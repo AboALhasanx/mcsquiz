@@ -47,8 +47,10 @@
     chapterFilter: null,   // chapter_no — always selected, no "all"
     lang: 'ar',         // 'ar' | 'en'
     sound: true,
-    session: null,      // {sub, ch, questions, picks, dwells, idx, ..., replay}
+    session: null,      // {sub, ch, title, chapterLabel, questions, picks, dwells, idx, ..., replay}
     saved: {},          // saveKey -> {origin, snapshot, savedAt}
+    savedSubject: null, // saved-view filter
+    savedChapter: null, // saved-view filter
   };
 
   const SAVED_KEY = 'portal_saved_v1';
@@ -274,12 +276,13 @@
   }
 
   function launchSession(pool, meta) {
-    // meta: {subjectId, subjectTitle, chapterNo, topic, quizId|null, retryWrong, replay}
+    // meta: {subjectId, subjectTitle, chapterNo, chapterLabel?, topic, quizId|null, retryWrong, replay}
     preparePool(pool);
     S.session = {
       sub: { subject_id: meta.subjectId, subject_title: meta.subjectTitle },
       ch: { chapter_no: meta.chapterNo, quiz_id: meta.quizId },
       title: meta.topic,
+      chapterLabel: meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }),
       questions: pool,
       picks: new Array(pool.length).fill(null),
       dwells: new Array(pool.length).fill(0),
@@ -289,9 +292,9 @@
       qStart: Date.now(), timerId: null,
     };
 
-    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + chLabel({ chapter_no: meta.chapterNo });
+    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + (meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }));
     $('quiz-title').textContent = meta.topic;
-    $('start-subject-badge').textContent = meta.subjectTitle + ' · ' + chLabel({ chapter_no: meta.chapterNo });
+    $('start-subject-badge').textContent = meta.subjectTitle + ' · ' + (meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }));
     $('start-quiz-title').textContent = meta.topic;
     $('start-questions-count').textContent = pool.length;
     $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5));
@@ -328,13 +331,14 @@
   }
 
   // Practice session built from saved-question snapshots (device-local).
-  function startSavedPractice(items) {
-    if (!items.length) { toast('لا توجد أسئلة محفوظة هنا'); return; }
+  function startSavedPractice(items, title, chapterLabel) {
+    if (!items.length) return;
     const pool = items.map((it) => JSON.parse(JSON.stringify(it.snapshot)));
     const first = items[0].origin;
     launchSession(pool, {
       subjectId: first.subjectId, subjectTitle: first.subjectTitle,
-      chapterNo: first.chapterNo, topic: 'تدريب المحفوظ (' + pool.length + ' أسئلة)',
+      chapterNo: first.chapterNo, chapterLabel: chapterLabel,
+      topic: title,
       quizId: null, retryWrong: false,
       replay: { type: 'saved', keys: items.map((it) => it.key) },
     });
@@ -406,66 +410,140 @@
     groups.forEach((g) => g.chapters.forEach((c) => { total += c.items.length; }));
     $('saved-total-line').textContent = total === 0 ? '' : total + ' أسئلة محفوظة في ' + groups.length + ' مواد';
     $('saved-empty-state').classList.toggle('hidden', total !== 0);
-    const letters = S.lang === 'ar' ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
-    groups.forEach((g) => {
-      g.chapters.forEach((c) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'saved-group';
-        const head = document.createElement('div');
-        head.className = 'saved-group-head';
-        head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.subjectTitle) +
-          '</div><div class="saved-group-sub">' + escapeHtml('تشابتر ' + c.chapterNo) + ' · ' + c.items.length + ' أسئلة</div></div>';
-        const train = document.createElement('button');
-        train.type = 'button';
-        train.className = 'action-btn primary-btn saved-train-btn';
-        train.innerHTML = '<i data-lucide="target"></i><span>تدريب</span>';
-        train.setAttribute('aria-label', 'تدريب على محفوظ ' + g.subjectTitle + ' تشابتر ' + c.chapterNo);
-        train.addEventListener('click', () => startSavedPractice(c.items));
-        head.appendChild(train);
-        wrap.appendChild(head);
-        c.items.forEach((it) => {
-          const q = it.snapshot;
-          const isAr = S.lang === 'ar';
-          const opts = isAr ? (q.options_ar || q.options) : (q.options_en || q.options);
-          const card = document.createElement('div');
-          card.className = 'review-card correct-border saved-card';
-          const stem = document.createElement('p');
-          stem.className = 'review-question-text';
-          stem.textContent = isAr ? (q.question_ar || q.question) : (q.question_en || q.question);
-          card.appendChild(stem);
-          const optionsList = document.createElement('div');
-          optionsList.className = 'review-options-list';
-          opts.forEach((t, oi) => {
-            if (oi !== q.correct) return;
-            const item = document.createElement('div');
-            item.className = 'review-option-item correct-answer';
-            item.innerHTML = '<span class="review-option-indicator">' + letters[oi] +
-              '</span><span class="review-option-text">' + escapeHtml(t) + '</span>';
-            optionsList.appendChild(item);
-          });
-          card.appendChild(optionsList);
-          if (q.explanation) {
-            const exp = document.createElement('div');
-            exp.className = 'review-explanation-box';
-            exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(q.explanation) + '</span>';
-            card.appendChild(exp);
-          }
-          const rm = document.createElement('button');
-          rm.type = 'button';
-          rm.className = 'action-btn secondary-btn saved-remove-btn';
-          rm.innerHTML = '<i data-lucide="trash-2"></i><span>إزالة</span>';
-          rm.setAttribute('aria-label', 'إزالة السؤال من المحفوظ');
-          rm.addEventListener('click', () => {
-            delete S.saved[it.key];
-            persistSaved(); updateSavedBadge(); renderSaved(); icons();
-            toast('أُزيل من المحفوظ');
-          });
-          card.appendChild(rm);
-          wrap.appendChild(card);
-        });
-        box.appendChild(wrap);
+
+    // Filter bars (same pattern as catalog): subject chips, then chapter chips. No "all".
+    const subBar = $('saved-subject-bar');
+    const chBar = $('saved-chapter-bar');
+    if (total === 0) {
+      if (subBar) { subBar.innerHTML = ''; subBar.style.display = 'none'; }
+      if (chBar) { chBar.innerHTML = ''; chBar.style.display = 'none'; }
+      icons();
+      return;
+    }
+    if (subBar) subBar.style.display = '';
+    if (!S.savedSubject || !groups.some((g) => g.subjectId === S.savedSubject)) {
+      S.savedSubject = groups[0].subjectId;
+      S.savedChapter = null;
+    }
+    const sub = groups.find((g) => g.subjectId === S.savedSubject) || groups[0];
+    if (subBar) {
+      subBar.innerHTML = '';
+      groups.forEach((g) => {
+        const n = g.chapters.reduce((a, c) => a + c.items.length, 0);
+        const b = document.createElement('button');
+        b.className = 'filter-chip' + (S.savedSubject === g.subjectId ? ' active' : '');
+        b.textContent = g.subjectTitle + ' (' + n + ')';
+        b.setAttribute('aria-pressed', S.savedSubject === g.subjectId ? 'true' : 'false');
+        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; renderSaved(); });
+        subBar.appendChild(b);
       });
+    }
+    const chNos = sub.chapters.map((c) => c.chapterNo);
+    if (!S.savedChapter || !chNos.includes(S.savedChapter)) S.savedChapter = chNos[0];
+    if (chBar) {
+      chBar.innerHTML = '';
+      if (chNos.length <= 1) { chBar.style.display = 'none'; }
+      else {
+        chBar.style.display = '';
+        chNos.forEach((n) => {
+          const b = document.createElement('button');
+          b.className = 'filter-chip chapter-chip' + (S.savedChapter === n ? ' active' : '');
+          b.textContent = 'تشابتر ' + n;
+          b.setAttribute('aria-pressed', S.savedChapter === n ? 'true' : 'false');
+          b.addEventListener('click', () => { S.savedChapter = n; renderSaved(); });
+          chBar.appendChild(b);
+        });
+      }
+    }
+
+    const letters = S.lang === 'ar' ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+    // Subject-level block: title + whole-subject test generation
+    const subAll = [];
+    sub.chapters.forEach((c) => c.items.forEach((it) => subAll.push(it)));
+    const subWrap = document.createElement('div');
+    subWrap.className = 'saved-group saved-subject-block';
+    const subHead = document.createElement('div');
+    subHead.className = 'saved-group-head';
+    const subTitle = document.createElement('div');
+    subTitle.innerHTML = '<div class="saved-group-title">' + escapeHtml(sub.subjectTitle) +
+      '</div><div class="saved-group-sub">' + subAll.length + ' أسئلة محفوظة في ' + sub.chapters.length + ' تشابترات</div>';
+    subHead.appendChild(subTitle);
+    const genSub = document.createElement('button');
+    genSub.type = 'button';
+    genSub.className = 'action-btn primary-btn saved-gen-btn';
+    genSub.innerHTML = '<i data-lucide="zap"></i><span>توليد اختبار للمادة (' + subAll.length + ')</span>';
+    genSub.setAttribute('aria-label', 'توليد اختبار من كل محفوظ ' + sub.subjectTitle);
+    genSub.addEventListener('click', () => startSavedPractice(
+      subAll,
+      'اختبار محفوظ ' + sub.subjectTitle,
+      'اختبار شامل (' + subAll.length + ' أسئلة)'
+    ));
+    subHead.appendChild(genSub);
+    subWrap.appendChild(subHead);
+    box.appendChild(subWrap);
+
+    // Selected chapter block: items + chapter-only test generation
+    const c = sub.chapters.find((x) => x.chapterNo === S.savedChapter) || sub.chapters[0];
+    const wrap = document.createElement('div');
+    wrap.className = 'saved-group';
+    const head = document.createElement('div');
+    head.className = 'saved-group-head';
+    head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml('تشابتر ' + c.chapterNo) +
+      '</div><div class="saved-group-sub">' + c.items.length + ' أسئلة</div></div>';
+    const train = document.createElement('button');
+    train.type = 'button';
+    train.className = 'action-btn primary-btn saved-train-btn';
+    train.innerHTML = '<i data-lucide="target"></i><span>توليد اختبار للتشابتر (' + c.items.length + ')</span>';
+    train.setAttribute('aria-label', 'توليد اختبار لتشابتر ' + c.chapterNo);
+    train.addEventListener('click', () => startSavedPractice(
+      c.items,
+      'اختبار محفوظ ' + sub.subjectTitle + ' ' + 'تشابتر ' + c.chapterNo,
+      'تشابتر ' + c.chapterNo + ' (' + c.items.length + ' أسئلة)'
+    ));
+    head.appendChild(train);
+    wrap.appendChild(head);
+    c.items.forEach((it) => {
+      const q = it.snapshot;
+      const isAr = S.lang === 'ar';
+      const opts = isAr ? (q.options_ar || q.options) : (q.options_en || q.options);
+      const card = document.createElement('div');
+      card.className = 'review-card correct-border saved-card';
+      const stem = document.createElement('p');
+      stem.className = 'review-question-text';
+      stem.textContent = isAr ? (q.question_ar || q.question) : (q.question_en || q.question);
+      card.appendChild(stem);
+      const optionsList = document.createElement('div');
+      optionsList.className = 'review-options-list';
+      opts.forEach((t, oi) => {
+        if (oi !== q.correct) return;
+        const item = document.createElement('div');
+        item.className = 'review-option-item correct-answer';
+        item.innerHTML = '<span class="review-option-indicator">' + letters[oi] +
+          '</span><span class="review-option-text">' + escapeHtml(t) + '</span>';
+        optionsList.appendChild(item);
+      });
+      card.appendChild(optionsList);
+      if (q.explanation) {
+        const exp = document.createElement('div');
+        exp.className = 'review-explanation-box';
+        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(q.explanation) + '</span>';
+        card.appendChild(exp);
+      }
+      const rm = document.createElement('button');
+      rm.type = 'button';
+      rm.className = 'action-btn secondary-btn saved-remove-btn';
+      rm.innerHTML = '<i data-lucide="trash-2"></i><span>إزالة</span>';
+      rm.setAttribute('aria-label', 'إزالة السؤال من المحفوظ');
+      rm.addEventListener('click', () => {
+        delete S.saved[it.key];
+        if (Object.keys(S.saved).length === 0) { S.savedSubject = null; S.savedChapter = null; }
+        persistSaved(); updateSavedBadge(); renderSaved(); icons();
+        toast('أُزيل من المحفوظ');
+      });
+      card.appendChild(rm);
+      wrap.appendChild(card);
     });
+    box.appendChild(wrap);
     icons();
   }
 
@@ -632,7 +710,7 @@
     const cb = $('chapter-breakdown');
     const ses = S.session;
     cb.innerHTML = '<div class="chapter-row"><span class="chapter-name">' +
-      escapeHtml(ses.sub.subject_title + ' · ' + chLabel(ses.ch)) + '</span>' +
+      escapeHtml(ses.sub.subject_title + ' · ' + (ses.chapterLabel || chLabel(ses.ch))) + '</span>' +
       '<span class="chapter-pct">' + res.correct + ' / ' + res.total + '</span></div>';
 
     $('filter-count-all').textContent = res.total;
@@ -770,6 +848,9 @@
     }
     ov.classList.remove('hidden');
     ov.setAttribute('aria-hidden', 'false');
+    ov.classList.toggle('tour-dim-light', !!st.center);
+    const icon = $('tour-tip-icon');
+    if (icon) icon.style.display = st.center ? 'block' : 'none';
     // Action steps need the spotlight hole clickable: shades stop intercepting.
     ['tour-shade-top', 'tour-shade-bottom', 'tour-shade-left', 'tour-shade-right'].forEach((id) => {
       document.getElementById(id).style.pointerEvents = st.action ? 'none' : 'auto';
@@ -972,7 +1053,7 @@
       if (ses.replay && ses.replay.type === 'saved') {
         const subset = window.PortalAnalytics.buildWrongOnly(from.questions, from.picks);
         if (!subset) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
-        const meta = { subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title, chapterNo: ses.ch.chapter_no, topic: ses.title, quizId: null, retryWrong: true, replay: ses.replay };
+        const meta = { subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title, chapterNo: ses.ch.chapter_no, chapterLabel: ses.chapterLabel, topic: ses.title, quizId: null, retryWrong: true, replay: ses.replay };
         launchSession(subset, meta);
         beginAnswering();
         return;
