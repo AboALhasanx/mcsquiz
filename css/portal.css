@@ -1,0 +1,111 @@
+/* portal.css — MCQ Portal modification layer (on top of copied quiz.css).
+ * Everything here is OUR addition/improvement. quiz.css stays untouched
+ * (byte-copy of Master-Studio) so future visual syncs stay trivial. */
+
+:root { color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }
+
+/* --- visible keyboard focus (fixes invisible-focus defect) --- */
+:focus-visible {
+  outline: 2px solid #4da3ff !important;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* --- TEST MODE badge --- */
+.test-mode-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0b0f16;
+  background: #ffc53d;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  margin-inline-start: 0.4rem;
+  white-space: nowrap;
+}
+
+/* --- chapter filter row --- */
+.chapter-bar { margin-top: -0.25rem; }
+.chapter-chip { font-size: 0.78rem; }
+.catalog-filter-bar { overflow-x: auto; scrollbar-width: none; }
+.catalog-filter-bar::-webkit-scrollbar { display: none; }
+.catalog-filter-bar .filter-chip { flex: 0 0 auto; }
+
+/* --- portal note under catalog --- */
+.portal-note {
+  display: block;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.65;
+  padding: 0.5rem 0 1rem;
+}
+
+/* --- toasts (aria-live announcements) --- */
+.toast-region {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  pointer-events: none;
+}
+.portal-toast {
+  background: #1c2530;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  max-width: 90vw;
+  text-align: center;
+}
+.portal-toast.show { opacity: 1; }
+
+/* --- chapter breakdown on results --- */
+.chapter-breakdown { margin: 0.75rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.chapter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+}
+.chapter-pct { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+/* --- debug panel (testing mode only, ?debug=1) --- */
+.debug-panel {
+  margin: 1rem 0.5rem;
+  font-size: 0.75rem;
+  border: 1px dashed #ffc53d;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+}
+.debug-panel summary { cursor: pointer; color: #ffc53d; font-weight: 700; }
+.debug-panel pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 220px;
+  overflow: auto;
+  margin: 0.5rem 0 0;
+  direction: ltr;
+  text-align: left;
+}
+
+/* --- reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}

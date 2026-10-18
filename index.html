@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>MSCQuiz — بوابة الأسئلة</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F16">
+    <meta name="description" content="بوابة أسئلة MCQ تفاعلية — وضع اختبار">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <link rel="icon" type="image/png" href="assets/icon-192.png">
+    <script src="js/lucide.min.js" defer></script>
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/portal.css">
+</head>
+<body id="quiz-root">
+
+    <div class="app-container">
+
+        <header class="app-header">
+            <div id="header-catalog-view" class="header-inner" style="display:flex; width:100%; justify-content:space-between; align-items:center;">
+                <div class="header-left header-catalog-brand">
+                    <img src="assets/brand-icon-light.png" alt="شعار MSCQuiz" class="brand-logo-img" width="24" height="24">
+                    <span class="app-brand-title">MSCQuiz</span>
+                    <span id="test-mode-badge" class="test-mode-badge" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
+                </div>
+                <div class="header-right header-catalog-actions">
+                    <button id="btn-theme-toggle" class="icon-btn" aria-label="تبديل المظهر" title="تبديل المظهر">
+                        <i data-lucide="moon" id="theme-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="header-session-view" class="header-inner" style="display:none; width:100%; justify-content:space-between; align-items:center;">
+                <div class="header-left">
+                    <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
+                        <i data-lucide="home"></i>
+                    </button>
+                    <button id="btn-open-matrix" class="icon-btn" aria-label="جدول الأسئلة" title="جدول الأسئلة">
+                        <i data-lucide="layout-grid"></i>
+                    </button>
+                </div>
+                <div class="header-right">
+                    <button id="btn-lang-toggle" class="icon-btn" aria-label="ترجمة السؤال والخيارات" title="ترجمة السؤال والخيارات">
+                        <i data-lucide="languages"></i>
+                    </button>
+                    <button id="btn-sound-toggle" class="icon-btn" aria-label="كتم أو تشغيل الصوت" title="كتم/تشغيل الصوت">
+                        <i data-lucide="volume-2" id="sound-icon"></i>
+                    </button>
+                    <button id="btn-theme-toggle-session" class="icon-btn" aria-label="تبديل المظهر" title="تبديل المظهر">
+                        <i data-lucide="moon" id="theme-icon-session"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="pwa-install-banner" class="pwa-install-banner hidden">
+            <div class="pwa-install-info">
+                <i data-lucide="download-cloud" class="pwa-icon"></i>
+                <div class="pwa-text">
+                    <strong>تثبيت التطبيق على هاتفك</strong>
+                    <span>للمذاكرة بدون إنترنت وبسرعة فائقة</span>
+                </div>
+            </div>
+            <div class="pwa-actions">
+                <button id="btn-pwa-install" class="pwa-install-btn">تثبيت الآن</button>
+                <button id="btn-pwa-dismiss" class="pwa-dismiss-btn" aria-label="إغلاق">✕</button>
+            </div>
+        </div>
+
+        <div id="quiz-session-topbar" style="display:none;">
+            <section class="topic-banner">
+                <span id="quiz-subtitle" class="topic-subject-badge">…</span>
+                <h1 id="quiz-title" class="topic-title">كوز تفاعلي</h1>
+            </section>
+
+            <section class="progress-section" aria-label="تقدم الكوز">
+                <div class="progress-bar-track">
+                    <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+                </div>
+                <div class="progress-meta-row">
+                    <div class="progress-counter">
+                        <span id="question-index-label">1</span>
+                        <span class="meta-separator">/</span>
+                        <span id="question-total-label">8</span>
+                    </div>
+                    <button id="btn-timer-pause" class="timer-unified-pill" aria-label="إيقاف مؤقت أو استئناف الكوز" title="إيقاف مؤقت / استئناف">
+                        <i data-lucide="pause" id="timer-icon" class="timer-icon"></i>
+                        <span id="session-timer" class="timer-total">00:00</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <main class="main-content" id="main-content">
+
+            <div id="deck-catalog" class="deck-catalog" style="display:flex; flex-direction:column; gap:0.75rem; margin:0.5rem 0;">
+                <div class="catalog-filter-bar" id="subject-filter-bar" role="group" aria-label="فلتر المواد"></div>
+                <div class="catalog-filter-bar chapter-bar" id="chapter-filter-bar" role="group" aria-label="فلتر التشابتر"></div>
+                <div id="catalog-cards-container" class="sketch-card-group"></div>
+                <div id="catalog-empty-state" class="catalog-empty-state hidden">لا توجد كويزات هنا بعد</div>
+                <div class="offline-sync-footer">
+                    <span class="portal-note">الأسئلة محفوظة داخل الموقع — تعمل بدون إنترنت بعد أول زيارة</span>
+                </div>
+            </div>
+
+            <div id="quiz-loading" class="state-view hidden" role="status" aria-live="polite">
+                <div class="spinner" aria-hidden="true"></div>
+                <p>جاري تحميل أسئلة الكوز…</p>
+            </div>
+
+            <div id="quiz-error" class="state-view hidden">
+                <div class="error-icon-box">
+                    <i data-lucide="alert-triangle"></i>
+                </div>
+                <h2>تعذر تحميل الكوز</h2>
+                <p id="error-message">لم يتم العثور على الكوز المطلوب.</p>
+                <div style="display:flex; flex-direction:column; gap:0.5rem; width:100%; max-width:280px;">
+                    <button id="btn-retry-load" class="action-btn primary-btn">
+                        <i data-lucide="refresh-cw"></i>
+                        <span>إعادة المحاولة</span>
+                    </button>
+                    <button id="btn-back-home" class="action-btn secondary-btn">
+                        <i data-lucide="home"></i>
+                        <span>العودة للمواد</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="quiz-start-view" class="state-view quiz-start-card hidden">
+                <div class="start-icon-box">
+                    <i data-lucide="sparkles" class="start-icon"></i>
+                </div>
+                <span id="start-subject-badge" class="topic-subject-badge">المادة الدراسية</span>
+                <h2 id="start-quiz-title" class="start-title">عنوان الكوز</h2>
+                <div class="start-meta-pills">
+                    <span class="start-pill"><i data-lucide="help-circle"></i> <span id="start-questions-count">0</span> أسئلة</span>
+                    <span class="start-pill"><i data-lucide="clock"></i> <span id="start-estimated-time">0</span> دقيقة</span>
+                </div>
+                <p class="start-instructions">جاهز للاختبار؟ اضغط ابدأ لبدء احتساب الوقت ومراجعة الأسئلة.</p>
+                <button id="btn-start-quiz" class="nav-btn primary-btn start-btn">
+                    <i data-lucide="play"></i>
+                    <span>ابدأ الكوز الآن</span>
+                </button>
+            </div>
+
+            <div id="quiz-view" class="quiz-view hidden" style="position:relative;">
+                <div id="pause-overlay" class="pause-overlay hidden">
+                    <div class="pause-card">
+                        <i data-lucide="pause-circle" class="pause-icon"></i>
+                        <h3>الكوز متوقف مؤقتاً</h3>
+                        <p>تم تجميد الوقت. اضغط استئناف لمتابعة الإجابة.</p>
+                        <button id="btn-resume-quiz" class="nav-btn primary-btn resume-btn">
+                            <i data-lucide="play"></i>
+                            <span>استئناف الكوز</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="question-card" id="question-card">
+                    <div class="card-header">
+                        <span class="card-hint">اختر الإجابة الصحيحة</span>
+                    </div>
+                    <div class="question-body">
+                        <p id="question-text" class="question-text" dir="auto"></p>
+                    </div>
+                    <div id="options-container" class="options-grid" role="radiogroup" aria-label="خيارات الإجابة"></div>
+                    <div id="live-feedback-box" class="explanation-card hidden">
+                        <div class="explanation-badge">
+                            <i data-lucide="lightbulb" class="explanation-icon"></i>
+                            <span>الشرح</span>
+                        </div>
+                        <p id="live-explanation-text" class="explanation-body"></p>
+                    </div>
+                </div>
+
+                <nav class="bottom-nav single-btn-nav" aria-label="التنقل بين الأسئلة">
+                    <button id="btn-next" class="nav-btn primary-btn full-width-btn" aria-label="السؤال التالي">
+                        <span id="next-btn-text">التالي</span>
+                        <i data-lucide="arrow-left" id="next-btn-icon"></i>
+                    </button>
+                </nav>
+            </div>
+
+            <div id="results-view" class="results-view hidden">
+                <div class="results-card">
+                    <div class="score-circle-wrapper">
+                        <div class="score-circle">
+                            <span id="score-percentage" class="score-number">0%</span>
+                            <span class="score-fraction" id="score-fraction">0 / 0</span>
+                        </div>
+                        <div class="score-status-badge" id="score-badge">
+                            <i data-lucide="check-circle-2" id="score-badge-icon"></i>
+                            <span id="score-badge-text">—</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-summary-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper correct-accent"><i data-lucide="check"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="stat-correct">0</span>
+                                <span class="stat-label">إجابة صحيحة</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper wrong-accent"><i data-lucide="x"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="stat-wrong">0</span>
+                                <span class="stat-label">إجابة خاطئة</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper time-accent"><i data-lucide="clock"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="stat-total-time">0:00</span>
+                                <span class="stat-label">الزمن الكلي</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper lucky-accent"><i data-lucide="zap"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="stat-avg-dwell">0 ث</span>
+                                <span class="stat-label">متوسط زمن الإجابة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="chapter-breakdown" class="chapter-breakdown" aria-live="polite"></div>
+
+                    <div class="results-action-row">
+                        <button id="btn-retry-wrong" class="action-btn primary-btn">
+                            <i data-lucide="target"></i>
+                            <span>إعادة الخاطئ فقط</span>
+                        </button>
+                        <button id="btn-retry-quiz" class="action-btn secondary-btn">
+                            <i data-lucide="refresh-cw"></i>
+                            <span>إعادة الكوز كاملاً</span>
+                        </button>
+                    </div>
+                    <div class="results-action-row">
+                        <button id="btn-back-catalog" class="action-btn secondary-btn">
+                            <i data-lucide="layout-grid"></i>
+                            <span>كل المواد</span>
+                        </button>
+                    </div>
+                </div>
+
+                <section class="breakdown-section" aria-label="مراجعة الأسئلة">
+                    <div class="breakdown-header">
+                        <h2>مراجعة الأسئلة</h2>
+                        <div class="filter-pills" role="tablist" aria-label="فلتر المراجعة">
+                            <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">الكل (<span id="filter-count-all">0</span>)</button>
+                            <button class="filter-pill" data-filter="wrong" role="tab" aria-selected="false">الخاطئة (<span id="filter-count-wrong">0</span>)</button>
+                            <button class="filter-pill" data-filter="correct" role="tab" aria-selected="false">الصحيحة (<span id="filter-count-correct">0</span>)</button>
+                        </div>
+                    </div>
+                    <div id="review-cards-list" class="review-cards-list"></div>
+                </section>
+            </div>
+
+        </main>
+
+        <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+
+        <aside id="quiz-info-drawer" class="drawer" aria-labelledby="info-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="info" class="drawer-header-icon"></i>
+                    <h2 id="info-drawer-title">تفاصيل الكوز</h2>
+                </div>
+                <button id="btn-close-info" class="icon-btn" aria-label="إغلاق التفاصيل">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div id="info-sheet-topic" class="info-sheet-topic"></div>
+                <ul id="info-sheet-list" class="info-sheet-list"></ul>
+            </div>
+        </aside>
+
+        <aside id="matrix-drawer" class="drawer" aria-labelledby="matrix-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="layout-grid" class="drawer-header-icon"></i>
+                    <h2 id="matrix-drawer-title">جدول الأسئلة</h2>
+                </div>
+                <button id="btn-close-matrix" class="icon-btn" aria-label="إغلاق الجدول">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body">
+                <div class="matrix-legend">
+                    <span class="legend-item"><span class="legend-dot dot-answered"></span> مُجاب</span>
+                    <span class="legend-item"><span class="legend-dot dot-unanswered"></span> لم يُجب</span>
+                    <span class="legend-item"><span class="legend-dot dot-current"></span> الحالي</span>
+                </div>
+                <div id="matrix-grid" class="matrix-grid"></div>
+            </div>
+        </aside>
+
+        <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+        <details id="debug-panel" class="debug-panel hidden">
+            <summary>Debug — تفاصيل التشغيل</summary>
+            <pre id="debug-output">…</pre>
+        </details>
+
+    </div>
+
+    <script src="js/quiz-vault.js" defer></script>
+    <script src="js/analytics.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/pwa.js" defer></script>
+</body>
+</html>
