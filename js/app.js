@@ -417,8 +417,8 @@
     const ses = S.session;
     clearInterval(ses.timerId);
     $('progress-bar-fill').style.width = '100%';
-    playSound('completed');
     const res = window.PortalAnalytics.analyze(ses.questions, ses.picks, ses.dwells, elapsedSec());
+    playSound(res.pct >= 60 ? 'completed' : 'fail');
     setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
     renderResults(res);
     show('results-view');

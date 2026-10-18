@@ -1,7 +1,7 @@
 /* MCQ Portal service worker — static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const CACHE = 'mcq-portal-v1';
+const CACHE = 'mcq-portal-v2';
 const CORE = [
   './',
   './index.html',
@@ -21,6 +21,10 @@ const CORE = [
   './assets/icon-192.png',
   './assets/icon-512.png',
   './assets/brand-icon-light.png',
+  './sounds/correct.mp3',
+  './sounds/wrong.mp3',
+  './sounds/completed.mp3',
+  './sounds/fail.mp3',
 ];
 
 self.addEventListener('install', (e) => {
