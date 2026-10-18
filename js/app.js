@@ -94,6 +94,7 @@
   try { loadSaved(); } catch (e) {}
   function persistSaved() {
     try { localStorage.setItem(SAVED_KEY, JSON.stringify(S.saved)); } catch (e) {}
+    cloudPush();
   }
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
@@ -161,6 +162,15 @@
       const prev = getBest(quizId);
       if (!prev || pct > prev.pct) localStorage.setItem(bestKey(quizId), JSON.stringify({ pct: pct, frac: frac }));
     } catch (e) { /* storage optional */ }
+    cloudPush();
+  }
+  function cloudPush() {
+    try {
+      if (window.PortalCloud && window.PortalCloud.configured() && window.PortalCloud.linked()) {
+        window.PortalCloud.pushSoon();
+      }
+      updateAccountRow();
+    } catch (e) {}
   }
 
   function chLabel(ch) { return 'جابتر ' + ch.chapter_no; }
@@ -835,6 +845,7 @@
       while (S.history.length > 200) S.history.shift();
       localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history));
     } catch (e) {}
+    cloudPush();
   }
 
   function clearHistory() {
@@ -1371,6 +1382,130 @@
     }
   }
 
+  // ---------------- cloud account (Dropbox, optional) ----------------
+  function cloud() { return window.PortalCloud || null; }
+  function fmtSyncTime() {
+    try {
+      const t = window.PortalCloud ? window.PortalCloud.lastSync() : 0;
+      if (!t) return '';
+      return new Intl.DateTimeFormat('ar', { hour: '2-digit', minute: '2-digit' }).format(new Date(t));
+    } catch (e) { return ''; }
+  }
+  function updateAccountRow() {
+    const name = $('menu-account-name');
+    const sub = $('menu-account-sub');
+    const av = $('menu-avatar');
+    if (!name || !sub) return;
+    const C = cloud();
+    if (!C || !C.configured()) {
+      name.textContent = 'زائر — بدون حساب';
+      sub.textContent = 'الحساب السحابي غير مُعد بعد';
+      if (av) av.textContent = 'ز';
+      return;
+    }
+    if (!C.linked()) {
+      name.textContent = 'زائر — بدون حساب';
+      sub.textContent = 'اضغط للتسجيل عبر Dropbox';
+      if (av) av.textContent = 'ز';
+      return;
+    }
+    const who = S.cloudName || 'حسابي';
+    name.textContent = who;
+    if (!navigator.onLine) sub.textContent = 'أوفلاين — سيُزامَن عند الاتصال';
+    else {
+      const t = fmtSyncTime();
+      sub.textContent = t ? 'مزامن ✓ ' + t : 'مزامن ✓';
+    }
+    if (av) av.textContent = (who.trim()[0] || 'ح').toUpperCase();
+    icons();
+  }
+  window.PortalCloudUI = function () { try { updateAccountRow(); } catch (e) {} };
+
+  async function handleAccountTap() {
+    const C = cloud();
+    if (!C || !C.configured()) {
+      toast('الحساب السحابي غير مُعد بعد — أضف مفتاح Dropbox أولاً');
+      return;
+    }
+    if (!C.linked()) {
+      toast('جارٍ التحويل إلى Dropbox…');
+      const r = await C.startLogin().catch((e) => ({ ok: false, error: String((e && e.message) || e) }));
+      if (!r.ok && !r.needSetup) toast(r.error || 'تعذر بدء التسجيل');
+      return;
+    }
+    try { await C.logout(); } catch (e) {}
+    S.cloudName = null;
+    updateAccountRow();
+    toast('تم تسجيل الخروج (نسختك المحلية باقية)');
+  }
+
+  async function handleOAuthCallback() {
+    const C = cloud();
+    if (!C || !C.configured()) return false;
+    const q = new URLSearchParams(location.search);
+    const code = q.get('code');
+    if (!code) return false;
+    try {
+      await C.finishLogin(code, q.get('state'));
+      history.replaceState(null, '', location.pathname + location.hash);
+      try {
+        const me = await C.accountInfo();
+        S.cloudName = me.name ? (me.name.display_name || me.email) : null;
+      } catch (e) { S.cloudName = null; }
+      const r = await C.pullOrPush();
+      renderCatalog();
+      if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+      if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+      updateAccountRow();
+      icons();
+      toast(r.action === 'downloaded' ? 'تمت المزامنة من حسابك ✓' : 'تم رفع بياناتك إلى حسابك ✓');
+    } catch (e) {
+      history.replaceState(null, '', location.pathname + location.hash);
+      toast('فشل تسجيل الدخول: تحقق من مفتاح التطبيق والرابط المعتمد');
+    }
+    return true;
+  }
+
+  async function handleOAuthCallback() {
+    const C = window.PortalCloud;
+    if (!C || !C.configured()) return false;
+    const q = new URLSearchParams(location.search);
+    const code = q.get('code');
+    if (!code) return false;
+    try {
+      const r = await C.finishLogin(code, q.get('state'));
+      void r;
+      history.replaceState(null, '', location.pathname + location.hash);
+      try {
+        const me = await C.accountInfo();
+        S.cloudName = me && me.name ? (me.name.display_name || me.email) : null;
+      } catch (e) { S.cloudName = null; }
+      try {
+        const res = await C.pullOrPush();
+        renderCatalog();
+        if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+        if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+        updateSavedBadge(); updateMenuCounts(); updateAccountRow();
+        toast(res && res.action === 'downloaded' ? 'تمت المزامنة من حسابك ✓' : 'تم ربط الحساب ورفع بياناتك ✓');
+      } catch (e) {
+        toast('تم الربط، تعذرت المزامنة الأولى — سيُحاوِل تلقائياً');
+      }
+    } catch (e) {
+      history.replaceState(null, '', location.pathname + location.hash);
+      toast('فشل تسجيل الدخول: تحقق من المفتاح والرابط المعتمد');
+    }
+    return true;
+  }
+
+  async function handleOAuthReturn() {
+    try {
+      const q = new URLSearchParams(location.search);
+      if (!q.get('code')) return;
+      toast('جارٍ إتمام تسجيل الدخول…');
+      await handleOAuthCallback();
+    } catch (e) { /* handled inside */ }
+  }
+
   // ---------------- wire up ----------------
   function bind() {
     window.addEventListener('hashchange', onHashChange);
@@ -1411,6 +1546,10 @@
     if (saveBtn) saveBtn.addEventListener('click', toggleSaveCurrent);
     $('menu-tour').addEventListener('click', () => { closeDrawers(); tourShow(0); });
     $('menu-install').addEventListener('click', installApp);
+    const menuAccount = $('menu-account');
+    if (menuAccount) menuAccount.addEventListener('click', () => { handleAccountTap(); });
+    window.addEventListener('online', () => { updateAccountRow(); try { window.PortalCloud && window.PortalCloud.pushSoon(); } catch (e) {} });
+    window.addEventListener('offline', updateAccountRow);
     $('menu-sound').addEventListener('click', () => { setSound(!S.sound); });
     $('menu-theme').addEventListener('click', () => toggleTheme());
     const expBtn = $('btn-export-data');
@@ -1527,14 +1666,16 @@
     loadUI();
     if (S.lang === 'en') document.documentElement.setAttribute('lang', 'en');
     bind();
+    handleOAuthReturn();
     show('quiz-loading');
     try {
       await loadData();
       renderSubjectChips();
       renderChapterChips();
       route();
-      updateSavedBadge();
+      updateSavedBadge(); updateMenuCounts();
       syncMenuToggles();
+      updateAccountRow();
       icons();
       if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
       if (S.index && S.index.test_mode === false) {
