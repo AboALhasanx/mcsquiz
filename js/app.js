@@ -42,8 +42,8 @@
   const S = {
     index: null,
     banks: {},          // quiz_id -> bank json
-    subjectFilter: 'all',
-    chapterFilter: 'all',
+    subjectFilter: null,   // subject_id — always selected, no "all"
+    chapterFilter: null,   // chapter_no — always selected, no "all"
     lang: 'ar',         // 'ar' | 'en'
     sound: true,
     session: null,      // {bank, questions, picks, dwells, idx, startEpoch, paused, pauseAccum, pauseStart, timerId, retryWrong}
@@ -110,9 +110,30 @@
     } catch (e) { /* storage optional */ }
   }
 
+  function chLabel(ch) { return 'تشابتر ' + ch.chapter_no; }
+
+  function currentSubject() {
+    if (S.index && S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
+      return S.index.subjects.find((s) => s.subject_id === S.subjectFilter);
+    }
+    return S.index ? S.index.subjects[0] : null;
+  }
+
+  function currentChapter(sub) {
+    sub = sub || currentSubject();
+    if (sub.chapters.some((c) => c.chapter_no === S.chapterFilter)) {
+      return sub.chapters.find((c) => c.chapter_no === S.chapterFilter);
+    }
+    return sub.chapters[0];
+  }
+
   function renderSubjectChips() {
     const bar = $('subject-filter-bar');
     bar.innerHTML = '';
+    if (!S.subjectFilter || !S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
+      S.subjectFilter = S.index.subjects[0].subject_id;
+      S.chapterFilter = null;
+    }
     const mk = (id, label) => {
       const b = document.createElement('button');
       b.className = 'filter-chip' + (S.subjectFilter === id ? ' active' : '');
@@ -121,41 +142,38 @@
       b.setAttribute('aria-pressed', S.subjectFilter === id ? 'true' : 'false');
       b.addEventListener('click', () => {
         S.subjectFilter = id;
-        S.chapterFilter = 'all';
+        S.chapterFilter = null;
         renderSubjectChips(); renderChapterChips(); renderCatalog();
       });
       return b;
     };
-    bar.appendChild(mk('all', 'الكل'));
     S.index.subjects.forEach((s) => bar.appendChild(mk(s.subject_id, s.subject_title)));
   }
 
   function visibleChapters() {
-    const out = [];
-    S.index.subjects.forEach((s) => {
-      if (S.subjectFilter !== 'all' && s.subject_id !== S.subjectFilter) return;
-      s.chapters.forEach((c) => out.push({ sub: s, ch: c }));
-    });
-    return out;
+    const sub = currentSubject();
+    return sub.chapters
+      .filter((c) => c.chapter_no === currentChapter(sub).chapter_no)
+      .map((ch) => ({ sub: sub, ch: ch }));
   }
 
   function renderChapterChips() {
     const bar = $('chapter-filter-bar');
+    const sub = currentSubject();
+    if (!S.chapterFilter || !sub.chapters.some((c) => c.chapter_no === S.chapterFilter)) {
+      S.chapterFilter = sub.chapters[0].chapter_no;
+    }
     bar.innerHTML = '';
-    const seen = [];
-    visibleChapters().forEach(({ ch }) => { if (!seen.includes(ch.chapter)) seen.push(ch.chapter); });
-    if (seen.length <= 1) { bar.style.display = 'none'; return; }
+    if (sub.chapters.length <= 1) { bar.style.display = 'none'; return; }
     bar.style.display = '';
-    const mk = (id, label) => {
+    sub.chapters.forEach((c) => {
       const b = document.createElement('button');
-      b.className = 'filter-chip chapter-chip' + (S.chapterFilter === id ? ' active' : '');
-      b.textContent = label;
-      b.setAttribute('aria-pressed', S.chapterFilter === id ? 'true' : 'false');
-      b.addEventListener('click', () => { S.chapterFilter = id; renderChapterChips(); renderCatalog(); });
-      return b;
-    };
-    bar.appendChild(mk('all', 'كل التشابترات'));
-    seen.forEach((c) => bar.appendChild(mk(c, c)));
+      b.className = 'filter-chip chapter-chip' + (S.chapterFilter === c.chapter_no ? ' active' : '');
+      b.textContent = chLabel(c);
+      b.setAttribute('aria-pressed', S.chapterFilter === c.chapter_no ? 'true' : 'false');
+      b.addEventListener('click', () => { S.chapterFilter = c.chapter_no; renderChapterChips(); renderCatalog(); });
+      bar.appendChild(b);
+    });
   }
 
   function renderCatalog() {
@@ -163,7 +181,6 @@
     box.innerHTML = '';
     let count = 0;
     visibleChapters().forEach(({ sub, ch }) => {
-      if (S.chapterFilter !== 'all' && ch.chapter !== S.chapterFilter) return;
       const bank = S.banks[ch.quiz_id];
       if (!bank) return;
       count++;
@@ -176,7 +193,7 @@
         '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-content-cell">' +
           '<div class="sketch-title-ltr">' + escapeHtml(bank.topic) + '</div>' +
           '<div class="sketch-meta-line"><span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
-          '<span class="sketch-meta-dot">·</span><span class="sketch-sem-tag">' + escapeHtml(ch.chapter) + '</span>' +
+          '<span class="sketch-meta-dot">·</span><span class="sketch-sem-tag">' + escapeHtml(chLabel(ch)) + '</span>' +
           '<span class="sketch-meta-dot">·</span><span class="sketch-count-tag">' + bank.questions.length + ' أسئلة</span>' +
           (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
           '</div></a>' +
@@ -199,7 +216,7 @@
     $('info-sheet-topic').textContent = bank.topic;
     $('info-sheet-list').innerHTML =
       '<li><strong>المادة:</strong> ' + escapeHtml(sub.subject_title) + '</li>' +
-      '<li><strong>التشابتر:</strong> ' + escapeHtml(ch.chapter) + '</li>' +
+      '<li><strong>التشابتر:</strong> ' + escapeHtml(chLabel(ch)) + '</li>' +
       '<li><strong>الأسئلة:</strong> ' + bank.questions.length + '</li>' +
       (best_text(ch.quiz_id));
     openDrawer('quiz-info-drawer');
@@ -252,9 +269,9 @@
       qStart: Date.now(), timerId: null,
     };
 
-    $('quiz-subtitle').textContent = sub.subject_title + ' · ' + ch.chapter;
+    $('quiz-subtitle').textContent = sub.subject_title + ' · ' + chLabel(ch);
     $('quiz-title').textContent = bank.topic;
-    $('start-subject-badge').textContent = sub.subject_title + ' · ' + ch.chapter;
+    $('start-subject-badge').textContent = sub.subject_title + ' · ' + chLabel(ch);
     $('start-quiz-title').textContent = bank.topic;
     $('start-questions-count').textContent = pool.length;
     $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5));
@@ -422,7 +439,7 @@
     const cb = $('chapter-breakdown');
     const ses = S.session;
     cb.innerHTML = '<div class="chapter-row"><span class="chapter-name">' +
-      escapeHtml(ses.sub.subject_title + ' · ' + ses.ch.chapter) + '</span>' +
+      escapeHtml(ses.sub.subject_title + ' · ' + chLabel(ses.ch)) + '</span>' +
       '<span class="chapter-pct">' + res.correct + ' / ' + res.total + '</span></div>';
 
     $('filter-count-all').textContent = res.total;
