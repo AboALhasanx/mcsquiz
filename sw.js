@@ -1,7 +1,7 @@
 /* MCQ Portal service worker — static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const CACHE = 'mcq-portal-v2';
+const CACHE = 'mcq-portal-v14';
 const CORE = [
   './',
   './index.html',
@@ -14,13 +14,16 @@ const CORE = [
   './js/lucide.min.js',
   './js/pwa.js',
   './data/index.json',
-  './data/banks/01_Cyber_Security_Ch01_demo.json',
-  './data/banks/01_Cyber_Security_Ch02_demo.json',
-  './data/banks/04_ASE_SDLC_demo.json',
-  './data/banks/04_ASE_Agile_demo.json',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/brand-icon-light.png',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_DrHuda_20MCQ.json',
+  './data/banks/01_Cyber_Security_Ch02_Quiz_Ch02_DrHuda_20MCQ.json',
+  './data/banks/01_Cyber_Security_Ch03_Quiz_01_Cybersecurity_Foundations.json',
+  './data/banks/01_Cyber_Security_Ch04_Quiz_02_Risk_Assessment.json',
+  './data/banks/02_English_Language_Ch01_Quiz_01_Grammar_and_Tenses.json',
+  './data/banks/03_Data_Mining_Ch01_Quiz_01_Introduction_to_Data_Mining.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_02_Patriot_Brooks.json',
+  './data/banks/05_Soft_Computing_Ch01_Quiz_01_Soft_Computing_Foundations.json',
+  './data/banks/05_Soft_Computing_Ch02_Quiz_02_Fuzzy_Logic_Systems.json',
   './sounds/correct.mp3',
   './sounds/wrong.mp3',
   './sounds/completed.mp3',

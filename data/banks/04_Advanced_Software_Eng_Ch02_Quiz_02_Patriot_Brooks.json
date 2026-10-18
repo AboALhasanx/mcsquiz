@@ -1,0 +1,168 @@
+{
+ "subject": "04_Advanced_Software_Eng",
+ "subject_id": "04_Advanced_Software_Eng",
+ "subject_title": "Advanced Software Engineering",
+ "topic": "Lecture 01: Patriot Drift & Brooks Essential Complexity",
+ "topic_ar": "محاضرة 01: انحراف باتريوت والتعقيد الجوهري لبروكس",
+ "instructor": "Asst. Prof. Dr. Ali Fahim Ni'ma",
+ "instructor_ar": "أ.م.د. علي فاهم نعمة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "schema_version": 2,
+ "quiz_id": "Quiz_02_Patriot_Brooks",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "patriot_clock_drift",
+   "bloom_level": "Apply",
+   "question": "A Patriot battery ran continuously for 100 hours using an integer tenth-of-a-second counter multiplied by a 24-bit fixed-point approximation of 1/10. What is the direct engineering root cause of the accumulated clock error?",
+   "question_ar": "تعمل بطارية باتريوت لمدة 100 ساعة متصلة بعداد صحيح للأعشار مضروب في تقريب النقطة الثابتة 24-بت للرقم 1/10. ما الجذر الهندسي المباشر لخطأ الساعة التراكمي؟",
+   "text": "تعمل بطارية باتريوت لمدة 100 ساعة متصلة بعداد صحيح للأعشار مضروب في تقريب النقطة الثابتة 24-بت للرقم 1/10. ما الجذر الهندسي المباشر لخطأ الساعة التراكمي؟",
+   "text_en": "A Patriot battery ran continuously for 100 hours using an integer tenth-of-a-second counter multiplied by a 24-bit fixed-point approximation of 1/10. What is the direct engineering root cause of the accumulated clock error?",
+   "options": [
+    "تراكم خطأ التكامل العددي للسرعة اللحظية عند كل قراءة لموقع الصاروخ المنبعث كل نبضة زمنية.",
+    "انزلاق مجموع العدّاد التراكمي ضد التصحيح اليومي الجيوديسي لموقع الموقع الأرضي المرصود.",
+    "اختيار تردد ساعة المعالج أبطأ من المواصفة المطلوبة بمقدار مئات الهرتز عبر مدة التشغيل الطويلة.",
+    "اقتطاع الكسر العشري 1/10 عند البت 24 أنتج فرقاً قدره نحو 95 نانوثانية لكل نبضة يتضاعف عبر التشغيل."
+   ],
+   "options_ar": [
+    "تراكم خطأ التكامل العددي للسرعة اللحظية عند كل قراءة لموقع الصاروخ المنبعث كل نبضة زمنية.",
+    "انزلاق مجموع العدّاد التراكمي ضد التصحيح اليومي الجيوديسي لموقع الموقع الأرضي المرصود.",
+    "اختيار تردد ساعة المعالج أبطأ من المواصفة المطلوبة بمقدار مئات الهرتز عبر مدة التشغيل الطويلة.",
+    "اقتطاع الكسر العشري 1/10 عند البت 24 أنتج فرقاً قدره نحو 95 نانوثانية لكل نبضة يتضاعف عبر التشغيل."
+   ],
+   "options_en": [
+    "Numerical integration error of instantaneous velocity accumulated on every radar return reading.",
+    "The accumulator total drifted against the daily geodetic correction of the tracked site position.",
+    "The processor clock frequency was selected hundreds of hertz below specification across the long run.",
+    "Truncating 1/10 at the 24-bit fixed-point boundary produced roughly 95 nanoseconds per tick."
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "تمثيل 1/10 بالأعداد الثنائية يتطلب كسوراً غير منتهية؛ الاقتطاع عند البت 24 ترك فرقاً نحو 9.5×10⁻⁸ ثانية للنبضة الواحدة. على مدى 3.6 مليون نبضة (100 ساعة) تراكم الخلل إلى 0.34 ثانية، وبسرعة 5 ماخ أزيحت بوابة النطاق نحو 687 متراً."
+  },
+  {
+   "id": "q2",
+   "concept_id": "brooks_no_silver_bullet",
+   "bloom_level": "Understand",
+   "question": "In Brooks' essay No Silver Bullet, which statement captures the core of his central claim about software productivity?",
+   "question_ar": "في مقالة Brooks المعنونة No Silver Bullet، أي عبارة تلتقط جوهر ادّعائه المركزي عن إنتاجية البرمجيات؟",
+   "text": "في مقالة Brooks المعنونة No Silver Bullet، أي عبارة تلتقط جوهر ادّعائه المركزي عن إنتاجية البرمجيات؟",
+   "text_en": "In Brooks' essay No Silver Bullet, which statement captures the core of his central claim about software productivity?",
+   "options": [
+    "معضلات البرمجيات كلها عرضية بطبيعتها وتُحسم بإدخال أحدث تقنيات الأتمتة والذكاء.",
+    "التعقيد الجوهري طبيعة ملازمة للبرنامج، ولا تقضي عليه أي أداة أو لغة جديدة خلال عقد.",
+    "تكاليف صيانة البرمجيات فقط هي التي تتجاوز تكاليف تطويرها في الأنظمة الضخمة.",
+    "جذر صعوبة البرمجيات هو أدوات التطوير القديمة، وسيزول الأمر بتوحيد بيئة العمل بالكامل."
+   ],
+   "options_ar": [
+    "معضلات البرمجيات كلها عرضية بطبيعتها وتُحسم بإدخال أحدث تقنيات الأتمتة والذكاء.",
+    "التعقيد الجوهري طبيعة ملازمة للبرنامج، ولا تقضي عليه أي أداة أو لغة جديدة خلال عقد.",
+    "تكاليف صيانة البرمجيات فقط هي التي تتجاوز تكاليف تطويرها في الأنظمة الضخمة.",
+    "جذر صعوبة البرمجيات هو أدوات التطوير القديمة، وسيزول الأمر بتوحيد بيئة العمل بالكامل."
+   ],
+   "options_en": [
+    "All software troubles are accidental by nature and yield to the newest automation technology.",
+    "Essential complexity is inherent to the software itself and no new tool slays it within a decade.",
+    "Only maintenance costs ever exceed development costs once a system grows large in scope.",
+    "The root cause is legacy tooling, and unified workbenches alone will erase the difficulty entirely."
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "بروكس يفرّق بين التعقيد العرضي (Accidental) الذي تلغيه الأدوات مثل لغات المستوى العالي، والتعقيد الجوهري (Essential) المتأصل في نطاق المشكلة نفسه؛ ادّعاؤه أن الثاني لا يزول بأي ن فضة واحدة."
+  },
+  {
+   "id": "q3",
+   "concept_id": "software_crisis_symptoms",
+   "bloom_level": "Understand",
+   "question": "Which observation best describes the symptoms of the 1970s software crisis that motivated the birth of software engineering?",
+   "question_ar": "أي ملاحظة تصف بأدق أعراض أزمة البرمجيات في السبعينيات التي دفعت بموالاة هندسة البرمجيات؟",
+   "text": "أي ملاحظة تصف بأدق أعراض أزمة البرمجيات في السبعينيات التي دفعت بموالاة هندسة البرمجيات؟",
+   "text_en": "Which observation best describes the symptoms of the 1970s software crisis that motivated the birth of software engineering?",
+   "options": [
+    "انخفاض معدلات إنتاج الشيفرة المبرمجة نتيجة نقص مهندسي لغات البرمجة المتاحة آنذاك.",
+    "ارتفاع كلفة العتاد الحاسوبي مقارنة بنفقات أنظمة التشغيل خلال حقبة السبعينيات الباكدة.",
+    "تجاوز المشاريع للمواقيت والتكاليف وانتشار أنظمة معيبة لا تستوفي المتطلبات المطلوبة.",
+    "صعوبة تدريب المهندسين الجدد على محطات العمل الآلية الجديدة وما تبعها من تكلفة."
+   ],
+   "options_ar": [
+    "انخفاض معدلات إنتاج الشيفرة المبرمجة نتيجة نقص مهندسي لغات البرمجة المتاحة آنذاك.",
+    "ارتفاع كلفة العتاد الحاسوبي مقارنة بنفقات أنظمة التشغيل خلال حقبة السبعينيات الباكدة.",
+    "تجاوز المشاريع للمواقيت والتكاليف وانتشار أنظمة معيبة لا تستوفي المتطلبات المطلوبة.",
+    "صعوبة تدريب المهندسين الجدد على محطات العمل الآلية الجديدة وما تبعها من تكلفة."
+   ],
+   "options_en": [
+    "Code output rates fell sharply because too few programming languages were available.",
+    "Hardware prices rose far above operating system spending across that early computing era.",
+    "Projects overran schedule and budget while broken systems failed to meet requirements.",
+    "Training new engineers on fresh automated workstations proved unexpectedly expensive."
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "أزمة البرمجيات تعني فجوة متزايدة بين قدرة صناعة البرمجيات واحتياجات المستخدمين: تجاوز التكلفة والزمن، وزيادة أعطال الأنظمة، وعدم استيفاء المتطلبات — وهو ما دعا لانتقال من الشيفرة الحرة إلى الانضباط الهندسي المنظم."
+  },
+  {
+   "id": "q4",
+   "concept_id": "accidental_vs_essential",
+   "bloom_level": "Analyze",
+   "question": "Which of the following is a genuine example of accidental complexity that modern tooling can remove from a project?",
+   "question_ar": "أي مما يلي مثال حقيقي على التعقيد العرضي الذي تستطيع الأدوات الحديثة إزالته من المشروع؟",
+   "text": "أي مما يلي مثال حقيقي على التعقيد العرضي الذي تستطيع الأدوات الحديثة إزالته من المشروع؟",
+   "text_en": "Which of the following is a genuine example of accidental complexity that modern tooling can remove from a project?",
+   "options": [
+    "كتابة عنوان الذاكرة اليدوية لكل متغيّر بدل تحرير المتغيرات عبر لغة عالية المستوى.",
+    "معالجة الحالات الحدّية الناتجة عن تزامن عدة مستخدمين على المورد نفسه ضمن النظام.",
+    "نمذجة قواعد أعمال متغيرة تتطلب موازنة مستمرة بين التكلفة والموثوقية المطلوبة.",
+    "تقسيم النظام إلى وحدات مستقلة تتنافس وتناقش متطلبات معمارية متعارضة الأطراف."
+   ],
+   "options_ar": [
+    "كتابة عنوان الذاكرة اليدوية لكل متغيّر بدل تحرير المتغيرات عبر لغة عالية المستوى.",
+    "معالجة الحالات الحدّية الناتجة عن تزامن عدة مستخدمين على المورد نفسه ضمن النظام.",
+    "نمذجة قواعد أعمال متغيرة تتطلب موازنة مستمرة بين التكلفة والموثوقية المطلوبة.",
+    "تقسيم النظام إلى وحدات مستقلة تتنافس وتناقش متطلبات معمارية متعارضة الأطراف."
+   ],
+   "options_en": [
+    "Writing raw memory addresses by hand instead of declaring variables in a language.",
+    "Handling edge cases that arise from several users contending for a shared resource.",
+    "Modeling shifting business rules that demand a standing cost versus reliability trade.",
+    "Partitioning the system into modules debating conflicting architectural requirements."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "التعقيد العرضي ينتج عن قصور أدوات التنفيذ لا عن طبيعة المشكلة؛ إدارة الذاكرة اليدوية مثال كلاسيكي يلغيه المترجم والمترجم التلقائي، بينما تبقى متطلبات التزامن والموازنة تعقيداً جوهرياً ملازماً."
+  },
+  {
+   "id": "q5",
+   "concept_id": "patriot_prevention",
+   "bloom_level": "Evaluate",
+   "question": "From an engineering assurance perspective, which single measure would have most directly neutralized the Patriot tracking failure before impact?",
+   "question_ar": "من منظور الضمان الهندسي، أي إجراء وحيد كان ليصدّ فشل تتبع باتريوت مباشرة قبل وقوع الإصابة؟",
+   "text": "من منظور الضمان الهندسي، أي إجراء وحيد كان ليصدّ فشل تتبع باتريوت مباشرة قبل وقوع الإصابة؟",
+   "text_en": "From an engineering assurance perspective, which single measure would have most directly neutralized the Patriot tracking failure before impact?",
+   "options": [
+    "توسيع دقة النقطة الثابتة وفحص حدود التمثيل بمحاكاة تشغيل ممتد زمنياً قبل النشر.",
+    "استبدال خوارزمية التتبع الحالية بأخرى أخف حساباً تقلّ زمن تحديث بوابة النطاق.",
+    "إعادة ضبط العدّاد يدوياً كل يوم دون مساءلة دقة التمثيل الرقمي للكسر العشري.",
+    "رفع تردد ساع المعالج إلى ضعف قيمته المخصصة لتسريع عمليات الحساب اللحظية اليومية."
+   ],
+   "options_ar": [
+    "توسيع دقة النقطة الثابتة وفحص حدود التمثيل بمحاكاة تشغيل ممتد زمنياً قبل النشر.",
+    "استبدال خوارزمية التتبع الحالية بأخرى أخف حساباً تقلّ زمن تحديث بوابة النطاق.",
+    "إعادة ضبط العدّاد يدوياً كل يوم دون مساءلة دقة التمثيل الرقمي للكسر العشري.",
+    "رفع تردد ساع المعالج إلى ضعف قيمته المخصصة لتسريع عمليات الحساب اللحظية اليومية."
+   ],
+   "options_en": [
+    "Widen fixed-point precision and test representation limits via extended-run simulation.",
+    "Swap the tracking algorithm for a lighter one that shortens range gate update time.",
+    "Reset the counter by hand each day while ignoring the true numeric representation error.",
+    "Double the processor clock frequency to accelerate all of the daily position computing."
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "سبب الفشل تمثيلي بحت، والعلاج التمثيلي: تمديد دقة النقطة الثابتة يلغي الاقتطاع، ومحاكاة التشغيل الممتد تكشف حدود التمثيل قبل التشغيل الميداني؛ أما إعادة الضبط اليدوي فلم تكن لتعالج أصل الخطأ التراكمي."
+  }
+ ],
+ "chapter": "Chapter 2",
+ "chapter_no": 2,
+ "demo": false
+}

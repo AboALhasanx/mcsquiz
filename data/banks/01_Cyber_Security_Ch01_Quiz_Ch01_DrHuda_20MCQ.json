@@ -1,0 +1,637 @@
+{
+ "schema_version": 2,
+ "subject_id": "01_Cyber_Security",
+ "subject_title": "الأمن السيبراني",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "quiz_id": "Quiz_Ch01_DrHuda_20MCQ",
+ "topic": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor",
+ "instructor_ar": "أ.م.د. هدى لفتة مجيد",
+ "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
+ "subject": "01_Cyber_Security",
+ "source_grounding": "W01_Intro.pdf, Chapter 1 Introduction to Cybersecurity, covering definition and scope, historical evolution, importance and domains, the CIA triad, the threat landscape, risks and vulnerabilities, policy overview and case studies.",
+ "language_mode": "English-only deliverable requested by the instructor as a special case. The _ar fields mirror the English text so that canonical schema v2 stays structurally valid and no tooling breaks.",
+ "_difficulty_distribution": {
+  "levels": 5,
+  "scale": {
+   "1": "Easy",
+   "2": "Easy-Medium",
+   "3": "Medium",
+   "4": "Above-Medium",
+   "5": "Hard"
+  },
+  "planned_counts": {
+   "1": 2,
+   "2": 3,
+   "3": 5,
+   "4": 6,
+   "5": 4
+  },
+  "policy": "Easy items are deliberately rare. Medium and Above-Medium items carry the largest share of the bank so that the paper discriminates between students instead of rewarding recall alone."
+ },
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "cybersecurity_definition_scope",
+   "bloom_level": "Remember",
+   "difficulty": 1,
+   "difficulty_label": "Easy",
+   "question": "Which option best describes the scope of cybersecurity?",
+   "question_ar": "Which option best describes the scope of cybersecurity?",
+   "options": [
+    "The legal measures that allow prosecutors to pursue attackers after an incident",
+    "The technical measures that block unauthorised access to networks and applications",
+    "The managerial measures that document security policies and staff responsibilities",
+    "The technical, legal, managerial and social measures that protect the cyber environment"
+   ],
+   "options_ar": [
+    "The legal measures that allow prosecutors to pursue attackers after an incident",
+    "The technical measures that block unauthorised access to networks and applications",
+    "The managerial measures that document security policies and staff responsibilities",
+    "The technical, legal, managerial and social measures that protect the cyber environment"
+   ],
+   "options_en": [
+    "The legal measures that allow prosecutors to pursue attackers after an incident",
+    "The technical measures that block unauthorised access to networks and applications",
+    "The managerial measures that document security policies and staff responsibilities",
+    "The technical, legal, managerial and social measures that protect the cyber environment"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The chapter defines cybersecurity as the set of tools, policies, security concepts, safeguards, risk management approaches and technologies used to protect the cyber environment, and it states explicitly that the field encompasses technical, legal, managerial and social aspects. The three distractors each name only one of those aspects and drop the others, so each is a partial definition rather than the scope the chapter describes."
+  },
+  {
+   "id": "q2",
+   "concept_id": "historical_evolution_timeline",
+   "bloom_level": "Remember",
+   "difficulty": 1,
+   "difficulty_label": "Easy",
+   "question": "Which set of developments belongs to the period from the 2010s onwards?",
+   "question_ar": "Which set of developments belongs to the period from the 2010s onwards?",
+   "options": [
+    "ARPANET together with the very earliest mainframe installations",
+    "Advanced persistent threats, ransomware, IoT, AI and zero trust models",
+    "The first computer viruses, worms and commercial antivirus products",
+    "The integration of cybersecurity into e-commerce and e-banking services"
+   ],
+   "options_ar": [
+    "ARPANET together with the very earliest mainframe installations",
+    "Advanced persistent threats, ransomware, IoT, AI and zero trust models",
+    "The first computer viruses, worms and commercial antivirus products",
+    "The integration of cybersecurity into e-commerce and e-banking services"
+   ],
+   "options_en": [
+    "ARPANET together with the very earliest mainframe installations",
+    "Advanced persistent threats, ransomware, IoT, AI and zero trust models",
+    "The first computer viruses, worms and commercial antivirus products",
+    "The integration of cybersecurity into e-commerce and e-banking services"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The timeline places advanced persistent threats, ransomware, IoT, AI and zero trust in the 2010s to the present. ARPANET and early mainframes belong to the 1960s, viruses, worms and antivirus products to the 1980s and 1990s, and the arrival of e-commerce and e-banking to the 2000s, which is why the other three options are wrong."
+  },
+  {
+   "id": "q3",
+   "concept_id": "stakeholder_domains",
+   "bloom_level": "Understand",
+   "difficulty": 2,
+   "difficulty_label": "Easy-Medium",
+   "question": "Which responsibility for cybersecurity falls specifically to governments?",
+   "question_ar": "Which responsibility for cybersecurity falls specifically to governments?",
+   "options": [
+    "Protecting cross-border digital commerce and international payment systems",
+    "Protecting customer trust, business continuity and legal compliance",
+    "Protecting national security, defence and e-governance infrastructure",
+    "Protecting personal emails, social media accounts and banking details"
+   ],
+   "options_ar": [
+    "Protecting cross-border digital commerce and international payment systems",
+    "Protecting customer trust, business continuity and legal compliance",
+    "Protecting national security, defence and e-governance infrastructure",
+    "Protecting personal emails, social media accounts and banking details"
+   ],
+   "options_en": [
+    "Protecting cross-border digital commerce and international payment systems",
+    "Protecting customer trust, business continuity and legal compliance",
+    "Protecting national security, defence and e-governance infrastructure",
+    "Protecting personal emails, social media accounts and banking details"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The chapter assigns national security, defence and e-governance infrastructure to governments. The other options describe the roles it assigns to individuals, to enterprises and to global trade respectively, so they are correct statements attached to the wrong stakeholder."
+  },
+  {
+   "id": "q4",
+   "concept_id": "specialist_domains_iot",
+   "bloom_level": "Understand",
+   "difficulty": 2,
+   "difficulty_label": "Easy-Medium",
+   "question": "Which pair of controls is used to secure IoT systems?",
+   "question_ar": "Which pair of controls is used to secure IoT systems?",
+   "options": [
+    "Lightweight encryption together with anomaly detection",
+    "Firewalls together with intrusion detection and prevention systems",
+    "Secure coding together with the OWASP standards",
+    "Sandboxing together with malware detection"
+   ],
+   "options_ar": [
+    "Lightweight encryption together with anomaly detection",
+    "Firewalls together with intrusion detection and prevention systems",
+    "Secure coding together with the OWASP standards",
+    "Sandboxing together with malware detection"
+   ],
+   "options_en": [
+    "Lightweight encryption together with anomaly detection",
+    "Firewalls together with intrusion detection and prevention systems",
+    "Secure coding together with the OWASP standards",
+    "Sandboxing together with malware detection"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The chapter pairs lightweight encryption and anomaly detection with IoT security, because constrained devices cannot run heavy cryptography. Firewalls with intrusion detection and prevention belong to network security, secure coding with the OWASP standards belongs to application security, and sandboxing with malware detection belongs to mobile security."
+  },
+  {
+   "id": "q5",
+   "concept_id": "cia_confidentiality_techniques",
+   "bloom_level": "Understand",
+   "difficulty": 2,
+   "difficulty_label": "Easy-Medium",
+   "question": "Which set of techniques is used to enforce confidentiality?",
+   "question_ar": "Which set of techniques is used to enforce confidentiality?",
+   "options": [
+    "Redundancy, load balancing and DDoS mitigation",
+    "Encryption, access controls and virtual private networks",
+    "Sandboxing, malware detection and application isolation",
+    "Hashing, digital signatures and version control"
+   ],
+   "options_ar": [
+    "Redundancy, load balancing and DDoS mitigation",
+    "Encryption, access controls and virtual private networks",
+    "Sandboxing, malware detection and application isolation",
+    "Hashing, digital signatures and version control"
+   ],
+   "options_en": [
+    "Redundancy, load balancing and DDoS mitigation",
+    "Encryption, access controls and virtual private networks",
+    "Sandboxing, malware detection and application isolation",
+    "Hashing, digital signatures and version control"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The chapter assigns encryption, access controls and virtual private networks to confidentiality, whose purpose is to prevent unauthorised access to data. Hashing, digital signatures and version control protect integrity, redundancy, load balancing and DDoS mitigation protect availability, and sandboxing with malware detection is a mobile security control."
+  },
+  {
+   "id": "q6",
+   "concept_id": "cia_availability_scenario",
+   "bloom_level": "Apply",
+   "difficulty": 3,
+   "difficulty_label": "Medium",
+   "question": "A university registration portal becomes unreachable during the enrolment peak and no student can log in. Which pillar has failed, and which controls best prevent a repeat?",
+   "question_ar": "A university registration portal becomes unreachable during the enrolment peak and no student can log in. Which pillar has failed, and which controls best prevent a repeat?",
+   "options": [
+    "Integrity, prevented by hashing, digital signatures and version control",
+    "Availability, prevented by redundancy, load balancing and DDoS mitigation",
+    "Confidentiality, prevented by encryption, access controls and VPNs",
+    "Non-repudiation, prevented by signed audit logs and trusted timestamps"
+   ],
+   "options_ar": [
+    "Integrity, prevented by hashing, digital signatures and version control",
+    "Availability, prevented by redundancy, load balancing and DDoS mitigation",
+    "Confidentiality, prevented by encryption, access controls and VPNs",
+    "Non-repudiation, prevented by signed audit logs and trusted timestamps"
+   ],
+   "options_en": [
+    "Integrity, prevented by hashing, digital signatures and version control",
+    "Availability, prevented by redundancy, load balancing and DDoS mitigation",
+    "Confidentiality, prevented by encryption, access controls and VPNs",
+    "Non-repudiation, prevented by signed audit logs and trusted timestamps"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "Availability is the pillar that guarantees resources are accessible when they are needed, so an outage during the enrolment peak is an availability failure, and the chapter prescribes redundancy, load balancing and DDoS mitigation for it. Integrity controls such as hashing would not restore reachability, confidentiality controls would not restore reachability either, and non-repudiation addresses proof of origin rather than uptime."
+  },
+  {
+   "id": "q7",
+   "concept_id": "risk_exposure_formula",
+   "bloom_level": "Apply",
+   "difficulty": 3,
+   "difficulty_label": "Medium",
+   "question": "An analyst estimates the probability of each threat and its impact for the coming year. Which expression gives the expected cyber risk exposure at a point in time?",
+   "question_ar": "An analyst estimates the probability of each threat and its impact for the coming year. Which expression gives the expected cyber risk exposure at a point in time?",
+   "options": [
+    "The sum of each threat probability divided by its impact value",
+    "The ratio of the total impact to the number of identified threats",
+    "The product of the highest probability and the highest impact",
+    "The sum of each threat probability multiplied by its impact value"
+   ],
+   "options_ar": [
+    "The sum of each threat probability divided by its impact value",
+    "The ratio of the total impact to the number of identified threats",
+    "The product of the highest probability and the highest impact",
+    "The sum of each threat probability multiplied by its impact value"
+   ],
+   "options_en": [
+    "The sum of each threat probability divided by its impact value",
+    "The ratio of the total impact to the number of identified threats",
+    "The product of the highest probability and the highest impact",
+    "The sum of each threat probability multiplied by its impact value"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The chapter writes risk exposure as the sum over all threats of the probability of occurrence multiplied by the impact of that threat, which is the standard expected-value form. Dividing probability by impact, keeping only the highest probability and highest impact pair, or dividing total impact by the threat count all discard the weighted-sum structure that the definition requires."
+  },
+  {
+   "id": "q8",
+   "concept_id": "security_utility_weights",
+   "bloom_level": "Apply",
+   "difficulty": 3,
+   "difficulty_label": "Medium",
+   "question": "A hospital assigns a higher weight to confidentiality than to availability when scoring a system. In the utility function U = αC + βI + γA, what do the weights represent?",
+   "question_ar": "A hospital assigns a higher weight to confidentiality than to availability when scoring a system. In the utility function U = αC + βI + γA, what do the weights represent?",
+   "options": [
+    "The cost of the controls that the organisation deploys for each pillar",
+    "The number of incidents recorded against each pillar during one year",
+    "The importance that the given system assigns to each of the three pillars",
+    "The measured performance of each pillar, normalised between zero and one"
+   ],
+   "options_ar": [
+    "The cost of the controls that the organisation deploys for each pillar",
+    "The number of incidents recorded against each pillar during one year",
+    "The importance that the given system assigns to each of the three pillars",
+    "The measured performance of each pillar, normalised between zero and one"
+   ],
+   "options_en": [
+    "The cost of the controls that the organisation deploys for each pillar",
+    "The number of incidents recorded against each pillar during one year",
+    "The importance that the given system assigns to each of the three pillars",
+    "The measured performance of each pillar, normalised between zero and one"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "In this utility function the symbols C, I and A carry the normalised zero to one scores of the three pillars, while the weights express how important each pillar is for the given system, which is why healthcare can place a higher weight on confidentiality. The second option describes the C, I and A terms rather than the weights, and neither control cost nor incident counts appear in the model."
+  },
+  {
+   "id": "q9",
+   "concept_id": "attack_surface_metric",
+   "bloom_level": "Apply",
+   "difficulty": 3,
+   "difficulty_label": "Medium",
+   "question": "The attack surface metric multiplies three quantities for every component of a system. Which three quantities does it use?",
+   "question_ar": "The attack surface metric multiplies three quantities for every component of a system. Which three quantities does it use?",
+   "options": [
+    "External exploits, validated countermeasures and assigned owners",
+    "Encrypted endpoints, verified identities and applied access policies",
+    "Exposed entry points, vulnerability severity score and asset value",
+    "Estimated exposure, vendor rating and annual audit frequency"
+   ],
+   "options_ar": [
+    "External exploits, validated countermeasures and assigned owners",
+    "Encrypted endpoints, verified identities and applied access policies",
+    "Exposed entry points, vulnerability severity score and asset value",
+    "Estimated exposure, vendor rating and annual audit frequency"
+   ],
+   "options_en": [
+    "External exploits, validated countermeasures and assigned owners",
+    "Encrypted endpoints, verified identities and applied access policies",
+    "Exposed entry points, vulnerability severity score and asset value",
+    "Estimated exposure, vendor rating and annual audit frequency"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "The chapter defines the attack surface as a sum over components of the number of exposed entry points, the vulnerability severity score measured with CVSS, and the asset value of that component, which together quantify how attackable a system is. Encrypted endpoints, estimated exposure, vendor ratings and countermeasures do not appear in this metric, and the last option even mixes in a defensive term that would reduce rather than enlarge the surface."
+  },
+  {
+   "id": "q10",
+   "concept_id": "policy_compliance_index",
+   "bloom_level": "Apply",
+   "difficulty": 3,
+   "difficulty_label": "Medium",
+   "question": "An auditor measures how far an organisation satisfies each policy requirement and how important each requirement is. Which expression gives the weighted policy compliance index?",
+   "question_ar": "An auditor measures how far an organisation satisfies each policy requirement and how important each requirement is. Which expression gives the weighted policy compliance index?",
+   "options": [
+    "The weighted sum of compliance levels divided by the total of the weights",
+    "The highest compliance level divided by the total of the weights across requirements",
+    "The arithmetic mean of compliance levels divided by the total of the weights",
+    "The weighted sum of compliance levels divided by the number of requirements"
+   ],
+   "options_ar": [
+    "The weighted sum of compliance levels divided by the total of the weights",
+    "The highest compliance level divided by the total of the weights across requirements",
+    "The arithmetic mean of compliance levels divided by the total of the weights",
+    "The weighted sum of compliance levels divided by the number of requirements"
+   ],
+   "options_en": [
+    "The weighted sum of compliance levels divided by the total of the weights",
+    "The highest compliance level divided by the total of the weights across requirements",
+    "The arithmetic mean of compliance levels divided by the total of the weights",
+    "The weighted sum of compliance levels divided by the number of requirements"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The compliance index is defined as the sum of each requirement weight multiplied by its compliance level, divided by the sum of the weights, which produces a normalised average where important requirements count more. Dividing by the number of requirements ignores the weights, replacing the weighted sum by a plain arithmetic mean treats all requirements as equally important, and taking only the highest compliance level discards the remaining requirements."
+  },
+  {
+   "id": "q11",
+   "concept_id": "sector_specific_pillar_weights",
+   "bloom_level": "Analyze",
+   "difficulty": 4,
+   "difficulty_label": "Above-Medium",
+   "question": "One sector places a higher weight on confidentiality than on availability, while another sector ranks the pillars differently. Which reasoning best explains why such weights differ between sectors?",
+   "question_ar": "One sector places a higher weight on confidentiality than on availability, while another sector ranks the pillars differently. Which reasoning best explains why such weights differ between sectors?",
+   "options": [
+    "The weights are chosen at random to keep the utility function mathematically stable",
+    "The weights reflect the relative harm caused when each pillar is violated in that sector",
+    "The weights follow the alphabetical order of the pillars inside the utility function",
+    "The weights are fixed constants that apply identically to every sector and system"
+   ],
+   "options_ar": [
+    "The weights are chosen at random to keep the utility function mathematically stable",
+    "The weights reflect the relative harm caused when each pillar is violated in that sector",
+    "The weights follow the alphabetical order of the pillars inside the utility function",
+    "The weights are fixed constants that apply identically to every sector and system"
+   ],
+   "options_en": [
+    "The weights are chosen at random to keep the utility function mathematically stable",
+    "The weights reflect the relative harm caused when each pillar is violated in that sector",
+    "The weights follow the alphabetical order of the pillars inside the utility function",
+    "The weights are fixed constants that apply identically to every sector and system"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The chapter calls the weights the importance values for a given system and illustrates the point by stating that confidentiality carries a higher weight in healthcare, which is exactly the statement that the harm of a confidentiality breach differs by sector. Fixed constants would make the healthcare example pointless, and neither alphabetical position nor randomness can explain a deliberate ranking of the pillars."
+  },
+  {
+   "id": "q12",
+   "concept_id": "threat_landscape_trends",
+   "bloom_level": "Analyze",
+   "difficulty": 4,
+   "difficulty_label": "Above-Medium",
+   "question": "Global ransomware damage is expected to exceed twenty billion dollars, and cloud-related attacks are rising. Which conclusion is best supported by these trends?",
+   "question_ar": "Global ransomware damage is expected to exceed twenty billion dollars, and cloud-related attacks are rising. Which conclusion is best supported by these trends?",
+   "options": [
+    "Ransomware has become technically impossible to detect on modern computer networks",
+    "Attackers have abandoned malware in favour of purely physical intrusion methods",
+    "Economic damage and misconfiguration-driven exposure are both increasing over time",
+    "Cloud providers have eliminated the misconfigurations that caused earlier breaches"
+   ],
+   "options_ar": [
+    "Ransomware has become technically impossible to detect on modern computer networks",
+    "Attackers have abandoned malware in favour of purely physical intrusion methods",
+    "Economic damage and misconfiguration-driven exposure are both increasing over time",
+    "Cloud providers have eliminated the misconfigurations that caused earlier breaches"
+   ],
+   "options_en": [
+    "Ransomware has become technically impossible to detect on modern computer networks",
+    "Attackers have abandoned malware in favour of purely physical intrusion methods",
+    "Economic damage and misconfiguration-driven exposure are both increasing over time",
+    "Cloud providers have eliminated the misconfigurations that caused earlier breaches"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Both reported trends point in the same direction, since the rising ransomware figure measures growing economic damage while the cloud finding is attributed to misconfigurations rather than to a weakness of cloud technology itself. The second option contradicts the fact that ransomware is still being reported, the third reverses the stated cause of cloud breaches, and the fourth is refuted by the malware categories the same chapter lists as the leading component of the threat landscape."
+  },
+  {
+   "id": "q13",
+   "concept_id": "apt_characteristics",
+   "bloom_level": "Analyze",
+   "difficulty": 4,
+   "difficulty_label": "Above-Medium",
+   "question": "Advanced persistent threats are state-sponsored and stealthy long-term attacks. How do they differ from ordinary malware infections?",
+   "question_ar": "Advanced persistent threats are state-sponsored and stealthy long-term attacks. How do they differ from ordinary malware infections?",
+   "options": [
+    "They rely solely on physical theft of media and never use network access",
+    "They remain inside the target for a long period and avoid immediate detection",
+    "They target only home users and never reach enterprise or government networks",
+    "They spread automatically to every host and delete all data within minutes"
+   ],
+   "options_ar": [
+    "They rely solely on physical theft of media and never use network access",
+    "They remain inside the target for a long period and avoid immediate detection",
+    "They target only home users and never reach enterprise or government networks",
+    "They spread automatically to every host and delete all data within minutes"
+   ],
+   "options_en": [
+    "They rely solely on physical theft of media and never use network access",
+    "They remain inside the target for a long period and avoid immediate detection",
+    "They target only home users and never reach enterprise or government networks",
+    "They spread automatically to every host and delete all data within minutes"
+   ],
+   "answer": "B",
+   "correct": 1,
+   "explanation": "The defining words in the chapter are persistent and stealthy, so the distinguishing behaviour is long-term presence combined with avoidance of detection, which is what makes such an intrusion hard to notice and hard to remove. The second option describes fast destructive spreading rather than persistence, the third reverses the state-sponsored targeting that the chapter reports, and nothing in the definition requires physical media or excludes network access."
+  },
+  {
+   "id": "q14",
+   "concept_id": "risk_vulnerability_exploit_distinction",
+   "bloom_level": "Analyze",
+   "difficulty": 4,
+   "difficulty_label": "Above-Medium",
+   "question": "Which sequence states the meanings of risk, vulnerability and exploit correctly?",
+   "question_ar": "Which sequence states the meanings of risk, vulnerability and exploit correctly?",
+   "options": [
+    "Risk as an attack tool, vulnerability as likelihood and impact, exploit as a weakness",
+    "Risk as a weakness, vulnerability as an attack tool, exploit as likelihood and impact",
+    "Risk as a likelihood only, vulnerability as an impact only, exploit as a severity score",
+    "Risk as likelihood and impact, vulnerability as a weakness, exploit as an attack tool"
+   ],
+   "options_ar": [
+    "Risk as an attack tool, vulnerability as likelihood and impact, exploit as a weakness",
+    "Risk as a weakness, vulnerability as an attack tool, exploit as likelihood and impact",
+    "Risk as a likelihood only, vulnerability as an impact only, exploit as a severity score",
+    "Risk as likelihood and impact, vulnerability as a weakness, exploit as an attack tool"
+   ],
+   "options_en": [
+    "Risk as an attack tool, vulnerability as likelihood and impact, exploit as a weakness",
+    "Risk as a weakness, vulnerability as an attack tool, exploit as likelihood and impact",
+    "Risk as a likelihood only, vulnerability as an impact only, exploit as a severity score",
+    "Risk as likelihood and impact, vulnerability as a weakness, exploit as an attack tool"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The chapter defines risk as a function of likelihood and impact, describes vulnerabilities as weaknesses in software, hardware or human factors such as the entries of the OWASP Top 10 and the CVE list, and describes exploits as the tools or methods used to take advantage of a vulnerability. The remaining options reshuffle the three meanings, and the last one also splits risk into two separate quantities, which contradicts the definition of risk as a function of both."
+  },
+  {
+   "id": "q15",
+   "concept_id": "case_studies_critical_infrastructure",
+   "bloom_level": "Analyze",
+   "difficulty": 4,
+   "difficulty_label": "Above-Medium",
+   "question": "Stuxnet and the Colonial Pipeline incident are two widely studied cyber incidents. What does this pairing illustrate about cybersecurity?",
+   "question_ar": "Stuxnet and the Colonial Pipeline incident are two widely studied cyber incidents. What does this pairing illustrate about cybersecurity?",
+   "options": [
+    "Both show that isolated industrial systems can never be reached by any attacker",
+    "Both show that attacks remain confined to digital data with no physical effects",
+    "Both show that attacks can disrupt physical operations and critical infrastructure",
+    "Both show that only financial institutions are targeted by advanced attackers"
+   ],
+   "options_ar": [
+    "Both show that isolated industrial systems can never be reached by any attacker",
+    "Both show that attacks remain confined to digital data with no physical effects",
+    "Both show that attacks can disrupt physical operations and critical infrastructure",
+    "Both show that only financial institutions are targeted by advanced attackers"
+   ],
+   "options_en": [
+    "Both show that isolated industrial systems can never be reached by any attacker",
+    "Both show that attacks remain confined to digital data with no physical effects",
+    "Both show that attacks can disrupt physical operations and critical infrastructure",
+    "Both show that only financial institutions are targeted by advanced attackers"
+   ],
+   "answer": "C",
+   "correct": 2,
+   "explanation": "Stuxnet is presented as a demonstration of cyber-physical warfare against nuclear facilities and the pipeline incident as a shutdown of an oil supply chain, so the common lesson is that digital attacks produce physical and societal consequences. The second option denies exactly those consequences, the third ignores that the targets were industrial rather than financial, and the fourth is contradicted by the fact that both incidents reached installations designed to be isolated."
+  },
+  {
+   "id": "q16",
+   "concept_id": "regulatory_frameworks_mapping",
+   "bloom_level": "Analyze",
+   "difficulty": 4,
+   "difficulty_label": "Above-Medium",
+   "question": "Which pairing of regulation and protected domain is correct?",
+   "question_ar": "Which pairing of regulation and protected domain is correct?",
+   "options": [
+    "GDPR covers European data protection, while HIPAA covers healthcare information",
+    "GDPR covers healthcare information, while HIPAA covers European data protection",
+    "GDPR covers international standards, while HIPAA covers European data protection",
+    "GDPR covers European data protection, while HIPAA covers international standards"
+   ],
+   "options_ar": [
+    "GDPR covers European data protection, while HIPAA covers healthcare information",
+    "GDPR covers healthcare information, while HIPAA covers European data protection",
+    "GDPR covers international standards, while HIPAA covers European data protection",
+    "GDPR covers European data protection, while HIPAA covers international standards"
+   ],
+   "options_en": [
+    "GDPR covers European data protection, while HIPAA covers healthcare information",
+    "GDPR covers healthcare information, while HIPAA covers European data protection",
+    "GDPR covers international standards, while HIPAA covers European data protection",
+    "GDPR covers European data protection, while HIPAA covers international standards"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The chapter labels GDPR as the European instrument for data protection and privacy and HIPAA as the United States instrument for healthcare information protection, while NIST and ISO 27001 are the international standards. The other options swap these roles or attach the international standards label to the wrong regulation."
+  },
+  {
+   "id": "q17",
+   "concept_id": "risk_optimization_objective",
+   "bloom_level": "Evaluate",
+   "difficulty": 5,
+   "difficulty_label": "Hard",
+   "question": "Cybersecurity can be modelled as an optimisation problem whose objective is to minimise risk while maximising security investment. Which statement best evaluates that objective?",
+   "question_ar": "Cybersecurity can be modelled as an optimisation problem whose objective is to minimise risk while maximising security investment. Which statement best evaluates that objective?",
+   "options": [
+    "Risk rises as investment rises, because extra controls create additional attack paths",
+    "Risk is minimised by ignoring threat probability and paying for every available control",
+    "Risk is independent of both the investment level and the threat probabilities",
+    "Risk falls as investment rises, but the model treats control cost as a linear deduction"
+   ],
+   "options_ar": [
+    "Risk rises as investment rises, because extra controls create additional attack paths",
+    "Risk is minimised by ignoring threat probability and paying for every available control",
+    "Risk is independent of both the investment level and the threat probabilities",
+    "Risk falls as investment rises, but the model treats control cost as a linear deduction"
+   ],
+   "options_en": [
+    "Risk rises as investment rises, because extra controls create additional attack paths",
+    "Risk is minimised by ignoring threat probability and paying for every available control",
+    "Risk is independent of both the investment level and the threat probabilities",
+    "Risk falls as investment rises, but the model treats control cost as a linear deduction"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The objective subtracts the sum of control investments from the sum of probability-weighted impacts, so spending does reduce the objective value and the trade-off is captured as a straightforward linear deduction rather than as a curve with diminishing returns. The second option reverses the sign of the investment term, the third contradicts the fact that probabilities and impacts still drive the first sum, and the fourth denies the presence of both terms in the formula."
+  },
+  {
+   "id": "q18",
+   "concept_id": "defence_in_depth_domains",
+   "bloom_level": "Evaluate",
+   "difficulty": 5,
+   "difficulty_label": "Hard",
+   "question": "An organisation protects laptops, a public cloud tenant, an IoT sensor fleet and a factory control network. Which conclusion about domain-specific controls is best supported?",
+   "question_ar": "An organisation protects laptops, a public cloud tenant, an IoT sensor fleet and a factory control network. Which conclusion about domain-specific controls is best supported?",
+   "options": [
+    "Each domain needs controls matched to it, so one universal control set is insufficient",
+    "Only the factory control network matters, since the other domains carry no real risk",
+    "One control set is enough, because firewalls protect every domain equally well",
+    "Only the public cloud tenant matters, since laptops and sensors store no data"
+   ],
+   "options_ar": [
+    "Each domain needs controls matched to it, so one universal control set is insufficient",
+    "Only the factory control network matters, since the other domains carry no real risk",
+    "One control set is enough, because firewalls protect every domain equally well",
+    "Only the public cloud tenant matters, since laptops and sensors store no data"
+   ],
+   "options_en": [
+    "Each domain needs controls matched to it, so one universal control set is insufficient",
+    "Only the factory control network matters, since the other domains carry no real risk",
+    "One control set is enough, because firewalls protect every domain equally well",
+    "Only the public cloud tenant matters, since laptops and sensors store no data"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The chapter treats network, application, cloud, IoT, mobile and industrial control security as separate domains and gives each of them a different control pair, which only makes sense if a single control set cannot cover them all. The second option contradicts that differentiation, and the third and fourth arbitrarily discard three of the four environments that the chapter explicitly identifies as needing protection."
+  },
+  {
+   "id": "q19",
+   "concept_id": "perimeter_defence_limitations",
+   "bloom_level": "Evaluate",
+   "difficulty": 5,
+   "difficulty_label": "Hard",
+   "question": "Zero trust has become a leading security model in the last decade. Which statement best evaluates why perimeter-only defence became insufficient?",
+   "question_ar": "Zero trust has become a leading security model in the last decade. Which statement best evaluates why perimeter-only defence became insufficient?",
+   "options": [
+    "Users, devices and services now sit outside a single well-defined network perimeter",
+    "Employees stopped using passwords and moved entirely to hardware security keys",
+    "Firewalls became technically unable to filter traffic on modern high-speed links",
+    "Attackers stopped targeting networks and moved entirely to physical intrusions"
+   ],
+   "options_ar": [
+    "Users, devices and services now sit outside a single well-defined network perimeter",
+    "Employees stopped using passwords and moved entirely to hardware security keys",
+    "Firewalls became technically unable to filter traffic on modern high-speed links",
+    "Attackers stopped targeting networks and moved entirely to physical intrusions"
+   ],
+   "options_en": [
+    "Users, devices and services now sit outside a single well-defined network perimeter",
+    "Employees stopped using passwords and moved entirely to hardware security keys",
+    "Firewalls became technically unable to filter traffic on modern high-speed links",
+    "Attackers stopped targeting networks and moved entirely to physical intrusions"
+   ],
+   "answer": "A",
+   "correct": 0,
+   "explanation": "The developments that the chapter groups with zero trust, namely cloud services, IoT devices, mobile work and remote access, all place assets beyond a fixed boundary, so a single defended perimeter no longer contains what has to be protected. The second option invents a performance limit that the chapter never states, and the third and fourth describe uniform migrations that never happened, since passwords and network-borne attacks both remain in use."
+  },
+  {
+   "id": "q20",
+   "concept_id": "attack_surface_reduction",
+   "bloom_level": "Evaluate",
+   "difficulty": 5,
+   "difficulty_label": "Hard",
+   "question": "A team must reduce the attack surface of a system. Which decision is the most defensible?",
+   "question_ar": "A team must reduce the attack surface of a system. Which decision is the most defensible?",
+   "options": [
+    "Keep every entry point open and rely on the asset values remaining unchanged",
+    "Retire all high-value assets so that the metric can no longer be computed",
+    "Open additional entry points so that attackers become confused by the extra services",
+    "Close unnecessary entry points and patch severe vulnerabilities on high-value assets"
+   ],
+   "options_ar": [
+    "Keep every entry point open and rely on the asset values remaining unchanged",
+    "Retire all high-value assets so that the metric can no longer be computed",
+    "Open additional entry points so that attackers become confused by the extra services",
+    "Close unnecessary entry points and patch severe vulnerabilities on high-value assets"
+   ],
+   "options_en": [
+    "Keep every entry point open and rely on the asset values remaining unchanged",
+    "Retire all high-value assets so that the metric can no longer be computed",
+    "Open additional entry points so that attackers become confused by the extra services",
+    "Close unnecessary entry points and patch severe vulnerabilities on high-value assets"
+   ],
+   "answer": "D",
+   "correct": 3,
+   "explanation": "The attack surface grows with the number of exposed entry points, the severity of the vulnerabilities behind them and the value of the assets they lead to, so the defensible action is to reduce the first factor and lower the second on the components that matter most. Opening extra services increases the product directly, leaving entry points untouched changes nothing, and destroying the assets to defeat the measurement confuses the indicator with the objective."
+  }
+ ],
+ "chapter": "Chapter 1",
+ "chapter_no": 1,
+ "demo": false
+}

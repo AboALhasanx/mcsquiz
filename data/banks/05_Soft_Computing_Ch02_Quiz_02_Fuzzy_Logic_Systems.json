@@ -1,0 +1,354 @@
+{
+ "subject": "05_Soft_Computing",
+ "topic": "Week 02: Fuzzy Logic Systems — Fuzzy Sets, Classical Set Laws & Representation",
+ "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+ "source": "03_Study_Notes/w02-fuzzy-logic-systems-booklet.pdf (source pp. 1-66) + 02_Raw_Materials/W02_Fuzzy_Math_Vision_Verified.md (vision-verified math)",
+ "questions": [
+  {
+   "id": "q1",
+   "concept_id": "fuzzy_system_pipeline",
+   "bloom_level": "Understand",
+   "question": "A Fuzzy Logic System converts a crisp sensor reading into a usable control value. Which sequence describes the correct data flow?",
+   "question_ar": "نظام المنطق الضبابي يحوّل قراءة حسّاس حاسمة إلى قيمة سيطرة قابلة للاستخدام. أي تسلسل يوصف التدفق الصحيح للبيانات؟",
+   "options": [
+    "قاعدة القواعد ← التحويل الضبابي ← إزالة الضبابية ← الاستدلال",
+    "الاستدلال ← التحويل الضبابي ← قاعدة القواعد ← إزالة الضبابية",
+    "إزالة الضبابية ← قاعدة القواعد والاستدلال ← التحويل الضبابي",
+    "التحويل الضبابي ← قاعدة القواعد والاستدلال ← إزالة الضبابية"
+   ],
+   "options_ar": [
+    "قاعدة القواعد ← التحويل الضبابي ← إزالة الضبابية ← الاستدلال",
+    "الاستدلال ← التحويل الضبابي ← قاعدة القواعد ← إزالة الضبابية",
+    "إزالة الضبابية ← قاعدة القواعد والاستدلال ← التحويل الضبابي",
+    "التحويل الضبابي ← قاعدة القواعد والاستدلال ← إزالة الضبابية"
+   ],
+   "options_en": [
+    "Rule Base, then Fuzzification, then Defuzzification, then Inference.",
+    "Inference, then Fuzzification, then Rule Base, then Defuzzification.",
+    "Defuzzification, then Rule Base and Inference, then Fuzzification.",
+    "Fuzzification, then Rule Base and Inference, then Defuzzification."
+   ],
+   "answer": "D",
+   "explanation": "معمارية النظام الضبابي في الكتيّب: المدخل الحاسم يدخل إلى المُضبِّب (Fuzzifier) فتتحوّل إلى درجات عضوية، ثم تُطابَق مع قاعدة القواعد (Rule Base) ويشتغل محرك الاستدلال (Inference Engine)، وأخيراً يُعيد مزيل الضبابية (Defuzzifier) الناتج قيمة حاسمة واحدة. الترتيب المقلوب هو الفخ الأكثر شيوعاً.",
+   "correct": 3
+  },
+  {
+   "id": "q2",
+   "concept_id": "fuzzification_vs_defuzzification",
+   "bloom_level": "Understand",
+   "question": "Which statement correctly distinguishes fuzzification from defuzzification?",
+   "question_ar": "أي عبارة تميّز بدقة بين التحويل الضبابي وإزالة الضبابية؟",
+   "options": [
+    "التحويل الضبابي يطابق القواعد مع المدخل، وإزالة الضبابية تنشئ القاعدة اللغوية.",
+    "التحويل الضبابي يحوّل المدخل الحاسم إلى درجات، وإزالة الضبابية تُعيد الناتج قيمة حاسمة.",
+    "التحويل الضبابي يُعيد الناتج قيمة حاسمة، وإزالة الضبابية تحوّل المدخل إلى درجات.",
+    "التحويل الضبابي يبني قاعدة القواعد، وإزالة الضبابية تُشعل القواعد الفعّالة وتدمجها."
+   ],
+   "options_ar": [
+    "التحويل الضبابي يطابق القواعد مع المدخل، وإزالة الضبابية تنشئ القاعدة اللغوية.",
+    "التحويل الضبابي يحوّل المدخل الحاسم إلى درجات، وإزالة الضبابية تُعيد الناتج قيمة حاسمة.",
+    "التحويل الضبابي يُعيد الناتج قيمة حاسمة، وإزالة الضبابية تحوّل المدخل إلى درجات.",
+    "التحويل الضبابي يبني قاعدة القواعد، وإزالة الضبابية تُشعل القواعد الفعّالة وتدمجها."
+   ],
+   "options_en": [
+    "Fuzzification matches rules against the input; defuzzification creates the linguistic rule base.",
+    "Fuzzification converts the crisp input into grades; defuzzification returns a crisp output value.",
+    "Fuzzification returns a crisp output value; defuzzification converts the input into grades.",
+    "Fuzzification builds the Rule Base; defuzzification fires and combines the active rules."
+   ],
+   "answer": "B",
+   "explanation": "القاعدة الذهبية: التحويل الضبابي = تحويل المدخل (crisp → fuzzy)، وإزالة الضبابية = تحويل المخرج (fuzzy → crisp). أي خيار يعكسهن هو خطأ. هذا الفخ مذكور صريحاً في كتيّب الأسبوع الثاني.",
+   "correct": 1
+  },
+  {
+   "id": "q3",
+   "concept_id": "rule_base_linguistic",
+   "bloom_level": "Understand",
+   "question": "The Rule Base of a fuzzy controller stores which kind of knowledge?",
+   "question_ar": "قاعدة القواعد في متحكم ضبابي تخزّن أي نوع من المعرفة؟",
+   "options": [
+    "توزيعات احتمالية إحصائية للمتغيرات التي يجري التحكم بها.",
+    "مصفوفات أوزان مشبكية مُدرَّبة تعلّمت من بيانات موسومة.",
+    "قواعد لغوية شرطية من نوع IF-THEN مصدرها خبراء المجال.",
+    "جداول معايرة عددية للحساسات سُجّلت أثناء الاختبار الميداني."
+   ],
+   "options_ar": [
+    "توزيعات احتمالية إحصائية للمتغيرات التي يجري التحكم بها.",
+    "مصفوفات أوزان مشبكية مُدرَّبة تعلّمت من بيانات موسومة.",
+    "قواعد لغوية شرطية من نوع IF-THEN مصدرها خبراء المجال.",
+    "جداول معايرة عددية للحساسات سُجّلت أثناء الاختبار الميداني."
+   ],
+   "options_en": [
+    "Statistical probability distributions of the controlled variables.",
+    "Trained synaptic weight matrices learned from labelled data.",
+    "Linguistic IF-THEN rules supplied by domain experts.",
+    "Numerical sensor calibration tables recorded during field testing."
+   ],
+   "answer": "C",
+   "explanation": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية.",
+   "correct": 2
+  },
+  {
+   "id": "q4",
+   "concept_id": "crisp_vs_fuzzy_logic",
+   "bloom_level": "Understand",
+   "question": "In the booklet's comparison, crisp logic is bi-valued while fuzzy logic is best described as:",
+   "question_ar": "في مقارنة الكتيّب، المنطق الحاسم ثنائي القيمة، أما المنطق الضبابي فأفضل وصف له أنه:",
+   "options": [
+    "لا نهائي القيمة، بعضوية متدرجة على المجال [0, 1].",
+    "ثلاثي القيمة، يستخدم فقط الصفر والنصف والواحد الصحيح.",
+    "ثنائي القيمة أيضاً لكن مع نطاق تسامح أوسع حول كل عتبة.",
+    "احتمالي القيمة، مجموعه يساوي الواحد على كل عناصر الكون."
+   ],
+   "options_ar": [
+    "لا نهائي القيمة، بعضوية متدرجة على المجال [0, 1].",
+    "ثلاثي القيمة، يستخدم فقط الصفر والنصف والواحد الصحيح.",
+    "ثنائي القيمة أيضاً لكن مع نطاق تسامح أوسع حول كل عتبة.",
+    "احتمالي القيمة، مجموعه يساوي الواحد على كل عناصر الكون."
+   ],
+   "options_en": [
+    "Infinite-valued, with graded membership across the interval [0, 1].",
+    "Tri-valued, using only zero, one half, and the whole number one.",
+    "Also bi-valued, but with a wider tolerance band around each threshold.",
+    "Probability-valued, summing to exactly one across all universe elements."
+   ],
+   "answer": "A",
+   "explanation": "الكتيّب يقابل بين المنطق الحاسم ثنائي القيمة (bi-valued) والمنطق الضبابي لا نهائي القيمة (infinite-valued)، لأن درجة العضوية تقبل أي عدد حقيقي في المجال [0, 1] وليس قيمتين فقط.",
+   "correct": 0
+  },
+  {
+   "id": "q5",
+   "concept_id": "membership_not_probability",
+   "bloom_level": "Analyze",
+   "question": "A fuzzy set assigns New Delhi a comfort grade of 0.7. What does this value mean?",
+   "question_ar": "مجموعة ضبابية تعطي نيودلهي درجة راحة 0.7. ماذا تعني هذه القيمة؟",
+   "options": [
+    "أن نيودلهي مريحة باحتمال يساوي 0.7 تماماً كأي حدث عشوائي.",
+    "أن نيودلهي متوافقة مع المفهوم الضبابي بدرجة 0.7 وليست احتمالاً.",
+    "أن سبعين بالمئة من الزوار يجدون نيودلهي مدينة مريحة فعلاً.",
+    "أن نيودلهي تنتمي للمجموعة الحاسمة في 0.7 من كل الحالات."
+   ],
+   "options_ar": [
+    "أن نيودلهي مريحة باحتمال يساوي 0.7 تماماً كأي حدث عشوائي.",
+    "أن نيودلهي متوافقة مع المفهوم الضبابي بدرجة 0.7 وليست احتمالاً.",
+    "أن سبعين بالمئة من الزوار يجدون نيودلهي مدينة مريحة فعلاً.",
+    "أن نيودلهي تنتمي للمجموعة الحاسمة في 0.7 من كل الحالات."
+   ],
+   "options_en": [
+    "New Delhi is comfortable with a probability of exactly 0.7, like any random event.",
+    "New Delhi is compatible with the vague concept to degree 0.7, which is not a probability.",
+    "Seventy per cent of all visitors find New Delhi to be a genuinely comfortable city.",
+    "New Delhi belongs to the crisp comfort set in 0.7 of all observed cases."
+   ],
+   "answer": "B",
+   "explanation": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث.",
+   "correct": 1
+  },
+  {
+   "id": "q6",
+   "concept_id": "membership_function_range",
+   "bloom_level": "Remember",
+   "question": "How is the membership function of a fuzzy set formally written?",
+   "question_ar": "كيف تُكتب دالة العضوية لمجموعة ضبابية كتابةً رسمية؟",
+   "options": [
+    "μ_Ã : X → (0, 1) بحيث يُستبعد الطرفان صفر وواحد.",
+    "μ_Ã : X → [0, 1) بحيث يُستبعد الطرف الأعلى من المجال.",
+    "μ_Ã : X → [0, 1] بحيث يُضمَّن الطرفان صفر وواحد معاً.",
+    "μ_Ã : X → {0, 1} بحيث يُسمح بالطرفين فقط دون غيرهما."
+   ],
+   "options_ar": [
+    "μ_Ã : X → (0, 1) بحيث يُستبعد الطرفان صفر وواحد.",
+    "μ_Ã : X → [0, 1) بحيث يُستبعد الطرف الأعلى من المجال.",
+    "μ_Ã : X → [0, 1] بحيث يُضمَّن الطرفان صفر وواحد معاً.",
+    "μ_Ã : X → {0, 1} بحيث يُسمح بالطرفين فقط دون غيرهما."
+   ],
+   "options_en": [
+    "mu_A : X to (0, 1), so both endpoints zero and one are excluded.",
+    "mu_A : X to [0, 1), so the upper endpoint is excluded from the range.",
+    "mu_A : X to [0, 1], so both endpoints zero and one are included.",
+    "mu_A : X to {0, 1}, so only the two endpoints are permitted."
+   ],
+   "answer": "C",
+   "explanation": "التعريف الرسمي: دالة العضوية ترفع كل عنصر من مجال الخطاب X إلى درجة في المجال [0, 1] والطرفان مضغمان (both inclusive) — أي أن الصفر والواحد قيمتان مشروعتان تماماً. μ = 1 انتماء كامل، μ = 0 لا انتماء، وما بينهما انتماء جزئي.",
+   "correct": 2
+  },
+  {
+   "id": "q7",
+   "concept_id": "fuzzy_notation_slash_marker",
+   "bloom_level": "Understand",
+   "question": "In the alternative fuzzy notation A = sum of mu(x_i)/x_i, what does the slash mean?",
+   "question_ar": "في الترميز الضبابي البديل A = Σ μ(xᵢ)/xᵢ، ماذا تعني الشرطة المائلة؟",
+   "options": [
+    "إنها قسمة عادية لدرجة العضوية على العنصر المقابل لها.",
+    "إنها نسبة احتمالية بين العنصر وكل عناصر الكون المطلق.",
+    "إنها دليل تجميع يربط العنصر بمجال الخطاب الخاص به.",
+    "إنها وسم فاصل بين الدرجة وعنصرها، وليست عملية قسمة."
+   ],
+   "options_ar": [
+    "إنها قسمة عادية لدرجة العضوية على العنصر المقابل لها.",
+    "إنها نسبة احتمالية بين العنصر وكل عناصر الكون المطلق.",
+    "إنها دليل تجميع يربط العنصر بمجال الخطاب الخاص به.",
+    "إنها وسم فاصل بين الدرجة وعنصرها، وليست عملية قسمة."
+   ],
+   "options_en": [
+    "It is an ordinary division of the membership grade by its element.",
+    "It is a probability ratio between the element and the whole universe.",
+    "It is a summation index binding the element to its universe of discourse.",
+    "It is a marker separating the grade from its element, not a division."
+   ],
+   "answer": "D",
+   "explanation": "النص الأزرق على شريحة الترميز البديل يقول صريحاً: الشرطة المائلة «/» هي علامة وسم (marker) ولا تعني القسمة إطلاقاً. فلا تحسب μ/x كناتج قسمة — إنها تعني «العنصر x بعضوية مقدارها μ».",
+   "correct": 3
+  },
+  {
+   "id": "q8",
+   "concept_id": "fuzzy_notation_sigma_integral",
+   "bloom_level": "Analyze",
+   "question": "In the booklet's notation, what do the summation and integral symbols stand for?",
+   "question_ar": "في ترميز الكتيّب، ماذا يمثّل الرمزان Σ و ∫؟",
+   "options": [
+    "كتلة الاحتمال الكلية الموزعة على عناصر الكون.",
+    "معدّل درجات العضوية لكل عنصر داخل المجموعة.",
+    "المجموع الحسابي العادي لدرجات العضوية كلها مجتمعة.",
+    "توحيد درجات العضوية على كل عناصر الكون لا أكثر."
+   ],
+   "options_ar": [
+    "كتلة الاحتمال الكلية الموزعة على عناصر الكون.",
+    "معدّل درجات العضوية لكل عنصر داخل المجموعة.",
+    "المجموع الحسابي العادي لدرجات العضوية كلها مجتمعة.",
+    "توحيد درجات العضوية على كل عناصر الكون لا أكثر."
+   ],
+   "options_en": [
+    "The total probability mass distributed over the elements of the universe.",
+    "The average membership grade of all the elements inside the set.",
+    "The ordinary arithmetic sum of all the membership grades together.",
+    "The union of the membership grades across every element of the universe."
+   ],
+   "answer": "D",
+   "explanation": "نص الكتيّب: رمزا Σ و ∫ يمثّلان «توحيد درجات العضوية» (union of membership grades) على عناصر الكون — وليسا مجموعاً حسابياً عادياً ولا كتلة احتمالية. هذا يفرّق بين الترميز الضبابي والترميز الاحتمالي.",
+   "correct": 3
+  },
+  {
+   "id": "q9",
+   "concept_id": "fuzzy_representation_cases",
+   "bloom_level": "Understand",
+   "question": "Which pair correctly matches each fuzzy-set representation case to its universe?",
+   "question_ar": "أي زوج يطابق بدقة كل حالة تمثيل للمجموعة الضبابية مع كونها؟",
+   "options": [
+    "الحالة 1: منفصل ومنتهي · الحالة 2: مستمر ولا نهائي.",
+    "الحالة 1: مستمر ولا نهائي · الحالة 2: منفصل ومنتهي.",
+    "الحالة 1: منفصل ولا نهائي · الحالة 2: مستمر ومنتهي.",
+    "الحالة 1: مستمر ومنتهي · الحالة 2: منفصل ولا نهائي."
+   ],
+   "options_ar": [
+    "الحالة 1: منفصل ومنتهي · الحالة 2: مستمر ولا نهائي.",
+    "الحالة 1: مستمر ولا نهائي · الحالة 2: منفصل ومنتهي.",
+    "الحالة 1: منفصل ولا نهائي · الحالة 2: مستمر ومنتهي.",
+    "الحالة 1: مستمر ومنتهي · الحالة 2: منفصل ولا نهائي."
+   ],
+   "options_en": [
+    "Case 1: discrete and finite; Case 2: continuous and infinite.",
+    "Case 1: continuous and infinite; Case 2: discrete and finite.",
+    "Case 1: discrete and infinite; Case 2: continuous and finite.",
+    "Case 1: continuous and finite; Case 2: discrete and infinite."
+   ],
+   "answer": "A",
+   "explanation": "الحالة 1 في الكتيّب: كون المعلومات منفصل ومنتهي (discrete and finite) فيُكتب المجموع Σ. الحالة 2: كون المعلومات مستمر ولا نهائي (continuous and infinite) فيُكتب التكامل ∫. نفس الدلالة في الحالتين، والفرق فقط في رمز الجمع.",
+   "correct": 0
+  },
+  {
+   "id": "q10",
+   "concept_id": "classical_identity_property",
+   "bloom_level": "Remember",
+   "question": "Which set of equations is the complete Identity Property as printed in the booklet?",
+   "question_ar": "أي مجموعة معادلات تمثّل خاصية الهوية كاملة كما وردت في الكتيّب؟",
+   "options": [
+    "A ∪ φ = A · A ∩ X = A · A ∩ φ = φ · A ∪ X = X",
+    "A ∪ φ = A · A ∩ X = A · A ∪ A = A · A ∩ A = A",
+    "A ∪ φ = A · A ∩ X = A · وقف عند قانونين اثنين فقط",
+    "A ∪ X = A · A ∩ φ = A · A ∪ φ = φ · A ∩ X = X"
+   ],
+   "options_ar": [
+    "A ∪ φ = A · A ∩ X = A · A ∩ φ = φ · A ∪ X = X",
+    "A ∪ φ = A · A ∩ X = A · A ∪ A = A · A ∩ A = A",
+    "A ∪ φ = A · A ∩ X = A · وقف عند قانونين اثنين فقط",
+    "A ∪ X = A · A ∩ φ = A · A ∪ φ = φ · A ∩ X = X"
+   ],
+   "options_en": [
+    "A union phi = A; A intersect X = A; A intersect phi = phi; A union X = X",
+    "A union phi = A; A intersect X = A; A union A = A; A intersect A = A",
+    "A union phi = A; A intersect X = A, and it stops at only these two laws",
+    "A union X = A; A intersect phi = A; A union phi = phi; A intersect X = X"
+   ],
+   "answer": "A",
+   "explanation": "خاصية الهوية في الكتيّب لها أربعة قوانين لا قانونان: A ∪ φ = A، و A ∩ X = A، و A ∩ φ = φ، و A ∪ X = X. علماً أن φ رمز المجموعة الخالية في هذا الكتيّب و X رمز المجموعة الشاملة على شريحة الهوية. الخيار الذي يتوقف عند قانونين هو الفخ الشائع.",
+   "correct": 0
+  },
+  {
+   "id": "q11",
+   "concept_id": "de_morgan_law",
+   "bloom_level": "Apply",
+   "question": "Which statement is a correct form of De Morgan's Law for sets?",
+   "question_ar": "أي عبارة تمثّل صيغة صحيحة لقانون دي مورغان في المجموعات؟",
+   "options": [
+    "مكمّل A ∪ B يساوي مكمّل A ∪ مكمّل B مع توزيع المكمّل.",
+    "مكمّل A ∩ B يساوي مكمّل A ∪ مكمّل B مع توزيع المكمّل.",
+    "مكمّل A ∩ B يساوي A ∪ B دون أي تأثير للمكمّل.",
+    "مكمّل A ∩ B يساوي مكمّل A ∩ مكمّل B مع توزيع المكمّل."
+   ],
+   "options_ar": [
+    "مكمّل A ∪ B يساوي مكمّل A ∪ مكمّل B مع توزيع المكمّل.",
+    "مكمّل A ∩ B يساوي مكمّل A ∪ مكمّل B مع توزيع المكمّل.",
+    "مكمّل A ∩ B يساوي A ∪ B دون أي تأثير للمكمّل.",
+    "مكمّل A ∩ B يساوي مكمّل A ∩ مكمّل B مع توزيع المكمّل."
+   ],
+   "options_en": [
+    "The complement of A union B equals the complement of A union the complement of B.",
+    "The complement of A intersect B equals the complement of A union the complement of B.",
+    "The complement of A intersect B equals A union B with no complement applied.",
+    "The complement of A intersect B equals the complement of A intersect the complement of B."
+   ],
+   "answer": "B",
+   "explanation": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي.",
+   "correct": 1
+  },
+  {
+   "id": "q12",
+   "concept_id": "cartesian_product_ambient_space",
+   "bloom_level": "Analyze",
+   "question": "A fuzzy set on universe X is written as a set of ordered pairs. What is the precise role of the Cartesian product in that representation?",
+   "question_ar": "المجموعة الضبابية على الكون X تُكتب كمجموعة أزواج مرتّبة. ما الدور الدقيق للجداء الديكارتي في هذا التمثيل؟",
+   "options": [
+    "الجداء X × [0, 1] وحده يحدّد الأزواج المنتمية، فأي مجموعة جزئية منه مجموعة ضبابية.",
+    "المجموعة الضبابية هي الجداء الديكارتي نفسه بين الكون X والمجال [0, 1].",
+    "الجداء X × [0, 1] يوفّر فضاء الأزواج الممكنة، ودالة العضوية هي التي تختار الأزواج.",
+    "الجداء يبني الأزواج من عنصرين حاسمين، ودرجة العضوية هي العنصر الثاني فيها."
+   ],
+   "options_ar": [
+    "الجداء X × [0, 1] وحده يحدّد الأزواج المنتمية، فأي مجموعة جزئية منه مجموعة ضبابية.",
+    "المجموعة الضبابية هي الجداء الديكارتي نفسه بين الكون X والمجال [0, 1].",
+    "الجداء X × [0, 1] يوفّر فضاء الأزواج الممكنة، ودالة العضوية هي التي تختار الأزواج.",
+    "الجداء يبني الأزواج من عنصرين حاسمين، ودرجة العضوية هي العنصر الثاني فيها."
+   ],
+   "options_en": [
+    "The product X x [0, 1] alone determines which pairs belong, so any subset of it is a fuzzy set.",
+    "The fuzzy set is itself the Cartesian product of the universe X with the interval [0, 1].",
+    "The product X x [0, 1] supplies the space of possible pairs; the membership function is what selects the pairs.",
+    "The product builds pairs from two crisp elements, and the membership grade is the second element."
+   ],
+   "answer": "C",
+   "explanation": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة (المحيط الذي تعيش فيه المجموعة)، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. ودقة إضافية: المجموعة الضبابية على X تقابل دالة X → [0, 1]، فرسمها مجموعة دالية — درجة واحدة لكل عنصر — وليست أي مجموعة جزئية عشوائية من الجداء. علماً أن صفحة 33 في الكتيّب تعرّف الجداء الديكارتي فقط ولا تربطه بالمجموعات الضبابية؛ الربط جسر تعليمي لا ادّعاء من المصدر.",
+   "correct": 2
+  }
+ ],
+ "schema_version": 2,
+ "subject_id": "05_Soft_Computing",
+ "subject_title": "الحوسبة المرنة",
+ "semester": 1,
+ "semester_label": "كورس أول",
+ "quiz_id": "Quiz_02_Fuzzy_Logic_Systems",
+ "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+ "chapter": "Chapter 2",
+ "chapter_no": 2,
+ "demo": false
+}
