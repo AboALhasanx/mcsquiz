@@ -49,6 +49,9 @@
                     </button>
                 </div>
                 <div class="header-right">
+                    <button id="btn-tour-replay-session" class="icon-btn" aria-label="إعادة الجولة التعليمية" title="الجولة التعليمية">
+                        <i data-lucide="help-circle"></i>
+                    </button>
                     <button id="btn-lang-toggle" class="icon-btn" aria-label="ترجمة السؤال والخيارات" title="ترجمة السؤال والخيارات">
                         <i data-lucide="languages"></i>
                     </button>
@@ -336,6 +339,7 @@
             <div class="tour-shade" id="tour-shade-left"></div>
             <div class="tour-shade" id="tour-shade-right"></div>
             <div id="tour-tip" class="tour-tip" role="dialog" aria-modal="true" aria-labelledby="tour-tip-title">
+                <div class="tour-tip-progressbar"><span id="tour-tip-bar-fill"></span></div>
                 <div class="tour-tip-progress" id="tour-tip-progress"></div>
                 <h3 id="tour-tip-title"></h3>
                 <p id="tour-tip-body"></p>

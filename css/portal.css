@@ -160,8 +160,9 @@ html[data-theme="light"] { color-scheme: light; }
 .bookmark-btn.is-saved svg { fill: currentColor; }
 
 /* --- guided tour spotlight --- */
-.tour-overlay { position: fixed; inset: 0; z-index: 10000; }
+.tour-overlay { position: fixed; inset: 0; z-index: 10000; pointer-events: none; }
 .tour-shade { position: fixed; background: rgba(4, 7, 12, 0.72); }
+.tour-tip { pointer-events: auto; }
 .tour-tip {
   position: fixed;
   left: 12px;
@@ -181,6 +182,27 @@ html[data-theme="light"] { color-scheme: light; }
   color: #4da3ff;
   font-variant-numeric: tabular-nums;
   margin-bottom: 0.25rem;
+}
+.tour-tip-progressbar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+.tour-tip-progressbar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #4da3ff;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.tour-tip {
+  border-top: 3px solid #4da3ff;
+}
+.tour-waiting #tour-btn-next {
+  border-style: dashed;
 }
 .tour-tip-actions { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; }
 .tour-spacer { flex: 1; }

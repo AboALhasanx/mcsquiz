@@ -474,6 +474,7 @@
     show('quiz-view');
     updateSaveBtn();
     maybeQuizHint();
+    tourNotify('start');
     ses.startEpoch = Date.now(); ses.pauseAccum = 0; ses.pauseStart = null;
     ses.qStart = Date.now();
     clearInterval(ses.timerId);
@@ -562,6 +563,7 @@
     if (ses.picks[ses.idx] !== null || ses.pauseStart) return;
     ses.picks[ses.idx] = i;
     ses.dwells[ses.idx] = (Date.now() - ses.qStart) / 1000;
+    tourNotify('answer');
     const q = ses.questions[ses.idx];
     if (i === q.correct) playSound('correct'); else playSound('wrong');
     renderQuestion();
@@ -726,13 +728,20 @@
     }
   }
 
-  // ---------------- guided tour (custom spotlight, short steps, replayable) ----------------
+  // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
   const TOUR_STEPS = [
-    { title: 'أهلاً بك في MSCQuiz', body: 'كوزات موادك هنا. جولة سريعة من 4 خطوات.', target: null },
-    { title: '1 — اختر المادة', body: 'كل مادة بزر مستقل، بدون زر الكل.', target: '#subject-filter-bar' },
-    { title: '2 — اختر التشابتر', body: 'التشابترات مرقمة: تشابتر 1، 2…', target: '#chapter-filter-bar' },
+    { title: 'أهلاً بك في MSCQuiz', body: 'كوزات موادك هنا. جولة تفاعلية قصيرة — ستجرّب بنفسك.', center: true },
+    { title: '1 — اختر المادة', body: 'كل مادة بزر مستقل.', target: '#subject-filter-bar' },
+    { title: '2 — اختر التشابتر', body: 'التشابترات مرقمة: 1، 2…', target: '#chapter-filter-bar' },
     { title: '3 — ابدأ الكوز', body: 'زر التشغيل يبدأ فوراً. زر (i) يعرض التفاصيل.', target: '#deck-catalog .sketch-row:first-child .sketch-play-cell' },
-    { title: '4 — المحفوظ', body: 'احفظ أي سؤال بزر الحفظ، وراجعه هنا مقسماً حسب المادة والتشابتر.', target: '#btn-open-saved' },
+    { title: '4 — المحفوظ', body: 'أسئلتك المحفوظة هنا، مقسمة حسب المادة والتشابتر.', target: '#btn-open-saved' },
+    { title: 'تجربة حقيقية', body: 'سنفتح أول كوز لتجرب بنفسك.', center: true, go: true },
+    { title: '5 — ابدأ', body: 'اضغط زر البدء لينطلق المؤقت.', target: '#btn-start-quiz', action: 'start' },
+    { title: '6 — أجب', body: 'اضغط أي إجابة — جرّب بنفسك.', target: '#options-container', action: 'answer' },
+    { title: '7 — الشرح والحفظ', body: 'يظهر الشرح فوراً. زر الحفظ أعلى البطاقة يحفظ السؤال.', target: '#btn-save-question' },
+    { title: '8 — أدوات الامتحان', body: 'الترجمة، الثيم، وإيقاف المؤقت مؤقتاً من الأعلى.', target: '#header-session-view .header-right' },
+    { title: '9 — التنقل', body: 'جدول الأسئلة يقفز لأي سؤال. زر التالي ينهي عند آخر سؤال.', target: '#btn-open-matrix' },
+    { title: 'انطلق', body: 'أكمل الكوز بنفسك. في النهاية: نتيجتك وتحليلها ومراجعة الأخطاء.', center: true },
   ];
   let tourIdx = -1;
 
@@ -744,25 +753,79 @@
     const ov = $('tour-overlay');
     if (i < 0 || i >= TOUR_STEPS.length) { tourHide(); return; }
     const st = TOUR_STEPS[i];
+    if (st.go) {
+      const sub = currentSubject();
+      const ch = sub && sub.chapters[0];
+      if (sub && ch) location.hash = '#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id);
+      setTimeout(() => tourShow(i + 1), 900);
+      return;
+    }
+    let el = null;
     let rect = null;
-    if (st.target) {
-      const el = document.querySelector(st.target);
+    if (!st.center) {
+      el = st.target && document.querySelector(st.target);
       if (!el || !el.offsetParent) { tourShow(i + 1); return; } // skip missing target
       el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       rect = el.getBoundingClientRect();
     }
     ov.classList.remove('hidden');
     ov.setAttribute('aria-hidden', 'false');
+    // Action steps need the spotlight hole clickable: shades stop intercepting.
+    ['tour-shade-top', 'tour-shade-bottom', 'tour-shade-left', 'tour-shade-right'].forEach((id) => {
+      document.getElementById(id).style.pointerEvents = st.action ? 'none' : 'auto';
+    });
     $('tour-tip-title').textContent = st.title;
     $('tour-tip-body').textContent = st.body;
     $('tour-tip-progress').textContent = (i + 1) + ' / ' + TOUR_STEPS.length;
+    const bar = $('tour-tip-bar-fill');
+    if (bar) bar.style.width = ((i + 1) / TOUR_STEPS.length * 100) + '%';
+    const isAction = !!st.action;
+    $('tour-tip').classList.toggle('tour-waiting', isAction);
+    $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : (isAction ? 'تخطي الخطوة' : 'التالي');
     $('tour-btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
-    $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : 'التالي';
-    requestAnimationFrame(() => tourPlace(rect));
+    requestAnimationFrame(() => tourPlace(rect, !!st.center));
+    // Re-place after smooth scroll settles (fixed overlay doesn't track scrolling).
+    if (el) setTimeout(() => {
+      if (tourIdx !== i) return;
+      tourPlace(el.getBoundingClientRect(), false);
+    }, 550);
     icons();
   }
 
-  function tourPlace(rect) {
+  function tourPlace(rect, centered) {
+    const tip = $('tour-tip');
+    tip.classList.toggle('tour-centered', centered);
+    if (centered) { centerTip(); paintShades(null); return; }
+    const pad = 8;
+    paintShades(rect);
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const wide = vw >= 768;
+    tip.style.visibility = 'hidden';
+    tip.style.transform = '';
+    tip.style.maxWidth = '';
+    tip.style.marginLeft = '';
+    tip.style.marginRight = '';
+    if (wide) {
+      tip.style.width = '360px';
+      tip.style.left = ''; tip.style.right = '';
+      // RTL: align tip's right edge with the target's right edge
+      tip.style.left = Math.max(8, Math.min(rect.right - 360, vw - 376)) + 'px';
+    } else {
+      tip.style.width = '';
+      tip.style.left = '12px'; tip.style.right = '12px';
+    }
+    tip.style.top = '0px';
+    const th = tip.offsetHeight;
+    const gap = 10;
+    const y = rect.top + rect.height + pad;
+    let ty = y + gap;
+    if (ty + th > vh - 8) ty = Math.max(8, rect.top - pad - gap - th);
+    tip.style.top = ty + 'px';
+    tip.style.visibility = 'visible';
+    tip.style.right = wide ? '' : '12px';
+  }
+
+  function paintShades(rect) {
     const pad = 8;
     const t = $('tour-shade-top'), b = $('tour-shade-bottom'),
       l = $('tour-shade-left'), r = $('tour-shade-right');
@@ -773,7 +836,6 @@
     };
     if (!rect) {
       show(t, 0, 0, vw, vh); show(b, 0, 0, 0, 0); show(l, 0, 0, 0, 0); show(r, 0, 0, 0, 0);
-      centerTip();
       return;
     }
     const x = Math.max(0, rect.left - pad), y = Math.max(0, rect.top - pad),
@@ -782,22 +844,17 @@
     show(b, 0, y + h, vw, vh - (y + h));
     show(l, 0, y, x, h);
     show(r, x + w, y, vw - (x + w), h);
-    // tip below target, else above
-    const tip = $('tour-tip');
-    const gap = 10;
-    let ty = y + h + gap;
-    tip.style.visibility = 'hidden';
-    tip.style.left = '12px'; tip.style.right = '12px'; tip.style.top = '0px';
-    const th = tip.offsetHeight;
-    if (ty + th > vh - 8) ty = Math.max(8, y - th - gap);
-    tip.style.top = ty + 'px';
-    tip.style.visibility = 'visible';
   }
 
   function centerTip() {
     const tip = $('tour-tip');
-    tip.style.left = '12px'; tip.style.right = '12px';
-    tip.style.top = Math.max(8, (window.innerHeight - tip.offsetHeight) / 2 - 40) + 'px';
+    tip.style.width = 'min(440px, calc(100vw - 24px))';
+    tip.style.left = '0';
+    tip.style.right = '0';
+    tip.style.marginLeft = 'auto';
+    tip.style.marginRight = 'auto';
+    tip.style.transform = '';
+    tip.style.top = Math.max(12, (window.innerHeight - tip.offsetHeight) / 2 - 30) + 'px';
     tip.style.visibility = 'visible';
   }
 
@@ -809,6 +866,12 @@
 
   function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }
 
+  function tourNotify(eventName) {
+    if (tourIdx < 0 || tourIdx >= TOUR_STEPS.length) return;
+    const st = TOUR_STEPS[tourIdx];
+    if (st.action === eventName) tourShow(tourIdx + 1);
+  }
+
   function maybeQuizHint() {
     if (tourGet(QUIZ_HINT_KEY)) return;
     tourSet(QUIZ_HINT_KEY);
@@ -818,7 +881,11 @@
   // ---------------- wire up ----------------
   function bind() {
     window.addEventListener('hashchange', route);
-    window.addEventListener('resize', () => { if (tourIdx >= 0) tourShow(tourIdx); });
+    window.addEventListener('resize', () => {
+      if (tourIdx < 0 || tourIdx >= TOUR_STEPS.length) return;
+      if (TOUR_STEPS[tourIdx].go) return;
+      tourShow(tourIdx);
+    });
     $('btn-retry-load').addEventListener('click', () => location.reload());
     $('btn-back-home').addEventListener('click', () => { location.hash = ''; });
     $('btn-start-quiz').addEventListener('click', beginAnswering);
@@ -827,6 +894,8 @@
     const saveBtn = $('btn-save-question');
     if (saveBtn) saveBtn.addEventListener('click', toggleSaveCurrent);
     $('btn-tour-replay').addEventListener('click', () => tourShow(0));
+    const replaySession = $('btn-tour-replay-session');
+    if (replaySession) replaySession.addEventListener('click', () => tourShow(0));
     $('tour-btn-next').addEventListener('click', () => {
       if (tourIdx >= TOUR_STEPS.length - 1) tourDone();
       else tourShow(tourIdx + 1);
