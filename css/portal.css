@@ -276,6 +276,25 @@ html[data-theme="light"] .app-header .icon-btn {
 .two-btn-nav .nav-btn { flex: 1; max-width: 380px; }
 .two-btn-nav #btn-skip { flex: 0 0 auto; }
 
+/* --- auth dialog --- */
+.auth-card { text-align: start; }
+.auth-card h3 { text-align: center; margin-bottom: 0.2rem; }
+.auth-close { float: inline-end; }
+.auth-sub { text-align: center; opacity: 0.7; font-size: 0.82rem; margin: 0 0 0.9rem; }
+.auth-label { display: block; font-size: 0.8rem; opacity: 0.75; margin: 0.6rem 0 0.25rem; }
+.auth-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(127, 140, 160, 0.4);
+  background: rgba(127, 140, 160, 0.08);
+  color: inherit;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+.auth-submit { width: 100%; margin-top: 0.9rem; }
+.auth-error { color: #f43f5e; font-size: 0.82rem; margin: 0.5rem 0 0; min-height: 1.1em; }
+
 /* --- side menu --- */
 .menu-list { display: flex; flex-direction: column; gap: 0.4rem; }
 .menu-item {

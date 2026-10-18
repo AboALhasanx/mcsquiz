@@ -417,6 +417,24 @@
             </div>
         </aside>
 
+        <!-- Auth dialog (email account) -->
+        <div id="auth-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+                <button id="auth-close" class="icon-btn auth-close" aria-label="إغلاق">
+                    <i data-lucide="x"></i>
+                </button>
+                <h3 id="auth-title">تسجيل الدخول</h3>
+                <p class="auth-sub">حسابك يحفظ محفوظاتك وسجلك على كل أجهزتك</p>
+                <label class="auth-label" for="auth-email">البريد الإلكتروني</label>
+                <input id="auth-email" class="auth-input" type="email" inputmode="email" autocomplete="email" dir="ltr" placeholder="you@example.com">
+                <label class="auth-label" for="auth-password">كلمة المرور</label>
+                <input id="auth-password" class="auth-input" type="password" autocomplete="current-password" dir="ltr" placeholder="••••••••">
+                <p id="auth-error" class="auth-error hidden" role="alert"></p>
+                <button id="auth-submit" class="action-btn primary-btn auth-submit">دخول</button>
+                <button id="auth-toggle" class="tour-link-btn">ليس لدي حساب؟ إنشاء حساب</button>
+            </div>
+        </div>
+
         <!-- Leave-exam confirmation -->
         <div id="leave-modal" class="modal-overlay hidden" aria-hidden="true">
             <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="leave-title" aria-describedby="leave-body">
@@ -463,7 +481,7 @@
 
     <script src="js/quiz-vault.js" defer></script>
     <script src="js/analytics.js" defer></script>
-    <script src="js/dropbox-config.js" defer></script>
+    <script src="js/tg-config.js" defer></script>
     <script src="js/cloud.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/pwa.js" defer></script>

@@ -1399,13 +1399,13 @@
     const C = cloud();
     if (!C || !C.configured()) {
       name.textContent = 'زائر — بدون حساب';
-      sub.textContent = 'الحساب السحابي غير مُعد بعد';
+      sub.textContent = 'افتح البوابة من بوت تليجرام للمزامنة';
       if (av) av.textContent = 'ز';
       return;
     }
     if (!C.linked()) {
       name.textContent = 'زائر — بدون حساب';
-      sub.textContent = 'اضغط للتسجيل عبر Dropbox';
+      sub.textContent = 'افتح البوابة من داخل تليجرام للدخول';
       if (av) av.textContent = 'ز';
       return;
     }
@@ -1423,91 +1423,63 @@
 
   async function handleAccountTap() {
     const C = cloud();
-    if (!C || !C.configured()) {
-      toast('الحساب السحابي غير مُعد بعد — أضف مفتاح Dropbox أولاً');
+        if (!C || !C.configured()) {
+      try {
+        const inTg = C && C.inTelegram && C.inTelegram();
+        const hasBot = C && C.bot && C.bot();
+        if (!inTg && !hasBot) { toast('حساب تليجرام قيد الإعداد — قريباً'); }
+        else { toast('افتح البوابة من داخل تليجرام'); }
+      } catch (e) { toast('افتح البوابة من داخل تليجرام'); }
       return;
     }
     if (!C.linked()) {
-      toast('جارٍ التحويل إلى Dropbox…');
-      const r = await C.startLogin().catch((e) => ({ ok: false, error: String((e && e.message) || e) }));
-      if (!r.ok && !r.needSetup) toast(r.error || 'تعذر بدء التسجيل');
+      const link = C.botLink ? C.botLink() : '';
+      if (link) {
+        try { window.open(link, '_blank', 'noopener'); } catch (e) {}
+        toast('افتح الرابط في تليجرام للدخول بحسابك');
+      } else {
+        toast('افتح هذه الصفحة من داخل تطبيق تليجرام');
+      }
       return;
     }
-    try { await C.logout(); } catch (e) {}
-    S.cloudName = null;
-    updateAccountRow();
-    toast('تم تسجيل الخروج (نسختك المحلية باقية)');
+    let me = null;
+    try { me = await C.accountInfo(); } catch (e) {}
+    toast(me && me.name ? ('مسجل عبر تليجرام: ' + me.name) : 'مسجل عبر تليجرام ✓');
   }
 
-  async function handleOAuthCallback() {
+  async function initTelegram() {
     const C = cloud();
-    if (!C || !C.configured()) return false;
-    const q = new URLSearchParams(location.search);
-    const code = q.get('code');
-    if (!code) return false;
+    if (!C) return;
     try {
-      await C.finishLogin(code, q.get('state'));
-      history.replaceState(null, '', location.pathname + location.hash);
-      try {
-        const me = await C.accountInfo();
-        S.cloudName = me.name ? (me.name.display_name || me.email) : null;
-      } catch (e) { S.cloudName = null; }
+      if (typeof C.integrate === 'function') C.integrate();
+    } catch (e) {}
+    if (!C.linked()) { updateAccountRow(); return; }
+    try {
+      const me = await C.accountInfo();
+      S.cloudName = (me && (me.name || me.username)) || S.cloudName || null;
+    } catch (e) {}
+    updateAccountRow();
+    try {
       const r = await C.pullOrPush();
       renderCatalog();
       if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
       if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
-      updateAccountRow();
+      updateSavedBadge(); updateMenuCounts(); updateAccountRow();
       icons();
-      toast(r.action === 'downloaded' ? 'تمت المزامنة من حسابك ✓' : 'تم رفع بياناتك إلى حسابك ✓');
-    } catch (e) {
-      history.replaceState(null, '', location.pathname + location.hash);
-      toast('فشل تسجيل الدخول: تحقق من مفتاح التطبيق والرابط المعتمد');
-    }
-    return true;
-  }
-
-  async function handleOAuthCallback() {
-    const C = window.PortalCloud;
-    if (!C || !C.configured()) return false;
-    const q = new URLSearchParams(location.search);
-    const code = q.get('code');
-    if (!code) return false;
-    try {
-      const r = await C.finishLogin(code, q.get('state'));
-      void r;
-      history.replaceState(null, '', location.pathname + location.hash);
-      try {
-        const me = await C.accountInfo();
-        S.cloudName = me && me.name ? (me.name.display_name || me.email) : null;
-      } catch (e) { S.cloudName = null; }
-      try {
-        const res = await C.pullOrPush();
-        renderCatalog();
-        if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
-        if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
-        updateSavedBadge(); updateMenuCounts(); updateAccountRow();
-        toast(res && res.action === 'downloaded' ? 'تمت المزامنة من حسابك ✓' : 'تم ربط الحساب ورفع بياناتك ✓');
-      } catch (e) {
-        toast('تم الربط، تعذرت المزامنة الأولى — سيُحاوِل تلقائياً');
-      }
-    } catch (e) {
-      history.replaceState(null, '', location.pathname + location.hash);
-      toast('فشل تسجيل الدخول: تحقق من المفتاح والرابط المعتمد');
-    }
-    return true;
-  }
-
-  async function handleOAuthReturn() {
-    try {
-      const q = new URLSearchParams(location.search);
-      if (!q.get('code')) return;
-      toast('جارٍ إتمام تسجيل الدخول…');
-      await handleOAuthCallback();
-    } catch (e) { /* handled inside */ }
+      if (r && r.action === 'downloaded') toast('تمت المزامنة من حساب تليجرام ✓');
+    } catch (e) { toast('تعذرت المزامنة الأولى — سيُحاوِل تلقائياً'); }
   }
 
   // ---------------- wire up ----------------
   function bind() {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        if (!$('leave-modal').classList.contains('hidden')) { hideLeaveModal(); return; }
+        if (!$('tour-overlay').classList.contains('hidden')) return; // tour has its own skip
+        closeDrawers();
+        return;
+      }
+    });
     window.addEventListener('hashchange', onHashChange);
     window.addEventListener('beforeunload', (e) => {
       if (dirtySession()) { e.preventDefault(); e.returnValue = ''; }
@@ -1666,7 +1638,7 @@
     loadUI();
     if (S.lang === 'en') document.documentElement.setAttribute('lang', 'en');
     bind();
-    handleOAuthReturn();
+    initTelegram();
     show('quiz-loading');
     try {
       await loadData();

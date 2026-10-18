@@ -1,127 +1,76 @@
-/* Portal cloud sync — student's own Dropbox (App Folder), no server needed.
- * OAuth2 PKCE flow (no client secret), tokens in localStorage (never exported).
- * One JSON file synced: /mcq-portal.json {saved, history, bests, updatedAt}.
- * Requires window.PORTAL_DROPBOX_KEY (see js/dropbox-config.example.js).
+/* Portal cloud sync — Telegram WebApp identity + Telegram CloudStorage.
+ * No server, no database, no OAuth dance: when the portal runs inside
+ * Telegram (opened from the course bot), window.Telegram.WebApp is present,
+ * the student is already identified, and data syncs to their own per-user
+ * Telegram cloud. Outside Telegram everything stays device-local.
+ *
+ * CloudStorage limits: ~1024 keys, 4096 chars per value -> the JSON bundle
+ * is chunked (~3800 chars) under keys mcq_idx + mcq_p0..mcq_pN.
  */
 (function (global) {
   'use strict';
 
-  const TOK_KEY = 'portal_cloud_tokens';
   const SYNC_KEY = 'portal_cloud_synced_at';
-  const FILE_PATH = '/mcq-portal.json';
   const LS_BEST_PREFIX = 'portal_best_';
   const LS_SAVED = 'portal_saved_v1';
   const LS_HISTORY = 'portal_history_v1';
+  const IDX_KEY = 'mcq_idx';
+  const CHUNK_PREFIX = 'mcq_p';
+  const CHUNK_SIZE = 3800;
 
   let pushTimer = null;
   let syncing = false;
 
-  function key() { return (global.PORTAL_DROPBOX_KEY || '').trim(); }
-  function configured() { return !!key(); }
-
-  function loadTokens() {
-    try { return JSON.parse(localStorage.getItem(TOK_KEY) || 'null'); } catch (e) { return null; }
+  function wa() {
+    try { return (global.Telegram && global.Telegram.WebApp) || null; }
+    catch (e) { return null; }
   }
-  function saveTokens(t) {
+  function tgUser() {
     try {
-      if (t) localStorage.setItem(TOK_KEY, JSON.stringify(t));
-      else localStorage.removeItem(TOK_KEY);
-    } catch (e) {}
+      const w = wa();
+      const u = w && w.initDataUnsafe && w.initDataUnsafe.user;
+      return u && u.id ? u : null;
+    } catch (e) { return null; }
   }
-  function linked() { const t = loadTokens(); return !!(t && t.refresh_token); }
+  function inTelegram() { return !!wa(); }
+  function botName() {
+    try { return (global.PORTAL_TG_BOT || '').trim().replace(/^@/, ''); }
+    catch (e) { return ''; }
+  }
+  // "configured" = the account feature can do something useful:
+  // either we are inside Telegram, or the owner set the bot username.
+  function configured() { return inTelegram() || !!botName(); }
+  function linked() { return !!tgUser(); }
 
-  function b64url(buf) {
-    const s = btoa(String.fromCharCode.apply(null, new Uint8Array(buf)));
-    return s.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  function lastSync() {
+    try { return Number(localStorage.getItem(SYNC_KEY) || 0); } catch (e) { return 0; }
   }
-  function randStr(n) {
-    const a = new Uint8Array(n);
-    (global.crypto || {}).getRandomValues ? crypto.getRandomValues(a) : a.map(() => Math.floor(Math.random() * 256));
-    let s = '';
-    for (let i = 0; i < a.length; i++) s += 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'[a[i] % 64];
-    return s;
-  }
-  async function challengeFor(verifier) {
-    const data = new TextEncoder().encode(verifier);
-    const digest = await crypto.subtle.digest('SHA-256', data);
-    return b64url(digest);
-  }
-
-  function redirectUri() {
-    return location.origin + location.pathname;
+  function markSync() {
+    try { localStorage.setItem(SYNC_KEY, String(Date.now())); } catch (e) {}
   }
 
-  async function startLogin() {
-    if (!configured()) return { ok: false, needSetup: true };
-    const verifier = randStr(96);
-    try { sessionStorage.setItem('portal_pkce_verifier', verifier); } catch (e) {}
-    const challenge = await challengeFor(verifier).catch(() => null);
-    if (!challenge) return { ok: false, error: 'PKCE غير مدعوم في هذا المتصفح' };
-    const state = randStr(24);
-    try { sessionStorage.setItem('portal_pkce_state', state); } catch (e) {}
-    const u = new URL('https://www.dropbox.com/oauth2/authorize');
-    u.searchParams.set('client_id', key());
-    u.searchParams.set('redirect_uri', redirectUri());
-    u.searchParams.set('response_type', 'code');
-    u.searchParams.set('token_access_type', 'offline');
-    u.searchParams.set('scope', 'account_info.read files.content.read files.content.write');
-    u.searchParams.set('code_challenge', challenge);
-    u.searchParams.set('code_challenge_method', 'S256');
-    u.searchParams.set('state', state);
-    location.href = u.toString();
-    return { ok: true };
-  }
-
-  async function api(path, opts) {
-    const t = loadTokens();
-    if (!t) throw new Error('not-linked');
-    let access = t.access_token;
-    if (!access || Date.now() > (t.obtained_at || 0) + (t.expires_in - 60) * 1000) {
-      access = await refresh(t);
-    }
-    const res = await fetch(path, Object.assign({}, opts, {
-      headers: Object.assign({ Authorization: 'Bearer ' + access }, (opts && opts.headers) || {}),
-    }));
-    if (!res.ok) {
-      let msg = 'HTTP ' + res.status;
-      try { const j = await res.json(); if (j && j.error_summary) msg = j.error_summary; } catch (e) {}
-      throw new Error(msg);
-    }
-    return res;
-  }
-
-  async function refresh(t) {
-    const body = new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: t.refresh_token,
-      client_id: key(),
+  function csCall(method, arg) {
+    return new Promise((resolve, reject) => {
+      let w;
+      try { w = wa(); } catch (e) { w = null; }
+      if (!w || !w.CloudStorage || typeof w.CloudStorage[method] !== 'function') {
+        reject(new Error('no-cloud'));
+        return;
+      }
+      try {
+        if (method === 'getItems' || method === 'removeItems') {
+          w.CloudStorage[method](arg, (err, res) => (err ? reject(new Error(String(err))) : resolve(res)));
+        } else if (method === 'getItem' || method === 'removeItem') {
+          w.CloudStorage[method](arg[0], (err, res) => (err ? reject(new Error(String(err))) : resolve(res)));
+        } else {
+          w.CloudStorage[method](arg[0], arg[1], (err, res) => (err ? reject(new Error(String(err))) : resolve(res)));
+        }
+      } catch (e) { reject(e); }
     });
-    const res = await fetch('https://api.dropboxapi.com/oauth2/token', { method: 'POST', body: body });
-    if (!res.ok) throw new Error('refresh-failed');
-    const j = await res.json();
-    const nt = Object.assign({}, t, { access_token: j.access_token, expires_in: j.expires_in || 14400, obtained_at: Date.now() });
-    saveTokens(nt);
-    return nt.access_token;
   }
-
-  async function finishLogin(code, state) {
-    let verifier = null, want = null;
-    try {
-      verifier = sessionStorage.getItem('portal_pkce_verifier');
-      want = sessionStorage.getItem('portal_pkce_state');
-      sessionStorage.removeItem('portal_pkce_verifier');
-      sessionStorage.removeItem('portal_pkce_state');
-    } catch (e) {}
-    if (!verifier || (want && want !== state)) throw new Error('bad-state');
-    const body = new URLSearchParams({
-      code: code, grant_type: 'authorization_code', code_verifier: verifier,
-      client_id: key(), redirect_uri: redirectUri(),
-    });
-    const res = await fetch('https://api.dropboxapi.com/oauth2/token', { method: 'POST', body: body });
-    if (!res.ok) throw new Error('exchange-failed');
-    const j = await res.json();
-    saveTokens({ access_token: j.access_token, refresh_token: j.refresh_token, expires_in: j.expires_in || 14400, obtained_at: Date.now() });
-  }
+  const csGet = (k) => csCall('getItem', [k]).then((v) => (typeof v === 'string' && v !== '' ? v : null));
+  const csSet = (k, v) => csCall('setItem', [k, v]);
+  const csDel = (k) => csCall('removeItem', [k]).catch(() => {});
 
   function collectBundle() {
     let saved = {}, history = [], bests = {};
@@ -153,61 +102,70 @@
     }
   }
 
-  function lastSync() {
-    try { return Number(localStorage.getItem(SYNC_KEY) || 0); } catch (e) { return 0; }
-  }
-  function markSync() {
-    try { localStorage.setItem(SYNC_KEY, String(Date.now())); } catch (e) {}
+  function chunkUp(str) {
+    const out = [];
+    for (let i = 0; i < str.length; i += CHUNK_SIZE) out.push(str.slice(i, i + CHUNK_SIZE));
+    return out;
   }
 
   async function download() {
-    const res = await api('https://content.dropboxapi.com/2/files/download', {
-      method: 'POST',
-      headers: { 'Dropbox-API-Arg': JSON.stringify({ path: FILE_PATH }) },
-    });
-    return res.json();
+    const idxRaw = await csGet(IDX_KEY);
+    if (!idxRaw) return null;
+    let idx;
+    try { idx = JSON.parse(idxRaw); } catch (e) { return null; }
+    if (!idx || typeof idx.chunks !== 'number' || idx.chunks < 1) return null;
+    let text = '';
+    for (let i = 0; i < idx.chunks; i++) {
+      const part = await csGet(CHUNK_PREFIX + i);
+      if (part === null || part === undefined) throw new Error('incomplete-cloud');
+      text += part;
+    }
+    try { return JSON.parse(text); } catch (e) { throw new Error('corrupt-cloud'); }
   }
 
   async function upload(bundle) {
-    await api('https://content.dropboxapi.com/2/files/upload', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/octet-stream',
-        'Dropbox-API-Arg': JSON.stringify({ path: FILE_PATH, mode: { '.tag': 'overwrite' }, autorename: false, mute: true }),
-      },
-      body: JSON.stringify(bundle || collectBundle()),
-    });
+    const payload = bundle || collectBundle();
+    const text = JSON.stringify(payload);
+    const parts = chunkUp(text);
+    if (parts.length > 900) throw new Error('too-big');
+    for (let i = 0; i < parts.length; i++) await csSet(CHUNK_PREFIX + i, parts[i]);
+    await csSet(IDX_KEY, JSON.stringify({ chunks: parts.length, updatedAt: payload.updatedAt || Date.now() }));
+    // best-effort cleanup of stale chunks from a previously larger bundle
+    for (let i = parts.length; i < parts.length + 8; i++) await csDel(CHUNK_PREFIX + i);
     markSync();
   }
 
-  async function accountInfo() {
-    const res = await api('https://api.dropboxapi.com/2/users/get_current_account', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: 'null' });
-    return res.json();
+  function localCount() {
+    let n = 0;
+    try { n += Object.keys(JSON.parse(localStorage.getItem(LS_SAVED) || '{}') || {}).length; } catch (e) {}
+    try { n += (JSON.parse(localStorage.getItem(LS_HISTORY) || '[]') || []).length; } catch (e) {}
+    return n;
   }
 
-  // Pull on link: cloud wins if newer, else push local up.
   async function pullOrPush() {
+    if (!linked()) throw new Error('not-linked');
     let remote = null;
-    let missing = false;
-    try {
-      remote = await download();
-    } catch (e) {
-      if (String((e && e.message) || '').indexOf('not_found') !== -1) missing = true;
-      else throw e;
+    try { remote = await download(); } catch (e) { remote = null; }
+    const rUpdated = (remote && remote.updatedAt) ? Number(remote.updatedAt) : 0;
+    const localN = localCount();
+    if (!remote) {
+      if (localN > 0) { await upload(); return { action: 'uploaded-new' }; }
+      markSync();
+      return { action: 'empty' };
     }
-    const local = collectBundle();
-    const localCount = Object.keys(local.saved || {}).length + (local.history || []).length;
-    if (missing || !remote || (remote.updatedAt || 0) <= lastSync() && localCount > 0) {
-      if (localCount > 0 || missing) await upload(local);
-      return { action: missing ? 'uploaded-new' : 'uploaded' };
+    if (localN === 0) { applyBundle(remote); markSync(); return { action: 'downloaded' }; }
+    const ls = lastSync();
+    if (ls && rUpdated && rUpdated < ls) { await upload(); return { action: 'uploaded-local-newer' }; }
+    if (!rUpdated || !ls || rUpdated >= ls) {
+      if (rUpdated && ls && rUpdated === ls) { await upload(); return { action: 'uploaded-tie' }; }
+      applyBundle(remote); markSync(); return { action: 'downloaded' };
     }
-    applyBundle(remote);
-    markSync();
-    return { action: 'downloaded' };
+    await upload();
+    return { action: 'uploaded' };
   }
 
   function pushSoon() {
-    if (!configured() || !linked() || !navigator.onLine) return;
+    if (!linked() || !navigator.onLine) return;
     if (pushTimer) clearTimeout(pushTimer);
     pushTimer = setTimeout(() => {
       pushTimer = null;
@@ -220,22 +178,43 @@
     }, 2000);
   }
 
-  async function logout() {
-    saveTokens(null);
-    try { localStorage.removeItem(SYNC_KEY); } catch (e) {}
+  async function accountInfo() {
+    const u = tgUser();
+    if (!u) return null;
+    const name = [u.first_name, u.last_name].filter(Boolean).join(' ').trim();
+    return { name: name || null, username: u.username || null, id: u.id };
+  }
+
+  // Telegram chrome integration (safe no-ops outside Telegram).
+  function integrate() {
+    let w = null;
+    try { w = wa(); } catch (e) { return; }
+    if (!w) return;
+    try { if (typeof w.ready === 'function') w.ready(); } catch (e) {}
+    try { if (typeof w.expand === 'function') w.expand(); } catch (e) {}
+    try {
+      if (typeof w.disableVerticalSwipes === 'function') w.disableVerticalSwipes();
+    } catch (e) {}
+    try {
+      if (w.colorScheme && !localStorage.getItem('portal_theme')) {
+        document.documentElement.setAttribute('data-theme', w.colorScheme === 'light' ? 'light' : 'dark');
+      }
+    } catch (e) {}
   }
 
   global.PortalCloud = {
     configured: configured,
     linked: linked,
-    startLogin: startLogin,
-    finishLogin: finishLogin,
-    logout: logout,
+    inTelegram: inTelegram,
+    bot: botName,
+    botLink: function () { const b = botName(); return b ? 'https://t.me/' + b + '?startapp=portal' : ''; },
+    user: async function () { return tgUser(); },
+    accountInfo: accountInfo,
+    integrate: integrate,
     pushSoon: pushSoon,
     pullOrPush: pullOrPush,
     upload: upload,
     download: download,
-    accountInfo: accountInfo,
-    lastSync: lastSync,
+    logout: async function () {},
   };
 })(window);
