@@ -9,6 +9,7 @@
     <meta name="description" content="بوابة أسئلة MCQ تفاعلية — وضع اختبار">
     <link rel="apple-touch-icon" href="assets/icon-192.png">
     <link rel="icon" type="image/png" href="assets/icon-192.png">
+    <link rel="preload" href="assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
     <script src="js/lucide.min.js" defer></script>
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/portal.css">
@@ -25,6 +26,13 @@
                     <span id="test-mode-badge" class="test-mode-badge" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
+                    <a id="btn-open-saved" class="icon-btn" href="#/saved" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
+                        <i data-lucide="bookmark"></i>
+                        <span id="saved-count-badge" class="saved-count-badge hidden">0</span>
+                    </a>
+                    <button id="btn-tour-replay" class="icon-btn" aria-label="إعادة الجولة التعليمية" title="الجولة التعليمية">
+                        <i data-lucide="help-circle"></i>
+                    </button>
                     <button id="btn-theme-toggle" class="icon-btn" aria-label="تبديل المظهر" title="تبديل المظهر">
                         <i data-lucide="moon" id="theme-icon"></i>
                     </button>
@@ -160,6 +168,9 @@
                 <div class="question-card" id="question-card">
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</span>
+                        <button id="btn-save-question" class="icon-btn bookmark-btn" aria-label="حفظ السؤال" title="حفظ السؤال لمراجعته لاحقاً">
+                            <i data-lucide="bookmark" id="save-icon"></i>
+                        </button>
                     </div>
                     <div class="question-body">
                         <p id="question-text" class="question-text" dir="auto"></p>
@@ -182,8 +193,7 @@
                 </nav>
             </div>
 
-            <div id="results-view" class="results-view hidden">
-                <div class="results-card">
+            <div id="results-view" class="results-view hidden"><div class="results-card">
                     <div class="score-circle-wrapper">
                         <div class="score-circle">
                             <span id="score-percentage" class="score-number">0%</span>
@@ -259,6 +269,24 @@
                 </section>
             </div>
 
+            <!-- Saved Questions View (organized Subject -> Chapter) -->
+            <div id="saved-view" class="state-view hidden">
+                <div class="saved-topbar">
+                    <div>
+                        <h2 class="saved-title">الأسئلة المحفوظة</h2>
+                        <p id="saved-total-line" class="saved-total-line"></p>
+                    </div>
+                    <a href="#/" class="action-btn secondary-btn saved-back-btn">
+                        <i data-lucide="layout-grid"></i>
+                        <span>المواد</span>
+                    </a>
+                </div>
+                <div id="saved-groups" class="saved-groups"></div>
+                <div id="saved-empty-state" class="catalog-empty-state hidden">
+                    لا توجد أسئلة محفوظة بعد — افتح أي كوز واضغط زر الحفظ أعلى السؤال
+                </div>
+            </div>
+
         </main>
 
         <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
@@ -300,6 +328,26 @@
         </aside>
 
         <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+        <!-- Guided tour overlay (custom spotlight, offline-safe) -->
+        <div id="tour-overlay" class="tour-overlay hidden" aria-hidden="true">
+            <div class="tour-shade" id="tour-shade-top"></div>
+            <div class="tour-shade" id="tour-shade-bottom"></div>
+            <div class="tour-shade" id="tour-shade-left"></div>
+            <div class="tour-shade" id="tour-shade-right"></div>
+            <div id="tour-tip" class="tour-tip" role="dialog" aria-modal="true" aria-labelledby="tour-tip-title">
+                <div class="tour-tip-progress" id="tour-tip-progress"></div>
+                <h3 id="tour-tip-title"></h3>
+                <p id="tour-tip-body"></p>
+                <div class="tour-tip-actions">
+                    <button id="tour-btn-skip" class="tour-link-btn">تخطي الجولة</button>
+                    <span class="tour-spacer"></span>
+                    <button id="tour-btn-prev" class="action-btn secondary-btn tour-nav-btn">السابق</button>
+                    <button id="tour-btn-next" class="action-btn primary-btn tour-nav-btn">التالي</button>
+                </div>
+                <p class="tour-replay-hint">يمكنك إعادة الجولة من زر <i data-lucide="help-circle" class="tour-inline-icon"></i> أعلى الصفحة</p>
+            </div>
+        </div>
 
         <details id="debug-panel" class="debug-panel hidden">
             <summary>Debug — تفاصيل التشغيل</summary>

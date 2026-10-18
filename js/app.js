@@ -24,12 +24,13 @@
   function toast(msg) {
     const region = $('toast-region');
     if (!region) return;
+    region.innerHTML = ''; // single-toast policy: replace, never stack
     const t = document.createElement('div');
     t.className = 'portal-toast';
     t.textContent = msg;
     region.appendChild(t);
-    setTimeout(() => t.classList.add('show'));
-    setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 300); }, 2600);
+    requestAnimationFrame(() => t.classList.add('show'));
+    setTimeout(() => { t.classList.remove('show'); setTimeout(() => { if (t.parentNode === region) region.innerHTML = ''; }, 300); }, 2600);
   }
 
   function icons() {
@@ -46,10 +47,26 @@
     chapterFilter: null,   // chapter_no — always selected, no "all"
     lang: 'ar',         // 'ar' | 'en'
     sound: true,
-    session: null,      // {bank, questions, picks, dwells, idx, startEpoch, paused, pauseAccum, pauseStart, timerId, retryWrong}
+    session: null,      // {sub, ch, questions, picks, dwells, idx, ..., replay}
+    saved: {},          // saveKey -> {origin, snapshot, savedAt}
   };
 
-  const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view', 'results-view'];
+  const SAVED_KEY = 'portal_saved_v1';
+  const TOUR_KEY = 'portal_tour_done';
+  const QUIZ_HINT_KEY = 'portal_quiz_hint';
+
+  function loadSaved() {
+    try { S.saved = JSON.parse(localStorage.getItem(SAVED_KEY) || '{}') || {}; }
+    catch (e) { S.saved = {}; }
+  }
+  try { loadSaved(); } catch (e) {}
+  function persistSaved() {
+    try { localStorage.setItem(SAVED_KEY, JSON.stringify(S.saved)); } catch (e) {}
+  }
+  function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
+
+  const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
+    'results-view', 'saved-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     $('quiz-session-topbar').style.display = (viewId === 'quiz-start-view' || viewId === 'quiz-view') ? 'block' : 'none';
@@ -236,19 +253,14 @@
     return arr;
   }
 
-  function startSession(subjectId, quizId, wrongOnlyFrom) {
-    const sub = S.index.subjects.find((s) => s.subject_id === subjectId);
-    const ch = sub && sub.chapters.find((c) => c.quiz_id === quizId);
-    const bank = S.banks[quizId];
-    if (!sub || !ch || !bank) { showError('لم يتم العثور على الكوز المطلوب.'); return; }
+  function originOf(sub, ch, bank) {
+    return {
+      subjectId: sub.subject_id, subjectTitle: sub.subject_title,
+      chapterNo: ch.chapter_no, quizId: ch.quiz_id, topic: bank ? bank.topic : '',
+    };
+  }
 
-    let pool = bank.questions.map((q) => JSON.parse(JSON.stringify(q)));
-    let retryWrong = false;
-    if (wrongOnlyFrom) {
-      const sub2 = window.PortalAnalytics.buildWrongOnly(wrongOnlyFrom.questions, wrongOnlyFrom.picks);
-      if (!sub2) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
-      pool = sub2; retryWrong = true;
-    }
+  function preparePool(pool) {
     shuffle(pool);
     // Always shuffle options; remap correct (fixes positional bias).
     pool.forEach((q) => {
@@ -258,32 +270,210 @@
       q.options_en = order.map((i) => q.options_en[i]);
       q.correct = order.indexOf(q.correct);
     });
+    return pool;
+  }
 
+  function launchSession(pool, meta) {
+    // meta: {subjectId, subjectTitle, chapterNo, topic, quizId|null, retryWrong, replay}
+    preparePool(pool);
     S.session = {
-      sub: sub, ch: ch, bank: bank,
+      sub: { subject_id: meta.subjectId, subject_title: meta.subjectTitle },
+      ch: { chapter_no: meta.chapterNo, quiz_id: meta.quizId },
+      title: meta.topic,
       questions: pool,
       picks: new Array(pool.length).fill(null),
       dwells: new Array(pool.length).fill(0),
-      idx: 0, retryWrong: retryWrong,
+      idx: 0, retryWrong: !!meta.retryWrong,
+      replay: meta.replay || null,
       startEpoch: Date.now(), pauseAccum: 0, pauseStart: null,
       qStart: Date.now(), timerId: null,
     };
 
-    $('quiz-subtitle').textContent = sub.subject_title + ' · ' + chLabel(ch);
-    $('quiz-title').textContent = bank.topic;
-    $('start-subject-badge').textContent = sub.subject_title + ' · ' + chLabel(ch);
-    $('start-quiz-title').textContent = bank.topic;
+    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + chLabel({ chapter_no: meta.chapterNo });
+    $('quiz-title').textContent = meta.topic;
+    $('start-subject-badge').textContent = meta.subjectTitle + ' · ' + chLabel({ chapter_no: meta.chapterNo });
+    $('start-quiz-title').textContent = meta.topic;
     $('start-questions-count').textContent = pool.length;
     $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5));
     $('question-total-label').textContent = pool.length;
     $('live-feedback-box').classList.add('hidden');
+    updateSaveBtn();
     show('quiz-start-view');
-    dbg('session start:', quizId, 'n=', pool.length, 'retryWrong=', retryWrong);
+    dbg('session start:', meta.quizId, 'n=', pool.length, 'retryWrong=', !!meta.retryWrong);
+  }
+
+  function startSession(subjectId, quizId, wrongOnlyFrom) {
+    const sub = S.index.subjects.find((s) => s.subject_id === subjectId);
+    const ch = sub && sub.chapters.find((c) => c.quiz_id === quizId);
+    const bank = S.banks[quizId];
+    if (!sub || !ch || !bank) { showError('لم يتم العثور على الكوز المطلوب.'); return; }
+
+    let pool = bank.questions.map((q) => {
+      const c = JSON.parse(JSON.stringify(q));
+      c.origin = originOf(sub, ch, bank);
+      return c;
+    });
+    let retryWrong = false;
+    if (wrongOnlyFrom) {
+      const sub2 = window.PortalAnalytics.buildWrongOnly(wrongOnlyFrom.questions, wrongOnlyFrom.picks);
+      if (!sub2) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
+      pool = sub2; retryWrong = true;
+    }
+    const origin = originOf(sub, ch, bank);
+    launchSession(pool, {
+      subjectId: sub.subject_id, subjectTitle: sub.subject_title,
+      chapterNo: ch.chapter_no, topic: bank.topic, quizId: ch.quiz_id,
+      retryWrong: retryWrong, replay: { type: 'bank', subjectId: sub.subject_id, quizId: ch.quiz_id },
+    });
+  }
+
+  // Practice session built from saved-question snapshots (device-local).
+  function startSavedPractice(items) {
+    if (!items.length) { toast('لا توجد أسئلة محفوظة هنا'); return; }
+    const pool = items.map((it) => JSON.parse(JSON.stringify(it.snapshot)));
+    const first = items[0].origin;
+    launchSession(pool, {
+      subjectId: first.subjectId, subjectTitle: first.subjectTitle,
+      chapterNo: first.chapterNo, topic: 'تدريب المحفوظ (' + pool.length + ' أسئلة)',
+      quizId: null, retryWrong: false,
+      replay: { type: 'saved', keys: items.map((it) => it.key) },
+    });
+  }
+
+  // ---------------- saved questions (device-local) ----------------
+  function currentSaveKey() {
+    const ses = S.session;
+    if (!ses || !ses.questions[ses.idx] || !ses.questions[ses.idx].origin) return null;
+    const q = ses.questions[ses.idx];
+    return saveKeyOf(q.origin, q.id);
+  }
+
+  function updateSaveBtn() {
+    const btn = $('btn-save-question');
+    if (!btn) return;
+    const key = currentSaveKey();
+    btn.classList.toggle('is-saved', !!key && !!S.saved[key]);
+    btn.setAttribute('aria-pressed', !!key && !!S.saved[key] ? 'true' : 'false');
+  }
+
+  function toggleSaveCurrent() {
+    const ses = S.session;
+    if (!ses) return;
+    const q = ses.questions[ses.idx];
+    if (!q || !q.origin) return;
+    const key = saveKeyOf(q.origin, q.id);
+    if (S.saved[key]) {
+      delete S.saved[key];
+      toast('أُزيل من المحفوظ');
+    } else {
+      S.saved[key] = { origin: q.origin, snapshot: JSON.parse(JSON.stringify(q)), savedAt: Date.now() };
+      toast('حُفظ السؤال');
+    }
+    persistSaved();
+    updateSaveBtn();
+    updateSavedBadge();
+  }
+
+  function updateSavedBadge() {
+    const b = $('saved-count-badge');
+    if (!b) return;
+    const n = Object.keys(S.saved).length;
+    b.textContent = n;
+    b.classList.toggle('hidden', n === 0);
+  }
+
+  function savedGroups() {
+    // [{subjectId, subjectTitle, chapters: [{chapterNo, topic, items: [{key, origin, snapshot}]}]}]
+    const bySub = {};
+    Object.keys(S.saved).forEach((key) => {
+      const it = S.saved[key];
+      const o = it.origin;
+      bySub[o.subjectId] = bySub[o.subjectId] || { subjectId: o.subjectId, subjectTitle: o.subjectTitle, chapters: {} };
+      const ch = bySub[o.subjectId].chapters[o.chapterNo] = bySub[o.subjectId].chapters[o.chapterNo] || { chapterNo: o.chapterNo, topic: o.topic, items: [] };
+      ch.items.push({ key: key, origin: o, snapshot: it.snapshot });
+    });
+    return Object.keys(bySub).map((sid) => ({
+      subjectId: sid, subjectTitle: bySub[sid].subjectTitle,
+      chapters: Object.keys(bySub[sid].chapters).map(Number).sort((a, b) => a - b).map((n) => bySub[sid].chapters[n]),
+    }));
+  }
+
+  function renderSaved() {
+    const box = $('saved-groups');
+    box.innerHTML = '';
+    const groups = savedGroups();
+    let total = 0;
+    groups.forEach((g) => g.chapters.forEach((c) => { total += c.items.length; }));
+    $('saved-total-line').textContent = total === 0 ? '' : total + ' أسئلة محفوظة في ' + groups.length + ' مواد';
+    $('saved-empty-state').classList.toggle('hidden', total !== 0);
+    const letters = S.lang === 'ar' ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+    groups.forEach((g) => {
+      g.chapters.forEach((c) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'saved-group';
+        const head = document.createElement('div');
+        head.className = 'saved-group-head';
+        head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.subjectTitle) +
+          '</div><div class="saved-group-sub">' + escapeHtml('تشابتر ' + c.chapterNo) + ' · ' + c.items.length + ' أسئلة</div></div>';
+        const train = document.createElement('button');
+        train.type = 'button';
+        train.className = 'action-btn primary-btn saved-train-btn';
+        train.innerHTML = '<i data-lucide="target"></i><span>تدريب</span>';
+        train.setAttribute('aria-label', 'تدريب على محفوظ ' + g.subjectTitle + ' تشابتر ' + c.chapterNo);
+        train.addEventListener('click', () => startSavedPractice(c.items));
+        head.appendChild(train);
+        wrap.appendChild(head);
+        c.items.forEach((it) => {
+          const q = it.snapshot;
+          const isAr = S.lang === 'ar';
+          const opts = isAr ? (q.options_ar || q.options) : (q.options_en || q.options);
+          const card = document.createElement('div');
+          card.className = 'review-card correct-border saved-card';
+          const stem = document.createElement('p');
+          stem.className = 'review-question-text';
+          stem.textContent = isAr ? (q.question_ar || q.question) : (q.question_en || q.question);
+          card.appendChild(stem);
+          const optionsList = document.createElement('div');
+          optionsList.className = 'review-options-list';
+          opts.forEach((t, oi) => {
+            if (oi !== q.correct) return;
+            const item = document.createElement('div');
+            item.className = 'review-option-item correct-answer';
+            item.innerHTML = '<span class="review-option-indicator">' + letters[oi] +
+              '</span><span class="review-option-text">' + escapeHtml(t) + '</span>';
+            optionsList.appendChild(item);
+          });
+          card.appendChild(optionsList);
+          if (q.explanation) {
+            const exp = document.createElement('div');
+            exp.className = 'review-explanation-box';
+            exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(q.explanation) + '</span>';
+            card.appendChild(exp);
+          }
+          const rm = document.createElement('button');
+          rm.type = 'button';
+          rm.className = 'action-btn secondary-btn saved-remove-btn';
+          rm.innerHTML = '<i data-lucide="trash-2"></i><span>إزالة</span>';
+          rm.setAttribute('aria-label', 'إزالة السؤال من المحفوظ');
+          rm.addEventListener('click', () => {
+            delete S.saved[it.key];
+            persistSaved(); updateSavedBadge(); renderSaved(); icons();
+            toast('أُزيل من المحفوظ');
+          });
+          card.appendChild(rm);
+          wrap.appendChild(card);
+        });
+        box.appendChild(wrap);
+      });
+    });
+    icons();
   }
 
   function beginAnswering() {
     const ses = S.session;
     show('quiz-view');
+    updateSaveBtn();
+    maybeQuizHint();
     ses.startEpoch = Date.now(); ses.pauseAccum = 0; ses.pauseStart = null;
     ses.qStart = Date.now();
     clearInterval(ses.timerId);
@@ -363,6 +553,7 @@
       $('next-btn-text').textContent = 'التالي';
       $('next-btn-icon').setAttribute('data-lucide', 'arrow-left');
     }
+    updateSaveBtn();
     icons();
   }
 
@@ -419,7 +610,7 @@
     $('progress-bar-fill').style.width = '100%';
     const res = window.PortalAnalytics.analyze(ses.questions, ses.picks, ses.dwells, elapsedSec());
     playSound(res.pct >= 60 ? 'completed' : 'fail');
-    setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
+    if (ses.ch.quiz_id) setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
     renderResults(res);
     show('results-view');
     window.scrollTo(0, 0);
@@ -520,7 +711,13 @@
   function route() {
     const h = location.hash;
     const m = h.match(/^#\/quiz\/([^/]+)\/([^/]+)$/);
-    if (m) {
+    if (h === '#/saved' || h === '#/saved/') {
+      S.session = null;
+      renderSaved();
+      show('saved-view');
+      window.scrollTo(0, 0);
+      icons();
+    } else if (m) {
       startSession(decodeURIComponent(m[1]), decodeURIComponent(m[2]), null);
     } else {
       S.session = null;
@@ -529,14 +726,113 @@
     }
   }
 
+  // ---------------- guided tour (custom spotlight, short steps, replayable) ----------------
+  const TOUR_STEPS = [
+    { title: 'أهلاً بك في MSCQuiz', body: 'كوزات موادك هنا. جولة سريعة من 4 خطوات.', target: null },
+    { title: '1 — اختر المادة', body: 'كل مادة بزر مستقل، بدون زر الكل.', target: '#subject-filter-bar' },
+    { title: '2 — اختر التشابتر', body: 'التشابترات مرقمة: تشابتر 1، 2…', target: '#chapter-filter-bar' },
+    { title: '3 — ابدأ الكوز', body: 'زر التشغيل يبدأ فوراً. زر (i) يعرض التفاصيل.', target: '#deck-catalog .sketch-row:first-child .sketch-play-cell' },
+    { title: '4 — المحفوظ', body: 'احفظ أي سؤال بزر الحفظ، وراجعه هنا مقسماً حسب المادة والتشابتر.', target: '#btn-open-saved' },
+  ];
+  let tourIdx = -1;
+
+  function tourGet(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+  function tourSet(key) { try { localStorage.setItem(key, '1'); } catch (e) {} }
+
+  function tourShow(i) {
+    tourIdx = i;
+    const ov = $('tour-overlay');
+    if (i < 0 || i >= TOUR_STEPS.length) { tourHide(); return; }
+    const st = TOUR_STEPS[i];
+    let rect = null;
+    if (st.target) {
+      const el = document.querySelector(st.target);
+      if (!el || !el.offsetParent) { tourShow(i + 1); return; } // skip missing target
+      el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      rect = el.getBoundingClientRect();
+    }
+    ov.classList.remove('hidden');
+    ov.setAttribute('aria-hidden', 'false');
+    $('tour-tip-title').textContent = st.title;
+    $('tour-tip-body').textContent = st.body;
+    $('tour-tip-progress').textContent = (i + 1) + ' / ' + TOUR_STEPS.length;
+    $('tour-btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
+    $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : 'التالي';
+    requestAnimationFrame(() => tourPlace(rect));
+    icons();
+  }
+
+  function tourPlace(rect) {
+    const pad = 8;
+    const t = $('tour-shade-top'), b = $('tour-shade-bottom'),
+      l = $('tour-shade-left'), r = $('tour-shade-right');
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const show = (el, x, y, w, h) => {
+      el.style.left = x + 'px'; el.style.top = y + 'px';
+      el.style.width = Math.max(0, w) + 'px'; el.style.height = Math.max(0, h) + 'px';
+    };
+    if (!rect) {
+      show(t, 0, 0, vw, vh); show(b, 0, 0, 0, 0); show(l, 0, 0, 0, 0); show(r, 0, 0, 0, 0);
+      centerTip();
+      return;
+    }
+    const x = Math.max(0, rect.left - pad), y = Math.max(0, rect.top - pad),
+      w = rect.width + pad * 2, h = rect.height + pad * 2;
+    show(t, 0, 0, vw, y);
+    show(b, 0, y + h, vw, vh - (y + h));
+    show(l, 0, y, x, h);
+    show(r, x + w, y, vw - (x + w), h);
+    // tip below target, else above
+    const tip = $('tour-tip');
+    const gap = 10;
+    let ty = y + h + gap;
+    tip.style.visibility = 'hidden';
+    tip.style.left = '12px'; tip.style.right = '12px'; tip.style.top = '0px';
+    const th = tip.offsetHeight;
+    if (ty + th > vh - 8) ty = Math.max(8, y - th - gap);
+    tip.style.top = ty + 'px';
+    tip.style.visibility = 'visible';
+  }
+
+  function centerTip() {
+    const tip = $('tour-tip');
+    tip.style.left = '12px'; tip.style.right = '12px';
+    tip.style.top = Math.max(8, (window.innerHeight - tip.offsetHeight) / 2 - 40) + 'px';
+    tip.style.visibility = 'visible';
+  }
+
+  function tourHide() {
+    tourIdx = -1;
+    $('tour-overlay').classList.add('hidden');
+    $('tour-overlay').setAttribute('aria-hidden', 'true');
+  }
+
+  function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }
+
+  function maybeQuizHint() {
+    if (tourGet(QUIZ_HINT_KEY)) return;
+    tourSet(QUIZ_HINT_KEY);
+    setTimeout(() => toast('اختر إجابة ثم التالي — وزر الحفظ يحفظ السؤال'), 600);
+  }
+
   // ---------------- wire up ----------------
   function bind() {
     window.addEventListener('hashchange', route);
+    window.addEventListener('resize', () => { if (tourIdx >= 0) tourShow(tourIdx); });
     $('btn-retry-load').addEventListener('click', () => location.reload());
     $('btn-back-home').addEventListener('click', () => { location.hash = ''; });
     $('btn-start-quiz').addEventListener('click', beginAnswering);
     $('btn-next').addEventListener('click', nextQuestion);
     $('btn-exit').addEventListener('click', () => { location.hash = ''; });
+    const saveBtn = $('btn-save-question');
+    if (saveBtn) saveBtn.addEventListener('click', toggleSaveCurrent);
+    $('btn-tour-replay').addEventListener('click', () => tourShow(0));
+    $('tour-btn-next').addEventListener('click', () => {
+      if (tourIdx >= TOUR_STEPS.length - 1) tourDone();
+      else tourShow(tourIdx + 1);
+    });
+    $('tour-btn-prev').addEventListener('click', () => { if (tourIdx > 0) tourShow(tourIdx - 1); });
+    $('tour-btn-skip').addEventListener('click', tourDone);
     $('btn-open-matrix').addEventListener('click', () => { renderMatrix(); openDrawer('matrix-drawer'); });
     $('btn-close-matrix').addEventListener('click', closeDrawers);
     $('btn-close-info').addEventListener('click', closeDrawers);
@@ -584,6 +880,10 @@
 
     $('btn-retry-quiz').addEventListener('click', () => {
       const ses = S.session;
+      if (ses && ses.replay && ses.replay.type === 'saved') {
+        const items = ses.replay.keys.map((k) => ({ key: k, origin: S.saved[k].origin, snapshot: S.saved[k].snapshot })).filter((it) => it.origin);
+        if (items.length) { startSavedPractice(items); return; }
+      }
       startSession(ses.sub.subject_id, ses.ch.quiz_id, null);
       beginAnswering();
     });
@@ -591,6 +891,14 @@
       const ses = S.session;
       const from = { questions: ses.questions, picks: ses.picks };
       const n0 = ses.questions.length;
+      if (ses.replay && ses.replay.type === 'saved') {
+        const subset = window.PortalAnalytics.buildWrongOnly(from.questions, from.picks);
+        if (!subset) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
+        const meta = { subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title, chapterNo: ses.ch.chapter_no, topic: ses.title, quizId: null, retryWrong: true, replay: ses.replay };
+        launchSession(subset, meta);
+        beginAnswering();
+        return;
+      }
       startSession(ses.sub.subject_id, ses.ch.quiz_id, from);
       if (S.session && S.session.questions.length < n0) beginAnswering();
     });
@@ -620,12 +928,14 @@
       renderSubjectChips();
       renderChapterChips();
       route();
+      updateSavedBadge();
       icons();
       if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
       if (S.index && S.index.test_mode === false) {
         const badge = $('test-mode-badge');
         if (badge) badge.style.display = 'none';
       }
+      if (!tourGet(TOUR_KEY)) setTimeout(() => { if (tourIdx < 0) tourShow(0); }, 1200);
       dbg('boot ok. subjects:', S.index.subjects.length);
     } catch (e) {
       console.error(e);

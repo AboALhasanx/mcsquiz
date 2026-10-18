@@ -2,8 +2,30 @@
  * Everything here is OUR addition/improvement. quiz.css stays untouched
  * (byte-copy of Master-Studio) so future visual syncs stay trivial. */
 
+/* Brand font: Space Grotesk (SIL OFL, self-hosted — identical on every device, offline-safe). */
+@font-face {
+  font-family: 'MSCQuiz Brand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/space-grotesk-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'MSCQuiz Brand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/space-grotesk-700.woff2') format('woff2');
+}
+
 :root { color-scheme: dark; }
 html[data-theme="light"] { color-scheme: light; }
+
+.app-brand-title {
+  font-family: 'MSCQuiz Brand', 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
 
 /* --- visible keyboard focus (fixes invisible-focus defect) --- */
 :focus-visible {
@@ -82,7 +104,98 @@ html[data-theme="light"] { color-scheme: light; }
 }
 .chapter-pct { font-variant-numeric: tabular-nums; font-weight: 700; }
 
-/* --- debug panel (testing mode only, ?debug=1) --- */
+/* --- saved badge on header icon --- */
+#btn-open-saved { position: relative; }
+.saved-count-badge {
+  position: absolute;
+  top: -2px;
+  inset-inline-end: -4px;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: #4da3ff;
+  color: #0b0f16;
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* --- saved view --- */
+.saved-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.25rem;
+}
+.saved-title { font-size: 1.15rem; margin: 0; }
+.saved-total-line { opacity: 0.65; font-size: 0.82rem; margin: 0.15rem 0 0; }
+.saved-back-btn { text-decoration: none; }
+.saved-groups { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
+.saved-group {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 0.7rem;
+}
+.saved-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.saved-group-title { font-weight: 800; font-size: 0.95rem; }
+.saved-group-sub { opacity: 0.65; font-size: 0.8rem; }
+.saved-train-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+.saved-card { margin-bottom: 0.6rem; }
+.saved-card:last-of-type { margin-bottom: 0.35rem; }
+.saved-remove-btn { font-size: 0.78rem; padding: 0.35rem 0.7rem; margin-top: 0.4rem; }
+
+/* --- bookmark saved state --- */
+.bookmark-btn.is-saved { color: #ffc53d; }
+.bookmark-btn.is-saved svg { fill: currentColor; }
+
+/* --- guided tour spotlight --- */
+.tour-overlay { position: fixed; inset: 0; z-index: 10000; }
+.tour-shade { position: fixed; background: rgba(4, 7, 12, 0.72); }
+.tour-tip {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  background: #141c27;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  visibility: hidden;
+}
+.tour-tip h3 { margin: 0 0 0.3rem; font-size: 1rem; }
+.tour-tip p { margin: 0; opacity: 0.85; font-size: 0.88rem; line-height: 1.6; }
+.tour-tip-progress {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #4da3ff;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.25rem;
+}
+.tour-tip-actions { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; }
+.tour-spacer { flex: 1; }
+.tour-nav-btn { font-size: 0.82rem; padding: 0.45rem 0.9rem; }
+.tour-link-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.tour-replay-hint { margin-top: 0.6rem !important; font-size: 0.72rem !important; opacity: 0.55 !important; }
+.tour-inline-icon { width: 14px; height: 14px; vertical-align: -2px; }
 .debug-panel {
   margin: 1rem 0.5rem;
   font-size: 0.75rem;
