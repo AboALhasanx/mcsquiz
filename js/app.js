@@ -828,7 +828,8 @@
   function paintShades(rect) {
     const pad = 8;
     const t = $('tour-shade-top'), b = $('tour-shade-bottom'),
-      l = $('tour-shade-left'), r = $('tour-shade-right');
+      l = $('tour-shade-left'), r = $('tour-shade-right'),
+      f = $('tour-frame');
     const vw = window.innerWidth, vh = window.innerHeight;
     const show = (el, x, y, w, h) => {
       el.style.left = x + 'px'; el.style.top = y + 'px';
@@ -836,6 +837,7 @@
     };
     if (!rect) {
       show(t, 0, 0, vw, vh); show(b, 0, 0, 0, 0); show(l, 0, 0, 0, 0); show(r, 0, 0, 0, 0);
+      if (f) f.classList.add('hidden');
       return;
     }
     const x = Math.max(0, rect.left - pad), y = Math.max(0, rect.top - pad),
@@ -844,6 +846,11 @@
     show(b, 0, y + h, vw, vh - (y + h));
     show(l, 0, y, x, h);
     show(r, x + w, y, vw - (x + w), h);
+    if (f) {
+      f.classList.remove('hidden');
+      f.style.left = x + 'px'; f.style.top = y + 'px';
+      f.style.width = w + 'px'; f.style.height = h + 'px';
+    }
   }
 
   function centerTip() {
@@ -862,6 +869,8 @@
     tourIdx = -1;
     $('tour-overlay').classList.add('hidden');
     $('tour-overlay').setAttribute('aria-hidden', 'true');
+    const f = $('tour-frame');
+    if (f) f.classList.add('hidden');
   }
 
   function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }

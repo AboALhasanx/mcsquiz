@@ -204,6 +204,27 @@ html[data-theme="light"] { color-scheme: light; }
 .tour-waiting #tour-btn-next {
   border-style: dashed;
 }
+
+/* --- brand logo per theme (original quiz.css points at /static/; portal serves from assets/) --- */
+html[data-theme="light"] .brand-logo-img {
+  content: url('../assets/brand-icon-dark.png') !important;
+}
+
+/* --- light-theme button affordance --- */
+html[data-theme="light"] .app-header .icon-btn {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+/* --- tour highlight frame (border emphasis) --- */
+.tour-frame {
+  position: fixed;
+  border: 2px solid #4da3ff;
+  border-radius: 12px;
+  box-shadow: 0 0 0 4px rgba(77, 163, 255, 0.25), 0 0 24px rgba(77, 163, 255, 0.35);
+  pointer-events: none;
+  z-index: 10001;
+}
 .tour-tip-actions { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; }
 .tour-spacer { flex: 1; }
 .tour-nav-btn { font-size: 0.82rem; padding: 0.45rem 0.9rem; }

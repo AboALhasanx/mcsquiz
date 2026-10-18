@@ -90,7 +90,7 @@
                     <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
                 </div>
                 <div class="progress-meta-row">
-                    <div class="progress-counter">
+                    <div class="progress-counter" dir="ltr">
                         <span id="question-index-label">1</span>
                         <span class="meta-separator">/</span>
                         <span id="question-total-label">8</span>
@@ -338,9 +338,10 @@
             <div class="tour-shade" id="tour-shade-bottom"></div>
             <div class="tour-shade" id="tour-shade-left"></div>
             <div class="tour-shade" id="tour-shade-right"></div>
+            <div id="tour-frame" class="tour-frame hidden" aria-hidden="true"></div>
             <div id="tour-tip" class="tour-tip" role="dialog" aria-modal="true" aria-labelledby="tour-tip-title">
-                <div class="tour-tip-progressbar"><span id="tour-tip-bar-fill"></span></div>
-                <div class="tour-tip-progress" id="tour-tip-progress"></div>
+                <div id="tour-tip-progressbar" class="tour-tip-progressbar"><span id="tour-tip-bar-fill"></span></div>
+                <div class="tour-tip-progress" id="tour-tip-progress" dir="ltr"></div>
                 <h3 id="tour-tip-title"></h3>
                 <p id="tour-tip-body"></p>
                 <div class="tour-tip-actions">
