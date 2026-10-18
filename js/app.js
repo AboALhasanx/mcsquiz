@@ -52,6 +52,7 @@
     history: [],        // [{t, subjectId, subjectTitle, chapterNo, chapterLabel, quizId, topic, correct, total, pct, secs, kind}]
     savedSubject: null, // saved-view filter
     savedChapter: null, // saved-view filter
+    savedExpanded: null, // saved-view accordion
   };
 
   const SAVED_KEY = 'portal_saved_v1';
@@ -64,7 +65,7 @@
     try {
       localStorage.setItem(UI_KEY, JSON.stringify({
         subject: S.subjectFilter, chapter: S.chapterFilter,
-        savedSubject: S.savedSubject, savedChapter: S.savedChapter,
+        savedSubject: S.savedSubject, savedChapter: S.savedChapter, savedExpanded: S.savedExpanded,
         lang: S.lang,
       }));
     } catch (e) {}
@@ -76,6 +77,7 @@
       if (u.subject) S.subjectFilter = u.subject;
       if (u.chapter) S.chapterFilter = u.chapter;
       if (u.savedSubject) S.savedSubject = u.savedSubject;
+    if (u.savedExpanded) S.savedExpanded = u.savedExpanded;
       if (u.savedChapter) S.savedChapter = u.savedChapter;
       if (u.lang === 'ar' || u.lang === 'en' || u.lang === 'both') S.lang = u.lang;
     } catch (e) {}
@@ -476,15 +478,16 @@
         b.className = 'filter-chip' + (S.savedSubject === g.subjectId ? ' active' : '');
         b.textContent = g.subjectTitle + ' (' + n + ')';
         b.setAttribute('aria-pressed', S.savedSubject === g.subjectId ? 'true' : 'false');
-        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; saveUI(); renderSaved(); });
+        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; S.savedExpanded = g.subjectId; saveUI(); renderSaved(); });
         subBar.appendChild(b);
       });
     }
     const chNos = sub.chapters.map((c) => c.chapterNo);
     if (!S.savedChapter || !chNos.includes(S.savedChapter)) S.savedChapter = chNos[0];
+    const expanded = S.savedExpanded === sub.subjectId;
     if (chBar) {
       chBar.innerHTML = '';
-      if (chNos.length <= 1) { chBar.style.display = 'none'; }
+      if (!expanded || chNos.length <= 1) { chBar.style.display = 'none'; }
       else {
         chBar.style.display = '';
         chNos.forEach((n) => {
@@ -513,7 +516,7 @@
     const genSub = document.createElement('button');
     genSub.type = 'button';
     genSub.className = 'action-btn primary-btn saved-gen-btn';
-    genSub.innerHTML = '<i data-lucide="zap"></i><span>توليد اختبار للمادة (' + subAll.length + ')</span>';
+    genSub.innerHTML = '<i data-lucide="zap"></i><span>اختبار المادة (' + subAll.length + ')</span>';
     genSub.setAttribute('aria-label', 'توليد اختبار من كل محفوظ ' + sub.subjectTitle);
     genSub.addEventListener('click', () => startSavedPractice(
       subAll,
@@ -521,8 +524,24 @@
       'اختبار شامل (' + subAll.length + ' أسئلة)'
     ));
     subHead.appendChild(genSub);
+    const expBtn = document.createElement('button');
+    expBtn.type = 'button';
+    expBtn.className = 'icon-btn saved-expand-btn' + (S.savedExpanded === sub.subjectId ? ' open' : '');
+    expBtn.setAttribute('aria-label', S.savedExpanded === sub.subjectId ? 'طي المادة' : 'فتح المادة');
+    expBtn.setAttribute('aria-expanded', S.savedExpanded === sub.subjectId ? 'true' : 'false');
+    expBtn.innerHTML = '<i data-lucide="chevron-down"></i>';
+    expBtn.addEventListener('click', () => {
+      S.savedExpanded = S.savedExpanded === sub.subjectId ? null : sub.subjectId;
+      saveUI();
+      renderSaved();
+    });
+    subHead.appendChild(expBtn);
     subWrap.appendChild(subHead);
     box.appendChild(subWrap);
+
+    // Expanded subject only: chapter content (collapsed by default)
+    if (!expanded) { icons(); return; }
+
 
     // Selected chapter block: items + chapter-only test generation
     const c = sub.chapters.find((x) => x.chapterNo === S.savedChapter) || sub.chapters[0];
@@ -535,7 +554,7 @@
     const train = document.createElement('button');
     train.type = 'button';
     train.className = 'action-btn primary-btn saved-train-btn';
-    train.innerHTML = '<i data-lucide="target"></i><span>توليد اختبار للجابتر (' + c.items.length + ')</span>';
+    train.innerHTML = '<i data-lucide="target"></i><span>اختبار الجابتر (' + c.items.length + ')</span>';
     train.setAttribute('aria-label', 'توليد اختبار لجابتر ' + c.chapterNo);
     train.addEventListener('click', () => startSavedPractice(
       c.items,

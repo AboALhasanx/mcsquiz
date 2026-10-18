@@ -154,11 +154,14 @@ html[data-theme="light"] { color-scheme: light; }
 .saved-card { margin-bottom: 0.6rem; }
 .saved-card:last-of-type { margin-bottom: 0.35rem; }
 .saved-remove-btn { font-size: 0.78rem; padding: 0.35rem 0.7rem; margin-top: 0.4rem; }
-.saved-gen-btn { font-size: 0.82rem; padding: 0.5rem 0.9rem; white-space: nowrap; }
+.saved-gen-btn { font-size: 0.8rem; padding: 0.45rem 0.8rem; white-space: nowrap; }
 .saved-subject-block {
   border: 1px solid rgba(77, 163, 255, 0.25);
   background: rgba(77, 163, 255, 0.05);
 }
+.saved-expand-btn { flex-shrink: 0; transition: transform 0.25s ease; }
+.saved-expand-btn.open { transform: rotate(180deg); }
+.saved-expand-btn.open svg { color: #4da3ff; }
 
 /* --- bookmark saved state --- */
 .bookmark-btn.is-saved { color: #ffc53d; }
