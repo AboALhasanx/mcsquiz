@@ -441,6 +441,10 @@
   }
 
   function renderSaved() {
+    try {
+      const sv = JSON.parse(localStorage.getItem(SAVED_KEY) || '{}');
+      if (sv && typeof sv === 'object') S.saved = sv;
+    } catch (e) {}
     const box = $('saved-groups');
     box.innerHTML = '';
     const groups = savedGroups();
@@ -841,6 +845,10 @@
   }
 
   function renderStats() {
+    try {
+      const h = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+      if (Array.isArray(h)) S.history = h;
+    } catch (e) {}
     const H = S.history;
     const n = H.length;
     const totQ = H.reduce((a, h) => a + (h.correct || 0), 0);
