@@ -362,6 +362,7 @@
 
   function nextQuestion() {
     const ses = S.session;
+    if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
     if (ses.picks[ses.idx] === null) { toast('أجب على السؤال أولاً'); return; }
     if (ses.idx < ses.questions.length - 1) {
       ses.idx++;
@@ -369,6 +370,13 @@
       renderQuestion();
       renderMatrix();
     } else {
+      const remaining = ses.picks.filter((p) => p === null).length;
+      if (remaining > 0) {
+        toast('لم تجب على كل الأسئلة — متبقٍ ' + remaining + ' — استخدم جدول الأسئلة');
+        renderMatrix();
+        openDrawer('matrix-drawer');
+        return;
+      }
       finishQuiz();
     }
   }
@@ -383,7 +391,7 @@
       c.className = 'matrix-cell' + (ses.picks[i] !== null ? ' answered' : '') + (i === ses.idx ? ' current' : '');
       c.textContent = i + 1;
       c.setAttribute('aria-label', 'السؤال ' + (i + 1));
-      c.addEventListener('click', () => { ses.idx = i; ses.qStart = Date.now(); renderQuestion(); renderMatrix(); closeDrawers(); });
+      c.addEventListener('click', () => { if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; } ses.idx = i; ses.qStart = Date.now(); renderQuestion(); renderMatrix(); closeDrawers(); });
       grid.appendChild(c);
     });
   }
