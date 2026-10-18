@@ -21,26 +21,31 @@
         <header class="app-header">
             <div id="header-catalog-view" class="header-inner" style="display:flex; width:100%; justify-content:space-between; align-items:center;">
                 <div class="header-left header-catalog-brand">
-                    <img src="assets/brand-icon-light.png" alt="شعار MSCQuiz" class="brand-logo-img" width="24" height="24">
-                    <span class="app-brand-title">MSCQuiz</span>
+                    <a id="brand-home" href="#/" class="brand-home-link" aria-label="الرئيسية">
+                        <img src="assets/brand-icon-light.png" alt="شعار MSCQuiz" class="brand-logo-img" width="24" height="24">
+                        <span class="app-brand-title">MSCQuiz</span>
+                    </a>
                     <span id="test-mode-badge" class="test-mode-badge" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
+                    <button id="btn-menu-catalog" class="icon-btn btn-menu" aria-label="القائمة الجانبية" title="القائمة الجانبية">
+                        <i data-lucide="menu"></i>
+                    </button>
                     <a id="btn-open-saved" class="icon-btn" href="#/saved" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
                         <i data-lucide="bookmark"></i>
                         <span id="saved-count-badge" class="saved-count-badge hidden">0</span>
                     </a>
-                    <button id="btn-tour-replay" class="icon-btn" aria-label="إعادة الجولة التعليمية" title="الجولة التعليمية">
-                        <i data-lucide="help-circle"></i>
-                    </button>
-                    <button id="btn-theme-toggle" class="icon-btn" aria-label="تبديل المظهر" title="تبديل المظهر">
-                        <i data-lucide="moon" id="theme-icon"></i>
-                    </button>
+                    <a id="btn-open-stats" class="icon-btn" href="#/stats" aria-label="الإحصائيات والسجل" title="الإحصائيات والسجل">
+                        <i data-lucide="chart-column"></i>
+                    </a>
                 </div>
             </div>
 
             <div id="header-session-view" class="header-inner" style="display:none; width:100%; justify-content:space-between; align-items:center;">
                 <div class="header-left">
+                    <button id="btn-menu-session" class="icon-btn btn-menu" aria-label="القائمة الجانبية" title="القائمة الجانبية">
+                        <i data-lucide="menu"></i>
+                    </button>
                     <button id="btn-exit" class="icon-btn" aria-label="الرئيسية" title="العودة للرئيسية">
                         <i data-lucide="home"></i>
                     </button>
@@ -49,17 +54,11 @@
                     </button>
                 </div>
                 <div class="header-right">
-                    <button id="btn-tour-replay-session" class="icon-btn" aria-label="إعادة الجولة التعليمية" title="الجولة التعليمية">
-                        <i data-lucide="help-circle"></i>
-                    </button>
                     <button id="btn-lang-toggle" class="icon-btn" aria-label="ترجمة السؤال والخيارات" title="ترجمة السؤال والخيارات">
                         <i data-lucide="languages"></i>
                     </button>
                     <button id="btn-sound-toggle" class="icon-btn" aria-label="كتم أو تشغيل الصوت" title="كتم/تشغيل الصوت">
                         <i data-lucide="volume-2" id="sound-icon"></i>
-                    </button>
-                    <button id="btn-theme-toggle-session" class="icon-btn" aria-label="تبديل المظهر" title="تبديل المظهر">
-                        <i data-lucide="moon" id="theme-icon-session"></i>
                     </button>
                 </div>
             </div>
@@ -107,7 +106,7 @@
 
             <div id="deck-catalog" class="deck-catalog" style="display:flex; flex-direction:column; gap:0.75rem; margin:0.5rem 0;">
                 <div class="catalog-filter-bar" id="subject-filter-bar" role="group" aria-label="فلتر المواد"></div>
-                <div class="catalog-filter-bar chapter-bar" id="chapter-filter-bar" role="group" aria-label="فلتر التشابتر"></div>
+                <div class="catalog-filter-bar chapter-bar" id="chapter-filter-bar" role="group" aria-label="فلتر الجابتر"></div>
                 <div id="catalog-cards-container" class="sketch-card-group"></div>
                 <div id="catalog-empty-state" class="catalog-empty-state hidden">لا توجد كويزات هنا بعد</div>
                 <div class="offline-sync-footer">
@@ -177,6 +176,7 @@
                     </div>
                     <div class="question-body">
                         <p id="question-text" class="question-text" dir="auto"></p>
+                        <p id="question-text-2" class="question-text question-text-sub hidden" dir="auto"></p>
                     </div>
                     <div id="options-container" class="options-grid" role="radiogroup" aria-label="خيارات الإجابة"></div>
                     <div id="live-feedback-box" class="explanation-card hidden">
@@ -188,7 +188,11 @@
                     </div>
                 </div>
 
-                <nav class="bottom-nav single-btn-nav" aria-label="التنقل بين الأسئلة">
+                <nav class="bottom-nav two-btn-nav" aria-label="التنقل بين الأسئلة">
+                    <button id="btn-skip" class="nav-btn secondary-btn" aria-label="تخطي السؤال">
+                        <i data-lucide="skip-forward"></i>
+                        <span>تخطي</span>
+                    </button>
                     <button id="btn-next" class="nav-btn primary-btn full-width-btn" aria-label="السؤال التالي">
                         <span id="next-btn-text">التالي</span>
                         <i data-lucide="arrow-left" id="next-btn-icon"></i>
@@ -279,17 +283,47 @@
                         <h2 class="saved-title">الأسئلة المحفوظة</h2>
                         <p id="saved-total-line" class="saved-total-line"></p>
                     </div>
-                    <a href="#/" class="action-btn secondary-btn saved-back-btn">
-                        <i data-lucide="layout-grid"></i>
-                        <span>المواد</span>
-                    </a>
                 </div>
                 <div class="catalog-filter-bar" id="saved-subject-bar" role="group" aria-label="فلتر المواد المحفوظة"></div>
-                <div class="catalog-filter-bar chapter-bar" id="saved-chapter-bar" role="group" aria-label="فلتر التشابترات المحفوظة"></div>
+                <div class="catalog-filter-bar chapter-bar" id="saved-chapter-bar" role="group" aria-label="فلتر الجابترات المحفوظة"></div>
                 <div id="saved-groups" class="saved-groups"></div>
                 <div id="saved-empty-state" class="catalog-empty-state hidden">
                     لا توجد أسئلة محفوظة بعد — افتح أي كوز واضغط زر الحفظ أعلى السؤال
                 </div>
+            </div>
+
+            <!-- Statistics & history view -->
+            <div id="stats-view" class="state-view hidden">
+                <div class="saved-topbar">
+                    <div>
+                        <h2 class="saved-title">الإحصائيات والسجل</h2>
+                        <p id="stats-total-line" class="saved-total-line"></p>
+                    </div>
+                </div>
+                <div id="stats-overall" class="stats-summary-grid"></div>
+                <div id="stats-subjects" class="saved-groups"></div>
+                <section class="breakdown-section" aria-label="سجل المحاولات">
+                    <div class="breakdown-header">
+                        <h2>سجل المحاولات</h2>
+                        <div class="stats-backup-row">
+                            <button id="btn-export-data" class="action-btn secondary-btn stats-mini-btn">
+                                <i data-lucide="download"></i>
+                                <span>نسخة احتياطية</span>
+                            </button>
+                            <label for="import-data-input" class="action-btn secondary-btn stats-mini-btn" style="cursor:pointer;">
+                                <i data-lucide="upload"></i>
+                                <span>استعادة</span>
+                            </label>
+                            <input type="file" id="import-data-input" accept=".json,application/json" class="visually-hidden-input" style="display:none !important;">
+                            <button id="btn-clear-history" class="action-btn secondary-btn stats-mini-btn danger-btn">
+                                <i data-lucide="trash-2"></i>
+                                <span>مسح السجل</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="history-list" class="review-cards-list"></div>
+                    <div id="history-empty-state" class="catalog-empty-state hidden">لا محاولات بعد — ابدأ أول كوز</div>
+                </section>
             </div>
 
         </main>
@@ -324,13 +358,67 @@
             </div>
             <div class="drawer-body">
                 <div class="matrix-legend">
-                    <span class="legend-item"><span class="legend-dot dot-answered"></span> مُجاب</span>
+                    <span class="legend-item"><span class="legend-dot dot-correct"></span> صحيح</span>
+                    <span class="legend-item"><span class="legend-dot dot-wrong"></span> خطأ</span>
+                    <span class="legend-item"><span class="legend-dot dot-skipped"></span> متخطى</span>
                     <span class="legend-item"><span class="legend-dot dot-unanswered"></span> لم يُجب</span>
                     <span class="legend-item"><span class="legend-dot dot-current"></span> الحالي</span>
                 </div>
                 <div id="matrix-grid" class="matrix-grid"></div>
             </div>
         </aside>
+
+        <!-- Side burger menu -->
+        <aside id="menu-drawer" class="drawer" aria-labelledby="menu-drawer-title" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-title-group">
+                    <i data-lucide="menu" class="drawer-header-icon"></i>
+                    <h2 id="menu-drawer-title">القائمة</h2>
+                </div>
+                <button id="btn-close-menu" class="icon-btn" aria-label="إغلاق القائمة">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="drawer-body menu-list">
+                <button id="menu-install" class="menu-item" type="button">
+                    <i data-lucide="download"></i>
+                    <span>تثبيت التطبيق</span>
+                </button>
+                <a id="menu-saved" class="menu-item" href="#/saved">
+                    <i data-lucide="bookmark"></i>
+                    <span>الأسئلة المحفوظة</span>
+                    <span id="menu-saved-count" class="menu-count hidden">0</span>
+                </a>
+                <a id="menu-stats" class="menu-item" href="#/stats">
+                    <i data-lucide="chart-column"></i>
+                    <span>الإحصائيات والسجل</span>
+                </a>
+                <button id="menu-tour" class="menu-item" type="button">
+                    <i data-lucide="circle-help"></i>
+                    <span>إعادة الجولة التعليمية</span>
+                </button>
+                <button id="menu-sound" class="menu-item" type="button">
+                    <i data-lucide="volume-2" id="menu-sound-icon"></i>
+                    <span id="menu-sound-label">الصوت: يعمل</span>
+                </button>
+                <button id="menu-theme" class="menu-item" type="button">
+                    <i data-lucide="moon" id="menu-theme-icon"></i>
+                    <span id="menu-theme-label">المظهر: داكن</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Leave-exam confirmation -->
+        <div id="leave-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="leave-title" aria-describedby="leave-body">
+                <h3 id="leave-title">مغادرة الكوز؟</h3>
+                <p id="leave-body">تقدّمك الحالي سيضيع. هل أنت متأكد؟</p>
+                <div class="modal-actions">
+                    <button id="leave-stay" class="action-btn primary-btn">البقاء</button>
+                    <button id="leave-go" class="action-btn secondary-btn">مغادرة</button>
+                </div>
+            </div>
+        </div>
 
         <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
 

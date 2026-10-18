@@ -1,4 +1,4 @@
-/* portal pwa.js — SW registration + install banner (no server dependency). */
+/* portal pwa.js — SW registration + install API (banner never auto-shows; install lives in the side menu). */
 (function () {
   'use strict';
   let deferredPrompt = null;
@@ -10,20 +10,17 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      const b = document.getElementById('pwa-install-banner');
-      if (b) b.classList.remove('hidden');
-    });
-    const install = document.getElementById('btn-pwa-install');
-    if (install) install.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice.catch(() => {});
-      deferredPrompt = null;
-      document.getElementById('pwa-install-banner').classList.add('hidden');
-    });
-    const dismiss = document.getElementById('btn-pwa-dismiss');
-    if (dismiss) dismiss.addEventListener('click', () => {
-      document.getElementById('pwa-install-banner').classList.add('hidden');
     });
   });
+
+  window.PortalPWA = {
+    canInstall: function () { return !!deferredPrompt; },
+    install: async function () {
+      if (!deferredPrompt) return false;
+      deferredPrompt.prompt();
+      try { await deferredPrompt.userChoice; } catch (e) {}
+      deferredPrompt = null;
+      return true;
+    },
+  };
 })();

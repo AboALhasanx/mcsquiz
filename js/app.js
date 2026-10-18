@@ -45,21 +45,48 @@
     banks: {},          // quiz_id -> bank json
     subjectFilter: null,   // subject_id — always selected, no "all"
     chapterFilter: null,   // chapter_no — always selected, no "all"
-    lang: 'ar',         // 'ar' | 'en'
+    lang: 'ar',         // 'ar' | 'en' | 'both'
     sound: true,
-    session: null,      // {sub, ch, title, chapterLabel, questions, picks, dwells, idx, ..., replay}
+    session: null,      // {sub, ch, title, chapterLabel, questions, picks, dwells, idx, hash, finished, ..., replay}
     saved: {},          // saveKey -> {origin, snapshot, savedAt}
+    history: [],        // [{t, subjectId, subjectTitle, chapterNo, chapterLabel, quizId, topic, correct, total, pct, secs, kind}]
     savedSubject: null, // saved-view filter
     savedChapter: null, // saved-view filter
   };
 
   const SAVED_KEY = 'portal_saved_v1';
+  const HISTORY_KEY = 'portal_history_v1';
+  const UI_KEY = 'portal_ui_v1';
   const TOUR_KEY = 'portal_tour_done';
   const QUIZ_HINT_KEY = 'portal_quiz_hint';
+
+  function saveUI() {
+    try {
+      localStorage.setItem(UI_KEY, JSON.stringify({
+        subject: S.subjectFilter, chapter: S.chapterFilter,
+        savedSubject: S.savedSubject, savedChapter: S.savedChapter,
+        lang: S.lang,
+      }));
+    } catch (e) {}
+  }
+  function loadUI() {
+    try {
+      const u = JSON.parse(localStorage.getItem(UI_KEY) || 'null');
+      if (!u) return;
+      if (u.subject) S.subjectFilter = u.subject;
+      if (u.chapter) S.chapterFilter = u.chapter;
+      if (u.savedSubject) S.savedSubject = u.savedSubject;
+      if (u.savedChapter) S.savedChapter = u.savedChapter;
+      if (u.lang === 'ar' || u.lang === 'en' || u.lang === 'both') S.lang = u.lang;
+    } catch (e) {}
+  }
 
   function loadSaved() {
     try { S.saved = JSON.parse(localStorage.getItem(SAVED_KEY) || '{}') || {}; }
     catch (e) { S.saved = {}; }
+    try { S.history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]') || []; }
+    catch (e) { S.history = []; }
+    if (!Array.isArray(S.history)) S.history = [];
   }
   try { loadSaved(); } catch (e) {}
   function persistSaved() {
@@ -68,12 +95,16 @@
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
-    'results-view', 'saved-view'];
+    'results-view', 'saved-view', 'stats-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
-    $('quiz-session-topbar').style.display = (viewId === 'quiz-start-view' || viewId === 'quiz-view') ? 'block' : 'none';
-    $('header-catalog-view').style.display = (viewId === 'deck-catalog') ? 'flex' : 'none';
-    $('header-session-view').style.display = (viewId === 'deck-catalog') ? 'none' : 'flex';
+    const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
+    $('quiz-session-topbar').style.display = (inQuiz || viewId === 'results-view') ? 'block' : 'none';
+    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view'];
+    $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
+    $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
+    document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
+    closeDrawers();
     icons();
   }
 
@@ -129,7 +160,7 @@
     } catch (e) { /* storage optional */ }
   }
 
-  function chLabel(ch) { return 'تشابتر ' + ch.chapter_no; }
+  function chLabel(ch) { return 'جابتر ' + ch.chapter_no; }
 
   function currentSubject() {
     if (S.index && S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
@@ -162,6 +193,7 @@
       b.addEventListener('click', () => {
         S.subjectFilter = id;
         S.chapterFilter = null;
+        saveUI();
         renderSubjectChips(); renderChapterChips(); renderCatalog();
       });
       return b;
@@ -190,7 +222,7 @@
       b.className = 'filter-chip chapter-chip' + (S.chapterFilter === c.chapter_no ? ' active' : '');
       b.textContent = chLabel(c);
       b.setAttribute('aria-pressed', S.chapterFilter === c.chapter_no ? 'true' : 'false');
-      b.addEventListener('click', () => { S.chapterFilter = c.chapter_no; renderChapterChips(); renderCatalog(); });
+      b.addEventListener('click', () => { S.chapterFilter = c.chapter_no; saveUI(); renderChapterChips(); renderCatalog(); });
       bar.appendChild(b);
     });
   }
@@ -235,9 +267,11 @@
     $('info-sheet-topic').textContent = bank.topic;
     $('info-sheet-list').innerHTML =
       '<li><strong>المادة:</strong> ' + escapeHtml(sub.subject_title) + '</li>' +
-      '<li><strong>التشابتر:</strong> ' + escapeHtml(chLabel(ch)) + '</li>' +
+      '<li><strong>الجابتر:</strong> ' + escapeHtml(chLabel(ch)) + '</li>' +
       '<li><strong>الأسئلة:</strong> ' + bank.questions.length + '</li>' +
       (best_text(ch.quiz_id));
+    const startBtn = $('info-sheet-start');
+    if (startBtn) startBtn.setAttribute('href', '#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id));
     openDrawer('quiz-info-drawer');
     icons();
   }
@@ -286,8 +320,9 @@
       questions: pool,
       picks: new Array(pool.length).fill(null),
       dwells: new Array(pool.length).fill(0),
-      idx: 0, retryWrong: !!meta.retryWrong,
+      idx: 0, maxIdx: 0, retryWrong: !!meta.retryWrong,
       replay: meta.replay || null,
+      hash: location.hash, finished: false, started: false,
       startEpoch: Date.now(), pauseAccum: 0, pauseStart: null,
       qStart: Date.now(), timerId: null,
     };
@@ -342,6 +377,8 @@
       quizId: null, retryWrong: false,
       replay: { type: 'saved', keys: items.map((it) => it.key) },
     });
+    S.session.hash = '#/practice';
+    if (location.hash !== '#/practice') location.hash = '#/practice';
   }
 
   // ---------------- saved questions (device-local) ----------------
@@ -384,6 +421,7 @@
     const n = Object.keys(S.saved).length;
     b.textContent = n;
     b.classList.toggle('hidden', n === 0);
+    updateMenuCounts();
   }
 
   function savedGroups() {
@@ -434,7 +472,7 @@
         b.className = 'filter-chip' + (S.savedSubject === g.subjectId ? ' active' : '');
         b.textContent = g.subjectTitle + ' (' + n + ')';
         b.setAttribute('aria-pressed', S.savedSubject === g.subjectId ? 'true' : 'false');
-        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; renderSaved(); });
+        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; saveUI(); renderSaved(); });
         subBar.appendChild(b);
       });
     }
@@ -448,9 +486,9 @@
         chNos.forEach((n) => {
           const b = document.createElement('button');
           b.className = 'filter-chip chapter-chip' + (S.savedChapter === n ? ' active' : '');
-          b.textContent = 'تشابتر ' + n;
+          b.textContent = 'جابتر ' + n;
           b.setAttribute('aria-pressed', S.savedChapter === n ? 'true' : 'false');
-          b.addEventListener('click', () => { S.savedChapter = n; renderSaved(); });
+          b.addEventListener('click', () => { S.savedChapter = n; saveUI(); renderSaved(); });
           chBar.appendChild(b);
         });
       }
@@ -466,7 +504,7 @@
     subHead.className = 'saved-group-head';
     const subTitle = document.createElement('div');
     subTitle.innerHTML = '<div class="saved-group-title">' + escapeHtml(sub.subjectTitle) +
-      '</div><div class="saved-group-sub">' + subAll.length + ' أسئلة محفوظة في ' + sub.chapters.length + ' تشابترات</div>';
+      '</div><div class="saved-group-sub">' + subAll.length + ' أسئلة محفوظة في ' + sub.chapters.length + ' جابترات</div>';
     subHead.appendChild(subTitle);
     const genSub = document.createElement('button');
     genSub.type = 'button';
@@ -488,45 +526,51 @@
     wrap.className = 'saved-group';
     const head = document.createElement('div');
     head.className = 'saved-group-head';
-    head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml('تشابتر ' + c.chapterNo) +
+    head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml('جابتر ' + c.chapterNo) +
       '</div><div class="saved-group-sub">' + c.items.length + ' أسئلة</div></div>';
     const train = document.createElement('button');
     train.type = 'button';
     train.className = 'action-btn primary-btn saved-train-btn';
-    train.innerHTML = '<i data-lucide="target"></i><span>توليد اختبار للتشابتر (' + c.items.length + ')</span>';
-    train.setAttribute('aria-label', 'توليد اختبار لتشابتر ' + c.chapterNo);
+    train.innerHTML = '<i data-lucide="target"></i><span>توليد اختبار للجابتر (' + c.items.length + ')</span>';
+    train.setAttribute('aria-label', 'توليد اختبار لجابتر ' + c.chapterNo);
     train.addEventListener('click', () => startSavedPractice(
       c.items,
-      'اختبار محفوظ ' + sub.subjectTitle + ' ' + 'تشابتر ' + c.chapterNo,
-      'تشابتر ' + c.chapterNo + ' (' + c.items.length + ' أسئلة)'
+      'اختبار محفوظ ' + sub.subjectTitle + ' ' + 'جابتر ' + c.chapterNo,
+      'جابتر ' + c.chapterNo + ' (' + c.items.length + ' أسئلة)'
     ));
     head.appendChild(train);
     wrap.appendChild(head);
     c.items.forEach((it) => {
       const q = it.snapshot;
-      const isAr = S.lang === 'ar';
-      const opts = isAr ? (q.options_ar || q.options) : (q.options_en || q.options);
       const card = document.createElement('div');
       card.className = 'review-card correct-border saved-card';
-      const stem = document.createElement('p');
-      stem.className = 'review-question-text';
-      stem.textContent = isAr ? (q.question_ar || q.question) : (q.question_en || q.question);
-      card.appendChild(stem);
+      stemPair(q).forEach((sp, si) => {
+        const stem = document.createElement('p');
+        stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
+        stem.textContent = sp.t;
+        stem.setAttribute('dir', 'auto');
+        card.appendChild(stem);
+      });
       const optionsList = document.createElement('div');
       optionsList.className = 'review-options-list';
-      opts.forEach((t, oi) => {
-        if (oi !== q.correct) return;
+      for (let oi = 0; oi < 4; oi++) {
+        if (oi !== q.correct) continue;
+        const pair = optsPair(q, oi);
         const item = document.createElement('div');
         item.className = 'review-option-item correct-answer';
-        item.innerHTML = '<span class="review-option-indicator">' + letters[oi] +
-          '</span><span class="review-option-text">' + escapeHtml(t) + '</span>';
+        item.setAttribute('dir', 'auto');
+        const li = lettersFor(pair[0].lang);
+        item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
+          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + escapeHtml(p.t) + '</span>').join('') + '</span>';
         optionsList.appendChild(item);
-      });
+      }
       card.appendChild(optionsList);
-      if (q.explanation) {
+      const expl = explText(q);
+      if (expl) {
         const exp = document.createElement('div');
         exp.className = 'review-explanation-box';
-        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(q.explanation) + '</span>';
+        exp.setAttribute('dir', 'auto');
+        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(expl) + '</span>';
         card.appendChild(exp);
       }
       const rm = document.createElement('button');
@@ -549,6 +593,7 @@
 
   function beginAnswering() {
     const ses = S.session;
+    ses.started = true;
     show('quiz-view');
     updateSaveBtn();
     maybeQuizHint();
@@ -576,26 +621,52 @@
     $('session-timer').textContent = window.PortalAnalytics.fmtClock(s);
   }
 
-  function qText(q) { return S.lang === 'ar' ? (q.question_ar || q.question) : (q.question_en || q.question); }
-  function qOpts(q) { return S.lang === 'ar' ? (q.options_ar || q.options) : (q.options_en || q.options); }
+  function qText(q) { return S.lang === 'en' ? (q.question_en || q.question) : (q.question_ar || q.question); }
+  function qOpts(q) { return S.lang === 'en' ? (q.options_en || q.options) : (q.options_ar || q.options); }
+  function qLetters() { return S.lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
+
+  // Bilingual pairs for 'both' mode: [{t, lang}] — primary first.
+  function stemPair(q) {
+    const ar = q.question_ar || q.question;
+    const en = q.question_en || q.question;
+    if (S.lang === 'en') return [{ t: en, lang: 'en' }];
+    if (S.lang === 'both' && en !== ar) return [{ t: ar, lang: 'ar' }, { t: en, lang: 'en' }];
+    return [{ t: ar, lang: 'ar' }];
+  }
+  function optsPair(q, i) {
+    const ar = (q.options_ar || q.options)[i];
+    const en = (q.options_en || q.options)[i];
+    if (S.lang === 'en') return [{ t: en, lang: 'en' }];
+    if (S.lang === 'both' && en !== ar) return [{ t: ar, lang: 'ar' }, { t: en, lang: 'en' }];
+    return [{ t: ar, lang: 'ar' }];
+  }
+  function explText(q) { return q.explanation_ar || q.explanation || q.explanation_en || ''; }
+  function lettersFor(lang) { return lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
 
   function renderQuestion() {
     const ses = S.session;
     const q = ses.questions[ses.idx];
-    const isAr = S.lang === 'ar';
-    const letters = isAr ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+    const letters = qLetters();
     $('question-index-label').textContent = ses.idx + 1;
     $('progress-bar-fill').style.width = (ses.idx / ses.questions.length) * 100 + '%';
+    const stems = stemPair(q);
     const qEl = $('question-text');
-    qEl.textContent = qText(q);
-    qEl.style.direction = isAr ? 'rtl' : 'ltr';
-    qEl.style.textAlign = isAr ? 'right' : 'left';
+    qEl.textContent = stems[0].t;
+    qEl.setAttribute('dir', 'auto');
+    const qEl2 = $('question-text-2');
+    if (stems[1]) {
+      qEl2.textContent = stems[1].t;
+      qEl2.setAttribute('dir', 'auto');
+      qEl2.classList.remove('hidden');
+    } else {
+      qEl2.classList.add('hidden');
+    }
     const box = $('options-container');
     box.innerHTML = '';
     const locked = ses.picks[ses.idx] !== null;
     box.classList.toggle('locked', locked);
-    const opts = qOpts(q);
-    opts.forEach((text, i) => {
+    for (let i = 0; i < 4; i++) {
+      const pair = optsPair(q, i);
       const isSelected = ses.picks[ses.idx] === i;
       const isCorrectOpt = q.correct === i;
       let tileClass = 'option-tile';
@@ -609,22 +680,25 @@
       btn.setAttribute('role', 'radio');
       btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
       btn.setAttribute('data-option-index', i);
-      btn.style.direction = isAr ? 'rtl' : 'ltr';
-      btn.style.textAlign = isAr ? 'right' : 'left';
+      btn.setAttribute('dir', 'auto');
       const letter = document.createElement('div');
       letter.className = 'option-letter';
       letter.textContent = letters[i];
       const content = document.createElement('div');
       content.className = 'option-content';
-      content.textContent = text;
+      content.setAttribute('dir', 'auto');
+      content.innerHTML = pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + escapeHtml(p.t) + '</span>').join('');
       btn.appendChild(letter);
       btn.appendChild(content);
       if (!locked) btn.addEventListener('click', () => pickOption(i));
       box.appendChild(btn);
-    });
+    }
     const showExpl = locked && ses.picks[ses.idx] !== q.correct;
     $('live-feedback-box').classList.toggle('hidden', !showExpl);
-    if (showExpl) $('live-explanation-text').textContent = q.explanation || '';
+    if (showExpl) {
+      $('live-explanation-text').textContent = explText(q);
+      $('live-explanation-text').setAttribute('dir', 'auto');
+    }
     if (ses.idx === ses.questions.length - 1) {
       $('next-btn-text').textContent = 'إنهاء الكوز';
       $('next-btn-icon').setAttribute('data-lucide', 'check-circle');
@@ -648,38 +722,63 @@
     renderMatrix();
   }
 
+  function advanceTo(i) {
+    const ses = S.session;
+    ses.idx = i;
+    ses.maxIdx = Math.max(ses.maxIdx, i);
+    ses.qStart = Date.now();
+    renderQuestion();
+    renderMatrix();
+  }
+
+  function skipQuestion() {
+    const ses = S.session;
+    if (!ses || ses.pauseStart) { if (ses && ses.pauseStart) toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
+    if (ses.picks[ses.idx] !== null) { nextQuestion(); return; }
+    ses.dwells[ses.idx] = (Date.now() - ses.qStart) / 1000;
+    tourNotify('answer');
+    if (ses.idx < ses.questions.length - 1) {
+      advanceTo(ses.idx + 1);
+    } else {
+      finishQuiz();
+    }
+  }
+
   function nextQuestion() {
     const ses = S.session;
     if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
-    if (ses.picks[ses.idx] === null) { toast('أجب على السؤال أولاً'); return; }
+    if (ses.picks[ses.idx] === null) { toast('أجب على السؤال أو اضغط تخطي'); return; }
     if (ses.idx < ses.questions.length - 1) {
-      ses.idx++;
-      ses.qStart = Date.now();
-      renderQuestion();
-      renderMatrix();
+      advanceTo(ses.idx + 1);
     } else {
-      const remaining = ses.picks.filter((p) => p === null).length;
-      if (remaining > 0) {
-        toast('لم تجب على كل الأسئلة — متبقٍ ' + remaining + ' — استخدم جدول الأسئلة');
-        renderMatrix();
-        openDrawer('matrix-drawer');
-        return;
-      }
       finishQuiz();
     }
   }
 
   function renderMatrix() {
     const ses = S.session;
+    if (!ses || ses.finished) return;
     const grid = $('matrix-grid');
     grid.innerHTML = '';
     ses.questions.forEach((q, i) => {
       const c = document.createElement('button');
       c.type = 'button';
-      c.className = 'matrix-cell' + (ses.picks[i] !== null ? ' answered' : '') + (i === ses.idx ? ' current' : '');
+      let cls = 'matrix-cell';
+      const picked = ses.picks[i];
+      if (picked !== null && picked !== undefined) {
+        cls += (picked === q.correct) ? ' answered-correct' : ' answered-wrong';
+      } else if (i < ses.maxIdx) {
+        cls += ' seen-skipped';
+      }
+      if (i === ses.idx) cls += ' current';
+      c.className = cls;
       c.textContent = i + 1;
       c.setAttribute('aria-label', 'السؤال ' + (i + 1));
-      c.addEventListener('click', () => { if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; } ses.idx = i; ses.qStart = Date.now(); renderQuestion(); renderMatrix(); closeDrawers(); });
+      c.addEventListener('click', () => {
+        if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
+        if (i > ses.maxIdx) { toast('أجب بالترتيب — لا يمكن القفز للأمام'); return; }
+        ses.idx = i; ses.qStart = Date.now(); renderQuestion(); renderMatrix(); closeDrawers();
+      });
       grid.appendChild(c);
     });
   }
@@ -691,10 +790,172 @@
     const res = window.PortalAnalytics.analyze(ses.questions, ses.picks, ses.dwells, elapsedSec());
     playSound(res.pct >= 60 ? 'completed' : 'fail');
     if (ses.ch.quiz_id) setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
+    ses.finished = true;
+    recordHistory(ses, res);
     renderResults(res);
     show('results-view');
     window.scrollTo(0, 0);
     dbg('result:', res);
+  }
+
+  function recordHistory(ses, res) {
+    try {
+      S.history.push({
+        t: Date.now(),
+        subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title,
+        chapterNo: ses.ch.chapter_no, chapterLabel: ses.chapterLabel || '',
+        quizId: ses.ch.quiz_id, topic: ses.title,
+        correct: res.correct, total: res.total, pct: res.pct,
+        secs: res.totalTimeSec,
+        kind: ses.ch.quizId ? 'bank' : (ses.replay && ses.replay.type === 'saved' ? 'saved' : 'bank'),
+      });
+      while (S.history.length > 200) S.history.shift();
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history));
+    } catch (e) {}
+  }
+
+  function clearHistory() {
+    S.history = [];
+    try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+  }
+
+  function pctClass(p) { return p >= 75 ? 'good' : (p >= 60 ? 'mid' : 'bad'); }
+  function fmtDate(t) {
+    try { return new Intl.DateTimeFormat('ar', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(t)); }
+    catch (e) { return ''; }
+  }
+  function fmtDur(s) {
+    s = Math.round(Number(s) || 0);
+    const m = Math.floor(s / 60);
+    return m > 0 ? m + ' د ' + (s % 60) + ' ث' : s + ' ث';
+  }
+  function collectBests() {
+    const out = {};
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.indexOf('portal_best_') === 0) out[k] = JSON.parse(localStorage.getItem(k));
+      }
+    } catch (e) {}
+    return out;
+  }
+
+  function renderStats() {
+    const H = S.history;
+    const n = H.length;
+    const totQ = H.reduce((a, h) => a + (h.correct || 0), 0);
+    const totTried = H.reduce((a, h) => a + (h.total || 0), 0);
+    const totSecs = H.reduce((a, h) => a + (h.secs || 0), 0);
+    const avg = n ? H.reduce((a, h) => a + (h.pct || 0), 0) / n : 0;
+    const best = n ? Math.max.apply(null, H.map((h) => h.pct || 0)) : 0;
+    $('stats-total-line').textContent = n === 0 ? '' :
+      n + ' محاولات · ' + totQ + ' إجابات صحيحة · ' + fmtDur(totSecs) + ' مذاكرة';
+    const box = $('stats-overall');
+    box.innerHTML = '';
+    const cards = [
+      ['history', String(n), 'محاولات'],
+      ['target', n ? (Math.round(avg * 10) / 10) + '%' : '—', 'متوسط النتائج'],
+      ['award', n ? best + '%' : '—', 'أفضل نتيجة'],
+      ['check', totQ + ' / ' + totTried, 'إجابات صحيحة'],
+      ['clock', fmtDur(totSecs), 'زمن المذاكرة'],
+    ];
+    cards.forEach(([icon, val, label]) => {
+      const d = document.createElement('div');
+      d.className = 'stat-card stat-card-wide';
+      d.innerHTML = '<div class="stat-icon-wrapper time-accent"><i data-lucide="' + icon + '"></i></div>' +
+        '<div class="stat-info"><span class="stat-value">' + (typeof val === 'string' && val.indexOf('/') !== -1 ? '<span dir="ltr">' + escapeHtml(val) + '</span>' : escapeHtml(val)) + '</span>' +
+        '<span class="stat-label">' + escapeHtml(label) + '</span></div>';
+      box.appendChild(d);
+    });
+
+    const subs = $('stats-subjects');
+    subs.innerHTML = '';
+    const bySub = {};
+    H.forEach((h) => {
+      (bySub[h.subjectId] = bySub[h.subjectId] || { title: h.subjectTitle, rows: [] }).rows.push(h);
+    });
+    Object.keys(bySub).forEach((sid) => {
+      const g = bySub[sid];
+      const rows = g.rows;
+      const a2 = rows.reduce((x, h) => x + (h.pct || 0), 0) / rows.length;
+      const b2 = Math.max.apply(null, rows.map((h) => h.pct || 0));
+      const last = rows[rows.length - 1];
+      const wrap = document.createElement('div');
+      wrap.className = 'saved-group';
+      const head = document.createElement('div');
+      head.className = 'saved-group-head';
+      head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.title) +
+        '</div><div class="saved-group-sub">' + rows.length + ' محاولات · آخر نتيجة ' + last.pct + '%</div></div>' +
+        '<div class="stat-value" dir="ltr">' + last.pct + '%</div>';
+      wrap.appendChild(head);
+      const track = document.createElement('div');
+      track.className = 'stat-bar-track';
+      track.innerHTML = '<div class="stat-bar-fill" style="width:' + Math.max(0, Math.min(100, a2)) + '%"></div>';
+      wrap.appendChild(track);
+      const meta = document.createElement('div');
+      meta.className = 'saved-group-sub';
+      meta.textContent = 'المتوسط ' + (Math.round(a2 * 10) / 10) + '% · الأفضل ' + b2 + '%';
+      wrap.appendChild(meta);
+      subs.appendChild(wrap);
+    });
+
+    const list = $('history-list');
+    list.innerHTML = '';
+    $('history-empty-state').classList.toggle('hidden', n !== 0);
+    H.slice(-20).reverse().forEach((h) => {
+      const row = document.createElement('div');
+      row.className = 'history-row';
+      row.innerHTML = '<span class="history-pct ' + pctClass(h.pct) + '" dir="ltr">' + h.pct + '%</span>' +
+        '<div class="history-meta"><div class="history-topic">' + escapeHtml(h.topic || '') + '</div>' +
+        '<div class="history-sub">' + escapeHtml(h.subjectTitle + (h.chapterLabel ? ' · ' + h.chapterLabel : '')) +
+        ' · ' + fmtDate(h.t) + ' · ' + h.correct + '/' + h.total + '</div></div>';
+      list.appendChild(row);
+    });
+    icons();
+  }
+
+  function exportData() {
+    try {
+      const data = {
+        app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(),
+        saved: S.saved, history: S.history, bests: collectBests(),
+      };
+      const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'mcq-portal-backup.json';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+      toast('تم تنزيل النسخة الاحتياطية');
+    } catch (e) { toast('تعذر إنشاء النسخة'); }
+  }
+
+  function importData(file) {
+    const rd = new FileReader();
+    rd.onload = () => {
+      try {
+        const d = JSON.parse(rd.result);
+        if (d.saved && typeof d.saved === 'object') {
+          S.saved = d.saved;
+          persistSaved(); updateSavedBadge(); updateMenuCounts();
+        }
+        if (Array.isArray(d.history)) {
+          S.history = d.history.slice(-200);
+          try { localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history)); } catch (e) {}
+        }
+        if (d.bests && typeof d.bests === 'object') {
+          Object.keys(d.bests).forEach((k) => {
+            if (k.indexOf('portal_best_') === 0) {
+              try { localStorage.setItem(k, JSON.stringify(d.bests[k])); } catch (e) {}
+            }
+          });
+        }
+        if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+        toast('تمت الاستعادة بنجاح');
+      } catch (e) { toast('ملف غير صالح'); }
+    };
+    rd.readAsText(file);
   }
 
   // ---------------- results ----------------
@@ -711,7 +972,7 @@
     const ses = S.session;
     cb.innerHTML = '<div class="chapter-row"><span class="chapter-name">' +
       escapeHtml(ses.sub.subject_title + ' · ' + (ses.chapterLabel || chLabel(ses.ch))) + '</span>' +
-      '<span class="chapter-pct">' + res.correct + ' / ' + res.total + '</span></div>';
+      '<span class="chapter-pct" dir="ltr">' + res.correct + ' / ' + res.total + '</span></div>';
 
     $('filter-count-all').textContent = res.total;
     $('filter-count-wrong').textContent = res.wrong;
@@ -719,55 +980,61 @@
 
     const list = $('review-cards-list');
     list.innerHTML = '';
-    const isAr = S.lang === 'ar';
-    const letters = isAr ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
+    const letters = qLetters();
     ses.questions.forEach((q, i) => {
       const picked = ses.picks[i];
-      const ok = picked === q.correct;
-      const opts = isAr ? (q.options_ar || q.options) : (q.options_en || q.options);
+      const skipped = picked === null || picked === undefined;
+      const ok = !skipped && picked === q.correct;
+      const verdict = ok ? 'correct' : (skipped ? 'skipped' : 'wrong');
       const card = document.createElement('div');
-      card.className = 'review-card ' + (ok ? 'correct-border' : 'wrong-border');
-      card.dataset.ok = ok ? 'correct' : 'wrong';
+      card.className = 'review-card ' + (ok ? 'correct-border' : (skipped ? 'skipped-border' : 'wrong-border'));
+      card.dataset.ok = verdict;
       card.setAttribute('data-q-index', i);
 
       const header = document.createElement('div');
       header.className = 'review-card-header';
       const dwellSec = Math.round(Number(ses.dwells[i]) || 0);
+      const statusIcon = ok ? 'check' : (skipped ? 'minus' : 'x');
+      const statusWord = ok ? 'صحيحة' : (skipped ? 'تم تخطيها' : 'خاطئة');
       header.innerHTML =
         '<div class="review-q-meta"><span class="review-q-num">سؤال ' + (i + 1) + '</span>' +
-        '<span class="review-status-tag ' + (ok ? 'correct' : 'wrong') + '">' +
-        '<i data-lucide="' + (ok ? 'check' : 'x') + '"></i><span>' + (ok ? 'صحيحة' : 'خاطئة') + '</span></span></div>' +
-        '<span class="review-dwell-tag"><i data-lucide="clock"></i><span>' + dwellSec + 's</span></span>';
+        '<span class="review-status-tag ' + verdict + '">' +
+        '<i data-lucide="' + statusIcon + '"></i><span>' + statusWord + '</span></span></div>' +
+        '<span class="review-dwell-tag" dir="ltr"><i data-lucide="clock"></i><span>' + dwellSec + 's</span></span>';
       card.appendChild(header);
 
-      const stem = document.createElement('p');
-      stem.className = 'review-question-text';
-      stem.textContent = isAr ? (q.question_ar || q.question) : (q.question_en || q.question);
-      stem.style.direction = isAr ? 'rtl' : 'ltr';
-      stem.style.textAlign = isAr ? 'right' : 'left';
-      card.appendChild(stem);
+      stemPair(q).forEach((sp, si) => {
+        const stem = document.createElement('p');
+        stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
+        stem.textContent = sp.t;
+        stem.setAttribute('dir', 'auto');
+        card.appendChild(stem);
+      });
 
       const optionsList = document.createElement('div');
       optionsList.className = 'review-options-list';
-      opts.forEach((t, oi) => {
-        if (oi !== picked && oi !== q.correct) return; // show only pick + correct
+      for (let oi = 0; oi < 4; oi++) {
+        if (oi !== picked && oi !== q.correct) continue; // show only pick + correct
+        const pair = optsPair(q, oi);
         let optClass = 'review-option-item';
-        if (oi === picked && !ok) optClass += ' user-wrong';
+        if (oi === picked && !ok && !skipped) optClass += ' user-wrong';
         else if (oi === q.correct) optClass += ' correct-answer';
         const item = document.createElement('div');
         item.className = optClass;
-        item.style.direction = isAr ? 'rtl' : 'ltr';
-        item.style.textAlign = isAr ? 'right' : 'left';
-        item.innerHTML = '<span class="review-option-indicator">' + letters[oi] +
-          '</span><span class="review-option-text">' + escapeHtml(t) + '</span>';
+        item.setAttribute('dir', 'auto');
+        const li = lettersFor(pair[0].lang);
+        item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
+          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + escapeHtml(p.t) + '</span>').join('') + '</span>';
         optionsList.appendChild(item);
-      });
+      }
       card.appendChild(optionsList);
 
-      if (q.explanation) {
+      const expl = explText(q);
+      if (expl) {
         const exp = document.createElement('div');
         exp.className = 'review-explanation-box';
-        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(q.explanation) + '</span>';
+        exp.setAttribute('dir', 'auto');
+        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(expl) + '</span>';
         card.appendChild(exp);
       }
       list.appendChild(card);
@@ -783,7 +1050,8 @@
       p.setAttribute('aria-selected', on ? 'true' : 'false');
     });
     document.querySelectorAll('.review-card').forEach((c) => {
-      c.style.display = (f === 'all' || c.dataset.ok === f) ? '' : 'none';
+      const k = c.dataset.ok;
+      c.style.display = (f === 'all' || k === f || (f === 'wrong' && k === 'skipped')) ? '' : 'none';
     });
   }
 
@@ -797,8 +1065,28 @@
       show('saved-view');
       window.scrollTo(0, 0);
       icons();
+    } else if (h === '#/stats' || h === '#/stats/') {
+      S.session = null;
+      renderStats();
+      show('stats-view');
+      window.scrollTo(0, 0);
+      icons();
+    } else if (h === '#/practice' || h === '#/practice/') {
+      if (S.session && !S.session.finished && !S.session.ch.quiz_id) {
+        show(S.session.started ? 'quiz-view' : 'quiz-start-view');
+        window.scrollTo(0, 0);
+      } else {
+        location.hash = '';
+      }
     } else if (m) {
-      startSession(decodeURIComponent(m[1]), decodeURIComponent(m[2]), null);
+      const qz = decodeURIComponent(m[2]);
+      if (S.session && !S.session.finished && S.session.ch.quiz_id &&
+          S.session.ch.quiz_id === qz && h === S.session.hash) {
+        show(S.session.started ? 'quiz-view' : 'quiz-start-view');
+        window.scrollTo(0, 0);
+      } else {
+        startSession(decodeURIComponent(m[1]), qz, null);
+      }
     } else {
       S.session = null;
       renderCatalog();
@@ -809,17 +1097,18 @@
   // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
   const TOUR_STEPS = [
     { title: 'أهلاً بك في MSCQuiz', body: 'كوزات موادك هنا. جولة تفاعلية قصيرة — ستجرّب بنفسك.', center: true },
-    { title: '1 — اختر المادة', body: 'كل مادة بزر مستقل.', target: '#subject-filter-bar' },
-    { title: '2 — اختر التشابتر', body: 'التشابترات مرقمة: 1، 2…', target: '#chapter-filter-bar' },
-    { title: '3 — ابدأ الكوز', body: 'زر التشغيل يبدأ فوراً. زر (i) يعرض التفاصيل.', target: '#deck-catalog .sketch-row:first-child .sketch-play-cell' },
-    { title: '4 — المحفوظ', body: 'أسئلتك المحفوظة هنا، مقسمة حسب المادة والتشابتر.', target: '#btn-open-saved' },
+    { title: '1 — القائمة الجانبية', body: 'التثبيت والمحفوظ والجولة والصوت والمظهر — كلها هنا.', target: '.btn-menu' },
+    { title: '2 — اختر المادة', body: 'كل مادة بزر مستقل.', target: '#subject-filter-bar' },
+    { title: '3 — اختر الجابتر', body: 'الجابترات مرقمة: 1، 2…', target: '#chapter-filter-bar' },
+    { title: '4 — ابدأ الكوز', body: 'زر التشغيل يبدأ فوراً. زر (i) يعرض التفاصيل.', target: '#deck-catalog .sketch-row:first-child .sketch-play-cell' },
+    { title: '5 — المحفوظ', body: 'أسئلتك المحفوظة هنا، مقسمة حسب المادة والجابتر.', target: '#btn-open-saved' },
     { title: 'تجربة حقيقية', body: 'سنفتح أول كوز لتجرب بنفسك.', center: true, go: true },
-    { title: '5 — ابدأ', body: 'اضغط زر البدء لينطلق المؤقت.', target: '#btn-start-quiz', action: 'start' },
-    { title: '6 — أجب', body: 'اضغط أي إجابة — جرّب بنفسك.', target: '#options-container', action: 'answer' },
-    { title: '7 — الشرح والحفظ', body: 'يظهر الشرح فوراً. زر الحفظ أعلى البطاقة يحفظ السؤال.', target: '#btn-save-question' },
-    { title: '8 — أدوات الامتحان', body: 'الترجمة، الثيم، وإيقاف المؤقت مؤقتاً من الأعلى.', target: '#header-session-view .header-right' },
-    { title: '9 — التنقل', body: 'جدول الأسئلة يقفز لأي سؤال. زر التالي ينهي عند آخر سؤال.', target: '#btn-open-matrix' },
-    { title: 'انطلق', body: 'أكمل الكوز بنفسك. في النهاية: نتيجتك وتحليلها ومراجعة الأخطاء.', center: true },
+    { title: '6 — ابدأ', body: 'اضغط زر البدء لينطلق المؤقت.', target: '#btn-start-quiz', action: 'start' },
+    { title: '7 — أجب أو تخطّ', body: 'اختر أي إجابة أو اضغط تخطي — جرّب بنفسك.', target: '#options-container', action: 'answer' },
+    { title: '8 — الشرح والحفظ', body: 'يظهر الشرح فوراً. زر الحفظ أعلى البطاقة يحفظ السؤال.', target: '#btn-save-question' },
+    { title: '9 — أدوات الامتحان', body: 'الترجمة والصوت من الأعلى، وباقي الإعدادات في القائمة الجانبية.', target: '#header-session-view .header-right' },
+    { title: '10 — التنقل', body: 'جدول الأسئلة يقفز للأسئلة السابقة فقط. زر التالي ينهي عند آخر سؤال.', target: '#btn-open-matrix' },
+    { title: 'انطلق', body: 'أكمل الكوز بنفسك. في النهاية: نتيجتك وتحليلها ومراجعة الأخطاء — وتقدّمك في الإحصائيات — وتقدّمك في الإحصائيات.', center: true },
   ];
   let tourIdx = -1;
 
@@ -841,8 +1130,9 @@
     let el = null;
     let rect = null;
     if (!st.center) {
-      el = st.target && document.querySelector(st.target);
-      if (!el || !el.offsetParent) { tourShow(i + 1); return; } // skip missing target
+      const cands = st.target ? Array.from(document.querySelectorAll(st.target)) : [];
+      el = cands.find((x) => x && x.offsetParent) || null;
+      if (!el) { tourShow(i + 1); return; } // skip missing target
       el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       rect = el.getBoundingClientRect();
     }
@@ -968,56 +1258,182 @@
     setTimeout(() => toast('اختر إجابة ثم التالي — وزر الحفظ يحفظ السؤال'), 600);
   }
 
+  // ---------------- leave-exam guard ----------------
+  let navBypass = false;
+  let navPending = null;
+
+  function dirtySession() {
+    const s = S.session;
+    return !!(s && !s.finished && s.picks.some((p) => p !== null));
+  }
+
+  function goHash(h) {
+    if (dirtySession() && h !== S.session.hash) {
+      navPending = h;
+      showLeaveModal();
+      return;
+    }
+    if (location.hash === h) route();
+    else location.hash = h;
+  }
+
+  function showLeaveModal() {
+    $('leave-modal').classList.remove('hidden');
+    $('leave-modal').setAttribute('aria-hidden', 'false');
+    icons();
+  }
+  function hideLeaveModal() {
+    $('leave-modal').classList.add('hidden');
+    $('leave-modal').setAttribute('aria-hidden', 'true');
+    navPending = null;
+  }
+
+  function onHashChange() {
+    if (navBypass) { navBypass = false; route(); return; }
+    if (dirtySession()) {
+      const h = location.hash;
+      if (h !== S.session.hash) {
+        navPending = h;
+        navBypass = true;
+        location.hash = S.session.hash;
+        showLeaveModal();
+        return;
+      }
+    }
+    route();
+  }
+
+  // ---------------- side menu ----------------
+  function openMenu() {
+    syncMenuToggles();
+    updateMenuCounts();
+    openDrawer('menu-drawer');
+  }
+  function setSound(on) {
+    S.sound = !!on;
+    const si = $('sound-icon');
+    if (si) si.setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
+    syncMenuToggles();
+    icons();
+  }
+  function syncMenuToggles() {
+    const ms = $('menu-sound-icon');
+    if (ms) ms.setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
+    const ml = $('menu-sound-label');
+    if (ml) ml.textContent = 'الصوت: ' + (S.sound ? 'يعمل' : 'صامت');
+    const dark = document.documentElement.getAttribute('data-theme') !== 'light';
+    const mt = $('menu-theme-icon');
+    if (mt) mt.setAttribute('data-lucide', dark ? 'moon' : 'sun');
+    const mtl = $('menu-theme-label');
+    if (mtl) mtl.textContent = 'المظهر: ' + (dark ? 'داكن' : 'فاتح');
+    icons();
+  }
+  function updateMenuCounts() {
+    const b = $('menu-saved-count');
+    if (!b) return;
+    const n = Object.keys(S.saved).length;
+    b.textContent = n;
+    b.classList.toggle('hidden', n === 0);
+  }
+  async function installApp() {
+    if (window.PortalPWA && await window.PortalPWA.install()) {
+      closeDrawers();
+      toast('تم إرسال طلب التثبيت');
+    } else {
+      toast('من قائمة المتصفح ⋮ اختر "تثبيت التطبيق"');
+    }
+  }
+
   // ---------------- wire up ----------------
   function bind() {
-    window.addEventListener('hashchange', route);
+    window.addEventListener('hashchange', onHashChange);
+    window.addEventListener('beforeunload', (e) => {
+      if (dirtySession()) { e.preventDefault(); e.returnValue = ''; }
+    });
+    // In-app navigation goes through the leave guard.
+    document.addEventListener('click', (e) => {
+      const a = e.target && e.target.closest ? e.target.closest('a[href^="#/"]') : null;
+      if (!a) return;
+      e.preventDefault();
+      closeDrawers();
+      goHash(a.getAttribute('href'));
+    });
+    $('leave-stay').addEventListener('click', hideLeaveModal);
+    $('leave-go').addEventListener('click', () => {
+      const target = navPending || '';
+      S.session = null;
+      hideLeaveModal();
+      if (location.hash === target) route();
+      else location.hash = target;
+    });
     window.addEventListener('resize', () => {
       if (tourIdx < 0 || tourIdx >= TOUR_STEPS.length) return;
       if (TOUR_STEPS[tourIdx].go) return;
       tourShow(tourIdx);
     });
     $('btn-retry-load').addEventListener('click', () => location.reload());
-    $('btn-back-home').addEventListener('click', () => { location.hash = ''; });
+    $('btn-back-home').addEventListener('click', () => goHash(''));
     $('btn-start-quiz').addEventListener('click', beginAnswering);
     $('btn-next').addEventListener('click', nextQuestion);
-    $('btn-exit').addEventListener('click', () => { location.hash = ''; });
+    const btnSkip = $('btn-skip');
+    if (btnSkip) btnSkip.addEventListener('click', skipQuestion);
+    $('btn-exit').addEventListener('click', () => goHash(''));
+    document.querySelectorAll('.btn-menu').forEach((b) => b.addEventListener('click', openMenu));
+    $('btn-close-menu').addEventListener('click', closeDrawers);
     const saveBtn = $('btn-save-question');
     if (saveBtn) saveBtn.addEventListener('click', toggleSaveCurrent);
-    $('btn-tour-replay').addEventListener('click', () => tourShow(0));
-    const replaySession = $('btn-tour-replay-session');
-    if (replaySession) replaySession.addEventListener('click', () => tourShow(0));
+    $('menu-tour').addEventListener('click', () => { closeDrawers(); tourShow(0); });
+    $('menu-install').addEventListener('click', installApp);
+    $('menu-sound').addEventListener('click', () => { setSound(!S.sound); });
+    $('menu-theme').addEventListener('click', () => toggleTheme());
+    const expBtn = $('btn-export-data');
+    if (expBtn) expBtn.addEventListener('click', exportData);
+    const impInput = $('import-data-input');
+    if (impInput) impInput.addEventListener('change', () => {
+      if (impInput.files && impInput.files[0]) importData(impInput.files[0]);
+      impInput.value = '';
+    });
+    const clearBtn = $('btn-clear-history');
+    if (clearBtn) clearBtn.addEventListener('click', () => {
+      if (S.history.length === 0) { toast('السجل فارغ أصلاً'); return; }
+      if (window.confirm('مسح كل سجل المحاولات؟ لا يمكن التراجع.')) {
+        clearHistory();
+        renderStats();
+        toast('تم مسح السجل');
+      }
+    });
     $('tour-btn-next').addEventListener('click', () => {
       if (tourIdx >= TOUR_STEPS.length - 1) tourDone();
       else tourShow(tourIdx + 1);
     });
     $('tour-btn-prev').addEventListener('click', () => { if (tourIdx > 0) tourShow(tourIdx - 1); });
     $('tour-btn-skip').addEventListener('click', tourDone);
-    $('btn-open-matrix').addEventListener('click', () => { renderMatrix(); openDrawer('matrix-drawer'); });
+    const openMatrix = $('btn-open-matrix');
+    if (openMatrix) openMatrix.addEventListener('click', () => {
+      if (!S.session || S.session.finished) { toast('لا يوجد كوز نشط'); return; }
+      renderMatrix(); openDrawer('matrix-drawer');
+    });
     $('btn-close-matrix').addEventListener('click', closeDrawers);
     $('btn-close-info').addEventListener('click', closeDrawers);
     $('drawer-overlay').addEventListener('click', closeDrawers);
     document.querySelectorAll('.filter-pill').forEach((p) => p.addEventListener('click', () => filterReview(p.dataset.filter)));
 
     $('btn-lang-toggle').addEventListener('click', () => {
-      S.lang = S.lang === 'ar' ? 'en' : 'ar';
-      document.documentElement.setAttribute('lang', S.lang === 'ar' ? 'ar' : 'en');
+      S.lang = S.lang === 'ar' ? 'en' : (S.lang === 'en' ? 'both' : 'ar');
+      document.documentElement.setAttribute('lang', S.lang === 'en' ? 'en' : 'ar');
+      saveUI();
       if (S.session && !$('quiz-view').classList.contains('hidden')) renderQuestion();
-      toast(S.lang === 'ar' ? 'العربية' : 'English');
+      toast(S.lang === 'ar' ? 'العربية فقط' : (S.lang === 'en' ? 'English only' : 'عربي + English معاً'));
     });
-    $('btn-sound-toggle').addEventListener('click', () => {
-      S.sound = !S.sound;
-      $('sound-icon').setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
-      icons();
-    });
+    $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
 
     const toggleTheme = () => {
       const root = document.documentElement;
       const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('portal_theme', next); } catch (e) {}
+      syncMenuToggles();
     };
-    $('btn-theme-toggle').addEventListener('click', toggleTheme);
-    $('btn-theme-toggle-session').addEventListener('click', toggleTheme);
 
     $('btn-timer-pause').addEventListener('click', () => {
       const ses = S.session;
@@ -1061,7 +1477,7 @@
       startSession(ses.sub.subject_id, ses.ch.quiz_id, from);
       if (S.session && S.session.questions.length < n0) beginAnswering();
     });
-    $('btn-back-catalog').addEventListener('click', () => { location.hash = ''; });
+    $('btn-back-catalog').addEventListener('click', () => goHash(''));
 
     document.addEventListener('keydown', (e) => {
       if ($('quiz-view').classList.contains('hidden') || S.session === null) return;
@@ -1070,7 +1486,8 @@
       const map = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
       if (k in map) pickOption(map[k]);
       else if (k === 'enter') nextQuestion();
-      else if (k === 'arrowleft' || k === 'arrowright') nextQuestion();
+      else if (k === 's' || k === 'd' || k === 'س') skipQuestion();
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') nextQuestion();
     });
   }
 
@@ -1080,6 +1497,8 @@
       const savedTheme = localStorage.getItem('portal_theme');
       if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
     } catch (e) {}
+    loadUI();
+    if (S.lang === 'en') document.documentElement.setAttribute('lang', 'en');
     bind();
     show('quiz-loading');
     try {
@@ -1088,6 +1507,7 @@
       renderChapterChips();
       route();
       updateSavedBadge();
+      syncMenuToggles();
       icons();
       if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
       if (S.index && S.index.test_mode === false) {
