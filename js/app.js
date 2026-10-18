@@ -479,13 +479,13 @@
         b.className = 'filter-chip' + (S.savedSubject === g.subjectId ? ' active' : '');
         b.textContent = g.subjectTitle + ' (' + n + ')';
         b.setAttribute('aria-pressed', S.savedSubject === g.subjectId ? 'true' : 'false');
-        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; S.savedExpanded = g.subjectId; saveUI(); renderSaved(); });
+        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; saveUI(); renderSaved(); });
         subBar.appendChild(b);
       });
     }
     const chNos = sub.chapters.map((c) => c.chapterNo);
     if (!S.savedChapter || !chNos.includes(S.savedChapter)) S.savedChapter = chNos[0];
-    const expanded = S.savedExpanded === sub.subjectId;
+    const expanded = true; // subject block always open; chapters collapse individually
     if (chBar) {
       chBar.innerHTML = '';
       if (!expanded || chNos.length <= 1) { chBar.style.display = 'none'; }
@@ -525,23 +525,8 @@
       'اختبار شامل (' + subAll.length + ' أسئلة)'
     ));
     subHead.appendChild(genSub);
-    const expBtn = document.createElement('button');
-    expBtn.type = 'button';
-    expBtn.className = 'icon-btn saved-expand-btn' + (S.savedExpanded === sub.subjectId ? ' open' : '');
-    expBtn.setAttribute('aria-label', S.savedExpanded === sub.subjectId ? 'طي المادة' : 'فتح المادة');
-    expBtn.setAttribute('aria-expanded', S.savedExpanded === sub.subjectId ? 'true' : 'false');
-    expBtn.innerHTML = '<i data-lucide="chevron-down"></i>';
-    expBtn.addEventListener('click', () => {
-      S.savedExpanded = S.savedExpanded === sub.subjectId ? null : sub.subjectId;
-      saveUI();
-      renderSaved();
-    });
-    subHead.appendChild(expBtn);
     subWrap.appendChild(subHead);
     box.appendChild(subWrap);
-
-    // Expanded subject only: chapter content (collapsed by default)
-    if (!expanded) { icons(); return; }
 
 
     // Selected chapter block: items + chapter-only test generation
@@ -566,11 +551,12 @@
     const chExp = document.createElement('button');
     chExp.type = 'button';
     chExp.className = 'icon-btn saved-expand-btn' + (S.savedChapterOpen === c.chapterNo ? ' open' : '');
-    chExp.setAttribute('aria-expanded', S.savedExpanded === sub.subjectId && S.savedChapterOpen === c.chapterNo ? 'true' : 'false');
+    chExp.setAttribute('aria-label', 'فتح أو طي أسئلة الجابتر');
+    chExp.setAttribute('aria-label', 'فتح أو طي أسئلة الجابتر');
+    chExp.setAttribute('aria-expanded', S.savedChapterOpen === c.chapterNo ? 'true' : 'false');
     chExp.innerHTML = '<i data-lucide="chevron-down"></i>';
     chExp.addEventListener('click', () => {
-      S.savedChapterOpen = (S.savedExpanded === sub.subjectId && S.savedChapterOpen === c.chapterNo) ? null : c.chapterNo;
-      S.savedExpanded = sub.subjectId;
+      S.savedChapterOpen = S.savedChapterOpen === c.chapterNo ? null : c.chapterNo;
       saveUI();
       renderSaved();
     });
