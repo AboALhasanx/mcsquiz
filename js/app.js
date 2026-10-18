@@ -50,6 +50,7 @@
     session: null,      // {sub, ch, title, chapterLabel, questions, picks, dwells, idx, hash, finished, ..., replay}
     saved: {},          // saveKey -> {origin, snapshot, savedAt}
     history: [],        // [{t, subjectId, subjectTitle, chapterNo, chapterLabel, quizId, topic, correct, total, pct, secs, kind}]
+    savedChapterOpen: null, // open chapter in saved view
     savedSubject: null, // saved-view filter
     savedChapter: null, // saved-view filter
     savedExpanded: null, // saved-view accordion
@@ -65,7 +66,7 @@
     try {
       localStorage.setItem(UI_KEY, JSON.stringify({
         subject: S.subjectFilter, chapter: S.chapterFilter,
-        savedSubject: S.savedSubject, savedChapter: S.savedChapter, savedExpanded: S.savedExpanded,
+        savedSubject: S.savedSubject, savedChapter: S.savedChapter, savedChapterOpen: null, savedExpanded: S.savedExpanded,
         lang: S.lang,
       }));
     } catch (e) {}
@@ -495,7 +496,7 @@
           b.className = 'filter-chip chapter-chip' + (S.savedChapter === n ? ' active' : '');
           b.textContent = 'جابتر ' + n;
           b.setAttribute('aria-pressed', S.savedChapter === n ? 'true' : 'false');
-          b.addEventListener('click', () => { S.savedChapter = n; saveUI(); renderSaved(); });
+          b.addEventListener('click', () => { S.savedChapter = n; S.savedChapterOpen = null; saveUI(); renderSaved(); });
           chBar.appendChild(b);
         });
       }
@@ -562,7 +563,20 @@
       'جابتر ' + c.chapterNo + ' (' + c.items.length + ' أسئلة)'
     ));
     head.appendChild(train);
+    const chExp = document.createElement('button');
+    chExp.type = 'button';
+    chExp.className = 'icon-btn saved-expand-btn' + (S.savedChapterOpen === c.chapterNo ? ' open' : '');
+    chExp.setAttribute('aria-expanded', S.savedExpanded === sub.subjectId && S.savedChapterOpen === c.chapterNo ? 'true' : 'false');
+    chExp.innerHTML = '<i data-lucide="chevron-down"></i>';
+    chExp.addEventListener('click', () => {
+      S.savedChapterOpen = (S.savedExpanded === sub.subjectId && S.savedChapterOpen === c.chapterNo) ? null : c.chapterNo;
+      S.savedExpanded = sub.subjectId;
+      saveUI();
+      renderSaved();
+    });
+    head.appendChild(chExp);
     wrap.appendChild(head);
+    if (S.savedChapterOpen !== c.chapterNo) { box.appendChild(wrap); icons(); return; }
     c.items.forEach((it) => {
       const q = it.snapshot;
       const card = document.createElement('div');
