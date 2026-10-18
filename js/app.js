@@ -622,6 +622,10 @@
       route();
       icons();
       if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
+      if (S.index && S.index.test_mode === false) {
+        const badge = $('test-mode-badge');
+        if (badge) badge.style.display = 'none';
+      }
       dbg('boot ok. subjects:', S.index.subjects.length);
     } catch (e) {
       console.error(e);
