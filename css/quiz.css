@@ -202,7 +202,14 @@ textarea,
 [tabindex] {
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none !important;
-    outline: none !important;
+}
+
+/* Keyboard focus stays visible: portal.css adds the :focus-visible ring on top
+   of this reset (the reset only kills the UA ring, not our own). */
+html body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid #4da3ff !important;
+    outline-offset: 2px;
+    border-radius: 8px;
 }
 
 button:focus,
@@ -220,7 +227,6 @@ button:focus-visible,
 .action-btn:focus,
 .action-btn:active,
 .action-btn:focus-visible {
-    outline: none !important;
     -webkit-tap-highlight-color: transparent !important;
 }
 
@@ -375,7 +381,7 @@ input:focus, textarea:focus {
     font-size: 0.78rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
     outline: none;
     user-select: none;
     margin-right: 0.35rem;
@@ -772,7 +778,7 @@ button.timer-unified-pill {
     border: 1px solid var(--border-subtle);
     outline: none;
     font-family: inherit;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 button.timer-unified-pill:hover {
@@ -997,7 +1003,7 @@ button.timer-unified-pill.is-paused {
     font-weight: 700;
     font-size: 0.8rem;
     color: var(--letter-text) !important;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 .option-tile.correct-answer .option-letter {
@@ -1180,7 +1186,7 @@ button.timer-unified-pill.is-paused {
     border-radius: var(--radius-lg);
     font-weight: 600;
     font-size: 0.95rem;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 /* --------------------------------------------------------------------------
@@ -1434,7 +1440,7 @@ button.timer-unified-pill.is-paused {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     white-space: nowrap;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 .filter-pill:hover {
@@ -1630,7 +1636,7 @@ button.timer-unified-pill.is-paused {
     font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
     outline: none;
     user-select: none;
     -webkit-user-select: none;
@@ -1697,7 +1703,7 @@ button.timer-unified-pill.is-paused {
     font-size: 0.88rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
     user-select: none;
     -webkit-user-select: none;
 }
@@ -2118,7 +2124,7 @@ pre,
     font-weight: 700;
     cursor: pointer;
     font-family: inherit;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 .pwa-install-btn:active {
@@ -2162,7 +2168,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     letter-spacing: 0.02em;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.04);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Quiet Server Status Dot */
@@ -2174,7 +2180,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     box-shadow: 0 0 6px #10b981;
     display: inline-block;
     margin-right: 0.15rem;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 .server-status-dot.offline {
     background: #f59e0b;
@@ -2202,7 +2208,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     background: var(--bg-card);
     color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 .filter-chip.active {
     background: var(--accent);
@@ -2268,7 +2274,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     justify-content: center;
     gap: 0.4rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 .download-pack-btn:hover {
     background: rgba(56, 189, 248, 0.16);
@@ -2338,7 +2344,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     border-radius: 0 !important;
     color: var(--text-muted) !important;
     cursor: pointer !important;
-    transition: all 0.15s ease !important;
+    transition: background-color 0.15s ease !important, color 0.15s ease !important, border-color 0.15s ease !important, transform 0.15s ease !important, opacity 0.15s ease !important;
     padding: 0 !important;
     margin: 0 !important;
     flex-shrink: 0 !important;
@@ -2443,7 +2449,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     border-radius: 0 !important;
     color: #38bdf8 !important;
     background: rgba(56, 189, 248, 0.04) !important;
-    transition: all 0.15s ease !important;
+    transition: background-color 0.15s ease !important, color 0.15s ease !important, border-color 0.15s ease !important, transform 0.15s ease !important, opacity 0.15s ease !important;
     padding: 0 !important;
     margin: 0 !important;
     flex-shrink: 0 !important;
@@ -2673,7 +2679,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     border: 1px solid var(--border-card);
     background: var(--bg-card);
     color: var(--text-muted);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 .matrix-cell.answered {
     background: rgba(16, 185, 129, 0.16);
@@ -2712,7 +2718,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
 .drill-btn:hover {
@@ -2754,7 +2760,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     background: var(--bg-card);
     color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
 }
 .bm-filter-chip.active {
     background: var(--accent);
@@ -2856,7 +2862,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     color: var(--text-muted);
     border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
 }
 .bm-expand-btn:hover {
     background: rgba(255, 255, 255, 0.08);

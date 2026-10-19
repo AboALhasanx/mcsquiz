@@ -195,13 +195,11 @@
   }
 
   function shareText(me, boardRows, scopeLabel) {
-    var line = boardRows.slice(0, 3).map(function (r, i) {
-      var medal = ['🥇', '🥈', '🥉'][i] || ('' + r.rank + '.');
-      return medal + ' ' + r.name + ' (' + r.xp + ' نقطة)';
-    }).join('\n');
-    return '🏆 دوري MSCQuiz — ' + scopeLabel + '\n' + line +
-      (me ? '\nترتيبي: #' + me.rank + ' بـ ' + me.xp + ' نقطة' : '') +
-      '\nتحدّاني في الكوزات 👇';
+    var lines = boardRows.slice(0, 3).map(function (r) {
+      return r.rank + '. ' + r.name + ' — ' + r.xp + ' نقطة';
+    });
+    return 'دوري MSCQuiz · ' + scopeLabel + '\n' + lines.join('\n') +
+      (me ? '\nترتيبي: ' + me.rank + ' بـ ' + me.xp + ' نقطة' : '');
   }
 
   global.PortalLeague = {

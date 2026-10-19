@@ -115,6 +115,7 @@ html[data-theme="light"] { color-scheme: light; }
   border-radius: 999px;
   background: #4da3ff;
   color: #0b0f16;
+  box-shadow: 0 0 0 2px var(--bg-base);
   font-size: 0.65rem;
   font-weight: 800;
   display: inline-flex;
@@ -136,8 +137,8 @@ html[data-theme="light"] { color-scheme: light; }
 .saved-back-btn { text-decoration: none; }
 .saved-groups { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.5rem; }
 .saved-group {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: 14px;
   padding: 0.7rem;
 }
@@ -148,17 +149,20 @@ html[data-theme="light"] { color-scheme: light; }
   gap: 0.6rem;
   margin-bottom: 0.6rem;
 }
-.saved-group-title { font-weight: 800; font-size: 0.95rem; }
+.saved-group-title { font-weight: 700; font-size: 0.95rem; }
 .saved-group-sub { opacity: 0.65; font-size: 0.8rem; }
 .saved-train-btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
 .saved-card { margin-bottom: 0.6rem; }
 .saved-card:last-of-type { margin-bottom: 0.35rem; }
 .saved-remove-btn { font-size: 0.78rem; padding: 0.35rem 0.7rem; margin-top: 0.4rem; }
 .saved-gen-btn { font-size: 0.8rem; padding: 0.45rem 0.8rem; white-space: nowrap; }
+/* the subject row is a heading, not a second card inside the screen */
 .saved-subject-block {
-  border: 1px solid rgba(77, 163, 255, 0.25);
-  background: rgba(77, 163, 255, 0.05);
+  border: 0;
+  background: none;
+  padding: 0.15rem 0 0;
 }
+.saved-subject-block .saved-group-head { margin-bottom: 0.15rem; }
 .saved-expand-btn { flex-shrink: 0; transition: transform 0.25s ease; }
 .saved-expand-btn.open { transform: rotate(180deg); }
 .saved-expand-btn.open svg { color: #4da3ff; }
@@ -230,8 +234,8 @@ html[data-theme="light"] .brand-logo-img {
 
 /* --- light-theme button affordance --- */
 html[data-theme="light"] .app-header .icon-btn {
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 0;
+  background: none;
 }
 
 /* --- tour highlight frame (border emphasis) --- */
@@ -257,6 +261,287 @@ html[data-theme="light"] .app-header .icon-btn {
 }
 .tour-replay-hint { margin-top: 0.6rem !important; font-size: 0.72rem !important; opacity: 0.55 !important; }
 .tour-inline-icon { width: 14px; height: 14px; vertical-align: -2px; }
+/* ---------- focus visibility (must beat quiz.css .icon-btn:focus { outline:none !important }) ---------- */
+html body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #4da3ff !important;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+html body :is(a, button, input, select, textarea, summary, [tabindex]):focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+/* ---------- Arabic-first type system ---------- */
+:root {
+  --font-body: 'MSCQuiz Arabic', 'Segoe UI', Tahoma, system-ui, -apple-system, sans-serif;
+}
+body, .app-container, button, input, select, textarea, .filter-chip, .menu-item {
+  font-family: var(--font-body);
+}
+.app-brand-title, .sketch-title-ltr, .league-rank, .stat-value, .history-pct {
+  font-family: var(--font-body);
+}
+
+/* ---------- league screen ----------
+   A ranked list, not a game. Numbers carry the rank, one accent marks you,
+   one switch controls visibility. No podium, no medals, no progress bars. */
+#league-view {
+  align-items: stretch;   /* .state-view centres its children; this view is a column */
+  text-align: start;
+  padding: 0.75rem 0 1.5rem;
+  gap: 0;
+}
+
+.league-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+.league-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.league-week {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* your row: rank + one visibility switch */
+.league-me {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  background: var(--bg-card);
+  margin-bottom: 0.9rem;
+}
+.league-me-main { flex: 1; min-width: 0; }
+.league-me-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.league-me-sub {
+  margin-top: 0.1rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* native checkbox, styled as a switch: keyboard + screen reader come for free */
+.league-vis {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  user-select: none;
+}
+.league-vis input {
+  appearance: none;
+  margin: 0;
+  width: 34px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--bg-hover, rgba(127, 140, 160, 0.28));
+  border: 1px solid var(--border-card);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+.league-vis input::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  inset-inline-start: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #8b97a8;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+.league-vis input:checked {
+  background: rgba(77, 163, 255, 0.35);
+  border-color: rgba(77, 163, 255, 0.7);
+}
+.league-vis input:checked::after {
+  background: #4da3ff;
+  transform: translateX(14px);
+}
+[dir="rtl"] .league-vis input:checked::after { transform: translateX(-14px); }
+
+/* ranked list */
+.league-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+.league-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 10px;
+}
+.league-row + .league-row { border-top: 1px solid var(--border-subtle); border-radius: 0; }
+.league-row.is-me { background: rgba(77, 163, 255, 0.10); border-radius: 10px; }
+.league-rank {
+  width: 1.6rem;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+.league-row.is-top .league-rank { color: #d9a521; font-weight: 700; }
+.league-row .menu-avatar { width: 30px; height: 30px; font-size: 0.85rem; flex-shrink: 0; }
+.league-row-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.league-row-xp {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.league-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.league-empty p { margin: 0; }
+.league-empty-icon { width: 26px; height: 26px; opacity: 0.45; }
+
+/* --- quiz start card: one fact line instead of icon + pills --- */
+.start-title { text-align: center; }
+.start-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.35rem 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.start-meta-sep { opacity: 0.5; }
+
+/* --- filter bars are sliders: subjects scroll, chapters scroll in a squarer geometry --- */
+.catalog-filter-bar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  padding-bottom: 0.35rem;
+}
+.catalog-filter-bar::-webkit-scrollbar { display: none; }
+.catalog-filter-bar .filter-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.76rem;
+}
+
+/* chapters: compact number tiles (subjects stay pills) */
+#chapter-filter-bar .filter-chip,
+#saved-chapter-bar .filter-chip {
+  min-width: 42px;
+  height: 32px;
+  padding: 0 0.45rem;
+  border-radius: 9px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+}
+#chapter-filter-bar .filter-chip.active,
+#saved-chapter-bar .filter-chip.active {
+  border-radius: 9px;
+}
+
+/* a sticky mini label so "1 2 3 4" never reads as unexplained numbers */
+.filter-bar-label {
+  position: sticky;
+  inset-inline-start: 0;
+  flex: 0 0 auto;
+  align-self: center;
+  padding-inline-end: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-base);
+  z-index: 1;
+}
+
+/* end-of-rail fade so a clipped pill reads as scrollable, not broken */
+html[dir="rtl"] .catalog-filter-bar {
+  -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 20px), transparent 100%);
+  mask-image: linear-gradient(to left, #000 calc(100% - 20px), transparent 100%);
+}
+html[dir="ltr"] .catalog-filter-bar {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent 100%);
+}
+
+/* --- install banner: one accent tint, not a two-hue gradient --- */
+.pwa-install-banner {
+  background: rgba(77, 163, 255, 0.10);
+  border-color: rgba(77, 163, 255, 0.30);
+}
+
+/* --- skip link (keyboard) --- */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 0.5rem;
+  top: -3rem;
+  z-index: 10002;
+  background: #4da3ff;
+  color: #0b0f16;
+  font-weight: 800;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: top 0.18s ease;
+}
+.skip-link:focus { top: 0.5rem; }
+
+/* --- header icon buttons: icons on the bar, no chip background --- */
+.app-header .icon-btn {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.app-header .icon-btn:hover {
+  background: none;
+  color: var(--text-main);
+}
+.app-header .icon-btn:active { transform: scale(0.94); }
+
 /* --- brand home link --- */
 .brand-home-link {
   display: inline-flex;
@@ -267,15 +552,6 @@ html[data-theme="light"] .app-header .icon-btn {
 }
 
 /* --- two-button bottom nav --- */
-.bottom-nav.two-btn-nav {
-  display: flex;
-  gap: 0.6rem;
-  justify-content: center;
-  align-items: stretch;
-}
-.two-btn-nav .nav-btn { flex: 1; max-width: 380px; }
-.two-btn-nav #btn-skip { flex: 0 0 auto; }
-
 /* --- auth dialog --- */
 .auth-card { text-align: start; }
 .auth-card h3 { text-align: center; margin-bottom: 0.2rem; }
@@ -355,6 +631,16 @@ html[data-theme="light"] .app-header .icon-btn {
 .modal-actions { display: flex; gap: 0.6rem; }
 .modal-actions .action-btn { flex: 1; }
 
+/* --- saved / stats: list layouts, not centred slides --- */
+#saved-view,
+#stats-view,
+#league-view {
+  align-items: stretch;
+  text-align: start;
+  padding: 0.75rem 0 1.5rem;
+  gap: 0.6rem;
+}
+
 /* --- stats view --- */
 .stat-bar-track {
   height: 8px;
@@ -370,6 +656,56 @@ html[data-theme="light"] .app-header .icon-btn {
   transition: width 0.4s ease;
 }
 .stat-card-wide { grid-column: 1 / -1; }
+
+/* Numbers, not icon tiles: strip the card chrome from both summaries. */
+.stats-summary-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin: 0.9rem 0;
+}
+.stats-summary-grid .stat-card {
+  display: block;
+  padding: 0.65rem 0.35rem;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+}
+.stats-summary-grid .stat-card + .stat-card { border-inline-start: 1px solid var(--border-subtle); }
+.stats-summary-grid .stat-icon-wrapper { display: none; }
+.stats-summary-grid .stat-info { display: block; }
+.stats-summary-grid .stat-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+.stats-summary-grid .stat-label {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* the stats page holds five figures: two columns, no boxes */
+#stats-overall.stats-summary-grid {
+  grid-template-columns: 1fr 1fr;
+  border: 0;
+  margin: 0.2rem 0 0.6rem;
+}
+#stats-overall .stat-card {
+  text-align: start;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  border-inline-start: 0;
+}
+#stats-overall .stat-card:nth-last-child(1):nth-child(odd) { grid-column: 1 / -1; }
+#stats-overall .stat-value { font-size: 1.25rem; }
+#stats-overall .stat-label { font-size: 0.72rem; }
 .stats-backup-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .stats-mini-btn { font-size: 0.78rem; padding: 0.4rem 0.7rem; }
 .danger-btn { color: #f87171 !important; }
@@ -510,15 +846,42 @@ body:not([data-quizlive="yes"]) #btn-exit {
   bottom: 0;
 }
 
-/* --- bottom two-button nav --- */
-.bottom-nav.two-btn-nav {
-  display: flex;
-  gap: 0.6rem;
-  justify-content: center;
-  align-items: stretch;
+/* --- results: a flat ring, not a glowing orb --- */
+.score-circle {
+  background: none;
+  box-shadow: none;
 }
-.two-btn-nav .nav-btn { flex: 1; max-width: 380px; }
-.two-btn-nav #btn-skip { flex: 0 0 auto; }
+.chapter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+}
+.chapter-pct {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.results-action-row .text-link-btn {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-weight: 600;
+  box-shadow: none;
+  min-height: 44px;
+}
+
+/* --- matrix drawer: voluntary finish (no skip button in the quiz itself) --- */
+.matrix-finish-btn {
+  width: 100%;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+}
 
 /* --- bilingual option lines --- */
 .opt-line { display: block; }

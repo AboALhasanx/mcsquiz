@@ -14,6 +14,20 @@
     })[c]);
   }
 
+  // Arabic-aware counts. English-style "1 أسئلة" is the fastest way to look machine-made.
+  function arCount(n, forms) {
+    if (n === 1) return forms.one;
+    if (n === 2) return forms.two;
+    if (n >= 3 && n <= 10) return n + ' ' + forms.few;
+    return n + ' ' + forms.many;
+  }
+  const qCount = (n) => arCount(n, { one: 'سؤال واحد', two: 'سؤالان', few: 'أسئلة', many: 'سؤالاً' });
+  const chCount = (n) => arCount(n, { one: 'جابتر واحد', two: 'جابترين', few: 'جابترات', many: 'جابتراً' });
+  const savedCount = (n) => (n === 1 ? 'سؤال واحد محفوظ'
+    : n === 2 ? 'سؤالان محفوظان'
+      : n >= 3 && n <= 10 ? n + ' أسئلة محفوظة'
+        : n + ' سؤالاً محفوظاً');
+
   function dbg(...args) {
     if (!DEBUG) return;
     const el = $('debug-output');
@@ -107,7 +121,7 @@
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
     $('quiz-session-topbar').style.display = (inQuiz || viewId === 'results-view') ? 'block' : 'none';
-    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view'];
+    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
     document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
@@ -229,6 +243,13 @@
       .map((c2) => ({ sub: sub, ch: c2 }));
   }
 
+  function filterBarLabel(text) {
+    const lab = document.createElement('span');
+    lab.className = 'filter-bar-label';
+    lab.textContent = text;
+    return lab;
+  }
+
   function renderChapterChips() {
     const bar = $('chapter-filter-bar');
     const sub = currentSubject();
@@ -242,14 +263,19 @@
     bar.innerHTML = '';
     if (sub.chapters.length <= 1) { bar.style.display = 'none'; return; }
     bar.style.display = '';
+    bar.appendChild(filterBarLabel('جابتر'));
     sub.chapters.forEach((c) => {
       const b = document.createElement('button');
       b.className = 'filter-chip chapter-chip' + (S.chapterFilter === c.chapter_no ? ' active' : '');
-      b.textContent = chLabel(c);
+      b.textContent = c.chapter_no;
+      b.setAttribute('aria-label', chLabel(c));
+      b.title = chLabel(c);
       b.setAttribute('aria-pressed', S.chapterFilter === c.chapter_no ? 'true' : 'false');
       b.addEventListener('click', () => { S.chapterFilter = c.chapter_no; saveUI(); renderChapterChips(); renderCatalog(); });
       bar.appendChild(b);
     });
+    const active = bar.querySelector('.filter-chip.active');
+    if (active) { try { active.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {} }
   }
 
   function renderCatalog() {
@@ -270,7 +296,7 @@
           '<div class="sketch-title-ltr">' + escapeHtml(bank.topic) + '</div>' +
           '<div class="sketch-meta-line"><span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
           '<span class="sketch-meta-dot">·</span><span class="sketch-sem-tag">' + escapeHtml(chLabel(ch)) + '</span>' +
-          '<span class="sketch-meta-dot">·</span><span class="sketch-count-tag">' + bank.questions.length + ' أسئلة</span>' +
+          '<span class="sketch-meta-dot">·</span><span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
           (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
           '</div></a>' +
         '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-play-cell" aria-label="بدء الكويز مباشرة"><i data-lucide="play"></i></a>';
@@ -356,8 +382,8 @@
     $('quiz-title').textContent = meta.topic;
     $('start-subject-badge').textContent = meta.subjectTitle + ' · ' + (meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }));
     $('start-quiz-title').textContent = meta.topic;
-    $('start-questions-count').textContent = pool.length;
-    $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5));
+    $('start-questions-count').textContent = qCount(pool.length);
+    $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5)) + ' دقيقة';
     $('question-total-label').textContent = pool.length;
     $('live-feedback-box').classList.add('hidden');
     updateSaveBtn();
@@ -475,7 +501,8 @@
     const groups = savedGroups();
     let total = 0;
     groups.forEach((g) => g.chapters.forEach((c) => { total += c.items.length; }));
-    $('saved-total-line').textContent = total === 0 ? '' : total + ' أسئلة محفوظة في ' + groups.length + ' مواد';
+    $('saved-total-line').textContent = total === 0 ? '' :
+      savedCount(total) + ' في ' + arCount(groups.length, { one: 'مادة واحدة', two: 'مادتين', few: 'مواد', many: 'مادة' });
     $('saved-empty-state').classList.toggle('hidden', total !== 0);
 
     // Filter bars (same pattern as catalog): subject chips, then chapter chips. No "all".
@@ -513,14 +540,19 @@
       if (!expanded || chNos.length <= 1) { chBar.style.display = 'none'; }
       else {
         chBar.style.display = '';
+        chBar.appendChild(filterBarLabel('جابتر'));
         chNos.forEach((n) => {
           const b = document.createElement('button');
           b.className = 'filter-chip chapter-chip' + (S.savedChapter === n ? ' active' : '');
-          b.textContent = 'جابتر ' + n;
+          b.textContent = n;
+          b.setAttribute('aria-label', 'جابتر ' + n);
+          b.title = 'جابتر ' + n;
           b.setAttribute('aria-pressed', S.savedChapter === n ? 'true' : 'false');
           b.addEventListener('click', () => { S.savedChapter = n; S.savedChapterOpen = null; saveUI(); renderSaved(); });
           chBar.appendChild(b);
         });
+        const act = chBar.querySelector('.filter-chip.active');
+        if (act) { try { act.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {} }
       }
     }
 
@@ -534,12 +566,12 @@
     subHead.className = 'saved-group-head';
     const subTitle = document.createElement('div');
     subTitle.innerHTML = '<div class="saved-group-title">' + escapeHtml(sub.subjectTitle) +
-      '</div><div class="saved-group-sub">' + subAll.length + ' أسئلة محفوظة في ' + sub.chapters.length + ' جابترات</div>';
+      '</div><div class="saved-group-sub">' + savedCount(subAll.length) + '</div>';
     subHead.appendChild(subTitle);
     const genSub = document.createElement('button');
     genSub.type = 'button';
-    genSub.className = 'action-btn primary-btn saved-gen-btn';
-    genSub.innerHTML = '<i data-lucide="zap"></i><span>اختبار المادة (' + subAll.length + ')</span>';
+    genSub.className = 'action-btn secondary-btn saved-gen-btn';
+    genSub.innerHTML = '<i data-lucide="layers"></i><span>اختبار المادة</span>';
     genSub.setAttribute('aria-label', 'توليد اختبار من كل محفوظ ' + sub.subjectTitle);
     genSub.addEventListener('click', () => startSavedPractice(
       subAll,
@@ -558,11 +590,11 @@
     const head = document.createElement('div');
     head.className = 'saved-group-head';
     head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml('جابتر ' + c.chapterNo) +
-      '</div><div class="saved-group-sub">' + c.items.length + ' أسئلة</div></div>';
+      '</div><div class="saved-group-sub">' + qCount(c.items.length) + '</div></div>';
     const train = document.createElement('button');
     train.type = 'button';
-    train.className = 'action-btn primary-btn saved-train-btn';
-    train.innerHTML = '<i data-lucide="target"></i><span>اختبار الجابتر (' + c.items.length + ')</span>';
+    train.className = 'action-btn secondary-btn saved-train-btn';
+    train.innerHTML = '<i data-lucide="play"></i><span>اختبار</span>';
     train.setAttribute('aria-label', 'توليد اختبار لجابتر ' + c.chapterNo);
     train.addEventListener('click', () => startSavedPractice(
       c.items,
@@ -573,7 +605,6 @@
     const chExp = document.createElement('button');
     chExp.type = 'button';
     chExp.className = 'icon-btn saved-expand-btn' + (S.savedChapterOpen === c.chapterNo ? ' open' : '');
-    chExp.setAttribute('aria-label', 'فتح أو طي أسئلة الجابتر');
     chExp.setAttribute('aria-label', 'فتح أو طي أسئلة الجابتر');
     chExp.setAttribute('aria-expanded', S.savedChapterOpen === c.chapterNo ? 'true' : 'false');
     chExp.innerHTML = '<i data-lucide="chevron-down"></i>';
@@ -776,23 +807,10 @@
     renderMatrix();
   }
 
-  function skipQuestion() {
-    const ses = S.session;
-    if (!ses || ses.pauseStart) { if (ses && ses.pauseStart) toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
-    if (ses.picks[ses.idx] !== null) { nextQuestion(); return; }
-    ses.dwells[ses.idx] = (Date.now() - ses.qStart) / 1000;
-    tourNotify('answer');
-    if (ses.idx < ses.questions.length - 1) {
-      advanceTo(ses.idx + 1);
-    } else {
-      finishQuiz();
-    }
-  }
-
   function nextQuestion() {
     const ses = S.session;
     if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
-    if (ses.picks[ses.idx] === null) { toast('أجب على السؤال أو اضغط تخطي'); return; }
+    if (ses.picks[ses.idx] === null) { toast('اختر إجابة أولاً'); return; }
     if (ses.idx < ses.questions.length - 1) {
       advanceTo(ses.idx + 1);
     } else {
@@ -903,8 +921,9 @@
     const totSecs = H.reduce((a, h) => a + (h.secs || 0), 0);
     const avg = n ? H.reduce((a, h) => a + (h.pct || 0), 0) / n : 0;
     const best = n ? Math.max.apply(null, H.map((h) => h.pct || 0)) : 0;
-    $('stats-total-line').textContent = n === 0 ? '' :
-      n + ' محاولات · ' + totQ + ' إجابات صحيحة · ' + fmtDur(totSecs) + ' مذاكرة';
+    // The figures below carry the same facts; no duplicate one-line summary.
+    $('stats-total-line').textContent = '';
+    const attempts = (k) => (k === 0 ? 'لا محاولات' : k === 1 ? 'محاولة واحدة' : k === 2 ? 'محاولتان' : k + ' محاولات');
     const box = $('stats-overall');
     box.innerHTML = '';
     const cards = [
@@ -940,7 +959,7 @@
       const head = document.createElement('div');
       head.className = 'saved-group-head';
       head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.title) +
-        '</div><div class="saved-group-sub">' + rows.length + ' محاولات · آخر نتيجة ' + last.pct + '%</div></div>' +
+        '</div><div class="saved-group-sub">' + attempts(rows.length) + '</div></div>' +
         '<div class="stat-value" dir="ltr">' + last.pct + '%</div>';
       wrap.appendChild(head);
       const track = document.createElement('div');
@@ -949,7 +968,9 @@
       wrap.appendChild(track);
       const meta = document.createElement('div');
       meta.className = 'saved-group-sub';
-      meta.textContent = 'المتوسط ' + (Math.round(a2 * 10) / 10) + '% · الأفضل ' + b2 + '%';
+      meta.textContent = rows.length > 1
+        ? 'المتوسط ' + (Math.round(a2 * 10) / 10) + '% · الأفضل ' + b2 + '%'
+        : 'النتيجة ' + b2 + '%';
       wrap.appendChild(meta);
       subs.appendChild(wrap);
     });
@@ -1018,19 +1039,28 @@
     $('score-percentage').textContent = res.pct + '%';
     $('score-fraction').textContent = res.correct + ' / ' + res.total;
     $('score-badge-text').textContent = res.band.ar;
+    const badgeIcon = $('score-badge-icon');
+    if (badgeIcon) {
+      const fresh = document.createElement('i');
+      fresh.id = 'score-badge-icon';
+      fresh.setAttribute('data-lucide', res.band.icon);
+      badgeIcon.replaceWith(fresh);
+    }
+    const unanswered = (S.session.picks || []).filter((p) => p === null || p === undefined).length;
     $('stat-correct').textContent = res.correct;
-    $('stat-wrong').textContent = res.wrong;
+    $('stat-wrong').textContent = Math.max(0, res.total - res.correct - unanswered);
+    const unansweredEl = $('stat-unanswered');
+    if (unansweredEl) unansweredEl.textContent = unanswered;
     $('stat-total-time').textContent = res.totalTime;
-    $('stat-avg-dwell').textContent = res.avgDwell + ' ث';
 
     const cb = $('chapter-breakdown');
     const ses = S.session;
     cb.innerHTML = '<div class="chapter-row"><span class="chapter-name">' +
-      escapeHtml(ses.sub.subject_title + ' · ' + (ses.chapterLabel || chLabel(ses.ch))) + '</span>' +
-      '<span class="chapter-pct" dir="ltr">' + res.correct + ' / ' + res.total + '</span></div>';
+      escapeHtml(ses.sub.subject_title + ' · ' + (ses.chapterLabel || chLabel(ses.ch))) + '</span></div>';
 
     $('filter-count-all').textContent = res.total;
-    $('filter-count-wrong').textContent = res.wrong;
+    const actualWrong = ses.picks.filter((p, i) => p !== null && p !== undefined && p !== ses.questions[i].correct).length;
+    $('filter-count-wrong').textContent = actualWrong;
     $('filter-count-correct').textContent = res.correct;
 
     const list = $('review-cards-list');
@@ -1050,7 +1080,7 @@
       header.className = 'review-card-header';
       const dwellSec = Math.round(Number(ses.dwells[i]) || 0);
       const statusIcon = ok ? 'check' : (skipped ? 'minus' : 'x');
-      const statusWord = ok ? 'صحيحة' : (skipped ? 'تم تخطيها' : 'خاطئة');
+      const statusWord = ok ? 'صحيحة' : (skipped ? 'لم تُجب' : 'خاطئة');
       header.innerHTML =
         '<div class="review-q-meta"><span class="review-q-num">سؤال ' + (i + 1) + '</span>' +
         '<span class="review-status-tag ' + verdict + '">' +
@@ -1322,6 +1352,7 @@
   // ---------------- leave-exam guard ----------------
   let navBypass = false;
   let navPending = null;
+  let leaveIntent = 'exit';
 
   function dirtySession() {
     const s = S.session;
@@ -1338,7 +1369,20 @@
     else location.hash = h;
   }
 
-  function showLeaveModal() {
+  function showLeaveModal(intent) {
+    leaveIntent = intent === 'finish' ? 'finish' : 'exit';
+    const t = $('leave-title'), b = $('leave-body'), go = $('leave-go');
+    if (t && b && go) {
+      if (leaveIntent === 'finish') {
+        t.textContent = 'إنهاء الاختبار؟';
+        b.textContent = 'الأسئلة التي لم تُجب عنها ستُحسب غير صحيحة.';
+        go.textContent = 'إنهاء';
+      } else {
+        t.textContent = 'الخروج من الاختبار؟';
+        b.textContent = 'سيُلغى تقدمك الحالي. هل أنت متأكد؟';
+        go.textContent = 'خروج';
+      }
+    }
     $('leave-modal').classList.remove('hidden');
     $('leave-modal').setAttribute('aria-hidden', 'false');
     icons();
@@ -1387,6 +1431,8 @@
     if (mt) mt.setAttribute('data-lucide', dark ? 'moon' : 'sun');
     const mtl = $('menu-theme-label');
     if (mtl) mtl.textContent = 'المظهر: ' + (dark ? 'داكن' : 'فاتح');
+    const th = $('theme-header-icon');
+    if (th) th.setAttribute('data-lucide', dark ? 'sun' : 'moon');
     icons();
   }
   function updateMenuCounts() {
@@ -1517,12 +1563,13 @@
       toast('تعذرت المزامنة الأولى — سيُحاوَل تلقائياً');
     }
   }
-  // ---------------- weekly league (Duolingo-style, Supabase shared board) ----------------
+  // ---------------- weekly league (shared board) ----------------
   function leagueScopeLabel() {
     if (!S.leagueSubject) return 'الترتيب العام';
     const s = (S.index.subjects || []).find((x) => x.subject_id === S.leagueSubject);
     return s ? s.subject_title : 'الترتيب العام';
   }
+
   function renderLeagueChips() {
     const bar = $('league-subject-bar');
     if (!bar) return;
@@ -1536,111 +1583,143 @@
       bar.appendChild(b);
     };
     mk(null, 'العام');
-    S.index.subjects.forEach((s) => mk(s.subject_id, s.subject_title));
+    (S.index.subjects || []).forEach((s) => mk(s.subject_id, s.subject_title));
   }
-  function leagueMedal(rank) {
-    return rank === 1 ? '🥇' : (rank === 2 ? '🥈' : (rank === 3 ? '🥉' : String(rank)));
+
+  function avatarHtml(photo, name, cls) {
+    if (photo) {
+      return '<span class="' + cls + '" style="background-image:url(&quot;' + String(photo).replace(/"/g, '%22') +
+        '&quot;);background-size:cover;background-position:center"></span>';
+    }
+    return '<span class="' + cls + '">' + escapeHtml((name || '؟').trim().charAt(0) || '؟') + '</span>';
   }
+
   async function renderLeague() {
     const box = $('league-board');
     const emptyEl = $('league-empty-state');
     const offEl = $('league-offline-note');
     if (box) box.innerHTML = '';
     const L = window.PortalLeague;
-    const wb = $('league-week-line');
-    try {
-      const wk = L && L.weekStart ? L.weekStart(Date.now()) : '';
-      if (wb) wb.textContent = wk ? 'أسبوع يبدأ ' + wk : '';
-    } catch (e) {}
+    const wk = L && L.weekStart ? L.weekStart(Date.now()) : '';
+    const wl = $('league-week-line');
+    if (wl) {
+      if (wk) {
+        const start = new Date(wk + 'T00:00:00');
+        const end = new Date(start.getTime() + 6 * 86400000);
+        const dayFmt = new Intl.DateTimeFormat('ar', { day: 'numeric' });
+        const monFmt = new Intl.DateTimeFormat('ar', { month: 'long' });
+        wl.textContent = start.getMonth() === end.getMonth()
+          ? dayFmt.format(start) + ' – ' + dayFmt.format(end) + ' ' + monFmt.format(start)
+          : dayFmt.format(start) + ' ' + monFmt.format(start) + ' – ' + dayFmt.format(end) + ' ' + monFmt.format(end);
+      } else {
+        wl.textContent = '';
+      }
+    }
     renderLeagueChips();
-    if (offEl) offEl.classList.toggle('hidden', navigator.onLine !== false);
+
     if (!L || !L.configured()) {
-      if (emptyEl) { emptyEl.textContent = 'لوحة الدوري غير مفعّلة بعد'; emptyEl.classList.remove('hidden'); }
+      if (emptyEl) emptyEl.classList.add('hidden');
+      if (offEl) offEl.classList.add('hidden');
+      const chips = $('league-subject-bar');
+      if (chips) chips.style.display = 'none';
       updateLeagueMe(null, []);
       icons();
       return;
     }
+    const chips = $('league-subject-bar');
+    if (chips) chips.style.display = '';
+    if (offEl) offEl.classList.toggle('hidden', navigator.onLine !== false);
     if (emptyEl) emptyEl.classList.add('hidden');
+
     let rows = [];
+    let me = null;
     try {
       rows = await L.board(undefined, S.leagueSubject || undefined);
+      me = (L.linked && L.linked()) ? await L.myRow() : null;
     } catch (e) {
-      if (emptyEl) { emptyEl.textContent = 'تعذر تحميل اللوحة — تحقق من الاتصال'; emptyEl.classList.remove('hidden'); }
+      if (emptyEl) { emptyEl.querySelector('p').textContent = 'تعذر تحميل اللوحة'; emptyEl.classList.remove('hidden'); }
       updateLeagueMe(null, []);
       icons();
       return;
     }
     if (!rows.length && emptyEl) {
-      emptyEl.textContent = 'لا نقاط بعد هذا الأسبوع — العب أي كوز لتدخل الترتيب';
+      emptyEl.querySelector('p').textContent = 'لا أحد في الترتيب بعد هذا الأسبوع';
       emptyEl.classList.remove('hidden');
     }
-    const maxXp = rows.length ? Math.max.apply(null, rows.map((r) => r.xp)) : 0;
-    const meId = null;
+
+    const myId = me && me.user_id;
     rows.forEach((r) => {
-      const card = document.createElement('div');
-      const isMe = false;
-      card.className = 'history-row league-row' + (r.rank <= 3 ? ' league-top' : '');
-      card.innerHTML =
-        '<span class="league-rank">' + leagueMedal(r.rank) + '</span>' +
-        (r.avatar
-          ? '<span class="menu-avatar league-avatar" style="background-image:url(&quot;' + String(r.avatar).replace(/"/g, '%22') + '&quot;);background-size:cover;background-position:center"></span>'
-          : '<span class="menu-avatar league-avatar">' + escapeHtml((r.name || '؟').trim().charAt(0) || '؟') + '</span>') +
-        '<div class="history-meta"><div class="history-topic">' + escapeHtml(r.name || 'لاعب') + (r.rank <= 3 ? ' <span class="fire">🔥</span>' : '') + '</div>' +
-        '<div class="history-sub" dir="ltr">' + r.xp + ' XP</div></div>' +
-        '<div class="stat-bar-track league-bar"><div class="stat-bar-fill" style="width:' + (maxXp ? Math.round((r.xp / maxXp) * 100) : 0) + '%"></div></div>';
-      box.appendChild(card);
+      const row = document.createElement('div');
+      row.className = 'league-row' + (myId && r.user_id === myId ? ' is-me' : '') + (r.rank <= 3 ? ' is-top' : '');
+      row.setAttribute('role', 'listitem');
+      row.innerHTML =
+        '<span class="league-rank" dir="ltr">' + r.rank + '</span>' +
+        avatarHtml(r.avatar, r.name, 'menu-avatar') +
+        '<span class="league-row-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
+        '<span class="league-row-xp" dir="ltr">' + r.xp + ' XP</span>';
+      box.appendChild(row);
     });
-    try {
-      const me = L.linked && L.linked() ? await L.myRow() : null;
-      updateLeagueMe(me, rows);
-    } catch (e) { updateLeagueMe(null, rows); }
+    updateLeagueMe(me, rows);
     icons();
   }
+
   function updateLeagueMe(me, rows) {
     const box = $('league-me');
     if (!box) return;
-    box.innerHTML = '';
     const L = window.PortalLeague;
     const linked = !!(L && L.linked && L.linked());
-    if (!linked) {
-      box.classList.remove('hidden');
-      box.innerHTML = '<div class="saved-group-head"><div><div class="saved-group-title">وضع الضيف</div>' +
-        '<div class="saved-group-sub">افتح من بوت تليجرام للدخول في الترتيب</div></div></div>';
-      const hb = $('league-hide-label');
-      if (hb) hb.textContent = 'إخفاء ظهوري';
+    box.hidden = false;
+
+    if (!L || !L.configured()) {
+      box.innerHTML = '<div class="league-me-main"><div class="league-me-name">الدوري غير متاح حالياً</div>' +
+        '<div class="league-me-sub">سيتوفر بعد إعداد الخادم الخاص بالبوابة</div></div>';
       icons();
       return;
     }
-    const myId = null;
-    let mine = null;
-    try {
-      const rows2 = rows || [];
-      mine = me || null;
-      if (mine && mine.user_id) {
-        const found = rows2.filter((r) => r.user_id === mine.user_id)[0];
-        if (found) { mine.rank = found.rank; mine.xp = found.xp; }
-      }
-    } catch (e) {}
-    const hidden = !!(mine && mine.hidden);
-    box.classList.remove('hidden');
-    box.innerHTML = '<div class="saved-group-head"><div>' +
-      '<div class="saved-group-title">' + escapeHtml((mine && mine.name) || S.cloudName || 'أنا') + '</div>' +
-      '<div class="saved-group-sub">' + (mine ? ('ترتيبي #' + (mine.rank || '—') + ' · ' + (mine.xp || 0) + ' نقطة') : 'لم تدخل الترتيب بعد — العب كوزاً') + '</div></div>' +
-      '<button id="league-hide-btn" class="action-btn secondary-btn saved-gen-btn" type="button"><i data-lucide="' + (hidden ? 'eye' : 'eye-off') + '"></i><span>' + (hidden ? 'إظهار ظهوري' : 'إخفاء ظهوري') + '</span></button></div>';
-    const hb = $('league-hide-label');
-    if (hb) hb.textContent = hidden ? 'إظهار ظهوري' : 'إخفاء ظهوري';
-    const b = $('league-hide-btn');
-    if (b) b.addEventListener('click', async () => {
+
+    if (!linked) {
+      box.innerHTML = '<div class="league-me-main"><div class="league-me-name">لست في الدوري</div>' +
+        '<div class="league-me-sub">افتح البوابة من بوت تليجرام لتظهر في الترتيب</div></div>';
+      icons();
+      return;
+    }
+
+    const hidden = !!(me && me.hidden);
+    const myId = me && me.user_id;
+    const mine = (rows || []).filter((r) => r.user_id === myId)[0];
+    const name = (me && me.name) || S.cloudName || 'أنت';
+    const photo = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
+    const facts = [];
+    if (mine) facts.push('المركز ' + mine.rank);
+    facts.push((mine ? mine.xp : (Number(me && me.xp) || 0)) + ' XP');
+    if (hidden) facts.push('مخفي');
+
+    box.innerHTML =
+      avatarHtml(photo, name, 'menu-avatar') +
+      '<div class="league-me-main">' +
+      '<div class="league-me-name" dir="auto">' + escapeHtml(name) + '</div>' +
+      '<div class="league-me-sub">' + escapeHtml(facts.join(' · ')) + '</div>' +
+      '</div>' +
+      '<label class="league-vis">' +
+      '<input type="checkbox" id="league-vis-toggle"' + (hidden ? '' : ' checked') + '>' +
+      '<span>ظاهر</span>' +
+      '</label>';
+
+    const toggle = $('league-vis-toggle');
+    if (toggle) toggle.addEventListener('change', async () => {
+      const next = !toggle.checked;   // checked = visible, so hiding = !checked
+      toggle.disabled = true;
       try {
-        if (window.PortalLeague && window.PortalLeague.setHidden) {
-          await window.PortalLeague.setHidden(!hidden);
-          toast(hidden ? 'ظهرت في الترتيب ✓' : 'أصبحت مخفياً عن الترتيب');
-        }
-      } catch (e) { toast('تعذر تحديث الحالة'); }
+        await L.setHidden(next);
+        toast(next ? 'أُخفيت من الترتيب' : 'ظهرت في الترتيب');
+      } catch (e) {
+        toast('تعذر تحديث الحالة');
+      }
       renderLeague();
     });
     icons();
   }
+
   async function shareMyRank() {
     try {
       const L = window.PortalLeague;
@@ -1651,8 +1730,7 @@
         const m = await L.myRow();
         if (m && m.user_id) {
           const f = rows.filter((r) => r.user_id === m.user_id)[0];
-          if (f) me = f;
-          else if (!m.hidden) me = { rank: '—', xp: 0 };
+          me = f || { rank: '—', xp: Number(m.xp) || 0 };
         }
       } catch (e) {}
       const text = L.shareText(me, rows, leagueScopeLabel());
@@ -1689,7 +1767,18 @@
       goHash(a.getAttribute('href'));
     });
     $('leave-stay').addEventListener('click', hideLeaveModal);
+    const finishBtn = $('btn-finish-quiz');
+    if (finishBtn) finishBtn.addEventListener('click', () => {
+      closeDrawers();
+      showLeaveModal('finish');
+    });
     $('leave-go').addEventListener('click', () => {
+      if (leaveIntent === 'finish') {
+        hideLeaveModal();
+        closeDrawers();
+        finishQuiz();
+        return;
+      }
       const target = navPending || '';
       S.session = null;
       hideLeaveModal();
@@ -1705,8 +1794,6 @@
     $('btn-back-home').addEventListener('click', () => goHash(''));
     $('btn-start-quiz').addEventListener('click', beginAnswering);
     $('btn-next').addEventListener('click', nextQuestion);
-    const btnSkip = $('btn-skip');
-    if (btnSkip) btnSkip.addEventListener('click', skipQuestion);
     $('btn-exit').addEventListener('click', () => goHash(''));
     document.querySelectorAll('.btn-menu').forEach((b) => b.addEventListener('click', openMenu));
     $('btn-close-menu').addEventListener('click', closeDrawers);
@@ -1760,6 +1847,14 @@
     });
     const shareBtn = $('btn-league-share');
     if (shareBtn) shareBtn.addEventListener('click', shareMyRank);
+    // league: sync my row when opening the board so the rank is always fresh
+    const leagueLink = $('menu-league');
+    if (leagueLink) leagueLink.addEventListener('click', () => {
+      try {
+        const L = window.PortalLeague;
+        if (L && L.linked && L.linked() && L.syncWeek) L.syncWeek().catch(() => {});
+      } catch (e) {}
+    });
     const impInput = $('import-data-input');
     if (impInput) impInput.addEventListener('change', () => {
       if (impInput.files && impInput.files[0]) importData(impInput.files[0]);
@@ -1806,6 +1901,8 @@
       try { localStorage.setItem('portal_theme', next); } catch (e) {}
       syncMenuToggles();
     };
+    const themeHeaderBtn = $('btn-theme-header');
+    if (themeHeaderBtn) themeHeaderBtn.addEventListener('click', toggleTheme);
 
     $('btn-timer-pause').addEventListener('click', () => {
       const ses = S.session;
@@ -1858,14 +1955,13 @@
       const map = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3 };
       if (k in map) pickOption(map[k]);
       else if (k === 'enter') nextQuestion();
-      else if (k === 's' || k === 'd' || k === 'س') skipQuestion();
       else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') nextQuestion();
     });
   }
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v20';
+  const SHELL_VERSION = 'v21';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -1,12 +1,13 @@
 /* MCQ Portal service worker — static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const CACHE = 'mcq-portal-v20';
+const CACHE = 'mcq-portal-v21';
 const CORE = [
   './',
   './index.html',
   './manifest.json',
   './css/quiz.css',
+  './css/fonts.css',
   './css/portal.css',
   './js/app.js',
   './js/analytics.js',
@@ -20,6 +21,14 @@ const CORE = [
   './js/supabase-config.js',
   './assets/fonts/space-grotesk-500.woff2',
   './assets/fonts/space-grotesk-700.woff2',
+  './assets/fonts/plex-arabic-400-arabic.woff2',
+  './assets/fonts/plex-arabic-400-latin.woff2',
+  './assets/fonts/plex-arabic-500-arabic.woff2',
+  './assets/fonts/plex-arabic-500-latin.woff2',
+  './assets/fonts/plex-arabic-600-arabic.woff2',
+  './assets/fonts/plex-arabic-600-latin.woff2',
+  './assets/fonts/plex-arabic-700-arabic.woff2',
+  './assets/fonts/plex-arabic-700-latin.woff2',
   './assets/brand-icon-light.png',
   './assets/brand-icon-dark.png',
   './data/index.json',

@@ -12,11 +12,14 @@
     <link rel="preload" href="assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
     <script src="js/lucide.min.js" defer></script>
     <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/portal.css">
 </head>
 <body id="quiz-root">
 
     <div class="app-container">
+
+        <a class="skip-link" href="#main-content">تخطَّ إلى المحتوى</a>
 
         <header class="app-header">
             <div id="header-catalog-view" class="header-inner" style="display:flex; width:100%; justify-content:space-between; align-items:center;">
@@ -28,16 +31,16 @@
                     <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
-                    <button id="btn-menu-catalog" class="icon-btn btn-menu" aria-label="القائمة الجانبية" title="القائمة الجانبية">
-                        <i data-lucide="menu"></i>
-                    </button>
                     <a id="btn-open-saved" class="icon-btn" href="#/saved" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
                         <i data-lucide="bookmark"></i>
                         <span id="saved-count-badge" class="saved-count-badge hidden">0</span>
                     </a>
-                    <a id="btn-open-stats" class="icon-btn" href="#/stats" aria-label="الإحصائيات والسجل" title="الإحصائيات والسجل">
-                        <i data-lucide="chart-column"></i>
-                    </a>
+                    <button id="btn-theme-header" class="icon-btn" type="button" aria-label="تبديل المظهر" title="تبديل المظهر">
+                        <i data-lucide="sun" id="theme-header-icon"></i>
+                    </button>
+                    <button id="btn-menu-catalog" class="icon-btn btn-menu" aria-label="القائمة الجانبية" title="القائمة الجانبية">
+                        <i data-lucide="menu"></i>
+                    </button>
                 </div>
             </div>
 
@@ -102,7 +105,7 @@
             </section>
         </div>
 
-        <main class="main-content" id="main-content">
+        <main class="main-content" id="main-content" tabindex="-1">
 
             <div id="deck-catalog" class="deck-catalog" style="display:flex; flex-direction:column; gap:0.75rem; margin:0.5rem 0;">
                 <div class="catalog-filter-bar" id="subject-filter-bar" role="group" aria-label="فلتر المواد"></div>
@@ -138,19 +141,17 @@
             </div>
 
             <div id="quiz-start-view" class="state-view quiz-start-card hidden">
-                <div class="start-icon-box">
-                    <i data-lucide="sparkles" class="start-icon"></i>
-                </div>
                 <span id="start-subject-badge" class="topic-subject-badge">المادة الدراسية</span>
                 <h2 id="start-quiz-title" class="start-title">عنوان الكوز</h2>
-                <div class="start-meta-pills">
-                    <span class="start-pill"><i data-lucide="help-circle"></i> <span id="start-questions-count">0</span> أسئلة</span>
-                    <span class="start-pill"><i data-lucide="clock"></i> <span id="start-estimated-time">0</span> دقيقة</span>
-                </div>
-                <p class="start-instructions">جاهز للاختبار؟ اضغط ابدأ لبدء احتساب الوقت ومراجعة الأسئلة.</p>
+                <p class="start-meta-line">
+                    <span id="start-questions-count">0 أسئلة</span>
+                    <span class="start-meta-sep" aria-hidden="true">·</span>
+                    <span id="start-estimated-time">0 دقيقة</span>
+                </p>
+                <p class="start-instructions">سيبدأ احتساب الوقت فور الضغط على ابدأ.</p>
                 <button id="btn-start-quiz" class="nav-btn primary-btn start-btn">
                     <i data-lucide="play"></i>
-                    <span>ابدأ الكوز الآن</span>
+                    <span>ابدأ الكوز</span>
                 </button>
             </div>
 
@@ -188,11 +189,7 @@
                     </div>
                 </div>
 
-                <nav class="bottom-nav two-btn-nav" aria-label="التنقل بين الأسئلة">
-                    <button id="btn-skip" class="nav-btn secondary-btn" aria-label="تخطي السؤال">
-                        <i data-lucide="skip-forward"></i>
-                        <span>تخطي</span>
-                    </button>
+                <nav class="bottom-nav single-btn-nav" aria-label="التنقل بين الأسئلة">
                     <button id="btn-next" class="nav-btn primary-btn full-width-btn" aria-label="السؤال التالي">
                         <span id="next-btn-text">التالي</span>
                         <i data-lucide="arrow-left" id="next-btn-icon"></i>
@@ -228,17 +225,17 @@
                             </div>
                         </div>
                         <div class="stat-card">
+                            <div class="stat-icon-wrapper time-accent"><i data-lucide="minus"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="stat-unanswered">0</span>
+                                <span class="stat-label">لم تُجب</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
                             <div class="stat-icon-wrapper time-accent"><i data-lucide="clock"></i></div>
                             <div class="stat-info">
                                 <span class="stat-value" id="stat-total-time">0:00</span>
                                 <span class="stat-label">الزمن الكلي</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon-wrapper lucky-accent"><i data-lucide="zap"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-avg-dwell">0 ث</span>
-                                <span class="stat-label">متوسط زمن الإجابة</span>
                             </div>
                         </div>
                     </div>
@@ -256,7 +253,7 @@
                         </button>
                     </div>
                     <div class="results-action-row">
-                        <button id="btn-back-catalog" class="action-btn secondary-btn">
+                        <button id="btn-back-catalog" class="action-btn text-link-btn">
                             <i data-lucide="layout-grid"></i>
                             <span>كل المواد</span>
                         </button>
@@ -326,29 +323,31 @@
                 </section>
             </div>
 
-        <!-- League (Duolingo-style weekly board) -->
+        <!-- League (weekly board) -->
         <div id="league-view" class="state-view hidden">
-            <div class="saved-topbar">
-                <div>
-                    <h2 class="saved-title">الدوري الأسبوعي 🏆</h2>
-                    <p id="league-week-line" class="saved-total-line"></p>
+            <div class="league-head">
+                <div class="league-head-text">
+                    <h2 class="league-title">الدوري الأسبوعي</h2>
+                    <p id="league-week-line" class="league-week"></p>
                 </div>
-            </div>
-            <div id="league-me" class="saved-group saved-subject-block hidden"></div>
-            <div class="catalog-filter-bar" id="league-subject-bar" role="group" aria-label="فلتر مواد الدوري"></div>
-            <div id="league-board" class="saved-groups"></div>
-            <div id="league-empty-state" class="catalog-empty-state hidden">لا نقاط بعد هذا الأسبوع — العب أي كوز لتدخل الترتيب</div>
-            <div class="results-action-row">
-                <button id="btn-league-share" class="action-btn secondary-btn">
+                <button id="btn-league-share" class="icon-btn league-share-btn" aria-label="مشاركة ترتيبي" title="مشاركة ترتيبي">
                     <i data-lucide="share-2"></i>
-                    <span>مشاركة ترتيبي</span>
-                </button>
-                <button id="btn-league-hide" class="action-btn secondary-btn">
-                    <i data-lucide="eye-off"></i>
-                    <span id="league-hide-label">إخفاء ظهوري</span>
                 </button>
             </div>
-            <div id="league-offline-note" class="catalog-empty-state hidden">تحتاج إنترنت لعرض لوحة الدوري</div>
+
+            <!-- Your row: rank + the only control on this screen -->
+            <div id="league-me" class="league-me" hidden></div>
+
+            <div class="catalog-filter-bar" id="league-subject-bar" role="group" aria-label="ترتيب مادة محددة"></div>
+            <div id="league-board" class="league-board" role="list" aria-live="polite"></div>
+            <div id="league-empty-state" class="league-empty hidden">
+                <i data-lucide="users" class="league-empty-icon"></i>
+                <p>لا أحد في الترتيب بعد هذا الأسبوع</p>
+            </div>
+            <div id="league-offline-note" class="league-empty hidden">
+                <i data-lucide="cloud-off" class="league-empty-icon"></i>
+                <p>تحتاج إنترنت لعرض لوحة الدوري</p>
+            </div>
         </div>
 
         </main>
@@ -385,11 +384,11 @@
                 <div class="matrix-legend">
                     <span class="legend-item"><span class="legend-dot dot-correct"></span> صحيح</span>
                     <span class="legend-item"><span class="legend-dot dot-wrong"></span> خطأ</span>
-                    <span class="legend-item"><span class="legend-dot dot-skipped"></span> متخطى</span>
                     <span class="legend-item"><span class="legend-dot dot-unanswered"></span> لم يُجب</span>
                     <span class="legend-item"><span class="legend-dot dot-current"></span> الحالي</span>
                 </div>
                 <div id="matrix-grid" class="matrix-grid"></div>
+                <button id="btn-finish-quiz" class="action-btn secondary-btn matrix-finish-btn" type="button">إنهاء الاختبار</button>
             </div>
         </aside>
 
@@ -429,7 +428,7 @@
                 </a>
                 <a id="menu-league" class="menu-item" href="#/league">
                     <i data-lucide="trophy"></i>
-                    <span>الدوري 🏆</span>
+                    <span>الدوري الأسبوعي</span>
                 </a>
                 <button id="menu-tour" class="menu-item" type="button">
                     <i data-lucide="circle-help"></i>
@@ -525,11 +524,11 @@
             <div id="tour-tip" class="tour-tip" role="dialog" aria-modal="true" aria-labelledby="tour-tip-title">
                 <div id="tour-tip-progressbar" class="tour-tip-progressbar"><span id="tour-tip-bar-fill"></span></div>
                 <div class="tour-tip-progress" id="tour-tip-progress" dir="ltr"></div>
-                <i data-lucide="sparkles" id="tour-tip-icon" class="tour-tip-icon" aria-hidden="true"></i>
+                <i data-lucide="compass" id="tour-tip-icon" class="tour-tip-icon" aria-hidden="true"></i>
                 <h3 id="tour-tip-title"></h3>
                 <p id="tour-tip-body"></p>
                 <div class="tour-tip-actions">
-                    <button id="tour-btn-skip" class="tour-link-btn">تخطي الجولة</button>
+                    <button id="tour-btn-skip" class="tour-link-btn">إغلاق الجولة</button>
                     <span class="tour-spacer"></span>
                     <button id="tour-btn-prev" class="action-btn secondary-btn tour-nav-btn">السابق</button>
                     <button id="tour-btn-next" class="action-btn primary-btn tour-nav-btn">التالي</button>
