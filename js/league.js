@@ -183,8 +183,18 @@
     } catch (e) { return null; }
   }
 
-  async function board(weekId, subjectId) {
+  // Upload a generated card to the public "cards" bucket and return its URL.
+  async function uploadCard(blob) {
     var sb = await client();
+    var uid = (myUserId() || 'guest').replace(/[^a-zA-Z0-9]/g, '');
+    var name = 'card_' + uid + '_' + Date.now() + '.png';
+    var up = await sb.storage.from('cards').upload(name, blob, { contentType: 'image/png', upsert: true });
+    if (up.error) throw new Error(up.error.message || 'upload-failed');
+    var pub = sb.storage.from('cards').getPublicUrl(name);
+    return (pub && pub.data && pub.data.publicUrl) || '';
+  }
+
+  async function board(weekId, subjectId) {    var sb = await client();
     var r = await sb.from('league_xp').select('*').eq('week_id', weekId || weekStart(Date.now())).eq('hidden', false).order('xp', { ascending: false }).limit(100);
     if (r.error) throw new Error(r.error.message || 'read-failed');
     var rows = (r.data || []).map(function (x, i) {
@@ -217,6 +227,7 @@
     setHidden: setHidden,
     myRow: myRow,
     board: board,
+    uploadCard: uploadCard,
     shareText: shareText,
     displayName: displayName,
     _setClient: _setClient,

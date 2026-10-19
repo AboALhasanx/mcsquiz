@@ -1932,24 +1932,53 @@
     ctx.closePath();
   }
 
-  function drawAvatar(ctx, cx, cy, r, name, ring) {
+  function drawAvatar(ctx, cx, cy, r, name, ring, img) {
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fillStyle = '#c9a227';
-    ctx.fill();
-    ctx.lineWidth = 6;
+    ctx.clip();
+    if (img && img.width) {
+      const s = Math.min(img.width, img.height);
+      ctx.drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, cx - r, cy - r, r * 2, r * 2);
+    } else {
+      ctx.fillStyle = '#c9a227';
+      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
+      ctx.fillStyle = '#14161c';
+      ctx.font = '700 ' + Math.round(r * 0.9) + 'px "MSCQuiz Arabic", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText((name || '؟').trim().charAt(0) || '؟', cx, cy + 2);
+    }
+    ctx.restore();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.lineWidth = 3;
     ctx.strokeStyle = ring || 'rgba(255,255,255,0.14)';
     ctx.stroke();
-    ctx.fillStyle = '#0b0f16';
-    ctx.font = '700 ' + Math.round(r * 0.9) + 'px "MSCQuiz Arabic", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText((name || '؟').trim().charAt(0) || '؟', cx, cy + 2);
-    ctx.restore();
   }
 
-  function buildLeagueCard(data) {
+  function loadCardImage(url) {
+    return new Promise((resolve) => {
+      if (!url) return resolve(null);
+      // Telegram avatars are unreadable from the browser (CSP sandbox), so route
+      // them through our own /api/avatar proxy → same-origin → canvas-safe.
+      const isTme = /^https:\/\/t\.me\/i\/userpic\//.test(url);
+      const localDev = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+      const src = isTme
+        ? ((localDev ? 'https://mcq-portal-jade.vercel.app' : '') + '/api/avatar?u=' + encodeURIComponent(url))
+        : url;
+      const img = new Image();
+      if (!/^\/api\//.test(src)) img.crossOrigin = 'anonymous';
+      let done = false;
+      const finish = (v) => { if (!done) { done = true; resolve(v); } };
+      img.onload = () => finish(img);
+      img.onerror = () => finish(null);
+      img.src = src;
+      setTimeout(() => finish(null), 3500);
+    });
+  }
+
+  async function buildLeagueCard(data) {
     const W = 1080;
     const INK = '#f3f4f6', MUTED = '#8b97a8', FAINT = '#6b7280';
     const ACCENT = '#c9a227', GOLD = '#d9a521';
@@ -1967,6 +1996,15 @@
     const rowH = 148;
     const header = 330, footerH = 40, mineH = mineOutside ? 148 : 0;
     const H = Math.max(860, Math.min(1350, header + shown.length * rowH + mineH + footerH));
+
+    // avatars are remote (Telegram) — preload with CORS, fall back to initials
+    const imgs = {};
+    const toLoad = shown.slice();
+    if (mineOutside && mine) toLoad.push(mine);
+    await Promise.all(toLoad.map(async (r) => {
+      const url = (mineId && r.user_id === mineId && !r.avatar) ? (data.myPhoto || '') : r.avatar;
+      imgs[r.user_id] = await loadCardImage(url);
+    }));
 
     const c = document.createElement('canvas');
     c.width = W; c.height = H;
@@ -2042,7 +2080,7 @@
       ctx.fillText(String(r.rank), R - 4, cy + 13);
 
       // avatar
-      drawAvatar(ctx, R - 92, cy, avR, r.name, first ? GOLD : 'rgba(255,255,255,0.10)');
+      drawAvatar(ctx, R - 92, cy, avR, r.name, first ? GOLD : 'rgba(255,255,255,0.10)', imgs[r.user_id]);
       if (first) {
         const cx = R - 92, cyy = cy - avR - 12;
         ctx.fillStyle = GOLD;
@@ -2095,7 +2133,7 @@
     return c;
   }
 
-  function showSharePreview(url, blob) {
+  function showSharePreview(url, blob, publicUrl) {
     const modal = $('share-modal');
     const img = $('share-img');
     if (!modal || !img) return;
@@ -2111,6 +2149,30 @@
       a.click();
       a.remove();
     };
+    const tg = $('share-telegram');
+    if (tg) {
+      tg.classList.toggle('hidden', !publicUrl);
+      tg.onclick = () => {
+        if (!publicUrl) return;
+        const link = 'https://t.me/share/url?url=' + encodeURIComponent(publicUrl) +
+          '&text=' + encodeURIComponent('دوري MSCQuiz — ترتيبي هذا الأسبوع');
+        try {
+          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
+            window.Telegram.WebApp.openTelegramLink(link);
+          } else {
+            window.open(link, '_blank');
+          }
+        } catch (e) { window.open(link, '_blank'); }
+      };
+    }
+    const cp = $('share-copy');
+    if (cp) {
+      cp.classList.toggle('hidden', !publicUrl);
+      cp.onclick = async () => {
+        try { await navigator.clipboard.writeText(publicUrl); toast('نُسخ رابط البطاقة', 'success'); }
+        catch (e) { toast(publicUrl); }
+      };
+    }
   }
 
   async function shareMyRank() {
@@ -2141,7 +2203,8 @@
         const mf = new Intl.DateTimeFormat('ar', { month: 'long' });
         weekLabel = df.format(start) + ' – ' + df.format(end) + ' ' + mf.format(start);
       }
-      const canvas = buildLeagueCard({ rows, mine, scope: leagueScopeLabel(), week: weekLabel });
+      const myPhoto = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
+      const canvas = await buildLeagueCard({ rows, mine, myPhoto, scope: leagueScopeLabel(), week: weekLabel });
       const blob = await new Promise((res) => canvas.toBlob(res, 'image/png'));
       if (!blob) { toast('تعذر إنشاء الصورة', 'error'); return; }
       const file = new File([blob], 'mscquiz-league.png', { type: 'image/png' });
@@ -2153,7 +2216,18 @@
           if (e && e.name === 'AbortError') return;
         }
       }
-      showSharePreview(URL.createObjectURL(blob), blob);
+      // no file share on this device: publish the card and hand over a link
+      let publicUrl = '';
+      try {
+        publicUrl = (L.uploadCard && await L.uploadCard(blob)) || '';
+      } catch (e) { publicUrl = ''; }
+      const tgApp = window.Telegram && window.Telegram.WebApp;
+      if (publicUrl && tgApp && tgApp.openTelegramLink) {
+        const link = 'https://t.me/share/url?url=' + encodeURIComponent(publicUrl) +
+          '&text=' + encodeURIComponent('دوري MSCQuiz — ترتيبي هذا الأسبوع');
+        try { tgApp.openTelegramLink(link); return; } catch (e) {}
+      }
+      showSharePreview(URL.createObjectURL(blob), blob, publicUrl);
     } catch (e) { toast('تعذر إنشاء المشاركة', 'error'); }
     finally {
       if (btn) { btn.disabled = false; btn.classList.remove('is-busy'); }
