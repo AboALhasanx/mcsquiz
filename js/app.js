@@ -1382,7 +1382,7 @@
     }
   }
 
-  // ---------------- cloud account (Dropbox, optional) ----------------
+  // ---------------- cloud account (Telegram, optional) ----------------
   function cloud() { return window.PortalCloud || null; }
   function fmtSyncTime() {
     try {
