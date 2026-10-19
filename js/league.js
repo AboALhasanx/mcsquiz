@@ -102,18 +102,19 @@
   function weeklyXp(history, weekId) {
     var monday = new Date(weekId + 'T00:00:00');
     var end = new Date(monday.getTime() + 7 * 86400000);
-    var total = 0, bySub = {};
+    var total = 0, answered = 0, bySub = {};
     (history || []).forEach(function (h) {
       var t = Number(h.t) || 0;
       if (t < monday.getTime() || t >= end.getTime()) return;
       var c = Number(h.correct) || 0;
       total += c;
+      answered += Number(h.total) || 0;
       var sid = h.subjectId || '؟';
       if (!bySub[sid]) bySub[sid] = { title: h.subjectTitle || sid, xp: 0, n: 0 };
       bySub[sid].xp += c;
       bySub[sid].n += 1;
     });
-    return { total: total, bySub: bySub };
+    return { total: total, answered: answered, bySub: bySub };
   }
 
   function loadLocal() {
@@ -138,6 +139,7 @@
       avatar: avatarOf(u).slice(0, 300),
       hidden: await isHidden(sb, myUserId(), wid),
       xp: Math.max(0, Math.min(5000, w.total)),
+      answered: Math.max(0, Math.min(20000, w.answered)),
       per_subject: w.bySub,
       updated_at: new Date().toISOString(),
     };
@@ -164,7 +166,7 @@
     var res = await sb.from('league_xp').upsert({
       user_id: uid, week_id: wid,
       name: displayName(u).slice(0, 40), username: (u.username || '').slice(0, 40), avatar: avatarOf(u).slice(0, 300),
-      hidden: !!hidden, xp: Math.max(0, Math.min(5000, w.total)), per_subject: w.bySub,
+      hidden: !!hidden, xp: Math.max(0, Math.min(5000, w.total)), answered: Math.max(0, Math.min(20000, w.answered)), per_subject: w.bySub,
       updated_at: new Date().toISOString(),
     }, { onConflict: 'user_id,week_id' });
     if (res.error) throw new Error(res.error.message || 'upsert-failed');
@@ -187,7 +189,10 @@
     if (r.error) throw new Error(r.error.message || 'read-failed');
     var rows = (r.data || []).map(function (x, i) {
       var xp = subjectId && x.per_subject && x.per_subject[subjectId] ? (Number(x.per_subject[subjectId].xp) || 0) : Number(x.xp) || 0;
-      return { rank: 0, user_id: x.user_id, name: x.name || 'لاعب', username: x.username || '', xp: xp, per_subject: x.per_subject || {}, updated_at: x.updated_at };
+      return {
+        rank: 0, user_id: x.user_id, name: x.name || 'لاعب', username: x.username || '',
+        xp: xp, answered: Number(x.answered) || 0, per_subject: x.per_subject || {}, updated_at: x.updated_at,
+      };
     });
     if (subjectId) rows.sort(function (a, b) { return b.xp - a.xp; });
     rows.forEach(function (x, i) { x.rank = i + 1; });

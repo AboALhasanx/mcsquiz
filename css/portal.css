@@ -335,6 +335,11 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   font-size: 0.75rem;
   color: var(--text-muted);
 }
+.league-me-gap {
+  margin-top: 0.1rem;
+  font-size: 0.72rem;
+  color: var(--text-subtle, var(--text-muted));
+}
 
 /* native checkbox, styled as a switch: keyboard + screen reader come for free */
 .league-vis {
@@ -541,10 +546,22 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 }
 .league-row-xp {
   flex-shrink: 0;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  color: var(--text-muted);
+  color: var(--text-main);
 }
+.league-row-xp small { font-size: 0.68rem; font-weight: 500; color: var(--text-muted); margin-inline-start: 0.15rem; }
+.league-row-acc {
+  flex-shrink: 0;
+  min-width: 2.6rem;
+  text-align: end;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.podium-xp { font-size: 0.68rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.podium-xp small { font-size: 0.62rem; }
 
 .league-empty {
   display: flex;
@@ -753,6 +770,14 @@ html[dir="ltr"] .catalog-filter-bar {
 .modal-card p { margin: 0 0 1rem; opacity: 0.85; font-size: 0.9rem; }
 .modal-actions { display: flex; gap: 0.6rem; }
 .modal-actions .action-btn { flex: 1; }
+.share-card { max-width: 360px; }
+.share-img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 0.8rem;
+  display: block;
+}
 
 /* --- saved / stats: list layouts, not centred slides --- */
 #saved-view,

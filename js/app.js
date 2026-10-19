@@ -27,6 +27,10 @@
     : n === 2 ? 'سؤالان محفوظان'
       : n >= 3 && n <= 10 ? n + ' أسئلة محفوظة'
         : n + ' سؤالاً محفوظاً');
+  // The league talks in correct answers, not an abstract currency.
+  const ansCount = (n) => (n === 1 ? 'إجابة واحدة' : n === 2 ? 'إجابتان'
+    : n >= 3 && n <= 10 ? n + ' إجابات' : n + ' إجابة');
+  const accuracyOf = (r) => (r && r.answered > 0 ? Math.round((r.xp / r.answered) * 100) : null);
 
   function dbg(...args) {
     if (!DEBUG) return;
@@ -1566,7 +1570,8 @@
   // ---------------- weekly league (shared board) ----------------
   function leagueScopeLabel() {
     if (!S.leagueSubject) return 'الترتيب العام';
-    const s = (S.index.subjects || []).find((x) => x.subject_id === S.leagueSubject);
+    const subs = (S.index && S.index.subjects) || [];
+    const s = subs.find((x) => x.subject_id === S.leagueSubject);
     return s ? s.subject_title : 'الترتيب العام';
   }
 
@@ -1583,7 +1588,7 @@
       bar.appendChild(b);
     };
     mk(null, 'العام');
-    (S.index.subjects || []).forEach((s) => mk(s.subject_id, s.subject_title));
+    ((S.index && S.index.subjects) || []).forEach((s) => mk(s.subject_id, s.subject_title));
   }
 
   function avatarHtml(photo, name, cls) {
@@ -1661,7 +1666,8 @@
         '<span class="league-rank" dir="ltr">' + r.rank + '</span>' +
         avatarHtml(r.avatar, r.name, 'menu-avatar') +
         '<span class="league-row-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
-        '<span class="league-row-xp" dir="ltr">' + r.xp + ' XP</span>';
+        '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
+        (accuracyOf(r) !== null && !S.leagueSubject ? '<span class="league-row-acc">' + accuracyOf(r) + '%</span>' : '');
       box.appendChild(row);
     });
     updateLeagueMe(me, rows);
@@ -1686,7 +1692,7 @@
         avatarHtml(r.avatar, r.name, 'podium-av') +
         '</span>' +
         '<span class="podium-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
-        '<span class="podium-xp" dir="ltr">' + r.xp + ' XP</span>' +
+        '<span class="podium-xp">' + r.xp + ' <small>إجابة</small></span>' +
         '<span class="podium-block">' + r.rank + '</span>';
       el.appendChild(slot);
     });
@@ -1720,13 +1726,16 @@
     const photo = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
     const facts = [];
     if (mine) facts.push('المركز ' + mine.rank);
-    facts.push((mine ? mine.xp : (Number(me && me.xp) || 0)) + ' XP');
+    facts.push(ansCount(mine ? mine.xp : (Number(me && me.xp) || 0)));
+    const acc = accuracyOf(mine);
+    if (acc !== null && !S.leagueSubject) facts.push('دقة ' + acc + '%');
     if (hidden) facts.push('مخفي');
-    else if (mine && mine.rank > 1) {
+    let gapLine = '';
+    if (!hidden && mine && mine.rank > 1) {
       const above = (rows || [])[mine.rank - 2];
       if (above) {
         const gap = Math.max(0, above.xp - mine.xp);
-        facts.push(gap === 0 ? 'متعادل مع المركز ' + above.rank : 'باقي ' + gap + ' XP للمركز ' + above.rank);
+        gapLine = gap === 0 ? 'متعادل مع المركز ' + above.rank : 'باقي ' + gap + ' للمركز ' + above.rank;
       }
     }
 
@@ -1735,6 +1744,7 @@
       '<div class="league-me-main">' +
       '<div class="league-me-name" dir="auto">' + escapeHtml(name) + '</div>' +
       '<div class="league-me-sub">' + escapeHtml(facts.join(' · ')) + '</div>' +
+      (gapLine ? '<div class="league-me-gap">' + escapeHtml(gapLine) + '</div>' : '') +
       '</div>' +
       '<label class="league-vis">' +
       '<input type="checkbox" id="league-vis-toggle"' + (hidden ? '' : ' checked') + '>' +
@@ -1756,27 +1766,229 @@
     icons();
   }
 
+  // ---- shareable league card (drawn on canvas, no external template) ----
+  function drawRoundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawAvatar(ctx, cx, cy, r, name, ring) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fillStyle = '#4da3ff';
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = ring || 'rgba(255,255,255,0.14)';
+    ctx.stroke();
+    ctx.fillStyle = '#0b0f16';
+    ctx.font = '700 ' + Math.round(r * 0.9) + 'px "MSCQuiz Arabic", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText((name || '؟').trim().charAt(0) || '؟', cx, cy + 2);
+    ctx.restore();
+  }
+
+  function buildLeagueCard(data) {
+    const W = 1080;
+    const INK = '#f3f4f6', MUTED = '#8b97a8', FAINT = '#6b7280';
+    const ACCENT = '#4da3ff', GOLD = '#d9a521';
+    const L = 84, R = W - 84;
+
+    // never trust incoming order: rank the rows here so a bigger number can never
+    // sit under a smaller rank on the card
+    const ranked = data.rows.slice().sort((a, b) => b.xp - a.xp)
+      .map((r, i) => Object.assign({}, r, { rank: i + 1 }));
+    const mineId = data.mine && data.mine.user_id;
+    const mine = ranked.filter((r) => r.user_id === mineId)[0] || null;
+    const shown = ranked.slice(0, 5);
+    const mineOutside = !!(mine && mine.rank > 5);
+
+    const rowH = 148;
+    const header = 330, footerH = 40, mineH = mineOutside ? 148 : 0;
+    const H = Math.max(860, Math.min(1350, header + shown.length * rowH + mineH + footerH));
+
+    const c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const ctx = c.getContext('2d');
+    ctx.direction = 'rtl';
+    ctx.textBaseline = 'alphabetic';
+
+    const bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, '#0b0e14');
+    bg.addColorStop(1, '#0e131c');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    const glow = ctx.createRadialGradient(W / 2, 190, 40, W / 2, 190, 580);
+    glow.addColorStop(0, 'rgba(77,163,255,0.10)');
+    glow.addColorStop(1, 'rgba(77,163,255,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, 660);
+
+    // brand row
+    ctx.textAlign = 'right';
+    ctx.fillStyle = INK;
+    ctx.font = '700 34px "MSCQuiz Arabic", sans-serif';
+    ctx.fillText('MSCQuiz', R, 96);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = MUTED;
+    ctx.font = '500 26px "MSCQuiz Arabic", sans-serif';
+    ctx.fillText(data.week, L, 96);
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.fillRect(L, 132, W - L * 2, 2);
+
+    // title
+    ctx.textAlign = 'right';
+    ctx.fillStyle = INK;
+    ctx.font = '700 58px "MSCQuiz Arabic", sans-serif';
+    ctx.fillText('ترتيب هذا الأسبوع', R, 226);
+    ctx.fillStyle = MUTED;
+    ctx.font = '500 28px "MSCQuiz Arabic", sans-serif';
+    ctx.fillText(data.scope, R, 268);
+
+    // column labels — makes it a table, not a list of guesses
+    ctx.font = '500 21px "MSCQuiz Arabic", sans-serif';
+    ctx.fillStyle = FAINT;
+    ctx.textAlign = 'right';
+    ctx.fillText('اللاعب', R - 162, 306);
+    ctx.textAlign = 'left';
+    ctx.fillText('إجابات صحيحة', L, 306);
+    ctx.fillStyle = 'rgba(255,255,255,0.05)';
+    ctx.fillRect(L, 318, W - L * 2, 1.5);
+
+    const medals = ['#d9a521', '#c3ccda', '#c08a5c'];
+
+    const drawRow = (r, y, opts) => {
+      const h = opts.h;
+      const isMe = !!mine && r.user_id === mine.user_id;
+      const first = r.rank === 1;
+      const avR = opts.av;
+      const cy = y + h / 2;
+
+      if (isMe) {
+        ctx.fillStyle = 'rgba(77,163,255,0.10)';
+        drawRoundRect(ctx, L - 14, y + 8, W - (L - 14) * 2, h - 16, 16);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(77,163,255,0.35)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // rank at the right edge
+      ctx.textAlign = 'right';
+      ctx.fillStyle = medals[r.rank - 1] || MUTED;
+      ctx.font = '700 40px "MSCQuiz Arabic", sans-serif';
+      ctx.fillText(String(r.rank), R - 4, cy + 13);
+
+      // avatar
+      drawAvatar(ctx, R - 92, cy, avR, r.name, first ? GOLD : 'rgba(255,255,255,0.10)');
+      if (first) {
+        const cx = R - 92, cyy = cy - avR - 12;
+        ctx.fillStyle = GOLD;
+        ctx.beginPath();
+        ctx.moveTo(cx - 22, cyy + 10);
+        ctx.lineTo(cx - 15, cyy - 8);
+        ctx.lineTo(cx - 7, cyy + 2);
+        ctx.lineTo(cx, cyy - 10);
+        ctx.lineTo(cx + 7, cyy + 2);
+        ctx.lineTo(cx + 15, cyy - 8);
+        ctx.lineTo(cx + 22, cyy + 10);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // name (+ "you")
+      ctx.textAlign = 'right';
+      ctx.fillStyle = INK;
+      ctx.font = '600 32px "MSCQuiz Arabic", sans-serif';
+      const nameX = R - 92 - avR - 26;
+      ctx.fillText(r.name || 'لاعب', nameX, cy + 10);
+      if (isMe) {
+        const w = ctx.measureText(r.name || 'لاعب').width;
+        ctx.fillStyle = ACCENT;
+        ctx.font = '600 21px "MSCQuiz Arabic", sans-serif';
+        ctx.fillText('أنت', nameX - w - 12, cy + 8);
+      }
+
+      // the number on the left, where a table puts its values
+      ctx.textAlign = 'left';
+      ctx.fillStyle = first ? GOLD : INK;
+      ctx.font = '700 38px "MSCQuiz Arabic", sans-serif';
+      ctx.fillText(String(r.xp), L, cy + 16);
+      const nw = ctx.measureText(String(r.xp)).width;
+      ctx.fillStyle = MUTED;
+      ctx.font = '500 22px "MSCQuiz Arabic", sans-serif';
+      ctx.fillText('إجابة', L + nw + 8, cy + 14);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      ctx.fillRect(L, y + h - 6, W - L * 2, 1.5);
+    };
+
+    let y = header;
+    shown.forEach((r) => { drawRow(r, y, { h: rowH, av: 44 }); y += rowH; });
+
+    if (mineOutside) {
+      drawRow(mine, y + 12, { h: 124, av: 40 });
+    }
+
+    return c;
+  }
+
+  function showSharePreview(url, blob) {
+    const modal = $('share-modal');
+    const img = $('share-img');
+    if (!modal || !img) return;
+    img.src = url;
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    const dl = $('share-download');
+    if (dl) dl.onclick = () => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mscquiz-league.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+  }
+
   async function shareMyRank() {
     try {
       const L = window.PortalLeague;
-      if (!L || !L.configured()) { toast('الدوري غير مُعد بعد'); return; }
+      if (!L || !L.configured()) { toast('الدوري غير معد بعد'); return; }
       const rows = await L.board(undefined, S.leagueSubject || undefined);
       let me = null;
-      try {
-        const m = await L.myRow();
-        if (m && m.user_id) {
-          const f = rows.filter((r) => r.user_id === m.user_id)[0];
-          me = f || { rank: '—', xp: Number(m.xp) || 0 };
-        }
-      } catch (e) {}
-      const text = L.shareText(me, rows, leagueScopeLabel());
-      if (navigator.share) {
-        try { await navigator.share({ title: 'MSCQuiz League', text: text }); return; } catch (e) { if (e && e.name === 'AbortError') return; }
+      try { me = await L.myRow(); } catch (e) {}
+      const myId = me && me.user_id;
+      const mine = rows.filter((r) => r.user_id === myId)[0] || null;
+      let weekLabel = '';
+      const wk = L.weekStart(Date.now());
+      if (wk) {
+        const start = new Date(wk + 'T00:00:00');
+        const end = new Date(start.getTime() + 6 * 86400000);
+        const df = new Intl.DateTimeFormat('ar', { day: 'numeric' });
+        const mf = new Intl.DateTimeFormat('ar', { month: 'long' });
+        weekLabel = df.format(start) + ' – ' + df.format(end) + ' ' + mf.format(start);
       }
-      try {
-        await navigator.clipboard.writeText(text);
-        toast('نُسخ ترتيبك — الصقه أينما شئت');
-      } catch (e) { toast(text); }
+      const canvas = buildLeagueCard({ rows, mine, scope: leagueScopeLabel(), week: weekLabel });
+      const blob = await new Promise((res) => canvas.toBlob(res, 'image/png'));
+      if (!blob) { toast('تعذر إنشاء الصورة'); return; }
+      const file = new File([blob], 'mscquiz-league.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: 'دوري MSCQuiz' });
+          return;
+        } catch (e) {
+          if (e && e.name === 'AbortError') return;
+        }
+      }
+      showSharePreview(URL.createObjectURL(blob), blob);
     } catch (e) { toast('تعذر إنشاء المشاركة'); }
   }
 
@@ -1803,6 +2015,11 @@
       goHash(a.getAttribute('href'));
     });
     $('leave-stay').addEventListener('click', hideLeaveModal);
+    const shareClose = $('share-close');
+    if (shareClose) shareClose.addEventListener('click', () => {
+      $('share-modal').classList.add('hidden');
+      $('share-modal').setAttribute('aria-hidden', 'true');
+    });
     const finishBtn = $('btn-finish-quiz');
     if (finishBtn) finishBtn.addEventListener('click', () => {
       closeDrawers();
@@ -1997,7 +2214,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v24';
+  const SHELL_VERSION = 'v25';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -2038,7 +2255,9 @@
         }
       }
       if (window.PortalLog) window.PortalLog.info('boot', 'ok subjects=' + (S.index ? S.index.subjects.length : 0) + ' test_mode=' + (S.index ? S.index.test_mode : '?'));
-      if (!tourGet(TOUR_KEY)) setTimeout(() => { if (tourIdx < 0) tourShow(0); }, 1200);
+      // Show the tour exactly once per device: mark it seen the moment it opens,
+      // so a reload mid-tour never brings it back (it is replayable from the menu).
+      if (!tourGet(TOUR_KEY)) setTimeout(() => { if (tourIdx < 0) { tourSet(TOUR_KEY); tourShow(0); } }, 1200);
       dbg('boot ok. subjects:', S.index.subjects.length);
     } catch (e) {
       try { if (window.PortalLog) window.PortalLog.error('boot', String((e && e.message) || e)); } catch (e2) {}
