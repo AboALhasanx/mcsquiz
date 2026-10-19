@@ -641,6 +641,13 @@ html[dir="ltr"] .catalog-filter-bar {
   gap: 0.6rem;
 }
 
+/* column flex views must never squeeze their cards when content is short */
+#saved-view > *,
+#stats-view > *,
+#league-view > * {
+  flex-shrink: 0;
+}
+
 /* --- stats view --- */
 .stat-bar-track {
   height: 8px;
