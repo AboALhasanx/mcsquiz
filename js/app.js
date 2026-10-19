@@ -1196,21 +1196,48 @@
 
   // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
   const TOUR_STEPS = [
-    { title: 'أهلاً بك في MSCQuiz', body: 'كوزات موادك هنا. جولة تفاعلية قصيرة — ستجرّب بنفسك.', center: true },
-    { title: '1 — القائمة الجانبية', body: 'التثبيت والمحفوظ والجولة والصوت والمظهر — كلها هنا.', target: '.btn-menu' },
-    { title: '2 — اختر المادة', body: 'كل مادة بزر مستقل.', target: '#subject-filter-bar' },
-    { title: '3 — اختر الجابتر', body: 'الجابترات مرقمة: 1، 2…', target: '#chapter-filter-bar' },
-    { title: '4 — ابدأ الكوز', body: 'زر التشغيل يبدأ فوراً. زر (i) يعرض التفاصيل.', target: '#deck-catalog .sketch-row:first-child .sketch-play-cell' },
-    { title: '5 — المحفوظ', body: 'أسئلتك المحفوظة هنا، مقسمة حسب المادة والجابتر.', target: '#btn-open-saved' },
-    { title: 'تجربة حقيقية', body: 'سنفتح أول كوز لتجرب بنفسك.', center: true, go: true },
-    { title: '6 — ابدأ', body: 'اضغط زر البدء لينطلق المؤقت.', target: '#btn-start-quiz', action: 'start' },
-    { title: '7 — أجب أو تخطّ', body: 'اختر أي إجابة أو اضغط تخطي — جرّب بنفسك.', target: '#options-container', action: 'answer' },
-    { title: '8 — الشرح والحفظ', body: 'يظهر الشرح فوراً. زر الحفظ أعلى البطاقة يحفظ السؤال.', target: '#btn-save-question' },
-    { title: '9 — أدوات الامتحان', body: 'الترجمة والصوت من الأعلى، وباقي الإعدادات في القائمة الجانبية.', target: '#header-session-view .header-right' },
-    { title: '10 — التنقل', body: 'جدول الأسئلة يقفز للأسئلة السابقة فقط. زر التالي ينهي عند آخر سؤال.', target: '#btn-open-matrix' },
-    { title: 'انطلق', body: 'أكمل الكوز بنفسك. في النهاية: نتيجتك وتحليلها ومراجعة الأخطاء — وتقدّمك في الإحصائيات — وتقدّمك في الإحصائيات.', center: true },
+    { title: 'MSCQuiz — جولة كاملة', body: 'كل شي بالبوابة: المواد والكوزات والمحفوظ والإحصائيات والدوري. جولة قصيرة، وتقدر تطلع منها بأي وقت.', center: true },
+
+    { title: 'أزرار الهيدر', body: 'المحفوظات، تبديل المظهر (فاتح/داكن)، والقائمة الجانبية. اضغط الشعار للرجوع للرئيسية.', target: '.header-catalog-actions' },
+
+    { title: 'القائمة الجانبية', body: 'تثبيت التطبيق، المحفوظ، الإحصائيات، الدوري، إعادة الجولة، الصوت، المظهر، وسجل التشخيص.', open: 'menu', target: '#menu-drawer .menu-list' },
+
+    { title: 'اختر المادة', body: 'شريط أفقي — اسحب واختر مادتك.', target: '#subject-filter-bar' },
+
+    { title: 'اختر الجابتر', body: 'أرقام الجابترات. الرقم الفاتح هو المختار حالياً.', target: '#chapter-filter-bar' },
+
+    { title: 'صف الكوز', body: 'زر التشغيل يبدأ الكوز فوراً، وأيقونة (i) تعرض عدد الأسئلة وأفضل نتيجة.', target: '#deck-catalog .sketch-row:first-child' },
+
+    { title: 'نجرّب كوز', body: 'سنفتح أول كوز حتى تشوف كل شي عملي.', center: true, go: true },
+
+    { title: 'البداية', body: 'هنا عدد الأسئلة والوقت المتوقع. المؤقت يبدأ عند الضغط.', target: '#btn-start-quiz', action: 'start' },
+
+    { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
+
+    { title: 'الشرح فوراً', body: 'بعد الإجابة يظهر الشرح بالعربي تحت الخيارات.', target: '#live-feedback-box' },
+
+    { title: 'الحفظ والترجمة', body: 'زر الحفظ أعلى البطاقة، وأيقونة اللغة تبدّل السؤال بين عربي / English / الاثنين معاً.', target: '#btn-save-question' },
+
+    { title: 'التالي', body: 'ينتقل بعد الإجابة فقط، وبآخر سؤال ينهي الكوز ويحسب النتيجة.', target: '#btn-next' },
+
+    { title: 'جدول الأسئلة', body: 'يعرض الصحيح والخطأ وغير المجاب، ويقفز للأسئلة السابقة. منه أيضاً «إنهاء الاختبار».', target: '#btn-open-matrix' },
+
+    { title: 'بعد الإنهاء', body: 'نسبتك، صحيحة/خاطئة/لم تُجب، الزمن، مراجعة كل سؤال بشرحه، وإعادة الخاطئ فقط.', center: true },
+
+    { title: 'المحفوظات', body: 'كل سؤال حفظته، مقسم مادة ثم جابتر. كل جابتر عنده زر اختبار، وفيه اختبار لكل المادة.', center: true, route: '#/saved' },
+
+    { title: 'الإحصائيات', body: 'أرقامك العامة، متوسط كل مادة، سجل المحاولات، ونسخة احتياطية/استعادة/مسح.', center: true, route: '#/stats' },
+
+    { title: 'الدوري الأسبوعي', body: 'ترتيب أسبوعي بالإجابات الصحيحة مع نسبة الدقة. زر «ظاهر» يخفي اسمك أو يرجعه.', target: '#league-view .league-head', route: '#/league' },
+
+    { title: 'شارك ترتيبك', body: 'بطاقة صورة جاهزة: ترتيبك، أعلى ثلاثة، والدقة — تنزلها أو تشاركها بضغطة.', target: '#btn-league-share' },
+
+    { title: 'خلصت الجولة', body: 'تعيدها من القائمة الجانبية، والتطبيق يشتغل بدون إنترنت بعد أول زيارة.', center: true },
   ];
+
   let tourIdx = -1;
+  let tourRoutedFor = -1;
+  const tourRetried = new Map();
 
   function tourGet(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
   function tourSet(key) { try { localStorage.setItem(key, '1'); } catch (e) {} }
@@ -1220,6 +1247,32 @@
     const ov = $('tour-overlay');
     if (i < 0 || i >= TOUR_STEPS.length) { tourHide(); return; }
     const st = TOUR_STEPS[i];
+    // cross-view steps: navigate first, then place the tip on the new screen
+    if (st.route && location.hash !== st.route) {
+      if (tourRoutedFor !== i) {
+        tourRoutedFor = i;
+        try { S.session = null; } catch (e) {}     // the tour is an explicit leave
+        try { hideLeaveModal(); } catch (e) {}
+        $('tour-tip').style.visibility = 'hidden';
+        const nb = $('tour-btn-next');
+        if (nb) nb.disabled = true;
+        navBypass = true;
+        location.hash = st.route;
+        setTimeout(() => {
+          $('tour-tip').style.visibility = '';
+          if (nb) nb.disabled = false;
+          if (tourIdx === i) tourShow(i);
+        }, 800);
+        return;
+      }
+      // navigation did not take: keep the step centred instead of looping
+    }
+    $('tour-tip').style.visibility = '';
+    const nextBtn = $('tour-btn-next');
+    if (nextBtn) nextBtn.disabled = false;
+    try { hideLeaveModal(); } catch (e) {}
+    if (st.open === 'menu') openDrawer('menu-drawer');
+    else closeDrawers();
     if (st.go) {
       const sub = currentSubject();
       const ch = sub && sub.chapters[0];
@@ -1232,7 +1285,16 @@
     if (!st.center) {
       const cands = st.target ? Array.from(document.querySelectorAll(st.target)) : [];
       el = cands.find((x) => x && x.offsetParent) || null;
-      if (!el) { tourShow(i + 1); return; } // skip missing target
+      if (!el) {
+        // the view may still be rendering (e.g. the explanation after an answer)
+        const tries = tourRetried.get(i) || 0;
+        if (tries < 3) {
+          tourRetried.set(i, tries + 1);
+          setTimeout(() => { if (tourIdx === i) tourShow(i); }, 600);
+          return;
+        }
+        tourShow(i + 1); return; // skip a target that never appears
+      }
       el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       rect = el.getBoundingClientRect();
     }
@@ -1342,6 +1404,7 @@
     $('tour-overlay').setAttribute('aria-hidden', 'true');
     const f = $('tour-frame');
     if (f) f.classList.add('hidden');
+    try { closeDrawers(); } catch (e) {}
   }
 
   function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }
@@ -2219,7 +2282,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v26';
+  const SHELL_VERSION = 'v27';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
