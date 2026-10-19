@@ -388,6 +388,129 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   gap: 0.3rem;
   margin-top: 0.5rem;
 }
+
+/* podium: the top three get a stage, everyone else a table */
+.league-board-label {
+  margin: 1.1rem 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.league-podium {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  align-items: end;
+  gap: 0.4rem;
+  margin: 0.2rem 0 0;
+  direction: rtl;
+}
+.podium-slot.p1 { grid-column: 2; }
+.podium-slot.p2 { grid-column: 1; }
+.podium-slot.p3 { grid-column: 3; }
+.podium-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+  position: relative;
+}
+
+/* the winner gets a crown, a halo and a flame — motion explains "this is first",
+   and every effect is disabled under prefers-reduced-motion */
+.podium-slot.p1::before {
+  content: '';
+  position: absolute;
+  inset: -16px -12px 0;
+  background: radial-gradient(ellipse at 50% 26%, rgba(217, 165, 33, 0.30), rgba(217, 165, 33, 0) 68%);
+  filter: blur(4px);
+  z-index: 0;
+  pointer-events: none;
+  animation: podiumHalo 5s ease-in-out infinite;
+}
+.podium-slot > * { position: relative; z-index: 1; }
+.podium-av-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.podium-crown {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-6deg);
+  color: #d9a521;
+  display: inline-flex;
+  animation: crownFloat 3.6s ease-in-out infinite;
+}
+.podium-crown svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35)); }
+.podium-block { gap: 0.2rem; }
+
+@keyframes podiumHalo {
+  0%, 100% { opacity: 0.55; transform: scale(0.98); }
+  50% { opacity: 0.95; transform: scale(1.03); }
+}
+@keyframes crownFloat {
+  0%, 100% { transform: translateX(-50%) rotate(-6deg) translateY(0); }
+  50% { transform: translateX(-50%) rotate(-3deg) translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .podium-slot.p1::before,
+  .podium-crown { animation: none; }
+}
+.podium-av {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0b0f16;
+  background-color: #4da3ff;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+}
+.podium-slot.p1 .podium-av { width: 62px; height: 62px; border-color: #d9a521; }
+.podium-slot.p2 .podium-av { border-color: #9aa6b8; }
+.podium-slot.p3 .podium-av { border-color: #b07a4a; }
+.podium-name {
+  max-width: 100%;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.podium-xp {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.podium-block {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  background: rgba(127, 140, 160, 0.10);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.podium-slot.p1 .podium-block { height: 66px; color: #e6b53a; background: rgba(217, 165, 33, 0.14); border-color: rgba(217, 165, 33, 0.45); }
+.podium-slot.p2 .podium-block { height: 48px; }
+.podium-slot.p3 .podium-block { height: 36px; }
+.podium-slot.is-me .podium-name { color: #4da3ff; }
+
 .league-row {
   display: flex;
   align-items: center;

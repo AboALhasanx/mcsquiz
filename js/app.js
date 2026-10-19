@@ -1648,9 +1648,14 @@
     }
 
     const myId = me && me.user_id;
-    rows.forEach((r) => {
+    const top = rows.slice(0, 3);
+    const rest = rows.slice(3);
+    renderPodium(top, myId);
+    const restLabel = $('league-rest-label');
+    if (restLabel) restLabel.classList.toggle('hidden', rest.length === 0);
+    rest.forEach((r) => {
       const row = document.createElement('div');
-      row.className = 'league-row' + (myId && r.user_id === myId ? ' is-me' : '') + (r.rank <= 3 ? ' is-top' : '');
+      row.className = 'league-row' + (myId && r.user_id === myId ? ' is-me' : '');
       row.setAttribute('role', 'listitem');
       row.innerHTML =
         '<span class="league-rank" dir="ltr">' + r.rank + '</span>' +
@@ -1661,6 +1666,30 @@
     });
     updateLeagueMe(me, rows);
     icons();
+  }
+
+  function renderPodium(top, myId) {
+    const el = $('league-podium');
+    if (!el) return;
+    el.innerHTML = '';
+    if (!top.length) { el.style.display = 'none'; return; }
+    el.style.display = '';
+    // visual order in RTL: 2nd · 1st · 3rd  (grid fills right-to-left)
+    const order = [top[1], top[0], top[2]].filter(Boolean);
+    order.forEach((r) => {
+      const slot = document.createElement('div');
+      const first = r.rank === 1;
+      slot.className = 'podium-slot p' + r.rank + (myId && r.user_id === myId ? ' is-me' : '');
+      slot.innerHTML =
+        '<span class="podium-av-wrap">' +
+        (first ? '<span class="podium-crown" aria-hidden="true"><i data-lucide="crown"></i></span>' : '') +
+        avatarHtml(r.avatar, r.name, 'podium-av') +
+        '</span>' +
+        '<span class="podium-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
+        '<span class="podium-xp" dir="ltr">' + r.xp + ' XP</span>' +
+        '<span class="podium-block">' + r.rank + '</span>';
+      el.appendChild(slot);
+    });
   }
 
   function updateLeagueMe(me, rows) {
@@ -1693,6 +1722,13 @@
     if (mine) facts.push('المركز ' + mine.rank);
     facts.push((mine ? mine.xp : (Number(me && me.xp) || 0)) + ' XP');
     if (hidden) facts.push('مخفي');
+    else if (mine && mine.rank > 1) {
+      const above = (rows || [])[mine.rank - 2];
+      if (above) {
+        const gap = Math.max(0, above.xp - mine.xp);
+        facts.push(gap === 0 ? 'متعادل مع المركز ' + above.rank : 'باقي ' + gap + ' XP للمركز ' + above.rank);
+      }
+    }
 
     box.innerHTML =
       avatarHtml(photo, name, 'menu-avatar') +
@@ -1961,7 +1997,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v22';
+  const SHELL_VERSION = 'v24';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
