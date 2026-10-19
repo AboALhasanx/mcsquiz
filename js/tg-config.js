@@ -5,4 +5,4 @@
  * syncs into Telegram's per-user CloudStorage. Outside Telegram the portal
  * stays a device-local guest app (same as before).
  */
-window.PORTAL_TG_BOT = '';
+window.PORTAL_TG_BOT = 'cs_mscbot';
