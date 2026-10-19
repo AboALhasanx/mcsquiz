@@ -140,6 +140,15 @@
     if (u.username) return '@' + u.username;
     return 'لاعب';
   }
+  // Telegram profile photo (small) when available, else '' -> callers use initials.
+  function avatarUrl(u) {
+    u = u || tgUser() || {};
+    try {
+      if (u.photo_url) return u.photo_url;
+      if (u.photo && u.photo.small_url) return u.photo.small_url;
+    } catch (e) {}
+    return '';
+  }
 
   function lastSync() {
     var v = lsGet(SYNC_KEY);
@@ -346,7 +355,7 @@
     var u = tgUser();
     if (!u) return null;
     var name = [u.first_name, u.last_name].filter(Boolean).join(' ').trim();
-    return { name: name || null, username: u.username || null, id: u.id, photo: u.photo_url || null };
+    return { name: name || null, username: u.username || null, id: u.id, photo: avatarUrl(u) };
   }
 
   function integrate() {
@@ -397,6 +406,7 @@
     botLink: function () { var b = botName(); return b ? 'https://t.me/' + b : ''; },
     user: async function () { return tgUser(); },
     accountInfo: accountInfo,
+    avatarUrl: avatarUrl,
     integrate: integrate,
     captureLaunch: captureLaunch,
     pushSoon: pushSoon,

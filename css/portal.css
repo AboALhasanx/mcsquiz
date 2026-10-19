@@ -418,6 +418,8 @@ html[data-theme="light"] .danger-btn { color: #dc2626 !important; }
   height: 34px;
   border-radius: 50%;
   background: #4da3ff;
+  background-size: cover;
+  background-position: center;
   color: #0b0f16;
   font-weight: 800;
   display: inline-flex;
@@ -425,6 +427,7 @@ html[data-theme="light"] .danger-btn { color: #dc2626 !important; }
   justify-content: center;
   flex-shrink: 0;
   font-size: 1rem;
+  overflow: hidden;
 }
 .menu-account-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .menu-account-sub { font-size: 0.75rem; opacity: 0.6; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

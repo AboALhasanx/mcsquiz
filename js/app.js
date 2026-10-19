@@ -1420,26 +1420,40 @@
     const av = $('menu-avatar');
     if (!name || !sub) return;
     const C = cloud();
+    const setAvatar = (url, fallbackText) => {
+      if (!av) return;
+      if (url) {
+        av.style.backgroundImage = 'url("' + url.replace(/"/g, '%22') + '")';
+        av.style.backgroundSize = 'cover';
+        av.style.backgroundPosition = 'center';
+        av.textContent = '';
+      } else {
+        av.style.backgroundImage = '';
+        av.textContent = fallbackText;
+      }
+    };
     if (!C || !C.configured()) {
       name.textContent = 'زائر — بدون حساب';
       sub.textContent = 'افتح البوابة من بوت تليجرام للمزامنة';
-      if (av) av.textContent = 'ز';
+      setAvatar('', 'ز');
       return;
     }
     if (!C.linked()) {
       name.textContent = 'زائر — بدون حساب';
       sub.textContent = 'افتح البوابة من داخل تليجرام للدخول';
-      if (av) av.textContent = 'ز';
+      setAvatar('', 'ز');
       return;
     }
     const who = S.cloudName || 'حسابي';
     name.textContent = who;
+    let photo = '';
+    try { photo = (C.avatarUrl && C.avatarUrl()) || ''; } catch (e) {}
+    setAvatar(photo, (who.trim()[0] || 'ح').toUpperCase());
     if (!navigator.onLine) sub.textContent = 'أوفلاين — سيُزامَن عند الاتصال';
     else {
       const t = fmtSyncTime();
       sub.textContent = t ? 'مزامن ✓ ' + t : 'مزامن ✓';
     }
-    if (av) av.textContent = (who.trim()[0] || 'ح').toUpperCase();
     icons();
   }
   window.PortalCloudUI = function () { try { updateAccountRow(); } catch (e) {} };
@@ -1568,7 +1582,9 @@
       card.className = 'history-row league-row' + (r.rank <= 3 ? ' league-top' : '');
       card.innerHTML =
         '<span class="league-rank">' + leagueMedal(r.rank) + '</span>' +
-        '<span class="menu-avatar league-avatar">' + escapeHtml((r.name || '؟').trim().charAt(0) || '؟') + '</span>' +
+        (r.avatar
+          ? '<span class="menu-avatar league-avatar" style="background-image:url(&quot;' + String(r.avatar).replace(/"/g, '%22') + '&quot;);background-size:cover;background-position:center"></span>'
+          : '<span class="menu-avatar league-avatar">' + escapeHtml((r.name || '؟').trim().charAt(0) || '؟') + '</span>') +
         '<div class="history-meta"><div class="history-topic">' + escapeHtml(r.name || 'لاعب') + (r.rank <= 3 ? ' <span class="fire">🔥</span>' : '') + '</div>' +
         '<div class="history-sub" dir="ltr">' + r.xp + ' XP</div></div>' +
         '<div class="stat-bar-track league-bar"><div class="stat-bar-fill" style="width:' + (maxXp ? Math.round((r.xp / maxXp) * 100) : 0) + '%"></div></div>';

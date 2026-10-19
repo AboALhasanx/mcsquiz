@@ -3,5 +3,5 @@
 // Supabase Dashboard -> Project Settings -> API -> "anon public" key.
 window.PORTAL_SUPABASE = {
   url: 'https://fauomjucqcreohnvmbcb.supabase.co',
-  key: '',
+  key: 'sb_publishable_CLlwtrIfKG5P0fhmnI8aKQ_FRbXPbrq',
 };

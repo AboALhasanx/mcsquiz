@@ -68,6 +68,14 @@
     if (u && u.username) return '@' + u.username;
     return 'لاعب';
   }
+  function avatarOf(u) {
+    u = u || tgUser() || {};
+    try {
+      if (u.photo_url) return u.photo_url;
+      if (u.photo && u.photo.small_url) return u.photo.small_url;
+    } catch (e) {}
+    return '';
+  }
 
   function weekStart(d) {
     var t = d ? new Date(d) : new Date();
@@ -127,7 +135,7 @@
       week_id: wid,
       name: displayName(u).slice(0, 40),
       username: (u.username || '').slice(0, 40),
-      avatar: '',
+      avatar: avatarOf(u).slice(0, 300),
       hidden: await isHidden(sb, myUserId(), wid),
       xp: Math.max(0, Math.min(5000, w.total)),
       per_subject: w.bySub,
@@ -155,7 +163,7 @@
     var u = tgUser() || {};
     var res = await sb.from('league_xp').upsert({
       user_id: uid, week_id: wid,
-      name: displayName(u).slice(0, 40), username: (u.username || '').slice(0, 40), avatar: '',
+      name: displayName(u).slice(0, 40), username: (u.username || '').slice(0, 40), avatar: avatarOf(u).slice(0, 300),
       hidden: !!hidden, xp: Math.max(0, Math.min(5000, w.total)), per_subject: w.bySub,
       updated_at: new Date().toISOString(),
     }, { onConflict: 'user_id,week_id' });
