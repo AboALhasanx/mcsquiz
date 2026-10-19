@@ -2219,7 +2219,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v25';
+  const SHELL_VERSION = 'v26';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
