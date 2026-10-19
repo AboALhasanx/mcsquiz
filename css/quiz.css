@@ -63,7 +63,7 @@
 
     --explanation-bg: #1A1E27;
     --explanation-border: rgba(255, 255, 255, 0.10);
-    --explanation-accent: #38BDF8;
+    --explanation-accent: var(--accent);
     --explanation-text: #F1F3F7;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
@@ -137,7 +137,7 @@
 
     --explanation-bg: #F8FAFC;
     --explanation-border: #E2E8F0;
-    --explanation-accent: #0284C7;
+    --explanation-accent: var(--accent);
     --explanation-text: #1E293B;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -393,13 +393,13 @@ input:focus, textarea:focus {
 }
 
 .mode-pill-btn.exam-active {
-    background-color: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.4);
+    background-color: rgba(201, 162, 39, 0.15);
+    border-color: rgba(201, 162, 39, 0.4);
     color: #818CF8;
 }
 
 [data-theme="light"] .mode-pill-btn.exam-active {
-    background-color: rgba(99, 102, 241, 0.10);
+    background-color: rgba(201, 162, 39, 0.10);
     border-color: #6366F1;
     color: #4F46E5;
 }
@@ -411,13 +411,13 @@ input:focus, textarea:focus {
 
 /* Shuffle Button Active State */
 .icon-btn.shuffle-active {
-    color: #38BDF8 !important;
-    background-color: rgba(56, 189, 248, 0.12) !important;
+    color: var(--accent) !important;
+    background-color: rgba(201, 162, 39, 0.12) !important;
 }
 
 [data-theme="light"] .icon-btn.shuffle-active {
-    color: #0284C7 !important;
-    background-color: rgba(2, 132, 199, 0.10) !important;
+    color: var(--accent) !important;
+    background-color: rgba(150, 114, 26, 0.10) !important;
 }
 
 .topic-banner {
@@ -904,7 +904,7 @@ button.timer-unified-pill.is-paused {
 .concept-tag {
     background-color: var(--accent-subtle);
     color: var(--accent);
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    border: 1px solid rgba(201, 162, 39, 0.3);
 }
 
 .bookmark-btn {
@@ -1264,7 +1264,7 @@ button.timer-unified-pill.is-paused {
     border-radius: 50%;
     background: radial-gradient(circle, var(--bg-surface) 60%, var(--bg-card) 100%);
     border: 4px solid var(--accent);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
 }
 
 .score-number {
@@ -2070,8 +2070,8 @@ pre,
     justify-content: space-between;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
-    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.14) 0%, rgba(201, 162, 39, 0.06) 100%);
+    border: 1px solid rgba(201, 162, 39, 0.35);
     border-radius: var(--radius-lg);
     margin: 0.5rem 0;
     animation: fadeIn 0.25s ease-out;
@@ -2086,7 +2086,7 @@ pre,
 .pwa-icon {
     width: 24px;
     height: 24px;
-    color: #38BDF8;
+    color: var(--accent);
     flex-shrink: 0;
 }
 
@@ -2117,7 +2117,7 @@ pre,
 .pwa-install-btn {
     padding: 0.4rem 0.85rem;
     border-radius: var(--radius-full);
-    background-color: #38BDF8;
+    background-color: var(--accent);
     color: #0B0D11;
     border: none;
     font-size: 0.82rem;
@@ -2231,9 +2231,9 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     border: 1px solid rgba(16, 185, 129, 0.25);
 }
 .badge-new {
-    background: rgba(56, 189, 248, 0.12);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.22);
+    background: rgba(201, 162, 39, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(201, 162, 39, 0.22);
 }
 
 /* Brand Logo & Header Layout */
@@ -2263,9 +2263,9 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 .download-pack-btn {
     width: 100%;
     height: 38px;
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px dashed rgba(56, 189, 248, 0.35);
-    color: #38bdf8;
+    background: rgba(201, 162, 39, 0.08);
+    border: 1px dashed rgba(201, 162, 39, 0.35);
+    color: var(--accent);
     font-size: 0.82rem;
     font-weight: 700;
     border-radius: var(--radius-md);
@@ -2277,8 +2277,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 .download-pack-btn:hover {
-    background: rgba(56, 189, 248, 0.16);
-    border-color: #38bdf8;
+    background: rgba(201, 162, 39, 0.16);
+    border-color: var(--accent);
 }
 
 /* Compact Cards Layout (155px height) */
@@ -2357,8 +2357,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 
 .sketch-info-cell:hover,
 .sketch-info-cell:active {
-    background: rgba(56, 189, 248, 0.12);
-    color: #38bdf8;
+    background: rgba(201, 162, 39, 0.12);
+    color: var(--accent);
 }
 
 .sketch-info-cell svg {
@@ -2410,7 +2410,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 
 .sketch-subject-tag {
     font-weight: 800;
-    color: #38bdf8;
+    color: var(--accent);
 }
 
 .sketch-sem-tag {
@@ -2447,8 +2447,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     border-left: 1.5px solid rgba(255, 255, 255, 0.18) !important;
     border-right: none !important;
     border-radius: 0 !important;
-    color: #38bdf8 !important;
-    background: rgba(56, 189, 248, 0.04) !important;
+    color: var(--accent) !important;
+    background: rgba(201, 162, 39, 0.04) !important;
     transition: background-color 0.15s ease !important, color 0.15s ease !important, border-color 0.15s ease !important, transform 0.15s ease !important, opacity 0.15s ease !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -2462,7 +2462,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 
 .sketch-play-cell:hover,
 .sketch-play-cell:active {
-    background: rgba(56, 189, 248, 0.16);
+    background: rgba(201, 162, 39, 0.16);
     color: #ffffff;
 }
 
@@ -2507,8 +2507,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 }
 
 .row-info-btn:hover {
-    background-color: rgba(56, 189, 248, 0.12);
-    color: #38bdf8;
+    background-color: rgba(201, 162, 39, 0.12);
+    color: var(--accent);
 }
 
 .row-info-btn:active {
@@ -2521,8 +2521,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 }
 
 [data-theme="light"] .row-info-btn:hover {
-    background-color: rgba(2, 132, 199, 0.1);
-    color: #0284c7;
+    background-color: rgba(150, 114, 26, 0.1);
+    color: var(--accent);
 }
 
 /* Info Sheet (inside drawer) */
@@ -2657,8 +2657,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     background: rgba(255, 255, 255, 0.2);
 }
 .dot-current {
-    background: #38bdf8;
-    box-shadow: 0 0 6px #38bdf8;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
 }
 
 .matrix-grid {
@@ -2687,8 +2687,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     color: #34d399;
 }
 .matrix-cell.current {
-    border-color: #38bdf8;
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.35);
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(201, 162, 39, 0.35);
     color: #ffffff;
     font-size: 1.05rem;
 }
@@ -2710,14 +2710,14 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, #0369a1 100%);
     color: #ffffff;
-    border: 1px solid rgba(56, 189, 248, 0.4);
+    border: 1px solid rgba(201, 162, 39, 0.4);
     border-radius: var(--radius-md);
     font-size: 0.9rem;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    box-shadow: 0 4px 12px rgba(150, 114, 26, 0.35);
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -2830,7 +2830,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 .bm-subject-tag {
     font-size: 0.72rem;
     font-weight: 800;
-    color: #38bdf8;
+    color: var(--accent);
 }
 
 .bm-question-preview {
@@ -2933,8 +2933,8 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 }
 
 .bm-explanation-box {
-    background: rgba(56, 189, 248, 0.06);
-    border-left: 3px solid #38bdf8;
+    background: rgba(201, 162, 39, 0.06);
+    border-left: 3px solid var(--accent);
     padding: 0.5rem 0.75rem;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-size: 0.8rem;
@@ -2950,7 +2950,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 
 .bm-deep-link-btn {
     font-size: 0.76rem;
-    color: #38bdf8;
+    color: var(--accent);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -2985,7 +2985,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     width: 100%;
     max-width: 430px;
     background: #101725;
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    border: 1px solid rgba(201, 162, 39, 0.3);
     border-radius: 16px;
     padding: 1rem;
     display: flex;
@@ -2996,7 +2996,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 
 [data-theme="light"] .qr-scanner-box {
     background: #f8fafc;
-    border-color: rgba(3, 105, 161, 0.35);
+    border-color: rgba(150, 114, 26, 0.35);
 }
 
 .qr-scanner-head {
@@ -3020,7 +3020,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 .qr-scanner-head svg {
     width: 19px;
     height: 19px;
-    color: #38bdf8;
+    color: var(--accent);
 }
 
 #qr-video {
@@ -3067,7 +3067,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 }
 
 .qr-manual-row input:focus {
-    border-color: #38bdf8;
+    border-color: var(--accent);
 }
 
 [data-theme="light"] .qr-manual-row input {

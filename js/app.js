@@ -1527,7 +1527,7 @@
         go.textContent = 'إنهاء';
       } else {
         t.textContent = 'الخروج من الاختبار؟';
-        b.textContent = 'سيُلغى تقدمك الحالي. هل أنت متأكد؟';
+        b.textContent = 'لن تُحسب نتيجتك إذا خرجت الآن. هل تريد الخروج؟';
         go.textContent = 'خروج';
       }
     }
@@ -1783,6 +1783,10 @@
     let rows = [];
     let me = null;
     try {
+      // refresh my row first so the board (and my avatar) is never stale
+      if (L.linked && L.linked() && navigator.onLine !== false) {
+        try { await L.syncWeek(); } catch (e) {}
+      }
       rows = await L.board(undefined, S.leagueSubject || undefined);
       me = (L.linked && L.linked()) ? await L.myRow() : null;
     } catch (e) {
@@ -1800,18 +1804,21 @@
     S.leagueStamp = Date.now();
 
     const myId = me && me.user_id;
-    const top = rows.slice(0, 3);
-    const rest = rows.slice(3);
-    renderPodium(top, myId);
+    const myPhoto = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
+    const avatarFor = (r) => avatarHtml(r.user_id === myId && !r.avatar ? myPhoto : r.avatar, r.name, 'menu-avatar');
+    const usePodium = rows.length >= 3;
+    const top = usePodium ? rows.slice(0, 3) : [];
+    const rest = usePodium ? rows.slice(3) : rows;
+    renderPodium(top, myId, myPhoto);
     const restLabel = $('league-rest-label');
-    if (restLabel) restLabel.classList.toggle('hidden', rest.length === 0);
+    if (restLabel) restLabel.classList.toggle('hidden', !usePodium || rest.length === 0);
     rest.forEach((r) => {
       const row = document.createElement('div');
       row.className = 'league-row' + (myId && r.user_id === myId ? ' is-me' : '');
       row.setAttribute('role', 'listitem');
       row.innerHTML =
         '<span class="league-rank" dir="ltr">' + r.rank + '</span>' +
-        avatarHtml(r.avatar, r.name, 'menu-avatar') +
+        avatarFor(r) +
         '<span class="league-row-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
         '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
         (accuracyOf(r) !== null && !S.leagueSubject ? '<span class="league-row-acc">' + accuracyOf(r) + '%</span>' : '');
@@ -1821,7 +1828,7 @@
     icons();
   }
 
-  function renderPodium(top, myId) {
+  function renderPodium(top, myId, myPhoto) {
     const el = $('league-podium');
     if (!el) return;
     el.innerHTML = '';
@@ -1832,11 +1839,12 @@
     order.forEach((r) => {
       const slot = document.createElement('div');
       const first = r.rank === 1;
+      const photo = (myId && r.user_id === myId && !r.avatar) ? (myPhoto || '') : r.avatar;
       slot.className = 'podium-slot p' + r.rank + (myId && r.user_id === myId ? ' is-me' : '');
       slot.innerHTML =
         '<span class="podium-av-wrap">' +
         (first ? '<span class="podium-crown" aria-hidden="true"><i data-lucide="crown"></i></span>' : '') +
-        avatarHtml(r.avatar, r.name, 'podium-av') +
+        avatarHtml(photo, r.name, 'podium-av') +
         '</span>' +
         '<span class="podium-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
         '<span class="podium-xp">' + r.xp + ' <small>إجابة</small></span>' +
@@ -1928,7 +1936,7 @@
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fillStyle = '#4da3ff';
+    ctx.fillStyle = '#c9a227';
     ctx.fill();
     ctx.lineWidth = 6;
     ctx.strokeStyle = ring || 'rgba(255,255,255,0.14)';
@@ -1944,7 +1952,7 @@
   function buildLeagueCard(data) {
     const W = 1080;
     const INK = '#f3f4f6', MUTED = '#8b97a8', FAINT = '#6b7280';
-    const ACCENT = '#4da3ff', GOLD = '#d9a521';
+    const ACCENT = '#c9a227', GOLD = '#d9a521';
     const L = 84, R = W - 84;
 
     // never trust incoming order: rank the rows here so a bigger number can never
@@ -1973,7 +1981,7 @@
     ctx.fillRect(0, 0, W, H);
 
     const glow = ctx.createRadialGradient(W / 2, 190, 40, W / 2, 190, 580);
-    glow.addColorStop(0, 'rgba(77,163,255,0.10)');
+    glow.addColorStop(0, 'rgba(201,162,39,0.10)');
     glow.addColorStop(1, 'rgba(77,163,255,0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, 660);
@@ -2019,10 +2027,10 @@
       const cy = y + h / 2;
 
       if (isMe) {
-        ctx.fillStyle = 'rgba(77,163,255,0.10)';
+        ctx.fillStyle = 'rgba(201,162,39,0.10)';
         drawRoundRect(ctx, L - 14, y + 8, W - (L - 14) * 2, h - 16, 16);
         ctx.fill();
-        ctx.strokeStyle = 'rgba(77,163,255,0.35)';
+        ctx.strokeStyle = 'rgba(201,162,39,0.35)';
         ctx.lineWidth = 2;
         ctx.stroke();
       }
@@ -2370,7 +2378,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v28';
+  const SHELL_VERSION = 'v29';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
