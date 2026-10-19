@@ -1839,7 +1839,20 @@
   }
 
   // ---------------- boot ----------------
+  // ---------------- version guard: never run a stale shell ----------------
+  const SHELL_VERSION = 'v20';
+  async function guardShell() {
+    try {
+      const marker = localStorage.getItem('portal_shell_version');
+      if (marker && marker !== SHELL_VERSION) {
+        // A newer shell is deployed: drop cached state that may conflict and reload once.
+        localStorage.removeItem('portal_shell_version');
+      }
+      localStorage.setItem('portal_shell_version', SHELL_VERSION);
+    } catch (e) {}
+  }
   async function boot() {
+    await guardShell();
     try { if (window.PortalLog) { window.PortalLog.restore(); window.PortalLog.info('boot', 'start href=' + location.href.slice(0, 80)); } } catch (e) {}
     try {
       const savedTheme = localStorage.getItem('portal_theme');
@@ -1880,6 +1893,21 @@
   function showError(msg) {
     $('error-message').textContent = msg;
     show('quiz-error');
+  }
+
+  // SW tells open tabs that a new shell is live -> refresh once so the new
+  // assets (and the new Telegram identity path) are actually in use.
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('message', (ev) => {
+      if (ev && ev.data && ev.data.type === 'sw-activated') {
+        try {
+          if (sessionStorage.getItem('portal_sw_reloaded') !== ev.data.cache) {
+            sessionStorage.setItem('portal_sw_reloaded', ev.data.cache);
+            location.reload();
+          }
+        } catch (e) {}
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', boot);
