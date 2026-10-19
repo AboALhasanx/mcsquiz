@@ -201,6 +201,7 @@
       var xp = subjectId && x.per_subject && x.per_subject[subjectId] ? (Number(x.per_subject[subjectId].xp) || 0) : Number(x.xp) || 0;
       return {
         rank: 0, user_id: x.user_id, name: x.name || 'لاعب', username: x.username || '',
+        avatar: x.avatar || '',
         xp: xp, answered: Number(x.answered) || 0, per_subject: x.per_subject || {}, updated_at: x.updated_at,
       };
     });
