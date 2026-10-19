@@ -39,16 +39,21 @@
     console.log('[portal-debug]', ...args);
   }
 
-  function toast(msg) {
+  function toast(msg, kind) {
     const region = $('toast-region');
     if (!region) return;
     region.innerHTML = ''; // single-toast policy: replace, never stack
+    const type = kind === 'error' || kind === 'success' ? kind : 'info';
     const t = document.createElement('div');
-    t.className = 'portal-toast';
-    t.textContent = msg;
+    t.className = 'portal-toast toast-' + type;
+    const icon = type === 'error' ? 'alert-circle' : (type === 'success' ? 'check-circle-2' : 'info');
+    t.innerHTML = '<i data-lucide="' + icon + '" class="toast-icon" aria-hidden="true"></i><span></span>';
+    t.querySelector('span').textContent = msg;
+    t.setAttribute('role', type === 'error' ? 'alert' : 'status');
     region.appendChild(t);
+    try { if (window.lucide && window.lucide.createIcons) window.lucide.createIcons(); } catch (e) {}
     requestAnimationFrame(() => t.classList.add('show'));
-    setTimeout(() => { t.classList.remove('show'); setTimeout(() => { if (t.parentNode === region) region.innerHTML = ''; }, 300); }, 2600);
+    setTimeout(() => { t.classList.remove('show'); setTimeout(() => { if (t.parentNode === region) region.innerHTML = ''; }, 260); }, 2800);
     try { if (window.PortalLog) window.PortalLog.info('toast', msg); } catch (e) {}
   }
 
@@ -814,7 +819,7 @@
   function nextQuestion() {
     const ses = S.session;
     if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
-    if (ses.picks[ses.idx] === null) { toast('اختر إجابة أولاً'); return; }
+    if (ses.picks[ses.idx] === null) { toast('اختر إجابة أولاً', 'error'); return; }
     if (ses.idx < ses.questions.length - 1) {
       advanceTo(ses.idx + 1);
     } else {
@@ -1757,9 +1762,9 @@
       toggle.disabled = true;
       try {
         await L.setHidden(next);
-        toast(next ? 'أُخفيت من الترتيب' : 'ظهرت في الترتيب');
+        toast(next ? 'أُخفيت من الترتيب' : 'ظهرت في الترتيب', 'success');
       } catch (e) {
-        toast('تعذر تحديث الحالة');
+        toast('تعذر تحديث الحالة', 'error');
       }
       renderLeague();
     });
@@ -1978,7 +1983,7 @@
       }
       const canvas = buildLeagueCard({ rows, mine, scope: leagueScopeLabel(), week: weekLabel });
       const blob = await new Promise((res) => canvas.toBlob(res, 'image/png'));
-      if (!blob) { toast('تعذر إنشاء الصورة'); return; }
+      if (!blob) { toast('تعذر إنشاء الصورة', 'error'); return; }
       const file = new File([blob], 'mscquiz-league.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         try {
@@ -1989,7 +1994,7 @@
         }
       }
       showSharePreview(URL.createObjectURL(blob), blob);
-    } catch (e) { toast('تعذر إنشاء المشاركة'); }
+    } catch (e) { toast('تعذر إنشاء المشاركة', 'error'); }
   }
 
   // ---------------- wire up ----------------
@@ -2096,7 +2101,7 @@
         const m = await L.myRow();
         await L.setHidden(!(m && m.hidden));
         renderLeague();
-      } catch (e) { toast('تعذر تحديث الحالة'); }
+      } catch (e) { toast('تعذر تحديث الحالة', 'error'); }
     });
     const shareBtn = $('btn-league-share');
     if (shareBtn) shareBtn.addEventListener('click', shareMyRank);

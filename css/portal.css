@@ -63,32 +63,50 @@ html[data-theme="light"] { color-scheme: light; }
   padding: 0.5rem 0 1rem;
 }
 
-/* --- toasts (aria-live announcements) --- */
+/* --- toasts: floating pills under the header, not a bottom bar --- */
 .toast-region {
   position: fixed;
-  bottom: 1.2rem;
+  top: calc(env(safe-area-inset-top, 0px) + 60px);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 10050;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
   align-items: center;
   pointer-events: none;
+  width: max-content;
+  max-width: 92vw;
 }
 .portal-toast {
-  background: #1c2530;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
-  padding: 0.55rem 1rem;
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.38);
   opacity: 0;
-  transition: opacity 0.25s ease;
-  max-width: 90vw;
-  text-align: center;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  max-width: 92vw;
+  text-align: start;
 }
-.portal-toast.show { opacity: 1; }
+.portal-toast.show { opacity: 1; transform: translateY(0); }
+/* while a quiz runs, clear the progress block instead of covering it */
+body[data-quizlive="yes"] .toast-region {
+  top: calc(env(safe-area-inset-top, 0px) + 116px);
+}
+.toast-icon { width: 16px; height: 16px; flex-shrink: 0; }
+.toast-info .toast-icon { color: #4da3ff; }
+.toast-success { border-color: rgba(16, 185, 129, 0.45); }
+.toast-success .toast-icon { color: #34d399; }
+.toast-error { border-color: rgba(244, 63, 94, 0.5); }
+.toast-error .toast-icon { color: #fb7185; }
 
 /* --- chapter breakdown on results --- */
 .chapter-breakdown { margin: 0.75rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
