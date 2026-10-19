@@ -179,14 +179,15 @@
   function chLabel(ch) { return 'جابتر ' + ch.chapter_no; }
 
   function currentSubject() {
-    if (S.index && S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
+    if (S.index && Array.isArray(S.index.subjects) && S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
       return S.index.subjects.find((s) => s.subject_id === S.subjectFilter);
     }
-    return S.index ? S.index.subjects[0] : null;
+    return (S.index && Array.isArray(S.index.subjects) && S.index.subjects.length) ? S.index.subjects[0] : null;
   }
 
   function currentChapter(sub) {
     sub = sub || currentSubject();
+    if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) return null;
     if (sub.chapters.some((c) => c.chapter_no === S.chapterFilter)) {
       return sub.chapters.find((c) => c.chapter_no === S.chapterFilter);
     }
@@ -196,8 +197,11 @@
   function renderSubjectChips() {
     const bar = $('subject-filter-bar');
     bar.innerHTML = '';
-    if (!S.subjectFilter || !S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
-      S.subjectFilter = S.index.subjects[0].subject_id;
+    const subjects = (S.index && Array.isArray(S.index.subjects)) ? S.index.subjects : [];
+    if (!subjects.length) { bar.style.display = 'none'; return; }
+    bar.style.display = '';
+    if (!S.subjectFilter || !subjects.some((s) => s.subject_id === S.subjectFilter)) {
+      S.subjectFilter = subjects[0].subject_id;
       S.chapterFilter = null;
     }
     const mk = (id, label) => {
@@ -214,19 +218,24 @@
       });
       return b;
     };
-    S.index.subjects.forEach((s) => bar.appendChild(mk(s.subject_id, s.subject_title)));
+    subjects.forEach((s) => bar.appendChild(mk(s.subject_id, s.subject_title)));
   }
-
   function visibleChapters() {
     const sub = currentSubject();
+    const ch = currentChapter(sub);
+    if (!sub || !ch) return [];
     return sub.chapters
-      .filter((c) => c.chapter_no === currentChapter(sub).chapter_no)
-      .map((ch) => ({ sub: sub, ch: ch }));
+      .filter((c) => c.chapter_no === ch.chapter_no)
+      .map((c2) => ({ sub: sub, ch: c2 }));
   }
 
   function renderChapterChips() {
     const bar = $('chapter-filter-bar');
     const sub = currentSubject();
+    if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) {
+      if (bar) { bar.innerHTML = ''; bar.style.display = 'none'; }
+      return;
+    }
     if (!S.chapterFilter || !sub.chapters.some((c) => c.chapter_no === S.chapterFilter)) {
       S.chapterFilter = sub.chapters[0].chapter_no;
     }
@@ -357,8 +366,8 @@
   }
 
   function startSession(subjectId, quizId, wrongOnlyFrom) {
-    const sub = S.index.subjects.find((s) => s.subject_id === subjectId);
-    const ch = sub && sub.chapters.find((c) => c.quiz_id === quizId);
+    const sub = (S.index.subjects || []).find((s) => s.subject_id === subjectId);
+    const ch = sub && (sub.chapters || []).find((c) => c.quiz_id === quizId);
     const bank = S.banks[quizId];
     if (!sub || !ch || !bank) { showError('لم يتم العثور على الكوز المطلوب.'); return; }
 
@@ -1497,7 +1506,7 @@
   // ---------------- weekly league (Duolingo-style, Supabase shared board) ----------------
   function leagueScopeLabel() {
     if (!S.leagueSubject) return 'الترتيب العام';
-    const s = S.index.subjects.find((x) => x.subject_id === S.leagueSubject);
+    const s = (S.index.subjects || []).find((x) => x.subject_id === S.leagueSubject);
     return s ? s.subject_title : 'الترتيب العام';
   }
   function renderLeagueChips() {
