@@ -54,6 +54,8 @@
     savedSubject: null, // saved-view filter
     savedChapter: null, // saved-view filter
     savedExpanded: null, // saved-view accordion
+    leagueSubject: null, // league filter: null = overall
+    cloudName: null, // linked Telegram account display name
   };
 
   const SAVED_KEY = 'portal_saved_v1';
@@ -99,7 +101,7 @@
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
-    'results-view', 'saved-view', 'stats-view'];
+    'results-view', 'saved-view', 'stats-view', 'league-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
@@ -846,6 +848,11 @@
       localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history));
     } catch (e) {}
     cloudPush();
+    try {
+      if (window.PortalLeague && window.PortalLeague.linked && window.PortalLeague.linked()) {
+        window.PortalLeague.syncWeek().catch(function () {});
+      }
+    } catch (e) {}
   }
 
   function clearHistory() {
@@ -1107,6 +1114,12 @@
       S.session = null;
       renderStats();
       show('stats-view');
+      window.scrollTo(0, 0);
+      icons();
+    } else if (h === '#/league' || h === '#/league/') {
+      S.session = null;
+      renderLeague();
+      show('league-view');
       window.scrollTo(0, 0);
       icons();
     } else if (h === '#/practice' || h === '#/practice/') {
@@ -1470,6 +1483,153 @@
     } catch (e) { toast('تعذرت المزامنة الأولى — سيُحاوِل تلقائياً'); }
   }
 
+  // ---------------- weekly league (Duolingo-style, Supabase shared board) ----------------
+  function leagueScopeLabel() {
+    if (!S.leagueSubject) return 'الترتيب العام';
+    const s = S.index.subjects.find((x) => x.subject_id === S.leagueSubject);
+    return s ? s.subject_title : 'الترتيب العام';
+  }
+  function renderLeagueChips() {
+    const bar = $('league-subject-bar');
+    if (!bar) return;
+    bar.innerHTML = '';
+    const mk = (id, label) => {
+      const b = document.createElement('button');
+      b.className = 'filter-chip' + (S.leagueSubject === id ? ' active' : '');
+      b.textContent = label;
+      b.setAttribute('aria-pressed', S.leagueSubject === id ? 'true' : 'false');
+      b.addEventListener('click', () => { S.leagueSubject = id; renderLeague(); });
+      bar.appendChild(b);
+    };
+    mk(null, 'العام');
+    S.index.subjects.forEach((s) => mk(s.subject_id, s.subject_title));
+  }
+  function leagueMedal(rank) {
+    return rank === 1 ? '🥇' : (rank === 2 ? '🥈' : (rank === 3 ? '🥉' : String(rank)));
+  }
+  async function renderLeague() {
+    const box = $('league-board');
+    const emptyEl = $('league-empty-state');
+    const offEl = $('league-offline-note');
+    if (box) box.innerHTML = '';
+    const L = window.PortalLeague;
+    const wb = $('league-week-line');
+    try {
+      const wk = L && L.weekStart ? L.weekStart(Date.now()) : '';
+      if (wb) wb.textContent = wk ? 'أسبوع يبدأ ' + wk : '';
+    } catch (e) {}
+    renderLeagueChips();
+    if (offEl) offEl.classList.toggle('hidden', navigator.onLine !== false);
+    if (!L || !L.configured()) {
+      if (emptyEl) { emptyEl.textContent = 'لوحة الدوري غير مفعّلة بعد'; emptyEl.classList.remove('hidden'); }
+      updateLeagueMe(null, []);
+      icons();
+      return;
+    }
+    if (emptyEl) emptyEl.classList.add('hidden');
+    let rows = [];
+    try {
+      rows = await L.board(undefined, S.leagueSubject || undefined);
+    } catch (e) {
+      if (emptyEl) { emptyEl.textContent = 'تعذر تحميل اللوحة — تحقق من الاتصال'; emptyEl.classList.remove('hidden'); }
+      updateLeagueMe(null, []);
+      icons();
+      return;
+    }
+    if (!rows.length && emptyEl) {
+      emptyEl.textContent = 'لا نقاط بعد هذا الأسبوع — العب أي كوز لتدخل الترتيب';
+      emptyEl.classList.remove('hidden');
+    }
+    const maxXp = rows.length ? Math.max.apply(null, rows.map((r) => r.xp)) : 0;
+    const meId = null;
+    rows.forEach((r) => {
+      const card = document.createElement('div');
+      const isMe = false;
+      card.className = 'history-row league-row' + (r.rank <= 3 ? ' league-top' : '');
+      card.innerHTML =
+        '<span class="league-rank">' + leagueMedal(r.rank) + '</span>' +
+        '<span class="menu-avatar league-avatar">' + escapeHtml((r.name || '؟').trim().charAt(0) || '؟') + '</span>' +
+        '<div class="history-meta"><div class="history-topic">' + escapeHtml(r.name || 'لاعب') + (r.rank <= 3 ? ' <span class="fire">🔥</span>' : '') + '</div>' +
+        '<div class="history-sub" dir="ltr">' + r.xp + ' XP</div></div>' +
+        '<div class="stat-bar-track league-bar"><div class="stat-bar-fill" style="width:' + (maxXp ? Math.round((r.xp / maxXp) * 100) : 0) + '%"></div></div>';
+      box.appendChild(card);
+    });
+    try {
+      const me = L.linked && L.linked() ? await L.myRow() : null;
+      updateLeagueMe(me, rows);
+    } catch (e) { updateLeagueMe(null, rows); }
+    icons();
+  }
+  function updateLeagueMe(me, rows) {
+    const box = $('league-me');
+    if (!box) return;
+    box.innerHTML = '';
+    const L = window.PortalLeague;
+    const linked = !!(L && L.linked && L.linked());
+    if (!linked) {
+      box.classList.remove('hidden');
+      box.innerHTML = '<div class="saved-group-head"><div><div class="saved-group-title">وضع الضيف</div>' +
+        '<div class="saved-group-sub">افتح من بوت تليجرام للدخول في الترتيب</div></div></div>';
+      const hb = $('league-hide-label');
+      if (hb) hb.textContent = 'إخفاء ظهوري';
+      icons();
+      return;
+    }
+    const myId = null;
+    let mine = null;
+    try {
+      const rows2 = rows || [];
+      mine = me || null;
+      if (mine && mine.user_id) {
+        const found = rows2.filter((r) => r.user_id === mine.user_id)[0];
+        if (found) { mine.rank = found.rank; mine.xp = found.xp; }
+      }
+    } catch (e) {}
+    const hidden = !!(mine && mine.hidden);
+    box.classList.remove('hidden');
+    box.innerHTML = '<div class="saved-group-head"><div>' +
+      '<div class="saved-group-title">' + escapeHtml((mine && mine.name) || S.cloudName || 'أنا') + '</div>' +
+      '<div class="saved-group-sub">' + (mine ? ('ترتيبي #' + (mine.rank || '—') + ' · ' + (mine.xp || 0) + ' نقطة') : 'لم تدخل الترتيب بعد — العب كوزاً') + '</div></div>' +
+      '<button id="league-hide-btn" class="action-btn secondary-btn saved-gen-btn" type="button"><i data-lucide="' + (hidden ? 'eye' : 'eye-off') + '"></i><span>' + (hidden ? 'إظهار ظهوري' : 'إخفاء ظهوري') + '</span></button></div>';
+    const hb = $('league-hide-label');
+    if (hb) hb.textContent = hidden ? 'إظهار ظهوري' : 'إخفاء ظهوري';
+    const b = $('league-hide-btn');
+    if (b) b.addEventListener('click', async () => {
+      try {
+        if (window.PortalLeague && window.PortalLeague.setHidden) {
+          await window.PortalLeague.setHidden(!hidden);
+          toast(hidden ? 'ظهرت في الترتيب ✓' : 'أصبحت مخفياً عن الترتيب');
+        }
+      } catch (e) { toast('تعذر تحديث الحالة'); }
+      renderLeague();
+    });
+    icons();
+  }
+  async function shareMyRank() {
+    try {
+      const L = window.PortalLeague;
+      if (!L || !L.configured()) { toast('الدوري غير مُعد بعد'); return; }
+      const rows = await L.board(undefined, S.leagueSubject || undefined);
+      let me = null;
+      try {
+        const m = await L.myRow();
+        if (m && m.user_id) {
+          const f = rows.filter((r) => r.user_id === m.user_id)[0];
+          if (f) me = f;
+          else if (!m.hidden) me = { rank: '—', xp: 0 };
+        }
+      } catch (e) {}
+      const text = L.shareText(me, rows, leagueScopeLabel());
+      if (navigator.share) {
+        try { await navigator.share({ title: 'MSCQuiz League', text: text }); return; } catch (e) { if (e && e.name === 'AbortError') return; }
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        toast('نُسخ ترتيبك — الصقه أينما شئت');
+      } catch (e) { toast(text); }
+    } catch (e) { toast('تعذر إنشاء المشاركة'); }
+  }
+
   // ---------------- wire up ----------------
   function bind() {
     window.addEventListener('keydown', (e) => {
@@ -1526,6 +1686,18 @@
     $('menu-theme').addEventListener('click', () => toggleTheme());
     const expBtn = $('btn-export-data');
     if (expBtn) expBtn.addEventListener('click', exportData);
+    const hideBtn = $('btn-league-hide');
+    if (hideBtn) hideBtn.addEventListener('click', async () => {
+      try {
+        const L = window.PortalLeague;
+        if (!L || !L.configured() || !L.linked || !L.linked()) { toast('سجّل الدخول عبر تليجرام أولاً'); return; }
+        const m = await L.myRow();
+        await L.setHidden(!(m && m.hidden));
+        renderLeague();
+      } catch (e) { toast('تعذر تحديث الحالة'); }
+    });
+    const shareBtn = $('btn-league-share');
+    if (shareBtn) shareBtn.addEventListener('click', shareMyRank);
     const impInput = $('import-data-input');
     if (impInput) impInput.addEventListener('change', () => {
       if (impInput.files && impInput.files[0]) importData(impInput.files[0]);

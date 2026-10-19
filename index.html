@@ -326,6 +326,31 @@
                 </section>
             </div>
 
+        <!-- League (Duolingo-style weekly board) -->
+        <div id="league-view" class="state-view hidden">
+            <div class="saved-topbar">
+                <div>
+                    <h2 class="saved-title">الدوري الأسبوعي 🏆</h2>
+                    <p id="league-week-line" class="saved-total-line"></p>
+                </div>
+            </div>
+            <div id="league-me" class="saved-group saved-subject-block hidden"></div>
+            <div class="catalog-filter-bar" id="league-subject-bar" role="group" aria-label="فلتر مواد الدوري"></div>
+            <div id="league-board" class="saved-groups"></div>
+            <div id="league-empty-state" class="catalog-empty-state hidden">لا نقاط بعد هذا الأسبوع — العب أي كوز لتدخل الترتيب</div>
+            <div class="results-action-row">
+                <button id="btn-league-share" class="action-btn secondary-btn">
+                    <i data-lucide="share-2"></i>
+                    <span>مشاركة ترتيبي</span>
+                </button>
+                <button id="btn-league-hide" class="action-btn secondary-btn">
+                    <i data-lucide="eye-off"></i>
+                    <span id="league-hide-label">إخفاء ظهوري</span>
+                </button>
+            </div>
+            <div id="league-offline-note" class="catalog-empty-state hidden">تحتاج إنترنت لعرض لوحة الدوري</div>
+        </div>
+
         </main>
 
         <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
@@ -401,6 +426,10 @@
                 <a id="menu-stats" class="menu-item" href="#/stats">
                     <i data-lucide="chart-column"></i>
                     <span>الإحصائيات والسجل</span>
+                </a>
+                <a id="menu-league" class="menu-item" href="#/league">
+                    <i data-lucide="trophy"></i>
+                    <span>الدوري 🏆</span>
                 </a>
                 <button id="menu-tour" class="menu-item" type="button">
                     <i data-lucide="circle-help"></i>
@@ -482,7 +511,9 @@
     <script src="js/quiz-vault.js" defer></script>
     <script src="js/analytics.js" defer></script>
     <script src="js/tg-config.js" defer></script>
+    <script src="js/supabase-config.js" defer></script>
     <script src="js/cloud.js" defer></script>
+    <script src="js/league.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/pwa.js" defer></script>
 </body>

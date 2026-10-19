@@ -15,6 +15,8 @@ const CORE = [
   './js/pwa.js',
   './js/tg-config.js',
   './js/cloud.js',
+  './js/league.js',
+  './js/supabase-config.js',
   './assets/fonts/space-grotesk-500.woff2',
   './assets/fonts/space-grotesk-700.woff2',
   './assets/brand-icon-light.png',

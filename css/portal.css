@@ -397,7 +397,19 @@ html[data-theme="light"] .danger-btn { color: #dc2626 !important; }
 .history-pct.bad { background: rgba(225, 29, 72, 0.13); color: #f43f5e; }
 .history-meta { flex: 1; min-width: 0; }
 .history-topic { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
-.history-sub { opacity: 0.65; font-size: 0.75rem; }
+.league-row { align-items: center; }
+.league-rank { font-size: 1.1rem; font-weight: 800; min-width: 2rem; text-align: center; font-variant-numeric: tabular-nums; }
+.league-avatar { width: 30px; height: 30px; font-size: 0.9rem; }
+.league-top { border-color: rgba(255, 193, 7, 0.45) !important; }
+.fire { display: inline-block; animation: fire-flicker 1.1s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes fire-flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.18) rotate(2deg); }
+}
+.league-bar { flex: 1; min-width: 60px; margin-top: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .fire { animation: none; }
+}
 
 /* --- account row --- */
 .menu-account { align-items: center; }
