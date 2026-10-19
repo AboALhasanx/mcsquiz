@@ -31,6 +31,7 @@
     region.appendChild(t);
     requestAnimationFrame(() => t.classList.add('show'));
     setTimeout(() => { t.classList.remove('show'); setTimeout(() => { if (t.parentNode === region) region.innerHTML = ''; }, 300); }, 2600);
+    try { if (window.PortalLog) window.PortalLog.info('toast', msg); } catch (e) {}
   }
 
   function icons() {
@@ -1462,27 +1463,37 @@
 
   async function initTelegram() {
     const C = cloud();
-    if (!C) return;
+    const L = window.PortalLog;
+    try { if (L) L.info('tg', 'init src=' + (C && C.identitySource ? C.identitySource() : 'none') + ' store=' + (C && C.storeName ? C.storeName() : '?')); } catch (e) {}
+    if (!C) { try { if (L) L.warn('tg', 'no PortalCloud'); } catch (e) {} return; }
     try {
       if (typeof C.integrate === 'function') C.integrate();
-    } catch (e) {}
-    if (!C.linked()) { updateAccountRow(); return; }
+    } catch (e) { try { if (L) L.warn('tg', 'integrate failed: ' + e.message); } catch (e2) {} }
+    if (!C.linked()) {
+      try { if (L) L.info('tg', 'not linked (guest)'); } catch (e) {}
+      updateAccountRow();
+      return;
+    }
     try {
       const me = await C.accountInfo();
       S.cloudName = (me && (me.name || me.username)) || S.cloudName || null;
-    } catch (e) {}
+      try { if (L) L.info('tg', 'linked ' + (me && (me.username || me.id)) + ' store=' + C.storeName()); } catch (e) {}
+    } catch (e) { try { if (L) L.warn('tg', 'accountInfo failed: ' + e.message); } catch (e2) {} }
     updateAccountRow();
     try {
       const r = await C.pullOrPush();
+      try { if (L) L.info('tg', 'sync=' + (r && r.action)); } catch (e) {}
       renderCatalog();
       if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
       if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
       updateSavedBadge(); updateMenuCounts(); updateAccountRow();
       icons();
       if (r && r.action === 'downloaded') toast('تمت المزامنة من حساب تليجرام ✓');
-    } catch (e) { toast('تعذرت المزامنة الأولى — سيُحاوِل تلقائياً'); }
+    } catch (e) {
+      try { if (L) L.warn('tg', 'sync failed: ' + ((e && e.message) || e)); } catch (e2) {}
+      toast('تعذرت المزامنة الأولى — سيُحاوَل تلقائياً');
+    }
   }
-
   // ---------------- weekly league (Duolingo-style, Supabase shared board) ----------------
   function leagueScopeLabel() {
     if (!S.leagueSubject) return 'الترتيب العام';
@@ -1677,6 +1688,32 @@
     const saveBtn = $('btn-save-question');
     if (saveBtn) saveBtn.addEventListener('click', toggleSaveCurrent);
     $('menu-tour').addEventListener('click', () => { closeDrawers(); tourShow(0); });
+    const dbgBtn = $('menu-debug');
+    if (dbgBtn) dbgBtn.addEventListener('click', () => {
+      closeDrawers();
+      try { if (window.PortalLog) window.PortalLog.restore(); } catch (e) {}
+      const m = $('debug-modal');
+      const log = $('debug-modal-log');
+      if (log && window.PortalLog) log.textContent = window.PortalLog.snapshot();
+      if (m) { m.classList.remove('hidden'); m.setAttribute('aria-hidden', 'false'); }
+      icons();
+    });
+    $('debug-close').addEventListener('click', () => {
+      const m = $('debug-modal');
+      if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
+    });
+    $('debug-clear').addEventListener('click', () => {
+      try { if (window.PortalLog) window.PortalLog.clear(); } catch (e) {}
+      const log = $('debug-modal-log');
+      if (log) log.textContent = '(فُرغ السجل)';
+    });
+    $('debug-copy').addEventListener('click', async () => {
+      try {
+        const txt = window.PortalLog ? window.PortalLog.snapshot() : '';
+        if (navigator.clipboard) { await navigator.clipboard.writeText(txt); toast('نُسخ السجل'); }
+        else { const log = $('debug-modal-log'); if (log) { log.textContent = txt; toast('انسخ يدوياً من النص'); } }
+      } catch (e) { toast('تعذر النسخ'); }
+    });
     $('menu-install').addEventListener('click', installApp);
     const menuAccount = $('menu-account');
     if (menuAccount) menuAccount.addEventListener('click', () => { handleAccountTap(); });
@@ -1803,6 +1840,7 @@
 
   // ---------------- boot ----------------
   async function boot() {
+    try { if (window.PortalLog) { window.PortalLog.restore(); window.PortalLog.info('boot', 'start href=' + location.href.slice(0, 80)); } } catch (e) {}
     try {
       const savedTheme = localStorage.getItem('portal_theme');
       if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
@@ -1822,13 +1860,18 @@
       updateAccountRow();
       icons();
       if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
-      if (S.index && S.index.test_mode === false) {
+      {
         const badge = $('test-mode-badge');
-        if (badge) badge.style.display = 'none';
+        if (badge) {
+          if (S.index && S.index.test_mode === true) badge.classList.remove('hidden');
+          else badge.classList.add('hidden');
+        }
       }
+      if (window.PortalLog) window.PortalLog.info('boot', 'ok subjects=' + (S.index ? S.index.subjects.length : 0) + ' test_mode=' + (S.index ? S.index.test_mode : '?'));
       if (!tourGet(TOUR_KEY)) setTimeout(() => { if (tourIdx < 0) tourShow(0); }, 1200);
       dbg('boot ok. subjects:', S.index.subjects.length);
     } catch (e) {
+      try { if (window.PortalLog) window.PortalLog.error('boot', String((e && e.message) || e)); } catch (e2) {}
       console.error(e);
       showError('فشل تحميل البيانات: ' + e.message);
     }

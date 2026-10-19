@@ -25,7 +25,7 @@
                         <img src="assets/brand-icon-light.png" alt="شعار MSCQuiz" class="brand-logo-img" width="24" height="24">
                         <span class="app-brand-title">MSCQuiz</span>
                     </a>
-                    <span id="test-mode-badge" class="test-mode-badge" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
+                    <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
                     <button id="btn-menu-catalog" class="icon-btn btn-menu" aria-label="القائمة الجانبية" title="القائمة الجانبية">
@@ -443,6 +443,10 @@
                     <i data-lucide="moon" id="menu-theme-icon"></i>
                     <span id="menu-theme-label">المظهر: داكن</span>
                 </button>
+                <button id="menu-debug" class="menu-item" type="button">
+                    <i data-lucide="activity"></i>
+                    <span>التشخيص والسجل</span>
+                </button>
             </div>
         </aside>
 
@@ -464,6 +468,22 @@
             </div>
         </div>
 
+        <!-- Account dialog (Telegram login status + actions) -->
+        <div id="account-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="account-title">
+                <div class="drawer-title-group">
+                    <i data-lucide="user-round" class="drawer-header-icon"></i>
+                    <h3 id="account-title">الحساب</h3>
+                </div>
+                <p id="account-body" class="auth-sub"></p>
+                <div class="modal-actions" style="flex-direction:column;gap:0.5rem;">
+                    <button id="account-open-bot" class="action-btn primary-btn hidden">فتح البوت</button>
+                    <button id="account-sync-now" class="action-btn secondary-btn hidden">مزامنة الآن</button>
+                    <button id="account-close" class="action-btn secondary-btn">إغلاق</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Leave-exam confirmation -->
         <div id="leave-modal" class="modal-overlay hidden" aria-hidden="true">
             <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="leave-title" aria-describedby="leave-body">
@@ -472,6 +492,23 @@
                 <div class="modal-actions">
                     <button id="leave-stay" class="action-btn primary-btn">البقاء</button>
                     <button id="leave-go" class="action-btn secondary-btn">مغادرة</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagnostics: persistent debug log viewer -->
+        <div id="debug-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="debug-modal-title" style="max-width:420px;">
+                <div class="drawer-title-group">
+                    <i data-lucide="activity" class="drawer-header-icon"></i>
+                    <h3 id="debug-modal-title">سجل التشخيص</h3>
+                </div>
+                <p class="auth-sub">انسخ السجل وأرسله عند حدوث أي مشكلة</p>
+                <pre id="debug-modal-log" dir="ltr" style="text-align:left;max-height:220px;overflow:auto;background:rgba(127,140,160,.12);border-radius:10px;padding:.6rem;font-size:.72rem;white-space:pre-wrap;word-break:break-word;"></pre>
+                <div class="modal-actions">
+                    <button id="debug-copy" class="action-btn primary-btn">نسخ السجل</button>
+                    <button id="debug-clear" class="action-btn secondary-btn">مسح</button>
+                    <button id="debug-close" class="action-btn secondary-btn">إغلاق</button>
                 </div>
             </div>
         </div>
@@ -508,6 +545,7 @@
 
     </div>
 
+    <script src="js/debug.js" defer></script>
     <script src="js/quiz-vault.js" defer></script>
     <script src="js/analytics.js" defer></script>
     <script src="js/tg-config.js" defer></script>

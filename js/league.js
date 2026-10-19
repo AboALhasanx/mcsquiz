@@ -44,8 +44,13 @@
     try {
       var w = global.Telegram && global.Telegram.WebApp;
       var u = w && w.initDataUnsafe && w.initDataUnsafe.user;
-      return (u && u.id) ? u : null;
-    } catch (e) { return null; }
+      if (u && u.id) return u;
+    } catch (e) {}
+    try {
+      var g = global.PortalTGUser;
+      if (g && g.id) return g;
+    } catch (e2) {}
+    return null;
   }
   function linked() { return !!tgUser(); }
 

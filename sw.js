@@ -13,6 +13,7 @@ const CORE = [
   './js/quiz-vault.js',
   './js/lucide.min.js',
   './js/pwa.js',
+  './js/debug.js',
   './js/tg-config.js',
   './js/cloud.js',
   './js/league.js',
