@@ -195,25 +195,29 @@ body[data-quizlive="yes"] .toast-region {
 .tour-tip { pointer-events: auto; }
 .tour-tip {
   position: fixed;
-  left: 12px;
-  right: 12px;
+  left: 10px;
+  right: 10px;
   background: #141c27;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 14px;
-  padding: 0.9rem 1rem;
+  padding: 0.7rem 0.85rem 0.75rem;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
   visibility: hidden;
+  max-height: 62vh;
+  display: flex;
+  flex-direction: column;
 }
-.tour-tip h3 { margin: 0 0 0.3rem; font-size: 1.15rem; font-weight: 800; color: #FFFFFF; }
-.tour-tip p { margin: 0; font-size: 0.92rem; line-height: 1.7; color: #E8EDF3; }
+.tour-tip h3 { margin: 0 0 0.2rem; font-size: 0.98rem; font-weight: 700; color: #FFFFFF; }
+.tour-tip p { margin: 0; font-size: 0.8rem; line-height: 1.55; color: #E8EDF3; }
+#tour-tip-body { overflow-y: auto; max-height: 28vh; }
 .tour-tip-icon {
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   color: #4da3ff;
-  margin: 0 auto 0.5rem;
+  margin: 0 auto 0.35rem;
 }
-.tour-tip-icon svg { width: 30px !important; height: 30px !important; }
+.tour-tip-icon svg { width: 22px !important; height: 22px !important; }
 /* center (modal) steps: lighter dim so the app shows through */
 .tour-dim-light .tour-shade { background: rgba(4, 7, 12, 0.55); }
 .tour-tip-progress {
@@ -277,7 +281,8 @@ html[data-theme="light"] .app-header .icon-btn {
   cursor: pointer;
   text-decoration: underline;
 }
-.tour-replay-hint { margin-top: 0.6rem !important; font-size: 0.72rem !important; opacity: 0.55 !important; }
+.tour-replay-hint { display: none; margin-top: 0.55rem !important; font-size: 0.7rem !important; opacity: 0.55 !important; }
+.tour-tip.is-last .tour-replay-hint { display: block; }
 .tour-inline-icon { width: 14px; height: 14px; vertical-align: -2px; }
 /* ---------- focus visibility (must beat quiz.css .icon-btn:focus { outline:none !important }) ---------- */
 html body :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
@@ -330,6 +335,10 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 }
 
 /* your row: rank + one visibility switch */
+#btn-league-share.is-busy { opacity: 0.5; }
+#btn-league-share.is-busy svg { animation: shareSpin 0.9s linear infinite; }
+@keyframes shareSpin { to { transform: rotate(360deg); } }
+
 .league-me {
   display: flex;
   align-items: center;
@@ -656,14 +665,10 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   z-index: 1;
 }
 
-/* end-of-rail fade so a clipped pill reads as scrollable, not broken */
-html[dir="rtl"] .catalog-filter-bar {
-  -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 20px), transparent 100%);
-  mask-image: linear-gradient(to left, #000 calc(100% - 20px), transparent 100%);
-}
-html[dir="ltr"] .catalog-filter-bar {
-  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent 100%);
-  mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent 100%);
+/* both ends fade, so no pill ever looks chopped */
+.catalog-filter-bar {
+  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+  mask-image: linear-gradient(to left, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
 }
 
 /* --- install banner: one accent tint, not a two-hue gradient --- */
@@ -1007,6 +1012,73 @@ body:not([data-quizlive="yes"]) #btn-exit {
 .legend-dot.dot-current { background: #4da3ff; }
 
 /* --- review skipped verdict --- */
+/* --- review cards: readable, left/right aligned, compact controls --- */
+.review-card { text-align: start; }
+.review-question-text { text-align: start; }
+.review-option-item { text-align: start; }
+.review-explanation-box { background: none; }
+.expl-body { text-align: start; }
+.review-save-btn { align-self: flex-start; }
+
+/* --- review list: collapsible explanation + save toggle --- */
+.review-explanation-box {
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  margin-top: 0.55rem;
+  overflow: hidden;
+  background: none;
+  padding: 0;
+}
+.expl-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: none;
+  border: 0;
+  color: var(--text-main);
+  padding: 0.5rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 40px;
+}
+.expl-icon { width: 15px; height: 15px; color: #f59e0b; flex-shrink: 0; }
+.expl-chevron { width: 15px; height: 15px; margin-inline-start: auto; transition: transform 0.2s ease; }
+.review-explanation-box:not(.collapsed) .expl-chevron { transform: rotate(180deg); }
+.expl-body {
+  padding: 0 0.8rem 0.7rem;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.review-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+  background: none;
+  border: 1px solid var(--border-card);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-height: 34px;
+}
+.review-save-btn.is-saved { color: #d9a521; border-color: rgba(217, 165, 33, 0.45); }
+.review-save-btn svg { width: 14px; height: 14px; }
+.demo-banner {
+  margin: 0 0 0.7rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 10px;
+  background: rgba(77, 163, 255, 0.10);
+  border: 1px solid rgba(77, 163, 255, 0.35);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
 .review-status-tag.skipped { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
 .review-card.skipped-border { border-color: #f59e0b; }
 

@@ -1044,7 +1044,40 @@
   }
 
   // ---------------- results ----------------
+  function startTourDemoResults() {
+    const sub = currentSubject();
+    const ch = sub && sub.chapters && sub.chapters[0];
+    const bank = ch && S.banks ? S.banks[ch.quiz_id] : null;
+    if (!sub || !ch || !bank || !bank.questions || !bank.questions.length) return false;
+    const origin = { subjectId: sub.subject_id, subjectTitle: sub.subject_title, chapterNo: ch.chapter_no, topic: bank.topic, quizId: ch.quiz_id };
+    const qs = bank.questions.slice(0, 3).map((q) => Object.assign({}, q, { origin: origin }));
+    const picks = [qs[0].correct, (qs[0].correct + 1) % 4, (qs[0].correct + 2) % 4];
+    const dwells = [14, 9, 0];
+    S.session = {
+      sub: { subject_id: sub.subject_id, subject_title: sub.subject_title },
+      ch: ch, chapterLabel: chLabel(ch), questions: qs, picks: picks, dwells: dwells,
+      started: true, finished: true, demo: true, idx: 0, maxIdx: 0,
+      quizId: ch.quiz_id, hash: location.hash,
+    };
+    const res = window.PortalAnalytics.analyze(qs, picks, dwells, 23);
+    show('results-view');
+    renderResults(res);
+    return true;
+  }
+
   function renderResults(res) {
+    S.lastResults = res;
+    const resultsCard = document.querySelector('.results-card');
+    if (resultsCard) {
+      const old = resultsCard.querySelector('.demo-banner');
+      if (old) old.remove();
+      if (S.session && S.session.demo) {
+        const b = document.createElement('div');
+        b.className = 'demo-banner';
+        b.textContent = 'عرض تجريبي من الجولة — ليست نتيجتك';
+        resultsCard.prepend(b);
+      }
+    }
     $('score-percentage').textContent = res.pct + '%';
     $('score-fraction').textContent = res.correct + ' / ' + res.total;
     $('score-badge-text').textContent = res.band.ar;
@@ -1058,8 +1091,8 @@
     const unanswered = (S.session.picks || []).filter((p) => p === null || p === undefined).length;
     $('stat-correct').textContent = res.correct;
     $('stat-wrong').textContent = Math.max(0, res.total - res.correct - unanswered);
-    const unansweredEl = $('stat-unanswered');
-    if (unansweredEl) unansweredEl.textContent = unanswered;
+    const accEl = $('stat-accuracy');
+    if (accEl) accEl.textContent = res.pct + '%';
     $('stat-total-time').textContent = res.totalTime;
 
     const cb = $('chapter-breakdown');
@@ -1126,10 +1159,46 @@
       const expl = explText(q);
       if (expl) {
         const exp = document.createElement('div');
-        exp.className = 'review-explanation-box';
-        exp.setAttribute('dir', 'auto');
-        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(expl) + '</span>';
+        exp.className = 'review-explanation-box collapsed';
+        exp.innerHTML =
+          '<button type="button" class="expl-toggle" aria-expanded="false">' +
+          '<i data-lucide="lightbulb" class="expl-icon"></i>' +
+          '<span>الشرح</span>' +
+          '<i data-lucide="chevron-down" class="expl-chevron"></i>' +
+          '</button>' +
+          '<div class="expl-body" dir="auto" hidden>' + escapeHtml(expl) + '</div>';
+        const tg = exp.querySelector('.expl-toggle');
+        const body = exp.querySelector('.expl-body');
+        tg.addEventListener('click', () => {
+          const open = exp.classList.toggle('collapsed') === false;
+          tg.setAttribute('aria-expanded', open ? 'true' : 'false');
+          body.hidden = !open;
+        });
         card.appendChild(exp);
+      }
+
+      // save / unsave straight from the review list
+      if (q.origin) {
+        const key = saveKeyOf(q.origin, q.id);
+        const saveBtn = document.createElement('button');
+        const setState = () => {
+          const on = !!S.saved[key];
+          saveBtn.className = 'review-save-btn' + (on ? ' is-saved' : '');
+          saveBtn.innerHTML = '<i data-lucide="bookmark"></i><span>' + (on ? 'محفوظ' : 'حفظ') + '</span>';
+          saveBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          try { if (window.lucide) window.lucide.createIcons(); } catch (e) {}
+        };
+        saveBtn.type = 'button';
+        setState();
+        saveBtn.addEventListener('click', () => {
+          if (S.saved[key]) delete S.saved[key];
+          else S.saved[key] = { origin: q.origin, snapshot: JSON.parse(JSON.stringify(q)), savedAt: Date.now() };
+          persistSaved();
+          updateSavedBadge();
+          setState();
+          toast(S.saved[key] ? 'تم حفظ السؤال' : 'أُزيل من المحفوظة', S.saved[key] ? 'success' : 'info');
+        });
+        card.appendChild(saveBtn);
       }
       list.appendChild(card);
     });
@@ -1196,9 +1265,9 @@
 
   // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
   const TOUR_STEPS = [
-    { title: 'MSCQuiz — جولة كاملة', body: 'كل شي بالبوابة: المواد والكوزات والمحفوظ والإحصائيات والدوري. جولة قصيرة، وتقدر تطلع منها بأي وقت.', center: true },
+    { title: 'MSCQuiz — جولة كاملة', body: 'كل شي بالبوابة: المواد والكوزات والنتيجة والمحفوظ والإحصائيات والدوري. جولة قصيرة، تقدر تطلع منها بأي وقت.', center: true },
 
-    { title: 'أزرار الهيدر', body: 'المحفوظات، تبديل المظهر (فاتح/داكن)، والقائمة الجانبية. اضغط الشعار للرجوع للرئيسية.', target: '.header-catalog-actions' },
+    { title: 'أزرار الهيدر', body: 'المحفوظات، تبديل المظهر (فاتح/داكن)، والقائمة الجانبية — والشعار يرجّعك للرئيسية.', target: '.header-catalog-actions' },
 
     { title: 'القائمة الجانبية', body: 'تثبيت التطبيق، المحفوظ، الإحصائيات، الدوري، إعادة الجولة، الصوت، المظهر، وسجل التشخيص.', open: 'menu', target: '#menu-drawer .menu-list' },
 
@@ -1212,17 +1281,19 @@
 
     { title: 'البداية', body: 'هنا عدد الأسئلة والوقت المتوقع. المؤقت يبدأ عند الضغط.', target: '#btn-start-quiz', action: 'start' },
 
+    { title: 'الحفظ والترجمة', body: 'زر الحفظ أعلى البطاقة، وأيقونة اللغة تبدّل السؤال بين عربي / English / الاثنين معاً.', target: '#btn-save-question' },
+
     { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
 
     { title: 'الشرح فوراً', body: 'بعد الإجابة يظهر الشرح بالعربي تحت الخيارات.', target: '#live-feedback-box' },
 
-    { title: 'الحفظ والترجمة', body: 'زر الحفظ أعلى البطاقة، وأيقونة اللغة تبدّل السؤال بين عربي / English / الاثنين معاً.', target: '#btn-save-question' },
-
     { title: 'التالي', body: 'ينتقل بعد الإجابة فقط، وبآخر سؤال ينهي الكوز ويحسب النتيجة.', target: '#btn-next' },
 
-    { title: 'جدول الأسئلة', body: 'يعرض الصحيح والخطأ وغير المجاب، ويقفز للأسئلة السابقة. منه أيضاً «إنهاء الاختبار».', target: '#btn-open-matrix' },
+    { title: 'جدول الأسئلة', body: 'هذا الزر يفتح خريطة الأسئلة.', target: '#btn-open-matrix' },
 
-    { title: 'بعد الإنهاء', body: 'نسبتك، صحيحة/خاطئة/لم تُجب، الزمن، مراجعة كل سؤال بشرحه، وإعادة الخاطئ فقط.', center: true },
+    { title: 'خريطة الأسئلة', body: 'الصحيح والخطأ، وتقفز للأسئلة السابقة فقط. الكوز ينهي نفسه تلقائياً بعد آخر سؤال.', open: 'matrix', target: '#matrix-drawer .matrix-grid' },
+
+    { title: 'شاشة النتيجة', body: 'عرض حقيقي للنتيجة: النسبة، الصحيحة/الخاطئة/لم تُجب، الزمن، ثم مراجعة كل سؤال. السهم يفتح الشرح، وتقدر تحفظ أي سؤال من هنا، والترجمة من الشريط العلوي.', demo: 'results', target: '.results-card' },
 
     { title: 'المحفوظات', body: 'كل سؤال حفظته، مقسم مادة ثم جابتر. كل جابتر عنده زر اختبار، وفيه اختبار لكل المادة.', center: true, route: '#/saved' },
 
@@ -1232,7 +1303,7 @@
 
     { title: 'شارك ترتيبك', body: 'بطاقة صورة جاهزة: ترتيبك، أعلى ثلاثة، والدقة — تنزلها أو تشاركها بضغطة.', target: '#btn-league-share' },
 
-    { title: 'خلصت الجولة', body: 'تعيدها من القائمة الجانبية، والتطبيق يشتغل بدون إنترنت بعد أول زيارة.', center: true },
+    { title: 'خلصت الجولة', body: 'تعيدها من القائمة الجانبية ← إعادة الجولة التعليمية. والتطبيق يشتغل بدون إنترنت بعد أول زيارة.', center: true },
   ];
 
   let tourIdx = -1;
@@ -1247,6 +1318,9 @@
     const ov = $('tour-overlay');
     if (i < 0 || i >= TOUR_STEPS.length) { tourHide(); return; }
     const st = TOUR_STEPS[i];
+    if (st.demo === 'results' && $('results-view').classList.contains('hidden')) {
+      startTourDemoResults();
+    }
     // cross-view steps: navigate first, then place the tip on the new screen
     if (st.route && location.hash !== st.route) {
       if (tourRoutedFor !== i) {
@@ -1272,6 +1346,7 @@
     if (nextBtn) nextBtn.disabled = false;
     try { hideLeaveModal(); } catch (e) {}
     if (st.open === 'menu') openDrawer('menu-drawer');
+    else if (st.open === 'matrix') openDrawer('matrix-drawer');
     else closeDrawers();
     if (st.go) {
       const sub = currentSubject();
@@ -1295,7 +1370,7 @@
         }
         tourShow(i + 1); return; // skip a target that never appears
       }
-      el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
       rect = el.getBoundingClientRect();
     }
     ov.classList.remove('hidden');
@@ -1316,6 +1391,7 @@
     $('tour-tip').classList.toggle('tour-waiting', isAction);
     $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : (isAction ? 'تخطي الخطوة' : 'التالي');
     $('tour-btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
+    $('tour-tip').classList.toggle('is-last', i === TOUR_STEPS.length - 1);
     requestAnimationFrame(() => tourPlace(rect, !!st.center));
     // Re-place after smooth scroll settles (fixed overlay doesn't track scrolling).
     if (el) setTimeout(() => {
@@ -1719,6 +1795,9 @@
       emptyEl.querySelector('p').textContent = 'لا أحد في الترتيب بعد هذا الأسبوع';
       emptyEl.classList.remove('hidden');
     }
+    S.leagueRows = rows;
+    S.leagueMe = me;
+    S.leagueStamp = Date.now();
 
     const myId = me && me.user_id;
     const top = rows.slice(0, 3);
@@ -2027,12 +2106,22 @@
   }
 
   async function shareMyRank() {
+    const btn = $('btn-league-share');
+    if (btn) { btn.disabled = true; btn.classList.add('is-busy'); }
+    toast('نجهّز بطاقتك…', 'info');
     try {
       const L = window.PortalLeague;
-      if (!L || !L.configured()) { toast('الدوري غير معد بعد'); return; }
-      const rows = await L.board(undefined, S.leagueSubject || undefined);
+      if (!L || !L.configured()) { toast('الدوري غير مفعّل بعد', 'error'); return; }
+      // reuse what the board already fetched — the tap should feel instant
+      let rows = null;
       let me = null;
-      try { me = await L.myRow(); } catch (e) {}
+      if (Array.isArray(S.leagueRows) && Date.now() - (S.leagueStamp || 0) < 60000) {
+        rows = S.leagueRows;
+        me = S.leagueMe || null;
+      } else {
+        rows = await L.board(undefined, S.leagueSubject || undefined);
+        try { me = await L.myRow(); } catch (e) {}
+      }
       const myId = me && me.user_id;
       const mine = rows.filter((r) => r.user_id === myId)[0] || null;
       let weekLabel = '';
@@ -2058,6 +2147,9 @@
       }
       showSharePreview(URL.createObjectURL(blob), blob);
     } catch (e) { toast('تعذر إنشاء المشاركة', 'error'); }
+    finally {
+      if (btn) { btn.disabled = false; btn.classList.remove('is-busy'); }
+    }
   }
 
   // ---------------- wire up ----------------
@@ -2087,11 +2179,6 @@
     if (shareClose) shareClose.addEventListener('click', () => {
       $('share-modal').classList.add('hidden');
       $('share-modal').setAttribute('aria-hidden', 'true');
-    });
-    const finishBtn = $('btn-finish-quiz');
-    if (finishBtn) finishBtn.addEventListener('click', () => {
-      closeDrawers();
-      showLeaveModal('finish');
     });
     $('leave-go').addEventListener('click', () => {
       if (leaveIntent === 'finish') {
@@ -2211,6 +2298,7 @@
       document.documentElement.setAttribute('lang', S.lang === 'en' ? 'en' : 'ar');
       saveUI();
       if (S.session && !$('quiz-view').classList.contains('hidden')) renderQuestion();
+      else if (S.session && S.lastResults && !$('results-view').classList.contains('hidden')) renderResults(S.lastResults);
       toast(S.lang === 'ar' ? 'العربية فقط' : (S.lang === 'en' ? 'English only' : 'عربي + English معاً'));
     });
     $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
@@ -2282,7 +2370,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v27';
+  const SHELL_VERSION = 'v28';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
