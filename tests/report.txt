@@ -67,14 +67,24 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 17
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/stats', '#/league'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/stats', '#/saved'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
 PASS | tour | no runtime errors | []
+PASS | offline | service worker takes control | 
+PASS | offline | banks loaded while online | 
+PASS | offline | a question is saved locally | 
+PASS | offline | catalog renders with no network | 
+PASS | offline | subject chips render offline | 
+PASS | offline | a quiz starts, runs and finishes offline | 
+PASS | offline | history is journalled on the device offline | 
+PASS | offline | saved questions open offline | 
+PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 19 – 25 أكتوبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | هندسة البرمجيات | ا
+PASS | offline | no runtime errors | []
 PASS | a11y | document is RTL Arabic | 
-PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 8}
-PASS | a11y | the skip link becomes visible on focus | {'cls': 'skip-link', 'top': 8}
+PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 6}
+PASS | a11y | the skip link becomes visible on focus | {'cls': 'skip-link', 'top': 6}
 PASS | a11y | every visible icon-only control has a label | []
 PASS | a11y | focused controls draw a focus ring | 2px solid
 PASS | a11y | a message appears for a blocked action | 

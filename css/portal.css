@@ -681,18 +681,24 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   inset-inline-start: 0;
   flex: 0 0 auto;
   align-self: center;
-  padding-inline-end: 0.3rem;
+  margin-inline-end: 0.3rem;
+  padding-inline: 0.55rem 0.15rem;
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--text-muted);
   background: var(--bg-base);
-  z-index: 1;
+  /* the rail mask must never dim the label: it paints its own backdrop */
+  -webkit-mask-image: none;
+  mask-image: none;
+  z-index: 2;
 }
 
-/* both ends fade, so no pill ever looks chopped */
+/* rail ends dim slightly instead of vanishing, so nothing ever reads "cut" */
 .catalog-filter-bar {
-  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
-  mask-image: linear-gradient(to left, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.35) 0, #000 14px, #000 calc(100% - 14px), rgba(0, 0, 0, 0.35) 100%);
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.35) 0, #000 14px, #000 calc(100% - 14px), rgba(0, 0, 0, 0.35) 100%);
+  padding-inline: 2px;
+  scroll-padding-inline: 2px;
 }
 
 /* --- install banner: one accent tint, not a two-hue gradient --- */

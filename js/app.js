@@ -1817,7 +1817,14 @@
         }
       }
     } catch (e) {
-      if (emptyEl) { emptyEl.querySelector('p').textContent = 'تعذر تحميل اللوحة'; emptyEl.classList.remove('hidden'); }
+      const offline = navigator.onLine === false;
+      if (offline) {
+        if (offEl) offEl.classList.remove('hidden');
+        if (emptyEl) emptyEl.classList.add('hidden');
+      } else if (emptyEl) {
+        emptyEl.querySelector('p').textContent = 'تعذر تحميل اللوحة';
+        emptyEl.classList.remove('hidden');
+      }
       updateLeagueMe(null, []);
       icons();
       return;

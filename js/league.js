@@ -27,6 +27,17 @@
 
   function _setClient(c) { injectedClient = c; clientPromise = null; }
 
+  // Never let a network call hold the UI: offline / a stalled CDN import must
+  // surface as a normal rejection so the board can say "needs internet".
+  function withTimeout(promise, ms) {
+    return Promise.race([
+      promise,
+      new Promise(function (_, reject) {
+        setTimeout(function () { reject(new Error('timeout')); }, ms || 6000);
+      }),
+    ]);
+  }
+
   async function client() {
     if (injectedClient) return injectedClient;
     if (!clientPromise) {
@@ -194,8 +205,11 @@
     return (pub && pub.data && pub.data.publicUrl) || '';
   }
 
-  async function board(weekId, subjectId) {    var sb = await client();
-    var r = await sb.from('league_xp').select('*').eq('week_id', weekId || weekStart(Date.now())).eq('hidden', false).order('xp', { ascending: false }).limit(100);
+  async function board(weekId, subjectId) {
+    var sb = await withTimeout(client(), 6000);
+    var r = await withTimeout(
+      sb.from('league_xp').select('*').eq('week_id', weekId || weekStart(Date.now())).eq('hidden', false).order('xp', { ascending: false }).limit(100),
+      8000);
     if (r.error) throw new Error(r.error.message || 'read-failed');
     var rows = (r.data || []).map(function (x, i) {
       var xp = subjectId && x.per_subject && x.per_subject[subjectId] ? (Number(x.per_subject[subjectId].xp) || 0) : Number(x.xp) || 0;

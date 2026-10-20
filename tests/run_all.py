@@ -22,6 +22,7 @@ SPECS = [
     'test_league.py',
     'test_share.py',
     'test_tour.py',
+    'test_offline.py',
     'test_a11y.py',
 ]
 
