@@ -1711,6 +1711,18 @@
       toast('تعذرت المزامنة الأولى — سيُحاوَل تلقائياً');
     }
   }
+  // Re-rank a board inside one subject (the cached board is always the full one,
+  // so switching subjects is a local re-sort instead of another request).
+  function scopeRows(rows, subjectId) {
+    if (!subjectId) return rows;
+    const out = (rows || []).map((r) => Object.assign({}, r, {
+      xp: (r.per_subject && r.per_subject[subjectId] && Number(r.per_subject[subjectId].xp)) || 0,
+    }));
+    out.sort((a, b) => b.xp - a.xp);
+    out.forEach((r, i) => { r.rank = i + 1; });
+    return out;
+  }
+
   // ---------------- weekly league (shared board) ----------------
   function leagueScopeLabel() {
     if (!S.leagueSubject) return 'الترتيب العام';
@@ -1740,7 +1752,8 @@
       return '<span class="' + cls + '" style="background-image:url(&quot;' + String(photo).replace(/"/g, '%22') +
         '&quot;);background-size:cover;background-position:center"></span>';
     }
-    return '<span class="' + cls + '">' + escapeHtml((name || '؟').trim().charAt(0) || '؟') + '</span>';
+    // default avatar (no photo): neutral silhouette instead of a letter on a tinted disc
+    return '<span class="' + cls + ' avatar-default" aria-hidden="true"></span>';
   }
 
   async function renderLeague() {
@@ -1783,25 +1796,37 @@
     let rows = [];
     let me = null;
     try {
-      // refresh my row first so the board (and my avatar) is never stale
-      if (L.linked && L.linked() && navigator.onLine !== false) {
-        try { await L.syncWeek(); } catch (e) {}
+      const fresh = Array.isArray(S.leagueRows) && Date.now() - (S.leagueStamp || 0) < 45000;
+      if (fresh) {
+        rows = S.leagueRows;
+        me = S.leagueMe || null;
+      } else {
+        rows = await L.board();
+        me = (L.linked && L.linked()) ? await L.myRow() : null;
+        S.leagueRows = rows;
+        S.leagueMe = me;
+        S.leagueStamp = Date.now();
+        // refresh my row in the background — never on the render path
+        if (L.linked && L.linked() && navigator.onLine !== false && Date.now() - (S.leagueSyncStamp || 0) > 600000) {
+          S.leagueSyncStamp = Date.now();
+          L.syncWeek().then(() => L.board()).then((r2) => {
+            S.leagueRows = r2;
+            S.leagueStamp = Date.now();
+            if (location.hash.indexOf('#/league') === 0) renderLeague();
+          }).catch(() => {});
+        }
       }
-      rows = await L.board(undefined, S.leagueSubject || undefined);
-      me = (L.linked && L.linked()) ? await L.myRow() : null;
     } catch (e) {
       if (emptyEl) { emptyEl.querySelector('p').textContent = 'تعذر تحميل اللوحة'; emptyEl.classList.remove('hidden'); }
       updateLeagueMe(null, []);
       icons();
       return;
     }
+    rows = scopeRows(rows, S.leagueSubject);
     if (!rows.length && emptyEl) {
       emptyEl.querySelector('p').textContent = 'لا أحد في الترتيب بعد هذا الأسبوع';
       emptyEl.classList.remove('hidden');
     }
-    S.leagueRows = rows;
-    S.leagueMe = me;
-    S.leagueStamp = Date.now();
 
     const myId = me && me.user_id;
     const myPhoto = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
@@ -1932,7 +1957,7 @@
     ctx.closePath();
   }
 
-  function drawAvatar(ctx, cx, cy, r, name, ring, img) {
+  function drawAvatar(ctx, cx, cy, r, name, ring, img, fallback) {
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -1940,6 +1965,10 @@
     if (img && img.width) {
       const s = Math.min(img.width, img.height);
       ctx.drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, cx - r, cy - r, r * 2, r * 2);
+    } else if (fallback && fallback.width) {
+      ctx.fillStyle = 'rgba(139, 151, 168, 0.14)';
+      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
+      ctx.drawImage(fallback, cx - r, cy - r, r * 2, r * 2);
     } else {
       ctx.fillStyle = '#c9a227';
       ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
@@ -1997,8 +2026,9 @@
     const header = 330, footerH = 40, mineH = mineOutside ? 148 : 0;
     const H = Math.max(860, Math.min(1350, header + shown.length * rowH + mineH + footerH));
 
-    // avatars are remote (Telegram) — preload with CORS, fall back to initials
+    // avatars are remote (Telegram) — preload with CORS, fall back to the silhouette
     const imgs = {};
+    const fallbackAvatar = await loadCardImage('/assets/avatar-default.svg');
     const toLoad = shown.slice();
     if (mineOutside && mine) toLoad.push(mine);
     await Promise.all(toLoad.map(async (r) => {
@@ -2080,7 +2110,7 @@
       ctx.fillText(String(r.rank), R - 4, cy + 13);
 
       // avatar
-      drawAvatar(ctx, R - 92, cy, avR, r.name, first ? GOLD : 'rgba(255,255,255,0.10)', imgs[r.user_id]);
+      drawAvatar(ctx, R - 92, cy, avR, r.name, first ? GOLD : 'rgba(255,255,255,0.10)', imgs[r.user_id], fallbackAvatar);
       if (first) {
         const cx = R - 92, cyy = cy - avR - 12;
         ctx.fillStyle = GOLD;
@@ -2150,16 +2180,19 @@
       a.remove();
     };
     const tg = $('share-telegram');
-    if (tg) tg.onclick = () => {
-      const link = appShareLink();
-      try {
-        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
-          window.Telegram.WebApp.openTelegramLink(link);
-        } else {
-          window.open(link, '_blank');
-        }
-      } catch (e) { window.open(link, '_blank'); }
-    };
+    if (tg) {
+      tg.classList.remove('hidden');
+      tg.onclick = () => {
+        const link = appShareLink();
+        try {
+          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
+            window.Telegram.WebApp.openTelegramLink(link);
+          } else {
+            window.open(link, '_blank');
+          }
+        } catch (e) { window.open(link, '_blank'); }
+      };
+    }
     const cp = $('share-copy');
     if (cp) cp.classList.toggle('hidden', true);
   }
@@ -2178,9 +2211,10 @@
         rows = S.leagueRows;
         me = S.leagueMe || null;
       } else {
-        rows = await L.board(undefined, S.leagueSubject || undefined);
+        rows = await L.board();
         try { me = await L.myRow(); } catch (e) {}
       }
+      rows = scopeRows(rows, S.leagueSubject);
       const myId = me && me.user_id;
       const mine = rows.filter((r) => r.user_id === myId)[0] || null;
       let weekLabel = '';
@@ -2339,6 +2373,11 @@
       }
     });
     $('tour-btn-next').addEventListener('click', () => {
+      const st = TOUR_STEPS[tourIdx];
+      // skipping an action step still performs it, so the tour's screen matches the app
+      if (st && st.action === 'start' && S.session && !S.session.started) {
+        try { beginAnswering(); } catch (e) {}
+      }
       if (tourIdx >= TOUR_STEPS.length - 1) tourDone();
       else tourShow(tourIdx + 1);
     });

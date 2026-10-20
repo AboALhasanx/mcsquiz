@@ -580,6 +580,11 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   color: var(--text-muted);
 }
 .league-row.is-top .league-rank { color: #d9a521; font-weight: 700; }
+.menu-avatar.avatar-default,
+.podium-av.avatar-default {
+  background: var(--bg-surface) url('../assets/avatar-default.svg') center / cover no-repeat;
+  border: 1px solid var(--border-card);
+}
 .league-row .menu-avatar { width: 30px; height: 30px; font-size: 0.85rem; flex-shrink: 0; }
 .league-row-name {
   flex: 1;
