@@ -2487,7 +2487,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v35';
+  const SHELL_VERSION = 'v36';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -2501,18 +2501,19 @@
   // ---------------- offline / service-worker diagnostics ----------------
   async function offlineState() {
     const out = { supported: ('serviceWorker' in navigator), controller: false, reg: 'none', caches: {} };
+    const race = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('t')), ms || 2000))]);
     try { out.controller = !!navigator.serviceWorker.controller; } catch (e) {}
     try {
       if (out.supported) {
-        const reg = await navigator.serviceWorker.getRegistration();
+        const reg = await race(navigator.serviceWorker.getRegistration());
         out.reg = reg ? (reg.active ? 'active' : (reg.installing ? 'installing' : (reg.waiting ? 'waiting' : 'registered'))) : 'none';
       }
-    } catch (e) { out.reg = 'error'; }
+    } catch (e) { out.reg = 'timeout'; }
     try {
-      const names = await caches.keys();
+      const names = await race(caches.keys());
       for (let i = 0; i < names.length; i++) {
         const c = await caches.open(names[i]);
-        const keys = await c.keys();
+        const keys = await race(c.keys());
         out.caches[names[i]] = keys.length;
       }
     } catch (e) {}
@@ -2520,13 +2521,18 @@
   }
 
   function logOfflineState() {
+    // log the synchronous facts first: inside Telegram's WebView the async
+    // service-worker APIs can hang, and then we would learn nothing at all
+    let quick = 'sw=NO controller=no';
+    try {
+      quick = 'sw=' + (('serviceWorker' in navigator) ? 'yes' : 'NO') +
+        ' controller=' + ((navigator.serviceWorker && navigator.serviceWorker.controller) ? 'yes' : 'no');
+    } catch (e) {}
+    try { if (window.PortalLog) window.PortalLog.info('offline', quick); } catch (e) {}
     const log = (st) => {
       try {
         if (window.PortalLog) {
-          window.PortalLog.info('offline', 'sw=' + (st.supported ? 'yes' : 'NO') +
-            ' controller=' + (st.controller ? 'yes' : 'no') +
-            ' reg=' + st.reg +
-            ' caches=' + JSON.stringify(st.caches));
+          window.PortalLog.info('offline', 'reg=' + st.reg + ' caches=' + JSON.stringify(st.caches));
         }
       } catch (e) {}
     };
