@@ -1941,6 +1941,11 @@
       } catch (e) {
         toast('تعذر تحديث الحالة', 'error');
       }
+      // the visibility flip is already on the server: drop the cached board
+      // so the re-render below shows the new state instead of the old one
+      S.leagueRows = null;
+      S.leagueMe = null;
+      S.leagueStamp = 0;
       renderLeague();
     });
     icons();
@@ -2470,7 +2475,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v29';
+  const SHELL_VERSION = 'v32';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -1853,12 +1853,14 @@ input:checked + .slider::before {
     z-index: 30;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity var(--transition-drawer), visibility var(--transition-drawer);
 }
 
 .drawer-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 .drawer {
