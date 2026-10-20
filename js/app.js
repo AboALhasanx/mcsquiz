@@ -1591,9 +1591,14 @@
     b.classList.toggle('hidden', n === 0);
   }
   async function installApp() {
+    const inTelegram = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData);
     if (window.PortalPWA && await window.PortalPWA.install()) {
       closeDrawers();
       toast('تم إرسال طلب التثبيت');
+    } else if (inTelegram) {
+      // measured on a real tablet: Telegram's WebView does not keep the offline
+      // cache, so the installed browser app is the offline path
+      toast('للتشغيل بدون إنترنت: افتح الرابط في Chrome ثم ⋮ ← تثبيت التطبيق', 'info');
     } else {
       toast('من قائمة المتصفح ⋮ اختر "تثبيت التطبيق"');
     }
@@ -2482,7 +2487,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v33';
+  const SHELL_VERSION = 'v34';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
