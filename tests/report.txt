@@ -110,3 +110,11 @@ PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr |
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</spa
 PASS | banks | no runtime errors | []
+PASS | banks | banks exist | 10
+PASS | banks | every question has English text and a valid answer key | []
+PASS | banks | Arabic question coverage meets the current target | 137/157 translated
+PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
+PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
+                    <div class="card-header">
+                        <span class="card-hint">اختر الإجابة الصحيحة</spa
+PASS | banks | no runtime errors | []
