@@ -2096,18 +2096,12 @@
         ctx.fill();
       }
 
-      // name (+ "you")
+      // name
       ctx.textAlign = 'right';
       ctx.fillStyle = INK;
       ctx.font = '600 32px "MSCQuiz Arabic", sans-serif';
       const nameX = R - 92 - avR - 26;
       ctx.fillText(r.name || 'لاعب', nameX, cy + 10);
-      if (isMe) {
-        const w = ctx.measureText(r.name || 'لاعب').width;
-        ctx.fillStyle = ACCENT;
-        ctx.font = '600 21px "MSCQuiz Arabic", sans-serif';
-        ctx.fillText('أنت', nameX - w - 12, cy + 8);
-      }
 
       // the number on the left, where a table puts its values
       ctx.textAlign = 'left';
@@ -2133,7 +2127,13 @@
     return c;
   }
 
-  function showSharePreview(url, blob, publicUrl) {
+  function appShareLink() {
+    const appUrl = (window.PORTAL_APP_URL || 'https://mcq-portal-jade.vercel.app/') + '#/league';
+    return 'https://t.me/share/url?url=' + encodeURIComponent(appUrl) +
+      '&text=' + encodeURIComponent('دوري MSCQuiz — ترتيبي هذا الأسبوع');
+  }
+
+  function showSharePreview(url) {
     const modal = $('share-modal');
     const img = $('share-img');
     if (!modal || !img) return;
@@ -2150,29 +2150,18 @@
       a.remove();
     };
     const tg = $('share-telegram');
-    if (tg) {
-      tg.classList.toggle('hidden', !publicUrl);
-      tg.onclick = () => {
-        if (!publicUrl) return;
-        const link = 'https://t.me/share/url?url=' + encodeURIComponent(publicUrl) +
-          '&text=' + encodeURIComponent('دوري MSCQuiz — ترتيبي هذا الأسبوع');
-        try {
-          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
-            window.Telegram.WebApp.openTelegramLink(link);
-          } else {
-            window.open(link, '_blank');
-          }
-        } catch (e) { window.open(link, '_blank'); }
-      };
-    }
+    if (tg) tg.onclick = () => {
+      const link = appShareLink();
+      try {
+        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.openTelegramLink) {
+          window.Telegram.WebApp.openTelegramLink(link);
+        } else {
+          window.open(link, '_blank');
+        }
+      } catch (e) { window.open(link, '_blank'); }
+    };
     const cp = $('share-copy');
-    if (cp) {
-      cp.classList.toggle('hidden', !publicUrl);
-      cp.onclick = async () => {
-        try { await navigator.clipboard.writeText(publicUrl); toast('نُسخ رابط البطاقة', 'success'); }
-        catch (e) { toast(publicUrl); }
-      };
-    }
+    if (cp) cp.classList.toggle('hidden', true);
   }
 
   async function shareMyRank() {
@@ -2216,18 +2205,8 @@
           if (e && e.name === 'AbortError') return;
         }
       }
-      // no file share on this device: publish the card and hand over a link
-      let publicUrl = '';
-      try {
-        publicUrl = (L.uploadCard && await L.uploadCard(blob)) || '';
-      } catch (e) { publicUrl = ''; }
-      const tgApp = window.Telegram && window.Telegram.WebApp;
-      if (publicUrl && tgApp && tgApp.openTelegramLink) {
-        const link = 'https://t.me/share/url?url=' + encodeURIComponent(publicUrl) +
-          '&text=' + encodeURIComponent('دوري MSCQuiz — ترتيبي هذا الأسبوع');
-        try { tgApp.openTelegramLink(link); return; } catch (e) {}
-      }
-      showSharePreview(URL.createObjectURL(blob), blob, publicUrl);
+      // no file share on this device: offer the card + open the Telegram share sheet
+      showSharePreview(URL.createObjectURL(blob));
     } catch (e) { toast('تعذر إنشاء المشاركة', 'error'); }
     finally {
       if (btn) { btn.disabled = false; btn.classList.remove('is-busy'); }
