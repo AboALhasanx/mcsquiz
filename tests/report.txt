@@ -93,3 +93,20 @@ PASS | a11y | the share preview image has alt text |
 PASS | a11y | theme toggle changes the palette | #d9b26a / #96721a
 PASS | a11y | theme choice is remembered | 
 PASS | a11y | no runtime errors | []
+PASS | banks | banks exist | 10
+FAIL | banks | every question has English text and a valid answer key | ['02_English_Language_Ch01_Quiz_01#q3:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q2:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q15:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q18:ar-options']
+FAIL | banks | translated questions have four Arabic options | ['02_English_Language_Ch01_Quiz_01#q3:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q2:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q15:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q18:ar-options']
+PASS | banks | Arabic question coverage meets the current target | 127/157 translated
+PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
+PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
+                    <div class="card-header">
+                        <span class="card-hint">اختر الإجابة الصحيحة</spa
+PASS | banks | no runtime errors | []
+PASS | banks | banks exist | 10
+PASS | banks | every question has English text and a valid answer key | []
+PASS | banks | Arabic question coverage meets the current target | 127/157 translated
+PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
+PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
+                    <div class="card-header">
+                        <span class="card-hint">اختر الإجابة الصحيحة</spa
+PASS | banks | no runtime errors | []

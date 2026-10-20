@@ -1,768 +1,843 @@
 {
- "subject": "03_Data_Mining",
- "topic": "Week 01: Introduction to Data Mining",
- "topic_ar": "المحاضرة 01: مقدمة في التنقيب عن البيانات",
- "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "dm_definition",
-   "bloom_level": "Remember",
-   "text": "عرّف التنقيب عن البيانات (Data Mining) وفقاً لنص المحاضرة: هو عملية استخراج __________ لتحديد الأنماط والاتجاهات والبيانات المفيدة من مجموعات بيانات ضخمة، حتى تتخذ المنظمة قرارات مبنية على البيانات.",
-   "text_en": "According to the lecture text, data mining is the process of extracting __________ to identify patterns, trends, and useful data from huge sets of data so the organization can take data-driven decisions.",
-   "options": [
-    "المعلومات",
-    "العتاد المادي فقط",
-    "أسماء المستخدمين وكلمات المرور",
-    "ملفات الألعاب الإلكترونية"
-   ],
-   "options_en": [
-    "Information",
-    "Hardware components only",
-    "Usernames and passwords",
-    "Video game files"
-   ],
-   "answer": "A",
-   "explanation": "التعريف الحرفي: عملية استخراج معلومات (extracting information) لتحديد أنماط واتجاهات وبيانات مفيدة من مجموعات ضخمة تسمح باتخاذ قرارات مبنية على البيانات.",
-   "question": "According to the lecture, data mining is the process of extracting __________ to identify patterns, trends, and useful data from huge datasets for data-driven decisions.",
-   "question_ar": "عرّف التنقيب عن البيانات وفقاً لنص المحاضرة: هو عملية استخراج __________ لتحديد الأنماط والاتجاهات والبيانات المفيدة من مجموعات بيانات ضخمة.",
-   "correct": 0,
-   "options_ar": [
-    "المعلومات",
-    "العتاد المادي فقط",
-    "أسماء المستخدمين وكلمات المرور",
-    "ملفات الألعاب الإلكترونية"
-   ]
-  },
-  {
-   "id": "q2",
-   "concept_id": "kdd_alias",
-   "bloom_level": "Remember",
-   "text": "ما هو الاسم الآخر المستعمل للتنقيب عن البيانات في المحاضرة؟",
-   "text_en": "What is the other name used for data mining in the lecture?",
-   "options": [
-    "Knowledge Discovery of Data (KDD)",
-    "Keyboard Device Driver (KDD)",
-    "Kernel Data Dump (KDD)",
-    "Known Data Definition (KDD)"
-   ],
-   "options_en": [
-    "Knowledge Discovery of Data (KDD)",
-    "Keyboard Device Driver (KDD)",
-    "Kernel Data Dump (KDD)",
-    "Known Data Definition (KDD)"
-   ],
-   "answer": "A",
-   "explanation": "المحاضرة تذكر صراحة: Data Mining is also called Knowledge Discovery of Data (KDD) — اكتشاف المعرفة من البيانات.",
-   "question": "What is the other name used for data mining in the lecture?",
-   "question_ar": "ما هو الاسم الآخر المستعمل للتنقيب عن البيانات في المحاضرة؟",
-   "correct": 0,
-   "options_ar": [
-    "Knowledge Discovery of Data (KDD)",
-    "Keyboard Device Driver (KDD)",
-    "Kernel Data Dump (KDD)",
-    "Known Data Definition (KDD)"
-   ]
-  },
-  {
-   "id": "q3",
-   "concept_id": "dm_tool",
-   "bloom_level": "Remember",
-   "text": "أي أداة يستخدمها التنقيب عن البيانات وفقاً للنص؟",
-   "text_en": "Which tool does data mining use according to the lecture text?",
-   "options": [
-    "لوحات الرسم اليدوية فقط",
-    "خوارزميات رياضية معقّدة",
-    "برامج تحرير الصور",
-    "معالجات النصوص المكتبية"
-   ],
-   "options_en": [
-    "Hand drawing boards only",
-    "Complex mathematical algorithms",
-    "Image-editing software",
-    "Office word processors"
-   ],
-   "answer": "B",
-   "explanation": "النص: Data mining utilizes complex mathematical algorithms for data segments and evaluates the probability of future events.",
-   "question": "Which tool does data mining use according to the lecture?",
-   "question_ar": "أي أداة يستخدمها التنقيب عن البيانات وفقاً للنص؟",
-   "correct": 1,
-   "options_ar": [
-    "لوحات الرسم اليدوية فقط",
-    "خوارزميات رياضية معقّدة",
-    "برامج تحرير الصور",
-    "معالجات النصوص المكتبية"
-   ]
-  },
-  {
-   "id": "q4",
-   "concept_id": "dm_warehouse",
-   "bloom_level": "Remember",
-   "text": "أين تُجمَّع البيانات عادةً التي يُشغَّل عليها التنقيب وفقاً للنص؟",
-   "text_en": "Where is the data usually collected for mining according to the lecture?",
-   "options": [
-    "دفاتر ورقية مدرسية",
-    "أقراص الألعاب القديمة",
-    "لوحات إعلانات الشوارع",
-    "مستودعات البيانات"
-   ],
-   "options_en": [
-    "School paper notebooks",
-    "Old game discs",
-    "Street billboards",
-    "Data warehouses"
-   ],
-   "answer": "D",
-   "explanation": "النص يذكر data warehouses كمكان تُجمَّع فيه البيانات المستهدفة بالتنقيب.",
-   "question": "Where is data usually collected for mining according to the lecture?",
-   "question_ar": "أين تُجمَّع البيانات عادةً التي يُشغَّل عليها التنقيب وفقاً للنص؟",
-   "correct": 3,
-   "options_ar": [
-    "دفاتر ورقية مدرسية",
-    "أقراص الألعاب القديمة",
-    "لوحات إعلانات الشوارع",
-    "مستودعات البيانات"
-   ]
-  },
-  {
-   "id": "q5",
-   "concept_id": "beyond_simple_analysis",
-   "bloom_level": "Understand",
-   "text": "ما هو جوهر الفرق بين التنقيب عن البيانات والتحليل البسيط (simple analysis procedures)؟",
-   "text_en": "What is the essential difference between data mining and simple analysis procedures?",
-   "options": [
-    "التنقيب يعتمد على المعالجة اليدوية بينما التحليل البسيط يعتمد على خوارزميات الذكاء الاصطناعي.",
-    "التحليل البسيط يتعامل مع البيانات غير المهيكلة بينما التنقيب يتعامل حصراً مع الجداول العادية.",
-    "التنقيب يتجاوز التحليل البسيط ويكتشف أنماطاً خفية وتنبؤات غير واضحة في البيانات الضخمة.",
-    "التحليل البسيط يقتصر على تلخيص الماضي بينما التنقيب يكتشف أنماطاً تنبؤية للمستقبل."
-   ],
-   "options_en": [
-    "Data mining uses fewer computers",
-    "Simple analysis is always deeper than mining",
-    "Data mining goes beyond simple analysis and discovers hidden patterns and predictions",
-    "There is no practical difference"
-   ],
-   "answer": "C",
-   "explanation": "الجملة المفتاحية بالنص: go beyond simple analysis procedures — التنقيب بحث تلقائي عن أنماط تتجاوز التحليل البسيط.",
-   "question": "What is the essential difference between data mining and simple analysis procedures?",
-   "question_ar": "ما هو جوهر الفرق بين التنقيب عن البيانات والتحليل البسيط؟",
-   "correct": 2,
-   "options_ar": [
-    "التنقيب يعتمد على المعالجة اليدوية بينما التحليل البسيط يعتمد على خوارزميات الذكاء الاصطناعي.",
-    "التحليل البسيط يتعامل مع البيانات غير المهيكلة بينما التنقيب يتعامل حصراً مع الجداول العادية.",
-    "التنقيب يتجاوز التحليل البسيط ويكتشف أنماطاً خفية وتنبؤات غير واضحة في البيانات الضخمة.",
-    "التحليل البسيط يقتصر على تلخيص الماضي بينما التنقيب يكتشف أنماطاً تنبؤية للمستقبل."
-   ]
-  },
-  {
-   "id": "q6",
-   "concept_id": "dm_function",
-   "bloom_level": "Understand",
-   "text": "إلى جانب تجزئة البيانات، ما هي الوظيفة الأخرى التي يذكرها النص للتنقيب؟",
-   "text_en": "Besides segmenting data, what other function does the text attribute to data mining?",
-   "options": [
-    "مراقبة استهلاك الموارد وحساب زمن استجابة خوادم الويب.",
-    "إعادة بناء قواعد البيانات العلائقية وضغط الملفات المؤرشفة.",
-    "تقييم احتمال الأحداث المستقبلية والتنبؤ بسلوك المتغيرات.",
-    "توليد المفاتيح التشفيرية وإدارة صلاحيات وصول المستخدمين."
-   ],
-   "options_en": [
-    "Printing paper photos",
-    "Charging batteries",
-    "Evaluating the probability of future events",
-    "Installing operating systems"
-   ],
-   "answer": "C",
-   "explanation": "النص: evaluates the probability of future events — مع تجزئة البيانات (data segments).",
-   "question": "Besides segmenting data, what other function does the text attribute to data mining?",
-   "question_ar": "إلى جانب تجزئة البيانات، ما هي الوظيفة الأخرى التي يذكرها النص للتنقيب؟",
-   "correct": 2,
-   "options_ar": [
-    "مراقبة استهلاك الموارد وحساب زمن استجابة خوادم الويب.",
-    "إعادة بناء قواعد البيانات العلائقية وضغط الملفات المؤرشفة.",
-    "تقييم احتمال الأحداث المستقبلية والتنبؤ بسلوك المتغيرات.",
-    "توليد المفاتيح التشفيرية وإدارة صلاحيات وصول المستخدمين."
-   ]
-  },
-  {
-   "id": "q7",
-   "concept_id": "advantage_data_level",
-   "bloom_level": "Understand",
-   "text": "في قالب الفوائد الثلاثة (Data → Business → Tech)، أي مما يلي يندرج تحت مستوى البيانات (Discovery & Analysis)؟",
-   "text_en": "In the three-level advantages template (Data → Business → Tech), which belongs to the Discovery & Analysis (Data) level?",
-   "options": [
-    "تسريع زمن معالجة المعاملات المالية الموزعة وضمان تسليم الرسائل عبر الشبكة المحلية.",
-    "اكتشاف تلقائي للأنماط الخفية والتنبؤ بالاتجاهات وتحويل البيانات الخام إلى معرفة.",
-    "إمكانية الدمج المرن بالأنظمة القديمة والحديثة دون الحاجة لإعادة هيكلة البنية التحتية.",
-    "تقليل التكلفة التشغيلية للخوادم السحابية عبر تحسين استهلاك الذاكرة وتوزيع الأحمال."
-   ],
-   "options_en": [
-    "Speed of analyzing huge volumes for new users",
-    "Automated discovery of hidden patterns and prediction of trends + transforming raw data into knowledge-based data",
-    "Integration with new and legacy platforms",
-    "Tools being cost-efficient vs statistics"
-   ],
-   "answer": "B",
-   "explanation": "المستوى الأول (Data): Hidden Patterns & Prediction + Knowledge-Based Data. الخيارات الأخرى من مستوى النظام/التقنية.",
-   "question": "In the three-level advantages template, which belongs to the Discovery & Analysis (Data) level?",
-   "question_ar": "في قالب الفوائد الثلاثة، أي مما يلي يندرج تحت مستوى البيانات (Discovery & Analysis)؟",
-   "correct": 1,
-   "options_ar": [
-    "تسريع زمن معالجة المعاملات المالية الموزعة وضمان تسليم الرسائل عبر الشبكة المحلية.",
-    "اكتشاف تلقائي للأنماط الخفية والتنبؤ بالاتجاهات وتحويل البيانات الخام إلى معرفة.",
-    "إمكانية الدمج المرن بالأنظمة القديمة والحديثة دون الحاجة لإعادة هيكلة البنية التحتية.",
-    "تقليل التكلفة التشغيلية للخوادم السحابية عبر تحسين استهلاك الذاكرة وتوزيع الأحمال."
-   ]
-  },
-  {
-   "id": "q8",
-   "concept_id": "advantage_business_level",
-   "bloom_level": "Apply",
-   "text": "مؤسسة عدّلت خطوط إنتاجها بناءً على نتائج تنقيب البيانات وحققت أرباحاً أعلى. أي مستوى من مستويات الفوائد الثلاثة يصف هذا المثال؟",
-   "text_en": "A firm changed its production lines based on data-mining results and achieved higher profits. Which of the three advantage levels does this example describe?",
-   "options": [
-    "مستوى الخصوصية",
-    "مستوى التكلفة فقط",
-    "مستوى القرار / العمل",
-    "مستوى البيانات"
-   ],
-   "options_en": [
-    "Privacy level",
-    "Cost-only level",
-    "Business Impact / Decision level",
-    "Data / Discovery level"
-   ],
-   "answer": "C",
-   "explanation": "Lucrative modifications + Decision-Making = المستوى الثاني Business Impact / Decision Level (قرّر واربِح).",
-   "question": "A firm changed production based on mining results and earned higher profits. Which advantage level?",
-   "question_ar": "مؤسسة عدّلت خطوط إنتاجها بناءً على التنقيب وحققت أرباحاً أعلى. أي مستوى من مستويات الفوائد؟",
-   "correct": 2,
-   "options_ar": [
-    "مستوى الخصوصية",
-    "مستوى التكلفة فقط",
-    "مستوى القرار / العمل",
-    "مستوى البيانات"
-   ]
-  },
-  {
-   "id": "q9",
-   "concept_id": "advantage_system_level",
-   "bloom_level": "Understand",
-   "text": "أي مما يلي من فوائد مستوى النظام/التقنية (Practical Feasibility) كما وردت بالنص؟",
-   "text_en": "Which of the following is a Practical Feasibility (system-level) advantage in the lecture?",
-   "options": [
-    "حماية خصوصية السجلات عبر خوارزميات التشفير المتماثل ومصادقة الهوية.",
-    "إعادة هيكلة مخازن البيانات تلقائياً دون استهلاك أي مساحة تخزينية على القرص.",
-    "استبدال محللي البيانات البشريين بأنظمة ذاتية التحكم تعمل دون أي إشراف هندسي.",
-    "كفاءة اقتصادية في الكلفة مع مرونة عالية في الدمج وسرعة للمستخدمين الجدد."
-   ],
-   "options_en": [
-    "Selling customer data",
-    "Imprecise probabilistic results",
-    "Software being hard to operate",
-    "Cost-efficient + integratable + fast for new users"
-   ],
-   "answer": "D",
-   "explanation": "المستوى الثالث: Cost-Efficient · System Integration (new + legacy) · Speed & Usability. بقية الخيارات من العيوب.",
-   "question": "Which is a Practical Feasibility (system-level) advantage in the lecture?",
-   "question_ar": "أي مما يلي من فوائد مستوى النظام/التقنية كما وردت بالنص؟",
-   "correct": 3,
-   "options_ar": [
-    "حماية خصوصية السجلات عبر خوارزميات التشفير المتماثل ومصادقة الهوية.",
-    "إعادة هيكلة مخازن البيانات تلقائياً دون استهلاك أي مساحة تخزينية على القرص.",
-    "استبدال محللي البيانات البشريين بأنظمة ذاتية التحكم تعمل دون أي إشراف هندسي.",
-    "كفاءة اقتصادية في الكلفة مع مرونة عالية في الدمج وسرعة للمستخدمين الجدد."
-   ]
-  },
-  {
-   "id": "q10",
-   "concept_id": "advantage_anchor",
-   "bloom_level": "Remember",
-   "text": "ما هي مرساة الحفظ (Mental Anchor) للفوائد كما طوّرتها مع Gemini؟",
-   "text_en": "What is the mental anchor for advantages as developed with Gemini?",
-   "options": [
-    "تعارض خوارزميات التنقيب مع بروتوكولات الشبكات القياسية وأنظمة التخزين السحابي.",
-    "غياب المتخصصين الفنيين وارتفاع تكلفة تدريب الكوادر الهندسية على التقنيات الحديثة.",
-    "احتمالية النتائج غير الدقيقة وغموض استخراج الأنماط بالإضافة للمخاوف حول الخصوصية.",
-    "الحصول على نتائج قطعية ومؤكدة بنسبة مئة بالمئة في جميع بيئات العمل البرمجية."
-   ],
-   "options_en": [
-    "Nature → Root Cause → Consequence",
-    "Extract & Predict → Decide & Profit → Cheap, Integratable & Fast",
-    "Patient Forecasting → Insurance Fraud",
-    "Selling → Tools → Flawed Results"
-   ],
-   "answer": "B",
-   "explanation": "مرساة الفوائد من الأرض للأعلى: Extract & Predict (بيانات) → Decide & Profit (عمل) → Cheap, Integratable & Fast (تقنية).",
-   "question": "What is the mental anchor for data mining advantages (Gemini framework)?",
-   "question_ar": "ما هي مرساة الحفظ للفوائد كما طوّرتها مع Gemini؟",
-   "correct": 1,
-   "options_ar": [
-    "تعارض خوارزميات التنقيب مع بروتوكولات الشبكات القياسية وأنظمة التخزين السحابي.",
-    "غياب المتخصصين الفنيين وارتفاع تكلفة تدريب الكوادر الهندسية على التقنيات الحديثة.",
-    "احتمالية النتائج غير الدقيقة وغموض استخراج الأنماط بالإضافة للمخاوف حول الخصوصية.",
-    "الحصول على نتائج قطعية ومؤكدة بنسبة مئة بالمئة في جميع بيئات العمل البرمجية."
-   ]
-  },
-  {
-   "id": "q11",
-   "concept_id": "disadvantage_amex",
-   "bloom_level": "Remember",
-   "text": "أي منظمة ذكرتها المحاضرة كمثال على بيع بيانات العملاء لمنظمات خارجية؟",
-   "text_en": "Which organization did the lecture cite as an example of selling customer data to outsiders?",
-   "options": [
-    "البيانات المجدولة والنصوص.",
-    "البيانات السمعية والموسيقى.",
-    "الدوائر الكهربائية فقط.",
-    "إشارات الراديو والموجات."
-   ],
-   "options_en": [
-    "IBM",
-    "Microsoft",
-    "Oracle",
-    "American Express"
-   ],
-   "answer": "D",
-   "explanation": "النص: As per the report, American Express has sold credit card purchases of their customers to other organizations.",
-   "question": "Which organization did the lecture cite for selling customer data?",
-   "question_ar": "أي منظمة ذكرتها المحاضرة كمثال على بيع بيانات العملاء لمنظمات خارجية؟",
-   "correct": 3,
-   "options_ar": [
-    "البيانات المجدولة والنصوص.",
-    "البيانات السمعية والموسيقى.",
-    "الدوائر الكهربائية فقط.",
-    "إشارات الراديو والموجات."
-   ]
-  },
-  {
-   "id": "q12",
-   "concept_id": "disadvantage_tool_selection",
-   "bloom_level": "Understand",
-   "text": "ليش اختيار أداة التنقيب المناسبة يُعدّ تحدياً صعباً وفقاً للنص؟",
-   "text_en": "Why is selecting the right data mining tool considered challenging according to the text?",
-   "options": [
-    "استبدال بروتوكولات الاتصال الموزعة بحزم برمجية مخصصة لإرسال البريد الإلكتروني.",
-    "التنبؤ بفرص الشراء المستقبلية وتحليل سلة السوق لتحديد المنتجات المرتبطة ببعضها.",
-    "التحقق من صحة المفاتيح التشفيرية المستخدمة في المصادقة الثنائية لحسابات العملاء.",
-    "قياس سرعة استجابة وحدات التخزين الصلبة ومراقبة درجات حرارة وحدات المعالجة المركزية."
-   ],
-   "options_en": [
-    "Because all tools are completely free",
-    "Because different tools operate in distinct ways due to different design algorithms",
-    "Because tools do not run on computers",
-    "Because all tools are identical"
-   ],
-   "answer": "B",
-   "explanation": "النص: Different data mining instruments operate in distinct ways due to the different algorithms used in their design.",
-   "question": "Why is selecting the right data mining tool challenging?",
-   "question_ar": "ليش اختيار أداة التنقيب المناسبة يُعدّ تحدياً صعباً وفقاً للنص؟",
-   "correct": 1,
-   "options_ar": [
-    "استبدال بروتوكولات الاتصال الموزعة بحزم برمجية مخصصة لإرسال البريد الإلكتروني.",
-    "التنبؤ بفرص الشراء المستقبلية وتحليل سلة السوق لتحديد المنتجات المرتبطة ببعضها.",
-    "التحقق من صحة المفاتيح التشفيرية المستخدمة في المصادقة الثنائية لحسابات العملاء.",
-    "قياس سرعة استجابة وحدات التخزين الصلبة ومراقبة درجات حرارة وحدات المعالجة المركزية."
-   ]
-  },
-  {
-   "id": "q13",
-   "concept_id": "disadvantage_imprecision",
-   "bloom_level": "Understand",
-   "text": "ما العيب الجوهري المرتبط بدقة نواتج التنقيب؟",
-   "text_en": "What is the core disadvantage related to the precision of mining outputs?",
-   "options": [
-    "النتائج دائماً دقيقة بنسبة مئة بالمئة ومضمونة في كافة التطبيقات الحساسة.",
-    "الخوارزميات تستهلك كامل موارد المعالج مما يؤدي لتوقف خوادم قواعد البيانات فوراً.",
-    "التقنيات ذات طبيعة احتمالية وغير دقيقة وقد تقود لقرارات وخيمة عند غياب الفهم البشري.",
-    "النماذج تتجاهل المتغيرات الإحصائية وتعتمد حصراً على التخمين العشوائي غير المنطقي."
-   ],
-   "options_en": [
-    "Results are always 100% precise and guaranteed",
-    "Techniques are probabilistic/not precise and may lead to severe consequences",
-    "Results never appear on a computer",
-    "Results are printed on paper only"
-   ],
-   "answer": "B",
-   "explanation": "النص: The data mining techniques are not precise, so that it may lead to severe consequences in certain conditions.",
-   "question": "What disadvantage is related to mining output precision?",
-   "question_ar": "ما العيب الجوهري المرتبط بدقة نواتج التنقيب؟",
-   "correct": 1,
-   "options_ar": [
-    "النتائج دائماً دقيقة بنسبة مئة بالمئة ومضمونة في كافة التطبيقات الحساسة.",
-    "الخوارزميات تستهلك كامل موارد المعالج مما يؤدي لتوقف خوادم قواعد البيانات فوراً.",
-    "التقنيات ذات طبيعة احتمالية وغير دقيقة وقد تقود لقرارات وخيمة عند غياب الفهم البشري.",
-    "النماذج تتجاهل المتغيرات الإحصائية وتعتمد حصراً على التخمين العشوائي غير المنطقي."
-   ]
-  },
-  {
-   "id": "q14",
-   "concept_id": "disadvantage_training",
-   "bloom_level": "Apply",
-   "text": "موظفون في مصرف اشتكوا إن برنامج تحليلات التنقيب صعب التشغيل ويحتاج دورات متقدمة قبل الاستخدام. أي عيب من عيوب التنقيب ينطبق هنا؟",
-   "text_en": "Bank staff complained that analytics mining software is hard to operate and needs advanced training. Which disadvantage applies?",
-   "options": [
-    "تحليل حركة المرور وإشارات الشوارع الذكية.",
-    "إدارة سلاسل التوريد والخدمات اللوجستية الموزعة.",
-    "تحديد العملاء ذوي الجدارة الائتمانية العالية.",
-    "تصميم واجهات المستخدم للمواقع الحكومية العامة."
-   ],
-   "options_en": [
-    "Privacy / selling customer data",
-    "System excessive speed",
-    "Steep learning curve + difficult-to-operate software",
-    "Low solution cost"
-   ],
-   "answer": "C",
-   "explanation": "النص: Many data mining analytics software is difficult to operate and needs advance training — المستوى التقني/التشغيلي من العيوب.",
-   "question": "Staff find mining analytics hard to operate and need advanced training. Which disadvantage?",
-   "question_ar": "موظفون اشتكوا إن برنامج التنقيب صعب ويحتاج دورات متقدمة. أي عيب ينطبق؟",
-   "correct": 2,
-   "options_ar": [
-    "تحليل حركة المرور وإشارات الشوارع الذكية.",
-    "إدارة سلاسل التوريد والخدمات اللوجستية الموزعة.",
-    "تحديد العملاء ذوي الجدارة الائتمانية العالية.",
-    "تصميم واجهات المستخدم للمواقع الحكومية العامة."
-   ]
-  },
-  {
-   "id": "q15",
-   "concept_id": "app_healthcare",
-   "bloom_level": "Apply",
-   "text": "مستشفى يستخدم التنقيب لتصنيف وتوقع أعداد المرضى حتى تصل الرعاية المركزة بالمكان والوقت المناسبين، وتكشف شركات التأمين الاحتيال بالمطالبات. وفقاً لقاعدة الكلمتين، ما هو المجال وما هي الكلمتان الجوهريتان؟",
-   "text_en": "A hospital uses mining to forecast patient categories for timely intensive care, while insurers detect claim fraud. By the 2-keyword rule, what domain and core keywords?",
-   "options": [
-    "Lie Detection — Text Mining + Truth Model",
-    "Banking — Trends & Customer Segmentation",
-    "Healthcare — Patient Forecasting + Fraud & Abuse",
-    "Manufacturing — Process Patterns + Cost"
-   ],
-   "options_en": [
-    "Lie Detection — Text Mining + Truth Model",
-    "Banking — Trends & Customer Segmentation",
-    "Healthcare — Patient Forecasting + Fraud & Abuse",
-    "Manufacturing — Process Patterns + Cost"
-   ],
-   "answer": "C",
-   "explanation": "المجال Healthcare؛ الكلمتان: Patient Forecasting (العملية الأساسية) + Fraud & Abuse (الخطر/الشذوذ بمطالبات التأمين).",
-   "question": "Hospital forecasts patients + insurers detect claim fraud. Domain + two keywords?",
-   "question_ar": "مستشفى يتنبأ بالمرضى وشركات تأمين تكشف الاحتيال. المجال والكلمتان الجوهريتان؟",
-   "correct": 2,
-   "options_ar": [
-    "Lie Detection — Text Mining + Truth Model",
-    "Banking — Trends & Customer Segmentation",
-    "Healthcare — Patient Forecasting + Fraud & Abuse",
-    "Manufacturing — Process Patterns + Cost"
-   ]
-  },
-  {
-   "id": "q16",
-   "concept_id": "app_market_basket",
-   "bloom_level": "Understand",
-   "text": "ما الفرضية الجوهرية لتحليل سلة السوق (Market Basket Analysis) كما وردت بالنص؟",
-   "text_en": "What is the core hypothesis of Market Basket Analysis in the lecture?",
-   "options": [
-    "تحليل سلة السوق لمعرفة المنتجات المشتراة معاً وتقديم توصيات مخصصة للزبائن.",
-    "توزيع النسخ الاحتياطية على خوادم متعددة جغرافياً لمنع فقدان السجلات الرقمية.",
-    "تصميم هياكل الجداول العلائقية وتحسين استعلامات لغة إس كيو إل لمخازن البيانات.",
-    "تشفير بيانات بطاقات الدفع الإلكتروني وفق المعايير المصرفية العالمية الصارمة."
-   ],
-   "options_en": [
-    "Product prices are globally fixed",
-    "If you buy a specific group of products, you are more likely to buy another group",
-    "All customers always buy the same product",
-    "Stores never need layout planning"
-   ],
-   "answer": "B",
-   "explanation": "الفرضية بالنص: If you buy a specific group of products, then you are more likely to buy another group of products. والناتج: فهم سلوك الشراء وتغيير تخطيط المتجر.",
-   "question": "What is the core hypothesis of Market Basket Analysis?",
-   "question_ar": "ما الفرضية الجوهرية لتحليل سلة السوق كما وردت بالنص؟",
-   "correct": 1,
-   "options_ar": [
-    "تحليل سلة السوق لمعرفة المنتجات المشتراة معاً وتقديم توصيات مخصصة للزبائن.",
-    "توزيع النسخ الاحتياطية على خوادم متعددة جغرافياً لمنع فقدان السجلات الرقمية.",
-    "تصميم هياكل الجداول العلائقية وتحسين استعلامات لغة إس كيو إل لمخازن البيانات.",
-    "تشفير بيانات بطاقات الدفع الإلكتروني وفق المعايير المصرفية العالمية الصارمة."
-   ]
-  },
-  {
-   "id": "q17",
-   "concept_id": "app_edm",
-   "bloom_level": "Understand",
-   "text": "ما الهدف المذكور من التنقيب في التعليم (EDM) والمخرج الأهم للمؤسسة التعليمية؟",
-   "text_en": "What is the stated goal of Education Data Mining (EDM) and the key institutional output?",
-   "options": [
-    "حساب رواتب الموظفين الشهرية والضرائب السنوية تلقائياً.",
-    "تحديث أنظمة التشغيل وحذف الملفات المؤقتة من خوادم البنوك.",
-    "تنظيم جداول مواعيد الاجتماعات الدورية لأعضاء مجلس الإدارة.",
-    "اكتشاف المعاملات الاحتيالية وبطاقات الائتمان المسروقة."
-   ],
-   "options_en": [
-    "Only increasing campus buildings",
-    "Printing certificates without assessment",
-    "Predicting student learning/performance and deciding what to teach and how to teach",
-    "Canceling curricula"
-   ],
-   "answer": "C",
-   "explanation": "أهداف EDM: affirming learning behavior · studying support impact · promoting learning science. والمخرج: concentrate on what to teach and how to teach.",
-   "question": "What is EDM's goal and key output for institutions?",
-   "question_ar": "ما هدف التنقيب التعليمي EDM والمخرج الأهم للمؤسسة؟",
-   "correct": 2,
-   "options_ar": [
-    "حساب رواتب الموظفين الشهرية والضرائب السنوية تلقائياً.",
-    "تحديث أنظمة التشغيل وحذف الملفات المؤقتة من خوادم البنوك.",
-    "تنظيم جداول مواعيد الاجتماعات الدورية لأعضاء مجلس الإدارة.",
-    "اكتشاف المعاملات الاحتيالية وبطاقات الائتمان المسروقة."
-   ]
-  },
-  {
-   "id": "q18",
-   "concept_id": "app_fraud_supervised",
-   "bloom_level": "Apply",
-   "text": "نظام يصنّف السجلات إلى احتيالية أو سليمة بناءً على عيّنات مصنفة مسبقاً، ثم يبني نموذجاً للتحقق من الوثائق. ما المجال والتقنية الأساسية؟",
-   "text_en": "A system classifies records as fraudulent vs non-fraudulent using pre-labeled samples then builds a model to check documents. Domain + core technique?",
-   "options": [
-    "Education — Student Performance Prediction",
-    "Spatial mining — GPS coordinates",
-    "Image mining — textures and regions",
-    "Fraud Detection — Supervised classification"
-   ],
-   "options_en": [
-    "Education — Student Performance Prediction",
-    "Spatial mining — GPS coordinates",
-    "Image mining — textures and regions",
-    "Fraud Detection — Supervised classification (fraudulent vs non-fraudulent)"
-   ],
-   "answer": "D",
-   "explanation": "النص عن Fraud Detection: Supervised methods consist of sample records classified as fraudulent or non-fraudulent; a model is constructed to identify whether a document is fraudulent.",
-   "question": "Pre-labeled fraud/non-fraud samples train a model to check documents. Domain + technique?",
-   "question_ar": "عيّنات مصنفة احتيال/سليم تبني نموذج للتحقق من الوثائق. المجال والتقنية؟",
-   "correct": 3,
-   "options_ar": [
-    "Education — Student Performance Prediction",
-    "Spatial mining — GPS coordinates",
-    "Image mining — textures and regions",
-    "Fraud Detection — Supervised classification"
-   ]
-  },
-  {
-   "id": "q19",
-   "concept_id": "app_lie_textmining",
-   "bloom_level": "Understand",
-   "text": "أي مجال يستخدم تنقيب النصوص (Text Mining) على نص غير مهيكل ويسجلات تحقيقات سابقة لبناء نموذج لكشف الكذب؟",
-   "text_en": "Which domain uses text mining on unstructured text and past investigation records to build a lie-detection model?",
-   "options": [
-    "Lie Detection",
-    "Market Basket Analysis",
-    "Manufacturing forecasting",
-    "Retail store layout"
-   ],
-   "options_en": [
-    "Lie Detection",
-    "Market Basket Analysis",
-    "Manufacturing forecasting",
-    "Retail store layout"
-   ],
-   "answer": "A",
-   "explanation": "النص: This technique includes text mining also... seeks meaningful patterns in data which is usually unstructured text... model for lie detection is constructed.",
-   "question": "Which domain uses text mining + past cases to build a lie-detection model?",
-   "question_ar": "أي مجال يستخدم تنقيب النصوص وسجلات تحقيقات سابقة لبناء نموذج كشف الكذب؟",
-   "correct": 0,
-   "options_ar": [
-    "Lie Detection",
-    "Market Basket Analysis",
-    "Manufacturing forecasting",
-    "Retail store layout"
-   ]
-  },
-  {
-   "id": "q20",
-   "concept_id": "app_banking",
-   "bloom_level": "Analyze",
-   "text": "لماذا يعجز المدير المصرفي عن رؤية الأنماط بنفسه وفقاً للنص، وماذا يكتشف له التنقيب؟",
-   "text_en": "Why can a bank manager not see patterns himself, and what does mining uncover for him?",
-   "options": [
-    "الاعتماد على الحوسبة السحابية الخاصة لتقليل تكلفة شراء الخوادم المادية للمؤسسات الكبرى.",
-    "الاستفادة من البيانات التراكمية التاريخية الضخمة وتحويلها إلى قرارات تجارية تنافسية واستباقية.",
-    "تقليص عدد الموظفين في أقسام تقنية المعلومات عبر أتمتة مهام إدخال البيانات اليدوية الروتينية.",
-    "استبدال قواعد البيانات القديمة بمحركات بحث نصية تعتمد على المطابقة السطحية للكلمات المفتاحية."
-   ],
-   "options_en": [
-    "Because data volume is too large or produced too rapidly; mining finds trends, causalities, correlations",
-    "Because managers avoid the internet; mining reveals favorite colors",
-    "Because law forbids analysis; mining hides data",
-    "Because banks have no data; mining only prints reports"
-   ],
-   "answer": "A",
-   "explanation": "النص: not instantly evident... because the data volume is too large or are produced too rapidly. والتنقيب: identifying trends, casualties [causalities], and correlations.",
-   "question": "Why can't bank managers see patterns themselves, and what does mining find?",
-   "question_ar": "لماذا يعجز المدير المصرفي عن رؤية الأنماط، وماذا يكتشف التنقيب؟",
-   "correct": 0,
-   "options_ar": [
-    "الاعتماد على الحوسبة السحابية الخاصة لتقليل تكلفة شراء الخوادم المادية للمؤسسات الكبرى.",
-    "الاستفادة من البيانات التراكمية التاريخية الضخمة وتحويلها إلى قرارات تجارية تنافسية واستباقية.",
-    "تقليص عدد الموظفين في أقسام تقنية المعلومات عبر أتمتة مهام إدخال البيانات اليدوية الروتينية.",
-    "استبدال قواعد البيانات القديمة بمحركات بحث نصية تعتمد على المطابقة السطحية للكلمات المفتاحية."
-   ]
-  },
-  {
-   "id": "q21",
-   "concept_id": "challenge_noisy_format",
-   "bloom_level": "Analyze",
-   "text": "سلسلة تجزئة تجمع أرقام هواتف عملاء يصرفون أكثر من 500 دولار؛ موظف أدخل رقماً خطأً وعميل رفض إعطاء رقمه. وفقاً لصيغة العناصر الثلاثة، ما هو التحدي؟",
-   "text_en": "A retail chain collects phones of customers spending >$500; an employee mistypes a number and a customer refuses to share theirs. By the 3-element formula, what challenge is this?",
-   "options": [
-    "Data Visualization",
-    "Data Distribution across regions",
-    "Performance of algorithms only",
-    "Incomplete and Noisy Data"
-   ],
-   "options_en": [
-    "Data Visualization",
-    "Data Distribution across regions",
-    "Performance of algorithms only",
-    "Incomplete and Noisy Data"
-   ],
-   "answer": "D",
-   "explanation": "الطبيعة: بيانات غير متجانسة/ناقصة/مشوّشة · السبب: خطأ إدخال بشري + رفض مشاركة · الأثر: بيانات غير دقيقة → تشويه استخراج الأنماط. مثال المحاضرة الحرفي.",
-   "question": "Mistyped phone + customer refusal. Which challenge (3-element formula)?",
-   "question_ar": "خطأ برقم هاتف + رفض عميل للمشاركة. أي تحدٍّ حسب صيغة العناصر الثلاثة؟",
-   "correct": 3,
-   "options_ar": [
-    "Data Visualization",
-    "Data Distribution across regions",
-    "Performance of algorithms only",
-    "Incomplete and Noisy Data"
-   ]
-  },
-  {
-   "id": "q22",
-   "concept_id": "challenge_outlier_not_error",
-   "bloom_level": "Evaluate",
-   "text": "قيمة ضغط دم مرتفعة جداً ظهرت بسجلات مستشفى. ما الحكم الصحيح قبل حذفها كخطأ؟",
-   "text_en": "A very high blood-pressure value appears in hospital records. What is the correct action before deleting it as an error?",
-   "options": [
-    "تحسين كفاءة محركات الاحتراق الداخلي وتقليل انبعاثات الكربون في المصانع.",
-    "برمجة الأجهزة الجراحية الروبوتية للعمل دون الحاجة لأي إشراف من الأطباء البشريين.",
-    "أرشفة السجلات الطبية القديمة في ملفات نصية غير قابلة للتعديل أو البحث السريع.",
-    "التنبؤ باحتياجات المرضى المستقبلية وتحديد حالات الاحتيال في التأمين الصحي."
-   ],
-   "options_en": [
-    "Investigate first; an outlier is not necessarily an error and may reflect a real patient condition",
-    "Ignore the whole table and restart",
-    "Always replace it with 0",
-    "Delete immediately because all outliers are errors"
-   ],
-   "answer": "A",
-   "explanation": "قاعدة المحاضرة: An outlier is not necessarily an error — مثل ضغط دم مرتفع بسبب حالة طبية فعلية. لذلك يُتحقّق قبل الحذف.",
-   "question": "Outlier blood pressure appears. Correct action before deleting as error?",
-   "question_ar": "قيمة شاذة لضغط الدم ظهرت. ما الحكم الصحيح قبل حذفها كخطأ؟",
-   "correct": 0,
-   "options_ar": [
-    "تحسين كفاءة محركات الاحتراق الداخلي وتقليل انبعاثات الكربون في المصانع.",
-    "برمجة الأجهزة الجراحية الروبوتية للعمل دون الحاجة لأي إشراف من الأطباء البشريين.",
-    "أرشفة السجلات الطبية القديمة في ملفات نصية غير قابلة للتعديل أو البحث السريع.",
-    "التنبؤ باحتياجات المرضى المستقبلية وتحديد حالات الاحتيال في التأمين الصحي."
-   ]
-  },
-  {
-   "id": "q23",
-   "concept_id": "challenge_performance",
-   "bloom_level": "Understand",
-   "text": "ما العنصر الجذري للتحدي المتعلق بأداء منظومة التنقيب وفقاً للنص؟",
-   "text_en": "What is the root element of the data-mining performance challenge in the text?",
-   "options": [
-    "مراقبة سرعة تدفق البيانات عبر كابلات الألياف الضوئية بين القارات.",
-    "إصلاح الأعطال الميكانيكية في محركات المركبات عبر الاستشعار عن بعد.",
-    "تتبع التغيرات المناخية الموسمية وقياس معدلات هطول الأمطار الشهرية.",
-    "مكافحة الغش المالي وتحديد العملاء المحتملين للاستثمار في الصناديق."
-   ],
-   "options_en": [
-    "Efficiency of algorithms/techniques; weak design degrades speed and accuracy",
-    "The color of the computer monitor",
-    "Number of open windows in the room",
-    "The type of tea the analyst drinks"
-   ],
-   "answer": "A",
-   "explanation": "النص: The data mining system's performance relies primarily on the efficiency of algorithms and techniques used. إذا لم تكن up to the mark يتأثر الأداء سلبياً.",
-   "question": "What is the root of the mining performance challenge?",
-   "question_ar": "ما العنصر الجذري للتحدي المتعلق بأداء منظومة التنقيب؟",
-   "correct": 0,
-   "options_ar": [
-    "مراقبة سرعة تدفق البيانات عبر كابلات الألياف الضوئية بين القارات.",
-    "إصلاح الأعطال الميكانيكية في محركات المركبات عبر الاستشعار عن بعد.",
-    "تتبع التغيرات المناخية الموسمية وقياس معدلات هطول الأمطار الشهرية.",
-    "مكافحة الغش المالي وتحديد العملاء المحتملين للاستثمار في الصناديق."
-   ]
-  },
-  {
-   "id": "q24",
-   "concept_id": "challenge_privacy_vs_disadvantage",
-   "bloom_level": "Analyze",
-   "text": "تحليل تجزئة لتفاصيل مشتريات العملاء يكشف عاداتهم وتفضيلاتهم دون إذن مسبق. ما التصنيف الأدق في إطار المحاضرة؟",
-   "text_en": "A retailer analyzes purchase details revealing customer habits without prior permission. Most accurate classification in the lecture framework?",
-   "options": [
-    "استخراج العلاقات الخفية والأنماط المعقدة غير المكتشفة من مجموعات البيانات الضخمة.",
-    "تنسيق تقارير المبيعات الشهرية وطباعتها على ورق رسمي لتقديمها إلى الإدارة العليا.",
-    "مراقبة استهلاك الطاقة الكهربائية في غرف الخوادم وضبط وحدات التبريد المركزية.",
-    "تنظيف شاشات الحواسيب وصيانة لوحات المفاتيح لتقليل أعطال الأجهزة الطرفية للمستخدمين."
-   ],
-   "options_en": [
-    "Pure cost-efficient advantage only",
-    "Visualization-only problem",
-    "A spelling error in 'Privacy'",
-    "Data Privacy & Security / Governance challenge — not the same as selling data for money disadvantage"
-   ],
-   "answer": "D",
-   "explanation": "النص (challenge): Data mining usually leads to serious issues in terms of data security, governance, and privacy... reveals buying habits... without their permission. يختلف عن العيب الأخلاقي لبيع البيانات (American Express) رغم التشابه.",
-   "question": "Retailer reveals habits without permission. Best lecture classification?",
-   "question_ar": "تجزئة تكشف عادات العملاء دون إذن. ما التصنيف الأدق وفق المحاضرة؟",
-   "correct": 3,
-   "options_ar": [
-    "استخراج العلاقات الخفية والأنماط المعقدة غير المكتشفة من مجموعات البيانات الضخمة.",
-    "تنسيق تقارير المبيعات الشهرية وطباعتها على ورق رسمي لتقديمها إلى الإدارة العليا.",
-    "مراقبة استهلاك الطاقة الكهربائية في غرف الخوادم وضبط وحدات التبريد المركزية.",
-    "تنظيف شاشات الحواسيب وصيانة لوحات المفاتيح لتقليل أعطال الأجهزة الطرفية للمستخدمين."
-   ]
-  },
-  {
-   "id": "q25",
-   "concept_id": "safe_answer_rule",
-   "bloom_level": "Evaluate",
-   "text": "الدكتور يطلب: 'Data mining in Healthcare'. وفقاً لقاعدة الأمان (2-Keyword + الجملة الثابتة)، ما هي أفضل استراتيجية إجابة؟",
-   "text_en": "The doctor asks: 'Data mining in Healthcare'. By the 2-keyword safe rule, what is the best answer strategy?",
-   "options": [
-    "كتابة اسم المؤسسة فقط دون التطرق للمنهجية العلمية أو المخاطر المحتملة للتطبيق التقني.",
-    "نسخ الفقرة التمهيدية كاملة من الكتاب دون أي تحليل نقدي أو تفكيك للمفاهيم الهندسية الواردة.",
-    "ذكر العملية الأساسية مع توضيح خطر الاحتيال وبيان الطبيعة الاحتمالية غير الدقيقة للتقنية.",
-    "سرد أسماء البرمجيات التجارية المستخدمة مع تجاهل القيود الإحصائية والأبعاد الأخلاقية المذكورة."
-   ],
-   "options_en": [
-    "Write Core Operation (Patient Forecasting) + Risk (Fraud & Abuse) + the fixed techniques sentence, no filler",
-    "Write only American Express",
-    "Write a full page on medical history without course terms",
-    "Leave the paper blank"
-   ],
-   "answer": "A",
-   "explanation": "نقطة الأمان: المصحح يبحث عن كلمتين للقطاع + جملة ثابتة مثل Using techniques like Classification, Clustering, and Machine Learning. الحشو بلا وزن.",
-   "question": "Doctor asks 'Data mining in Healthcare' — best safe-answer strategy?",
-   "question_ar": "الدكتور يطلب Data mining in Healthcare — ما أفضل استراتيجية إجابة آمنة؟",
-   "correct": 0,
-   "options_ar": [
-    "كتابة اسم المؤسسة فقط دون التطرق للمنهجية العلمية أو المخاطر المحتملة للتطبيق التقني.",
-    "نسخ الفقرة التمهيدية كاملة من الكتاب دون أي تحليل نقدي أو تفكيك للمفاهيم الهندسية الواردة.",
-    "ذكر العملية الأساسية مع توضيح خطر الاحتيال وبيان الطبيعة الاحتمالية غير الدقيقة للتقنية.",
-    "سرد أسماء البرمجيات التجارية المستخدمة مع تجاهل القيود الإحصائية والأبعاد الأخلاقية المذكورة."
-   ]
-  }
- ],
- "schema_version": 2,
- "subject_id": "03_Data_Mining",
- "subject_title": "تنقيب البيانات",
- "semester": 1,
- "semester_label": "كورس أول",
- "quiz_id": "Quiz_01_Introduction_to_Data_Mining",
- "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
- "chapter": "Chapter 1",
- "chapter_no": 1,
- "demo": false
+  "subject": "03_Data_Mining",
+  "topic": "Week 01: Introduction to Data Mining",
+  "topic_ar": "المحاضرة 01: مقدمة في التنقيب عن البيانات",
+  "instructor": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "dm_definition",
+      "bloom_level": "Remember",
+      "text": "عرّف التنقيب عن البيانات (Data Mining) وفقاً لنص المحاضرة: هو عملية استخراج __________ لتحديد الأنماط والاتجاهات والبيانات المفيدة من مجموعات بيانات ضخمة، حتى تتخذ المنظمة قرارات مبنية على البيانات.",
+      "text_en": "According to the lecture text, data mining is the process of extracting __________ to identify patterns, trends, and useful data from huge sets of data so the organization can take data-driven decisions.",
+      "options": [
+        "المعلومات",
+        "العتاد المادي فقط",
+        "أسماء المستخدمين وكلمات المرور",
+        "ملفات الألعاب الإلكترونية"
+      ],
+      "options_en": [
+        "Information",
+        "Hardware components only",
+        "Usernames and passwords",
+        "Video game files"
+      ],
+      "answer": "A",
+      "explanation": "التعريف الحرفي: عملية استخراج معلومات (extracting information) لتحديد أنماط واتجاهات وبيانات مفيدة من مجموعات ضخمة تسمح باتخاذ قرارات مبنية على البيانات.",
+      "question": "According to the lecture, data mining is the process of extracting __________ to identify patterns, trends, and useful data from huge datasets for data-driven decisions.",
+      "question_ar": "عرّف التنقيب عن البيانات وفقاً لنص المحاضرة: هو عملية استخراج __________ لتحديد الأنماط والاتجاهات والبيانات المفيدة من مجموعات بيانات ضخمة.",
+      "correct": 0,
+      "options_ar": [
+        "المعلومات",
+        "العتاد المادي فقط",
+        "أسماء المستخدمين وكلمات المرور",
+        "ملفات الألعاب الإلكترونية"
+      ],
+      "question_en": "According to the lecture, data mining is the process of extracting __________ to identify patterns, trends, and useful data from huge datasets for data-driven decisions.",
+      "explanation_en": "التعريف الحرفي: عملية استخراج معلومات (extracting information) لتحديد أنماط واتجاهات وبيانات مفيدة من مجموعات ضخمة تسمح باتخاذ قرارات مبنية على البيانات.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q2",
+      "concept_id": "kdd_alias",
+      "bloom_level": "Remember",
+      "text": "ما هو الاسم الآخر المستعمل للتنقيب عن البيانات في المحاضرة؟",
+      "text_en": "What is the other name used for data mining in the lecture?",
+      "options": [
+        "Knowledge Discovery of Data (KDD)",
+        "Keyboard Device Driver (KDD)",
+        "Kernel Data Dump (KDD)",
+        "Known Data Definition (KDD)"
+      ],
+      "options_en": [
+        "Knowledge Discovery of Data (KDD)",
+        "Keyboard Device Driver (KDD)",
+        "Kernel Data Dump (KDD)",
+        "Known Data Definition (KDD)"
+      ],
+      "answer": "A",
+      "explanation": "المحاضرة تذكر صراحة: Data Mining is also called Knowledge Discovery of Data (KDD) — اكتشاف المعرفة من البيانات.",
+      "question": "What is the other name used for data mining in the lecture?",
+      "question_ar": "ما هو الاسم الآخر المستعمل للتنقيب عن البيانات في المحاضرة؟",
+      "correct": 0,
+      "options_ar": [
+        "Knowledge Discovery of Data (KDD)",
+        "Keyboard Device Driver (KDD)",
+        "Kernel Data Dump (KDD)",
+        "Known Data Definition (KDD)"
+      ],
+      "question_en": "What is the other name used for data mining in the lecture?",
+      "explanation_en": "المحاضرة تذكر صراحة: Data Mining is also called Knowledge Discovery of Data (KDD) — اكتشاف المعرفة من البيانات.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q3",
+      "concept_id": "dm_tool",
+      "bloom_level": "Remember",
+      "text": "أي أداة يستخدمها التنقيب عن البيانات وفقاً للنص؟",
+      "text_en": "Which tool does data mining use according to the lecture text?",
+      "options": [
+        "لوحات الرسم اليدوية فقط",
+        "خوارزميات رياضية معقّدة",
+        "برامج تحرير الصور",
+        "معالجات النصوص المكتبية"
+      ],
+      "options_en": [
+        "Hand drawing boards only",
+        "Complex mathematical algorithms",
+        "Image-editing software",
+        "Office word processors"
+      ],
+      "answer": "B",
+      "explanation": "النص: Data mining utilizes complex mathematical algorithms for data segments and evaluates the probability of future events.",
+      "question": "Which tool does data mining use according to the lecture?",
+      "question_ar": "أي أداة يستخدمها التنقيب عن البيانات وفقاً للنص؟",
+      "correct": 1,
+      "options_ar": [
+        "لوحات الرسم اليدوية فقط",
+        "خوارزميات رياضية معقّدة",
+        "برامج تحرير الصور",
+        "معالجات النصوص المكتبية"
+      ],
+      "question_en": "Which tool does data mining use according to the lecture?",
+      "explanation_en": "النص: Data mining utilizes complex mathematical algorithms for data segments and evaluates the probability of future events.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q4",
+      "concept_id": "dm_warehouse",
+      "bloom_level": "Remember",
+      "text": "أين تُجمَّع البيانات عادةً التي يُشغَّل عليها التنقيب وفقاً للنص؟",
+      "text_en": "Where is the data usually collected for mining according to the lecture?",
+      "options": [
+        "دفاتر ورقية مدرسية",
+        "أقراص الألعاب القديمة",
+        "لوحات إعلانات الشوارع",
+        "مستودعات البيانات"
+      ],
+      "options_en": [
+        "School paper notebooks",
+        "Old game discs",
+        "Street billboards",
+        "Data warehouses"
+      ],
+      "answer": "D",
+      "explanation": "النص يذكر data warehouses كمكان تُجمَّع فيه البيانات المستهدفة بالتنقيب.",
+      "question": "Where is data usually collected for mining according to the lecture?",
+      "question_ar": "أين تُجمَّع البيانات عادةً التي يُشغَّل عليها التنقيب وفقاً للنص؟",
+      "correct": 3,
+      "options_ar": [
+        "دفاتر ورقية مدرسية",
+        "أقراص الألعاب القديمة",
+        "لوحات إعلانات الشوارع",
+        "مستودعات البيانات"
+      ],
+      "question_en": "Where is data usually collected for mining according to the lecture?",
+      "explanation_en": "النص يذكر data warehouses كمكان تُجمَّع فيه البيانات المستهدفة بالتنقيب.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q5",
+      "concept_id": "beyond_simple_analysis",
+      "bloom_level": "Understand",
+      "text": "ما هو جوهر الفرق بين التنقيب عن البيانات والتحليل البسيط (simple analysis procedures)؟",
+      "text_en": "What is the essential difference between data mining and simple analysis procedures?",
+      "options": [
+        "التنقيب يعتمد على المعالجة اليدوية بينما التحليل البسيط يعتمد على خوارزميات الذكاء الاصطناعي.",
+        "التحليل البسيط يتعامل مع البيانات غير المهيكلة بينما التنقيب يتعامل حصراً مع الجداول العادية.",
+        "التنقيب يتجاوز التحليل البسيط ويكتشف أنماطاً خفية وتنبؤات غير واضحة في البيانات الضخمة.",
+        "التحليل البسيط يقتصر على تلخيص الماضي بينما التنقيب يكتشف أنماطاً تنبؤية للمستقبل."
+      ],
+      "options_en": [
+        "Data mining uses fewer computers",
+        "Simple analysis is always deeper than mining",
+        "Data mining goes beyond simple analysis and discovers hidden patterns and predictions",
+        "There is no practical difference"
+      ],
+      "answer": "C",
+      "explanation": "الجملة المفتاحية بالنص: go beyond simple analysis procedures — التنقيب بحث تلقائي عن أنماط تتجاوز التحليل البسيط.",
+      "question": "What is the essential difference between data mining and simple analysis procedures?",
+      "question_ar": "ما هو جوهر الفرق بين التنقيب عن البيانات والتحليل البسيط؟",
+      "correct": 2,
+      "options_ar": [
+        "التنقيب يعتمد على المعالجة اليدوية بينما التحليل البسيط يعتمد على خوارزميات الذكاء الاصطناعي.",
+        "التحليل البسيط يتعامل مع البيانات غير المهيكلة بينما التنقيب يتعامل حصراً مع الجداول العادية.",
+        "التنقيب يتجاوز التحليل البسيط ويكتشف أنماطاً خفية وتنبؤات غير واضحة في البيانات الضخمة.",
+        "التحليل البسيط يقتصر على تلخيص الماضي بينما التنقيب يكتشف أنماطاً تنبؤية للمستقبل."
+      ],
+      "question_en": "What is the essential difference between data mining and simple analysis procedures?",
+      "explanation_en": "الجملة المفتاحية بالنص: go beyond simple analysis procedures — التنقيب بحث تلقائي عن أنماط تتجاوز التحليل البسيط.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q6",
+      "concept_id": "dm_function",
+      "bloom_level": "Understand",
+      "text": "إلى جانب تجزئة البيانات، ما هي الوظيفة الأخرى التي يذكرها النص للتنقيب؟",
+      "text_en": "Besides segmenting data, what other function does the text attribute to data mining?",
+      "options": [
+        "مراقبة استهلاك الموارد وحساب زمن استجابة خوادم الويب.",
+        "إعادة بناء قواعد البيانات العلائقية وضغط الملفات المؤرشفة.",
+        "تقييم احتمال الأحداث المستقبلية والتنبؤ بسلوك المتغيرات.",
+        "توليد المفاتيح التشفيرية وإدارة صلاحيات وصول المستخدمين."
+      ],
+      "options_en": [
+        "Printing paper photos",
+        "Charging batteries",
+        "Evaluating the probability of future events",
+        "Installing operating systems"
+      ],
+      "answer": "C",
+      "explanation": "النص: evaluates the probability of future events — مع تجزئة البيانات (data segments).",
+      "question": "Besides segmenting data, what other function does the text attribute to data mining?",
+      "question_ar": "إلى جانب تجزئة البيانات، ما هي الوظيفة الأخرى التي يذكرها النص للتنقيب؟",
+      "correct": 2,
+      "options_ar": [
+        "مراقبة استهلاك الموارد وحساب زمن استجابة خوادم الويب.",
+        "إعادة بناء قواعد البيانات العلائقية وضغط الملفات المؤرشفة.",
+        "تقييم احتمال الأحداث المستقبلية والتنبؤ بسلوك المتغيرات.",
+        "توليد المفاتيح التشفيرية وإدارة صلاحيات وصول المستخدمين."
+      ],
+      "question_en": "Besides segmenting data, what other function does the text attribute to data mining?",
+      "explanation_en": "النص: evaluates the probability of future events — مع تجزئة البيانات (data segments).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q7",
+      "concept_id": "advantage_data_level",
+      "bloom_level": "Understand",
+      "text": "في قالب الفوائد الثلاثة (Data → Business → Tech)، أي مما يلي يندرج تحت مستوى البيانات (Discovery & Analysis)؟",
+      "text_en": "In the three-level advantages template (Data → Business → Tech), which belongs to the Discovery & Analysis (Data) level?",
+      "options": [
+        "تسريع زمن معالجة المعاملات المالية الموزعة وضمان تسليم الرسائل عبر الشبكة المحلية.",
+        "اكتشاف تلقائي للأنماط الخفية والتنبؤ بالاتجاهات وتحويل البيانات الخام إلى معرفة.",
+        "إمكانية الدمج المرن بالأنظمة القديمة والحديثة دون الحاجة لإعادة هيكلة البنية التحتية.",
+        "تقليل التكلفة التشغيلية للخوادم السحابية عبر تحسين استهلاك الذاكرة وتوزيع الأحمال."
+      ],
+      "options_en": [
+        "Speed of analyzing huge volumes for new users",
+        "Automated discovery of hidden patterns and prediction of trends + transforming raw data into knowledge-based data",
+        "Integration with new and legacy platforms",
+        "Tools being cost-efficient vs statistics"
+      ],
+      "answer": "B",
+      "explanation": "المستوى الأول (Data): Hidden Patterns & Prediction + Knowledge-Based Data. الخيارات الأخرى من مستوى النظام/التقنية.",
+      "question": "In the three-level advantages template, which belongs to the Discovery & Analysis (Data) level?",
+      "question_ar": "في قالب الفوائد الثلاثة، أي مما يلي يندرج تحت مستوى البيانات (Discovery & Analysis)؟",
+      "correct": 1,
+      "options_ar": [
+        "تسريع زمن معالجة المعاملات المالية الموزعة وضمان تسليم الرسائل عبر الشبكة المحلية.",
+        "اكتشاف تلقائي للأنماط الخفية والتنبؤ بالاتجاهات وتحويل البيانات الخام إلى معرفة.",
+        "إمكانية الدمج المرن بالأنظمة القديمة والحديثة دون الحاجة لإعادة هيكلة البنية التحتية.",
+        "تقليل التكلفة التشغيلية للخوادم السحابية عبر تحسين استهلاك الذاكرة وتوزيع الأحمال."
+      ],
+      "question_en": "In the three-level advantages template, which belongs to the Discovery & Analysis (Data) level?",
+      "explanation_en": "المستوى الأول (Data): Hidden Patterns & Prediction + Knowledge-Based Data. الخيارات الأخرى من مستوى النظام/التقنية.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q8",
+      "concept_id": "advantage_business_level",
+      "bloom_level": "Apply",
+      "text": "مؤسسة عدّلت خطوط إنتاجها بناءً على نتائج تنقيب البيانات وحققت أرباحاً أعلى. أي مستوى من مستويات الفوائد الثلاثة يصف هذا المثال؟",
+      "text_en": "A firm changed its production lines based on data-mining results and achieved higher profits. Which of the three advantage levels does this example describe?",
+      "options": [
+        "مستوى الخصوصية",
+        "مستوى التكلفة فقط",
+        "مستوى القرار / العمل",
+        "مستوى البيانات"
+      ],
+      "options_en": [
+        "Privacy level",
+        "Cost-only level",
+        "Business Impact / Decision level",
+        "Data / Discovery level"
+      ],
+      "answer": "C",
+      "explanation": "Lucrative modifications + Decision-Making = المستوى الثاني Business Impact / Decision Level (قرّر واربِح).",
+      "question": "A firm changed production based on mining results and earned higher profits. Which advantage level?",
+      "question_ar": "مؤسسة عدّلت خطوط إنتاجها بناءً على التنقيب وحققت أرباحاً أعلى. أي مستوى من مستويات الفوائد؟",
+      "correct": 2,
+      "options_ar": [
+        "مستوى الخصوصية",
+        "مستوى التكلفة فقط",
+        "مستوى القرار / العمل",
+        "مستوى البيانات"
+      ],
+      "question_en": "A firm changed production based on mining results and earned higher profits. Which advantage level?",
+      "explanation_en": "Lucrative modifications + Decision-Making = المستوى الثاني Business Impact / Decision Level (قرّر واربِح).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q9",
+      "concept_id": "advantage_system_level",
+      "bloom_level": "Understand",
+      "text": "أي مما يلي من فوائد مستوى النظام/التقنية (Practical Feasibility) كما وردت بالنص؟",
+      "text_en": "Which of the following is a Practical Feasibility (system-level) advantage in the lecture?",
+      "options": [
+        "حماية خصوصية السجلات عبر خوارزميات التشفير المتماثل ومصادقة الهوية.",
+        "إعادة هيكلة مخازن البيانات تلقائياً دون استهلاك أي مساحة تخزينية على القرص.",
+        "استبدال محللي البيانات البشريين بأنظمة ذاتية التحكم تعمل دون أي إشراف هندسي.",
+        "كفاءة اقتصادية في الكلفة مع مرونة عالية في الدمج وسرعة للمستخدمين الجدد."
+      ],
+      "options_en": [
+        "Selling customer data",
+        "Imprecise probabilistic results",
+        "Software being hard to operate",
+        "Cost-efficient + integratable + fast for new users"
+      ],
+      "answer": "D",
+      "explanation": "المستوى الثالث: Cost-Efficient · System Integration (new + legacy) · Speed & Usability. بقية الخيارات من العيوب.",
+      "question": "Which is a Practical Feasibility (system-level) advantage in the lecture?",
+      "question_ar": "أي مما يلي من فوائد مستوى النظام/التقنية كما وردت بالنص؟",
+      "correct": 3,
+      "options_ar": [
+        "حماية خصوصية السجلات عبر خوارزميات التشفير المتماثل ومصادقة الهوية.",
+        "إعادة هيكلة مخازن البيانات تلقائياً دون استهلاك أي مساحة تخزينية على القرص.",
+        "استبدال محللي البيانات البشريين بأنظمة ذاتية التحكم تعمل دون أي إشراف هندسي.",
+        "كفاءة اقتصادية في الكلفة مع مرونة عالية في الدمج وسرعة للمستخدمين الجدد."
+      ],
+      "question_en": "Which is a Practical Feasibility (system-level) advantage in the lecture?",
+      "explanation_en": "المستوى الثالث: Cost-Efficient · System Integration (new + legacy) · Speed & Usability. بقية الخيارات من العيوب.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q10",
+      "concept_id": "advantage_anchor",
+      "bloom_level": "Remember",
+      "text": "ما هي مرساة الحفظ (Mental Anchor) للفوائد كما طوّرتها مع Gemini؟",
+      "text_en": "What is the mental anchor for advantages as developed with Gemini?",
+      "options": [
+        "تعارض خوارزميات التنقيب مع بروتوكولات الشبكات القياسية وأنظمة التخزين السحابي.",
+        "غياب المتخصصين الفنيين وارتفاع تكلفة تدريب الكوادر الهندسية على التقنيات الحديثة.",
+        "احتمالية النتائج غير الدقيقة وغموض استخراج الأنماط بالإضافة للمخاوف حول الخصوصية.",
+        "الحصول على نتائج قطعية ومؤكدة بنسبة مئة بالمئة في جميع بيئات العمل البرمجية."
+      ],
+      "options_en": [
+        "Nature → Root Cause → Consequence",
+        "Extract & Predict → Decide & Profit → Cheap, Integratable & Fast",
+        "Patient Forecasting → Insurance Fraud",
+        "Selling → Tools → Flawed Results"
+      ],
+      "answer": "B",
+      "explanation": "مرساة الفوائد من الأرض للأعلى: Extract & Predict (بيانات) → Decide & Profit (عمل) → Cheap, Integratable & Fast (تقنية).",
+      "question": "What is the mental anchor for data mining advantages (Gemini framework)?",
+      "question_ar": "ما هي مرساة الحفظ للفوائد كما طوّرتها مع Gemini؟",
+      "correct": 1,
+      "options_ar": [
+        "تعارض خوارزميات التنقيب مع بروتوكولات الشبكات القياسية وأنظمة التخزين السحابي.",
+        "غياب المتخصصين الفنيين وارتفاع تكلفة تدريب الكوادر الهندسية على التقنيات الحديثة.",
+        "احتمالية النتائج غير الدقيقة وغموض استخراج الأنماط بالإضافة للمخاوف حول الخصوصية.",
+        "الحصول على نتائج قطعية ومؤكدة بنسبة مئة بالمئة في جميع بيئات العمل البرمجية."
+      ],
+      "question_en": "What is the mental anchor for data mining advantages (Gemini framework)?",
+      "explanation_en": "مرساة الفوائد من الأرض للأعلى: Extract & Predict (بيانات) → Decide & Profit (عمل) → Cheap, Integratable & Fast (تقنية).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q11",
+      "concept_id": "disadvantage_amex",
+      "bloom_level": "Remember",
+      "text": "أي منظمة ذكرتها المحاضرة كمثال على بيع بيانات العملاء لمنظمات خارجية؟",
+      "text_en": "Which organization did the lecture cite as an example of selling customer data to outsiders?",
+      "options": [
+        "البيانات المجدولة والنصوص.",
+        "البيانات السمعية والموسيقى.",
+        "الدوائر الكهربائية فقط.",
+        "إشارات الراديو والموجات."
+      ],
+      "options_en": [
+        "IBM",
+        "Microsoft",
+        "Oracle",
+        "American Express"
+      ],
+      "answer": "D",
+      "explanation": "النص: As per the report, American Express has sold credit card purchases of their customers to other organizations.",
+      "question": "Which organization did the lecture cite for selling customer data?",
+      "question_ar": "أي منظمة ذكرتها المحاضرة كمثال على بيع بيانات العملاء لمنظمات خارجية؟",
+      "correct": 3,
+      "options_ar": [
+        "البيانات المجدولة والنصوص.",
+        "البيانات السمعية والموسيقى.",
+        "الدوائر الكهربائية فقط.",
+        "إشارات الراديو والموجات."
+      ],
+      "question_en": "Which organization did the lecture cite for selling customer data?",
+      "explanation_en": "النص: As per the report, American Express has sold credit card purchases of their customers to other organizations.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q12",
+      "concept_id": "disadvantage_tool_selection",
+      "bloom_level": "Understand",
+      "text": "ليش اختيار أداة التنقيب المناسبة يُعدّ تحدياً صعباً وفقاً للنص؟",
+      "text_en": "Why is selecting the right data mining tool considered challenging according to the text?",
+      "options": [
+        "استبدال بروتوكولات الاتصال الموزعة بحزم برمجية مخصصة لإرسال البريد الإلكتروني.",
+        "التنبؤ بفرص الشراء المستقبلية وتحليل سلة السوق لتحديد المنتجات المرتبطة ببعضها.",
+        "التحقق من صحة المفاتيح التشفيرية المستخدمة في المصادقة الثنائية لحسابات العملاء.",
+        "قياس سرعة استجابة وحدات التخزين الصلبة ومراقبة درجات حرارة وحدات المعالجة المركزية."
+      ],
+      "options_en": [
+        "Because all tools are completely free",
+        "Because different tools operate in distinct ways due to different design algorithms",
+        "Because tools do not run on computers",
+        "Because all tools are identical"
+      ],
+      "answer": "B",
+      "explanation": "النص: Different data mining instruments operate in distinct ways due to the different algorithms used in their design.",
+      "question": "Why is selecting the right data mining tool challenging?",
+      "question_ar": "ليش اختيار أداة التنقيب المناسبة يُعدّ تحدياً صعباً وفقاً للنص؟",
+      "correct": 1,
+      "options_ar": [
+        "استبدال بروتوكولات الاتصال الموزعة بحزم برمجية مخصصة لإرسال البريد الإلكتروني.",
+        "التنبؤ بفرص الشراء المستقبلية وتحليل سلة السوق لتحديد المنتجات المرتبطة ببعضها.",
+        "التحقق من صحة المفاتيح التشفيرية المستخدمة في المصادقة الثنائية لحسابات العملاء.",
+        "قياس سرعة استجابة وحدات التخزين الصلبة ومراقبة درجات حرارة وحدات المعالجة المركزية."
+      ],
+      "question_en": "Why is selecting the right data mining tool challenging?",
+      "explanation_en": "النص: Different data mining instruments operate in distinct ways due to the different algorithms used in their design.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q13",
+      "concept_id": "disadvantage_imprecision",
+      "bloom_level": "Understand",
+      "text": "ما العيب الجوهري المرتبط بدقة نواتج التنقيب؟",
+      "text_en": "What is the core disadvantage related to the precision of mining outputs?",
+      "options": [
+        "النتائج دائماً دقيقة بنسبة مئة بالمئة ومضمونة في كافة التطبيقات الحساسة.",
+        "الخوارزميات تستهلك كامل موارد المعالج مما يؤدي لتوقف خوادم قواعد البيانات فوراً.",
+        "التقنيات ذات طبيعة احتمالية وغير دقيقة وقد تقود لقرارات وخيمة عند غياب الفهم البشري.",
+        "النماذج تتجاهل المتغيرات الإحصائية وتعتمد حصراً على التخمين العشوائي غير المنطقي."
+      ],
+      "options_en": [
+        "Results are always 100% precise and guaranteed",
+        "Techniques are probabilistic/not precise and may lead to severe consequences",
+        "Results never appear on a computer",
+        "Results are printed on paper only"
+      ],
+      "answer": "B",
+      "explanation": "النص: The data mining techniques are not precise, so that it may lead to severe consequences in certain conditions.",
+      "question": "What disadvantage is related to mining output precision?",
+      "question_ar": "ما العيب الجوهري المرتبط بدقة نواتج التنقيب؟",
+      "correct": 1,
+      "options_ar": [
+        "النتائج دائماً دقيقة بنسبة مئة بالمئة ومضمونة في كافة التطبيقات الحساسة.",
+        "الخوارزميات تستهلك كامل موارد المعالج مما يؤدي لتوقف خوادم قواعد البيانات فوراً.",
+        "التقنيات ذات طبيعة احتمالية وغير دقيقة وقد تقود لقرارات وخيمة عند غياب الفهم البشري.",
+        "النماذج تتجاهل المتغيرات الإحصائية وتعتمد حصراً على التخمين العشوائي غير المنطقي."
+      ],
+      "question_en": "What disadvantage is related to mining output precision?",
+      "explanation_en": "النص: The data mining techniques are not precise, so that it may lead to severe consequences in certain conditions.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q14",
+      "concept_id": "disadvantage_training",
+      "bloom_level": "Apply",
+      "text": "موظفون في مصرف اشتكوا إن برنامج تحليلات التنقيب صعب التشغيل ويحتاج دورات متقدمة قبل الاستخدام. أي عيب من عيوب التنقيب ينطبق هنا؟",
+      "text_en": "Bank staff complained that analytics mining software is hard to operate and needs advanced training. Which disadvantage applies?",
+      "options": [
+        "تحليل حركة المرور وإشارات الشوارع الذكية.",
+        "إدارة سلاسل التوريد والخدمات اللوجستية الموزعة.",
+        "تحديد العملاء ذوي الجدارة الائتمانية العالية.",
+        "تصميم واجهات المستخدم للمواقع الحكومية العامة."
+      ],
+      "options_en": [
+        "Privacy / selling customer data",
+        "System excessive speed",
+        "Steep learning curve + difficult-to-operate software",
+        "Low solution cost"
+      ],
+      "answer": "C",
+      "explanation": "النص: Many data mining analytics software is difficult to operate and needs advance training — المستوى التقني/التشغيلي من العيوب.",
+      "question": "Staff find mining analytics hard to operate and need advanced training. Which disadvantage?",
+      "question_ar": "موظفون اشتكوا إن برنامج التنقيب صعب ويحتاج دورات متقدمة. أي عيب ينطبق؟",
+      "correct": 2,
+      "options_ar": [
+        "تحليل حركة المرور وإشارات الشوارع الذكية.",
+        "إدارة سلاسل التوريد والخدمات اللوجستية الموزعة.",
+        "تحديد العملاء ذوي الجدارة الائتمانية العالية.",
+        "تصميم واجهات المستخدم للمواقع الحكومية العامة."
+      ],
+      "question_en": "Staff find mining analytics hard to operate and need advanced training. Which disadvantage?",
+      "explanation_en": "النص: Many data mining analytics software is difficult to operate and needs advance training — المستوى التقني/التشغيلي من العيوب.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q15",
+      "concept_id": "app_healthcare",
+      "bloom_level": "Apply",
+      "text": "مستشفى يستخدم التنقيب لتصنيف وتوقع أعداد المرضى حتى تصل الرعاية المركزة بالمكان والوقت المناسبين، وتكشف شركات التأمين الاحتيال بالمطالبات. وفقاً لقاعدة الكلمتين، ما هو المجال وما هي الكلمتان الجوهريتان؟",
+      "text_en": "A hospital uses mining to forecast patient categories for timely intensive care, while insurers detect claim fraud. By the 2-keyword rule, what domain and core keywords?",
+      "options": [
+        "Lie Detection — Text Mining + Truth Model",
+        "Banking — Trends & Customer Segmentation",
+        "Healthcare — Patient Forecasting + Fraud & Abuse",
+        "Manufacturing — Process Patterns + Cost"
+      ],
+      "options_en": [
+        "Lie Detection — Text Mining + Truth Model",
+        "Banking — Trends & Customer Segmentation",
+        "Healthcare — Patient Forecasting + Fraud & Abuse",
+        "Manufacturing — Process Patterns + Cost"
+      ],
+      "answer": "C",
+      "explanation": "المجال Healthcare؛ الكلمتان: Patient Forecasting (العملية الأساسية) + Fraud & Abuse (الخطر/الشذوذ بمطالبات التأمين).",
+      "question": "Hospital forecasts patients + insurers detect claim fraud. Domain + two keywords?",
+      "question_ar": "مستشفى يتنبأ بالمرضى وشركات تأمين تكشف الاحتيال. المجال والكلمتان الجوهريتان؟",
+      "correct": 2,
+      "options_ar": [
+        "Lie Detection — Text Mining + Truth Model",
+        "Banking — Trends & Customer Segmentation",
+        "Healthcare — Patient Forecasting + Fraud & Abuse",
+        "Manufacturing — Process Patterns + Cost"
+      ],
+      "question_en": "Hospital forecasts patients + insurers detect claim fraud. Domain + two keywords?",
+      "explanation_en": "المجال Healthcare؛ الكلمتان: Patient Forecasting (العملية الأساسية) + Fraud & Abuse (الخطر/الشذوذ بمطالبات التأمين).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q16",
+      "concept_id": "app_market_basket",
+      "bloom_level": "Understand",
+      "text": "ما الفرضية الجوهرية لتحليل سلة السوق (Market Basket Analysis) كما وردت بالنص؟",
+      "text_en": "What is the core hypothesis of Market Basket Analysis in the lecture?",
+      "options": [
+        "تحليل سلة السوق لمعرفة المنتجات المشتراة معاً وتقديم توصيات مخصصة للزبائن.",
+        "توزيع النسخ الاحتياطية على خوادم متعددة جغرافياً لمنع فقدان السجلات الرقمية.",
+        "تصميم هياكل الجداول العلائقية وتحسين استعلامات لغة إس كيو إل لمخازن البيانات.",
+        "تشفير بيانات بطاقات الدفع الإلكتروني وفق المعايير المصرفية العالمية الصارمة."
+      ],
+      "options_en": [
+        "Product prices are globally fixed",
+        "If you buy a specific group of products, you are more likely to buy another group",
+        "All customers always buy the same product",
+        "Stores never need layout planning"
+      ],
+      "answer": "B",
+      "explanation": "الفرضية بالنص: If you buy a specific group of products, then you are more likely to buy another group of products. والناتج: فهم سلوك الشراء وتغيير تخطيط المتجر.",
+      "question": "What is the core hypothesis of Market Basket Analysis?",
+      "question_ar": "ما الفرضية الجوهرية لتحليل سلة السوق كما وردت بالنص؟",
+      "correct": 1,
+      "options_ar": [
+        "تحليل سلة السوق لمعرفة المنتجات المشتراة معاً وتقديم توصيات مخصصة للزبائن.",
+        "توزيع النسخ الاحتياطية على خوادم متعددة جغرافياً لمنع فقدان السجلات الرقمية.",
+        "تصميم هياكل الجداول العلائقية وتحسين استعلامات لغة إس كيو إل لمخازن البيانات.",
+        "تشفير بيانات بطاقات الدفع الإلكتروني وفق المعايير المصرفية العالمية الصارمة."
+      ],
+      "question_en": "What is the core hypothesis of Market Basket Analysis?",
+      "explanation_en": "الفرضية بالنص: If you buy a specific group of products, then you are more likely to buy another group of products. والناتج: فهم سلوك الشراء وتغيير تخطيط المتجر.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q17",
+      "concept_id": "app_edm",
+      "bloom_level": "Understand",
+      "text": "ما الهدف المذكور من التنقيب في التعليم (EDM) والمخرج الأهم للمؤسسة التعليمية؟",
+      "text_en": "What is the stated goal of Education Data Mining (EDM) and the key institutional output?",
+      "options": [
+        "حساب رواتب الموظفين الشهرية والضرائب السنوية تلقائياً.",
+        "تحديث أنظمة التشغيل وحذف الملفات المؤقتة من خوادم البنوك.",
+        "تنظيم جداول مواعيد الاجتماعات الدورية لأعضاء مجلس الإدارة.",
+        "اكتشاف المعاملات الاحتيالية وبطاقات الائتمان المسروقة."
+      ],
+      "options_en": [
+        "Only increasing campus buildings",
+        "Printing certificates without assessment",
+        "Predicting student learning/performance and deciding what to teach and how to teach",
+        "Canceling curricula"
+      ],
+      "answer": "C",
+      "explanation": "أهداف EDM: affirming learning behavior · studying support impact · promoting learning science. والمخرج: concentrate on what to teach and how to teach.",
+      "question": "What is EDM's goal and key output for institutions?",
+      "question_ar": "ما هدف التنقيب التعليمي EDM والمخرج الأهم للمؤسسة؟",
+      "correct": 2,
+      "options_ar": [
+        "حساب رواتب الموظفين الشهرية والضرائب السنوية تلقائياً.",
+        "تحديث أنظمة التشغيل وحذف الملفات المؤقتة من خوادم البنوك.",
+        "تنظيم جداول مواعيد الاجتماعات الدورية لأعضاء مجلس الإدارة.",
+        "اكتشاف المعاملات الاحتيالية وبطاقات الائتمان المسروقة."
+      ],
+      "question_en": "What is EDM's goal and key output for institutions?",
+      "explanation_en": "أهداف EDM: affirming learning behavior · studying support impact · promoting learning science. والمخرج: concentrate on what to teach and how to teach.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q18",
+      "concept_id": "app_fraud_supervised",
+      "bloom_level": "Apply",
+      "text": "نظام يصنّف السجلات إلى احتيالية أو سليمة بناءً على عيّنات مصنفة مسبقاً، ثم يبني نموذجاً للتحقق من الوثائق. ما المجال والتقنية الأساسية؟",
+      "text_en": "A system classifies records as fraudulent vs non-fraudulent using pre-labeled samples then builds a model to check documents. Domain + core technique?",
+      "options": [
+        "Education — Student Performance Prediction",
+        "Spatial mining — GPS coordinates",
+        "Image mining — textures and regions",
+        "Fraud Detection — Supervised classification"
+      ],
+      "options_en": [
+        "Education — Student Performance Prediction",
+        "Spatial mining — GPS coordinates",
+        "Image mining — textures and regions",
+        "Fraud Detection — Supervised classification (fraudulent vs non-fraudulent)"
+      ],
+      "answer": "D",
+      "explanation": "النص عن Fraud Detection: Supervised methods consist of sample records classified as fraudulent or non-fraudulent; a model is constructed to identify whether a document is fraudulent.",
+      "question": "Pre-labeled fraud/non-fraud samples train a model to check documents. Domain + technique?",
+      "question_ar": "عيّنات مصنفة احتيال/سليم تبني نموذج للتحقق من الوثائق. المجال والتقنية؟",
+      "correct": 3,
+      "options_ar": [
+        "Education — Student Performance Prediction",
+        "Spatial mining — GPS coordinates",
+        "Image mining — textures and regions",
+        "Fraud Detection — Supervised classification"
+      ],
+      "question_en": "Pre-labeled fraud/non-fraud samples train a model to check documents. Domain + technique?",
+      "explanation_en": "النص عن Fraud Detection: Supervised methods consist of sample records classified as fraudulent or non-fraudulent; a model is constructed to identify whether a document is fraudulent.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q19",
+      "concept_id": "app_lie_textmining",
+      "bloom_level": "Understand",
+      "text": "أي مجال يستخدم تنقيب النصوص (Text Mining) على نص غير مهيكل ويسجلات تحقيقات سابقة لبناء نموذج لكشف الكذب؟",
+      "text_en": "Which domain uses text mining on unstructured text and past investigation records to build a lie-detection model?",
+      "options": [
+        "Lie Detection",
+        "Market Basket Analysis",
+        "Manufacturing forecasting",
+        "Retail store layout"
+      ],
+      "options_en": [
+        "Lie Detection",
+        "Market Basket Analysis",
+        "Manufacturing forecasting",
+        "Retail store layout"
+      ],
+      "answer": "A",
+      "explanation": "النص: This technique includes text mining also... seeks meaningful patterns in data which is usually unstructured text... model for lie detection is constructed.",
+      "question": "Which domain uses text mining + past cases to build a lie-detection model?",
+      "question_ar": "أي مجال يستخدم تنقيب النصوص وسجلات تحقيقات سابقة لبناء نموذج كشف الكذب؟",
+      "correct": 0,
+      "options_ar": [
+        "Lie Detection",
+        "Market Basket Analysis",
+        "Manufacturing forecasting",
+        "Retail store layout"
+      ],
+      "question_en": "Which domain uses text mining + past cases to build a lie-detection model?",
+      "explanation_en": "النص: This technique includes text mining also... seeks meaningful patterns in data which is usually unstructured text... model for lie detection is constructed.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q20",
+      "concept_id": "app_banking",
+      "bloom_level": "Analyze",
+      "text": "لماذا يعجز المدير المصرفي عن رؤية الأنماط بنفسه وفقاً للنص، وماذا يكتشف له التنقيب؟",
+      "text_en": "Why can a bank manager not see patterns himself, and what does mining uncover for him?",
+      "options": [
+        "الاعتماد على الحوسبة السحابية الخاصة لتقليل تكلفة شراء الخوادم المادية للمؤسسات الكبرى.",
+        "الاستفادة من البيانات التراكمية التاريخية الضخمة وتحويلها إلى قرارات تجارية تنافسية واستباقية.",
+        "تقليص عدد الموظفين في أقسام تقنية المعلومات عبر أتمتة مهام إدخال البيانات اليدوية الروتينية.",
+        "استبدال قواعد البيانات القديمة بمحركات بحث نصية تعتمد على المطابقة السطحية للكلمات المفتاحية."
+      ],
+      "options_en": [
+        "Because data volume is too large or produced too rapidly; mining finds trends, causalities, correlations",
+        "Because managers avoid the internet; mining reveals favorite colors",
+        "Because law forbids analysis; mining hides data",
+        "Because banks have no data; mining only prints reports"
+      ],
+      "answer": "A",
+      "explanation": "النص: not instantly evident... because the data volume is too large or are produced too rapidly. والتنقيب: identifying trends, casualties [causalities], and correlations.",
+      "question": "Why can't bank managers see patterns themselves, and what does mining find?",
+      "question_ar": "لماذا يعجز المدير المصرفي عن رؤية الأنماط، وماذا يكتشف التنقيب؟",
+      "correct": 0,
+      "options_ar": [
+        "الاعتماد على الحوسبة السحابية الخاصة لتقليل تكلفة شراء الخوادم المادية للمؤسسات الكبرى.",
+        "الاستفادة من البيانات التراكمية التاريخية الضخمة وتحويلها إلى قرارات تجارية تنافسية واستباقية.",
+        "تقليص عدد الموظفين في أقسام تقنية المعلومات عبر أتمتة مهام إدخال البيانات اليدوية الروتينية.",
+        "استبدال قواعد البيانات القديمة بمحركات بحث نصية تعتمد على المطابقة السطحية للكلمات المفتاحية."
+      ],
+      "question_en": "Why can't bank managers see patterns themselves, and what does mining find?",
+      "explanation_en": "النص: not instantly evident... because the data volume is too large or are produced too rapidly. والتنقيب: identifying trends, casualties [causalities], and correlations.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q21",
+      "concept_id": "challenge_noisy_format",
+      "bloom_level": "Analyze",
+      "text": "سلسلة تجزئة تجمع أرقام هواتف عملاء يصرفون أكثر من 500 دولار؛ موظف أدخل رقماً خطأً وعميل رفض إعطاء رقمه. وفقاً لصيغة العناصر الثلاثة، ما هو التحدي؟",
+      "text_en": "A retail chain collects phones of customers spending >$500; an employee mistypes a number and a customer refuses to share theirs. By the 3-element formula, what challenge is this?",
+      "options": [
+        "Data Visualization",
+        "Data Distribution across regions",
+        "Performance of algorithms only",
+        "Incomplete and Noisy Data"
+      ],
+      "options_en": [
+        "Data Visualization",
+        "Data Distribution across regions",
+        "Performance of algorithms only",
+        "Incomplete and Noisy Data"
+      ],
+      "answer": "D",
+      "explanation": "الطبيعة: بيانات غير متجانسة/ناقصة/مشوّشة · السبب: خطأ إدخال بشري + رفض مشاركة · الأثر: بيانات غير دقيقة → تشويه استخراج الأنماط. مثال المحاضرة الحرفي.",
+      "question": "Mistyped phone + customer refusal. Which challenge (3-element formula)?",
+      "question_ar": "خطأ برقم هاتف + رفض عميل للمشاركة. أي تحدٍّ حسب صيغة العناصر الثلاثة؟",
+      "correct": 3,
+      "options_ar": [
+        "Data Visualization",
+        "Data Distribution across regions",
+        "Performance of algorithms only",
+        "Incomplete and Noisy Data"
+      ],
+      "question_en": "Mistyped phone + customer refusal. Which challenge (3-element formula)?",
+      "explanation_en": "الطبيعة: بيانات غير متجانسة/ناقصة/مشوّشة · السبب: خطأ إدخال بشري + رفض مشاركة · الأثر: بيانات غير دقيقة → تشويه استخراج الأنماط. مثال المحاضرة الحرفي.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q22",
+      "concept_id": "challenge_outlier_not_error",
+      "bloom_level": "Evaluate",
+      "text": "قيمة ضغط دم مرتفعة جداً ظهرت بسجلات مستشفى. ما الحكم الصحيح قبل حذفها كخطأ؟",
+      "text_en": "A very high blood-pressure value appears in hospital records. What is the correct action before deleting it as an error?",
+      "options": [
+        "تحسين كفاءة محركات الاحتراق الداخلي وتقليل انبعاثات الكربون في المصانع.",
+        "برمجة الأجهزة الجراحية الروبوتية للعمل دون الحاجة لأي إشراف من الأطباء البشريين.",
+        "أرشفة السجلات الطبية القديمة في ملفات نصية غير قابلة للتعديل أو البحث السريع.",
+        "التنبؤ باحتياجات المرضى المستقبلية وتحديد حالات الاحتيال في التأمين الصحي."
+      ],
+      "options_en": [
+        "Investigate first; an outlier is not necessarily an error and may reflect a real patient condition",
+        "Ignore the whole table and restart",
+        "Always replace it with 0",
+        "Delete immediately because all outliers are errors"
+      ],
+      "answer": "A",
+      "explanation": "قاعدة المحاضرة: An outlier is not necessarily an error — مثل ضغط دم مرتفع بسبب حالة طبية فعلية. لذلك يُتحقّق قبل الحذف.",
+      "question": "Outlier blood pressure appears. Correct action before deleting as error?",
+      "question_ar": "قيمة شاذة لضغط الدم ظهرت. ما الحكم الصحيح قبل حذفها كخطأ؟",
+      "correct": 0,
+      "options_ar": [
+        "تحسين كفاءة محركات الاحتراق الداخلي وتقليل انبعاثات الكربون في المصانع.",
+        "برمجة الأجهزة الجراحية الروبوتية للعمل دون الحاجة لأي إشراف من الأطباء البشريين.",
+        "أرشفة السجلات الطبية القديمة في ملفات نصية غير قابلة للتعديل أو البحث السريع.",
+        "التنبؤ باحتياجات المرضى المستقبلية وتحديد حالات الاحتيال في التأمين الصحي."
+      ],
+      "question_en": "Outlier blood pressure appears. Correct action before deleting as error?",
+      "explanation_en": "قاعدة المحاضرة: An outlier is not necessarily an error — مثل ضغط دم مرتفع بسبب حالة طبية فعلية. لذلك يُتحقّق قبل الحذف.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q23",
+      "concept_id": "challenge_performance",
+      "bloom_level": "Understand",
+      "text": "ما العنصر الجذري للتحدي المتعلق بأداء منظومة التنقيب وفقاً للنص؟",
+      "text_en": "What is the root element of the data-mining performance challenge in the text?",
+      "options": [
+        "مراقبة سرعة تدفق البيانات عبر كابلات الألياف الضوئية بين القارات.",
+        "إصلاح الأعطال الميكانيكية في محركات المركبات عبر الاستشعار عن بعد.",
+        "تتبع التغيرات المناخية الموسمية وقياس معدلات هطول الأمطار الشهرية.",
+        "مكافحة الغش المالي وتحديد العملاء المحتملين للاستثمار في الصناديق."
+      ],
+      "options_en": [
+        "Efficiency of algorithms/techniques; weak design degrades speed and accuracy",
+        "The color of the computer monitor",
+        "Number of open windows in the room",
+        "The type of tea the analyst drinks"
+      ],
+      "answer": "A",
+      "explanation": "النص: The data mining system's performance relies primarily on the efficiency of algorithms and techniques used. إذا لم تكن up to the mark يتأثر الأداء سلبياً.",
+      "question": "What is the root of the mining performance challenge?",
+      "question_ar": "ما العنصر الجذري للتحدي المتعلق بأداء منظومة التنقيب؟",
+      "correct": 0,
+      "options_ar": [
+        "مراقبة سرعة تدفق البيانات عبر كابلات الألياف الضوئية بين القارات.",
+        "إصلاح الأعطال الميكانيكية في محركات المركبات عبر الاستشعار عن بعد.",
+        "تتبع التغيرات المناخية الموسمية وقياس معدلات هطول الأمطار الشهرية.",
+        "مكافحة الغش المالي وتحديد العملاء المحتملين للاستثمار في الصناديق."
+      ],
+      "question_en": "What is the root of the mining performance challenge?",
+      "explanation_en": "النص: The data mining system's performance relies primarily on the efficiency of algorithms and techniques used. إذا لم تكن up to the mark يتأثر الأداء سلبياً.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q24",
+      "concept_id": "challenge_privacy_vs_disadvantage",
+      "bloom_level": "Analyze",
+      "text": "تحليل تجزئة لتفاصيل مشتريات العملاء يكشف عاداتهم وتفضيلاتهم دون إذن مسبق. ما التصنيف الأدق في إطار المحاضرة؟",
+      "text_en": "A retailer analyzes purchase details revealing customer habits without prior permission. Most accurate classification in the lecture framework?",
+      "options": [
+        "استخراج العلاقات الخفية والأنماط المعقدة غير المكتشفة من مجموعات البيانات الضخمة.",
+        "تنسيق تقارير المبيعات الشهرية وطباعتها على ورق رسمي لتقديمها إلى الإدارة العليا.",
+        "مراقبة استهلاك الطاقة الكهربائية في غرف الخوادم وضبط وحدات التبريد المركزية.",
+        "تنظيف شاشات الحواسيب وصيانة لوحات المفاتيح لتقليل أعطال الأجهزة الطرفية للمستخدمين."
+      ],
+      "options_en": [
+        "Pure cost-efficient advantage only",
+        "Visualization-only problem",
+        "A spelling error in 'Privacy'",
+        "Data Privacy & Security / Governance challenge — not the same as selling data for money disadvantage"
+      ],
+      "answer": "D",
+      "explanation": "النص (challenge): Data mining usually leads to serious issues in terms of data security, governance, and privacy... reveals buying habits... without their permission. يختلف عن العيب الأخلاقي لبيع البيانات (American Express) رغم التشابه.",
+      "question": "Retailer reveals habits without permission. Best lecture classification?",
+      "question_ar": "تجزئة تكشف عادات العملاء دون إذن. ما التصنيف الأدق وفق المحاضرة؟",
+      "correct": 3,
+      "options_ar": [
+        "استخراج العلاقات الخفية والأنماط المعقدة غير المكتشفة من مجموعات البيانات الضخمة.",
+        "تنسيق تقارير المبيعات الشهرية وطباعتها على ورق رسمي لتقديمها إلى الإدارة العليا.",
+        "مراقبة استهلاك الطاقة الكهربائية في غرف الخوادم وضبط وحدات التبريد المركزية.",
+        "تنظيف شاشات الحواسيب وصيانة لوحات المفاتيح لتقليل أعطال الأجهزة الطرفية للمستخدمين."
+      ],
+      "question_en": "Retailer reveals habits without permission. Best lecture classification?",
+      "explanation_en": "النص (challenge): Data mining usually leads to serious issues in terms of data security, governance, and privacy... reveals buying habits... without their permission. يختلف عن العيب الأخلاقي لبيع البيانات (American Express) رغم التشابه.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q25",
+      "concept_id": "safe_answer_rule",
+      "bloom_level": "Evaluate",
+      "text": "الدكتور يطلب: 'Data mining in Healthcare'. وفقاً لقاعدة الأمان (2-Keyword + الجملة الثابتة)، ما هي أفضل استراتيجية إجابة؟",
+      "text_en": "The doctor asks: 'Data mining in Healthcare'. By the 2-keyword safe rule, what is the best answer strategy?",
+      "options": [
+        "كتابة اسم المؤسسة فقط دون التطرق للمنهجية العلمية أو المخاطر المحتملة للتطبيق التقني.",
+        "نسخ الفقرة التمهيدية كاملة من الكتاب دون أي تحليل نقدي أو تفكيك للمفاهيم الهندسية الواردة.",
+        "ذكر العملية الأساسية مع توضيح خطر الاحتيال وبيان الطبيعة الاحتمالية غير الدقيقة للتقنية.",
+        "سرد أسماء البرمجيات التجارية المستخدمة مع تجاهل القيود الإحصائية والأبعاد الأخلاقية المذكورة."
+      ],
+      "options_en": [
+        "Write Core Operation (Patient Forecasting) + Risk (Fraud & Abuse) + the fixed techniques sentence, no filler",
+        "Write only American Express",
+        "Write a full page on medical history without course terms",
+        "Leave the paper blank"
+      ],
+      "answer": "A",
+      "explanation": "نقطة الأمان: المصحح يبحث عن كلمتين للقطاع + جملة ثابتة مثل Using techniques like Classification, Clustering, and Machine Learning. الحشو بلا وزن.",
+      "question": "Doctor asks 'Data mining in Healthcare' — best safe-answer strategy?",
+      "question_ar": "الدكتور يطلب Data mining in Healthcare — ما أفضل استراتيجية إجابة آمنة؟",
+      "correct": 0,
+      "options_ar": [
+        "كتابة اسم المؤسسة فقط دون التطرق للمنهجية العلمية أو المخاطر المحتملة للتطبيق التقني.",
+        "نسخ الفقرة التمهيدية كاملة من الكتاب دون أي تحليل نقدي أو تفكيك للمفاهيم الهندسية الواردة.",
+        "ذكر العملية الأساسية مع توضيح خطر الاحتيال وبيان الطبيعة الاحتمالية غير الدقيقة للتقنية.",
+        "سرد أسماء البرمجيات التجارية المستخدمة مع تجاهل القيود الإحصائية والأبعاد الأخلاقية المذكورة."
+      ],
+      "question_en": "Doctor asks 'Data mining in Healthcare' — best safe-answer strategy?",
+      "explanation_en": "نقطة الأمان: المصحح يبحث عن كلمتين للقطاع + جملة ثابتة مثل Using techniques like Classification, Clustering, and Machine Learning. الحشو بلا وزن.",
+      "explanation_ar": ""
+    }
+  ],
+  "schema_version": 2,
+  "subject_id": "03_Data_Mining",
+  "subject_title": "تنقيب البيانات",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_01_Introduction_to_Data_Mining",
+  "instructor_ar": "أ.م.د. أحمد شاكر عبد الرضا",
+  "chapter": "Chapter 1",
+  "chapter_no": 1,
+  "demo": false
 }

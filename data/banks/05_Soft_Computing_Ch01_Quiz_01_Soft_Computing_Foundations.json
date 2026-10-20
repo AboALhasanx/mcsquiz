@@ -1,157 +1,172 @@
 {
- "subject": "05_Soft_Computing",
- "topic": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic",
- "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
- "questions": [
-  {
-   "id": "q1",
-   "concept_id": "hard_vs_soft_computing",
-   "bloom_level": "Understand",
-   "question": "What is the fundamental architectural distinction between Hard Computing and Soft Computing regarding their tolerance for imprecision and real-world noise?",
-   "question_ar": "ما هو الفارق المعماري الجوهري بين الحوسبة الصلبة (Hard Computing) والحوسبة المرنة (Soft Computing) من حيث تحمل عدم الدقة والضجيج الواقعي؟",
-   "options": [
-    "الحوسبة الصلبة تعتمد على المنطق الضبابي، بينما الحوسبة المرنة تعتمد على المنطق الثنائي الحاسم والخوارزميات القطعية.",
-    "الحوسبة الصلبة تحاكي وظائف الدماغ البشري، بينما الحوسبة المرنة تركز فقط على العمليات الحسابية التسلسلية التقليدية.",
-    "الحوسبة الصلبة تعمل على الأنظمة الموزعة فقط، بينما الحوسبة المرنة مخصصة حصرياً لمعالجات الأجهزة الذكية المحمولة.",
-    "الحوسبة الصلبة تتطلب دقة مطلقة ويقيناً كاملاً، بينما الحوسبة المرنة تتسامح مع التقريب وعدم اليقين والضجيج."
-   ],
-   "options_ar": [
-    "الحوسبة الصلبة تعتمد على المنطق الضبابي، بينما الحوسبة المرنة تعتمد على المنطق الثنائي الحاسم والخوارزميات القطعية.",
-    "الحوسبة الصلبة تحاكي وظائف الدماغ البشري، بينما الحوسبة المرنة تركز فقط على العمليات الحسابية التسلسلية التقليدية.",
-    "الحوسبة الصلبة تعمل على الأنظمة الموزعة فقط، بينما الحوسبة المرنة مخصصة حصرياً لمعالجات الأجهزة الذكية المحمولة.",
-    "الحوسبة الصلبة تتطلب دقة مطلقة ويقيناً كاملاً، بينما الحوسبة المرنة تتسامح مع التقريب وعدم اليقين والضجيج."
-   ],
-   "options_en": [
-    "Hard Computing relies on fuzzy logic, while Soft Computing utilizes crisp binary logic and deterministic algorithms.",
-    "Hard Computing emulates the biological human brain, while Soft Computing focuses exclusively on traditional serial arithmetic.",
-    "Hard Computing runs only on distributed clusters, while Soft Computing is restricted to mobile embedded processors.",
-    "Hard Computing requires absolute precision and certainty, while Soft Computing tolerates imprecision, uncertainty, and noise."
-   ],
-   "answer": "D",
-   "explanation": "وفق الأستاذ لطفي زادة (Lotfi Zadeh): الحوسبة الصلبة تتطلب نموذجاً تحليلياً دقيقاً ولا تتسامح مع أي خطأ (Precision, Certainty). أما الحوسبة المرنة فتستغل التسامح مع عدم الدقة واللايقين والحقيقة الجزئية للحصول على قابلية الحل والمرونة وانخفاض كلفة الحوسبة.",
-   "correct": 3
-  },
-  {
-   "id": "q2",
-   "concept_id": "boolean_vs_fuzzy_sets",
-   "bloom_level": "Analyze",
-   "question": "How does the membership function of a Fuzzy Set fundamentally differ from the characteristic function of a traditional Crisp/Boolean Set?",
-   "question_ar": "كيف تختلف دالة الانتماء في المجموعات الضبابية (Fuzzy Set) جذرياً عن الدالة المميزة للمجموعات التقليدية الحاسمة (Crisp Set)؟",
-   "options": [
-    "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
-    "المجموعات التقليدية ثنائية تماماً {0, 1}، بينما المجموعات الضبابية تمنح درجات انتماء مستمرة في المجال [0, 1].",
-    "المجموعات التقليدية تسمح بتداخل العناصر بين فئات متناقضة، بينما المجموعات الضبابية تمنع أي تداخل تصنيفي.",
-    "المجموعات الضبابية تقبل قيماً سالبة، بينما المجموعات التقليدية تقبل الأعداد الصحيحة الموجبة فقط."
-   ],
-   "options_ar": [
-    "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
-    "المجموعات التقليدية ثنائية تماماً {0, 1}، بينما المجموعات الضبابية تمنح درجات انتماء مستمرة في المجال [0, 1].",
-    "المجموعات التقليدية تسمح بتداخل العناصر بين فئات متناقضة، بينما المجموعات الضبابية تمنع أي تداخل تصنيفي.",
-    "المجموعات الضبابية تقبل قيماً سالبة، بينما المجموعات التقليدية تقبل الأعداد الصحيحة الموجبة فقط."
-   ],
-   "options_en": [
-    "Fuzzy sets are restricted to statistical counting, whereas crisp sets apply to digital signal filtering.",
-    "Crisp sets are strictly binary {0, 1}, whereas fuzzy sets assign continuous membership degrees in the range [0, 1].",
-    "Crisp sets permit element overlap across contradictory classes, whereas fuzzy sets prevent any classification overlap.",
-    "Fuzzy sets accept negative values, whereas crisp sets accept only positive whole integers."
-   ],
-   "answer": "B",
-   "explanation": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3).",
-   "correct": 1
-  },
-  {
-   "id": "q3",
-   "concept_id": "biological_neuron_mapping",
-   "bloom_level": "Understand",
-   "question": "In the structural mapping between a biological neuron and an Artificial Neural Network (ANN), which biological part corresponds to the inputs and synaptic weights?",
-   "question_ar": "في المطابقة الهيكلية بين العصبون البيولوجي والشبكة العصبية الاصطناعية (ANN)، أي جزء حيوي يقابل المدخلات والأوزان المشبكية؟",
-   "options": [
-    "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة.",
-    "جسم الخلية العصبية الذي يقوم بالجمع الخطي للإشارات العصبية الواردة من المستقبلات الحسية.",
-    "التفرعات العصبية ونقاط التشابك المشبكي التي تستقبل الإشارات وتعدل شدة الاتصال النسبي.",
-    "غمد النخاعين العازل الذي يسرع تدفق النبضات الكهربائية عبر الألياف العصبية الممتدة."
-   ],
-   "options_ar": [
-    "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة.",
-    "جسم الخلية العصبية الذي يقوم بالجمع الخطي للإشارات العصبية الواردة من المستقبلات الحسية.",
-    "التفرعات العصبية ونقاط التشابك المشبكي التي تستقبل الإشارات وتعدل شدة الاتصال النسبي.",
-    "غمد النخاعين العازل الذي يسرع تدفق النبضات الكهربائية عبر الألياف العصبية الممتدة."
-   ],
-   "options_en": [
-    "The Axon which conducts the final output signal to neighboring downstream neurons.",
-    "The cell body (Soma) which performs linear summation of incoming nervous impulses.",
-    "The Dendrites and Synapses which receive signals and modulate their relative connection strength.",
-    "The Myelin Sheath which accelerates the propagation of electrical pulses along nerve fibers."
-   ],
-   "answer": "C",
-   "explanation": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output).",
-   "correct": 2
-  },
-  {
-   "id": "q4",
-   "concept_id": "soft_computing_components",
-   "bloom_level": "Understand",
-   "question": "Which of the following pairings correctly maps the four primary methodology pillars of Soft Computing to their core functional role?",
-   "question_ar": "أي من الأزواج التالية يطابق بدقة بين الركائز المنهجية الأساسية للحوسبة المرنة ودورها الوظيفي الجوهري؟",
-   "options": [
-    "المنطق الضبابي لعدم اليقين، والشبكات العصبية للتعلم، والحوسبة التطورية للاستمثال، والاستدلال الاحتمالي للتفكير.",
-    "الشبكات العصبية للاستمثال الشامل، والمنطق الضبابي للتعلم من البيانات، والحوسبة التطورية للترتيب النصي.",
-    "الحوسبة التطورية للتعامل مع عدم اليقين، والاستدلال الاحتمالي لبناء الهياكل المعمارية المادية للمعالجات.",
-    "المنطق الضبابي لتخزين الملفات، والشبكات العصبية لحماية الشبكات، والاستدلال الاحتمالي لتوليد التوقيعات الرقمية."
-   ],
-   "options_ar": [
-    "المنطق الضبابي لعدم اليقين، والشبكات العصبية للتعلم، والحوسبة التطورية للاستمثال، والاستدلال الاحتمالي للتفكير.",
-    "الشبكات العصبية للاستمثال الشامل، والمنطق الضبابي للتعلم من البيانات، والحوسبة التطورية للترتيب النصي.",
-    "الحوسبة التطورية للتعامل مع عدم اليقين، والاستدلال الاحتمالي لبناء الهياكل المعمارية المادية للمعالجات.",
-    "المنطق الضبابي لتخزين الملفات، والشبكات العصبية لحماية الشبكات، والاستدلال الاحتمالي لتوليد التوقيعات الرقمية."
-   ],
-   "options_en": [
-    "Fuzzy Logic for uncertainty, Neural Networks for learning, Evolutionary for optimization, and Probabilistic for reasoning.",
-    "Neural Networks for global optimization, Fuzzy Logic for learning from data, and Evolutionary for sorting.",
-    "Evolutionary Computation for uncertainty, and Probabilistic Reasoning for hardware physical architecture.",
-    "Fuzzy Logic for file storage, Neural Networks for network firewalls, and Probabilistic for digital signatures."
-   ],
-   "answer": "A",
-   "explanation": "المصفوفة الوظيفية المعتمدة للحوسبة المرنة (سلايد 28 وكتاب زادة): Fuzzy Logic يتعامل مع اللايقين (Imprecision & Uncertainty)، و Neural Networks تختص بالتعلم والتكيف (Learning & Adaptation)، و Evolutionary Computation للاستمثال والبحث (Optimization & Search)، و Probabilistic Reasoning للتفكير التنبؤي (Reasoning).",
-   "correct": 0
-  },
-  {
-   "id": "q5",
-   "concept_id": "soft_computing_applications",
-   "bloom_level": "Apply",
-   "question": "Why is a Fuzzy Logic controller preferred over a classic PID controller in consumer appliances like modern washing machines and ABS brakes?",
-   "question_ar": "لماذا يفضل استخدام متحكم المنطق الضبابي (Fuzzy Logic Controller) على متحكمات PID التقليدية في التطبيقات الاستهلاكية مثل الغسالات الذكية ومكابح ABS؟",
-   "options": [
-    "المنطق الضبابي يتعامل ببراعة مع المتغيرات غير الخطية المعقدة دون الحاجة لنموذج رياضي دقيق.",
-    "متحكمات PID تستهلك طاقة كهربائية تفوق قدرة البطاريات الاستهلاكية بعشرة أضعاف.",
-    "أنظمة ABS تتطلب سرعة استجابة لا يمكن برمجتها إلا بلغات التجميع منخفضة المستوى القديمة.",
-    "المنطق الضبابي يلغي الحاجة لأي حساسات فيزيائية ويعتمد حصراً على الاتصال بالإنترنت."
-   ],
-   "options_ar": [
-    "المنطق الضبابي يتعامل ببراعة مع المتغيرات غير الخطية المعقدة دون الحاجة لنموذج رياضي دقيق.",
-    "متحكمات PID تستهلك طاقة كهربائية تفوق قدرة البطاريات الاستهلاكية بعشرة أضعاف.",
-    "أنظمة ABS تتطلب سرعة استجابة لا يمكن برمجتها إلا بلغات التجميع منخفضة المستوى القديمة.",
-    "المنطق الضبابي يلغي الحاجة لأي حساسات فيزيائية ويعتمد حصراً على الاتصال بالإنترنت."
-   ],
-   "options_en": [
-    "Fuzzy logic seamlessly handles complex non-linear dynamics without requiring an exact analytical mathematical model.",
-    "Classic PID controllers consume ten times more electrical energy than consumer household battery capacities.",
-    "ABS braking systems require microsecond response times that can only be written in legacy assembly languages.",
-    "Fuzzy logic eliminates the need for physical sensors and relies strictly on cloud internet connectivity."
-   ],
-   "answer": "A",
-   "explanation": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية.",
-   "correct": 0
-  }
- ],
- "schema_version": 2,
- "subject_id": "05_Soft_Computing",
- "subject_title": "الحوسبة المرنة",
- "semester": 1,
- "semester_label": "كورس أول",
- "quiz_id": "Quiz_01_Soft_Computing_Foundations",
- "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
- "chapter": "Chapter 1",
- "chapter_no": 1,
- "demo": false
+  "subject": "05_Soft_Computing",
+  "topic": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic",
+  "instructor": "Prof. Dr. Abdul Hadi Mohammed Adkhil",
+  "questions": [
+    {
+      "id": "q1",
+      "concept_id": "hard_vs_soft_computing",
+      "bloom_level": "Understand",
+      "question": "What is the fundamental architectural distinction between Hard Computing and Soft Computing regarding their tolerance for imprecision and real-world noise?",
+      "question_ar": "ما هو الفارق المعماري الجوهري بين الحوسبة الصلبة (Hard Computing) والحوسبة المرنة (Soft Computing) من حيث تحمل عدم الدقة والضجيج الواقعي؟",
+      "options": [
+        "الحوسبة الصلبة تعتمد على المنطق الضبابي، بينما الحوسبة المرنة تعتمد على المنطق الثنائي الحاسم والخوارزميات القطعية.",
+        "الحوسبة الصلبة تحاكي وظائف الدماغ البشري، بينما الحوسبة المرنة تركز فقط على العمليات الحسابية التسلسلية التقليدية.",
+        "الحوسبة الصلبة تعمل على الأنظمة الموزعة فقط، بينما الحوسبة المرنة مخصصة حصرياً لمعالجات الأجهزة الذكية المحمولة.",
+        "الحوسبة الصلبة تتطلب دقة مطلقة ويقيناً كاملاً، بينما الحوسبة المرنة تتسامح مع التقريب وعدم اليقين والضجيج."
+      ],
+      "options_ar": [
+        "الحوسبة الصلبة تعتمد على المنطق الضبابي، بينما الحوسبة المرنة تعتمد على المنطق الثنائي الحاسم والخوارزميات القطعية.",
+        "الحوسبة الصلبة تحاكي وظائف الدماغ البشري، بينما الحوسبة المرنة تركز فقط على العمليات الحسابية التسلسلية التقليدية.",
+        "الحوسبة الصلبة تعمل على الأنظمة الموزعة فقط، بينما الحوسبة المرنة مخصصة حصرياً لمعالجات الأجهزة الذكية المحمولة.",
+        "الحوسبة الصلبة تتطلب دقة مطلقة ويقيناً كاملاً، بينما الحوسبة المرنة تتسامح مع التقريب وعدم اليقين والضجيج."
+      ],
+      "options_en": [
+        "Hard Computing relies on fuzzy logic, while Soft Computing utilizes crisp binary logic and deterministic algorithms.",
+        "Hard Computing emulates the biological human brain, while Soft Computing focuses exclusively on traditional serial arithmetic.",
+        "Hard Computing runs only on distributed clusters, while Soft Computing is restricted to mobile embedded processors.",
+        "Hard Computing requires absolute precision and certainty, while Soft Computing tolerates imprecision, uncertainty, and noise."
+      ],
+      "answer": "D",
+      "explanation": "وفق الأستاذ لطفي زادة (Lotfi Zadeh): الحوسبة الصلبة تتطلب نموذجاً تحليلياً دقيقاً ولا تتسامح مع أي خطأ (Precision, Certainty). أما الحوسبة المرنة فتستغل التسامح مع عدم الدقة واللايقين والحقيقة الجزئية للحصول على قابلية الحل والمرونة وانخفاض كلفة الحوسبة.",
+      "correct": 3,
+      "question_en": "What is the fundamental architectural distinction between Hard Computing and Soft Computing regarding their tolerance for imprecision and real-world noise?",
+      "explanation_en": "وفق الأستاذ لطفي زادة (Lotfi Zadeh): الحوسبة الصلبة تتطلب نموذجاً تحليلياً دقيقاً ولا تتسامح مع أي خطأ (Precision, Certainty). أما الحوسبة المرنة فتستغل التسامح مع عدم الدقة واللايقين والحقيقة الجزئية للحصول على قابلية الحل والمرونة وانخفاض كلفة الحوسبة.",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q2",
+      "concept_id": "boolean_vs_fuzzy_sets",
+      "bloom_level": "Analyze",
+      "question": "How does the membership function of a Fuzzy Set fundamentally differ from the characteristic function of a traditional Crisp/Boolean Set?",
+      "question_ar": "كيف تختلف دالة الانتماء في المجموعات الضبابية (Fuzzy Set) جذرياً عن الدالة المميزة للمجموعات التقليدية الحاسمة (Crisp Set)؟",
+      "options": [
+        "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
+        "المجموعات التقليدية ثنائية تماماً {0, 1}، بينما المجموعات الضبابية تمنح درجات انتماء مستمرة في المجال [0, 1].",
+        "المجموعات التقليدية تسمح بتداخل العناصر بين فئات متناقضة، بينما المجموعات الضبابية تمنع أي تداخل تصنيفي.",
+        "المجموعات الضبابية تقبل قيماً سالبة، بينما المجموعات التقليدية تقبل الأعداد الصحيحة الموجبة فقط."
+      ],
+      "options_ar": [
+        "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
+        "المجموعات التقليدية ثنائية تماماً {0, 1}، بينما المجموعات الضبابية تمنح درجات انتماء مستمرة في المجال [0, 1].",
+        "المجموعات التقليدية تسمح بتداخل العناصر بين فئات متناقضة، بينما المجموعات الضبابية تمنع أي تداخل تصنيفي.",
+        "المجموعات الضبابية تقبل قيماً سالبة، بينما المجموعات التقليدية تقبل الأعداد الصحيحة الموجبة فقط."
+      ],
+      "options_en": [
+        "Fuzzy sets are restricted to statistical counting, whereas crisp sets apply to digital signal filtering.",
+        "Crisp sets are strictly binary {0, 1}, whereas fuzzy sets assign continuous membership degrees in the range [0, 1].",
+        "Crisp sets permit element overlap across contradictory classes, whereas fuzzy sets prevent any classification overlap.",
+        "Fuzzy sets accept negative values, whereas crisp sets accept only positive whole integers."
+      ],
+      "answer": "B",
+      "explanation": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3).",
+      "correct": 1,
+      "question_en": "How does the membership function of a Fuzzy Set fundamentally differ from the characteristic function of a traditional Crisp/Boolean Set?",
+      "explanation_en": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q3",
+      "concept_id": "biological_neuron_mapping",
+      "bloom_level": "Understand",
+      "question": "In the structural mapping between a biological neuron and an Artificial Neural Network (ANN), which biological part corresponds to the inputs and synaptic weights?",
+      "question_ar": "في المطابقة الهيكلية بين العصبون البيولوجي والشبكة العصبية الاصطناعية (ANN)، أي جزء حيوي يقابل المدخلات والأوزان المشبكية؟",
+      "options": [
+        "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة.",
+        "جسم الخلية العصبية الذي يقوم بالجمع الخطي للإشارات العصبية الواردة من المستقبلات الحسية.",
+        "التفرعات العصبية ونقاط التشابك المشبكي التي تستقبل الإشارات وتعدل شدة الاتصال النسبي.",
+        "غمد النخاعين العازل الذي يسرع تدفق النبضات الكهربائية عبر الألياف العصبية الممتدة."
+      ],
+      "options_ar": [
+        "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة.",
+        "جسم الخلية العصبية الذي يقوم بالجمع الخطي للإشارات العصبية الواردة من المستقبلات الحسية.",
+        "التفرعات العصبية ونقاط التشابك المشبكي التي تستقبل الإشارات وتعدل شدة الاتصال النسبي.",
+        "غمد النخاعين العازل الذي يسرع تدفق النبضات الكهربائية عبر الألياف العصبية الممتدة."
+      ],
+      "options_en": [
+        "The Axon which conducts the final output signal to neighboring downstream neurons.",
+        "The cell body (Soma) which performs linear summation of incoming nervous impulses.",
+        "The Dendrites and Synapses which receive signals and modulate their relative connection strength.",
+        "The Myelin Sheath which accelerates the propagation of electrical pulses along nerve fibers."
+      ],
+      "answer": "C",
+      "explanation": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output).",
+      "correct": 2,
+      "question_en": "In the structural mapping between a biological neuron and an Artificial Neural Network (ANN), which biological part corresponds to the inputs and synaptic weights?",
+      "explanation_en": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q4",
+      "concept_id": "soft_computing_components",
+      "bloom_level": "Understand",
+      "question": "Which of the following pairings correctly maps the four primary methodology pillars of Soft Computing to their core functional role?",
+      "question_ar": "أي من الأزواج التالية يطابق بدقة بين الركائز المنهجية الأساسية للحوسبة المرنة ودورها الوظيفي الجوهري؟",
+      "options": [
+        "المنطق الضبابي لعدم اليقين، والشبكات العصبية للتعلم، والحوسبة التطورية للاستمثال، والاستدلال الاحتمالي للتفكير.",
+        "الشبكات العصبية للاستمثال الشامل، والمنطق الضبابي للتعلم من البيانات، والحوسبة التطورية للترتيب النصي.",
+        "الحوسبة التطورية للتعامل مع عدم اليقين، والاستدلال الاحتمالي لبناء الهياكل المعمارية المادية للمعالجات.",
+        "المنطق الضبابي لتخزين الملفات، والشبكات العصبية لحماية الشبكات، والاستدلال الاحتمالي لتوليد التوقيعات الرقمية."
+      ],
+      "options_ar": [
+        "المنطق الضبابي لعدم اليقين، والشبكات العصبية للتعلم، والحوسبة التطورية للاستمثال، والاستدلال الاحتمالي للتفكير.",
+        "الشبكات العصبية للاستمثال الشامل، والمنطق الضبابي للتعلم من البيانات، والحوسبة التطورية للترتيب النصي.",
+        "الحوسبة التطورية للتعامل مع عدم اليقين، والاستدلال الاحتمالي لبناء الهياكل المعمارية المادية للمعالجات.",
+        "المنطق الضبابي لتخزين الملفات، والشبكات العصبية لحماية الشبكات، والاستدلال الاحتمالي لتوليد التوقيعات الرقمية."
+      ],
+      "options_en": [
+        "Fuzzy Logic for uncertainty, Neural Networks for learning, Evolutionary for optimization, and Probabilistic for reasoning.",
+        "Neural Networks for global optimization, Fuzzy Logic for learning from data, and Evolutionary for sorting.",
+        "Evolutionary Computation for uncertainty, and Probabilistic Reasoning for hardware physical architecture.",
+        "Fuzzy Logic for file storage, Neural Networks for network firewalls, and Probabilistic for digital signatures."
+      ],
+      "answer": "A",
+      "explanation": "المصفوفة الوظيفية المعتمدة للحوسبة المرنة (سلايد 28 وكتاب زادة): Fuzzy Logic يتعامل مع اللايقين (Imprecision & Uncertainty)، و Neural Networks تختص بالتعلم والتكيف (Learning & Adaptation)، و Evolutionary Computation للاستمثال والبحث (Optimization & Search)، و Probabilistic Reasoning للتفكير التنبؤي (Reasoning).",
+      "correct": 0,
+      "question_en": "Which of the following pairings correctly maps the four primary methodology pillars of Soft Computing to their core functional role?",
+      "explanation_en": "المصفوفة الوظيفية المعتمدة للحوسبة المرنة (سلايد 28 وكتاب زادة): Fuzzy Logic يتعامل مع اللايقين (Imprecision & Uncertainty)، و Neural Networks تختص بالتعلم والتكيف (Learning & Adaptation)، و Evolutionary Computation للاستمثال والبحث (Optimization & Search)، و Probabilistic Reasoning للتفكير التنبؤي (Reasoning).",
+      "explanation_ar": ""
+    },
+    {
+      "id": "q5",
+      "concept_id": "soft_computing_applications",
+      "bloom_level": "Apply",
+      "question": "Why is a Fuzzy Logic controller preferred over a classic PID controller in consumer appliances like modern washing machines and ABS brakes?",
+      "question_ar": "لماذا يفضل استخدام متحكم المنطق الضبابي (Fuzzy Logic Controller) على متحكمات PID التقليدية في التطبيقات الاستهلاكية مثل الغسالات الذكية ومكابح ABS؟",
+      "options": [
+        "المنطق الضبابي يتعامل ببراعة مع المتغيرات غير الخطية المعقدة دون الحاجة لنموذج رياضي دقيق.",
+        "متحكمات PID تستهلك طاقة كهربائية تفوق قدرة البطاريات الاستهلاكية بعشرة أضعاف.",
+        "أنظمة ABS تتطلب سرعة استجابة لا يمكن برمجتها إلا بلغات التجميع منخفضة المستوى القديمة.",
+        "المنطق الضبابي يلغي الحاجة لأي حساسات فيزيائية ويعتمد حصراً على الاتصال بالإنترنت."
+      ],
+      "options_ar": [
+        "المنطق الضبابي يتعامل ببراعة مع المتغيرات غير الخطية المعقدة دون الحاجة لنموذج رياضي دقيق.",
+        "متحكمات PID تستهلك طاقة كهربائية تفوق قدرة البطاريات الاستهلاكية بعشرة أضعاف.",
+        "أنظمة ABS تتطلب سرعة استجابة لا يمكن برمجتها إلا بلغات التجميع منخفضة المستوى القديمة.",
+        "المنطق الضبابي يلغي الحاجة لأي حساسات فيزيائية ويعتمد حصراً على الاتصال بالإنترنت."
+      ],
+      "options_en": [
+        "Fuzzy logic seamlessly handles complex non-linear dynamics without requiring an exact analytical mathematical model.",
+        "Classic PID controllers consume ten times more electrical energy than consumer household battery capacities.",
+        "ABS braking systems require microsecond response times that can only be written in legacy assembly languages.",
+        "Fuzzy logic eliminates the need for physical sensors and relies strictly on cloud internet connectivity."
+      ],
+      "answer": "A",
+      "explanation": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية.",
+      "correct": 0,
+      "question_en": "Why is a Fuzzy Logic controller preferred over a classic PID controller in consumer appliances like modern washing machines and ABS brakes?",
+      "explanation_en": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية.",
+      "explanation_ar": ""
+    }
+  ],
+  "schema_version": 2,
+  "subject_id": "05_Soft_Computing",
+  "subject_title": "الحوسبة المرنة",
+  "semester": 1,
+  "semester_label": "كورس أول",
+  "quiz_id": "Quiz_01_Soft_Computing_Foundations",
+  "instructor_ar": "أ.د. عبد الهادي محمد ادخيل",
+  "chapter": "Chapter 1",
+  "chapter_no": 1,
+  "demo": false
 }

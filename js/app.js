@@ -632,7 +632,7 @@
       stemPair(q).forEach((sp, si) => {
         const stem = document.createElement('p');
         stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
-        stem.textContent = sp.t;
+        stem.innerHTML = bidiHtml(sp.t);
         stem.setAttribute('dir', 'auto');
         card.appendChild(stem);
       });
@@ -646,7 +646,7 @@
         item.setAttribute('dir', 'auto');
         const li = lettersFor(pair[0].lang);
         item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
-          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + escapeHtml(p.t) + '</span>').join('') + '</span>';
+          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + bidiHtml(p.t) + '</span>').join('') + '</span>';
         optionsList.appendChild(item);
       }
       card.appendChild(optionsList);
@@ -655,7 +655,7 @@
         const exp = document.createElement('div');
         exp.className = 'review-explanation-box';
         exp.setAttribute('dir', 'auto');
-        exp.innerHTML = '<strong>الشرح</strong><span>' + escapeHtml(expl) + '</span>';
+        exp.innerHTML = '<strong>الشرح</strong><span>' + bidiHtml(expl) + '</span>';
         card.appendChild(exp);
       }
       const rm = document.createElement('button');
@@ -711,6 +711,20 @@
   function qLetters() { return S.lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
 
   // Bilingual pairs for 'both' mode: [{t, lang}] — primary first.
+  // Bidi-safe text: inside Arabic text, Latin/numeric runs (numbers, formulas,
+  // English terms) are isolated so they never reverse or tear the sentence.
+  const AR_RE = /[\u0600-\u06FF]/;
+  function bidiHtml(text) {
+    const s = String(text == null ? '' : text);
+    if (!AR_RE.test(s)) return escapeHtml(s);
+    return s.split(/([\x20-\x7E]+)/g).map(function (part) {
+      if (/^[\x20-\x7E]+$/.test(part)) {
+        return '<bdi dir="ltr">' + escapeHtml(part) + '</bdi>';
+      }
+      return escapeHtml(part);
+    }).join('');
+  }
+
   function stemPair(q) {
     const ar = q.question_ar || q.question;
     const en = q.question_en || q.question;
@@ -736,11 +750,11 @@
     $('progress-bar-fill').style.width = (ses.idx / ses.questions.length) * 100 + '%';
     const stems = stemPair(q);
     const qEl = $('question-text');
-    qEl.textContent = stems[0].t;
+    qEl.innerHTML = bidiHtml(stems[0].t);
     qEl.setAttribute('dir', 'auto');
     const qEl2 = $('question-text-2');
     if (stems[1]) {
-      qEl2.textContent = stems[1].t;
+      qEl2.innerHTML = bidiHtml(stems[1].t);
       qEl2.setAttribute('dir', 'auto');
       qEl2.classList.remove('hidden');
     } else {
@@ -772,7 +786,7 @@
       const content = document.createElement('div');
       content.className = 'option-content';
       content.setAttribute('dir', 'auto');
-      content.innerHTML = pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + escapeHtml(p.t) + '</span>').join('');
+      content.innerHTML = pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + bidiHtml(p.t) + '</span>').join('');
       btn.appendChild(letter);
       btn.appendChild(content);
       if (!locked) btn.addEventListener('click', () => pickOption(i));
@@ -781,7 +795,7 @@
     const showExpl = locked && ses.picks[ses.idx] !== q.correct;
     $('live-feedback-box').classList.toggle('hidden', !showExpl);
     if (showExpl) {
-      $('live-explanation-text').textContent = explText(q);
+      $('live-explanation-text').innerHTML = bidiHtml(explText(q));
       $('live-explanation-text').setAttribute('dir', 'auto');
     }
     if (ses.idx === ses.questions.length - 1) {
@@ -1133,7 +1147,7 @@
       stemPair(q).forEach((sp, si) => {
         const stem = document.createElement('p');
         stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
-        stem.textContent = sp.t;
+        stem.innerHTML = bidiHtml(sp.t);
         stem.setAttribute('dir', 'auto');
         card.appendChild(stem);
       });
@@ -1151,7 +1165,7 @@
         item.setAttribute('dir', 'auto');
         const li = lettersFor(pair[0].lang);
         item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
-          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + escapeHtml(p.t) + '</span>').join('') + '</span>';
+          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + bidiHtml(p.t) + '</span>').join('') + '</span>';
         optionsList.appendChild(item);
       }
       card.appendChild(optionsList);
@@ -1166,7 +1180,7 @@
           '<span>الشرح</span>' +
           '<i data-lucide="chevron-down" class="expl-chevron"></i>' +
           '</button>' +
-          '<div class="expl-body" dir="auto" hidden>' + escapeHtml(expl) + '</div>';
+          '<div class="expl-body" dir="auto" hidden>' + bidiHtml(expl) + '</div>';
         const tg = exp.querySelector('.expl-toggle');
         const body = exp.querySelector('.expl-body');
         tg.addEventListener('click', () => {
@@ -2551,7 +2565,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v38';
+  const SHELL_VERSION = 'v39';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
