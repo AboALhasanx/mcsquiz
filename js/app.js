@@ -1612,7 +1612,12 @@
       ]).catch(() => {});
       const st = await offlineState();
       const entries = Object.keys(st.caches).reduce((n, k) => n + (st.caches[k] || 0), 0);
-      if (entries > 5) toast('النسخة بدون إنترنت جاهزة ✓', 'success');
+      if (entries > 5) {
+        const inTelegram = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData);
+        toast(inTelegram
+          ? 'النسخة محفوظة ✓ — داخل تليجرام لازم تفتحها وأنت متصل؛ للفتح بلا نت استعمل التطبيق المثبّت'
+          : 'النسخة بدون إنترنت جاهزة ✓', 'success');
+      }
       else toast('التجهيز ما كمل — خلي الصفحة مفتوحة شوي وأعد المحاولة', 'error');
       refreshOfflineRow();
     } catch (e) {
@@ -2546,7 +2551,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v37';
+  const SHELL_VERSION = 'v38';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
