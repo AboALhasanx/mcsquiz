@@ -2487,7 +2487,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v34';
+  const SHELL_VERSION = 'v35';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -2498,6 +2498,42 @@
       localStorage.setItem('portal_shell_version', SHELL_VERSION);
     } catch (e) {}
   }
+  // ---------------- offline / service-worker diagnostics ----------------
+  async function offlineState() {
+    const out = { supported: ('serviceWorker' in navigator), controller: false, reg: 'none', caches: {} };
+    try { out.controller = !!navigator.serviceWorker.controller; } catch (e) {}
+    try {
+      if (out.supported) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        out.reg = reg ? (reg.active ? 'active' : (reg.installing ? 'installing' : (reg.waiting ? 'waiting' : 'registered'))) : 'none';
+      }
+    } catch (e) { out.reg = 'error'; }
+    try {
+      const names = await caches.keys();
+      for (let i = 0; i < names.length; i++) {
+        const c = await caches.open(names[i]);
+        const keys = await c.keys();
+        out.caches[names[i]] = keys.length;
+      }
+    } catch (e) {}
+    return out;
+  }
+
+  function logOfflineState() {
+    const log = (st) => {
+      try {
+        if (window.PortalLog) {
+          window.PortalLog.info('offline', 'sw=' + (st.supported ? 'yes' : 'NO') +
+            ' controller=' + (st.controller ? 'yes' : 'no') +
+            ' reg=' + st.reg +
+            ' caches=' + JSON.stringify(st.caches));
+        }
+      } catch (e) {}
+    };
+    offlineState().then(log).catch(() => {});
+    setTimeout(() => { offlineState().then(log).catch(() => {}); }, 6000);
+  }
+
   async function boot() {
     await guardShell();
     try { if (window.PortalLog) { window.PortalLog.restore(); window.PortalLog.info('boot', 'start href=' + location.href.slice(0, 80)); } } catch (e) {}
@@ -2528,6 +2564,7 @@
         }
       }
       if (window.PortalLog) window.PortalLog.info('boot', 'ok subjects=' + (S.index ? S.index.subjects.length : 0) + ' test_mode=' + (S.index ? S.index.test_mode : '?'));
+      logOfflineState();
       // Show the tour exactly once per device: mark it seen the moment it opens,
       // so a reload mid-tour never brings it back (it is replayable from the menu).
       if (!tourGet(TOUR_KEY)) setTimeout(() => { if (tourIdx < 0) { tourSet(TOUR_KEY); tourShow(0); } }, 1200);
