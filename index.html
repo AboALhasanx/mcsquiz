@@ -508,12 +508,14 @@
 
         <!-- Leave-exam confirmation -->
         <div id="leave-modal" class="modal-overlay hidden" aria-hidden="true">
-            <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="leave-title" aria-describedby="leave-body">
-                <h3 id="leave-title">مغادرة الكوز؟</h3>
-                <p id="leave-body">تقدّمك الحالي سيضيع. هل أنت متأكد؟</p>
-                <div class="modal-actions">
-                    <button id="leave-stay" class="action-btn primary-btn">البقاء</button>
-                    <button id="leave-go" class="action-btn secondary-btn">مغادرة</button>
+            <div class="modal-card leave-card" role="alertdialog" aria-modal="true" aria-labelledby="leave-title" aria-describedby="leave-body">
+                <span class="leave-icon" aria-hidden="true"><i data-lucide="alert-triangle"></i></span>
+                <h3 id="leave-title">الخروج من الاختبار؟</h3>
+                <p id="leave-body">لن تُحسب نتيجتك إذا خرجت الآن.</p>
+                <p class="leave-hint" id="leave-hint">بقيت أسئلة على إنهاء الاختبار.</p>
+                <div class="modal-actions leave-actions">
+                    <button id="leave-stay" class="action-btn primary-btn">متابعة الاختبار</button>
+                    <button id="leave-go" class="action-btn danger-outline">خروج بدون احتساب</button>
                 </div>
             </div>
         </div>

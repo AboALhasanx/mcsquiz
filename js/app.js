@@ -1550,15 +1550,25 @@
   function showLeaveModal(intent) {
     leaveIntent = intent === 'finish' ? 'finish' : 'exit';
     const t = $('leave-title'), b = $('leave-body'), go = $('leave-go');
+    const stay = $('leave-stay'), hint = $('leave-hint'), rem = $('leave-remaining');
     if (t && b && go) {
       if (leaveIntent === 'finish') {
         t.textContent = 'إنهاء الاختبار؟';
-        b.textContent = 'الأسئلة التي لم تُجب عنها ستُحسب غير صحيحة.';
-        go.textContent = 'إنهاء';
+        b.textContent = 'الأسئلة التي لم تُجب عنها ستُحسب خاطئة.';
+        go.textContent = 'إنهاء الآن';
+        if (stay) stay.textContent = 'متابعة الاختبار';
+        if (hint) hint.style.display = 'none';
       } else {
         t.textContent = 'الخروج من الاختبار؟';
-        b.textContent = 'لن تُحسب نتيجتك إذا خرجت الآن. هل تريد الخروج؟';
-        go.textContent = 'خروج';
+        b.textContent = 'لن تُحسب نتيجتك إذا خرجت الآن.';
+        go.textContent = 'خروج بدون احتساب';
+        if (stay) stay.textContent = 'متابعة الاختبار';
+        if (hint) {
+          const ses = S.session;
+          const left = ses ? ses.questions.filter((q, i) => ses.picks[i] === null || ses.picks[i] === undefined).length : 0;
+          hint.textContent = left > 0 ? ('بقي ' + qCount(left) + ' على إنهاء الاختبار.') : '';
+          hint.style.display = left > 0 ? '' : 'none';
+        }
       }
     }
     $('leave-modal').classList.remove('hidden');
@@ -2367,9 +2377,9 @@
       }
     });
     window.addEventListener('hashchange', onHashChange);
-    window.addEventListener('beforeunload', (e) => {
-      if (dirtySession()) { e.preventDefault(); e.returnValue = ''; }
-    });
+    // No native beforeunload dialog: the browser renders it in its own language
+    // and cannot be styled. Leaving the app is guarded by the Arabic modal above,
+    // and Telegram's own close confirmation when the mini app is closed.
     // In-app navigation goes through the leave guard.
     document.addEventListener('click', (e) => {
       const a = e.target && e.target.closest ? e.target.closest('a[href^="#/"]') : null;
@@ -2587,7 +2597,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v41';
+  const SHELL_VERSION = 'v42';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

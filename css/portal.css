@@ -800,6 +800,37 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 }
 
 /* --- leave-exam modal --- */
+.leave-card { text-align: center; }
+.leave-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+}
+.leave-icon svg { width: 22px; height: 22px; }
+.leave-card h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+.leave-card p { margin: 0 0 0.5rem; opacity: 0.85; font-size: 0.88rem; line-height: 1.6; }
+.leave-card .leave-hint {
+  margin: 0 0 0.9rem;
+  font-size: 0.78rem;
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+}
+.leave-actions { flex-direction: column; gap: 0.5rem; }
+.leave-actions .action-btn { width: 100%; flex: none; }
+.action-btn.danger-outline {
+  background: none;
+  border: 1px solid rgba(244, 63, 94, 0.45);
+  color: #fb7185;
+}
+html[data-theme="light"] .action-btn.danger-outline { color: #dc2626; }
+
 .modal-overlay {
   position: fixed;
   inset: 0;
