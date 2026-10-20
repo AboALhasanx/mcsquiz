@@ -1560,7 +1560,64 @@
   function openMenu() {
     syncMenuToggles();
     updateMenuCounts();
+    refreshOfflineRow();
     openDrawer('menu-drawer');
+  }
+
+  // Honest offline readiness: says whether this window can even run a service
+  // worker (Telegram's WebView may not), and whether the shell is cached.
+  async function refreshOfflineRow() {
+    const label = $('menu-offline-label');
+    const badge = $('menu-offline-state');
+    if (!label || !badge) return;
+    let supported = false;
+    try { supported = ('serviceWorker' in navigator); } catch (e) {}
+    if (!supported) {
+      label.textContent = 'بدون إنترنت: غير مدعوم في هذه النافذة';
+      badge.textContent = '!';
+      badge.classList.remove('hidden');
+      return;
+    }
+    let entries = 0;
+    try {
+      const st = await offlineState();
+      entries = Object.keys(st.caches).reduce((n, k) => n + (st.caches[k] || 0), 0);
+      const ctrl = !!navigator.serviceWorker.controller;
+      if (entries > 5 && ctrl) {
+        label.textContent = 'النسخة بدون إنترنت';
+        badge.textContent = 'جاهزة';
+        badge.classList.remove('hidden');
+        return;
+      }
+    } catch (e) {}
+    label.textContent = 'جهّز النسخة بدون إنترنت';
+    badge.textContent = '—';
+    badge.classList.remove('hidden');
+  }
+
+  async function prepareOffline() {
+    let supported = false;
+    try { supported = ('serviceWorker' in navigator); } catch (e) {}
+    if (!supported) {
+      toast('هذه النافذة ما تدعم التخزين — افتح الرابط في Chrome وثبّته', 'error');
+      return;
+    }
+    toast('نجهّز النسخة بدون إنترنت…', 'info');
+    try {
+      const reg = await navigator.serviceWorker.register('sw.js');
+      if (reg && reg.update) await reg.update().catch(() => {});
+      await Promise.race([
+        navigator.serviceWorker.ready,
+        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 8000)),
+      ]).catch(() => {});
+      const st = await offlineState();
+      const entries = Object.keys(st.caches).reduce((n, k) => n + (st.caches[k] || 0), 0);
+      if (entries > 5) toast('النسخة بدون إنترنت جاهزة ✓', 'success');
+      else toast('التجهيز ما كمل — خلي الصفحة مفتوحة شوي وأعد المحاولة', 'error');
+      refreshOfflineRow();
+    } catch (e) {
+      toast('تعذر تجهيز النسخة بدون إنترنت', 'error');
+    }
   }
   function setSound(on) {
     S.sound = !!on;
@@ -2347,6 +2404,8 @@
       } catch (e) { toast('تعذر النسخ'); }
     });
     $('menu-install').addEventListener('click', installApp);
+    const offlineBtn = $('menu-offline');
+    if (offlineBtn) offlineBtn.addEventListener('click', prepareOffline);
     const menuAccount = $('menu-account');
     if (menuAccount) menuAccount.addEventListener('click', () => { handleAccountTap(); });
     window.addEventListener('online', () => { updateAccountRow(); try { window.PortalCloud && window.PortalCloud.pushSoon(); } catch (e) {} });
@@ -2487,7 +2546,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v36';
+  const SHELL_VERSION = 'v37';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
