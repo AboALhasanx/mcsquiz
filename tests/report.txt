@@ -118,3 +118,60 @@ PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr |
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</spa
 PASS | banks | no runtime errors | []
+PASS | quiz | no skip button exists | 
+PASS | quiz | one single action button | 
+PASS | quiz | next is blocked while unanswered | 
+PASS | quiz | blocked next explains itself | 
+PASS | quiz | question starts in Arabic mode | أ
+PASS | quiz | toggle switches to English mode | A
+PASS | quiz | both-language mode restores Arabic letters | أ
+PASS | quiz | toggle returns to Arabic mode | أ
+PASS | quiz | total questions loaded | 20
+PASS | quiz | saving marks the bookmark | 
+PASS | quiz | saving again removes it | 
+PASS | quiz | explanation appears after a wrong answer | 
+PASS | quiz | matrix opens | 
+PASS | quiz | matrix has one cell per question | 20
+PASS | quiz | answered cell is marked answered | 
+PASS | quiz | matrix has no early-finish button | 
+PASS | quiz | the quiz ends after the last answer | 
+PASS | quiz | correct + wrong equals the total | {'correct': 5, 'wrong': 15, 'acc': '25%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 5, 'wrong': 15, 'acc': '25%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | no unanswered figure | 
+PASS | quiz | results never say "unanswered" | 
+PASS | quiz | one review card per question | 20
+PASS | quiz | explanations start collapsed | 
+PASS | quiz | explanation opens with the arrow | 
+PASS | quiz | every card can save the question | 
+PASS | quiz | correct answer is always shown | 
+PASS | quiz | no runtime errors | []
+PASS | quiz | no skip button exists | 
+PASS | quiz | one single action button | 
+PASS | quiz | next is blocked while unanswered | 
+PASS | quiz | blocked next explains itself | 
+PASS | quiz | question starts in Arabic mode | أ
+PASS | quiz | toggle switches to English mode | A
+PASS | quiz | both-language mode restores Arabic letters | أ
+PASS | quiz | toggle returns to Arabic mode | أ
+PASS | quiz | total questions loaded | 20
+PASS | quiz | saving marks the bookmark | 
+PASS | quiz | saving again removes it | 
+PASS | quiz | explanation appears after a wrong answer | 
+PASS | quiz | a wrong answer opens the explanation automatically | 
+PASS | quiz | the explanation can be collapsed on demand | 
+PASS | quiz | the explanation re-opens on demand | 
+PASS | quiz | matrix opens | 
+PASS | quiz | matrix has one cell per question | 20
+PASS | quiz | answered cell is marked answered | 
+PASS | quiz | matrix has no early-finish button | 
+PASS | quiz | the quiz ends after the last answer | 
+PASS | quiz | correct + wrong equals the total | {'correct': 2, 'wrong': 18, 'acc': '10%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 2, 'wrong': 18, 'acc': '10%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | no unanswered figure | 
+PASS | quiz | results never say "unanswered" | 
+PASS | quiz | one review card per question | 20
+PASS | quiz | explanations start collapsed | 
+PASS | quiz | explanation opens with the arrow | 
+PASS | quiz | every card can save the question | 
+PASS | quiz | correct answer is always shown | 
+PASS | quiz | no runtime errors | []

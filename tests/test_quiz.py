@@ -67,6 +67,16 @@ def run():
         page.wait_for_timeout(300)
         check('explanation appears after a wrong answer',
               'hidden' not in (page.locator('#live-feedback-box').get_attribute('class') or ''))
+        check('a wrong answer opens the explanation automatically',
+              page.locator('#live-expl-toggle').get_attribute('aria-expanded') == 'true')
+        page.locator('#live-expl-toggle').click()
+        page.wait_for_timeout(200)
+        check('the explanation can be collapsed on demand',
+              page.locator('#live-expl-toggle').get_attribute('aria-expanded') == 'false')
+        page.locator('#live-expl-toggle').click()
+        page.wait_for_timeout(200)
+        check('the explanation re-opens on demand',
+              page.locator('#live-expl-toggle').get_attribute('aria-expanded') == 'true')
 
         # matrix: answered cell marked, no forward jumping
         page.evaluate('() => document.querySelector("#btn-open-matrix").click()')

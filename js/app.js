@@ -714,6 +714,13 @@
   // Bidi-safe text: inside Arabic text, Latin/numeric runs (numbers, formulas,
   // English terms) are isolated so they never reverse or tear the sentence.
   const AR_RE = /[\u0600-\u06FF]/;
+  function setExplOpen(box, toggle, body, open) {
+    if (!box) return;
+    box.classList.toggle('collapsed', !open);
+    if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (body) body.hidden = !open;
+  }
+
   function bidiHtml(text) {
     const s = String(text == null ? '' : text);
     if (!AR_RE.test(s)) return escapeHtml(s);
@@ -792,11 +799,20 @@
       if (!locked) btn.addEventListener('click', () => pickOption(i));
       box.appendChild(btn);
     }
-    const showExpl = locked && ses.picks[ses.idx] !== q.correct;
-    $('live-feedback-box').classList.toggle('hidden', !showExpl);
-    if (showExpl) {
-      $('live-explanation-text').innerHTML = bidiHtml(explText(q));
-      $('live-explanation-text').setAttribute('dir', 'auto');
+    // The explanation is always available after answering: auto-opened when the
+    // answer was wrong (the moment it matters), collapsed when it was right.
+    const answered = locked;
+    const wasWrong = answered && ses.picks[ses.idx] !== q.correct;
+    const expl = explText(q);
+    const boxEl = $('live-feedback-box');
+    const explBody = $('live-explanation-text');
+    const explToggle = $('live-expl-toggle');
+    const showBox = answered && !!expl;
+    boxEl.classList.toggle('hidden', !showBox);
+    if (showBox) {
+      explBody.innerHTML = bidiHtml(expl);
+      explBody.setAttribute('dir', 'auto');
+      setExplOpen(boxEl, explToggle, explBody, wasWrong);
     }
     if (ses.idx === ses.questions.length - 1) {
       $('next-btn-text').textContent = 'إنهاء الكوز';
@@ -2423,6 +2439,12 @@
       } catch (e) { toast('تعذر النسخ'); }
     });
     $('menu-install').addEventListener('click', installApp);
+    const liveExplToggle = $('live-expl-toggle');
+    if (liveExplToggle) liveExplToggle.addEventListener('click', () => {
+      const box = $('live-feedback-box');
+      const body = $('live-explanation-text');
+      setExplOpen(box, liveExplToggle, body, box.classList.contains('collapsed'));
+    });
     const offlineBtn = $('menu-offline');
     if (offlineBtn) offlineBtn.addEventListener('click', prepareOffline);
     const menuAccount = $('menu-account');
@@ -2565,7 +2587,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v40';
+  const SHELL_VERSION = 'v41';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

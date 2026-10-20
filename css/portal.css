@@ -1082,6 +1082,13 @@ body:not([data-quizlive="yes"]) #btn-exit {
   line-height: 1.65;
   color: var(--text-muted);
 }
+/* the in-quiz explanation scrolls inside a capped box so options stay visible */
+.expl-body-live {
+  max-height: 30vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
 .review-save-btn {
   display: inline-flex;
   align-items: center;

@@ -180,12 +180,13 @@
                         <p id="question-text-2" class="question-text question-text-sub hidden" dir="auto"></p>
                     </div>
                     <div id="options-container" class="options-grid" role="radiogroup" aria-label="خيارات الإجابة"></div>
-                    <div id="live-feedback-box" class="explanation-card hidden">
-                        <div class="explanation-badge">
-                            <i data-lucide="lightbulb" class="explanation-icon"></i>
+                    <div id="live-feedback-box" class="review-explanation-box collapsed hidden">
+                        <button type="button" class="expl-toggle" id="live-expl-toggle" aria-expanded="false">
+                            <i data-lucide="lightbulb" class="expl-icon"></i>
                             <span>الشرح</span>
-                        </div>
-                        <p id="live-explanation-text" class="explanation-body"></p>
+                            <i data-lucide="chevron-down" class="expl-chevron"></i>
+                        </button>
+                        <div class="expl-body expl-body-live" id="live-explanation-text" dir="auto" hidden></div>
                     </div>
                 </div>
 
