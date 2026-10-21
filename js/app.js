@@ -1914,6 +1914,7 @@
     const C = cloud();
     if (!C || !C.login) return;
     const code = String(Math.floor(1000 + Math.random() * 9000));
+    $('link-title').textContent = 'ربط هذا الجهاز';
     $('link-generate').classList.remove('hidden');
     $('link-approve').classList.add('hidden');
     $('link-code').textContent = code;
@@ -1970,6 +1971,7 @@
     const C = cloud();
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
+    $('link-title').textContent = 'ربط جهاز آخر';
     $('link-generate').classList.add('hidden');
     $('link-approve').classList.remove('hidden');
     let pre = '';
@@ -1981,6 +1983,50 @@
     $('link-modal').classList.remove('hidden');
     $('link-modal').setAttribute('aria-hidden', 'false');
     setTimeout(() => { try { $('link-code-input').focus(); } catch (e) {} }, 120);
+  }
+
+  let scanStream = null;
+  let scanTimer = null;
+
+  function stopScan() {
+    if (scanTimer) { clearInterval(scanTimer); scanTimer = null; }
+    if (scanStream) {
+      try { scanStream.getTracks().forEach((t) => t.stop()); } catch (e) {}
+      scanStream = null;
+    }
+    const v = $('link-video');
+    if (v) { v.classList.add('hidden'); try { v.srcObject = null; } catch (e) {} }
+  }
+
+  async function startScan() {
+    const v = $('link-video');
+    if (!v) return;
+    if (!('BarcodeDetector' in window)) {
+      toast('متصفحك ما يدعم المسح — اكتب الأرقام الظاهرة على الجهاز', 'error');
+      return;
+    }
+    try {
+      scanStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      v.srcObject = scanStream;
+      v.classList.remove('hidden');
+      await v.play().catch(() => {});
+      const detector = new window.BarcodeDetector({ formats: ['qr_code'] });
+      scanTimer = setInterval(async () => {
+        try {
+          const codes = await detector.detect(v);
+          if (!codes || !codes.length) return;
+          const raw = codes[0].rawValue || '';
+          const m = raw.match(/(\d{4})/);
+          if (!m) return;
+          $('link-code-input').value = m[1];
+          stopScan();
+          toast('انقر «نعم، اربط الجهاز» للتأكيد', 'success');
+        } catch (e) {}
+      }, 700);
+    } catch (e) {
+      toast('تعذر فتح الكاميرا — اكتب الأرقام', 'error');
+      stopScan();
+    }
   }
 
   async function approveLinkCode() {
@@ -2001,6 +2047,7 @@
 
   function closeLinkModal() {
     stopLinkPoll();
+    stopScan();
     $('link-modal').classList.add('hidden');
     $('link-modal').setAttribute('aria-hidden', 'true');
   }
@@ -2693,6 +2740,7 @@
       const C = cloud();
       try { await C.pullOrPush(); toast('تمت المزامنة', 'success'); } catch (e) { toast('تعذر المزامنة', 'error'); }
     });
+    bindClick('link-scan', startScan);
     bindClick('profile-save', saveProfile);
     bindClick('account-close', () => {
       $('account-modal').classList.add('hidden');
@@ -2856,7 +2904,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v47';
+  const SHELL_VERSION = 'v48';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

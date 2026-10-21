@@ -525,20 +525,31 @@
         <div id="link-modal" class="modal-overlay hidden" aria-hidden="true">
             <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="link-title">
                 <h3 id="link-title">ربط جهاز</h3>
+
+                <!-- A) this device is new: it waits, the signed-in device approves -->
                 <div id="link-generate">
-                    <p class="auth-sub">افتح هذا الرابط على الجهاز الآخر، أو اكتب المعرّف هناك — يظهر هنا رمز التأكيد.</p>
+                    <ol class="link-steps">
+                        <li>افتح البوابة على الجهاز اللي عليه حسابك.</li>
+                        <li>القائمة ← حسابي ← «ربط جهاز آخر».</li>
+                        <li>امسح الرمز بالكاميرا أو اكتب الأرقام.</li>
+                    </ol>
                     <div id="link-qr" class="link-qr" aria-hidden="true"></div>
                     <div id="link-code" class="link-code" dir="ltr">----</div>
-                    <p class="auth-sub" id="link-wait">بانتظار التأكيد من الجهاز الآخر…</p>
+                    <p class="auth-sub" id="link-wait">بانتظار الموافقة من جهازك…</p>
                 </div>
+
+                <!-- B) this device is signed in: it approves -->
                 <div id="link-approve" class="hidden">
-                    <p class="auth-sub">اكتب الرمز الظاهر على الجهاز الآخر ثم أكّد:</p>
+                    <p class="auth-sub">امسح رمز الجهاز الجديد، أو اكتب الأرقام الظاهرة عليه.</p>
                     <input id="link-code-input" class="auth-input" dir="ltr" inputmode="numeric" maxlength="4" placeholder="1234">
+                    <button id="link-scan" class="action-btn secondary-btn" style="width:100%;margin-top:0.5rem;">امسح بالكاميرا</button>
+                    <video id="link-video" class="link-video hidden" playsinline muted></video>
                     <div class="modal-actions" style="margin-top:0.6rem;">
                         <button id="link-yes" class="action-btn primary-btn">نعم، اربط الجهاز</button>
                         <button id="link-no" class="action-btn secondary-btn">لا</button>
                     </div>
                 </div>
+
                 <div class="modal-actions" style="margin-top:0.5rem;">
                     <button id="link-close" class="action-btn text-link-btn">إغلاق</button>
                 </div>
