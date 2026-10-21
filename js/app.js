@@ -138,6 +138,10 @@
     // the saved shortcut belongs to the saved views, not to the home or a quiz
     const savedBtn = $('btn-open-saved');
     if (savedBtn) savedBtn.style.display = (viewId === 'deck-catalog' || inQuiz) ? 'none' : '';
+    // the AR/EN switch: in the quiz bar, the results/review bar and the saved
+    // view — not on the home screen
+    const langBar = $('lang-switch-catalog');
+    if (langBar) langBar.style.display = (viewId === 'saved-view') ? 'inline-flex' : 'none';
     const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
@@ -2051,7 +2055,7 @@
 
     { title: 'أزرار الهيدر', body: 'الجرس للتنبيهات (يطلع رقم لما تنزل أسئلة جديدة)، بعدها المحفوظات وتبديل المظهر والقائمة — والشعار يرجّعك للرئيسية.', target: '.header-catalog-actions' },
 
-    { title: 'القائمة الجانبية', body: 'المحفوظ والإحصائيات والدوري، وتثبيت التطبيق والنسخة بدون إنترنت، ولغة الأسئلة (عربي/English)، والصوت والمظهر.', open: 'menu', target: '#menu-drawer .menu-list' },
+    { title: 'القائمة الجانبية', body: 'المحفوظ والإحصائيات والدوري، وتثبيت التطبيق والنسخة بدون إنترنت، والصوت والمظهر.', open: 'menu', target: '#menu-drawer .menu-list' },
 
     { title: 'الجرس والتنبيهات', body: 'أي أسئلة تنزل جديدة توصلك هنا: المادة والجابتر وعدد الأسئلة. تفتحها أو تحدد الكل كمقروء.', target: '#btn-bell' },
 
@@ -2065,7 +2069,9 @@
 
     { title: 'البداية', body: 'هنا عدد الأسئلة والوقت المتوقع. المؤقت يبدأ عند الضغط.', target: '#btn-start-quiz', action: 'start' },
 
-    { title: 'الحفظ والترجمة', body: 'زر الحفظ أعلى البطاقة. ولغة الأسئلة (عربي/English) بمكانها بالقائمة ← الإعدادات، وتبدّل السؤال والخيارات والشرح.', target: '#btn-save-question' },
+    { title: 'الحفظ', body: 'زر الحفظ أعلى البطاقة — يضيف السؤال إلى المحفوظات.', target: '#btn-save-question' },
+
+    { title: 'زر الترجمة', body: 'ع / EN بالشريط الأعلى: يبدّل السؤال والخيارات والشرح — متاح بالكوز، والنتيجة والمراجعة، والمحفوظات.', target: '#lang-switch-session' },
 
     { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
 
@@ -3801,7 +3807,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v89';
+  const SHELL_VERSION = 'v90';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

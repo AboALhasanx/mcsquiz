@@ -32,6 +32,10 @@
                     <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
+                    <div id="lang-switch-catalog" class="lang-switch lang-switch-bar" role="group" aria-label="لغة الأسئلة" style="display:none">
+                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true" aria-label="عربي">ع</button>
+                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+                    </div>
                     <button id="btn-bell" class="icon-btn bell-btn" type="button" aria-label="التنبيهات" title="التنبيهات">
                         <i data-lucide="bell"></i>
                         <span id="bell-dot" class="bell-dot hidden" aria-hidden="true"></span>
@@ -62,6 +66,10 @@
                     </button>
                 </div>
                 <div class="header-right">
+                    <div id="lang-switch-session" class="lang-switch lang-switch-bar" role="group" aria-label="لغة الأسئلة">
+                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true" aria-label="عربي">ع</button>
+                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+                    </div>
                     <button id="btn-bell-session" class="icon-btn bell-btn" type="button" aria-label="التنبيهات" title="التنبيهات">
                         <i data-lucide="bell"></i>
                         <span id="bell-dot-session" class="bell-dot hidden" aria-hidden="true"></span>
@@ -551,17 +559,6 @@
 
                 <div class="menu-section">
                     <span class="menu-section-title">الإعدادات</span>
-                    <div class="menu-item menu-item-stack menu-lang-row" role="group" aria-label="لغة الأسئلة">
-                        <i data-lucide="languages"></i>
-                        <span class="menu-item-text">
-                            <span class="menu-item-label">لغة الأسئلة</span>
-                            <span class="menu-item-sub">السؤال والخيارات والشرح</span>
-                        </span>
-                        <div class="lang-switch" role="group" aria-label="لغة الأسئلة">
-                            <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true">ع</button>
-                            <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-                        </div>
-                    </div>
                     <button id="menu-sound" class="menu-item" type="button">
                         <i data-lucide="volume-2" id="menu-sound-icon"></i>
                         <span id="menu-sound-label" class="menu-item-label">الصوت: يعمل</span>

@@ -1641,6 +1641,21 @@ body:not([data-quizlive="yes"]) #btn-exit {
 /* ---------- the notifications bell ---------- */
 .bell-btn { position: relative; }
 .bell-btn.has-new { color: var(--accent); }
+/* the AR/EN switch in the app bar: quiz, results/review and saved */
+.lang-switch-bar {
+  flex: 0 0 auto;
+  padding: 2px;
+  margin-inline-end: 2px;
+}
+.lang-switch-bar .lang-opt {
+  min-width: 26px;
+  padding: 0.32rem 0.44rem;
+  font-size: 0.68rem;
+}
+@media (max-width: 380px) {
+  .lang-switch-bar .lang-opt { min-width: 22px; padding: 0.28rem 0.36rem; }
+  .header-right { gap: 0.15rem; }
+}
 .bell-dot {
   position: absolute;
   top: -4px;

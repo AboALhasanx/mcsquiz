@@ -4,23 +4,23 @@ PASS | banks | Arabic question coverage meets the current target | 218/238 trans
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_ModelB_DrHuda')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': '66e61870-b4ae-4d6b-8f07-118780589ada', 'handle': 't897965', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792613903310}
+PASS | accounts | username + PIN creates an account | {'id': '4b607174-652f-44c7-a320-b143b3d9f92c', 'handle': 't469695', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792615473997}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': '66e61870-b4ae-4d6b-8f07-118780589ada', 'handle': 't897965', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792613918295}
-PASS | accounts | the avatar is saved | {'id': '66e61870-b4ae-4d6b-8f07-118780589ada', 'handle': 't897965', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792613918295}
+PASS | accounts | the display name is editable | {'id': '4b607174-652f-44c7-a320-b143b3d9f92c', 'handle': 't469695', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792615488954}
+PASS | accounts | the avatar is saved | {'id': '4b607174-652f-44c7-a320-b143b3d9f92c', 'handle': 't469695', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792615488954}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': '66e61870-b4ae-4d6b-8f07-118780589ada', 'handle': 't897965', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792613936941}
+PASS | accounts | same username returns the same account | {'id': '4b607174-652f-44c7-a320-b143b3d9f92c', 'handle': 't469695', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792615507005}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 2455
+PASS | accounts | the link code has four digits | 5094
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': '66e61870-b4ae-4d6b-8f07-118780589ada', 'handle': 't897965', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792613964927}
+PASS | accounts | the approved device signs in | {'id': '4b607174-652f-44c7-a320-b143b3d9f92c', 'handle': 't469695', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792615534417}
 PASS | catalog | index exposes subjects | 6
 PASS | catalog | one chip per subject | 6 vs 6
 PASS | catalog | no "all" chip | 
@@ -35,36 +35,6 @@ PASS | catalog | opening a quiz shows the start card |
 PASS | catalog | start card counts the questions | 
 PASS | catalog | start card estimates the time | 
 PASS | catalog | no runtime errors | []
-PASS | quiz | no skip button exists | 
-PASS | quiz | one single action button | 
-PASS | quiz | next is blocked while unanswered | 
-PASS | quiz | blocked next explains itself | 
-PASS | quiz | question starts in Arabic mode | أ
-PASS | quiz | the switch turns the question into English | A
-PASS | quiz | the English stem is used | Which responsibility for cybersecurity falls specifically to
-PASS | quiz | the switch returns to Arabic | أ
-PASS | quiz | total questions loaded | 10
-PASS | quiz | saving marks the bookmark | 
-PASS | quiz | saving again removes it | 
-PASS | quiz | explanation appears after a wrong answer | 
-PASS | quiz | a wrong answer opens the explanation automatically | 
-PASS | quiz | the explanation can be collapsed on demand | 
-PASS | quiz | the explanation re-opens on demand | 
-PASS | quiz | matrix opens | 
-PASS | quiz | matrix has one cell per question | 10
-PASS | quiz | answered cell is marked answered | 
-PASS | quiz | matrix has no early-finish button | 
-PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 4, 'wrong': 6, 'acc': '40%', 'hasUnanswered': False, 'time': '0:09'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 4, 'wrong': 6, 'acc': '40%', 'hasUnanswered': False, 'time': '0:09'}
-PASS | quiz | no unanswered figure | 
-PASS | quiz | results never say "unanswered" | 
-PASS | quiz | one review card per question | 10
-PASS | quiz | explanations start collapsed | 
-PASS | quiz | explanation opens with the arrow | 
-PASS | quiz | every card can save the question | 
-PASS | quiz | correct answer is always shown | 
-PASS | quiz | no runtime errors | []
 PASS | league | podium shows three slots | 3
 PASS | league | the leader wears the crown | 
 PASS | league | ranks four and below are a table | 3
@@ -92,8 +62,8 @@ PASS | share | no runtime errors | []
 PASS | tour | tour greets a first-time visitor | 
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
-PASS | tour | the tour has more than ten steps | 18
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/league', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ'}
+PASS | tour | the tour has more than ten steps | 19
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/league', '#/saved'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
