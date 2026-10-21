@@ -199,6 +199,113 @@
     } catch (e) {}
   }
 
+  // ---- hierarchy: subject -> chapter -> topic (the finest unit) ----
+  const DIFF_LABELS = { 1: 'سهل', 2: 'سهل-متوسط', 3: 'متوسط', 4: 'فوق المتوسط', 5: 'صعب' };
+  const DIFF_COLORS = { 1: '#34d399', 2: '#a3e635', 3: '#fbbf24', 4: '#f97316', 5: '#ef4444' };
+
+  function isRtlText(t) { return /[\u0600-\u06FF]/.test(String(t || '')); }
+
+  function cleanTopic(t) {
+    let s = String(t || '').trim();
+    s = s.replace(/^(chapter|week|unit|lecture|lesson|module)\s*\.?\s*\d+\s*[:.\-\u2013\u2014]\s*/i, '');
+    s = s.replace(/[,،]\s*\d+\s*MCQ bank requested by the instructor\s*$/i, '');
+    return s.trim();
+  }
+
+  function topicTitle(bank) {
+    if (!bank) return '';
+    if (bank.topic_ar) return String(bank.topic_ar).trim();
+    return cleanTopic(bank.topic);
+  }
+
+  function crumbHtml(sub, ch) {
+    return '<span class="crumb-subject">' + escapeHtml(sub.subject_title) + '</span>' +
+      '<span class="crumb-sep" aria-hidden="true">\u2039</span>' +
+      '<span class="crumb-chapter">' + escapeHtml(chLabel(ch)) + '</span>';
+  }
+
+  function detailGridHtml(rows) {
+    return (rows || []).filter(Boolean).map((r) =>
+      '<div class="detail-item' + (r[2] === 'span2' ? ' span-2' : '') + '">' +
+        '<span class="detail-label">' + escapeHtml(r[0]) + '</span>' +
+        '<span class="detail-value ' + (r[3] || '') + '">' + r[1] + '</span>' +
+      '</div>').join('');
+  }
+
+  function attemptsFor(quizId) {
+    let count = 0; let last = null;
+    try {
+      (S.history || []).forEach((h) => {
+        if (h && h.quizId === quizId) { count++; if (!last || (h.t || 0) > (last.t || 0)) last = h; }
+      });
+    } catch (e) {}
+    return { count: count, last: last };
+  }
+
+  function savedCountFor(quizId) {
+    let n = 0;
+    try {
+      Object.keys(S.saved || {}).forEach((k) => {
+        const parts = String(k).split('|');
+        if (parts[1] === quizId) n++;
+      });
+    } catch (e) {}
+    return n;
+  }
+
+  function bankDetailRows(sub, ch, bank) {
+    if (!bank) return [];
+    const n = bank.questions.length;
+    const best = getBest(ch.quiz_id);
+    const att = attemptsFor(ch.quiz_id);
+    const rows = [];
+    rows.push(['المادة', escapeHtml(sub.subject_title)]);
+    rows.push(['المحاضرة', escapeHtml(chLabel(ch))]);
+    rows.push(['عدد الأسئلة', escapeHtml(qCount(n))]);
+    rows.push(['الوقت المقدّر', escapeHtml(Math.max(1, Math.round(n * 1.5)) + ' دقيقة')]);
+    if (best) rows.push(['أفضل نتيجة', '<span class="is-good">' + Math.round(best.pct) + '%</span> <span class="muted">(' + escapeHtml(best.frac) + ')</span>']);
+    else rows.push(['أفضل نتيجة', '<span class="muted">لم تبدأ بعد</span>']);
+    rows.push(['عدد المحاولات', att.count ? escapeHtml(att.count + ' ' + (att.count === 1 ? 'محاولة' : 'محاولات')) : '<span class="muted">لا محاولات سابقة</span>']);
+    if (bank.semester_label) rows.push(['المستوى', escapeHtml(bank.semester_label)]);
+    if (bank.instructor_ar) rows.push(['المدرّس', escapeHtml(bank.instructor_ar)]);
+    if (bank.source_grounding) {
+      const src = String(bank.source_grounding).trim();
+      rows.push(['مصدر المحتوى', '<span class="muted small">' + escapeHtml(src.length > 90 ? src.slice(0, 90) + '…' : src) + '</span>', 'span2']);
+    }
+    return rows;
+  }
+
+  function renderDifficulty(prefix, bank) {
+    const block = $(prefix + '-difficulty');
+    if (!block) return;
+    const dist = (bank && bank._difficulty_distribution) || null;
+    if (!dist || !dist.planned_counts) { block.classList.add('hidden'); return; }
+    const counts = dist.planned_counts;
+    const total = Object.keys(counts).reduce((a, k) => a + (Number(counts[k]) || 0), 0);
+    if (!total) { block.classList.add('hidden'); return; }
+    block.classList.remove('hidden');
+    const scale = $(prefix + '-difficulty-scale');
+    if (scale) scale.textContent = Object.keys(counts).length + ' مستويات';
+    const bar = $(prefix + '-difficulty-bar');
+    if (bar) {
+      bar.innerHTML = Object.keys(counts).sort().map((k) => {
+        const c = Number(counts[k]) || 0;
+        if (!c) return '';
+        return '<span class="difficulty-seg" style="width:' + (c / total * 100).toFixed(2) + '%;background:' +
+          (DIFF_COLORS[k] || '#888') + '" title="' + escapeHtml((DIFF_LABELS[k] || k) + ': ' + c) + '"></span>';
+      }).join('');
+    }
+    const legend = $(prefix + '-difficulty-legend');
+    if (legend) {
+      legend.innerHTML = Object.keys(counts).sort().map((k) => {
+        const c = Number(counts[k]) || 0;
+        if (!c) return '';
+        return '<span class="difficulty-legend-item"><span class="difficulty-dot" style="background:' +
+          (DIFF_COLORS[k] || '#888') + '"></span>' + escapeHtml(DIFF_LABELS[k] || k) + ' (' + c + ')</span>';
+      }).join('');
+    }
+  }
+
   function chLabel(ch) { return 'جابتر ' + ch.chapter_no; }
 
   function currentSubject() {
@@ -298,17 +405,21 @@
       const best = getBest(ch.quiz_id);
       const row = document.createElement('div');
       row.className = 'sketch-row';
+      const title = topicTitle(bank);
       row.innerHTML =
-        '<button type="button" class="sketch-cell sketch-info-cell row-info-cell" aria-label="تفاصيل الكويز">' +
+        '<button type="button" class="sketch-cell sketch-info-cell row-info-cell" aria-label="تفاصيل الكوز">' +
           '<i data-lucide="info"></i></button>' +
         '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-content-cell">' +
-          '<div class="sketch-title-ltr">' + escapeHtml(bank.topic) + '</div>' +
-          '<div class="sketch-meta-line"><span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
-          '<span class="sketch-meta-dot">·</span><span class="sketch-sem-tag">' + escapeHtml(chLabel(ch)) + '</span>' +
-          '<span class="sketch-meta-dot">·</span><span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
-          (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
+          '<div class="sketch-eyebrow">' +
+            '<span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
+            '<span class="sketch-chip">' + escapeHtml(chLabel(ch)) + '</span>' +
+          '</div>' +
+          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '">' + escapeHtml(title) + '</div>' +
+          '<div class="sketch-meta-line">' +
+            '<span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
+            (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
           '</div></a>' +
-        '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-play-cell" aria-label="بدء الكويز مباشرة"><i data-lucide="play"></i></a>';
+        '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-play-cell" aria-label="بدء الكوز مباشرة"><i data-lucide="play"></i></a>';
       row.querySelector('.row-info-cell').addEventListener('click', () => openInfo(sub, ch, bank));
       box.appendChild(row);
     });
@@ -324,12 +435,14 @@
   }
 
   function openInfo(sub, ch, bank) {
-    $('info-sheet-topic').textContent = bank.topic;
-    $('info-sheet-list').innerHTML =
-      '<li><strong>المادة:</strong> ' + escapeHtml(sub.subject_title) + '</li>' +
-      '<li><strong>الجابتر:</strong> ' + escapeHtml(chLabel(ch)) + '</li>' +
-      '<li><strong>الأسئلة:</strong> ' + bank.questions.length + '</li>' +
-      (best_text(ch.quiz_id));
+    const title = topicTitle(bank);
+    const crumb = $('info-sheet-crumb');
+    if (crumb) crumb.innerHTML = crumbHtml(sub, ch);
+    const topicEl = $('info-sheet-topic');
+    topicEl.textContent = title;
+    topicEl.setAttribute('dir', isRtlText(title) ? 'rtl' : 'ltr');
+    $('info-sheet-list').innerHTML = detailGridHtml(bankDetailRows(sub, ch, bank));
+    renderDifficulty('info', bank);
     const startBtn = $('info-sheet-start');
     if (startBtn) startBtn.setAttribute('href', '#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id));
     openDrawer('quiz-info-drawer');
@@ -387,12 +500,38 @@
       qStart: Date.now(), timerId: null,
     };
 
-    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + (meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }));
+    const chapterLabel = meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo });
+    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + chapterLabel;
     $('quiz-title').textContent = meta.topic;
-    $('start-subject-badge').textContent = meta.subjectTitle + ' · ' + (meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }));
-    $('start-quiz-title').textContent = meta.topic;
+    $('start-subject-badge').textContent = meta.subjectTitle;
+    $('start-chapter-badge').textContent = chapterLabel;
+    const startTitle = $('start-quiz-title');
+    startTitle.textContent = meta.topic;
+    startTitle.setAttribute('dir', isRtlText(meta.topic) ? 'rtl' : 'ltr');
     $('start-questions-count').textContent = qCount(pool.length);
     $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5)) + ' دقيقة';
+    // the pre-exam card carries every detail a student needs before committing
+    const bank = meta.bank || null;
+    const details = $('start-details');
+    if (details) {
+      details.innerHTML = bank
+        ? detailGridHtml(bankDetailRows({ subject_title: meta.subjectTitle }, { chapter_no: meta.chapterNo, quiz_id: meta.quizId }, bank))
+        : '';
+    }
+    renderDifficulty('start', bank);
+    const note = $('start-note');
+    if (note) {
+      const att = attemptsFor(meta.quizId);
+      const saved = savedCountFor(meta.quizId);
+      if (att.count) {
+        note.textContent = 'لديك ' + att.count + ' محاولة سابقة على هذا الكوز — آخر نتيجة ' +
+          Math.round((att.last && att.last.pct) || 0) + '%. البدء من جديد يعيد ضبط المحاولة.';
+      } else if (saved) {
+        note.textContent = 'لديك ' + saved + ' سؤال محفوظ من هذا الكوز في «الأسئلة المحفوظة».';
+      } else {
+        note.textContent = '';
+      }
+    }
     $('question-total-label').textContent = pool.length;
     $('live-feedback-box').classList.add('hidden');
     updateSaveBtn();
@@ -420,7 +559,7 @@
     const origin = originOf(sub, ch, bank);
     launchSession(pool, {
       subjectId: sub.subject_id, subjectTitle: sub.subject_title,
-      chapterNo: ch.chapter_no, topic: bank.topic, quizId: ch.quiz_id,
+      chapterNo: ch.chapter_no, topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
       retryWrong: retryWrong, replay: { type: 'bank', subjectId: sub.subject_id, quizId: ch.quiz_id },
     });
   }
@@ -2909,7 +3048,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v51';
+  const SHELL_VERSION = 'v52';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

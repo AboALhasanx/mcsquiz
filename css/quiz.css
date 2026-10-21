@@ -3083,3 +3083,344 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     font-size: 0.85rem;
     white-space: nowrap;
 }
+
+/* ==========================================================================
+   Pre-exam card / catalog card â€” hierarchy: subject -> chapter -> topic
+   ========================================================================== */
+
+/* Breadcrumb: where this quiz sits (subject â€º chapter) */
+.quiz-crumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+    direction: rtl;
+    text-align: right;
+}
+
+.quiz-crumb .crumb-subject {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.quiz-crumb .crumb-chapter {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.quiz-crumb .crumb-sep {
+    opacity: 0.45;
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+.quiz-crumb .crumb-topic {
+    color: var(--text-subtle);
+}
+
+/* Two-column fact grid (label above value) */
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 0.85rem 0 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+    direction: rtl;
+}
+
+.detail-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0.45rem 0.55rem;
+    min-width: 0;
+}
+
+.detail-item.span-2 {
+    grid-column: 1 / -1;
+}
+
+.detail-label {
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text-subtle);
+    margin-bottom: 0.1rem;
+}
+
+.detail-value {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.4;
+    word-break: break-word;
+    /* each value keeps its own direction: Arabic stays RTL, English stays LTR */
+    unicode-bidi: plaintext;
+}
+
+.detail-label {
+    unicode-bidi: plaintext;
+}
+
+.detail-value .muted {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.detail-value.is-good { color: #34d399; }
+.detail-value.is-warn { color: #f59e0b; }
+
+/* Difficulty distribution bar */
+.difficulty-block {
+    margin: 0.75rem 0 0;
+    padding: 0.6rem 0.6rem 0.5rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    text-align: right;
+    direction: rtl;
+}
+
+.difficulty-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+}
+
+.difficulty-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.difficulty-scale {
+    font-size: 0.66rem;
+    color: var(--text-subtle);
+}
+
+.difficulty-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--bg-card);
+}
+
+.difficulty-seg {
+    height: 100%;
+    min-width: 3px;
+}
+
+.difficulty-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.7rem;
+    margin-top: 0.4rem;
+    font-size: 0.65rem;
+    color: var(--text-subtle);
+}
+
+.difficulty-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.difficulty-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Pre-exam card head: subject chip + chapter chip */
+.start-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.start-chapter-chip {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+}
+
+.start-note {
+    margin: 0.7rem 0 0;
+    font-size: 0.74rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    text-align: right;
+    direction: rtl;
+}
+
+.start-note:empty {
+    display: none;
+}
+
+/* The card itself can grow: keep it scrollable instead of clipped */
+#quiz-start-view {
+    justify-content: flex-start;
+    padding: 1.1rem 0.9rem 2rem;
+}
+
+.quiz-start-card {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    max-height: calc(100vh - 7.5rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.quiz-start-card .start-title {
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 1.45;
+}
+
+.quiz-start-card .detail-grid {
+    text-align: right;
+}
+
+/* Catalog card: eyebrow (subject + chapter) over the topic title */
+.sketch-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    direction: rtl;
+    text-align: right;
+    min-width: 0;
+}
+
+.sketch-eyebrow .sketch-subject-tag {
+    font-weight: 800;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sketch-chip {
+    flex-shrink: 0;
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 0.05rem 0.45rem;
+}
+
+/* Topic title: up to two lines, never a single clipped line */
+.sketch-title {
+    font-size: 0.93rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.4;
+    direction: rtl;
+    text-align: right;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sketch-title[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Info drawer: topic as the heading, facts under it */
+.info-sheet-topic {
+    font-size: 1.02rem;
+    font-weight: 800;
+    line-height: 1.5;
+    margin: 0.1rem 0 0;
+    text-align: right;
+}
+
+.info-sheet-topic[dir="ltr"] {
+    text-align: left;
+}
+
+#info-sheet-start {
+    margin-top: 0.9rem;
+}
+
+/* The info affordance on a catalog row reads as a button, not a stray glyph */
+.sketch-info-cell svg {
+    width: 19px !important;
+    height: 19px !important;
+    padding: 0;
+}
+
+.sketch-info-cell {
+    position: relative;
+}
+
+.sketch-info-cell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.sketch-info-cell svg {
+    position: relative;
+    z-index: 1;
+}
+
+.sketch-info-cell:hover::before,
+.sketch-info-cell:active::before {
+    border-color: var(--accent);
+    background: rgba(201, 162, 39, 0.12);
+}
+
+@media (max-width: 360px) {
+    .detail-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+
+/* RTL polish: play arrows point left, small source text, sticky start CTA */
+[dir="rtl"] .sketch-play-cell svg { transform: scaleX(-1) !important; }
+[dir="rtl"] .start-btn svg,
+[dir="rtl"] #info-sheet-start svg { transform: scaleX(-1); }
+
+.detail-value.small { font-size: 0.74rem; font-weight: 600; line-height: 1.6; }
+
+.quiz-start-card .start-btn {
+    position: sticky;
+    bottom: 0;
+    z-index: 3;
+    box-shadow: 0 -10px 18px -12px rgba(0, 0, 0, 0.75);
+}
+
+.quiz-start-card .start-instructions { margin-bottom: 0.35rem; }

@@ -141,13 +141,26 @@
             </div>
 
             <div id="quiz-start-view" class="state-view quiz-start-card hidden">
-                <span id="start-subject-badge" class="topic-subject-badge">المادة الدراسية</span>
-                <h2 id="start-quiz-title" class="start-title">عنوان الكوز</h2>
+                <div class="start-head">
+                    <span id="start-subject-badge" class="topic-subject-badge">المادة الدراسية</span>
+                    <span id="start-chapter-badge" class="start-chapter-chip">جابتر</span>
+                </div>
+                <h2 id="start-quiz-title" class="start-title" dir="auto">عنوان الكوز</h2>
                 <p class="start-meta-line">
                     <span id="start-questions-count">0 أسئلة</span>
                     <span class="start-meta-sep" aria-hidden="true">·</span>
                     <span id="start-estimated-time">0 دقيقة</span>
                 </p>
+                <dl class="detail-grid" id="start-details"></dl>
+                <div class="difficulty-block" id="start-difficulty">
+                    <div class="difficulty-head">
+                        <span class="difficulty-title">توزيع الصعوبة</span>
+                        <span class="difficulty-scale" id="start-difficulty-scale">5 مستويات</span>
+                    </div>
+                    <div class="difficulty-bar" id="start-difficulty-bar"></div>
+                    <div class="difficulty-legend" id="start-difficulty-legend"></div>
+                </div>
+                <p class="start-note" id="start-note"></p>
                 <p class="start-instructions">سيبدأ احتساب الوقت فور الضغط على ابدأ.</p>
                 <button id="btn-start-quiz" class="nav-btn primary-btn start-btn">
                     <i data-lucide="play"></i>
@@ -368,8 +381,21 @@
                 </button>
             </div>
             <div class="drawer-body">
-                <div id="info-sheet-topic" class="info-sheet-topic"></div>
-                <ul id="info-sheet-list" class="info-sheet-list"></ul>
+                <nav class="quiz-crumb" id="info-sheet-crumb" aria-label="مسار الكوز"></nav>
+                <h3 id="info-sheet-topic" class="info-sheet-topic" dir="auto"></h3>
+                <dl class="detail-grid" id="info-sheet-list"></dl>
+                <div class="difficulty-block" id="info-difficulty">
+                    <div class="difficulty-head">
+                        <span class="difficulty-title">توزيع الصعوبة</span>
+                        <span class="difficulty-scale" id="info-difficulty-scale">5 مستويات</span>
+                    </div>
+                    <div class="difficulty-bar" id="info-difficulty-bar"></div>
+                    <div class="difficulty-legend" id="info-difficulty-legend"></div>
+                </div>
+                <a id="info-sheet-start" class="nav-btn primary-btn start-btn" href="#/">
+                    <i data-lucide="play"></i>
+                    <span>ابدأ الكوز</span>
+                </a>
             </div>
         </aside>
 
