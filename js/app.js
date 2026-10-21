@@ -2248,6 +2248,7 @@
   }
 
   function tourHide() {
+    try { window.__tourHide = (window.__tourHide || []).concat([Date.now()]); } catch (e) {}
     tourIdx = -1;
     $('tour-overlay').classList.add('hidden');
     $('tour-overlay').setAttribute('aria-hidden', 'true');
@@ -2256,7 +2257,10 @@
     try { closeDrawers(); } catch (e) {}
   }
 
-  function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }
+  function tourDone() {
+    try { window.__tourDone = (window.__tourDone || []).concat([Date.now()]); } catch (e) {}
+    tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!');
+  }
 
   function tourNotify(eventName) {
     if (tourIdx < 0 || tourIdx >= TOUR_STEPS.length) return;
@@ -3790,7 +3794,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v83';
+  const SHELL_VERSION = 'v84';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
