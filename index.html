@@ -310,9 +310,14 @@
                     </div>
                 </div>
 
+                <div id="stats-empty" class="stats-empty hidden">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <p>ما في محاولات بعد — ابدأ أول كوز، ونتائجك تتحرك هنا.</p>
+                </div>
+
                 <div class="stats-range" role="group" aria-label="الفترة">
-                    <button type="button" class="range-opt" data-range="7">أخر أسبوعاً</button>
-                    <button type="button" class="range-opt" data-range="30">أشهر يوماً</button>
+                    <button type="button" class="range-opt" data-range="7">آخر أسبوع</button>
+                    <button type="button" class="range-opt" data-range="30">آخر شهر</button>
                     <button type="button" class="range-opt" data-range="0">الكل</button>
                 </div>
 
@@ -322,7 +327,7 @@
                 <section class="stats-block" aria-label="تطوّر النتائج">
                     <div class="stats-block-head">
                         <h3>نتائجك عبر الوقت</h3>
-                        <span class="stats-block-note">حدّ النجاح ٠٠١</span>
+                        <span class="stats-block-note">حدّ النجاح <span dir="ltr">60%</span></span>
                     </div>
                     <div id="stats-trend" class="stats-trend"></div>
                     <p id="stats-insight" class="stats-insight"></p>
@@ -338,7 +343,6 @@
                         <h2>سجل المحاولات</h2>
                     </div>
                     <div id="history-list" class="review-cards-list"></div>
-                    <div id="history-empty-state" class="catalog-empty-state hidden">لا محاولات بعد — ابدأ أول كوز</div>
                 </section>
 
                 <section class="stats-block stats-tools" aria-label="بياناتك">

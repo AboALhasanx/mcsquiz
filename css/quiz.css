@@ -3707,3 +3707,17 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 /* data tools sit last, quiet */
 .stats-tools .stats-backup-row { justify-content: flex-start; }
 
+
+.stats-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2.2rem 1.2rem;
+  text-align: center;
+  border: 1px dashed var(--border-card);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+}
+.stats-empty svg { width: 30px; height: 30px; color: var(--text-subtle); }
+.stats-empty p { margin: 0; font-size: 0.84rem; line-height: 1.7; max-width: 30ch; }

@@ -1202,6 +1202,19 @@
       ? (arCount(n, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + ' · ' + rangeName)
       : '';
 
+    // ---- with no attempts at all, the screen shows one honest empty state ----
+    const empty = $('stats-empty');
+    const hasAny = ALL.length > 0;
+    if (empty) empty.classList.toggle('hidden', hasAny);
+    ['stats-hero', 'stats-overall', 'stats-trend', 'stats-insight', 'stats-subjects'].forEach((id) => {
+      const el = $(id);
+      if (el) el.classList.toggle('hidden', !hasAny);
+    });
+    const trendBlock = document.querySelector('#stats-trend') ? document.querySelector('#stats-trend').closest('.stats-block') : null;
+    if (trendBlock) trendBlock.classList.toggle('hidden', !hasAny);
+    const subsBlock = document.querySelector('#stats-subjects') ? document.querySelector('#stats-subjects').closest('.stats-block') : null;
+    if (subsBlock) subsBlock.classList.toggle('hidden', !hasAny);
+
     // ---- hero: the one number that matters, with the movement behind it ----
     const hero = $('stats-hero');
     hero.innerHTML = '';
@@ -1312,7 +1325,8 @@
     // ---- the log, grouped by day ----
     const list = $('history-list');
     list.innerHTML = '';
-    $('history-empty-state').classList.toggle('hidden', ALL.length !== 0);
+    const rangeBar = document.querySelector('.stats-range');
+    if (rangeBar) rangeBar.classList.toggle('hidden', !hasAny);
     const recent = ALL.slice(-30).reverse();
     let currentKey = '';
     recent.forEach((h) => {
@@ -3280,7 +3294,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v67';
+  const SHELL_VERSION = 'v68';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
