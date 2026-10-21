@@ -1191,14 +1191,6 @@
 
   // a small read-only status for the console, the tests and the diagnostics
   window.PortalApp = {
-    tour: function () {
-      return {
-        idx: tourIdx,
-        visible: !$('tour-overlay').classList.contains('hidden'),
-        title: $('tour-tip-title').textContent,
-      };
-    },
-    startTour: function () { tourShow(0); },
     contentSource: function () { return S.contentSource || 'unknown'; },
     contentVersion: function () { return S.contentVersion || 0; },
     bankCount: function () { return Object.keys(S.banks || {}).length; },
@@ -2248,7 +2240,6 @@
   }
 
   function tourHide() {
-    try { window.__tourHide = (window.__tourHide || []).concat([Date.now()]); } catch (e) {}
     tourIdx = -1;
     $('tour-overlay').classList.add('hidden');
     $('tour-overlay').setAttribute('aria-hidden', 'true');
@@ -2257,10 +2248,7 @@
     try { closeDrawers(); } catch (e) {}
   }
 
-  function tourDone() {
-    try { window.__tourDone = (window.__tourDone || []).concat([Date.now()]); } catch (e) {}
-    tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!');
-  }
+  function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }
 
   function tourNotify(eventName) {
     if (tourIdx < 0 || tourIdx >= TOUR_STEPS.length) return;
@@ -3794,7 +3782,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v84';
+  const SHELL_VERSION = 'v85';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
