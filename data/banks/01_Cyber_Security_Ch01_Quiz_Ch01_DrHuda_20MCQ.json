@@ -1,699 +1,663 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "subject_id": "01_Cyber_Security",
   "subject_title": "الأمن السيبراني",
   "semester": 1,
   "semester_label": "كورس أول",
   "quiz_id": "Quiz_Ch01_DrHuda_20MCQ",
-  "topic": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor",
-  "instructor_ar": "أ.م.د. هدى لفتة مجيد",
-  "instructor": "Asst. Prof. Dr. Huda Lafta Majeed",
-  "subject": "01_Cyber_Security",
-  "source_grounding": "W01_Intro.pdf, Chapter 1 Introduction to Cybersecurity, covering definition and scope, historical evolution, importance and domains, the CIA triad, the threat landscape, risks and vulnerabilities, policy overview and case studies.",
-  "language_mode": "English-only deliverable requested by the instructor as a special case. The _ar fields mirror the English text so that canonical schema v2 stays structurally valid and no tooling breaks.",
-  "_difficulty_distribution": {
-    "levels": 5,
-    "scale": {
-      "1": "Easy",
-      "2": "Easy-Medium",
-      "3": "Medium",
-      "4": "Above-Medium",
-      "5": "Hard"
-    },
-    "planned_counts": {
-      "1": 2,
-      "2": 3,
-      "3": 5,
-      "4": 6,
-      "5": 4
-    },
-    "policy": "Easy items are deliberately rare. Medium and Above-Medium items carry the largest share of the bank so that the paper discriminates between students instead of rewarding recall alone."
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "questions": [
     {
       "id": "q1",
       "concept_id": "cybersecurity_definition_scope",
-      "bloom_level": "Remember",
-      "difficulty": 1,
-      "difficulty_label": "Easy",
-      "question": "Which option best describes the scope of cybersecurity?",
-      "question_ar": "أي خيار يصف نطاق الأمن السيبراني وصفاً أفضل؟",
+      "bloom": "Remember",
+      "stem": {
+        "ar": "أي خيار يصف نطاق الأمن السيبراني وصفاً أفضل؟",
+        "en": "Which option best describes the scope of cybersecurity?"
+      },
       "options": [
-        "The legal measures that allow prosecutors to pursue attackers after an incident",
-        "The technical measures that block unauthorised access to networks and applications",
-        "The managerial measures that document security policies and staff responsibilities",
-        "The technical, legal, managerial and social measures that protect the cyber environment"
+        {
+          "ar": "الإجراءات القانونية التي تتيح للمدّعين ملاحقة المهاجمين بعد وقوع الحادث",
+          "en": "The legal measures that allow prosecutors to pursue attackers after an incident"
+        },
+        {
+          "ar": "الإجراءات التقنية التي تمنع الوصول غير المصرّح به إلى الشبكات والتطبيقات",
+          "en": "The technical measures that block unauthorised access to networks and applications"
+        },
+        {
+          "ar": "الإجراءات الإدارية التي توثّق سياسات الأمن ومسؤوليات الموظفين",
+          "en": "The managerial measures that document security policies and staff responsibilities"
+        },
+        {
+          "ar": "الإجراءات التقنية والقانونية والإدارية والاجتماعية التي تحمي البيئة السيبرانية",
+          "en": "The technical, legal, managerial and social measures that protect the cyber environment"
+        }
       ],
-      "options_ar": [
-        "الإجراءات القانونية التي تتيح للمدّعين ملاحقة المهاجمين بعد وقوع الحادث",
-        "الإجراءات التقنية التي تمنع الوصول غير المصرّح به إلى الشبكات والتطبيقات",
-        "الإجراءات الإدارية التي توثّق سياسات الأمن ومسؤوليات الموظفين",
-        "الإجراءات التقنية والقانونية والإدارية والاجتماعية التي تحمي البيئة السيبرانية"
-      ],
-      "options_en": [
-        "The legal measures that allow prosecutors to pursue attackers after an incident",
-        "The technical measures that block unauthorised access to networks and applications",
-        "The managerial measures that document security policies and staff responsibilities",
-        "The technical, legal, managerial and social measures that protect the cyber environment"
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The chapter defines cybersecurity as the set of tools, policies, security concepts, safeguards, risk management approaches and technologies used to protect the cyber environment, and it states explicitly that the field encompasses technical, legal, managerial and social aspects. The three distractors each name only one of those aspects and drop the others, so each is a partial definition rather than the scope the chapter describes.",
-      "question_en": "Which option best describes the scope of cybersecurity?",
-      "explanation_en": "The chapter defines cybersecurity as the set of tools, policies, security concepts, safeguards, risk management approaches and technologies used to protect the cyber environment, and it states explicitly that the field encompasses technical, legal, managerial and social aspects. The three distractors each name only one of those aspects and drop the others, so each is a partial definition rather than the scope the chapter describes.",
-      "explanation_ar": "يعرّف الفصل الأمن السيبراني بأنه مجموعة الأدوات والسياسات والمفاهيم الأمنية والضمانات وأساليب إدارة المخاطر والتقنيات المستخدمة لحماية البيئة السيبرانية، وينص صراحةً على أنه يشمل الجوانب التقنية والقانونية والإدارية والاجتماعية. كل بديل من البدائل الثلاثة يذكر جانباً واحداً فقط ويُسقط البقية، فهو تعريف جزئي لا النطاق الكامل."
+      "answer": 3,
+      "explanation": {
+        "ar": "يعرّف الفصل الأمن السيبراني بأنه مجموعة الأدوات والسياسات والمفاهيم الأمنية والضمانات وأساليب إدارة المخاطر والتقنيات المستخدمة لحماية البيئة السيبرانية، وينص صراحةً على أنه يشمل الجوانب التقنية والقانونية والإدارية والاجتماعية. كل بديل من البدائل الثلاثة يذكر جانباً واحداً فقط ويُسقط البقية، فهو تعريف جزئي لا النطاق الكامل.",
+        "en": "The chapter defines cybersecurity as the set of tools, policies, security concepts, safeguards, risk management approaches and technologies used to protect the cyber environment, and it states explicitly that the field encompasses technical, legal, managerial and social aspects. The three distractors each name only one of those aspects and drop the others, so each is a partial definition rather than the scope the chapter describes."
+      }
     },
     {
       "id": "q2",
       "concept_id": "historical_evolution_timeline",
-      "bloom_level": "Remember",
-      "difficulty": 1,
-      "difficulty_label": "Easy",
-      "question": "Which set of developments belongs to the period from the 2010s onwards?",
-      "question_ar": "أي مجموعة من التطورات تنتمي إلى الفترة من 2010 فصاعداً؟",
+      "bloom": "Remember",
+      "stem": {
+        "ar": "أي مجموعة من التطورات تنتمي إلى الفترة من 2010 فصاعداً؟",
+        "en": "Which set of developments belongs to the period from the 2010s onwards?"
+      },
       "options": [
-        "ARPANET together with the very earliest mainframe installations",
-        "Advanced persistent threats, ransomware, IoT, AI and zero trust models",
-        "The first computer viruses, worms and commercial antivirus products",
-        "The integration of cybersecurity into e-commerce and e-banking services"
+        {
+          "ar": "ARPANET مع أوائل تركيب الحواسيب المركزية",
+          "en": "ARPANET together with the very earliest mainframe installations"
+        },
+        {
+          "ar": "التهديدات المستمرة المتقدمة وبرامج الفدية وإنترنت الأشياء والذكاء الاصطناعي ونماذج الثقة الصفرية",
+          "en": "Advanced persistent threats, ransomware, IoT, AI and zero trust models"
+        },
+        {
+          "ar": "أول فيروسات الحاسوب والديدان ومنتجات مكافحة الفيروسات التجارية",
+          "en": "The first computer viruses, worms and commercial antivirus products"
+        },
+        {
+          "ar": "دمج الأمن السيبراني في التجارة الإلكترونية والخدمات المصرفية",
+          "en": "The integration of cybersecurity into e-commerce and e-banking services"
+        }
       ],
-      "options_ar": [
-        "ARPANET مع أوائل تركيب الحواسيب المركزية",
-        "التهديدات المستمرة المتقدمة وبرامج الفدية وإنترنت الأشياء والذكاء الاصطناعي ونماذج الثقة الصفرية",
-        "أول فيروسات الحاسوب والديدان ومنتجات مكافحة الفيروسات التجارية",
-        "دمج الأمن السيبراني في التجارة الإلكترونية والخدمات المصرفية"
-      ],
-      "options_en": [
-        "ARPANET together with the very earliest mainframe installations",
-        "Advanced persistent threats, ransomware, IoT, AI and zero trust models",
-        "The first computer viruses, worms and commercial antivirus products",
-        "The integration of cybersecurity into e-commerce and e-banking services"
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The timeline places advanced persistent threats, ransomware, IoT, AI and zero trust in the 2010s to the present. ARPANET and early mainframes belong to the 1960s, viruses, worms and antivirus products to the 1980s and 1990s, and the arrival of e-commerce and e-banking to the 2000s, which is why the other three options are wrong.",
-      "question_en": "Which set of developments belongs to the period from the 2010s onwards?",
-      "explanation_en": "The timeline places advanced persistent threats, ransomware, IoT, AI and zero trust in the 2010s to the present. ARPANET and early mainframes belong to the 1960s, viruses, worms and antivirus products to the 1980s and 1990s, and the arrival of e-commerce and e-banking to the 2000s, which is why the other three options are wrong.",
-      "explanation_ar": "يضع الخط الزمني التهديدات المستمرة المتقدمة وبرامج الفدية وإنترنت الأشياء والذكاء الاصطناعي والثقة الصفرية في الفترة من 2010 حتى اليوم. أما ARPANET والحواسيب المركزية الأولى فتعود إلى الستينيات، والفيروسات والديدان ومكافحة الفيروسات إلى الثمانينيات والتسعينيات، ووصول التجارة الإلكترونية والمصرفية إلى الألفية الثالثة، لذلك بقية الخيارات خاطئة."
+      "answer": 1,
+      "explanation": {
+        "ar": "يضع الخط الزمني التهديدات المستمرة المتقدمة وبرامج الفدية وإنترنت الأشياء والذكاء الاصطناعي والثقة الصفرية في الفترة من 2010 حتى اليوم. أما ARPANET والحواسيب المركزية الأولى فتعود إلى الستينيات، والفيروسات والديدان ومكافحة الفيروسات إلى الثمانينيات والتسعينيات، ووصول التجارة الإلكترونية والمصرفية إلى الألفية الثالثة، لذلك بقية الخيارات خاطئة.",
+        "en": "The timeline places advanced persistent threats, ransomware, IoT, AI and zero trust in the 2010s to the present. ARPANET and early mainframes belong to the 1960s, viruses, worms and antivirus products to the 1980s and 1990s, and the arrival of e-commerce and e-banking to the 2000s, which is why the other three options are wrong."
+      }
     },
     {
       "id": "q3",
       "concept_id": "stakeholder_domains",
-      "bloom_level": "Understand",
-      "difficulty": 2,
-      "difficulty_label": "Easy-Medium",
-      "question": "Which responsibility for cybersecurity falls specifically to governments?",
-      "question_ar": "أي مسؤولية أمنية تقع على الحكومات تحديداً؟",
+      "bloom": "Understand",
+      "stem": {
+        "ar": "أي مسؤولية أمنية تقع على الحكومات تحديداً؟",
+        "en": "Which responsibility for cybersecurity falls specifically to governments?"
+      },
       "options": [
-        "Protecting cross-border digital commerce and international payment systems",
-        "Protecting customer trust, business continuity and legal compliance",
-        "Protecting national security, defence and e-governance infrastructure",
-        "Protecting personal emails, social media accounts and banking details"
+        {
+          "ar": "حماية التجارة الرقمية العابرة للحدود وأنظمة الدفع الدولية",
+          "en": "Protecting cross-border digital commerce and international payment systems"
+        },
+        {
+          "ar": "حماية ثقة العملاء واستمرارية الأعمال والامتثال القانوني",
+          "en": "Protecting customer trust, business continuity and legal compliance"
+        },
+        {
+          "ar": "حماية الأمن القومي والدفاع والبنية التحتية للحكومة الإلكترونية",
+          "en": "Protecting national security, defence and e-governance infrastructure"
+        },
+        {
+          "ar": "حماية البريد الشخصي وحسابات التواصل الاجتماعي والبيانات المصرفية",
+          "en": "Protecting personal emails, social media accounts and banking details"
+        }
       ],
-      "options_ar": [
-        "حماية التجارة الرقمية العابرة للحدود وأنظمة الدفع الدولية",
-        "حماية ثقة العملاء واستمرارية الأعمال والامتثال القانوني",
-        "حماية الأمن القومي والدفاع والبنية التحتية للحكومة الإلكترونية",
-        "حماية البريد الشخصي وحسابات التواصل الاجتماعي والبيانات المصرفية"
-      ],
-      "options_en": [
-        "Protecting cross-border digital commerce and international payment systems",
-        "Protecting customer trust, business continuity and legal compliance",
-        "Protecting national security, defence and e-governance infrastructure",
-        "Protecting personal emails, social media accounts and banking details"
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The chapter assigns national security, defence and e-governance infrastructure to governments. The other options describe the roles it assigns to individuals, to enterprises and to global trade respectively, so they are correct statements attached to the wrong stakeholder.",
-      "question_en": "Which responsibility for cybersecurity falls specifically to governments?",
-      "explanation_en": "The chapter assigns national security, defence and e-governance infrastructure to governments. The other options describe the roles it assigns to individuals, to enterprises and to global trade respectively, so they are correct statements attached to the wrong stakeholder.",
-      "explanation_ar": "يُسند الفصل الأمن القومي والدفاع والبنية التحتية للحكومة الإلكترونية إلى الحكومات، بينما تصف الخيارات الأخرى أدوار الأفراد والشركات والتجارة العالمية على الترتيب، فهي عبارات صحيحة لكنها منسوبة إلى جهة خاطئة."
+      "answer": 2,
+      "explanation": {
+        "ar": "يُسند الفصل الأمن القومي والدفاع والبنية التحتية للحكومة الإلكترونية إلى الحكومات، بينما تصف الخيارات الأخرى أدوار الأفراد والشركات والتجارة العالمية على الترتيب، فهي عبارات صحيحة لكنها منسوبة إلى جهة خاطئة.",
+        "en": "The chapter assigns national security, defence and e-governance infrastructure to governments. The other options describe the roles it assigns to individuals, to enterprises and to global trade respectively, so they are correct statements attached to the wrong stakeholder."
+      }
     },
     {
       "id": "q4",
       "concept_id": "specialist_domains_iot",
-      "bloom_level": "Understand",
-      "difficulty": 2,
-      "difficulty_label": "Easy-Medium",
-      "question": "Which pair of controls is used to secure IoT systems?",
-      "question_ar": "أي زوج من الضوابط يُستخدم لتأمين أنظمة إنترنت الأشياء؟",
+      "bloom": "Understand",
+      "stem": {
+        "ar": "أي زوج من الضوابط يُستخدم لتأمين أنظمة إنترنت الأشياء؟",
+        "en": "Which pair of controls is used to secure IoT systems?"
+      },
       "options": [
-        "Lightweight encryption together with anomaly detection",
-        "Firewalls together with intrusion detection and prevention systems",
-        "Secure coding together with the OWASP standards",
-        "Sandboxing together with malware detection"
+        {
+          "ar": "التشفير الخفيف مع كشف الشذوذ",
+          "en": "Lightweight encryption together with anomaly detection"
+        },
+        {
+          "ar": "جدران الحماية مع أنظمة كشف ومنع التسلل",
+          "en": "Firewalls together with intrusion detection and prevention systems"
+        },
+        {
+          "ar": "البرمجة الآمنة مع معايير OWASP",
+          "en": "Secure coding together with the OWASP standards"
+        },
+        {
+          "ar": "العزل مع كشف البرمجيات الخبيثة",
+          "en": "Sandboxing together with malware detection"
+        }
       ],
-      "options_ar": [
-        "التشفير الخفيف مع كشف الشذوذ",
-        "جدران الحماية مع أنظمة كشف ومنع التسلل",
-        "البرمجة الآمنة مع معايير OWASP",
-        "العزل مع كشف البرمجيات الخبيثة"
-      ],
-      "options_en": [
-        "Lightweight encryption together with anomaly detection",
-        "Firewalls together with intrusion detection and prevention systems",
-        "Secure coding together with the OWASP standards",
-        "Sandboxing together with malware detection"
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The chapter pairs lightweight encryption and anomaly detection with IoT security, because constrained devices cannot run heavy cryptography. Firewalls with intrusion detection and prevention belong to network security, secure coding with the OWASP standards belongs to application security, and sandboxing with malware detection belongs to mobile security.",
-      "question_en": "Which pair of controls is used to secure IoT systems?",
-      "explanation_en": "The chapter pairs lightweight encryption and anomaly detection with IoT security, because constrained devices cannot run heavy cryptography. Firewalls with intrusion detection and prevention belong to network security, secure coding with the OWASP standards belongs to application security, and sandboxing with malware detection belongs to mobile security.",
-      "explanation_ar": "يقرن الفصل بين إنترنت الأشياء والتشفير الخفيف وكشف الشذوذ، لأن الأجهزة محدودة الموارد لا تتحمل التشفير الثقيل. جدران الحماية مع كشف ومنع التسلل تخص أمن الشبكات، والبرمجة الآمنة مع OWASP تخص أمن التطبيقات، والعزل مع كشف البرمجيات الخبيثة يخص أمن الأجهزة المحمولة."
+      "answer": 0,
+      "explanation": {
+        "ar": "يقرن الفصل بين إنترنت الأشياء والتشفير الخفيف وكشف الشذوذ، لأن الأجهزة محدودة الموارد لا تتحمل التشفير الثقيل. جدران الحماية مع كشف ومنع التسلل تخص أمن الشبكات، والبرمجة الآمنة مع OWASP تخص أمن التطبيقات، والعزل مع كشف البرمجيات الخبيثة يخص أمن الأجهزة المحمولة.",
+        "en": "The chapter pairs lightweight encryption and anomaly detection with IoT security, because constrained devices cannot run heavy cryptography. Firewalls with intrusion detection and prevention belong to network security, secure coding with the OWASP standards belongs to application security, and sandboxing with malware detection belongs to mobile security."
+      }
     },
     {
       "id": "q5",
       "concept_id": "cia_confidentiality_techniques",
-      "bloom_level": "Understand",
-      "difficulty": 2,
-      "difficulty_label": "Easy-Medium",
-      "question": "Which set of techniques is used to enforce confidentiality?",
-      "question_ar": "أي مجموعة تقنيات تُستخدم لتحقيق السرية؟",
+      "bloom": "Understand",
+      "stem": {
+        "ar": "أي مجموعة تقنيات تُستخدم لتحقيق السرية؟",
+        "en": "Which set of techniques is used to enforce confidentiality?"
+      },
       "options": [
-        "Redundancy, load balancing and DDoS mitigation",
-        "Encryption, access controls and virtual private networks",
-        "Sandboxing, malware detection and application isolation",
-        "Hashing, digital signatures and version control"
+        {
+          "ar": "التكرار وموازنة الحمل والتخفيف من هجمات DDoS",
+          "en": "Redundancy, load balancing and DDoS mitigation"
+        },
+        {
+          "ar": "التشفير وضوابط الوصول والشبكات الخاصة الافتراضية",
+          "en": "Encryption, access controls and virtual private networks"
+        },
+        {
+          "ar": "العزل وكشف البرمجيات الخبيثة وعزل التطبيقات",
+          "en": "Sandboxing, malware detection and application isolation"
+        },
+        {
+          "ar": "التجزئة والتوقيعات الرقمية والتحكم بالإصدارات",
+          "en": "Hashing, digital signatures and version control"
+        }
       ],
-      "options_ar": [
-        "التكرار وموازنة الحمل والتخفيف من هجمات DDoS",
-        "التشفير وضوابط الوصول والشبكات الخاصة الافتراضية",
-        "العزل وكشف البرمجيات الخبيثة وعزل التطبيقات",
-        "التجزئة والتوقيعات الرقمية والتحكم بالإصدارات"
-      ],
-      "options_en": [
-        "Redundancy, load balancing and DDoS mitigation",
-        "Encryption, access controls and virtual private networks",
-        "Sandboxing, malware detection and application isolation",
-        "Hashing, digital signatures and version control"
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The chapter assigns encryption, access controls and virtual private networks to confidentiality, whose purpose is to prevent unauthorised access to data. Hashing, digital signatures and version control protect integrity, redundancy, load balancing and DDoS mitigation protect availability, and sandboxing with malware detection is a mobile security control.",
-      "question_en": "Which set of techniques is used to enforce confidentiality?",
-      "explanation_en": "The chapter assigns encryption, access controls and virtual private networks to confidentiality, whose purpose is to prevent unauthorised access to data. Hashing, digital signatures and version control protect integrity, redundancy, load balancing and DDoS mitigation protect availability, and sandboxing with malware detection is a mobile security control.",
-      "explanation_ar": "يخصص الفصل التشفير وضوابط الوصول والشبكات الخاصة الافتراضية للسرية، وهدفها منع الوصول غير المصرّح به إلى البيانات. التجزئة والتوقيعات الرقمية والتحكم بالإصدارات تحمي السلامة، والتكرار وموازنة الحمل والتخفيف من DDoS تحمي التوافر، والعزل مع كشف البرمجيات الخبيثة ضابط لأمن الأجهزة المحمولة."
+      "answer": 1,
+      "explanation": {
+        "ar": "يخصص الفصل التشفير وضوابط الوصول والشبكات الخاصة الافتراضية للسرية، وهدفها منع الوصول غير المصرّح به إلى البيانات. التجزئة والتوقيعات الرقمية والتحكم بالإصدارات تحمي السلامة، والتكرار وموازنة الحمل والتخفيف من DDoS تحمي التوافر، والعزل مع كشف البرمجيات الخبيثة ضابط لأمن الأجهزة المحمولة.",
+        "en": "The chapter assigns encryption, access controls and virtual private networks to confidentiality, whose purpose is to prevent unauthorised access to data. Hashing, digital signatures and version control protect integrity, redundancy, load balancing and DDoS mitigation protect availability, and sandboxing with malware detection is a mobile security control."
+      }
     },
     {
       "id": "q6",
       "concept_id": "cia_availability_scenario",
-      "bloom_level": "Apply",
-      "difficulty": 3,
-      "difficulty_label": "Medium",
-      "question": "A university registration portal becomes unreachable during the enrolment peak and no student can log in. Which pillar has failed, and which controls best prevent a repeat?",
-      "question_ar": "تصبح بوابة تسجيل جامعية غير قابلة للوصول في ذروة التسجيل فلا يستطيع أي طالب الدخول. أي ركيزة فشلت، وأي الضوابط تمنع التكرار؟",
+      "bloom": "Apply",
+      "stem": {
+        "ar": "تصبح بوابة تسجيل جامعية غير قابلة للوصول في ذروة التسجيل فلا يستطيع أي طالب الدخول. أي ركيزة فشلت، وأي الضوابط تمنع التكرار؟",
+        "en": "A university registration portal becomes unreachable during the enrolment peak and no student can log in. Which pillar has failed, and which controls best prevent a repeat?"
+      },
       "options": [
-        "Integrity, prevented by hashing, digital signatures and version control",
-        "Availability, prevented by redundancy, load balancing and DDoS mitigation",
-        "Confidentiality, prevented by encryption, access controls and VPNs",
-        "Non-repudiation, prevented by signed audit logs and trusted timestamps"
+        {
+          "ar": "السلامة، وتُمنع بالتجزئة والتوقيعات الرقمية والتحكم بالإصدارات",
+          "en": "Integrity, prevented by hashing, digital signatures and version control"
+        },
+        {
+          "ar": "التوافر، ويُمنع بالتكرار وموازنة الحمل والتخفيف من هجمات DDoS",
+          "en": "Availability, prevented by redundancy, load balancing and DDoS mitigation"
+        },
+        {
+          "ar": "السرية، وتُمنع بالتشفير وضوابط الوصول والشبكات الخاصة الافتراضية",
+          "en": "Confidentiality, prevented by encryption, access controls and VPNs"
+        },
+        {
+          "ar": "عدم الإنكار، ويُمنع بسجلات التدقيق الموقّعة والطوابع الزمنية الموثوقة",
+          "en": "Non-repudiation, prevented by signed audit logs and trusted timestamps"
+        }
       ],
-      "options_ar": [
-        "السلامة، وتُمنع بالتجزئة والتوقيعات الرقمية والتحكم بالإصدارات",
-        "التوافر، ويُمنع بالتكرار وموازنة الحمل والتخفيف من هجمات DDoS",
-        "السرية، وتُمنع بالتشفير وضوابط الوصول والشبكات الخاصة الافتراضية",
-        "عدم الإنكار، ويُمنع بسجلات التدقيق الموقّعة والطوابع الزمنية الموثوقة"
-      ],
-      "options_en": [
-        "Integrity, prevented by hashing, digital signatures and version control",
-        "Availability, prevented by redundancy, load balancing and DDoS mitigation",
-        "Confidentiality, prevented by encryption, access controls and VPNs",
-        "Non-repudiation, prevented by signed audit logs and trusted timestamps"
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "Availability is the pillar that guarantees resources are accessible when they are needed, so an outage during the enrolment peak is an availability failure, and the chapter prescribes redundancy, load balancing and DDoS mitigation for it. Integrity controls such as hashing would not restore reachability, confidentiality controls would not restore reachability either, and non-repudiation addresses proof of origin rather than uptime.",
-      "question_en": "A university registration portal becomes unreachable during the enrolment peak and no student can log in. Which pillar has failed, and which controls best prevent a repeat?",
-      "explanation_en": "Availability is the pillar that guarantees resources are accessible when they are needed, so an outage during the enrolment peak is an availability failure, and the chapter prescribes redundancy, load balancing and DDoS mitigation for it. Integrity controls such as hashing would not restore reachability, confidentiality controls would not restore reachability either, and non-repudiation addresses proof of origin rather than uptime.",
-      "explanation_ar": "التوافر هو الركيزة التي تضمن إمكانية الوصول إلى الموارد عند الحاجة، فانقطاع الخدمة في ذروة التسجيل فشل في التوافر، ويوصي الفصل له بالتكرار وموازنة الحمل والتخفيف من DDoS. ضوابط السلامة مثل التجزئة لا تعيد الوصول، وضوابط السرية كذلك، وعدم الإنكار يخص إثبات المصدر لا استمرارية الخدمة."
+      "answer": 1,
+      "explanation": {
+        "ar": "التوافر هو الركيزة التي تضمن إمكانية الوصول إلى الموارد عند الحاجة، فانقطاع الخدمة في ذروة التسجيل فشل في التوافر، ويوصي الفصل له بالتكرار وموازنة الحمل والتخفيف من DDoS. ضوابط السلامة مثل التجزئة لا تعيد الوصول، وضوابط السرية كذلك، وعدم الإنكار يخص إثبات المصدر لا استمرارية الخدمة.",
+        "en": "Availability is the pillar that guarantees resources are accessible when they are needed, so an outage during the enrolment peak is an availability failure, and the chapter prescribes redundancy, load balancing and DDoS mitigation for it. Integrity controls such as hashing would not restore reachability, confidentiality controls would not restore reachability either, and non-repudiation addresses proof of origin rather than uptime."
+      }
     },
     {
       "id": "q7",
       "concept_id": "risk_exposure_formula",
-      "bloom_level": "Apply",
-      "difficulty": 3,
-      "difficulty_label": "Medium",
-      "question": "An analyst estimates the probability of each threat and its impact for the coming year. Which expression gives the expected cyber risk exposure at a point in time?",
-      "question_ar": "يقدّر محلل احتمال كل تهديد وأثره للسنة القادمة. أي تعبير يعطي التعرّض المتوقع للمخاطر عند نقطة زمنية؟",
+      "bloom": "Apply",
+      "stem": {
+        "ar": "يقدّر محلل احتمال كل تهديد وأثره للسنة القادمة. أي تعبير يعطي التعرّض المتوقع للمخاطر عند نقطة زمنية؟",
+        "en": "An analyst estimates the probability of each threat and its impact for the coming year. Which expression gives the expected cyber risk exposure at a point in time?"
+      },
       "options": [
-        "The sum of each threat probability divided by its impact value",
-        "The ratio of the total impact to the number of identified threats",
-        "The product of the highest probability and the highest impact",
-        "The sum of each threat probability multiplied by its impact value"
+        {
+          "ar": "مجموع احتمال كل تهديد مقسوماً على قيمة أثره",
+          "en": "The sum of each threat probability divided by its impact value"
+        },
+        {
+          "ar": "نسبة الأثر الكلي إلى عدد التهديدات المحددة",
+          "en": "The ratio of the total impact to the number of identified threats"
+        },
+        {
+          "ar": "حاصل ضرب أعلى احتمال في أعلى أثر",
+          "en": "The product of the highest probability and the highest impact"
+        },
+        {
+          "ar": "مجموع احتمال كل تهديد مضروباً في قيمة أثره",
+          "en": "The sum of each threat probability multiplied by its impact value"
+        }
       ],
-      "options_ar": [
-        "مجموع احتمال كل تهديد مقسوماً على قيمة أثره",
-        "نسبة الأثر الكلي إلى عدد التهديدات المحددة",
-        "حاصل ضرب أعلى احتمال في أعلى أثر",
-        "مجموع احتمال كل تهديد مضروباً في قيمة أثره"
-      ],
-      "options_en": [
-        "The sum of each threat probability divided by its impact value",
-        "The ratio of the total impact to the number of identified threats",
-        "The product of the highest probability and the highest impact",
-        "The sum of each threat probability multiplied by its impact value"
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The chapter writes risk exposure as the sum over all threats of the probability of occurrence multiplied by the impact of that threat, which is the standard expected-value form. Dividing probability by impact, keeping only the highest probability and highest impact pair, or dividing total impact by the threat count all discard the weighted-sum structure that the definition requires.",
-      "question_en": "An analyst estimates the probability of each threat and its impact for the coming year. Which expression gives the expected cyber risk exposure at a point in time?",
-      "explanation_en": "The chapter writes risk exposure as the sum over all threats of the probability of occurrence multiplied by the impact of that threat, which is the standard expected-value form. Dividing probability by impact, keeping only the highest probability and highest impact pair, or dividing total impact by the threat count all discard the weighted-sum structure that the definition requires.",
-      "explanation_ar": "يكتب الفصل التعرّض للمخاطر كمجموع على جميع التهديدات لاحتمال الحدوث مضروباً في أثر ذلك التهديد، وهو الشكل القياسي للقيمة المتوقعة. القسمة على الأثر، أو الاحتفاظ بأعلى احتمال وأعلى أثر فقط، أو القسمة على عدد التهديدات، كلها تُسقط بنية المجموع الموزون التي يشترطها التعريف."
+      "answer": 3,
+      "explanation": {
+        "ar": "يكتب الفصل التعرّض للمخاطر كمجموع على جميع التهديدات لاحتمال الحدوث مضروباً في أثر ذلك التهديد، وهو الشكل القياسي للقيمة المتوقعة. القسمة على الأثر، أو الاحتفاظ بأعلى احتمال وأعلى أثر فقط، أو القسمة على عدد التهديدات، كلها تُسقط بنية المجموع الموزون التي يشترطها التعريف.",
+        "en": "The chapter writes risk exposure as the sum over all threats of the probability of occurrence multiplied by the impact of that threat, which is the standard expected-value form. Dividing probability by impact, keeping only the highest probability and highest impact pair, or dividing total impact by the threat count all discard the weighted-sum structure that the definition requires."
+      }
     },
     {
       "id": "q8",
       "concept_id": "security_utility_weights",
-      "bloom_level": "Apply",
-      "difficulty": 3,
-      "difficulty_label": "Medium",
-      "question": "A hospital assigns a higher weight to confidentiality than to availability when scoring a system. In the utility function U = αC + βI + γA, what do the weights represent?",
-      "question_ar": "يمنح مستشفى وزناً أعلى للسرية من التوافر عند تقييم نظام. في دالة المنفعة U = αC + βI + γA، ماذا تمثّل الأوزان؟",
+      "bloom": "Apply",
+      "stem": {
+        "ar": "يمنح مستشفى وزناً أعلى للسرية من التوافر عند تقييم نظام. في دالة المنفعة U = αC + βI + γA، ماذا تمثّل الأوزان؟",
+        "en": "A hospital assigns a higher weight to confidentiality than to availability when scoring a system. In the utility function U = αC + βI + γA, what do the weights represent?"
+      },
       "options": [
-        "The cost of the controls that the organisation deploys for each pillar",
-        "The number of incidents recorded against each pillar during one year",
-        "The importance that the given system assigns to each of the three pillars",
-        "The measured performance of each pillar, normalised between zero and one"
+        {
+          "ar": "تكلفة الضوابط التي تنشرها المؤسسة لكل ركيزة",
+          "en": "The cost of the controls that the organisation deploys for each pillar"
+        },
+        {
+          "ar": "عدد الحوادث المسجلة ضد كل ركيزة خلال سنة",
+          "en": "The number of incidents recorded against each pillar during one year"
+        },
+        {
+          "ar": "أهمية كل ركيزة من الركائز الثلاث بالنسبة للنظام المعني",
+          "en": "The importance that the given system assigns to each of the three pillars"
+        },
+        {
+          "ar": "الأداء المقاس لكل ركيزة بعد تطبيعه بين صفر وواحد",
+          "en": "The measured performance of each pillar, normalised between zero and one"
+        }
       ],
-      "options_ar": [
-        "تكلفة الضوابط التي تنشرها المؤسسة لكل ركيزة",
-        "عدد الحوادث المسجلة ضد كل ركيزة خلال سنة",
-        "أهمية كل ركيزة من الركائز الثلاث بالنسبة للنظام المعني",
-        "الأداء المقاس لكل ركيزة بعد تطبيعه بين صفر وواحد"
-      ],
-      "options_en": [
-        "The cost of the controls that the organisation deploys for each pillar",
-        "The number of incidents recorded against each pillar during one year",
-        "The importance that the given system assigns to each of the three pillars",
-        "The measured performance of each pillar, normalised between zero and one"
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "In this utility function the symbols C, I and A carry the normalised zero to one scores of the three pillars, while the weights express how important each pillar is for the given system, which is why healthcare can place a higher weight on confidentiality. The second option describes the C, I and A terms rather than the weights, and neither control cost nor incident counts appear in the model.",
-      "question_en": "A hospital assigns a higher weight to confidentiality than to availability when scoring a system. In the utility function U = αC + βI + γA, what do the weights represent?",
-      "explanation_en": "In this utility function the symbols C, I and A carry the normalised zero to one scores of the three pillars, while the weights express how important each pillar is for the given system, which is why healthcare can place a higher weight on confidentiality. The second option describes the C, I and A terms rather than the weights, and neither control cost nor incident counts appear in the model.",
-      "explanation_ar": "في دالة المنفعة هذه تحمل الرموز C وI وA درجات الركائز الثلاث المطبّعة بين صفر وواحد، بينما تعبّر الأوزان عن أهمية كل ركيزة لهذا النظام تحديداً، ولهذا يمكن للقطاع الصحي منح السرية وزناً أعلى. الخيار الثاني يصف الحدود C وI وA لا الأوزان، ولا تظهر تكلفة الضوابط ولا عدد الحوادث في النموذج."
+      "answer": 2,
+      "explanation": {
+        "ar": "في دالة المنفعة هذه تحمل الرموز C وI وA درجات الركائز الثلاث المطبّعة بين صفر وواحد، بينما تعبّر الأوزان عن أهمية كل ركيزة لهذا النظام تحديداً، ولهذا يمكن للقطاع الصحي منح السرية وزناً أعلى. الخيار الثاني يصف الحدود C وI وA لا الأوزان، ولا تظهر تكلفة الضوابط ولا عدد الحوادث في النموذج.",
+        "en": "In this utility function the symbols C, I and A carry the normalised zero to one scores of the three pillars, while the weights express how important each pillar is for the given system, which is why healthcare can place a higher weight on confidentiality. The second option describes the C, I and A terms rather than the weights, and neither control cost nor incident counts appear in the model."
+      }
     },
     {
       "id": "q9",
       "concept_id": "attack_surface_metric",
-      "bloom_level": "Apply",
-      "difficulty": 3,
-      "difficulty_label": "Medium",
-      "question": "The attack surface metric multiplies three quantities for every component of a system. Which three quantities does it use?",
-      "question_ar": "مقياس سطح الهجوم يضرب ثلاث كميات لكل مكوّن في النظام. ما هذه الكميات الثلاث؟",
+      "bloom": "Apply",
+      "stem": {
+        "ar": "مقياس سطح الهجوم يضرب ثلاث كميات لكل مكوّن في النظام. ما هذه الكميات الثلاث؟",
+        "en": "The attack surface metric multiplies three quantities for every component of a system. Which three quantities does it use?"
+      },
       "options": [
-        "External exploits, validated countermeasures and assigned owners",
-        "Encrypted endpoints, verified identities and applied access policies",
-        "Exposed entry points, vulnerability severity score and asset value",
-        "Estimated exposure, vendor rating and annual audit frequency"
+        {
+          "ar": "الثغرات الخارجية والضوابط المتحققة والمالكون المعيّنون",
+          "en": "External exploits, validated countermeasures and assigned owners"
+        },
+        {
+          "ar": "نقاط النهاية المشفّرة والهويات المتحققة وسياسات الوصول المطبقة",
+          "en": "Encrypted endpoints, verified identities and applied access policies"
+        },
+        {
+          "ar": "نقاط الدخول المكشوفة ودرجة خطورة الثغرة وقيمة الأصل",
+          "en": "Exposed entry points, vulnerability severity score and asset value"
+        },
+        {
+          "ar": "التعرّض المقدّر وتقييم المورد وتكرار التدقيق السنوي",
+          "en": "Estimated exposure, vendor rating and annual audit frequency"
+        }
       ],
-      "options_ar": [
-        "الثغرات الخارجية والضوابط المتحققة والمالكون المعيّنون",
-        "نقاط النهاية المشفّرة والهويات المتحققة وسياسات الوصول المطبقة",
-        "نقاط الدخول المكشوفة ودرجة خطورة الثغرة وقيمة الأصل",
-        "التعرّض المقدّر وتقييم المورد وتكرار التدقيق السنوي"
-      ],
-      "options_en": [
-        "External exploits, validated countermeasures and assigned owners",
-        "Encrypted endpoints, verified identities and applied access policies",
-        "Exposed entry points, vulnerability severity score and asset value",
-        "Estimated exposure, vendor rating and annual audit frequency"
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "The chapter defines the attack surface as a sum over components of the number of exposed entry points, the vulnerability severity score measured with CVSS, and the asset value of that component, which together quantify how attackable a system is. Encrypted endpoints, estimated exposure, vendor ratings and countermeasures do not appear in this metric, and the last option even mixes in a defensive term that would reduce rather than enlarge the surface.",
-      "question_en": "The attack surface metric multiplies three quantities for every component of a system. Which three quantities does it use?",
-      "explanation_en": "The chapter defines the attack surface as a sum over components of the number of exposed entry points, the vulnerability severity score measured with CVSS, and the asset value of that component, which together quantify how attackable a system is. Encrypted endpoints, estimated exposure, vendor ratings and countermeasures do not appear in this metric, and the last option even mixes in a defensive term that would reduce rather than enlarge the surface.",
-      "explanation_ar": "يعرّف الفصل سطح الهجوم بأنه مجموع على المكوّنات لعدد نقاط الدخول المكشوفة، ودرجة خطورة الثغرة وفق CVSS، وقيمة الأصل لذلك المكوّن، وهي معاً تحدد قابلية النظام للهجوم. نقاط النهاية المشفّرة والتعرّض المقدّر وتقييم المورد والضوابط لا تدخل في هذا المقياس، والخيار الأخير يخلط مصطلحاً دفاعياً كان سيقلّل السطح لا يزيده."
+      "answer": 2,
+      "explanation": {
+        "ar": "يعرّف الفصل سطح الهجوم بأنه مجموع على المكوّنات لعدد نقاط الدخول المكشوفة، ودرجة خطورة الثغرة وفق CVSS، وقيمة الأصل لذلك المكوّن، وهي معاً تحدد قابلية النظام للهجوم. نقاط النهاية المشفّرة والتعرّض المقدّر وتقييم المورد والضوابط لا تدخل في هذا المقياس، والخيار الأخير يخلط مصطلحاً دفاعياً كان سيقلّل السطح لا يزيده.",
+        "en": "The chapter defines the attack surface as a sum over components of the number of exposed entry points, the vulnerability severity score measured with CVSS, and the asset value of that component, which together quantify how attackable a system is. Encrypted endpoints, estimated exposure, vendor ratings and countermeasures do not appear in this metric, and the last option even mixes in a defensive term that would reduce rather than enlarge the surface."
+      }
     },
     {
       "id": "q10",
       "concept_id": "policy_compliance_index",
-      "bloom_level": "Apply",
-      "difficulty": 3,
-      "difficulty_label": "Medium",
-      "question": "An auditor measures how far an organisation satisfies each policy requirement and how important each requirement is. Which expression gives the weighted policy compliance index?",
-      "question_ar": "يقيس مدقق مدى تلبية المؤسسة لكل متطلب سياسة ومدى أهمية كل متطلب. أي تعبير يعطي مؤشر الامتثال الموزون؟",
+      "bloom": "Apply",
+      "stem": {
+        "ar": "يقيس مدقق مدى تلبية المؤسسة لكل متطلب سياسة ومدى أهمية كل متطلب. أي تعبير يعطي مؤشر الامتثال الموزون؟",
+        "en": "An auditor measures how far an organisation satisfies each policy requirement and how important each requirement is. Which expression gives the weighted policy compliance index?"
+      },
       "options": [
-        "The weighted sum of compliance levels divided by the total of the weights",
-        "The highest compliance level divided by the total of the weights across requirements",
-        "The arithmetic mean of compliance levels divided by the total of the weights",
-        "The weighted sum of compliance levels divided by the number of requirements"
+        {
+          "ar": "المجموع الموزون لمستويات الامتثال مقسوماً على مجموع الأوزان",
+          "en": "The weighted sum of compliance levels divided by the total of the weights"
+        },
+        {
+          "ar": "أعلى مستوى امتثال مقسوماً على مجموع الأوزان",
+          "en": "The highest compliance level divided by the total of the weights across requirements"
+        },
+        {
+          "ar": "المتوسط الحسابي لمستويات الامتثال مقسوماً على مجموع الأوزان",
+          "en": "The arithmetic mean of compliance levels divided by the total of the weights"
+        },
+        {
+          "ar": "المجموع الموزون لمستويات الامتثال مقسوماً على عدد المتطلبات",
+          "en": "The weighted sum of compliance levels divided by the number of requirements"
+        }
       ],
-      "options_ar": [
-        "المجموع الموزون لمستويات الامتثال مقسوماً على مجموع الأوزان",
-        "أعلى مستوى امتثال مقسوماً على مجموع الأوزان",
-        "المتوسط الحسابي لمستويات الامتثال مقسوماً على مجموع الأوزان",
-        "المجموع الموزون لمستويات الامتثال مقسوماً على عدد المتطلبات"
-      ],
-      "options_en": [
-        "The weighted sum of compliance levels divided by the total of the weights",
-        "The highest compliance level divided by the total of the weights across requirements",
-        "The arithmetic mean of compliance levels divided by the total of the weights",
-        "The weighted sum of compliance levels divided by the number of requirements"
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The compliance index is defined as the sum of each requirement weight multiplied by its compliance level, divided by the sum of the weights, which produces a normalised average where important requirements count more. Dividing by the number of requirements ignores the weights, replacing the weighted sum by a plain arithmetic mean treats all requirements as equally important, and taking only the highest compliance level discards the remaining requirements.",
-      "question_en": "An auditor measures how far an organisation satisfies each policy requirement and how important each requirement is. Which expression gives the weighted policy compliance index?",
-      "explanation_en": "The compliance index is defined as the sum of each requirement weight multiplied by its compliance level, divided by the sum of the weights, which produces a normalised average where important requirements count more. Dividing by the number of requirements ignores the weights, replacing the weighted sum by a plain arithmetic mean treats all requirements as equally important, and taking only the highest compliance level discards the remaining requirements.",
-      "explanation_ar": "يُعرّف مؤشر الامتثال بأنه مجموع وزن كل متطلب مضروباً في مستوى امتثاله مقسوماً على مجموع الأوزان، فينتج متوسط مطبّع تُحسب فيه المتطلبات المهمة أكثر. القسمة على عدد المتطلبات تُهمل الأوزان، واستبدال المجموع الموزون بمتوسط حسابي يعامل كل المتطلبات بالتساوي، والاحتفاظ بأعلى مستوى فقط يُسقط بقية المتطلبات."
+      "answer": 0,
+      "explanation": {
+        "ar": "يُعرّف مؤشر الامتثال بأنه مجموع وزن كل متطلب مضروباً في مستوى امتثاله مقسوماً على مجموع الأوزان، فينتج متوسط مطبّع تُحسب فيه المتطلبات المهمة أكثر. القسمة على عدد المتطلبات تُهمل الأوزان، واستبدال المجموع الموزون بمتوسط حسابي يعامل كل المتطلبات بالتساوي، والاحتفاظ بأعلى مستوى فقط يُسقط بقية المتطلبات.",
+        "en": "The compliance index is defined as the sum of each requirement weight multiplied by its compliance level, divided by the sum of the weights, which produces a normalised average where important requirements count more. Dividing by the number of requirements ignores the weights, replacing the weighted sum by a plain arithmetic mean treats all requirements as equally important, and taking only the highest compliance level discards the remaining requirements."
+      }
     },
     {
       "id": "q11",
       "concept_id": "sector_specific_pillar_weights",
-      "bloom_level": "Analyze",
-      "difficulty": 4,
-      "difficulty_label": "Above-Medium",
-      "question": "One sector places a higher weight on confidentiality than on availability, while another sector ranks the pillars differently. Which reasoning best explains why such weights differ between sectors?",
-      "question_ar": "أي تفسير يشرح اختلاف أوزان الركائز بين القطاعات اختلافاً أفضل؟",
+      "bloom": "Analyze",
+      "stem": {
+        "ar": "أي تفسير يشرح اختلاف أوزان الركائز بين القطاعات اختلافاً أفضل؟",
+        "en": "One sector places a higher weight on confidentiality than on availability, while another sector ranks the pillars differently. Which reasoning best explains why such weights differ between sectors?"
+      },
       "options": [
-        "The weights are chosen at random to keep the utility function mathematically stable",
-        "The weights reflect the relative harm caused when each pillar is violated in that sector",
-        "The weights follow the alphabetical order of the pillars inside the utility function",
-        "The weights are fixed constants that apply identically to every sector and system"
+        {
+          "ar": "تُختار الأوزان عشوائياً للحفاظ على استقرار دالة المنفعة رياضياً",
+          "en": "The weights are chosen at random to keep the utility function mathematically stable"
+        },
+        {
+          "ar": "تعكس الأوزان الضرر النسبي الناتج عند انتهاك كل ركيزة في ذلك القطاع",
+          "en": "The weights reflect the relative harm caused when each pillar is violated in that sector"
+        },
+        {
+          "ar": "تتبع الأوزان الترتيب الأبجدي للركائز داخل دالة المنفعة",
+          "en": "The weights follow the alphabetical order of the pillars inside the utility function"
+        },
+        {
+          "ar": "الأوزان ثوابت تُطبَّق بالتساوي على كل قطاع وكل نظام",
+          "en": "The weights are fixed constants that apply identically to every sector and system"
+        }
       ],
-      "options_ar": [
-        "تُختار الأوزان عشوائياً للحفاظ على استقرار دالة المنفعة رياضياً",
-        "تعكس الأوزان الضرر النسبي الناتج عند انتهاك كل ركيزة في ذلك القطاع",
-        "تتبع الأوزان الترتيب الأبجدي للركائز داخل دالة المنفعة",
-        "الأوزان ثوابت تُطبَّق بالتساوي على كل قطاع وكل نظام"
-      ],
-      "options_en": [
-        "The weights are chosen at random to keep the utility function mathematically stable",
-        "The weights reflect the relative harm caused when each pillar is violated in that sector",
-        "The weights follow the alphabetical order of the pillars inside the utility function",
-        "The weights are fixed constants that apply identically to every sector and system"
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The chapter calls the weights the importance values for a given system and illustrates the point by stating that confidentiality carries a higher weight in healthcare, which is exactly the statement that the harm of a confidentiality breach differs by sector. Fixed constants would make the healthcare example pointless, and neither alphabetical position nor randomness can explain a deliberate ranking of the pillars.",
-      "question_en": "One sector places a higher weight on confidentiality than on availability, while another sector ranks the pillars differently. Which reasoning best explains why such weights differ between sectors?",
-      "explanation_en": "The chapter calls the weights the importance values for a given system and illustrates the point by stating that confidentiality carries a higher weight in healthcare, which is exactly the statement that the harm of a confidentiality breach differs by sector. Fixed constants would make the healthcare example pointless, and neither alphabetical position nor randomness can explain a deliberate ranking of the pillars.",
-      "explanation_ar": "يسمّي الفصل الأوزان قيم أهمية النظام المعني، ويوضح ذلك بأن السرية تحمل وزناً أعلى في القطاع الصحي، وهذا يعني بالضبط أن ضرر اختراق السرية يختلف باختلاف القطاع. الثوابت الثابتة تُلغي معنى مثال الصحة، ولا الترتيب الأبجدي ولا العشوائية تفسّر ترتيباً مقصوداً للركائز."
+      "answer": 1,
+      "explanation": {
+        "ar": "يسمّي الفصل الأوزان قيم أهمية النظام المعني، ويوضح ذلك بأن السرية تحمل وزناً أعلى في القطاع الصحي، وهذا يعني بالضبط أن ضرر اختراق السرية يختلف باختلاف القطاع. الثوابت الثابتة تُلغي معنى مثال الصحة، ولا الترتيب الأبجدي ولا العشوائية تفسّر ترتيباً مقصوداً للركائز.",
+        "en": "The chapter calls the weights the importance values for a given system and illustrates the point by stating that confidentiality carries a higher weight in healthcare, which is exactly the statement that the harm of a confidentiality breach differs by sector. Fixed constants would make the healthcare example pointless, and neither alphabetical position nor randomness can explain a deliberate ranking of the pillars."
+      }
     },
     {
       "id": "q12",
       "concept_id": "threat_landscape_trends",
-      "bloom_level": "Analyze",
-      "difficulty": 4,
-      "difficulty_label": "Above-Medium",
-      "question": "Global ransomware damage is expected to exceed twenty billion dollars, and cloud-related attacks are rising. Which conclusion is best supported by these trends?",
-      "question_ar": "يُتوقع أن يتجاوز ضرر برامج الفدية عالمياً عشرين مليار دولار، والهجمات المرتبطة بالسحابة ترتفع. أي استنتاج تدعمه هذه الاتجاهات؟",
+      "bloom": "Analyze",
+      "stem": {
+        "ar": "يُتوقع أن يتجاوز ضرر برامج الفدية عالمياً عشرين مليار دولار، والهجمات المرتبطة بالسحابة ترتفع. أي استنتاج تدعمه هذه الاتجاهات؟",
+        "en": "Global ransomware damage is expected to exceed twenty billion dollars, and cloud-related attacks are rising. Which conclusion is best supported by these trends?"
+      },
       "options": [
-        "Ransomware has become technically impossible to detect on modern computer networks",
-        "Attackers have abandoned malware in favour of purely physical intrusion methods",
-        "Economic damage and misconfiguration-driven exposure are both increasing over time",
-        "Cloud providers have eliminated the misconfigurations that caused earlier breaches"
+        {
+          "ar": "أصبح كشف برامج الفدية مستحيلاً تقنياً على الشبكات الحديثة",
+          "en": "Ransomware has become technically impossible to detect on modern computer networks"
+        },
+        {
+          "ar": "تخلى المهاجمون عن البرمجيات الخبيثة لصالح اختراق مادي بحت",
+          "en": "Attackers have abandoned malware in favour of purely physical intrusion methods"
+        },
+        {
+          "ar": "الضرر الاقتصادي والتعرّض الناتج عن سوء الضبط يتزايدان مع الوقت",
+          "en": "Economic damage and misconfiguration-driven exposure are both increasing over time"
+        },
+        {
+          "ar": "قضى مزودو السحابة على أخطاء الضبط التي سبّبت الاختراقات السابقة",
+          "en": "Cloud providers have eliminated the misconfigurations that caused earlier breaches"
+        }
       ],
-      "options_ar": [
-        "أصبح كشف برامج الفدية مستحيلاً تقنياً على الشبكات الحديثة",
-        "تخلى المهاجمون عن البرمجيات الخبيثة لصالح اختراق مادي بحت",
-        "الضرر الاقتصادي والتعرّض الناتج عن سوء الضبط يتزايدان مع الوقت",
-        "قضى مزودو السحابة على أخطاء الضبط التي سبّبت الاختراقات السابقة"
-      ],
-      "options_en": [
-        "Ransomware has become technically impossible to detect on modern computer networks",
-        "Attackers have abandoned malware in favour of purely physical intrusion methods",
-        "Economic damage and misconfiguration-driven exposure are both increasing over time",
-        "Cloud providers have eliminated the misconfigurations that caused earlier breaches"
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Both reported trends point in the same direction, since the rising ransomware figure measures growing economic damage while the cloud finding is attributed to misconfigurations rather than to a weakness of cloud technology itself. The second option contradicts the fact that ransomware is still being reported, the third reverses the stated cause of cloud breaches, and the fourth is refuted by the malware categories the same chapter lists as the leading component of the threat landscape.",
-      "question_en": "Global ransomware damage is expected to exceed twenty billion dollars, and cloud-related attacks are rising. Which conclusion is best supported by these trends?",
-      "explanation_en": "Both reported trends point in the same direction, since the rising ransomware figure measures growing economic damage while the cloud finding is attributed to misconfigurations rather than to a weakness of cloud technology itself. The second option contradicts the fact that ransomware is still being reported, the third reverses the stated cause of cloud breaches, and the fourth is refuted by the malware categories the same chapter lists as the leading component of the threat landscape.",
-      "explanation_ar": "يشير الاتجاهان إلى الاتجاه نفسه: رقم الفدية المتصاعد يقيس ضرراً اقتصادياً متزايداً، ونتيجة السحابة تُنسب إلى سوء الضبط لا إلى ضعف تقنية السحابة. الخيار الثاني يناقض استمرار تقارير الفدية، والثالث يعكس سبب الاختراقات المذكور، والرابع يكذّبه تصنيف البرمجيات الخبيثة الذي يضعه الفصل في مقدمة المشهد."
+      "answer": 2,
+      "explanation": {
+        "ar": "يشير الاتجاهان إلى الاتجاه نفسه: رقم الفدية المتصاعد يقيس ضرراً اقتصادياً متزايداً، ونتيجة السحابة تُنسب إلى سوء الضبط لا إلى ضعف تقنية السحابة. الخيار الثاني يناقض استمرار تقارير الفدية، والثالث يعكس سبب الاختراقات المذكور، والرابع يكذّبه تصنيف البرمجيات الخبيثة الذي يضعه الفصل في مقدمة المشهد.",
+        "en": "Both reported trends point in the same direction, since the rising ransomware figure measures growing economic damage while the cloud finding is attributed to misconfigurations rather than to a weakness of cloud technology itself. The second option contradicts the fact that ransomware is still being reported, the third reverses the stated cause of cloud breaches, and the fourth is refuted by the malware categories the same chapter lists as the leading component of the threat landscape."
+      }
     },
     {
       "id": "q13",
       "concept_id": "apt_characteristics",
-      "bloom_level": "Analyze",
-      "difficulty": 4,
-      "difficulty_label": "Above-Medium",
-      "question": "Advanced persistent threats are state-sponsored and stealthy long-term attacks. How do they differ from ordinary malware infections?",
-      "question_ar": "التهديدات المستمرة المتقدمة مدعومة من دول وخفية وطويلة الأمد. كيف تختلف عن عدوى البرمجيات الخبيثة العادية؟",
+      "bloom": "Analyze",
+      "stem": {
+        "ar": "التهديدات المستمرة المتقدمة مدعومة من دول وخفية وطويلة الأمد. كيف تختلف عن عدوى البرمجيات الخبيثة العادية؟",
+        "en": "Advanced persistent threats are state-sponsored and stealthy long-term attacks. How do they differ from ordinary malware infections?"
+      },
       "options": [
-        "They rely solely on physical theft of media and never use network access",
-        "They remain inside the target for a long period and avoid immediate detection",
-        "They target only home users and never reach enterprise or government networks",
-        "They spread automatically to every host and delete all data within minutes"
+        {
+          "ar": "تعتمد على السرقة المادية للوسائط فقط ولا تستخدم الشبكة",
+          "en": "They rely solely on physical theft of media and never use network access"
+        },
+        {
+          "ar": "تبقى داخل الهدف مدة طويلة وتتجنب الكشف الفوري",
+          "en": "They remain inside the target for a long period and avoid immediate detection"
+        },
+        {
+          "ar": "تستهدف المستخدمين المنزليين فقط ولا تصل إلى شبكات الشركات أو الحكومة",
+          "en": "They target only home users and never reach enterprise or government networks"
+        },
+        {
+          "ar": "تنتشر تلقائياً إلى كل الأجهزة وتمحو كل البيانات في دقائق",
+          "en": "They spread automatically to every host and delete all data within minutes"
+        }
       ],
-      "options_ar": [
-        "تعتمد على السرقة المادية للوسائط فقط ولا تستخدم الشبكة",
-        "تبقى داخل الهدف مدة طويلة وتتجنب الكشف الفوري",
-        "تستهدف المستخدمين المنزليين فقط ولا تصل إلى شبكات الشركات أو الحكومة",
-        "تنتشر تلقائياً إلى كل الأجهزة وتمحو كل البيانات في دقائق"
-      ],
-      "options_en": [
-        "They rely solely on physical theft of media and never use network access",
-        "They remain inside the target for a long period and avoid immediate detection",
-        "They target only home users and never reach enterprise or government networks",
-        "They spread automatically to every host and delete all data within minutes"
-      ],
-      "answer": "B",
-      "correct": 1,
-      "explanation": "The defining words in the chapter are persistent and stealthy, so the distinguishing behaviour is long-term presence combined with avoidance of detection, which is what makes such an intrusion hard to notice and hard to remove. The second option describes fast destructive spreading rather than persistence, the third reverses the state-sponsored targeting that the chapter reports, and nothing in the definition requires physical media or excludes network access.",
-      "question_en": "Advanced persistent threats are state-sponsored and stealthy long-term attacks. How do they differ from ordinary malware infections?",
-      "explanation_en": "The defining words in the chapter are persistent and stealthy, so the distinguishing behaviour is long-term presence combined with avoidance of detection, which is what makes such an intrusion hard to notice and hard to remove. The second option describes fast destructive spreading rather than persistence, the third reverses the state-sponsored targeting that the chapter reports, and nothing in the definition requires physical media or excludes network access.",
-      "explanation_ar": "الكلمتان المفتاحيتان في الفصل هما «مستمرة» و«خفية»، فسلوكها المميّز هو البقاء الطويل مع تجنّب الكشف، ولهذا يصعب ملاحظة هذا التسلل وإزالته. الخيار الثاني يصف انتشاراً سريعاً مدمّراً لا استمرارية، والثالث يعكس استهداف الدول الذي يذكره الفصل، ولا شيء في التعريف يشترط وسائط مادية أو يمنع الوصول الشبكي."
+      "answer": 1,
+      "explanation": {
+        "ar": "الكلمتان المفتاحيتان في الفصل هما «مستمرة» و«خفية»، فسلوكها المميّز هو البقاء الطويل مع تجنّب الكشف، ولهذا يصعب ملاحظة هذا التسلل وإزالته. الخيار الثاني يصف انتشاراً سريعاً مدمّراً لا استمرارية، والثالث يعكس استهداف الدول الذي يذكره الفصل، ولا شيء في التعريف يشترط وسائط مادية أو يمنع الوصول الشبكي.",
+        "en": "The defining words in the chapter are persistent and stealthy, so the distinguishing behaviour is long-term presence combined with avoidance of detection, which is what makes such an intrusion hard to notice and hard to remove. The second option describes fast destructive spreading rather than persistence, the third reverses the state-sponsored targeting that the chapter reports, and nothing in the definition requires physical media or excludes network access."
+      }
     },
     {
       "id": "q14",
       "concept_id": "risk_vulnerability_exploit_distinction",
-      "bloom_level": "Analyze",
-      "difficulty": 4,
-      "difficulty_label": "Above-Medium",
-      "question": "Which sequence states the meanings of risk, vulnerability and exploit correctly?",
-      "question_ar": "أي تسلسل يعطي معاني الخطر والثغرة والاستغلال بشكل صحيح؟",
+      "bloom": "Analyze",
+      "stem": {
+        "ar": "أي تسلسل يعطي معاني الخطر والثغرة والاستغلال بشكل صحيح؟",
+        "en": "Which sequence states the meanings of risk, vulnerability and exploit correctly?"
+      },
       "options": [
-        "Risk as an attack tool, vulnerability as likelihood and impact, exploit as a weakness",
-        "Risk as a weakness, vulnerability as an attack tool, exploit as likelihood and impact",
-        "Risk as a likelihood only, vulnerability as an impact only, exploit as a severity score",
-        "Risk as likelihood and impact, vulnerability as a weakness, exploit as an attack tool"
+        {
+          "ar": "الخطر أداة هجوم، والثغرة احتمال وأثر، والاستغلال نقطة ضعف",
+          "en": "Risk as an attack tool, vulnerability as likelihood and impact, exploit as a weakness"
+        },
+        {
+          "ar": "الخطر نقطة ضعف، والثغرة أداة هجوم، والاستغلال احتمال وأثر",
+          "en": "Risk as a weakness, vulnerability as an attack tool, exploit as likelihood and impact"
+        },
+        {
+          "ar": "الخطر احتمال فقط، والثغرة أثر فقط، والاستغلال درجة خطورة",
+          "en": "Risk as a likelihood only, vulnerability as an impact only, exploit as a severity score"
+        },
+        {
+          "ar": "الخطر احتمال وأثر، والثغرة نقطة ضعف، والاستغلال أداة هجوم",
+          "en": "Risk as likelihood and impact, vulnerability as a weakness, exploit as an attack tool"
+        }
       ],
-      "options_ar": [
-        "الخطر أداة هجوم، والثغرة احتمال وأثر، والاستغلال نقطة ضعف",
-        "الخطر نقطة ضعف، والثغرة أداة هجوم، والاستغلال احتمال وأثر",
-        "الخطر احتمال فقط، والثغرة أثر فقط، والاستغلال درجة خطورة",
-        "الخطر احتمال وأثر، والثغرة نقطة ضعف، والاستغلال أداة هجوم"
-      ],
-      "options_en": [
-        "Risk as an attack tool, vulnerability as likelihood and impact, exploit as a weakness",
-        "Risk as a weakness, vulnerability as an attack tool, exploit as likelihood and impact",
-        "Risk as a likelihood only, vulnerability as an impact only, exploit as a severity score",
-        "Risk as likelihood and impact, vulnerability as a weakness, exploit as an attack tool"
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The chapter defines risk as a function of likelihood and impact, describes vulnerabilities as weaknesses in software, hardware or human factors such as the entries of the OWASP Top 10 and the CVE list, and describes exploits as the tools or methods used to take advantage of a vulnerability. The remaining options reshuffle the three meanings, and the last one also splits risk into two separate quantities, which contradicts the definition of risk as a function of both.",
-      "question_en": "Which sequence states the meanings of risk, vulnerability and exploit correctly?",
-      "explanation_en": "The chapter defines risk as a function of likelihood and impact, describes vulnerabilities as weaknesses in software, hardware or human factors such as the entries of the OWASP Top 10 and the CVE list, and describes exploits as the tools or methods used to take advantage of a vulnerability. The remaining options reshuffle the three meanings, and the last one also splits risk into two separate quantities, which contradicts the definition of risk as a function of both.",
-      "explanation_ar": "يعرّف الفصل الخطر بأنه دالة في الاحتمال والأثر، ويصف الثغرات بأنها نقاط ضعف في البرمجيات أو العتاد أو العامل البشري مثل بنود OWASP Top 10 وقائمة CVE، ويصف الاستغلال بأنه الأدوات أو الأساليب التي تُستغل بها الثغرة. الخيارات الأخرى تعيد ترتيب المعاني الثلاثة، والأخير يفصل الخطر إلى كميتين منفصلتين وهذا يناقض تعريفه كدالة فيهما معاً."
+      "answer": 3,
+      "explanation": {
+        "ar": "يعرّف الفصل الخطر بأنه دالة في الاحتمال والأثر، ويصف الثغرات بأنها نقاط ضعف في البرمجيات أو العتاد أو العامل البشري مثل بنود OWASP Top 10 وقائمة CVE، ويصف الاستغلال بأنه الأدوات أو الأساليب التي تُستغل بها الثغرة. الخيارات الأخرى تعيد ترتيب المعاني الثلاثة، والأخير يفصل الخطر إلى كميتين منفصلتين وهذا يناقض تعريفه كدالة فيهما معاً.",
+        "en": "The chapter defines risk as a function of likelihood and impact, describes vulnerabilities as weaknesses in software, hardware or human factors such as the entries of the OWASP Top 10 and the CVE list, and describes exploits as the tools or methods used to take advantage of a vulnerability. The remaining options reshuffle the three meanings, and the last one also splits risk into two separate quantities, which contradicts the definition of risk as a function of both."
+      }
     },
     {
       "id": "q15",
       "concept_id": "case_studies_critical_infrastructure",
-      "bloom_level": "Analyze",
-      "difficulty": 4,
-      "difficulty_label": "Above-Medium",
-      "question": "Stuxnet and the Colonial Pipeline incident are two widely studied cyber incidents. What does this pairing illustrate about cybersecurity?",
-      "question_ar": "ستكسنت وحادثة Colonial Pipeline حادثتان مدروستان كثيراً. ماذا يوضح هذا الاقتران عن الأمن السيبراني؟",
+      "bloom": "Analyze",
+      "stem": {
+        "ar": "ستكسنت وحادثة Colonial Pipeline حادثتان مدروستان كثيراً. ماذا يوضح هذا الاقتران عن الأمن السيبراني؟",
+        "en": "Stuxnet and the Colonial Pipeline incident are two widely studied cyber incidents. What does this pairing illustrate about cybersecurity?"
+      },
       "options": [
-        "Both show that isolated industrial systems can never be reached by any attacker",
-        "Both show that attacks remain confined to digital data with no physical effects",
-        "Both show that attacks can disrupt physical operations and critical infrastructure",
-        "Both show that only financial institutions are targeted by advanced attackers"
+        {
+          "ar": "كلتاهما تُظهر أن الأنظمة الصناعية المعزولة لا يمكن الوصول إليها إطلاقاً",
+          "en": "Both show that isolated industrial systems can never be reached by any attacker"
+        },
+        {
+          "ar": "كلتاهما تُظهر أن الهجمات تبقى داخل البيانات الرقمية دون آثار مادية",
+          "en": "Both show that attacks remain confined to digital data with no physical effects"
+        },
+        {
+          "ar": "كلتاهما تُظهر أن الهجمات قد تعطّل العمليات المادية والبنية التحتية الحرجة",
+          "en": "Both show that attacks can disrupt physical operations and critical infrastructure"
+        },
+        {
+          "ar": "كلتاهما تُظهر أن المؤسسات المالية وحدها تُستهدف من المهاجمين المتقدمين",
+          "en": "Both show that only financial institutions are targeted by advanced attackers"
+        }
       ],
-      "options_ar": [
-        "كلتاهما تُظهر أن الأنظمة الصناعية المعزولة لا يمكن الوصول إليها إطلاقاً",
-        "كلتاهما تُظهر أن الهجمات تبقى داخل البيانات الرقمية دون آثار مادية",
-        "كلتاهما تُظهر أن الهجمات قد تعطّل العمليات المادية والبنية التحتية الحرجة",
-        "كلتاهما تُظهر أن المؤسسات المالية وحدها تُستهدف من المهاجمين المتقدمين"
-      ],
-      "options_en": [
-        "Both show that isolated industrial systems can never be reached by any attacker",
-        "Both show that attacks remain confined to digital data with no physical effects",
-        "Both show that attacks can disrupt physical operations and critical infrastructure",
-        "Both show that only financial institutions are targeted by advanced attackers"
-      ],
-      "answer": "C",
-      "correct": 2,
-      "explanation": "Stuxnet is presented as a demonstration of cyber-physical warfare against nuclear facilities and the pipeline incident as a shutdown of an oil supply chain, so the common lesson is that digital attacks produce physical and societal consequences. The second option denies exactly those consequences, the third ignores that the targets were industrial rather than financial, and the fourth is contradicted by the fact that both incidents reached installations designed to be isolated.",
-      "question_en": "Stuxnet and the Colonial Pipeline incident are two widely studied cyber incidents. What does this pairing illustrate about cybersecurity?",
-      "explanation_en": "Stuxnet is presented as a demonstration of cyber-physical warfare against nuclear facilities and the pipeline incident as a shutdown of an oil supply chain, so the common lesson is that digital attacks produce physical and societal consequences. The second option denies exactly those consequences, the third ignores that the targets were industrial rather than financial, and the fourth is contradicted by the fact that both incidents reached installations designed to be isolated.",
-      "explanation_ar": "يُقدَّم ستكسنت كدليل على الحرب السيبرانية-المادية ضد منشآت نووية، وتُقدَّم حادثة الأنابيب كتوقف لسلسلة إمداد نفطية، فالدرس المشترك أن الهجمات الرقمية تُنتج آثاراً مادية ومجتمعية. الخيار الثاني ينكر هذه الآثار، والثالث يتجاهل أن الأهداف صناعية لا مالية، والرابع يكذّبه أن الحادثتين وصلتا إلى منشآت مصمّمة لتكون معزولة."
+      "answer": 2,
+      "explanation": {
+        "ar": "يُقدَّم ستكسنت كدليل على الحرب السيبرانية-المادية ضد منشآت نووية، وتُقدَّم حادثة الأنابيب كتوقف لسلسلة إمداد نفطية، فالدرس المشترك أن الهجمات الرقمية تُنتج آثاراً مادية ومجتمعية. الخيار الثاني ينكر هذه الآثار، والثالث يتجاهل أن الأهداف صناعية لا مالية، والرابع يكذّبه أن الحادثتين وصلتا إلى منشآت مصمّمة لتكون معزولة.",
+        "en": "Stuxnet is presented as a demonstration of cyber-physical warfare against nuclear facilities and the pipeline incident as a shutdown of an oil supply chain, so the common lesson is that digital attacks produce physical and societal consequences. The second option denies exactly those consequences, the third ignores that the targets were industrial rather than financial, and the fourth is contradicted by the fact that both incidents reached installations designed to be isolated."
+      }
     },
     {
       "id": "q16",
       "concept_id": "regulatory_frameworks_mapping",
-      "bloom_level": "Analyze",
-      "difficulty": 4,
-      "difficulty_label": "Above-Medium",
-      "question": "Which pairing of regulation and protected domain is correct?",
-      "question_ar": "أي اقتران بين التنظيم والمجال المحمي صحيح؟",
+      "bloom": "Analyze",
+      "stem": {
+        "ar": "أي اقتران بين التنظيم والمجال المحمي صحيح؟",
+        "en": "Which pairing of regulation and protected domain is correct?"
+      },
       "options": [
-        "GDPR covers European data protection, while HIPAA covers healthcare information",
-        "GDPR covers healthcare information, while HIPAA covers European data protection",
-        "GDPR covers international standards, while HIPAA covers European data protection",
-        "GDPR covers European data protection, while HIPAA covers international standards"
+        {
+          "ar": "GDPR يحمي البيانات الأوروبية، وHIPAA يحمي معلومات الرعاية الصحية",
+          "en": "GDPR covers European data protection, while HIPAA covers healthcare information"
+        },
+        {
+          "ar": "GDPR يحمي معلومات الرعاية الصحية، وHIPAA يحمي البيانات الأوروبية",
+          "en": "GDPR covers healthcare information, while HIPAA covers European data protection"
+        },
+        {
+          "ar": "GDPR يخص المعايير الدولية، وHIPAA يحمي البيانات الأوروبية",
+          "en": "GDPR covers international standards, while HIPAA covers European data protection"
+        },
+        {
+          "ar": "GDPR يحمي البيانات الأوروبية، وHIPAA يخص المعايير الدولية",
+          "en": "GDPR covers European data protection, while HIPAA covers international standards"
+        }
       ],
-      "options_ar": [
-        "GDPR يحمي البيانات الأوروبية، وHIPAA يحمي معلومات الرعاية الصحية",
-        "GDPR يحمي معلومات الرعاية الصحية، وHIPAA يحمي البيانات الأوروبية",
-        "GDPR يخص المعايير الدولية، وHIPAA يحمي البيانات الأوروبية",
-        "GDPR يحمي البيانات الأوروبية، وHIPAA يخص المعايير الدولية"
-      ],
-      "options_en": [
-        "GDPR covers European data protection, while HIPAA covers healthcare information",
-        "GDPR covers healthcare information, while HIPAA covers European data protection",
-        "GDPR covers international standards, while HIPAA covers European data protection",
-        "GDPR covers European data protection, while HIPAA covers international standards"
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The chapter labels GDPR as the European instrument for data protection and privacy and HIPAA as the United States instrument for healthcare information protection, while NIST and ISO 27001 are the international standards. The other options swap these roles or attach the international standards label to the wrong regulation.",
-      "question_en": "Which pairing of regulation and protected domain is correct?",
-      "explanation_en": "The chapter labels GDPR as the European instrument for data protection and privacy and HIPAA as the United States instrument for healthcare information protection, while NIST and ISO 27001 are the international standards. The other options swap these roles or attach the international standards label to the wrong regulation.",
-      "explanation_ar": "يصف الفصل GDPR بأنه الأداة الأوروبية لحماية البيانات والخصوصية، وHIPAA بأنه الأداة الأمريكية لحماية معلومات الرعاية الصحية، بينما NIST وISO 27001 هما المعياران الدوليان. بقية الخيارات تبدّل هذه الأدوار أو تنسب وصف المعايير الدولية إلى تنظيم خاطئ."
+      "answer": 0,
+      "explanation": {
+        "ar": "يصف الفصل GDPR بأنه الأداة الأوروبية لحماية البيانات والخصوصية، وHIPAA بأنه الأداة الأمريكية لحماية معلومات الرعاية الصحية، بينما NIST وISO 27001 هما المعياران الدوليان. بقية الخيارات تبدّل هذه الأدوار أو تنسب وصف المعايير الدولية إلى تنظيم خاطئ.",
+        "en": "The chapter labels GDPR as the European instrument for data protection and privacy and HIPAA as the United States instrument for healthcare information protection, while NIST and ISO 27001 are the international standards. The other options swap these roles or attach the international standards label to the wrong regulation."
+      }
     },
     {
       "id": "q17",
       "concept_id": "risk_optimization_objective",
-      "bloom_level": "Evaluate",
-      "difficulty": 5,
-      "difficulty_label": "Hard",
-      "question": "Cybersecurity can be modelled as an optimisation problem whose objective is to minimise risk while maximising security investment. Which statement best evaluates that objective?",
-      "question_ar": "يمكن نمذجة الأمن السيبراني كمسألة تحسين هدفها تقليل الخطر مع تعظيم الاستثمار الأمني. أي عبارة تقيّم هذا الهدف تقييماً أفضل؟",
+      "bloom": "Evaluate",
+      "stem": {
+        "ar": "يمكن نمذجة الأمن السيبراني كمسألة تحسين هدفها تقليل الخطر مع تعظيم الاستثمار الأمني. أي عبارة تقيّم هذا الهدف تقييماً أفضل؟",
+        "en": "Cybersecurity can be modelled as an optimisation problem whose objective is to minimise risk while maximising security investment. Which statement best evaluates that objective?"
+      },
       "options": [
-        "Risk rises as investment rises, because extra controls create additional attack paths",
-        "Risk is minimised by ignoring threat probability and paying for every available control",
-        "Risk is independent of both the investment level and the threat probabilities",
-        "Risk falls as investment rises, but the model treats control cost as a linear deduction"
+        {
+          "ar": "يرتفع الخطر مع ارتفاع الاستثمار لأن الضوابط الإضافية تخلق مسارات هجوم",
+          "en": "Risk rises as investment rises, because extra controls create additional attack paths"
+        },
+        {
+          "ar": "يُقلَّل الخطر بتجاهل احتمال التهديد والدفع لكل ضابط متاح",
+          "en": "Risk is minimised by ignoring threat probability and paying for every available control"
+        },
+        {
+          "ar": "الخطر مستقل عن مستوى الاستثمار وعن احتمالات التهديد",
+          "en": "Risk is independent of both the investment level and the threat probabilities"
+        },
+        {
+          "ar": "ينخفض الخطر مع ارتفاع الاستثمار، لكن النموذج يعامل تكلفة الضوابط كخصم خطي",
+          "en": "Risk falls as investment rises, but the model treats control cost as a linear deduction"
+        }
       ],
-      "options_ar": [
-        "يرتفع الخطر مع ارتفاع الاستثمار لأن الضوابط الإضافية تخلق مسارات هجوم",
-        "يُقلَّل الخطر بتجاهل احتمال التهديد والدفع لكل ضابط متاح",
-        "الخطر مستقل عن مستوى الاستثمار وعن احتمالات التهديد",
-        "ينخفض الخطر مع ارتفاع الاستثمار، لكن النموذج يعامل تكلفة الضوابط كخصم خطي"
-      ],
-      "options_en": [
-        "Risk rises as investment rises, because extra controls create additional attack paths",
-        "Risk is minimised by ignoring threat probability and paying for every available control",
-        "Risk is independent of both the investment level and the threat probabilities",
-        "Risk falls as investment rises, but the model treats control cost as a linear deduction"
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The objective subtracts the sum of control investments from the sum of probability-weighted impacts, so spending does reduce the objective value and the trade-off is captured as a straightforward linear deduction rather than as a curve with diminishing returns. The second option reverses the sign of the investment term, the third contradicts the fact that probabilities and impacts still drive the first sum, and the fourth denies the presence of both terms in the formula.",
-      "question_en": "Cybersecurity can be modelled as an optimisation problem whose objective is to minimise risk while maximising security investment. Which statement best evaluates that objective?",
-      "explanation_en": "The objective subtracts the sum of control investments from the sum of probability-weighted impacts, so spending does reduce the objective value and the trade-off is captured as a straightforward linear deduction rather than as a curve with diminishing returns. The second option reverses the sign of the investment term, the third contradicts the fact that probabilities and impacts still drive the first sum, and the fourth denies the presence of both terms in the formula.",
-      "explanation_ar": "يطرح الهدف مجموع الاستثمارات في الضوابط من مجموع الآثار الموزونة بالاحتمال، فالإنفاق يقلّل قيمة الهدف فعلاً، والمقايضة ممثّلة كخصم خطي مباشر لا كمنحنى بعوائد متناقصة. الخيار الثاني يعكس إشارة حدّ الاستثمار، والثالث يناقض أن الاحتمالات والآثار ما زالت تحكم المجموع الأول، والرابع ينكر وجود الحدّين في الصيغة."
+      "answer": 3,
+      "explanation": {
+        "ar": "يطرح الهدف مجموع الاستثمارات في الضوابط من مجموع الآثار الموزونة بالاحتمال، فالإنفاق يقلّل قيمة الهدف فعلاً، والمقايضة ممثّلة كخصم خطي مباشر لا كمنحنى بعوائد متناقصة. الخيار الثاني يعكس إشارة حدّ الاستثمار، والثالث يناقض أن الاحتمالات والآثار ما زالت تحكم المجموع الأول، والرابع ينكر وجود الحدّين في الصيغة.",
+        "en": "The objective subtracts the sum of control investments from the sum of probability-weighted impacts, so spending does reduce the objective value and the trade-off is captured as a straightforward linear deduction rather than as a curve with diminishing returns. The second option reverses the sign of the investment term, the third contradicts the fact that probabilities and impacts still drive the first sum, and the fourth denies the presence of both terms in the formula."
+      }
     },
     {
       "id": "q18",
       "concept_id": "defence_in_depth_domains",
-      "bloom_level": "Evaluate",
-      "difficulty": 5,
-      "difficulty_label": "Hard",
-      "question": "An organisation protects laptops, a public cloud tenant, an IoT sensor fleet and a factory control network. Which conclusion about domain-specific controls is best supported?",
-      "question_ar": "تحمي مؤسسة حواسيب محمولة ومستأجر سحابة عامة وأسطول مستشعرات إنترنت أشياء وشبكة تحكم مصنع. أي استنتاج عن الضوابط الخاصة بكل مجال تدعمه المعطيات؟",
+      "bloom": "Evaluate",
+      "stem": {
+        "ar": "تحمي مؤسسة حواسيب محمولة ومستأجر سحابة عامة وأسطول مستشعرات إنترنت أشياء وشبكة تحكم مصنع. أي استنتاج عن الضوابط الخاصة بكل مجال تدعمه المعطيات؟",
+        "en": "An organisation protects laptops, a public cloud tenant, an IoT sensor fleet and a factory control network. Which conclusion about domain-specific controls is best supported?"
+      },
       "options": [
-        "Each domain needs controls matched to it, so one universal control set is insufficient",
-        "Only the factory control network matters, since the other domains carry no real risk",
-        "One control set is enough, because firewalls protect every domain equally well",
-        "Only the public cloud tenant matters, since laptops and sensors store no data"
+        {
+          "ar": "كل مجال يحتاج ضوابط تناسبه، فمجموعة ضوابط واحدة غير كافية",
+          "en": "Each domain needs controls matched to it, so one universal control set is insufficient"
+        },
+        {
+          "ar": "شبكة تحكم المصنع وحدها تهم، لأن بقية المجالات بلا خطر حقيقي",
+          "en": "Only the factory control network matters, since the other domains carry no real risk"
+        },
+        {
+          "ar": "مجموعة واحدة تكفي، لأن جدران الحماية تحمي كل المجالات بالتساوي",
+          "en": "One control set is enough, because firewalls protect every domain equally well"
+        },
+        {
+          "ar": "مستأجر السحابة العامة وحده يهم، لأن الحواسيب والمستشعرات لا تخزّن بيانات",
+          "en": "Only the public cloud tenant matters, since laptops and sensors store no data"
+        }
       ],
-      "options_ar": [
-        "كل مجال يحتاج ضوابط تناسبه، فمجموعة ضوابط واحدة غير كافية",
-        "شبكة تحكم المصنع وحدها تهم، لأن بقية المجالات بلا خطر حقيقي",
-        "مجموعة واحدة تكفي، لأن جدران الحماية تحمي كل المجالات بالتساوي",
-        "مستأجر السحابة العامة وحده يهم، لأن الحواسيب والمستشعرات لا تخزّن بيانات"
-      ],
-      "options_en": [
-        "Each domain needs controls matched to it, so one universal control set is insufficient",
-        "Only the factory control network matters, since the other domains carry no real risk",
-        "One control set is enough, because firewalls protect every domain equally well",
-        "Only the public cloud tenant matters, since laptops and sensors store no data"
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The chapter treats network, application, cloud, IoT, mobile and industrial control security as separate domains and gives each of them a different control pair, which only makes sense if a single control set cannot cover them all. The second option contradicts that differentiation, and the third and fourth arbitrarily discard three of the four environments that the chapter explicitly identifies as needing protection.",
-      "question_en": "An organisation protects laptops, a public cloud tenant, an IoT sensor fleet and a factory control network. Which conclusion about domain-specific controls is best supported?",
-      "explanation_en": "The chapter treats network, application, cloud, IoT, mobile and industrial control security as separate domains and gives each of them a different control pair, which only makes sense if a single control set cannot cover them all. The second option contradicts that differentiation, and the third and fourth arbitrarily discard three of the four environments that the chapter explicitly identifies as needing protection.",
-      "explanation_ar": "يعامل الفصل أمن الشبكات والتطبيقات والسحابة وإنترنت الأشياء والهواتف والتحكم الصناعي كمجالات منفصلة، ويعطي كل مجال زوجاً مختلفاً من الضوابط، وهذا لا يصح إلا إذا كانت مجموعة واحدة لا تغطيها كلها. الخيار الثاني يناقض هذا التفريق، والثالث والرابع يُسقطان ثلاثة من البيئات الأربع التي يحددها الفصل كبيئات تحتاج حماية."
+      "answer": 0,
+      "explanation": {
+        "ar": "يعامل الفصل أمن الشبكات والتطبيقات والسحابة وإنترنت الأشياء والهواتف والتحكم الصناعي كمجالات منفصلة، ويعطي كل مجال زوجاً مختلفاً من الضوابط، وهذا لا يصح إلا إذا كانت مجموعة واحدة لا تغطيها كلها. الخيار الثاني يناقض هذا التفريق، والثالث والرابع يُسقطان ثلاثة من البيئات الأربع التي يحددها الفصل كبيئات تحتاج حماية.",
+        "en": "The chapter treats network, application, cloud, IoT, mobile and industrial control security as separate domains and gives each of them a different control pair, which only makes sense if a single control set cannot cover them all. The second option contradicts that differentiation, and the third and fourth arbitrarily discard three of the four environments that the chapter explicitly identifies as needing protection."
+      }
     },
     {
       "id": "q19",
       "concept_id": "perimeter_defence_limitations",
-      "bloom_level": "Evaluate",
-      "difficulty": 5,
-      "difficulty_label": "Hard",
-      "question": "Zero trust has become a leading security model in the last decade. Which statement best evaluates why perimeter-only defence became insufficient?",
-      "question_ar": "أصبحت الثقة الصفرية نموذجاً رائداً في العقد الأخير. أي عبارة تقيّم سبب عدم كفاية الدفاع بالمحيط وحده؟",
+      "bloom": "Evaluate",
+      "stem": {
+        "ar": "أصبحت الثقة الصفرية نموذجاً رائداً في العقد الأخير. أي عبارة تقيّم سبب عدم كفاية الدفاع بالمحيط وحده؟",
+        "en": "Zero trust has become a leading security model in the last decade. Which statement best evaluates why perimeter-only defence became insufficient?"
+      },
       "options": [
-        "Users, devices and services now sit outside a single well-defined network perimeter",
-        "Employees stopped using passwords and moved entirely to hardware security keys",
-        "Firewalls became technically unable to filter traffic on modern high-speed links",
-        "Attackers stopped targeting networks and moved entirely to physical intrusions"
+        {
+          "ar": "المستخدمون والأجهزة والخدمات صاروا خارج محيط شبكي واحد محدد",
+          "en": "Users, devices and services now sit outside a single well-defined network perimeter"
+        },
+        {
+          "ar": "توقف الموظفون عن استخدام كلمات المرور وانتقلوا كلياً لمفاتيح عتادية",
+          "en": "Employees stopped using passwords and moved entirely to hardware security keys"
+        },
+        {
+          "ar": "أصبحت جدران الحماية غير قادرة تقنياً على تصفية الحركة على الروابط السريعة",
+          "en": "Firewalls became technically unable to filter traffic on modern high-speed links"
+        },
+        {
+          "ar": "توقف المهاجمون عن استهداف الشبكات وانتقلوا كلياً للاختراق المادي",
+          "en": "Attackers stopped targeting networks and moved entirely to physical intrusions"
+        }
       ],
-      "options_ar": [
-        "المستخدمون والأجهزة والخدمات صاروا خارج محيط شبكي واحد محدد",
-        "توقف الموظفون عن استخدام كلمات المرور وانتقلوا كلياً لمفاتيح عتادية",
-        "أصبحت جدران الحماية غير قادرة تقنياً على تصفية الحركة على الروابط السريعة",
-        "توقف المهاجمون عن استهداف الشبكات وانتقلوا كلياً للاختراق المادي"
-      ],
-      "options_en": [
-        "Users, devices and services now sit outside a single well-defined network perimeter",
-        "Employees stopped using passwords and moved entirely to hardware security keys",
-        "Firewalls became technically unable to filter traffic on modern high-speed links",
-        "Attackers stopped targeting networks and moved entirely to physical intrusions"
-      ],
-      "answer": "A",
-      "correct": 0,
-      "explanation": "The developments that the chapter groups with zero trust, namely cloud services, IoT devices, mobile work and remote access, all place assets beyond a fixed boundary, so a single defended perimeter no longer contains what has to be protected. The second option invents a performance limit that the chapter never states, and the third and fourth describe uniform migrations that never happened, since passwords and network-borne attacks both remain in use.",
-      "question_en": "Zero trust has become a leading security model in the last decade. Which statement best evaluates why perimeter-only defence became insufficient?",
-      "explanation_en": "The developments that the chapter groups with zero trust, namely cloud services, IoT devices, mobile work and remote access, all place assets beyond a fixed boundary, so a single defended perimeter no longer contains what has to be protected. The second option invents a performance limit that the chapter never states, and the third and fourth describe uniform migrations that never happened, since passwords and network-borne attacks both remain in use.",
-      "explanation_ar": "التطورات التي يجمعها الفصل مع الثقة الصفرية — خدمات السحابة وأجهزة إنترنت الأشياء والعمل المتنقل والوصول عن بُعد — تضع الأصول خارج حدود ثابتة، فلم يبقَ محيط واحد محمي يحتوي ما يجب حمايته. الخيار الثاني يخترع حداً أدائياً لم يذكره الفصل، والثالث والرابع يصفان تحولاً كاملاً لم يحدث، فكلمات المرور والهجمات الشبكية ما زالت مستخدمة."
+      "answer": 0,
+      "explanation": {
+        "ar": "التطورات التي يجمعها الفصل مع الثقة الصفرية — خدمات السحابة وأجهزة إنترنت الأشياء والعمل المتنقل والوصول عن بُعد — تضع الأصول خارج حدود ثابتة، فلم يبقَ محيط واحد محمي يحتوي ما يجب حمايته. الخيار الثاني يخترع حداً أدائياً لم يذكره الفصل، والثالث والرابع يصفان تحولاً كاملاً لم يحدث، فكلمات المرور والهجمات الشبكية ما زالت مستخدمة.",
+        "en": "The developments that the chapter groups with zero trust, namely cloud services, IoT devices, mobile work and remote access, all place assets beyond a fixed boundary, so a single defended perimeter no longer contains what has to be protected. The second option invents a performance limit that the chapter never states, and the third and fourth describe uniform migrations that never happened, since passwords and network-borne attacks both remain in use."
+      }
     },
     {
       "id": "q20",
       "concept_id": "attack_surface_reduction",
-      "bloom_level": "Evaluate",
-      "difficulty": 5,
-      "difficulty_label": "Hard",
-      "question": "A team must reduce the attack surface of a system. Which decision is the most defensible?",
-      "question_ar": "على فريق أن يقلّل سطح الهجوم لنظام. أي قرار هو الأكثر دفاعاً؟",
+      "bloom": "Evaluate",
+      "stem": {
+        "ar": "على فريق أن يقلّل سطح الهجوم لنظام. أي قرار هو الأكثر دفاعاً؟",
+        "en": "A team must reduce the attack surface of a system. Which decision is the most defensible?"
+      },
       "options": [
-        "Keep every entry point open and rely on the asset values remaining unchanged",
-        "Retire all high-value assets so that the metric can no longer be computed",
-        "Open additional entry points so that attackers become confused by the extra services",
-        "Close unnecessary entry points and patch severe vulnerabilities on high-value assets"
+        {
+          "ar": "إبقاء كل نقاط الدخول مفتوحة والاعتماد على بقاء قيم الأصول ثابتة",
+          "en": "Keep every entry point open and rely on the asset values remaining unchanged"
+        },
+        {
+          "ar": "إخراج كل الأصول عالية القيمة من الخدمة حتى يتعذر حساب المقياس",
+          "en": "Retire all high-value assets so that the metric can no longer be computed"
+        },
+        {
+          "ar": "فتح نقاط دخول إضافية حتى يرتبك المهاجمون بالخدمات الزائدة",
+          "en": "Open additional entry points so that attackers become confused by the extra services"
+        },
+        {
+          "ar": "إغلاق نقاط الدخول غير الضرورية وسدّ الثغرات الخطيرة في الأصول عالية القيمة",
+          "en": "Close unnecessary entry points and patch severe vulnerabilities on high-value assets"
+        }
       ],
-      "options_ar": [
-        "إبقاء كل نقاط الدخول مفتوحة والاعتماد على بقاء قيم الأصول ثابتة",
-        "إخراج كل الأصول عالية القيمة من الخدمة حتى يتعذر حساب المقياس",
-        "فتح نقاط دخول إضافية حتى يرتبك المهاجمون بالخدمات الزائدة",
-        "إغلاق نقاط الدخول غير الضرورية وسدّ الثغرات الخطيرة في الأصول عالية القيمة"
-      ],
-      "options_en": [
-        "Keep every entry point open and rely on the asset values remaining unchanged",
-        "Retire all high-value assets so that the metric can no longer be computed",
-        "Open additional entry points so that attackers become confused by the extra services",
-        "Close unnecessary entry points and patch severe vulnerabilities on high-value assets"
-      ],
-      "answer": "D",
-      "correct": 3,
-      "explanation": "The attack surface grows with the number of exposed entry points, the severity of the vulnerabilities behind them and the value of the assets they lead to, so the defensible action is to reduce the first factor and lower the second on the components that matter most. Opening extra services increases the product directly, leaving entry points untouched changes nothing, and destroying the assets to defeat the measurement confuses the indicator with the objective.",
-      "question_en": "A team must reduce the attack surface of a system. Which decision is the most defensible?",
-      "explanation_en": "The attack surface grows with the number of exposed entry points, the severity of the vulnerabilities behind them and the value of the assets they lead to, so the defensible action is to reduce the first factor and lower the second on the components that matter most. Opening extra services increases the product directly, leaving entry points untouched changes nothing, and destroying the assets to defeat the measurement confuses the indicator with the objective.",
-      "explanation_ar": "يكبر سطح الهجوم بعدد نقاط الدخول المكشوفة، وبخطورة الثغرات خلفها، وبقيمة الأصول التي تفضي إليها، فالقرار السليم هو تقليل العامل الأول وخفض الثاني في المكونات الأهم. فتح خدمات إضافية يزيد الحاصل مباشرة، وترك نقاط الدخول لا يغيّر شيئاً، وتدمير الأصول لإفشال القياس يخلط بين المؤشر والهدف."
+      "answer": 3,
+      "explanation": {
+        "ar": "يكبر سطح الهجوم بعدد نقاط الدخول المكشوفة، وبخطورة الثغرات خلفها، وبقيمة الأصول التي تفضي إليها، فالقرار السليم هو تقليل العامل الأول وخفض الثاني في المكونات الأهم. فتح خدمات إضافية يزيد الحاصل مباشرة، وترك نقاط الدخول لا يغيّر شيئاً، وتدمير الأصول لإفشال القياس يخلط بين المؤشر والهدف.",
+        "en": "The attack surface grows with the number of exposed entry points, the severity of the vulnerabilities behind them and the value of the assets they lead to, so the defensible action is to reduce the first factor and lower the second on the components that matter most. Opening extra services increases the product directly, leaving entry points untouched changes nothing, and destroying the assets to defeat the measurement confuses the indicator with the objective."
+      }
     }
   ],
-  "chapter": "Chapter 1",
-  "chapter_no": 1,
-  "demo": false,
-  "topic_ar": "مقدمة في الأمن السيبراني",
-  "material_url": "https://t.me/c/3710711332/84/182"
+  "topic": {
+    "ar": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor",
+    "en": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor"
+  },
+  "updated_at": "2026-10-21T13:48:08Z",
+  "has_math": false,
+  "version": 1,
+  "material_url": "https://t.me/c/3710711332/84/182",
+  "question_count": 20
 }

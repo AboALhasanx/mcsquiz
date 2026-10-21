@@ -14,6 +14,8 @@ const CORE = [
   './js/quiz-vault.js',
   './js/lucide.min.js',
   './js/qrcode.min.js',
+  './js/vendor/katex/katex.min.js',
+  './js/vendor/katex/katex.min.css',
   './js/pwa.js',
   './js/debug.js',
   './js/tg-config.js',
@@ -31,6 +33,26 @@ const CORE = [
   './assets/fonts/plex-arabic-700-arabic.woff2',
   './assets/fonts/plex-arabic-700-latin.woff2',
   './assets/brand-icon-light.png',
+  './assets/fonts/katex/KaTeX_AMS-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Caligraphic-Bold.woff2',
+  './assets/fonts/katex/KaTeX_Caligraphic-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Fraktur-Bold.woff2',
+  './assets/fonts/katex/KaTeX_Fraktur-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Main-Bold.woff2',
+  './assets/fonts/katex/KaTeX_Main-BoldItalic.woff2',
+  './assets/fonts/katex/KaTeX_Main-Italic.woff2',
+  './assets/fonts/katex/KaTeX_Main-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Math-BoldItalic.woff2',
+  './assets/fonts/katex/KaTeX_Math-Italic.woff2',
+  './assets/fonts/katex/KaTeX_SansSerif-Bold.woff2',
+  './assets/fonts/katex/KaTeX_SansSerif-Italic.woff2',
+  './assets/fonts/katex/KaTeX_SansSerif-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Script-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Size1-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Size2-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Size3-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Size4-Regular.woff2',
+  './assets/fonts/katex/KaTeX_Typewriter-Regular.woff2',
   './assets/brand-icon-dark.png',
   './assets/avatar-default.svg',
   './assets/avatars/person-01.png',
@@ -104,6 +126,11 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
+  // versioned URLs (?v=) ask for one specific revision: always go to the network
+  if (url.searchParams.has('v')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
   e.respondWith(
     caches.match(e.request).then((hit) => {
       const net = fetch(e.request).then((res) => {

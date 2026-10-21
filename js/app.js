@@ -158,20 +158,158 @@
   }
 
   // ---------------- data ----------------
+  // The content is versioned: data/index.json carries a version, every chapter
+  // carries its own. The app keeps the banks it already has (localStorage), and
+  // only downloads the ones that actually changed — that is what makes
+  // "new questions published" appear without a redeploy of the whole app.
+  const BANKS_KEY = 'portal_banks_v1';
+  const SEEN_KEY = 'portal_seen_v1';
+
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  function loadBankStore() {
+    try {
+      const s = JSON.parse(lsGet(BANKS_KEY) || '{}');
+      return (s && typeof s === 'object') ? s : {};
+    } catch (e) { return {}; }
+  }
+
+  function saveBankStore(store) {
+    try { lsSet(BANKS_KEY, JSON.stringify(store)); } catch (e) {}
+  }
+
+  function loadSeen() {
+    try {
+      const s = JSON.parse(lsGet(SEEN_KEY) || '{}');
+      return (s && typeof s === 'object') ? s : {};
+    } catch (e) { return {}; }
+  }
+
+  function saveSeen(seen) {
+    try { lsSet(SEEN_KEY, JSON.stringify(seen)); } catch (e) {}
+  }
+
+  // v3 is the canonical shape; older banks are read through the same normaliser
+  // the publish tool uses (the pairs may be plain strings in a hand-edited file)
+  function normalizeBank(raw, fallbackTitle) {
+    const b = raw && typeof raw === 'object' ? raw : {};
+    const pair = (v, arFallback, enFallback) => {
+      if (v && typeof v === 'object') return { ar: v.ar || '', en: v.en || '' };
+      return { ar: arFallback || '', en: enFallback || (typeof v === 'string' ? v : '') };
+    };
+    const out = {
+      schema_version: 3,
+      quiz_id: b.quiz_id || '',
+      subject_id: b.subject_id || b.subject || '',
+      subject_title: b.subject_title || '',
+      topic: pair(b.topic, b.topic_ar, b.topic),
+      instructor: pair(b.instructor, b.instructor_ar, b.instructor),
+      updated_at: b.updated_at || '',
+      has_math: !!b.has_math,
+      questions: [],
+    };
+    (b.questions || []).forEach((q) => {
+      const opts = (q.options || []).map((o) => {
+        if (o && typeof o === 'object') return { ar: o.ar || '', en: o.en || '' };
+        return { ar: '', en: o || '' };
+      });
+      const optAr = (q.options_ar && q.options_ar.length ? q.options_ar : null);
+      const optEn = (q.options_en && q.options_en.length ? q.options_en : null);
+      if (optAr || optEn) {
+        const ar = optAr || [];
+        const en = optEn || [];
+        for (let i = 0; i < 4; i++) {
+          opts[i] = { ar: (ar[i] || ''), en: (en[i] || '') };
+        }
+      }
+      let answer = q.answer;
+      if (typeof answer === 'string' && 'ABCD'.indexOf(answer.toUpperCase()) >= 0) {
+        answer = 'ABCD'.indexOf(answer.toUpperCase());
+      }
+      if (typeof answer !== 'number' && typeof q.correct === 'number') answer = q.correct;
+      const answerIdx = typeof answer === 'number' ? answer : -1;
+      out.questions.push({
+        id: q.id || '',
+        concept_id: q.concept_id || '',
+        bloom: q.bloom || q.bloom_level || '',
+        stem: pair(q.stem, q.question_ar, q.question_en || q.question),
+        options: opts,
+        answer: answerIdx,
+        correct: answerIdx,
+        explanation: pair(q.explanation, q.explanation_ar, q.explanation_en),
+      });
+    });
+    if (!out.topic.ar && !out.topic.en) out.topic = { ar: fallbackTitle || '', en: '' };
+    return out;
+  }
+
   async function loadData() {
     const t0 = performance.now();
-    const idx = await (await fetch('data/index.json', { cache: 'no-store' })).json();
+    const store = loadBankStore();
+    const seen = loadSeen();
+    let idx = null;
+    let fresh = false;
+    // the index is small: always ask the network, fall back to the cache offline
+    try {
+      const r = await fetch('data/index.json?v=' + Date.now(), { cache: 'no-store' });
+      if (r.ok) { idx = await r.json(); fresh = true; }
+    } catch (e) { /* offline */ }
+    if (!idx) {
+      try { idx = await (await fetch('data/index.json', { cache: 'no-store' })).json(); }
+      catch (e) { throw new Error('no content'); }
+    }
     S.index = idx;
+    S.contentVersion = Number(idx.version || 0);
+
     const jobs = [];
     idx.subjects.forEach((sub) => sub.chapters.forEach((ch) => {
-      jobs.push(fetch('data/' + ch.bank, { cache: 'no-store' }).then((r) => r.json()).then((bank) => {
-        const errs = validateBank(bank);
-        if (errs.length) throw new Error(ch.bank + ': ' + errs.join('; '));
-        S.banks[ch.quiz_id] = bank;
-      }));
+      const want = Number(ch.version || 1);
+      const cached = store[ch.quiz_id];
+      if (cached && Number(cached.v) === want) {
+        S.banks[ch.quiz_id] = cached.b;
+        return;
+      }
+      jobs.push(fetch('data/' + ch.bank + '?v=' + want, { cache: 'no-store' })
+        .then((r) => { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+        .then((raw) => {
+          const bank = normalizeBank(raw, (ch.topic && ch.topic.ar) || '');
+          const errs = validateBank(bank);
+          if (errs.length) throw new Error(ch.bank + ': ' + errs.join('; '));
+          S.banks[ch.quiz_id] = bank;
+          store[ch.quiz_id] = { v: want, b: bank };
+        }));
     }));
-    await Promise.all(jobs);
-    dbg('data loaded in ms:', Math.round(performance.now() - t0), 'banks:', Object.keys(S.banks));
+    if (jobs.length) {
+      await Promise.all(jobs);
+      saveBankStore(store);
+    }
+
+    // the first run sets the baseline: what is there now is not "new"
+    const seenExisted = !!lsGet(SEEN_KEY);
+    if (!seenExisted) {
+      idx.subjects.forEach((sub) => sub.chapters.forEach((ch) => {
+        seen[ch.quiz_id] = Number(ch.version || 1);
+      }));
+      saveSeen(seen);
+    }
+
+    // which chapters carry questions the student has not seen yet
+    const freshChapters = [];
+    idx.subjects.forEach((sub) => sub.chapters.forEach((ch) => {
+      const want = Number(ch.version || 1);
+      if (Number(seen[ch.quiz_id] || 0) < want) {
+        freshChapters.push({
+          quiz_id: ch.quiz_id,
+          subject: sub.subject_title,
+          chapter: ch.chapter_no,
+          count: ch.count || 0,
+          updated_at: ch.updated_at || '',
+        });
+      }
+    }));
+    S.freshChapters = freshChapters;
+    dbg('data loaded in ms:', Math.round(performance.now() - t0), 'banks:', Object.keys(S.banks), 'fresh:', freshChapters.length);
     if (DEBUG) $('debug-panel').classList.remove('hidden');
   }
 
@@ -179,9 +317,17 @@
     const errs = [];
     if (!Array.isArray(b.questions) || b.questions.length === 0) errs.push('no questions');
     (b.questions || []).forEach((q) => {
-      if (!(q.options && q.options_ar && q.options_en) || q.options.length !== 4 || q.options_ar.length !== 4 || q.options_en.length !== 4) errs.push(q.id + ':optlen');
-      if ('ABCD'[q.correct] !== q.answer) errs.push(q.id + ':keysync');
-      if (!q.explanation) errs.push(q.id + ':noexpl');
+      const opts = q.options || [];
+      if (opts.length !== 4) errs.push(q.id + ':optlen');
+      opts.forEach((o, i) => {
+        const v = (o && typeof o === 'object') ? (o.ar || o.en) : o;
+        if (!v) errs.push(q.id + ':opt' + i + 'empty');
+      });
+      if (!(q.answer >= 0 && q.answer <= 3)) errs.push(q.id + ':keysync');
+      const ex = (q.explanation && typeof q.explanation === 'object') ? (q.explanation.ar || q.explanation.en) : q.explanation;
+      if (!ex) errs.push(q.id + ':noexpl');
+      const stem = (q.stem && typeof q.stem === 'object') ? (q.stem.ar || q.stem.en) : '';
+      if (!stem) errs.push(q.id + ':nostem');
     });
     return errs;
   }
@@ -369,7 +515,52 @@
     if (active) { try { active.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {} }
   }
 
+  // the "new questions" notice at the top of the catalogue
+  function renderContentBanner() {
+    const banner = $('content-new-banner');
+    if (!banner) return;
+    const fresh = S.freshChapters || [];
+    if (!fresh.length) { banner.classList.add('hidden'); banner.innerHTML = ''; return; }
+    banner.classList.remove('hidden');
+    const total = fresh.reduce((n, f) => n + (f.count || 0), 0);
+    const lines = fresh.map((f) =>
+      '<a class="content-new-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '">' +
+      '<span class="content-new-subject">' + escapeHtml(f.subject) + '</span>' +
+      '<span class="content-new-chapter">' + escapeHtml(chLabel({ chapter_no: f.chapter })) + '</span>' +
+      '<span class="content-new-count">' + (f.count || 0) + ' سؤال</span>' +
+      '<i data-lucide="chevron-left"></i></a>').join('');
+    banner.innerHTML =
+      '<div class="content-new-head"><i data-lucide="sparkles"></i>' +
+      '<div><strong>نزلت أسئلة جديدة</strong>' +
+      '<span>' + (total ? (total + ' سؤال تحت البوابة') : 'تحدّث المحتوى') + '</span></div>' +
+      '</div>' + lines;
+    icons();
+  }
+
+  function findChapter(quizId) {
+    const idx = S.index || {};
+    let found = null;
+    (idx.subjects || []).forEach((sub) => (sub.chapters || []).forEach((ch) => {
+      if (ch.quiz_id === quizId) found = ch;
+    }));
+    return found;
+  }
+
+  // a chapter counts as seen once the student opens it
+  function markChapterSeen(quizId) {
+    const seen = loadSeen();
+    const ch = findChapter(quizId);
+    if (!ch) return;
+    if (Number(seen[quizId] || 0) >= Number(ch.version || 1)) return;
+    seen[quizId] = Number(ch.version || 1);
+    saveSeen(seen);
+    S.freshChapters = (S.freshChapters || []).filter((f) => f.quiz_id !== quizId);
+    renderContentBanner();
+    renderCatalog();
+  }
+
   function renderCatalog() {
+    renderContentBanner();
     const box = $('catalog-cards-container');
     box.innerHTML = '';
     let count = 0;
@@ -381,6 +572,7 @@
       const row = document.createElement('div');
       row.className = 'sketch-row';
       const title = topicTitle(bank);
+      const isFresh = !!(S.freshChapters || []).some((f) => f.quiz_id === ch.quiz_id);
       row.innerHTML =
         '<button type="button" class="sketch-cell sketch-info-cell row-info-cell" aria-label="تفاصيل الكوز">' +
           '<i data-lucide="info"></i></button>' +
@@ -388,6 +580,7 @@
           '<div class="sketch-eyebrow">' +
             '<span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
             '<span class="sketch-chip">' + escapeHtml(chLabel(ch)) + '</span>' +
+            (isFresh ? '<span class="sketch-chip sketch-chip-new">جديد</span>' : '') +
           '</div>' +
           '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '">' + escapeHtml(title) + '</div>' +
           '<div class="sketch-meta-line">' +
@@ -448,10 +641,19 @@
     // Always shuffle options; remap correct (fixes positional bias).
     pool.forEach((q) => {
       const order = shuffle([0, 1, 2, 3]);
-      q.options = order.map((i) => q.options[i]);
-      q.options_ar = order.map((i) => q.options_ar[i]);
-      q.options_en = order.map((i) => q.options_en[i]);
-      q.correct = order.indexOf(q.correct);
+      if (Array.isArray(q.options) && q.options.length && q.options[0] && typeof q.options[0] === 'object') {
+        // v3: the options are {ar, en} pairs, shuffled together
+        q.options = order.map((i) => q.options[i]);
+      } else {
+        q.options = order.map((i) => q.options[i]);
+        if (Array.isArray(q.options_ar)) q.options_ar = order.map((i) => q.options_ar[i]);
+        if (Array.isArray(q.options_en)) q.options_en = order.map((i) => q.options_en[i]);
+      }
+      // v3 calls it "answer", the session has always used "correct"
+      const key = (typeof q.correct === 'number' && q.correct >= 0) ? q.correct
+        : (typeof q.answer === 'number' ? q.answer : -1);
+      q.correct = order.indexOf(key);
+      q.answer = q.correct;
     });
     return pool;
   }
@@ -532,6 +734,7 @@
       pool = sub2; retryWrong = true;
     }
     const origin = originOf(sub, ch, bank);
+    markChapterSeen(ch.quiz_id);
     launchSession(pool, {
       subjectId: sub.subject_id, subjectTitle: sub.subject_title,
       chapterNo: ch.chapter_no, topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
@@ -746,7 +949,7 @@
       stemPair(q).forEach((sp, si) => {
         const stem = document.createElement('p');
         stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
-        stem.innerHTML = bidiHtml(sp.t);
+        stem.innerHTML = richHtml(sp.t);
         stem.setAttribute('dir', 'auto');
         card.appendChild(stem);
       });
@@ -760,7 +963,7 @@
         item.setAttribute('dir', 'auto');
         const li = lettersFor(pair[0].lang);
         item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
-          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + bidiHtml(p.t) + '</span>').join('') + '</span>';
+          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + richHtml(p.t) + '</span>').join('') + '</span>';
         optionsList.appendChild(item);
       }
       card.appendChild(optionsList);
@@ -769,7 +972,7 @@
         const exp = document.createElement('div');
         exp.className = 'review-explanation-box';
         exp.setAttribute('dir', 'auto');
-        exp.innerHTML = '<strong>الشرح</strong><span>' + bidiHtml(expl) + '</span>';
+        exp.innerHTML = '<strong>الشرح</strong><span>' + richHtml(expl) + '</span>';
         card.appendChild(exp);
       }
       const rm = document.createElement('button');
@@ -837,11 +1040,74 @@
     const s = String(text == null ? '' : text);
     if (!AR_RE.test(s)) return escapeHtml(s);
     return s.split(/([\x20-\x7E]+)/g).map(function (part) {
-      if (/^[\x20-\x7E]+$/.test(part)) {
+      // isolate a Latin/number run, but never a lone space (it would break
+      // the Arabic line flow)
+      if (/^[\x20-\x7E]+$/.test(part) && /[A-Za-z0-9]/.test(part)) {
         return '<bdi dir="ltr">' + escapeHtml(part) + '</bdi>';
       }
       return escapeHtml(part);
     }).join('');
+  }
+
+  // ---------------- math + mixed text ----------------
+  // A question may mix Arabic prose, English technical terms and LaTeX:
+  //   $x^2 + 1$        inline math
+  //   $$\sum_{i=1}^n$$  display math
+  // The math is pulled out first (so the bidi pass never touches it), then
+  // rendered with KaTeX and wrapped in <bdi dir="ltr"> so it keeps its own
+  // direction inside the Arabic line.
+  const MATH_RE = /\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g;
+
+  function hasMath(text) {
+    MATH_RE.lastIndex = 0;
+    return MATH_RE.test(String(text == null ? '' : text));
+  }
+
+  function katexReady() {
+    return !!(window.katex && typeof window.katex.renderToString === 'function');
+  }
+
+  function renderMath(src, display) {
+    if (!katexReady()) {
+      // no math engine (or it failed): show the source, still readable
+      return '<bdi dir="ltr">' + escapeHtml(src) + '</bdi>';
+    }
+    try {
+      const html = window.katex.renderToString(src, {
+        displayMode: !!display,
+        throwOnError: false,
+        strict: false,
+        trust: false,
+        output: 'html'
+      });
+      return '<bdi dir="ltr" class="math-inline">' + html + '</bdi>';
+    } catch (e) {
+      return '<bdi dir="ltr">' + escapeHtml(src) + '</bdi>';
+    }
+  }
+
+  // exposed so the math renderer can be checked from the console and by tests
+  window.PortalRich = {
+    html: function (t) { return richHtml(t); },
+    hasMath: function (t) { return hasMath(t); },
+  };
+
+  // the renderer every question, option and explanation goes through
+  function richHtml(text) {
+    const raw = String(text == null ? '' : text);
+    if (raw.indexOf('$') < 0) return bidiHtml(raw);
+    MATH_RE.lastIndex = 0;
+    let out = '';
+    let last = 0;
+    let m;
+    while ((m = MATH_RE.exec(raw)) !== null) {
+      out += bidiHtml(raw.slice(last, m.index));
+      if (m[1] !== undefined) out += renderMath(m[1], true);
+      else out += renderMath(m[2], false);
+      last = m.index + m[0].length;
+    }
+    out += bidiHtml(raw.slice(last));
+    return out;
   }
 
   // pick the candidate that really is in the wanted language (the banks carry
@@ -860,22 +1126,48 @@
     }
     return '';
   }
-  function stemAr(q) { return pickAr(q.question_ar, q.text) || q.question_en || q.question || ''; }
-  function stemEn(q) { return pickEn(q.question_en, q.text_en) || q.question_ar || q.question || ''; }
+  // v3 shape: stem/options/explanation are {ar, en} pairs. The fallbacks keep
+  // the older files readable while they are being republished.
+  function stemAr(q) {
+    const s = q.stem;
+    if (s && typeof s === 'object') return pickAr(s.ar, s.en);
+    return pickAr(q.question_ar, q.text) || q.question_en || q.question || '';
+  }
+  function stemEn(q) {
+    const s = q.stem;
+    if (s && typeof s === 'object') return pickEn(s.en, s.ar);
+    return pickEn(q.question_en, q.text_en) || q.question_ar || q.question || '';
+  }
   function optsAr(q) {
-    const a = q.options_ar; const b = q.options;
+    const o = q.options;
+    if (Array.isArray(o) && o.length && o[0] && typeof o[0] === 'object') {
+      return o.map((x) => (x && (x.ar || x.en)) || '');
+    }
+    const a = q.options_ar; const b = o;
     if (Array.isArray(a) && a.length && AR_RE.test(String(a[0]))) return a;
     if (Array.isArray(b) && b.length && AR_RE.test(String(b[0]))) return b;
     return (Array.isArray(a) && a.length) ? a : (Array.isArray(b) ? b : []);
   }
   function optsEn(q) {
-    const a = q.options_en; const b = q.options;
+    const o = q.options;
+    if (Array.isArray(o) && o.length && o[0] && typeof o[0] === 'object') {
+      return o.map((x) => (x && (x.en || x.ar)) || '');
+    }
+    const a = q.options_en; const b = o;
     if (Array.isArray(a) && a.length && !AR_RE.test(String(a[0]))) return a;
     if (Array.isArray(b) && b.length && !AR_RE.test(String(b[0]))) return b;
     return (Array.isArray(a) && a.length) ? a : (Array.isArray(b) ? b : []);
   }
-  function explAr(q) { return pickAr(q.explanation_ar, q.explanation, q.explanation_en); }
-  function explEn(q) { return pickEn(q.explanation_en, q.explanation, q.explanation_ar); }
+  function explAr(q) {
+    const e = q.explanation;
+    if (e && typeof e === 'object') return pickAr(e.ar, e.en);
+    return pickAr(q.explanation_ar, q.explanation, q.explanation_en);
+  }
+  function explEn(q) {
+    const e = q.explanation;
+    if (e && typeof e === 'object') return pickEn(e.en, e.ar);
+    return pickEn(q.explanation_en, q.explanation, q.explanation_ar);
+  }
 
   function syncLangButtons() {
     document.querySelectorAll('.lang-opt').forEach((b) => {
@@ -922,11 +1214,11 @@
     $('progress-bar-fill').style.width = (ses.idx / ses.questions.length) * 100 + '%';
     const stems = stemPair(q);
     const qEl = $('question-text');
-    qEl.innerHTML = bidiHtml(stems[0].t);
+    qEl.innerHTML = richHtml(stems[0].t);
     qEl.setAttribute('dir', 'auto');
     const qEl2 = $('question-text-2');
     if (stems[1]) {
-      qEl2.innerHTML = bidiHtml(stems[1].t);
+      qEl2.innerHTML = richHtml(stems[1].t);
       qEl2.setAttribute('dir', 'auto');
       qEl2.classList.remove('hidden');
     } else {
@@ -958,7 +1250,7 @@
       const content = document.createElement('div');
       content.className = 'option-content';
       content.setAttribute('dir', 'auto');
-      content.innerHTML = pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + bidiHtml(p.t) + '</span>').join('');
+      content.innerHTML = pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + richHtml(p.t) + '</span>').join('');
       btn.appendChild(letter);
       btn.appendChild(content);
       if (!locked) btn.addEventListener('click', () => pickOption(i));
@@ -975,7 +1267,7 @@
     const showBox = answered && !!expl;
     boxEl.classList.toggle('hidden', !showBox);
     if (showBox) {
-      explBody.innerHTML = bidiHtml(expl);
+      explBody.innerHTML = richHtml(expl);
       explBody.setAttribute('dir', 'auto');
       setExplOpen(boxEl, explToggle, explBody, wasWrong);
     }
@@ -1486,7 +1778,7 @@
       stemPair(q).forEach((sp, si) => {
         const stem = document.createElement('p');
         stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
-        stem.innerHTML = bidiHtml(sp.t);
+        stem.innerHTML = richHtml(sp.t);
         stem.setAttribute('dir', 'auto');
         card.appendChild(stem);
       });
@@ -1504,7 +1796,7 @@
         item.setAttribute('dir', 'auto');
         const li = lettersFor(pair[0].lang);
         item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
-          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + bidiHtml(p.t) + '</span>').join('') + '</span>';
+          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + richHtml(p.t) + '</span>').join('') + '</span>';
         optionsList.appendChild(item);
       }
       card.appendChild(optionsList);
@@ -1519,7 +1811,7 @@
           '<span>الشرح</span>' +
           '<i data-lucide="chevron-down" class="expl-chevron"></i>' +
           '</button>' +
-          '<div class="expl-body" dir="auto" hidden>' + bidiHtml(expl) + '</div>';
+          '<div class="expl-body" dir="auto" hidden>' + richHtml(expl) + '</div>';
         const tg = exp.querySelector('.expl-toggle');
         const body = exp.querySelector('.expl-body');
         tg.addEventListener('click', () => {

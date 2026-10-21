@@ -1595,3 +1595,39 @@ body:not([data-quizlive="yes"]) #btn-exit {
   color: #f59e0b;
 }
 
+
+/* ---------- new questions notice ---------- */
+.content-new-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.85rem 0.9rem;
+  margin: 0.25rem 0 0.6rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(201, 162, 39, 0.14), transparent 60%),
+    var(--bg-card);
+}
+.content-new-head { display: flex; align-items: center; gap: 0.6rem; }
+.content-new-head > svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
+.content-new-head strong { display: block; font-size: 0.9rem; font-weight: 800; }
+.content-new-head span { font-size: 0.72rem; color: var(--text-muted); }
+.content-new-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.content-new-row:hover { border-color: var(--accent); }
+.content-new-subject { font-weight: 700; }
+.content-new-chapter { color: var(--text-muted); font-size: 0.74rem; }
+.content-new-count { margin-inline-start: auto; color: var(--accent); font-weight: 800; font-size: 0.74rem; }
+.content-new-row > svg { width: 16px; height: 16px; color: var(--text-subtle); flex-shrink: 0; }
+.sketch-chip-new { background: var(--accent); border-color: var(--accent); color: #12141a; }

@@ -1,68 +1,70 @@
 {
   "portal": "MCQ Portal",
   "test_mode": false,
-  "updated": "2026-10-18",
-  "version": 15,
+  "version": 16,
+  "updated_at": "2026-10-21T13:48:08Z",
   "subjects": [
     {
+      "subject_id": "01_Cyber_Security",
+      "subject_title": "الأمن السيبراني",
       "chapters": [
         {
           "chapter_no": 1,
           "quiz_id": "Quiz_Ch01_DrHuda_20MCQ",
-          "topic": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor",
           "bank": "banks/01_Cyber_Security_Ch01_Quiz_Ch01_DrHuda_20MCQ.json",
-          "topic_ar": "مقدمة في الأمن السيبراني",
+          "topic": {
+            "ar": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor",
+            "en": "Chapter 1: Introduction to Cybersecurity, 20 MCQ bank requested by the instructor"
+          },
+          "count": 20,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/84/182"
         },
         {
           "chapter_no": 2,
           "quiz_id": "Quiz_Ch02_DrHuda_20MCQ",
-          "topic": "Chapter 2: Cybersecurity Risks and Threats, 20 MCQ bank requested by the instructor",
           "bank": "banks/01_Cyber_Security_Ch02_Quiz_Ch02_DrHuda_20MCQ.json",
-          "topic_ar": "مخاطر وتهديدات الأمن السيبراني",
+          "topic": {
+            "ar": "Chapter 2: Cybersecurity Risks and Threats, 20 MCQ bank requested by the instructor",
+            "en": "Chapter 2: Cybersecurity Risks and Threats, 20 MCQ bank requested by the instructor"
+          },
+          "count": 20,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/84/183"
         },
         {
           "chapter_no": 3,
           "quiz_id": "Quiz_01_Cybersecurity_Foundations",
-          "topic": "Week 01: Cybersecurity Foundations, CIA Triad & Risk Assessment",
           "bank": "banks/01_Cyber_Security_Ch03_Quiz_01_Cybersecurity_Foundations.json",
-          "topic_ar": "أسس الأمن السيبراني: ثلاثية CIA وتقييم المخاطر",
+          "topic": {
+            "ar": "Week 01: Cybersecurity Foundations, CIA Triad & Risk Assessment",
+            "en": "Week 01: Cybersecurity Foundations, CIA Triad & Risk Assessment"
+          },
+          "count": 30,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/84/184"
         },
         {
           "chapter_no": 4,
           "quiz_id": "Quiz_02_Risk_Assessment",
-          "topic": "Week 02: Cybersecurity Risks, Threats, Countermeasures & Risk Management",
           "bank": "banks/01_Cyber_Security_Ch04_Quiz_02_Risk_Assessment.json",
-          "topic_ar": "مخاطر الأمن السيبراني: التهديدات وإجراءات الحماية وإدارة المخاطر",
+          "topic": {
+            "ar": "Week 02: Cybersecurity Risks, Threats, Countermeasures & Risk Management",
+            "en": "Week 02: Cybersecurity Risks, Threats, Countermeasures & Risk Management"
+          },
+          "count": 30,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/84/185"
         }
-      ],
-      "subject_id": "01_Cyber_Security",
-      "subject_title": "الأمن السيبراني"
-    },
-    {
-      "chapters": [
-        {
-          "chapter_no": 1,
-          "quiz_id": "Quiz_01_Software_Crisis",
-          "topic": "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics",
-          "bank": "banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json",
-          "topic_ar": "أسس هندسة البرمجيات: فشل الباتريوت وتعقيد بروكس والأخلاقيات",
-          "material_url": "https://t.me/c/3710711332/87/197"
-        },
-        {
-          "chapter_no": 2,
-          "quiz_id": "Quiz_02_Patriot_Brooks",
-          "topic": "Lecture 01: Patriot Drift & Brooks Essential Complexity",
-          "bank": "banks/04_Advanced_Software_Eng_Ch02_Quiz_02_Patriot_Brooks.json",
-          "topic_ar": "انحراف الباتريوت والتعقيد الجوهري لبروكس",
-          "material_url": "https://t.me/c/3710711332/87/198"
-        }
-      ],
-      "subject_id": "04_Advanced_Software_Eng",
-      "subject_title": "هندسة البرمجيات"
+      ]
     },
     {
       "subject_id": "02_English_Language",
@@ -71,9 +73,15 @@
         {
           "chapter_no": 1,
           "quiz_id": "Quiz_01_Grammar_and_Tenses",
-          "topic": "Unit 01: The English Tense System, Time Adverbials & Academic Register",
           "bank": "banks/02_English_Language_Ch01_Quiz_01_Grammar_and_Tenses.json",
-          "topic_ar": "نظام الأزمنة الإنجليزي: الأفعال الزمنية والتسجيل الأكاديمي",
+          "topic": {
+            "ar": "Unit 01: The English Tense System, Time Adverbials & Academic Register",
+            "en": "Unit 01: The English Tense System, Time Adverbials & Academic Register"
+          },
+          "count": 5,
+          "version": 2,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/85/188"
         }
       ]
@@ -85,10 +93,50 @@
         {
           "chapter_no": 1,
           "quiz_id": "Quiz_01_Introduction_to_Data_Mining",
-          "topic": "Week 01: Introduction to Data Mining",
           "bank": "banks/03_Data_Mining_Ch01_Quiz_01_Introduction_to_Data_Mining.json",
-          "topic_ar": "مقدمة في التنقيب عن البيانات",
+          "topic": {
+            "ar": "المحاضرة 01: مقدمة في التنقيب عن البيانات",
+            "en": "Week 01: Introduction to Data Mining"
+          },
+          "count": 25,
+          "version": 2,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/86/191"
+        }
+      ]
+    },
+    {
+      "subject_id": "04_Advanced_Software_Eng",
+      "subject_title": "هندسة البرمجيات",
+      "chapters": [
+        {
+          "chapter_no": 1,
+          "quiz_id": "Quiz_01_Software_Crisis",
+          "bank": "banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json",
+          "topic": {
+            "ar": "المحاضرة 01: أسس هندسة البرمجيات، فشل الباتريوت، تعقيد بروكس والأخلاقيات",
+            "en": "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics"
+          },
+          "count": 5,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
+          "material_url": "https://t.me/c/3710711332/87/197"
+        },
+        {
+          "chapter_no": 2,
+          "quiz_id": "Quiz_02_Patriot_Brooks",
+          "bank": "banks/04_Advanced_Software_Eng_Ch02_Quiz_02_Patriot_Brooks.json",
+          "topic": {
+            "ar": "محاضرة 01: انحراف باتريوت والتعقيد الجوهري لبروكس",
+            "en": "Lecture 01: Patriot Drift & Brooks Essential Complexity"
+          },
+          "count": 5,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
+          "material_url": "https://t.me/c/3710711332/87/198"
         }
       ]
     },
@@ -99,17 +147,29 @@
         {
           "chapter_no": 1,
           "quiz_id": "Quiz_01_Soft_Computing_Foundations",
-          "topic": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic",
           "bank": "banks/05_Soft_Computing_Ch01_Quiz_01_Soft_Computing_Foundations.json",
-          "topic_ar": "مقدمة في الحوسبة الناعمة: الأعصاب البيولوجية والمنطق الغامض",
+          "topic": {
+            "ar": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic",
+            "en": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic"
+          },
+          "count": 5,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/88/202"
         },
         {
           "chapter_no": 2,
           "quiz_id": "Quiz_02_Fuzzy_Logic_Systems",
-          "topic": "Week 02: Fuzzy Logic Systems — Fuzzy Sets, Classical Set Laws & Representation",
           "bank": "banks/05_Soft_Computing_Ch02_Quiz_02_Fuzzy_Logic_Systems.json",
-          "topic_ar": "أنظمة المنطق الغامض: المجموعات الغامضة وقوانين المجموعات الكلاسيكية والتمثيل",
+          "topic": {
+            "ar": "Week 02: Fuzzy Logic Systems — Fuzzy Sets, Classical Set Laws & Representation",
+            "en": "Week 02: Fuzzy Logic Systems — Fuzzy Sets, Classical Set Laws & Representation"
+          },
+          "count": 12,
+          "version": 1,
+          "updated_at": "2026-10-21T13:48:08Z",
+          "has_math": false,
           "material_url": "https://t.me/c/3710711332/88/203"
         }
       ]
