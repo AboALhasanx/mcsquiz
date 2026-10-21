@@ -559,6 +559,8 @@
     const empty = $('notif-empty');
     if (!list) return;
     const fresh = S.freshChapters || [];
+    const readAllBtn = $('notif-read-all');
+    if (readAllBtn) readAllBtn.classList.toggle('hidden', unreadCount() === 0);
     if (!fresh.length) {
       list.innerHTML = '';
       if (empty) empty.classList.remove('hidden');
@@ -572,8 +574,6 @@
       '<span class="notif-text"><span class="notif-title">' + (f.read ? 'تم الاطلاع' : 'نزلت أسئلة جديدة') + '</span>' +
       '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
       '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
-    const readAll = $('notif-read-all');
-    if (readAll) readAll.classList.toggle('hidden', unreadCount() === 0);
     icons();
   }
 
@@ -3718,7 +3718,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v78';
+  const SHELL_VERSION = 'v79';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
