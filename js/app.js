@@ -301,6 +301,7 @@
       if (Number(seen[ch.quiz_id] || 0) < want) {
         freshChapters.push({
           quiz_id: ch.quiz_id,
+          subject_id: sub.subject_id,
           subject: sub.subject_title,
           chapter: ch.chapter_no,
           count: ch.count || 0,
