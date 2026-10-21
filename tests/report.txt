@@ -4,25 +4,25 @@ PASS | banks | Arabic question coverage meets the current target | 138/158 trans
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': 'c32f54bc-64d8-422e-8e14-a61d45b63373', 'handle': 't338011', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792601343228}
+PASS | accounts | username + PIN creates an account | {'id': '5ee105b2-af5b-411a-9dd5-bc7951f1c723', 'handle': 't480211', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792604485749}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': 'c32f54bc-64d8-422e-8e14-a61d45b63373', 'handle': 't338011', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792601358373}
-PASS | accounts | the avatar is saved | {'id': 'c32f54bc-64d8-422e-8e14-a61d45b63373', 'handle': 't338011', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792601358373}
+PASS | accounts | the display name is editable | {'id': '5ee105b2-af5b-411a-9dd5-bc7951f1c723', 'handle': 't480211', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792604500482}
+PASS | accounts | the avatar is saved | {'id': '5ee105b2-af5b-411a-9dd5-bc7951f1c723', 'handle': 't480211', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792604500482}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': 'c32f54bc-64d8-422e-8e14-a61d45b63373', 'handle': 't338011', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792601384125}
+PASS | accounts | same username returns the same account | {'id': '5ee105b2-af5b-411a-9dd5-bc7951f1c723', 'handle': 't480211', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792604528531}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 8932
+PASS | accounts | the link code has four digits | 1384
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': 'c32f54bc-64d8-422e-8e14-a61d45b63373', 'handle': 't338011', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792601416713}
-PASS | catalog | index exposes subjects | 6
-PASS | catalog | one chip per subject | 6 vs 6
+PASS | accounts | the approved device signs in | {'id': '5ee105b2-af5b-411a-9dd5-bc7951f1c723', 'handle': 't480211', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792604557578}
+PASS | catalog | index exposes subjects | 5
+PASS | catalog | one chip per subject | 5 vs 5
 PASS | catalog | no "all" chip | 
 PASS | catalog | first subject is active | 
 PASS | catalog | chapter tiles are numbers | ['1', '2', '3', '4']
@@ -41,7 +41,7 @@ PASS | quiz | next is blocked while unanswered |
 PASS | quiz | blocked next explains itself | 
 PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the switch turns the question into English | A
-PASS | quiz | the English stem is used | A team must reduce the attack surface of a system. Which dec
+PASS | quiz | the English stem is used | Which sequence states the meanings of risk, vulnerability an
 PASS | quiz | the switch returns to Arabic | أ
 PASS | quiz | total questions loaded | 20
 PASS | quiz | saving marks the bookmark | 
@@ -55,8 +55,8 @@ PASS | quiz | matrix has one cell per question | 20
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 3, 'wrong': 17, 'acc': '15%', 'hasUnanswered': False, 'time': '0:15'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 3, 'wrong': 17, 'acc': '15%', 'hasUnanswered': False, 'time': '0:15'}
+PASS | quiz | correct + wrong equals the total | {'correct': 5, 'wrong': 15, 'acc': '25%', 'hasUnanswered': False, 'time': '0:15'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 5, 'wrong': 15, 'acc': '25%', 'hasUnanswered': False, 'time': '0:15'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
 PASS | quiz | one review card per question | 20
@@ -85,15 +85,15 @@ PASS | share | share opens the preview |
 PASS | share | the card image rendered | 
 PASS | share | share action is offered | 
 PASS | share | download is offered | 
-PASS | share | sharing sends the app link, not a storage URL | https://t.me/share/url?url=https%3A%2F%2Fmcq-portal-jade.vercel.app%2F%23%2Fleague&text=%D8%AF%D9%88%D8%B1%D9%8A%20MSCQu
+PASS | share | sharing sends the app link, not a storage URL | https://t.me/share/url?url=https%3A%2F%2Fmcq-portal-jade.vercel.app%2F%23%2Fleague&text=%D8%AF%D9%88%D8%B1%D9%8A%20MCSQu
 PASS | share | card keeps a portrait share format | {'w': 1080, 'h': 1110}
 PASS | share | card grows when the viewer is outside the top five | {'w': 1080, 'h': 1110}
 PASS | share | no runtime errors | []
 PASS | tour | tour greets a first-time visitor | 
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
-PASS | tour | the tour has more than ten steps | 17
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/stats', '#/saved'}
+PASS | tour | the tour has more than ten steps | 18
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/league'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 

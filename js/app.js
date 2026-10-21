@@ -2028,11 +2028,13 @@
 
   // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
   const TOUR_STEPS = [
-    { title: 'MSCQuiz — جولة كاملة', body: 'كل شي بالبوابة: المواد والكوزات والنتيجة والمحفوظ والإحصائيات والدوري. جولة قصيرة، تقدر تطلع منها بأي وقت.', center: true },
+    { title: 'MCSQuiz — جولة كاملة', body: 'كل شي بالبوابة: المواد والكوزات والنتيجة والمحفوظ والإحصائيات والدوري. جولة قصيرة، تقدر تطلع منها بأي وقت.', center: true },
 
-    { title: 'أزرار الهيدر', body: 'المحفوظات، تبديل المظهر (فاتح/داكن)، والقائمة الجانبية — والشعار يرجّعك للرئيسية.', target: '.header-catalog-actions' },
+    { title: 'أزرار الهيدر', body: 'الجرس للتنبيهات (يطلع رقم لما تنزل أسئلة جديدة)، بعدها المحفوظات وتبديل المظهر والقائمة — والشعار يرجّعك للرئيسية.', target: '.header-catalog-actions' },
 
-    { title: 'القائمة الجانبية', body: 'تثبيت التطبيق، المحفوظ، الإحصائيات، الدوري، إعادة الجولة، الصوت، المظهر، وسجل التشخيص.', open: 'menu', target: '#menu-drawer .menu-list' },
+    { title: 'القائمة الجانبية', body: 'المحفوظ والإحصائيات والدوري، وتثبيت التطبيق والنسخة بدون إنترنت، ولغة الأسئلة (عربي/English)، والصوت والمظهر.', open: 'menu', target: '#menu-drawer .menu-list' },
+
+    { title: 'الجرس والتنبيهات', body: 'أي أسئلة تنزل جديدة توصلك هنا: المادة والجابتر وعدد الأسئلة. تفتحها أو تحدد الكل كمقروء.', target: '#btn-bell' },
 
     { title: 'اختر المادة', body: 'شريط أفقي — اسحب واختر مادتك.', target: '#subject-filter-bar' },
 
@@ -2044,7 +2046,7 @@
 
     { title: 'البداية', body: 'هنا عدد الأسئلة والوقت المتوقع. المؤقت يبدأ عند الضغط.', target: '#btn-start-quiz', action: 'start' },
 
-    { title: 'الحفظ والترجمة', body: 'زر الحفظ أعلى البطاقة، وأيقونة اللغة تبدّل السؤال بين عربي / English / الاثنين معاً.', target: '#btn-save-question' },
+    { title: 'الحفظ والترجمة', body: 'زر الحفظ أعلى البطاقة. ولغة الأسئلة (عربي/English) بمكانها بالقائمة ← الإعدادات، وتبدّل السؤال والخيارات والشرح.', target: '#btn-save-question' },
 
     { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
 
@@ -2375,17 +2377,35 @@
     badge.classList.add('warn');
   }
 
-  // the install row: the state depends on the browser and on whether the app
-  // is already running as an installed app
-  function refreshInstallRow() {
+  // the install row: "installed" is what matters, and an installed app opened in
+  // a normal tab reports neither standalone mode nor an install prompt — so it is
+  // detected three ways (mode, the appinstalled flag, the browser's own list)
+  async function isAppInstalled() {
+    try {
+      if (window.matchMedia('(display-mode: standalone)').matches) return true;
+      if (window.matchMedia('(display-mode: minimal-ui)').matches) return true;
+    } catch (e) {}
+    try { if (lsGet('portal_installed_v1') === '1') return true; } catch (e) {}
+    try {
+      if (navigator.getInstalledRelatedApps) {
+        const apps = await navigator.getInstalledRelatedApps();
+        if (Array.isArray(apps) && apps.length) {
+          lsSet('portal_installed_v1', '1');
+          return true;
+        }
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  async function refreshInstallRow() {
     const sub = $('menu-install-sub');
     const badge = $('menu-install-state');
     if (!sub && !badge) return;
-    let standalone = false;
-    try { standalone = window.matchMedia('(display-mode: standalone)').matches; } catch (e) {}
+    const installed = await isAppInstalled();
     const canInstall = !!(window.PortalPWA && window.PortalPWA.canInstall && window.PortalPWA.canInstall());
-    if (standalone) {
-      if (sub) sub.textContent = 'التطبيق مثبّت على جهازك';
+    if (installed) {
+      if (sub) sub.textContent = 'التطبيق مثبّت على جهازك — افتحه من شاشته';
       if (badge) { badge.textContent = 'مثبّت'; badge.classList.remove('hidden', 'warn'); badge.classList.add('ok'); }
     } else if (canInstall) {
       if (sub) sub.textContent = 'افتح البوابة كتطبيق وتفتح بلا نت';
@@ -2459,6 +2479,11 @@
   }
   async function installApp() {
     const inTelegram = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData);
+    if (await isAppInstalled()) {
+      closeDrawers();
+      toast('التطبيق مثبّت أصلاً — افتحه من شاشته', 'info');
+      return;
+    }
     if (window.PortalPWA && await window.PortalPWA.install()) {
       closeDrawers();
       toast('تم إرسال طلب التثبيت');
@@ -3180,7 +3205,7 @@
       ctx.fillStyle = '#c9a227';
       ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
       ctx.fillStyle = '#14161c';
-      ctx.font = '700 ' + Math.round(r * 0.9) + 'px "MSCQuiz Arabic", sans-serif';
+      ctx.font = '700 ' + Math.round(r * 0.9) + 'px "MCSQuiz Arabic", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText((name || '؟').trim().charAt(0) || '؟', cx, cy + 2);
@@ -3264,11 +3289,11 @@
     // brand row
     ctx.textAlign = 'right';
     ctx.fillStyle = INK;
-    ctx.font = '700 34px "MSCQuiz Arabic", sans-serif';
-    ctx.fillText('MSCQuiz', R, 96);
+    ctx.font = '700 34px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText('MCSQuiz', R, 96);
     ctx.textAlign = 'left';
     ctx.fillStyle = MUTED;
-    ctx.font = '500 26px "MSCQuiz Arabic", sans-serif';
+    ctx.font = '500 26px "MCSQuiz Arabic", sans-serif';
     ctx.fillText(data.week, L, 96);
     ctx.fillStyle = 'rgba(255,255,255,0.06)';
     ctx.fillRect(L, 132, W - L * 2, 2);
@@ -3276,14 +3301,14 @@
     // title
     ctx.textAlign = 'right';
     ctx.fillStyle = INK;
-    ctx.font = '700 58px "MSCQuiz Arabic", sans-serif';
+    ctx.font = '700 58px "MCSQuiz Arabic", sans-serif';
     ctx.fillText('ترتيب هذا الأسبوع', R, 226);
     ctx.fillStyle = MUTED;
-    ctx.font = '500 28px "MSCQuiz Arabic", sans-serif';
+    ctx.font = '500 28px "MCSQuiz Arabic", sans-serif';
     ctx.fillText(data.scope, R, 268);
 
     // column labels — makes it a table, not a list of guesses
-    ctx.font = '500 21px "MSCQuiz Arabic", sans-serif';
+    ctx.font = '500 21px "MCSQuiz Arabic", sans-serif';
     ctx.fillStyle = FAINT;
     ctx.textAlign = 'right';
     ctx.fillText('اللاعب', R - 162, 306);
@@ -3313,7 +3338,7 @@
       // rank at the right edge
       ctx.textAlign = 'right';
       ctx.fillStyle = medals[r.rank - 1] || MUTED;
-      ctx.font = '700 40px "MSCQuiz Arabic", sans-serif';
+      ctx.font = '700 40px "MCSQuiz Arabic", sans-serif';
       ctx.fillText(String(r.rank), R - 4, cy + 13);
 
       // avatar
@@ -3336,18 +3361,18 @@
       // name
       ctx.textAlign = 'right';
       ctx.fillStyle = INK;
-      ctx.font = '600 32px "MSCQuiz Arabic", sans-serif';
+      ctx.font = '600 32px "MCSQuiz Arabic", sans-serif';
       const nameX = R - 92 - avR - 26;
       ctx.fillText(r.name || 'لاعب', nameX, cy + 10);
 
       // the number on the left, where a table puts its values
       ctx.textAlign = 'left';
       ctx.fillStyle = first ? GOLD : INK;
-      ctx.font = '700 38px "MSCQuiz Arabic", sans-serif';
+      ctx.font = '700 38px "MCSQuiz Arabic", sans-serif';
       ctx.fillText(String(r.xp), L, cy + 16);
       const nw = ctx.measureText(String(r.xp)).width;
       ctx.fillStyle = MUTED;
-      ctx.font = '500 22px "MSCQuiz Arabic", sans-serif';
+      ctx.font = '500 22px "MCSQuiz Arabic", sans-serif';
       ctx.fillText('إجابة', L + nw + 8, cy + 14);
 
       ctx.fillStyle = 'rgba(255,255,255,0.05)';
@@ -3367,7 +3392,7 @@
   function appShareLink() {
     const appUrl = (window.PORTAL_APP_URL || 'https://mcq-portal-jade.vercel.app/') + '#/league';
     return 'https://t.me/share/url?url=' + encodeURIComponent(appUrl) +
-      '&text=' + encodeURIComponent('دوري MSCQuiz — ترتيبي هذا الأسبوع');
+      '&text=' + encodeURIComponent('دوري MCSQuiz — ترتيبي هذا الأسبوع');
   }
 
   function showSharePreview(url) {
@@ -3381,7 +3406,7 @@
     if (dl) dl.onclick = () => {
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'mscquiz-league.png';
+      a.download = 'mcsquiz-league.png';
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -3437,10 +3462,10 @@
       const canvas = await buildLeagueCard({ rows, mine, myPhoto, scope: leagueScopeLabel(), week: weekLabel });
       const blob = await new Promise((res) => canvas.toBlob(res, 'image/png'));
       if (!blob) { toast('تعذر إنشاء الصورة', 'error'); return; }
-      const file = new File([blob], 'mscquiz-league.png', { type: 'image/png' });
+      const file = new File([blob], 'mcsquiz-league.png', { type: 'image/png' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         try {
-          await navigator.share({ files: [file], title: 'دوري MSCQuiz' });
+          await navigator.share({ files: [file], title: 'دوري MCSQuiz' });
           return;
         } catch (e) {
           if (e && e.name === 'AbortError') return;
@@ -3674,7 +3699,10 @@
     // pwa.js is loaded after app.js, so its handler stores the prompt after
     // this one runs: read the state on the next tick, not right now
     window.addEventListener('beforeinstallprompt', () => { setTimeout(refreshInstallRow, 0); });
-    window.addEventListener('appinstalled', () => { setTimeout(refreshInstallRow, 0); });
+    window.addEventListener('appinstalled', () => {
+      try { lsSet('portal_installed_v1', '1'); } catch (e) {}
+      setTimeout(refreshInstallRow, 0);
+    });
     document.querySelectorAll('.range-opt').forEach((b) => {
       b.addEventListener('click', () => {
         S.statsRange = Number(b.dataset.range);
@@ -3754,7 +3782,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v80';
+  const SHELL_VERSION = 'v81';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

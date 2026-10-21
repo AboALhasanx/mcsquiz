@@ -4,14 +4,14 @@
 
 /* Brand font: Space Grotesk (SIL OFL, self-hosted — identical on every device, offline-safe). */
 @font-face {
-  font-family: 'MSCQuiz Brand';
+  font-family: 'MCSQuiz Brand';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
   src: url('../assets/fonts/space-grotesk-500.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'MSCQuiz Brand';
+  font-family: 'MCSQuiz Brand';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -40,7 +40,7 @@ html[data-theme="light"] {
 html[data-theme="light"] { color-scheme: light; }
 
 .app-brand-title {
-  font-family: 'MSCQuiz Brand', 'Segoe UI', Arial, sans-serif;
+  font-family: 'MCSQuiz Brand', 'Segoe UI', Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--text-main);
@@ -315,7 +315,7 @@ html body :is(a, button, input, select, textarea, summary, [tabindex]):focus:not
 
 /* ---------- Arabic-first type system ---------- */
 :root {
-  --font-body: 'MSCQuiz Arabic', 'Segoe UI', Tahoma, system-ui, -apple-system, sans-serif;
+  --font-body: 'MCSQuiz Arabic', 'Segoe UI', Tahoma, system-ui, -apple-system, sans-serif;
 }
 body, .app-container, button, input, select, textarea, .filter-chip, .menu-item {
   font-family: var(--font-body);
@@ -960,7 +960,7 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 .link-qr { display: flex; justify-content: center; margin: 0.3rem 0 0.55rem; }
 .link-qr svg { width: 150px; height: 150px; background: #fff; padding: 8px; border-radius: 12px; }
 
-.link-code {  font-family: 'MSCQuiz Brand', monospace;
+.link-code {  font-family: 'MCSQuiz Brand', monospace;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.35em;

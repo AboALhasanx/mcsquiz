@@ -251,7 +251,7 @@
     var lines = boardRows.slice(0, 3).map(function (r) {
       return r.rank + '. ' + r.name + ' — ' + r.xp + ' نقطة';
     });
-    return 'دوري MSCQuiz · ' + scopeLabel + '\n' + lines.join('\n') +
+    return 'دوري MCSQuiz · ' + scopeLabel + '\n' + lines.join('\n') +
       (me ? '\nترتيبي: ' + me.rank + ' بـ ' + me.xp + ' نقطة' : '');
   }
 
