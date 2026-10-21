@@ -1721,6 +1721,7 @@
     const av = $('menu-avatar');
     if (!name || !sub) return;
     const C = cloud();
+    const acc = (C && C.account) ? C.account() : null;
     const setAvatar = (url, fallbackText) => {
       if (!av) return;
       if (url) {
@@ -1733,24 +1734,30 @@
         av.textContent = fallbackText;
       }
     };
-    if (!C || !C.configured()) {
-      name.textContent = 'زائر — بدون حساب';
-      sub.textContent = 'افتح البوابة من بوت تليجرام للمزامنة';
-      setAvatar('', 'ز');
+    if (acc) {
+      name.textContent = acc.name || acc.handle;
+      setAvatar('', (String(acc.name || acc.handle).trim()[0] || '؟'));
+      if (!navigator.onLine) sub.textContent = 'أوفلاين — تُزامن عند الاتصال';
+      else {
+        const t = fmtSyncTime();
+        sub.textContent = '@' + acc.handle + (t ? ' · مزامن ' + t : '');
+      }
+      icons();
       return;
     }
-    if (!C.linked()) {
+    if (!C || !C.linked()) {
       name.textContent = 'زائر — بدون حساب';
-      sub.textContent = 'افتح البوابة من داخل تليجرام للدخول';
+      sub.textContent = 'ادخل باسمك لتُحفظ بياناتك وتظهر في الدوري';
       setAvatar('', 'ز');
+      icons();
       return;
     }
-    const who = S.cloudName || 'حسابي';
+    const who = (C.displayName && C.displayName()) || S.cloudName || 'لاعب';
     name.textContent = who;
     let photo = '';
     try { photo = (C.avatarUrl && C.avatarUrl()) || ''; } catch (e) {}
-    setAvatar(photo, (who.trim()[0] || 'ح').toUpperCase());
-    if (!navigator.onLine) sub.textContent = 'أوفلاين — سيُزامَن عند الاتصال';
+    setAvatar(photo, (String(who).trim()[0] || '؟'));
+    if (!navigator.onLine) sub.textContent = 'أوفلاين — تُزامن عند الاتصال';
     else {
       const t = fmtSyncTime();
       sub.textContent = t ? 'مزامن ✓ ' + t : 'مزامن ✓';
@@ -1761,28 +1768,151 @@
 
   async function handleAccountTap() {
     const C = cloud();
-        if (!C || !C.configured()) {
+    const acc = (C && C.account) ? C.account() : null;
+    if (!acc) { openLoginModal(); return; }
+    // signed in with a handle: show the account sheet
+    $('account-body').textContent = (acc.name || acc.handle) + ' · @' + acc.handle +
+      (navigator.onLine ? '' : ' — أوفلاين');
+    $('account-link').classList.remove('hidden');
+    $('account-logout').classList.remove('hidden');
+    $('account-open-bot').classList.add('hidden');
+    $('account-sync-now').classList.remove('hidden');
+    $('account-modal').classList.remove('hidden');
+    $('account-modal').setAttribute('aria-hidden', 'false');
+    icons();
+  }
+
+  // ---------------- handle accounts (no email / password) ----------------
+  function loginError(msg) {
+    const el = $('login-error');
+    if (!el) return;
+    el.textContent = msg || '';
+    el.classList.toggle('hidden', !msg);
+  }
+
+  function openLoginModal() {
+    loginError('');
+    $('login-modal').classList.remove('hidden');
+    $('login-modal').setAttribute('aria-hidden', 'false');
+    setTimeout(() => { try { $('login-name').focus(); } catch (e) {} }, 120);
+    icons();
+  }
+
+  function closeLoginModal() {
+    $('login-modal').classList.add('hidden');
+    $('login-modal').setAttribute('aria-hidden', 'true');
+  }
+
+  async function submitLogin() {
+    const C = cloud();
+    const name = ($('login-name').value || '').trim();
+    const handle = C && C.normalizeHandle ? C.normalizeHandle($('login-handle').value) : ($('login-handle').value || '').trim();
+    if (!name) { loginError('اكتب اسمك أولاً'); return; }
+    if (handle.length < 3) { loginError('المعرّف 3 أحرف على الأقل (a-z 0-9 _)'); return; }
+    const btn = $('login-submit');
+    btn.disabled = true;
+    btn.textContent = 'جارٍ الدخول…';
+    try {
+      await C.login(handle, name);
+      closeLoginModal();
+      toast('أهلاً ' + name, 'success');
+      updateAccountRow();
+      // a fresh identity must not read the previous board cache
+      S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
+      try { await C.pullOrPush(); } catch (e) {}
+      try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) {}
+      renderLeague();
+    } catch (e) {
+      const msg = String((e && e.message) || '');
+      loginError(msg.indexOf('handle-short') >= 0 ? 'المعرّف قصير' : 'تعذر الدخول — تحقق من الاتصال');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'دخول';
+    }
+  }
+
+  // ---------------- link another device (code + number matching) ----------------
+  let linkPoll = null;
+  let linkMode = 'generate';
+
+  function stopLinkPoll() {
+    if (linkPoll) { clearInterval(linkPoll); linkPoll = null; }
+  }
+
+  async function generateLinkCode() {
+    const C = cloud();
+    if (!C || !C.login) return;
+    const code = String(Math.floor(100000 + Math.random() * 900000));
+    $('link-generate').classList.remove('hidden');
+    $('link-approve').classList.add('hidden');
+    $('link-code').textContent = code;
+    $('link-wait').textContent = 'بانتظار التأكيد من الجهاز الآخر…';
+    $('link-modal').classList.remove('hidden');
+    $('link-modal').setAttribute('aria-hidden', 'false');
+    try {
+      const sb = await sbRaw();
+      await sb.rpc('link_new', { p_code: code });
+    } catch (e) {}
+    stopLinkPoll();
+    linkPoll = setInterval(async () => {
       try {
-        const inTg = C && C.inTelegram && C.inTelegram();
-        const hasBot = C && C.bot && C.bot();
-        if (!inTg && !hasBot) { toast('حساب تليجرام قيد الإعداد — قريباً'); }
-        else { toast('افتح البوابة من داخل تليجرام'); }
-      } catch (e) { toast('افتح البوابة من داخل تليجرام'); }
-      return;
-    }
-    if (!C.linked()) {
-      const link = C.botLink ? C.botLink() : '';
-      if (link) {
-        try { window.open(link, '_blank', 'noopener'); } catch (e) {}
-        toast('افتح الرابط في تليجرام للدخول بحسابك');
-      } else {
-        toast('افتح هذه الصفحة من داخل تطبيق تليجرام');
-      }
-      return;
-    }
-    let me = null;
-    try { me = await C.accountInfo(); } catch (e) {}
-    toast(me && me.name ? ('مسجل عبر تليجرام: ' + me.name) : 'مسجل عبر تليجرام ✓');
+        const sb = await sbRaw();
+        const r = await sb.rpc('link_status', { p_code: code });
+        const row = (Array.isArray(r.data) ? r.data[0] : r.data) || null;
+        if (row && row.approved && row.handle) {
+          stopLinkPoll();
+          await C.login(row.handle, row.name || row.handle);
+          $('link-wait').textContent = 'تم الربط ✓';
+          closeLinkModal();
+          updateAccountRow();
+          toast('تم ربط هذا الجهاز', 'success');
+          S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
+          try { await C.pullOrPush(); } catch (e) {}
+          try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) {}
+          renderLeague();
+        }
+      } catch (e) {}
+    }, 3000);
+  }
+
+  function openLinkApprove() {
+    const C = cloud();
+    const acc = (C && C.account) ? C.account() : null;
+    if (!acc) { openLoginModal(); return; }
+    $('link-generate').classList.add('hidden');
+    $('link-approve').classList.remove('hidden');
+    $('link-code-input').value = '';
+    $('link-modal').classList.remove('hidden');
+    $('link-modal').setAttribute('aria-hidden', 'false');
+    setTimeout(() => { try { $('link-code-input').focus(); } catch (e) {} }, 120);
+  }
+
+  async function approveLinkCode() {
+    const C = cloud();
+    const acc = (C && C.account) ? C.account() : null;
+    if (!acc) { openLoginModal(); return; }
+    const code = ($('link-code-input').value || '').replace(/\D/g, '').slice(0, 6);
+    if (code.length !== 6) { toast('اكتب الرمز المكوّن من 6 أرقام', 'error'); return; }
+    try {
+      const sb = await sbRaw();
+      const r = await sb.rpc('link_approve', { p_code: code, p_user: acc.id });
+      const okRow = Array.isArray(r.data) ? r.data[0] : r.data;
+      if (r.error || okRow === false) { toast('الرمز غير صحيح أو انتهت مهلته', 'error'); return; }
+      closeLinkModal();
+      toast('تم ربط الجهاز الآخر ✓', 'success');
+    } catch (e) { toast('تعذر الربط', 'error'); }
+  }
+
+  function closeLinkModal() {
+    stopLinkPoll();
+    $('link-modal').classList.add('hidden');
+    $('link-modal').setAttribute('aria-hidden', 'true');
+  }
+
+  async function sbRaw() {
+    const C = cloud();
+    // cloud.js keeps its own client; reuse it through a tiny bridge
+    return C.sb();
   }
 
   async function initTelegram() {
@@ -2449,6 +2579,33 @@
       } catch (e) { toast('تعذر النسخ'); }
     });
     $('menu-install').addEventListener('click', installApp);
+    // ---- handle accounts: login, account sheet, device linking ----
+    const bindClick = (id, fn) => { const el = $(id); if (el) el.addEventListener('click', fn); };
+    bindClick('login-submit', submitLogin);
+    bindClick('login-skip', () => { closeLoginModal(); toast('تستخدم الآن بدون حساب'); });
+    bindClick('login-link-device', () => { closeLoginModal(); generateLinkCode(); });
+    bindClick('account-link', () => { $('account-modal').classList.add('hidden'); openLinkApprove(); });
+    bindClick('account-logout', async () => {
+      const C = cloud();
+      if (C && C.signOut) C.signOut();
+      $('account-modal').classList.add('hidden');
+      updateAccountRow();
+      toast('تم تسجيل الخروج — بياناتك باقية على الجهاز');
+    });
+    bindClick('account-sync-now', async () => {
+      const C = cloud();
+      try { await C.pullOrPush(); toast('تمت المزامنة', 'success'); } catch (e) { toast('تعذر المزامنة', 'error'); }
+    });
+    bindClick('link-yes', approveLinkCode);
+    bindClick('link-no', closeLinkModal);
+    bindClick('link-close', closeLinkModal);
+    const loginHandle = $('login-handle');
+    if (loginHandle) loginHandle.addEventListener('input', () => {
+      loginHandle.value = String(loginHandle.value || '').toLowerCase().replace(/[^a-z0-9_]/g, '');
+    });
+    const loginName = $('login-name');
+    if (loginName) loginName.addEventListener('keydown', (e) => { if (e.key === 'Enter') $('login-handle').focus(); });
+    if (loginHandle) loginHandle.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitLogin(); });
     const liveExplToggle = $('live-expl-toggle');
     if (liveExplToggle) liveExplToggle.addEventListener('click', () => {
       const box = $('live-feedback-box');
@@ -2597,7 +2754,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v42';
+  const SHELL_VERSION = 'v43';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

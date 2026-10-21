@@ -63,10 +63,21 @@
     } catch (e2) {}
     return null;
   }
-  function linked() { return !!tgUser(); }
+  function linked() {
+    try {
+      if (global.PortalCloud && global.PortalCloud.account && global.PortalCloud.account()) return true;
+    } catch (e) {}
+    return !!tgUser();
+  }
 
   function myUserId() {
     if (myId) return myId;
+    try {
+      if (global.PortalCloud && global.PortalCloud.account && global.PortalCloud.account()) {
+        myId = global.PortalCloud.userId ? global.PortalCloud.userId() : null;
+        if (myId) return myId;
+      }
+    } catch (e) {}
     var u = tgUser();
     if (!u) return null;
     myId = 'tg:' + String(u.id);
@@ -74,6 +85,12 @@
   }
 
   function displayName(u) {
+    try {
+      if (global.PortalCloud && global.PortalCloud.account && global.PortalCloud.account()) {
+        var a = global.PortalCloud.account();
+        if (a && a.name) return a.name;
+      }
+    } catch (e) {}
     var n = [u && u.first_name, u && u.last_name].filter(Boolean).join(' ').trim();
     if (n) return n;
     if (u && u.username) return '@' + u.username;
@@ -138,7 +155,7 @@
   async function syncWeek() {
     if (!configured() || !linked() || !navigator.onLine) return { ok: false, reason: 'offline-or-unlinked' };
     var sb = await client();
-    var u = tgUser();
+    var u = tgUser() || {};
     var wid = weekStart(Date.now());
     var local = loadLocal();
     var w = weeklyXp(local.history, wid);

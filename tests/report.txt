@@ -1,3 +1,11 @@
+PASS | banks | banks exist | 10
+PASS | banks | every question has English text and a valid answer key | []
+PASS | banks | Arabic question coverage meets the current target | 137/157 translated
+PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
+PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
+                    <div class="card-header">
+                        <span class="card-hint">اختر الإجابة الصحيحة</spa
+PASS | banks | no runtime errors | []
 PASS | catalog | index exposes subjects | 5
 PASS | catalog | one chip per subject | 5 vs 5
 PASS | catalog | no "all" chip | 
@@ -24,13 +32,16 @@ PASS | quiz | total questions loaded | 20
 PASS | quiz | saving marks the bookmark | 
 PASS | quiz | saving again removes it | 
 PASS | quiz | explanation appears after a wrong answer | 
+PASS | quiz | a wrong answer opens the explanation automatically | 
+PASS | quiz | the explanation can be collapsed on demand | 
+PASS | quiz | the explanation re-opens on demand | 
 PASS | quiz | matrix opens | 
 PASS | quiz | matrix has one cell per question | 20
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 6, 'wrong': 14, 'acc': '30%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 6, 'wrong': 14, 'acc': '30%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | correct + wrong equals the total | {'correct': 7, 'wrong': 13, 'acc': '35%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 7, 'wrong': 13, 'acc': '35%', 'hasUnanswered': False, 'time': '0:14'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
 PASS | quiz | one review card per question | 20
@@ -67,7 +78,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 17
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/stats', '#/saved'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/saved', '#/stats', '#/league'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
@@ -83,8 +94,8 @@ PASS | offline | saved questions open offline |
 PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 19 – 25 أكتوبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | هندسة البرمجيات | ا
 PASS | offline | no runtime errors | []
 PASS | a11y | document is RTL Arabic | 
-PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 6}
-PASS | a11y | the skip link becomes visible on focus | {'cls': 'skip-link', 'top': 6}
+PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 8}
+PASS | a11y | the skip link becomes visible on focus | {'cls': 'skip-link', 'top': 8}
 PASS | a11y | every visible icon-only control has a label | []
 PASS | a11y | focused controls draw a focus ring | 2px solid
 PASS | a11y | a message appears for a blocked action | 
@@ -93,85 +104,13 @@ PASS | a11y | the share preview image has alt text |
 PASS | a11y | theme toggle changes the palette | #d9b26a / #96721a
 PASS | a11y | theme choice is remembered | 
 PASS | a11y | no runtime errors | []
-PASS | banks | banks exist | 10
-FAIL | banks | every question has English text and a valid answer key | ['02_English_Language_Ch01_Quiz_01#q3:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q2:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q15:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q18:ar-options']
-FAIL | banks | translated questions have four Arabic options | ['02_English_Language_Ch01_Quiz_01#q3:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q2:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q15:ar-options', '03_Data_Mining_Ch01_Quiz_01_Intr#q18:ar-options']
-PASS | banks | Arabic question coverage meets the current target | 127/157 translated
-PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
-PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
-                    <div class="card-header">
-                        <span class="card-hint">اختر الإجابة الصحيحة</spa
-PASS | banks | no runtime errors | []
-PASS | banks | banks exist | 10
-PASS | banks | every question has English text and a valid answer key | []
-PASS | banks | Arabic question coverage meets the current target | 127/157 translated
-PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
-PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
-                    <div class="card-header">
-                        <span class="card-hint">اختر الإجابة الصحيحة</spa
-PASS | banks | no runtime errors | []
-PASS | banks | banks exist | 10
-PASS | banks | every question has English text and a valid answer key | []
-PASS | banks | Arabic question coverage meets the current target | 137/157 translated
-PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_DrHuda_20MCQ')
-PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | 
-                    <div class="card-header">
-                        <span class="card-hint">اختر الإجابة الصحيحة</spa
-PASS | banks | no runtime errors | []
-PASS | quiz | no skip button exists | 
-PASS | quiz | one single action button | 
-PASS | quiz | next is blocked while unanswered | 
-PASS | quiz | blocked next explains itself | 
-PASS | quiz | question starts in Arabic mode | أ
-PASS | quiz | toggle switches to English mode | A
-PASS | quiz | both-language mode restores Arabic letters | أ
-PASS | quiz | toggle returns to Arabic mode | أ
-PASS | quiz | total questions loaded | 20
-PASS | quiz | saving marks the bookmark | 
-PASS | quiz | saving again removes it | 
-PASS | quiz | explanation appears after a wrong answer | 
-PASS | quiz | matrix opens | 
-PASS | quiz | matrix has one cell per question | 20
-PASS | quiz | answered cell is marked answered | 
-PASS | quiz | matrix has no early-finish button | 
-PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 5, 'wrong': 15, 'acc': '25%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 5, 'wrong': 15, 'acc': '25%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | no unanswered figure | 
-PASS | quiz | results never say "unanswered" | 
-PASS | quiz | one review card per question | 20
-PASS | quiz | explanations start collapsed | 
-PASS | quiz | explanation opens with the arrow | 
-PASS | quiz | every card can save the question | 
-PASS | quiz | correct answer is always shown | 
-PASS | quiz | no runtime errors | []
-PASS | quiz | no skip button exists | 
-PASS | quiz | one single action button | 
-PASS | quiz | next is blocked while unanswered | 
-PASS | quiz | blocked next explains itself | 
-PASS | quiz | question starts in Arabic mode | أ
-PASS | quiz | toggle switches to English mode | A
-PASS | quiz | both-language mode restores Arabic letters | أ
-PASS | quiz | toggle returns to Arabic mode | أ
-PASS | quiz | total questions loaded | 20
-PASS | quiz | saving marks the bookmark | 
-PASS | quiz | saving again removes it | 
-PASS | quiz | explanation appears after a wrong answer | 
-PASS | quiz | a wrong answer opens the explanation automatically | 
-PASS | quiz | the explanation can be collapsed on demand | 
-PASS | quiz | the explanation re-opens on demand | 
-PASS | quiz | matrix opens | 
-PASS | quiz | matrix has one cell per question | 20
-PASS | quiz | answered cell is marked answered | 
-PASS | quiz | matrix has no early-finish button | 
-PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 2, 'wrong': 18, 'acc': '10%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 2, 'wrong': 18, 'acc': '10%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | no unanswered figure | 
-PASS | quiz | results never say "unanswered" | 
-PASS | quiz | one review card per question | 20
-PASS | quiz | explanations start collapsed | 
-PASS | quiz | explanation opens with the arrow | 
-PASS | quiz | every card can save the question | 
-PASS | quiz | correct answer is always shown | 
-PASS | quiz | no runtime errors | []
+PASS | accounts | handle login creates an account | {'id': 'e67082a2-2eb9-42ef-b176-d80d07a4673f', 'handle': 't257310', 'name': 'طالب الاختبار', 'at': 1792562260607}
+PASS | accounts | account id drives the user id | 
+PASS | accounts | drawer shows the account name | طالب الاختبار
+PASS | accounts | device 1 has local study data | 1/1
+PASS | accounts | the same handle returns the same account id | {'id': 'e67082a2-2eb9-42ef-b176-d80d07a4673f', 'handle': 't257310', 'name': 'طالب الاختبار', 'at': 1792562283000}
+PASS | accounts | device 2 receives the saved questions | 1
+PASS | accounts | device 2 receives the history | 1
+PASS | accounts | the newest write wins across devices | 
+PASS | accounts | a 6-digit link code is shown on the new device | 751107
+PASS | accounts | new device signs in after approval | {'id': 'e67082a2-2eb9-42ef-b176-d80d07a4673f', 'handle': 't257310', 'name': 'طالب الاختبار', 'at': 1792562306404}

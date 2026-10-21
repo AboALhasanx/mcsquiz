@@ -485,7 +485,49 @@
                 <div class="modal-actions" style="flex-direction:column;gap:0.5rem;">
                     <button id="account-open-bot" class="action-btn primary-btn hidden">فتح البوت</button>
                     <button id="account-sync-now" class="action-btn secondary-btn hidden">مزامنة الآن</button>
+                    <button id="account-link" class="action-btn secondary-btn hidden">ربط جهاز آخر</button>
+                    <button id="account-logout" class="action-btn danger-outline hidden">تسجيل الخروج</button>
                     <button id="account-close" class="action-btn secondary-btn">إغلاق</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account: handle + name (no email, no password) -->
+        <div id="login-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="login-title">
+                <h3 id="login-title">ادخل باسمك</h3>
+                <p class="auth-sub">معرّفك هو حسابك — بدون إيميل ولا كلمة مرور. نفس المعرّف على أي جهاز يفتح نفس بياناتك.</p>
+                <label class="auth-label" for="login-name">اسمك</label>
+                <input id="login-name" class="auth-input" maxlength="40" dir="auto" placeholder="مثال: حسن علي" autocomplete="name">
+                <label class="auth-label" for="login-handle">معرّفك</label>
+                <input id="login-handle" class="auth-input" maxlength="20" dir="ltr" inputmode="latin"
+                       autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="hasan1" autocomplete="username">
+                <p id="login-error" class="auth-error hidden" role="alert"></p>
+                <button id="login-submit" class="action-btn primary-btn auth-submit">دخول</button>
+                <button id="login-link-device" class="tour-link-btn">ربط جهاز بدل كتابة المعرّف</button>
+                <button id="login-skip" class="tour-link-btn">متابعة بدون حساب</button>
+            </div>
+        </div>
+
+        <!-- Link another device (code + number matching) -->
+        <div id="link-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="link-title">
+                <h3 id="link-title">ربط جهاز</h3>
+                <div id="link-generate">
+                    <p class="auth-sub">افتح هذا الرابط على الجهاز الآخر، أو اكتب المعرّف هناك — يظهر هنا رمز التأكيد.</p>
+                    <div id="link-code" class="link-code" dir="ltr">------</div>
+                    <p class="auth-sub" id="link-wait">بانتظار التأكيد من الجهاز الآخر…</p>
+                </div>
+                <div id="link-approve" class="hidden">
+                    <p class="auth-sub">اكتب الرمز الظاهر على الجهاز الآخر ثم أكّد:</p>
+                    <input id="link-code-input" class="auth-input" dir="ltr" inputmode="numeric" maxlength="6" placeholder="123456">
+                    <div class="modal-actions" style="margin-top:0.6rem;">
+                        <button id="link-yes" class="action-btn primary-btn">نعم، اربط الجهاز</button>
+                        <button id="link-no" class="action-btn secondary-btn">لا</button>
+                    </div>
+                </div>
+                <div class="modal-actions" style="margin-top:0.5rem;">
+                    <button id="link-close" class="action-btn text-link-btn">إغلاق</button>
                 </div>
             </div>
         </div>

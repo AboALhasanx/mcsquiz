@@ -26,6 +26,7 @@
   'use strict';
 
   var SYNC_KEY = 'portal_cloud_synced_at';
+  var ACCOUNT_KEY = 'portal_account_v1';
   var LS_BEST_PREFIX = 'portal_best_';
   var LS_SAVED = 'portal_saved_v1';
   var LS_HISTORY = 'portal_history_v1';
@@ -118,7 +119,7 @@
   }
 
   function inTelegram() { return !!wa() || !!parseLaunchHash() || !!stashedUser(); }
-  function linked() { return !!tgUser(); }
+  function linked() { return !!account() || !!tgUser(); }
   function botName() {
     try { return (global.PORTAL_TG_BOT || '').trim().replace(/^@/, ''); }
     catch (e) { return ''; }
@@ -130,10 +131,46 @@
   }
 
   function userId() {
+    var a = account();
+    if (a) return 'u:' + a.id;
     var u = tgUser();
     return u ? ('tg:' + String(u.id)) : null;
   }
+  // ---- handle accounts (no email, no password) -------------------------------
+  function account() {
+    try {
+      var a = JSON.parse(lsGet(ACCOUNT_KEY) || 'null');
+      return (a && a.id) ? a : null;
+    } catch (e) { return null; }
+  }
+  function setAccount(a) {
+    try { lsSet(ACCOUNT_KEY, JSON.stringify(a)); } catch (e) {}
+    cachedUser = null;
+    try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
+  }
+  function signOut() {
+    try { localStorage.removeItem(ACCOUNT_KEY); } catch (e) {}
+    cachedUser = null;
+    try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
+  }
+  function normalizeHandle(h) {
+    return String(h || '').toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 20);
+  }
+  async function login(handle, name) {
+    var h = normalizeHandle(handle);
+    if (h.length < 3) throw new Error('handle-short');
+    var sb = await sbClient();
+    var r = await sb.rpc('portal_login', { p_handle: h, p_name: String(name || '').trim() });
+    if (r.error) throw new Error(r.error.message || 'login-failed');
+    var row = Array.isArray(r.data) ? r.data[0] : r.data;
+    if (!row || !row.id) throw new Error('login-empty');
+    setAccount({ id: row.id, handle: row.handle, name: row.name || h, at: Date.now() });
+    return account();
+  }
+
   function displayName(u) {
+    var a = account();
+    if (a && a.name) return a.name;
     u = u || tgUser() || {};
     var n = [u.first_name, u.last_name].filter(Boolean).join(' ').trim();
     if (n) return n;
@@ -142,6 +179,7 @@
   }
   // Telegram profile photo (small) when available, else '' -> callers use initials.
   function avatarUrl(u) {
+    if (account()) return '';
     u = u || tgUser() || {};
     try {
       if (u.photo_url) return u.photo_url;
@@ -327,10 +365,11 @@
       return { action: 'empty' };
     }
     if (localN === 0) { applyBundle(remote); markSync(); return { action: 'downloaded' }; }
-    var ls = lastSync();
-    if (ls && rUpdated && rUpdated < ls) { await upload(); return { action: 'uploaded-local-newer' }; }
-    if (!rUpdated || !ls || rUpdated >= ls) {
-      if (rUpdated && ls && rUpdated === ls) { await upload(); return { action: 'uploaded-tie' }; }
+    var local = collectBundle();
+    var lUpdated = Number(local.updatedAt) || 0;
+    // newest write wins; on a tie the server copy wins (online is the source of truth)
+    if (lUpdated && rUpdated && lUpdated > rUpdated) { await upload(local); return { action: 'uploaded-local-newer' }; }
+    if (!rUpdated || lUpdated <= rUpdated) {
       applyBundle(remote); markSync(); return { action: 'downloaded' };
     }
     await upload();
@@ -406,6 +445,12 @@
     botLink: function () { var b = botName(); return b ? 'https://t.me/' + b : ''; },
     user: async function () { return tgUser(); },
     accountInfo: accountInfo,
+    account: account,
+    userId: userId,
+    login: login,
+    signOut: signOut,
+    normalizeHandle: normalizeHandle,
+    sb: sbClient,
     avatarUrl: avatarUrl,
     integrate: integrate,
     captureLaunch: captureLaunch,

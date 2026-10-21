@@ -750,6 +750,20 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 .auth-card h3 { text-align: center; margin-bottom: 0.2rem; }
 .auth-close { float: inline-end; }
 .auth-sub { text-align: center; opacity: 0.7; font-size: 0.82rem; margin: 0 0 0.9rem; }
+.link-code {
+  font-family: 'MSCQuiz Brand', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-align: center;
+  padding: 0.6rem 0;
+  margin: 0.2rem 0 0.6rem;
+  border-radius: 12px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-card);
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
 .auth-label { display: block; font-size: 0.8rem; opacity: 0.75; margin: 0.6rem 0 0.25rem; }
 .auth-input {
   width: 100%;
