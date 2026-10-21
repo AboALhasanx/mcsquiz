@@ -1196,7 +1196,7 @@
     const avg = n ? H.reduce((a, h) => a + (h.pct || 0), 0) / n : 0;
     const best = n ? Math.max.apply(null, H.map((h) => h.pct || 0)) : 0;
     const prevAvg = prev.length ? prev.reduce((a, h) => a + (h.pct || 0), 0) / prev.length : null;
-    const rangeName = days === 7 ? 'آخر أسبوع' : (days === 30 ? 'آخر شهر' : 'كل المدة');
+    const rangeName = days === 7 ? 'آخر أسبوع' : (days === 30 ? 'آخر شهر' : 'الكل');
 
     $('stats-total-line').textContent = n
       ? (arCount(n, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + ' · ' + rangeName)
@@ -3294,7 +3294,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v68';
+  const SHELL_VERSION = 'v69';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
