@@ -130,6 +130,12 @@
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
     $('quiz-session-topbar').style.display = (inQuiz || viewId === 'results-view') ? 'block' : 'none';
+    // the question grid is meaningless before the quiz starts
+    const matrixBtn = $('btn-open-matrix');
+    if (matrixBtn) matrixBtn.style.display = (viewId === 'quiz-view') ? '' : 'none';
+    // the saved shortcut belongs to the saved views, not to the home or a quiz
+    const savedBtn = $('btn-open-saved');
+    if (savedBtn) savedBtn.style.display = (viewId === 'deck-catalog' || inQuiz) ? 'none' : '';
     const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
@@ -1825,6 +1831,8 @@
     S.sound = !!on;
     const si = $('sound-icon');
     if (si) si.setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
+    const sh = $('sound-header-icon');
+    if (sh) sh.setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
     syncMenuToggles();
     icons();
   }
@@ -1840,6 +1848,8 @@
     if (mtl) mtl.textContent = 'المظهر: ' + (dark ? 'داكن' : 'فاتح');
     const th = $('theme-header-icon');
     if (th) th.setAttribute('data-lucide', dark ? 'sun' : 'moon');
+    const ths = $('theme-header-icon-session');
+    if (ths) ths.setAttribute('data-lucide', dark ? 'sun' : 'moon');
     icons();
   }
   function updateMenuCounts() {
@@ -2994,6 +3004,8 @@
     });
     syncLangButtons();
     $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
+    const soundHeader = $('btn-sound-header');
+    if (soundHeader) soundHeader.addEventListener('click', () => { setSound(!S.sound); });
 
     const toggleTheme = () => {
       const root = document.documentElement;
@@ -3004,6 +3016,8 @@
     };
     const themeHeaderBtn = $('btn-theme-header');
     if (themeHeaderBtn) themeHeaderBtn.addEventListener('click', toggleTheme);
+    const themeSessionBtn = $('btn-theme-header-session');
+    if (themeSessionBtn) themeSessionBtn.addEventListener('click', toggleTheme);
 
     $('btn-timer-pause').addEventListener('click', () => {
       const ses = S.session;
@@ -3062,7 +3076,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v54';
+  const SHELL_VERSION = 'v56';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
