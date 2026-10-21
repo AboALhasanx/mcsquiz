@@ -369,8 +369,11 @@
 
   function topicTitle(bank) {
     if (!bank) return '';
+    const t = bank.topic;
+    // v3 keeps the topic as an {ar, en} pair
+    if (t && typeof t === 'object') return String(t.ar || t.en || '').trim();
     if (bank.topic_ar) return String(bank.topic_ar).trim();
-    return cleanTopic(bank.topic);
+    return cleanTopic(t);
   }
 
   function crumbHtml(sub, ch) {
