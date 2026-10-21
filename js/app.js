@@ -2029,7 +2029,12 @@
     if (!box) return;
     if (src) {
       box.classList.add('has-avatar');
-      box.innerHTML = '<img src="' + escapeHtml(src) + '" alt="">';
+      const img = document.createElement('img');
+      img.src = escapeHtml(src);
+      img.alt = '';
+      img.onerror = () => { box.classList.remove('has-avatar'); box.innerHTML = '<i data-lucide="user-round"></i>'; icons(); };
+      box.innerHTML = '';
+      box.appendChild(img);
     } else {
       box.classList.remove('has-avatar');
       box.innerHTML = '<i data-lucide="user-round"></i>';
@@ -3117,7 +3122,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v63';
+  const SHELL_VERSION = 'v64';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

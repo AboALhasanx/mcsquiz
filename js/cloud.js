@@ -141,7 +141,7 @@
     try {
       var a = JSON.parse(lsGet(ACCOUNT_KEY) || 'null');
       // avatars from older builds were removed; never point at a missing file
-      if (a && a.avatar && !/^assets\/avatars\/[\w.-]+$/.test(String(a.avatar))) a.avatar = '';
+      if (a && a.avatar && !/^assets\/avatars\/person-\d{2}\.png$/.test(String(a.avatar))) a.avatar = '';
       return (a && a.id) ? a : null;
     } catch (e) { return null; }
   }
