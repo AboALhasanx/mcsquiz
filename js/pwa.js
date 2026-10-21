@@ -5,7 +5,17 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
+      // a shell left open for days must still pick up a new build: never trust
+      // the HTTP cache for sw.js, and re-check whenever the app comes forward
+      navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((reg) => {
+        if (!reg || !reg.update) return;
+        const check = () => { try { reg.update(); } catch (e) {} };
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') check();
+        });
+        window.addEventListener('focus', check);
+        setInterval(check, 20 * 60 * 1000);
+      }).catch(() => {});
     }
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
