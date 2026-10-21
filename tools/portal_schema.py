@@ -237,7 +237,10 @@ def check_math(src: str) -> bool:
     body = body.strip()
     if not body:
         return False
-    # balanced braces and a sane shape: a formula is not plain prose
+    # Arabic belongs outside the math (it would be rendered as symbols)
+    if AR_RE.search(body):
+        return False
+    # balanced braces
     depth = 0
     for ch in body:
         if ch == "{":
@@ -248,9 +251,14 @@ def check_math(src: str) -> bool:
                 return False
     if depth != 0:
         return False
-    if " " in body and not re.search(r"\\[a-zA-Z]+|[\^_{}=+\-*/]", body):
-        return False
-    return bool(re.search(r"[\\^_{}=+\-*/]", body))
+    # a real formula: a command, an operator, or sub/superscript
+    # any LaTeX command or escaped symbol (\frac, \%, \Rightarrow ...)
+    if re.search(r"\\|[\^_{}=+\-*/<>|]", body):
+        return True
+    # a bare variable or number is valid too ($A$, $80$, $x$)
+    if re.fullmatch(r"[A-Za-z0-9.,%()\s]+", body) and len(body.split()) <= 3:
+        return True
+    return False
 
 
 # --------------------------------------------------------------------------- #

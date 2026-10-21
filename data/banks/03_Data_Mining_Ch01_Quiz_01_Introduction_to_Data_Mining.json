@@ -809,15 +809,47 @@
         "ar": "نقطة الأمان: المصحح يبحث عن كلمتين للقطاع + جملة ثابتة مثل Using techniques like Classification, Clustering, and Machine Learning. الحشو بلا وزن.",
         "en": "نقطة الأمان: المصحح يبحث عن كلمتين للقطاع + جملة ثابتة مثل Using techniques like Classification, Clustering, and Machine Learning. الحشو بلا وزن."
       }
+    },
+    {
+      "id": "q26",
+      "concept_id": "support_measure",
+      "bloom": "Apply",
+      "stem": {
+        "ar": "إذا كان عدد المعاملات الكلي $N = 1000$، وعدد المعاملات التي تحتوي على $A$ و $B$ معاً $80$، فما قيمة الدعم (support) للقاعدة $A \\Rightarrow B$؟",
+        "en": "If the total number of transactions is $N = 1000$ and the transactions containing both $A$ and $B$ are $80$, what is the support of the rule $A \\Rightarrow B$?"
+      },
+      "options": [
+        {
+          "ar": "$8\\%$",
+          "en": "$8\\%$"
+        },
+        {
+          "ar": "$0.8\\%$",
+          "en": "$0.8\\%$"
+        },
+        {
+          "ar": "$80\\%$",
+          "en": "$80\\%$"
+        },
+        {
+          "ar": "$12.5\\%$",
+          "en": "$12.5\\%$"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "ar": "الدعم يقيس تكرار ظهور $A$ و $B$ معاً منسوباً إلى كل المعاملات: $\\text{support}(A \\Rightarrow B) = \\frac{80}{1000} = 0.08 = 8\\%$. الاختيار $0.8\\%$ ناتج عن قسمة خاطئة على $10000$، والاختيار $80\\%$ يخلط بين العدد والنسبة، و$12.5\\%$ هو مقلوب $8$ تقريباً.",
+        "en": "الدعم يقيس تكرار ظهور $A$ و $B$ معاً منسوباً إلى كل المعاملات: $\\text{support}(A \\Rightarrow B) = \\frac{80}{1000} = 0.08 = 8\\%$. الاختيار $0.8\\%$ ناتج عن قسمة خاطئة على $10000$، والاختيار $80\\%$ يخلط بين العدد والنسبة، و$12.5\\%$ هو مقلوب $8$ تقريباً."
+      }
     }
   ],
   "topic": {
     "ar": "المحاضرة 01: مقدمة في التنقيب عن البيانات",
     "en": "Week 01: Introduction to Data Mining"
   },
-  "updated_at": "2026-10-21T13:48:08Z",
-  "has_math": false,
-  "version": 2,
+  "updated_at": "2026-10-21T14:31:46Z",
+  "has_math": true,
+  "version": 3,
   "material_url": "https://t.me/c/3710711332/86/191",
-  "question_count": 25
+  "question_count": 26
 }
