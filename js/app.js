@@ -1898,11 +1898,13 @@
     const setAvatar = (url, fallbackText) => {
       if (!av) return;
       if (url) {
-        av.style.backgroundImage = 'url("' + url.replace(/"/g, '%22') + '")';
+        av.classList.add('avatar-default');
+        av.style.backgroundImage = 'url("' + url.replace(/"/g, '%22') + '"),url("assets/avatar-default.svg")';
         av.style.backgroundSize = 'cover';
         av.style.backgroundPosition = 'center';
         av.textContent = '';
       } else {
+        av.classList.remove('avatar-default');
         av.style.backgroundImage = '';
         av.textContent = fallbackText;
       }
@@ -2348,8 +2350,10 @@
 
   function avatarHtml(photo, name, cls) {
     if (photo) {
-      return '<span class="' + cls + '" style="background-image:url(&quot;' + String(photo).replace(/"/g, '%22') +
-        '&quot;);background-size:cover;background-position:center"></span>';
+      // two layers: the picture on top, the silhouette underneath, so a file that
+      // no longer exists still shows a proper avatar instead of an empty circle
+      return '<span class="' + cls + ' avatar-default" style="background-image:url(&quot;' + String(photo).replace(/"/g, '%22') +
+        '&quot;),url(&quot;assets/avatar-default.svg&quot;);background-size:cover;background-position:center"></span>';
     }
     // default avatar (no photo): neutral silhouette instead of a letter on a tinted disc
     return '<span class="' + cls + ' avatar-default" aria-hidden="true"></span>';
@@ -3123,7 +3127,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v65';
+  const SHELL_VERSION = 'v66';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
