@@ -35,13 +35,21 @@ def run():
         # language switch: Arabic <-> English (letters prove the mode)
         letters = lambda: (page.locator('.option-letter').first.text_content() or '').strip()
         check('question starts in Arabic mode', letters() == 'أ', letters())
-        page.evaluate('() => document.querySelector("#header-session-view .lang-opt[data-lang=\'en\']").click()')
+        page.evaluate('() => document.querySelector(".btn-menu").click()')
+        page.wait_for_selector('#menu-drawer.open', timeout=10000)
+        page.evaluate('() => document.querySelector(".menu-lang-row .lang-opt[data-lang=\'en\']").click()')
+        page.evaluate('() => document.querySelector("#btn-close-menu").click()')
+        page.wait_for_timeout(300)
         page.wait_for_timeout(250)
         check('the switch turns the question into English', letters() == 'A', letters())
         check('the English stem is used',
               not re.search(r'[\u0600-\u06FF]', page.locator('#question-text').text_content() or ''),
               (page.locator('#question-text').text_content() or '')[:60])
-        page.evaluate('() => document.querySelector("#header-session-view .lang-opt[data-lang=\'ar\']").click()')
+        page.evaluate('() => document.querySelector(".btn-menu").click()')
+        page.wait_for_selector('#menu-drawer.open', timeout=10000)
+        page.evaluate('() => document.querySelector(".menu-lang-row .lang-opt[data-lang=\'ar\']").click()')
+        page.evaluate('() => document.querySelector("#btn-close-menu").click()')
+        page.wait_for_timeout(300)
         page.wait_for_timeout(250)
         check('the switch returns to Arabic', letters() == 'أ', letters())
 

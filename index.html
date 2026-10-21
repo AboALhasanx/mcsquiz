@@ -32,10 +32,10 @@
                     <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
-                    <div class="lang-switch" role="group" aria-label="لغة السؤال والخيارات">
-                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true">ع</button>
-                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-                    </div>
+                    <button id="btn-bell" class="icon-btn bell-btn" type="button" aria-label="التنبيهات" title="التنبيهات">
+                        <i data-lucide="bell"></i>
+                        <span id="bell-dot" class="bell-dot hidden" aria-hidden="true"></span>
+                    </button>
                     <a id="btn-open-saved" class="icon-btn" href="#/saved" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
                         <i data-lucide="bookmark"></i>
                         <span id="saved-count-badge" class="saved-count-badge hidden">0</span>
@@ -62,10 +62,10 @@
                     </button>
                 </div>
                 <div class="header-right">
-                    <div class="lang-switch" role="group" aria-label="لغة السؤال والخيارات">
-                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true">ع</button>
-                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
-                    </div>
+                    <button id="btn-bell-session" class="icon-btn bell-btn" type="button" aria-label="التنبيهات" title="التنبيهات">
+                        <i data-lucide="bell"></i>
+                        <span id="bell-dot-session" class="bell-dot hidden" aria-hidden="true"></span>
+                    </button>
                     <button id="btn-theme-header-session" class="icon-btn" type="button" aria-label="تبديل المظهر" title="تبديل المظهر">
                         <i data-lucide="sun" id="theme-header-icon-session"></i>
                     </button>
@@ -552,6 +552,17 @@
 
                 <div class="menu-section">
                     <span class="menu-section-title">الإعدادات</span>
+                    <div class="menu-item menu-item-stack menu-lang-row" role="group" aria-label="لغة الأسئلة">
+                        <i data-lucide="languages"></i>
+                        <span class="menu-item-text">
+                            <span class="menu-item-label">لغة الأسئلة</span>
+                            <span class="menu-item-sub">السؤال والخيارات والشرح</span>
+                        </span>
+                        <div class="lang-switch" role="group" aria-label="لغة الأسئلة">
+                            <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true">ع</button>
+                            <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+                        </div>
+                    </div>
                     <button id="menu-sound" class="menu-item" type="button">
                         <i data-lucide="volume-2" id="menu-sound-icon"></i>
                         <span id="menu-sound-label" class="menu-item-label">الصوت: يعمل</span>
@@ -608,6 +619,19 @@
         </div>
 
         <!-- Link another device (code + number matching) -->
+        <div id="notif-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card notif-card" role="dialog" aria-modal="true" aria-labelledby="notif-title">
+                <div class="notif-head">
+                    <h3 id="notif-title">التنبيهات</h3>
+                    <button id="notif-close" class="icon-btn" type="button" aria-label="إغلاق التنبيهات">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div id="notif-list" class="notif-list"></div>
+                <p id="notif-empty" class="notif-empty hidden">ما في تنبيهات جديدة — كل شي محدّث.</p>
+            </div>
+        </div>
+
         <div id="link-modal" class="modal-overlay hidden" aria-hidden="true">
             <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="link-title">
                 <h3 id="link-title">ربط جهاز</h3>

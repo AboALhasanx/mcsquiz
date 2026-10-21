@@ -310,6 +310,7 @@
       }
     }));
     S.freshChapters = freshChapters;
+    setTimeout(notifyNewContent, 1200);
     dbg('data loaded in ms:', Math.round(performance.now() - t0), 'banks:', Object.keys(S.banks), 'fresh:', freshChapters.length);
     if (DEBUG) $('debug-panel').classList.remove('hidden');
   }
@@ -527,30 +528,58 @@
     if (active) { try { active.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {} }
   }
 
-  // the "new questions" notice at the top of the catalogue
-  function renderContentBanner() {
-    const banner = $('content-new-banner');
-    if (!banner) return;
+  // the bell carries the "new questions" state; the list lives in a sheet
+  function renderBell() {
     const fresh = S.freshChapters || [];
-    if (!fresh.length) { banner.classList.add('hidden'); banner.innerHTML = ''; return; }
-    banner.classList.remove('hidden');
-    const total = fresh.reduce((n, f) => n + (f.count || 0), 0);
-    // a bump can flag many chapters at once: show the first few, then a summary
-    const shown = fresh.slice(0, 4);
-    const rest = fresh.length - shown.length;
-    const lines = shown.map((f) =>
-      '<a class="content-new-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '">' +
-      '<span class="content-new-subject">' + escapeHtml(f.subject) + '</span>' +
-      '<span class="content-new-chapter">' + escapeHtml(chLabel({ chapter_no: f.chapter })) + '</span>' +
-      '<span class="content-new-count">' + (f.count || 0) + ' سؤال</span>' +
-      '<i data-lucide="chevron-left"></i></a>').join('') +
-      (rest > 0 ? '<div class="content-new-more">و' + rest + ' جابتر أخرى تحتاج مراجعة</div>' : '');
-    banner.innerHTML =
-      '<div class="content-new-head"><i data-lucide="sparkles"></i>' +
-      '<div><strong>نزلت أسئلة جديدة</strong>' +
-      '<span>' + (total ? (total + ' سؤال تحت البوابة') : 'تحدّث المحتوى') + '</span></div>' +
-      '</div>' + lines;
+    const n = fresh.length;
+    ['bell-dot', 'bell-dot-session'].forEach((id) => {
+      const dot = $(id);
+      if (!dot) return;
+      dot.classList.toggle('hidden', n === 0);
+      dot.textContent = n > 9 ? '9+' : String(n);
+    });
+    ['btn-bell', 'btn-bell-session'].forEach((id) => {
+      const b = $(id);
+      if (!b) return;
+      b.classList.toggle('has-new', n > 0);
+      b.setAttribute('aria-label', n ? ('التنبيهات — ' + n + ' جديد') : 'التنبيهات');
+    });
+    renderNotifList();
+  }
+
+  function renderNotifList() {
+    const list = $('notif-list');
+    const empty = $('notif-empty');
+    if (!list) return;
+    const fresh = S.freshChapters || [];
+    if (!fresh.length) {
+      list.innerHTML = '';
+      if (empty) empty.classList.remove('hidden');
+      return;
+    }
+    if (empty) empty.classList.add('hidden');
+    list.innerHTML = fresh.map((f) =>
+      '<a class="notif-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '">' +
+      '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
+      '<span class="notif-text"><span class="notif-title">نزلت أسئلة جديدة</span>' +
+      '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
+      '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
     icons();
+  }
+
+  // other callers still say "the content banner": keep the name working
+  function renderContentBanner() { renderBell(); }
+
+  // one toast when new content actually lands on this device
+  function notifyNewContent() {
+    const fresh = S.freshChapters || [];
+    if (!fresh.length) return;
+    if (lsGet('portal_notified_v' + (S.contentVersion || 0))) return;
+    lsSet('portal_notified_v' + (S.contentVersion || 0), '1');
+    const total = fresh.reduce((n, f) => n + (f.count || 0), 0);
+    toast(total
+      ? ('نزلت ' + total + ' سؤال جديد — افتح الجرس')
+      : 'تحدّث المحتوى', 'info');
   }
 
   function findChapter(quizId) {
@@ -576,7 +605,7 @@
   }
 
   function renderCatalog() {
-    renderContentBanner();
+    renderBell();
     const box = $('catalog-cards-container');
     box.innerHTML = '';
     let count = 0;
@@ -3551,6 +3580,21 @@
       b.addEventListener('click', () => setLang(b.dataset.lang));
     });
     syncLangButtons();
+    ['btn-bell', 'btn-bell-session'].forEach((id) => {
+      const b = $(id);
+      if (!b) return;
+      b.addEventListener('click', () => {
+        renderNotifList();
+        closeDrawers();
+        const m = $('notif-modal');
+        if (m) { m.classList.remove('hidden'); m.setAttribute('aria-hidden', 'false'); }
+        icons();
+      });
+    });
+    bindClick('notif-close', () => {
+      const m = $('notif-modal');
+      if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
+    });
     $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
     // pwa.js is loaded after app.js, so its handler stores the prompt after
     // this one runs: read the state on the next tick, not right now
@@ -3635,7 +3679,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v74';
+  const SHELL_VERSION = 'v75';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
