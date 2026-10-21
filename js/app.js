@@ -1909,7 +1909,8 @@
     };
     if (acc) {
       name.textContent = acc.name || acc.handle;
-      setAvatar('', (String(acc.name || acc.handle).trim()[0] || '؟'));
+      // the picture the account holder picked, not just the first letter
+      setAvatar(acc.avatar || '', (String(acc.name || acc.handle).trim()[0] || '؟'));
       if (!navigator.onLine) sub.textContent = 'أوفلاين — تُزامن عند الاتصال';
       else {
         const t = fmtSyncTime();
@@ -3122,7 +3123,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v64';
+  const SHELL_VERSION = 'v65';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
