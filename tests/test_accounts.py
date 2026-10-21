@@ -1,4 +1,4 @@
-"""Accounts: handle login, cross-device sync, last-write-wins, device link."""
+"""Accounts: username + 4-digit PIN, sync, last-write-wins, profile, device link."""
 import os
 import sys
 import time
@@ -9,17 +9,24 @@ from common import suite, check
 
 suite('accounts')
 
+PIN = '4271'
 
-def login(page, handle, name):
-    page.evaluate("() => document.querySelector('.btn-menu').click()")
-    page.wait_for_timeout(400)
-    page.evaluate("() => document.querySelector('#menu-account').click()")
-    page.wait_for_timeout(400)
+
+def open_account(page):
+    page.evaluate("() => document.querySelector('.btn-menu').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+    page.wait_for_timeout(450)
+    page.evaluate("() => document.querySelector('#menu-account').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+    page.wait_for_timeout(450)
+
+
+def login(page, handle, name, pin=PIN):
+    open_account(page)
+    page.wait_for_selector('#login-modal:not(.hidden)', timeout=12000)
     page.fill('#login-name', name)
     page.fill('#login-handle', handle)
-    page.click('#login-submit')
-    page.wait_for_timeout(3000)
-    return page.evaluate('() => window.PortalCloud.account()')
+    page.fill('#login-pin', pin)
+    page.evaluate("() => document.querySelector('#login-submit').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+    page.wait_for_timeout(3500)
 
 
 def run():
@@ -27,106 +34,135 @@ def run():
     handle = 't%d' % (int(time.time() * 1000) % 1000000)
     name = 'طالب الاختبار'
 
-    # ---------- device 1: create the account ----------
+    # ---------- device 1 ----------
     b1, p1, err1 = common.new_page(pw, tour_done=True, telegram=None)
     try:
-        acc1 = login(p1, handle, name)
-        check('handle login creates an account', bool(acc1 and acc1['id']), acc1)
-        check('account id drives the user id',
+        login(p1, handle, name)
+        acc1 = p1.evaluate('() => window.PortalCloud.account()')
+        check('username + PIN creates an account', bool(acc1 and acc1['id']), acc1)
+        check('user id derives from the account',
               p1.evaluate('() => window.PortalCloud.userId()') == 'u:' + acc1['id'])
-        row = p1.locator('#menu-account-name').text_content()
-        check('drawer shows the account name', name in (row or ''), row)
+        check('drawer shows the name', name in (p1.locator('#menu-account-name').text_content() or ''))
 
-        # produce local data: save a question and finish a quiz
+        # wrong pin must be rejected
+        open_account(p1)
+        p1.wait_for_selector('#account-modal:not(.hidden)', timeout=12000)
+        p1.evaluate("() => document.querySelector('#account-logout').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+        p1.wait_for_timeout(800)
+        login(p1, handle, name, pin='1111')
+        check('a wrong PIN is rejected', not p1.evaluate('() => !!window.PortalCloud.account()'),
+              p1.locator('#login-error').text_content())
+
+        # correct pin again
+        login(p1, handle, name)
+        check('the right PIN signs in again',
+              p1.evaluate('() => window.PortalCloud.account()')['id'] == acc1['id'])
+
+        # profile: rename + pick an avatar
+        open_account(p1)
+        p1.wait_for_selector('#account-modal:not(.hidden)', timeout=12000)
+        check('profile editor is shown', 'hidden' not in (p1.locator('#account-profile').get_attribute('class') or ''))
+        check('the username is labelled as permanent',
+              'لا يمكن تغييره' in (p1.locator('.auth-hint').inner_text() or ''))
+        p1.fill('#profile-name', 'اسم جديد')
+        p1.evaluate("() => document.querySelectorAll('#avatar-grid .avatar-choice')[1].dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+        p1.evaluate("() => document.querySelector('#profile-save').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+        p1.wait_for_timeout(2500)
+        acc_after = p1.evaluate('() => window.PortalCloud.account()')
+        check('the display name is editable', acc_after.get('name') == 'اسم جديد', acc_after)
+        check('the avatar is saved', 'assets/avatars/' in (acc_after.get('avatar') or ''), acc_after)
+
+        # test-side cleanup: close every sheet so the quiz is tappable
+        p1.evaluate('''() => {
+          document.querySelectorAll('.modal-overlay').forEach((m) => m.classList.add('hidden'));
+          document.querySelectorAll('.drawer').forEach((d) => d.classList.remove('open'));
+          document.querySelector('#drawer-overlay').classList.remove('active');
+        }''')
+        p1.wait_for_timeout(500)
+
+        # study data (for sync)
         subs = common.subjects(p1)
         sid, qid = subs[0]['id'], subs[0]['chapters'][0]
         p1.evaluate('(h) => { location.hash = h; }', '#/quiz/%s/%s' % (sid, qid))
         p1.wait_for_selector('#btn-start-quiz:visible', timeout=15000)
-        p1.evaluate('() => document.querySelector("#btn-start-quiz").click()')
+        p1.evaluate("() => document.querySelector('#btn-start-quiz').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+        p1.wait_for_timeout(500)
+        p1.evaluate("() => document.querySelector('#btn-save-question').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
         p1.wait_for_timeout(400)
-        p1.evaluate('() => document.querySelector("#btn-save-question").click()')
-        p1.wait_for_timeout(300)
         total = int((p1.locator('#question-total-label').text_content() or '0').strip())
         for _ in range(total):
             if 'hidden' not in (p1.locator('#results-view').get_attribute('class') or ''):
                 break
-            is_open = p1.evaluate("""() => {
-              const s = window.__portal.S.session; return s.picks[s.idx] === null; }""")
+            is_open = p1.evaluate("() => { const s = window.__portal.S.session; return s.picks[s.idx] === null; }")
             if is_open:
                 common.tap(p1, p1.locator('.option-tile').first)
                 p1.wait_for_timeout(120)
             p1.click('#btn-next')
             p1.wait_for_timeout(150)
-        p1.evaluate("() => { try { window.PortalCloud.pushSoon(); } catch (e) {} }")
+        p1.evaluate('() => window.PortalCloud.pushSoon()')
         p1.wait_for_timeout(4000)
         saved1 = p1.evaluate("() => Object.keys(JSON.parse(localStorage.getItem('portal_saved_v1')||'{}')).length")
         hist1 = p1.evaluate("() => JSON.parse(localStorage.getItem('portal_history_v1')||'[]').length")
-        check('device 1 has local study data', saved1 >= 1 and hist1 >= 1, '%s/%s' % (saved1, hist1))
+        check('device 1 has study data', saved1 >= 1 and hist1 >= 1, '%s/%s' % (saved1, hist1))
     finally:
         b1.close()
 
-    # ---------- device 2: same handle pulls the data ----------
+    # ---------- device 2: same username + pin pulls the data ----------
     b2, p2, err2 = common.new_page(pw, tour_done=True, telegram=None)
     try:
-        acc2 = login(p2, handle, name)
-        check('the same handle returns the same account id',
-              bool(acc2 and acc1 and acc2['id'] == acc1['id']), acc2)
-        p2.wait_for_timeout(2500)
+        login(p2, handle, 'اسم جديد')
+        acc2 = p2.evaluate('() => window.PortalCloud.account()')
+        check('same username returns the same account', bool(acc2 and acc2['id'] == acc1['id']), acc2)
+        p2.wait_for_timeout(3000)
         saved2 = p2.evaluate("() => Object.keys(JSON.parse(localStorage.getItem('portal_saved_v1')||'{}')).length")
         hist2 = p2.evaluate("() => JSON.parse(localStorage.getItem('portal_history_v1')||'[]').length")
         check('device 2 receives the saved questions', saved2 >= 1, saved2)
         check('device 2 receives the history', hist2 >= 1, hist2)
 
-        # ---------- last write wins ----------
+        # last write wins
         p2.evaluate("""() => {
-          const k = 'portal_saved_v1';
-          const s = JSON.parse(localStorage.getItem(k) || '{}');
-          s['newdevice|q|2'] = { origin: { subjectId: 'newdevice', quizId: 'q', chapterNo: 1, topic: 't' }, snapshot: { id: 2 }, savedAt: Date.now() };
-          localStorage.setItem(k, JSON.stringify(s));
+          const s = JSON.parse(localStorage.getItem('portal_saved_v1') || '{}');
+          s['newdevice|q|9'] = { origin: { subjectId: 'newdevice', quizId: 'q', chapterNo: 1, topic: 't' }, snapshot: { id: 9 }, savedAt: Date.now() };
+          localStorage.setItem('portal_saved_v1', JSON.stringify(s));
           window.PortalCloud.pushSoon();
         }""")
-        p2.wait_for_timeout(2500)
-        p1b, p1c, err3 = common.new_page(pw, tour_done=True, telegram=None)
+        p2.wait_for_timeout(3000)
+        b3, p3, err3 = common.new_page(pw, tour_done=True, telegram=None)
         try:
-            login(p1c, handle, name)
-            p1c.wait_for_timeout(3000)
-            has_new = p1c.evaluate("() => !!JSON.parse(localStorage.getItem('portal_saved_v1')||'{}')['newdevice|q|2']")
-            check('the newest write wins across devices', has_new)
-        finally:
-            p1b.close()
-
-        # ---------- device link: code + approval ----------
-        b3, p3, err4 = common.new_page(pw, tour_done=True, telegram=None)
-        try:
-            p3.evaluate("() => document.querySelector('.btn-menu').click()")
-            p3.wait_for_timeout(400)
-            p3.evaluate("() => document.querySelector('#menu-account').click()")
-            p3.wait_for_timeout(400)
-            p3.locator('#login-link-device').click()
-            p3.wait_for_timeout(800)
-            code = (p3.locator('#link-code').text_content() or '').strip()
-            check('a 6-digit link code is shown on the new device', len(code) == 6 and code.isdigit(), code)
-
-            # approve from the signed-in device
-            p2.evaluate("() => document.querySelector('.btn-menu').click()")
-            p2.wait_for_timeout(300)
-            p2.evaluate("() => document.querySelector('#menu-account').click()")
-            p2.wait_for_timeout(300)
-            p2.locator('#account-link').click()
-            p2.wait_for_timeout(400)
-            p2.fill('#link-code-input', code)
-            p2.click('#link-yes')
-            p2.wait_for_timeout(1500)
-
-            p3.wait_for_timeout(6000)
-            linked = p3.evaluate('() => window.PortalCloud.account()')
-            check('new device signs in after approval', bool(linked and linked.get('id') == acc1['id']), linked)
+            login(p3, handle, 'اسم جديد')
+            p3.wait_for_timeout(3500)
+            check('the newest write wins across devices',
+                  p3.evaluate("() => !!JSON.parse(localStorage.getItem('portal_saved_v1')||'{}')['newdevice|q|9']"))
         finally:
             b3.close()
+
+        # ---------- device link: 4-digit code + QR ----------
+        b4, p4, err4 = common.new_page(pw, tour_done=True, telegram=None)
+        try:
+            open_account(p4)
+            p4.wait_for_selector('#login-modal:not(.hidden)', timeout=12000)
+            p4.evaluate("() => document.querySelector('#login-link-device').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+            p4.wait_for_timeout(1500)
+            code = (p4.locator('#link-code').text_content() or '').strip()
+            check('the link code has four digits', len(code) == 4 and code.isdigit(), code)
+            check('a QR is rendered for the link', p4.locator('#link-qr svg').count() == 1)
+
+            open_account(p2)
+            p2.wait_for_selector('#account-modal:not(.hidden)', timeout=12000)
+            p2.evaluate("() => document.querySelector('#account-link').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+            p2.wait_for_selector('#link-modal:not(.hidden)', timeout=12000)
+            p2.fill('#link-code-input', code)
+            p2.evaluate("() => document.querySelector('#link-yes').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+            p2.wait_for_timeout(2000)
+            p4.wait_for_timeout(7000)
+            linked = p4.evaluate('() => window.PortalCloud.account()')
+            check('the approved device signs in', bool(linked and linked['id'] == acc1['id']), linked)
+        finally:
+            b4.close()
     finally:
         b2.close()
 
-    print('errors:', (err1 + err2)[:3], flush=True)
+    print('errors:', (err1 + err2)[:2], flush=True)
     return common.report()
 
 

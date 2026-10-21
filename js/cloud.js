@@ -156,15 +156,42 @@
   function normalizeHandle(h) {
     return String(h || '').toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 20);
   }
-  async function login(handle, name) {
+  async function login(handle, pin, name) {
     var h = normalizeHandle(handle);
     if (h.length < 3) throw new Error('handle-short');
+    if (!/^[0-9]{4}$/.test(String(pin || ''))) throw new Error('pin-format');
     var sb = await sbClient();
-    var r = await sb.rpc('portal_login', { p_handle: h, p_name: String(name || '').trim() });
+    var r = await sb.rpc('portal_login', { p_handle: h, p_pin: String(pin), p_name: String(name || '').trim() });
     if (r.error) throw new Error(r.error.message || 'login-failed');
     var row = Array.isArray(r.data) ? r.data[0] : r.data;
     if (!row || !row.id) throw new Error('login-empty');
-    setAccount({ id: row.id, handle: row.handle, name: row.name || h, at: Date.now() });
+    setAccount({ id: row.id, handle: row.handle, name: row.name || h, avatar: row.avatar || '', at: Date.now() });
+    try { lsSet('portal_pin_v1', String(pin)); } catch (e) {}
+    return account();
+  }
+
+  async function updateProfile(name, avatar, pinOverride) {
+    var a = account();
+    if (!a) throw new Error('not-linked');
+    var pin = String(pinOverride || lsGet('portal_pin_v1') || '');
+    if (!pin) throw new Error('pin-required');
+    var sb = await sbClient();
+    var r = await sb.rpc('portal_profile', {
+      p_handle: a.handle, p_pin: pin, p_name: String(name || '').trim(), p_avatar: String(avatar || ''),
+    });
+    if (r.error) throw new Error(r.error.message || 'profile-failed');
+    var row = Array.isArray(r.data) ? r.data[0] : r.data;
+    setAccount({ id: a.id, handle: a.handle, name: (row && row.name) || a.name, avatar: (row && row.avatar) || '', at: Date.now() });
+    try { lsSet('portal_pin_v1', pin); } catch (e) {}
+    return account();
+  }
+
+  // a device approved through the link code gets the account without the pin;
+  // profile edits then ask for the pin once.
+  function adopt(row) {
+    if (!row || !row.id) throw new Error('adopt-empty');
+    setAccount({ id: row.id, handle: row.handle, name: row.name || row.handle, avatar: row.avatar || '', at: Date.now() });
+    try { localStorage.removeItem('portal_pin_v1'); } catch (e) {}
     return account();
   }
 
@@ -179,7 +206,8 @@
   }
   // Telegram profile photo (small) when available, else '' -> callers use initials.
   function avatarUrl(u) {
-    if (account()) return '';
+    var a = account();
+    if (a) return a.avatar || '';
     u = u || tgUser() || {};
     try {
       if (u.photo_url) return u.photo_url;
@@ -448,6 +476,8 @@
     account: account,
     userId: userId,
     login: login,
+    updateProfile: updateProfile,
+    adopt: adopt,
     signOut: signOut,
     normalizeHandle: normalizeHandle,
     sb: sbClient,

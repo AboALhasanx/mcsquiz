@@ -1771,8 +1771,8 @@
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
     // signed in with a handle: show the account sheet
-    $('account-body').textContent = (acc.name || acc.handle) + ' · @' + acc.handle +
-      (navigator.onLine ? '' : ' — أوفلاين');
+    $('account-body').textContent = '@' + acc.handle + (navigator.onLine ? '' : ' — أوفلاين');
+    renderProfileEditor(acc);
     $('account-link').classList.remove('hidden');
     $('account-logout').classList.remove('hidden');
     $('account-open-bot').classList.add('hidden');
@@ -1780,6 +1780,72 @@
     $('account-modal').classList.remove('hidden');
     $('account-modal').setAttribute('aria-hidden', 'false');
     icons();
+  }
+
+  const AVATARS = [
+    'adventurer-amina', 'adventurer-yusuf', 'adventurer-layla', 'adventurer-hasan',
+    'big-smile-sara', 'big-smile-omar', 'big-smile-noor', 'big-smile-ali',
+    'micah-zahra', 'micah-kareem', 'micah-huda', 'micah-mustafa',
+  ];
+
+  function renderProfileEditor(acc) {
+    const box = $('account-profile');
+    if (!box) return;
+    box.classList.remove('hidden');
+    $('profile-name').value = acc.name || '';
+    $('profile-handle').textContent = '@' + acc.handle;
+    try { $('profile-pin').value = localStorage.getItem('portal_pin_v1') || ''; } catch (e) {}
+    const grid = $('avatar-grid');
+    grid.innerHTML = '';
+    const current = acc.avatar || '';
+    const none = document.createElement('button');
+    none.type = 'button';
+    none.className = 'avatar-choice' + (current ? '' : ' selected');
+    none.textContent = 'بدون';
+    none.setAttribute('aria-label', 'بدون صورة');
+    none.addEventListener('click', () => {
+      grid.querySelectorAll('.avatar-choice').forEach((b) => b.classList.remove('selected'));
+      none.classList.add('selected');
+      box.dataset.avatar = '';
+    });
+    grid.appendChild(none);
+    AVATARS.forEach((name) => {
+      const src = 'assets/avatars/' + name + '.svg';
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'avatar-choice' + (current === src ? ' selected' : '');
+      b.setAttribute('aria-label', 'صورة ' + name);
+      b.innerHTML = '<img src="' + src + '" alt="">';
+      b.addEventListener('click', () => {
+        grid.querySelectorAll('.avatar-choice').forEach((x) => x.classList.remove('selected'));
+        b.classList.add('selected');
+        box.dataset.avatar = src;
+      });
+      grid.appendChild(b);
+    });
+    box.dataset.avatar = current;
+  }
+
+  async function saveProfile() {
+    const C = cloud();
+    const box = $('account-profile');
+    if (!C || !C.updateProfile) return;
+    const name = ($('profile-name').value || '').trim();
+    if (!name) { toast('اكتب اسمك', 'error'); return; }
+    const avatar = box.dataset.avatar || '';
+    const pin = ($('profile-pin').value || '').replace(/\D/g, '');
+    if (pin.length !== 4) { toast('أدخل رمزك (4 أرقام) لتأكيد التعديل', 'error'); return; }
+    try {
+      await C.updateProfile(name, avatar, pin);
+      updateAccountRow();
+      S.leagueRows = null; S.leagueStamp = 0;
+      try { await window.PortalLeague.syncWeek(); } catch (e) {}
+      renderLeague();
+      toast('تم حفظ الملف', 'success');
+    } catch (e) {
+      const msg = String((e && e.message) || '');
+      toast(msg.indexOf('pin') >= 0 ? 'أعد تسجيل الدخول لتعديل الملف' : 'تعذر الحفظ', 'error');
+    }
   }
 
   // ---------------- handle accounts (no email / password) ----------------
@@ -1807,13 +1873,15 @@
     const C = cloud();
     const name = ($('login-name').value || '').trim();
     const handle = C && C.normalizeHandle ? C.normalizeHandle($('login-handle').value) : ($('login-handle').value || '').trim();
+    const pin = ($('login-pin').value || '').replace(/\D/g, '');
     if (!name) { loginError('اكتب اسمك أولاً'); return; }
-    if (handle.length < 3) { loginError('المعرّف 3 أحرف على الأقل (a-z 0-9 _)'); return; }
+    if (handle.length < 3) { loginError('اسم المستخدم 3 أحرف على الأقل (a-z 0-9 _)'); return; }
+    if (pin.length !== 4) { loginError('رمز الدخول 4 أرقام'); return; }
     const btn = $('login-submit');
     btn.disabled = true;
     btn.textContent = 'جارٍ الدخول…';
     try {
-      await C.login(handle, name);
+      await C.login(handle, pin, name);
       closeLoginModal();
       toast('أهلاً ' + name, 'success');
       updateAccountRow();
@@ -1824,7 +1892,10 @@
       renderLeague();
     } catch (e) {
       const msg = String((e && e.message) || '');
-      loginError(msg.indexOf('handle-short') >= 0 ? 'المعرّف قصير' : 'تعذر الدخول — تحقق من الاتصال');
+      if (msg.indexOf('bad_pin') >= 0) loginError('الرمز غير صحيح لهذا المستخدم');
+      else if (msg.indexOf('handle-short') >= 0) loginError('اسم المستخدم قصير');
+      else if (msg.indexOf('pin-format') >= 0) loginError('رمز الدخول 4 أرقام');
+      else loginError('تعذر الدخول — تحقق من الاتصال');
     } finally {
       btn.disabled = false;
       btn.textContent = 'دخول';
@@ -1842,10 +1913,11 @@
   async function generateLinkCode() {
     const C = cloud();
     if (!C || !C.login) return;
-    const code = String(Math.floor(100000 + Math.random() * 900000));
+    const code = String(Math.floor(1000 + Math.random() * 9000));
     $('link-generate').classList.remove('hidden');
     $('link-approve').classList.add('hidden');
     $('link-code').textContent = code;
+    renderLinkQr(code);
     $('link-wait').textContent = 'بانتظار التأكيد من الجهاز الآخر…';
     $('link-modal').classList.remove('hidden');
     $('link-modal').setAttribute('aria-hidden', 'false');
@@ -1866,7 +1938,7 @@
         const row = (Array.isArray(r.data) ? r.data[0] : r.data) || null;
         if (row && row.approved && row.handle) {
           stopLinkPoll();
-          await C.login(row.handle, row.name || row.handle);
+          C.adopt({ id: row.user_id, handle: row.handle, name: row.name, avatar: row.avatar || '' });
           $('link-wait').textContent = 'تم الربط ✓';
           closeLinkModal();
           updateAccountRow();
@@ -1880,13 +1952,32 @@
     }, 3000);
   }
 
+  function renderLinkQr(code) {
+    const box = $('link-qr');
+    if (!box) return;
+    box.innerHTML = '';
+    try {
+      if (typeof qrcode !== 'function') return;
+      const url = location.origin + location.pathname + '#/link?code=' + code;
+      const qr = qrcode(0, 'M');
+      qr.addData(url);
+      qr.make();
+      box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 1, scalable: true });
+    } catch (e) {}
+  }
+
   function openLinkApprove() {
     const C = cloud();
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
     $('link-generate').classList.add('hidden');
     $('link-approve').classList.remove('hidden');
-    $('link-code-input').value = '';
+    let pre = '';
+    try {
+      const m = location.hash.match(/code=(\d{4})/);
+      if (m) pre = m[1];
+    } catch (e) {}
+    $('link-code-input').value = pre;
     $('link-modal').classList.remove('hidden');
     $('link-modal').setAttribute('aria-hidden', 'false');
     setTimeout(() => { try { $('link-code-input').focus(); } catch (e) {} }, 120);
@@ -1896,8 +1987,8 @@
     const C = cloud();
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
-    const code = ($('link-code-input').value || '').replace(/\D/g, '').slice(0, 6);
-    if (code.length !== 6) { toast('اكتب الرمز المكوّن من 6 أرقام', 'error'); return; }
+    const code = ($('link-code-input').value || '').replace(/\D/g, '').slice(0, 4);
+    if (code.length !== 4) { toast('اكتب الرمز المكوّن من 4 أرقام', 'error'); return; }
     try {
       const sb = await sbRaw();
       const r = await sb.rpc('link_approve', { p_code: code, p_user: acc.id });
@@ -2602,6 +2693,11 @@
       const C = cloud();
       try { await C.pullOrPush(); toast('تمت المزامنة', 'success'); } catch (e) { toast('تعذر المزامنة', 'error'); }
     });
+    bindClick('profile-save', saveProfile);
+    bindClick('account-close', () => {
+      $('account-modal').classList.add('hidden');
+      $('account-modal').setAttribute('aria-hidden', 'true');
+    });
     bindClick('link-yes', approveLinkCode);
     bindClick('link-no', closeLinkModal);
     bindClick('link-close', closeLinkModal);
@@ -2760,7 +2856,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v44';
+  const SHELL_VERSION = 'v46';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -2842,6 +2938,16 @@
           else badge.classList.add('hidden');
         }
       }
+      // a QR / shared link opens the approval sheet with the code in the hash
+      try {
+        if (/^#\/link/.test(location.hash)) {
+          setTimeout(() => {
+            const C = cloud();
+            if (C && C.account && C.account()) openLinkApprove();
+            else openLoginModal();
+          }, 900);
+        }
+      } catch (e) {}
       if (window.PortalLog) window.PortalLog.info('boot', 'ok subjects=' + (S.index ? S.index.subjects.length : 0) + ' test_mode=' + (S.index ? S.index.test_mode : '?'));
       logOfflineState();
       // Show the tour exactly once per device: mark it seen the moment it opens,

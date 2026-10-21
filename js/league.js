@@ -97,6 +97,12 @@
     return 'لاعب';
   }
   function avatarOf(u) {
+    try {
+      if (global.PortalCloud && global.PortalCloud.account) {
+        var a = global.PortalCloud.account();
+        if (a) return a.avatar || '';
+      }
+    } catch (e) {}
     u = u || tgUser() || {};
     try {
       if (u.photo_url) return u.photo_url;
