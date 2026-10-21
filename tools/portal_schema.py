@@ -267,10 +267,20 @@ def check_math(src: str) -> bool:
 def build_index(previous: dict, banks: dict, chapter_meta: dict) -> dict:
     """Rebuild data/index.json from the published banks.
 
-    `banks` maps quiz_id -> the v3 bank.
+    `banks` maps quiz_id -> the v3 bank (this may be one subject only; the
+    subjects that were not published keep their previous chapters as they are).
+
     `chapter_meta` maps quiz_id -> {subject_id, subject_title, chapter_no, bank}
     """
+    # start from what is already published, so a one-subject publish never
+    # drops the other subjects
     subjects = {}
+    for sub in previous.get("subjects", []):
+        kept = dict(sub)
+        kept["chapters"] = [ch for ch in sub.get("chapters", [])
+                            if ch.get("quiz_id") not in banks]
+        if kept["chapters"]:
+            subjects[sub.get("subject_id")] = kept
     for quiz_id, bank in banks.items():
         meta = chapter_meta.get(quiz_id) or {}
         sid = meta.get("subject_id") or bank.get("subject_id") or "00"
