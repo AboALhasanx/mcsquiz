@@ -268,9 +268,10 @@
     rows.push(['عدد المحاولات', att.count ? escapeHtml(att.count + ' ' + (att.count === 1 ? 'محاولة' : 'محاولات')) : '<span class="muted">لا محاولات سابقة</span>']);
     if (bank.semester_label) rows.push(['المستوى', escapeHtml(bank.semester_label)]);
     if (bank.instructor_ar) rows.push(['المدرّس', escapeHtml(bank.instructor_ar)]);
-    if (bank.source_grounding) {
-      const src = String(bank.source_grounding).trim();
-      rows.push(['مصدر المحتوى', '<span class="muted small">' + escapeHtml(src.length > 90 ? src.slice(0, 90) + '…' : src) + '</span>', 'span2']);
+    const material = bank.material_url || '';
+    if (material) {
+      rows.push(['الملزمة', '<a class="material-link" href="' + escapeHtml(material) +
+        '" target="_blank" rel="noopener">افتح ملزمة الجابتر في مجموعة الملازم \u2197</a>', 'span2']);
     }
     return rows;
   }
@@ -3048,7 +3049,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v52';
+  const SHELL_VERSION = 'v53';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

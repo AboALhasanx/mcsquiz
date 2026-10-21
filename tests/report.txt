@@ -6,23 +6,23 @@ PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr |
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</spa
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': 'f93af26e-6cae-4d91-9d49-d8e8aeeaafe2', 'handle': 't537181', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792570541200}
+PASS | accounts | username + PIN creates an account | {'id': '056e79d6-e1b9-4a02-8484-282bd239969c', 'handle': 't1973', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792571005496}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': 'f93af26e-6cae-4d91-9d49-d8e8aeeaafe2', 'handle': 't537181', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792570555582}
-PASS | accounts | the avatar is saved | {'id': 'f93af26e-6cae-4d91-9d49-d8e8aeeaafe2', 'handle': 't537181', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792570555582}
+PASS | accounts | the display name is editable | {'id': '056e79d6-e1b9-4a02-8484-282bd239969c', 'handle': 't1973', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792571020101}
+PASS | accounts | the avatar is saved | {'id': '056e79d6-e1b9-4a02-8484-282bd239969c', 'handle': 't1973', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792571020101}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': 'f93af26e-6cae-4d91-9d49-d8e8aeeaafe2', 'handle': 't537181', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792570579172}
+PASS | accounts | same username returns the same account | {'id': '056e79d6-e1b9-4a02-8484-282bd239969c', 'handle': 't1973', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792571043588}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 5374
+PASS | accounts | the link code has four digits | 5710
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': 'f93af26e-6cae-4d91-9d49-d8e8aeeaafe2', 'handle': 't537181', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792570604497}
+PASS | accounts | the approved device signs in | {'id': '056e79d6-e1b9-4a02-8484-282bd239969c', 'handle': 't1973', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792571068950}
 PASS | catalog | index exposes subjects | 5
 PASS | catalog | one chip per subject | 5 vs 5
 PASS | catalog | no "all" chip | 
@@ -95,7 +95,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 17
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/league'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/stats', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 

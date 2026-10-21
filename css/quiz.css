@@ -3424,3 +3424,15 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 }
 
 .quiz-start-card .start-instructions { margin-bottom: 0.35rem; }
+
+.detail-value .material-link {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(201, 162, 39, 0.45);
+    padding-bottom: 1px;
+}
+
+.detail-value .material-link:hover {
+    border-bottom-style: solid;
+}
