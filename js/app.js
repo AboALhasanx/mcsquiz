@@ -1191,6 +1191,14 @@
 
   // a small read-only status for the console, the tests and the diagnostics
   window.PortalApp = {
+    tour: function () {
+      return {
+        idx: tourIdx,
+        visible: !$('tour-overlay').classList.contains('hidden'),
+        title: $('tour-tip-title').textContent,
+      };
+    },
+    startTour: function () { tourShow(0); },
     contentSource: function () { return S.contentSource || 'unknown'; },
     contentVersion: function () { return S.contentVersion || 0; },
     bankCount: function () { return Object.keys(S.banks || {}).length; },
@@ -3782,7 +3790,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v82';
+  const SHELL_VERSION = 'v83';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
