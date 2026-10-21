@@ -140,6 +140,8 @@
   function account() {
     try {
       var a = JSON.parse(lsGet(ACCOUNT_KEY) || 'null');
+      // avatars from older builds were removed; never point at a missing file
+      if (a && a.avatar && !/^assets\/avatars\/animal-[\w-]+\.svg$/.test(String(a.avatar))) a.avatar = '';
       return (a && a.id) ? a : null;
     } catch (e) { return null; }
   }

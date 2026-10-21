@@ -165,3 +165,37 @@ PASS | accounts | the newest write wins across devices |
 PASS | accounts | the link code has four digits | 7957
 PASS | accounts | a QR is rendered for the link | 
 PASS | accounts | the approved device signs in | {'id': 'd416f3d6-5348-4093-a15b-bb0206fbc185', 'handle': 't997623', 'name': 'اسم جديد', 'avatar': 'assets/avatars/adventurer-amina.svg', 'at': 1792567068114}
+PASS | accounts | username + PIN creates an account | {'id': '822403ad-dc51-4e45-850b-248580f818eb', 'handle': 't281103', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792568285476}
+PASS | accounts | user id derives from the account | 
+PASS | accounts | drawer shows the name | 
+PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
+PASS | accounts | the right PIN signs in again | 
+PASS | accounts | profile editor is shown | 
+PASS | accounts | the username is labelled as permanent | 
+PASS | accounts | the display name is editable | {'id': '822403ad-dc51-4e45-850b-248580f818eb', 'handle': 't281103', 'name': 'اسم جديد', 'avatar': 'assets/avatars/adventurer-amina.svg', 'at': 1792568300345}
+PASS | accounts | the avatar is saved | {'id': '822403ad-dc51-4e45-850b-248580f818eb', 'handle': 't281103', 'name': 'اسم جديد', 'avatar': 'assets/avatars/adventurer-amina.svg', 'at': 1792568300345}
+PASS | accounts | device 1 has study data | 1/1
+PASS | accounts | same username returns the same account | {'id': '822403ad-dc51-4e45-850b-248580f818eb', 'handle': 't281103', 'name': 'اسم جديد', 'avatar': 'assets/avatars/adventurer-amina.svg', 'at': 1792568323803}
+PASS | accounts | device 2 receives the saved questions | 1
+PASS | accounts | device 2 receives the history | 1
+PASS | accounts | the newest write wins across devices | 
+PASS | accounts | the link code has four digits | 1023
+PASS | accounts | a QR is rendered for the link | 
+PASS | accounts | the approved device signs in | {'id': '822403ad-dc51-4e45-850b-248580f818eb', 'handle': 't281103', 'name': 'اسم جديد', 'avatar': 'assets/avatars/adventurer-amina.svg', 'at': 1792568350499}
+PASS | accounts | username + PIN creates an account | {'id': '8df63cf5-e6c1-4d48-b05c-6fd0335821e1', 'handle': 't563839', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792568568136}
+PASS | accounts | user id derives from the account | 
+PASS | accounts | drawer shows the name | 
+PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
+PASS | accounts | the right PIN signs in again | 
+PASS | accounts | profile editor is shown | 
+PASS | accounts | the username is labelled as permanent | 
+PASS | accounts | the display name is editable | {'id': '8df63cf5-e6c1-4d48-b05c-6fd0335821e1', 'handle': 't563839', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792568582525}
+PASS | accounts | the avatar is saved | {'id': '8df63cf5-e6c1-4d48-b05c-6fd0335821e1', 'handle': 't563839', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792568582525}
+PASS | accounts | device 1 has study data | 1/1
+PASS | accounts | same username returns the same account | {'id': '8df63cf5-e6c1-4d48-b05c-6fd0335821e1', 'handle': 't563839', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792568605744}
+PASS | accounts | device 2 receives the saved questions | 1
+PASS | accounts | device 2 receives the history | 1
+PASS | accounts | the newest write wins across devices | 
+PASS | accounts | the link code has four digits | 6122
+PASS | accounts | a QR is rendered for the link | 
+PASS | accounts | the approved device signs in | {'id': '8df63cf5-e6c1-4d48-b05c-6fd0335821e1', 'handle': 't563839', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792568631198}

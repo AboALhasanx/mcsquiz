@@ -1,14 +1,31 @@
-Avatar assets in this folder come from DiceBear (https://www.dicebear.com/),
-downloaded as static SVGs so the picker also works offline.
+Avatar assets in this folder
+============================
 
-- "Adventurer" by Lisa Wischofsky — CC BY 4.0
-  https://www.figma.com/community/file/1184595184137881796
-- "Big Smile" by Ashley Seo — CC BY 4.0
-- "Micah" by Micah Lanier — CC BY 4.0
+The avatar set is 12 animal faces only — no human figures, chosen so the picker
+stays neutral for a conservative audience.
 
-Licensed under Creative Commons Attribution 4.0
-(https://creativecommons.org/licenses/by/4.0/). Attribution is kept here and in
-the app's avatar picker (see the credits line in the account sheet).
+Source: Twemoji (jdecked/twemoji, the community-maintained Twemoji fork)
+  https://github.com/jdecked/twemoji
+  Graphics licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+  (the code in that project is MIT; these files are the graphic assets)
 
-Each file was generated with:
-  https://api.dicebear.com/9.x/<style>/svg?seed=<seed>&radius=50&backgroundColor=transparent
+Files (SVG, 36x36 viewBox, downloaded as-is so the picker works offline):
+
+  animal-dog.svg      U+1F436
+  animal-cat.svg      U+1F431
+  animal-fox.svg      U+1F98A
+  animal-bear.svg     U+1F43B
+  animal-panda.svg    U+1F43C
+  animal-koala.svg    U+1F428
+  animal-tiger.svg    U+1F42F
+  animal-lion.svg     U+1F981
+  animal-owl.svg      U+1F989
+  animal-penguin.svg  U+1F427
+  animal-frog.svg     U+1F438
+  animal-wolf.svg     U+1F43A
+
+Downloaded from:
+  https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/<codepoint>.svg
+
+Attribution for Twemoji is kept here. The shapes are unmodified apart from
+being served locally instead of from a CDN.

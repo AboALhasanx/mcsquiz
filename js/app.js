@@ -1786,9 +1786,9 @@
   }
 
   const AVATARS = [
-    'adventurer-amina', 'adventurer-yusuf', 'adventurer-layla', 'adventurer-hasan',
-    'big-smile-sara', 'big-smile-omar', 'big-smile-noor', 'big-smile-ali',
-    'micah-zahra', 'micah-kareem', 'micah-huda', 'micah-mustafa',
+    'animal-dog', 'animal-cat', 'animal-fox', 'animal-bear',
+    'animal-panda', 'animal-koala', 'animal-tiger', 'animal-lion',
+    'animal-owl', 'animal-penguin', 'animal-frog', 'animal-wolf',
   ];
 
   function renderProfileEditor(acc) {
@@ -1918,6 +1918,7 @@
     if (!C || !C.login) return;
     const code = String(Math.floor(1000 + Math.random() * 9000));
     $('link-title').textContent = 'ربط هذا الجهاز';
+    $('link-close').textContent = 'إلغاء الربط';
     $('link-generate').classList.remove('hidden');
     $('link-approve').classList.add('hidden');
     $('link-code').textContent = code;
@@ -1975,6 +1976,7 @@
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
     $('link-title').textContent = 'ربط جهاز آخر';
+    $('link-close').textContent = 'إغلاق';
     $('link-generate').classList.add('hidden');
     $('link-approve').classList.remove('hidden');
     let pre = '';
@@ -2907,7 +2909,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v49';
+  const SHELL_VERSION = 'v51';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
