@@ -1767,6 +1767,9 @@
   window.PortalCloudUI = function () { try { updateAccountRow(); } catch (e) {} };
 
   async function handleAccountTap() {
+    // picking a drawer item must dismiss the drawer itself, otherwise its overlay
+    // keeps intercepting taps behind the sheet that opens next
+    closeDrawers();
     const C = cloud();
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
@@ -2904,7 +2907,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v48';
+  const SHELL_VERSION = 'v49';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
