@@ -535,12 +535,16 @@
     if (!fresh.length) { banner.classList.add('hidden'); banner.innerHTML = ''; return; }
     banner.classList.remove('hidden');
     const total = fresh.reduce((n, f) => n + (f.count || 0), 0);
-    const lines = fresh.map((f) =>
+    // a bump can flag many chapters at once: show the first few, then a summary
+    const shown = fresh.slice(0, 4);
+    const rest = fresh.length - shown.length;
+    const lines = shown.map((f) =>
       '<a class="content-new-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '">' +
       '<span class="content-new-subject">' + escapeHtml(f.subject) + '</span>' +
       '<span class="content-new-chapter">' + escapeHtml(chLabel({ chapter_no: f.chapter })) + '</span>' +
       '<span class="content-new-count">' + (f.count || 0) + ' سؤال</span>' +
-      '<i data-lucide="chevron-left"></i></a>').join('');
+      '<i data-lucide="chevron-left"></i></a>').join('') +
+      (rest > 0 ? '<div class="content-new-more">و' + rest + ' جابتر أخرى تحتاج مراجعة</div>' : '');
     banner.innerHTML =
       '<div class="content-new-head"><i data-lucide="sparkles"></i>' +
       '<div><strong>نزلت أسئلة جديدة</strong>' +
@@ -3631,7 +3635,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v73';
+  const SHELL_VERSION = 'v74';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

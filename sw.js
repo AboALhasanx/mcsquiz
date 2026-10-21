@@ -1,7 +1,7 @@
 ﻿/* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const CACHE = 'mcq-portal-v73';
+const CACHE = 'mcq-portal-v74';
 const CORE = [
   './',
   './index.html',
