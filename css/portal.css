@@ -1700,3 +1700,28 @@ body:not([data-quizlive="yes"]) #btn-exit {
 .notif-empty { font-size: 0.82rem; color: var(--text-muted); text-align: center; padding: 1.2rem 0; margin: 0; }
 .menu-lang-row { cursor: default; }
 .menu-lang-row:hover { background: transparent; }
+
+.notif-read-all {
+  appearance: none;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.notif-read-all:hover { border-color: var(--accent); }
+.notif-row.is-read {
+  background: transparent;
+  border-style: dashed;
+}
+.notif-row.is-read .notif-title { color: var(--text-muted); font-weight: 600; }
+.notif-row.is-read .notif-icon {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-subtle);
+}
+.notif-row:not(.is-read) { box-shadow: inset 3px 0 0 var(--accent); }

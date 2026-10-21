@@ -300,6 +300,7 @@
       const want = Number(ch.version || 1);
       if (Number(seen[ch.quiz_id] || 0) < want) {
         freshChapters.push({
+          read: false,
           quiz_id: ch.quiz_id,
           subject_id: sub.subject_id,
           subject: sub.subject_title,
@@ -528,10 +529,16 @@
     if (active) { try { active.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {} }
   }
 
-  // the bell carries the "new questions" state; the list lives in a sheet
+  // the bell carries the "new questions" state; the list lives in a sheet.
+  // Every item has a read flag: tapping one marks it read, "قراءة الكل" clears
+  // the lot, and the badge counts only what is still unread.
+  function unreadCount() {
+    return (S.freshChapters || []).filter((f) => !f.read).length;
+  }
+
   function renderBell() {
     const fresh = S.freshChapters || [];
-    const n = fresh.length;
+    const n = unreadCount();
     ['bell-dot', 'bell-dot-session'].forEach((id) => {
       const dot = $(id);
       if (!dot) return;
@@ -559,12 +566,32 @@
     }
     if (empty) empty.classList.add('hidden');
     list.innerHTML = fresh.map((f) =>
-      '<a class="notif-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '">' +
-      '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
-      '<span class="notif-text"><span class="notif-title">نزلت أسئلة جديدة</span>' +
+      '<a class="notif-row' + (f.read ? ' is-read' : '') + '" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '"' +
+      ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
+      '<span class="notif-icon">' + (f.read ? '<i data-lucide="check"></i>' : '<i data-lucide="sparkles"></i>') + '</span>' +
+      '<span class="notif-text"><span class="notif-title">' + (f.read ? 'تم الاطلاع' : 'نزلت أسئلة جديدة') + '</span>' +
       '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
       '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
+    const readAll = $('notif-read-all');
+    if (readAll) readAll.classList.toggle('hidden', unreadCount() === 0);
     icons();
+  }
+
+  // tapping a notification marks it read; the bell count follows
+  function markNotifRead(quizId) {
+    const item = (S.freshChapters || []).find((f) => f.quiz_id === quizId);
+    if (!item || item.read) return;
+    item.read = true;
+    markChapterSeen(quizId);
+    renderBell();
+  }
+
+  function markAllNotifsRead() {
+    (S.freshChapters || []).forEach((f) => {
+      if (!f.read) { f.read = true; markChapterSeen(f.quiz_id); }
+    });
+    renderBell();
+    toast('تم تحديد الكل كمقروء', 'success');
   }
 
   // other callers still say "the content banner": keep the name working
@@ -3591,6 +3618,15 @@
         icons();
       });
     });
+    const notifList = $('notif-list');
+    if (notifList) {
+      notifList.addEventListener('click', (e) => {
+        const row = e.target && e.target.closest ? e.target.closest('.notif-row') : null;
+        if (!row) return;
+        markNotifRead(row.getAttribute('data-quiz'));
+      });
+    }
+    bindClick('notif-read-all', markAllNotifsRead);
     bindClick('notif-close', () => {
       const m = $('notif-modal');
       if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
@@ -3679,7 +3715,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v76';
+  const SHELL_VERSION = 'v77';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
