@@ -370,8 +370,16 @@
   function topicTitle(bank) {
     if (!bank) return '';
     const t = bank.topic;
-    // v3 keeps the topic as an {ar, en} pair
-    if (t && typeof t === 'object') return String(t.ar || t.en || '').trim();
+    // v3 keeps the topic as an {ar, en} pair; follow the language switch and
+    // keep the English side clean (the raw label carries a chapter prefix and
+    // an instructor note)
+    if (t && typeof t === 'object') {
+      const ar = String(t.ar || '').trim();
+      const en = cleanTopic(t.en || '');
+      if (S.lang === 'en') return en || ar;
+      return ar || en;
+    }
+    if (S.lang === 'en') return cleanTopic(t) || String(bank.topic_ar || '').trim();
     if (bank.topic_ar) return String(bank.topic_ar).trim();
     return cleanTopic(t);
   }
