@@ -1224,6 +1224,7 @@ html[data-theme="light"] .action-btn.danger-outline { color: #dc2626; }
   text-align: center;
 }
 .stats-summary-grid .stat-card + .stat-card { border-inline-start: 1px solid var(--border-subtle); }
+.stats-summary-grid .stat-card-wide { grid-column: auto; }
 .stats-summary-grid .stat-icon-wrapper { display: none; }
 .stats-summary-grid .stat-info { display: block; }
 .stats-summary-grid .stat-value {
@@ -1518,3 +1519,49 @@ body:not([data-quizlive="yes"]) #btn-exit {
 :root .saved-count-badge { color: var(--accent-ink); }
 :root .league-vis input:checked { background: var(--accent); border-color: var(--accent); }
 :root .league-vis input:checked::after { background: var(--accent-ink); }
+
+/* ==========================================================================
+   Statistics tiles â€” light tiles (the old design dropped the card chrome on
+   purpose; this keeps that spirit but gives the four facts a readable grid)
+   ========================================================================== */
+.stats-summary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  border-top: 0;
+  padding-top: 0;
+}
+.stats-summary-grid .stat-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.7rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  text-align: start;
+}
+.stats-summary-grid .stat-card + .stat-card { border-inline-start: 1px solid var(--border-subtle); }
+.stats-summary-grid .stat-card-wide { grid-column: auto; }
+.stats-summary-grid .stat-icon-wrapper {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: rgba(201, 162, 39, 0.12);
+  color: var(--accent);
+}
+.stats-summary-grid .stat-icon-wrapper svg { width: 16px; height: 16px; }
+.stats-summary-grid .stat-info { display: flex; flex-direction: column; gap: 0.05rem; }
+.stats-summary-grid .stat-value {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.stats-summary-grid .stat-label { font-size: 0.68rem; color: var(--text-muted); }
+@media (min-width: 560px) {
+  .stats-summary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+

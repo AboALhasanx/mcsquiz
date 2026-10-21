@@ -3502,3 +3502,208 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     border-radius: 999px;
     gap: 0.45rem;
 }
+
+/* ==========================================================================
+   Statistics & history â€” one headline, the trend behind it, the breakdown,
+   then the raw log. (The screen follows the pattern the good study apps use.)
+   ========================================================================== */
+#stats-view {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1rem 0.9rem 2.5rem;
+  text-align: start;
+}
+
+/* period filter */
+.stats-range {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+}
+.range-opt {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.range-opt:hover { color: var(--text-main); }
+.range-opt.active {
+  background: var(--accent);
+  color: #12141a;
+}
+
+/* headline */
+.stats-hero {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.05rem;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(201, 162, 39, 0.16), transparent 60%),
+    var(--bg-card);
+  border: 1px solid var(--border-card);
+}
+.stats-hero-main { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; min-width: 0; }
+.stats-hero-label { font-size: 0.74rem; font-weight: 700; color: var(--text-muted); }
+.stats-hero-value {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+.stats-hero-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+.stats-hero-trend.up { color: #34d399; }
+.stats-hero-trend.down { color: #f87171; }
+.stats-hero-side {
+  display: flex;
+  gap: 1.1rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 1px solid var(--border-subtle);
+}
+.stats-hero-side > div { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+.stats-hero-side-value { font-size: 1.05rem; font-weight: 800; color: var(--text-main); }
+.stats-hero-side-label { font-size: 0.66rem; color: var(--text-subtle); }
+
+/* the four facts: the tile styling lives in portal.css (it loads last) */
+
+/* blocks */
+.stats-block {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.85rem;
+}
+.stats-block:first-of-type { border-top: 0; padding-top: 0; }
+.stats-block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+.stats-block-head h3 { margin: 0; font-size: 0.95rem; font-weight: 800; }
+.stats-block-note { font-size: 0.68rem; color: var(--text-subtle); }
+
+/* trend chart */
+.trend-chart { margin: 0.25rem 0 0; }
+.trend-bars {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 128px;
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.trend-col {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.trend-bar {
+  width: 100%;
+  max-width: 34px;
+  border-radius: 6px 6px 3px 3px;
+  background: var(--accent);
+  opacity: 0.9;
+  transition: height 0.3s ease;
+}
+.trend-bar.good { background: #34d399; }
+.trend-bar.ok { background: var(--accent); }
+.trend-bar.low { background: #f87171; }
+.trend-val {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+.trend-day {
+  position: absolute;
+  bottom: -1.2rem;
+  font-size: 0.6rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+}
+.trend-pass {
+  position: absolute;
+  inset-inline: 0;
+  height: 0;
+  border-top: 1px dashed rgba(134, 142, 158, 0.55);
+  pointer-events: none;
+}
+.trend-pass b {
+  position: absolute;
+  inset-inline-start: 0;
+  top: -0.55rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+  background: var(--bg-page);
+  padding: 0 0.25rem;
+}
+.trend-empty {
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.stats-insight {
+  margin: 0.85rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  text-align: right;
+}
+.stats-insight:empty { display: none; }
+
+/* the log, grouped by day */
+.history-day { margin-top: 0.85rem; }
+.history-day:first-child { margin-top: 0; }
+.history-day-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.15rem 0.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0.4rem;
+}
+.history-day-name { font-size: 0.78rem; font-weight: 800; color: var(--text-main); }
+.history-day-count { font-size: 0.68rem; color: var(--text-subtle); }
+
+/* data tools sit last, quiet */
+.stats-tools .stats-backup-row { justify-content: flex-start; }
+

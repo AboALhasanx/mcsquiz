@@ -309,29 +309,55 @@
                         <p id="stats-total-line" class="saved-total-line"></p>
                     </div>
                 </div>
+
+                <div class="stats-range" role="group" aria-label="الفترة">
+                    <button type="button" class="range-opt" data-range="7">أخر أسبوعاً</button>
+                    <button type="button" class="range-opt" data-range="30">أشهر يوماً</button>
+                    <button type="button" class="range-opt" data-range="0">الكل</button>
+                </div>
+
+                <div id="stats-hero" class="stats-hero"></div>
                 <div id="stats-overall" class="stats-summary-grid"></div>
-                <div id="stats-subjects" class="saved-groups"></div>
+
+                <section class="stats-block" aria-label="تطوّر النتائج">
+                    <div class="stats-block-head">
+                        <h3>نتائجك عبر الوقت</h3>
+                        <span class="stats-block-note">حدّ النجاح ٠٠١</span>
+                    </div>
+                    <div id="stats-trend" class="stats-trend"></div>
+                    <p id="stats-insight" class="stats-insight"></p>
+                </section>
+
+                <section class="stats-block" aria-label="حسب المادة">
+                    <div class="stats-block-head"><h3>حسب المادة</h3></div>
+                    <div id="stats-subjects" class="saved-groups"></div>
+                </section>
+
                 <section class="breakdown-section" aria-label="سجل المحاولات">
                     <div class="breakdown-header">
                         <h2>سجل المحاولات</h2>
-                        <div class="stats-backup-row">
-                            <button id="btn-export-data" class="action-btn secondary-btn stats-mini-btn">
-                                <i data-lucide="download"></i>
-                                <span>نسخة احتياطية</span>
-                            </button>
-                            <label for="import-data-input" class="action-btn secondary-btn stats-mini-btn" style="cursor:pointer;">
-                                <i data-lucide="upload"></i>
-                                <span>استعادة</span>
-                            </label>
-                            <input type="file" id="import-data-input" accept=".json,application/json" class="visually-hidden-input" style="display:none !important;">
-                            <button id="btn-clear-history" class="action-btn secondary-btn stats-mini-btn danger-btn">
-                                <i data-lucide="trash-2"></i>
-                                <span>مسح السجل</span>
-                            </button>
-                        </div>
                     </div>
                     <div id="history-list" class="review-cards-list"></div>
                     <div id="history-empty-state" class="catalog-empty-state hidden">لا محاولات بعد — ابدأ أول كوز</div>
+                </section>
+
+                <section class="stats-block stats-tools" aria-label="بياناتك">
+                    <div class="stats-block-head"><h3>بياناتك</h3></div>
+                    <div class="stats-backup-row">
+                        <button id="btn-export-data" class="action-btn secondary-btn stats-mini-btn">
+                            <i data-lucide="download"></i>
+                            <span>نسخة احتياطية</span>
+                        </button>
+                        <label for="import-data-input" class="action-btn secondary-btn stats-mini-btn" style="cursor:pointer;">
+                            <i data-lucide="upload"></i>
+                            <span>استعادة</span>
+                        </label>
+                        <input type="file" id="import-data-input" accept=".json,application/json" class="visually-hidden-input" style="display:none !important;">
+                        <button id="btn-clear-history" class="action-btn secondary-btn stats-mini-btn danger-btn">
+                            <i data-lucide="trash-2"></i>
+                            <span>مسح السجل</span>
+                        </button>
+                    </div>
                 </section>
             </div>
 

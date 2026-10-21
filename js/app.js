@@ -94,6 +94,7 @@
         subject: S.subjectFilter, chapter: S.chapterFilter,
         savedSubject: S.savedSubject, savedChapter: S.savedChapter, savedChapterOpen: null, savedExpanded: S.savedExpanded,
         lang: S.lang,
+        statsRange: S.statsRange,
       }));
     } catch (e) {}
   }
@@ -106,6 +107,7 @@
       if (u.savedSubject) S.savedSubject = u.savedSubject;
     if (u.savedExpanded) S.savedExpanded = u.savedExpanded;
       if (u.savedChapter) S.savedChapter = u.savedChapter;
+      if (u.statsRange !== undefined && u.statsRange !== null) S.statsRange = Number(u.statsRange);
       if (u.lang === 'en' || u.lang === 'ar') S.lang = u.lang;
     } catch (e) {}
   }
@@ -1111,28 +1113,122 @@
     return out;
   }
 
+  // ---------------- statistics & history ----------------
+  // The screen follows the pattern the good study apps use: one headline
+  // number, the trend behind it, a breakdown by subject, then the raw log.
+  const STATS_RANGES = [7, 30, 0];
+  const PASS_MARK = 60;   // the pass mark used everywhere in this app
+
+  function statsRange() {
+    const r = Number(S.statsRange);
+    return STATS_RANGES.indexOf(r) >= 0 ? r : 30;
+  }
+
+  function statsBand(pct) {
+    if (pct >= 85) return 'good';
+    if (pct >= PASS_MARK) return 'ok';
+    return 'low';
+  }
+
+  function dayKey(t) {
+    const d = new Date(t || 0);
+    return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+  }
+
+  function shortDay(t) {
+    try {
+      return new Intl.DateTimeFormat('ar', { day: 'numeric', month: 'short' }).format(new Date(t || 0));
+    } catch (e) { return ''; }
+  }
+
+  function dayLabel(t) {
+    const d = new Date(t || 0);
+    const today = new Date();
+    const startOf = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+    const diff = Math.round((startOf(today) - startOf(d)) / 86400000);
+    if (diff === 0) return 'اليوم';
+    if (diff === 1) return 'أمس';
+    if (diff === 2) return 'أمس قبل أمس';
+    const df = new Intl.DateTimeFormat('ar', { day: 'numeric', month: 'long' });
+    return df.format(d);
+  }
+
+  function streakDays(items) {
+    if (!items.length) return 0;
+    const days = {};
+    items.forEach((h) => { days[dayKey(h.t)] = true; });
+    let streak = 0;
+    const cur = new Date();
+    // a streak survives if the last attempt was today or yesterday
+    if (!days[dayKey(cur.getTime())]) cur.setDate(cur.getDate() - 1);
+    while (days[dayKey(cur.getTime())]) {
+      streak++;
+      cur.setDate(cur.getDate() - 1);
+    }
+    return streak;
+  }
+
   function renderStats() {
     try {
       const h = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
       if (Array.isArray(h)) S.history = h;
     } catch (e) {}
-    const H = S.history;
+    const ALL = S.history.slice().sort((a, b) => (a.t || 0) - (b.t || 0));
+    const days = statsRange();
+    const H = days ? ALL.filter((h) => (Date.now() - (h.t || 0)) <= days * 86400000) : ALL;
+    const prev = days
+      ? ALL.filter((h) => {
+        const age = Date.now() - (h.t || 0);
+        return age > days * 86400000 && age <= days * 2 * 86400000;
+      })
+      : [];
+
+    document.querySelectorAll('.range-opt').forEach((b) => {
+      const on = Number(b.dataset.range) === days;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+
     const n = H.length;
     const totQ = H.reduce((a, h) => a + (h.correct || 0), 0);
     const totTried = H.reduce((a, h) => a + (h.total || 0), 0);
     const totSecs = H.reduce((a, h) => a + (h.secs || 0), 0);
     const avg = n ? H.reduce((a, h) => a + (h.pct || 0), 0) / n : 0;
     const best = n ? Math.max.apply(null, H.map((h) => h.pct || 0)) : 0;
-    // The figures below carry the same facts; no duplicate one-line summary.
-    $('stats-total-line').textContent = '';
-    const attempts = (k) => (k === 0 ? 'لا محاولات' : k === 1 ? 'محاولة واحدة' : k === 2 ? 'محاولتان' : k + ' محاولات');
+    const prevAvg = prev.length ? prev.reduce((a, h) => a + (h.pct || 0), 0) / prev.length : null;
+    const rangeName = days === 7 ? 'آخر أسبوع' : (days === 30 ? 'آخر شهر' : 'كل المدة');
+
+    $('stats-total-line').textContent = n
+      ? (arCount(n, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + ' · ' + rangeName)
+      : '';
+
+    // ---- hero: the one number that matters, with the movement behind it ----
+    const hero = $('stats-hero');
+    hero.innerHTML = '';
+    const delta = prevAvg === null ? null : avg - prevAvg;
+    const heroMain = document.createElement('div');
+    heroMain.className = 'stats-hero-main';
+    heroMain.innerHTML =
+      '<span class="stats-hero-label">متوسط نتائجك</span>' +
+      '<span class="stats-hero-value" dir="ltr">' + (n ? (Math.round(avg * 10) / 10) + '%' : '—') + '</span>' +
+      (delta === null ? '' :
+        '<span class="stats-hero-trend ' + (delta >= 0 ? 'up' : 'down') + '">' +
+        (delta >= 0 ? '▲' : '▼') + ' ' + Math.abs(Math.round(delta * 10) / 10) + ' نقطة عن الفترة السابقة</span>');
+    hero.appendChild(heroMain);
+    const heroSide = document.createElement('div');
+    heroSide.className = 'stats-hero-side';
+    heroSide.innerHTML =
+      '<div><span class="stats-hero-side-value" dir="ltr">' + n + '</span><span class="stats-hero-side-label">محاولة</span></div>' +
+      '<div><span class="stats-hero-side-value" dir="ltr">' + (n ? best + '%' : '—') + '</span><span class="stats-hero-side-label">أفضل نتيجة</span></div>';
+    hero.appendChild(heroSide);
+
+    // ---- four small facts ----
     const box = $('stats-overall');
     box.innerHTML = '';
     const cards = [
-      ['history', String(n), 'محاولات'],
+      ['check', totQ + ' / ' + totTried, 'إجابات صحيحة'],
       ['target', n ? (Math.round(avg * 10) / 10) + '%' : '—', 'متوسط النتائج'],
       ['award', n ? best + '%' : '—', 'أفضل نتيجة'],
-      ['check', totQ + ' / ' + totTried, 'إجابات صحيحة'],
       ['clock', fmtDur(totSecs), 'زمن المذاكرة'],
     ];
     cards.forEach(([icon, val, label]) => {
@@ -1144,43 +1240,93 @@
       box.appendChild(d);
     });
 
+    // ---- the trend: one bar per attempt, with the pass mark ----
+    const trend = $('stats-trend');
+    trend.innerHTML = '';
+    const last = H.slice(-12);
+    if (!last.length) {
+      trend.innerHTML = '<div class="trend-empty">ما في محاولات بهذه الفترة</div>';
+    } else {
+      const bars = last.map((h) => {
+        const pct = Math.max(0, Math.min(100, h.pct || 0));
+        return '<div class="trend-col" title="' + escapeHtml((h.topic || '') + ' · ' + h.pct + '%') + '">' +
+          '<span class="trend-val" dir="ltr">' + h.pct + '</span>' +
+          '<div class="trend-bar ' + statsBand(h.pct) + '" style="height:' + Math.max(6, pct) + '%"></div>' +
+          '<span class="trend-day">' + escapeHtml(shortDay(h.t)) + '</span>' +
+          '</div>';
+      }).join('');
+      trend.innerHTML = '<div class="trend-chart"><div class="trend-bars">' + bars +
+        '<span class="trend-pass" style="bottom:' + PASS_MARK + '%"><i></i><b>' + PASS_MARK + '%</b></span>' +
+        '</div></div>';
+    }
+
+    // ---- one honest sentence about the movement ----
+    const insight = $('stats-insight');
+    const streak = streakDays(ALL);
+    let txt = '';
+    if (n) {
+      if (delta !== null && Math.abs(delta) >= 0.5) {
+        txt = delta > 0
+          ? 'تحسّن متوسطك ' + Math.round(delta) + ' نقطة عن الفترة السابقة.'
+          : 'انخفض متوسطك ' + Math.abs(Math.round(delta)) + ' نقاط عن الفترة السابقة.';
+      } else if (prev.length) {
+        txt = 'نتائجك على نفس المستوى عن الفترة السابقة.';
+      } else {
+        txt = 'ما في محاولة سابقة بنفس الفترة — أول محاولة جديدة تكفي للمقارنة.';
+      }
+      if (streak >= 2) txt += ' وعندك سلسلة ' + streak + ' أيام متتالية.';
+    }
+    insight.textContent = txt;
+
+    // ---- per subject ----
     const subs = $('stats-subjects');
     subs.innerHTML = '';
     const bySub = {};
     H.forEach((h) => {
       (bySub[h.subjectId] = bySub[h.subjectId] || { title: h.subjectTitle, rows: [] }).rows.push(h);
     });
-    Object.keys(bySub).forEach((sid) => {
+    Object.keys(bySub).sort((a, b) => {
+      const av = (g) => g.rows.reduce((x, h) => x + (h.pct || 0), 0) / g.rows.length;
+      return av(bySub[b]) - av(bySub[a]);
+    }).forEach((sid) => {
       const g = bySub[sid];
       const rows = g.rows;
       const a2 = rows.reduce((x, h) => x + (h.pct || 0), 0) / rows.length;
       const b2 = Math.max.apply(null, rows.map((h) => h.pct || 0));
-      const last = rows[rows.length - 1];
+      const lastRow = rows[rows.length - 1];
       const wrap = document.createElement('div');
       wrap.className = 'saved-group';
       const head = document.createElement('div');
       head.className = 'saved-group-head';
-      head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.title) +
-        '</div><div class="saved-group-sub">' + attempts(rows.length) + '</div></div>' +
-        '<div class="stat-value" dir="ltr">' + last.pct + '%</div>';
+      head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.title) + '</div>' +
+        '<div class="saved-group-sub">' + (rows.length > 1 ? 'المتوسط ' + (Math.round(a2 * 10) / 10) + '% · الأفضل ' + b2 + '%' : 'محاولة واحدة · ' + (lastRow ? lastRow.pct : 0) + '%') + '</div></div>' +
+        '<div class="stat-value" dir="ltr">' + Math.round(a2) + '%</div>';
       wrap.appendChild(head);
       const track = document.createElement('div');
       track.className = 'stat-bar-track';
       track.innerHTML = '<div class="stat-bar-fill" style="width:' + Math.max(0, Math.min(100, a2)) + '%"></div>';
       wrap.appendChild(track);
-      const meta = document.createElement('div');
-      meta.className = 'saved-group-sub';
-      meta.textContent = rows.length > 1
-        ? 'المتوسط ' + (Math.round(a2 * 10) / 10) + '% · الأفضل ' + b2 + '%'
-        : 'النتيجة ' + b2 + '%';
-      wrap.appendChild(meta);
       subs.appendChild(wrap);
     });
 
+    // ---- the log, grouped by day ----
     const list = $('history-list');
     list.innerHTML = '';
-    $('history-empty-state').classList.toggle('hidden', n !== 0);
-    H.slice(-20).reverse().forEach((h) => {
+    $('history-empty-state').classList.toggle('hidden', ALL.length !== 0);
+    const recent = ALL.slice(-30).reverse();
+    let currentKey = '';
+    recent.forEach((h) => {
+      const key = dayKey(h.t);
+      if (key !== currentKey) {
+        currentKey = key;
+        const dayBox = document.createElement('div');
+        dayBox.className = 'history-day';
+        const count = ALL.filter((x) => dayKey(x.t) === key).length;
+        dayBox.innerHTML = '<div class="history-day-head"><span class="history-day-name">' +
+          escapeHtml(dayLabel(h.t)) + '</span><span class="history-day-count">' +
+          arCount(count, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + '</span></div>';
+        list.appendChild(dayBox);
+      }
       const row = document.createElement('div');
       row.className = 'history-row';
       row.innerHTML = '<span class="history-pct ' + pctClass(h.pct) + '" dir="ltr">' + h.pct + '%</span>' +
@@ -3055,6 +3201,13 @@
     });
     syncLangButtons();
     $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
+    document.querySelectorAll('.range-opt').forEach((b) => {
+      b.addEventListener('click', () => {
+        S.statsRange = Number(b.dataset.range);
+        saveUI();
+        renderStats();
+      });
+    });
     const soundHeader = $('btn-sound-header');
     if (soundHeader) soundHeader.addEventListener('click', () => { setSound(!S.sound); });
 
@@ -3127,7 +3280,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v66';
+  const SHELL_VERSION = 'v67';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
