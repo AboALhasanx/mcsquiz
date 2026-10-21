@@ -149,7 +149,12 @@
     try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
   }
   function signOut() {
-    try { localStorage.removeItem(ACCOUNT_KEY); localStorage.removeItem(SYNC_KEY); } catch (e) {}
+    // an explicit sign-out must survive any background poll/sync
+    try {
+      localStorage.removeItem(ACCOUNT_KEY);
+      localStorage.removeItem(SYNC_KEY);
+      localStorage.setItem('portal_signed_out_v1', '1');
+    } catch (e) {}
     cachedUser = null;
     try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
   }
@@ -166,6 +171,7 @@
     var row = Array.isArray(r.data) ? r.data[0] : r.data;
     if (!row || !row.id) throw new Error('login-empty');
     setAccount({ id: row.id, handle: row.handle, name: row.name || h, avatar: row.avatar || '', at: Date.now() });
+    try { localStorage.removeItem('portal_signed_out_v1'); } catch (e) {}
     try { lsSet('portal_pin_v1', String(pin)); } catch (e) {}
     return account();
   }
@@ -190,6 +196,7 @@
   // profile edits then ask for the pin once.
   function adopt(row) {
     if (!row || !row.id) throw new Error('adopt-empty');
+    try { if (localStorage.getItem('portal_signed_out_v1') === '1') return null; } catch (e) {}
     setAccount({ id: row.id, handle: row.handle, name: row.name || row.handle, avatar: row.avatar || '', at: Date.now() });
     try { localStorage.removeItem('portal_pin_v1'); } catch (e) {}
     return account();
