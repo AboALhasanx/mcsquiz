@@ -46,7 +46,7 @@ def run():
 
         # wrong pin must be rejected
         open_account(p1)
-        p1.wait_for_selector('#account-modal:not(.hidden)', timeout=12000)
+        p1.wait_for_selector('#account-view:not(.hidden)', timeout=12000)
         p1.evaluate("() => document.querySelector('#account-logout').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
         p1.wait_for_timeout(800)
         login(p1, handle, name, pin='1111')
@@ -60,7 +60,7 @@ def run():
 
         # profile: rename + pick an avatar
         open_account(p1)
-        p1.wait_for_selector('#account-modal:not(.hidden)', timeout=12000)
+        p1.wait_for_selector('#account-view:not(.hidden)', timeout=12000)
         check('profile editor is shown', 'hidden' not in (p1.locator('#account-profile').get_attribute('class') or ''))
         check('the username is labelled as permanent',
               'لا يمكن تغييره' in (p1.locator('.auth-hint').inner_text() or ''))
@@ -77,6 +77,7 @@ def run():
           document.querySelectorAll('.modal-overlay').forEach((m) => m.classList.add('hidden'));
           document.querySelectorAll('.drawer').forEach((d) => d.classList.remove('open'));
           document.querySelector('#drawer-overlay').classList.remove('active');
+          if (location.hash === '#/account') location.hash = '#/';
         }''')
         p1.wait_for_timeout(500)
 
@@ -148,7 +149,7 @@ def run():
             check('a QR is rendered for the link', p4.locator('#link-qr svg').count() == 1)
 
             open_account(p2)
-            p2.wait_for_selector('#account-modal:not(.hidden)', timeout=12000)
+            p2.wait_for_selector('#account-view:not(.hidden)', timeout=12000)
             p2.evaluate("() => document.querySelector('#account-link').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
             p2.wait_for_selector('#link-modal:not(.hidden)', timeout=12000)
             p2.fill('#link-code-input', code)

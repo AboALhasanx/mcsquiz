@@ -1869,7 +1869,7 @@ input:checked + .slider::before {
     right: 0;
     bottom: 0;
     width: 100%;
-    max-width: 420px;
+    max-width: 340px;
     background-color: var(--bg-surface);
     border-left: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-lg);
@@ -1919,6 +1919,22 @@ input:checked + .slider::before {
 
     .drawer-overlay {
         z-index: 90 !important;
+    }
+
+    /* the sheet reads as a sheet: a small grab handle on top */
+    .menu-drawer::before {
+        content: '';
+        display: block;
+        width: 38px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--border-card);
+        margin: 0.55rem auto 0;
+        flex: 0 0 auto;
+    }
+
+    .menu-drawer .drawer-header {
+        padding-top: 0.55rem;
     }
 }
 
@@ -2031,17 +2047,20 @@ input:checked + .slider::before {
 }
 
 @media (min-width: 641px) {
+    /* RTL: the panel slides in from the right, the way the reading starts */
     [dir="rtl"] .drawer {
-        right: auto;
-        left: -380px;
-        border-right: 1px solid var(--border-subtle);
-        border-left: none;
-        transition: left var(--transition-normal);
+        right: 0;
+        left: auto;
+        border-left: 1px solid var(--border-subtle);
+        border-right: none;
+        transform: translateX(100%);
+        transition: transform var(--transition-drawer);
     }
 
     [dir="rtl"] .drawer.open {
-        left: 0;
-        right: auto;
+        right: 0;
+        left: auto;
+        transform: translateX(0);
     }
 }
 

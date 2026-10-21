@@ -125,7 +125,7 @@
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
-    'results-view', 'saved-view', 'stats-view', 'league-view'];
+    'results-view', 'saved-view', 'stats-view', 'league-view', 'account-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
@@ -136,7 +136,7 @@
     // the saved shortcut belongs to the saved views, not to the home or a quiz
     const savedBtn = $('btn-open-saved');
     if (savedBtn) savedBtn.style.display = (viewId === 'deck-catalog' || inQuiz) ? 'none' : '';
-    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view'];
+    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
     document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
@@ -1427,6 +1427,12 @@
       show('stats-view');
       window.scrollTo(0, 0);
       icons();
+    } else if (h === '#/account' || h === '#/account/') {
+      S.session = null;
+      renderAccount();
+      show('account-view');
+      window.scrollTo(0, 0);
+      icons();
     } else if (h === '#/league' || h === '#/league/') {
       S.session = null;
       renderLeague();
@@ -1940,15 +1946,22 @@
     const C = cloud();
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
-    // signed in with a handle: show the account sheet
-    $('account-body').textContent = '@' + acc.handle + (navigator.onLine ? '' : ' — أوفلاين');
+    // signed in: the account opens as its own page
+    S.accountReturn = (location.hash && location.hash !== '#/account') ? location.hash : '#/';
+    goHash('#/account');
+  }
+
+  // the account page
+  function renderAccount() {
+    const C = cloud();
+    const acc = (C && C.account) ? C.account() : null;
+    if (!acc) { openLoginModal(); return; }
+    $('account-body').textContent = '@' + acc.handle + (navigator.onLine ? '' : ' · غير متصل');
     renderProfileEditor(acc);
     $('account-link').classList.remove('hidden');
     $('account-logout').classList.remove('hidden');
     $('account-open-bot').classList.add('hidden');
     $('account-sync-now').classList.remove('hidden');
-    $('account-modal').classList.remove('hidden');
-    $('account-modal').setAttribute('aria-hidden', 'false');
     icons();
   }
 
@@ -2927,13 +2940,13 @@
     bindClick('login-submit', submitLogin);
     bindClick('login-skip', () => { closeLoginModal(); toast('تستخدم الآن بدون حساب'); });
     bindClick('login-link-device', () => { closeLoginModal(); generateLinkCode(); });
-    bindClick('account-link', () => { $('account-modal').classList.add('hidden'); openLinkApprove(); });
+    bindClick('account-link', () => { openLinkApprove(); });
     bindClick('account-logout', async () => {
       const C = cloud();
       stopLinkPoll();
       if (C && C.signOut) C.signOut();
-      $('account-modal').classList.add('hidden');
       updateAccountRow();
+      goHash('#/');
       toast('تم تسجيل الخروج — بياناتك باقية على الجهاز');
     });
     bindClick('account-sync-now', async () => {
@@ -2943,8 +2956,8 @@
     bindClick('link-scan', startScan);
     bindClick('profile-save', saveProfile);
     bindClick('account-close', () => {
-      $('account-modal').classList.add('hidden');
-      $('account-modal').setAttribute('aria-hidden', 'true');
+      // back to wherever the account was opened from (the catalogue by default)
+      goHash(S.accountReturn || '#/');
     });
     bindClick('link-yes', approveLinkCode);
     bindClick('link-no', closeLinkModal);
@@ -3104,7 +3117,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v60';
+  const SHELL_VERSION = 'v63';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
