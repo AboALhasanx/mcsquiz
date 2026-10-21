@@ -626,7 +626,10 @@
     if (Number(seen[quizId] || 0) >= Number(ch.version || 1)) return;
     seen[quizId] = Number(ch.version || 1);
     saveSeen(seen);
-    S.freshChapters = (S.freshChapters || []).filter((f) => f.quiz_id !== quizId);
+    // the item stays in the sheet, flagged read (the badge follows the unread
+    // count); it disappears on the next load
+    const item = (S.freshChapters || []).find((f) => f.quiz_id === quizId);
+    if (item) item.read = true;
     renderContentBanner();
     renderCatalog();
   }
@@ -3715,7 +3718,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v77';
+  const SHELL_VERSION = 'v78';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
