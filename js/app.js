@@ -3782,7 +3782,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v81';
+  const SHELL_VERSION = 'v82';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -3878,7 +3878,16 @@
       logOfflineState();
       // Show the tour exactly once per device: mark it seen the moment it opens,
       // so a reload mid-tour never brings it back (it is replayable from the menu).
-      if (!tourGet(TOUR_KEY)) setTimeout(() => { if (tourIdx < 0) { tourSet(TOUR_KEY); tourShow(0); } }, 1200);
+      try {
+        const resume = sessionStorage.getItem('portal_tour_resume');
+        if (resume !== null) {
+          sessionStorage.removeItem('portal_tour_resume');
+          tourSet(TOUR_KEY);
+          setTimeout(() => tourShow(Number(resume) || 0), 600);
+        } else if (!tourGet(TOUR_KEY)) {
+          setTimeout(() => { if (tourIdx < 0) { tourSet(TOUR_KEY); tourShow(0); } }, 1200);
+        }
+      } catch (e) {}
       dbg('boot ok. subjects:', S.index.subjects.length);
     } catch (e) {
       try { if (window.PortalLog) window.PortalLog.error('boot', String((e && e.message) || e)); } catch (e2) {}
@@ -3900,6 +3909,9 @@
         try {
           if (sessionStorage.getItem('portal_sw_reloaded') !== ev.data.cache) {
             sessionStorage.setItem('portal_sw_reloaded', ev.data.cache);
+            // a first visit can be reloaded by the worker right as the tour
+            // opens: remember it so it resumes instead of disappearing
+            if (tourIdx >= 0) sessionStorage.setItem('portal_tour_resume', String(tourIdx));
             location.reload();
           }
         } catch (e) {}
