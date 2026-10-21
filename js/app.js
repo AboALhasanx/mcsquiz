@@ -279,6 +279,16 @@
       }
     }
     S.index = idx;
+    // a chapter can hold two papers (النموذج أ / النموذج ب): keep a stable
+    // order so "أ" is always listed before "ب"
+    try {
+      idx.subjects.sort((a, b) => String(a.subject_id).localeCompare(String(b.subject_id)));
+      idx.subjects.forEach((sub) => {
+        (sub.chapters || []).sort((a, b) =>
+          ((Number(a.chapter_no) || 0) - (Number(b.chapter_no) || 0)) ||
+          String(a.quiz_id).localeCompare(String(b.quiz_id)));
+      });
+    } catch (e) {}
     S.contentVersion = Number(idx.version || 0);
     S.contentSource = source;
 
@@ -3791,7 +3801,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v86';
+  const SHELL_VERSION = 'v87';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
