@@ -1930,6 +1930,7 @@
     syncMenuToggles();
     updateMenuCounts();
     refreshOfflineRow();
+    refreshInstallRow();
     openDrawer('menu-drawer');
   }
 
@@ -1938,13 +1939,15 @@
   async function refreshOfflineRow() {
     const label = $('menu-offline-label');
     const badge = $('menu-offline-state');
+    const sub = $('menu-offline-sub');
     if (!label || !badge) return;
     let supported = false;
     try { supported = ('serviceWorker' in navigator); } catch (e) {}
     if (!supported) {
-      label.textContent = 'بدون إنترنت: غير مدعوم في هذه النافذة';
+      label.textContent = 'النسخة بدون إنترنت';
+      if (sub) sub.textContent = 'هذه النافذة ما تدعم التخزين — افتح الرابط في Chrome';
       badge.textContent = '!';
-      badge.classList.remove('hidden');
+      badge.classList.remove('hidden', 'ok', 'warn');
       return;
     }
     let entries = 0;
@@ -1954,14 +1957,39 @@
       const ctrl = !!navigator.serviceWorker.controller;
       if (entries > 5 && ctrl) {
         label.textContent = 'النسخة بدون إنترنت';
+        if (sub) sub.textContent = 'الكوزات محفوظة على جهازك — تفتح بلا نت';
         badge.textContent = 'جاهزة';
-        badge.classList.remove('hidden');
+        badge.classList.remove('hidden', 'warn');
+        badge.classList.add('ok');
         return;
       }
     } catch (e) {}
-    label.textContent = 'جهّز النسخة بدون إنترنت';
-    badge.textContent = '—';
-    badge.classList.remove('hidden');
+    label.textContent = 'النسخة بدون إنترنت';
+    if (sub) sub.textContent = 'اضطر لتحضير الكوزات على جهازك';
+    badge.textContent = 'جهّز';
+    badge.classList.remove('hidden', 'ok');
+    badge.classList.add('warn');
+  }
+
+  // the install row: the state depends on the browser and on whether the app
+  // is already running as an installed app
+  function refreshInstallRow() {
+    const sub = $('menu-install-sub');
+    const badge = $('menu-install-state');
+    if (!sub && !badge) return;
+    let standalone = false;
+    try { standalone = window.matchMedia('(display-mode: standalone)').matches; } catch (e) {}
+    const canInstall = !!(window.PortalPWA && window.PortalPWA.canInstall && window.PortalPWA.canInstall());
+    if (standalone) {
+      if (sub) sub.textContent = 'التطبيق مثبّت على جهازك';
+      if (badge) { badge.textContent = 'مثبّت'; badge.classList.remove('hidden', 'warn'); badge.classList.add('ok'); }
+    } else if (canInstall) {
+      if (sub) sub.textContent = 'افتح البوابة كتطبيق وتفتح بلا نت';
+      if (badge) { badge.textContent = 'متاح'; badge.classList.remove('hidden', 'warn'); badge.classList.add('ok'); }
+    } else {
+      if (sub) sub.textContent = 'ثبّته من قائمة المتصفح جم → تثبيت التطبيق';
+      if (badge) { badge.textContent = 'غير متاح'; badge.classList.remove('hidden', 'ok'); badge.classList.add('warn'); }
+    }
   }
 
   async function prepareOffline() {
@@ -2035,7 +2063,7 @@
       // cache, so the installed browser app is the offline path
       toast('للتشغيل بدون إنترنت: افتح الرابط في Chrome ثم ⋮ ← تثبيت التطبيق', 'info');
     } else {
-      toast('من قائمة المتصفح ⋮ اختر "تثبيت التطبيق"');
+      toast('ثبّت التطبيق من قائمة المتصفح: جم → تثبيت التطبيق', 'info');
     }
   }
 
@@ -3215,6 +3243,10 @@
     });
     syncLangButtons();
     $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
+    // pwa.js is loaded after app.js, so its handler stores the prompt after
+    // this one runs: read the state on the next tick, not right now
+    window.addEventListener('beforeinstallprompt', () => { setTimeout(refreshInstallRow, 0); });
+    window.addEventListener('appinstalled', () => { setTimeout(refreshInstallRow, 0); });
     document.querySelectorAll('.range-opt').forEach((b) => {
       b.addEventListener('click', () => {
         S.statsRange = Number(b.dataset.range);
@@ -3294,7 +3326,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v70';
+  const SHELL_VERSION = 'v72';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -526,13 +526,20 @@
 
                 <div class="menu-section">
                     <span class="menu-section-title">التطبيق</span>
-                    <button id="menu-install" class="menu-item" type="button">
+                    <button id="menu-install" class="menu-item menu-item-stack" type="button">
                         <i data-lucide="download"></i>
-                        <span class="menu-item-label">تثبيت التطبيق</span>
+                        <span class="menu-item-text">
+                            <span class="menu-item-label">تثبيت التطبيق</span>
+                            <span class="menu-item-sub" id="menu-install-sub">افتح البوابة كتطبيق على جهازك</span>
+                        </span>
+                        <span id="menu-install-state" class="menu-count hidden">…</span>
                     </button>
-                    <button id="menu-offline" class="menu-item" type="button">
+                    <button id="menu-offline" class="menu-item menu-item-stack" type="button">
                         <i data-lucide="cloud-off"></i>
-                        <span id="menu-offline-label" class="menu-item-label">النسخة بدون إنترنت</span>
+                        <span class="menu-item-text">
+                            <span id="menu-offline-label" class="menu-item-label">النسخة بدون إنترنت</span>
+                            <span class="menu-item-sub" id="menu-offline-sub">اضطر لتحضير الكوزات على جهازك</span>
+                        </span>
                         <span id="menu-offline-state" class="menu-count">…</span>
                     </button>
                     <button id="menu-tour" class="menu-item" type="button">

@@ -6,23 +6,23 @@ PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr |
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</spa
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': 'd6db22ac-2c08-47a7-b41f-21fdcbd5f1d4', 'handle': 't441584', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792585445468}
+PASS | accounts | username + PIN creates an account | {'id': '4437f074-d0ad-42a9-ab31-063f23b6f7c8', 'handle': 't722525', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792586727867}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': 'd6db22ac-2c08-47a7-b41f-21fdcbd5f1d4', 'handle': 't441584', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792585460284}
-PASS | accounts | the avatar is saved | {'id': 'd6db22ac-2c08-47a7-b41f-21fdcbd5f1d4', 'handle': 't441584', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792585460284}
+PASS | accounts | the display name is editable | {'id': '4437f074-d0ad-42a9-ab31-063f23b6f7c8', 'handle': 't722525', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792586740887}
+PASS | accounts | the avatar is saved | {'id': '4437f074-d0ad-42a9-ab31-063f23b6f7c8', 'handle': 't722525', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792586740887}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': 'd6db22ac-2c08-47a7-b41f-21fdcbd5f1d4', 'handle': 't441584', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792585483198}
+PASS | accounts | same username returns the same account | {'id': '4437f074-d0ad-42a9-ab31-063f23b6f7c8', 'handle': 't722525', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792586764524}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 6077
+PASS | accounts | the link code has four digits | 6698
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': 'd6db22ac-2c08-47a7-b41f-21fdcbd5f1d4', 'handle': 't441584', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792585509106}
+FAIL | accounts | the approved device signs in | None
 PASS | catalog | index exposes subjects | 5
 PASS | catalog | one chip per subject | 5 vs 5
 PASS | catalog | no "all" chip | 
@@ -43,7 +43,7 @@ PASS | quiz | next is blocked while unanswered |
 PASS | quiz | blocked next explains itself | 
 PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the switch turns the question into English | A
-PASS | quiz | the English stem is used | Zero trust has become a leading security model in the last d
+PASS | quiz | the English stem is used | Cybersecurity can be modelled as an optimisation problem who
 PASS | quiz | the switch returns to Arabic | أ
 PASS | quiz | total questions loaded | 20
 PASS | quiz | saving marks the bookmark | 
@@ -57,8 +57,8 @@ PASS | quiz | matrix has one cell per question | 20
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 4, 'wrong': 16, 'acc': '20%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 4, 'wrong': 16, 'acc': '20%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | correct + wrong equals the total | {'correct': 1, 'wrong': 19, 'acc': '5%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 1, 'wrong': 19, 'acc': '5%', 'hasUnanswered': False, 'time': '0:14'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
 PASS | quiz | one review card per question | 20
@@ -95,7 +95,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 17
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/saved', '#/stats'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/league', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
@@ -111,8 +111,8 @@ PASS | offline | saved questions open offline |
 PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 19 – 25 أكتوبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | هندسة البرمجيات | ا
 PASS | offline | no runtime errors | []
 PASS | a11y | document is RTL Arabic | 
-PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 8}
-PASS | a11y | the skip link becomes visible on focus | {'cls': 'skip-link', 'top': 8}
+PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 7}
+PASS | a11y | the skip link becomes visible on focus | {'cls': 'skip-link', 'top': 7}
 PASS | a11y | every visible icon-only control has a label | []
 PASS | a11y | focused controls draw a focus ring | 2px solid
 PASS | a11y | a message appears for a blocked action | 

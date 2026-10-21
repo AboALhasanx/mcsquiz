@@ -1565,3 +1565,33 @@ body:not([data-quizlive="yes"]) #btn-exit {
   .stats-summary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
+
+/* Two-line menu rows (the install and the offline copy) */
+.menu-item-stack { align-items: flex-start; gap: 0.8rem; }
+.menu-item-stack > svg { margin-top: 0.15rem; }
+.menu-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+}
+.menu-item-sub {
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-subtle);
+}
+
+/* state colours on the small badges */
+.menu-count.ok {
+  background: rgba(52, 211, 153, 0.16);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+}
+.menu-count.warn {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #f59e0b;
+}
+
