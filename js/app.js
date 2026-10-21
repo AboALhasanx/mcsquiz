@@ -1855,6 +1855,11 @@
     } catch (e) {}
     stopLinkPoll();
     linkPoll = setInterval(async () => {
+      // never resurrect a session after the sheet was closed or the user signed out
+      if (!document.querySelector('#link-modal') || document.querySelector('#link-modal').classList.contains('hidden')) {
+        stopLinkPoll();
+        return;
+      }
       try {
         const sb = await sbRaw();
         const r = await sb.rpc('link_status', { p_code: code });
@@ -2587,6 +2592,7 @@
     bindClick('account-link', () => { $('account-modal').classList.add('hidden'); openLinkApprove(); });
     bindClick('account-logout', async () => {
       const C = cloud();
+      stopLinkPoll();
       if (C && C.signOut) C.signOut();
       $('account-modal').classList.add('hidden');
       updateAccountRow();

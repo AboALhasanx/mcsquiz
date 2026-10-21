@@ -149,7 +149,7 @@
     try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
   }
   function signOut() {
-    try { localStorage.removeItem(ACCOUNT_KEY); } catch (e) {}
+    try { localStorage.removeItem(ACCOUNT_KEY); localStorage.removeItem(SYNC_KEY); } catch (e) {}
     cachedUser = null;
     try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
   }
