@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "البحث والخوارزميات الاستدلالية والذكاء السربي — النموذج أ",
+    "en": "Search Foundations: Formulation, BFS/DFS and Informed Cost — Model A"
+  },
+  "quiz_id": "Quiz_Ch02_ModelA_Search_and_Learning",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تُعرَّف مسألة البحث صورياً بخمسة مكوّنات هي:",
+        "en": "A search problem is formally defined by which five components?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الحالات، المؤثرات، heuristic، اختبار الهدف، حد العمق",
+          "en": "States, operators, heuristic, goal test, depth limit"
+        },
+        {
+          "ar": "المتغيرات، المجالات، القيود، دالة الهدف، اللياقة",
+          "en": "Variables, domains, constraints, objective, fitness"
+        },
+        {
+          "ar": "الحالة الابتدائية، الحدود، المجموعة المستكشفة، heuristic، الكلفة",
+          "en": "Initial state, frontier, explored set, heuristic, cost"
+        },
+        {
+          "ar": "الحالة الابتدائية، الأفعال، النتيجة، اختبار الهدف، كلفة المسار",
+          "en": "Initial state, actions, result, goal test, path cost"
+        }
+      ],
+      "concept_id": "problem_formulation_tuple",
+      "explanation": {
+        "ar": "تصوغ AIMA المسألة بالحالة الابتدائية ومجموعة الأفعال ودالة النتيجة واختبار الهدف وكلفة المسار. أما الحدود والمجموعة المستكشفة فتنتمي إلى خوارزمية البحث، والـheuristic ينتمي إلى البحث الموجّه، والمتغيرات والمجالات والقيود تنتمي إلى مسائل إرضاء القيود.",
+        "en": "AIMA formulates a problem as the initial state, the set of actions, the result function, the goal test and the path cost. Frontier and explored set belong to the search algorithm, heuristics belong to informed search, and variables with domains and constraints belong to constraint satisfaction problems."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "لا تعيد خوارزمية BFS حلاً أمثلاً إلا عندما...",
+        "en": "Breadth-first search returns an optimal solution only when..."
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا يحتوي المخطط أي حالات مكررة",
+          "en": "the graph contains no repeated states at all"
+        },
+        {
+          "ar": "تتساوى كلفة كل خطوة بقيمة موجبة",
+          "en": "every step cost is the same positive value"
+        },
+        {
+          "ar": "يكون الهدف على بعد توسعة واحدة",
+          "en": "the goal is reachable within one expansion"
+        },
+        {
+          "ar": "لا يبالغ heuristic في تقدير الكلفة",
+          "en": "the heuristic never overestimates the cost"
+        }
+      ],
+      "concept_id": "bfs_optimality",
+      "explanation": {
+        "ar": "توسّع BFS العقد بحسب العمق، فتكون مثالية لأقل هدف عمقاً فقط عندما تتساوى كلفة كل الخطوات وتكون موجبة. أما شرط الـheuristic فهو مطلب A*، وخلو المخطط من الحالات المكررة شأن يخص البحث في المخططات، والوصول بتوسعة واحدة أقوى بكثير من اللازم.",
+        "en": "BFS expands nodes in order of depth, so it is optimal for the shallowest goal only when all step costs are equal and positive. A heuristic condition is a requirement of A*, the absence of repeated states is a graph-search concern, and one-expansion reachability is far stronger than needed."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا يُفضَّل البحث بالعمق DFS عندما تكون الذاكرة هي القيد الحاسم؟",
+        "en": "Why is depth-first search preferred when memory is the binding constraint?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأنه يوسّع عقداً أقل من BFS",
+          "en": "It expands fewer nodes than breadth-first search"
+        },
+        {
+          "ar": "لأنه يجد حالة الهدف الأقل عمقاً أولاً",
+          "en": "It always finds the shallowest goal state first"
+        },
+        {
+          "ar": "لأنه يخزّن المسار الحالي وإخوته فقط",
+          "en": "It stores only the current path and its siblings"
+        },
+        {
+          "ar": "لأنه لا يحتاج مجموعة مستكشفة أصلاً",
+          "en": "It needs no explored set in any graph search"
+        }
+      ],
+      "concept_id": "dfs_space_complexity",
+      "explanation": {
+        "ar": "يحتفظ DFS بعقد المسار من الجذر إلى العقدة الحالية مع إخوتها غير الموسَّعة فقط، فتكون المساحة خطية في العمق الأقصى. أما إيجاد الهدف الأقل عمقاً فهو شأن BFS، وتوسيع عقد أقل ليس مضموناً، والبحث في المخططات يبقى بحاجة إلى مجموعة مستكشفة.",
+        "en": "DFS keeps only the nodes on the path from the root to the current node plus their unexpanded siblings, giving space linear in the maximum depth. Finding the shallowest goal belongs to BFS, fewer expanded nodes is not guaranteed, and graph search still needs an explored set."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "توسّع خوارزمية UCS العقدة ذات أصغر...",
+        "en": "Uniform-cost search expands the node with the smallest..."
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كلفة مسار من عقدة البداية",
+          "en": "path cost from the start node"
+        },
+        {
+          "ar": "كلفة متبقية مقدّرة حتى الهدف",
+          "en": "estimated remaining cost to the goal"
+        },
+        {
+          "ar": "مجموع كلفة المسار والتقدير",
+          "en": "sum of path cost and the estimate"
+        },
+        {
+          "ar": "عمق العقدة في شجرة البحث",
+          "en": "depth of the node in the search tree"
+        }
+      ],
+      "concept_id": "uniform_cost_search",
+      "explanation": {
+        "ar": "ترتب UCS الحدود وفق الكلفة المتراكمة g(n) للمسار من البداية، ولذلك تكون مثالية عندما تكون كلف الخطوات غير سالبة. أما التقدير المتبقي حتى الهدف فيستخدمه البحث الجشع الأفضل أولاً، ومجموعه مع الكلفة يستخدمه A*، والتوسيع بحسب العمق يخص BFS.",
+        "en": "Uniform-cost search orders the frontier by the accumulated cost g(n) of the path from the start, which makes it optimal for non-negative step costs. The estimate to the goal is used by greedy best-first search, their sum by A*, and expansion by depth by BFS."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يكون heuristic مقبولاً admissible عندما...",
+        "en": "A heuristic $h(n)$ is admissible when it..."
+      },
+      "bloom": "Evaluate",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لا يبالغ أبداً في تقدير الكلفة الحقيقية للهدف",
+          "en": "never overestimates the true cost to the goal"
+        },
+        {
+          "ar": "يكون دائماً أصغر من كلفة خطوة العقدة",
+          "en": "is always smaller than the step cost of n"
+        },
+        {
+          "ar": "يتناقص على طول كل مسار من الجذر",
+          "en": "decreases along every path from the root"
+        },
+        {
+          "ar": "لا يقلّل أبداً من تقدير الكلفة الحقيقية",
+          "en": "never underestimates the true cost to the goal"
+        }
+      ],
+      "concept_id": "admissible_heuristic",
+      "explanation": {
+        "ar": "تعني المقبولية أن $0 \\le h(n) \\le h^*(n)$، أي أن التقدير لا يتجاوز الكلفة الحقيقية المتبقية، وهذا ما يضمن أمثلية A* في بحث الشجرة. التقليل هو الاتجاه غير الضار، ومقارنة h بكلفة خطوة واحدة تخلط بين المقبولية والاتساق، والتناقص على طول كل مسار هو شرط الاتساق.",
+        "en": "Admissibility means $0 \\le h(n) \\le h^*(n)$, so the estimate never exceeds the true remaining cost, which is what guarantees optimality for A* tree search. Underestimating is the harmless direction, comparing h with a single step cost confuses admissibility with consistency, and decreasing along every path is the consistency condition."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. سيف علي السعيدي",
+    "en": "Prof. Dr. Saif Ali Al-Saidi"
+  },
+  "subject_id": "06_Artificial_Intelligence",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الذكاء الاصطناعي",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

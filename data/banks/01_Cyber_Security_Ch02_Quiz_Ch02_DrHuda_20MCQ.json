@@ -1,23 +1,20 @@
 {
-  "schema_version": 3,
-  "subject_id": "01_Cyber_Security",
-  "subject_title": "الأمن السيبراني",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_Ch02_DrHuda_20MCQ",
-  "instructor": {
-    "ar": "أ.م.د. هدى لفتة مجيد",
-    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  "topic": {
+    "ar": "مخاطر وتهديدات الأمن السيبراني — النموذج أ",
+    "en": "Chapter 2: Cybersecurity Risks and Threats, 20 MCQ bank requested by the instructor — Model A"
   },
+  "quiz_id": "Quiz_Ch02_DrHuda_20MCQ",
+  "has_math": false,
+  "semester": 1,
   "questions": [
     {
       "id": "q1",
-      "concept_id": "risk_technical_definition",
-      "bloom": "Remember",
       "stem": {
         "ar": "In its technical sense in IT security, what does the term risk mean?",
         "en": "In its technical sense in IT security, what does the term risk mean?"
       },
+      "bloom": "Remember",
+      "answer": 3,
       "options": [
         {
           "ar": "The total count of vulnerabilities that remain unpatched inside a system",
@@ -36,7 +33,7 @@
           "en": "The quantitative probability that an error situation occurs and gives rise to damage"
         }
       ],
-      "answer": 3,
+      "concept_id": "risk_technical_definition",
       "explanation": {
         "ar": "The booklet defines risk in its technical sense as the quantitative probability that an error situation occurs and gives rise to damage. The second option describes the subjective notion of risk that the booklet explicitly separates from the technical one, while the third and fourth confuse risk with the inventory of vulnerabilities and with the inventory of controls, neither of which is a probability of damage.",
         "en": "The booklet defines risk in its technical sense as the quantitative probability that an error situation occurs and gives rise to damage. The second option describes the subjective notion of risk that the booklet explicitly separates from the technical one, while the third and fourth confuse risk with the inventory of vulnerabilities and with the inventory of controls, neither of which is a probability of damage."
@@ -44,44 +41,12 @@
     },
     {
       "id": "q2",
-      "concept_id": "vulnerability_definition",
-      "bloom": "Remember",
-      "stem": {
-        "ar": "Which definition of a vulnerability is correct?",
-        "en": "Which definition of a vulnerability is correct?"
-      },
-      "options": [
-        {
-          "ar": "A countermeasure that reduces the frequency of attack attempts",
-          "en": "A countermeasure that reduces the frequency of attack attempts"
-        },
-        {
-          "ar": "A weakness that can be exploited in order to damage the system",
-          "en": "A weakness that can be exploited in order to damage the system"
-        },
-        {
-          "ar": "A colour code that classifies a threat inside the risk matrix",
-          "en": "A colour code that classifies a threat inside the risk matrix"
-        },
-        {
-          "ar": "A contract that transfers the residual risk to an outside party",
-          "en": "A contract that transfers the residual risk to an outside party"
-        }
-      ],
-      "answer": 1,
-      "explanation": {
-        "ar": "The booklet states that damage occurs when a threat is realised against a weakness in the system and that a weakness which can be exploited to damage the system is known as a vulnerability. The remaining options describe a control, a colour convention inside the risk matrix, and the mechanism of risk transfer, none of which is a weakness in the system.",
-        "en": "The booklet states that damage occurs when a threat is realised against a weakness in the system and that a weakness which can be exploited to damage the system is known as a vulnerability. The remaining options describe a control, a colour convention inside the risk matrix, and the mechanism of risk transfer, none of which is a weakness in the system."
-      }
-    },
-    {
-      "id": "q3",
-      "concept_id": "objective_vs_subjective_risk",
-      "bloom": "Understand",
       "stem": {
         "ar": "Objective risk and subjective risk are two distinct notions. Which factor belongs to the subjective definition?",
         "en": "Objective risk and subjective risk are two distinct notions. Which factor belongs to the subjective definition?"
       },
+      "bloom": "Understand",
+      "answer": 3,
       "options": [
         {
           "ar": "The level of countermeasures that are applied to protect the asset",
@@ -92,125 +57,65 @@
           "en": "The consequences that follow from a successful attack on the asset"
         },
         {
-          "ar": "Human factors such as public attitudes, trust and personality",
-          "en": "Human factors such as public attitudes, trust and personality"
-        },
-        {
           "ar": "The frequency of attempts that exploit a specific vulnerability",
           "en": "The frequency of attempts that exploit a specific vulnerability"
+        },
+        {
+          "ar": "Human factors such as public attitudes, trust and personality",
+          "en": "Human factors such as public attitudes, trust and personality"
         }
       ],
-      "answer": 2,
+      "concept_id": "objective_vs_subjective_risk",
       "explanation": {
-        "ar": "The booklet warns that the objective definition of risk must not be confused with subjective risk, which also takes human factors such as public attitudes, trust and personality into consideration. The other three options are the quantitative ingredients of the objective treatment, since they appear in the severity relation and in the residual risk relation.",
+        "ar": "The booklet states that damage occurs when a threat is realised against a weakness in the system and that a weakness which can be exploited to damage the system is known as a vulnerability. The remaining options describe a control, a colour convention inside the risk matrix, and the mechanism of risk transfer, none of which is a weakness in the system.",
         "en": "The booklet warns that the objective definition of risk must not be confused with subjective risk, which also takes human factors such as public attitudes, trust and personality into consideration. The other three options are the quantitative ingredients of the objective treatment, since they appear in the severity relation and in the residual risk relation."
       }
     },
     {
-      "id": "q4",
-      "concept_id": "damage_policy_breach",
-      "bloom": "Understand",
-      "stem": {
-        "ar": "In IT security, what is synonymous with damage?",
-        "en": "In IT security, what is synonymous with damage?"
-      },
-      "options": [
-        {
-          "ar": "A breach of the security policy defined by the organisation",
-          "en": "A breach of the security policy defined by the organisation"
-        },
-        {
-          "ar": "A reduction in the performance of the affected computer system",
-          "en": "A reduction in the performance of the affected computer system"
-        },
-        {
-          "ar": "A financial loss that is recorded in the annual budget of the firm",
-          "en": "A financial loss that is recorded in the annual budget of the firm"
-        },
-        {
-          "ar": "A delay in the delivery of services to external paying customers",
-          "en": "A delay in the delivery of services to external paying customers"
-        }
-      ],
-      "answer": 0,
-      "explanation": {
-        "ar": "The booklet states that in IT security damage is synonymous with a breach of the security policy, which is what makes the definition objective and measurable. Performance loss, financial loss and service delay are possible consequences of an incident, but the booklet defines damage by the policy breach itself rather than by whichever downstream effect happens to be observed.",
-        "en": "The booklet states that in IT security damage is synonymous with a breach of the security policy, which is what makes the definition objective and measurable. Performance loss, financial loss and service delay are possible consequences of an incident, but the booklet defines damage by the policy breach itself rather than by whichever downstream effect happens to be observed."
-      }
-    },
-    {
-      "id": "q5",
-      "concept_id": "risk_severity_frequency_consequence",
-      "bloom": "Understand",
+      "id": "q3",
       "stem": {
         "ar": "In the basic risk expression S = F × K, what do the symbols F and K represent?",
         "en": "In the basic risk expression S = F × K, what do the symbols F and K represent?"
       },
+      "bloom": "Understand",
+      "answer": 2,
       "options": [
         {
           "ar": "The financial value of the protected asset and the technical knowledge level of the attacker",
           "en": "The financial value of the protected asset and the technical knowledge level of the attacker"
         },
         {
-          "ar": "The frequency of attempts to exploit the vulnerability and the consequences of a successful attempt",
-          "en": "The frequency of attempts to exploit the vulnerability and the consequences of a successful attempt"
-        },
-        {
           "ar": "The fault rate of the equipment and the length of the cryptographic keys used in encryption",
           "en": "The fault rate of the equipment and the length of the cryptographic keys used in encryption"
+        },
+        {
+          "ar": "The frequency of attempts to exploit the vulnerability and the consequences of a successful attempt",
+          "en": "The frequency of attempts to exploit the vulnerability and the consequences of a successful attempt"
         },
         {
           "ar": "The frequency of successful attacks and the total number of known vulnerabilities inside the system",
           "en": "The frequency of successful attacks and the total number of known vulnerabilities inside the system"
         }
       ],
-      "answer": 1,
+      "concept_id": "risk_severity_frequency_consequence",
       "explanation": {
-        "ar": "The booklet defines the basic risk S of a threat as depending on the frequency F of attempts to exploit the vulnerability and the consequences K of a successful attempt. The second option replaces consequences by a count of vulnerabilities, and the third and fourth substitute asset value, attacker skill, equipment fault rate and key length, none of which are the two factors named in the relation.",
+        "ar": "The booklet warns that the objective definition of risk must not be confused with subjective risk, which also takes human factors such as public attitudes, trust and personality into consideration. The other three options are the quantitative ingredients of the objective treatment, since they appear in the severity relation and in the residual risk relation.",
         "en": "The booklet defines the basic risk S of a threat as depending on the frequency F of attempts to exploit the vulnerability and the consequences K of a successful attempt. The second option replaces consequences by a count of vulnerabilities, and the third and fourth substitute asset value, attacker skill, equipment fault rate and key length, none of which are the two factors named in the relation."
       }
     },
     {
-      "id": "q6",
-      "concept_id": "residual_risk_expression",
-      "bloom": "Apply",
-      "stem": {
-        "ar": "A threat is evaluated to give a basic risk S, and countermeasures of level M are applied. Which expression gives the residual risk R?",
-        "en": "A threat is evaluated to give a basic risk S, and countermeasures of level M are applied. Which expression gives the residual risk R?"
-      },
-      "options": [
-        {
-          "ar": "The basic risk multiplied by the level of countermeasures",
-          "en": "The basic risk multiplied by the level of countermeasures"
-        },
-        {
-          "ar": "The basic risk divided by the level of countermeasures",
-          "en": "The basic risk divided by the level of countermeasures"
-        },
-        {
-          "ar": "The basic risk added to the level of countermeasures",
-          "en": "The basic risk added to the level of countermeasures"
-        },
-        {
-          "ar": "The basic risk reduced by the number of countermeasures",
-          "en": "The basic risk reduced by the number of countermeasures"
-        }
-      ],
-      "answer": 1,
-      "explanation": {
-        "ar": "The booklet defines the residual risk as the reduced risk that remains after controls are introduced and writes it as the basic risk divided by the level of countermeasures, so stronger protection produces a smaller residual value. Multiplication would make controls increase the residual risk, addition would leave it larger than the basic risk, and subtraction would allow the residual risk to become negative.",
-        "en": "The booklet defines the residual risk as the reduced risk that remains after controls are introduced and writes it as the basic risk divided by the level of countermeasures, so stronger protection produces a smaller residual value. Multiplication would make controls increase the residual risk, addition would leave it larger than the basic risk, and subtraction would allow the residual risk to become negative."
-      }
-    },
-    {
-      "id": "q7",
-      "concept_id": "risk_matrix_high_zone",
-      "bloom": "Apply",
+      "id": "q4",
       "stem": {
         "ar": "A threat is placed in the red area of the risk matrix. What does that position indicate?",
         "en": "A threat is placed in the red area of the risk matrix. What does that position indicate?"
       },
+      "bloom": "Apply",
+      "answer": 0,
       "options": [
+        {
+          "ar": "Both the frequency of attempts and the consequences are high for this threat",
+          "en": "Both the frequency of attempts and the consequences are high for this threat"
+        },
         {
           "ar": "The consequences are high while the frequency of attempts stays low",
           "en": "The consequences are high while the frequency of attempts stays low"
@@ -222,63 +127,23 @@
         {
           "ar": "The consequences are low while the frequency of attempts stays high",
           "en": "The consequences are low while the frequency of attempts stays high"
-        },
-        {
-          "ar": "Both the frequency of attempts and the consequences are high for this threat",
-          "en": "Both the frequency of attempts and the consequences are high for this threat"
         }
       ],
-      "answer": 3,
+      "concept_id": "risk_matrix_high_zone",
       "explanation": {
-        "ar": "The booklet explains that red indicates a high risk and that this arises when the consequences of a successful attack are high and the frequency of attempts to exploit the vulnerability is also high. The remaining options describe the mixed and low combinations that the same paragraph assigns to the yellow and green areas of the matrix.",
+        "ar": "The booklet states that in IT security damage is synonymous with a breach of the security policy, which is what makes the definition objective and measurable. Performance loss, financial loss and service delay are possible consequences of an incident, but the booklet defines damage by the policy breach itself rather than by whichever downstream effect happens to be observed.",
         "en": "The booklet explains that red indicates a high risk and that this arises when the consequences of a successful attack are high and the frequency of attempts to exploit the vulnerability is also high. The remaining options describe the mixed and low combinations that the same paragraph assigns to the yellow and green areas of the matrix."
       }
     },
     {
-      "id": "q8",
-      "concept_id": "countermeasure_matching_network",
-      "bloom": "Apply",
-      "stem": {
-        "ar": "An organisation wants to block attacks that arrive from the internet. Which countermeasure is appropriate?",
-        "en": "An organisation wants to block attacks that arrive from the internet. Which countermeasure is appropriate?"
-      },
-      "options": [
-        {
-          "ar": "Place the equipment inside a secure room with restricted physical access",
-          "en": "Place the equipment inside a secure room with restricted physical access"
-        },
-        {
-          "ar": "Take regular backup copies of the data and software held on the systems",
-          "en": "Take regular backup copies of the data and software held on the systems"
-        },
-        {
-          "ar": "Deploy firewalls in the network to stop hostile traffic from reaching the target",
-          "en": "Deploy firewalls in the network to stop hostile traffic from reaching the target"
-        },
-        {
-          "ar": "Deploy antivirus programs that scan files for known malicious code on hosts",
-          "en": "Deploy antivirus programs that scan files for known malicious code on hosts"
-        }
-      ],
-      "answer": 2,
-      "explanation": {
-        "ar": "The booklet matches threats from attackers outside the system who attack through the internet with firewalls in the network, used so that traffic from the attacker never reaches the target. Antivirus programs answer the malware threat, a secure room answers vandalism, theft and other physical damage, and regular backups answer unauthorised modification or deletion of data and software.",
-        "en": "The booklet matches threats from attackers outside the system who attack through the internet with firewalls in the network, used so that traffic from the attacker never reaches the target. Antivirus programs answer the malware threat, a secure room answers vandalism, theft and other physical damage, and regular backups answer unauthorised modification or deletion of data and software."
-      }
-    },
-    {
-      "id": "q9",
-      "concept_id": "threat_group_hardware",
-      "bloom": "Apply",
+      "id": "q5",
       "stem": {
         "ar": "A storm damages the roof above a data centre and water reaches the servers. Into which threat group does this event fall?",
         "en": "A storm damages the roof above a data centre and water reaches the servers. Into which threat group does this event fall?"
       },
+      "bloom": "Apply",
+      "answer": 1,
       "options": [
-        {
-          "ar": "Liveware related threats that come from human error among users",
-          "en": "Liveware related threats that come from human error among users"
-        },
         {
           "ar": "Software related threats that affect the installed applications",
           "en": "Software related threats that affect the installed applications"
@@ -288,124 +153,64 @@
           "en": "Hardware related threats that physically affect the computer equipment"
         },
         {
+          "ar": "Liveware related threats that come from human error among users",
+          "en": "Liveware related threats that come from human error among users"
+        },
+        {
           "ar": "Data related threats that lead to unauthorised data processing",
           "en": "Data related threats that lead to unauthorised data processing"
         }
       ],
-      "answer": 2,
+      "concept_id": "threat_group_hardware",
       "explanation": {
-        "ar": "The booklet places harmful surroundings and natural disasters such as storms inside the hardware related group, because they physically affect the computer or the infrastructure it depends on. Software threats concern installed programs, data threats concern unauthorised processing of data, and liveware threats concern human error such as social engineering and phishing.",
+        "ar": "The booklet defines the basic risk S of a threat as depending on the frequency F of attempts to exploit the vulnerability and the consequences K of a successful attempt. The second option replaces consequences by a count of vulnerabilities, and the third and fourth substitute asset value, attacker skill, equipment fault rate and key length, none of which are the two factors named in the relation.",
         "en": "The booklet places harmful surroundings and natural disasters such as storms inside the hardware related group, because they physically affect the computer or the infrastructure it depends on. Software threats concern installed programs, data threats concern unauthorised processing of data, and liveware threats concern human error such as social engineering and phishing."
       }
     },
     {
-      "id": "q10",
-      "concept_id": "mitigation_strategy_avoidance",
-      "bloom": "Apply",
-      "stem": {
-        "ar": "Forbidding risky behaviour such as the use of WiFi is one way of handling risk. Which mitigation strategy does that example illustrate?",
-        "en": "Forbidding risky behaviour such as the use of WiFi is one way of handling risk. Which mitigation strategy does that example illustrate?"
-      },
-      "options": [
-        {
-          "ar": "Risk avoidance, since the target system is kept away from the risk",
-          "en": "Risk avoidance, since the target system is kept away from the risk"
-        },
-        {
-          "ar": "Risk transfer, since the risk is handed over to an outside party",
-          "en": "Risk transfer, since the risk is handed over to an outside party"
-        },
-        {
-          "ar": "Risk retention, since a small agreed residual risk is accepted",
-          "en": "Risk retention, since a small agreed residual risk is accepted"
-        },
-        {
-          "ar": "Risk reduction, since proactive steps are taken to limit future losses",
-          "en": "Risk reduction, since proactive steps are taken to limit future losses"
-        }
-      ],
-      "answer": 0,
-      "explanation": {
-        "ar": "The booklet lists risk avoidance first and gives forbidding risky behaviour such as the use of WiFi as its example, because the system is kept away from the risk instead of being defended against it. Reduction would instead add proactive measures such as backups and encryption, retention would accept a defined residual risk, and transfer would move the risk to another party through a contract.",
-        "en": "The booklet lists risk avoidance first and gives forbidding risky behaviour such as the use of WiFi as its example, because the system is kept away from the risk instead of being defended against it. Reduction would instead add proactive measures such as backups and encryption, retention would accept a defined residual risk, and transfer would move the risk to another party through a contract."
-      }
-    },
-    {
-      "id": "q11",
-      "concept_id": "threat_families_rationale",
-      "bloom": "Analyze",
+      "id": "q6",
       "stem": {
         "ar": "Threats to an IT system are commonly grouped into four families instead of treating intrusion as the only threat. Which statement best explains why?",
         "en": "Threats to an IT system are commonly grouped into four families instead of treating intrusion as the only threat. Which statement best explains why?"
       },
+      "bloom": "Analyze",
+      "answer": 2,
       "options": [
         {
           "ar": "Physical surroundings affect hardware alone and never influence the data layer at all",
           "en": "Physical surroundings affect hardware alone and never influence the data layer at all"
         },
         {
-          "ar": "Threats also arise from physical surroundings, software faults, data misuse and human error",
-          "en": "Threats also arise from physical surroundings, software faults, data misuse and human error"
-        },
-        {
           "ar": "Intrusion belongs to the liveware family because a human being performs the attack",
           "en": "Intrusion belongs to the liveware family because a human being performs the attack"
+        },
+        {
+          "ar": "Threats also arise from physical surroundings, software faults, data misuse and human error",
+          "en": "Threats also arise from physical surroundings, software faults, data misuse and human error"
         },
         {
           "ar": "Attackers are rare in practice, so the remaining families describe accidental events only",
           "en": "Attackers are rare in practice, so the remaining families describe accidental events only"
         }
       ],
-      "answer": 1,
+      "concept_id": "threat_families_rationale",
       "explanation": {
-        "ar": "The booklet opens that section by correcting the mistaken belief that only attackers who hack their way in can stop a computer from working correctly, then lists hardware, software, data and liveware families, so the point is that threats come from several distinct sources. The second option is wrong because the booklet calls attackers a real threat that users merely overestimate as the only one, the third misplaces intrusion inside a family defined by user error, and the fourth ignores the causal chain in which a physical event can still corrupt data.",
+        "ar": "The booklet defines the residual risk as the reduced risk that remains after controls are introduced and writes it as the basic risk divided by the level of countermeasures, so stronger protection produces a smaller residual value. Multiplication would make controls increase the residual risk, addition would leave it larger than the basic risk, and subtraction would allow the residual risk to become negative.",
         "en": "The booklet opens that section by correcting the mistaken belief that only attackers who hack their way in can stop a computer from working correctly, then lists hardware, software, data and liveware families, so the point is that threats come from several distinct sources. The second option is wrong because the booklet calls attackers a real threat that users merely overestimate as the only one, the third misplaces intrusion inside a family defined by user error, and the fourth ignores the causal chain in which a physical event can still corrupt data."
       }
     },
     {
-      "id": "q12",
-      "concept_id": "data_threat_inference",
-      "bloom": "Analyze",
-      "stem": {
-        "ar": "Inference is classified as a data related threat. What does inference mean in that context?",
-        "en": "Inference is classified as a data related threat. What does inference mean in that context?"
-      },
-      "options": [
-        {
-          "ar": "Deleting confidential records from a database without authorisation",
-          "en": "Deleting confidential records from a database without authorisation"
-        },
-        {
-          "ar": "Copying licensed software between machines without a valid licence",
-          "en": "Copying licensed software between machines without a valid licence"
-        },
-        {
-          "ar": "Deducing confidential information from data that is legitimately accessible",
-          "en": "Deducing confidential information from data that is legitimately accessible"
-        },
-        {
-          "ar": "Pretending to be another user in order to obtain access rights",
-          "en": "Pretending to be another user in order to obtain access rights"
-        }
-      ],
-      "answer": 2,
-      "explanation": {
-        "ar": "The booklet defines inference as collecting accessible data from which it is possible to deduce confidential information that is not directly accessible, so the leak is produced by combination rather than by breaking in. The second option describes unwanted deletion, the third describes masquerading, and the fourth describes unauthorised copying of software, all of which are separate entries on the same lists.",
-        "en": "The booklet defines inference as collecting accessible data from which it is possible to deduce confidential information that is not directly accessible, so the leak is produced by combination rather than by breaking in. The second option describes unwanted deletion, the third describes masquerading, and the fourth describes unauthorised copying of software, all of which are separate entries on the same lists."
-      }
-    },
-    {
-      "id": "q13",
-      "concept_id": "mitigation_strategy_retention",
-      "bloom": "Analyze",
+      "id": "q7",
       "stem": {
         "ar": "An organisation documents a low-probability threat, reserves budget for it and continues operations without further action. Which mitigation strategy does this behaviour implement?",
         "en": "An organisation documents a low-probability threat, reserves budget for it and continues operations without further action. Which mitigation strategy does this behaviour implement?"
       },
+      "bloom": "Analyze",
+      "answer": 1,
       "options": [
         {
-          "ar": "Risk sharing, since several parties agree to handle the risk jointly",
-          "en": "Risk sharing, since several parties agree to handle the risk jointly"
+          "ar": "Risk reduction, since proactive steps are taken to prevent future loss",
+          "en": "Risk reduction, since proactive steps are taken to prevent future loss"
         },
         {
           "ar": "Risk retention, since a certain agreed amount of residual risk is accepted",
@@ -416,57 +221,29 @@
           "en": "Risk transfer, since the risk is moved to an external contract partner"
         },
         {
-          "ar": "Risk reduction, since proactive steps are taken to prevent future loss",
-          "en": "Risk reduction, since proactive steps are taken to prevent future loss"
+          "ar": "Risk sharing, since several parties agree to handle the risk jointly",
+          "en": "Risk sharing, since several parties agree to handle the risk jointly"
         }
       ],
-      "answer": 1,
+      "concept_id": "mitigation_strategy_retention",
       "explanation": {
-        "ar": "The booklet defines retention as allowing a certain, agreed amount of residual risk, which is exactly what happens when the threat is documented, a budget is set aside and operations continue. Reduction requires proactive measures such as backups or encryption, transfer requires a contract with another party, and sharing requires a joint arrangement, and none of those three is present in the scenario.",
+        "ar": "The booklet explains that red indicates a high risk and that this arises when the consequences of a successful attack are high and the frequency of attempts to exploit the vulnerability is also high. The remaining options describe the mixed and low combinations that the same paragraph assigns to the yellow and green areas of the matrix.",
         "en": "The booklet defines retention as allowing a certain, agreed amount of residual risk, which is exactly what happens when the threat is documented, a budget is set aside and operations continue. Reduction requires proactive measures such as backups or encryption, transfer requires a contract with another party, and sharing requires a joint arrangement, and none of those three is present in the scenario."
       }
     },
     {
-      "id": "q14",
-      "concept_id": "physical_access_technology",
-      "bloom": "Analyze",
-      "stem": {
-        "ar": "Several physical access-control technologies are used at building entrances. Which statement correctly describes a smart card?",
-        "en": "Several physical access-control technologies are used at building entrances. Which statement correctly describes a smart card?"
-      },
-      "options": [
-        {
-          "ar": "It uses radio signals to identify tags from a distance without any contact",
-          "en": "It uses radio signals to identify tags from a distance without any contact"
-        },
-        {
-          "ar": "Its magnetic stripe stores coded spots that any stripe reader can copy",
-          "en": "Its magnetic stripe stores coded spots that any stripe reader can copy"
-        },
-        {
-          "ar": "It relies on a personal access code that is typed on a keypad at the door",
-          "en": "It relies on a personal access code that is typed on a keypad at the door"
-        },
-        {
-          "ar": "Its intelligent circuitry hides user data until the authentication process succeeds",
-          "en": "Its intelligent circuitry hides user data until the authentication process succeeds"
-        }
-      ],
-      "answer": 3,
-      "explanation": {
-        "ar": "The booklet states that smart cards resemble magnetic stripe cards but offer improved data security because intelligent circuitry can hide the user data until an authentication process has been performed. The second option describes the magnetic stripe card, the third describes the RFID badge, and the fourth describes the cipher lock, so each of them names a different technology from the one the question asks about.",
-        "en": "The booklet states that smart cards resemble magnetic stripe cards but offer improved data security because intelligent circuitry can hide the user data until an authentication process has been performed. The second option describes the magnetic stripe card, the third describes the RFID badge, and the fourth describes the cipher lock, so each of them names a different technology from the one the question asks about."
-      }
-    },
-    {
-      "id": "q15",
-      "concept_id": "framework_iso27002_nature",
-      "bloom": "Analyze",
+      "id": "q8",
       "stem": {
         "ar": "Several systematic security analysis frameworks are in use. Which description matches ISO/IEC 27002?",
         "en": "Several systematic security analysis frameworks are in use. Which description matches ISO/IEC 27002?"
       },
+      "bloom": "Analyze",
+      "answer": 0,
       "options": [
+        {
+          "ar": "A checklist of the things that must be considered to achieve a secure system",
+          "en": "A checklist of the things that must be considered to achieve a secure system"
+        },
         {
           "ar": "An evaluation process for the threats, assets and vulnerabilities of a firm",
           "en": "An evaluation process for the threats, assets and vulnerabilities of a firm"
@@ -476,61 +253,29 @@
           "en": "A taxonomy of the factors that can contribute to the formation of risk"
         },
         {
-          "ar": "A checklist of the things that must be considered to achieve a secure system",
-          "en": "A checklist of the things that must be considered to achieve a secure system"
-        },
-        {
           "ar": "A description of the internal processes that a company has to follow",
           "en": "A description of the internal processes that a company has to follow"
         }
       ],
-      "answer": 2,
+      "concept_id": "framework_iso27002_nature",
       "explanation": {
-        "ar": "The booklet introduces ISO/IEC 27002 as the international standard that gives a checklist of things which have to be taken into consideration in order to achieve a secure system. The second option describes FAIR, the third describes COSO, and the fourth describes OCTAVE, which is why each of them is the right description attached to the wrong framework.",
+        "ar": "The booklet matches threats from attackers outside the system who attack through the internet with firewalls in the network, used so that traffic from the attacker never reaches the target. Antivirus programs answer the malware threat, a secure room answers vandalism, theft and other physical damage, and regular backups answer unauthorised modification or deletion of data and software.",
         "en": "The booklet introduces ISO/IEC 27002 as the international standard that gives a checklist of things which have to be taken into consideration in order to achieve a secure system. The second option describes FAIR, the third describes COSO, and the fourth describes OCTAVE, which is why each of them is the right description attached to the wrong framework."
       }
     },
     {
-      "id": "q16",
-      "concept_id": "pdca_check_phase",
-      "bloom": "Analyze",
-      "stem": {
-        "ar": "Risk management is often organised as a PDCA process. Which activity belongs to the Check phase?",
-        "en": "Risk management is often organised as a PDCA process. Which activity belongs to the Check phase?"
-      },
-      "options": [
-        {
-          "ar": "Monitoring the implemented solution to confirm that the security level is maintained",
-          "en": "Monitoring the implemented solution to confirm that the security level is maintained"
-        },
-        {
-          "ar": "Identifying the threats, analysing the risks and planning the countermeasures",
-          "en": "Identifying the threats, analysing the risks and planning the countermeasures"
-        },
-        {
-          "ar": "Implementing the countermeasures and the related risk management activities",
-          "en": "Implementing the countermeasures and the related risk management activities"
-        },
-        {
-          "ar": "Adjusting the solution or deciding to start a completely new cycle of work",
-          "en": "Adjusting the solution or deciding to start a completely new cycle of work"
-        }
-      ],
-      "answer": 0,
-      "explanation": {
-        "ar": "The booklet assigns monitoring of the implemented solution, to check that the desired level of security is maintained, to the Check phase. The second option is the Plan phase, the third is the Do phase and the fourth is the Act phase, so the three distractors are the remaining steps of the same cycle rather than the checking step.",
-        "en": "The booklet assigns monitoring of the implemented solution, to check that the desired level of security is maintained, to the Check phase. The second option is the Plan phase, the third is the Do phase and the fourth is the Act phase, so the three distractors are the remaining steps of the same cycle rather than the checking step."
-      }
-    },
-    {
-      "id": "q17",
-      "concept_id": "countermeasure_effectiveness",
-      "bloom": "Evaluate",
+      "id": "q9",
       "stem": {
         "ar": "Two departments apply the same number of countermeasures against one threat, yet their residual risks differ. Which explanation accounts for this?",
         "en": "Two departments apply the same number of countermeasures against one threat, yet their residual risks differ. Which explanation accounts for this?"
       },
+      "bloom": "Evaluate",
+      "answer": 0,
       "options": [
+        {
+          "ar": "Effectiveness differs between controls, and M reflects effectiveness as well as count",
+          "en": "Effectiveness differs between controls, and M reflects effectiveness as well as count"
+        },
         {
           "ar": "Residual risk never changes once the number of countermeasures has been fixed",
           "en": "Residual risk never changes once the number of countermeasures has been fixed"
@@ -542,66 +287,30 @@
         {
           "ar": "Only the consequence value can change the residual risk of a threat",
           "en": "Only the consequence value can change the residual risk of a threat"
-        },
-        {
-          "ar": "Effectiveness differs between controls, and M reflects effectiveness as well as count",
-          "en": "Effectiveness differs between controls, and M reflects effectiveness as well as count"
         }
       ],
-      "answer": 3,
+      "concept_id": "countermeasure_effectiveness",
       "explanation": {
-        "ar": "The booklet states that M covers both the number of countermeasures, since several things can affect the risk for a particular type of attack, and their effectiveness, so two departments with equal counts can still obtain different residual risks. The second option denies that dual nature, and the third and fourth reduce the whole expression to one of its two factors, which is impossible because the residual risk is derived from the basic risk that both factors build.",
+        "ar": "The booklet places harmful surroundings and natural disasters such as storms inside the hardware related group, because they physically affect the computer or the infrastructure it depends on. Software threats concern installed programs, data threats concern unauthorised processing of data, and liveware threats concern human error such as social engineering and phishing.",
         "en": "The booklet states that M covers both the number of countermeasures, since several things can affect the risk for a particular type of attack, and their effectiveness, so two departments with equal counts can still obtain different residual risks. The second option denies that dual nature, and the third and fourth reduce the whole expression to one of its two factors, which is impossible because the residual risk is derived from the basic risk that both factors build."
       }
     },
     {
-      "id": "q18",
-      "concept_id": "strategy_selection_constraints",
-      "bloom": "Evaluate",
-      "stem": {
-        "ar": "A clinic cannot afford full redundancy but must keep patient data recoverable. Which pair of strategies fits both constraints best?",
-        "en": "A clinic cannot afford full redundancy but must keep patient data recoverable. Which pair of strategies fits both constraints best?"
-      },
-      "options": [
-        {
-          "ar": "Reduction through backups and encryption, with retention of the remaining risk",
-          "en": "Reduction through backups and encryption, with retention of the remaining risk"
-        },
-        {
-          "ar": "Sharing of the risk with regulators, with no additional technical measures",
-          "en": "Sharing of the risk with regulators, with no additional technical measures"
-        },
-        {
-          "ar": "Avoidance of all digital records, with transfer of the risk to an insurer only",
-          "en": "Avoidance of all digital records, with transfer of the risk to an insurer only"
-        },
-        {
-          "ar": "Transfer of every risk to an outsourcer, with no internal controls retained",
-          "en": "Transfer of every risk to an outsourcer, with no internal controls retained"
-        }
-      ],
-      "answer": 0,
-      "explanation": {
-        "ar": "Because redundancy is ruled out by cost while recoverability is mandatory, the booklet's reduction strategy fits through backups and encryption, and whatever residual exposure remains is then deliberately accepted through retention, which the booklet defines as allowing a certain agreed amount of residual risk. Abandoning digital records destroys the clinical service, and the last two options drop internal controls altogether, which contradicts the booklet's principle that controls must match the threat.",
-        "en": "Because redundancy is ruled out by cost while recoverability is mandatory, the booklet's reduction strategy fits through backups and encryption, and whatever residual exposure remains is then deliberately accepted through retention, which the booklet defines as allowing a certain agreed amount of residual risk. Abandoning digital records destroys the clinical service, and the last two options drop internal controls altogether, which contradicts the booklet's principle that controls must match the threat."
-      }
-    },
-    {
-      "id": "q19",
-      "concept_id": "access_control_policy_argument",
-      "bloom": "Evaluate",
+      "id": "q10",
       "stem": {
         "ar": "A cohesive access-control policy is recommended at every level of an organisation. Which argument best supports that recommendation?",
         "en": "A cohesive access-control policy is recommended at every level of an organisation. Which argument best supports that recommendation?"
       },
+      "bloom": "Evaluate",
+      "answer": 1,
       "options": [
-        {
-          "ar": "Free internal movement makes it hard to protect assets and to prevent accidents",
-          "en": "Free internal movement makes it hard to protect assets and to prevent accidents"
-        },
         {
           "ar": "Visitors are the only group that is able to bypass the physical security perimeter",
           "en": "Visitors are the only group that is able to bypass the physical security perimeter"
+        },
+        {
+          "ar": "Free internal movement makes it hard to protect assets and to prevent accidents",
+          "en": "Free internal movement makes it hard to protect assets and to prevent accidents"
         },
         {
           "ar": "Access-control devices are cheaper when the policy covers a single level only",
@@ -612,52 +321,20 @@
           "en": "Employees never misuse the assets that they are authorised to reach at work"
         }
       ],
-      "answer": 0,
+      "concept_id": "access_control_policy_argument",
       "explanation": {
-        "ar": "The booklet warns that free access to all departments creates a variety of risks, that it becomes much more difficult to implement safeguards when everyone can move freely, that human temptation must be reduced, and that access control is also needed to prevent accidents. Cost is never offered as a reason to narrow the policy, visitors are not singled out as the only bypass, and the booklet treats personnel as a threat source that must be checked and trained.",
+        "ar": "The booklet lists risk avoidance first and gives forbidding risky behaviour such as the use of WiFi as its example, because the system is kept away from the risk instead of being defended against it. Reduction would instead add proactive measures such as backups and encryption, retention would accept a defined residual risk, and transfer would move the risk to another party through a contract.",
         "en": "The booklet warns that free access to all departments creates a variety of risks, that it becomes much more difficult to implement safeguards when everyone can move freely, that human temptation must be reduced, and that access control is also needed to prevent accidents. Cost is never offered as a reason to narrow the policy, visitors are not singled out as the only bypass, and the booklet treats personnel as a threat source that must be checked and trained."
-      }
-    },
-    {
-      "id": "q20",
-      "concept_id": "multifactor_authentication_config",
-      "bloom": "Evaluate",
-      "stem": {
-        "ar": "A facility must verify identity by combining knowledge, possession and inheritance factors. Which configuration satisfies that requirement?",
-        "en": "A facility must verify identity by combining knowledge, possession and inheritance factors. Which configuration satisfies that requirement?"
-      },
-      "options": [
-        {
-          "ar": "A smart card, an identity badge and a magnetic stripe card used together",
-          "en": "A smart card, an identity badge and a magnetic stripe card used together"
-        },
-        {
-          "ar": "A fingerprint scan, an iris scan and a voice recognition check used together",
-          "en": "A fingerprint scan, an iris scan and a voice recognition check used together"
-        },
-        {
-          "ar": "A password, a personal identification number and a second secret password",
-          "en": "A password, a personal identification number and a second secret password"
-        },
-        {
-          "ar": "A password, a smart card and a fingerprint scan used together at the entry point",
-          "en": "A password, a smart card and a fingerprint scan used together at the entry point"
-        }
-      ],
-      "answer": 3,
-      "explanation": {
-        "ar": "The booklet lists knowledge as something you know, possession as something you have and inheritance as something you are, so the only mixture that draws one factor from each class is the password, the smart card and the fingerprint scan. The second option stacks three knowledge factors, the third stacks three possession factors, and the fourth stacks three inheritance factors, so each of them verifies the same kind of evidence three times.",
-        "en": "The booklet lists knowledge as something you know, possession as something you have and inheritance as something you are, so the only mixture that draws one factor from each class is the password, the smart card and the fingerprint scan. The second option stacks three knowledge factors, the third stacks three possession factors, and the fourth stacks three inheritance factors, so each of them verifies the same kind of evidence three times."
       }
     }
   ],
-  "topic": {
-    "ar": "مخاطر وتهديدات الأمن السيبراني",
-    "en": "Chapter 2: Cybersecurity Risks and Threats, 20 MCQ bank requested by the instructor"
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
-  "updated_at": "2026-10-21T15:06:05Z",
-  "has_math": false,
-  "version": 2,
-  "material_url": "https://t.me/c/3710711332/84/183",
-  "question_count": 20
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
 }

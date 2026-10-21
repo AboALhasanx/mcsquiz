@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "أنواع البيانات وتحضيرها: الجودة والتنظيف والتحويل — النموذج ب",
+    "en": "Data Types and Preparation — Model B"
+  },
+  "quiz_id": "Quiz_Ch02_ModelB_Data_Types_and_Preparation",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يفعل تنظيف البيانات في خط التحضير وفقاً للمحاضرة؟",
+        "en": "What does data cleaning do in the preparation pipeline according to the lecture?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يقلّل عدد السمات مع الحفاظ على المعلومات المهمة",
+          "en": "It reduces the number of attributes while preserving information"
+        },
+        {
+          "ar": "يدمج عدة مصادر في مجموعة واحدة عبر سمة مفتاح مشتركة",
+          "en": "It merges several sources into one dataset using a shared key attribute"
+        },
+        {
+          "ar": "يحوّل القيم المتصلة إلى فترات مسمّاة قبل التنقيب",
+          "en": "It converts continuous values into named intervals before mining"
+        },
+        {
+          "ar": "يكشف المشكلات ويصححها، مثل القيم الناقصة والمشوشة والمكررة",
+          "en": "It detects and corrects problems such as missing, noisy, and duplicate data"
+        }
+      ],
+      "concept_id": "data_cleaning_goal",
+      "explanation": {
+        "ar": "تنظيف البيانات هو عملية كشف المشكلات في البيانات وتصحيحها، ومنها القيم الناقصة والمشوشة والشاذة والمكررة وغير المتسقة.",
+        "en": "Data cleaning is the process of detecting and correcting problems in the data, including missing values, noise, outliers, duplicates, and inconsistencies."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "تحتوي سمة عددية على القيم 60 و70 و80 وقيمة ناقصة و90. باستخدام متوسط القيم الملاحظة، ما القيمة التي تعوّض الناقص؟",
+        "en": "A numerical attribute holds the values 60, 70, 80, missing, and 90. Using the mean of the observed values, what replaces the missing entry?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "90، لأن أكبر قيمة ملاحظة تُنسخ إلى الخانة",
+          "en": "90, because the largest observed value is copied down"
+        },
+        {
+          "ar": "75، لأن المجموع 300 يُقسم على أربع قيم ملاحظة",
+          "en": "75, because the sum 300 is divided by four observed values"
+        },
+        {
+          "ar": "60، لأن المجموع 300 يُقسم على خمس قيم مسجلة",
+          "en": "60, because the sum 300 is divided by five recorded values"
+        },
+        {
+          "ar": "80، لأن القيمة الوسطى الملاحظة تُختار مباشرة",
+          "en": "80, because the middle observed value is chosen directly"
+        }
+      ],
+      "concept_id": "missing_value_mean",
+      "explanation": {
+        "ar": "القيم الملاحظة أربع فقط، لذا يكون المتوسط 300 / 4 = 75، والقسمة على خمسة هي الخطأ الحسابي الشائع.",
+        "en": "Only four values are observed, so the mean is 300 / 4 = 75; dividing by five is the common arithmetic trap."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "تحتوي مجموعة سجلات على القيم 60 و65 و70 و75 و200 لسمة واحدة. أي مقياس يملأ القيمة الناقصة هنا، ولماذا؟",
+        "en": "A set of records holds the values 60, 65, 70, 75, and 200 for one attribute. Which statistic should fill a missing entry here, and why?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المتوسط، لأنه يستخدم كل قيمة ملاحظة بالتساوي",
+          "en": "The mean, because it uses every observed value equally"
+        },
+        {
+          "ar": "المنوال، لأنه يكرر الفئة الأكثر تكراراً",
+          "en": "The mode, because it repeats the most frequent category"
+        },
+        {
+          "ar": "الوسيط، لأن القيمة المتطرفة تشوّه المتوسط",
+          "en": "The median, because an extreme value distorts the mean"
+        },
+        {
+          "ar": "المدى، لأنه يغطي أصغر قيمة وأكبر قيمة",
+          "en": "The range, because it spans the smallest and largest value"
+        }
+      ],
+      "concept_id": "median_for_extremes",
+      "explanation": {
+        "ar": "توصي المحاضرة باستخدام الوسيط عند وجود قيم متطرفة، لأن القيمة 200 متطرفة وتشوّه المتوسط.",
+        "en": "The lecture recommends the median when the data contains extreme values; 200 is extreme, so the median represents the typical record better than the mean."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يظهر في سجل مستشفى قيمة ضغط دم مرتفعة بشكل غير معتاد. ماذا تشترط المحاضرة قبل حذفها كخطأ؟",
+        "en": "A hospital record shows an unusually high blood pressure value. What does the lecture require before deleting it as an error?"
+      },
+      "bloom": "Evaluate",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التحقق منها أولاً، لأن القيمة الشاذة قد تعكس حالة حقيقية",
+          "en": "Investigate it first, since an outlier may reflect a real condition"
+        },
+        {
+          "ar": "حذفها فوراً، لأن كل قيمة شاذة خطأ في إدخال البيانات",
+          "en": "Delete it at once, since every outlier is a data entry mistake"
+        },
+        {
+          "ar": "تعويضها بالصفر، لأن القيمة خارج المدى الطبيعي المعتاد",
+          "en": "Replace it with zero, since the value is outside the normal range"
+        },
+        {
+          "ar": "تكرار السجل، لأن القيم المتطرفة يجب موازنتها",
+          "en": "Duplicate the row, since extreme values must be balanced out"
+        }
+      ],
+      "concept_id": "outlier_not_error",
+      "explanation": {
+        "ar": "تنص المحاضرة على أن القيمة الشاذة ليست خطأ بالضرورة؛ فارتفاع ضغط الدم قد يعكس حالة مرضية حقيقية، ولذلك يُتحقق منها قبل الحذف.",
+        "en": "The lecture states that an outlier is not necessarily an error; unusually high blood pressure may reflect an actual medical condition, so outliers are investigated before removal."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يتراوح العمر بين 20 و60، وعمر أحد المرضى 40. عند تطبيق Min-Max Normalization إلى المدى من 0 إلى 1، ما القيمة الناتجة؟",
+        "en": "Age ranges from 20 to 60, and one patient is 40 years old. Applying Min-Max Normalization into the range from 0 to 1 gives which value?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.5، من قسمة 20 على المدى 40",
+          "en": "0.5, from dividing 20 by the range of 40"
+        },
+        {
+          "ar": "2.0، من قسمة 40 على الحد الأدنى 20",
+          "en": "2.0, from dividing 40 by the minimum of 20"
+        },
+        {
+          "ar": "0.33، من قسمة 20 على الحد الأعلى 60",
+          "en": "0.33, from dividing 20 by the maximum of 60"
+        },
+        {
+          "ar": "0.67، من قسمة 40 على الحد الأعلى 60",
+          "en": "0.67, from dividing 40 by the maximum of 60"
+        }
+      ],
+      "concept_id": "minmax_normalization",
+      "explanation": {
+        "ar": "تحسب Min-Max Normalization الفرق بين القيمة والحد الأدنى مقسوماً على المدى، أي 20 / 40 = 0.5 ضمن المدى من 0 إلى 1.",
+        "en": "Min-Max normalization computes the difference from the minimum divided by the range, so 20 / 40 = 0.5 within the range from 0 to 1."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "الفصل الثاني: نماذج دورة حياة تطوير البرمجيات — النموذج ب",
+    "en": "Ch02 Model B: Waterfall, Incremental, Spiral, UP and Agile"
+  },
+  "quiz_id": "Quiz_Ch02_ModelB_SDLC_Models",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "يفترض نموذج Waterfall الكلاسيكي عدم وقوع أي خطأ في أي مرحلة. أي نتيجة تصميمية تترتب على هذا الافتراض؟",
+        "en": "The classical Waterfall model assumes that no error occurs in any phase. What design consequence follows from that assumption?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تُغلق المراحل المكتملة، فلا يوفر النموذج مسارات تغذية راجعة",
+          "en": "Completed phases are closed, so the model provides no feedback paths"
+        },
+        {
+          "ar": "تُقيَّم المخاطر في كل حلقة قبل بدء المرحلة التالية",
+          "en": "Risks are assessed in each loop before the next phase begins"
+        },
+        {
+          "ar": "تُعاد كل مرحلة حتى يوافق العميل على مخرجاتها",
+          "en": "Every phase is repeated until the customer approves its artefacts"
+        },
+        {
+          "ar": "يُسلَّم برنامج عامل كل أسبوعين أو ثلاثة للمستخدمين",
+          "en": "Working software is delivered every two or three weeks to users"
+        }
+      ],
+      "concept_id": "waterfall_no_feedback_paths",
+      "explanation": {
+        "ar": "لأن النموذج يفترض عدم وقوع أخطاء، فإنه لا يملك آلية للتصحيح، فالمرحلة المكتملة نهائية كما لا يعود الماء إلى أعلى الشلال.",
+        "en": "Because it assumes no developer error, the classical Waterfall has no mechanism for correction: a completed phase is final, exactly as water cannot flow back up a waterfall."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي زوج من المشكلات يرتبط أكثر بنموذج التطوير والتسليم التدريجي؟",
+        "en": "Which pair of problems is most associated with incremental development and delivery?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "توثيق مفرط وتسليم واحد متكامل",
+          "en": "Excessive documentation and single monolithic delivery"
+        },
+        {
+          "ar": "عملية غير مرئية وتدهور تدريجي في البنية",
+          "en": "Invisible process and gradual degradation of structure"
+        },
+        {
+          "ar": "غياب تحليل المخاطر وغياب البرنامج العامل المبكر",
+          "en": "No risk analysis and no early working software"
+        },
+        {
+          "ar": "متطلبات مجمّدة وانعدام تغذية راجعة من العميل",
+          "en": "Frozen requirements and missing customer feedback"
+        }
+      ],
+      "concept_id": "incremental_development_weaknesses",
+      "explanation": {
+        "ar": "يجعل التطوير التدريجي العملية صعبة الرؤية ويسمح بتدهور البنية مع تراكم الإضافات، كما أنه أقل ملاءمة للأنظمة الكبيرة أو المدمجة أو الحرجة مقارنة بالعملية المخططة.",
+        "en": "Incremental development keeps the process hard to see and lets the structure degrade as increments accumulate. It also fits very large, embedded, or critical systems less well than a plan-driven process."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الذي يميز نموذج Spiral عن بقية نماذج العملية في مقارنة الأسبوع الثاني؟",
+        "en": "What distinguishes the Spiral model from the other process models in the Week 02 comparison?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تُنجز كل مرحلة مرة واحدة ولا يُعاد إليها لاحقاً",
+          "en": "Each phase is completed once and never revisited later"
+        },
+        {
+          "ar": "يسلّم الفريق منتجاً نهائياً واحداً بعد كل المراحل",
+          "en": "The team delivers a single final product after all phases"
+        },
+        {
+          "ar": "تُجمَّد المتطلبات قبل بدء أي نشاط تصميمي",
+          "en": "Requirements are frozen before any design activity starts"
+        },
+        {
+          "ar": "تبدأ كل حلقة بتقييم صريح للمخاطر وخفضها",
+          "en": "Each loop begins with explicit risk assessment and reduction"
+        }
+      ],
+      "concept_id": "spiral_explicit_risk_driven",
+      "explanation": {
+        "ar": "السمة المميزة لنموذج Spiral هي الاعتراف الصريح بالمخاطر، فكل حلقة تحدد الأهداف وتقيّم المخاطر وتخفضها ثم تطور الإضافة وتخطط للحلقة التالية.",
+        "en": "The spiral's defining feature is its explicit recognition of risk: every loop sets objectives, assesses and reduces risk, develops the increment, and plans the next loop."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ينظّم Unified Process العمل في أربع مراحل. أي تسلسل صحيح؟",
+        "en": "The Unified Process organizes work into four phases. Which sequence is correct?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "البدء والتنقيح والبناء والانتقال",
+          "en": "Inception, elaboration, construction, transition"
+        },
+        {
+          "ar": "الجدوى والتحليل والترميز والتكامل",
+          "en": "Feasibility, analysis, coding, integration"
+        },
+        {
+          "ar": "التوصيف والتحقق والبناء والإحالة للتقاعد",
+          "en": "Specification, validation, construction, retirement"
+        },
+        {
+          "ar": "التخطيط وتحليل المخاطر والهندسة والتقييم",
+          "en": "Planning, risk analysis, engineering, evaluation"
+        }
+      ],
+      "concept_id": "unified_process_four_phases",
+      "explanation": {
+        "ar": "يمر Unified Process بمراحل البدء والتنقيح والبناء والانتقال، مع تكرار داخل كل مرحلة وعبر مجموعة المراحل كاملة.",
+        "en": "The Unified Process runs through inception, elaboration, construction, and transition, with iteration both inside each phase and across the whole set of phases."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يواجه فريق صغير في موقع واحد متطلبات سريعة التغير ولديه عميل ملتزم حاضر معه. أي نموذج أنسب؟",
+        "en": "A small collocated team faces rapidly changing requirements and has a committed on-site customer. Which model fits best?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "RAD بأدوات آلية ونطاق ثابت لشهرين",
+          "en": "RAD with automated tools and a two-month fixed scope"
+        },
+        {
+          "ar": "Waterfall الكلاسيكي بخط أساس واحد مجمّد للمتطلبات",
+          "en": "Classical Waterfall with a single frozen requirements baseline"
+        },
+        {
+          "ar": "Agile بإصدارات قصيرة ومشاركة مستمرة من العميل",
+          "en": "Agile with short releases and continuous customer involvement"
+        },
+        {
+          "ar": "V-Model بتحقق مقترن بكل مرحلة تطوير",
+          "en": "V-Model with verification paired to every development stage"
+        }
+      ],
+      "concept_id": "agile_model_selection",
+      "explanation": {
+        "ar": "يناسب Agile الفرق الصغيرة التي تواجه متطلبات متقلبة ولديها عميل متاح، فالإصدارات القصيرة والمشاركة المستمرة تستوعبان التغيير بكلفة منخفضة، بينما تقاومه النماذج ذات الأساس المجمّد.",
+        "en": "Agile suits small teams facing volatile requirements with an available customer. Short releases and continuous involvement absorb change cheaply, while frozen-baseline models resist it."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

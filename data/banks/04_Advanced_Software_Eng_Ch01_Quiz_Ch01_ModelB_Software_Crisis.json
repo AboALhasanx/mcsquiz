@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "الفصل الأول: البرمجيات كأصل هندسي وأنشطة العملية والخرافات — النموذج ب",
+    "en": "Ch01 Model B: Software as an Asset, Process Activities and Myths"
+  },
+  "quiz_id": "Quiz_Ch01_ModelB_Software_Crisis",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "يُعرَّف البرنامج في هندسة البرمجيات للدراسات العليا كأصل هندسي ثلاثي. أي مجموعة تسمي أضلاعه الثلاثة؟",
+        "en": "In graduate software engineering, software is defined as a tripartite asset. Which set names its three pillars?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الخوارزميات وسجلات العتاد وتقارير الاختبار",
+          "en": "Algorithms, hardware registers, and test reports"
+        },
+        {
+          "ar": "المتطلبات ونماذج التصميم وسكربتات النشر",
+          "en": "Requirements, design models, and deployment scripts"
+        },
+        {
+          "ar": "البرامج وبنى البيانات والتوثيق الكامل",
+          "en": "Programs, data structures, and complete documentation"
+        },
+        {
+          "ar": "الكود المصدري وأدلة المستخدم وميزانيات الصيانة",
+          "en": "Source code, user manuals, and maintenance budgets"
+        }
+      ],
+      "concept_id": "tripartite_software_asset",
+      "explanation": {
+        "ar": "يُعرَّف البرنامج بأنه برامج وبنى بيانات وتوثيق كامل. والتوثيق هو الذي يحفظ المعرفة المعمارية ويجعل الصيانة اللاحقة ممكنة.",
+        "en": "Software is defined as programs plus data structures plus complete documentation. Documentation carries architectural knowledge and is what makes later maintenance possible."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "يصف Sommerville أربعة أنشطة عملية جوهرية تظهر بشكل أو بآخر في كل عملية برمجية. أي تسلسل يذكرها بشكل صحيح؟",
+        "en": "Sommerville describes four fundamental process activities that appear in some form in every software process. Which sequence lists them correctly?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التوصيف والتصميم والتنفيذ والتحقق والتطور",
+          "en": "Specification, design and implementation, validation, evolution"
+        },
+        {
+          "ar": "التحليل والتصميم المعماري والترميز والصيانة",
+          "en": "Analysis, architectural design, coding, maintenance"
+        },
+        {
+          "ar": "البدء والتنقيح والبناء والانتقال",
+          "en": "Inception, elaboration, construction, transition"
+        },
+        {
+          "ar": "دراسة الجدوى وتحليل المتطلبات والترميز واختبار التكامل",
+          "en": "Feasibility study, requirements analysis, coding, integration testing"
+        }
+      ],
+      "concept_id": "four_fundamental_process_activities",
+      "explanation": {
+        "ar": "الأنشطة الجوهرية الأربعة هي التوصيف والتصميم والتنفيذ والتحقق والتطور، وهي جوهرية لأن شكلاً من كل منها يظهر في كل عملية برمجية.",
+        "en": "The four fundamental activities are specification, design and implementation, validation, and evolution. They are fundamental because some form of each belongs to every software process."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "يُثبت باحث أن خوارزمية فرز مثالية من حيث التعقيد التقاربي، لكن المنتج المسلَّم يتجاوز المواعيد ويقاوم الصيانة. أي تمييز يوضحه هذا الموقف؟",
+        "en": "A researcher proves a sorting algorithm optimal in asymptotic complexity, yet the delivered product misses deadlines and resists maintenance. Which distinction does this case illustrate?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "هندسة البرمجيات تقيس التعقيد، وعلوم الحاسوب تقيس كلفة التسليم",
+          "en": "Software engineering measures complexity, while computer science measures delivery cost"
+        },
+        {
+          "ar": "علوم الحاسوب تُحسّن النظرية، وهندسة البرمجيات تدير دورة الحياة والجودة",
+          "en": "Computer science optimises theory, while software engineering manages lifecycle and quality"
+        },
+        {
+          "ar": "علوم الحاسوب تُحسّن الخوارزميات، وهندسة البرمجيات تُثبت النظريات الشكلية",
+          "en": "Computer science optimises algorithms, while software engineering proves formal theorems"
+        },
+        {
+          "ar": "هندسة البرمجيات تتجنب الخوارزميات، وعلوم الحاسوب تبني أنظمة كبيرة",
+          "en": "Software engineering avoids algorithms, while computer science builds large systems"
+        }
+      ],
+      "concept_id": "computer_science_vs_software_engineering",
+      "explanation": {
+        "ar": "تقيس علوم الحاسوب النجاح بالتعقيد التقاربي والصحة الشكلية، بينما تقيس هندسة البرمجيات الإتاحية وقابلية الصيانة والجدول والميزانية في الأنظمة كبيرة الحجم.",
+        "en": "Computer science measures success by asymptotic complexity and formal correctness, whereas software engineering measures availability, maintainability, schedule, and budget in multi-person systems."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يؤكد Sommerville أن البرمجيات المتقدمة تشكل نظاماً اجتماعياً تقنياً. أي ثلاثية تسمي طبقاته بشكل صحيح؟",
+        "en": "Sommerville argues that advanced software forms a socio-technical system. Which trio correctly names its layers?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "النواة التقنية والعملية التشغيلية والعنصر البشري",
+          "en": "Technical core, operational process, and human element"
+        },
+        {
+          "ar": "الخوارزمية وبنية البيانات ومجموعة التوثيق",
+          "en": "Algorithm, data structure, and documentation set"
+        },
+        {
+          "ar": "الكود المصدري ومخطط قاعدة البيانات وطوبولوجيا الشبكة",
+          "en": "Source code, database schema, and network topology"
+        },
+        {
+          "ar": "المترجم ونظام التشغيل ومنصة العتاد",
+          "en": "Compiler, operating system, and hardware platform"
+        }
+      ],
+      "concept_id": "socio_technical_system_layers",
+      "explanation": {
+        "ar": "يضيف المنظور الاجتماعي التقني العملية التشغيلية والعنصر البشري إلى النواة التقنية المتمثلة في الكود وقواعد البيانات والخدمات، فالبرمجية ليست أثراً رياضياً معزولاً.",
+        "en": "The socio-technical view adds the operational process and the human element to the technical core of code, databases, and services. Software is therefore never a purely mathematical artefact."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يصرّ العميل على أن الهدف العام يكفي وأن التفاصيل يمكن تأجيلها. أي خرافة برمجية يعبّر عنها هذا القول؟",
+        "en": "A client insists that a general objective is enough and that details can wait. Which software myth does this statement express?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "خرافة المطور بأن التوثيق هو المُخرَج الأساسي",
+          "en": "The developer myth that documentation is the main deliverable"
+        },
+        {
+          "ar": "خرافة الإدارة بأن زيادة الموظفين تقصّر الجدول المتأخر",
+          "en": "The management myth that extra staff shortens a late schedule"
+        },
+        {
+          "ar": "خرافة المطور بأن نجاح الترجمة يعني انتهاء العمل",
+          "en": "The developer myth that a compiling program ends the work"
+        },
+        {
+          "ar": "خرافة العميل بأن الأهداف الغامضة يمكن توضيحها لاحقاً",
+          "en": "The customer myth that vague objectives can be clarified later"
+        }
+      ],
+      "concept_id": "customer_requirements_myth",
+      "explanation": {
+        "ar": "تفترض خرافة العميل أن الهدف العام الغامض يكفي، لكن المتطلبات الغامضة هي السبب الأول لإعادة العمل المعماري.",
+        "en": "The customer myth holds that a vague general objective suffices, yet ambiguous requirements are the primary cause of architectural rework."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

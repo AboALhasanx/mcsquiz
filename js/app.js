@@ -536,14 +536,23 @@
       if (bar) { bar.innerHTML = ''; bar.style.display = 'none'; }
       return;
     }
-    if (!S.chapterFilter || !sub.chapters.some((c) => c.chapter_no === S.chapterFilter)) {
-      S.chapterFilter = sub.chapters[0].chapter_no;
+    // several banks can share one chapter (النموذج أ / النموذج ب) — the bar
+    // lists every chapter number once, and keeps the first bank as its label
+    const chapters = [];
+    const seenChapters = new Set();
+    sub.chapters.forEach((c) => {
+      if (seenChapters.has(c.chapter_no)) return;
+      seenChapters.add(c.chapter_no);
+      chapters.push(c);
+    });
+    if (!S.chapterFilter || !chapters.some((c) => c.chapter_no === S.chapterFilter)) {
+      S.chapterFilter = chapters[0].chapter_no;
     }
     bar.innerHTML = '';
-    if (sub.chapters.length <= 1) { bar.style.display = 'none'; return; }
+    if (chapters.length <= 1) { bar.style.display = 'none'; return; }
     bar.style.display = '';
     bar.appendChild(filterBarLabel('جابتر'));
-    sub.chapters.forEach((c) => {
+    chapters.forEach((c) => {
       const b = document.createElement('button');
       b.className = 'filter-chip chapter-chip' + (S.chapterFilter === c.chapter_no ? ' active' : '');
       b.textContent = c.chapter_no;
@@ -3782,7 +3791,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v85';
+  const SHELL_VERSION = 'v86';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

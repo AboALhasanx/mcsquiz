@@ -1,23 +1,20 @@
 {
-  "schema_version": 3,
-  "subject_id": "05_Soft_Computing",
-  "subject_title": "الحوسبة المرنة",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_01_Soft_Computing_Foundations",
-  "instructor": {
-    "ar": "أ.د. عبد الهادي محمد ادخيل",
-    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  "topic": {
+    "ar": "مقدمة في الحوسبة الناعمة: الأعصاب البيولوجية والمنطق الغامض",
+    "en": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic"
   },
+  "quiz_id": "Quiz_01_Soft_Computing_Foundations",
+  "has_math": false,
+  "semester": 1,
   "questions": [
     {
       "id": "q1",
-      "concept_id": "hard_vs_soft_computing",
-      "bloom": "Understand",
       "stem": {
         "ar": "ما هو الفارق المعماري الجوهري بين الحوسبة الصلبة (Hard Computing) والحوسبة المرنة (Soft Computing) من حيث تحمل عدم الدقة والضجيج الواقعي؟",
         "en": "What is the fundamental architectural distinction between Hard Computing and Soft Computing regarding their tolerance for imprecision and real-world noise?"
       },
+      "bloom": "Understand",
+      "answer": 3,
       "options": [
         {
           "ar": "الحوسبة الصلبة تعتمد على المنطق الضبابي، بينما الحوسبة المرنة تعتمد على المنطق الثنائي الحاسم والخوارزميات القطعية.",
@@ -36,7 +33,7 @@
           "en": "Hard Computing requires absolute precision and certainty, while Soft Computing tolerates imprecision, uncertainty, and noise."
         }
       ],
-      "answer": 3,
+      "concept_id": "hard_vs_soft_computing",
       "explanation": {
         "ar": "وفق الأستاذ لطفي زادة (Lotfi Zadeh): الحوسبة الصلبة تتطلب نموذجاً تحليلياً دقيقاً ولا تتسامح مع أي خطأ (Precision, Certainty). أما الحوسبة المرنة فتستغل التسامح مع عدم الدقة واللايقين والحقيقة الجزئية للحصول على قابلية الحل والمرونة وانخفاض كلفة الحوسبة.",
         "en": "وفق الأستاذ لطفي زادة (Lotfi Zadeh): الحوسبة الصلبة تتطلب نموذجاً تحليلياً دقيقاً ولا تتسامح مع أي خطأ (Precision, Certainty). أما الحوسبة المرنة فتستغل التسامح مع عدم الدقة واللايقين والحقيقة الجزئية للحصول على قابلية الحل والمرونة وانخفاض كلفة الحوسبة."
@@ -44,12 +41,12 @@
     },
     {
       "id": "q2",
-      "concept_id": "boolean_vs_fuzzy_sets",
-      "bloom": "Analyze",
       "stem": {
         "ar": "كيف تختلف دالة الانتماء في المجموعات الضبابية (Fuzzy Set) جذرياً عن الدالة المميزة للمجموعات التقليدية الحاسمة (Crisp Set)؟",
         "en": "How does the membership function of a Fuzzy Set fundamentally differ from the characteristic function of a traditional Crisp/Boolean Set?"
       },
+      "bloom": "Analyze",
+      "answer": 1,
       "options": [
         {
           "ar": "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
@@ -68,7 +65,7 @@
           "en": "Fuzzy sets accept negative values, whereas crisp sets accept only positive whole integers."
         }
       ],
-      "answer": 1,
+      "concept_id": "boolean_vs_fuzzy_sets",
       "explanation": {
         "ar": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3).",
         "en": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3)."
@@ -76,12 +73,12 @@
     },
     {
       "id": "q3",
-      "concept_id": "biological_neuron_mapping",
-      "bloom": "Understand",
       "stem": {
         "ar": "في المطابقة الهيكلية بين العصبون البيولوجي والشبكة العصبية الاصطناعية (ANN)، أي جزء حيوي يقابل المدخلات والأوزان المشبكية؟",
         "en": "In the structural mapping between a biological neuron and an Artificial Neural Network (ANN), which biological part corresponds to the inputs and synaptic weights?"
       },
+      "bloom": "Understand",
+      "answer": 2,
       "options": [
         {
           "ar": "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة.",
@@ -100,7 +97,7 @@
           "en": "The Myelin Sheath which accelerates the propagation of electrical pulses along nerve fibers."
         }
       ],
-      "answer": 2,
+      "concept_id": "biological_neuron_mapping",
       "explanation": {
         "ar": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output).",
         "en": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output)."
@@ -108,12 +105,12 @@
     },
     {
       "id": "q4",
-      "concept_id": "soft_computing_components",
-      "bloom": "Understand",
       "stem": {
         "ar": "أي من الأزواج التالية يطابق بدقة بين الركائز المنهجية الأساسية للحوسبة المرنة ودورها الوظيفي الجوهري؟",
         "en": "Which of the following pairings correctly maps the four primary methodology pillars of Soft Computing to their core functional role?"
       },
+      "bloom": "Understand",
+      "answer": 0,
       "options": [
         {
           "ar": "المنطق الضبابي لعدم اليقين، والشبكات العصبية للتعلم، والحوسبة التطورية للاستمثال، والاستدلال الاحتمالي للتفكير.",
@@ -132,7 +129,7 @@
           "en": "Fuzzy Logic for file storage, Neural Networks for network firewalls, and Probabilistic for digital signatures."
         }
       ],
-      "answer": 0,
+      "concept_id": "soft_computing_components",
       "explanation": {
         "ar": "المصفوفة الوظيفية المعتمدة للحوسبة المرنة (سلايد 28 وكتاب زادة): Fuzzy Logic يتعامل مع اللايقين (Imprecision & Uncertainty)، و Neural Networks تختص بالتعلم والتكيف (Learning & Adaptation)، و Evolutionary Computation للاستمثال والبحث (Optimization & Search)، و Probabilistic Reasoning للتفكير التنبؤي (Reasoning).",
         "en": "المصفوفة الوظيفية المعتمدة للحوسبة المرنة (سلايد 28 وكتاب زادة): Fuzzy Logic يتعامل مع اللايقين (Imprecision & Uncertainty)، و Neural Networks تختص بالتعلم والتكيف (Learning & Adaptation)، و Evolutionary Computation للاستمثال والبحث (Optimization & Search)، و Probabilistic Reasoning للتفكير التنبؤي (Reasoning)."
@@ -140,12 +137,12 @@
     },
     {
       "id": "q5",
-      "concept_id": "soft_computing_applications",
-      "bloom": "Apply",
       "stem": {
         "ar": "لماذا يفضل استخدام متحكم المنطق الضبابي (Fuzzy Logic Controller) على متحكمات PID التقليدية في التطبيقات الاستهلاكية مثل الغسالات الذكية ومكابح ABS؟",
         "en": "Why is a Fuzzy Logic controller preferred over a classic PID controller in consumer appliances like modern washing machines and ABS brakes?"
       },
+      "bloom": "Apply",
+      "answer": 0,
       "options": [
         {
           "ar": "المنطق الضبابي يتعامل ببراعة مع المتغيرات غير الخطية المعقدة دون الحاجة لنموذج رياضي دقيق.",
@@ -164,20 +161,20 @@
           "en": "Fuzzy logic eliminates the need for physical sensors and relies strictly on cloud internet connectivity."
         }
       ],
-      "answer": 0,
+      "concept_id": "soft_computing_applications",
       "explanation": {
         "ar": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية.",
         "en": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية."
       }
     }
   ],
-  "topic": {
-    "ar": "مقدمة في الحوسبة الناعمة: الأعصاب البيولوجية والمنطق الغامض",
-    "en": "Week 01: Introduction to Soft Computing, Biological Neurons & Fuzzy Logic"
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
-  "updated_at": "2026-10-21T15:06:05Z",
-  "has_math": false,
-  "version": 2,
-  "material_url": "https://t.me/c/3710711332/88/202",
-  "question_count": 5
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
 }

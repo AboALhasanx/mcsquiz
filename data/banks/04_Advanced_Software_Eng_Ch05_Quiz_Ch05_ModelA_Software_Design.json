@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "الفصل الخامس: الاقتران والتماسك والاستقلال واستراتيجية التصميم — النموذج أ",
+    "en": "Ch05 Model A: Coupling, Cohesion, Independence and Design Strategy"
+  },
+  "quiz_id": "Quiz_Ch05_ModelA_Software_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تُمرِّر الوحدة A سجل طالب كاملاً إلى الوحدة B مع أنها تحتاج رقم الطالب فقط. أي اقتران يصف هذا؟",
+        "en": "Module A passes an entire student record to Module B although B needs only the student identifier. Which coupling does this describe?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "Content coupling لأن B تعدّل بيانات A الداخلية مباشرة",
+          "en": "Content coupling, because B modifies internal data of A directly"
+        },
+        {
+          "ar": "Stamp coupling لأن بنية بيانات كاملة تعبر الواجهة",
+          "en": "Stamp coupling, because a whole data structure crosses the interface"
+        },
+        {
+          "ar": "Common coupling لأن الوحدتين تتشاركان منطقة شاملة",
+          "en": "Common coupling, because both modules share a global area"
+        },
+        {
+          "ar": "Data coupling لأن عناصر بيانات أولية فقط تُتبادل",
+          "en": "Data coupling, because only primitive data items are exchanged"
+        }
+      ],
+      "concept_id": "stamp_coupling",
+      "explanation": {
+        "ar": "تمرير سجل كامل مع الحاجة إلى حقل واحد هو Stamp coupling، أما Data coupling فيمرر رقم الطالب فقط، وهو اقتران ضعيف وأفضل.",
+        "en": "Passing a complete record when one field is needed is stamp coupling. Data coupling would pass just the identifier, which is loose and therefore preferable."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "تجمع وحدة إجراءات التهيئة والإعداد والإغلاق فقط لأنها تُنفَّذ في الفترة الزمنية نفسها. أي تماسك هذا؟",
+        "en": "A module groups initialisation, setup, and shutdown routines only because they run in the same time span. Which cohesion is this?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "Logical cohesion لأن المهام تنتمي إلى صنف منطقي واحد",
+          "en": "Logical cohesion, since the tasks belong to one logical category"
+        },
+        {
+          "ar": "Sequential cohesion لأن كل مهمة تغذي مدخل التالية",
+          "en": "Sequential cohesion, since each task feeds the next task input"
+        },
+        {
+          "ar": "Functional cohesion لأن كل المهام تخدم غرضاً واحداً",
+          "en": "Functional cohesion, since all tasks serve one single purpose"
+        },
+        {
+          "ar": "Temporal cohesion لأن المهام تتشارك فترة تنفيذ واحدة",
+          "en": "Temporal cohesion, since the tasks share a common execution period"
+        }
+      ],
+      "concept_id": "temporal_cohesion",
+      "explanation": {
+        "ar": "يربط Temporal cohesion المهام بفترة تنفيذ مشتركة، كما في التهيئة والإعداد والإغلاق، بينما يشترط Functional cohesion غرضاً واحداً.",
+        "en": "Temporal cohesion binds tasks by a common execution time span, as in initialisation, setup, and shutdown. Functional cohesion would require one single purpose instead."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مجموعة فوائد تنتج عن التماسك العالي والاقتران المنخفض في التصميم المعياري؟",
+        "en": "Which set of benefits follows from high cohesion and low coupling in a modular design?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تجميد المتطلبات وقصر الجداول وتقليل أصحاب المصلحة",
+          "en": "Frozen requirements, shorter schedules, and fewer stakeholders"
+        },
+        {
+          "ar": "تسريع الترجمة وتصغير الملفات التنفيذية ورخص العتاد",
+          "en": "Faster compilation, smaller binaries, and cheaper hardware"
+        },
+        {
+          "ar": "عزل الأخطاء وتوسيع نطاق إعادة الاستخدام وسهولة الفهم",
+          "en": "Error isolation, wider scope of reuse, and easier understanding"
+        },
+        {
+          "ar": "اختبار آلي وإثباتات شكلية كاملة وانعدام الصيانة",
+          "en": "Automatic testing, full formal proofs, and zero maintenance"
+        }
+      ],
+      "concept_id": "functional_independence_benefits",
+      "explanation": {
+        "ar": "يحقق الاستقلال الوظيفي عزل الأخطاء وتوسيع نطاق إعادة الاستخدام وسهولة الفهم، ولهذا كانت القاعدة المركزية تماسكاً عالياً واقتراناً منخفضاً.",
+        "en": "Functional independence yields error isolation, a wider scope of reuse, and easier understanding. That is why high cohesion with low coupling is the central design rule."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يجب على فريق إعادة استخدام عدة وحدات مكتبية جاهزة مع تنقيح التحكم في المستوى الأعلى. أي استراتيجية تصميم أكثر عملية؟",
+        "en": "A team must reuse several existing library modules while refining top-level control. Which design strategy is most practical?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Hybrid بالجمع بين تحكم top-down وإعادة استخدام bottom-up",
+          "en": "Hybrid, combining top-down control with bottom-up reuse"
+        },
+        {
+          "ar": "تنقيح top-down خالص من الجذر إلى الأوراق",
+          "en": "Pure top-down refinement from the root to the leaves"
+        },
+        {
+          "ar": "تجميع bottom-up خالص دون أي خطة عليا",
+          "en": "Pure bottom-up assembly without any top-level plan"
+        },
+        {
+          "ar": "Embedded design يفرضه لوح العتاد الهدف",
+          "en": "Embedded design, dictated by the target hardware board"
+        }
+      ],
+      "concept_id": "hybrid_design_strategy",
+      "explanation": {
+        "ar": "استراتيجية Hybrid هي الأكثر شيوعاً وعملية، فالتنقيح top-down يثبت التحكم والتجميع bottom-up يتيح إعادة استخدام وحدات المكتبة، أما Embedded design فليست استراتيجية تصميم.",
+        "en": "Hybrid is the most popular and practical strategy: top-down refinement fixes control while bottom-up assembly lets existing library modules be reused. Embedded design is not a design strategy at all."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مستند هو المُخرَج الرسمي لمرحلة التصميم وفق IEEE 1016؟",
+        "en": "Which document is the official output of the design phase, described by IEEE 1016?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Software Design Description وهو مخطط التنفيذ",
+          "en": "Software Design Description, the blueprint for implementation"
+        },
+        {
+          "ar": "Project Management Plan وهو أساس الجدول والتوظيف",
+          "en": "Project Management Plan, the schedule and staffing baseline"
+        },
+        {
+          "ar": "Software Requirements Specification وهو أساس التصميم",
+          "en": "Software Requirements Specification, the baseline for design"
+        },
+        {
+          "ar": "Test Readiness Report وهو دليل ما قبل اختبار النظام",
+          "en": "Test Readiness Report, the evidence before system testing"
+        }
+      ],
+      "concept_id": "software_design_description",
+      "explanation": {
+        "ar": "تنتج مرحلة التصميم مستند Software Design Description الذي يعده IEEE 1016 مخططاً يوجه التنفيذ، أما SRS فينتمي إلى المتطلبات لا إلى التصميم.",
+        "en": "The design phase produces the Software Design Description, which IEEE 1016 treats as the blueprint guiding implementation. The SRS belongs to requirements, not to design."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,23 +1,20 @@
 {
-  "schema_version": 3,
-  "subject_id": "04_Advanced_Software_Eng",
-  "subject_title": "هندسة البرمجيات المتقدمة",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_01_Software_Crisis",
-  "instructor": {
-    "ar": "أ.م.د. علي فاهم نعمة",
-    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  "topic": {
+    "ar": "المحاضرة 01: أسس هندسة البرمجيات، فشل الباتريوت، تعقيد بروكس والأخلاقيات",
+    "en": "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics"
   },
+  "quiz_id": "Quiz_01_Software_Crisis",
+  "has_math": false,
+  "semester": 1,
   "questions": [
     {
       "id": "q1",
-      "concept_id": "patriot_clock_drift",
-      "bloom": "Apply",
       "stem": {
         "ar": "خلال التشغيل المستمر لبطارية دفاع جوي في الوقت الحقيقي (Real-Time)، تم ضرب عداد الوقت العشري بتقريب النقطة الثابتة 24-بت لـ 1/10. على مدار 100 ساعة، ما هي النتيجة الحركية المباشرة التي سببت فشل صاروخ باتريوت الظهران؟",
         "en": "During continuous operation of a real-time defense tracking battery, an integer tenth-of-a-second clock counter is multiplied by a 24-bit fixed-point approximation of 1/10. Over 100 hours, what kinematic consequence directly caused the Dhahran Patriot missile failure?"
       },
+      "bloom": "Apply",
+      "answer": 1,
       "options": [
         {
           "ar": "احتراق جهاز إرسال الرادار بسبب رفع تردد تشغيل المعالج (CPU Overclocking).",
@@ -36,7 +33,7 @@
           "en": "The missile guidance fin locked up due to an integer division-by-zero exception."
         }
       ],
-      "answer": 1,
+      "concept_id": "patriot_clock_drift",
       "explanation": {
         "ar": "أدى اقتطاع 1/10 عند البت 24 إلى انحراف سالب قدره ~0.000000095 ثانية لكل نبضة. على مدار 100 ساعة (3.6 مليون نبضة)، فقدت الساعة 0.3433 ثانية. وبسرعة 5 ماخ (1,676 م/ث)، أزيحت بوابة النطاق (Range Gate) بمقدار ~687 متراً، مما جعل الرادار يبحث في موقع سابق للهدف.",
         "en": "أدى اقتطاع 1/10 عند البت 24 إلى انحراف سالب قدره ~0.000000095 ثانية لكل نبضة. على مدار 100 ساعة (3.6 مليون نبضة)، فقدت الساعة 0.3433 ثانية. وبسرعة 5 ماخ (1,676 م/ث)، أزيحت بوابة النطاق (Range Gate) بمقدار ~687 متراً، مما جعل الرادار يبحث في موقع سابق للهدف."
@@ -44,12 +41,12 @@
     },
     {
       "id": "q2",
-      "concept_id": "brooks_essential_complexity",
-      "bloom": "Analyze",
       "stem": {
         "ar": "في ورقته البحثية الشهيرة 'لا رصاصة فضية' (No Silver Bullet)، ميز فريد بروكس بين التعقيد الجوهري (Essential) والعرضي (Accidental). أي مما يلي يُعد تعقيداً جوهرياً متأصلاً في الأنظمة البرمجية؟",
         "en": "In his seminal paper 'No Silver Bullet', Fred Brooks distinguishes between Essential and Accidental complexity. Which of the following is an ESSENTIAL complexity inherent to software systems?"
       },
+      "bloom": "Analyze",
+      "answer": 2,
       "options": [
         {
           "ar": "إدارة تخصيص الذاكرة يدوياً وجمع القمامة في C/C++.",
@@ -68,7 +65,7 @@
           "en": "Syntax verbosity in legacy assembly programming languages."
         }
       ],
-      "answer": 2,
+      "concept_id": "brooks_essential_complexity",
       "explanation": {
         "ar": "حدد بروكس أربع خصائص متأصلة في التعقيد الجوهري: التعقيد (Complexity)، المطابقة (Conformity)، القابلية للتغيير (Changeability)، والخفاء (Invisibility). أما الأدوات وبطء الترجمة وصعوبة الصياغة فهي تعقيدات عرضية يمكن تحسينها تقنياً.",
         "en": "حدد بروكس أربع خصائص متأصلة في التعقيد الجوهري: التعقيد (Complexity)، المطابقة (Conformity)، القابلية للتغيير (Changeability)، والخفاء (Invisibility). أما الأدوات وبطء الترجمة وصعوبة الصياغة فهي تعقيدات عرضية يمكن تحسينها تقنياً."
@@ -76,12 +73,12 @@
     },
     {
       "id": "q3",
-      "concept_id": "brooks_law",
-      "bloom": "Understand",
       "stem": {
         "ar": "وفقاً لقانون بروكس (Brooks' Law) الذي صيغ أثناء تطوير نظام IBM OS/360، فإن إضافة مبرمجين إلى مشروع برمجيات متأخر يزيده تأخيراً لأن:",
         "en": "According to Brooks' Law formulated during the development of IBM OS/360, adding manpower to a late software project makes it later because:"
       },
+      "bloom": "Understand",
+      "answer": 1,
       "options": [
         {
           "ar": "قيود ذاكرة الأجهزة تمنع المطورين الإضافيين من سحب فروع الكود.",
@@ -100,7 +97,7 @@
           "en": "Operating system schedulers cannot handle multi-threaded development workflows."
         }
       ],
-      "answer": 1,
+      "concept_id": "brooks_law",
       "explanation": {
         "ar": "يوضح قانون بروكس أن عبء التواصل يزداد بالصيغة N(N-1)/2، بالإضافة إلى استهلاك وقت كبار المهندسين في تدريب الأعضاء الجدد بدلاً من إنجاز العمل.",
         "en": "يوضح قانون بروكس أن عبء التواصل يزداد بالصيغة N(N-1)/2، بالإضافة إلى استهلاك وقت كبار المهندسين في تدريب الأعضاء الجدد بدلاً من إنجاز العمل."
@@ -108,12 +105,12 @@
     },
     {
       "id": "q4",
-      "concept_id": "dependability_taxonomy",
-      "bloom": "Understand",
       "stem": {
         "ar": "في تصنيف الموثوقية الرسمي المعياري IEEE 610.12 ولابري/أفيزينيس (Laprie/Avižienis)، ما هو التسلسل الصحيح لكيفية حدوث الانهيارات البرمجية؟",
         "en": "In the formal IEEE 610.12 and Laprie/Avižienis dependability taxonomy, which sequence correctly models how software breakdowns emerge?"
       },
+      "bloom": "Understand",
+      "answer": 0,
       "options": [
         {
           "ar": "خطأ بشري (Error) -> عيب/خلل ثابت (Fault/Defect) -> حالة خطأ داخلية (Error State) -> فشل مرئي (Failure)",
@@ -132,7 +129,7 @@
           "en": "Bug -> Glitch -> Crash -> Failure"
         }
       ],
-      "answer": 0,
+      "concept_id": "dependability_taxonomy",
       "explanation": {
         "ar": "الخطأ الإدراكي البشري (Error) يولد عيباً ثابتاً (Fault/Defect) في الكود أو الوثائق. وعند تنفيذه في وقت التشغيل، يُنتج حالة خطأ داخلية غير صالحة (Error State)، والتي تظهر على حدود النظام كفشل مرئي (Failure).",
         "en": "الخطأ الإدراكي البشري (Error) يولد عيباً ثابتاً (Fault/Defect) في الكود أو الوثائق. وعند تنفيذه في وقت التشغيل، يُنتج حالة خطأ داخلية غير صالحة (Error State)، والتي تظهر على حدود النظام كفشل مرئي (Failure)."
@@ -140,12 +137,12 @@
     },
     {
       "id": "q5",
-      "concept_id": "se_ethics_public",
-      "bloom": "Evaluate",
       "stem": {
         "ar": "وفقاً للمبدأ الأول (المصلحة العامة / PUBLIC) من ميثاق أخلاقيات هندسة البرمجيات ACM/IEEE، ما هو الواجب المهني الأساسي للمهندس إذا ضغطت عليه الإدارة لتسليم برمجيات تنطوي على مخاطر أمان وسلامة غير مؤكدة؟",
         "en": "Under Principle 1 (PUBLIC) of the ACM/IEEE Software Engineering Code of Ethics, what is a software engineer's primary professional obligation if pressured by management to ship software with known unverified safety risks?"
       },
+      "bloom": "Evaluate",
+      "answer": 2,
       "options": [
         {
           "ar": "التوقيع بالموافقة فوراً إذا كان العقد يحتوي على بند إخلاء مسؤولية قانونية للمهندس.",
@@ -164,20 +161,20 @@
           "en": "Reduce the test suite coverage so that the CI/CD pipeline turns green before release."
         }
       ],
-      "answer": 2,
+      "concept_id": "se_ethics_public",
       "explanation": {
         "ar": "ينص المبدأ الأول بوضوح على أن مهندسي البرمجيات يجب أن يتصرفوا بما يتفق مع المصلحة العامة، وهي مصلحة تعلو فوق الولاء لصاحب العمل عندما تكون السلامة أو الصحة أو الرفاهية العامة مهددة.",
         "en": "ينص المبدأ الأول بوضوح على أن مهندسي البرمجيات يجب أن يتصرفوا بما يتفق مع المصلحة العامة، وهي مصلحة تعلو فوق الولاء لصاحب العمل عندما تكون السلامة أو الصحة أو الرفاهية العامة مهددة."
       }
     }
   ],
-  "topic": {
-    "ar": "المحاضرة 01: أسس هندسة البرمجيات، فشل الباتريوت، تعقيد بروكس والأخلاقيات",
-    "en": "Lecture 01: Foundations, Patriot Failure, Brooks & Ethics"
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
-  "updated_at": "2026-10-21T15:06:05Z",
-  "has_math": false,
-  "version": 2,
-  "material_url": "https://t.me/c/3710711332/87/197",
-  "question_count": 5
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "هندسة البرمجيات المتقدمة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
 }

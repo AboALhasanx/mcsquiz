@@ -1,23 +1,20 @@
 {
-  "schema_version": 3,
-  "subject_id": "02_English_Language",
-  "subject_title": "اللغة الإنجليزية",
-  "semester": 1,
-  "semester_label": "كورس أول",
-  "quiz_id": "Quiz_01_Grammar_and_Tenses",
-  "instructor": {
-    "ar": "أ.م.د. حيدر عكاب علوان",
-    "en": "Asst. Prof. Dr. Haidar Akab Alwan"
+  "topic": {
+    "ar": "نظام الأزمنة الإنجليزي: الأفعال الزمنية والتسجيل الأكاديمي",
+    "en": "Unit 01: The English Tense System, Time Adverbials & Academic Register"
   },
+  "quiz_id": "Quiz_01_Grammar_and_Tenses",
+  "has_math": false,
+  "semester": 1,
   "questions": [
     {
       "id": "q1",
-      "concept_id": "present_perfect_vs_past_simple",
-      "bloom": "Understand",
       "stem": {
         "ar": "كتب باحث الجملة التالية في مسودة مستخلص أطروحته: 'The distributed database has crashed in 2024 due to network partitioning.' لماذا تُعد هذه الجملة معيبة نحوياً وفق معايير أوكسفورد للغة الإنجليزية الأكاديمية؟",
         "en": "A researcher writes the following sentence in a draft thesis abstract: 'The distributed database has crashed in 2024 due to network partitioning.' Why is this sentence grammatically defective under Oxford academic English standards?"
       },
+      "bloom": "Understand",
+      "answer": 3,
       "options": [
         {
           "ar": "الفاعل 'distributed database' صيغة جمع ويتطلب استخدام 'have crashed' بدلاً من 'has crashed'.",
@@ -36,7 +33,7 @@
           "en": "The Present Perfect ('has crashed') cannot co-occur with a definite, closed past time adverbial ('in 2024'); it requires the Past Simple ('crashed')."
         }
       ],
-      "answer": 3,
+      "concept_id": "present_perfect_vs_past_simple",
       "explanation": {
         "ar": "In standard English, the Present Perfect connects past events to present relevance without a closed time boundary. When an explicit past time anchor is provided (such as 'in 2024', 'yesterday', or 'in the 1970s'), the Past Simple ('crashed') is strictly mandatory.",
         "en": "In standard English, the Present Perfect connects past events to present relevance without a closed time boundary. When an explicit past time anchor is provided (such as 'in 2024', 'yesterday', or 'in the 1970s'), the Past Simple ('crashed') is strictly mandatory."
@@ -44,12 +41,12 @@
     },
     {
       "id": "q2",
-      "concept_id": "present_perfect_duration",
-      "bloom": "Understand",
       "stem": {
         "ar": "تأمل الجملة الواردة في رسالة ماكس: 'How long has Max been at summer camp؟' لماذا تم استخدام المضارع التام البسيط بدلاً من الماضي البسيط ('How long was Max at summer camp؟')؟",
         "en": "Examine the sentence from Max's letter: 'How long has Max been at summer camp?' Why is the Present Perfect Simple employed instead of the Past Simple ('How long was Max at summer camp?')?"
       },
+      "bloom": "Understand",
+      "answer": 1,
       "options": [
         {
           "ar": "المخيمات الصيفية تُعامل كمؤسسات دائمة، وهو ما يفرض قواعد المضارع الدال على الحالة الثابتة.",
@@ -68,7 +65,7 @@
           "en": "Past Simple questions cannot begin with the interrogative phrase 'How long'."
         }
       ],
-      "answer": 1,
+      "concept_id": "present_perfect_duration",
       "explanation": {
         "ar": "The Present Perfect ('has been') denotes an open-ended duration that commenced in the past and continues into the present moment. Using the Past Simple ('was') would falsely imply that Max has already departed from the camp and returned home.",
         "en": "The Present Perfect ('has been') denotes an open-ended duration that commenced in the past and continues into the present moment. Using the Past Simple ('was') would falsely imply that Max has already departed from the camp and returned home."
@@ -76,12 +73,12 @@
     },
     {
       "id": "q3",
-      "concept_id": "state_verbs",
-      "bloom": "Apply",
       "stem": {
         "ar": "أي من الجمل التالية تلتزم بدقة بالقيد النحوي الذي يحكم أفعال الحالة (State Verbs) في الكتابة الأكاديمية لعلوم الحاسوب؟",
         "en": "Which of the following sentences correctly adheres to the syntactic constraint governing State Verbs (أفعال الحالة) in academic computer science writing?"
       },
+      "bloom": "Apply",
+      "answer": 2,
       "options": [
         {
           "ar": "The security auditor is knowing the exact cryptographic vulnerability in the protocol.",
@@ -100,7 +97,7 @@
           "en": "The postgraduate researcher is wanting to submit the revised manuscript today."
         }
       ],
-      "answer": 2,
+      "concept_id": "state_verbs",
       "explanation": {
         "ar": "Verbs of cognition, perception, possession, and composition (such as 'contain', 'consist', 'know', 'want', 'resemble') are State Verbs. They describe static qualities rather than active processes and resist the Continuous Aspect. 'Contains' is grammatically correct.",
         "en": "Verbs of cognition, perception, possession, and composition (such as 'contain', 'consist', 'know', 'want', 'resemble') are State Verbs. They describe static qualities rather than active processes and resist the Continuous Aspect. 'Contains' is grammatically correct."
@@ -108,12 +105,12 @@
     },
     {
       "id": "q4",
-      "concept_id": "syntactic_ellipsis",
-      "bloom": "Understand",
       "stem": {
         "ar": "في المراسلات غير الرسمية لمخيم غروف هيل، تُظهر العبارة 'Been here two days but seems like FOREVER' ظاهرة نحوية محظورة في كتابة الأطروحات الأكاديمية. ما هي هذه الظاهرة؟",
         "en": "In the informal correspondence from Grove Hill Camp, the phrase 'Been here two days but seems like FOREVER' exhibits a syntactic phenomenon strictly forbidden in academic thesis writing. What is this phenomenon?"
       },
+      "bloom": "Understand",
+      "answer": 0,
       "options": [
         {
           "ar": "الحذف النحوي المخل عبر إسقاط الفاعل 'I' والفعل المساعد 'have'.",
@@ -132,7 +129,7 @@
           "en": "Subjunctive mood inversion."
         }
       ],
-      "answer": 0,
+      "concept_id": "syntactic_ellipsis",
       "explanation": {
         "ar": "The writer drops the grammatical subject and auxiliary ('I have been here...'), which is known as Ellipsis. While prevalent in casual notes and spoken registers, formal academic writing requires complete clauses with explicit syntactic subjects and finite verbs.",
         "en": "The writer drops the grammatical subject and auxiliary ('I have been here...'), which is known as Ellipsis. While prevalent in casual notes and spoken registers, formal academic writing requires complete clauses with explicit syntactic subjects and finite verbs."
@@ -140,12 +137,12 @@
     },
     {
       "id": "q5",
-      "concept_id": "lexical_compounds",
-      "bloom": "Understand",
       "stem": {
         "ar": "في التحليل المعجمي للكلمات المركبة المشتقة من 'house' و 'home'، أي من المصطلحات التالية يمثل صفة (Adjective) تصف الاهتمام المفرط بنظافة المنزل وترتيبه؟",
         "en": "In the lexical analysis of compound words formed with 'house' and 'home', which of the following terms is an ADJECTIVE describing excessive, compulsive attention to domestic tidiness and maintenance?"
       },
+      "bloom": "Understand",
+      "answer": 0,
       "options": [
         {
           "ar": "House-proud (شديد الفخر والحرص المفرط على نظافة المنزل ومظهره).",
@@ -164,20 +161,20 @@
           "en": "Homesick."
         }
       ],
-      "answer": 0,
+      "concept_id": "lexical_compounds",
       "explanation": {
         "ar": "'House-proud' is an adjective denoting someone who is excessively concerned with the neatness, cleanliness, and visual appearance of their house. In contrast, 'homesick' refers to emotional distress caused by separation from one's home environment.",
         "en": "'House-proud' is an adjective denoting someone who is excessively concerned with the neatness, cleanliness, and visual appearance of their house. In contrast, 'homesick' refers to emotional distress caused by separation from one's home environment."
       }
     }
   ],
-  "topic": {
-    "ar": "نظام الأزمنة الإنجليزي: الأفعال الزمنية والتسجيل الأكاديمي",
-    "en": "Unit 01: The English Tense System, Time Adverbials & Academic Register"
+  "instructor": {
+    "ar": "أ.م.د. حيدر عكاب علوان",
+    "en": "Asst. Prof. Dr. Haidar Akab Alwan"
   },
-  "updated_at": "2026-10-21T15:06:05Z",
-  "has_math": false,
-  "version": 3,
-  "material_url": "https://t.me/c/3710711332/85/188",
-  "question_count": 5
+  "subject_id": "02_English_Language",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "اللغة الإنجليزية",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
 }

@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "أنواع البيانات وتحضيرها: الجودة والتنظيف والتحويل — النموذج أ",
+    "en": "Data Types and Preparation — Model A"
+  },
+  "quiz_id": "Quiz_Ch02_ModelA_Data_Types_and_Preparation",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "في جدول المرضى يمثّل كل صف مريضاً واحداً، ويسجّل كل عمود خاصية واحدة. أي عبارة تعبّر عن تمييز المحاضرة بشكل صحيح؟",
+        "en": "In a patient table, each row describes one patient and each column records one measured property. Which statement expresses the lecture distinction correctly?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الصف قيمة اسمية، والعمود قيمة رقمية فقط",
+          "en": "A row is a nominal value; a column is a numerical value only"
+        },
+        {
+          "ar": "الصف سمة، والعمود كائن بيانات في السجل",
+          "en": "A row is an attribute; a column is a data object of the record"
+        },
+        {
+          "ar": "الصف هيكل بيانات، والعمود مشكلة في جودة البيانات",
+          "en": "A row is a data structure; a column is a data quality problem"
+        },
+        {
+          "ar": "الصف كائن بيانات، والعمود سمة لذلك الكائن",
+          "en": "A row is a data object; a column is an attribute of that object"
+        }
+      ],
+      "concept_id": "data_object_vs_attribute",
+      "explanation": {
+        "ar": "كائن البيانات هو الكيان الذي تُجمع عنه المعلومات، والسمة خاصية له؛ لذلك يمثّل الصف كائناً ويمثّل العمود سمة.",
+        "en": "A data object is an entity about which information is collected, and an attribute is a property of that object; so a row represents an object and a column represents an attribute."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "تُسجَّل شدة المرض بالقيم خفيف أو متوسط أو شديد. ما نوع هذه السمة ولماذا؟",
+        "en": "Disease severity is recorded as Mild, Moderate, or Severe. Which attribute type is this, and why?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عددية، لأن قيم الشدة قياسات كمية دقيقة",
+          "en": "Numerical, because severity values are quantitative measurements"
+        },
+        {
+          "ar": "ترتيبية، لأن الترتيب ذو معنى لكن الفروق غير قابلة للقياس",
+          "en": "Ordinal, because the order is meaningful but the gaps are not measurable"
+        },
+        {
+          "ar": "اسمية، لأن تسميات الشدة لا تحمل أي ترتيب طبيعي",
+          "en": "Nominal, because severity labels carry no natural order at all"
+        },
+        {
+          "ar": "ثنائية، لأن الشدة لها حالتان سريريتان فقط",
+          "en": "Binary, because severity has only two clinical states recorded"
+        }
+      ],
+      "concept_id": "ordinal_attribute_gap",
+      "explanation": {
+        "ar": "السمة الترتيبية تحتوي فئات لها ترتيب ذو معنى، لكن الفرق بين الفئات المتجاورة ليس قابلاً للقياس بالضرورة.",
+        "en": "An ordinal attribute contains categories with a meaningful order, but the difference between consecutive categories is not necessarily measurable."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مما يلي يُعد سمة ثنائية في المحاضرة؟",
+        "en": "Which of the following is a binary attribute in the lecture?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "صغير ومتوسط وكبير في دليل ملابس",
+          "en": "Small, Medium, and Large in a clothing catalogue"
+        },
+        {
+          "ar": "أحمر وأزرق وأخضر في وصف لون",
+          "en": "Red, Blue, and Green in a colour description"
+        },
+        {
+          "ar": "مشتري مقابل غير مشتري في سجل مبيعات",
+          "en": "Purchased versus Not Purchased in a sales record"
+        },
+        {
+          "ar": "الراتب مقاساً بآلاف الدنانير شهرياً",
+          "en": "Salary measured in thousands of dinars monthly"
+        }
+      ],
+      "concept_id": "binary_attribute_example",
+      "explanation": {
+        "ar": "السمة الثنائية لها قيمتان محتملتان فقط، مثل مشتري وغير مشتري، أو نعم ولا، أو صفر وواحد.",
+        "en": "A binary attribute has only two possible values, such as Purchased versus Not Purchased, Yes versus No, or 0 versus 1."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "تسجّل عيادة عدد الزيارات ومستوى سكر الدم. كيف تصنّف المحاضرة هاتين السمتين؟",
+        "en": "A clinic records the number of visits and the blood glucose level. How does the lecture classify these two attributes?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الزيارات عددية منفصلة، والسكر عددية متصلة",
+          "en": "Visits are discrete numerical; glucose is continuous numerical"
+        },
+        {
+          "ar": "الزيارات عددية متصلة، والسكر عددية منفصلة",
+          "en": "Visits are continuous numerical; glucose is discrete numerical"
+        },
+        {
+          "ar": "الزيارات ترتيبية، والسكر اسمية",
+          "en": "Visits are ordinal categorical; glucose is nominal categorical"
+        },
+        {
+          "ar": "الزيارات ثنائية، والسكر ترتيبية",
+          "en": "Visits are binary numerical; glucose is ordinal categorical"
+        }
+      ],
+      "concept_id": "discrete_vs_continuous",
+      "explanation": {
+        "ar": "العددية المنفصلة قابلة للعد مثل عدد الزيارات، والعددية المتصلة تأخذ قيماً كثيرة داخل مدى مثل مستوى سكر الدم.",
+        "en": "Discrete numerical values are countable, such as the number of visits, while continuous numerical values take many values within a range, such as blood glucose."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "تفصل المحاضرة بين أنواع السمات وهياكل البيانات. أي قائمة تحتوي هياكل بيانات فقط؟",
+        "en": "The lecture separates attribute types from data structures. Which list contains only data structures?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "السجل والمعاملة والتسلسل والزمني والمكاني والرسم البياني",
+          "en": "Record, transaction, sequence, temporal, spatial, graph"
+        },
+        {
+          "ar": "المتوسط والوسيط والمنوال والحد الأدنى والحد الأعلى",
+          "en": "Mean, median, mode, minimum, maximum, variance"
+        },
+        {
+          "ar": "الاسمية والترتيبية والثنائية والعددية والفاصلة والنسبية",
+          "en": "Nominal, ordinal, binary, numerical, interval, ratio"
+        },
+        {
+          "ar": "التنظيف والدمج والتحويل والتقليل والتصنيف الفتري",
+          "en": "Cleaning, integration, transformation, reduction, binning"
+        }
+      ],
+      "concept_id": "attribute_vs_structure_layer",
+      "explanation": {
+        "ar": "الأنواع الاسمية والترتيبية والثنائية والعددية تصف نوع القيمة في السمة، أما السجل والمعاملة والنص والتسلسل والزمني والمكاني والصورة والرسم البياني فتصف كيفية تنظيم مجموعة البيانات.",
+        "en": "Nominal, ordinal, binary, and numerical describe the kind of value in an attribute, whereas record, transaction, text, sequence, temporal, spatial, image, and graph describe how the whole dataset is organized."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

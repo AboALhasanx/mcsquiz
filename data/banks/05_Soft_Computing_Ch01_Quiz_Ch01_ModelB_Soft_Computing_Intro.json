@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "مقدمة في الحوسبة الناعمة: المفاهيم والأدوات — النموذج ب",
+    "en": "Introduction to Soft Computing — Model B"
+  },
+  "quiz_id": "Quiz_Ch01_ModelB_Soft_Computing_Intro",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تعطي شريحة المحاضرة الدماغ نحو $10^{2}$ Hz مقابل $10^{12}$ Hz للحاسوب الكلاسيكي، ومع ذلك يستهلك الدماغ طاقة أقل بكثير في كل عملية. ما تفسير هذا الفارق؟",
+        "en": "The lecture slide gives the brain about $10^{2}$ Hz against $10^{12}$ Hz for a classical computer, yet the brain spends far less energy on each operation. What explains that gap?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأن عصبوناتها تخزن كل عملية في ذاكرة دائمة قبل أي معالجة.",
+          "en": "Its neurons store every operation in permanent memory before any processing."
+        },
+        {
+          "ar": "لأن تصميمها التسلسلي المركزي يلغي تكرار العمل داخل وحداته.",
+          "en": "Its serial centralized design removes duplicated switching work from its units."
+        },
+        {
+          "ar": "لأن تردد ساعتها أعلى من تردد ساعة الترانزستور داخل المعالج الكلاسيكي.",
+          "en": "Its clock frequency is higher than the transistor clock inside a classical CPU."
+        },
+        {
+          "ar": "لأن تنظيمها المتوازي الموزع يستهلك طاقة أقل بكثير في كل عملية.",
+          "en": "Its parallel distributed organization spends far less energy on each operation."
+        }
+      ],
+      "concept_id": "brain_vs_computer_energy_efficiency",
+      "explanation": {
+        "ar": "المقارنة في الشريحة تبين أن الدماغ أبطأ في تردد الساعة، لكنه يستهلك $10^{-16}$ جول لكل عملية مقابل $10^{-6}$ للحاسوب. مصدر التفوق هو التنظيم المتوازي الموزع وليس سرعة الساعة.",
+        "en": "The slide compares $10^{2}$ Hz and $10^{12}$ Hz, so the brain is not faster in clock speed, and it reports $10^{-16}$ against $10^{-6}$ joules per operation. The advantage comes from a parallel, distributed style of computation, not from a higher frequency."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا تعني خاصية عدم اليقين Uncertainty في حقائق الحوسبة الناعمة كما وردت في المحاضرة؟",
+        "en": "In the lecture's Few Facts, what does uncertainty mean for a soft-computing algorithm?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أن الخوارزمية تحذف كل عناصر العشوائية من عملية البحث الداخلية.",
+          "en": "It deletes all random elements from the internal search process."
+        },
+        {
+          "ar": "أن الخوارزمية قد تعطي نتيجة مختلفة في كل تشغيل للمسألة نفسها.",
+          "en": "It may return a different result each time for the same problem."
+        },
+        {
+          "ar": "أن الخوارزمية تضمن ناتجاً ثابتاً واحداً لكل مستوى من ضوضاء الإدخال.",
+          "en": "It guarantees one fixed answer for every level of input noise."
+        },
+        {
+          "ar": "أن الخوارزمية ترفض البدء ما لم تكن كل قيمة إدخال دقيقة تماماً.",
+          "en": "It refuses to start unless every input value is fully precise."
+        }
+      ],
+      "concept_id": "few_facts_uncertainty",
+      "explanation": {
+        "ar": "تنص المحاضرة على أن خوارزمية الحوسبة الناعمة قد تعطي نتائج مختلفة في كل مرة للمسألة نفسها، وتُعد هذه خاصية في النمط وليست عطلاً.",
+        "en": "The lecture states that the soft-computing algorithm may give different results every time for the same problem. This is treated as a property of the paradigm rather than a defect."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "بعد تدريب Neural Network على أزواج من المدخلات والمخرجات، أين تُخزَّن المعرفة المكتسبة فعلياً؟",
+        "en": "After an Artificial Neural Network is trained on input-output pairs, where is the learned knowledge actually stored?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "في عينات التدريب الخام التي تبقى محفوظة داخل طبقة الإدخال.",
+          "en": "In the raw training samples kept unchanged inside the input layer."
+        },
+        {
+          "ar": "في جدول قواعد لغوية من نوع IF-THEN يكتبه المصمم يدوياً.",
+          "en": "In a rule table of linguistic IF-THEN statements written by the designer."
+        },
+        {
+          "ar": "في الأوزان المشبكية والانحيازات المحسّنة لروابط الشبكة.",
+          "en": "In the optimized synaptic weights and biases of the network connections."
+        },
+        {
+          "ar": "في دالة التفعيل التي يُعاد تعريفها بعد كل خطوة تدريب.",
+          "en": "In the activation function, which is redefined after every training step."
+        }
+      ],
+      "concept_id": "ann_training_knowledge_storage",
+      "explanation": {
+        "ar": "تنتهي مرحلة التدريب بمعرفة تمثلها مجموعة من الأوزان المشبكية والانحيازات المحسّنة، ثم تُطبَّق هذه الأوزان على بيانات غير مرئية في مرحلة التحقق لإنتاج التنبؤ.",
+        "en": "The training stage ends with knowledge represented as a set of optimized synaptic weights and biases. Validation then applies those weights to unseen data to produce a prediction."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي ترتيب يطابق دورة الخوارزمية التطورية كما وردت في المحاضرة؟",
+        "en": "Which ordering matches the evolutionary algorithm cycle described in the lecture?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تهيئة، ثم تقييم، ثم انتخاب، ثم تحوير، ثم تقييم من جديد.",
+          "en": "Initialize, evaluate, select, vary, then evaluate again."
+        },
+        {
+          "ar": "تقييم، ثم تهيئة، ثم تحوير، ثم انتخاب، ثم توقف فوري.",
+          "en": "Evaluate, initialize, vary, select, then terminate at once."
+        },
+        {
+          "ar": "تهيئة، ثم انتخاب، ثم توقف، ثم تقييم السكان بالكامل.",
+          "en": "Initialize, select, terminate, then evaluate the whole population."
+        },
+        {
+          "ar": "انتخاب، ثم تهيئة، ثم تقييم، ثم تحوير، ثم توقف بعد دورة واحدة.",
+          "en": "Select, initialize, evaluate, vary, then stop after one pass."
+        }
+      ],
+      "concept_id": "evolutionary_algorithm_cycle",
+      "explanation": {
+        "ar": "تبدأ الحلقة بالتهيئة، ثم تقييم كل حل، ثم التوقف عند تحقق الشرط، وإلا يجري الانتخاب والتحوير قبل العودة إلى التقييم. والتحوير يولّد الجيل التالي الذي يُقيَّم من جديد.",
+        "en": "The loop starts with initialization, evaluates each candidate, stops at termination, and otherwise selects and varies before returning to evaluation. Variation creates the next generation, which is evaluated again."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يبقى البحث المحلي لدى فريق التصميم عائداً إلى التصميم الضعيف نفسه. أي ميزة للحوسبة الناعمة تقدمها المحاضرة كحل؟",
+        "en": "A team's local search keeps returning the same poor design. Which soft-computing advantage does the lecture offer as the remedy?"
+      },
+      "bloom": "Evaluate",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "استراتيجيات الاستمثال الشامل التي تمنع البحث من الوقوع في الحلول المحلية.",
+          "en": "Global optimization strategies that avoid getting trapped in local minima."
+        },
+        {
+          "ar": "البرامج التسلسلية القطعية التي تستقر بسرعة على نتيجة واحدة ثابتة.",
+          "en": "Sequential deterministic programs that settle quickly on one fixed result."
+        },
+        {
+          "ar": "قواعد المنطق الثنائي التي تحول المتطلبات الغامضة إلى قيم رقمية حادة.",
+          "en": "Binary logic rules that convert vague requirements into crisp numeric values."
+        },
+        {
+          "ar": "النماذج التحليلية الدقيقة التي تزيل كل ضوضاء من بيانات الإدخال.",
+          "en": "Exact analytical models that remove every source of noise from the input."
+        }
+      ],
+      "concept_id": "global_optimization_advantage",
+      "explanation": {
+        "ar": "تذكر شريحة المزايا أن استراتيجيات الاستمثال الشامل تمنع الحلول من السقوط في الحلول المحلية. أما بقية الخيارات فتصف سمات للحوسبة الصلبة ولا تعالج البحث المحلي العالق.",
+        "en": "The advantages slide states that global optimization strategies can prevent solutions from falling into local minima. The other three options describe hard-computing traits that do not address a trapped local search."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الحوسبة اللينة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

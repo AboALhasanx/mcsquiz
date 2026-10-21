@@ -1,0 +1,500 @@
+{
+  "topic": {
+    "ar": "مخاطر الأمن السيبراني: التهديدات وإجراءات الحماية — النموذج ب",
+    "en": "Cybersecurity Risk Assessment — Model B"
+  },
+  "quiz_id": "Quiz_Ch04_ModelB_Risk_Assessment",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "في أمن تقنية المعلومات، مع أي شيء يكون مصطلح 'الضرر' مرادفاً؟",
+        "en": "In IT security, with what is the word 'damage' synonymous?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "خرق سياسة الأمن التي حدّدتها المؤسسة لنفسها في وثائقها الرسمية المعتمدة.",
+          "en": "A breach of the security policy that the organisation has defined for itself."
+        },
+        {
+          "ar": "فشل المكوّنات المادية التي تسند أنظمة المؤسسة في بيئة التشغيل الفعلية لها.",
+          "en": "A failure of the hardware components that support the organisation's systems."
+        },
+        {
+          "ar": "انقطاع يستمر مدة أطول من هدف زمن الاستعادة المعلَن في خطة الاستمرارية.",
+          "en": "An outage that lasts longer than the declared recovery time objective."
+        },
+        {
+          "ar": "خسارة مالية تتجاوز الموازنة السنوية التي اعتُمدت لذلك الغرض تحديداً فيها.",
+          "en": "A financial loss greater than the annual budget that was approved for it."
+        }
+      ],
+      "concept_id": "damage_breach_policy",
+      "explanation": {
+        "ar": "الضرر في أمن تقنية المعلومات مرادف لخرق سياسة الأمن (breach of the security policy) كما ينصّ الفصل صراحةً. البقية أنواع أخرى من الخسارة وليست المرادف.",
+        "en": "الضرر في أمن تقنية المعلومات مرادف لخرق سياسة الأمن (breach of the security policy) كما ينصّ الفصل صراحةً. البقية أنواع أخرى من الخسارة وليست المرادف."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في تشبيه قفص القرش، ماذا يُمثّل عيب اللحام في القفص؟",
+        "en": "In the shark-cage illustration, what does the welding fault in the cage represent?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الخطر المتبقي، لأنه يبقى بعد تطبيق كل الإجراءات المضادة الممكنة في المثال.",
+          "en": "The residual risk, because it remains after every possible control has been applied."
+        },
+        {
+          "ar": "الثغرة، لأنه نقطة الضعف التي يمكن استغلالها لإحداث الضرر بالنظام في المثال.",
+          "en": "The vulnerability, because it is the weakness that can be exploited to cause damage."
+        },
+        {
+          "ar": "التهديد نفسه، لأنه الخطر الذي يتعرض له السبّاح بشكل مباشر داخل الماء في المثال.",
+          "en": "The threat itself, because it is the danger that the swimmer is exposed to directly."
+        },
+        {
+          "ar": "الإجراء المضاد، لأنه الجزء الذي تدهور ويحتاج إلى إصلاح واستبدال في المثال.",
+          "en": "The countermeasure, because it is the part that has degraded and needs to be repaired."
+        }
+      ],
+      "concept_id": "threat_vulnerability_damage_chain",
+      "explanation": {
+        "ar": "سلسلة الضرر: threat (القرش) ← vulnerability (عيب اللحام) ← damage. عيب اللحام هو نقطة الضعف القابلة للاستغلال، أي الثغرة، ولا يُخلط مع التهديد.",
+        "en": "سلسلة الضرر: threat (القرش) ← vulnerability (عيب اللحام) ← damage. عيب اللحام هو نقطة الضعف القابلة للاستغلال، أي الثغرة، ولا يُخلط مع التهديد."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي صيغة تعبّر عن الخطر المتبقي R بعد إدخال الإجراءات المضادة؟",
+        "en": "Which formula expresses the residual risk R after countermeasures are introduced?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "R = M / S، حيث S الخطر و M مستوى الإجراءات المضادة المطبَّقة على النظام.",
+          "en": "R = M / S, where S is the risk and M is the level of countermeasures applied."
+        },
+        {
+          "ar": "R = S × M، حيث S الخطر و M مستوى الإجراءات المضادة المطبَّقة على النظام.",
+          "en": "R = S x M, where S is the risk and M is the level of countermeasures applied."
+        },
+        {
+          "ar": "R = S + M، حيث S الخطر و M مستوى الإجراءات المضادة المطبَّقة على النظام.",
+          "en": "R = S + M, where S is the risk and M is the level of countermeasures applied."
+        },
+        {
+          "ar": "R = S / M، حيث S الخطر و M مستوى الإجراءات المضادة المطبَّقة على النظام.",
+          "en": "R = S / M, where S is the risk and M is the level of countermeasures applied."
+        }
+      ],
+      "concept_id": "residual_risk_equation",
+      "explanation": {
+        "ar": "الخطر المتبقي R = S / M: يقسم الخطر على مستوى الإجراءات المضادة. الاتجاه صحيح: كل ما زادت الإجراءات (M) قلّ الخطر المتبقي.",
+        "en": "الخطر المتبقي R = S / M: يقسم الخطر على مستوى الإجراءات المضادة. الاتجاه صحيح: كل ما زادت الإجراءات (M) قلّ الخطر المتبقي."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في مصفوفة الخطر، تحت أي شرط يقع التهديد في الخلية الحمراء عالية الخطر؟",
+        "en": "In the risk matrix, under what condition does a threat fall in the red (high-risk) cell?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لمّا تكون العواقب عالية حتى لو بقي تكرار المحاولات واطياً في مصفوفة الخطر.",
+          "en": "When the consequences are high even though the frequency of attempts stays low."
+        },
+        {
+          "ar": "لمّا يكون تكرار المحاولات عالياً حتى لو بقيت العواقب واطية في مصفوفة الخطر.",
+          "en": "When the frequency of attempts is high even though the consequences remain low."
+        },
+        {
+          "ar": "لمّا تكون العواقب عالية وتكرار المحاولات عالياً معاً في الوقت نفسه على المصفوفة.",
+          "en": "When the consequences are high and the frequency of attempts is also high together."
+        },
+        {
+          "ar": "لمّا يؤثر التهديد على أكثر من أصل مادي واحد في اللحظة ذاتها داخل المؤسسة.",
+          "en": "When the threat affects more than one hardware asset at exactly the same moment."
+        }
+      ],
+      "concept_id": "risk_matrix_red_corner",
+      "explanation": {
+        "ar": "الأحمر لا يظهر إلا عند اجتماع العواقب العالية مع التكرار العالي معاً. الشكل 3.2 يبيّن أن الأحمر في خلية واحدة فقط: (تكرار عالٍ، عواقب عالية).",
+        "en": "الأحمر لا يظهر إلا عند اجتماع العواقب العالية مع التكرار العالي معاً. الشكل 3.2 يبيّن أن الأحمر في خلية واحدة فقط: (تكرار عالٍ، عواقب عالية)."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الفرق البنيوي الأساسي بين المصفوفتين في الفصل؟",
+        "en": "What is the key structural difference between the two matrices in the chapter?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مصفوفة الخطر تُستخدم قبل التدقيق، بينما مصفوفة الخطر المتبقي تُستخدم فقط بعد مراجعة شهادة رسمية معتمدة.",
+          "en": "The risk matrix is used before an audit, while the residual-risk matrix is used only after a formal certification review."
+        },
+        {
+          "ar": "مصفوفة الخطر تجمع الخطر مع الإجراءات المضادة، بينما مصفوفة الخطر المتبقي تجمع التكرار مع العواقب.",
+          "en": "The risk matrix pairs risk with countermeasures, while the residual-risk matrix pairs frequency with consequences."
+        },
+        {
+          "ar": "مصفوفة الخطر تجمع التكرار مع العواقب، بينما مصفوفة الخطر المتبقي تجمع الخطر مع الإجراءات المضادة.",
+          "en": "The risk matrix pairs frequency with consequences, while the residual-risk matrix pairs risk with countermeasures."
+        },
+        {
+          "ar": "مصفوفة الخطر تُطبَّق فقط على تهديدات البرمجيات، بينما الثانية تُطبَّق فقط على التهديدات الفيزيائية في المبنى.",
+          "en": "The risk matrix applies only to software threats, while the residual-risk matrix applies only to physical threats in a building."
+        }
+      ],
+      "concept_id": "two_matrices_contrast",
+      "explanation": {
+        "ar": "مصفوفة الخطر: (تكرار F × عواقب K). مصفوفة الخطر المتبقي: (خطر S ÷ إجراءات M). المعادلة الأولى تُغذّي الثانية بمخرجها S، فهما مرحلتان لا بديلان.",
+        "en": "مصفوفة الخطر: (تكرار F × عواقب K). مصفوفة الخطر المتبقي: (خطر S ÷ إجراءات M). المعادلة الأولى تُغذّي الثانية بمخرجها S، فهما مرحلتان لا بديلان."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي مما يلي يُعطى كمثال على تهديد متعلق بالمعدات (Hardware related)؟",
+        "en": "Which of the following is given as an example of a hardware-related threat?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أعطال في البنية التحتية التي يعتمد عليها الحاسوب حتى يعمل بالشكل المطلوب.",
+          "en": "Faults in the infrastructure that the computer depends on so as to work properly."
+        },
+        {
+          "ar": "رسائل تخدع الموظف ليُفصح عن كلمة السر لمهاجم عن بعد يقف خلف العملية.",
+          "en": "Messages that trick an employee into revealing a password to a remote attacker."
+        },
+        {
+          "ar": "برامج خبيثة بقصد الإضرار تنتشر من جهاز إلى جهاز آخر داخل الشبكة ذاتها.",
+          "en": "Programs that are wilfully malicious and spread from one machine to another one."
+        },
+        {
+          "ar": "جمع بيانات متاحة يمكن منها استنتاج معلومات سرّية غير متاحة مباشرةً للطرف.",
+          "en": "Collecting accessible data from which confidential information can be deduced."
+        }
+      ],
+      "concept_id": "hardware_threats_examples",
+      "explanation": {
+        "ar": "تهديدات Hardware: بيئة ضارّة، كوارث طبيعية، هجوم فيزيائي كالسرقة، وأعطال البنية التحتية. الخيار الثاني = liveware، الثالث = software، الرابع = data.",
+        "en": "تهديدات Hardware: بيئة ضارّة، كوارث طبيعية، هجوم فيزيائي كالسرقة، وأعطال البنية التحتية. الخيار الثاني = liveware، الثالث = software، الرابع = data."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما هو 'الاستدلال' (inference) كتهديد متعلق بالبيانات؟",
+        "en": "What is 'inference' as a data-related threat?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حذف جدول في قاعدة البيانات بالخطأ أثناء صيانة روتينية على خادم الإنتاج.",
+          "en": "Deleting a database table by mistake while performing routine maintenance on the production server."
+        },
+        {
+          "ar": "جمع بيانات متاحة يمكن منها استنتاج معلومات سرّية غير متاحة مباشرةً للطرف.",
+          "en": "Collecting accessible data from which confidential information not directly accessible can be deduced."
+        },
+        {
+          "ar": "نسخ ملف سرّي مباشرةً من خادم لا يمتلك أي ضوابط وصول مفعّلة إطلاقاً.",
+          "en": "Copying a confidential file directly from a server that has no access controls enabled at all."
+        },
+        {
+          "ar": "انتحال شخصية مستخدم آخر للحصول على هويته وبيانات دخوله في النظام كله.",
+          "en": "Pretending to be another user in order to obtain their identity and credentials in the system."
+        }
+      ],
+      "concept_id": "data_threats_inference",
+      "explanation": {
+        "ar": "الـ inference ليست وصولاً مباشراً لبيانات سرّية، بل جمع بيانات متاحة واستنتاج المخفي منها. الخيار الثالث يصف masquerading، والباقي ليس inference.",
+        "en": "الـ inference ليست وصولاً مباشراً لبيانات سرّية، بل جمع بيانات متاحة واستنتاج المخفي منها. الخيار الثالث يصف masquerading، والباقي ليس inference."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي إجراء مضاد يطابقه الفصل مع تهديد المهاجمين من خارج النظام عبر الإنترنت؟",
+        "en": "Which countermeasure does the chapter match with the threat of attackers outside the system attacking through the Internet?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "فحص الأفراد وتدريب مناسب للمستخدمين المصرّح لهم العاملين داخل المؤسسة.",
+          "en": "Checking personnel and introducing suitable training for the authorised users."
+        },
+        {
+          "ar": "برامج مضادة للفيروسات على كل جهاز لإيقاف انتشار البرمجيات الخبيثة محلياً.",
+          "en": "Antivirus programs installed on each endpoint to stop malware from spreading locally."
+        },
+        {
+          "ar": "جدران نارية في الشبكة تمنع مرور ترافيك المهاجم من الوصول إلى الهدف المحدد.",
+          "en": "Firewalls placed in the network to stop the attacker's traffic from reaching the target."
+        },
+        {
+          "ar": "نسخ احتياطية دورية تُؤخذ حتى يمكن استرجاع البيانات والبرمجيات التالفة لاحقاً.",
+          "en": "Regular backup copies taken so that damaged data and software can be restored later."
+        }
+      ],
+      "concept_id": "countermeasure_threat_matching",
+      "explanation": {
+        "ar": "الجدول يطابق: مهاجمون من الخارج عبر الإنترنت ← Firewalls. Antivirus ← malware. Backups ← تعديل/حذف. فحص الأفراد ← تهديدات الموظفين.",
+        "en": "الجدول يطابق: مهاجمون من الخارج عبر الإنترنت ← Firewalls. Antivirus ← malware. Backups ← تعديل/حذف. فحص الأفراد ← تهديدات الموظفين."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف يميّز الفصل بين تخفيف الخطر (mitigation) وإدارته (management) بشكل عام؟",
+        "en": "How does the chapter distinguish risk mitigation from risk management overall?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تخفيف الخطر يُستخدم قبل وقوع الحادث، أما إدارة الخطر فتُستخدم فقط بعدما يقع الضرر فعلاً على المؤسسة.",
+          "en": "Risk mitigation is used before an incident happens, while risk management is used only after the damage has already occurred to the organisation."
+        },
+        {
+          "ar": "إدارة الخطر تشمل كل أنشطة التقييم والتخفيض، أما التخفيف فهو الجزء الذي يوصل الخطر لمستوى مقبول.",
+          "en": "Risk management covers all evaluating and reducing activities, while mitigation is the part reducing risk to an acceptable level."
+        },
+        {
+          "ar": "تخفيف الخطر يشمل كل أنشطة التقييم والتخفيض، أما إدارة الخطر فهي فقط الجزء الذي ينقل الخطر لطرف آخر بعقد.",
+          "en": "Risk mitigation covers all evaluating and reducing activities, while risk management is only the part that transfers the risk to a third party by contract."
+        },
+        {
+          "ar": "إدارة الخطر تُطبَّق فقط على تهديدات المعدات، أما تخفيف الخطر فيُطبَّق فقط على تهديدات البرمجيات والبيانات.",
+          "en": "Risk management applies only to hardware threats, while risk mitigation applies only to the software and data threats in the organisation."
+        }
+      ],
+      "concept_id": "risk_management_vs_mitigation",
+      "explanation": {
+        "ar": "إدارة الخطر = المظلة (كل نشاط تقييم وتخفيض). التخفيف (mitigation) = الجزء الذي هدفه الوصول بالخطر إلى مستوى مقبول.",
+        "en": "إدارة الخطر = المظلة (كل نشاط تقييم وتخفيض). التخفيف (mitigation) = الجزء الذي هدفه الوصول بالخطر إلى مستوى مقبول."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شركة توقّع عقداً مع جهة خارجية حتى تتحمّل تلك الجهة خطراً معيّناً. أي استراتيجية هذه؟",
+        "en": "A company signs a contract with an outside firm so that the outside firm bears a specific risk. Which strategy is this?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تقاسم الخطر، لأن الخطر يُعالَج بالمشاركة بين طرفين أو أكثر.",
+          "en": "Risk sharing, because the risk is dealt with jointly by two or more parties."
+        },
+        {
+          "ar": "الاحتفاظ بالخطر، لأن قدراً متّفقاً من الخطر المتبقي يُقبل.",
+          "en": "Risk retention, because a certain agreed amount of residual risk is allowed."
+        },
+        {
+          "ar": "تجنّب الخطر، لأن النظام المستهدف يُبعَد عن الخطر المحدد.",
+          "en": "Risk avoidance, because the target system is kept away from the given risk."
+        },
+        {
+          "ar": "نقل الخطر، لأن الخطر يُنقل إلى طرف آخر من خلال عقد مبرم.",
+          "en": "Risk transfer, because the risk is moved to another party through a contract."
+        }
+      ],
+      "concept_id": "strategy_scenario_outsourcing",
+      "explanation": {
+        "ar": "النقل (transfer) = تخلّي عن الخطر لطرف آخر عبر عقد (مثل outsourcing). أما sharing = تقاسم، retention = قبول الخطر المتبقي، avoidance = إبعاد النظام.",
+        "en": "النقل (transfer) = تخلّي عن الخطر لطرف آخر عبر عقد (مثل outsourcing). أما sharing = تقاسم، retention = قبول الخطر المتبقي، avoidance = إبعاد النظام."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي إطار يتميّز بأنه يقدّم تصنيفاً ومعيار تسمية ونموذجاً لحساب الخطر؟",
+        "en": "Which framework is distinctive in offering a taxonomy, a naming standard and a model for calculating risk?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "فير (FAIR)، تحليل عوامل خطر المعلومات، المستخدم للتسمية وحساب الخطر.",
+          "en": "FAIR, the Factor Analysis of Information Risk used for naming and calculating risk."
+        },
+        {
+          "ar": "كوسو (COSO)، لجنة المنظمات الراعية التي تصف العمليات الداخلية للشركة.",
+          "en": "COSO, the Committee of Sponsoring Organizations of the Treadway Commission."
+        },
+        {
+          "ar": "أوكتيف (OCTAVE)، تقييم التهديد الحرج تشغيلياً والأصول والثغرات في النظام.",
+          "en": "OCTAVE, the Operationally Critical Threat, Asset and Vulnerability Evaluation."
+        },
+        {
+          "ar": "كوبيت (COBIT)، أهداف الضبط لتقنية المعلومات والمرتبطة بها من مجالات.",
+          "en": "COBIT, the Control Objectives for Information and related Technology."
+        }
+      ],
+      "concept_id": "framework_fair_distinctive",
+      "explanation": {
+        "ar": "FAIR هو الوحيد الذي يقدّم الثلاثة: تصنيف (taxonomy) + معيار تسمية + نموذج حساب. COBIT = أهداف تدابير، COSO = عمليات داخلية، OCTAVE = عملية تحليل.",
+        "en": "FAIR هو الوحيد الذي يقدّم الثلاثة: تصنيف (taxonomy) + معيار تسمية + نموذج حساب. COBIT = أهداف تدابير، COSO = عمليات داخلية، OCTAVE = عملية تحليل."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "بحسب الفصل، كم فئة يصفها أحدث إصدار من ISO/IEC 27002؟",
+        "en": "According to the chapter, how many categories does the latest version of ISO/IEC 27002 describe targets within?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "44 فئة، والمعيار صادر بالاشتراك بين منظمة الأيزو واللجنة الكهروتقنية الدولية.",
+          "en": "44 categories, and the standard is published jointly by ISO and the IEC together."
+        },
+        {
+          "ar": "93 فئة، والمعيار صادر بالاشتراك بين منظمة الأيزو واللجنة الكهروتقنية الدولية.",
+          "en": "93 categories, and the standard is published jointly by ISO and the IEC together."
+        },
+        {
+          "ar": "4 فئات، والمعيار صادر بالاشتراك بين منظمة الأيزو واللجنة الكهروتقنية الدولية.",
+          "en": "4 categories, and the standard is published jointly by ISO and the IEC together."
+        },
+        {
+          "ar": "14 فئة، والمعيار صادر بالاشتراك بين منظمة الأيزو واللجنة الكهروتقنية الدولية.",
+          "en": "14 categories, and the standard is published jointly by ISO and the IEC together."
+        }
+      ],
+      "concept_id": "iso27002_categories_count",
+      "explanation": {
+        "ar": "المادة تقول 14 فئة (والدكتورة ظلّلت الرقم 14 بالأصفر). تنبيه دقيق: 14 هي هيكل نسخة 2013؛ نسخة 2022 أعادت التنظيم إلى 4 محاور/93 ضابطاً؛ لكن جواب الامتحان بحسب مادتها = 14. و44 = عدد معايير العائلة.",
+        "en": "المادة تقول 14 فئة (والدكتورة ظلّلت الرقم 14 بالأصفر). تنبيه دقيق: 14 هي هيكل نسخة 2013؛ نسخة 2022 أعادت التنظيم إلى 4 محاور/93 ضابطاً؛ لكن جواب الامتحان بحسب مادتها = 14. و44 = عدد معايير العائلة."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ما المراحل الثلاث لمنهجية OCTAVE بالترتيب؟",
+        "en": "What are the three phases of OCTAVE, in order?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بناء ملفات تهديد مبنية على الأصول، ثم تحديد ثغرات البنية، ثم تطوير استراتيجية وخطط أمنية.",
+          "en": "Build asset-based threat profiles; identify infrastructure vulnerabilities; develop a security strategy and plans."
+        },
+        {
+          "ar": "بناء ملفات تهديد مبنية على الأصول، ثم تطوير استراتيجية وخطط أمنية، ثم تحديد ثغرات البنية.",
+          "en": "Build asset-based threat profiles; develop a security strategy and plans; identify infrastructure vulnerabilities."
+        },
+        {
+          "ar": "تحديد ثغرات البنية، ثم بناء ملفات تهديد مبنية على الأصول، ثم تطوير استراتيجية وخطط أمنية.",
+          "en": "Identify infrastructure vulnerabilities; build asset-based threat profiles; develop a security strategy and plans."
+        },
+        {
+          "ar": "تطوير استراتيجية وخطط أمنية، ثم بناء ملفات تهديد مبنية على الأصول، ثم تحديد ثغرات البنية.",
+          "en": "Develop a security strategy and plans; build asset-based threat profiles; identify infrastructure vulnerabilities."
+        }
+      ],
+      "concept_id": "octave_three_phases",
+      "explanation": {
+        "ar": "مراحل OCTAVE الثلاث بالترتيب: (1) asset-based threat profiles ← (2) infrastructure vulnerabilities ← (3) security strategy and plans. الدكتورة ظلّلتها بالأحمر.",
+        "en": "مراحل OCTAVE الثلاث بالترتيب: (1) asset-based threat profiles ← (2) infrastructure vulnerabilities ← (3) security strategy and plans. الدكتورة ظلّلتها بالأحمر."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "ما المراحل الأربع المميّزة لعملية PDCA بالترتيب؟",
+        "en": "What are the four characteristic phases of the PDCA process, in order?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التخطيط، ثم الفحص، ثم التنفيذ، ثم التصحيح، وتشكّل دورة تتكرر بعدها.",
+          "en": "Plan, Check, Do and Act, forming a cycle that then repeats itself again."
+        },
+        {
+          "ar": "التخطيط، ثم التنفيذ، ثم الفحص، ثم التصحيح، وتشكّل دورة تتكرر بعدها.",
+          "en": "Plan, Do, Check and Act, forming a cycle that then repeats itself again."
+        },
+        {
+          "ar": "التحضير، ثم التنفيذ، ثم الفحص، ثم التعديل، وتشكّل دورة تتكرر بعدها.",
+          "en": "Prepare, Do, Check and Adjust, forming a cycle that then repeats itself."
+        },
+        {
+          "ar": "التخطيط، ثم التنفيذ، ثم الضبط، ثم التدقيق، وتشكّل دورة تتكرر بعدها.",
+          "en": "Plan, Do, Control and Audit, forming a cycle that then repeats itself."
+        }
+      ],
+      "concept_id": "pdca_cycle",
+      "explanation": {
+        "ar": "PDCA = Plan · Do · Check · Act. والترتيب مهم لأنه دورة (cycle) لا خط مستقيم؛ تنتهي Act إما بتعديل أو ببدء دورة Plan جديدة.",
+        "en": "PDCA = Plan · Do · Check · Act. والترتيب مهم لأنه دورة (cycle) لا خط مستقيم؛ تنتهي Act إما بتعديل أو ببدء دورة Plan جديدة."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "نظام يتحقق من المستخدم عبر مسح بصمة إصبعه. أي عامل مصادقة يمثّل هذا، وما المصطلح الاصطلاحي الصحيح؟",
+        "en": "A system verifies a user by scanning their fingerprint. Which authentication factor does this represent, and what is the correct standard term?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الموقع Location، أي مكان أنت فيه، والملزمة تكتبها Location ضمن عواملها الأربعة.",
+          "en": "Location, meaning somewhere you are, which the booklet prints as 'Location' among its four factors."
+        },
+        {
+          "ar": "الحيازة Possession، أي شيء تملكه، والملزمة تكتبها Possession ضمن عواملها الأربعة.",
+          "en": "Possession, meaning something you have, which the booklet prints as 'Possession' among its four factors."
+        },
+        {
+          "ar": "السمة الذاتية Inherence، أي شيء أنت عليه، والملزمة تكتبها Inheritance ضمن عواملها الأربعة.",
+          "en": "Inherence, meaning something you are, which the booklet prints as 'Inheritance' among its four factors."
+        },
+        {
+          "ar": "المعرفة Knowledge، أي شيء تعرفه، والملزمة تكتبها Knowledge ضمن عواملها الأربعة.",
+          "en": "Knowledge, meaning something you know, which the booklet prints as 'Knowledge' among its four factors."
+        }
+      ],
+      "concept_id": "authentication_inheritance_inherence",
+      "explanation": {
+        "ar": "البصمة = شيء أنت عليه، أي السمة الذاتية. الملزمة تكتبه Inheritance، والمصطلح الاصطلاحي الصحيح هو Inherence. عواملها الأربعة: Knowledge · Possession · Inheritance · Location.",
+        "en": "البصمة = شيء أنت عليه، أي السمة الذاتية. الملزمة تكتبه Inheritance، والمصطلح الاصطلاحي الصحيح هو Inherence. عواملها الأربعة: Knowledge · Possession · Inheritance · Location."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

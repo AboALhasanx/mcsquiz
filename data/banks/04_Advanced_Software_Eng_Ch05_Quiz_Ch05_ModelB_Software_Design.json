@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "الفصل الخامس: اقتران التحكم وأثر التموج والتصميم الكائني وتمثيل التصميم — النموذج ب",
+    "en": "Ch05 Model B: Control Coupling, Ripple Effect, OOD and Design Notation"
+  },
+  "quiz_id": "Quiz_Ch05_ModelB_Software_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تجمع وحدة كل إجراءات الإدخال وتختار أحدها عبر flag يمرره المستدعي. أي اقتران ينشئه هذا التصميم على الأرجح؟",
+        "en": "A module bundles all input routines and selects one through a flag passed by its caller. Which coupling does this design most likely create?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Control coupling لأن flag يوجّه مسار تنفيذ الوحدة المستدعاة",
+          "en": "Control coupling, because a flag directs the callee execution path"
+        },
+        {
+          "ar": "Stamp coupling لأن بنية سجل تُمرَّر كاملة",
+          "en": "Stamp coupling, because a record structure is passed whole"
+        },
+        {
+          "ar": "External coupling لأن بروتوكول جهاز خارجي معني",
+          "en": "External coupling, because a device protocol is involved"
+        },
+        {
+          "ar": "Data coupling لأن flag قيمة أولية واحدة فقط",
+          "en": "Data coupling, because the flag is a single primitive value"
+        }
+      ],
+      "concept_id": "logical_cohesion_control_coupling",
+      "explanation": {
+        "ar": "تمرير flag يختار فرعاً داخل الوحدة المستدعاة يمثل معلومة تحكم، لذا ينشأ Control coupling، وهو ما ينتج عادة عن Logical cohesion.",
+        "en": "A flag that selects a branch inside the callee is control information, so the design creates control coupling. Logical cohesion commonly produces exactly this coupling."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "يسبب عيب في وحدة واحدة فشلاً في أربع وحدات بعيدة. أي نتيجة للاقتران العالي يوضح هذا؟",
+        "en": "A defect in one module triggers failures in four distant modules. Which consequence of high coupling does this illustrate?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حالة التعطيل حيث ينتظر الأعضاء المنتهون المرحلة",
+          "en": "The blocking state, where finished members wait for the phase"
+        },
+        {
+          "ar": "زحف النطاق حيث توسّع متطلبات جديدة الأساس",
+          "en": "Scope creep, where new requirements expand the baseline"
+        },
+        {
+          "ar": "Ripple effect حيث ينتشر الخطأ عبر حدود الوحدات",
+          "en": "The ripple effect, where an error propagates across module boundaries"
+        },
+        {
+          "ar": "متلازمة 99 بالمئة حيث يبدو التقدم منجزاً",
+          "en": "The 99 per cent complete syndrome, where progress looks finished"
+        }
+      ],
+      "concept_id": "ripple_effect_high_coupling",
+      "explanation": {
+        "ar": "ينتج عن الاقتران العالي Ripple effect، حيث ينتشر العيب من وحدة إلى الوحدات المعتمدة عليها، فتصبح عملية التنقيح مكلفة وإعادة الاستخدام صعبة.",
+        "en": "High coupling produces the ripple effect: a fault in one module propagates to modules that depend on it, which makes debugging expensive and reuse difficult."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يحلل التصميم الكائني النظام بشكل مختلف عن التصميم الوظيفي؟",
+        "en": "How does object-oriented design decompose a system differently from function-oriented design?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حول الأفعال والإجراءات الشاملة لا حول الأسماء والأصناف",
+          "en": "Around verbs and global procedures rather than nouns and classes"
+        },
+        {
+          "ar": "حول طبقات العتاد ومشغلات الأجهزة لا حول كيانات المجال",
+          "en": "Around hardware layers and device drivers rather than domain entities"
+        },
+        {
+          "ar": "حول حالات الاختبار وأهداف التغطية لا حول المسؤوليات",
+          "en": "Around test cases and coverage goals rather than responsibilities"
+        },
+        {
+          "ar": "حول الأسماء والكائنات المغلفة لا حول الأفعال والحالة المشتركة",
+          "en": "Around nouns and encapsulated objects rather than verbs and shared state"
+        }
+      ],
+      "concept_id": "ood_vs_function_oriented",
+      "explanation": {
+        "ar": "يحلل التصميم الكائني حول الأسماء والكائنات المغلفة، بينما يحلل التصميم الوظيفي حول الأفعال والحالة الشاملة المشتركة، والمنظوران متعامدان.",
+        "en": "Object-oriented design decomposes around nouns and encapsulated objects, while function-oriented design decomposes around verbs and shared global state. The two perspectives are orthogonal."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "هل يمكن لهرمية أصناف أن تستخدم الوراثة دون إظهار polymorphism؟",
+        "en": "Can a class hierarchy use inheritance without exhibiting polymorphism?"
+      },
+      "bloom": "Evaluate",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نعم لكن فقط عندما يُعلن الصنف الأساس abstract",
+          "en": "Yes, but only when the base class is declared abstract"
+        },
+        {
+          "ar": "نعم إذا لم تُعَد تعريف أي عملية وبقي الربط ساكناً",
+          "en": "Yes, if no operation is overridden and binding stays static"
+        },
+        {
+          "ar": "لا لأن polymorphism شرط لتعريف أي صنف مشتق",
+          "en": "No, because polymorphism is required to define any subclass"
+        },
+        {
+          "ar": "لا لأن الوراثة تفرض دائماً ربطاً ديناميكياً للدوال",
+          "en": "No, because inheritance always forces dynamic method binding"
+        }
+      ],
+      "concept_id": "inheritance_without_polymorphism",
+      "explanation": {
+        "ar": "الوراثة آلية إعادة استخدام ويمكن أن توجد دون إعادة تعريف، فيبقى الربط ساكناً، وpolymorphism يفترض وراثة لكن الوراثة لا تفترض polymorphism.",
+        "en": "Inheritance is a reuse mechanism and can exist without overriding, so binding may stay static. Polymorphism requires inheritance, but inheritance does not require polymorphism."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي عبارة تقارن structure chart مع flow chart بشكل صحيح؟",
+        "en": "Which statement contrasts a structure chart with a flow chart correctly?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "structure chart يعرض الهرمية، وflow chart يعرض تسلسل المنطق",
+          "en": "A structure chart shows module hierarchy, while a flow chart shows logic sequence"
+        },
+        {
+          "ar": "structure chart يعرض تسلسل المنطق، وflow chart يعرض الهرمية",
+          "en": "A structure chart shows logic sequence, while a flow chart shows module hierarchy"
+        },
+        {
+          "ar": "structure chart يعرض تخزين البيانات، وflow chart يعرض خطط التوظيف",
+          "en": "A structure chart shows data storage, while a flow chart shows staffing plans"
+        },
+        {
+          "ar": "structure chart يعرض جدول المشروع، وflow chart يعرض تقديرات الكلفة",
+          "en": "A structure chart shows project schedule, while a flow chart shows cost estimates"
+        }
+      ],
+      "concept_id": "structure_chart_vs_flow_chart",
+      "explanation": {
+        "ar": "يوثق structure chart التفكيك الهرمي للوحدات ومعاملاتها وواجهاتها في التصميم المعماري، بينما يوثق flow chart تسلسل المنطق والتحكم.",
+        "en": "A structure chart documents the hierarchical module decomposition, its parameters, and its interfaces during architectural design. A flow chart documents the logic and control sequence instead."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

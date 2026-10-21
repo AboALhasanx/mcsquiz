@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "البحث والخوارزميات الاستدلالية والذكاء السربي — النموذج ب",
+    "en": "Local Search & Swarm Intelligence: SA, ACO and PSO — Model B"
+  },
+  "quiz_id": "Quiz_Ch02_ModelB_Search_and_Learning",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "قد يفشل التسلق الجبلي Hill Climbing في الوصول إلى الحل الأمثل العالمي لأنه...",
+        "en": "Hill climbing can fail to reach the global optimum because it..."
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يعاين الجوار بأكمله باستنفاد كامل",
+          "en": "samples the whole neighbourhood exhaustively"
+        },
+        {
+          "ar": "يقبل الحلول الأسوأ باحتمالية ثابتة",
+          "en": "accepts worse moves with a fixed probability"
+        },
+        {
+          "ar": "يحتفظ بكل حالة زارها في طابور أولوية",
+          "en": "keeps every visited state in a priority queue"
+        },
+        {
+          "ar": "يحتفظ بالحالة الراهنة فقط ويتحرك صعوداً",
+          "en": "keeps only the current state and moves uphill"
+        }
+      ],
+      "concept_id": "hill_climbing_limitations",
+      "explanation": {
+        "ar": "التسلق الجبلي بحث موضعي يحتفظ بحالة واحدة وينتقل دائماً إلى جار أفضل، فيتوقف عند قمة محلية أو هضبة أو كتف. أما حفظ كل الحالات فهو ما يتجنبه البحث الموضعي، واستنفاد الجوار ليس أسلوبه، وقبول الحلول الأسوأ هو آلية التلدين المحاكى.",
+        "en": "Hill climbing is a local search that remembers one state and always moves to a better neighbour, so it halts on a local maximum, a plateau or a ridge. Remembering all states is what local search avoids, exhaustive neighbourhood sampling is not its method, and accepting worse moves is the mechanism of simulated annealing."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في التلدين المحاكى Simulated Annealing، قبول حل أسوأ باحتمالية $e^{\\Delta E/T}$ يسمح للبحث بأن...",
+        "en": "In simulated annealing, accepting a worse move with probability $e^{\\Delta E/T}$ allows the search to..."
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يضمن الحل الأمثل العالمي بزمن منته",
+          "en": "guarantee the global optimum in finite time"
+        },
+        {
+          "ar": "يهرب من القمم المحلية في بداية الجدول",
+          "en": "escape local optima early in the schedule"
+        },
+        {
+          "ar": "يتجنب تقييم دالة الهدف كلياً",
+          "en": "avoid evaluating the objective function"
+        },
+        {
+          "ar": "يتقارب أسرع كلما ارتفعت الحرارة",
+          "en": "converge faster as the temperature rises"
+        }
+      ],
+      "concept_id": "simulated_annealing_acceptance",
+      "explanation": {
+        "ar": "تجعل الحرارة المرتفعة احتمالية قبول الحل الأسوأ قريبة من الواحد، فيستطيع المسار مغادرة القمة المحلية، ثم يقلّل التبريد هذه الاحتمالية تدريجياً نحو الهبوط الجشع. أما رفع الحرارة فيؤخر التقارب ولا يسرّعه، ولا يوجد ضمان عالمي بزمن منته، وكل خطوة تبقى مُقيَّمة.",
+        "en": "A high temperature makes the acceptance probability of a worse move close to one, so the walk can leave a local optimum, and cooling then reduces that probability towards greedy descent. A rising temperature delays rather than accelerates convergence, no finite-time global guarantee holds, and every move is still evaluated."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "تتواصل مستعمرة النمل في ACO عبر stigmergy، أي أن النمل...",
+        "en": "Ant colony optimization communicates through stigmergy, which means that ants..."
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يقلّد اتجاه النملة التي تتقدمه مباشرة",
+          "en": "copy the direction of the ant immediately ahead"
+        },
+        {
+          "ar": "يتبادل رسائل مباشرة مع العش عبر إشارات موجّهة",
+          "en": "exchange messages with the nest through direct signals"
+        },
+        {
+          "ar": "يرسب الفيرمون فتستشعره النملات اللاحقة وتتبعه",
+          "en": "deposit pheromone that later ants sense and follow"
+        },
+        {
+          "ar": "يحفظ خريطة البيئة كاملة في ذاكرته الداخلية",
+          "en": "remember the whole map of the environment internally"
+        }
+      ],
+      "concept_id": "aco_stigmergy",
+      "explanation": {
+        "ar": "التواصل عبر stigmergy تنسيق غير مباشر، إذ يعدّل كل نمل عضو في البيئة بترسيب الفيرمون، فتقرأ النملات اللاحقة هذا الأثر الكيميائي الذي يعمل ذاكرة خارجية موزّعة. أما الإشارات المباشرة وتقليد النملة المجاورة وحفظ خريطة داخلية كاملة فليست طريقة تنسيق مستعمرات النمل.",
+        "en": "Stigmergy is indirect coordination: each ant modifies the environment by laying pheromone, and later ants read that chemical trace, which acts as a distributed external memory. Direct signalling, simple imitation of a neighbour and a full internal map are all explicitly not how ant colonies coordinate."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما دور تبخر الفيرمون في خوارزمية مستعمرات النمل؟",
+        "en": "What is the role of pheromone evaporation in ant colony optimization?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يمحو المسارات الضعيفة ليتيح للمستعمرة الاستكشاف مجدداً",
+          "en": "It removes weak trails so the colony can explore again"
+        },
+        {
+          "ar": "يزيد ترسيب أفضل نملة في كل جولة",
+          "en": "It increases the deposit of the best ant every round"
+        },
+        {
+          "ar": "يمنع النمل من زيارة مدن القائمة المحظورة",
+          "en": "It stops ants from revisiting cities in the tabu list"
+        },
+        {
+          "ar": "يحوّل الجاذبية الاستدلالية إلى كلفة مسار",
+          "en": "It converts the heuristic visibility into a path cost"
+        }
+      ],
+      "concept_id": "pheromone_evaporation",
+      "explanation": {
+        "ar": "يضرب التبخر كل أثر في $1-\\rho$، فتتلاشى الحواف التي لا تتلقى تعزيزاً ولا تنغلق المستعمرة على مسار مبكر. أما الترسيب الإضافي لأفضل نملة فقاعدة مكافأة منفصلة، وتجنب الزيارات المتكررة وظيفة القائمة المحظورة، والجاذبية الاستدلالية كمية مبنية على المسافة ولا ينتجها التبخر.",
+        "en": "Evaporation multiplies every trail by $1-\\rho$, so rarely reinforced edges fade and the colony does not lock onto an early path. Extra deposit for the best ant is a separate reward rule, avoiding revisits is the job of the tabu list, and visibility is defined as a distance-based quantity rather than produced by evaporation."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "في معادلة تحديث سرعة PSO، الحد $c_2 r_2 (G_{best} - X_i)$ يشد الجسيم نحو...",
+        "en": "In the PSO velocity update, the term $c_2 r_2 (G_{best} - X_i)$ pulls a particle toward..."
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أفضل موقع وصله أي جسيم في السرب",
+          "en": "the best position found by any particle"
+        },
+        {
+          "ar": "اتجاه متجه سرعته السابقة",
+          "en": "its previous velocity vector direction"
+        },
+        {
+          "ar": "نقطة عشوائية داخل فضاء البحث",
+          "en": "a random point inside the search space"
+        },
+        {
+          "ar": "أفضل موقع وصله الجسيم نفسه",
+          "en": "the best position the particle itself found"
+        }
+      ],
+      "concept_id": "pso_social_component",
+      "explanation": {
+        "ar": "يستخدم المكوّن الاجتماعي أفضل موقع عالمي G_best، وهو أفضل موقع وصله أي فرد في السرب، ويُوزن بمعامل التسارع الاجتماعي c2. أما أفضل تاريخ شخصي للجسيم فهو المكوّن المعرفي، والسرعة السابقة هي مكوّن القصور، والعشوائية تعدّل حدّي الجذب فقط ولا تصنع هدفاً مستقلاً.",
+        "en": "The social component uses the global best G_best, the best position any member of the swarm has reached, and is weighted by the social coefficient c2. The particle's own best history is the cognitive component, the previous velocity is the inertia component, and randomness only modulates the two attraction terms."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. سيف علي السعيدي",
+    "en": "Prof. Dr. Saif Ali Al-Saidi"
+  },
+  "subject_id": "06_Artificial_Intelligence",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الذكاء الاصطناعي",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

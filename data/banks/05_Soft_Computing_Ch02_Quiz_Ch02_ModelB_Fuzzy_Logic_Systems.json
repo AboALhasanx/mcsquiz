@@ -1,0 +1,212 @@
+{
+  "topic": {
+    "ar": "أنظمة المنطق الغامض — النموذج ب",
+    "en": "Fuzzy Logic Systems — Model B"
+  },
+  "quiz_id": "Quiz_Ch02_ModelB_Fuzzy_Logic_Systems",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي عبارة تميّز بدقة بين التحويل الضبابي وإزالة الضبابية؟",
+        "en": "Which statement correctly distinguishes fuzzification from defuzzification?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التحويل الضبابي يطابق القواعد مع المدخل، وإزالة الضبابية تنشئ القاعدة اللغوية.",
+          "en": "Fuzzification matches rules against the input; defuzzification creates the linguistic rule base."
+        },
+        {
+          "ar": "التحويل الضبابي يُعيد الناتج قيمة حاسمة، وإزالة الضبابية تحوّل المدخل إلى درجات.",
+          "en": "Fuzzification returns a crisp output value; defuzzification converts the input into grades."
+        },
+        {
+          "ar": "التحويل الضبابي يبني قاعدة القواعد، وإزالة الضبابية تُشعل القواعد الفعّالة وتدمجها.",
+          "en": "Fuzzification builds the Rule Base; defuzzification fires and combines the active rules."
+        },
+        {
+          "ar": "التحويل الضبابي يحوّل المدخل الحاسم إلى درجات، وإزالة الضبابية تُعيد الناتج قيمة حاسمة.",
+          "en": "Fuzzification converts the crisp input into grades; defuzzification returns a crisp output value."
+        }
+      ],
+      "concept_id": "fuzzification_vs_defuzzification",
+      "explanation": {
+        "ar": "القاعدة الذهبية: التحويل الضبابي = تحويل المدخل (crisp → fuzzy)، وإزالة الضبابية = تحويل المخرج (fuzzy → crisp). أي خيار يعكسهن هو خطأ. هذا الفخ مذكور صريحاً في كتيّب الأسبوع الثاني.",
+        "en": "القاعدة الذهبية: التحويل الضبابي = تحويل المدخل (crisp → fuzzy)، وإزالة الضبابية = تحويل المخرج (fuzzy → crisp). أي خيار يعكسهن هو خطأ. هذا الفخ مذكور صريحاً في كتيّب الأسبوع الثاني."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في مقارنة الكتيّب، المنطق الحاسم ثنائي القيمة، أما المنطق الضبابي فأفضل وصف له أنه:",
+        "en": "In the booklet's comparison, crisp logic is bi-valued while fuzzy logic is best described as:"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ثلاثي القيمة، يستخدم فقط الصفر والنصف والواحد الصحيح.",
+          "en": "Tri-valued, using only zero, one half, and the whole number one."
+        },
+        {
+          "ar": "لا نهائي القيمة، بعضوية متدرجة على المجال [0, 1].",
+          "en": "Infinite-valued, with graded membership across the interval [0, 1]."
+        },
+        {
+          "ar": "ثنائي القيمة أيضاً لكن مع نطاق تسامح أوسع حول كل عتبة.",
+          "en": "Also bi-valued, but with a wider tolerance band around each threshold."
+        },
+        {
+          "ar": "احتمالي القيمة، مجموعه يساوي الواحد على كل عناصر الكون.",
+          "en": "Probability-valued, summing to exactly one across all universe elements."
+        }
+      ],
+      "concept_id": "crisp_vs_fuzzy_logic",
+      "explanation": {
+        "ar": "الكتيّب يقابل بين المنطق الحاسم ثنائي القيمة (bi-valued) والمنطق الضبابي لا نهائي القيمة (infinite-valued)، لأن درجة العضوية تقبل أي عدد حقيقي في المجال [0, 1] وليس قيمتين فقط.",
+        "en": "الكتيّب يقابل بين المنطق الحاسم ثنائي القيمة (bi-valued) والمنطق الضبابي لا نهائي القيمة (infinite-valued)، لأن درجة العضوية تقبل أي عدد حقيقي في المجال [0, 1] وليس قيمتين فقط."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف تُكتب دالة العضوية لمجموعة ضبابية كتابةً رسمية؟",
+        "en": "How is the membership function of a fuzzy set formally written?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "μ_Ã : X → [0, 1) بحيث يُستبعد الطرف الأعلى من المجال.",
+          "en": "mu_A : X to [0, 1), so the upper endpoint is excluded from the range."
+        },
+        {
+          "ar": "μ_Ã : X → (0, 1) بحيث يُستبعد الطرفان صفر وواحد.",
+          "en": "mu_A : X to (0, 1), so both endpoints zero and one are excluded."
+        },
+        {
+          "ar": "μ_Ã : X → [0, 1] بحيث يُضمَّن الطرفان صفر وواحد معاً.",
+          "en": "mu_A : X to [0, 1], so both endpoints zero and one are included."
+        },
+        {
+          "ar": "μ_Ã : X → {0, 1} بحيث يُسمح بالطرفين فقط دون غيرهما.",
+          "en": "mu_A : X to {0, 1}, so only the two endpoints are permitted."
+        }
+      ],
+      "concept_id": "membership_function_range",
+      "explanation": {
+        "ar": "التعريف الرسمي: دالة العضوية ترفع كل عنصر من مجال الخطاب X إلى درجة في المجال [0, 1] والطرفان مضغمان (both inclusive) — أي أن الصفر والواحد قيمتان مشروعتان تماماً. μ = 1 انتماء كامل، μ = 0 لا انتماء، وما بينهما انتماء جزئي.",
+        "en": "التعريف الرسمي: دالة العضوية ترفع كل عنصر من مجال الخطاب X إلى درجة في المجال [0, 1] والطرفان مضغمان (both inclusive) — أي أن الصفر والواحد قيمتان مشروعتان تماماً. μ = 1 انتماء كامل، μ = 0 لا انتماء، وما بينهما انتماء جزئي."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في ترميز الكتيّب، ماذا يمثّل الرمزان Σ و ∫؟",
+        "en": "In the booklet's notation, what do the summation and integral symbols stand for?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "توحيد درجات العضوية على كل عناصر الكون لا أكثر.",
+          "en": "The union of the membership grades across every element of the universe."
+        },
+        {
+          "ar": "كتلة الاحتمال الكلية الموزعة على عناصر الكون.",
+          "en": "The total probability mass distributed over the elements of the universe."
+        },
+        {
+          "ar": "معدّل درجات العضوية لكل عنصر داخل المجموعة.",
+          "en": "The average membership grade of all the elements inside the set."
+        },
+        {
+          "ar": "المجموع الحسابي العادي لدرجات العضوية كلها مجتمعة.",
+          "en": "The ordinary arithmetic sum of all the membership grades together."
+        }
+      ],
+      "concept_id": "fuzzy_notation_sigma_integral",
+      "explanation": {
+        "ar": "نص الكتيّب: رمزا Σ و ∫ يمثّلان «توحيد درجات العضوية» (union of membership grades) على عناصر الكون — وليسا مجموعاً حسابياً عادياً ولا كتلة احتمالية. هذا يفرّق بين الترميز الضبابي والترميز الاحتمالي.",
+        "en": "نص الكتيّب: رمزا Σ و ∫ يمثّلان «توحيد درجات العضوية» (union of membership grades) على عناصر الكون — وليسا مجموعاً حسابياً عادياً ولا كتلة احتمالية. هذا يفرّق بين الترميز الضبابي والترميز الاحتمالي."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مجموعة معادلات تمثّل خاصية الهوية كاملة كما وردت في الكتيّب؟",
+        "en": "Which set of equations is the complete Identity Property as printed in the booklet?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "A ∪ φ = A · A ∩ X = A · A ∩ φ = φ · A ∪ X = X",
+          "en": "A union phi = A; A intersect X = A; A intersect phi = phi; A union X = X"
+        },
+        {
+          "ar": "A ∪ φ = A · A ∩ X = A · A ∪ A = A · A ∩ A = A",
+          "en": "A union phi = A; A intersect X = A; A union A = A; A intersect A = A"
+        },
+        {
+          "ar": "A ∪ φ = A · A ∩ X = A · وقف عند قانونين اثنين فقط",
+          "en": "A union phi = A; A intersect X = A, and it stops at only these two laws"
+        },
+        {
+          "ar": "A ∪ X = A · A ∩ φ = A · A ∪ φ = φ · A ∩ X = X",
+          "en": "A union X = A; A intersect phi = A; A union phi = phi; A intersect X = X"
+        }
+      ],
+      "concept_id": "classical_identity_property",
+      "explanation": {
+        "ar": "خاصية الهوية في الكتيّب لها أربعة قوانين لا قانونان: A ∪ φ = A، و A ∩ X = A، و A ∩ φ = φ، و A ∪ X = X. علماً أن φ رمز المجموعة الخالية في هذا الكتيّب و X رمز المجموعة الشاملة على شريحة الهوية. الخيار الذي يتوقف عند قانونين هو الفخ الشائع.",
+        "en": "خاصية الهوية في الكتيّب لها أربعة قوانين لا قانونان: A ∪ φ = A، و A ∩ X = A، و A ∩ φ = φ، و A ∪ X = X. علماً أن φ رمز المجموعة الخالية في هذا الكتيّب و X رمز المجموعة الشاملة على شريحة الهوية. الخيار الذي يتوقف عند قانونين هو الفخ الشائع."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "المجموعة الضبابية على الكون X تُكتب كمجموعة أزواج مرتّبة. ما الدور الدقيق للجداء الديكارتي في هذا التمثيل؟",
+        "en": "A fuzzy set on universe X is written as a set of ordered pairs. What is the precise role of the Cartesian product in that representation?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الجداء X × [0, 1] وحده يحدّد الأزواج المنتمية، فأي مجموعة جزئية منه مجموعة ضبابية.",
+          "en": "The product X x [0, 1] alone determines which pairs belong, so any subset of it is a fuzzy set."
+        },
+        {
+          "ar": "الجداء X × [0, 1] يوفّر فضاء الأزواج الممكنة، ودالة العضوية هي التي تختار الأزواج.",
+          "en": "The product X x [0, 1] supplies the space of possible pairs; the membership function is what selects the pairs."
+        },
+        {
+          "ar": "المجموعة الضبابية هي الجداء الديكارتي نفسه بين الكون X والمجال [0, 1].",
+          "en": "The fuzzy set is itself the Cartesian product of the universe X with the interval [0, 1]."
+        },
+        {
+          "ar": "الجداء يبني الأزواج من عنصرين حاسمين، ودرجة العضوية هي العنصر الثاني فيها.",
+          "en": "The product builds pairs from two crisp elements, and the membership grade is the second element."
+        }
+      ],
+      "concept_id": "cartesian_product_ambient_space",
+      "explanation": {
+        "ar": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة (المحيط الذي تعيش فيه المجموعة)، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. ودقة إضافية: المجموعة الضبابية على X تقابل دالة X → [0, 1]، فرسمها مجموعة دالية — درجة واحدة لكل عنصر — وليست أي مجموعة جزئية عشوائية من الجداء. علماً أن صفحة 33 في الكتيّب تعرّف الجداء الديكارتي فقط ولا تربطه بالمجموعات الضبابية؛ الربط جسر تعليمي لا ادّعاء من المصدر.",
+        "en": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة (المحيط الذي تعيش فيه المجموعة)، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. ودقة إضافية: المجموعة الضبابية على X تقابل دالة X → [0, 1]، فرسمها مجموعة دالية — درجة واحدة لكل عنصر — وليست أي مجموعة جزئية عشوائية من الجداء. علماً أن صفحة 33 في الكتيّب تعرّف الجداء الديكارتي فقط ولا تربطه بالمجموعات الضبابية؛ الربط جسر تعليمي لا ادّعاء من المصدر."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

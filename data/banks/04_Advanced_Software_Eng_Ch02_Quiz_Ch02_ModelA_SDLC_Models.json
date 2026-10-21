@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "الفصل الثاني: نماذج دورة حياة تطوير البرمجيات — النموذج أ",
+    "en": "Ch02 Model A: Build & Fix, Waterfall, Prototyping, RAD and Incremental"
+  },
+  "quiz_id": "Quiz_Ch02_ModelA_SDLC_Models",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي عبارة تصف أسلوب Build and Fix والظرف الذي قد ينجح فيه بشكل صحيح؟",
+        "en": "Which statement correctly describes the build and fix style and the setting where it can still succeed?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يُحلَّل الخطر باستمرار قبل الترميز، ولا تحتمله إلا المنتجات المدمجة",
+          "en": "Continuous risk analysis precedes coding, and only embedded products tolerate it"
+        },
+        {
+          "ar": "تُجمَّد مواصفات المتطلبات قبل الترميز، ولا تتحمله إلا المشاريع الكبيرة",
+          "en": "A frozen SRS precedes coding, and only large team projects tolerate it"
+        },
+        {
+          "ar": "تُراجع مواصفات التصميم قبل الترميز، ولا تحتمله إلا الأنظمة الحرجة",
+          "en": "A formal design review precedes coding, and only critical systems tolerate it"
+        },
+        {
+          "ar": "لا تُعد مواصفات ولا خطة ولا تصميم، ولا تتحمله إلا المشكلات التافهة",
+          "en": "No specification, plan, or design is made, and only trivial problems tolerate it"
+        }
+      ],
+      "concept_id": "build_and_fix_style",
+      "explanation": {
+        "ar": "في أسلوب Build and Fix يُكتب البرنامج بسرعة دون مواصفات أو خطة أو تصميم، ثم تُصلح العيوب لاحقاً. وهو يصلح للمشكلات التافهة التي يعالجها مبرمج واحد، أما خارج ذلك فينتج كوداً رديئاً وصعب الصيانة.",
+        "en": "In the build and fix style a program is written quickly with no specification, plan, or design, and defects are fixed afterwards. It suits only trivial single-programmer work; beyond that it yields poor and unmaintainable code."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في دورة حياة Waterfall الكلاسيكية، أي المراحل هي مراحل التطوير ومتى تُسلَّم البرمجية؟",
+        "en": "In the classical Waterfall life cycle, which phases are the development phases and when is the software delivered?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "من دراسة الجدوى إلى الصيانة، وتُسلَّم بعد انتهاء مرحلة التشغيل",
+          "en": "From feasibility study to maintenance, delivered after the operation phase ends"
+        },
+        {
+          "ar": "من دراسة الجدوى إلى اختبار التكامل والنظام، وتُسلَّم عند اكتمالها",
+          "en": "From feasibility study to integration and system testing, delivered at their completion"
+        },
+        {
+          "ar": "من تحليل المتطلبات إلى الصيانة، وتُسلَّم بعد أول إصدار للمستخدم",
+          "en": "From requirements analysis to maintenance, delivered after the first user release"
+        },
+        {
+          "ar": "من التصميم إلى الترميز واختبار الوحدات، وتُسلَّم قبل بدء اختبار التكامل",
+          "en": "From design to coding and unit testing, delivered before integration testing starts"
+        }
+      ],
+      "concept_id": "waterfall_six_phases_delivery",
+      "explanation": {
+        "ar": "تمتد المراحل الست من دراسة الجدوى إلى الصيانة، لكن الخمس الأولى فقط هي مراحل التطوير. وتُسلَّم البرمجية عند انتهاء اختبار التكامل والنظام، ثم تبدأ الصيانة بعد التسليم.",
+        "en": "The six phases run from feasibility study to maintenance, but only the first five are development phases. The software is delivered when integration and system testing finish, and maintenance then begins."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "يواجه فريق متطلبات غير واضحة لكن كل المخاطر الرئيسية يمكن تحديدها قبل بدء التطوير. أي نموذج يناسب، ولماذا؟",
+        "en": "A team faces unclear requirements but every major risk can be identified before development starts. Which model fits, and why?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "Evolutionary لأن الإضافات تستوعب التغيير الذي يظهر لاحقاً",
+          "en": "Evolutionary, because increments tolerate change that appears later"
+        },
+        {
+          "ar": "Waterfall الكلاسيكي لأن الأساس المجمّد يزيل مخاطر المتطلبات",
+          "en": "Classical Waterfall, because a frozen baseline removes requirement risk"
+        },
+        {
+          "ar": "Prototyping لأن التغيير يُستباق قبل كلفة الإنتاج العالية",
+          "en": "Prototyping, because change is anticipated before heavy production costs"
+        },
+        {
+          "ar": "Spiral لأن كل حلقة تبدأ بتقييم صريح للمخاطر",
+          "en": "Spiral, because every loop begins with explicit risk assessment"
+        }
+      ],
+      "concept_id": "prototyping_change_avoidance",
+      "explanation": {
+        "ar": "يدعم Prototyping تجنب التغيير، إذ يوضح النموذج الأولي المتطلبات قبل الالتزام بكلفة الإنتاج العالية. ويفترض النموذج إمكانية تحديد المخاطر مسبقاً، وهو الشرط المذكور نفسه.",
+        "en": "Prototyping supports change avoidance: a throwaway prototype clarifies the requirements before high production costs are committed. The model assumes the risks can be identified up front, which is exactly the stated condition."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي فائدة للتطوير التدريجي تنتج عن تسليم الوظائف الأكثر إلحاحاً أولاً؟",
+        "en": "Which benefit of incremental development follows from delivering the most urgent functionality first?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يقيّم العميل النظام مبكراً، ولا تتغير إلا الإضافة الحالية",
+          "en": "The customer evaluates early, and only the current increment changes"
+        },
+        {
+          "ar": "يستلم العميل النظام كاملاً، ولا تُراجَع أي إضافة",
+          "en": "The customer receives the full system, and no increment is revised"
+        },
+        {
+          "ar": "يجمد الفريق كل المتطلبات، وتبقى الإضافات اللاحقة ثابتة",
+          "en": "The team freezes all requirements, and later increments stay fixed"
+        },
+        {
+          "ar": "يوثق الفريق كل مرحلة، ولا تُطلب أي إعادة عمل",
+          "en": "The team documents every phase, and no rework is ever required"
+        }
+      ],
+      "concept_id": "incremental_early_evaluation",
+      "explanation": {
+        "ar": "يسلّم التطوير التدريجي الوظائف الأهم أولاً، فيقيّم العميل النظام مبكراً، ولا يلزم تغيير سوى الإضافة الحالية إذا قصّرت عن المطلوب.",
+        "en": "Incremental development delivers the most important functionality first, so the customer can evaluate the system early and only the current increment must change if it falls short."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يجب إنجاز مشروع صغير خلال شهرين باستخدام أدوات آلية، بمتطلبات واضحة وعميل يعمل في الموقع نفسه. أي نموذج مصمم لهذا الظرف؟",
+        "en": "A small project must finish within two months using automated tools, with clear requirements and a customer working on site. Which model is designed for this setting?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "RAD بأدوات آلية وفرق ميزات متوازية",
+          "en": "RAD, with automated tools and parallel feature teams"
+        },
+        {
+          "ar": "Spiral بتقييم للمخاطر يتكرر في كل حلقة",
+          "en": "Spiral, with risk assessment repeated in every loop"
+        },
+        {
+          "ar": "Waterfall الكلاسيكي بموافقات مرحلية متتابعة",
+          "en": "Classical Waterfall, with sequential phase approvals"
+        },
+        {
+          "ar": "V-Model بتحقق مقترن بكل مرحلة تطوير",
+          "en": "V-Model, with verification paired to each development stage"
+        }
+      ],
+      "concept_id": "rad_preconditions",
+      "explanation": {
+        "ar": "يفترض RAD متطلبات واضحة ومشروعاً صغيراً أو متوسطاً يمكن إنجازه في شهرين إلى ثلاثة، وعميلاً يشارك بفعالية وفريقاً في موقع واحد، مع أدوات آلية وفرق ميزات متوازية.",
+        "en": "RAD assumes clear requirements, a small or medium project completable in two to three months, an actively participating customer, and a co-located team, supported by automated tools and parallel feature teams."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "أسس الذكاء الاصطناعي: الوكلاء والبيئات والمهام — النموذج ب",
+    "en": "AI Foundations: Agents, PEAS & Task Environments — Model B"
+  },
+  "quiz_id": "Quiz_Ch01_ModelB_AI_Foundations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "في كتاب AIMA، يُوصف سلوك الوكيل صورياً بدالة تربط...",
+        "en": "In AIMA, an agent's behaviour is formally described by a function that maps..."
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حالات البيئة بالأهداف",
+          "en": "environment states to goals"
+        },
+        {
+          "ar": "المكافآت بسياسات الفعل",
+          "en": "rewards to action policies"
+        },
+        {
+          "ar": "الأفعال بتسلسلات الإدراك",
+          "en": "actions to percept sequences"
+        },
+        {
+          "ar": "تسلسلات الإدراك بالأفعال",
+          "en": "percept sequences to actions"
+        }
+      ],
+      "concept_id": "agent_function_definition",
+      "explanation": {
+        "ar": "تُعرَّف دالة الوكيل بأنها ربط تاريخ الإدراك بفعل واحد، وبرنامج الوكيل هو التنفيذ الفعلي لهذه الدالة. أما الربط المعكوس وربط الحالات بالأهداف وربط المكافآت بالسياسات فتصف مكوّنات أخرى وليست دالة الوكيل.",
+        "en": "The agent function is defined as a mapping from the history of percepts to an action, and the agent program is the concrete implementation of that function. The reversed mapping, state-to-goal mapping and reward-to-policy mapping describe other components, not the agent function."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مكوّن في مواصفة PEAS يسمّي الأجهزة التي يغيّر الوكيل بها بيئته؟",
+        "en": "Which PEAS component names the devices through which the agent changes its environment?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مقاييس الأداء التي تقيّم الجولة",
+          "en": "Performance measures that score a run"
+        },
+        {
+          "ar": "المشغّلات التي تغيّر البيئة",
+          "en": "Actuators that change the environment"
+        },
+        {
+          "ar": "البيئات التي تقيّد المهمة",
+          "en": "Environments that constrain the task"
+        },
+        {
+          "ar": "المجسّات التي تقرأ البيئة",
+          "en": "Sensors that read the environment"
+        }
+      ],
+      "concept_id": "peas_actuators",
+      "explanation": {
+        "ar": "تفصل مواصفة PEAS بين معيار النجاح والسياق ووسيلة الفعل ووسيلة الإدراك. فالمجسّات تزوّد الوكيل بالمدركات، أما المشغّلات فهي المؤثرات التي تعدّل البيئة، بينما تقيّم مقاييس الأداء النتائج والبيئة هي مجال عمل الوكيل.",
+        "en": "PEAS separates what matters for success, the setting, the means of acting, and the means of perceiving. Sensors supply percepts to the agent, while actuators are the effectors that modify the environment; performance measures score outcomes and the environment is what the agent operates in."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "نظام رؤية يصنّف كل قطعة على حزام ناقل باستقلال تام عن القطع السابقة. أفضل وصف لبيئة مهمته أنها...",
+        "en": "A vision system classifies each part on a conveyor belt independently of all earlier parts. Its task environment is best described as..."
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ديناميكية، لأن الحزام لا يتوقف عن الحركة",
+          "en": "dynamic, because the belt never stops moving"
+        },
+        {
+          "ar": "متتابعة، لأن القطع تصل بترتيب ثابت",
+          "en": "sequential, because parts arrive in a fixed order"
+        },
+        {
+          "ar": "مقطعية، لأن كل قرار يُقيَّم بمفرده",
+          "en": "episodic, because each decision is scored alone"
+        },
+        {
+          "ar": "مستمرة، لأن أشكال القطع تتغيّر بحرية",
+          "en": "continuous, because part shapes vary freely"
+        }
+      ],
+      "concept_id": "episodic_vs_sequential",
+      "explanation": {
+        "ar": "في البيئة المقطعية episodic تعتمد جودة كل قرار على الحلقة نفسها فقط، وهذا ما يحدث عند الحكم على كل قطعة منفردة. أما ترتيب الوصول وحركة الحزام وتنوع الأشكال فلا تجعل المهمة متتابعة أو ديناميكية أو مستمرة بحد ذاتها.",
+        "en": "In an episodic environment the quality of each decision depends only on that episode, which is exactly the case when parts are judged one by one. Arrival order, belt motion and shape variety do not by themselves make a task sequential, dynamic or continuous."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يحتاج الوكيل الانعكاسي القائم على النموذج إلى حالة داخلية أساساً لأن...",
+        "en": "A model-based reflex agent needs an internal state mainly because..."
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "البيئة جزئية الملاحظة فقط",
+          "en": "the environment is only partially observable"
+        },
+        {
+          "ar": "إشارة المكافأة تصل بعد كل فعل",
+          "en": "the reward signal arrives after every action"
+        },
+        {
+          "ar": "مجموعة الأفعال أكبر من أن تُحصى",
+          "en": "the action set is too large to enumerate"
+        },
+        {
+          "ar": "اختبار الهدف لا يمكن كتابته برمجياً",
+          "en": "the goal test cannot be written as code"
+        }
+      ],
+      "concept_id": "model_based_reflex_agent",
+      "explanation": {
+        "ar": "عندما لا تكشف المدركات كامل حالة العالم، يلزم الوكيل أن يتتبّع الجزء غير الملاحَظ عبر نموذج داخلي يحدّثه بعد كل إدراك. أما توقيت المكافأة وحجم مجموعة الأفعال وتعقيد اختبار الهدف فلا تستلزم بحد ذاتها نموذجاً للحالة.",
+        "en": "When percepts do not reveal the whole world state, the agent must keep track of the unobserved part through an internal model and update it after each percept. Reward timing, action-set size and goal-test complexity do not by themselves require a state model."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مكوّن في الوكيل المتعلّم يحكم على جودة أداء الوكيل ويقدّم التغذية الراجعة؟",
+        "en": "Which component of a learning agent judges how well the agent is performing and supplies feedback?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الناقد، الذي يغذّي الأداء راجعاً",
+          "en": "The critic, which feeds back performance"
+        },
+        {
+          "ar": "عنصر الأداء، الذي يختار الأفعال",
+          "en": "The performance element, which selects actions"
+        },
+        {
+          "ar": "عنصر التعلّم، الذي يعيد تصميم الأجزاء",
+          "en": "The learning element, which redesigns parts"
+        },
+        {
+          "ar": "مولّد المسائل، الذي يقترح الأفعال",
+          "en": "The problem generator, which suggests actions"
+        }
+      ],
+      "concept_id": "learning_agent_components",
+      "explanation": {
+        "ar": "يقارن الناقد المدركات بمعيار أداء ويبلّغ عن مستوى الوكيل، ويستفيد عنصر التعلّم من هذه التغذية الراجعة لتحسين المكوّنات الأخرى. أما عنصر الأداء فيتصرّف، وعنصر التعلّم يعدّل المكوّنات، ومولّد المسائل يقترح أفعالاً استكشافية.",
+        "en": "The critic compares the percepts with a performance standard and reports how the agent is doing, and the learning element uses that feedback to improve the other components. The performance element acts, the learning element modifies, and the problem generator proposes exploratory actions."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. سيف علي السعيدي",
+    "en": "Prof. Dr. Saif Ali Al-Saidi"
+  },
+  "subject_id": "06_Artificial_Intelligence",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الذكاء الاصطناعي",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

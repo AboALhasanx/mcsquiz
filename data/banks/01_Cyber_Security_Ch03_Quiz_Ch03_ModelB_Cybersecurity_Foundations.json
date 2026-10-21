@@ -1,0 +1,500 @@
+{
+  "topic": {
+    "ar": "أسس الأمن السيبراني: ثلاثية CIA وتقييم المخاطر — النموذج ب",
+    "en": "Cybersecurity Foundations — Model B"
+  },
+  "quiz_id": "Quiz_Ch03_ModelB_Cybersecurity_Foundations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "وفق التطور التاريخي للأمن السيبراني، أي حقبة أدخلت أولاً مفاهيم مثل التهديدات المتقدمة المستمرة وبرمجيات الفدية وهجمات إنترنت الأشياء و Zero Trust؟",
+        "en": "According to the historical evolution of cybersecurity, which era first introduced concepts such as APTs, ransomware, IoT attacks and Zero Trust?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "من 2010 إلى الآن، مدفوعةً بتطور الجهات المهاجمة المتقدمة لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "The 2010s to the present, driven by evolving advanced threat actors for that specific component in the standard reference model."
+        },
+        {
+          "ar": "الستينيات، مع شبكة ARPANET والحوسبة المركزية Mainframe لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "The 1960s, together with ARPANET and mainframe computing for that specific component in the standard reference model."
+        },
+        {
+          "ar": "الثمانينيات والتسعينيات، مع ظهور الفيروسات والديدان وأدوات مكافحة الفيروسات وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "The 1980s-1990s, with the emergence of viruses, worms and antivirus tools in the standard reference model for that specific component."
+        },
+        {
+          "ar": "الألفينيات، عندما صارت التجارة الإلكترونية والمصرفية الرقمية منتشرة كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً.",
+          "en": "The 2000s, when e-commerce and online banking became mainstream as formally defined in the material for that specific component."
+        }
+      ],
+      "concept_id": "cyber_evolution_timeline",
+      "explanation": {
+        "ar": "الجدول الزمني قسم المراحل: الستينيات مع ARPANET، الثمانينيات-التسعينيات مع الفيروسات والديدان، الألفينيات مع التجارة الإلكترونية، ومن 2010 إلى الآن ظهرت APT و Ransomware و IoT و AI و Zero Trust. فالخيار الصحيح هو المرحلة الأخيرة.",
+        "en": "الجدول الزمني قسم المراحل: الستينيات مع ARPANET، الثمانينيات-التسعينيات مع الفيروسات والديدان، الألفينيات مع التجارة الإلكترونية، ومن 2010 إلى الآن ظهرت APT و Ransomware و IoT و AI و Zero Trust. فالخيار الصحيح هو المرحلة الأخيرة."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تذكر بشكل صحيح المجالات الستة الأساسية للأمن السيبراني كما وردت في المحاضرة؟",
+        "en": "Which set correctly lists the six key cybersecurity domains presented in the lecture?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "السرية، والسلامة، والتوفر، والمصادقة، وعدم الإنكار في ظروف التشغيل المعتادة.",
+          "en": "Confidentiality, Integrity, Availability, Authentication and Non-repudiation under the usual operating assumptions."
+        },
+        {
+          "ar": "الشبكات، والتطبيقات، والسحابة، وإنترنت الأشياء، والموبايل، وأنظمة التحكم الصناعي كما ورد تعريفه رسمياً في المادة.",
+          "en": "Network, Application, Cloud, IoT, Mobile and Industrial Control Systems as formally defined in the material."
+        },
+        {
+          "ar": "التشفير، وجدار الحماية، ومكافحة الفيروسات، والتجزئة، والشبكة الافتراضية، والتحكم بالوصول وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "Encryption, Firewall, Antivirus, Hashing, VPN and Access Control in the standard reference model for that specific component."
+        },
+        {
+          "ar": "البرمجيات الخبيثة، والتصيد، والتهديد الداخلي، والتهديد المتقدم، ودفاع الشبكات الخبيثة وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "Malware, Phishing, Insider Threat, APT and Botnet defence in the standard reference model for that specific component."
+        }
+      ],
+      "concept_id": "key_domains_six",
+      "explanation": {
+        "ar": "المجالات الستة هي: Network (firewalls, IDS/IPS) · Application (secure coding, OWASP) · Cloud (encryption, IAM, virtualization) · IoT (lightweight encryption, anomaly detection) · Mobile (sandboxing) · ICS. وهي قابلة للتوسّع (مثل AI Security وSupply-Chain Security).",
+        "en": "المجالات الستة هي: Network (firewalls, IDS/IPS) · Application (secure coding, OWASP) · Cloud (encryption, IAM, virtualization) · IoT (lightweight encryption, anomaly detection) · Mobile (sandboxing) · ICS. وهي قابلة للتوسّع (مثل AI Security وSupply-Chain Security)."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "نظام سجلات طبية يجب أن يضمن عدم قدرة الموظفين غير المصرّح لهم على قراءة بيانات المرضى. أي ركن من ثالوث CIA ينطبق، وما تقنياته؟",
+        "en": "A medical records system must ensure that patient data cannot be read by unauthorised staff. Under the CIA triad, which pillar applies and which techniques belong to it?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التوفر (التكرار الاحتياطي، موازنة الحمل، صد هجمات الإغراق) وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "Availability (redundancy, load balancing, DDoS mitigation) in the standard reference model for that specific component in the standard reference model."
+        },
+        {
+          "ar": "عدم الإنكار (شهادات المفتاح العام وسجلات التدقيق الموقّعة) في ظروف التشغيل المعتادة كما ورد تعريفه رسمياً في المادة.",
+          "en": "Non-repudiation (public-key certificates and signed audit trails) under the usual operating assumptions as formally defined in the material."
+        },
+        {
+          "ar": "السلامة (التجزئة SHA-256، التوقيعات الرقمية، إدارة الإصدارات) وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "Integrity (hashing SHA-256, digital signatures, version control) in the standard reference model for that specific component in the standard reference model."
+        },
+        {
+          "ar": "السرية (التشفير، ضوابط الوصول، الشبكات الافتراضية) كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "Confidentiality (encryption, access controls, VPNs) as formally defined in the material for that specific component in the standard reference model."
+        }
+      ],
+      "concept_id": "cia_confidentiality_tech",
+      "explanation": {
+        "ar": "منع الوصول غير المصرّح به للبيانات = ركن السرية (Confidentiality)، وتقنياته في المعادلة: encryption · access controls · VPNs. السلامة تخصّ عدم التعديل، والتوفر يخصّ الاتاحة، وعدم الإنكار ليس ركناً من الثالوث.",
+        "en": "منع الوصول غير المصرّح به للبيانات = ركن السرية (Confidentiality)، وتقنياته في المعادلة: encryption · access controls · VPNs. السلامة تخصّ عدم التعديل، والتوفر يخصّ الاتاحة، وعدم الإنكار ليس ركناً من الثالوث."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "بوابة تسجيل جامعية تنهار بالضبط وقت التسجيل ولا يستطيع آلاف الطلاب الدخول. أي ركن تأثر، وما الضوابط الأفضل لمنع تكراره؟",
+        "en": "A university registration portal crashes exactly during enrollment and thousands of students cannot log in. Which pillar is affected and which controls would best prevent recurrence?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدم الإنكار، ويُعالج بتسجيل كل محاولة تسجيل مع طوابع زمنية.",
+          "en": "Non-repudiation, fixed by logging every registration attempt with a timestamp."
+        },
+        {
+          "ar": "السلامة، وتُعالَج بتجزئة سجلات الطلبة وإضافة توقيعات رقمية.",
+          "en": "Integrity, fixed by hashing student records and adding digital signatures."
+        },
+        {
+          "ar": "التوفر، ويُعالَج بالتكرار الاحتياطي وموازنة الحمل وصد هجمات الإغراق.",
+          "en": "Availability, fixed by redundancy, load balancing and DDoS mitigation."
+        },
+        {
+          "ar": "السرية، وتُعالَج بتدوير مفاتيح التشفير وتضييق صلاحيات الوصول.",
+          "en": "Confidentiality, fixed by rotating encryption keys and narrowing access rights."
+        }
+      ],
+      "concept_id": "cia_availability_tech",
+      "explanation": {
+        "ar": "النظام لم يكن متاحاً وقت الحاجة = انتهاك التوفر (Availability). الحل طويل المدى: redundancy (سيرفرات احتياطية) + load balancing لتوزيع الحمل + DDoS mitigation لو كان السبب هجوم إغراق.",
+        "en": "النظام لم يكن متاحاً وقت الحاجة = انتهاك التوفر (Availability). الحل طويل المدى: redundancy (سيرفرات احتياطية) + load balancing لتوزيع الحمل + DDoS mitigation لو كان السبب هجوم إغراق."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "بالنسبة لدفتر أستاذ مصرفي أساسي، أي ركن من CIA يحمل أعلى وزن β في دالة المنفعة، ولماذا؟",
+        "en": "For a core banking ledger, which CIA pillar carries the highest weight β in the utility function, and why?"
+      },
+      "bloom": "Evaluate",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "السرية، لأن الجهات التنظيمية تفحص قوة التشفير كل ربع سنة.",
+          "en": "Confidentiality, because regulators inspect encryption strength every quarter."
+        },
+        {
+          "ar": "التوفر، لأن توقف الخمس دقائق يكلف المصرف بعض العملاء.",
+          "en": "Availability, because a five-minute outage would cost the bank some customers."
+        },
+        {
+          "ar": "السلامة، لأن تغيير رقم الحساب أو الرصيد يدمّر الثقة بشكل لا يُعوَّض.",
+          "en": "Integrity, because altering an account number or balance destroys trust irrecoverably."
+        },
+        {
+          "ar": "السرية، لأن تسريب بيانات الحسابات يحمل أشد عقوبة تنظيمية.",
+          "en": "Confidentiality, because leaked account data carries the largest regulatory penalty."
+        }
+      ],
+      "concept_id": "banking_integrity_weight",
+      "explanation": {
+        "ar": "في المصارف يكون ركن السلامة (Integrity, β) هو الأعلى وزناً؛ لأن تحويل الأموال أو تعديل الأرصدة يسبب كارثة تصفية وانهيار ثقة لا يمكن تعويضه بسهولة — بينما التوقف المؤقت خطير لكنه أقل فتكاً من تلاعب مالي.",
+        "en": "في المصارف يكون ركن السلامة (Integrity, β) هو الأعلى وزناً؛ لأن تحويل الأموال أو تعديل الأرصدة يسبب كارثة تصفية وانهيار ثقة لا يمكن تعويضه بسهولة — بينما التوقف المؤقت خطير لكنه أقل فتكاً من تلاعب مالي."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "يُشن هجوم إغراق واسع من آلاف الكاميرات والراوترات المنزلية المخطوفة بكلمات سر افتراضية. أي نوع تهديد والمثال المسمّى الذي تربطه المحاضرة بهذا؟",
+        "en": "A large-scale DDoS is launched from thousands of hijacked home cameras and routers with default passwords. Which threat type and named example does the lecture associate with this?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "هجمات إنترنت الأشياء عبر شبكة بوت نت، والمثال الكلاسيكي هو Mirai في ظروف التشغيل المعتادة كما ورد تعريفه رسمياً في المادة.",
+          "en": "IoT Attacks through a botnet, the textbook example being Mirai under the usual operating assumptions as formally defined in the material."
+        },
+        {
+          "ar": "التصيد الاحتيالي، الذي يجمع بيانات الدخول عبر رسائل بريد خادعة لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "Phishing, which harvests credentials through deceptive email messages for that specific component in the standard reference model."
+        },
+        {
+          "ar": "التهديد الداخلي، ويكون عادةً من موظف ساخط يملك صلاحية شرعية كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً.",
+          "en": "Insider Threat, typically caused by a disgruntled employee with legitimate access as formally defined in the material for that specific component."
+        },
+        {
+          "ar": "التهديد المتقدم المستمر، وهو تسلل خفي طويل المدى مدعوم من دولة كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً.",
+          "en": "Advanced Persistent Threat, a state-sponsored long-term stealthy intrusion as formally defined in the material for that specific component."
+        }
+      ],
+      "concept_id": "iot_botnet_mirai",
+      "explanation": {
+        "ar": "الأجهزة المخترقة (IoT) تُربط في شبكة robots واحدة لشن هجوم واحد، والمثال المسمّى بالمحاضرة هو Mirai. الشرح: Mirai يخترق كاميرات/راوترات ضعيفة كلمة السر ثم يوجّهها بهجوم ضخم.",
+        "en": "الأجهزة المخترقة (IoT) تُربط في شبكة robots واحدة لشن هجوم واحد، والمثال المسمّى بالمحاضرة هو Mirai. الشرح: Mirai يخترق كاميرات/راوترات ضعيفة كلمة السر ثم يوجّهها بهجوم ضخم."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما هي صيغة مقياس سطح الهجوم الصحيحة من المحاضرة، ولماذا يُستخدم الضرب بدل الجمع؟",
+        "en": "Which is the correct attack-surface metric formula from the lecture, and why is multiplication used rather than addition?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "AS = Σ(Eⱼ + Vⱼ + Aⱼ)، لأن الجمع يجمع كل العوامل المساهمة في ظروف التشغيل المعتادة.",
+          "en": "AS = Σ(Eⱼ + Vⱼ + Aⱼ), because addition captures every contributing factor under the usual operating assumptions."
+        },
+        {
+          "ar": "AS = Σ(Eⱼ · Vⱼ · Aⱼ)، لأن العوامل الثلاثة يجب أن تتوافر معاً حتى يوجد الخطر في ظروف التشغيل المعتادة.",
+          "en": "AS = Σ(Eⱼ · Vⱼ · Aⱼ), because all three factors must be present together for a risk to exist under the usual operating assumptions."
+        },
+        {
+          "ar": "AS = Σ(Eⱼ · Vⱼ)، لأن قيمة الأصل لا علاقة لها بالتعرّض للهجوم وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "AS = Σ(Eⱼ · Vⱼ), because asset value is unrelated to attack exposure in the standard reference model for that specific component."
+        },
+        {
+          "ar": "AS = Σ(Vⱼ · Aⱼ)، لأن عدد نقاط الدخول لا يهم وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "AS = Σ(Vⱼ · Aⱼ), because the number of entry points does not matter in the standard reference model for that specific component."
+        }
+      ],
+      "concept_id": "attack_surface_equation",
+      "explanation": {
+        "ar": "الصيغة AS = Σ(Eⱼ·Vⱼ·Aⱼ). الضرب مقصود: لو أي عامل = صفر (ماكو نقطة دخول، أو ماكو ثغرة، أو ماكو قيمة) فالناتج صفر. لو كانت جمع، السيرفر المحصّن (V=0) كان يعطي ناتج كبير — وهذا منطقياً غلط.",
+        "en": "الصيغة AS = Σ(Eⱼ·Vⱼ·Aⱼ). الضرب مقصود: لو أي عامل = صفر (ماكو نقطة دخول، أو ماكو ثغرة، أو ماكو قيمة) فالناتج صفر. لو كانت جمع، السيرفر المحصّن (V=0) كان يعطي ناتج كبير — وهذا منطقياً غلط."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "خادم مكشوف عليه 12 خدمة مفتوحة لكن بلا أي ثغرة معروفة. ماذا يتوقّع نموذج سطح الهجوم، ولماذا؟",
+        "en": "A server is exposed with 12 open services but has zero known vulnerabilities. What does the attack-surface model predict, and why?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "AS غير معرّفة، لأن النموذج لا يتعامل مع خادم بلا ثغرات لذلك المكوّن تحديداً.",
+          "en": "AS is undefined, because the model cannot handle a zero-vulnerability host for that specific component."
+        },
+        {
+          "ar": "AS تساوي قيمة الأصل وحدها، لأن V تُحذف من عملية الجمع في ظروف التشغيل المعتادة.",
+          "en": "AS equals the asset value alone, since V drops out of the addition under the usual operating assumptions."
+        },
+        {
+          "ar": "AS = 0، لأن V = 0 يجعل حاصل الضرب صفراً بغض النظر عن E و A للنظام المتأثر فقط.",
+          "en": "AS = 0, because with V = 0 the product collapses to zero regardless of E and A for the affected system only."
+        },
+        {
+          "ar": "قيمة AS عالية جداً، لأن كثرة الخدمات المفتوحة تغلب المعادلة دائماً وفق النموذج المرجعي القياسي.",
+          "en": "A very high AS, because many open services always dominate the formula in the standard reference model."
+        }
+      ],
+      "concept_id": "attack_surface_zero_factor",
+      "explanation": {
+        "ar": "لأن المعادلة ضرب، أي عامل صفر يُصفّر الناتج. الخادم المحصّن (V=0) ليس خطراً — وهذا بالضبط سبب اختيار الضرب بدل الجمع. لو كانت جمع، كان المحصّن يعطي ناتج كبير وهذا خطأ منطقي.",
+        "en": "لأن المعادلة ضرب، أي عامل صفر يُصفّر الناتج. الخادم المحصّن (V=0) ليس خطراً — وهذا بالضبط سبب اختيار الضرب بدل الجمع. لو كانت جمع، كان المحصّن يعطي ناتج كبير وهذا خطأ منطقي."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي قيمة توفّر Vⱼ في معادلة سطح الهجوم، وما مجالها الصحيح وفئات خطورتها؟",
+        "en": "Which value supplies Vⱼ in the attack-surface equation, and what is its valid range and severity bands?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تكلفة استبدال الأصل، وتتراوح من 0 إلى 100 لأغراض التطبيع وفق النموذج المرجعي القياسي.",
+          "en": "The asset replacement cost, ranging from 0 to 100 for normalisation in the standard reference model."
+        },
+        {
+          "ar": "درجة CVSS، وتتراوح من 0.0 إلى 10.0 (منخفضة، متوسطة، عالية، حرجة) لذلك المكوّن تحديداً.",
+          "en": "The CVSS score, ranging from 0.0 to 10.0 (Low, Medium, High, Critical) for that specific component."
+        },
+        {
+          "ar": "عدد المنافذ المفتوحة، ويتراوح من 0 إلى 65,535 وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "The number of open ports, ranging from 0 to 65,535 in the standard reference model for that specific component."
+        },
+        {
+          "ar": "تقدير الخسارة المالية السنوية، ويُعبَّر عنه بآلاف الدولارات وفق النموذج المرجعي القياسي.",
+          "en": "The annual financial loss estimate, expressed in thousands of dollars in the standard reference model."
+        }
+      ],
+      "concept_id": "cvss_severity_scale",
+      "explanation": {
+        "ar": "Vⱼ = شدة الثغرة، وتُؤخذ من CVSS (Common Vulnerability Scoring System) من 0.0 إلى 10.0: Low (0.1-3.9) · Medium (4.0-6.9) · High (7.0-8.9) · Critical (9.0-10.0).",
+        "en": "Vⱼ = شدة الثغرة، وتُؤخذ من CVSS (Common Vulnerability Scoring System) من 0.0 إلى 10.0: Low (0.1-3.9) · Medium (4.0-6.9) · High (7.0-8.9) · Critical (9.0-10.0)."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما هي نماذج تقييم المخاطر الثلاثة المذكورة في المحاضرة، مع توسّعها الصحيح؟",
+        "en": "Which three risk-assessment models are named in the lecture, with their correct expansions?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "OCTAVE (محرك مفتوح لتحليل التهديدات والثغرات)، FAIR (إطار لإعداد تقارير سلامة الأصول)، NIST RMF (نموذج فحص الاختراق الشبكي).",
+          "en": "OCTAVE (Open Cyber Threat Analysis and Vulnerability Engine), FAIR (Framework for Asset Integrity Reporting), NIST RMF (Network Intrusion Scanning Model)."
+        },
+        {
+          "ar": "GDPR و HIPAA و PCI-DSS، كنماذج الامتثال الثلاثة الأساسية في ظروف التشغيل المعتادة كما ورد تعريفه رسمياً في المادة.",
+          "en": "GDPR, HIPAA and PCI-DSS, as the three principal compliance models under the usual operating assumptions as formally defined in the material."
+        },
+        {
+          "ar": "COBIT و COSO و ITIL، كأطر الحوكمة الرئيسية الثلاثة وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "COBIT, COSO and ITIL, as the three primary governance frameworks in the standard reference model for that specific component in the standard reference model."
+        },
+        {
+          "ar": "OCTAVE (تقييم التهديدات والأصول والثغرات الحرجة تشغيلياً)، FAIR (تحليل عوامل مخاطر المعلومات)، NIST RMF (إطار إدارة المخاطر).",
+          "en": "OCTAVE (Operationally Critical Threat, Asset and Vulnerability Evaluation), FAIR (Factor Analysis of Information Risk), NIST RMF (Risk Management Framework)."
+        }
+      ],
+      "concept_id": "risk_assessment_models",
+      "explanation": {
+        "ar": "النماذج الثلاثة وتوسّعها الحرفي: OCTAVE = Operationally Critical Threat, Asset, and Vulnerability Evaluation · FAIR = Factor Analysis of Information Risk · NIST RMF = Risk Management Framework. الخيار الثاني يحرّف التوسّع، والثالث والرابع أطر حوكمة/امتثال لا نماذج تقييم مخاطر.",
+        "en": "النماذج الثلاثة وتوسّعها الحرفي: OCTAVE = Operationally Critical Threat, Asset, and Vulnerability Evaluation · FAIR = Factor Analysis of Information Risk · NIST RMF = Risk Management Framework. الخيار الثاني يحرّف التوسّع، والثالث والرابع أطر حوكمة/امتثال لا نماذج تقييم مخاطر."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي مجموعة تربط بشكل صحيح أطر السياسات الثلاثة المذكورة في المحاضرة بالجهات المُصدِرة لها؟",
+        "en": "Which set correctly matches the three policy frameworks named in the lecture to their issuing bodies?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "GDPR - الاتحاد الأوروبي، HIPAA - الولايات المتحدة، NIST/ISO 27001 - معايير دولية في ظروف التشغيل المعتادة.",
+          "en": "GDPR - European Union, HIPAA - United States, NIST/ISO 27001 - international standards under the usual operating assumptions."
+        },
+        {
+          "ar": "GDPR - الولايات المتحدة، HIPAA - الاتحاد الأوروبي، NIST/ISO 27001 - مجالس الشرق الأوسط في ظروف التشغيل المعتادة.",
+          "en": "GDPR - United States, HIPAA - European Union, NIST/ISO 27001 - Middle East councils under the usual operating assumptions."
+        },
+        {
+          "ar": "GDPR - الشرق الأوسط، HIPAA - الصين، NIST/ISO 27001 - الاتحاد الأفريقي في ظروف التشغيل المعتادة كما ورد تعريفه رسمياً في المادة.",
+          "en": "GDPR - Middle East, HIPAA - China, NIST/ISO 27001 - African Union under the usual operating assumptions as formally defined in the material."
+        },
+        {
+          "ar": "GDPR - الأمم المتحدة، HIPAA - الناتو، NIST/ISO 27001 - تحالف شركات خاص وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "GDPR - United Nations, HIPAA - NATO, NIST/ISO 27001 - private vendor consortium in the standard reference model for that specific component."
+        }
+      ],
+      "concept_id": "policies_frameworks",
+      "explanation": {
+        "ar": "GDPR (الاتحاد الأوروبي) لحماية البيانات والخصوصية · HIPAA (أمريكا) لحماية معلومات الرعاية الصحية · NIST/ISO 27001 معايير دولية. المنظورات: US ← NIST CSF · EU ← GDPR/ENISA · الشرق الأوسط ← مجالس الأمن السيبراني الوطنية.",
+        "en": "GDPR (الاتحاد الأوروبي) لحماية البيانات والخصوصية · HIPAA (أمريكا) لحماية معلومات الرعاية الصحية · NIST/ISO 27001 معايير دولية. المنظورات: US ← NIST CSF · EU ← GDPR/ENISA · الشرق الأوسط ← مجالس الأمن السيبراني الوطنية."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "مستشفى وبورصة يُقيَّمان بنفس دالة المنفعة U(C,I,A)=αC+βI+γA. المستشفى يرجّح α، والبورصة ترجّح I. ماذا يوضّح ذلك؟",
+        "en": "A hospital and a stock exchange are evaluated with the same utility function U(C,I,A)=αC+βI+γA. The hospital values α highest; the exchange values I highest. What does this demonstrate?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أن السرية هي الأهم عالمياً في كل الأنظمة دون استثناء لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي.",
+          "en": "That confidentiality is universally the most important pillar in all systems for that specific component in the standard reference model."
+        },
+        {
+          "ar": "أن قيم C و I و A يجب أن تكون غير متساوية دائماً حتى تصح الدالة كما ورد تعريفه رسمياً في المادة لذلك المكوّن تحديداً.",
+          "en": "That the values of C, I and A must always be unequal to make the function valid as formally defined in the material for that specific component."
+        },
+        {
+          "ar": "أن دالة المنفعة الواحدة باطلة ويجب التخلي عنها لذلك المكوّن تحديداً وفق النموذج المرجعي القياسي لذلك المكوّن تحديداً.",
+          "en": "That the single utility function is invalid and should be discarded for that specific component in the standard reference model for that specific component."
+        },
+        {
+          "ar": "أن الأوزان تعتمد على المجال، لأن كل نظام يرجّح أركاناً مختلفة للنظام المتأثر فقط في ظروف التشغيل المعتادة.",
+          "en": "That the weights are domain-dependent, since each system prioritises different pillars for the affected system only under the usual operating assumptions."
+        }
+      ],
+      "concept_id": "security_utility_function",
+      "explanation": {
+        "ar": "دالة المنفعة تبقى نفسها، لكن الأوزان α, β, γ تتغير حسب المجال: مستشفى ← السرية، بورصة/مصرف ← السلامة، طوارئ ← التوفر. فالاستنتاج أن الأوزان domain-dependent وليست ثابتة.",
+        "en": "دالة المنفعة تبقى نفسها، لكن الأوزان α, β, γ تتغير حسب المجال: مستشفى ← السرية، بورصة/مصرف ← السلامة، طوارئ ← التوفر. فالاستنتاج أن الأوزان domain-dependent وليست ثابتة."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "قاعدة الدكتورة تنص على أن الناتج إذا تجاوز 100 فهناك استثمار، وإذا قلّ عن 100 فلا استثمار. كيف تُفسَّر هذه القاعدة لأغراض الامتحان؟",
+        "en": "The doctor's rule states that if the equation result exceeds 100 there is investment; if below 100 there is not. How should this rule be interpreted for exam purposes?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كعتبة قرار: فوق 100 يعني الاستثمار الأمني مجدٍ؛ وتحتها يعني غير مجدٍ.",
+          "en": "As a decision threshold: above 100 means the security investment is worthwhile; below 100, it is not."
+        },
+        {
+          "ar": "كعتبة CVSS تشير إلى ثغرة حرجة فوق 100 كما ورد تعريفه رسمياً في المادة.",
+          "en": "As a CVSS threshold indicating a Critical vulnerability above 100 as formally defined in the material."
+        },
+        {
+          "ar": "كدليل على أن الإنفاق الأمني يعيد ربحاً يتجاوز 100% دائماً كما ورد تعريفه رسمياً في المادة.",
+          "en": "As proof that cybersecurity spending always returns a profit above 100% as formally defined in the material."
+        },
+        {
+          "ar": "كدرجة امتثال سنوية يجب أن تتجاوز 100 لاجتياز التدقيق وفق النموذج المرجعي القياسي.",
+          "en": "As a per-year compliance score that must exceed 100 to pass an audit in the standard reference model."
+        }
+      ],
+      "concept_id": "decision_threshold_100",
+      "explanation": {
+        "ar": "قاعدة الدكتورة: الناتج فوق 100 ← فيه استثمار؛ تحت 100 ← ما فيه استثمار. وتُفهم كعتبة قرار (decision threshold). ملاحظة: القاعدة تُسجَّل كما هي — كلامها هو المرجع ولا يُجادل به.",
+        "en": "قاعدة الدكتورة: الناتج فوق 100 ← فيه استثمار؛ تحت 100 ← ما فيه استثمار. وتُفهم كعتبة قرار (decision threshold). ملاحظة: القاعدة تُسجَّل كما هي — كلامها هو المرجع ولا يُجادل به."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "عميل مصرفي وجد 100,000 دولار ناقصة من حسابه؛ أثبت التحقيق أنه خلل برمجي، صلّحوه ورجع المبلغ. أي أركان CIA معنية، وبأي تقنيات؟",
+        "en": "A bank customer finds $100,000 missing from his account; investigation proves it was a software bug that was fixed and the money restored. Which CIA pillars are involved, and with which techniques?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "السرية فقط، لأن سجل الحساب تم الوصول إليه دون تخويل صريح فحسب.",
+          "en": "Only Confidentiality, since the account record was merely accessed without explicit approval."
+        },
+        {
+          "ar": "السلامة (التجزئة والتوقيعات الرقمية وإدارة الإصدارات) والتوفر (التكرار وموازنة الحمل).",
+          "en": "Integrity (hashing, digital signatures, version control) and Availability (redundancy, load balancing)."
+        },
+        {
+          "ar": "التوفر والأصالة فقط، دون أي مكوّن للسلامة في أي موضع من الحادثة.",
+          "en": "Availability and Authenticity alone, with no integrity component present anywhere in the incident."
+        },
+        {
+          "ar": "السرية (التشفير وضوابط الوصول والشبكات الافتراضية) مع عدم الإنكار فقط في الدفتر المتأثر.",
+          "en": "Confidentiality (encryption, access controls, VPNs) together with Non-repudiation only, in the affected ledger."
+        }
+      ],
+      "concept_id": "scenario_banking_glitch",
+      "explanation": {
+        "ar": "تغيّرت بياناته بغير وجه حق ← Integrity (hashing SHA-256, digital signatures, version control). والنظام بيه مشكلة ما اشتغل صح ← Availability (redundancy, load balancing, DDoS mitigation). مثال تدريب مباشر من الملزمة.",
+        "en": "تغيّرت بياناته بغير وجه حق ← Integrity (hashing SHA-256, digital signatures, version control). والنظام بيه مشكلة ما اشتغل صح ← Availability (redundancy, load balancing, DDoS mitigation). مثال تدريب مباشر من الملزمة."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "بمستشفى، صارت سجلات المرضى مرئية لموظف غير مصرّح له من قسم آخر؛ والسبب حساب موظف قديم لم يُعطَّل أبداً. أي ركن انتُهك، وكيف يُعالَج؟",
+        "en": "In a hospital, patient records became visible to an unauthorised staff member from another department; the cause was an old employee account that was never disabled. Which pillar is violated and how is it remediated?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "التوفر؛ ويُعالَج بإضافة سيرفرات احتياطية وموازنات حمل لذلك المكوّن تحديداً.",
+          "en": "Availability; remediated by adding redundant servers and load balancers for that specific component."
+        },
+        {
+          "ar": "السلامة؛ ويُعالَج بتجزئة سجلات المرضى وإضافة توقيعات رقمية لذلك المكوّن تحديداً.",
+          "en": "Integrity; remediated by hashing the patient records and adding digital signatures for that specific component."
+        },
+        {
+          "ar": "السرية؛ ويُعالَج بضوابط الوصول مع مراجعة دورية للحسابات وتعطيل غير المستخدم منها.",
+          "en": "Confidentiality; remediated by access controls plus periodic account review and deprovisioning."
+        },
+        {
+          "ar": "التوفر؛ ويُعالَج باستعادة السجلات من نسخة احتياطية معزولة في ظروف التشغيل المعتادة.",
+          "en": "Availability; remediated by restoring records from an air-gapped backup under the usual operating assumptions."
+        }
+      ],
+      "concept_id": "scenario_hospital_account",
+      "explanation": {
+        "ar": "بيانات المرضى انكشفت لغير المصرّح لهم ← Confidentiality (encryption, access controls, VPNs). السبب فشل ضبط الوصول (حساب قديم فعّال)، فيُعالَج بـ access controls + مراجعة دورية وتعطيل الحسابات. مثال تدريب مباشر من الملزمة (سيناريو المستشفى).",
+        "en": "بيانات المرضى انكشفت لغير المصرّح لهم ← Confidentiality (encryption, access controls, VPNs). السبب فشل ضبط الوصول (حساب قديم فعّال)، فيُعالَج بـ access controls + مراجعة دورية وتعطيل الحسابات. مثال تدريب مباشر من الملزمة (سيناريو المستشفى)."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-21T19:28:36Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
