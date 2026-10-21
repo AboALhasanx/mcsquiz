@@ -50,10 +50,11 @@ def run():
         page.wait_for_timeout(800)
         check('opening a quiz shows the start card',
               'hidden' not in (page.locator('#quiz-start-view').get_attribute('class') or ''))
+        start_card = page.locator('#quiz-start-view').inner_text()
         check('start card counts the questions',
-              (page.locator('#start-questions-count').text_content() or '').strip() != '0 أسئلة')
+              'عدد الأسئلة' in start_card and '0 أسئلة' not in start_card)
         check('start card estimates the time',
-              'دقيقة' in (page.locator('#start-estimated-time').text_content() or ''))
+              'الوقت المقدّر' in start_card and 'دقيقة' in start_card)
 
         check('no runtime errors', not errors, errors[:2])
     finally:

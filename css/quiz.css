@@ -3177,17 +3177,6 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 .detail-value.is-good { color: #34d399; }
 .detail-value.is-warn { color: #f59e0b; }
 
-/* Difficulty distribution bar */
-.difficulty-block {
-    margin: 0.75rem 0 0;
-    padding: 0.6rem 0.6rem 0.5rem;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
-    background: var(--bg-surface);
-    text-align: right;
-    direction: rtl;
-}
-
 .difficulty-head {
     display: flex;
     align-items: center;
@@ -3435,4 +3424,62 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 
 .detail-value .material-link:hover {
     border-bottom-style: solid;
+}
+
+/* Label-less detail tile (the material link) */
+.detail-item.no-label {
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+}
+
+.detail-item.no-label .detail-value {
+    font-size: 0.86rem;
+}
+
+/* Language switch: Arabic <-> English */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    border-radius: 999px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+}
+
+.lang-opt {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+    padding: 0.34rem 0.5rem;
+    min-width: 30px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lang-opt.active {
+    background: var(--accent);
+    color: #12141a;
+}
+
+.lang-opt:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+/* Start button: compact, hugging its content (no fat padding) */
+.quiz-start-card .start-btn {
+    width: auto;
+    max-width: none;
+    min-width: 172px;
+    height: 46px;
+    padding: 0;
+    margin: 0.45rem auto 0;
+    border-radius: 999px;
+    gap: 0.45rem;
 }

@@ -106,7 +106,7 @@
       if (u.savedSubject) S.savedSubject = u.savedSubject;
     if (u.savedExpanded) S.savedExpanded = u.savedExpanded;
       if (u.savedChapter) S.savedChapter = u.savedChapter;
-      if (u.lang === 'ar' || u.lang === 'en' || u.lang === 'both') S.lang = u.lang;
+      if (u.lang === 'en' || u.lang === 'ar') S.lang = u.lang;
     } catch (e) {}
   }
 
@@ -225,11 +225,11 @@
   }
 
   function detailGridHtml(rows) {
-    return (rows || []).filter(Boolean).map((r) =>
-      '<div class="detail-item' + (r[2] === 'span2' ? ' span-2' : '') + '">' +
-        '<span class="detail-label">' + escapeHtml(r[0]) + '</span>' +
-        '<span class="detail-value ' + (r[3] || '') + '">' + r[1] + '</span>' +
-      '</div>').join('');
+    return (rows || []).filter(Boolean).map((r) => {
+      const label = r[0] ? '<span class="detail-label">' + escapeHtml(r[0]) + '</span>' : '';
+      return '<div class="detail-item' + (r[2] === 'span2' ? ' span-2' : '') + (r[0] ? '' : ' no-label') + '">' +
+        label + '<span class="detail-value ' + (r[3] || '') + '">' + r[1] + '</span></div>';
+    }).join('');
   }
 
   function attemptsFor(quizId) {
@@ -259,52 +259,18 @@
     const best = getBest(ch.quiz_id);
     const att = attemptsFor(ch.quiz_id);
     const rows = [];
-    rows.push(['المادة', escapeHtml(sub.subject_title)]);
-    rows.push(['المحاضرة', escapeHtml(chLabel(ch))]);
     rows.push(['عدد الأسئلة', escapeHtml(qCount(n))]);
     rows.push(['الوقت المقدّر', escapeHtml(Math.max(1, Math.round(n * 1.5)) + ' دقيقة')]);
     if (best) rows.push(['أفضل نتيجة', '<span class="is-good">' + Math.round(best.pct) + '%</span> <span class="muted">(' + escapeHtml(best.frac) + ')</span>']);
     else rows.push(['أفضل نتيجة', '<span class="muted">لم تبدأ بعد</span>']);
     rows.push(['عدد المحاولات', att.count ? escapeHtml(att.count + ' ' + (att.count === 1 ? 'محاولة' : 'محاولات')) : '<span class="muted">لا محاولات سابقة</span>']);
-    if (bank.semester_label) rows.push(['المستوى', escapeHtml(bank.semester_label)]);
-    if (bank.instructor_ar) rows.push(['المدرّس', escapeHtml(bank.instructor_ar)]);
+    if (bank.instructor_ar) rows.push(['دكتور المادة', escapeHtml(bank.instructor_ar), 'span2']);
     const material = bank.material_url || '';
     if (material) {
-      rows.push(['الملزمة', '<a class="material-link" href="' + escapeHtml(material) +
-        '" target="_blank" rel="noopener">افتح ملزمة الجابتر في مجموعة الملازم \u2197</a>', 'span2']);
+      rows.push([null, '<a class="material-link" href="' + escapeHtml(material) +
+        '" target="_blank" rel="noopener">اضغط هنا للانتقال للجابتر</a>', 'span2']);
     }
     return rows;
-  }
-
-  function renderDifficulty(prefix, bank) {
-    const block = $(prefix + '-difficulty');
-    if (!block) return;
-    const dist = (bank && bank._difficulty_distribution) || null;
-    if (!dist || !dist.planned_counts) { block.classList.add('hidden'); return; }
-    const counts = dist.planned_counts;
-    const total = Object.keys(counts).reduce((a, k) => a + (Number(counts[k]) || 0), 0);
-    if (!total) { block.classList.add('hidden'); return; }
-    block.classList.remove('hidden');
-    const scale = $(prefix + '-difficulty-scale');
-    if (scale) scale.textContent = Object.keys(counts).length + ' مستويات';
-    const bar = $(prefix + '-difficulty-bar');
-    if (bar) {
-      bar.innerHTML = Object.keys(counts).sort().map((k) => {
-        const c = Number(counts[k]) || 0;
-        if (!c) return '';
-        return '<span class="difficulty-seg" style="width:' + (c / total * 100).toFixed(2) + '%;background:' +
-          (DIFF_COLORS[k] || '#888') + '" title="' + escapeHtml((DIFF_LABELS[k] || k) + ': ' + c) + '"></span>';
-      }).join('');
-    }
-    const legend = $(prefix + '-difficulty-legend');
-    if (legend) {
-      legend.innerHTML = Object.keys(counts).sort().map((k) => {
-        const c = Number(counts[k]) || 0;
-        if (!c) return '';
-        return '<span class="difficulty-legend-item"><span class="difficulty-dot" style="background:' +
-          (DIFF_COLORS[k] || '#888') + '"></span>' + escapeHtml(DIFF_LABELS[k] || k) + ' (' + c + ')</span>';
-      }).join('');
-    }
   }
 
   function chLabel(ch) { return 'جابتر ' + ch.chapter_no; }
@@ -443,7 +409,6 @@
     topicEl.textContent = title;
     topicEl.setAttribute('dir', isRtlText(title) ? 'rtl' : 'ltr');
     $('info-sheet-list').innerHTML = detailGridHtml(bankDetailRows(sub, ch, bank));
-    renderDifficulty('info', bank);
     const startBtn = $('info-sheet-start');
     if (startBtn) startBtn.setAttribute('href', '#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id));
     openDrawer('quiz-info-drawer');
@@ -509,8 +474,10 @@
     const startTitle = $('start-quiz-title');
     startTitle.textContent = meta.topic;
     startTitle.setAttribute('dir', isRtlText(meta.topic) ? 'rtl' : 'ltr');
-    $('start-questions-count').textContent = qCount(pool.length);
-    $('start-estimated-time').textContent = Math.max(1, Math.round(pool.length * 1.5)) + ' دقيقة';
+    const startCount = $('start-questions-count');
+    if (startCount) startCount.textContent = qCount(pool.length);
+    const startTime = $('start-estimated-time');
+    if (startTime) startTime.textContent = Math.max(1, Math.round(pool.length * 1.5)) + ' دقيقة';
     // the pre-exam card carries every detail a student needs before committing
     const bank = meta.bank || null;
     const details = $('start-details');
@@ -519,7 +486,6 @@
         ? detailGridHtml(bankDetailRows({ subject_title: meta.subjectTitle }, { chapter_no: meta.chapterNo, quiz_id: meta.quizId }, bank))
         : '';
     }
-    renderDifficulty('start', bank);
     const note = $('start-note');
     if (note) {
       const att = attemptsFor(meta.quizId);
@@ -846,8 +812,6 @@
     $('session-timer').textContent = window.PortalAnalytics.fmtClock(s);
   }
 
-  function qText(q) { return S.lang === 'en' ? (q.question_en || q.question) : (q.question_ar || q.question); }
-  function qOpts(q) { return S.lang === 'en' ? (q.options_en || q.options) : (q.options_ar || q.options); }
   function qLetters() { return S.lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
 
   // Bilingual pairs for 'both' mode: [{t, lang}] — primary first.
@@ -872,21 +836,74 @@
     }).join('');
   }
 
+  // pick the candidate that really is in the wanted language (the banks carry
+  // both a canonical pair and app-facing aliases, and some are untranslated)
+  function pickAr() {
+    for (let i = 0; i < arguments.length; i++) {
+      const c = arguments[i];
+      if (typeof c === 'string' && c.trim() && AR_RE.test(c)) return c;
+    }
+    return '';
+  }
+  function pickEn() {
+    for (let i = 0; i < arguments.length; i++) {
+      const c = arguments[i];
+      if (typeof c === 'string' && c.trim() && !AR_RE.test(c)) return c;
+    }
+    return '';
+  }
+  function stemAr(q) { return pickAr(q.question_ar, q.text) || q.question_en || q.question || ''; }
+  function stemEn(q) { return pickEn(q.question_en, q.text_en) || q.question_ar || q.question || ''; }
+  function optsAr(q) {
+    const a = q.options_ar; const b = q.options;
+    if (Array.isArray(a) && a.length && AR_RE.test(String(a[0]))) return a;
+    if (Array.isArray(b) && b.length && AR_RE.test(String(b[0]))) return b;
+    return (Array.isArray(a) && a.length) ? a : (Array.isArray(b) ? b : []);
+  }
+  function optsEn(q) {
+    const a = q.options_en; const b = q.options;
+    if (Array.isArray(a) && a.length && !AR_RE.test(String(a[0]))) return a;
+    if (Array.isArray(b) && b.length && !AR_RE.test(String(b[0]))) return b;
+    return (Array.isArray(a) && a.length) ? a : (Array.isArray(b) ? b : []);
+  }
+  function explAr(q) { return pickAr(q.explanation_ar, q.explanation, q.explanation_en); }
+  function explEn(q) { return pickEn(q.explanation_en, q.explanation, q.explanation_ar); }
+
+  function syncLangButtons() {
+    document.querySelectorAll('.lang-opt').forEach((b) => {
+      const on = b.dataset.lang === S.lang;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.classList.toggle('active', on);
+    });
+  }
+
+  // The switch: Arabic <-> English for the question, the options and the
+  // explanation — in the quiz, in the saved questions and in the review.
+  function setLang(lang) {
+    S.lang = (lang === 'en') ? 'en' : 'ar';
+    try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
+    saveUI();
+    syncLangButtons();
+    try {
+      if (S.session && !$('quiz-view').classList.contains('hidden')) renderQuestion();
+      else if (S.session && S.lastResults && !$('results-view').classList.contains('hidden')) renderResults(S.lastResults);
+      else if (!$('saved-view').classList.contains('hidden')) renderSaved();
+    } catch (e) {}
+  }
+
   function stemPair(q) {
-    const ar = q.question_ar || q.question;
-    const en = q.question_en || q.question;
-    if (S.lang === 'en') return [{ t: en, lang: 'en' }];
-    if (S.lang === 'both' && en !== ar) return [{ t: ar, lang: 'ar' }, { t: en, lang: 'en' }];
-    return [{ t: ar, lang: 'ar' }];
+    if (S.lang === 'en') return [{ t: stemEn(q), lang: 'en' }];
+    return [{ t: stemAr(q), lang: 'ar' }];
   }
   function optsPair(q, i) {
-    const ar = (q.options_ar || q.options)[i];
-    const en = (q.options_en || q.options)[i];
-    if (S.lang === 'en') return [{ t: en, lang: 'en' }];
-    if (S.lang === 'both' && en !== ar) return [{ t: ar, lang: 'ar' }, { t: en, lang: 'en' }];
-    return [{ t: ar, lang: 'ar' }];
+    const ar = optsAr(q)[i] || '';
+    const en = optsEn(q)[i] || '';
+    if (S.lang === 'en') return [{ t: en || ar, lang: 'en' }];
+    return [{ t: ar || en, lang: 'ar' }];
   }
-  function explText(q) { return q.explanation_ar || q.explanation || q.explanation_en || ''; }
+  function explText(q) {
+    return S.lang === 'en' ? (explEn(q) || explAr(q)) : (explAr(q) || explEn(q));
+  }
   function lettersFor(lang) { return lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
 
   function renderQuestion() {
@@ -2972,14 +2989,10 @@
     $('drawer-overlay').addEventListener('click', closeDrawers);
     document.querySelectorAll('.filter-pill').forEach((p) => p.addEventListener('click', () => filterReview(p.dataset.filter)));
 
-    $('btn-lang-toggle').addEventListener('click', () => {
-      S.lang = S.lang === 'ar' ? 'en' : (S.lang === 'en' ? 'both' : 'ar');
-      document.documentElement.setAttribute('lang', S.lang === 'en' ? 'en' : 'ar');
-      saveUI();
-      if (S.session && !$('quiz-view').classList.contains('hidden')) renderQuestion();
-      else if (S.session && S.lastResults && !$('results-view').classList.contains('hidden')) renderResults(S.lastResults);
-      toast(S.lang === 'ar' ? 'العربية فقط' : (S.lang === 'en' ? 'English only' : 'عربي + English معاً'));
+    document.querySelectorAll('.lang-opt').forEach((b) => {
+      b.addEventListener('click', () => setLang(b.dataset.lang));
     });
+    syncLangButtons();
     $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
 
     const toggleTheme = () => {
@@ -3049,7 +3062,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v53';
+  const SHELL_VERSION = 'v54';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

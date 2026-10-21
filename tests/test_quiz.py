@@ -1,5 +1,6 @@
 """Quiz session: no skip, answer → explanation → results, review cards."""
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -31,18 +32,18 @@ def run():
         check('blocked next explains itself',
               page.locator('.portal-toast').count() >= 1)
 
-        # language toggle cycles ar -> en -> both -> ar (letters prove the mode)
+        # language switch: Arabic <-> English (letters prove the mode)
         letters = lambda: (page.locator('.option-letter').first.text_content() or '').strip()
         check('question starts in Arabic mode', letters() == 'أ', letters())
-        page.evaluate('() => document.querySelector("#btn-lang-toggle").click()')  # ar -> en
+        page.evaluate('() => document.querySelector("#header-session-view .lang-opt[data-lang=\'en\']").click()')
         page.wait_for_timeout(250)
-        check('toggle switches to English mode', letters() == 'A', letters())
-        page.evaluate('() => document.querySelector("#btn-lang-toggle").click()')  # en -> both
+        check('the switch turns the question into English', letters() == 'A', letters())
+        check('the English stem is used',
+              not re.search(r'[\u0600-\u06FF]', page.locator('#question-text').text_content() or ''),
+              (page.locator('#question-text').text_content() or '')[:60])
+        page.evaluate('() => document.querySelector("#header-session-view .lang-opt[data-lang=\'ar\']").click()')
         page.wait_for_timeout(250)
-        check('both-language mode restores Arabic letters', letters() == 'أ', letters())
-        page.evaluate('() => document.querySelector("#btn-lang-toggle").click()')  # back to ar
-        page.wait_for_timeout(250)
-        check('toggle returns to Arabic mode', letters() == 'أ', letters())
+        check('the switch returns to Arabic', letters() == 'أ', letters())
 
         total = int((page.locator('#question-total-label').text_content() or '0').strip())
         check('total questions loaded', total > 0, total)

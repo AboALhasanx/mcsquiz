@@ -31,6 +31,10 @@
                     <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
+                    <div class="lang-switch" role="group" aria-label="لغة السؤال والخيارات">
+                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true">ع</button>
+                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+                    </div>
                     <a id="btn-open-saved" class="icon-btn" href="#/saved" aria-label="الأسئلة المحفوظة" title="الأسئلة المحفوظة">
                         <i data-lucide="bookmark"></i>
                         <span id="saved-count-badge" class="saved-count-badge hidden">0</span>
@@ -57,9 +61,10 @@
                     </button>
                 </div>
                 <div class="header-right">
-                    <button id="btn-lang-toggle" class="icon-btn" aria-label="ترجمة السؤال والخيارات" title="ترجمة السؤال والخيارات">
-                        <i data-lucide="languages"></i>
-                    </button>
+                    <div class="lang-switch" role="group" aria-label="لغة السؤال والخيارات">
+                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true">ع</button>
+                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+                    </div>
                     <button id="btn-sound-toggle" class="icon-btn" aria-label="كتم أو تشغيل الصوت" title="كتم/تشغيل الصوت">
                         <i data-lucide="volume-2" id="sound-icon"></i>
                     </button>
@@ -146,20 +151,7 @@
                     <span id="start-chapter-badge" class="start-chapter-chip">جابتر</span>
                 </div>
                 <h2 id="start-quiz-title" class="start-title" dir="auto">عنوان الكوز</h2>
-                <p class="start-meta-line">
-                    <span id="start-questions-count">0 أسئلة</span>
-                    <span class="start-meta-sep" aria-hidden="true">·</span>
-                    <span id="start-estimated-time">0 دقيقة</span>
-                </p>
                 <dl class="detail-grid" id="start-details"></dl>
-                <div class="difficulty-block" id="start-difficulty">
-                    <div class="difficulty-head">
-                        <span class="difficulty-title">توزيع الصعوبة</span>
-                        <span class="difficulty-scale" id="start-difficulty-scale">5 مستويات</span>
-                    </div>
-                    <div class="difficulty-bar" id="start-difficulty-bar"></div>
-                    <div class="difficulty-legend" id="start-difficulty-legend"></div>
-                </div>
                 <p class="start-note" id="start-note"></p>
                 <p class="start-instructions">سيبدأ احتساب الوقت فور الضغط على ابدأ.</p>
                 <button id="btn-start-quiz" class="nav-btn primary-btn start-btn">
@@ -384,14 +376,6 @@
                 <nav class="quiz-crumb" id="info-sheet-crumb" aria-label="مسار الكوز"></nav>
                 <h3 id="info-sheet-topic" class="info-sheet-topic" dir="auto"></h3>
                 <dl class="detail-grid" id="info-sheet-list"></dl>
-                <div class="difficulty-block" id="info-difficulty">
-                    <div class="difficulty-head">
-                        <span class="difficulty-title">توزيع الصعوبة</span>
-                        <span class="difficulty-scale" id="info-difficulty-scale">5 مستويات</span>
-                    </div>
-                    <div class="difficulty-bar" id="info-difficulty-bar"></div>
-                    <div class="difficulty-legend" id="info-difficulty-legend"></div>
-                </div>
                 <a id="info-sheet-start" class="nav-btn primary-btn start-btn" href="#/">
                     <i data-lucide="play"></i>
                     <span>ابدأ الكوز</span>
