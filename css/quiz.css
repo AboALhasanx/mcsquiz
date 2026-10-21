@@ -3614,6 +3614,7 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
   position: relative;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   gap: 0.35rem;
   height: 128px;
   padding-bottom: 1.35rem;
@@ -3621,8 +3622,9 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 }
 .trend-col {
   position: relative;
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
+  max-width: 52px;
   height: 100%;
   display: flex;
   flex-direction: column;
