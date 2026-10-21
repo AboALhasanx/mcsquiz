@@ -249,18 +249,38 @@
     const store = loadBankStore();
     const seen = loadSeen();
     let idx = null;
-    let fresh = false;
-    // the index is small: always ask the network, fall back to the cache offline
+    let source = 'static';
+    // 1) the content portal (Supabase): tiny manifest, then only what changed
     try {
-      const r = await fetch('data/index.json?v=' + Date.now(), { cache: 'no-store' });
-      if (r.ok) { idx = await r.json(); fresh = true; }
-    } catch (e) { /* offline */ }
+      if (window.PortalContent && window.PortalContent.configured()) {
+        const m = await window.PortalContent.manifest();
+        if (m && Array.isArray(m.subjects)) {
+          idx = m; source = 'portal';
+          try { lsSet('portal_manifest_v1', JSON.stringify(m)); } catch (e) {}
+        }
+      }
+    } catch (e) { dbg('content portal unreachable'); }
+    // 2) offline: the manifest this device saw last time
     if (!idx) {
-      try { idx = await (await fetch('data/index.json', { cache: 'no-store' })).json(); }
-      catch (e) { throw new Error('no content'); }
+      try {
+        const m = JSON.parse(lsGet('portal_manifest_v1') || 'null');
+        if (m && Array.isArray(m.subjects)) { idx = m; source = 'cache'; }
+      } catch (e) {}
+    }
+    // 3) the bundled copy that ships with the shell (first visit, no network)
+    if (!idx) {
+      try {
+        const r = await fetch('data/index.json?v=' + Date.now(), { cache: 'no-store' });
+        if (r.ok) idx = await r.json();
+      } catch (e) { /* offline */ }
+      if (!idx) {
+        try { idx = await (await fetch('data/index.json', { cache: 'no-store' })).json(); }
+        catch (e) { throw new Error('no content'); }
+      }
     }
     S.index = idx;
     S.contentVersion = Number(idx.version || 0);
+    S.contentSource = source;
 
     const jobs = [];
     idx.subjects.forEach((sub) => sub.chapters.forEach((ch) => {
@@ -270,15 +290,23 @@
         S.banks[ch.quiz_id] = cached.b;
         return;
       }
-      jobs.push(fetch('data/' + ch.bank + '?v=' + want, { cache: 'no-store' })
-        .then((r) => { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
-        .then((raw) => {
-          const bank = normalizeBank(raw, (ch.topic && ch.topic.ar) || '');
-          const errs = validateBank(bank);
-          if (errs.length) throw new Error(ch.bank + ': ' + errs.join('; '));
-          S.banks[ch.quiz_id] = bank;
-          store[ch.quiz_id] = { v: want, b: bank };
-        }));
+      const load = source === 'portal'
+        ? window.PortalContent.bank(ch.quiz_id)
+        : fetch('data/' + ch.bank + '?v=' + want, { cache: 'no-store' })
+          .then((r) => { if (!r.ok) throw new Error('http ' + r.status); return r.json(); });
+      jobs.push(Promise.resolve(load).then((raw) => {
+        if (!raw) throw new Error('empty bank ' + ch.quiz_id);
+        const bank = normalizeBank(raw, (ch.topic && ch.topic.ar) || '');
+        const errs = validateBank(bank);
+        if (errs.length) throw new Error(ch.quiz_id + ': ' + errs.join('; '));
+        S.banks[ch.quiz_id] = bank;
+        store[ch.quiz_id] = { v: want, b: bank };
+      }).catch((e) => {
+        // a missing bank from the portal must not kill the whole boot: keep the
+        // cached copy if there is one
+        if (cached && cached.b) { S.banks[ch.quiz_id] = cached.b; return; }
+        throw e;
+      }));
     }));
     if (jobs.length) {
       await Promise.all(jobs);
@@ -1160,6 +1188,14 @@
       return '<bdi dir="ltr">' + escapeHtml(src) + '</bdi>';
     }
   }
+
+  // a small read-only status for the console, the tests and the diagnostics
+  window.PortalApp = {
+    contentSource: function () { return S.contentSource || 'unknown'; },
+    contentVersion: function () { return S.contentVersion || 0; },
+    bankCount: function () { return Object.keys(S.banks || {}).length; },
+    freshCount: function () { return (S.freshChapters || []).length; },
+  };
 
   // exposed so the math renderer can be checked from the console and by tests
   window.PortalRich = {
@@ -3718,7 +3754,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v79';
+  const SHELL_VERSION = 'v80';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
