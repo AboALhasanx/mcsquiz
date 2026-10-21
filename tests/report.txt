@@ -6,23 +6,23 @@ PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr |
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</spa
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': '705c5226-2466-456a-8a15-4738afae48d7', 'handle': 't453709', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792574457741}
+PASS | accounts | username + PIN creates an account | {'id': '1fcad89c-a02d-456c-976d-918d9aa3bf7d', 'handle': 't87478', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792577090848}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': '705c5226-2466-456a-8a15-4738afae48d7', 'handle': 't453709', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792574473190}
-PASS | accounts | the avatar is saved | {'id': '705c5226-2466-456a-8a15-4738afae48d7', 'handle': 't453709', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792574473190}
+PASS | accounts | the display name is editable | {'id': '1fcad89c-a02d-456c-976d-918d9aa3bf7d', 'handle': 't87478', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792577105556}
+PASS | accounts | the avatar is saved | {'id': '1fcad89c-a02d-456c-976d-918d9aa3bf7d', 'handle': 't87478', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792577105556}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': '705c5226-2466-456a-8a15-4738afae48d7', 'handle': 't453709', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792574501697}
+PASS | accounts | same username returns the same account | {'id': '1fcad89c-a02d-456c-976d-918d9aa3bf7d', 'handle': 't87478', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792577128328}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 9992
+PASS | accounts | the link code has four digits | 9580
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': '705c5226-2466-456a-8a15-4738afae48d7', 'handle': 't453709', 'name': 'اسم جديد', 'avatar': 'assets/avatars/animal-dog.svg', 'at': 1792574533848}
+PASS | accounts | the approved device signs in | {'id': '1fcad89c-a02d-456c-976d-918d9aa3bf7d', 'handle': 't87478', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792577153142}
 PASS | catalog | index exposes subjects | 5
 PASS | catalog | one chip per subject | 5 vs 5
 PASS | catalog | no "all" chip | 
@@ -57,8 +57,8 @@ PASS | quiz | matrix has one cell per question | 20
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 8, 'wrong': 12, 'acc': '40%', 'hasUnanswered': False, 'time': '0:19'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 8, 'wrong': 12, 'acc': '40%', 'hasUnanswered': False, 'time': '0:19'}
+PASS | quiz | correct + wrong equals the total | {'correct': 6, 'wrong': 14, 'acc': '30%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 6, 'wrong': 14, 'acc': '30%', 'hasUnanswered': False, 'time': '0:14'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
 PASS | quiz | one review card per question | 20
@@ -95,7 +95,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 17
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/saved', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/saved'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 

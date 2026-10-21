@@ -1,7 +1,7 @@
 ﻿/* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const CACHE = 'mcq-portal-v56';
+const CACHE = 'mcq-portal-v60';
 const CORE = [
   './',
   './index.html',
@@ -33,6 +33,31 @@ const CORE = [
   './assets/brand-icon-light.png',
   './assets/brand-icon-dark.png',
   './assets/avatar-default.svg',
+  './assets/avatars/person-01.png',
+  './assets/avatars/person-02.png',
+  './assets/avatars/person-03.png',
+  './assets/avatars/person-04.png',
+  './assets/avatars/person-05.png',
+  './assets/avatars/person-06.png',
+  './assets/avatars/person-07.png',
+  './assets/avatars/person-08.png',
+  './assets/avatars/person-09.png',
+  './assets/avatars/person-10.png',
+  './assets/avatars/person-11.png',
+  './assets/avatars/person-12.png',
+  './assets/avatars/person-13.png',
+  './assets/avatars/person-14.png',
+  './assets/avatars/person-15.png',
+  './assets/avatars/person-16.png',
+  './assets/avatars/person-17.png',
+  './assets/avatars/person-18.png',
+  './assets/avatars/person-19.png',
+  './assets/avatars/person-20.png',
+  './assets/avatars/person-21.png',
+  './assets/avatars/person-22.png',
+  './assets/avatars/person-23.png',
+  './assets/avatars/person-24.png',
+  './assets/avatars/person-25.png',
   './assets/avatars/animal-dog.svg',
   './assets/avatars/animal-cat.svg',
   './assets/avatars/animal-fox.svg',

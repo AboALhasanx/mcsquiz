@@ -492,19 +492,30 @@
 
         <!-- Account dialog (Telegram login status + actions) -->
         <div id="account-modal" class="modal-overlay hidden" aria-hidden="true">
-            <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="account-title">
-                <div class="drawer-title-group">
-                    <i data-lucide="user-round" class="drawer-header-icon"></i>
-                    <h3 id="account-title">الحساب</h3>
+            <div class="modal-card account-card" role="dialog" aria-modal="true" aria-labelledby="account-title">
+                <div class="account-head">
+                    <div class="account-avatar-preview" id="account-avatar-preview" aria-hidden="true"></div>
+                    <div class="account-head-text">
+                        <h3 id="account-title">الحساب</h3>
+                        <p id="account-body" class="auth-sub"></p>
+                    </div>
                 </div>
-                <p id="account-body" class="auth-sub"></p>
                 <div id="account-profile" class="hidden">
-                    <label class="auth-label" for="profile-name">اسمك</label>
-                    <input id="profile-name" class="auth-input" maxlength="40" dir="auto" placeholder="اسمك">
-                    <p class="auth-hint">اسم المستخدم: <b id="profile-handle" dir="ltr"></b> — لا يمكن تغييره لاحقاً.</p>
-                    <label class="auth-label" for="profile-pin">رمزك (4 أرقام) لتأكيد التعديل</label>
-                    <input id="profile-pin" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••">
-                    <div id="avatar-grid" class="avatar-grid" role="group" aria-label="اختر صورة الحساب"></div>
+                    <div class="account-section">
+                        <span class="account-section-title">بياناك</span>
+                        <label class="auth-label" for="profile-name">اسمك</label>
+                        <input id="profile-name" class="auth-input" maxlength="40" dir="auto" placeholder="اسمك">
+                        <p class="auth-hint">اسم المستخدم: <b id="profile-handle" dir="ltr"></b> — لا يمكن تغييره لاحقاً.</p>
+                        <label class="auth-label" for="profile-pin">رمزك (4 أرقام) لتأكيد التغديل</label>
+                        <input id="profile-pin" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••">
+                    </div>
+                    <div class="account-section">
+                        <div class="account-section-head">
+                            <span class="account-section-title">صورتك</span>
+                            <button type="button" id="avatar-none" class="account-none-chip">بدون صورة</button>
+                        </div>
+                        <div id="avatar-grid" class="avatar-grid" role="group" aria-label="اختر صورة للملف"></div>
+                    </div>
                     <button id="profile-save" class="action-btn primary-btn auth-submit">حفظ التغييرات</button>
                 </div>
                 <div class="modal-actions" style="flex-direction:column;gap:0.5rem;">

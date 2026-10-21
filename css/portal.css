@@ -753,29 +753,136 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 /* --- profile editor (name + avatar) --- */
 .auth-hint { font-size: 0.74rem; color: var(--text-muted); margin: 0.35rem 0 0.2rem; }
 .auth-hint b { color: var(--text-main); }
+/* The picker shows the avatar disc itself: no card behind it, the ring and the
+   tick are the only chrome, so the chosen picture is unmistakable. */
 .avatar-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0.45rem;
-  margin: 0.55rem 0 0.8rem;
+  gap: 0.6rem 0.5rem;
+  margin: 0.7rem 0 0;
 }
 .avatar-choice {
+  position: relative;
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 2px solid transparent;
-  background: var(--bg-surface);
+  border: 0;
+  background: transparent;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.avatar-choice img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.10);
+  transition: box-shadow 0.16s ease;
+}
+.avatar-choice:hover { transform: translateY(-2px) scale(1.04); }
+.avatar-choice:hover img { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.22); }
+.avatar-choice:active { transform: scale(0.94); }
+.avatar-choice:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 50%; }
+
+.avatar-check {
+  position: absolute;
+  inset-inline-end: -2px;
+  inset-block-end: -2px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #12141a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.2, 1.4, 0.4, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+.avatar-check svg { width: 12px; height: 12px; stroke-width: 3; }
+.avatar-choice.selected img { box-shadow: 0 0 0 2.5px var(--accent), 0 4px 12px rgba(0, 0, 0, 0.4); }
+.avatar-choice.selected .avatar-check { opacity: 1; transform: scale(1); }
+
+/* ---- account sheet ---- */
+.account-card {
+  max-width: 400px;
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.account-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+.account-avatar-preview {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   color: var(--text-muted);
 }
-.avatar-choice img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.avatar-choice.selected { border-color: var(--accent); }
+.account-avatar-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.account-avatar-preview svg { width: 24px; height: 24px; }
+.account-avatar-preview.has-avatar { border-color: var(--accent); }
+.account-head-text { min-width: 0; }
+.account-head-text h3 { margin: 0 0 0.15rem; font-size: 1.05rem; }
+.account-head-text .auth-sub { margin: 0; }
+.account-section {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+}
+.account-section-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-subtle);
+  margin-bottom: 0.5rem;
+}
+.account-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.account-section-head .account-section-title { margin-bottom: 0; }
+.account-none-chip {
+  appearance: none;
+  border: 1.5px dashed var(--border-subtle);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+.account-none-chip:hover { border-color: var(--accent); color: var(--text-main); }
+.account-none-chip.active {
+  border-style: solid;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #12141a;
+}
 
 .link-steps {
   margin: 0 0 0.6rem;

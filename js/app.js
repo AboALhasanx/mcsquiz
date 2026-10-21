@@ -1953,9 +1953,11 @@
   }
 
   const AVATARS = [
-    'animal-dog', 'animal-cat', 'animal-fox', 'animal-bear',
-    'animal-panda', 'animal-koala', 'animal-tiger', 'animal-lion',
-    'animal-owl', 'animal-penguin', 'animal-frog', 'animal-wolf',
+    'person-01', 'person-02', 'person-03', 'person-04', 'person-05',
+    'person-06', 'person-07', 'person-08', 'person-09', 'person-10',
+    'person-11', 'person-12', 'person-13', 'person-14', 'person-15',
+    'person-16', 'person-17', 'person-18', 'person-19', 'person-20',
+    'person-21', 'person-22', 'person-23', 'person-24', 'person-25',
   ];
 
   function renderProfileEditor(acc) {
@@ -1968,32 +1970,58 @@
     const grid = $('avatar-grid');
     grid.innerHTML = '';
     const current = acc.avatar || '';
-    const none = document.createElement('button');
-    none.type = 'button';
-    none.className = 'avatar-choice' + (current ? '' : ' selected');
-    none.textContent = 'بدون';
-    none.setAttribute('aria-label', 'بدون صورة');
-    none.addEventListener('click', () => {
-      grid.querySelectorAll('.avatar-choice').forEach((b) => b.classList.remove('selected'));
-      none.classList.add('selected');
-      box.dataset.avatar = '';
-    });
-    grid.appendChild(none);
+    const noneBtn = $('avatar-none');
+    if (noneBtn) noneBtn.classList.toggle('active', !current);
     AVATARS.forEach((name) => {
-      const src = 'assets/avatars/' + name + '.svg';
+      const src = 'assets/avatars/' + name + '.png';
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'avatar-choice' + (current === src ? ' selected' : '');
       b.setAttribute('aria-label', 'صورة ' + name);
-      b.innerHTML = '<img src="' + src + '" alt="">';
+      b.setAttribute('aria-pressed', current === src ? 'true' : 'false');
+      b.innerHTML = '<img src="' + src + '" alt=""><span class="avatar-check" aria-hidden="true">' +
+        '<i data-lucide="check"></i></span>';
       b.addEventListener('click', () => {
-        grid.querySelectorAll('.avatar-choice').forEach((x) => x.classList.remove('selected'));
+        grid.querySelectorAll('.avatar-choice').forEach((x) => {
+          x.classList.remove('selected');
+          x.setAttribute('aria-pressed', 'false');
+        });
         b.classList.add('selected');
+        b.setAttribute('aria-pressed', 'true');
+        if (noneBtn) noneBtn.classList.remove('active');
         box.dataset.avatar = src;
+        paintAvatarPreview(src);
       });
       grid.appendChild(b);
     });
+    if (noneBtn) {
+      noneBtn.onclick = () => {
+        grid.querySelectorAll('.avatar-choice').forEach((x) => {
+          x.classList.remove('selected');
+          x.setAttribute('aria-pressed', 'false');
+        });
+        noneBtn.classList.add('active');
+        box.dataset.avatar = '';
+        paintAvatarPreview('');
+      };
+    }
     box.dataset.avatar = current;
+    paintAvatarPreview(current);
+    icons();
+  }
+
+  // the account sheet header shows the picture that is currently picked
+  function paintAvatarPreview(src) {
+    const box = $('account-avatar-preview');
+    if (!box) return;
+    if (src) {
+      box.classList.add('has-avatar');
+      box.innerHTML = '<img src="' + escapeHtml(src) + '" alt="">';
+    } else {
+      box.classList.remove('has-avatar');
+      box.innerHTML = '<i data-lucide="user-round"></i>';
+    }
+    icons();
   }
 
   async function saveProfile() {
@@ -3076,7 +3104,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v56';
+  const SHELL_VERSION = 'v60';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
