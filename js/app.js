@@ -1200,6 +1200,7 @@
       if (S.session && !$('quiz-view').classList.contains('hidden')) renderQuestion();
       else if (S.session && S.lastResults && !$('results-view').classList.contains('hidden')) renderResults(S.lastResults);
       else if (!$('saved-view').classList.contains('hidden')) renderSaved();
+      else if (!$('deck-catalog').classList.contains('hidden')) renderCatalog();
     } catch (e) {}
   }
 
