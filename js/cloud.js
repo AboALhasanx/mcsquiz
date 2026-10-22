@@ -26,6 +26,27 @@
   'use strict';
 
   var SYNC_KEY = 'portal_cloud_synced_at';
+  var OWNER_KEY = 'portal_data_owner_v1';
+
+  // whose data is on this device? a different account must never inherit it
+  function dataOwner() { try { return localStorage.getItem(OWNER_KEY) || ''; } catch (e) { return ''; } }
+  function clearPersonalData() {
+    try { localStorage.removeItem(LS_HISTORY); } catch (e) {}
+    try { localStorage.removeItem(LS_SAVED); } catch (e) {}
+    try {
+      for (var i = localStorage.length - 1; i >= 0; i--) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf(LS_BEST_PREFIX) === 0) localStorage.removeItem(k);
+      }
+    } catch (e) {}
+    try { localStorage.removeItem('portal_data_touched_v1'); } catch (e) {}
+  }
+  function ownData(id) {
+    if (!id) return;
+    var prev = dataOwner();
+    if (prev && prev !== id) clearPersonalData();
+    try { localStorage.setItem(OWNER_KEY, id); } catch (e) {}
+  }
   var ACCOUNT_KEY = 'portal_account_v1';
   var LS_BEST_PREFIX = 'portal_best_';
   var LS_SAVED = 'portal_saved_v1';
@@ -173,6 +194,7 @@
     var row = Array.isArray(r.data) ? r.data[0] : r.data;
     if (!row || !row.id) throw new Error('login-empty');
     setAccount({ id: row.id, handle: row.handle, name: row.name || h, avatar: row.avatar || '', at: Date.now() });
+    ownData(row.id);
     try { localStorage.removeItem('portal_signed_out_v1'); } catch (e) {}
     try { lsSet('portal_pin_v1', String(pin)); } catch (e) {}
     return account();
@@ -200,6 +222,7 @@
     if (!row || !row.id) throw new Error('adopt-empty');
     try { if (localStorage.getItem('portal_signed_out_v1') === '1') return null; } catch (e) {}
     setAccount({ id: row.id, handle: row.handle, name: row.name || row.handle, avatar: row.avatar || '', at: Date.now() });
+    ownData(row.id);
     try { localStorage.removeItem('portal_pin_v1'); } catch (e) {}
     return account();
   }
@@ -452,6 +475,9 @@
   }
 
   function integrate() {
+    // a device that was signed in before the owner key existed takes ownership
+    // now, so a later account switch still clears the old data
+    try { var a0 = account(); if (a0 && a0.id && !dataOwner()) localStorage.setItem(OWNER_KEY, a0.id); } catch (e) {}
     var w = null;
     try { w = wa(); } catch (e) { return; }
     if (!w) return;

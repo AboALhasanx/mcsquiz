@@ -2767,12 +2767,20 @@
       await C.login(handle, pin, name);
       closeLoginModal();
       toast('أهلاً ' + name, 'success');
+      // an account switch clears the previous account's data: re-read it, then
+      // let the pull bring this account's own copy
+      try { loadSaved(); } catch (e) {}
       updateAccountRow();
       // a fresh identity must not read the previous board cache
       S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
       try { await C.pullOrPush(); } catch (e) {}
       try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) {}
       renderLeague();
+      try { loadSaved(); } catch (e) {}
+      renderCatalog();
+      if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+      if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+      updateSavedBadge(); updateMenuCounts();
     } catch (e) {
       const msg = String((e && e.message) || '');
       if (msg.indexOf('bad_pin') >= 0) loginError('الرمز غير صحيح لهذا المستخدم');
@@ -2829,6 +2837,7 @@
           updateAccountRow();
           toast('تم ربط هذا الجهاز', 'success');
           S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
+          try { loadSaved(); } catch (e) {}
           try { await C.pullOrPush(); } catch (e) {}
           try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) {}
           renderLeague();
@@ -3834,7 +3843,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v97';
+  const SHELL_VERSION = 'v98';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

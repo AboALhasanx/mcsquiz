@@ -4,23 +4,23 @@ PASS | banks | Arabic question coverage meets the current target | 314/334 trans
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_ModelB_DrHuda')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': '3c05781b-4963-4fc8-ae82-1d72bef9f521', 'handle': 't491572', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792654495632}
+PASS | accounts | username + PIN creates an account | {'id': '7c1f9dea-3c4a-4b1b-8b7c-a47d1473a7bb', 'handle': 't31457', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792655036867}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': '3c05781b-4963-4fc8-ae82-1d72bef9f521', 'handle': 't491572', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792654510587}
-PASS | accounts | the avatar is saved | {'id': '3c05781b-4963-4fc8-ae82-1d72bef9f521', 'handle': 't491572', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792654510587}
+PASS | accounts | the display name is editable | {'id': '7c1f9dea-3c4a-4b1b-8b7c-a47d1473a7bb', 'handle': 't31457', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792655052121}
+PASS | accounts | the avatar is saved | {'id': '7c1f9dea-3c4a-4b1b-8b7c-a47d1473a7bb', 'handle': 't31457', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792655052121}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': '3c05781b-4963-4fc8-ae82-1d72bef9f521', 'handle': 't491572', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792654529215}
+PASS | accounts | same username returns the same account | {'id': '7c1f9dea-3c4a-4b1b-8b7c-a47d1473a7bb', 'handle': 't31457', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792655072253}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 4309
+PASS | accounts | the link code has four digits | 2154
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': '3c05781b-4963-4fc8-ae82-1d72bef9f521', 'handle': 't491572', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792654556711}
+PASS | accounts | the approved device signs in | {'id': '7c1f9dea-3c4a-4b1b-8b7c-a47d1473a7bb', 'handle': 't31457', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792655100535}
 PASS | catalog | index exposes subjects | 6
 PASS | catalog | one chip per subject | 6 vs 6
 PASS | catalog | no "all" chip | 
@@ -41,7 +41,7 @@ PASS | quiz | next is blocked while unanswered |
 PASS | quiz | blocked next explains itself | 
 PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the switch turns the question into English | A
-PASS | quiz | the English stem is used | Which option best describes the scope of cybersecurity?
+PASS | quiz | the English stem is used | Which set of techniques is used to enforce confidentiality?
 PASS | quiz | the switch returns to Arabic | أ
 PASS | quiz | total questions loaded | 10
 PASS | quiz | saving marks the bookmark | 
@@ -93,7 +93,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 19
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/stats', '#/saved', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/stats', '#/saved'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
