@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.1] — 2026-10-22
+
+### Changed
+- chore: dedupe the service-worker precache list
+
+
 ### Added
 - Deep audits: `tools/audit.py` (silent failures, dead code, orphan ids, unclosed timers) and
   `tools/audit_runtime.js` (live timers, unhandled rejections, storage keys after a session).
