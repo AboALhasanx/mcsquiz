@@ -268,7 +268,11 @@
     // that has been offline cannot overwrite newer data from another device
     var touched = 0;
     try { touched = Number(localStorage.getItem('portal_data_touched_v1')) || 0; } catch (e) {}
-    return { app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(), updatedAt: touched || Date.now(), saved: saved, history: history, bests: bests };
+    var removed = {}, clearedAt = 0;
+    try { removed = JSON.parse(localStorage.getItem('portal_saved_removed_v1') || '{}') || {}; } catch (e) {}
+    try { clearedAt = Number(localStorage.getItem('portal_history_cleared_v1')) || 0; } catch (e) {}
+    return { app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(), updatedAt: touched || Date.now(),
+             saved: saved, history: history, bests: bests, removed: removed, clearedAt: clearedAt };
   }
 
   function applyBundle(d) {
@@ -285,6 +289,12 @@
           try { localStorage.setItem(k, JSON.stringify(d.bests[k])); } catch (e) {}
         }
       });
+    }
+    if (d.removed && typeof d.removed === 'object') {
+      try { localStorage.setItem('portal_saved_removed_v1', JSON.stringify(d.removed)); } catch (e) {}
+    }
+    if (d.clearedAt) {
+      try { localStorage.setItem('portal_history_cleared_v1', String(Number(d.clearedAt))); } catch (e) {}
     }
     // the downloaded copy is the current state: remember its write time so the
     // next comparison is a tie and the server keeps winning it
@@ -422,35 +432,93 @@
     markSync();
   }
 
+  // ---------- merging two copies (two devices, one account) ----------
+  // Union of what both sides know, not "the newest copy replaces the other":
+  // a bookmark saved on the tablet and a bookmark saved on the computer both
+  // survive, the best score per quiz is the higher one, and a deliberate
+  // removal (unsave / clear history) is carried as a timestamp so it is not
+  // resurrected by the other device.
+  function mergeBundles(a, b) {
+    a = a || {}; b = b || {};
+    var out = {
+      app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(),
+      updatedAt: Math.max(Number(a.updatedAt) || 0, Number(b.updatedAt) || 0),
+    };
+
+    var removed = {};
+    [a.removed, b.removed].forEach(function (m) {
+      Object.keys(m || {}).forEach(function (k) {
+        removed[k] = Math.max(Number(removed[k]) || 0, Number(m[k]) || 0);
+      });
+    });
+
+    var saved = {};
+    [a.saved, b.saved].forEach(function (m) {
+      Object.keys(m || {}).forEach(function (k) {
+        var it = m[k], cur = saved[k];
+        var at = Number(it && it.savedAt) || 0;
+        var curAt = Number(cur && cur.savedAt) || 0;
+        if (!cur || at > curAt) saved[k] = it;
+      });
+    });
+    var now = Date.now(), old = now - 30 * 86400000;
+    Object.keys(saved).forEach(function (k) {
+      if (Number(removed[k]) || 0) delete saved[k];
+    });
+    Object.keys(removed).forEach(function (k) {
+      if (saved[k]) { delete removed[k]; return; }
+      if (Number(removed[k]) < old) delete removed[k];
+    });
+
+    var clearedAt = Math.max(Number(a.clearedAt) || 0, Number(b.clearedAt) || 0);
+    var seen = {}, hist = [];
+    [a.history, b.history].forEach(function (arr) {
+      (arr || []).forEach(function (h) {
+        if (!h || typeof h !== 'object') return;
+        if (Number(h.t) && Number(h.t) <= clearedAt) return;
+        var sig = [h.t, h.quizId, h.pct, h.correct, h.total].join('|');
+        if (seen[sig]) return;
+        seen[sig] = 1;
+        hist.push(h);
+      });
+    });
+    hist.sort(function (x, y) { return (Number(x.t) || 0) - (Number(y.t) || 0); });
+    if (hist.length > 200) hist = hist.slice(-200);
+
+    var bests = {};
+    [a.bests, b.bests].forEach(function (m) {
+      Object.keys(m || {}).forEach(function (k) {
+        var v = m[k], cur = bests[k];
+        if (!cur || Number(v && v.pct) > Number(cur && cur.pct)) bests[k] = v;
+      });
+    });
+
+    out.saved = saved; out.history = hist; out.bests = bests; out.removed = removed; out.clearedAt = clearedAt;
+    return out;
+  }
+
+  function sameBundle(a, b) {
+    try { return JSON.stringify(a || null) === JSON.stringify(b || null); } catch (e) { return false; }
+  }
+
   async function pullOrPush() {
     if (!linked()) throw new Error('not-linked');
     if (!activeStore()) { markSync(); return { action: 'local-only' }; }
     var remote = null;
     try { remote = await download(); } catch (e) { remote = null; }
-    var rUpdated = (remote && remote.updatedAt) ? Number(remote.updatedAt) : 0;
-    var localN = localCount();
+    var local = collectBundle();
     if (!remote) {
-      if (localN > 0) { await upload(); return { action: 'uploaded-new' }; }
+      if (localCount() > 0) { await upload(local); return { action: 'uploaded-new' }; }
       markSync();
       return { action: 'empty' };
     }
-    if (localN === 0) {
-      // an empty device normally downloads — unless its data was *cleared* on
-      // purpose after the server's last write, in which case the deletion wins
-      var touchedZero = 0;
-      try { touchedZero = Number(localStorage.getItem('portal_data_touched_v1')) || 0; } catch (e) {}
-      if (rUpdated && touchedZero && touchedZero > rUpdated) { await upload(collectBundle()); return { action: 'uploaded-empty' }; }
-      applyBundle(remote); markSync(); return { action: 'downloaded' };
-    }
-    var local = collectBundle();
-    var lUpdated = Number(local.updatedAt) || 0;
-    // newest write wins; on a tie the server copy wins (online is the source of truth)
-    if (lUpdated && rUpdated && lUpdated > rUpdated) { await upload(local); return { action: 'uploaded-local-newer' }; }
-    if (!rUpdated || lUpdated <= rUpdated) {
-      applyBundle(remote); markSync(); return { action: 'downloaded' };
-    }
-    await upload();
-    return { action: 'uploaded' };
+    // the two copies are merged, never swapped: neither device loses what the
+    // other added while they were apart
+    var merged = mergeBundles(local, remote);
+    applyBundle(merged);
+    if (!sameBundle(remote, merged)) { await upload(merged); return { action: 'merged-uploaded' }; }
+    markSync();
+    return { action: 'merged' };
   }
 
   function pushSoon() {

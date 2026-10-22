@@ -131,6 +131,17 @@
   function touchData() {
     try { localStorage.setItem('portal_data_touched_v1', String(Date.now())); } catch (e) {}
   }
+
+  // a removal is a fact too: it travels as a timestamp so the other device
+  // cannot bring the bookmark back on the next merge
+  function savedRemovedMap() {
+    try { return JSON.parse(localStorage.getItem('portal_saved_removed_v1') || '{}') || {}; } catch (e) { return {}; }
+  }
+  function writeSavedRemoved(m) {
+    try { localStorage.setItem('portal_saved_removed_v1', JSON.stringify(m)); } catch (e) {}
+  }
+  function markSavedRemoved(key) { const m = savedRemovedMap(); m[key] = Date.now(); writeSavedRemoved(m); }
+  function clearSavedRemoved(key) { const m = savedRemovedMap(); if (m[key]) { delete m[key]; writeSavedRemoved(m); } }
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
@@ -923,9 +934,11 @@
     const key = saveKeyOf(q.origin, q.id);
     if (S.saved[key]) {
       delete S.saved[key];
+      markSavedRemoved(key);
       toast('أُزيل من المحفوظ');
     } else {
       S.saved[key] = { origin: q.origin, snapshot: JSON.parse(JSON.stringify(q)), savedAt: Date.now() };
+      clearSavedRemoved(key);
       toast('حُفظ السؤال');
     }
     persistSaved();
@@ -1535,6 +1548,7 @@
   function clearHistory() {
     S.history = [];
     try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+    try { localStorage.setItem('portal_history_cleared_v1', String(Date.now())); } catch (e) {}
     touchData();
   }
 
@@ -1822,6 +1836,7 @@
         const d = JSON.parse(rd.result);
         if (d.saved && typeof d.saved === 'object') {
           S.saved = d.saved;
+          writeSavedRemoved({});
           persistSaved(); updateSavedBadge(); updateMenuCounts();
         }
         if (Array.isArray(d.history)) {
@@ -3843,7 +3858,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v98';
+  const SHELL_VERSION = 'v99';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
