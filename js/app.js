@@ -613,9 +613,10 @@
     const list = $('notif-list');
     const empty = $('notif-empty');
     if (!list) return;
-    const fresh = S.freshChapters || [];
+    // a notification that has been opened (or cleared) leaves the sheet at once
+    const fresh = (S.freshChapters || []).filter((f) => !f.read);
     const readAllBtn = $('notif-read-all');
-    if (readAllBtn) readAllBtn.classList.toggle('hidden', unreadCount() === 0);
+    if (readAllBtn) readAllBtn.classList.toggle('hidden', fresh.length === 0);
     if (!fresh.length) {
       list.innerHTML = '';
       if (empty) empty.classList.remove('hidden');
@@ -623,10 +624,10 @@
     }
     if (empty) empty.classList.add('hidden');
     list.innerHTML = fresh.map((f) =>
-      '<a class="notif-row' + (f.read ? ' is-read' : '') + '" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '"' +
+      '<a class="notif-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '"' +
       ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
-      '<span class="notif-icon">' + (f.read ? '<i data-lucide="check"></i>' : '<i data-lucide="sparkles"></i>') + '</span>' +
-      '<span class="notif-text"><span class="notif-title">' + (f.read ? 'تم الاطلاع' : 'نزلت أسئلة جديدة') + '</span>' +
+      '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
+      '<span class="notif-text"><span class="notif-title">نزلت أسئلة جديدة</span>' +
       '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
       '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
     icons();
@@ -639,6 +640,7 @@
     item.read = true;
     markChapterSeen(quizId);
     renderBell();
+    renderNotifList();
   }
 
   function markAllNotifsRead() {
@@ -646,6 +648,7 @@
       if (!f.read) { f.read = true; markChapterSeen(f.quiz_id); }
     });
     renderBell();
+    renderNotifList();
     toast('تم تحديد الكل كمقروء', 'success');
   }
 
@@ -702,7 +705,7 @@
       const row = document.createElement('div');
       row.className = 'sketch-row';
       const title = topicTitle(bank);
-      const isFresh = !!(S.freshChapters || []).some((f) => f.quiz_id === ch.quiz_id);
+      const isFresh = !!(S.freshChapters || []).some((f) => f.quiz_id === ch.quiz_id && !f.read);
       row.innerHTML =
         '<button type="button" class="sketch-cell sketch-info-cell row-info-cell" aria-label="تفاصيل الكوز">' +
           '<i data-lucide="info"></i></button>' +
@@ -3815,7 +3818,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v94';
+  const SHELL_VERSION = 'v95';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
