@@ -3466,6 +3466,7 @@
   }
 
   async function shareMyRank() {
+    if (!navigator.onLine) { toast('تحتاج إنترنت لإنشاء بطاقة الدوري', 'error'); return; }
     const btn = $('btn-league-share');
     if (btn) { btn.disabled = true; btn.classList.add('is-busy'); }
     toast('نجهّز بطاقتك…', 'info');
@@ -3613,6 +3614,10 @@
       toast('تم تسجيل الخروج — بياناتك باقية على الجهاز');
     });
     bindClick('account-sync-now', async () => {
+      if (!navigator.onLine) {
+        toast('لا يوجد اتصال — المزامنة تتم تلقائياً عند رجوع النت', 'info');
+        return;
+      }
       const C = cloud();
       try { await C.pullOrPush(); toast('تمت المزامنة', 'success'); } catch (e) { toast('تعذر المزامنة', 'error'); }
     });
@@ -3818,7 +3823,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v95';
+  const SHELL_VERSION = 'v96';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
