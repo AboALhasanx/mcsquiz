@@ -160,6 +160,13 @@ def run():
             check('the approved device signs in', bool(linked and linked['id'] == acc1['id']), linked)
         finally:
             b4.close()
+
+        # leave the portal as we found it: delete the throwaway account
+        try:
+            p2.evaluate("() => window.PortalCloud.deleteAccount('4271').catch(() => null)")
+            p2.wait_for_timeout(1500)
+        except Exception:
+            pass
     finally:
         b2.close()
 
