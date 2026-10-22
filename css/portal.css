@@ -1134,6 +1134,14 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 }
 .leave-actions { flex-direction: column; gap: 0.5rem; }
 .leave-actions .action-btn { width: 100%; flex: none; }
+/* the light theme needs a darker red on a white card */
+html[data-theme="light"] .action-btn.danger-outline {
+  color: #be123c;
+  border-color: rgba(190, 18, 60, 0.45);
+}
+html[data-theme="light"] .modal-overlay { background: rgba(15, 23, 42, 0.45); }
+html[data-theme="light"] .auth-error { color: #be123c; }
+
 .action-btn.danger-outline {
   background: none;
   border: 1px solid rgba(244, 63, 94, 0.45);
@@ -1146,14 +1154,16 @@ html[data-theme="light"] .action-btn.danger-outline { color: #dc2626; }
   inset: 0;
   z-index: 10001;
   background: rgba(4, 7, 12, 0.72);
+  color: var(--text-main);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
 }
 .modal-card {
-  background: #141c27;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
   border-radius: 16px;
   padding: 1.2rem 1.1rem;
   max-width: 340px;

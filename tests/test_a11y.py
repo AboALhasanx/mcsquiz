@@ -57,7 +57,7 @@ def run():
               outline.startswith('2px') and 'none' not in outline, outline)
 
         # toasts are announced
-        page.evaluate('() => { location.hash = "#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ"; }')
+        page.evaluate('() => { location.hash = "#/quiz/01_Cyber_Security/Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution"; }')
         page.wait_for_timeout(1200)
         page.click('#btn-start-quiz')
         page.wait_for_timeout(500)

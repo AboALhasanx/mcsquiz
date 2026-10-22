@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-10-22
+
+### Changed
+- the card title no longer repeats the subject, chapters are numbered 1.1/1.2, the login card has a close button, and the modals follow the light theme
+
+
 ## [1.1.1] — 2026-10-22
 
 ### Changed

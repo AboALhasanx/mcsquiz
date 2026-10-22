@@ -311,6 +311,16 @@
       }
     }
     S.index = idx;
+    // the chapter label: the subject number + the chapter number (1.1, 1.2 …)
+    try {
+      idx.subjects.forEach((sub) => {
+        const m = /^(\d+)/.exec(String(sub.subject_id || ''));
+        const prefix = m ? String(parseInt(m[1], 10)) : '';
+        (sub.chapters || []).forEach((ch) => {
+          ch.label = prefix ? (prefix + '.' + ch.chapter_no) : String(ch.chapter_no);
+        });
+      });
+    } catch (e) {}
     // a chapter can hold two papers (النموذج أ / النموذج ب): keep a stable
     // order so "أ" is always listed before "ب"
     try {
@@ -374,6 +384,7 @@
           quiz_id: ch.quiz_id,
           subject_id: sub.subject_id,
           subject: sub.subject_title,
+          chapterLabel: ch.label || String(ch.chapter_no || ''),
           chapter: ch.chapter_no,
           count: ch.count || 0,
           updated_at: ch.updated_at || '',
@@ -512,7 +523,8 @@
     return rows;
   }
 
-  function chLabel(ch) { return 'جابتر ' + ch.chapter_no; }
+  function chLabel(ch) { return (ch && ch.label) ? ch.label : String((ch && ch.chapter_no) || ''); }
+  function chLabelLong(ch) { return 'بابتر ' + chLabel(ch); }
 
   function currentSubject() {
     if (S.index && Array.isArray(S.index.subjects) && S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
@@ -599,8 +611,8 @@
       const b = document.createElement('button');
       b.className = 'filter-chip chapter-chip' + (S.chapterFilter === c.chapter_no ? ' active' : '');
       b.textContent = c.chapter_no;
-      b.setAttribute('aria-label', chLabel(c));
-      b.title = chLabel(c);
+      b.setAttribute('aria-label', chLabelLong(c));
+      b.title = chLabelLong(c);
       b.setAttribute('aria-pressed', S.chapterFilter === c.chapter_no ? 'true' : 'false');
       b.addEventListener('click', () => { S.chapterFilter = c.chapter_no; saveUI(); renderChapterChips(); renderCatalog(); });
       bar.appendChild(b);
@@ -653,7 +665,7 @@
       ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
       '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
       '<span class="notif-text"><span class="notif-title">نزلت أسئلة جديدة</span>' +
-      '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
+      '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(f.chapterLabel || chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
       '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
     icons();
   }
@@ -890,7 +902,7 @@
     markChapterSeen(ch.quiz_id);
     launchSession(pool, {
       subjectId: sub.subject_id, subjectTitle: sub.subject_title,
-      chapterNo: ch.chapter_no, topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
+      chapterNo: ch.chapter_no, chapterLabel: ch.label || chLabel(ch), topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
       retryWrong: retryWrong, replay: { type: 'bank', subjectId: sub.subject_id, quizId: ch.quiz_id },
     });
   }
@@ -3670,6 +3682,7 @@
     // ---- handle accounts: login, account sheet, device linking ----
     const bindClick = (id, fn) => { const el = $(id); if (el) el.addEventListener('click', fn); };
     bindClick('login-submit', submitLogin);
+    bindClick('login-close', () => { closeLoginModal(); closeDrawers(); });
     bindClick('login-skip', () => { closeLoginModal(); toast('تستخدم الآن بدون حساب'); });
     bindClick('login-link-device', () => { closeLoginModal(); generateLinkCode(); });
     bindClick('account-link', () => { openLinkApprove(); });
@@ -3931,7 +3944,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.1.1';
+  const SHELL_VERSION = '1.2.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
