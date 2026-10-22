@@ -165,7 +165,7 @@ def run():
         try:
             p2.evaluate("() => window.PortalCloud.deleteAccount('4271').catch(() => null)")
             p2.wait_for_timeout(1500)
-        except Exception:
+        except Exception:  # audit-ignore: cleanup is best effort
             pass
     finally:
         b2.close()
