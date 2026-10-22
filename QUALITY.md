@@ -78,14 +78,35 @@ adb forward tcp:9222 localabstract:chrome_devtools_remote
 node tools/audit_runtime.js
 ```
 
-### 3. `tests/run_all.py` — the behaviour suite (121 checks)
+### 3. `tests/run_all.py` — the behaviour suite (139 checks)
 
-Nine specs: banks, accounts, catalogue, quiz, league, share, tour, offline, a11y. They run
+Ten specs: banks, accounts, catalogue, quiz, league, share, tour, offline, a11y, **security**. They run
 against a locally served copy (their own server on `:8081`) or against production with
 `PORTAL_BASE_URL`. The tablet sweeps (`sync_cross_device.py`, `tablet_sweep.js`,
 `tablet_offline_sweep.js`) live in the vault under `90_Shared_Toolbox/tools/qa/`.
 
-### 4. `tools/ci.py` — the one command
+`tests/test_security.py` (18 checks) covers what the app promises about the data:
+the PIN is rate limited, the stored payload is an encrypted envelope, the personal rows are
+scoped to the claimed account, and deleting an account removes everything it owned.
+
+### 4. `db/*.sql` — the database as code
+
+The schema, the policies and the functions are migrations, not manual clicks:
+
+| file | what |
+|---|---|
+| `db/001_security_hardening.sql` | the attempt ledger, the rate-limited login, account deletion |
+| `db/002_login_rate_limit.sql` | the functions return a status instead of raising, so the counter commits |
+| `db/003_rls_scope.sql` | the personal tables are scoped to the claimed account |
+| `db/004_rate_limit_tuning.sql` | the address limit raised for shared networks, the delete fixed for a uuid column |
+
+```bash
+python tools/db_apply.py db/003_rls_scope.sql
+```
+
+Each file runs as one transaction: it either applies completely or changes nothing.
+
+### 5. `tools/ci.py` — the one command
 
 ```bash
 python tools/ci.py          # audit + suite on its own port

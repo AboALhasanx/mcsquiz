@@ -15,9 +15,10 @@
 - **SemVer + Keep a Changelog**, and a definition of done that a reviewer can check without
   redoing the work.
 
-**Verdict:** functionally complete. Engineering-wise **76 / 100** for this class of project —
-well above a hobby build, short of a production service in four places: session identity, error
-reporting, CI that actually runs, and the single-file front end.
+**Verdict:** functionally complete. Engineering-wise **81 / 100** for this class of project —
+well above a hobby build. After the security pass (rate-limited PIN, encrypted personal data,
+row-scoped tables, strict CSP, account deletion, a vendored client, crash reporting) the remaining
+gap is the session proof, the CI that actually runs, and the single-file front end.
 
 ## Checklist
 
@@ -54,8 +55,9 @@ Legend: ✅ done · 🟡 partial / acceptable for this project · ❌ missing
 | 4.2 | Real-device verification | ✅ | tablet sweeps, offline sweep, cross-device sync (vault `tools/qa/`) |
 | 4.3 | Runtime leak/zombie audit | ✅ | `tools/audit_runtime.js` (found and fixed two leaks) |
 | 4.4 | Regression tests for fixed bugs | 🟡 | leave guard and sync are covered; the two timer leaks are audit-only |
-| 4.5 | Coverage measured | ❌ | no coverage number; tests are scenario-level |
-| 4.6 | Performance/load tested | ❌ | no Lighthouse or load run |
+| 4.5 | Security regression suite | ✅ | `tests/test_security.py` (18 checks: rate limit, encryption, row scoping, deletion) |
+| 4.6 | Coverage measured | ❌ | no coverage number; tests are scenario-level |
+| 4.7 | Performance/load tested | ❌ | no Lighthouse or load run |
 
 ### 5. Security and privacy
 | # | Item | Status | Evidence |
@@ -63,12 +65,15 @@ Legend: ✅ done · 🟡 partial / acceptable for this project · ❌ missing
 | 5.1 | PIN stored salted and hashed | ✅ | `pin_salt` + SHA-256 (`extensions.digest`) |
 | 5.2 | Service key never ships to the browser | ✅ | publishable key only; agent-side writes |
 | 5.3 | Content read-only for anon | ✅ | `content_banks`/`content_meta` SELECT only |
-| 5.4 | Profile and link tables not publicly readable | ✅ | policies dropped in this review (pin hashes were exposed before) |
-| 5.5 | Server-verified session | ❌ | writes trust the client-supplied user id |
-| 5.6 | Personal data protected per user | ❌ | `portal_data` open SELECT/INSERT/UPDATE for anon |
-| 5.7 | Login rate limiting / lockout | ❌ | a 4-digit PIN with unlimited attempts |
-| 5.8 | Security headers (CSP, etc.) | ❌ | only cache headers in `vercel.json` |
+| 5.4 | Profile and link tables not publicly readable | ✅ | policies dropped (the pin hashes were exposed before) |
+| 5.5 | Server-verified session | 🟡 | the client header is asserted, not proven; the payload is encrypted, so a forged header only reaches unreadable bytes |
+| 5.6 | Personal data protected per user | ✅ | `portal_data` and the league writes are row-scoped (`db/003_rls_scope.sql`) |
+| 5.7 | Login rate limiting / lockout | ✅ | 5 wrong tries lock an account for 5 min, 100 lock an address for 10 min (`db/004_rate_limit_tuning.sql`) |
+| 5.8 | Security headers (CSP, etc.) | ✅ | strict CSP, nosniff, referrer and permissions policy in `vercel.json` |
 | 5.9 | Secrets out of git | ✅ | none committed; token in the local MCP store |
+| 5.10 | Personal data encrypted at rest | ✅ | AES-GCM with a PBKDF2 key from the PIN; the server stores unreadable bytes |
+| 5.11 | The student can erase their account | ✅ | «حذف حسابي» in the account page, with a PIN confirmation |
+| 5.12 | No third-party code at runtime | ✅ | the Supabase client is vendored into `js/vendor/npm/` |
 
 ### 6. Data integrity and recovery
 | # | Item | Status | Evidence |
@@ -99,8 +104,8 @@ Legend: ✅ done · 🟡 partial / acceptable for this project · ❌ missing
 | # | Item | Status | Evidence |
 |---|---|---|---|
 | 9.1 | On-device debug log | ✅ | `js/debug.js`, drawer log |
-| 9.2 | Error reporting off-device | ❌ | none (no Sentry-like sink) |
-| 9.3 | Uptime / health check | ❌ | none |
+| 9.2 | Error reporting off-device | ✅ | `/api/log` (crash lines only, no personal data) |
+| 9.3 | Uptime / health check | ✅ | `/api/health` returns the running version |
 | 9.4 | Usage metrics | 🟡 | local counters only; no privacy-friendly aggregate |
 
 ### 10. CI/CD and release
@@ -111,6 +116,7 @@ Legend: ✅ done · 🟡 partial / acceptable for this project · ❌ missing
 | 10.3 | CI on push/PR | 🟡 | workflow committed, **no git remote → never runs** |
 | 10.4 | Rollback procedure | 🟡 | Vercel keeps deployments; not documented |
 | 10.5 | Deploy automated after green | ❌ | manual `vercel --prod` |
+| 10.6 | Migrations as code | ✅ | `db/*.sql` applied by `tools/db_apply.py` (transactional, repeatable) |
 
 ### 11. Documentation
 | # | Item | Status | Evidence |
@@ -119,7 +125,8 @@ Legend: ✅ done · 🟡 partial / acceptable for this project · ❌ missing
 | 11.2 | Authoring and publishing documented | ✅ | vault protocols |
 | 11.3 | Changelog | ✅ | `CHANGELOG.md` |
 | 11.4 | Top-level README (run, deploy, arch) | ❌ | missing |
-| 11.5 | Database schema/policy doc | 🟡 | RPCs described in `PORTAL_PUBLISH.md`; policies not documented |
+| 11.5 | Database schema/policy doc | ✅ | `SECURITY.md` (what is protected, what is not, the recovery runbook) |
+| 11.6 | Top-level README | ✅ | `README.md` (run, gates, release, architecture) |
 
 ### 12. Team process
 | # | Item | Status | Evidence |
@@ -138,33 +145,35 @@ than release automation), and they sum to 100.
 | Requirements and scope | 7 | 6.1 | clear protocols; non-goals implicit |
 | Architecture | 9 | 6.3 | good layers; one huge file |
 | Code quality | 9 | 6.8 | audited and readable; monolith cost |
-| Testing | 15 | 12.0 | strong scenario suite + device/audits; no coverage or perf |
-| Security and privacy | 13 | 7.6 | hashing and server-side keys good; identity and `portal_data` open |
+| Testing | 15 | 13.0 | 139 checks (18 of them security) + device/audits; no coverage or perf |
+| Security and privacy | 13 | 10.0 | rate limit, encryption, row scoping, headers, deletion; the session is still client-asserted |
 | Data integrity | 9 | 7.2 | merge sync, tombstones, backup; no rehearsal |
 | Reliability / offline | 8 | 8.0 | genuinely offline-first |
 | Usability / a11y | 8 | 6.5 | solid basics; no contrast/tap/SR pass |
-| Observability | 6 | 3.0 | local log only |
-| CI/CD and release | 6 | 4.5 | gate and SemVer real; no remote, no auto-deploy |
-| Documentation | 6 | 5.2 | excellent internal docs; no README/schema page |
+| Observability | 6 | 4.0 | crash reports and a health endpoint; no uptime alerting |
+| CI/CD and release | 6 | 4.8 | gate, SemVer and migrations as code; no remote, no auto-deploy |
+| Documentation | 6 | 5.6 | README + SECURITY.md + the vault protocols |
 | Process | 4 | 3.2 | strong for one developer |
-| **Total** | **100** | **76.4** | **76 / 100** |
+| **Total** | **100** | **81.5** | **81 / 100** |
 
-The missing 24 points are concentrated: **security identity (5.4)**, **observability (3.0)** and
-**unmeasured testing (3.0)** account for about half of them.
+The missing 19 points are concentrated: **the session is still client-asserted (3.0)**,
+**unmeasured testing (2.0)**, **no CI that actually runs (1.2)** and **no performance data (1.5)**.
 
 ## What would move it to ~90
 
 | Fix | Area | Effort | Points |
 |---|---|---|---|
+| ~~Login rate limit~~ (done: 5 per account, 100 per address) | Security | done | — |
+| ~~CSP + security headers~~ (done) | Security | done | — |
+| ~~Error reporting + health endpoint~~ (done) | Observability | done | — |
+| ~~README + SECURITY.md~~ (done) | Docs | done | — |
+| A signed per-device session (the last real security gap) | Security | 2–3 h | +2.0 |
 | Push the repo to GitHub and let the committed workflow run | CI/CD | 20 min | +1.0 |
-| Per-device sync token so `portal_data` is not open to anon | Security | 2–3 h | +2.5 |
-| Login rate limit (attempts per handle/IP, exponential backoff) | Security | 1 h | +1.0 |
-| CSP + `X-Content-Type-Options` + `Referrer-Policy` in `vercel.json` | Security | 30 min | +0.5 |
 | Split `app.js` by screen (`quiz`, `catalog`, `account`, `stats`) | Architecture | 3–4 h | +1.5 |
-| Error reporting (a tiny `/api/log` or a free sink) + uptime ping | Observability | 1–2 h | +1.5 |
 | Contrast + tap-target pass, one screen-reader run on the tablet | a11y | 1 h | +1.0 |
-| README + a schema/policy page | Docs | 1 h | +1.0 |
-| Coverage number in CI (pytest-cov or c8 on the JS) | Testing | 1 h | +0.5 |
+| Coverage number in CI (a coverage report for the Python suite and the JS) | Testing | 1 h | +0.5 |
+| A scheduled uptime check that writes to the same log | Observability | 45 min | +0.5 |
+| Rehearse the restore path (a real backup and a real restore) | Data integrity | 1 h | +0.5 |
 
 ## Deliberately out of scope
 Paying-user SLAs, on-call rotations, penetration testing, formal change management, HIPAA/GDPR
