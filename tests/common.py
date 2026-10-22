@@ -79,7 +79,9 @@ def launch():
 
 
 def new_page(pw, tour_done=True, telegram=None, add_init=None):
-    browser = pw.chromium.launch(headless=True, executable_path=EXE)
+    # CI runs on Linux with Playwright's own Chromium; this machine uses Thorium
+    launch_kw = {'executable_path': EXE} if os.path.exists(EXE) else {}
+    browser = pw.chromium.launch(headless=True, **launch_kw)
     ctx = browser.new_context(viewport=VP, is_mobile=True, has_touch=True,
                               service_workers='block')
     done_line = ("localStorage.setItem('portal_tour_done', '1');"
@@ -212,7 +214,7 @@ def mock_board(page, rows):
           return (box && box.childElementCount > 0)
             || (empty && !empty.classList.contains('hidden'));
         }""", timeout=15000)
-    except Exception:
+    except Exception:  # audit-ignore: optional wait
         pass
     page.wait_for_timeout(400)
 

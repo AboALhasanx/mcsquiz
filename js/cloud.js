@@ -104,12 +104,6 @@
     } catch (e) { return null; }
   }
 
-  function stashLaunch() {
-    try {
-      var u = parseLaunchHash();
-      if (u) ssSet(LS_INIT_STASH, JSON.stringify({ u: u, t: Date.now() }));
-    } catch (e) {}
-  }
   function stashedUser() {
     try {
       var raw = ssGet(LS_INIT_STASH);
@@ -533,7 +527,7 @@
       pushTimer = null;
       if (syncing || !navigator.onLine || !linked() || !activeStore()) return;
       syncing = true;
-      upload().catch(function () {}).then(function () {
+      upload().catch(function (e) { try { console.warn('[sync] upload failed:', (e && e.message) || e); } catch (x) {} }).then(function () {
         syncing = false;
         if (typeof global.PortalCloudUI === 'function') { try { global.PortalCloudUI(); } catch (e) {} }
       });

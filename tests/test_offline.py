@@ -98,7 +98,7 @@ def run():
               return (e && !e.classList.contains('hidden'))
                 || (o && !o.classList.contains('hidden'));
             }""", timeout=20000)
-        except Exception:
+        except Exception:  # audit-ignore: optional wait
             pass
         page.wait_for_timeout(400)
         league_text = page.locator('#league-view').inner_text() or ''

@@ -15,7 +15,7 @@ try:
     page.wait_for_timeout(5000)
     try:
         page.wait_for_function('() => !!navigator.serviceWorker.controller', timeout=20000)
-    except Exception:
+    except Exception:  # audit-ignore: optional wait
         pass
     page.wait_for_timeout(1500)
     page.locator('.btn-menu').first.click()

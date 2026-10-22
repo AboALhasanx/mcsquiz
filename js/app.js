@@ -168,6 +168,12 @@
     // view change (a paused quiz that is left behind used to block the next one)
     const pauseOv = $('pause-overlay');
     if (pauseOv && viewId !== 'quiz-view') pauseOv.classList.add('hidden');
+    // and a session clock never outlives the quiz view (defensive: every exit
+    // path — the guard, the browser back button, a route change — lands here)
+    if (viewId !== 'quiz-view' && S.session && S.session.timerId) {
+      try { clearInterval(S.session.timerId); } catch (e) {}
+      S.session.timerId = null;
+    }
     closeDrawers();
     icons();
   }
@@ -767,11 +773,6 @@
     openDrawer('quiz-info-drawer');
     icons();
   }
-  function best_text(quizId) {
-    const b = getBest(quizId);
-    return b ? '<li><strong>أفضل نتيجة:</strong> ' + Math.round(b.pct) + '% (' + escapeHtml(b.frac) + ')</li>' : '';
-  }
-
   // ---------------- quiz session ----------------
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -1540,7 +1541,7 @@
     cloudPush();
     try {
       if (window.PortalLeague && window.PortalLeague.linked && window.PortalLeague.linked()) {
-        window.PortalLeague.syncWeek().catch(function () {});
+        window.PortalLeague.syncWeek().catch(function (e) { dbg('league sync failed:', (e && e.message) || e); });
       }
     } catch (e) {}
   }
@@ -2394,6 +2395,7 @@
   }
 
   // ---------------- side menu ----------------
+  // ---------- side menu ----------------
   function openMenu() {
     syncMenuToggles();
     updateMenuCounts();
@@ -2431,7 +2433,7 @@
         badge.classList.add('ok');
         return;
       }
-    } catch (e) {}
+    } catch (e) { /* audit-ignore: probe only */ }
     label.textContent = 'النسخة بدون إنترنت';
     if (sub) sub.textContent = 'اضطر لتحضير الكوزات على جهازك';
     badge.textContent = 'جهّز';
@@ -2456,7 +2458,7 @@
           return true;
         }
       }
-    } catch (e) {}
+    } catch (e) { /* audit-ignore: probe only */ }
     return false;
   }
 
@@ -2737,7 +2739,7 @@
       await C.updateProfile(name, avatar, pin);
       updateAccountRow();
       S.leagueRows = null; S.leagueStamp = 0;
-      try { await window.PortalLeague.syncWeek(); } catch (e) {}
+      try { await window.PortalLeague.syncWeek(); } catch (e) { dbg('league sync failed:', (e && e.message) || e); }
       renderLeague();
       toast('تم حفظ الملف', 'success');
     } catch (e) {
@@ -2788,8 +2790,8 @@
       updateAccountRow();
       // a fresh identity must not read the previous board cache
       S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
-      try { await C.pullOrPush(); } catch (e) {}
-      try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) {}
+      try { await C.pullOrPush(); } catch (e) { dbg('sync failed:', (e && e.message) || e); }
+      try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) { dbg('league sync failed:', (e && e.message) || e); }
       renderLeague();
       try { loadSaved(); } catch (e) {}
       renderCatalog();
@@ -2832,7 +2834,7 @@
     try {
       const sb = await sbRaw();
       await sb.rpc('link_new', { p_code: code });
-    } catch (e) {}
+    } catch (e) { /* audit-ignore: the link poll retries */ }
     stopLinkPoll();
     linkPoll = setInterval(async () => {
       // never resurrect a session after the sheet was closed or the user signed out
@@ -2853,11 +2855,11 @@
           toast('تم ربط هذا الجهاز', 'success');
           S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
           try { loadSaved(); } catch (e) {}
-          try { await C.pullOrPush(); } catch (e) {}
-          try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) {}
+          try { await C.pullOrPush(); } catch (e) { dbg('sync failed:', (e && e.message) || e); }
+          try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) { dbg('league sync failed:', (e && e.message) || e); }
           renderLeague();
         }
-      } catch (e) {}
+      } catch (e) { /* audit-ignore: probe only */ }
     }, 3000);
   }
 
@@ -2930,7 +2932,7 @@
           $('link-code-input').value = m[1];
           stopScan();
           toast('انقر «نعم، اربط الجهاز» للتأكيد', 'success');
-        } catch (e) {}
+        } catch (e) { /* audit-ignore: probe only */ }
       }, 700);
     } catch (e) {
       toast('تعذر فتح الكاميرا — اكتب الأرقام', 'error');
@@ -3516,7 +3518,7 @@
         me = S.leagueMe || null;
       } else {
         rows = await L.board();
-        try { me = await L.myRow(); } catch (e) {}
+        try { me = await L.myRow(); } catch (e) { dbg('myLeagueRow failed:', (e && e.message) || e); }
       }
       rows = scopeRows(rows, S.leagueSubject);
       const myId = me && me.user_id;
@@ -3586,6 +3588,12 @@
         finishQuiz();
         return;
       }
+      // leaving an unfinished quiz: stop its clock, or it keeps ticking in the
+      // background for the rest of the session (a real zombie timer)
+      try {
+        if (S.session && S.session.timerId) { clearInterval(S.session.timerId); S.session.timerId = null; }
+        if (S.session) S.session.pauseStart = null;
+      } catch (e) {}
       const target = navPending || '';
       S.session = null;
       hideLeaveModal();
@@ -3705,7 +3713,7 @@
     if (leagueLink) leagueLink.addEventListener('click', () => {
       try {
         const L = window.PortalLeague;
-        if (L && L.linked && L.linked() && L.syncWeek) L.syncWeek().catch(() => {});
+        if (L && L.linked && L.linked() && L.syncWeek) L.syncWeek().catch((e) => dbg('league sync failed:', (e && e.message) || e));
       } catch (e) {}
     });
     const impInput = $('import-data-input');
@@ -3858,7 +3866,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v100';
+  const SHELL_VERSION = '1.0.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -3887,7 +3895,7 @@
         const keys = await race(c.keys());
         out.caches[names[i]] = keys.length;
       }
-    } catch (e) {}
+    } catch (e) { /* audit-ignore: probe only */ }
     return out;
   }
 
@@ -3932,6 +3940,7 @@
       syncMenuToggles();
       updateAccountRow();
       icons();
+      // audit-ignore: debug only (?debug=1)
       if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
       {
         const badge = $('test-mode-badge');

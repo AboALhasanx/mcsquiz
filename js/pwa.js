@@ -14,7 +14,7 @@
           if (document.visibilityState === 'visible') check();
         });
         window.addEventListener('focus', check);
-        setInterval(check, 20 * 60 * 1000);
+        setInterval(check, 20 * 60 * 1000); // audit-ignore: page lifetime
       }).catch(() => {});
     }
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -28,7 +28,7 @@
     install: async function () {
       if (!deferredPrompt) return false;
       deferredPrompt.prompt();
-      try { await deferredPrompt.userChoice; } catch (e) {}
+      try { await deferredPrompt.userChoice; } catch (e) { /* audit-ignore: the user cancelled */ }
       deferredPrompt = null;
       return true;
     },
