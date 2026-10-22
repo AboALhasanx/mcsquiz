@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.2] — 2026-10-22
+
+### Changed
+- fix: a league request timeout no longer stays armed after the request settles
+
+
 ## [1.0.1] — 2026-10-22
 
 ### Changed

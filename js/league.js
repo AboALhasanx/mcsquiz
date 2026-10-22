@@ -30,12 +30,15 @@
   // Never let a network call hold the UI: offline / a stalled CDN import must
   // surface as a normal rejection so the board can say "needs internet".
   function withTimeout(promise, ms) {
-    return Promise.race([
-      promise,
-      new Promise(function (_, reject) {
-        setTimeout(function () { reject(new Error('timeout')); }, ms || 6000);
-      }),
-    ]);
+    var id = null;
+    var timer = new Promise(function (_, reject) {
+      id = setTimeout(function () { reject(new Error('timeout')); }, ms || 6000);
+    });
+    // whoever wins, the loser's timer must not stay armed for seconds
+    return Promise.race([promise, timer]).then(
+      function (v) { clearTimeout(id); return v; },
+      function (e) { clearTimeout(id); throw e; }
+    );
   }
 
   async function client() {
