@@ -610,7 +610,7 @@
     chapters.forEach((c) => {
       const b = document.createElement('button');
       b.className = 'filter-chip chapter-chip' + (S.chapterFilter === c.chapter_no ? ' active' : '');
-      b.textContent = c.chapter_no;
+      b.textContent = chLabel(c);
       b.setAttribute('aria-label', chLabelLong(c));
       b.title = chLabelLong(c);
       b.setAttribute('aria-pressed', S.chapterFilter === c.chapter_no ? 'true' : 'false');
@@ -3944,7 +3944,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.2.0';
+  const SHELL_VERSION = '1.2.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
