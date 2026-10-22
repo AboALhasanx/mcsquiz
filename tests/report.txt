@@ -4,23 +4,23 @@ PASS | banks | Arabic question coverage meets the current target | 314/334 trans
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_ModelB_DrHuda')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': '9a105b54-db13-438c-a6f0-d476d6cad327', 'handle': 't781864', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792660786454}
+PASS | accounts | username + PIN creates an account | {'id': '60c83d14-d7a2-41af-8f2b-23f84b3d63eb', 'handle': 't412198', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792661417551}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': '9a105b54-db13-438c-a6f0-d476d6cad327', 'handle': 't781864', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792660801469}
-PASS | accounts | the avatar is saved | {'id': '9a105b54-db13-438c-a6f0-d476d6cad327', 'handle': 't781864', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792660801469}
+PASS | accounts | the display name is editable | {'id': '60c83d14-d7a2-41af-8f2b-23f84b3d63eb', 'handle': 't412198', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792661432291}
+PASS | accounts | the avatar is saved | {'id': '60c83d14-d7a2-41af-8f2b-23f84b3d63eb', 'handle': 't412198', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792661432291}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': '9a105b54-db13-438c-a6f0-d476d6cad327', 'handle': 't781864', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792660819818}
+PASS | accounts | same username returns the same account | {'id': '60c83d14-d7a2-41af-8f2b-23f84b3d63eb', 'handle': 't412198', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792661450561}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has four digits | 9341
+PASS | accounts | the link code has four digits | 1738
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': '9a105b54-db13-438c-a6f0-d476d6cad327', 'handle': 't781864', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792660848472}
+PASS | accounts | the approved device signs in | {'id': '60c83d14-d7a2-41af-8f2b-23f84b3d63eb', 'handle': 't412198', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792661478659}
 PASS | catalog | index exposes subjects | 6
 PASS | catalog | one chip per subject | 6 vs 6
 PASS | catalog | no "all" chip | 
@@ -41,7 +41,7 @@ PASS | quiz | next is blocked while unanswered |
 PASS | quiz | blocked next explains itself | 
 PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the switch turns the question into English | A
-PASS | quiz | the English stem is used | Which set of techniques is used to enforce confidentiality?
+PASS | quiz | the English stem is used | Zero trust has become a leading security model in the last d
 PASS | quiz | the switch returns to Arabic | أ
 PASS | quiz | total questions loaded | 10
 PASS | quiz | saving marks the bookmark | 
@@ -55,8 +55,8 @@ PASS | quiz | matrix has one cell per question | 10
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 3, 'wrong': 7, 'acc': '30%', 'hasUnanswered': False, 'time': '0:09'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 3, 'wrong': 7, 'acc': '30%', 'hasUnanswered': False, 'time': '0:09'}
+PASS | quiz | correct + wrong equals the total | {'correct': 4, 'wrong': 6, 'acc': '40%', 'hasUnanswered': False, 'time': '0:09'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 4, 'wrong': 6, 'acc': '40%', 'hasUnanswered': False, 'time': '0:09'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
 PASS | quiz | one review card per question | 10
@@ -93,7 +93,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 19
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/saved', '#/league', '#/stats'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/league', '#/saved'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
