@@ -3807,7 +3807,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v90';
+  const SHELL_VERSION = 'v91';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

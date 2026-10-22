@@ -1,0 +1,532 @@
+{
+  "topic": {
+    "ar": "المخاطر والثغرات والاستغلال ونماذج التقييم وتوزيع الخطر P(R>r)",
+    "en": "Risks, Vulnerabilities, Assessment Models & Risk Distribution"
+  },
+  "quiz_id": "Quiz_Ch01_T05_Risks_Vulnerabilities_and_Distribution",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "وفق التعريفات الرسمية المعتمدة في المحاضرة، كيف يُعرّف الخطر Risk معيارياً؟",
+        "en": "According to the formal cybersecurity definitions in the lecture, how is Risk canonically defined?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد محاولات تسجيل الدخول غير المصرّح بها التي ترصدها جدران حماية الشبكة كل ساعة تشغيل.",
+          "en": "The number of unauthorized login attempts detected by perimeter firewalls hourly."
+        },
+        {
+          "ar": "المدة الزمنية المستغرقة لتنفيذ دوال التجزئة التشفيرية عند معالجة كتل البيانات الضخمة.",
+          "en": "The elapsed runtime duration required by cryptographic hashing functions to execute."
+        },
+        {
+          "ar": "إجمالي أقساط التأمين المالي المدفوعة لتغطية الأضرار المادية الناجمة عن تلف الخوادم بالسوائل.",
+          "en": "The total monetary insurance premium paid to cover hardware system liquid damage."
+        },
+        {
+          "ar": "دالة رياضية تجمع بين احتمالية وقوع الحادث Likelihood والتأثير السلبي الناجم عنه Impact.",
+          "en": "A mathematical function of incident likelihood and adverse operational impact."
+        }
+      ],
+      "concept_id": "risk_core_definition_function",
+      "explanation": {
+        "ar": "ينص المنهج حرفياً على أن: «الخطر: دالة للاحتمالية والتأثير» (Risk: Function of likelihood and impact)؛ فالخطر العالي هو نتاج احتمال مرتفع مع ضرر جسيم.",
+        "en": "Section 5 opens verbatim: Risk: Function of likelihood and impact."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما التعريف الشامل للثغرة الأمنية Vulnerability كما ورد في النص الأساسي للمحاضرة؟",
+        "en": "What is the comprehensive definition of a Vulnerability provided in the primary lecture text?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "العقوبات الإدارية والوظيفية المفروضة على الموظفين الذين يشاركون كلمات المرور في العمل.",
+          "en": "Administrative policy sanctions enforced against employees who share credentials."
+        },
+        {
+          "ar": "نقاط ضعف أو عيوب كامنة في البرمجيات Software، أو العتاد Hardware، أو العامل البشري Human.",
+          "en": "Weaknesses or flaws existing in software, hardware architecture, or human factors."
+        },
+        {
+          "ar": "شيفرة برمجية تنفيذية خبيثة مصممة لحذف واستبدال ملفات نواة نظام التشغيل فور تشغيلها.",
+          "en": "Malicious executable payload code designed to overwrite operating system kernels."
+        },
+        {
+          "ar": "طفرات الجهد الكهربائي العالية التي تؤدي إلى تلف الدوائر الإلكترونية للمعالجات الدقيقة.",
+          "en": "Hardware electrical grounding surges that permanently damage sensitive processors."
+        }
+      ],
+      "concept_id": "vulnerability_definition_weaknesses",
+      "explanation": {
+        "ar": "تعريف الثغرة نصاً في المحاضرة هو: «نقاط ضعف في البرمجيات أو العتاد أو العامل البشري» (Weaknesses in software, hardware, or human factors).",
+        "en": "The text defines: Vulnerabilities: Weaknesses in software, hardware, or human factors."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مثال استشهدت به ملاحظات المحاضرة نصياً لتوضيح ثغرات التطبيقات البرمجية الشائعة؟",
+        "en": "Which example is specifically cited in the lecture notes to illustrate common software application vulnerabilities?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "دليل التوثيق والامتثال لمعايير إدارة الجودة الشاملة للمؤسسات ISO 9001.",
+          "en": "The ISO 9001 quality management process documentation compliance manual."
+        },
+        {
+          "ar": "قائمة OWASP Top 10 التي توثق أخطر عشر ثغرات أمنية شائعة في تطبيقات الويب.",
+          "en": "The OWASP Top 10 catalog of critical web application security vulnerabilities."
+        },
+        {
+          "ar": "المعيار اللاسلكي IEEE 802.11 لبروتوكولات نقل البيانات في الشبكات المحلية.",
+          "en": "The IEEE 802.11 wireless local area network transmission protocol standard."
+        },
+        {
+          "ar": "المواصفات القياسية لقواعد تصريف وفحص بناء لغة البرمجة ANSI C المعتمدة.",
+          "en": "The ANSI C programming language standardized syntax parsing specifications."
+        }
+      ],
+      "concept_id": "vulnerability_examples_owasp_top_10",
+      "explanation": {
+        "ar": "أوردت المحاضرة مثالين رسميين على الثغرات نصاً: دليل OWASP Top 10 (لثغرات تطبيقات الويب) ومعرّفات CVEs.",
+        "en": "Under Vulnerabilities, the text gives: (Examples: OWASP Top 10, CVEs)."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الغرض التقني الأساسي لنظام ثغرات وانكشافات الأمان CVE المستشهد به في الملاحظات؟",
+        "en": "What is the primary industry purpose of the Common Vulnerabilities and Exposures (CVE) system cited in the notes?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حساب الالتزامات والخصومات الضريبية للشركات بعد التعرض لابتزاز برمجيات الفدية.",
+          "en": "To calculate corporate financial tax liability following external ransomware extortion."
+        },
+        {
+          "ar": "توليد أزواج المفاتيح التشفيرية العامة والخاصة تلقائياً لخوادم الويب المؤسسية.",
+          "en": "To automatically generate cryptographic public-private key pairs for web servers."
+        },
+        {
+          "ar": "توفير معرّف قياسي موحد عالمياً لكل ثغرة أمنية معروفة لتسهيل مشاركتها ومعالجتها عالمياً.",
+          "en": "To provide standardized, globally unique identifiers for publicly known vulnerabilities."
+        },
+        {
+          "ar": "تصريف ملفات الشيفرة المصدرية التنفيذية إلى صيغ ثنائية يفهمها نظام التشغيل.",
+          "en": "To compile executable machine code binaries into native operating system formats."
+        }
+      ],
+      "concept_id": "vulnerability_examples_cve_system",
+      "explanation": {
+        "ar": "نظام CVE هو سجل عالمي موحد يمنح كل ثغرة مكتشفة رقماً فريداً معتمداً، ليتسنى لمختصي الأمن حول العالم تتبعها وترقيعها دون لبس.",
+        "en": "CVE (Common Vulnerabilities and Exposures) assigns a unique, standardized identifier (e.g. CVE-2021-44228) to publicly known cybersecurity vulnerabilities."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما التعريف الرسمي الدقيق لمفهوم أداة الاستغلال Exploit وفق المادة التعليمية المعتمدة؟",
+        "en": "What is the exact formal definition of an Exploit according to the primary lecture materials?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "التحديثات والترقيعات البرمجية الدفاعية المثبتة لإغلاق الثغرات المكتشفة في الخوادم.",
+          "en": "Defensive software patches deployed to eliminate discovered database vulnerabilities."
+        },
+        {
+          "ar": "أدلة التدريب الوظيفية المصممة لرفع وعي الموظفين بمخاطر خدع الهندسة الاجتماعية.",
+          "en": "Administrative employee training manuals designed to prevent social engineering scams."
+        },
+        {
+          "ar": "الأدوات أو الطرق والأساليب المستخدمة للاستفادة من الثغرات الأمنية واختراق النظام.",
+          "en": "Tools or methods used by threat actors to take advantage of existing vulnerabilities."
+        },
+        {
+          "ar": "وثائق التأمين التجاري المبرمة لتعويض المؤسسة مالياً عن الخسائر المترتبة على الخرق.",
+          "en": "Commercial insurance policies acquired to indemnify organizations against breach loss."
+        }
+      ],
+      "concept_id": "exploit_definition_tools_methods",
+      "explanation": {
+        "ar": "تعريف الاستغلال Exploit نصاً في المحاضرة هو: «أدوات وطرق تُستخدم للاستفادة من الثغرات» (Tools/methods used to take advantage of vulnerabilities) والسيطرة على الهدف.",
+        "en": "The lecture defines: Exploits: Tools/methods used to take advantage of vulnerabilities."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف تتفاعل المفاهيم الثلاثة الأساسية (الثغرة، الاستغلال، الخطر) مفاهيمياً عند وقوع حادث أمني؟",
+        "en": "How do the three core concepts of Vulnerability, Exploit, and Risk conceptually interact in a security incident?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الخطر يمثل العيب المادي في الأجهزة، وتقوم أداة الاستغلال بإصلاحه وتجاوزه بالتحديث.",
+          "en": "Risk represents the physical hardware flaw, which an exploit repairs through patches."
+        },
+        {
+          "ar": "الثغرة الأمنية تولد أداة الاستغلال تلقائياً، ولكن الخطر الناتج لا يرتبط بأي منهما.",
+          "en": "A vulnerability causes an exploit, but the resulting risk is independent of both factors."
+        },
+        {
+          "ar": "الثغرة هي نقطة الضعف، والاستغلال هو الأداة المطبقة عليها، والخطر هو الأثر المتوقع للخرق.",
+          "en": "A vulnerability is the flaw, an exploit is the tool used against it, and risk is the resulting loss."
+        },
+        {
+          "ar": "أداة الاستغلال تخلق الثغرة الأمنية، وتؤدي بدورها إلى القضاء التلقائي على الخطر الكلي.",
+          "en": "An exploit creates a vulnerability, which in turn automatically eliminates the overall risk."
+        }
+      ],
+      "concept_id": "risk_vuln_exploit_conceptual_link",
+      "explanation": {
+        "ar": "الثغرة Vulnerability هي الخلل الكامن، والاستغلال Exploit هو الكود أو الأسلوب الذي ينفذ عبر هذا الخلل، والخطر Risk هو احتمالية استغلالها مقترنة بالأثر والضرر المترتب.",
+        "en": "A vulnerability is the inherent system weakness; an exploit weaponizes that weakness; risk is the probabilistic product of likelihood and impact if exploited."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي مجموعة تضم النماذج الثلاثة المعتمدة لتقييم المخاطر Models for Risk Assessment المذكورة في المنهج؟",
+        "en": "Which set lists the three recognized Models for Risk Assessment officially designated in the course notes?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "منهجية OCTAVE، ونموذج FAIR، وإطار NIST RMF لإدارة المخاطر.",
+          "en": "OCTAVE, FAIR, and NIST RMF (Risk Management Framework)."
+        },
+        {
+          "ar": "نموذج الشلال Waterfall، ومنهجية Agile Scrum، والبرمجة القصوى XP.",
+          "en": "Waterfall, Agile Scrum, and Extreme Programming (XP)."
+        },
+        {
+          "ar": "خوارزمية التجزئة SHA-256، والتشفير AES-GCM، والتوقيع الرقمي RSA-4096.",
+          "en": "SHA-256, AES-GCM, and RSA-4096 cryptographic suites."
+        },
+        {
+          "ar": "اللائحة الأوروبية GDPR، وقانون التأمين الصحي HIPAA، وقانون كاليفورنيا CCPA.",
+          "en": "GDPR, HIPAA, and California Consumer Privacy Act (CCPA)."
+        }
+      ],
+      "concept_id": "risk_assessment_three_models_overview",
+      "explanation": {
+        "ar": "تحدد المحاضرة نصاً ثلاثة نماذج لتقييم المخاطر (Models for Risk Assessment): الأول OCTAVE، والثاني FAIR، والثالث NIST RMF.",
+        "en": "The lecture designates three risk assessment frameworks: OCTAVE, FAIR, and NIST RMF."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الذي يرمز إليه الاختصار الأكاديمي OCTAVE في منهجيات تقييم المخاطر السيبرانية؟",
+        "en": "What does the formal acronym OCTAVE stand for in cybersecurity risk assessment methodology?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقييم التهديدات والأصول والثغرات الحرجة تشغيلياً للمنظمة.",
+          "en": "Operationally Critical Threat, Asset, and Vulnerability Evaluation."
+        },
+        {
+          "ar": "محرك الاختبارات والتحقق والتدقيق السيبراني للعمليات المؤسسية التشغيلية الميدانية.",
+          "en": "Operational Cybersecurity Testing And Verification Engine."
+        },
+        {
+          "ar": "معمارية قنوات التشفير المتطورة والأنفاق الافتراضية للشبكات الخاصة الآمنة.",
+          "en": "Optimized Cryptographic Tunneling And VPN Architecture Engine."
+        },
+        {
+          "ar": "بيئة تتبع ومراقبة الامتثال التنظيمي وعزل الأنظمة الافتراضية في مراكز البيانات.",
+          "en": "Organizational Compliance Tracking And Virtualization Environment."
+        }
+      ],
+      "concept_id": "model_octave_acronym_meaning",
+      "explanation": {
+        "ar": "الاختصار OCTAVE يعني حرفياً: Operationally Critical Threat, Asset, and Vulnerability Evaluation (تقييم التهديدات والأصول والثغرات الحيوية للعمليات).",
+        "en": "OCTAVE stands for: Operationally Critical Threat, Asset, and Vulnerability Evaluation."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف يتم هيكلة وتطبيق منهجية OCTAVE لتقييم المخاطر عبر العمليات التنظيمية للمؤسسة؟",
+        "en": "How is the OCTAVE risk assessment methodology structured across organizational operations?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نموذج انحدار خطي رياضي مستمر يحسب الخسائر المالية التقديرية في الميزانية السنوية.",
+          "en": "A continuous mathematical linear regression model calculating monetary balance sheet loss."
+        },
+        {
+          "ar": "ثلاث مراحل: بناء ملفات التهديد المبنية على الأصول، فحص البنية التحتية، وصياغة الاستراتيجية.",
+          "en": "Three phases: asset-based threat profiles, infrastructure vulnerability review, and security strategy."
+        },
+        {
+          "ar": "ست مراحل متعاقبة تركز حصرياً على اعتماد تصاريح تشغيل البرمجيات العسكرية الفدرالية.",
+          "en": "Six lifecycle stages focusing strictly on federal government defense software authorization."
+        },
+        {
+          "ar": "عملية فحص مؤتمتة من خطوة واحدة تنفذها جدران الحماية الخارجية على الشبكة حصراً.",
+          "en": "A single-step automated scanning process executed solely by perimeter hardware firewalls."
+        }
+      ],
+      "concept_id": "model_octave_three_phases_structure",
+      "explanation": {
+        "ar": "منهجية OCTAVE مبنية على تقييم الأصول وتعمل في 3 مراحل: 1) بناء ملفات تهديد موجهة للأصول، 2) تحديد ثغرات البنية التحتية، 3) تطوير الاستراتيجية والخطط الأمنية.",
+        "en": "OCTAVE operates in three phases: 1) Build asset-based threat profiles, 2) Identify infrastructure vulnerabilities, and 3) Develop security strategy and plans."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما الخاصية التحليلية المميزة لمنهجية تحليل عوامل مخاطر المعلومات FAIR مقارنة بغيرها؟",
+        "en": "What is the defining analytical characteristic of the Factor Analysis of Information Risk (FAIR) methodology?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إلغاء خوارزميات التشفير الحاسوبية والاعتماد كلياً على الأرشفة الورقية اليدوية للملفات.",
+          "en": "Eliminating cryptographic algorithms in favor of manual physical paper record storage."
+        },
+        {
+          "ar": "إجراء استبيانات رأي نوعية وانطباعية غير رقمية بين الموظفين غير الفنيين في الأقسام.",
+          "en": "Conducting purely qualitative emotional surveys among non-technical departmental employees."
+        },
+        {
+          "ar": "تفكيك الخطر إلى عوامل محددة لإجراء تحليل كمي رقمي دقيق يقيس الخسارة المالية المتوقعة.",
+          "en": "Decomposing cyber risk into discrete factors to conduct rigorous quantitative financial risk analysis."
+        },
+        {
+          "ar": "إلزام الزوار بوجود مرافقين أمنيين ماديين طوال فترة تواجدهم داخل غرف الخوادم.",
+          "en": "Mandating physical security guard escorts for all visitors inside server room facilities."
+        }
+      ],
+      "concept_id": "model_fair_factor_analysis_quantitative",
+      "explanation": {
+        "ar": "نموذج FAIR (Factor Analysis of Information Risk) يتميز بأنه منهجية تحليل كمي رقمي؛ حيث يفكك الخطر لعوامل (احتمالية الحدث × حجم الخسارة المالية) ويحسبها رقمياً.",
+        "en": "FAIR (Factor Analysis of Information Risk) is celebrated for quantitative risk analysis, breaking risk into loss event frequency and loss magnitude."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ما الإطار التشغيلي العام الذي يحدد منهجية إطار إدارة المخاطر الأمريكي NIST RMF؟",
+        "en": "What operational framework defines the NIST Risk Management Framework (RMF)?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "معاهدة دولية تنظم حقوق مد وتثبيت كابلات الألياف الضوئية البحرية في المياه الدولية.",
+          "en": "An international treaty regulating oceanic fiber optic telecommunication cable installation rights."
+        },
+        {
+          "ar": "دورة حياة منظمة ومستمرة من 6 خطوات: تصنيف، اختيار الضوابط، تنفيذ، تقييم، اعتماد، ومراقبة.",
+          "en": "A structured, continuous 6-step lifecycle for categorizing, selecting, implementing, and monitoring controls."
+        },
+        {
+          "ar": "أداة فحص برمجية تجارية مغلقة تقوم تلقائياً بإعادة كتابة منطق الشيفرة البرمجية المعيبة.",
+          "en": "A proprietary software scanning tool that automatically rewrites defective source code logic."
+        },
+        {
+          "ar": "مجموعة استبيانات لتقييم الأصول مكونة من 3 أجزاء تُسلّم حصرياً للمديرين الماليين.",
+          "en": "A set of three asset evaluation questionnaires administered exclusively to corporate finance officers."
+        }
+      ],
+      "concept_id": "model_nist_rmf_six_steps_lifecycle",
+      "explanation": {
+        "ar": "إطار NIST RMF هو إطار إدارة المخاطر التابع للمعهد الأمريكي للمعايير، ويقوم على دورة حياة من 6 خطوات متتالية: تصنيف الأنظمة، اختيار الضوابط، تنفيذها، تقييمها، اعتمادها، ومراقبتها.",
+        "en": "NIST RMF (Risk Management Framework) is a 6-step lifecycle: Categorize, Select, Implement, Assess, Authorize, and Monitor security controls."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ما المعادلة الرياضية المعيارية المعتمدة لتمثيل توزيع احتمالية الخطر في المحاضرة؟",
+        "en": "What is the canonical Mathematical Model for Risk Probability Distribution in the lecture?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
+          "en": "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$"
+        },
+        {
+          "ar": "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
+          "en": "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$"
+        },
+        {
+          "ar": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
+          "en": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$"
+        },
+        {
+          "ar": "$$P(R > r) = 1 - F$$",
+          "en": "$$P(R > r) = 1 - F(r)$$"
+        }
+      ],
+      "concept_id": "risk_probability_distribution_equation",
+      "explanation": {
+        "ar": "المعادلة الرياضية الخامسة لنموذج توزيع احتمالية الخطر هي: $P(R > r) = 1 - F(r)$؛ وتحدد احتمال أن يتجاوز الخطر قيمة أو عتبة معينة $r$.",
+        "en": "The formula for Risk Probability Distribution is $P(R > r) = 1 - F(r)$, where F(r) is the Cumulative Distribution Function (CDF)."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "في المعادلة $P(R > r) = 1 - F(r)$، كيف يُعرّف المتغير $R$ بالمعنى الإحصائي الدقيق؟",
+        "en": "In the formula $P(R > r) = 1 - F(r)$, how is the variable $R$ statistically defined?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "متغير عشوائي Random Variable يمثل حجم التأثير أو الخسارة الناتجة عن وقوع الخطر.",
+          "en": "A random variable representing the adverse impact or financial loss magnitude of risk."
+        },
+        {
+          "ar": "ثابت عددي صحيح يسجل عدد أجهزة التوجيه المادية المثبتة على أطراف الشبكة المحلية.",
+          "en": "A static integer constant recording the number of physical edge routers on the network."
+        },
+        {
+          "ar": "معدل سعة نقل البيانات المقاس بدقة وثبات عبر منافذ محولات الإيثرنت المحلية.",
+          "en": "The deterministic bandwidth throughput measured across local ethernet switch ports."
+        },
+        {
+          "ar": "التاريخ التقويمي بعدد الأيام المتبقية قبل انتهاء تراخيص البرمجيات التجارية للشركة.",
+          "en": "The calendar date in days remaining before commercial software license keys expire."
+        }
+      ],
+      "concept_id": "risk_variable_r_nature",
+      "explanation": {
+        "ar": "الرمز $R$ هو متغيّر عشوائي (Random Variable) يمثل حجم الضرر أو التأثير المالي للخطر السيبراني؛ ولأنه متغير احتمالي يخضع لتوزيع تراكمي.",
+        "en": "In probability theory and lecture notes, R is a random variable modeling the uncertain severity/impact of security risk events."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "ما الدالة $F(r)$ في معادلة توزيع الخطر، وما الحدود الرياضية التي تحصر قيمتها حتماً؟",
+        "en": "What is the function $F(r)$ in the risk distribution formula, and what mathematical bounds restrict its value?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "دالة انحدار التكلفة الخطية المعبر عن قيمها بوحدات العملة المالية غير المقيدة بسقف.",
+          "en": "A linear cost slope function with values expressed in unconstrained currency units."
+        },
+        {
+          "ar": "مقياس تكرار أسي تتراوح قيمه بين سالب واحد وموجب واحد في الحسابات الإحصائية.",
+          "en": "An exponential frequency metric with values ranging between negative one and positive one."
+        },
+        {
+          "ar": "دالة كثافة الاحتمال PDF التي تمتد قيمتها من الصفر إلى موجب ما لا نهاية رياضياً.",
+          "en": "A probability density function (PDF) with values spanning from zero to positive infinity."
+        },
+        {
+          "ar": "دالة التوزيع التراكمي CDF لتأثير الخطر، وتكون قيمتها محصورة حتماً ضمن المجال $0 \\le F \\le 1$.",
+          "en": "The Cumulative Distribution Function (CDF) of risk impact, bounded strictly within $0 \\le F(r) \\le 1$."
+        }
+      ],
+      "concept_id": "cdf_f_r_definition_and_bounds",
+      "explanation": {
+        "ar": "نصت حاشية الطالب والمحاضرة صراحةً على: «الـ $F(r)$ محصورة بين 0 و 1»؛ لأنها دالة التوزيع التراكمي CDF التي تعطي احتمال أن يكون الخطر دون الحد $r$ أو مساوياً له.",
+        "en": "As annotated: F(r) is bounded between 0 and 1 because it is a Cumulative Distribution Function (CDF) giving $P(R \\le r)$."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "ما الاحتمال التشغيلي المحدد الذي يقيسه التعبير الرياضي $P(R > r) = 1 - F(r)$ لمديري المخاطر؟",
+        "en": "What specific operational probability does the expression $P(R > r) = 1 - F(r)$ determine for risk managers?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "احتمال أن يتجاوز أثر أو ضرر الخطر الفعلي حداً أو عتبة معينة مقبولة $r$ (احتمال الذيل التراكمي).",
+          "en": "The probability that the realized risk loss will exceed an acceptable threshold $r$ (tail risk)."
+        },
+        {
+          "ar": "احتمال فك تشفير كافة كلمات مرور الموظفين بنجاح خلال ساعة واحدة من بدء الهجوم الإلكتروني.",
+          "en": "The probability that employee credential passwords will be successfully decrypted within one hour."
+        },
+        {
+          "ar": "احتمال تعرض جميع جدران حماية الشبكة المحيطية لانقطاع متزامن في التغذية الكهربائية.",
+          "en": "The probability that all perimeter network firewalls will experience simultaneous power loss."
+        },
+        {
+          "ar": "احتمال عدم وقوع أي حادث أو تهديد أمني إطلاقاً خلال الربع المالي التشغيلي القادم.",
+          "en": "The probability that zero security incidents will occur during the upcoming fiscal quarter."
+        }
+      ],
+      "concept_id": "risk_tail_probability_meaning",
+      "explanation": {
+        "ar": "التعبير $P(R > r)$ يعني حرفياً: «احتمال أن يتجاوز الخطر حداً معيناً $r$»؛ وهو ما يُعرف في إدارة المخاطر باحتمال الذيل (Tail Risk) لقياس احتمالية وقوع كوارث تتجاوز قدرة المؤسسة.",
+        "en": "$P(R > r) = 1 - F(r)$ evaluates the complementary tail probability: the likelihood of facing catastrophic losses exceeding threshold r."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "إذا كانت دالة التوزيع التراكمي لخسائر خوادم مؤسسة تساوي $F(50) = 0.85$، فما احتمال أن يتجاوز الخطر القيمة 50 أي ($P(R > 50)$)؟",
+        "en": "If an organization's cumulative distribution function for server failure loss evaluates to $F(50) = 0.85$, what is the probability that risk exceeds 50 ($P(R > 50)$)?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قيمة الاحتمال P(R > 50) تساوي 0.85 تماماً (أي 85%)، مأخوذة من F(50) مباشرة.",
+          "en": "The calculated value of P(R > 50) is exactly 0.85 (85%), from F(50) directly."
+        },
+        {
+          "ar": "قيمة الاحتمال P(R > 50) تساوي 0.50 تماماً (أي 50%)، بافتراض وسيط الخطر المتناظر.",
+          "en": "The calculated value of P(R > 50) is exactly 0.50 (50%), representing median."
+        },
+        {
+          "ar": "قيمة الاحتمال P(R > 50) تساوي 1.85 تماماً (أي 185%)، ناتجة عن جمع 1 + 0.85.",
+          "en": "The calculated value of P(R > 50) is exactly 1.85 (185%), from 1 + 0.85."
+        },
+        {
+          "ar": "قيمة الاحتمال P(R > 50) تساوي 0.15 تماماً (أي 15%)، ناتجة عن طرح 1 - 0.85.",
+          "en": "The calculated value of P(R > 50) is exactly 0.15 (15%), from 1 - 0.85."
+        }
+      ],
+      "concept_id": "risk_probability_numerical_example",
+      "explanation": {
+        "ar": "بتطبيق المعادلة مباشرة: $P(R > 50) = 1 - F(50) = 1 - 0.85 = 0.15$ (أي احتمال بنسبة 15% أن يتجاوز الخطر العتبة 50).",
+        "en": "$P(R > 50) = 1 - F(50) = 1 - 0.85 = 0.15$."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-22T01:35:54Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

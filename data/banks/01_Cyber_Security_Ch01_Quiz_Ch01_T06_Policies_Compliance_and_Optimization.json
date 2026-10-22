@@ -1,0 +1,532 @@
+{
+  "topic": {
+    "ar": "السياسات والأطر ومؤشر الامتثال PCI ومعادلة التحسين والسيناريوهات",
+    "en": "Policies, Frameworks, Compliance Index PCI & Risk Optimization"
+  },
+  "quiz_id": "Quiz_Ch01_T06_Policies_Compliance_and_Optimization",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما النطاق التنظيمي الأساسي الذي تحكمه اللائحة العامة لحماية البيانات في الاتحاد الأوروبي GDPR؟",
+        "en": "What primary regulatory domain is governed by the European Union General Data Protection Regulation (GDPR)?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "بروتوكولات ربط المحولات الكهربائية عالية الجهد في شبكات الطاقة.",
+          "en": "High-voltage electrical grid substation interconnection protocols."
+        },
+        {
+          "ar": "تقييم التعرفة الجمركية لحاويات الشحن التجاري البحري في الموانئ.",
+          "en": "Maritime commercial cargo container customs tariff valuation."
+        },
+        {
+          "ar": "تخصيص ترددات رادار الملاحة الجوية وإدارة حركة الطيران المدني.",
+          "en": "Aviation airspace radar frequency allocation and flight control."
+        },
+        {
+          "ar": "حماية البيانات الشخصية وحقوق الخصوصية الرقمية الصارمة للأفراد.",
+          "en": "Data protection and personal privacy rights of individuals."
+        }
+      ],
+      "concept_id": "policy_framework_gdpr_scope",
+      "explanation": {
+        "ar": "يحدد المنهج اللائحة الأوروبية GDPR نصاً بـ: «حماية البيانات والخصوصية» (Data protection and privacy) للأفراد والمستخدمين.",
+        "en": "Section 6 designates: GDPR (EU): Data protection and privacy."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي إطار تشريعي وتنظيمي في الولايات المتحدة يُلزم تحديداً بحماية معلومات الرعاية الصحية للمرضى؟",
+        "en": "Which regulatory framework in the United States specifically mandates the protection of healthcare information?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قانون سلامة النقل والملاحة الجوية التابع لإدارة الطيران الفدرالية الأمريكية.",
+          "en": "The Federal Aviation Administration National Airspace System Safety Act."
+        },
+        {
+          "ar": "قانون نقل ومساءلة التأمين الصحي الأمريكي HIPAA المخصص لحماية السجلات الطبية.",
+          "en": "The Health Insurance Portability and Accountability Act (HIPAA)."
+        },
+        {
+          "ar": "معايير تنظيم التجارة والتجزئة الرقمية العابرة للحدود التابعة لهيئة التجارة الفدرالية.",
+          "en": "The Federal Trade Commission Cross-Border Commercial Retailing Standard."
+        },
+        {
+          "ar": "لوائح السلامة البيئية والمادية لمنشآت الموانئ البحرية التجارية الدولية.",
+          "en": "The Maritime Port Facility Marine Environmental Safety Regulation."
+        }
+      ],
+      "concept_id": "policy_framework_hipaa_scope",
+      "explanation": {
+        "ar": "ينص المنهج صراحةً على أن قانون HIPAA الأمريكي مختص بـ: «حماية معلومات الرعاية الصحية» (Healthcare information protection).",
+        "en": "The lecture text records: HIPAA (US): Healthcare information protection."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي معيار دولي معترف به يحدد الضوابط العالمية لأنظمة إدارة أمن المعلومات ISMS؟",
+        "en": "Which recognized international standard establishes global benchmarks for Information Security Management Systems (ISMS)?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "معيار IEEE 802.3 المنظم لهيكلة وتأطير حزم البيانات في شبكات إيثرنت السلكية.",
+          "en": "The IEEE 802.3 standard governing local area network ethernet framing protocols."
+        },
+        {
+          "ar": "المعايير الدولية NIST / ISO 27001 المنظمة لأنظمة وإدارة أمن المعلومات المؤسسية.",
+          "en": "The NIST / ISO 27001 international cybersecurity and information security standards."
+        },
+        {
+          "ar": "مواصفة Bluetooth Core المنظمة لاقتران الملحقات اللاسلكية منخفضة الطاقة بالهواتف.",
+          "en": "The Bluetooth Core Specification governing low-energy wireless peripheral pairing."
+        },
+        {
+          "ar": "توصيات الاتحاد الدولي للاتصالات المنظمة للبث الصوتي التناظري عبر الدوائر العامة.",
+          "en": "The ITU-T Recommendation governing analog audio voice transmission over public circuits."
+        }
+      ],
+      "concept_id": "policy_framework_nist_iso_standards",
+      "explanation": {
+        "ar": "ورد نصاً في المحاضرة: «NIST / ISO 27001: معايير دولية» لتأسيس وتشغيل وتدقيق أنظمة إدارة أمن المعلومات ISMS داخل المؤسسات.",
+        "en": "The primary text lists: NIST/ISO 27001: International standards."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الأطر الاستراتيجية التي تميز المنظور الأمريكي في الأمن السيبراني وفق ملاحظات المحاضرة؟",
+        "en": "What cybersecurity frameworks characterize the United States global perspective in the lecture notes?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "اتفاقيات بازل المصرفية لكفاية رأس المال ونسب الاحتياطي النقدي للبنوك المركزية.",
+          "en": "The Basel III capital adequacy accords and central bank liquidity reserve ratios."
+        },
+        {
+          "ar": "وثائق بروتوكول كيوتو لتقليص الانبعاثات الكربونية في المنشآت الصناعية الكبرى.",
+          "en": "The Kyoto Protocol industrial carbon emissions reduction documentation targets."
+        },
+        {
+          "ar": "إطار NIST CSF للأمن السيبراني والاستراتيجية الفدرالية الفعالة للأمن السيبراني.",
+          "en": "The NIST Cybersecurity Framework (CSF) and the Federal Cybersecurity Strategy."
+        },
+        {
+          "ar": "قواعد معاهدة جنيف الخاصة بتنظيم حركة سفن النقل الطبي الإنساني في الحروب.",
+          "en": "The Geneva Convention rules governing neutral humanitarian medical transport vessels."
+        }
+      ],
+      "concept_id": "global_perspectives_us_nist_csf",
+      "explanation": {
+        "ar": "المحاضرة تدرج المنظور الأمريكي نصاً كالتالي: أمريكا ← NIST CSF، والاستراتيجية الفدرالية للأمن السيبراني (Federal Cybersecurity Strategy).",
+        "en": "Under Global Perspectives, the text pairs: US → NIST CSF, Federal Cybersecurity Strategy."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي وكالة متخصصة تتولى تنسيق السياسات والاستراتيجيات السيبرانية المشتركة في الاتحاد الأوروبي؟",
+        "en": "Which institutional agency coordinates cybersecurity strategy and policy across the European Union?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "منظمة الشرطة الجنائية الدولية الإنتربول لمكافحة الجرائم التقليدية وتتبع الفارين.",
+          "en": "INTERPOL, handling international criminal forensic ballistics and fugitives."
+        },
+        {
+          "ar": "حلف شمال الأطلسي الناتو لتنسيق الإمدادات العسكرية وجاهزية القوات المسلحة الميدانية.",
+          "en": "NATO, coordinating physical military allied artillery logistics and infantry readiness."
+        },
+        {
+          "ar": "وكالة الاتحاد الأوروبي للأمن السيبراني ENISA، بالتكامل مع لوائح الخصوصية GDPR.",
+          "en": "ENISA (The European Union Agency for Cybersecurity), paired with GDPR privacy mandates."
+        },
+        {
+          "ar": "منظمة اليونسكو لحماية مواقع التراث الثقافي العالمي وإدارة المكتبات التاريخية.",
+          "en": "UNESCO, preserving cultural heritage sites and international historical libraries."
+        }
+      ],
+      "concept_id": "global_perspectives_eu_enisa",
+      "explanation": {
+        "ar": "المنظور الأوروبي في المنهج يضم: أوروبا ← لائحة GDPR، ووكالة ENISA (وكالة الاتحاد الأوروبي للأمن السيبراني).",
+        "en": "The notes record: EU → GDPR, ENISA."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف تم توصيف النهج التنظيمي للأمن السيبراني في الشرق الأوسط ضمن قسم المنظورات العالمية؟",
+        "en": "How is the regional governance approach for the Middle East described in the Global Perspectives section?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إلزام الوزارات السيادية بالعودة للأرشفة الورقية المادية لعزل البيانات عن الشبكة.",
+          "en": "Mandating physical paper isolation for all sovereign national ministerial records."
+        },
+        {
+          "ar": "الاعتماد على المنح والمساعدات الفنية العفوية بين بلديات المدن والمحافظات.",
+          "en": "Relying strictly on informal bilateral municipal technology equipment donations."
+        },
+        {
+          "ar": "تأسيس وتفعيل مجالس الأمن السيبراني الوطنية.",
+          "en": "Establishing National Cybersecurity Councils to oversee strategic cyber governance."
+        },
+        {
+          "ar": "تفويض إدارة خوادم الوزارات الحكومية بالكامل إلى شركات سحابية خاصة أجنبية.",
+          "en": "Outsourcing all domestic government server infrastructure to foreign private cloud firms."
+        }
+      ],
+      "concept_id": "global_perspectives_middle_east_councils",
+      "explanation": {
+        "ar": "المنظور الإقليمي للشرق الأوسط في المنهج حُدد بـ: الشرق الأوسط ← «مجالس الأمن السيبراني الوطنية» (National Cybersecurity Councils) لقيادة الاستراتيجيات السيادية.",
+        "en": "The text lists: Middle East → National Cybersecurity Councils."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما المعادلة الرياضية المعيارية التي تمثل مؤشر الامتثال للسياسات PCI في المحاضرة؟",
+        "en": "What mathematical formula represents the Policy Compliance Index (PCI) in the lecture?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "PCI = \\frac{\\sum w_k \\cdot c_k}{\\sum w_k}",
+          "en": "PCI = \\frac{\\sum w_k \\cdot c_k}{\\sum w_k}"
+        },
+        {
+          "ar": "Risk = \\frac{\\sum P_i \\cdot I_i}{\\sum P_i}",
+          "en": "Risk = \\frac{\\sum P_i \\cdot I_i}{\\sum P_i}"
+        },
+        {
+          "ar": "AS = \\frac{\\sum E_j \\cdot V_j}{\\sum A_j}",
+          "en": "AS = \\frac{\\sum E_j \\cdot V_j}{\\sum A_j}"
+        },
+        {
+          "ar": "CDF = \\frac{1 - F}{1 + F}",
+          "en": "CDF = \\frac{1 - F(r)}{1 + F(r)}"
+        }
+      ],
+      "concept_id": "policy_compliance_index_equation",
+      "explanation": {
+        "ar": "المعادلة السادسة في المنهج هي معادلة مؤشر الامتثال للسياسات: $PCI = \\frac{\\sum w_k c_k}{\\sum w_k}$.",
+        "en": "Equation 6 is the Policy Compliance Index: $PCI = \\frac{\\sum w_k c_k}{\\sum w_k}$."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في معادلة مؤشر الامتثال للسياسات PCI، ما المعنى التشغيلي لمعامل الوزن $w_k$؟",
+        "en": "In the Policy Compliance Index formula, what operational meaning does the weight parameter $w_k$ carry?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الوزن والأهمية الاستراتيجية والخطورة التنظيمية المخصصة للمتطلب أو السياسة $k$.",
+          "en": "The relative importance and regulatory criticality of policy requirement $k$."
+        },
+        {
+          "ar": "الوزن المادي بالكيلوغرام لكابينة الخوادم الحاضنة لأقراص التخزين الإلكترونية.",
+          "en": "The physical mass in kilograms of the server cabinet enclosing the storage drives."
+        },
+        {
+          "ar": "عدد الأيام التقويمية المتبقية قبل موعد إجراء التدقيق الأمني الإلزامي للمؤسسة.",
+          "en": "The calendar day count allowed before mandatory compliance audits take effect."
+        },
+        {
+          "ar": "الزمن المستغرق بالميكروثانية عند تنفيذ استعلامات البحث في قواعد البيانات.",
+          "en": "The execution latency in microseconds measured when querying database tables."
+        }
+      ],
+      "concept_id": "pci_weight_significance_wk",
+      "explanation": {
+        "ar": "الرمز $w_k$ يمثل وزن أو أهمية المتطلب $k$؛ فالمتطلبات الأمنية الحرجة تُمنح وزناً أكبر ليكون لمدى الالتزام بها أثر أكبر على مؤشر الامتثال الكلي.",
+        "en": "$w_k$ reflects the relative importance or criticality weight of requirement k, ensuring major policies influence the index more than minor ones."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ماذا يمثل الرمز $c_k$ في معادلة مؤشر الامتثال PCI، وما المجال العددي الذي يحدد قيمته؟",
+        "en": "What does $c_k$ represent in the PCI equation, and what numerical interval bounds its evaluation score?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "دورات ساعة المعالج الحسابية المستغرقة للتحقق من منطق الشيفرة البرمجية للمتطلب $k$.",
+          "en": "The execution clock cycles required by software modules to verify requirement $k$ logic."
+        },
+        {
+          "ar": "مستوى امتثال المؤسسة للمتطلب $k$، وتكون قيمته مطبّعة ومحصورة حصراً بين 0 و 1.",
+          "en": "The compliance level of requirement $k$, evaluated on a normalized scale between 0 and 1."
+        },
+        {
+          "ar": "الميزانية المالية المنفقة على المتطلب $k$ مقاسة بآلاف الدولارات في الخطة السنوية.",
+          "en": "The financial expenditure budget allocated to requirement $k$, measured in thousands of dollars."
+        },
+        {
+          "ar": "عدد أفراد الطاقم الأمني المكلفين بمراقبة الإشراف على المتطلب $k$ بدوام كامل.",
+          "en": "The number of security staff members assigned to supervise requirement $k$ full-time."
+        }
+      ],
+      "concept_id": "pci_compliance_level_ck",
+      "explanation": {
+        "ar": "الرمز $c_k$ يمثل مستوى امتثال المؤسسة للبند أو المتطلب $k$، وهو قيمة عددية تتراوح بين 0 (عدم امتثال نهائي) و 1 (امتثال تام ومكتمل).",
+        "en": "$c_k$ represents the degree of compliance for requirement k, normalized between 0 (complete non-compliance) and 1 (full compliance)."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما المعادلة الرياضية التي تمثل الأمن السيبراني كمسألة تحسين Optimization Problem في المنهج؟",
+        "en": "What mathematical formula represents Cybersecurity as an Optimization Problem in the primary text?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "$$PCI = \\frac{\\sum_{k=1}^n w_k \\cdot c_k}{\\sum_{k=1}^n w_k}$$",
+          "en": "$$PCI = \\frac{\\sum_{k=1}^n w_k \\cdot c_k}{\\sum_{k=1}^n w_k}$$"
+        },
+        {
+          "ar": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
+          "en": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$"
+        },
+        {
+          "ar": "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
+          "en": "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$"
+        },
+        {
+          "ar": "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
+          "en": "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$"
+        }
+      ],
+      "concept_id": "optimization_min_risk_formula",
+      "explanation": {
+        "ar": "المعادلة الأولى في المنهج تصيغ الأمن كمسألة تحسين: $\\min R = \\sum P_i \\cdot I_i - \\sum C_j$؛ بهدف تقليل الخطر الصافي مع تعظيم أثر الاستثمارات الأمنية $C_j$.",
+        "en": "Equation 1 models cybersecurity optimization: $\\min R = \\sum P_i \\cdot I_i - \\sum C_j$, minimizing risk while accounting for security investments."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "في معادلة التحسين $\\min R = \\sum P_i \\cdot I_i - \\sum C_j$، ماذا يمثل الحد المطروح $\\sum C_j$؟",
+        "en": "In the optimization equation $\\min R = \\sum P_i \\cdot I_i - \\sum C_j$, what does the subtracted term $\\sum C_j$ signify?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد حسابات العملاء الملغاة نتيجة الانقطاعات غير المتوقعة للخدمة في الخوادم.",
+          "en": "The number of customer accounts cancelled due to unexpected system service outages."
+        },
+        {
+          "ar": "الاستثمارات والنفقات الإيجابية المخصصة لتثبيت وتفعيل الضوابط والوسائل الأمنية.",
+          "en": "The proactive investments and expenditures dedicated to security controls and safeguards."
+        },
+        {
+          "ar": "الوزن المادي لوحدات الحواسيب المكتبية القديمة المجدولة لعمليات إعادة التدوير.",
+          "en": "The physical weight of retired desktop computer towers scheduled for recycling."
+        },
+        {
+          "ar": "نسبة الإهلاك المالي السنوية المطبقة على برمجيات الملكية الفكرية في الشركة.",
+          "en": "The annual depreciation percentage applied to software development intellectual property."
+        }
+      ],
+      "concept_id": "optimization_components_pi_ii_cj",
+      "explanation": {
+        "ar": "الرمز $C_j$ يمثل الاستثمار في ضابط الأمان $j$ (Security Investment)؛ وطرحه يوضح أثر الإنفاق الأمني الإيجابي في تقليص الخسارة المتوقعة من التهديدات.",
+        "en": "$C_j$ represents investments in security control j. Subtracting it models how active investments reduce net expected threat loss."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ما القاعدة الإرشادية الصريحة التي حددتها أستاذة المادة لتفسير النتيجة العددية لمعادلة التحسين $\\min R$؟",
+        "en": "What explicit rule did the instructor provide for interpreting the numerical outcome of the $\\min R$ equation?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إذا كان الناتج عدداً أولياً، يجب إجراء تحديث كامل لشهادات المفاتيح في كافة الخوادم.",
+          "en": "If result is prime, perform a full cryptographic key pair rollover across all servers."
+        },
+        {
+          "ar": "إذا كان الناتج سالباً، تعلن المؤسسة إفلاسها المالي الفوري وتخطر الجهات الفدرالية.",
+          "en": "If result is negative, declare immediate bankruptcy and notify federal financial regulators."
+        },
+        {
+          "ar": "إذا كان الناتج مساوياً للصفر، تُلغى تراخيص جدران الحماية وأنظمة كشف التسلل فوراً.",
+          "en": "If result equals zero, discontinue all firewall and intrusion detection system licenses."
+        },
+        {
+          "ar": "إذا كان الناتج أكبر من 100 فهناك استثمار أمني إيجابي؛ وإذا كان أقل من 100 فلا يوجد استثمار.",
+          "en": "If result exceeds 100, there is positive investment; if below 100, there is no investment."
+        }
+      ],
+      "concept_id": "optimization_decision_threshold_100",
+      "explanation": {
+        "ar": "قاعدة الدكتورة المحفوظة نصاً في الملاحظات: «إذا الناتج ازداد عن 100 يعني اكو استثمار، وإذا أقل من 100 يعني مفيش استثمار»؛ وهي قاعدة القرار المعتمدة في الامتحان.",
+        "en": "Captured verbatim from student lecture annotations: If the result exceeds 100, there is investment; below 100, there is no investment."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "لاحظ عميل مصرفي اختفاء 100 ألف دولار من حسابه إثر خلل برمجي مفاجئ، وقام المصرف بإصلاحه وإعادة المبلغ. أي ركن من ثالوث CIA تضرر بصورة أساسية؟",
+        "en": "A bank customer notices their balance dropped by $100,000 due to an unhandled software crash, which the bank patched before restoring funds. What CIA pillar was primarily breached?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تضررت السلامة Integrity بالدرجة الأولى لأن البيانات المالية المخزنة تغيرت وصارت غير دقيقة.",
+          "en": "Integrity was primarily breached because the recorded financial data was altered and inaccurate."
+        },
+        {
+          "ar": "تضررت السرية Confidentiality لأن موظفي الفرع اطلعوا على كشوفات حساب العميل.",
+          "en": "Confidentiality was breached because bank tellers viewed account statements."
+        },
+        {
+          "ar": "تضرر عدم الإنكار Non-repudiation لأن مدير الفرع وقّع يدوياً على استرجاع الرصيد.",
+          "en": "Non-repudiation was breached because the branch manager signed the manual credit adjustment."
+        },
+        {
+          "ar": "تضرر الامتثال التنظيمي لأن احتساب الفوائد المصرفية جرى بالعملة الأجنبية.",
+          "en": "Regulatory compliance was breached because interest calculations were computed in dollars."
+        }
+      ],
+      "concept_id": "scenario_banking_accidental_glitch",
+      "explanation": {
+        "ar": "الركن المتضرر أساساً هو السلامة Integrity لأن رصيد الحساب المالي تغيّر بشكل غير صحيح إثر خلل برمجي. (وتقنيات معالجته: التجزئة SHA-256، التوقيع الرقمي، والتحكم بالإصدارات).",
+        "en": "Account balances unexpectedly changed without legitimate transactions, violating Integrity (hashing, digital signatures, version control). System malfunctioning also touches Availability."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "كشف تدقيق في مستشفى عن اطلاع مستخدمين غير مخولين على سجلات مرضى عبر حساب ممرضة مستقيلة لم يُلغَ. أي ركن تضرر وما الضابط الأنسب لمعالجته؟",
+        "en": "A hospital audit reveals patient diagnostic histories were accessed by unauthorized users using a terminated nurse's active login. What pillar was breached and what control prevents it?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تضرر التوافر Availability؛ ويُعالج الخلل بتثبيت موازنات أحمال ذات سعة تدفق عالية للخوادم.",
+          "en": "Availability was breached; remediated by deploying high-throughput server load balancers."
+        },
+        {
+          "ar": "تضررت السلامة Integrity؛ ويُعالج الخلل بحساب بصمات SHA-256 لصور الأشعة التشخيصية.",
+          "en": "Integrity was breached; remediated by calculating SHA-256 hashes on digital imaging records."
+        },
+        {
+          "ar": "تضرر عدم الإنكار Non-repudiation؛ ويُعالج الخلل بشراء وثائق التأمين ضد الأخطاء الطبية.",
+          "en": "Non-repudiation was breached; remediated by purchasing commercial malpractice liability insurance."
+        },
+        {
+          "ar": "تضررت السرية Confidentiality؛ ويُعالج الخلل بفرض ضوابط وصول Access Controls ومراجعة الحسابات.",
+          "en": "Confidentiality was breached; remediated by enforcing strict access controls and account reviews."
+        }
+      ],
+      "concept_id": "scenario_hospital_unrevoked_account",
+      "explanation": {
+        "ar": "اطلاع غير المصرح لهم يخرق السرية Confidentiality (التي تحمي من الوصول غير المصرّح). والعلاج المعتمد هو: ضوابط الوصول Access Controls ومراجعة دورة حياة الحسابات.",
+        "en": "Unauthorized viewing of confidential records violates Confidentiality. The primary remediation is access controls (RBAC, account de-provisioning) alongside encryption and VPNs."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "انهارت بوابة جامعة إلكترونية أثناء ذروة التسجيل الفصلي وعجز آلاف الطلاب عن التسجيل. أي ركن فشل وما الحل الهندسي المعتمد في المنهج لمعالجته؟",
+        "en": "A university portal crashes under enrollment peak traffic, preventing thousands of students from registering. What pillar failed and what engineering solution resolves it?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "فشل التوافر Availability؛ ويُعالج بنشر خوادم موازية Redundancy وموازنة الأحمال Load Balancing.",
+          "en": "Availability failed; resolved by deploying server redundancy, load balancing, and auto-scaling."
+        },
+        {
+          "ar": "فشلت السرية Confidentiality؛ وتُعالج بتثبيت تشفير RSA-4096 على حواسيب الطلاب الشخصية.",
+          "en": "Confidentiality failed; resolved by installing asymmetric RSA-4096 encryption on student laptops."
+        },
+        {
+          "ar": "فشلت السلامة Integrity؛ وتُعالج بإلزام المدرسين بالتوقيع الرقمي على مفردات المناهج الدراسية.",
+          "en": "Integrity failed; resolved by requiring cryptographic digital signatures on all course syllabi."
+        },
+        {
+          "ar": "فشل عدم الإنكار Non-repudiation؛ ويُعالج بإرسال السجلات الورقية المطبوعة عبر البريد المسجل.",
+          "en": "Non-repudiation failed; resolved by mailing physical printed paper transcripts via registered courier."
+        }
+      ],
+      "concept_id": "scenario_university_registration_crash",
+      "explanation": {
+        "ar": "النظام لم يكن متاحاً وقت الحاجة، مما يعني انتهاك ركن التوافر Availability؛ وحله الهندسي المعتمد نصياً هو: التكرار Redundancy وموازنة الأحمال Load Balancing.",
+        "en": "The system was not accessible when needed, violating Availability. The canonical techniques are redundancy, load balancing, and DDoS mitigation."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "أكّد عميل متجر إلكتروني طلباً بقيمة 500 دولار، لكن قاعدة بيانات الفواتير تغيّرت لتُسجّل 50 دولاراً بعد السداد. أي ركن من ثالوث CIA تم انتهاكه؟",
+        "en": "An online retail customer confirms an order for 500 USD, but the checkout database ledger changes to 50 USD after payment. Which CIA pillar was violated?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "انتُهك ركن السرية Confidentiality؛ ويتطلب معالجته قنوات اتصال VPN مشفرة لسائقي التوصيل الميدانيين.",
+          "en": "Confidentiality was violated, requiring IPSec VPN tunneling for warehouse delivery drivers."
+        },
+        {
+          "ar": "انتُهك ركن الامتثال الاجتماعي؛ ويتطلب معالجته تدريب موظفي خدمة العملاء على تلقي المكالمات الهاتفية.",
+          "en": "Social compliance was violated, requiring customer service representatives to take phone calls."
+        },
+        {
+          "ar": "انتُهك ركن التوافر Availability؛ ويتطلب معالجته توفير مولدات كهربائية تعمل بالديزل في المستودعات.",
+          "en": "Availability was violated, requiring diesel electric power backup generators installed at data centers."
+        },
+        {
+          "ar": "انتُهك ركن السلامة Integrity؛ ويتطلب معالجته دوال التجزئة SHA-256 والتوقيع الرقمي والتحكم بالإصدارات.",
+          "en": "Integrity was violated, requiring SHA-256 hashing, digital signatures, and version control audit trails."
+        }
+      ],
+      "concept_id": "scenario_ecommerce_price_alteration",
+      "explanation": {
+        "ar": "تغير السعر بعد التأكيد يمثل تلاعباً ببيانات الفاتورة، وهو انتهاك مباشر لركن السلامة Integrity؛ وتقنياته المعتمدة هي: التجزئة (SHA-256)، التوقيع الرقمي، والتحكم بالإصدارات.",
+        "en": "The price data was modified post-confirmation, compromising Integrity. The designated controls are hashing (SHA-256), digital signatures, and version control."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-22T01:35:54Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

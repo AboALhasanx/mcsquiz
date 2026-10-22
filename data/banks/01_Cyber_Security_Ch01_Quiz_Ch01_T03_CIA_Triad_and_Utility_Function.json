@@ -1,0 +1,532 @@
+{
+  "topic": {
+    "ar": "ثالوث CIA ودالة المنفعة الأمنية U(C,I,A) والتقنيات المعيارية",
+    "en": "The CIA Triad, Security Utility Function & Standard Controls"
+  },
+  "quiz_id": "Quiz_Ch01_T03_CIA_Triad_and_Utility_Function",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي نموذج أمني تأسيسي يُعد معيارياً بمثابة العمود الفقري لكافة هندسة وتطبيقات الأمن السيبراني؟",
+        "en": "Which foundational security construct is canonically recognized as the backbone of all cybersecurity engineering?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حزمة بروتوكولات الإنترنت TCP/IP المكونة من أربع طبقات نقل للبيانات.",
+          "en": "The TCP/IP Internet protocol suite four-layer transport model."
+        },
+        {
+          "ar": "نموذج Bell-LaPadula الرياضي لسرية البيانات متعددة المستويات الأمنية.",
+          "en": "The Bell-LaPadula confidentiality formal multi-level security model."
+        },
+        {
+          "ar": "النموذج المرجعي المفتوح OSI لطبقات بروتوكولات الاتصالات السبع المعيارية.",
+          "en": "The OSI Reference Model (seven layer telecommunication stack)."
+        },
+        {
+          "ar": "ثالوث CIA (السرية Confidentiality، والسلامة Integrity، والتوافر Availability).",
+          "en": "The CIA Triad (Confidentiality, Integrity, and Availability)."
+        }
+      ],
+      "concept_id": "cia_triad_backbone_concept",
+      "explanation": {
+        "ar": "تؤكد المحاضرة حرفياً أن ثالوث CIA (السرية، السلامة، التوافر) هو العمود الفقري للأمن السيبراني وأساس كل تقييم وتحليل أمني.",
+        "en": "The lecture text opens Section 3 explicitly: The CIA Triad (Confidentiality, Integrity, Availability) is the backbone of cybersecurity."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما التعريف الرسمي الدقيق لركن السرية Confidentiality ضمن ثالوث CIA؟",
+        "en": "What is the precise formal definition of the Confidentiality pillar within the CIA Triad?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ضمان عدم تعديل السجلات المخزنة أو تغيير محتواها بواسطة كتابها الأصليين.",
+          "en": "Ensuring that recorded data records cannot be altered or modified by authors."
+        },
+        {
+          "ar": "منع الوصول غير المصرّح به، أو الاطلاع، أو كشف الأصول والبيانات لأطراف غير مخولة.",
+          "en": "Preventing unauthorized observation, disclosure, and access to data assets."
+        },
+        {
+          "ar": "ضمان بقاء البيانات والخدمات متاحة للمستخدمين تحت وطأة طوفان حزم الشبكة.",
+          "en": "Guaranteeing that data remains accessible under severe network flooding."
+        },
+        {
+          "ar": "التحقق من أن الخوارزمية الحسابية تكمل معالجتها ضمن زمن تنفيذ خطي محدد.",
+          "en": "Verifying that the computational algorithm completes within linear execution time."
+        }
+      ],
+      "concept_id": "confidentiality_formal_definition",
+      "explanation": {
+        "ar": "تعريف السرية نصاً هو: منع الوصول غير المصرّح به إلى البيانات. بينما التعديل يخص السلامة، وإتاحة الخدمة تخص التوافر.",
+        "en": "Confidentiality is verbatim: Preventing unauthorized access to data. Integrity handles alteration, and Availability handles accessibility."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يفرض التشفير التشفيري ركن السرية Confidentiality بصورة مباشرة على البيانات المخزنة أو المنقولة؟",
+        "en": "How does cryptographic encryption directly enforce the Confidentiality requirement for stored or transmitted data?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إنشاء لقطات تاريخية غير قابلة للتغيير لإصدارات الملفات في المستودعات الموزعة.",
+          "en": "Generates immutable version history snapshots across distributed git repositories."
+        },
+        {
+          "ar": "تحويل النص الصريح إلى نص معمي غير مفهوم لا يمكن فكه إلا بالمفتاح السري المخصص.",
+          "en": "Transforms plaintext into unreadable ciphertext decryptable only with the secret key."
+        },
+        {
+          "ar": "إعادة توجيه حركة المرور الفائضة ديناميكياً إلى خوادم وسيطة بديلة متزامنة.",
+          "en": "Reroutes excess network user traffic dynamically to secondary server replicas."
+        },
+        {
+          "ar": "اكتشاف حزم البيانات المشوهة وإسقاطها فوراً عند حدود موجهات الشبكة الخارجية.",
+          "en": "Detects and drops malformed network packets at the perimeter routing boundary."
+        }
+      ],
+      "concept_id": "confidentiality_encryption_mechanism",
+      "explanation": {
+        "ar": "التشفير Encryption هو التقنية الأساسية لحفظ السرية؛ حيث يحول البيانات الصريحة إلى صيغة غير مفهومة Ciphertext تمنع المتلصصين من قراءتها بدون المفتاح.",
+        "en": "Encryption is the primary confidentiality control, scrambling plaintext into ciphertext so intercepted data cannot be read without the key."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الدور الذي تؤديه ضوابط الوصول Access Controls في الحفاظ على السرية في أنظمة المؤسسة؟",
+        "en": "What role do access controls perform in maintaining confidentiality across enterprise information systems?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ضمان التبريد المستمر ومولدات الديزل الاحتياطية أثناء انقطاع التيار الكهربائي العام.",
+          "en": "Maintain uninterrupted cooling and diesel generator power during municipal electric outages."
+        },
+        {
+          "ar": "حساب بصمات التجزئة SHA-256 لكشف أي تعديل غير مصرح به في حقول قواعد البيانات.",
+          "en": "Calculate cryptographic SHA-256 hashes to detect unauthorized database row modifications."
+        },
+        {
+          "ar": "فرض المصادقة وصلاحيات الحد الأدنى، لمنع وصول أي مستخدم لبيانات لا تخص دوره الوظيفي.",
+          "en": "Enforce authentication and least privilege permissions, restricting sensitive data to authorized roles."
+        },
+        {
+          "ar": "توزيع مهام المعالجة الحسابية بالتساوي على وحدات معالجة الرسوميات غير المشغولة.",
+          "en": "Distribute computational batch jobs evenly across idle graphics processing cluster units."
+        }
+      ],
+      "concept_id": "confidentiality_access_controls_role",
+      "explanation": {
+        "ar": "ضوابط الوصول Access Controls تحدد هوية المستخدم وتفرض صلاحيات الحد الأدنى Least Privilege؛ بحيث لا يطّلع على البيانات إلا المخولون رسمياً.",
+        "en": "Access controls (like RBAC/ACLs) ensure that only authorized, authenticated users with legitimate operational needs view confidential assets."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف تحمي الشبكات الخاصة الافتراضية VPNs سرية البيانات عبر قنوات الاتصال العامة غير الموثوقة؟",
+        "en": "How do Virtual Private Networks (VPNs) protect data confidentiality over untrusted public transmission channels?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "استنساخ البوابات الإلكترونية للشركة على مراكز بيانات جغرافية موزعة حول العالم.",
+          "en": "Replicate corporate web portals onto multiple geographical edge data centers worldwide."
+        },
+        {
+          "ar": "حساب بتات التكافؤ باستمرار لتصحيح حزم البيانات التالفة تلقائياً فور وصولها للهدف.",
+          "en": "Calculate continuous parity check bits to correct corrupted packet payloads on arrival."
+        },
+        {
+          "ar": "تغليف وتشفير حركة البيانات داخل أنفاق افتراضية آمنة، مما يحميها من التنصت أثناء نقلها.",
+          "en": "Encapsulate and encrypt data traffic inside secure virtual tunnels, protecting it from interception."
+        },
+        {
+          "ar": "حظر تصفح الإنترنت لموظفي محطات العمل أثناء ساعات الدوام التشغيلية الرسمية للشركة.",
+          "en": "Block employee workstation internet browsing during standard operational business hours."
+        }
+      ],
+      "concept_id": "confidentiality_vpn_secure_tunneling",
+      "explanation": {
+        "ar": "الشبكات الافتراضية VPNs تنشئ نفقاً مشفراً Secure Tunnel عبر الإنترنت العام، فتمنع أي طرف وسيط من التجسس على البيانات المنقولة أو الاطلاع عليها.",
+        "en": "VPNs build encrypted tunnels across untrusted networks (e.g. public internet), preserving confidentiality against eavesdropping and man-in-the-middle attacks."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما التعريف النصي الدقيق في المنهج لركن السلامة Integrity ضمن ثالوث CIA؟",
+        "en": "What is the exact textbook definition of the Integrity pillar in the CIA Triad?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قصر إعدادات إدارة التطبيقات حصرياً على كبار المديرين التنفيذيين المعتمدين في الشركة.",
+          "en": "Restricting application administrative settings strictly to verified senior corporate directors."
+        },
+        {
+          "ar": "الاحتفاظ بسجلات المراسلات الرقمية المؤرشفة لمدة قانونية إلزامية قدرها سبع سنوات.",
+          "en": "Retaining archived digital communication transcripts for a statutory duration of seven years."
+        },
+        {
+          "ar": "ضمان أن البيانات دقيقة وكاملة وجديرة بالثقة ولم تتعرض لأي تعديل أو تلاعب غير مصرّح.",
+          "en": "Ensuring that data remains accurate, complete, trustworthy, and completely unaltered."
+        },
+        {
+          "ar": "ضمان استجابة الموارد والخدمات لطلبات استعلام الويب الخارجية المستمرة بدون تأخير.",
+          "en": "Ensuring that resources remain responsive to continuous external web query requests."
+        }
+      ],
+      "concept_id": "integrity_formal_definition",
+      "explanation": {
+        "ar": "تعريف السلامة Integrity نصاً في الملزمة هو: ضمان أن البيانات دقيقة ولم تتغيّر (Ensuring data is accurate and unaltered).",
+        "en": "Integrity is verbatim: Ensuring data is accurate and unaltered."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا يُعد التجزئة بخوارزميات مثل SHA-256 الآلية الأساسية للتحقق من سلامة البيانات Integrity؟",
+        "en": "Why is cryptographic hashing with algorithms like SHA-256 the primary mechanism for verifying data integrity?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تنتج بصمة رقمية ثابتة الطول؛ وأي تعديل ولو بحرف أو بت واحد يغيّر البصمة الناتجة بالكامل.",
+          "en": "Generates a unique fixed-length digest; even a single bit change alters the resulting hash output."
+        },
+        {
+          "ar": "تنتج نصاً معمى متغير الطول يضغط ملفات الوسائط المتعددة التخزينية الضخمة تلقائياً.",
+          "en": "Produces a variable-length ciphertext that automatically compresses bulk multimedia storage files."
+        },
+        {
+          "ar": "تترجم تعليمات البرمجة عالية المستوى إلى شيفرة لغة التجميع المنفذة مباشرة على المعالج.",
+          "en": "Translates high-level programming instructions into low-level machine assembly code modules."
+        },
+        {
+          "ar": "تخصص الذاكرة ديناميكياً لمنع حدوث أخطاء طفح الذاكرة المؤقتة في دوال لغة C البرمجية.",
+          "en": "Allocates memory dynamically to prevent buffer overflow exceptions in compiled C routines."
+        }
+      ],
+      "concept_id": "integrity_hashing_sha256_fingerprint",
+      "explanation": {
+        "ar": "دوال التجزئة مثل SHA-256 تُنتج بصمة فريدة ثابتة الحجم (256 بت)؛ ولو تغيّر في الملف حرف واحد فقط، تتغير البصمة جذرياً، مما يكشف التعديل فوراً.",
+        "en": "Cryptographic hash functions are one-way and avalanche-sensitive: changing a single bit produces a completely different hash digest, exposing any unauthorized tampering."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الضمانتان الأمنيتان اللتان يقدمهما التوقيع الرقمي Digital Signature لتعزيز ركن السلامة؟",
+        "en": "What dual security guarantees do digital signatures provide to the Integrity pillar?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إثبات المصدر الحقيقي المرسل للرسالة والتحقق من عدم تعرض محتواها لأي تعديل أثناء النقل.",
+          "en": "Verify the authentic origin of the data message and prove that contents were not altered in transit."
+        },
+        {
+          "ar": "توفير موازنة الأحمال التلقائية لحركة مرور الشبكة ومضاعفة الخوادم لمقاومة الأعطال.",
+          "en": "Provide automatic network traffic load balancing and hardware failover clustering capabilities."
+        },
+        {
+          "ar": "تشفير الذاكرة العشوائية للخادم لمنع هجمات القنوات الجانبية المادية عند الإقلاع البارد.",
+          "en": "Encrypt server memory caches to prevent cold-boot hardware side-channel attacks on endpoints."
+        },
+        {
+          "ar": "ضمان ضغط البيانات لتقليص المساحات التخزينية وتسريع قراءة الأشرطة الممغنطة المادية.",
+          "en": "Ensure data compression to minimize storage footprints while speeding up physical tape reads."
+        }
+      ],
+      "concept_id": "integrity_digital_signatures_origin",
+      "explanation": {
+        "ar": "التوقيع الرقمي Digital Signature يدمج التجزئة مع المفتاح الخاص للمرسل، فيثبت أصالة المصدر Authenticity ويضمن عدم التلاعب بالبيانات Integrity.",
+        "en": "Digital signatures combine hashing with asymmetric encryption (signer's private key), providing message integrity and non-repudiation of origin."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "لماذا صُنفت أنظمة التحكم بالإصدارات Version Control كتقنية سلامة Integrity في المحاضرة؟",
+        "en": "Why is version control officially categorized as an integrity technique in the lecture notes?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تقصر صلاحيات الاطلاع على قواعد البيانات السرية على نواب الرئيس التنفيذيين في الشركة.",
+          "en": "Restricts confidential database view permissions exclusively to executive vice presidents."
+        },
+        {
+          "ar": "تتبع كل تعديل مع توثيق وقت وهوية القائم به، وتتيح التدقيق واسترجاع الحالة الأصلية عند التلاعب.",
+          "en": "Tracks every change with timestamps and authors, enabling auditing and restoration of original states."
+        },
+        {
+          "ar": "تحمي كابلات الألياف الضوئية المادية تحت الأرض من أضرار الزلازل والاهتزازات الأرضية.",
+          "en": "Protects physical fiber optic backbone cables from seismic earth movement disruptions."
+        },
+        {
+          "ar": "تمنع طفرات ترافيك الويب الخارجية من استهلاك سعات الاتصال للتطبيقات المؤسسية الحيوية.",
+          "en": "Prevents external web traffic spikes from consuming excessive application bandwidth resources."
+        }
+      ],
+      "concept_id": "integrity_version_control_tracking",
+      "explanation": {
+        "ar": "التحكم بالإصدارات Version Control يوفر سجلاً تدقيقياً يبيّن متى ومن غيّر المحتوى، ويتيح الرجوع للإصدار الدقيق السابق في حال حدوث تعديل خاطئ أو خبيث.",
+        "en": "Version control records an audit trail of who modified what and when, allowing detection of unauthorized changes and rollback to clean states."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما التعريف النصي المعياري لركن التوافر Availability ضمن ثالوث CIA؟",
+        "en": "What is the canonical textbook definition of the Availability pillar in the CIA Triad?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تنفيذ اختبارات الاختراق وفحص الثغرات الأمنية على واجهات التطبيقات الفعلية أسبوعياً.",
+          "en": "Executing vulnerability penetration scans against production application interfaces weekly."
+        },
+        {
+          "ar": "منع التعديل غير المصرّح به على السجلات المالية أثناء مطابقة الحسابات الختامية.",
+          "en": "Preventing unauthorized modification of financial records during accounting reconciliation."
+        },
+        {
+          "ar": "ضمان أن الموارد والخدمات والبيانات متاحة وقابلة للوصول للمخولين في أي وقت يحتاجونها.",
+          "en": "Ensuring resources and data services are accessible to authorized entities whenever needed."
+        },
+        {
+          "ar": "تعمية الرسائل السرية إلى نصوص مشفرة قبل إرسالها عبر شبكات Wi-Fi العامة غير الآمنة.",
+          "en": "Scrambling confidential messages into ciphertext before broadcasting across public Wi-Fi."
+        }
+      ],
+      "concept_id": "availability_formal_definition",
+      "explanation": {
+        "ar": "تعريف التوافر Availability نصاً في المنهج هو: ضمان أن الموارد والخدمات متاحة وقابلة للوصول عند الحاجة إليها (Ensuring resources are accessible when needed).",
+        "en": "Availability is verbatim: Ensuring resources are accessible when needed."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "كيف تحمي تقنية التكرار والازدواجية Redundancy توافر الخدمة ضد الأعطال المادية المفاجئة؟",
+        "en": "How does redundancy protect service availability against unplanned hardware failures?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تقييد صلاحيات الموظفين الإدارية لمنع إجراء تغييرات خاطئة وغير مقصودة على إعدادات النظام.",
+          "en": "Restricts employee administrative rights to prevent accidental system configuration changes."
+        },
+        {
+          "ar": "توفير خوادم ومكونات مادية متطابقة بديلة تعمل فوراً لتسلم المهام إذا تعطل المكوّن الأساسي.",
+          "en": "Maintains duplicate components or servers so a backup takes over immediately if the primary fails."
+        },
+        {
+          "ar": "حساب البصمات التشفيرية للتحقق من خلو الشيفرة المصدرية من أي تعديلات برمجية خبيثة.",
+          "en": "Calculates cryptographic hash digests to identify unauthorized source code tampering."
+        },
+        {
+          "ar": "تطبيق ماسحات بيومترية لقزحية العين عند بوابات الدخول لمراكز البيانات التابعة للمؤسسة.",
+          "en": "Implements strict biometric retina scanners at entrance doors to corporate data centers."
+        }
+      ],
+      "concept_id": "availability_redundancy_resilience",
+      "explanation": {
+        "ar": "التكرار Redundancy يقضي على نقطة الفشل الفردية Single Point of Failure بتوفير عتاد وخوادم ونسخ احتياطية موازية جاهزة للعمل فور تعطل الأصل.",
+        "en": "Redundancy eliminates single points of failure by keeping duplicate servers, power units, or disks ready to assume workload instantly."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ما الوظيفة التشغيلية الأساسية لموازنة الأحمال Load Balancing في استدامة توافر التطبيقات؟",
+        "en": "What is the primary function of load balancing in sustaining application availability?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "فرض سياسات تعقيد كلمات المرور الإلزامية على نطاقات الدليل النشط في خوادم المؤسسة.",
+          "en": "Enforcing mandatory password complexity rules across enterprise Active Directory domains."
+        },
+        {
+          "ar": "التحقق من التواقيع الرقمية للمرسلين على وثائق المعاملات والعرائض الرسمية الواردة.",
+          "en": "Verifying author digital signatures on incoming public service petition documents."
+        },
+        {
+          "ar": "تشفير قيود المعاملات في قواعد البيانات بخوارزميات التشفير المتناظر ذات 256 بت.",
+          "en": "Encrypting database transaction entries with 256-bit symmetric block ciphers."
+        },
+        {
+          "ar": "توزيع حركة المرور الواردة بالتوازن على عدة خوادم لمنع إرهاق أي خادم فردي وتوقفه عن العمل.",
+          "en": "Distributing incoming user traffic across multiple servers to prevent individual node exhaustion."
+        }
+      ],
+      "concept_id": "availability_load_balancing_distribution",
+      "explanation": {
+        "ar": "موازنة الأحمال Load Balancing توزع طلبات المستخدمين وحركة المرور بانتظام عبر عدة سيرفرات لمنع اختناق أو انهيار خادم معين تحت الضغط.",
+        "en": "Load balancing distributes incoming traffic across server pools so no single node is overwhelmed, preserving throughput and uptime."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "كيف تحمي أنظمة تخفيف هجمات DDoS التوافر من هجمات شبكات البوتنت الخبيثة المغرقة؟",
+        "en": "How do DDoS mitigation systems prevent malicious botnet attacks from compromising availability?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تصفية وتنقية الترافيك المغرق في مراكز تنظيف متخصصة مع تمرير الطلبات الشرعية الطبيعية للخوادم.",
+          "en": "Scrub and filter malicious flood traffic through specialized centers while routing legitimate requests."
+        },
+        {
+          "ar": "توقيع كافة الردود الصادرة من الخادم بشهادات الأمان التشفيرية اللامتناظرة المعتمدة رسمياً.",
+          "en": "Sign all outgoing server responses with asymmetric private cryptographic security certificates."
+        },
+        {
+          "ar": "تحويل تطبيقات الويب التفاعلية إلى مستندات نصية بسيطة غير منسقة لتقليل حجم البيانات.",
+          "en": "Convert dynamic interactive database applications into static unformatted text web documents."
+        },
+        {
+          "ar": "إلغاء تنشيط حسابات الموظفين عن بُعد فور رصد أي ارتفاع ملحوظ في حركة مرور الشبكة.",
+          "en": "Revoke active network accounts of all remote employees during observed high-traffic hours."
+        }
+      ],
+      "concept_id": "availability_ddos_mitigation_defense",
+      "explanation": {
+        "ar": "تقنيات DDoS Mitigation توجه الترافيك الضخم إلى مراكز تنقية Scrubbing Centers لعزل حزم الإغراق الخبيثة والسماح للمستخدمين الشرعيين بالوصول للخدمة.",
+        "en": "DDoS mitigation diverts traffic to scrubbing centers, filtering volumetric junk traffic (SYN floods, UDP reflection) while letting real user requests reach the server."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "في دالة المنفعة الأمنية $U(C, I, A) = \\alpha C + \\beta I + \\gamma A$، ماذا تمثل الرموز $\\alpha$ و $\\beta$ و $\\gamma$؟",
+        "en": "In the Security Utility Function $U(C, I, A) = \\alpha C + \\beta I + \\gamma A$, what do the symbols $\\alpha$, $\\beta$, and $\\gamma$ denote?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "زمن التنفيذ المقاس بالنانو ثانية لخوارزميات التشفير والبصمة الرقمية وتوجيه الحزم في الشبكة.",
+          "en": "The measured execution durations in nanoseconds for cipher, digest, and packet routing routines."
+        },
+        {
+          "ar": "التكلفة المالية الرأسمالية المطلوبة لشراء التراخيص البرمجية التجارية المخصصة لكل ركن.",
+          "en": "The monetary capital cost required to purchase commercial software licenses for each pillar."
+        },
+        {
+          "ar": "أشهر انتهاء الصلاحية الزمنية لشهادات الأمان الخاصة بالتشفير والتجزئة وموازنات الأحمال.",
+          "en": "The calendar expiration months for encryption, hashing, and load balancer digital certificates."
+        },
+        {
+          "ar": "أوزان الأهمية النسبية المخصصة لكل من السرية والسلامة والتوافر وفق متطلبات كل قطاع تشغيلي.",
+          "en": "Domain-specific importance weights assigned to Confidentiality, Integrity, and Availability."
+        }
+      ],
+      "concept_id": "security_utility_function_structure",
+      "explanation": {
+        "ar": "تمثل $\\alpha, \\beta, \\gamma$ أوزان الأهمية لنظام معيّن؛ فالأوزان ليست ثابتة بل تتغير حسب طبيعة عمل المؤسسة وأولوياتها الأمنية.",
+        "en": "Alpha, beta, and gamma are relative importance weights reflecting the organization's domain priorities, applied to normalized scores C, I, and A (each in [0, 1])."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "لماذا تمنح أنظمة الرعاية الصحية والمستشفيات الوزن الأكبر للسرية ($\\alpha$) مقارنة بالتوافر ($\\gamma$) في دالة المنفعة؟",
+        "en": "Why does a healthcare clinical hospital system assign highest priority weight to Confidentiality ($\\alpha$) over Availability ($\\gamma$)?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "انتهاك خصوصية السجلات الطبية للمرضى يُحدث أضراراً قانونية واجتماعية جسيمة لا يمكن تداركها.",
+          "en": "Violating patient diagnostic medical privacy causes permanent, severe legal and societal harm."
+        },
+        {
+          "ar": "قوانين الرعاية الصحية تلزم أجهزة الرنين المغناطيسي بالعمل وهي مفصولة كلياً عن شبكة الكهرباء.",
+          "en": "Medical regulatory laws mandate operating diagnostic MRI scanners completely disconnected from power."
+        },
+        {
+          "ar": "أنظمة المستشفيات تفتقر للبطاريات الاحتياطية وتتوقع انقطاع التيار الكهربائي اليومي كأمر معتاد.",
+          "en": "Hospital systems lack battery backups and intentionally expect daily routine power shutdowns."
+        },
+        {
+          "ar": "مختبرات الفحص السريري لا يمكنها تطبيق التشفير دون التسبب في إتلاف عينات الدم المخبرية.",
+          "en": "Clinical laboratories cannot deploy symmetric encryption without destroying patient blood samples."
+        }
+      ],
+      "concept_id": "utility_domain_weights_healthcare_alpha",
+      "explanation": {
+        "ar": "أكدت المحاضرة: «بالرعاية الصحية، السرية ($\\alpha$) وزنها أعلى من التوافر»؛ لأن تسريب السجلات الطبية يُرتّب خرقاً دائماً للخصوصية ومساءلة قانونية لا تعوض، بينما التوقف المؤقت يُدار إجرائياً.",
+        "en": "The lecture highlights: In healthcare, confidentiality (alpha) has higher weight than availability because disclosing sensitive health history causes irreversible harm."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "في الأنظمة المصرفية المركزية، لماذا يُمنح ركن السلامة ($\\beta$) الوزن الأعلى في معادلة المنفعة الأمنية؟",
+        "en": "In financial core banking systems, why is Integrity ($\\beta$) assigned the dominant weight in the security utility equation?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "المؤسسات المالية تعمل في الواقع بدون أي قوائم لضبط الوصول أو بيانات اعتماد للمستخدمين.",
+          "en": "Financial institutions operate without access control lists or database authentication credentials."
+        },
+        {
+          "ar": "البنوك التجارية تقدم التصميم الجمالي للبوابات الإلكترونية على دقة قيود وسجلات الحسابات.",
+          "en": "Commercial banks prioritize aesthetic web design over account transaction ledger accuracy."
+        },
+        {
+          "ar": "اللوائح المصرفية تشترط إطفاء شاشات أجهزة الصراف الآلي ATM بالكامل أثناء ساعات الليل المتأخرة.",
+          "en": "Banking regulations require automated ATM machines to power down during overnight operating hours."
+        },
+        {
+          "ar": "أي تعديل غير مصرح به على القيود يفسد أرصدة الحسابات ويؤدي إلى خسائر مالية كارثية وفقدان الثقة.",
+          "en": "Unauthorized ledger alteration corrupts account balances, causing immediate catastrophic financial losses."
+        }
+      ],
+      "concept_id": "utility_domain_weights_banking_beta",
+      "explanation": {
+        "ar": "في القطاع المصرفي، السلامة Integrity ($\\beta$) هي الأهم؛ لأن أي تعديل ولو برقم واحد في رصيد الحساب المالي يُعد كارثة مصرفية ويفقد البنك مصداقيته القانونية.",
+        "en": "In banking, integrity (beta) is paramount because tampering with ledger balances or transaction amounts causes immediate, catastrophic financial ruin."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-22T01:35:54Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,7 +1,7 @@
 ﻿/* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const CACHE = 'mcq-portal-v90';
+const CACHE = 'mcq-portal-v91';
 const CORE = [
   './',
   './index.html',
@@ -97,6 +97,12 @@ const CORE = [
   './data/index.json',
   './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_DrHuda_20MCQ.json',
   './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_ModelB_DrHuda.json',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution.json',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_T02_Scope_Domains_and_Risk_Exposure.json',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_T03_CIA_Triad_and_Utility_Function.json',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_T04_Threat_Landscape_and_Attack_Surface.json',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_T05_Risks_Vulnerabilities_and_Distribution.json',
+  './data/banks/01_Cyber_Security_Ch01_Quiz_Ch01_T06_Policies_Compliance_and_Optimization.json',
   './data/banks/01_Cyber_Security_Ch02_Quiz_Ch02_DrHuda_20MCQ.json',
   './data/banks/01_Cyber_Security_Ch02_Quiz_Ch02_ModelB_DrHuda.json',
   './data/banks/01_Cyber_Security_Ch03_Quiz_01_Cybersecurity_Foundations.json',
