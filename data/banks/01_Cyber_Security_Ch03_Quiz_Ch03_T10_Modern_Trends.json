@@ -1,0 +1,500 @@
+{
+  "topic": {
+    "ar": "الاتجاهات الحديثة في سياسات الأمن المؤسسي",
+    "en": "Modern Trends in Enterprise Security Policies"
+  },
+  "quiz_id": "Quiz_Ch03_T10_Modern_Trends",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي شعار يرتبط بسياسات Zero Trust؟",
+        "en": "Which slogan is attached to Zero Trust policies?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لا تثق أبداً، تحقّق دائماً.",
+          "en": "Never trust, always verify."
+        },
+        {
+          "ar": "لا تثق بأي شيء داخل المحيط.",
+          "en": "Trust nothing inside the perimeter."
+        },
+        {
+          "ar": "تحقّق مرة واحدة ثم ثق طوال الجلسة.",
+          "en": "Verify once, then trust for the session."
+        },
+        {
+          "ar": "ثق بكل جهاز على الشبكة المؤسسية.",
+          "en": "Trust every device on the corporate network."
+        }
+      ],
+      "concept_id": "zt_slogan",
+      "explanation": {
+        "ar": "يعطي الفصل شعار «لا تثق أبداً، تحقّق دائماً» كخلاصة لمبدأ Zero Trust.",
+        "en": "The chapter gives the slogan \"Never Trust, Always Verify\" as the summary of Zero Trust."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "على افترض الأمن المحيطي التقليدي بشأن الشبكة المؤسسية؟",
+        "en": "What did traditional perimeter security assume about the corporate network?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أن الثقة يجب أن تُكتسب باستمرار.",
+          "en": "That trust had to be earned continuously."
+        },
+        {
+          "ar": "أن كل ما داخلها كان موثوقاً.",
+          "en": "That everything inside it was trusted."
+        },
+        {
+          "ar": "أن كل معاملة تتطلب مصادقة جديدة.",
+          "en": "That every transaction required fresh authentication."
+        },
+        {
+          "ar": "أن المستخدمين الخارجيين أكثر ثقة من الموظفين.",
+          "en": "That external users were more trusted than staff."
+        }
+      ],
+      "concept_id": "traditional_assumption",
+      "explanation": {
+        "ar": "افترض الأمن المحيطي التقليدي أن «الداخل = موثوق»، وZero Trust يرفض هذا الافتراض بالضبط.",
+        "en": "Traditional perimeter security assumed \"inside = trusted\"; Zero Trust rejects exactly this notion."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي افتراض ترفضه سياسات Zero Trust صراحة؟",
+        "en": "Which assumption do Zero Trust policies explicitly reject?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أن المهاجمين قد يأتون من خارج الشبكة.",
+          "en": "That attackers can originate from outside the network."
+        },
+        {
+          "ar": "أن التشفير يحمي البيانات أثناء النقل.",
+          "en": "That encryption protects data while it is in transit."
+        },
+        {
+          "ar": "أن وجود الطلب داخل الشبكة يجعله موثوقاً.",
+          "en": "That being inside the network makes a request trustworthy."
+        },
+        {
+          "ar": "أن قرارات الوصول تعود لفريق الأمن.",
+          "en": "That access decisions belong to the security team."
+        }
+      ],
+      "concept_id": "zt_rejected_assumption",
+      "explanation": {
+        "ar": "ترفض Zero Trust فكرة أن الموقع الداخلي يمنح الثقة؛ وبدلاً من ذلك تطبّق تحقّقاً مستمراً على كل طلب وصول.",
+        "en": "Zero Trust rejects the notion that internal position confers trust; it applies continuous verification to every access request instead."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "على ماذا يطبّق Zero Trust التحقّق المستمر؟",
+        "en": "Zero Trust applies continuous verification to what?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الطلبات التي تعبر محيط الشبكة فقط.",
+          "en": "Only requests that cross the network perimeter."
+        },
+        {
+          "ar": "طلبات المديرين المميّزين فقط.",
+          "en": "Only requests made by privileged administrators."
+        },
+        {
+          "ar": "الطلبات التي تكشفها أنظمة كشف التسلل فقط.",
+          "en": "Only requests flagged by the intrusion detection system."
+        },
+        {
+          "ar": "كل طلب وصول.",
+          "en": "Every access request."
+        }
+      ],
+      "concept_id": "zt_verification_scope",
+      "explanation": {
+        "ar": "ينص النص على أن Zero Trust يطبّق تحقّقاً مستمراً على كل طلب وصول، دون استثناء للحركة الداخلية.",
+        "en": "The text states that Zero Trust applies continuous verification to every access request, with no exemption for internal traffic."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "في ظل Zero Trust، يجب أن يكون كل مستخدم وجهاز وطلب:",
+        "en": "Under Zero Trust, every user, device, and request must be:"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مُصادَقاً عليه، ومُخوّلاً، ومشفّراً.",
+          "en": "Authenticated, authorized, and encrypted."
+        },
+        {
+          "ar": "مسجّلاً، ومُرَسَلاً لمجلس الإدارة.",
+          "en": "Registered, logged, and reported to the board."
+        },
+        {
+          "ar": "مفحوصاً، ومعتمداً، ومؤرشَفاً للتدقيق.",
+          "en": "Inspected, approved, and archived for audit."
+        },
+        {
+          "ar": "معزولاً، ومراقَباً، ومحدّثاً بشكل دوري.",
+          "en": "Isolated, monitored, and patched on schedule."
+        }
+      ],
+      "concept_id": "zt_three_actions",
+      "explanation": {
+        "ar": "يعدّد الفصل ثلاثة إجراءات تُطبّق على كل مستخدم وجهاز وطلب: المصادقة، والتخويل، والتشفير.",
+        "en": "The chapter lists three actions applied to every user, device, and request: authenticated, authorized, and encrypted."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف تفرض سياسات Zero Trust مبدأ least privilege؟",
+        "en": "How do Zero Trust policies enforce least privilege?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ثابتاً، بتثبيت صلاحيات كل دور عند التوظيف.",
+          "en": "Statically, by fixing each role's permissions at hire date."
+        },
+        {
+          "ar": "ديناميكياً، بحيث يعاد تقييم الوصول كلما تغيّرت الظروف.",
+          "en": "Dynamically, so access is re-evaluated as conditions change."
+        },
+        {
+          "ar": "يدوياً، عبر مراجعة ربع سنوية من مدير الـ IT.",
+          "en": "Manually, through a quarterly review by the IT manager."
+        },
+        {
+          "ar": "بأثر رجعي، بتدقيق صلاحيات الوصول مرة في السنة.",
+          "en": "Retrospectively, by auditing access rights once a year."
+        }
+      ],
+      "concept_id": "least_privilege_dynamic",
+      "explanation": {
+        "ar": "تفرض السياسات في ظل Zero Trust مبدأ least privilege ديناميكياً، لا كمنحة ثابتة تُحدَّد مرة وتُنسى.",
+        "en": "Policies under Zero Trust enforce least privilege dynamically, not as a fixed grant set once and forgotten."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "تشترط سياسة وصول Zero Trust إعادة المصادقة للمعاملات الحساسة حتى لو حدثت في أي مكان؟",
+        "en": "A Zero Trust access policy requires re-authentication for sensitive transactions even when they occur where?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "على جهاز شخصي خارج ساعات العمل.",
+          "en": "On a personal device outside working hours."
+        },
+        {
+          "ar": "بين قسمين دون ميزانية مشتركة.",
+          "en": "Between two departments without a shared budget."
+        },
+        {
+          "ar": "داخل الشبكة المؤسسية.",
+          "en": "Inside the corporate network."
+        },
+        {
+          "ar": "في فرع لا يمتلك رابطاً مع المقر الرئيسي.",
+          "en": "At a branch office with no link to headquarters."
+        }
+      ],
+      "concept_id": "zt_example",
+      "explanation": {
+        "ar": "المثال في الفصل هو إعادة المصادقة للمعاملات الحساسة حتى داخل الشبكة المؤسسية، وهذا بالضبط النقطة التي يجعلها Zero Trust.",
+        "en": "The chapter's example is re-authentication for sensitive transactions even within the corporate network, which is the point Zero Trust makes."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا يُوصف التدقيق اليدوي للامتثال بأنه نقطة ضعف؟",
+        "en": "Why are manual compliance audits described as a weak point?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأنها لا تستطيع قراءة المعايير التي يجب أن تفحصها.",
+          "en": "They cannot read the standards they are meant to check."
+        },
+        {
+          "ar": "لأنها تشترط موافقة القسم المدقَّق على المدقق.",
+          "en": "They require the audited department to approve the auditor."
+        },
+        {
+          "ar": "لأنها ممنوعة بموجب معظم أطر الحوكمة.",
+          "en": "They are forbidden under most governance frameworks."
+        },
+        {
+          "ar": "لأنها تستهلك موارد وعرضة للخطأ.",
+          "en": "They consume resources and are prone to error."
+        }
+      ],
+      "concept_id": "manual_audit_problem",
+      "explanation": {
+        "ar": "يصف الفصل التدقيق اليدوي بأنه مكلف بالموارد وعرضة للخطأ، وهذه هي الدافع للتدقيق المعتمد على الذكاء الاصطناعي.",
+        "en": "The chapter calls manual audits resource-intensive and error-prone, which is the motivation for AI-driven auditing."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "تراقب أدوات التدقيق المعتمدة على الذكاء الاصطناعي السجلات من أجل:",
+        "en": "AI-driven auditing tools monitor logs in order to:"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كشف السلوك غير الممتثل في الزمن الحقيقي.",
+          "en": "Detect non-compliant behaviour in real time."
+        },
+        {
+          "ar": "تخزين كل سجل طوال فترة الاحتفاظ.",
+          "en": "Store every record for the full retention period."
+        },
+        {
+          "ar": "استبدال السياسة المكتبيرة بأخرى آلية.",
+          "en": "Replace the written policy with an automated one."
+        },
+        {
+          "ar": "إنتاج التقرير السنوي لمجلس الإدارة.",
+          "en": "Produce the annual report for the board of directors."
+        }
+      ],
+      "concept_id": "ai_monitor_logs",
+      "explanation": {
+        "ar": "من القدرات المذكورة مراقبة السجلات لكشف السلوكيات غير الممتثلة في الزمن الحقيقي.",
+        "en": "One listed capability is monitoring logs to detect non-compliant behaviours in real time."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "مقابل أي معايير ترسم أدوات الذكاء الاصطناعي فجوات الامتثال تلقائياً؟",
+        "en": "Against which standards do AI tools automatically map compliance gaps?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ISO 9001 و Six Sigma.",
+          "en": "ISO 9001 and Six Sigma."
+        },
+        {
+          "ar": "ISO 27001 و NIST CSF.",
+          "en": "ISO 27001 and NIST CSF."
+        },
+        {
+          "ar": "IEEE 802.11 و TCP/IP.",
+          "en": "IEEE 802.11 and TCP/IP."
+        },
+        {
+          "ar": "GDPR وقانون ساربينز أوكسلي.",
+          "en": "GDPR and the Sarbanes-Oxley Act."
+        }
+      ],
+      "concept_id": "ai_map_gaps",
+      "explanation": {
+        "ar": "يذكر النص معياري ISO 27001 و NIST CSF كمعايير تُرسم الفجوات مقابلهما تلقائياً.",
+        "en": "The text names ISO 27001 and NIST CSF as the standards against which gaps are mapped automatically."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "كيف تتنبأ الأدوات المعتمدة على الذكاء الاصطناعي بالمخاطر؟",
+        "en": "How do AI-driven tools predict risk?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بعدّ السياسات التي يملكها كل قسم.",
+          "en": "By counting the number of policies each department owns."
+        },
+        {
+          "ar": "بمقارنة ميزانية التدقيق بمتوسط القطاع.",
+          "en": "By comparing the audit budget with the industry average."
+        },
+        {
+          "ar": "بربط مخالفات السياسة باحتمالات الهجوم.",
+          "en": "By correlating policy violations with attack likelihoods."
+        },
+        {
+          "ar": "بطلب كل مدير أن يقيّم تعرّض قسمه بنفسه.",
+          "en": "By asking each manager to rate their own exposure."
+        }
+      ],
+      "concept_id": "ai_predict_risks",
+      "explanation": {
+        "ar": "يتم التنبؤ بربط مخالفات السياسة باحتمالات الهجوم.",
+        "en": "Prediction is done by correlating policy violations with attack likelihoods."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "القول إن التدقيق المعتمد على الذكاء الاصطناعي يُبقي السياسات «مطبَّقة فعلاً لا مكتوبة فقط» يعني أن:",
+        "en": "Saying that AI-driven compliance keeps policies \"actively enforced, not just written\" means that:"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "السياسات تُصاغ أسرع مما يمكن اعتمادها.",
+          "en": "Policies are drafted faster than they can be approved."
+        },
+        {
+          "ar": "كل موظف يجب أن يوقّع السياسة قبل استخدام الحاسوب.",
+          "en": "Every employee must sign the policy before using a computer."
+        },
+        {
+          "ar": "السياسة تُراجع من مدقق خارجي كل ربع سنة.",
+          "en": "The policy is reviewed by an external auditor each quarter."
+        },
+        {
+          "ar": "المخالفات تُكشف وتُتخذ بشأنها إجراءات أثناء حدوثها.",
+          "en": "Violations are detected and acted on while they happen."
+        }
+      ],
+      "concept_id": "ai_active_enforcement",
+      "explanation": {
+        "ar": "المقابلة هنا مع وثيقة مكتوبة لا يفحصها أحد؛ والذكاء الاصطناعي يُبقي التطبيق حياً بكشف المخالفات في الزمن الحقيقي.",
+        "en": "The contrast is with a written document nobody checks; AI keeps enforcement live by catching violations in real time."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "في سياق سياسات الأمن المؤسسي، يرمز الاختصار ESG إلى:",
+        "en": "In the context of enterprise security policies, ESG stands for:"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Environmental و Social و Governance.",
+          "en": "Environmental, Social, and Governance."
+        },
+        {
+          "ar": "Enterprise و Security و Governance.",
+          "en": "Enterprise, Security, and Governance reporting."
+        },
+        {
+          "ar": "Ethical و Sustainable و Global.",
+          "en": "Ethical, Sustainable, and Global standards."
+        },
+        {
+          "ar": "External و Systemic و Governance.",
+          "en": "External, Systemic, and Governance criteria."
+        }
+      ],
+      "concept_id": "esg_meaning",
+      "explanation": {
+        "ar": "يتوسع الاختصار ESG إلى Environmental و Social و Governance، والأمن السيبراني صار جزءاً من هذا الإبلاغ.",
+        "en": "ESG expands to Environmental, Social, and Governance, and cybersecurity is now part of that reporting."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "داخل إبلاغ ESG، يُغطّى البُعد Social بسياسات تضمن:",
+        "en": "Within ESG reporting, the Social dimension is covered by policies that ensure:"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المعالجة الأخلاقية للبيانات في المؤسسة.",
+          "en": "Ethical handling of data across the organisation."
+        },
+        {
+          "ar": "ثقة العملاء وخصوصية الموظفين.",
+          "en": "Customer trust and employee privacy."
+        },
+        {
+          "ar": "ممارسات تقنية مستدامة كمراكز البيانات الخضراء.",
+          "en": "Sustainable IT practices such as green data centres."
+        },
+        {
+          "ar": "الإفصاح عن إنفاق الأمن السيبراني للمساهمين.",
+          "en": "That cybersecurity spending is disclosed to shareholders."
+        }
+      ],
+      "concept_id": "esg_social_dimension",
+      "explanation": {
+        "ar": "يربط الفصل Governance بالمعالجة الأخلاقية للبيانات، و Social بثقة العملاء وخصوصية الموظفين، و Environmental بممارسات تقنية مستدامة.",
+        "en": "The chapter maps Governance to ethical data handling, Social to customer trust and employee privacy, and Environmental to sustainable IT practices."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "لماذا يرفع دمج الأمن السيبراني مع إبلاغ ESG الموضوع إلى مستوى مجلس الإدارة؟",
+        "en": "Why does integrating cybersecurity with ESG reporting elevate the subject to board level?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن على المجلس أن يعتمد بنفسه كل قرار وصول في الشركة.",
+          "en": "Because the board must personally approve every access decision in the company."
+        },
+        {
+          "ar": "لأن قواعد ESG تمنع تفويض أي واجب أمني لقسم الـ IT.",
+          "en": "Because ESG rules forbid delegating any security duty to the IT department."
+        },
+        {
+          "ar": "لأنه يصبح مسألة حوكمة مؤسسية لا مسألة تقنية.",
+          "en": "Because it becomes a matter of corporate governance rather than a technical one."
+        },
+        {
+          "ar": "لأن المدققين يبلّغون النتائج التقنية مباشرة للمساهمين.",
+          "en": "Because auditors report technical findings directly to the shareholders."
+        }
+      ],
+      "concept_id": "board_level",
+      "explanation": {
+        "ar": "يطالب المجالس بشكل متزايد بسياسات متكاملة مع أطر الحوكمة المؤسسية، وهذا ما يجعل الأمن السيبراني قضية استراتيجية على مستوى المجلس.",
+        "en": "Boards increasingly demand policies integrated with corporate governance frameworks, which is what makes cybersecurity a strategic, board-level concern."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-22T21:17:37Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

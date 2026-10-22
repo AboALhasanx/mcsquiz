@@ -1,0 +1,500 @@
+{
+  "topic": {
+    "ar": "الخطر وسلسلة التهديد",
+    "en": "Risk and the threat chain"
+  },
+  "quiz_id": "Quiz_Ch02_T01_Risk_And_Threat_Chain",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "بمعناه التقني، ماذا تعني كلمة risk في المحاضرة؟",
+        "en": "In its technical sense, what does the lecture mean by risk?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الاحتمال الكمّي بأن تحدث حالة خطأ ويترتب عليها ضرر.",
+          "en": "The quantitative probability that an error situation occurs and gives rise to damage."
+        },
+        {
+          "ar": "العدد الكلي للهجمات التي يتعرض لها النظام خلال فترة تقرير واحدة.",
+          "en": "The total number of attacks a system receives during one reporting period."
+        },
+        {
+          "ar": "الكلفة المالية لاستبدال المعدات المتضررة بكارثة طبيعية.",
+          "en": "The financial cost of replacing equipment destroyed by a natural disaster."
+        },
+        {
+          "ar": "مستوى القلق الذاتي الذي يشعر به المستخدمون تجاه حادث أمني محتمل.",
+          "en": "The subjective level of concern users feel about a possible security incident."
+        }
+      ],
+      "concept_id": "risk_technical_definition",
+      "explanation": {
+        "ar": "المحاضرة تعرّف الخطر بمعناه التقني بأنه الاحتمال الكمّي لحصول حالة خطأ ينتج عنها ضرر — فهو احتمال محسوب، لا عدد هجمات ولا كلفة إصلاح ولا شعور.",
+        "en": "The lecture defines risk in its technical sense as the quantitative probability that an error situation occurs and gives rise to damage. It is therefore a computed probability, not a count of attacks, not a repair cost, and not a feeling."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في أمن المعلومات، تعتبر المحاضرة الضرر مرادفاً لأي حادث؟",
+        "en": "In IT security, the lecture treats damage as synonymous with which event?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "انقطاع التغذية الكهربائية عن غرفة الخوادم.",
+          "en": "An interruption of the electrical power supply to the server room."
+        },
+        {
+          "ar": "خرق سياسة الأمن المتفق عليها.",
+          "en": "A breach of the security policy."
+        },
+        {
+          "ar": "تأخير في الإصدار المجدول لتحديث أحد التطبيقات.",
+          "en": "A delay in the scheduled release of an application update."
+        },
+        {
+          "ar": "انخفاض قابل للقياس في إنتاجية المستخدمين خلال ساعات العمل.",
+          "en": "A measurable drop in user productivity during working hours."
+        }
+      ],
+      "concept_id": "damage_policy_breach",
+      "explanation": {
+        "ar": "المحاضرة تنص على أن الضرر في أمن المعلومات مرادف لخرق سياسة الأمن. فانقطاع الكهرباء أو تأخير الإصدار أو هبوط الإنتاجية لا يصير ضرراً إلا إذا اعتبرته السياسة كذلك.",
+        "en": "The lecture states that in IT security damage is synonymous with a breach of the security policy. Power loss, a release delay or a productivity dip are only damage if the security policy defines them as such."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا تصف المحاضرة تعريفها للخطر بأنه موضوعي؟",
+        "en": "Why does the lecture describe its definition of risk as objective?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن منظمة معايير دولية وافقت عليه.",
+          "en": "Because an international standards organisation agreed it."
+        },
+        {
+          "ar": "لأنه يتجاهل عمداً أي شكل من أشكال الخسارة المالية.",
+          "en": "Because it deliberately ignores any kind of financial loss."
+        },
+        {
+          "ar": "لأنه يقوم على احتمال كمّي مقيس، لا على الإدراك الشخصي.",
+          "en": "Because it rests on a measured, quantitative probability, not perception."
+        },
+        {
+          "ar": "لأنه ينطبق على أعطال العتاد والانقطاعات فقط.",
+          "en": "Because it applies only to hardware failures and outages."
+        }
+      ],
+      "concept_id": "objective_definition_nature",
+      "explanation": {
+        "ar": "المحاضرة تقابل التعريف التقني بالخطر الذاتي وتقول إن الأخير يأخذ العوامل البشرية بنظر الاعتبار. فالموضوعي يعني الاحتمال المقيس نفسه، بلا مواقف الناس أو ثقتهم أو شخصياتهم.",
+        "en": "The lecture contrasts the technical definition with subjective risk and says the latter also takes human factors into account. Objective therefore means the measured probability itself, without the attitudes, trust or personality of the people involved."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي مجموعة عوامل تربطها المحاضرة بالخطر الذاتي؟",
+        "en": "Which set of factors does the lecture attach to subjective risk?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التكرار والعواقب ومستوى التدابير المضادة.",
+          "en": "Frequency, consequences, and countermeasure level."
+        },
+        {
+          "ar": "العتاد والبرمجيات والبيانات.",
+          "en": "Hardware, software, and data."
+        },
+        {
+          "ar": "السرية والسلامة والتوافر.",
+          "en": "Confidentiality, integrity, and availability."
+        },
+        {
+          "ar": "المواقف العامة والثقة والشخصية.",
+          "en": "Public attitudes, trust, and personality."
+        }
+      ],
+      "concept_id": "subjective_risk_factors",
+      "explanation": {
+        "ar": "المحاضرة تسمّي ثلاثة عوامل بشرية للخطر الذاتي: المواقف العامة والثقة والشخصية. أما المجموعات الأخرى فتعود إلى معادلات الخطر وتصنيف التهديدات وأركان الأمن على التوالي.",
+        "en": "The lecture names three human factors for subjective risk: public attitudes, trust and personality. The other sets belong to the risk equations, the threat taxonomy and the security pillars respectively."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يحلّل موظفان الخادم نفسه. الأول يقدّر احتمال خرق السياسة سنوياً بـ12%، والثاني يقول إن الموظفين يشعرون بعدم الأمان. أي وصف يطابق المحاضرة؟",
+        "en": "Two analysts assess the same server. The first reports a 12% annual probability of a policy breach; the second reports that staff feel unsafe about it. Which pairing matches the lecture?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الأول يعطي الخطر الموضوعي، والثاني يعطي الخطر الذاتي.",
+          "en": "The first gives the objective risk; the second gives the subjective risk."
+        },
+        {
+          "ar": "الأول يعطي الخطر الذاتي، والثاني يعطي الخطر الموضوعي.",
+          "en": "The first gives the subjective risk; the second gives the objective risk."
+        },
+        {
+          "ar": "كلاهما يعطي الخطر الموضوعي، لأن كليهما عن الخادم نفسه.",
+          "en": "Both give the objective risk, because both concern the same server."
+        },
+        {
+          "ar": "كلاهما يعطي الخطر الذاتي، لأن أياً منهما لم يذكر عاقبة.",
+          "en": "Both give the subjective risk, because neither states a consequence."
+        }
+      ],
+      "concept_id": "objective_vs_subjective_pairing",
+      "explanation": {
+        "ar": "رقم 12% هو الاحتمال الكمّي، أي التعريف الموضوعي. وأما التقرير الثاني فيقوم على شعور الناس، وهو الجانب البشري الذي تنسبه المحاضرة إلى الخطر الذاتي. وكون الخادم واحداً لا يغيّر نوع الحكم.",
+        "en": "The 12% figure is the quantitative probability, which is the objective definition. The second report is built on how people feel, which is the human-factor side the lecture assigns to subjective risk. Sharing the same server does not change the type of judgement."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "وفق المحاضرة، تحت أي شرط يحدث الضرر في نظام معلوماتي؟",
+        "en": "Under what condition does damage occur in an IT system, according to the lecture?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "كلما وُجد تهديد في أي مكان من الشبكة.",
+          "en": "Whenever a threat exists anywhere on the network."
+        },
+        {
+          "ar": "عندما يتحقق تهديد ضد نقطة ضعف في النظام.",
+          "en": "When a threat is realised against a weakness in the system."
+        },
+        {
+          "ar": "عندما تعيد الإدارة كتابة سياسة الأمن.",
+          "en": "When the security policy is rewritten by management."
+        },
+        {
+          "ar": "عندما تُخفَّض ميزانية التدابير المضادة.",
+          "en": "When the countermeasure budget is reduced."
+        }
+      ],
+      "concept_id": "threat_realised_condition",
+      "explanation": {
+        "ar": "المحاضرة صريحة بأن الضرر يحدث عندما يتحقق تهديد ضد نقطة ضعف في النظام. فوجود التهديد وحده لا يكفي، وكذلك تعديل السياسة أو خفض الميزانية.",
+        "en": "The lecture is explicit that damage occurs when a threat is realised against some weakness in the system. A threat on its own is not enough, and neither is a policy edit or a budget cut."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف تعرّف المحاضرة الثغرة؟",
+        "en": "How does the lecture define a vulnerability?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أي برنامج لم يُحدَّث خلال هذا العام.",
+          "en": "Any piece of software that has not been updated this year."
+        },
+        {
+          "ar": "مهاجم يعمل من خارج المؤسسة.",
+          "en": "An attacker who operates from outside the organisation."
+        },
+        {
+          "ar": "نقطة ضعف يمكن استغلالها لإلحاق الضرر بالنظام.",
+          "en": "A weakness which can be exploited to damage the system."
+        },
+        {
+          "ar": "الخسارة الكلية المسجّلة بعد هجوم ناجح.",
+          "en": "The total loss recorded after a successful attack."
+        }
+      ],
+      "concept_id": "vulnerability_definition",
+      "explanation": {
+        "ar": "المحاضرة تعرّف الثغرة بأنها نقطة ضعف يمكن استغلالها لإلحاق الضرر بالنظام. فالبرنامج القديم مجرد مثال عليها، والمهاجم هو التهديد، والخسارة المسجّلة هي الضرر.",
+        "en": "The lecture defines a vulnerability as a weakness which can be exploited to damage the system. An outdated program is only an example of one, an attacker is the threat, and the recorded loss is the damage."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "تُنبَّأ عاصفة فوق مركز بيانات سطحه يحمل مانع تسرب متشقق. أي عبارة تطابق تمييز المحاضرة؟",
+        "en": "A storm is forecast over a data centre whose roof has a cracked seal. Which statement matches the lecture's distinction?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "العاصفة هي الثغرة، والمانع المتشقق هو التهديد.",
+          "en": "The storm is the vulnerability; the cracked seal is the threat."
+        },
+        {
+          "ar": "كل من العاصفة والمانع المتشقق ثغرة.",
+          "en": "Both the storm and the cracked seal are vulnerabilities."
+        },
+        {
+          "ar": "لا شيء منهما تهديد إلى أن تُفقد البيانات فعلاً.",
+          "en": "Neither is a threat until data is actually lost."
+        },
+        {
+          "ar": "العاصفة هي التهديد، والمانع المتشقق هو الثغرة.",
+          "en": "The storm is the threat; the cracked seal is the vulnerability."
+        }
+      ],
+      "concept_id": "threat_vulnerability_distinction",
+      "explanation": {
+        "ar": "التهديد هو القوة التي قد تُلحق الضرر، والثغرة هي نقطة الضعف التي تسمح بمروره. فالعاصفة تهديد والمانع المتشقق ثغرة قابلة للاستغلال، تماماً كما أن القرش تهديد وعيب اللحام ثغرة.",
+        "en": "The threat is the force that may cause harm; the vulnerability is the weakness that lets it through. The storm is the threat and the cracked seal is the exploitable weakness, exactly as the shark is the threat and the welding fault is the vulnerability."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "في شكل قفص القرش بالمحاضرة، ماذا يمثّل عيب اللحام في القفص؟",
+        "en": "In the lecture's shark-cage figure, what does the welding fault in the cage represent?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الثغرة في النظام.",
+          "en": "The vulnerability in the system."
+        },
+        {
+          "ar": "التهديد الذي يهاجم النظام.",
+          "en": "The threat that attacks the system."
+        },
+        {
+          "ar": "الأصل الذي يجب حمايته.",
+          "en": "The asset that must be protected."
+        },
+        {
+          "ar": "التدبير المضاد الذي يصد الهجوم.",
+          "en": "The countermeasure that blocks the attack."
+        }
+      ],
+      "concept_id": "shark_figure_vulnerability",
+      "explanation": {
+        "ar": "الشكل يطابق القرش مع التهديد وعيب اللحام مع الثغرة. فالقفص هو النظام والغوّاص هو الأصل، لذا فالعيب هو نقطة الضعف التي يمكن استغلالها.",
+        "en": "The figure maps the shark to the threat and the welding fault to the vulnerability. The cage is the system and the diver is the asset, so the fault is the weakness an attacker can exploit."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "في الشكل نفسه، ماذا يقابل الغوّاص داخل القفص؟",
+        "en": "In the same figure, the diver inside the cage corresponds to which element?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التهديد الذي يبدأ السلسلة.",
+          "en": "The threat that initiates the chain."
+        },
+        {
+          "ar": "الأصل الذي يتضرر إذا اكتملت السلسلة.",
+          "en": "The asset that is damaged if the chain completes."
+        },
+        {
+          "ar": "الثغرة التي تتيح الهجوم.",
+          "en": "The vulnerability that enables the attack."
+        },
+        {
+          "ar": "السياسة التي تحدد الضرر المقبول.",
+          "en": "The policy that defines acceptable damage."
+        }
+      ],
+      "concept_id": "shark_figure_asset",
+      "explanation": {
+        "ar": "الغوّاص هو ما يحمي الترتيب كله من أجله، فهو يمثّل الأصل. والقرش تهديد وعيب اللحام ثغرة، والسلسلة تكتمل فقط عندما يسمح العيب للقرش بالوصول إلى الأصل.",
+        "en": "The diver is what the whole arrangement protects, so he stands for the asset. The shark is the threat and the welding fault is the vulnerability; the chain completes only when the fault lets the shark through to the asset."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "بأي ترتيب تسير سلسلة المحاضرة؟",
+        "en": "In what order does the lecture's chain run?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الضرر، ثم التهديد، ثم الثغرة.",
+          "en": "Damage, then threat, then vulnerability."
+        },
+        {
+          "ar": "الثغرة، ثم الضرر، ثم التهديد.",
+          "en": "Vulnerability, then damage, then threat."
+        },
+        {
+          "ar": "التهديد، ثم الثغرة، ثم الضرر.",
+          "en": "Threat, then vulnerability, then damage."
+        },
+        {
+          "ar": "التهديد، ثم الضرر، ثم الثغرة.",
+          "en": "Threat, then damage, then vulnerability."
+        }
+      ],
+      "concept_id": "chain_order",
+      "explanation": {
+        "ar": "السلسلة تسير: تهديد، ثم ثغرة، ثم ضرر — فالتهديد موجود أولاً، ويعمل عبر نقطة ضعف، وتكون النتيجة ضرراً أي خرقاً لسياسة الأمن.",
+        "en": "The chain runs threat, then vulnerability, then damage: the threat exists first, it acts through a weakness, and the result is damage, meaning a breach of the security policy."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "يدور قرش حول قفص لحامه سليم. وفق سلسلة المحاضرة، ماذا ينتج؟",
+        "en": "A shark circles a cage whose welds are intact. Using the lecture's chain, what follows?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الضرر يحدث رغم ذلك، لأن التهديد موجود.",
+          "en": "Damage still occurs, because the threat is present."
+        },
+        {
+          "ar": "التهديد يصبح ثغرة بمجرد ملامسته القفص.",
+          "en": "The threat becomes a vulnerability once it touches the cage."
+        },
+        {
+          "ar": "القفص يتحول إلى أصل ويتضرر أولاً.",
+          "en": "The cage turns into the asset and is damaged first."
+        },
+        {
+          "ar": "لا يحدث ضرر، لأن التهديد لا يجد نقطة ضعف يستغلها.",
+          "en": "No damage occurs, because the threat has no weakness to exploit."
+        }
+      ],
+      "concept_id": "chain_without_vulnerability",
+      "explanation": {
+        "ar": "مقصود المحاضرة من القفص السليم أن التهديد وحده لا يُنتج ضرراً. فالسلسلة تحتاج حلقتها الوسطى، ولذلك يبقى القرش خارجاً مع سلامة اللحام ولا يقع خرق.",
+        "en": "The lecture's point with the intact cage is that a threat alone does not produce damage. The chain needs the middle link, so with sound welds the shark stays outside and no breach follows."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "أي عبارة تنتج مباشرة عن تعريف الخطر بوصفه احتمالاً؟",
+        "en": "Which statement follows directly from defining risk as a probability?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الخطر يصف ما قد يحدث، لا ما حدث فعلاً.",
+          "en": "Risk describes what may happen, not what has already happened."
+        },
+        {
+          "ar": "الخطر لا يُقاس إلا بعد تسجيل الخسارة.",
+          "en": "Risk can only be measured after the loss has been recorded."
+        },
+        {
+          "ar": "الخطر واحد لكل تهديد داخل النظام نفسه.",
+          "en": "Risk is the same for every threat inside the same system."
+        },
+        {
+          "ar": "الخطر لا يُقارن بين تهديدين مختلفين.",
+          "en": "Risk cannot be compared between two different threats."
+        }
+      ],
+      "concept_id": "risk_is_forward_looking",
+      "explanation": {
+        "ar": "الاحتمال قول عن نتيجة لم تحدث بعد. والنتيجة المتحققة هي الضرر أي خرق سياسة الأمن، فالخطر يقع قبل الحادث والضرر بعده.",
+        "en": "A probability is a statement about an outcome that has not yet occurred. The realised outcome is the damage, a breach of the security policy, so risk sits before the event while damage sits after it."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "لماذا تُصرّ المحاضرة على عدم الخلط بين الخطر الموضوعي والخطر الذاتي؟",
+        "en": "Why does the lecture insist that objective risk must not be confused with subjective risk?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن الخطر الذاتي أكبر عددياً دائماً.",
+          "en": "Because subjective risk is always numerically larger."
+        },
+        {
+          "ar": "لأن الصيغة الموضوعية وحدها هي الاحتمال الكمّي المعتمد هنا.",
+          "en": "Because only the objective form is the quantitative probability used here."
+        },
+        {
+          "ar": "لأن الخطر الذاتي يخص الموظفين غير التقنيين فقط.",
+          "en": "Because subjective risk applies only to non-technical staff."
+        },
+        {
+          "ar": "لأن الخطر الموضوعي يتغير بتغير المواقف العامة مع الوقت.",
+          "en": "Because objective risk changes with public attitudes over time."
+        }
+      ],
+      "concept_id": "objective_subjective_why_separate",
+      "explanation": {
+        "ar": "الجابتر كله يقيس الخطر ويضربه بالتكرار والعواقب ويقسمه على التدابير. وهذه الحسابات لا تعمل إلا على الصيغة الموضوعية الكمّية، أما الذاتية فتحمل مواقف وثقة وشخصية، وهي ليست أرقاماً.",
+        "en": "The whole chapter measures risk, multiplies it by frequency and consequences, and divides it by countermeasures. That arithmetic only works on the objective, quantitative form; the subjective form carries attitudes, trust and personality, which are not numbers."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "إذا كان الضرر خرقاً لسياسة الأمن، فماذا تكون سياسة الأمن نفسها؟",
+        "en": "If damage is a breach of the security policy, what does that make the security policy itself?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تدبيراً مضاداً يزيل كل تهديد.",
+          "en": "A countermeasure that removes every threat."
+        },
+        {
+          "ar": "سجلاً للخسائر التي وقعت فعلاً.",
+          "en": "A record of losses already suffered."
+        },
+        {
+          "ar": "المرجع الذي يحدد متى وقع الضرر.",
+          "en": "The reference defining when damage has occurred."
+        },
+        {
+          "ar": "بديلاً عن تقييم المخاطر.",
+          "en": "A replacement for the risk assessment."
+        }
+      ],
+      "concept_id": "policy_defines_damage",
+      "explanation": {
+        "ar": "التعريف يجعل السياسة هي المقياس: لا يُعدّ الحادث ضرراً إلا إذا خرق السياسة. فالسياسة لا تزيل التهديدات ولا تسجّل الخسائر ولا تحل محل تقييم المخاطر.",
+        "en": "The definition makes the policy the yardstick: an event counts as damage only when it breaks the policy. The policy does not remove threats, does not log losses and does not replace the risk assessment."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-22T21:17:37Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

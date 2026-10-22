@@ -154,7 +154,7 @@
         },
         {
           "ar": "وكالة الاتحاد الأوروبي للأمن السيبراني ENISA، بالتكامل مع لوائح الخصوصية GDPR.",
-          "en": "ENISA (The European Union Agency for Cybersecurity), paired with GDPR privacy mandates."
+          "en": "ENISA, paired with GDPR privacy mandates."
         },
         {
           "ar": "منظمة اليونسكو لحماية مواقع التراث الثقافي العالمي وإدارة المكتبات التاريخية.",
@@ -394,33 +394,33 @@
     {
       "id": "q13",
       "stem": {
-        "ar": "لاحظ عميل مصرفي اختفاء 100 ألف دولار من حسابه إثر خلل برمجي مفاجئ، وقام المصرف بإصلاحه وإعادة المبلغ. أي ركن من ثالوث CIA تضرر بصورة أساسية؟",
-        "en": "A bank customer notices their balance dropped by $100,000 due to an unhandled software crash, which the bank patched before restoring funds. What CIA pillar was primarily breached?"
+        "ar": "كتبت وظيفة المعالجة الليلية في المصرف رصيد العميل 100,000 دولار بدل 1,000 دولار، وبقي الرقم الخاطئ في السجل حتى أبلغ العميل. ولم تتوقف خدمة المصرف عن الاستجابة إطلاقاً. أي ركن من ثالوث CIA تضرر؟",
+        "en": "A bank's overnight batch job writes a customer's balance as $100,000 instead of $1,000, and the wrong figure stays in the ledger until the customer reports it. The banking service itself never stopped responding. Which CIA pillar was breached?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "تضررت السلامة Integrity بالدرجة الأولى لأن البيانات المالية المخزنة تغيرت وصارت غير دقيقة.",
-          "en": "Integrity was primarily breached because the recorded financial data was altered and inaccurate."
+          "ar": "تضررت السلامة Integrity لأن الرصيد المسجّل تغيّر وصار غير دقيق.",
+          "en": "Integrity was breached because the recorded balance was altered and no longer accurate."
         },
         {
-          "ar": "تضررت السرية Confidentiality لأن موظفي الفرع اطلعوا على كشوفات حساب العميل.",
-          "en": "Confidentiality was breached because bank tellers viewed account statements."
+          "ar": "تضرر التوافر Availability لأن وظيفة المعالجة الليلية لم تكتمل كما هو مطلوب.",
+          "en": "Availability was breached because the overnight batch job did not complete as intended."
         },
         {
-          "ar": "تضرر عدم الإنكار Non-repudiation لأن مدير الفرع وقّع يدوياً على استرجاع الرصيد.",
-          "en": "Non-repudiation was breached because the branch manager signed the manual credit adjustment."
+          "ar": "تضررت السرية Confidentiality لأن موظفي الفرع اطّلعوا على سجل العميل.",
+          "en": "Confidentiality was breached because branch staff could read the customer's ledger."
         },
         {
-          "ar": "تضرر الامتثال التنظيمي لأن احتساب الفوائد المصرفية جرى بالعملة الأجنبية.",
-          "en": "Regulatory compliance was breached because interest calculations were computed in dollars."
+          "ar": "تضرر عدم الإنكار Non-repudiation لأن وظيفة المعالجة لم تترك سجلاً موقّعاً.",
+          "en": "Non-repudiation was breached because the batch job left no signed audit record."
         }
       ],
       "concept_id": "scenario_banking_accidental_glitch",
       "explanation": {
-        "ar": "الركن المتضرر أساساً هو السلامة Integrity لأن رصيد الحساب المالي تغيّر بشكل غير صحيح إثر خلل برمجي. (وتقنيات معالجته: التجزئة SHA-256، التوقيع الرقمي، والتحكم بالإصدارات).",
-        "en": "Account balances unexpectedly changed without legitimate transactions, violating Integrity (hashing, digital signatures, version control). System malfunctioning also touches Availability."
+        "ar": "السجل صار يحمل رقماً لا يطابق المعاملة الحقيقية، والخدمة ظلّت تستجيب طوال الوقت — فهذا تغيير في البيانات وعدم دقة، أي السلامة Integrity (التجزئة SHA-256، التوقيع الرقمي، التحكم بالإصدارات). ولا توافر (الخدمة لم تتوقف)، ولا سرية (لا كشف)، ولا عدم إنكار (لا توقيع متنازع عليه).",
+        "en": "The ledger now holds a figure that does not match the real transaction, while the service kept responding throughout. That is data altered and inaccurate, which is Integrity (hashing, digital signatures, version control). Availability is excluded by the stem, confidentiality because nothing was disclosed, and non-repudiation because no signature is disputed."
       }
     },
     {
@@ -525,7 +525,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-22T14:44:03Z",
+  "updated_at": "2026-10-22T21:17:37Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

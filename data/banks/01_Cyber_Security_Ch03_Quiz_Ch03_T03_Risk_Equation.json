@@ -1,0 +1,500 @@
+{
+  "topic": {
+    "ar": "معادلة الخطر بصيغتيها",
+    "en": "The risk equation in both forms"
+  },
+  "quiz_id": "Quiz_Ch03_T03_Risk_Equation",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يعرّف الفصل الخطر في سياق الأمن السيبراني؟",
+        "en": "How does the chapter define risk in the cybersecurity context?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الاحتمال القابل للقياس بأن يستغلّ فاعل تهديد ثغرةً لإلحاق الضرر بأصول المؤسسة.",
+          "en": "The quantifiable possibility that a threat actor exploits a vulnerability to damage organizational assets."
+        },
+        {
+          "ar": "العدد الكلي للهجمات التي تسجّلها المؤسسة في سنة ميلادية واحدة.",
+          "en": "The total number of attacks that an organization records across one full calendar year."
+        },
+        {
+          "ar": "المبلغ المصروف سنوياً على الجدران النارية ومكافحة الفيروسات وكشف التسلل.",
+          "en": "The amount of money spent each year on firewalls, antivirus and intrusion detection tools."
+        },
+        {
+          "ar": "مستوى ثقة الإدارة العليا بفريق الأمن لديها.",
+          "en": "The level of confidence that senior managers happen to have in their own security team."
+        }
+      ],
+      "concept_id": "quantifiable_possibility",
+      "explanation": {
+        "ar": "الخطر ليس مفهوماً مجرّداً: هو الاحتمال القابل للقياس بأن يستغلّ فاعل تهديد ثغرةً لإلحاق الضرر بأصول المؤسسة. فهو احتمال قابل للقياس، لا عدداً ولا بند ميزانية ولا شعوراً.",
+        "en": "Risk is not an abstract concept: it is the quantifiable possibility that a threat actor exploits a vulnerability to damage organizational assets. It is a measurable likelihood, not a count, a budget line or a feeling."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي أربع نتائج يقول الفصل إن الخطر قد ينتجها؟",
+        "en": "Which four consequences does the chapter say risk can produce?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "دوران الموظفين وانخفاض الروح المعنوية وضعف التوظيف وارتفاع كلف التدريب.",
+          "en": "Staff turnover, lower morale, weaker recruitment and higher training costs."
+        },
+        {
+          "ar": "خسارة مالية وتعطّل تشغيلي وضرر بالسمعة ومسؤولية قانونية.",
+          "en": "Financial loss, operational disruption, reputational damage and legal liability."
+        },
+        {
+          "ar": "بطء التطوير وكثرة العيوب وتأخّر المواعيد والدَّين التقني.",
+          "en": "Slower development, more defects, missed deadlines and technical debt."
+        },
+        {
+          "ar": "ارتفاع أقساط التأمين وكبر التدقيق وطول المراجعات وضيق الميزانيات.",
+          "en": "Higher insurance premiums, larger audits, longer reviews and tighter budgets."
+        }
+      ],
+      "concept_id": "four_consequences",
+      "explanation": {
+        "ar": "يعدّد الفصل الخسارة المالية والتعطّل التشغيلي والضرر السمعي والمسؤولية القانونية. وتظهر هذه الأربع لاحقاً كالأبعاد الثلاثة مع الخيط القانوني، ولهذا كانت الأبعاد مالية وتشغيلية وسمعية.",
+        "en": "The chapter lists financial loss, operational disruption, reputational damage and legal liability. Those four reappear as the three dimensions plus the legal thread, which is why the dimensions are financial, operational and reputational."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يُعبَّر عن الخطر بصيغة رسمية في الفصل؟",
+        "en": "How is risk expressed in formal terms in the chapter?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الخطر يساوي التهديد مضافاً إلى الثغرة مضافاً إلى التأثير.",
+          "en": "Risk equals threat added to vulnerability added to impact."
+        },
+        {
+          "ar": "الخطر يساوي التأثير مقسوماً على مجموع التهديد والثغرة.",
+          "en": "Risk equals impact divided by the sum of threat and vulnerability."
+        },
+        {
+          "ar": "الخطر يساوي التهديد مضروباً بالثغرة مضروباً بالتأثير.",
+          "en": "Risk equals threat multiplied by vulnerability multiplied by impact."
+        },
+        {
+          "ar": "الخطر يساوي متوسط التهديد والثغرة والتأثير.",
+          "en": "Risk equals the average of threat, vulnerability and impact."
+        }
+      ],
+      "concept_id": "tvi_formula",
+      "explanation": {
+        "ar": "يكتب الفصل الخطر كالتهديد مضروباً بالثغرة مضروباً بالتأثير. والضرب مقصود، والسؤال التالي يدور على سبب استحالة أن يكون جمعاً أو متوسطاً.",
+        "en": "The chapter writes risk as threat times vulnerability times impact. The multiplication is deliberate, and the next question turns on why it cannot be a sum or an average."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في تأطير الفصل الرسمي، ماذا تعني الاحتمالية؟",
+        "en": "In the chapter's formal framing, what does likelihood mean?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد الثغرات التي بقيت دون ترقيع هذا الشهر.",
+          "en": "The number of vulnerabilities that remain unpatched this month."
+        },
+        {
+          "ar": "القيمة المالية للأصل الذي سيتضرر.",
+          "en": "The financial value of the asset that would be damaged."
+        },
+        {
+          "ar": "الزمن بين الهجوم وكشفه من الفريق.",
+          "en": "The time between the attack and its detection by the team."
+        },
+        {
+          "ar": "احتمال أن يستغلّ تهديدٌ ثغرةً معيّنة.",
+          "en": "The probability that a threat will exploit a vulnerability."
+        }
+      ],
+      "concept_id": "likelihood_definition",
+      "explanation": {
+        "ar": "الاحتمالية هي احتمال أن يستغلّ تهديدٌ ثغرةً. والتأثير هو الضرر المحتمل، أما قيمة الأصل وزمن الكشف فليستا متغيّرين في معادلة الفصل.",
+        "en": "Likelihood is the probability that a threat will exploit a vulnerability. Impact is the potential damage, and asset value and detection time are not variables in the chapter's formula."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يشمل التأثير في تأطير الفصل؟",
+        "en": "What does impact cover in the chapter's framing?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الضرر المحتمل الذي قد يكون مالياً أو سمعياً أو تشغيلياً.",
+          "en": "Potential damage that may be financial, reputational or operational."
+        },
+        {
+          "ar": "عدد المستخدمين الذين اختُرقت حساباتهم في الهجوم.",
+          "en": "The number of users whose accounts were compromised in the attack."
+        },
+        {
+          "ar": "عدد الضوابط التي كانت فعّالة لحظة الهجوم.",
+          "en": "The count of controls that were active at the moment of the attack."
+        },
+        {
+          "ar": "الغرامة التعاقدية المكتوبة في اتفاقية المورّد.",
+          "en": "The contractual penalty written into the supplier agreement."
+        }
+      ],
+      "concept_id": "impact_definition",
+      "explanation": {
+        "ar": "يعرّف الفصل التأثير بأنه الضرر المحتمل، ويسمّي أنواعه الثلاثة: مالي وسمعي وتشغيلي. وهي الثلاثية نفسها التي ظهرت كأبعاد في الموضوع السابق.",
+        "en": "The chapter defines impact as potential damage, and names its three kinds as financial, reputational and operational. That is the same triad as the three dimensions of the previous topic."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "لماذا يضرب الفصل العوامل الثلاثة بدل جمعها؟",
+        "en": "Why does the chapter multiply the three factors instead of adding them?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن الضرب ينتج دائماً عدداً أكبر من الجمع.",
+          "en": "Because multiplication always produces a larger number than addition."
+        },
+        {
+          "ar": "لأن أي عامل إذا كان صفراً انهار الخطر كله إلى صفر.",
+          "en": "Because if any single factor is zero, the whole risk collapses to zero."
+        },
+        {
+          "ar": "لأن العوامل الثلاثة تُقاس بالوحدة النقدية نفسها.",
+          "en": "Because the three factors are measured in the same currency unit."
+        },
+        {
+          "ar": "لأن الجمع محفوظ للصيغة التجميعية من المعادلة.",
+          "en": "Because addition is reserved for the aggregate form of the equation."
+        }
+      ],
+      "concept_id": "zero_factor_reasoning",
+      "explanation": {
+        "ar": "بحاصل الضرب، انعدام التهديد أو الثغرة أو التأثير يجعل النتيجة صفراً، وهو السلوك الذي يريده الفصل. أما الجمع فيسمح لتهديد كبير بحمل ثغرة صفرية ومع ذلك إظهار خطر.",
+        "en": "With a product, no threat, no vulnerability or no impact each drives the result to zero, which is the behaviour the chapter wants. A sum would let a large threat carry a zero vulnerability and still report a risk."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يُجمَّع الخطر عبر تهديدات متعددة؟",
+        "en": "How is risk aggregated across multiple threats?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "كأعلى احتمال بين كل التهديدات المقيَّمة.",
+          "en": "As the maximum probability among all the threats assessed."
+        },
+        {
+          "ar": "كحاصل ضرب كل احتمالات التهديدات المقيَّمة.",
+          "en": "As the product of all the probabilities of the threats assessed."
+        },
+        {
+          "ar": "كمجموع، على كل التهديدات، لاحتمال كل تهديد مضروباً بتأثيره.",
+          "en": "As the sum over all threats of probability multiplied by impact."
+        },
+        {
+          "ar": "كالفارق بين أكبر قيمة تأثير وأصغرها.",
+          "en": "As the difference between the largest and smallest impact values."
+        }
+      ],
+      "concept_id": "aggregate_formula",
+      "explanation": {
+        "ar": "الإطار الموسّع يجمع احتمال كل تهديد مضروباً بتأثيره على كل التهديدات من واحد إلى n. وهو التركيب نفسه لمعادلة الخسارة المالية المتوقعة في الموضوع السابق، ولهذا يعامل الفصل الاثنتين كفكرة واحدة.",
+        "en": "The extended framing sums probability times impact over all threats, from one to n. That is the same structure as the Expected Financial Loss formula in the previous topic, which is why the chapter treats the two as one idea."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في الصيغة التجميعية، ماذا يمثّل الرمز n؟",
+        "en": "In the aggregate form, what does the symbol n stand for?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد الضوابط المنشورة ضد التهديدات.",
+          "en": "The number of controls deployed against the threats."
+        },
+        {
+          "ar": "عدد السنوات التي يُقاس عليها الخطر.",
+          "en": "The number of years over which the risk is measured."
+        },
+        {
+          "ar": "عدد الأقسام التي أبلغت عن التهديدات.",
+          "en": "The number of departments that reported the threats."
+        },
+        {
+          "ar": "عدد التهديدات المحتملة التي تُجمَّع.",
+          "en": "The number of possible threats being aggregated."
+        }
+      ],
+      "concept_id": "aggregate_symbols",
+      "explanation": {
+        "ar": "n هو عدد التهديدات المحتملة في المجموع، الذي يجري من i يساوي واحد إلى n. والضوابط والسنوات والأقسام خارج هذه المعادلة.",
+        "en": "n is the number of possible threats in the sum, which runs from i equals one to n. Controls, years and departments are outside this formula."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "يقابل الفصل بين حملة تصيّد وثغرة يوم الصفر. ماذا يُظهر هذا التقابل؟",
+        "en": "The chapter contrasts a phishing campaign with a zero-day exploit. What does the contrast demonstrate?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أن إدارة المخاطر يجب أن توازن بين الاحتمالية والتأثير لا أن تنظر لأحدهما وحده.",
+          "en": "That risk management must balance likelihood against impact rather than look at one alone."
+        },
+        {
+          "ar": "أن التصيّد أخطر دائماً من ثغرة يوم الصفر في كل مؤسسة.",
+          "en": "That phishing is always more dangerous than a zero-day exploit in every organization."
+        },
+        {
+          "ar": "أن ثغرات يوم الصفر لا تُقيَّم لأن احتمالها مجهول.",
+          "en": "That zero-day exploits cannot be assessed because their probability is unknown."
+        },
+        {
+          "ar": "أن الصيغة التجميعية تنطبق على الأحداث عالية التأثير فقط.",
+          "en": "That the aggregate formula only applies to high-impact events."
+        }
+      ],
+      "concept_id": "phishing_vs_zeroday",
+      "explanation": {
+        "ar": "التصيّد احتماليته عالية وتأثيره منخفض لكل حدث، وثغرة يوم الصفر احتماليته منخفضة وتأثيره كارثي. ومقصود الفصل أن البعدين يجب أن يوازَنا، ولهذا بالضبط تضرب المعادلة بدل أن تختار أحدهما.",
+        "en": "Phishing has high likelihood and low impact per event, while a zero-day has low likelihood and catastrophic impact. The chapter's point is that both dimensions must be balanced, which is exactly why the equation multiplies rather than picks one."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "يعطي الفصل الخطر مرتين، مرة كالتهديد × الثغرة × التأثير ومرة كمجموع احتمال × تأثير. كيف تُقرأان؟",
+        "en": "The chapter gives risk twice, once as threat times vulnerability times impact and once as a sum of probability times impact. How should they be read?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "كتعريفين متناقضين، أولُهما هو الصحيح.",
+          "en": "As two contradictory definitions, of which the first is the correct one."
+        },
+        {
+          "ar": "كفكرة واحدة بتأطيرين، حيث تقوم الاحتمالية مقام التهديد × الثغرة.",
+          "en": "As one idea in two framings, where probability stands in for threat times vulnerability."
+        },
+        {
+          "ar": "كتعريفين لصناعتين مختلفتين، أحدهما للمال والآخر للصحة.",
+          "en": "As two definitions for different industries, one for finance and one for health."
+        },
+        {
+          "ar": "كتعريف ومثال محلول، لا كمعادلتين.",
+          "en": "As a definition and a worked example, not as two formulas."
+        }
+      ],
+      "concept_id": "two_forms_relationship",
+      "explanation": {
+        "ar": "يعامل الفصل الاثنتين كفكرة واحدة: الاحتمالية في الصيغة التجميعية تقوم مقام التهديد × الثغرة في صيغة التهديد الواحد، والتأثير يقوم مقام التأثير. وهما ليستا متناقضتين، ولا يطلب الفصل اختيار إحداهما.",
+        "en": "The chapter treats them as the same idea: probability in the aggregate form does the work of threat times vulnerability in the single-threat form, and impact does the work of impact. They are not rivals, and the chapter never asks you to pick one."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ماذا يقول الفصل إن الصياغة الكمّية تعطي المؤسسة؟",
+        "en": "What does the chapter say the quantitative framing gives an organization?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ضماناً بأن أرخص ضابط هو الخيار الصحيح دائماً.",
+          "en": "A guarantee that the cheapest control is always the right choice."
+        },
+        {
+          "ar": "بديلاً عن حكم فريق الأمن.",
+          "en": "A replacement for the judgement of the security team."
+        },
+        {
+          "ar": "أساساً عقلانياً لتخصيص الموارد والاستثمارات الأمنية.",
+          "en": "A rational basis for allocating resources and security investments."
+        },
+        {
+          "ar": "طريقة لتجنّب توثيق الحوادث في سجل المخاطر.",
+          "en": "A way to avoid documenting incidents in the risk register."
+        }
+      ],
+      "concept_id": "rational_basis",
+      "explanation": {
+        "ar": "يقول الفصل إن الصياغة الكمّية توفّر للمؤسسات أساساً عقلانياً لاتخاذ القرار في تخصيص الموارد والاستثمارات الأمنية. فهي تُعين الحكم ولا تحلّ محلّه.",
+        "en": "The chapter says the quantitative framing provides organizations with a rational basis for decision-making in resource allocation and security investments. It informs judgement; it does not replace it."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "نظام يحمل أصلاً حرجاً ويواجه خصماً نشطاً، لكن درجة الثغرة صفر لأن العيب رُقِّع كلياً. ماذا تعطي معادلة الفصل؟",
+        "en": "A system holds a critical asset and faces an active adversary, but the vulnerability score is zero because the flaw was fully patched. What does the chapter's equation give?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "خطراً عالياً، لأن التهديد والتأثير كلاهما عالٍ.",
+          "en": "A high risk, because the threat and the impact are both high."
+        },
+        {
+          "ar": "خطراً يساوي قيمة التهديد وحدها مع تجاهل الثغرة.",
+          "en": "A risk equal to the threat value alone, with the vulnerability ignored."
+        },
+        {
+          "ar": "خطراً لا يمكن حسابه حتى يُعاد تقييم الأصل.",
+          "en": "A risk that cannot be computed until the asset is revalued."
+        },
+        {
+          "ar": "خطراً صفرياً، لأن أحد عوامل الضرب صفر.",
+          "en": "A risk of zero, because one factor in the product is zero."
+        }
+      ],
+      "concept_id": "apply_tvi_zero",
+      "explanation": {
+        "ar": "التهديد × الثغرة × التأثير مع ثغرة صفرية يعطي صفراً، وهي حجّة الفصل كلها على الضرب. فخصم نشط أمام عيب مُرقَّع لا يُنتج خطراً عبر ذلك العيب.",
+        "en": "Threat times vulnerability times impact with a zero vulnerability gives zero, which is the chapter's whole argument for multiplying. A live adversary against a patched flaw produces no risk through that flaw."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ثلاثة تهديدات أزواج احتمالها وتأثيرها: 0.2 و3، و0.1 و5، و0.5 و1. ما الخطر التجميعي؟",
+        "en": "Three threats have probability-impact pairs of 0.2 and 3, 0.1 and 5, and 0.5 and 1. What is the aggregate risk?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "1.6",
+          "en": "1.6"
+        },
+        {
+          "ar": "0.8",
+          "en": "0.8"
+        },
+        {
+          "ar": "3.6",
+          "en": "3.6"
+        },
+        {
+          "ar": "2.4",
+          "en": "2.4"
+        }
+      ],
+      "concept_id": "apply_aggregate",
+      "explanation": {
+        "ar": "كل حاصل هو 0.6 و0.5 و0.5، والمجموع 1.6. وجمع الاحتمالات أو التأثيرات بدل ذلك يعطي 0.8 و9، وهما العمليتان الخاطئتان التي لا تستخدمهما المعادلة.",
+        "en": "Each product is 0.6, 0.5 and 0.5, and the sum is 1.6. Adding the probabilities or the impacts instead gives 0.8 and 9, which are the two wrong operations the formula does not use."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "في معادلة التهديد الواحد، كيف يختلف التهديد عن الثغرة؟",
+        "en": "In the single-threat formula, how do threat and vulnerability differ?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التهديد هو نقطة الضعف في النظام؛ والثغرة هي الفاعل المهاجم.",
+          "en": "The threat is the weakness in the system; the vulnerability is the actor attacking it."
+        },
+        {
+          "ar": "التهديد هو الفاعل القادر على الهجوم؛ والثغرة هي نقطة الضعف التي يستغلها.",
+          "en": "The threat is the actor able to attack; the vulnerability is the weakness it exploits."
+        },
+        {
+          "ar": "التهديد هو الخسارة المالية؛ والثغرة هي الضابط الذي يمنعها.",
+          "en": "The threat is the financial loss; the vulnerability is the control that prevents it."
+        },
+        {
+          "ar": "التهديد والثغرة عامل واحد محسوب مرتين.",
+          "en": "The threat and the vulnerability are the same factor counted twice."
+        }
+      ],
+      "concept_id": "threat_vulnerability_distinction",
+      "explanation": {
+        "ar": "التهديد هو وجود فاعل قادر على الهجوم، والثغرة هي نقطة الضعف القابلة للاستغلال. والفصل بينهما هو ما يتيح للمؤسسة العمل على أحدهما دون الآخر، فترقّع العيب ويبقى الخصم.",
+        "en": "Threat is the existence of an actor capable of attacking, and vulnerability is the exploitable weakness. Keeping them separate is what lets an organization act on one without the other, patching a flaw while the adversary stays."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "أي ثلاثة أنواع من الضرر يربطها الفصل بالتأثير؟",
+        "en": "Which three kinds of damage does the chapter attach to impact?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تقني وقانوني وبيئي.",
+          "en": "Technical, legal and environmental."
+        },
+        {
+          "ar": "استراتيجي وتكتيكي وإجرائي.",
+          "en": "Strategic, tactical and procedural."
+        },
+        {
+          "ar": "مالي وسمعي وتشغيلي.",
+          "en": "Financial, reputational and operational."
+        },
+        {
+          "ar": "داخلي وخارجي وتنظيمي.",
+          "en": "Internal, external and regulatory."
+        }
+      ],
+      "concept_id": "impact_kinds",
+      "explanation": {
+        "ar": "تعريف التأثير في الفصل يسمّي الضرر المالي والسمعي والتشغيلي. والمسؤولية القانونية تظهر بين نتائج الخطر، أما أنواع التأثير الثلاثة نفسها فهي هذه الثلاثة.",
+        "en": "The chapter's impact definition names financial, reputational and operational damage. Legal liability appears among the consequences of risk, but the three impact kinds themselves are these three."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-22T21:17:37Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

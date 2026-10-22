@@ -210,7 +210,7 @@
       "options": [
         {
           "ar": "منهجية OCTAVE، ونموذج FAIR، وإطار NIST RMF لإدارة المخاطر.",
-          "en": "OCTAVE, FAIR, and NIST RMF (Risk Management Framework)."
+          "en": "OCTAVE, FAIR, and NIST RMF."
         },
         {
           "ar": "نموذج الشلال Waterfall، ومنهجية Agile Scrum، والبرمجة القصوى XP.",
@@ -234,129 +234,129 @@
     {
       "id": "q8",
       "stem": {
-        "ar": "ما الذي يرمز إليه الاختصار الأكاديمي OCTAVE في منهجيات تقييم المخاطر السيبرانية؟",
-        "en": "What does the formal acronym OCTAVE stand for in cybersecurity risk assessment methodology?"
+        "ar": "تُعرّف المحاضرة الخطر بأنه دالة للاحتمالية والتأثير. التهديد الأول احتماليته 0.2 وتأثيره 500,000، والتهديد الثاني احتماليته 0.4 وتأثيره 100,000. أيّهما أخطر؟",
+        "en": "The lecture defines Risk as a function of likelihood and impact. Threat 1 has likelihood 0.2 and impact 500,000; Threat 2 has likelihood 0.4 and impact 100,000. Which one carries the greater risk?"
       },
-      "bloom": "Remember",
+      "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "تقييم التهديدات والأصول والثغرات الحرجة تشغيلياً للمنظمة.",
-          "en": "Operationally Critical Threat, Asset, and Vulnerability Evaluation."
+          "ar": "التهديد الأول، لأن $0.2 \\times 500{,}000 = 100{,}000$ أكبر من $0.4 \\times 100{,}000 = 40{,}000$.",
+          "en": "Threat 1, because $0.2 \\times 500{,}000 = 100{,}000$ exceeds $0.4 \\times 100{,}000 = 40{,}000$."
         },
         {
-          "ar": "محرك الاختبارات والتحقق والتدقيق السيبراني للعمليات المؤسسية التشغيلية الميدانية.",
-          "en": "Operational Cybersecurity Testing And Verification Engine."
+          "ar": "التهديد الثاني، لأن $0.4 \\times 100{,}000 = 40{,}000$ أكبر من $0.2 \\times 500{,}000 = 100{,}000$.",
+          "en": "Threat 2, because $0.4 \\times 100{,}000 = 40{,}000$ exceeds $0.2 \\times 500{,}000 = 100{,}000$."
         },
         {
-          "ar": "معمارية قنوات التشفير المتطورة والأنفاق الافتراضية للشبكات الخاصة الآمنة.",
-          "en": "Optimized Cryptographic Tunneling And VPN Architecture Engine."
+          "ar": "التهديد الثاني، لأن الاحتمالية الأعلى تتغلّب دائماً على حدّ التأثير.",
+          "en": "Threat 2, because the higher likelihood always dominates the impact term."
         },
         {
-          "ar": "بيئة تتبع ومراقبة الامتثال التنظيمي وعزل الأنظمة الافتراضية في مراكز البيانات.",
-          "en": "Organizational Compliance Tracking And Virtualization Environment."
+          "ar": "لا هذا ولا ذاك، لأن الخطر لا يُقارن دون متغيّر الزمن $t$.",
+          "en": "Neither, because risk cannot be compared without the time variable $t$."
         }
       ],
-      "concept_id": "model_octave_acronym_meaning",
+      "concept_id": "risk_likelihood_impact_comparison",
       "explanation": {
-        "ar": "الاختصار OCTAVE يعني حرفياً: Operationally Critical Threat, Asset, and Vulnerability Evaluation (تقييم التهديدات والأصول والثغرات الحيوية للعمليات).",
-        "en": "OCTAVE stands for: Operationally Critical Threat, Asset, and Vulnerability Evaluation."
+        "ar": "الخطر = الاحتمالية × التأثير، وهو نفس تركيب الصيغة المعتمدة على الزمن من دون بُعد الزمن. الأول: 0.2 × 500,000 = 100,000، والثاني: 0.4 × 100,000 = 40,000، فالتهديد الأول أخطر. والخيار D يخلط بين هذا وبين الصيغة الزمنية.",
+        "en": "Risk is the product of likelihood and impact, the same structure as the time-dependent form with the time dimension left out. Threat 1 gives 100,000 and Threat 2 gives 40,000, so Threat 1 is the greater risk: a higher likelihood does not by itself dominate. Option D confuses this with the time-dependent model."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "كيف يتم هيكلة وتطبيق منهجية OCTAVE لتقييم المخاطر عبر العمليات التنظيمية للمؤسسة؟",
-        "en": "How is the OCTAVE risk assessment methodology structured across organizational operations?"
+        "ar": "كتب موظف كلمة مرور النظام على ورقة ملصقة على الشاشة. وفق تعريف المحاضرة للثغرة، أي صنف من نقاط الضعف يمثّل هذا؟",
+        "en": "An employee writes a system password on a note stuck to the monitor. Under the lecture's definition of a vulnerability, which category of weakness does this represent?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 1,
       "options": [
         {
-          "ar": "نموذج انحدار خطي رياضي مستمر يحسب الخسائر المالية التقديرية في الميزانية السنوية.",
-          "en": "A continuous mathematical linear regression model calculating monetary balance sheet loss."
+          "ar": "خلل برمجي أُدخل أثناء تطوير التطبيق.",
+          "en": "A software flaw introduced during application development."
         },
         {
-          "ar": "ثلاث مراحل: بناء ملفات التهديد المبنية على الأصول، فحص البنية التحتية، وصياغة الاستراتيجية.",
-          "en": "Three phases: asset-based threat profiles, infrastructure vulnerability review, and security strategy."
+          "ar": "نقطة ضعف في العامل البشري.",
+          "en": "A human-factor weakness."
         },
         {
-          "ar": "ست مراحل متعاقبة تركز حصرياً على اعتماد تصاريح تشغيل البرمجيات العسكرية الفدرالية.",
-          "en": "Six lifecycle stages focusing strictly on federal government defense software authorization."
+          "ar": "عيب تصميمي في عتاد جهاز العرض.",
+          "en": "A hardware design defect in the display device."
         },
         {
-          "ar": "عملية فحص مؤتمتة من خطوة واحدة تنفذها جدران الحماية الخارجية على الشبكة حصراً.",
-          "en": "A single-step automated scanning process executed solely by perimeter hardware firewalls."
+          "ar": "أداة استغلال مستخدمة ضد نظام التشغيل.",
+          "en": "An exploit tool used against the operating system."
         }
       ],
-      "concept_id": "model_octave_three_phases_structure",
+      "concept_id": "vulnerability_human_factor_classification",
       "explanation": {
-        "ar": "منهجية OCTAVE مبنية على تقييم الأصول وتعمل في 3 مراحل: 1) بناء ملفات تهديد موجهة للأصول، 2) تحديد ثغرات البنية التحتية، 3) تطوير الاستراتيجية والخطط الأمنية.",
-        "en": "OCTAVE operates in three phases: 1) Build asset-based threat profiles, 2) Identify infrastructure vulnerabilities, and 3) Develop security strategy and plans."
+        "ar": "المحاضرة تعرّف الثغرات بأنها نقاط ضعف في البرمجيات أو العتاد أو العامل البشري. وكلمة المرور المكشوفة نقطة ضعف بشرية، وليست خللاً برمجياً ولا عيب عتاد ولا استغلالاً — فالاستغلال أداة أو طريقة تُستثمر بها الثغرة، لا الثغرة نفسها.",
+        "en": "The lecture defines vulnerabilities as weaknesses in software, hardware, or human factors. A password left in plain view is a human-factor weakness: it is not a code defect, not a hardware fault, and not an exploit, because exploits are the tools or methods used to take advantage of a weakness, not the weakness itself."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "ما الخاصية التحليلية المميزة لمنهجية تحليل عوامل مخاطر المعلومات FAIR مقارنة بغيرها؟",
-        "en": "What is the defining analytical characteristic of the Factor Analysis of Information Risk (FAIR) methodology?"
+        "ar": "نُشر خلل مكتشف حديثاً في خادم ويب بمعرّف فريد حتى يشير إليه كل المزوّدين بالاسم نفسه. إلى أي مفهوم من مفاهيم المحاضرة ينتمي هذا المعرّف؟",
+        "en": "A newly discovered flaw in a web server is published with a unique identifier so that every vendor refers to it by the same name. Which lecture concept does that identifier belong to?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 2,
       "options": [
         {
-          "ar": "إلغاء خوارزميات التشفير الحاسوبية والاعتماد كلياً على الأرشفة الورقية اليدوية للملفات.",
-          "en": "Eliminating cryptographic algorithms in favor of manual physical paper record storage."
+          "ar": "حزمة أدوات استغلال تُوزّع على المهاجمين.",
+          "en": "An exploit toolkit distributed to attackers."
         },
         {
-          "ar": "إجراء استبيانات رأي نوعية وانطباعية غير رقمية بين الموظفين غير الفنيين في الأقسام.",
-          "en": "Conducting purely qualitative emotional surveys among non-technical departmental employees."
+          "ar": "نموذج تقييم مخاطر يُطبّق على الخادم.",
+          "en": "A risk assessment model applied to the server."
         },
         {
-          "ar": "تفكيك الخطر إلى عوامل محددة لإجراء تحليل كمي رقمي دقيق يقيس الخسارة المالية المتوقعة.",
-          "en": "Decomposing cyber risk into discrete factors to conduct rigorous quantitative financial risk analysis."
+          "ar": "ثغرة مُفهرسة في سجل الثغرات.",
+          "en": "A catalogued vulnerability entry."
         },
         {
-          "ar": "إلزام الزوار بوجود مرافقين أمنيين ماديين طوال فترة تواجدهم داخل غرف الخوادم.",
-          "en": "Mandating physical security guard escorts for all visitors inside server room facilities."
+          "ar": "ضابط أمني يُنشر لمعالجة الخلل.",
+          "en": "A security control deployed to remediate it."
         }
       ],
-      "concept_id": "model_fair_factor_analysis_quantitative",
+      "concept_id": "vulnerability_catalogue_identification",
       "explanation": {
-        "ar": "نموذج FAIR (Factor Analysis of Information Risk) يتميز بأنه منهجية تحليل كمي رقمي؛ حيث يفكك الخطر لعوامل (احتمالية الحدث × حجم الخسارة المالية) ويحسبها رقمياً.",
-        "en": "FAIR (Factor Analysis of Information Risk) is celebrated for quantitative risk analysis, breaking risk into loss event frequency and loss magnitude."
+        "ar": "المحاضرة تستشهد بـCVEs كمثال على الثغرات، وCVE معرّف معياري فريد عالمياً لثغرة معلنة. فالمعرّف يسمّي ثغرة مُفهرسة، لا أداة الاستغلال ولا نموذج التقييم ولا الضابط العلاجي.",
+        "en": "The lecture cites CVEs as its example of vulnerabilities, and a CVE is a standardized, globally unique identifier for a publicly known vulnerability. The identifier therefore names a catalogued vulnerability, not the exploit that abuses it, not a risk model, and not the control that fixes it."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "ما الإطار التشغيلي العام الذي يحدد منهجية إطار إدارة المخاطر الأمريكي NIST RMF؟",
-        "en": "What operational framework defines the NIST Risk Management Framework (RMF)?"
+        "ar": "تنص حاشية المحاضرة على أن $F(r)$ محصورة بين 0 و1. ماذا تعني القيمة $F(r) = 1$ بالنسبة إلى $P(R > r)$؟",
+        "en": "The lecture annotates that $F(r)$ is bounded between 0 and 1. What does the value $F(r) = 1$ imply for $P(R > r)$?"
       },
-      "bloom": "Understand",
+      "bloom": "Analyze",
       "answer": 1,
       "options": [
         {
-          "ar": "معاهدة دولية تنظم حقوق مد وتثبيت كابلات الألياف الضوئية البحرية في المياه الدولية.",
-          "en": "An international treaty regulating oceanic fiber optic telecommunication cable installation rights."
+          "ar": "تعني أن $P(R > r)$ تبلغ أقصى قيمة ممكنة وهي 1.",
+          "en": "It implies that $P(R > r)$ reaches its maximum possible value of 1."
         },
         {
-          "ar": "دورة حياة منظمة ومستمرة من 6 خطوات: تصنيف، اختيار الضوابط، تنفيذ، تقييم، اعتماد، ومراقبة.",
-          "en": "A structured, continuous 6-step lifecycle for categorizing, selecting, implementing, and monitoring controls."
+          "ar": "تعني أن $P(R > r)$ تساوي 0، لأنه لا توجد خسارة تتجاوز الحد $r$.",
+          "en": "It implies that $P(R > r)$ is 0, since no loss exceeds the threshold $r$."
         },
         {
-          "ar": "أداة فحص برمجية تجارية مغلقة تقوم تلقائياً بإعادة كتابة منطق الشيفرة البرمجية المعيبة.",
-          "en": "A proprietary software scanning tool that automatically rewrites defective source code logic."
+          "ar": "تعني أن $P(R > r)$ تصبح غير معرّفة لأن التوزيع ينهار.",
+          "en": "It implies that $P(R > r)$ becomes undefined because the distribution collapses."
         },
         {
-          "ar": "مجموعة استبيانات لتقييم الأصول مكونة من 3 أجزاء تُسلّم حصرياً للمديرين الماليين.",
-          "en": "A set of three asset evaluation questionnaires administered exclusively to corporate finance officers."
+          "ar": "تعني أن $P(R > r)$ تساوي 1 لأن التعبيرين متتامّان.",
+          "en": "It implies that $P(R > r)$ equals 1 because the two expressions are complementary."
         }
       ],
-      "concept_id": "model_nist_rmf_six_steps_lifecycle",
+      "concept_id": "cdf_boundary_implication",
       "explanation": {
-        "ar": "إطار NIST RMF هو إطار إدارة المخاطر التابع للمعهد الأمريكي للمعايير، ويقوم على دورة حياة من 6 خطوات متتالية: تصنيف الأنظمة، اختيار الضوابط، تنفيذها، تقييمها، اعتمادها، ومراقبتها.",
-        "en": "NIST RMF (Risk Management Framework) is a 6-step lifecycle: Categorize, Select, Implement, Assess, Authorize, and Monitor security controls."
+        "ar": "$P(R > r) = 1 - F(r)$. وإذا كان $F(r) = 1$ فقد استوعب التوزيع التراكمي كل الكتلة الاحتمالية حتى $r$، فتصير $P(R > r) = 1 - 1 = 0$. والخيار D يعكس التتامّ: التعبيران مجموعهما 1 ولا يتساويان.",
+        "en": "$P(R > r) = 1 - F(r)$. If $F(r) = 1$ the cumulative distribution has absorbed the whole probability mass up to $r$, so $P(R > r) = 1 - 1 = 0$: nothing is left above the threshold. Option D reverses the complement, because the two expressions sum to 1 rather than being equal."
       }
     },
     {
@@ -466,7 +466,7 @@
       "options": [
         {
           "ar": "احتمال أن يتجاوز أثر أو ضرر الخطر الفعلي حداً أو عتبة معينة مقبولة $r$ (احتمال الذيل التراكمي).",
-          "en": "The probability that the realized risk loss will exceed an acceptable threshold $r$ (tail risk)."
+          "en": "The probability that the realized risk loss will exceed an acceptable threshold $r$."
         },
         {
           "ar": "احتمال فك تشفير كافة كلمات مرور الموظفين بنجاح خلال ساعة واحدة من بدء الهجوم الإلكتروني.",
@@ -525,7 +525,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-22T14:44:03Z",
+  "updated_at": "2026-10-22T21:17:37Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"
