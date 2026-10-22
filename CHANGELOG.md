@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.0] — 2026-10-22
+
+### Changed
+- notifications name the new topic, chapter and subject; the topic badge sits with the card chips; the tab icon is the transparent white-Q logo
+
+
 ## [1.3.1] — 2026-10-22
 
 ### Changed

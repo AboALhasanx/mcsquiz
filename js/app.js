@@ -393,6 +393,7 @@
           subject: sub.subject_title,
           chapterLabel: ch.topicLabel || ch.label || String(ch.chapter_no || ''),
           chapter: ch.chapter_no,
+          topic: (ch.topic && (ch.topic.ar || ch.topic.en)) || (typeof ch.topic === 'string' ? ch.topic : ''),
           count: ch.count || 0,
           updated_at: ch.updated_at || '',
         });
@@ -671,8 +672,8 @@
       '<a class="notif-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '"' +
       ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
       '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
-      '<span class="notif-text"><span class="notif-title">نزلت أسئلة جديدة</span>' +
-      '<span class="notif-sub">' + escapeHtml(f.subject) + ' · جابتر ' + escapeHtml(String(f.chapter)) + ' · ' + escapeHtml(f.chapterLabel || chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
+      '<span class="notif-text"><span class="notif-title">تمت إضافة أسئلة لـ' + escapeHtml(f.chapterLabel || '') + '</span>' +
+      '<span class="notif-sub">في ' + escapeHtml(chLabelLong({ chapter_no: f.chapter })) + ' لمادة ' + escapeHtml(f.subject) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
       '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
     icons();
   }
@@ -701,14 +702,18 @@
 
   // one toast when new content actually lands on this device
   function notifyNewContent() {
-    const fresh = S.freshChapters || [];
+    const fresh = (S.freshChapters || []).filter((f) => !f.read);
     if (!fresh.length) return;
     if (lsGet('portal_notified_v' + (S.contentVersion || 0))) return;
     lsSet('portal_notified_v' + (S.contentVersion || 0), '1');
-    const total = fresh.reduce((n, f) => n + (f.count || 0), 0);
-    toast(total
-      ? ('نزلت ' + total + ' سؤال جديد — افتح الجرس')
-      : 'تحدّث المحتوى', 'info');
+    if (fresh.length === 1) {
+      const f = fresh[0];
+      toast('تمت إضافة أسئلة ل' + (f.chapterLabel || '') + ' في ' + chLabelLong({ chapter_no: f.chapter }) +
+        ' لمادة ' + (f.subject || '') + ' (' + (f.count || 0) + ' سؤال) — افتح الجرس', 'info');
+    } else {
+      const total = fresh.reduce((n, f) => n + (f.count || 0), 0);
+      toast('تمت إضافة أسئلة لـ' + fresh.length + ' مواضيع جديدة (' + total + ' سؤال) — افتح الجرس', 'info');
+    }
   }
 
   function findChapter(quizId) {
@@ -757,9 +762,10 @@
           '<div class="sketch-eyebrow">' +
             '<span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
             '<span class="sketch-chip">' + escapeHtml(chLabelLong(ch)) + '</span>' +
+            '<span class="sketch-topic-num" dir="auto">' + escapeHtml(ch.topicLabel || 'موضوع: 1') + '</span>' +
             (isFresh ? '<span class="sketch-chip sketch-chip-new">جديد</span>' : '') +
           '</div>' +
-          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '"><span class="sketch-topic-num">' + escapeHtml(ch.topicLabel || ('موضوع: 1')) + '</span> ' + escapeHtml(title) + '</div>' +
+          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '">' + escapeHtml(title) + '</div>' +
           '<div class="sketch-meta-line">' +
             '<span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
             (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
@@ -3970,7 +3976,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.3.1';
+  const SHELL_VERSION = '1.4.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

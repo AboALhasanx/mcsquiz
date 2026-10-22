@@ -1661,6 +1661,12 @@ body:not([data-quizlive="yes"]) #btn-exit {
   padding: 0.05rem 0.4rem;
   margin-inline-end: 0.4rem;
   white-space: nowrap;
+  vertical-align: middle;
+}
+/* inside the eyebrow chip row the flex gap spaces the badges, so no margin */
+.sketch-eyebrow .sketch-topic-num {
+  margin: 0;
+  flex: none;
 }
 .bell-btn { position: relative; }
 .bell-btn.has-new { color: var(--accent); }
