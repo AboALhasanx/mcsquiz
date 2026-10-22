@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-10-22
+
+### Changed
+- feat: rate-limited PIN, encrypted personal payload, row-scoped tables, account deletion, vendored Supabase client, strict CSP, crash reporting
+
+
 ## [1.0.3] — 2026-10-22
 
 ### Changed

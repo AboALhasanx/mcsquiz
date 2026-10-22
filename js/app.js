@@ -2644,6 +2644,11 @@
     renderProfileEditor(acc);
     $('account-link').classList.remove('hidden');
     $('account-logout').classList.remove('hidden');
+    $('account-delete').classList.remove('hidden');
+    // a device that only linked (no PIN here) cannot read or write the
+    // encrypted personal data yet
+    const hasPin = !!(C && C.pinOnDevice && C.pinOnDevice());
+    $('account-unlock').classList.toggle('hidden', hasPin);
     $('account-open-bot').classList.add('hidden');
     $('account-sync-now').classList.remove('hidden');
     icons();
@@ -2801,6 +2806,10 @@
     } catch (e) {
       const msg = String((e && e.message) || '');
       if (msg.indexOf('bad_pin') >= 0) loginError('الرمز غير صحيح لهذا المستخدم');
+      else if (msg.indexOf('too_many_attempts') >= 0) {
+        const mins = Number(String(msg).split(':')[1] || 5);
+        loginError('محاولات كثيرة — الحساب مقفل مؤقتاً. حاول بعد ' + mins + ' دقيقة');
+      }
       else if (msg.indexOf('handle-short') >= 0) loginError('اسم المستخدم قصير');
       else if (msg.indexOf('pin-format') >= 0) loginError('رمز الدخول 4 أرقام');
       else loginError('تعذر الدخول — تحقق من الاتصال');
@@ -2821,7 +2830,7 @@
   async function generateLinkCode() {
     const C = cloud();
     if (!C || !C.login) return;
-    const code = String(Math.floor(1000 + Math.random() * 9000));
+    const code = String(Math.floor(100000 + Math.random() * 900000));   // six digits
     $('link-title').textContent = 'ربط هذا الجهاز';
     $('link-close').textContent = 'إلغاء الربط';
     $('link-generate').classList.remove('hidden');
@@ -2944,8 +2953,8 @@
     const C = cloud();
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
-    const code = ($('link-code-input').value || '').replace(/\D/g, '').slice(0, 4);
-    if (code.length !== 4) { toast('اكتب الرمز المكوّن من 4 أرقام', 'error'); return; }
+    const code = ($('link-code-input').value || '').replace(/\D/g, '').slice(0, 6);
+    if (code.length !== 6 && code.length !== 4) { toast('اكتب الرمز المكوّن من 6 أرقام', 'error'); return; }
     try {
       const sb = await sbRaw();
       const r = await sb.rpc('link_approve', { p_code: code, p_user: acc.id });
@@ -2996,7 +3005,8 @@
       if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
       updateSavedBadge(); updateMenuCounts(); updateAccountRow();
       icons();
-      if (r && r.action === 'downloaded') toast('تمت المزامنة من حساب تليجرام ✓');
+      if (r && r.action === 'needs-pin') toast('بياناتك محمية — أدخل رمز الدخول على هذا الجهاز لتفعيل المزامنة', 'info');
+      else if (r && r.action === 'downloaded') toast('تمت المزامنة من حساب تليجرام ✓');
     } catch (e) {
       try { if (L) L.warn('tg', 'sync failed: ' + ((e && e.message) || e)); } catch (e2) {}
       toast('تعذرت المزامنة الأولى — سيُحاوَل تلقائياً');
@@ -3656,13 +3666,53 @@
       goHash('#/');
       toast('تم تسجيل الخروج — بياناتك باقية على الجهاز');
     });
+    bindClick('account-delete', async () => {
+      const C = cloud();
+      if (!C || !C.deleteAccount) return;
+      if (!confirm('سيُحذف حسابك نهائياً: بياناتك المحفوظة، سجلك، ومكانك في الدوري. تكمل؟')) return;
+      const pin = prompt('أدخل رمز الدخول (4 أرقام) لتأكيد الحذف:');
+      if (!pin) return;
+      try {
+        await C.deleteAccount(pin);
+        updateAccountRow();
+        goHash('#/');
+        toast('تم حذف الحساب — نراك', 'success');
+      } catch (e) {
+        const msg = String((e && e.message) || '');
+        if (msg.indexOf('too_many_attempts') >= 0) toast('محاولات كثيرة — حاول بعد قليل', 'error');
+        else if (msg.indexOf('bad_pin') >= 0) toast('الرمز غير صحيح', 'error');
+        else toast('تعذر الحذف — تحقق من الاتصال', 'error');
+      }
+    });
+    bindClick('account-unlock', async () => {
+      const C = cloud();
+      const acc = C && C.account ? C.account() : null;
+      if (!acc) return;
+      const pin = prompt('أدخل رمز الدخول (4 أرقام) لتفعيل المزامنة على هذا الجهاز:');
+      if (!pin) return;
+      try {
+        await C.login(acc.handle, pin, acc.name);
+        const r = await C.pullOrPush();
+        renderAccount();
+        toast(r && r.action === 'needs-pin' ? 'ما زال الرمز غير صحيح' : 'تم تفعيل المزامنة على هذا الجهاز', 'success');
+      } catch (e) {
+        const msg = String((e && e.message) || '');
+        if (msg.indexOf('too_many_attempts') >= 0) toast('محاولات كثيرة — حاول بعد قليل', 'error');
+        else if (msg.indexOf('bad_pin') >= 0) toast('الرمز غير صحيح', 'error');
+        else toast('تعذر التفعيل — تحقق من الاتصال', 'error');
+      }
+    });
     bindClick('account-sync-now', async () => {
       if (!navigator.onLine) {
         toast('لا يوجد اتصال — المزامنة تتم تلقائياً عند رجوع النت', 'info');
         return;
       }
       const C = cloud();
-      try { await C.pullOrPush(); toast('تمت المزامنة', 'success'); } catch (e) { toast('تعذر المزامنة', 'error'); }
+      try {
+        const r = await C.pullOrPush();
+        if (r && r.action === 'needs-pin') toast('بياناتك محمية — أدخل رمز الدخول على هذا الجهاز لتفعيل المزامنة', 'info');
+        else toast('تمت المزامنة', 'success');
+      } catch (e) { toast('تعذر المزامنة', 'error'); }
     });
     bindClick('link-scan', startScan);
     bindClick('profile-save', saveProfile);
@@ -3866,7 +3916,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.0.3';
+  const SHELL_VERSION = '1.1.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

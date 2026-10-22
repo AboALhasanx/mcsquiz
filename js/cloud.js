@@ -163,10 +163,12 @@
   function setAccount(a) {
     try { lsSet(ACCOUNT_KEY, JSON.stringify(a)); } catch (e) {}
     cachedUser = null;
+    invalidateClients();
     try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
   }
   function signOut() {
     // an explicit sign-out must survive any background poll/sync
+    invalidateClients();
     try {
       localStorage.removeItem(ACCOUNT_KEY);
       localStorage.removeItem(SYNC_KEY);
@@ -175,9 +177,30 @@
     cachedUser = null;
     try { if (global.PortalCloudUI) global.PortalCloudUI(); } catch (e) {}
   }
+  // the cached clients carry the account header, so they die with the identity
+  function invalidateClients() {
+    try { sbClientPromise = null; } catch (e) {}
+    try { if (global.PortalLeague && global.PortalLeague.invalidateClient) global.PortalLeague.invalidateClient(); } catch (e) {}
+    try { if (global.__sbClient) global.__sbClient = null; } catch (e) {}
+  }
+
   function normalizeHandle(h) {
     return String(h || '').toLowerCase().replace(/[^a-z0-9_]/g, '').slice(0, 20);
   }
+  // the server answers with a status instead of raising, so the attempt counter
+  // can commit; the client turns the status back into the old error shape
+  function statusError(row, fallback) {
+    var st = (row && row.status) || '';
+    if (st === 'bad_pin') return new Error('bad_pin');
+    if (st === 'too_many_attempts') {
+      var secs = Number(row && row.retry_after) || 0;
+      var mins = Math.max(1, Math.ceil(secs / 60));
+      return new Error('too_many_attempts:' + mins);
+    }
+    if (st && st !== 'ok') return new Error(st);
+    return new Error(fallback);
+  }
+
   async function login(handle, pin, name) {
     var h = normalizeHandle(handle);
     if (h.length < 3) throw new Error('handle-short');
@@ -186,7 +209,9 @@
     var r = await sb.rpc('portal_login', { p_handle: h, p_pin: String(pin), p_name: String(name || '').trim() });
     if (r.error) throw new Error(r.error.message || 'login-failed');
     var row = Array.isArray(r.data) ? r.data[0] : r.data;
-    if (!row || !row.id) throw new Error('login-empty');
+    if (!row) throw new Error('login-empty');
+    if (row.status && row.status !== 'ok') throw statusError(row, 'login-failed');
+    if (!row.id) throw new Error('login-empty');
     setAccount({ id: row.id, handle: row.handle, name: row.name || h, avatar: row.avatar || '', at: Date.now() });
     ownData(row.id);
     try { localStorage.removeItem('portal_signed_out_v1'); } catch (e) {}
@@ -205,9 +230,33 @@
     });
     if (r.error) throw new Error(r.error.message || 'profile-failed');
     var row = Array.isArray(r.data) ? r.data[0] : r.data;
+    if (row && row.status && row.status !== 'ok') throw statusError(row, 'profile-failed');
     setAccount({ id: a.id, handle: a.handle, name: (row && row.name) || a.name, avatar: (row && row.avatar) || '', at: Date.now() });
     try { lsSet('portal_pin_v1', pin); } catch (e) {}
     return account();
+  }
+
+  // erase the account and everything attached to it (the student asked for it)
+  async function deleteAccount(pinOverride) {
+    var a = account();
+    if (!a) throw new Error('not-linked');
+    var pin = String(pinOverride || lsGet('portal_pin_v1') || '');
+    if (!pin) throw new Error('pin-required');
+    var sb = await sbClient();
+    var r = await sb.rpc('portal_delete_account', { p_handle: a.handle, p_pin: pin });
+    if (r.error) throw new Error(r.error.message || 'delete-failed');
+    var st = (Array.isArray(r.data) ? r.data[0] : r.data) || 'ok';
+    if (st !== 'ok') throw statusError({ status: st }, 'delete-failed');
+    signOut();
+    try {
+      localStorage.removeItem(LS_HISTORY);
+      localStorage.removeItem(LS_SAVED);
+      for (var i = localStorage.length - 1; i >= 0; i--) {
+        var k = localStorage.key(i);
+        if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' || k === 'portal_saved_removed_v1' || k === 'portal_history_cleared_v1')) localStorage.removeItem(k);
+      }
+    } catch (e) {}
+    return true;
   }
 
   // a device approved through the link code gets the account without the pin;
@@ -365,6 +414,71 @@
     },
   };
 
+  // ---------- personal payload encryption ----------
+  // The history and the saved questions are encrypted on the device with a key
+  // derived from the PIN (PBKDF2) and a per-account salt (the handle). The
+  // server stores bytes it cannot read; the PIN never leaves the device.
+  var keyCache = null;
+
+  function b64(buf) {
+    var bytes = new Uint8Array(buf), out = '';
+    for (var i = 0; i < bytes.length; i++) out += String.fromCharCode(bytes[i]);
+    return btoa(out);
+  }
+  function unb64(str) {
+    var bin = atob(str), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out.buffer;
+  }
+  function saltFor(handle) { return 'mcqquiz|' + String(handle || ''); }
+
+  async function personalKey() {
+    var a = account();
+    if (!a) return null;
+    var pin = String(lsGet('portal_pin_v1') || '');
+    if (!/^[0-9]{4}$/.test(pin)) return null;      // a linked device without the PIN
+    if (global.crypto && global.crypto.subtle) {
+      var saltKey = 'k:' + a.handle + ':' + pin;
+      if (keyCache && keyCache.id === saltKey) return keyCache.key;
+      try {
+        var enc = new TextEncoder();
+        var base = await global.crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveKey']);
+        var key = await global.crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: enc.encode(saltFor(a.handle)), iterations: 210000, hash: 'SHA-256' },
+          base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']
+        );
+        keyCache = { id: saltKey, key: key };
+        return key;
+      } catch (e) { return null; }
+    }
+    return null;                                    // no WebCrypto (rare): stay in the clear
+  }
+
+  function isEnvelope(obj) {
+    return !!(obj && typeof obj === 'object' && obj.enc === 1 && typeof obj.iv === 'string' && typeof obj.ct === 'string');
+  }
+
+  async function encryptBundle(bundle) {
+    var key = await personalKey();
+    if (!key) return null;
+    try {
+      var iv = global.crypto.getRandomValues(new Uint8Array(12));
+      var data = new TextEncoder().encode(JSON.stringify(bundle));
+      var ct = await global.crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, data);
+      return { enc: 1, iv: b64(iv), ct: b64(ct) };
+    } catch (e) { return null; }
+  }
+
+  async function decryptBundle(envelope) {
+    var key = await personalKey();
+    if (!key) return null;
+    try {
+      var plain = await global.crypto.subtle.decrypt(
+        { name: 'AES-GCM', iv: new Uint8Array(unb64(envelope.iv)) }, key, unb64(envelope.ct));
+      return JSON.parse(new TextDecoder().decode(plain));
+    } catch (e) { return null; }                    // wrong key or tampered bytes
+  }
+
   // ---------- backend: Supabase portal_data (shared table, RLS-gated) ----------
   function sbCfg() {
     var c = {};
@@ -378,7 +492,10 @@
     sbClientPromise = (async function () {
       if (global.__sbClient) return global.__sbClient;
       var mod = await import('./vendor/npm/supabase-js.js');
-      return mod.createClient(c.url, c.key);
+      // the RLS policies scope the personal tables to the account we act as
+      var uid = '';
+      try { var a = account(); uid = a ? ('u:' + a.id) : ''; } catch (e) {}
+      return mod.createClient(c.url, c.key, { global: { headers: { 'x-portal-user': uid } } });
     })().catch(function (e) { sbClientPromise = null; throw e; });
     return sbClientPromise;
   }
@@ -390,15 +507,28 @@
       if (!uid) throw new Error('not-linked');
       var r = await sb.from('portal_data').select('data').eq('user_id', uid).maybeSingle();
       if (r.error) throw new Error(r.error.message || 'read-failed');
-      return (r.data && r.data.data) || null;
+      var raw = (r.data && r.data.data) || null;
+      if (!raw) return null;
+      if (isEnvelope(raw)) {
+        var plain = await decryptBundle(raw);
+        // no PIN on this device, or the bytes were tampered with: keep the
+        // local copy and say so instead of overwriting it with garbage
+        return plain || { enc: 1, locked: true };
+      }
+      return raw;                                   // legacy plain row
     },
     save: async function (bundle) {
       var sb = await sbClient();
       var uid = userId();
       if (!uid) throw new Error('not-linked');
       var payload = bundle || collectBundle();
+      var envelope = await encryptBundle(payload);
+      // without a key (no PIN on this device) we do not put readable bytes on
+      // the server: the data stays on the device until the PIN is entered
+      if (!envelope) throw new Error('no-key');
+      var stored = envelope;
       var res = await sb.from('portal_data').upsert({
-        user_id: uid, data: payload, updated_at: new Date().toISOString(),
+        user_id: uid, data: stored, updated_at: new Date().toISOString(),
       }, { onConflict: 'user_id' });
       if (res.error) throw new Error(res.error.message || 'write-failed');
     },
@@ -505,9 +635,17 @@
     if (!activeStore()) { markSync(); return { action: 'local-only' }; }
     var remote = null;
     try { remote = await download(); } catch (e) { remote = null; }
+    if (remote && remote.locked) {
+      // the server copy is encrypted and this device has no PIN yet: keep the
+      // local data and do not overwrite anything
+      return { action: 'needs-pin' };
+    }
     var local = collectBundle();
     if (!remote) {
-      if (localCount() > 0) { await upload(local); return { action: 'uploaded-new' }; }
+      if (localCount() > 0) {
+        try { await upload(local); return { action: 'uploaded-new' }; }
+        catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
+      }
       markSync();
       return { action: 'empty' };
     }
@@ -515,7 +653,10 @@
     // other added while they were apart
     var merged = mergeBundles(local, remote);
     applyBundle(merged);
-    if (!sameBundle(remote, merged)) { await upload(merged); return { action: 'merged-uploaded' }; }
+    if (!sameBundle(remote, merged)) {
+      try { await upload(merged); return { action: 'merged-uploaded' }; }
+      catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
+    }
     markSync();
     return { action: 'merged' };
   }
@@ -596,6 +737,8 @@
     userId: userId,
     login: login,
     updateProfile: updateProfile,
+    pinOnDevice: function () { return /^[0-9]{4}$/.test(String(lsGet('portal_pin_v1') || '')); },
+    deleteAccount: deleteAccount,
     adopt: adopt,
     signOut: signOut,
     normalizeHandle: normalizeHandle,

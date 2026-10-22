@@ -26,6 +26,7 @@ SPECS = [
     'test_tour.py',
     'test_offline.py',
     'test_a11y.py',
+    'test_security.py',
 ]
 
 

@@ -145,7 +145,7 @@ def run():
             p4.evaluate("() => document.querySelector('#login-link-device').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
             p4.wait_for_timeout(1500)
             code = (p4.locator('#link-code').text_content() or '').strip()
-            check('the link code has four digits', len(code) == 4 and code.isdigit(), code)
+            check('the link code has six digits', len(code) == 6 and code.isdigit(), code)
             check('a QR is rendered for the link', p4.locator('#link-qr svg').count() == 1)
 
             open_account(p2)

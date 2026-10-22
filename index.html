@@ -418,6 +418,12 @@
                         <button id="account-logout" class="account-action account-action-danger hidden" type="button">
                             <i data-lucide="log-out"></i><span>تسجيل الخروج</span>
                         </button>
+                        <button id="account-unlock" class="account-action hidden" type="button">
+                            <i data-lucide="key-round"></i><span>تفعيل المزامنة هنا</span>
+                        </button>
+                        <button id="account-delete" class="account-action account-action-danger hidden" type="button">
+                            <i data-lucide="trash-2"></i><span>حذف حسابي</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -648,7 +654,7 @@
                 <!-- B) this device is signed in: it approves -->
                 <div id="link-approve" class="hidden">
                     <p class="auth-sub">امسح رمز الجهاز الجديد، أو اكتب الأرقام الظاهرة عليه.</p>
-                    <input id="link-code-input" class="auth-input" dir="ltr" inputmode="numeric" maxlength="4" placeholder="1234">
+                    <input id="link-code-input" class="auth-input" dir="ltr" inputmode="numeric" maxlength="6" placeholder="123456">
                     <button id="link-scan" class="action-btn secondary-btn" style="width:100%;margin-top:0.5rem;">امسح بالكاميرا</button>
                     <video id="link-video" class="link-video hidden" playsinline muted></video>
                     <div class="modal-actions" style="margin-top:0.6rem;">

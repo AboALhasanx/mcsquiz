@@ -48,7 +48,13 @@
         var c = cfg();
         if (!c.url || !c.key) throw new Error('not-configured');
         var mod = await import(CLIENT_URL);
-        return mod.createClient(c.url, c.key);
+        // the league policies only accept the row the client claims
+        var uid = '';
+        try {
+          var a = global.PortalCloud && global.PortalCloud.account ? global.PortalCloud.account() : null;
+          uid = a ? ('u:' + a.id) : '';
+        } catch (e) {}
+        return mod.createClient(c.url, c.key, { global: { headers: { 'x-portal-user': uid } } });
       })().catch(function (e) { clientPromise = null; throw e; });
     }
     return clientPromise;
@@ -259,6 +265,7 @@
   }
 
   global.PortalLeague = {
+    invalidateClient: function () { clientPromise = null; },
     configured: configured,
     linked: linked,
     weekStart: weekStart,

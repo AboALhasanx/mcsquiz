@@ -73,7 +73,40 @@
     } catch (e) {}
   }
 
-  global.PortalLog = { info: info, warn: warn, error: error, snapshot: snapshot, clear: clear, restore: restore };
+  // ---------- reporting to the server ----------
+  // Only the error lines leave the device, in small batches, and only when the
+  // app is online. A handle, a question or a token is never part of a line.
+  var lastReport = 0;
+  var pending = [];
+
+  function flushReport(force) {
+    if (!pending.length) return;
+    var now = Date.now();
+    if (!force && now - lastReport < 60000) return;
+    if (!navigator.onLine) return;
+    lastReport = now;
+    var lines = pending.splice(0, 5);
+    var version = '';
+    try { version = localStorage.getItem('portal_shell_version') || ''; } catch (e) {}
+    try {
+      fetch('/api/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ version: version, lines: lines }),
+        keepalive: true,
+      }).catch(function (e) { info('report', 'the report endpoint did not answer: ' + safeText(e && e.message)); });
+    } catch (e) { /* audit-ignore: reporting is best effort */ }
+  }
+
+  function report(tag, msg) {
+    try {
+      pending.push(tag + ' :: ' + safeText(msg));
+      if (pending.length > 20) pending = pending.slice(-20);
+      flushReport(false);
+    } catch (e) {}
+  }
+
+  global.PortalLog = { info: info, warn: warn, error: error, snapshot: snapshot, clear: clear, restore: restore, report: report, flush: function () { flushReport(true); } };
 
   // Global crash net (page errors + rejected promises). Runs always.
   try {
@@ -81,11 +114,13 @@
       var m = ev && ev.message ? String(ev.message) : 'unknown error';
       var where = ev && ev.filename ? String(ev.filename).split('/').pop() + ':' + (ev.lineno || '?') : '';
       error('window.onerror', m.slice(0, 200) + ' @' + where);
+      report('window.onerror', m.slice(0, 160) + ' @' + where);
     }, true);
     window.addEventListener('unhandledrejection', function (ev) {
       var r = ev && ev.reason;
       var m = r ? (r.message || String(r)) : 'unhandled rejection';
       error('unhandledrejection', String(m).slice(0, 200));
+      report('unhandledrejection', String(m).slice(0, 160));
     });
   } catch (e) {}
 })(window);
