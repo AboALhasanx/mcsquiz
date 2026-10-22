@@ -311,13 +311,22 @@
       }
     }
     S.index = idx;
-    // the chapter label: the subject number + the chapter number (1.1, 1.2 …)
+    // chapters stay plain numbers (1, 2, 3 …). Inside a chapter every bank
+    // gets its own topic number: chapter.topic (1.1, 1.2 …), shown inside the
+    // card next to the topic title
     try {
       idx.subjects.forEach((sub) => {
-        const m = /^(\d+)/.exec(String(sub.subject_id || ''));
-        const prefix = m ? String(parseInt(m[1], 10)) : '';
+        const groups = {};
         (sub.chapters || []).forEach((ch) => {
-          ch.label = prefix ? (prefix + '.' + ch.chapter_no) : String(ch.chapter_no);
+          const k = String(ch.chapter_no);
+          (groups[k] = groups[k] || []).push(ch);
+        });
+        Object.keys(groups).forEach((k) => {
+          groups[k].sort((a, b) => String(a.quiz_id).localeCompare(String(b.quiz_id)));
+          groups[k].forEach((ch, i) => {
+            ch.label = String(ch.chapter_no);
+            ch.topicLabel = String(ch.chapter_no) + '.' + (i + 1);
+          });
         });
       });
     } catch (e) {}
@@ -384,7 +393,7 @@
           quiz_id: ch.quiz_id,
           subject_id: sub.subject_id,
           subject: sub.subject_title,
-          chapterLabel: ch.label || String(ch.chapter_no || ''),
+          chapterLabel: ch.topicLabel || ch.label || String(ch.chapter_no || ''),
           chapter: ch.chapter_no,
           count: ch.count || 0,
           updated_at: ch.updated_at || '',
@@ -749,10 +758,10 @@
         '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-content-cell">' +
           '<div class="sketch-eyebrow">' +
             '<span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
-            '<span class="sketch-chip">' + escapeHtml(chLabel(ch)) + '</span>' +
+            '<span class="sketch-chip">' + escapeHtml(chLabelLong(ch)) + '</span>' +
             (isFresh ? '<span class="sketch-chip sketch-chip-new">جديد</span>' : '') +
           '</div>' +
-          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '">' + escapeHtml(title) + '</div>' +
+          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '"><span class="sketch-topic-num" dir="ltr">' + escapeHtml(ch.topicLabel || (ch.chapter_no + '.1')) + '</span> ' + escapeHtml(title) + '</div>' +
           '<div class="sketch-meta-line">' +
             '<span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
             (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
@@ -777,7 +786,8 @@
     const crumb = $('info-sheet-crumb');
     if (crumb) crumb.innerHTML = crumbHtml(sub, ch);
     const topicEl = $('info-sheet-topic');
-    topicEl.textContent = title;
+    const tNum = ch.topicLabel || (ch.chapter_no + '.1');
+    topicEl.innerHTML = '<span class="sketch-topic-num" dir="ltr">' + escapeHtml(tNum) + '</span> ' + escapeHtml(title);
     topicEl.setAttribute('dir', isRtlText(title) ? 'rtl' : 'ltr');
     $('info-sheet-list').innerHTML = detailGridHtml(bankDetailRows(sub, ch, bank));
     const startBtn = $('info-sheet-start');
@@ -902,7 +912,7 @@
     markChapterSeen(ch.quiz_id);
     launchSession(pool, {
       subjectId: sub.subject_id, subjectTitle: sub.subject_title,
-      chapterNo: ch.chapter_no, chapterLabel: ch.label || chLabel(ch), topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
+      chapterNo: ch.chapter_no, chapterLabel: ch.topicLabel || ch.label || chLabel(ch), topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
       retryWrong: retryWrong, replay: { type: 'bank', subjectId: sub.subject_id, quizId: ch.quiz_id },
     });
   }
@@ -1883,7 +1893,7 @@
     const dwells = [14, 9, 0];
     S.session = {
       sub: { subject_id: sub.subject_id, subject_title: sub.subject_title },
-      ch: ch, chapterLabel: chLabel(ch), questions: qs, picks: picks, dwells: dwells,
+      ch: ch, chapterLabel: ch.topicLabel || chLabel(ch), questions: qs, picks: picks, dwells: dwells,
       started: true, finished: true, demo: true, idx: 0, maxIdx: 0,
       quizId: ch.quiz_id, hash: location.hash,
     };
@@ -3944,7 +3954,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.2.1';
+  const SHELL_VERSION = '1.2.2';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

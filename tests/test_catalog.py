@@ -1,6 +1,5 @@
 """Catalog: subject rail, chapter tiles, quiz rows, subject switching."""
 import os
-import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -23,10 +22,10 @@ def run():
         check('first subject is active',
               'active' in (page.locator('#subject-filter-bar .filter-chip').first.get_attribute('class') or ''))
 
-        # chapter rail: numbered chapters (1.1, 1.2 …), with a sticky label
+        # chapter rail: plain numbers, with a sticky label
         tiles = page.locator('#chapter-filter-bar .filter-chip').all_text_contents()
-        check('chapter tiles are numbered (1.1, 1.2 …)',
-              all(re.fullmatch(r'\d+\.\d+', t.strip()) for t in tiles) and len(tiles) >= 1, tiles)
+        check('chapter tiles are plain numbers',
+              all(t.strip().isdigit() for t in tiles) and len(tiles) >= 1, tiles)
         check('chapter rail keeps a label',
               'جابتر' in (page.locator('#chapter-filter-bar .filter-bar-label').text_content() or ''))
 

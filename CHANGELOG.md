@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.2] — 2026-10-22
+
+### Changed
+- chapters stay plain numbers, topics are numbered inside the card (1.1, 1.2)
+
+
 ## [1.2.1] — 2026-10-22
 
 ### Changed
