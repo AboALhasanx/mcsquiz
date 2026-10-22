@@ -156,10 +156,7 @@
     // the saved shortcut belongs to the saved views, not to the home or a quiz
     const savedBtn = $('btn-open-saved');
     if (savedBtn) savedBtn.style.display = (viewId === 'deck-catalog' || inQuiz) ? 'none' : '';
-    // the language toggle: in the quiz bar, the results/review bar and the
-    // saved view — not on the home screen
-    const langBar = $('lang-toggle-catalog');
-    if (langBar) langBar.style.display = (viewId === 'saved-view') ? '' : 'none';
+    // the language toggle lives in every app bar and is always visible
     const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
@@ -2144,7 +2141,7 @@
 
     { title: 'الحفظ', body: 'زر الحفظ أعلى البطاقة — يضيف السؤال إلى المحفوظات.', target: '#btn-save-question' },
 
-    { title: 'زر الترجمة', body: 'أيقونة الترجمة بالشريط الأعلى: صفراء يعني عربي، وبيضاء مثل بقية الأيقونات يعني English. تبدّل السؤال والخيارات والشرح — متاحة بالكوز، والنتيجة والمراجعة، والمحفوظات.', target: '#lang-toggle-session' },
+    { title: 'زر الترجمة', body: 'أيقونة الترجمة ثابتة بالشريط الأعلى بكل الشاشات: صفراء يعني عربي، وبيضاء مثل بقية الأيقونات يعني English. تبدّل السؤال والخيارات والشرح.', target: '#lang-toggle-session' },
 
     { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
 
@@ -3973,7 +3970,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.3.0';
+  const SHELL_VERSION = '1.3.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
