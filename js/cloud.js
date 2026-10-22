@@ -463,7 +463,12 @@
     });
     var now = Date.now(), old = now - 30 * 86400000;
     Object.keys(saved).forEach(function (k) {
-      if (Number(removed[k]) || 0) delete saved[k];
+      var rm = Number(removed[k]) || 0;
+      var at = Number(saved[k] && saved[k].savedAt) || 0;
+      // a removal wins only when it is newer than the item itself: re-saving a
+      // question after another device removed it must bring it back
+      if (rm && rm >= at) { delete saved[k]; return; }
+      if (rm) delete removed[k];
     });
     Object.keys(removed).forEach(function (k) {
       if (saved[k]) { delete removed[k]; return; }
