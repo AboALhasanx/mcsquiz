@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.3] — 2026-10-22
+
+### Changed
+- the browser tab and app name are just MCSQuiz; fix the chapter word
+
+
 ## [1.2.2] — 2026-10-22
 
 ### Changed

@@ -533,7 +533,7 @@
   }
 
   function chLabel(ch) { return (ch && ch.label) ? ch.label : String((ch && ch.chapter_no) || ''); }
-  function chLabelLong(ch) { return 'بابتر ' + chLabel(ch); }
+  function chLabelLong(ch) { return 'جابتر ' + chLabel(ch); }
 
   function currentSubject() {
     if (S.index && Array.isArray(S.index.subjects) && S.index.subjects.some((s) => s.subject_id === S.subjectFilter)) {
@@ -3954,7 +3954,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.2.2';
+  const SHELL_VERSION = '1.2.3';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
