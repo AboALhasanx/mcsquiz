@@ -241,7 +241,11 @@
         if (k && k.indexOf(LS_BEST_PREFIX) === 0) bests[k] = JSON.parse(localStorage.getItem(k));
       }
     } catch (e) {}
-    return { app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(), updatedAt: Date.now(), saved: saved, history: history, bests: bests };
+    // the timestamp of the last real change, not of this sync attempt: a device
+    // that has been offline cannot overwrite newer data from another device
+    var touched = 0;
+    try { touched = Number(localStorage.getItem('portal_data_touched_v1')) || 0; } catch (e) {}
+    return { app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(), updatedAt: touched || Date.now(), saved: saved, history: history, bests: bests };
   }
 
   function applyBundle(d) {
@@ -259,6 +263,9 @@
         }
       });
     }
+    // the downloaded copy is the current state: remember its write time so the
+    // next comparison is a tie and the server keeps winning it
+    try { localStorage.setItem('portal_data_touched_v1', String(Number(d.updatedAt) || Date.now())); } catch (e) {}
   }
 
   function localCount() {
@@ -385,7 +392,10 @@
   async function upload(bundle) {
     var s = activeStore();
     if (!s) throw new Error('no-store');
-    await s.save(bundle || collectBundle());
+    var b = bundle || collectBundle();
+    await s.save(b);
+    // what just went up is now the server's copy: keep the same write time
+    try { localStorage.setItem('portal_data_touched_v1', String(Number(b.updatedAt) || Date.now())); } catch (e) {}
     markSync();
   }
 
@@ -401,7 +411,14 @@
       markSync();
       return { action: 'empty' };
     }
-    if (localN === 0) { applyBundle(remote); markSync(); return { action: 'downloaded' }; }
+    if (localN === 0) {
+      // an empty device normally downloads — unless its data was *cleared* on
+      // purpose after the server's last write, in which case the deletion wins
+      var touchedZero = 0;
+      try { touchedZero = Number(localStorage.getItem('portal_data_touched_v1')) || 0; } catch (e) {}
+      if (rUpdated && touchedZero && touchedZero > rUpdated) { await upload(collectBundle()); return { action: 'uploaded-empty' }; }
+      applyBundle(remote); markSync(); return { action: 'downloaded' };
+    }
     var local = collectBundle();
     var lUpdated = Number(local.updatedAt) || 0;
     // newest write wins; on a tie the server copy wins (online is the source of truth)

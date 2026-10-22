@@ -122,7 +122,14 @@
   try { loadSaved(); } catch (e) {}
   function persistSaved() {
     try { localStorage.setItem(SAVED_KEY, JSON.stringify(S.saved)); } catch (e) {}
+    touchData();
     cloudPush();
+  }
+
+  // the moment the personal data really changed — the sync compares this with
+  // the server's write time, so a stale device can never clobber a newer one
+  function touchData() {
+    try { localStorage.setItem('portal_data_touched_v1', String(Date.now())); } catch (e) {}
   }
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
@@ -391,6 +398,7 @@
       const prev = getBest(quizId);
       if (!prev || pct > prev.pct) localStorage.setItem(bestKey(quizId), JSON.stringify({ pct: pct, frac: frac }));
     } catch (e) { /* storage optional */ }
+    touchData();
     cloudPush();
   }
   function cloudPush() {
@@ -1514,6 +1522,7 @@
       });
       while (S.history.length > 200) S.history.shift();
       localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history));
+      touchData();
     } catch (e) {}
     cloudPush();
     try {
@@ -1526,6 +1535,7 @@
   function clearHistory() {
     S.history = [];
     try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+    touchData();
   }
 
   function pctClass(p) { return p >= 75 ? 'good' : (p >= 60 ? 'mid' : 'bad'); }
@@ -1817,6 +1827,7 @@
         if (Array.isArray(d.history)) {
           S.history = d.history.slice(-200);
           try { localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history)); } catch (e) {}
+          touchData();
         }
         if (d.bests && typeof d.bests === 'object') {
           Object.keys(d.bests).forEach((k) => {
@@ -3823,7 +3834,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v96';
+  const SHELL_VERSION = 'v97';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
