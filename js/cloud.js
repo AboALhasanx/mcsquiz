@@ -377,7 +377,7 @@
     if (!c.url || !c.key) throw new Error('not-configured');
     sbClientPromise = (async function () {
       if (global.__sbClient) return global.__sbClient;
-      var mod = await import('../vendor/npm/supabase-js.mjs');
+      var mod = await import('./vendor/npm/supabase-js.js');
       return mod.createClient(c.url, c.key);
     })().catch(function (e) { sbClientPromise = null; throw e; });
     return sbClientPromise;

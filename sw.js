@@ -1,7 +1,7 @@
 ﻿/* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.0.2';
+const VERSION = '1.0.3';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -22,15 +22,15 @@ const CORE = [
   './js/quiz-vault.js',
   './js/supabase-config.js',
   './js/tg-config.js',
-  './js/vendor/npm/iceberg-js-0.8.1.mjs',
-  './js/vendor/npm/supabase-js.mjs',
-  './js/vendor/npm/supabase_auth-js-2.118.0.mjs',
-  './js/vendor/npm/supabase_functions-js-2.118.0.mjs',
-  './js/vendor/npm/supabase_phoenix-0.4.5.mjs',
-  './js/vendor/npm/supabase_postgrest-js-2.118.0.mjs',
-  './js/vendor/npm/supabase_realtime-js-2.118.0.mjs',
-  './js/vendor/npm/supabase_storage-js-2.118.0.mjs',
-  './js/vendor/npm/tslib-2.8.1.mjs',
+  './js/vendor/npm/iceberg-js-0.8.1.js',
+  './js/vendor/npm/supabase-js.js',
+  './js/vendor/npm/supabase_auth-js-2.118.0.js',
+  './js/vendor/npm/supabase_functions-js-2.118.0.js',
+  './js/vendor/npm/supabase_phoenix-0.4.5.js',
+  './js/vendor/npm/supabase_postgrest-js-2.118.0.js',
+  './js/vendor/npm/supabase_realtime-js-2.118.0.js',
+  './js/vendor/npm/supabase_storage-js-2.118.0.js',
+  './js/vendor/npm/tslib-2.8.1.js',
   './assets/fonts/plex-arabic-400-arabic.woff2',
   './assets/fonts/plex-arabic-400-latin.woff2',
   './assets/fonts/plex-arabic-500-arabic.woff2',

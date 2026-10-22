@@ -7,7 +7,7 @@
 (function (global) {
   'use strict';
 
-  var CLIENT_URL = '../vendor/npm/supabase-js.mjs';
+  var CLIENT_URL = './vendor/npm/supabase-js.js';
   var LS_BEST_PREFIX = 'portal_best_';
   var LS_SAVED = 'portal_saved_v1';
   var LS_HISTORY = 'portal_history_v1';

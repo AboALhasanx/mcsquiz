@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.3] — 2026-10-22
+
+### Changed
+- chore: vendor the Supabase client locally and add strict CSP/security headers
+
+
 ## [1.0.2] — 2026-10-22
 
 ### Changed

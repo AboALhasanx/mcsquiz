@@ -22,7 +22,7 @@ def wanted() -> list:
     items = ['./', './index.html', './manifest.json']
     items += ['./css/%s' % p.name for p in sorted((ROOT / 'css').glob('*.css'))]
     items += ['./js/%s' % p.name for p in sorted((ROOT / 'js').glob('*.js'))]
-    items += ['./js/vendor/npm/%s' % p.name for p in sorted((ROOT / 'js/vendor/npm').glob('*.mjs'))]
+    items += ['./js/vendor/npm/%s' % p.name for p in sorted((ROOT / 'js/vendor/npm').glob('*.js'))]
     items += ['./assets/fonts/%s' % p.name for p in sorted((ROOT / 'assets/fonts').glob('*.woff2'))]
     for name in ('icon-192.png', 'icon-512.png', 'brand-icon-light.png', 'brand-icon-dark.png', 'avatar-default.svg'):
         if (ROOT / 'assets' / name).exists():
