@@ -81,7 +81,12 @@ def run():
 
         # theme toggle updates the accent and persists
         page.evaluate('() => { location.hash = "#/"; }')
-        page.wait_for_timeout(800)
+        page.wait_for_timeout(700)
+        # a live quiz always warns before leaving (the student asked for this):
+        # confirm the exit, otherwise the guard keeps the quiz view open
+        if page.locator('#leave-modal:not(.hidden)').count():
+            page.click('#leave-go')
+            page.wait_for_timeout(700)
         dark = page.evaluate("() => getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()")
         page.click('#btn-theme-header')
         page.wait_for_timeout(400)

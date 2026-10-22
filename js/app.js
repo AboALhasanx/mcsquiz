@@ -2293,10 +2293,10 @@
   let leaveIntent = 'exit';
 
   function dirtySession() {
-    // a *live* quiz is enough: the attempt and its timer are running, so leaving
-    // must warn even before the first answer (the student asked for this)
+    // warn only once the quiz has really started: sitting on the start card is
+    // not an attempt yet, but a running quiz must always warn before leaving
     const s = S.session;
-    return !!(s && !s.finished);
+    return !!(s && !s.finished && s.started);
   }
 
   function goHash(h) {
@@ -3809,7 +3809,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v92';
+  const SHELL_VERSION = 'v93';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
