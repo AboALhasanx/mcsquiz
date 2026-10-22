@@ -2187,14 +2187,29 @@
       const cands = st.target ? Array.from(document.querySelectorAll(st.target)) : [];
       el = cands.find((x) => x && x.offsetParent) || null;
       if (!el) {
-        // the view may still be rendering (e.g. the explanation after an answer)
+        // the target is not on the screen yet (the explanation only appears
+        // after an answer): keep the text of the step visible in the middle
+        // and try again, instead of leaving a blank overlay behind
         const tries = tourRetried.get(i) || 0;
-        if (tries < 3) {
-          tourRetried.set(i, tries + 1);
-          setTimeout(() => { if (tourIdx === i) tourShow(i); }, 600);
-          return;
-        }
-        tourShow(i + 1); return; // skip a target that never appears
+        if (tries < 3) tourRetried.set(i, tries + 1);
+        ov.classList.remove('hidden');
+        ov.setAttribute('aria-hidden', 'false');
+        ov.classList.add('tour-dim-light');
+        const tipIcon = $('tour-tip-icon');
+        if (tipIcon) tipIcon.style.display = 'block';
+        $('tour-tip-title').textContent = st.title;
+        $('tour-tip-body').textContent = st.body;
+        $('tour-tip-progress').textContent = (i + 1) + ' / ' + TOUR_STEPS.length;
+        const tipBar = $('tour-tip-bar-fill');
+        if (tipBar) tipBar.style.width = ((i + 1) / TOUR_STEPS.length * 100) + '%';
+        $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : (st.action ? 'تخطي الخطوة' : 'التالي');
+        $('tour-btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
+        $('tour-tip').classList.remove('tour-waiting');
+        centerTip();
+        paintShades(null);
+        icons();
+        if (tries < 3) setTimeout(() => { if (tourIdx === i) tourShow(i); }, 600);
+        return;
       }
       el.scrollIntoView({ block: 'center', behavior: 'smooth' });
       rect = el.getBoundingClientRect();
@@ -3916,7 +3931,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.1.0';
+  const SHELL_VERSION = '1.1.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.1] — 2026-10-22
+
+### Changed
+- fix: a tour step whose target is not on screen yet keeps its text visible instead of leaving a blank overlay
+
+
 ## [1.1.0] — 2026-10-22
 
 ### Changed

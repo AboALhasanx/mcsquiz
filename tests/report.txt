@@ -4,23 +4,23 @@ PASS | banks | Arabic question coverage meets the current target | 314/334 trans
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_ModelB_DrHuda')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': 'ebb9076c-1a2c-4b62-bdd1-4dcb533efa1d', 'handle': 't266437', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792666271162}
+PASS | accounts | username + PIN creates an account | {'id': '13e0033d-cfa5-4dde-97ea-0e95e1b2f826', 'handle': 't918600', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792668922867}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا المستخدم
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': 'ebb9076c-1a2c-4b62-bdd1-4dcb533efa1d', 'handle': 't266437', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792666286308}
-PASS | accounts | the avatar is saved | {'id': 'ebb9076c-1a2c-4b62-bdd1-4dcb533efa1d', 'handle': 't266437', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792666286308}
+PASS | accounts | the display name is editable | {'id': '13e0033d-cfa5-4dde-97ea-0e95e1b2f826', 'handle': 't918600', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792668938069}
+PASS | accounts | the avatar is saved | {'id': '13e0033d-cfa5-4dde-97ea-0e95e1b2f826', 'handle': 't918600', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792668938069}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': 'ebb9076c-1a2c-4b62-bdd1-4dcb533efa1d', 'handle': 't266437', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792666304945}
+PASS | accounts | same username returns the same account | {'id': '13e0033d-cfa5-4dde-97ea-0e95e1b2f826', 'handle': 't918600', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792668956282}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has six digits | 124474
+PASS | accounts | the link code has six digits | 999067
 PASS | accounts | a QR is rendered for the link | 
-PASS | accounts | the approved device signs in | {'id': 'ebb9076c-1a2c-4b62-bdd1-4dcb533efa1d', 'handle': 't266437', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792666332203}
+PASS | accounts | the approved device signs in | {'id': '13e0033d-cfa5-4dde-97ea-0e95e1b2f826', 'handle': 't918600', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-02.png', 'at': 1792668984178}
 PASS | catalog | index exposes subjects | 6
 PASS | catalog | one chip per subject | 6 vs 6
 PASS | catalog | no "all" chip | 
@@ -41,7 +41,7 @@ PASS | quiz | next is blocked while unanswered |
 PASS | quiz | blocked next explains itself | 
 PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the switch turns the question into English | A
-PASS | quiz | the English stem is used | Cybersecurity can be modelled as an optimisation problem who
+PASS | quiz | the English stem is used | Zero trust has become a leading security model in the last d
 PASS | quiz | the switch returns to Arabic | أ
 PASS | quiz | total questions loaded | 10
 PASS | quiz | saving marks the bookmark | 
@@ -92,8 +92,8 @@ PASS | share | no runtime errors | []
 PASS | tour | tour greets a first-time visitor | 
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
-PASS | tour | the tour has more than ten steps | 19
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/stats', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/saved'}
+PASS | tour | the tour has more than ten steps | 20
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_DrHuda_20MCQ', '#/saved', '#/stats'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
@@ -119,21 +119,21 @@ PASS | a11y | the share preview image has alt text |
 PASS | a11y | theme toggle changes the palette | #d9b26a / #96721a
 PASS | a11y | theme choice is remembered | 
 PASS | a11y | no runtime errors | []
-PASS | security | an account can be created | [{'id': 'e122a384-b42d-4d7d-abcb-dadd9aaefeca', 'handle': 'sectest666463', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
-PASS | security | five wrong tries lock the account | [{'id': None, 'handle': 'sectest666463', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
-PASS | security | the lock says how long to wait | [{'id': None, 'handle': 'sectest666463', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
-PASS | security | another handle is not locked by the first | [{'id': '20fa8381-c2b3-4198-b57e-efe13ac86ebe', 'handle': 'sectest666463x', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | an account can be created | [{'id': '685ea76e-d094-459a-bbe1-85931646d8ca', 'handle': 'sectest669113', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | five wrong tries lock the account | [{'id': None, 'handle': 'sectest669113', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
+PASS | security | the lock says how long to wait | [{'id': None, 'handle': 'sectest669113', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
+PASS | security | another handle is not locked by the first | [{'id': '083769c0-f817-4fab-8d77-d616b4cc254d', 'handle': 'sectest669113x', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
 PASS | security | a row can be written for its owner | 201
 PASS | security | the server holds an encrypted envelope | {'ct': 'bbbbbbbb', 'iv': 'aaaaaaaaaaaaaaaa', 'enc': 1}
 PASS | security | no readable history is stored | {'ct': 'bbbbbbbb', 'iv': 'aaaaaaaaaaaaaaaa', 'enc': 1}
 PASS | security | without the account header nothing is readable | []
 PASS | security | a forged account header reads nothing | []
-PASS | security | the owner reads their own row | [{'user_id': 'u:e122a384-b42d-4d7d-abcb-dadd9aaefeca'}]
-PASS | security | the account is still locked after the wait | [{'id': None, 'handle': 'sectest666463', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 288}]
+PASS | security | the owner reads their own row | [{'user_id': 'u:685ea76e-d094-459a-bbe1-85931646d8ca'}]
+PASS | security | the account is still locked after the wait | [{'id': None, 'handle': 'sectest669113', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 288}]
 PASS | security | the app can sign in | True
 PASS | security | the sync runs | {'action': 'uploaded-new'}
-PASS | security | what the app wrote is encrypted | {'ct': 'zJqPYVRdRO1Bk88/T0GEd9RQsPrBX+l4TGExg8qDDx0LUglk7AwDtn2DmPeXqNY1GEHuiZvuvPOryg2DVo9zCFBO51vuJDiuTJG4sVjx6X6JjJXUQUyS9BRrIVZey1+P7f5JEQB4CAx7OxNygcrCpkO4c77RjhHs4IUoZRfenYqh78fpilXbdWOLZ/AUIH0JuG3uD7+p3OQl07EQAox+E+lxQbDPdQyz+fjDJc4mZro9btWJ9LpKuLmINuIzPIcstJxzP1lh5ADVkT5vOqS9bGVulA6ZIHKCEg3XfQG7gM2jEkxFTxftCmm8fGhNW9Fa2DHKqBeWPac6hMtvkssBOMrBJdCU2A8KDsLJhr6IU76gPzWjXGhp2l+VUAozjBX7t/yWOru6D1yaJvHjFVEFtTf3NEex2P2bWZAD+OTJykRhWDZkRJsNWPxB9sti0HSEFUxvC7YvyEu8KmQvfw==', 'iv': '9aedNdsmLL9J6sWW', 'enc': 1}
-PASS | security | the bookmark text is not on the server | {'ct': 'zJqPYVRdRO1Bk88/T0GEd9RQsPrBX+l4TGExg8qDDx0LUglk7AwDtn2DmPeXqNY1GEHuiZvuvPOryg2DVo9zCFBO51vuJDiuTJG4sVjx6X6JjJXUQUyS9BRrIVZey1+P7f5JEQB4CAx7OxNygcrCpkO4c77RjhHs4IUoZRfenYqh78fpilXbdWOLZ/AUIH0JuG3uD7+p3OQl07EQAox+E+lxQbDPdQyz+fjDJc4mZro9btWJ9LpKuLmINuIzPIcstJxzP1lh5ADVkT5vOqS9bGVulA6ZIHKCEg3XfQG7gM2jEkxFTxftCmm8fGhNW9Fa2DHKqBeWPac6hMtvkssBOMrBJdCU2A8KDsLJhr6IU76gPzWjXGhp2l+VUAozjBX7t/yWOru6D1yaJvHjFVEFtTf3NEex2P2bWZAD+OTJykRhWDZkRJsNWPxB9sti0HSEFUxvC7YvyEu8KmQvfw==', 'iv': '9aedNdsmLL9J6sWW', 'enc': 1}
+PASS | security | what the app wrote is encrypted | {'ct': 'knbqREA8txsGzCd3tlgXG+NLFioc1l8pDIO5grZeiQmfoY4z85tGKV+BPBuxadbMwZuKbO04mRwMEE30km86KqY+dZjwz18lcKIrsGD/VXXfQZmitrX4YjUWUJ6ca1FNszQ/y5McGkSgttiJoiyycF0AVePx8H6bcqlFisIwziH0DBbP8wH6SEHPNYlnEnnvffgkFFEqrfgRohepoKk3AO+SZ+fL0MWbPDz6SD5Z4QzCJrTnJFug9yKoYeNtsmuX7nn3z8k5tirjDgz2m3OI11UnzZrRikJdGzwS2lY8ow2j2IIPWaSCETfq0CTfO1KBRl38pIhGBQzgQAA+HmZ/rb1rHDfdrLQGussy2Miq+K2o81yeRUvvdtMQH2pQnWM5CEJHTfiqixyATkskmqx7MGjLjwdIUpFA/cNW63ttSz/pihqESc0XgZA/3y1iZZQJ5KtYgDyFVt2WEPIUMQ==', 'iv': '7lO+xZtSZqp+jrWv', 'enc': 1}
+PASS | security | the bookmark text is not on the server | {'ct': 'knbqREA8txsGzCd3tlgXG+NLFioc1l8pDIO5grZeiQmfoY4z85tGKV+BPBuxadbMwZuKbO04mRwMEE30km86KqY+dZjwz18lcKIrsGD/VXXfQZmitrX4YjUWUJ6ca1FNszQ/y5McGkSgttiJoiyycF0AVePx8H6bcqlFisIwziH0DBbP8wH6SEHPNYlnEnnvffgkFFEqrfgRohepoKk3AO+SZ+fL0MWbPDz6SD5Z4QzCJrTnJFug9yKoYeNtsmuX7nn3z8k5tirjDgz2m3OI11UnzZrRikJdGzwS2lY8ow2j2IIPWaSCETfq0CTfO1KBRl38pIhGBQzgQAA+HmZ/rb1rHDfdrLQGussy2Miq+K2o81yeRUvvdtMQH2pQnWM5CEJHTfiqixyATkskmqx7MGjLjwdIUpFA/cNW63ttSz/pihqESc0XgZA/3y1iZZQJ5KtYgDyFVt2WEPIUMQ==', 'iv': '7lO+xZtSZqp+jrWv', 'enc': 1}
 PASS | security | the account can be deleted | ok
 PASS | security | the personal row is gone | []
-PASS | security | the account no longer exists | [{'id': '0cf8dd0e-ee1e-4b3e-a753-3c1daf6b07f6', 'handle': 'secdat666478', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | the account no longer exists | [{'id': 'c2f5792f-2b3c-49cd-a78a-cbc864a6d499', 'handle': 'secdat669128', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
