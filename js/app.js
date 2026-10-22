@@ -146,6 +146,10 @@
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
     document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
+    // the pause overlay belongs to a running question: never let it survive a
+    // view change (a paused quiz that is left behind used to block the next one)
+    const pauseOv = $('pause-overlay');
+    if (pauseOv && viewId !== 'quiz-view') pauseOv.classList.add('hidden');
     closeDrawers();
     icons();
   }
@@ -1127,6 +1131,8 @@
     maybeQuizHint();
     tourNotify('start');
     ses.startEpoch = Date.now(); ses.pauseAccum = 0; ses.pauseStart = null;
+    // a pause from an earlier attempt must never cover the new question
+    try { $('pause-overlay').classList.add('hidden'); } catch (e) {}
     ses.qStart = Date.now();
     clearInterval(ses.timerId);
     ses.timerId = setInterval(tickTimer, 500);
@@ -3809,7 +3815,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = 'v93';
+  const SHELL_VERSION = 'v94';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
