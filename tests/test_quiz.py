@@ -32,18 +32,22 @@ def run():
         check('blocked next explains itself',
               page.locator('.portal-toast').count() >= 1)
 
-        # language switch: Arabic <-> English (letters prove the mode)
+        # language toggle: Arabic <-> English (letters prove the mode)
         letters = lambda: (page.locator('.option-letter').first.text_content() or '').strip()
         check('question starts in Arabic mode', letters() == 'أ', letters())
-        page.evaluate('() => document.querySelector("#lang-switch-session .lang-opt[data-lang=\'en\']").click()')
+        check('the toggle is yellow in Arabic mode',
+              'lang-active' in (page.locator('#lang-toggle-session').get_attribute('class') or ''), page.locator('#lang-toggle-session').get_attribute('class'))
+        page.evaluate('() => document.querySelector("#lang-toggle-session").click()')
         page.wait_for_timeout(400)
-        check('the switch turns the question into English', letters() == 'A', letters())
+        check('the toggle turns the question into English', letters() == 'A', letters())
+        check('the toggle is plain in English mode',
+              'lang-active' not in (page.locator('#lang-toggle-session').get_attribute('class') or ''), page.locator('#lang-toggle-session').get_attribute('class'))
         check('the English stem is used',
               not re.search(r'[\u0600-\u06FF]', page.locator('#question-text').text_content() or ''),
               (page.locator('#question-text').text_content() or '')[:60])
-        page.evaluate('() => document.querySelector("#lang-switch-session .lang-opt[data-lang=\'ar\']").click()')
+        page.evaluate('() => document.querySelector("#lang-toggle-session").click()')
         page.wait_for_timeout(400)
-        check('the switch returns to Arabic', letters() == 'أ', letters())
+        check('the toggle returns to Arabic', letters() == 'أ', letters())
 
         total = int((page.locator('#question-total-label').text_content() or '0').strip())
         check('total questions loaded', total > 0, total)

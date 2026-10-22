@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.0] — 2026-10-22
+
+### Changed
+- the language switch is now one translation icon (yellow for Arabic) before the bell, and a refresh no longer flashes the old header or language state
+
+
 ## [1.2.3] — 2026-10-22
 
 ### Changed

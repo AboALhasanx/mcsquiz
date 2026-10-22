@@ -156,10 +156,10 @@
     // the saved shortcut belongs to the saved views, not to the home or a quiz
     const savedBtn = $('btn-open-saved');
     if (savedBtn) savedBtn.style.display = (viewId === 'deck-catalog' || inQuiz) ? 'none' : '';
-    // the AR/EN switch: in the quiz bar, the results/review bar and the saved
-    // view — not on the home screen
-    const langBar = $('lang-switch-catalog');
-    if (langBar) langBar.style.display = (viewId === 'saved-view') ? 'inline-flex' : 'none';
+    // the language toggle: in the quiz bar, the results/review bar and the
+    // saved view — not on the home screen
+    const langBar = $('lang-toggle-catalog');
+    if (langBar) langBar.style.display = (viewId === 'saved-view') ? '' : 'none';
     const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
@@ -325,7 +325,8 @@
           groups[k].sort((a, b) => String(a.quiz_id).localeCompare(String(b.quiz_id)));
           groups[k].forEach((ch, i) => {
             ch.label = String(ch.chapter_no);
-            ch.topicLabel = String(ch.chapter_no) + '.' + (i + 1);
+            ch.topicNum = String(i + 1);
+            ch.topicLabel = 'موضوع: ' + (i + 1);
           });
         });
       });
@@ -674,7 +675,7 @@
       ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
       '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
       '<span class="notif-text"><span class="notif-title">نزلت أسئلة جديدة</span>' +
-      '<span class="notif-sub">' + escapeHtml(f.subject) + ' · ' + escapeHtml(f.chapterLabel || chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
+      '<span class="notif-sub">' + escapeHtml(f.subject) + ' · جابتر ' + escapeHtml(String(f.chapter)) + ' · ' + escapeHtml(f.chapterLabel || chLabel({ chapter_no: f.chapter })) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
       '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
     icons();
   }
@@ -761,7 +762,7 @@
             '<span class="sketch-chip">' + escapeHtml(chLabelLong(ch)) + '</span>' +
             (isFresh ? '<span class="sketch-chip sketch-chip-new">جديد</span>' : '') +
           '</div>' +
-          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '"><span class="sketch-topic-num" dir="ltr">' + escapeHtml(ch.topicLabel || (ch.chapter_no + '.1')) + '</span> ' + escapeHtml(title) + '</div>' +
+          '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '"><span class="sketch-topic-num">' + escapeHtml(ch.topicLabel || ('موضوع: 1')) + '</span> ' + escapeHtml(title) + '</div>' +
           '<div class="sketch-meta-line">' +
             '<span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
             (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
@@ -786,8 +787,8 @@
     const crumb = $('info-sheet-crumb');
     if (crumb) crumb.innerHTML = crumbHtml(sub, ch);
     const topicEl = $('info-sheet-topic');
-    const tNum = ch.topicLabel || (ch.chapter_no + '.1');
-    topicEl.innerHTML = '<span class="sketch-topic-num" dir="ltr">' + escapeHtml(tNum) + '</span> ' + escapeHtml(title);
+    const tNum = ch.topicLabel || 'موضوع: 1';
+    topicEl.innerHTML = '<span class="sketch-topic-num">' + escapeHtml(tNum) + '</span> ' + escapeHtml(title);
     topicEl.setAttribute('dir', isRtlText(title) ? 'rtl' : 'ltr');
     $('info-sheet-list').innerHTML = detailGridHtml(bankDetailRows(sub, ch, bank));
     const startBtn = $('info-sheet-start');
@@ -852,10 +853,11 @@
     };
 
     const chapterLabel = meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo });
-    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + chapterLabel;
+    const chapterNum = 'جابتر ' + meta.chapterNo;
+    $('quiz-subtitle').textContent = meta.subjectTitle + ' · ' + chapterNum + ' · ' + chapterLabel;
     $('quiz-title').textContent = meta.topic;
     $('start-subject-badge').textContent = meta.subjectTitle;
-    $('start-chapter-badge').textContent = chapterLabel;
+    $('start-chapter-badge').textContent = chapterNum + ' · ' + chapterLabel;
     const startTitle = $('start-quiz-title');
     startTitle.textContent = meta.topic;
     startTitle.setAttribute('dir', isRtlText(meta.topic) ? 'rtl' : 'ltr');
@@ -1356,13 +1358,26 @@
     return pickEn(q.explanation_en, q.explanation, q.explanation_ar);
   }
 
+  // one translation icon in the bar: yellow while the questions are Arabic,
+  // plain like the other icons while English. Tapping it toggles the language.
   function syncLangButtons() {
+    const ar = S.lang !== 'en';
+    document.querySelectorAll('.lang-toggle').forEach((b) => {
+      b.classList.toggle('lang-active', ar);
+      b.setAttribute('aria-pressed', ar ? 'true' : 'false');
+      const label = ar ? 'لغة الأسئلة: عربي' : 'لغة الأسئلة: English';
+      b.setAttribute('aria-label', label);
+      b.setAttribute('title', 'لغة الأسئلة');
+    });
+    try { document.documentElement.setAttribute('data-qlang', ar ? 'ar' : 'en'); } catch (e) {}
     document.querySelectorAll('.lang-opt').forEach((b) => {
       const on = b.dataset.lang === S.lang;
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       b.classList.toggle('active', on);
     });
   }
+
+  function toggleLang() { setLang(S.lang === 'en' ? 'ar' : 'en'); }
 
   // The switch: Arabic <-> English for the question, the options and the
   // explanation — in the quiz, in the saved questions and in the review.
@@ -2129,7 +2144,7 @@
 
     { title: 'الحفظ', body: 'زر الحفظ أعلى البطاقة — يضيف السؤال إلى المحفوظات.', target: '#btn-save-question' },
 
-    { title: 'زر الترجمة', body: 'ع / EN بالشريط الأعلى: يبدّل السؤال والخيارات والشرح — متاح بالكوز، والنتيجة والمراجعة، والمحفوظات.', target: '#lang-switch-session' },
+    { title: 'زر الترجمة', body: 'أيقونة الترجمة بالشريط الأعلى: صفراء يعني عربي، وبيضاء مثل بقية الأيقونات يعني English. تبدّل السؤال والخيارات والشرح — متاحة بالكوز، والنتيجة والمراجعة، والمحفوظات.', target: '#lang-toggle-session' },
 
     { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
 
@@ -3842,6 +3857,10 @@
     document.querySelectorAll('.lang-opt').forEach((b) => {
       b.addEventListener('click', () => setLang(b.dataset.lang));
     });
+    ['lang-toggle-catalog', 'lang-toggle-session'].forEach((id) => {
+      const b = $(id);
+      if (b) b.addEventListener('click', toggleLang);
+    });
     syncLangButtons();
     ['btn-bell', 'btn-bell-session'].forEach((id) => {
       const b = $(id);
@@ -3954,7 +3973,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.2.3';
+  const SHELL_VERSION = '1.3.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

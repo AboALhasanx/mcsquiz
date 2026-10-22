@@ -1664,6 +1664,11 @@ body:not([data-quizlive="yes"]) #btn-exit {
 }
 .bell-btn { position: relative; }
 .bell-btn.has-new { color: var(--accent); }
+/* the language toggle in the app bar: yellow while Arabic, plain like the
+   other icons while English */
+.icon-btn.lang-toggle.lang-active { color: var(--accent); }
+/* pre-paint: the head script sets data-qlang before the first render */
+html[data-qlang="ar"] .icon-btn.lang-toggle { color: var(--accent); }
 /* the AR/EN switch in the app bar: quiz, results/review and saved */
 .lang-switch-bar {
   flex: 0 0 auto;

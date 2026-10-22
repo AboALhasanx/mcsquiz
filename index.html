@@ -7,6 +7,19 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0B0F16">
     <meta name="description" content="بوابة أسئلة MCQ تفاعلية — وضع اختبار">
+    <script>
+    // pre-paint: apply the saved theme and question language before the first
+    // render, so a refresh never flashes the wrong theme or language state
+    try {
+      var __t = null, __u = null;
+      try { __t = localStorage.getItem('portal_theme'); } catch (e) {}
+      if (__t) document.documentElement.setAttribute('data-theme', __t);
+      try { __u = JSON.parse(localStorage.getItem('portal_ui_v1') || 'null'); } catch (e) {}
+      var __l = (__u && (__u.lang === 'en' || __u.lang === 'ar')) ? __u.lang : 'ar';
+      document.documentElement.setAttribute('data-qlang', __l);
+      document.documentElement.setAttribute('lang', __l);
+    } catch (e) {}
+    </script>
     <link rel="apple-touch-icon" href="assets/icon-192.png">
     <link rel="icon" type="image/png" href="assets/icon-192.png">
     <link rel="preload" href="assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -32,10 +45,9 @@
                     <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
-                    <div id="lang-switch-catalog" class="lang-switch lang-switch-bar" role="group" aria-label="لغة الأسئلة" style="display:none">
-                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true" aria-label="عربي">ع</button>
-                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
-                    </div>
+                    <button id="lang-toggle-catalog" class="icon-btn lang-toggle" type="button" aria-label="لغة الأسئلة: عربي" aria-pressed="true" title="لغة الأسئلة" style="display:none">
+                        <i data-lucide="languages"></i>
+                    </button>
                     <button id="btn-bell" class="icon-btn bell-btn" type="button" aria-label="التنبيهات" title="التنبيهات">
                         <i data-lucide="bell"></i>
                         <span id="bell-dot" class="bell-dot hidden" aria-hidden="true"></span>
@@ -66,10 +78,9 @@
                     </button>
                 </div>
                 <div class="header-right">
-                    <div id="lang-switch-session" class="lang-switch lang-switch-bar" role="group" aria-label="لغة الأسئلة">
-                        <button type="button" class="lang-opt" data-lang="ar" aria-pressed="true" aria-label="عربي">ع</button>
-                        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
-                    </div>
+                    <button id="lang-toggle-session" class="icon-btn lang-toggle" type="button" aria-label="لغة الأسئلة: عربي" aria-pressed="true" title="لغة الأسئلة">
+                        <i data-lucide="languages"></i>
+                    </button>
                     <button id="btn-bell-session" class="icon-btn bell-btn" type="button" aria-label="التنبيهات" title="التنبيهات">
                         <i data-lucide="bell"></i>
                         <span id="bell-dot-session" class="bell-dot hidden" aria-hidden="true"></span>
@@ -86,6 +97,18 @@
                 </div>
             </div>
         </header>
+        <script>
+        // first paint: show the header that matches the URL at once, so a quiz
+        // refresh never flashes the catalogue bar before the app boots
+        try {
+            var __h = location.hash || '';
+            var __s = /^#\/quiz\//.test(__h) || __h.indexOf('#/practice') === 0;
+            var __c = document.getElementById('header-catalog-view');
+            var __v = document.getElementById('header-session-view');
+            if (__c) __c.style.display = __s ? 'none' : 'flex';
+            if (__v) __v.style.display = __s ? 'flex' : 'none';
+        } catch (e) {}
+        </script>
 
         <div id="pwa-install-banner" class="pwa-install-banner hidden">
             <div class="pwa-install-info">
