@@ -416,9 +416,12 @@
                         <div class="account-section">
                             <div class="account-section-head">
                                 <span class="account-section-title">صورتك</span>
-                                <button type="button" id="avatar-none" class="account-none-chip">بدون صورة</button>
                             </div>
-                            <div id="avatar-grid" class="avatar-grid" role="group" aria-label="اختر صورة للملف"></div>
+                            <div id="avatar-grid" class="avatar-grid collapsed" role="group" aria-label="اختر صورة للملف"></div>
+                            <button id="avatar-more" class="avatar-more" type="button" aria-expanded="false" aria-controls="avatar-grid">
+                                <span id="avatar-more-label">إظهار المزيد</span>
+                                <i data-lucide="chevron-down" id="avatar-more-icon" aria-hidden="true"></i>
+                            </button>
                         </div>
                         <div class="account-section">
                             <span class="account-section-title">الرمز السري</span>
@@ -439,7 +442,7 @@
                             <i data-lucide="refresh-cw"></i><span>مزامنة الآن</span>
                         </button>
                         <button id="account-link" class="account-action hidden" type="button">
-                            <i data-lucide="link"></i><span>ربط جهاز آخر</span>
+                            <i data-lucide="qr-code"></i><span>ربط جهاز آخر</span>
                         </button>
                         <button id="account-logout" class="account-action account-action-danger hidden" type="button">
                             <i data-lucide="log-out"></i><span>تسجيل الخروج</span>
@@ -644,7 +647,10 @@
                        pattern="[0-9]{4}" placeholder="••••" autocomplete="current-password">
                 <p id="login-error" class="auth-error hidden" role="alert"></p>
                 <button id="login-submit" class="action-btn primary-btn auth-submit">دخول</button>
-                <button id="login-link-device" class="tour-link-btn">ربط جهاز بدل كتابة المعرّف</button>
+                <button id="login-link-device" class="action-btn secondary-btn auth-submit login-link-btn" type="button">
+                    <i data-lucide="qr-code"></i>
+                    <span>ربط جهاز آخر بمسح رمز QR</span>
+                </button>
                 <button id="login-skip" class="tour-link-btn">متابعة بدون حساب</button>
             </div>
         </div>

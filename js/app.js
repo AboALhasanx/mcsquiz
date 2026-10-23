@@ -2725,9 +2725,28 @@
     if ($('pin-new2')) $('pin-new2').value = '';
     const grid = $('avatar-grid');
     grid.innerHTML = '';
+    // one row at a time: the picker opens compact and «إظهار المزيد» expands it
+    grid.classList.add('collapsed');
+    const moreBtn = $('avatar-more');
+    if (moreBtn) {
+      moreBtn.setAttribute('aria-expanded', 'false');
+      if ($('avatar-more-label')) $('avatar-more-label').textContent = 'إظهار المزيد';
+      const mi = $('avatar-more-icon');
+      if (mi) mi.setAttribute('data-lucide', 'chevron-down');
+    }
     const current = acc.avatar || '';
-    const noneBtn = $('avatar-none');
-    if (noneBtn) noneBtn.classList.toggle('active', !current);
+
+    // «بدون صورة» is a tile of its own, not a chip on the edge
+    const noneBtn = document.createElement('button');
+    noneBtn.type = 'button';
+    noneBtn.id = 'avatar-none';
+    noneBtn.className = 'avatar-choice avatar-none-choice' + (current ? '' : ' selected');
+    noneBtn.setAttribute('aria-label', 'بدون صورة');
+    noneBtn.setAttribute('aria-pressed', current ? 'false' : 'true');
+    noneBtn.innerHTML = '<i data-lucide="user-x"></i><span class="avatar-check" aria-hidden="true">' +
+      '<i data-lucide="check"></i></span>';
+    grid.appendChild(noneBtn);
+
     AVATARS.forEach((name) => {
       const src = 'assets/avatars/' + name + '.png';
       const b = document.createElement('button');
@@ -2744,23 +2763,23 @@
         });
         b.classList.add('selected');
         b.setAttribute('aria-pressed', 'true');
-        if (noneBtn) noneBtn.classList.remove('active');
+        noneBtn.classList.remove('selected');
+        noneBtn.setAttribute('aria-pressed', 'false');
         box.dataset.avatar = src;
         paintAvatarPreview(src);
       });
       grid.appendChild(b);
     });
-    if (noneBtn) {
-      noneBtn.onclick = () => {
-        grid.querySelectorAll('.avatar-choice').forEach((x) => {
-          x.classList.remove('selected');
-          x.setAttribute('aria-pressed', 'false');
-        });
-        noneBtn.classList.add('active');
-        box.dataset.avatar = '';
-        paintAvatarPreview('');
-      };
-    }
+    noneBtn.onclick = () => {
+      grid.querySelectorAll('.avatar-choice').forEach((x) => {
+        x.classList.remove('selected');
+        x.setAttribute('aria-pressed', 'false');
+      });
+      noneBtn.classList.add('selected');
+      noneBtn.setAttribute('aria-pressed', 'true');
+      box.dataset.avatar = '';
+      paintAvatarPreview('');
+    };
     box.dataset.avatar = current;
     paintAvatarPreview(current);
     icons();
@@ -2985,7 +3004,9 @@
     $('link-approve').classList.remove('hidden');
     let pre = '';
     try {
-      const m = location.hash.match(/code=(\d{4})/);
+      // the code is six digits — a \d{4} match used to hand the field only the
+      // first four and every scan ended in a mismatch
+      const m = location.hash.match(/code=(\d{6})/);
       if (m) pre = m[1];
     } catch (e) {}
     $('link-code-input').value = pre;
@@ -3025,7 +3046,7 @@
           const codes = await detector.detect(v);
           if (!codes || !codes.length) return;
           const raw = codes[0].rawValue || '';
-          const m = raw.match(/(\d{4})/);
+          const m = raw.match(/code=(\d{6})/) || raw.match(/(\d{6})/);
           if (!m) return;
           $('link-code-input').value = m[1];
           stopScan();
@@ -3806,6 +3827,16 @@
     });
     bindClick('link-scan', startScan);
     bindClick('profile-save', saveProfile);
+    bindClick('avatar-more', () => {
+      const grid = $('avatar-grid');
+      const btn = $('avatar-more');
+      const collapsed = grid.classList.toggle('collapsed');
+      btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      if ($('avatar-more-label')) $('avatar-more-label').textContent = collapsed ? 'إظهار المزيد' : 'إخفاء';
+      const mi = $('avatar-more-icon');
+      if (mi) mi.setAttribute('data-lucide', collapsed ? 'chevron-down' : 'chevron-up');
+      icons();
+    });
     bindClick('pin-change', changePin);
     bindClick('account-close', () => {
       // back to wherever the account was opened from (the catalogue by default)
@@ -4008,7 +4039,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.5.0';
+  const SHELL_VERSION = '1.5.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.1] — 2026-10-23
+
+### Changed
+- fix: the QR link hands the approving device all six digits; the login link is a real button with a QR icon; the avatar picker opens one row with إظهار المزيد and a «بدون» tile
+
+
 ## [1.5.0] — 2026-10-23
 
 ### Changed

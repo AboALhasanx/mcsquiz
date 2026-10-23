@@ -148,6 +148,16 @@ def run():
             check('the link code has six digits', len(code) == 6 and code.isdigit(), code)
             check('a QR is rendered for the link', p4.locator('#link-qr svg').count() == 1)
 
+            # the QR carries #/link?code=NNNNNN: opening that URL must put all six
+            # digits in the field (a \d{4} match here silently truncated it)
+            base = os.environ.get('PORTAL_BASE_URL', 'http://127.0.0.1:8081')
+            p2.goto(base + '/#/link?code=123456', wait_until='domcontentloaded')
+            p2.wait_for_timeout(2500)
+            prefill = p2.evaluate("() => (document.getElementById('link-code-input') || {}).value")
+            check('the QR link pre-fills all six digits', prefill == '123456', prefill)
+            p2.evaluate("() => { location.hash = '#/account'; }")
+            p2.wait_for_timeout(800)
+
             open_account(p2)
             p2.wait_for_selector('#account-view:not(.hidden)', timeout=12000)
             p2.evaluate("() => document.querySelector('#account-link').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
