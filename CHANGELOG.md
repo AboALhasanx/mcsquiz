@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.4] — 2026-10-23
+
+### Changed
+- sound: the mute choice is remembered across reloads (it now lives in the burger menu)
+
+
 ## [1.4.3] — 2026-10-23
 
 ### Changed

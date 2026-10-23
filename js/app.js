@@ -2565,6 +2565,7 @@
   }
   function setSound(on) {
     S.sound = !!on;
+    try { localStorage.setItem('portal_sound', S.sound ? '1' : '0'); } catch (e) {}
     syncMenuToggles();
     icons();
   }
@@ -3968,7 +3969,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.4.3';
+  const SHELL_VERSION = '1.4.4';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -4027,6 +4028,12 @@
     try {
       const savedTheme = localStorage.getItem('portal_theme');
       if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (e) {}
+    // the sound setting is a preference, not a per-visit flag: it lives in the
+    // burger menu now, so losing it on reload would be invisible and annoying
+    try {
+      const savedSound = localStorage.getItem('portal_sound');
+      if (savedSound !== null) S.sound = savedSound === '1';
     } catch (e) {}
     loadUI();
     if (S.lang === 'en') document.documentElement.setAttribute('lang', 'en');
