@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.1] — 2026-10-23
+
+### Changed
+- content: Cyber chapter 5 published (17 banks / 346 questions); precache list refreshed so offline installs pick up the new banks
+
+
 ## [1.4.0] — 2026-10-22
 
 ### Changed
