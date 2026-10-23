@@ -37,6 +37,7 @@ PATTERNS = [
     re.compile(r'^tab\d{4,}$'),
     re.compile(r'^qla\d+$'),
     re.compile(r'^qlb\d+$'),
+    re.compile(r'^lk[ab]\d+$'),
 ]
 
 
