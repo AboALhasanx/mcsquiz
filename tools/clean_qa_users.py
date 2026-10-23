@@ -118,6 +118,24 @@ def main() -> int:
                 call(key, 'DELETE', '/%s?%s=eq.%s' % (table, column, uid))
         call(key, 'DELETE', '/login_attempts?key=eq.handle:' + u['handle'])
         call(key, 'DELETE', '/portal_users?id=eq.' + u['id'])
+    # league rows left behind by a test account whose user row is gone (the
+    # "Avatar" entry the student saw). Only the names the specs use are touched.
+    TEST_NAMES = {'Avatar', 'Av2', 'Av3', 'Tick', 'Dbg', 'QA', 'Link A', 'Link B',
+                  'Sign Out', 'PIN test', 'PIN renamed', 'اسم جديد', 'طالب الاختبار'}
+    status, league = call(key, 'GET', '/league_xp?select=user_id,name')
+    if isinstance(league, list):
+        for row in league:
+            uid = str(row.get('user_id') or '')
+            bare = uid[2:] if uid.startswith('u:') else uid
+            if row.get('name') not in TEST_NAMES:
+                continue
+            st, owners = call(key, 'GET', '/portal_users?select=id&id=eq.' + bare)
+            if isinstance(owners, list) and owners:
+                continue
+            call(key, 'DELETE', '/league_xp?user_id=eq.' + uid)
+            call(key, 'DELETE', '/portal_data?user_id=eq.' + uid)
+            print('  removed the leftover league row for', row.get('name'))
+
     status, left = call(key, 'GET', '/portal_users?select=handle')
     # the suite itself spends the per-address budget; reset the dev machine's
     # counter so the next run does not start against a half-full bucket
