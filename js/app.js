@@ -3062,6 +3062,12 @@
           try { loadSaved(); } catch (e) {}
           let sync = { action: '' };
           try { sync = await C.pullOrPush(); } catch (e) { dbg('sync failed:', (e && e.message) || e); }
+          // the merge just replaced the local copy: re-read it before any screen
+          // renders, otherwise the new device shows stale/empty stats until a reload
+          try { loadSaved(); } catch (e) {}
+          if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+          if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+          updateSavedBadge(); updateMenuCounts(); updateAccountRow();
           try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) { dbg('league sync failed:', (e && e.message) || e); }
           renderLeague();
           // the account's saved questions and history are encrypted with the PIN;
@@ -3974,6 +3980,10 @@
       try {
         await C.login(acc.handle, pin, acc.name);
         const r = await C.pullOrPush();
+        try { loadSaved(); } catch (e) {}
+        if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+        if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+        updateSavedBadge(); updateMenuCounts();
         renderAccount();
         toast(r && r.action === 'needs-pin' ? 'ما زال الرمز غير صحيح' : 'تم تفعيل المزامنة على هذا الجهاز', 'success');
       } catch (e) {
@@ -3991,6 +4001,10 @@
       const C = cloud();
       try {
         const r = await C.pullOrPush();
+        try { loadSaved(); } catch (e) {}
+        if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+        if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+        updateSavedBadge(); updateMenuCounts();
         if (r && r.action === 'needs-pin') toast('بياناتك محمية — أدخل رمز الدخول على هذا الجهاز لتفعيل المزامنة', 'info');
         else toast('تمت المزامنة', 'success');
       } catch (e) { toast('تعذر المزامنة', 'error'); }
@@ -4209,7 +4223,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.6.0';
+  const SHELL_VERSION = '1.6.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

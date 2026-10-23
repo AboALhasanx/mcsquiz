@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.6.1] — 2026-10-23
+
+### Changed
+- fix: after a link or a manual sync the stats/bookmarks re-read the merged copy instead of waiting for a reload
+
+
 ## [1.6.0] — 2026-10-23
 
 ### Changed
