@@ -369,6 +369,24 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   margin-bottom: 0.9rem;
 }
 .league-me-main { flex: 1; min-width: 0; }
+.league-join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.85rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-main);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.league-join-btn:hover { background: var(--accent); color: var(--accent-ink); }
+.league-join-btn svg { width: 16px; height: 16px; }
 .league-me-name {
   font-weight: 700;
   font-size: 0.92rem;

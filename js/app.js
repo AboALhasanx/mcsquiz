@@ -3429,7 +3429,9 @@
 
     if (!linked) {
       box.innerHTML = '<div class="league-me-main"><div class="league-me-name">لست في الدوري</div>' +
-        '<div class="league-me-sub">افتح البوابة من بوت تليجرام لتظهر في الترتيب</div></div>';
+        '<div class="league-me-sub">سجّل حسابك (اسم مستخدم + رمز 4 أرقام) وتظهر في الترتيب مع زملائك</div></div>' +
+        '<button type="button" class="league-join-btn" data-action="join">' +
+        '<i data-lucide="user-plus"></i><span>سجّل حسابك</span></button>';
       icons();
       return;
     }
@@ -3943,6 +3945,15 @@
     swipeToClose('login-modal', closeLoginSheet);
     swipeToClose('link-modal', closeLinkModal);
     bindClick('account-link', () => { openLinkApprove(); });
+    // the league card offers the way in instead of naming a bot that no longer exists
+    const leagueMe = $('league-me');
+    if (leagueMe) {
+      leagueMe.addEventListener('click', (e) => {
+        const join = e.target && e.target.closest ? e.target.closest('[data-action="join"]') : null;
+        if (!join) return;
+        openLoginModal();
+      });
+    }
     bindClick('account-logout', async () => {
       // leaving an account is not a one-tap action on a shared device
       const C = cloud();
@@ -4237,7 +4248,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.6.2';
+  const SHELL_VERSION = '1.6.3';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.6.3] — 2026-10-23
+
+### Changed
+- league: the join card says sign up (the Telegram bot is gone) and opens the sign-up sheet; ROADMAP records the public player card
+
+
 ## [1.6.2] — 2026-10-23
 
 ### Changed

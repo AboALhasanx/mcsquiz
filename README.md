@@ -112,3 +112,8 @@ are scoped by row, and no third party sees anything at runtime.
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Roadmap
+
+Ideas recorded for later — see [ROADMAP.md](ROADMAP.md) (e.g. a public player
+card behind the league rows).
