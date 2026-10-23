@@ -1,0 +1,596 @@
+{
+  "topic": {
+    "ar": "دوال الهاش",
+    "en": "Hash functions"
+  },
+  "quiz_id": "Quiz_Ch04_T05_Hash_Functions",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو تسوي دالة الهاش؟",
+        "en": "What does a hash function do?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تربط مدخلاً بحجم اعتباطي بمخرج ثابت الحجم يُسمّى البصمة.",
+          "en": "It maps input of arbitrary size to a fixed-size output called a digest."
+        },
+        {
+          "ar": "تربط مدخلاً ثابت الحجم بمخرج حجمه يتغير مع المدخل.",
+          "en": "It maps fixed-size input to an output whose size varies with the input."
+        },
+        {
+          "ar": "تعيد ترتيب حروف المدخل دون تغيير طوله.",
+          "en": "It rearranges the letters of the input without changing its length."
+        },
+        {
+          "ar": "تضغط المدخل حتى يقدر يُفكّ الضغط لاحقاً.",
+          "en": "It compresses the input so it can be decompressed later."
+        }
+      ],
+      "concept_id": "hash_definition",
+      "explanation": {
+        "ar": "المدخل يقدر يكون أي رسالة بأي طول؛ والمخرج دائماً بصمة ثابتة الطول n بت.",
+        "en": "Input can be any message of arbitrary length; the output is always a fixed-length n-bit digest."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "شنو يعبّر عنه الترميز h: {0,1}* → {0,1}^n؟",
+        "en": "What does the notation h: {0,1}* → {0,1}^n express?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أن المدخل بت واحد والمخرج n بت.",
+          "en": "That the input is a single bit and the output is n bits long."
+        },
+        {
+          "ar": "أن المدخل أي سلسلة بتات بأي طول، والمخرج n بت بالضبط.",
+          "en": "That the input is any bit string of any length and the output is exactly n bits."
+        },
+        {
+          "ar": "أن المدخل n بت بالضبط، والمخرج أي سلسلة بتات بأي طول.",
+          "en": "That the input is exactly n bits and the output is any bit string of any length."
+        },
+        {
+          "ar": "أن المدخل والمخرج كلاهما n بت بالضبط.",
+          "en": "That both the input and the output are exactly n bits long."
+        }
+      ],
+      "concept_id": "hash_domain_range",
+      "explanation": {
+        "ar": "النجمة تعني صفر بت أو أكثر، فالمجال هو كل سلسلة بتات ممكنة، بينما المدى ثابت عند n بت.",
+        "en": "The star means zero or more bits, so the domain is every possible bit string while the range is fixed at n bits."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "شنو يعني أن دالة الهاش حتمية؟",
+        "en": "What does it mean that a hash function is deterministic?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "طول المخرج يتغير بتغير طول المدخل.",
+          "en": "The output length changes with the input length."
+        },
+        {
+          "ar": "المخرج ما يقدر يُتنبأ به حتى من المرسل.",
+          "en": "The output cannot be predicted even by the sender."
+        },
+        {
+          "ar": "نفس المدخل يعطي دائماً نفس المخرج.",
+          "en": "The same input always produces the same output."
+        },
+        {
+          "ar": "المدخلات المختلفة تعطي دائماً مخارج مختلفة.",
+          "en": "Different inputs always produce different outputs."
+        }
+      ],
+      "concept_id": "hash_deterministic",
+      "explanation": {
+        "ar": "الحتمية هي ما يجعل التحقق ممكناً: إعادة حساب الهاش لازم تُنتج القيمة المخزّنة.",
+        "en": "Determinism is what makes verification possible: recomputing the hash must reproduce the stored value."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو تعني مقاومة الصورة الأصلية؟",
+        "en": "What does pre-image resistance mean?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إذا عُرف x، يصعب إيجاد مدخل ثانٍ بنفس الهاش.",
+          "en": "Given x, it is hard to find a second input with the same hash."
+        },
+        {
+          "ar": "إذا عُرف x، يصعب حساب h(x) أصلاً.",
+          "en": "Given x, it is hard to compute h(x) at all."
+        },
+        {
+          "ar": "إذا عُرف مدخلان، يصعب تمييز أطولهما.",
+          "en": "Given two inputs, it is hard to tell which one is longer."
+        },
+        {
+          "ar": "إذا عُرف h(x)، يصعب إيجاد أي x يُنتجه.",
+          "en": "Given h(x), it is hard to find any x that produces it."
+        }
+      ],
+      "concept_id": "hash_preimage_resistance",
+      "explanation": {
+        "ar": "مقاومة الصورة الأصلية هي الخاصية الأحادية الاتجاه: البصمة لا تكشف الرسالة.",
+        "en": "Pre-image resistance is the one-way property: the digest does not reveal the message."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ضد شنو تحمي مقاومة الصورة الأصلية الثانية؟",
+        "en": "What does second pre-image resistance protect against?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "استعادة المفتاح السري المستخدم لحساب الهاش.",
+          "en": "Recovering the secret key used to compute the hash."
+        },
+        {
+          "ar": "إيجاد رسالة مختلفة y تعطي نفس قيمة هاش x.",
+          "en": "Finding a different message y that hashes to the same value as x."
+        },
+        {
+          "ar": "إيجاد الرسالة الأصلية مباشرة من قيمة الهاش.",
+          "en": "Finding the original message directly from its hash value."
+        },
+        {
+          "ar": "إنتاج مخرجين مختلفين من مدخل واحد.",
+          "en": "Producing two different outputs from one single input."
+        }
+      ],
+      "concept_id": "hash_second_preimage",
+      "explanation": {
+        "ar": "بالنسبة إلى x معيّن، لازم ما يقدر المهاجم يجد y ≠ x بحيث h(y) = h(x).",
+        "en": "Given a specific x, an attacker must not be able to find y ≠ x with h(y) = h(x)."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف تختلف مقاومة التصادم عن مقاومة الصورة الأصلية الثانية؟",
+        "en": "How does collision resistance differ from second pre-image resistance?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مقاومة التصادم تتعلق بطول المخرج، ومقاومة الصورة الأصلية الثانية تتعلق بالسرعة.",
+          "en": "Collision resistance is about output length, while second pre-image resistance is about speed."
+        },
+        {
+          "ar": "ما كو فرق؛ الخاصيتان هما المطلب نفسه.",
+          "en": "There is no difference; the two properties are the same requirement."
+        },
+        {
+          "ar": "مقاومة التصادم تخصّ أي مدخلين، أما مقاومة الصورة الأصلية الثانية فتخصّ مدخلاً معطى محدداً.",
+          "en": "Collision resistance concerns any two inputs, while second pre-image resistance concerns a fixed given input."
+        },
+        {
+          "ar": "مقاومة التصادم تخصّ مدخلاً معطى محدداً، أما مقاومة الصورة الأصلية الثانية فتخصّ أي مدخلين.",
+          "en": "Collision resistance concerns a fixed given input, while second pre-image resistance concerns any two inputs."
+        }
+      ],
+      "concept_id": "hash_collision_resistance",
+      "explanation": {
+        "ar": "مقاومة الصورة الأصلية الثانية تنطلق من رسالة واحدة محددة؛ أما مقاومة التصادم فتتيح للمهاجم اختيار الرسالتين بحرية.",
+        "en": "Second pre-image resistance starts from one specified message; collision resistance lets the attacker choose both messages freely."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "شنو تأثير الانهيار الجليدي؟",
+        "en": "What is the avalanche effect?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تغيير صغير بالمدخل ينتج تغييراً صغيراً بالمخرج.",
+          "en": "A small change in the input produces a small change in the output."
+        },
+        {
+          "ar": "طول المخرج ينمو بنمو المدخل.",
+          "en": "The output length grows as the input grows."
+        },
+        {
+          "ar": "نفس المدخل ينتج مخارج مختلفة في كل تشغيل.",
+          "en": "The same input produces different outputs on each run."
+        },
+        {
+          "ar": "تغيير صغير بالمدخل ينتج مخرجاً مختلفاً جذرياً.",
+          "en": "A small change in the input produces a drastically different output."
+        }
+      ],
+      "concept_id": "hash_avalanche",
+      "explanation": {
+        "ar": "لأن قلب بت واحد يغيّر البصمة بالكامل، فالرسائل المتقاربة ما تشترك أبداً بهاشات متشابهة.",
+        "en": "Because a single flipped bit changes the whole digest, nearby messages never share similar hashes."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي هذه ليست من الخصائص الخمس للهاش الآمن؟",
+        "en": "Which of these is NOT one of the five properties of a secure hash?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "القابلية للعكس، حتى تُستعاد الرسالة الأصلية من البصمة.",
+          "en": "Reversibility, so the original message can be recovered from the digest."
+        },
+        {
+          "ar": "الحتمية، فنفس المدخل يعطي دائماً نفس المخرج.",
+          "en": "Determinism, so the same input always gives the same output."
+        },
+        {
+          "ar": "مقاومة التصادم، فمدخلان لا يشتركان ببصمة.",
+          "en": "Collision resistance, so two inputs cannot share a digest."
+        },
+        {
+          "ar": "تأثير الانهيار الجليدي، فتغيير صغير يغيّر المخرج كله.",
+          "en": "The avalanche effect, so a small change alters the whole output."
+        }
+      ],
+      "concept_id": "hash_five_properties",
+      "explanation": {
+        "ar": "الخصائص الخمس هي الحتمية، ومقاومة الصورة الأصلية، ومقاومة الصورة الأصلية الثانية، ومقاومة التصادم، وتأثير الانهيار الجليدي. والقابلية للعكس عكس المطلوب.",
+        "en": "The five are determinism, pre-image resistance, second pre-image resistance, collision resistance and the avalanche effect. Reversibility is the opposite of what is wanted."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ليش تصادمات الهاش حتمية رياضياً؟",
+        "en": "Why are hash collisions mathematically unavoidable?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن الخوارزمية تطبّق عدداً ثابتاً من الجولات.",
+          "en": "Because the algorithm applies a fixed number of rounds."
+        },
+        {
+          "ar": "لأن المدخل مقيّد بعدد ثابت من البتات.",
+          "en": "Because the input is limited to a fixed number of bits."
+        },
+        {
+          "ar": "لأن عدداً لا نهائياً من المدخلات لازم يُربط بمخارج محدودة العدد.",
+          "en": "Because infinitely many inputs must map into finitely many outputs."
+        },
+        {
+          "ar": "لأن البصمة أقصر دائماً من المفتاح المستخدم.",
+          "en": "Because the digest is always shorter than the key used."
+        }
+      ],
+      "concept_id": "hash_pigeonhole",
+      "explanation": {
+        "ar": "بحكم مبدأ الحمّام، المجال اللانهائي والمدى المحدود يفرضان تصادمات؛ الهاش الجيد يخليها فقط غير مجدية حسابياً.",
+        "en": "By the pigeonhole principle an infinite domain and a finite range force collisions; a good hash only makes them computationally infeasible."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي وصف يطابق SHA-256؟",
+        "en": "Which description matches SHA-256?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "من عائلة SHA-3 بمخرج 256-bit، تُستخدم بالبلوكتشين و TLS والشهادات.",
+          "en": "A member of the SHA-3 family with a 256-bit output, used in blockchain, TLS and certificates."
+        },
+        {
+          "ar": "من عائلة SHA-2 بمخرج 128-bit، تُستخدم بالبلوكتشين و TLS والشهادات.",
+          "en": "A member of the SHA-2 family with a 128-bit output, used in blockchain, TLS and certificates."
+        },
+        {
+          "ar": "من عائلة SHA-1 بمخرج 256-bit، تُستخدم بالبلوكتشين و TLS والشهادات.",
+          "en": "A member of the SHA-1 family with a 256-bit output, used in blockchain, TLS and certificates."
+        },
+        {
+          "ar": "من عائلة SHA-2 بمخرج 256-bit، تُستخدم بالبلوكتشين و TLS والشهادات.",
+          "en": "A member of the SHA-2 family with a 256-bit output, used in blockchain, TLS and certificates."
+        }
+      ],
+      "concept_id": "hash_sha256",
+      "explanation": {
+        "ar": "SHA-256 تنتمي إلى عائلة SHA-2 وتنتج بصمة بطول 256 بت.",
+        "en": "SHA-256 belongs to the SHA-2 family and produces a 256-bit digest."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "شنو يميّز SHA-3 كما يصفه الفصل؟",
+        "en": "What distinguishes SHA-3 as the chapter describes it?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تستخدم بنية فايستل وتقاوم هجمات القناة الجانبية.",
+          "en": "It uses a Feistel construction and resists side-channel attacks."
+        },
+        {
+          "ar": "تستخدم بنية إسفنجية وتقاوم هجمات تمديد الطول.",
+          "en": "It uses a sponge construction and resists length extension attacks."
+        },
+        {
+          "ar": "تستخدم بنية فايستل وتقاوم هجمات التوقيت.",
+          "en": "It uses a Feistel construction and resists timing attacks."
+        },
+        {
+          "ar": "تستخدم بنية إسفنجية وتقاوم البحث الشامل على المفاتيح.",
+          "en": "It uses a sponge construction and resists brute-force key search."
+        }
+      ],
+      "concept_id": "hash_sha3_keccak",
+      "explanation": {
+        "ar": "SHA-3 هي Keccak، مبنية على البنية الإسفنجية، ومقاومة لهجمات تمديد الطول.",
+        "en": "SHA-3 is Keccak, built on a sponge construction, and it is resistant to length extension attacks."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي خوارزميتي هاش يسمّيهما الفصل غير آمنتين؟",
+        "en": "Which hash algorithms does the chapter call insecure?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "SHA-2 و SHA-3.",
+          "en": "SHA-2 and SHA-3."
+        },
+        {
+          "ar": "MD5 و SHA-256.",
+          "en": "MD5 and SHA-256."
+        },
+        {
+          "ar": "MD5 و SHA-1.",
+          "en": "MD5 and SHA-1."
+        },
+        {
+          "ar": "SHA-256 و SHA-3.",
+          "en": "SHA-256 and SHA-3."
+        }
+      ],
+      "concept_id": "hash_broken_algorithms",
+      "explanation": {
+        "ar": "MD5 و SHA-1 كلتاهما مكسورة بتصادمات عملية، فلا يجوز استخدام أي منهما.",
+        "en": "MD5 and SHA-1 have both been broken by practical collisions, so neither should be used."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ليش الأنظمة تخزّن هاش كلمة المرور بدل كلمة المرور نفسها؟",
+        "en": "Why do systems store a hash of a password instead of the password itself?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حتى اختراق البيانات المخزّنة لا يكشف كلمات المرور مباشرة.",
+          "en": "So that a breach of the stored data does not directly reveal the passwords."
+        },
+        {
+          "ar": "حتى تقدر كلمة المرور تُستعاد لاحقاً عندما ينساها المستخدم.",
+          "en": "So that the password can be recovered later when the user forgets it."
+        },
+        {
+          "ar": "حتى تقدر كلمة المرور تُقارن دون أي حساب.",
+          "en": "So that the password can be compared without any computation."
+        },
+        {
+          "ar": "حتى مستخدمان لهما نفس كلمة المرور يحصلان على نفس القيمة المخزّنة.",
+          "en": "So that two users with the same password get the same stored value."
+        }
+      ],
+      "concept_id": "hash_password_storage",
+      "explanation": {
+        "ar": "النظام يهشّش كلمة المرور المُدخلة ويقارنها بالبصمة المخزّنة، فما حاجة أبداً للاحتفاظ بالنص الصريح.",
+        "en": "The system hashes the supplied password and compares it with the stored digest, so the plaintext never has to be kept."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "شنو الغرض من إضافة الملح قبل هش كلمة المرور؟",
+        "en": "What is the purpose of adding a salt before hashing a password?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يقصّر البصمة حتى تلائم عموداً بقاعدة البيانات.",
+          "en": "It shortens the digest so it fits in a database column."
+        },
+        {
+          "ar": "يسمح للنظام باستعادة كلمة المرور من البصمة لاحقاً.",
+          "en": "It lets the system recover the password from the digest later."
+        },
+        {
+          "ar": "يجعل الهاش حتمياً عبر مختلف المستخدمين.",
+          "en": "It makes the hash deterministic across different users."
+        },
+        {
+          "ar": "يُبطل هجمات جداول القوس قزح بجعل كل هاش مخزّن فريداً.",
+          "en": "It defeats rainbow-table attacks by making each stored hash unique."
+        }
+      ],
+      "concept_id": "hash_salt_rainbow",
+      "explanation": {
+        "ar": "الملح قيمة عشوائية تُضاف قبل الهاش، فمستخدمان لهما نفس كلمة المرور يحصلان مع ذلك على بصمتين مختلفتين، وتتوقف الجداول المحسوبة مسبقاً عن العمل.",
+        "en": "A salt is a random value appended before hashing, so two users with the same password still get different digests and precomputed tables stop working."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "حسب الفصل، ما هي بصمة SHA-256 للسلسلة password123؟",
+        "en": "According to the chapter, what is the SHA-256 digest of the string password123?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بصمة تبدأ بـ 0e1d2c3b.",
+          "en": "A digest beginning with 0e1d2c3b."
+        },
+        {
+          "ar": "بصمة تبدأ بـ ef92b778.",
+          "en": "A digest beginning with ef92b778."
+        },
+        {
+          "ar": "بصمة تبدأ بـ 5f4dcc3b.",
+          "en": "A digest beginning with 5f4dcc3b."
+        },
+        {
+          "ar": "بصمة تبدأ بـ a1b2c3d4.",
+          "en": "A digest beginning with a1b2c3d4."
+        }
+      ],
+      "concept_id": "hash_password_example",
+      "explanation": {
+        "ar": "الفصل يعطي بصمة SHA-256 للسلسلة password123 وهي ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f.",
+        "en": "The chapter gives the SHA-256 digest of password123 as ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "كيف يسمح الهاش للمستخدم بالتحقق من تحديث برمجي مُنزَّل؟",
+        "en": "How does a hash let a user verify a downloaded software update?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المستخدم يعيد حساب الهاش ويتحقق من مطابقته للقيمة المنشورة.",
+          "en": "The user recomputes the hash and checks it matches the published value."
+        },
+        {
+          "ar": "المستخدم يفكّ تشفير التحديث بالهاش المنشور كمفتاح.",
+          "en": "The user decrypts the update with the published hash as the key."
+        },
+        {
+          "ar": "المستخدم يقارن حجم الملف بقيمة الهاش المنشورة.",
+          "en": "The user compares the file size against the published hash value."
+        },
+        {
+          "ar": "المستخدم يرسل الهاش إلى الخادم ويستعيد الملف.",
+          "en": "The user sends the hash to the server and receives the file back."
+        }
+      ],
+      "concept_id": "hash_file_integrity",
+      "explanation": {
+        "ar": "التحديثات تُوزَّع مع قيم هاش؛ والاختلاف يعني أن الملف تعرّض للتلاعب أثناء التنزيل.",
+        "en": "Updates are distributed with hash values; a mismatch means the file was tampered with during download."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "كيف تمنح الهاشات سلسلة الكتل خاصية عدم قابليتها للتغيير؟",
+        "en": "How do hashes give a blockchain its immutability?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كل كتلة تُشفَّر بمفتاح مشتق من الكتلة التالية.",
+          "en": "Each block is encrypted with a key derived from the next block."
+        },
+        {
+          "ar": "كل كتلة يوقّعها كل عقدة بالشبكة قبل إضافتها.",
+          "en": "Each block is signed by every node in the network before it is added."
+        },
+        {
+          "ar": "كل كتلة تخزّن هاش الكتلة التي تليها، فالسلسلة تُقرأ للخلف فقط.",
+          "en": "Each block stores the hash of the block that follows it, so the chain can only be read backwards."
+        },
+        {
+          "ar": "كل كتلة تحمل هاش الكتلة السابقة، فتغيير كتلة واحدة يغيّر كل ما بعدها.",
+          "en": "Each block contains the hash of the previous block, so altering one block alters all that follow."
+        }
+      ],
+      "concept_id": "hash_blockchain_immutability",
+      "explanation": {
+        "ar": "لأن كل كتلة تشير إلى هاش سابقتها، فتلاعب بكتلة واحدة يغيّر كل هاش لاحق ويجعل الغش ظاهراً.",
+        "en": "Because each block references its predecessor's hash, tampering with one block changes every subsequent hash and makes the fraud evident."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "ليش توصف دالة الهاش بأنها أحادية الاتجاه؟",
+        "en": "Why is a hash function described as one-way?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن الدالة تقبل مدخلاً واحداً في كل مرة.",
+          "en": "Because the function accepts only one input at a time."
+        },
+        {
+          "ar": "لأن البصمة أقصر دائماً من الرسالة.",
+          "en": "Because the digest is always shorter than the message."
+        },
+        {
+          "ar": "لأن الرسالة الأصلية ما تقدر تُعاد من البصمة.",
+          "en": "Because the original message cannot be reconstructed from the digest."
+        },
+        {
+          "ar": "لأن البصمة تُحسب مرة واحدة فقط لكل رسالة.",
+          "en": "Because the digest can be computed only once per message."
+        }
+      ],
+      "concept_id": "hash_one_way",
+      "explanation": {
+        "ar": "مقاومة الصورة الأصلية هي ما يجعل الدالة أحادية الاتجاه: البصمة لا تحمل معلومات كافية لإعادة بناء المدخل.",
+        "en": "Pre-image resistance is what makes the function one-way: the digest does not carry enough information to rebuild the input."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T06:41:39Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,788 @@
+{
+  "topic": {
+    "ar": "بروتوكول HTTPS ومصافحة TLS والتطبيقات الواقعية",
+    "en": "HTTPS, TLS and Real-World Applications"
+  },
+  "quiz_id": "Quiz_Ch04_T08_HTTPS_TLS_And_Applications",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو هو HTTPS؟",
+        "en": "What is HTTPS?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "HTTP مضافاً إليه جهة إصدار شهادات.",
+          "en": "HTTP combined with a certificate authority."
+        },
+        {
+          "ar": "HTTP مضافاً إليه توقيع رقمي.",
+          "en": "HTTP combined with a digital signature."
+        },
+        {
+          "ar": "HTTP مضافاً إليه SSL/TLS.",
+          "en": "HTTP combined with SSL/TLS."
+        },
+        {
+          "ar": "HTTP مضافاً إليه شيفرة متماثلة فقط.",
+          "en": "HTTP combined with a symmetric cipher only."
+        }
+      ],
+      "concept_id": "https_definition",
+      "explanation": {
+        "ar": "الـ HTTPS، أو HTTP Secure، هو ببساطة HTTP فوق بروتوكولات SSL/TLS.",
+        "en": "HTTPS, or HTTP Secure, is simply HTTP layered on top of the SSL/TLS protocols."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة خصائص يوفّرها TLS؟",
+        "en": "Which set of properties does TLS provide?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "السرية والسلامة والأصالة.",
+          "en": "Confidentiality, integrity and authentication."
+        },
+        {
+          "ar": "السرية والتوافر والقابلية للتوسع.",
+          "en": "Confidentiality, availability and scalability."
+        },
+        {
+          "ar": "السلامة وإخفاء الهوية وعدم الإنكار.",
+          "en": "Integrity, anonymity and non-repudiation."
+        },
+        {
+          "ar": "الأصالة والضغط والتكرار.",
+          "en": "Authentication, compression and redundancy."
+        }
+      ],
+      "concept_id": "tls_provides",
+      "explanation": {
+        "ar": "الـ TLS يوفّر السرية عبر التشفير المتماثل، والسلامة عبر الهاشات و MACs، والأصالة عبر الشهادات والـ PKI.",
+        "en": "TLS delivers confidentiality through symmetric encryption, integrity through hashes and MACs, and authentication through certificates and PKI."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "بالـ TLS، شنو يُستخدم التشفير غير المتماثل؟",
+        "en": "In TLS, what is asymmetric cryptography used for?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تشفير معظم بيانات التطبيق.",
+          "en": "Encrypting the bulk of the application data."
+        },
+        {
+          "ar": "ضغط الجلسة قبل الإرسال.",
+          "en": "Compressing the session before transmission."
+        },
+        {
+          "ar": "توليد بصمة كل رسالة.",
+          "en": "Generating the digest of every message."
+        },
+        {
+          "ar": "المصادقة وتبادل المفاتيح.",
+          "en": "Authentication and key exchange."
+        }
+      ],
+      "concept_id": "tls_hybrid_asymmetric_role",
+      "explanation": {
+        "ar": "الـ TLS نظام هجين: التشفير غير المتماثل يتولّى المصادقة وتبادل المفاتيح، والشيفرة المتماثلة السريعة تتولّى البيانات نفسها.",
+        "en": "TLS is a hybrid cryptosystem: asymmetric cryptography handles authentication and key exchange, while the fast symmetric cipher handles the data itself."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ليش يستخدم TLS التشفير المتماثل بمرحلة البيانات؟",
+        "en": "Why does TLS use symmetric cryptography for the data phase?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأنه يوفّر عدم إنكار لكل رسالة.",
+          "en": "Because it provides non-repudiation for every message."
+        },
+        {
+          "ar": "لأنه أسرع بكثير ويناسب تشفير الحجم الكبير.",
+          "en": "Because it is far faster and suits bulk encryption."
+        },
+        {
+          "ar": "لأنه يُلغي الحاجة إلى أي شهادة.",
+          "en": "Because it removes the need for any certificate."
+        },
+        {
+          "ar": "لأنه يشتغل بدون مفتاح جلسة مشترك.",
+          "en": "Because it works without a shared session key."
+        }
+      ],
+      "concept_id": "tls_hybrid_symmetric_role",
+      "explanation": {
+        "ar": "العمليات غير المتماثلة قوية بس بطيئة، فاليها TLS يستخدمها بس للاتفاق على مفتاح الجلسة، وبعدها يشفّر البيانات بشيفرة متماثلة سريعة مثل AES أو ChaCha20.",
+        "en": "Asymmetric operations are strong but slow, so TLS uses them only to agree on a session key and then encrypts the bulk data with a fast symmetric cipher such as AES or ChaCha20."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "شنو يصير برسالة ClientHello؟",
+        "en": "What happens in the ClientHello message?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الطرفان يحسبان مفتاح الجلسة المتماثل.",
+          "en": "Both parties compute the symmetric session key."
+        },
+        {
+          "ar": "المتصفح يرسل شهادته X.509.",
+          "en": "The browser sends its own X.509 certificate."
+        },
+        {
+          "ar": "المتصفح يعدّد الخوارزميات اللي يدعمها.",
+          "en": "The browser lists the cipher suites it supports."
+        },
+        {
+          "ar": "السيرفر يختار مجموعة الخوارزميات ويوقّعها.",
+          "en": "The server selects the cipher suite and signs it."
+        }
+      ],
+      "concept_id": "handshake_step1",
+      "explanation": {
+        "ar": "في ClientHello يقول المتصفح للسيرفر أي الخوارزميات — مجموعات الخوارزميات — يدعمها.",
+        "en": "In ClientHello the browser tells the server which cryptographic algorithms — the cipher suites — it supports."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "شنو يرسل السيرفر بالخطوة الثانية من المصافحة؟",
+        "en": "What does the server send in the second step of the handshake?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "شهادته X.509، اللي تحتوي مفتاحه العام وموقّعة من CA.",
+          "en": "Its X.509 certificate, containing its public key and signed by a CA."
+        },
+        {
+          "ar": "مفتاحه الخاص، حتى يقدر العميل يفكّ تشفير الجلسة.",
+          "en": "Its private key, so the client can decrypt the session."
+        },
+        {
+          "ar": "مفتاح متماثل مشفّراً بالمفتاح العام للعميل.",
+          "en": "A symmetric key encrypted with the client's public key."
+        },
+        {
+          "ar": "قائمة بكل شهادة أصدرها بالسابق.",
+          "en": "A list of every certificate it has ever issued."
+        }
+      ],
+      "concept_id": "handshake_step2",
+      "explanation": {
+        "ar": "في ServerHello يختار السيرفر الخوارزميات ويرسل شهادته X.509، اللي تحتوي مفتاحه العام وتحمل توقيع الـ CA.",
+        "en": "In ServerHello the server selects the algorithms and sends its X.509 certificate, which holds the server's public key and carries the CA's signature."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "بمصافحة RSA القديمة، كيف يُنشأ مفتاح الجلسة؟",
+        "en": "In the legacy RSA handshake, how is the session key established?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "السيرفر يشفّره بالمفتاح العام للعميل.",
+          "en": "The server encrypts it with the client's public key."
+        },
+        {
+          "ar": "الطرفان يشتقّانه من كلمة مرور مشتركة.",
+          "en": "Both parties derive it from a shared password."
+        },
+        {
+          "ar": "جهة إصدار الشهادات تولّده وتوقّعه.",
+          "en": "The certificate authority generates it and signs it."
+        },
+        {
+          "ar": "العميل يشفّره بالمفتاح العام للسيرفر.",
+          "en": "The client encrypts it with the server's public key."
+        }
+      ],
+      "concept_id": "handshake_step3_rsa",
+      "explanation": {
+        "ar": "بالمصافحة RSA القديمة يشفّر العميل مفتاح الجلسة بالمفتاح العام للسيرفر، فما يقدر يستعيده إلا السيرفر.",
+        "en": "In the legacy RSA handshake the client encrypts the session key with the server's public key, so only the server can recover it."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "شنو يميّز مصافحة ECDHE الحديثة عن مصافحة RSA القديمة؟",
+        "en": "What distinguishes the modern ECDHE handshake from the legacy RSA one?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جهة إصدار الشهادات توزّع مفتاح الجلسة على الطرفين.",
+          "en": "A certificate authority distributes the session key to both parties."
+        },
+        {
+          "ar": "الطرفان يشتقّان مفتاح الجلسة عبر تبادل منحنيات إهليلجية مؤقّت.",
+          "en": "Both parties derive the session key through an ephemeral elliptic-curve exchange."
+        },
+        {
+          "ar": "السيرفر يرسل مفتاحه الخاص حتى يشفّر العميل مباشرة.",
+          "en": "The server sends its private key so the client can encrypt directly."
+        },
+        {
+          "ar": "العميل يرسل شهادته حتى يصادق السيرفر عليه.",
+          "en": "The client sends its certificate so the server can authenticate it."
+        }
+      ],
+      "concept_id": "handshake_step3_ecdhe",
+      "explanation": {
+        "ar": "بالمصافحة ECDHE الحديثة يسوي العميل والسيرفر تبادل منحنيات إهليلجية مؤقّت باش يشتقّون مفتاح جلسة مشترك، وهالشي يعطي أيضاً سرية تقدّمية.",
+        "en": "In the modern ECDHE handshake the client and server perform an Elliptic Curve Diffie-Hellman Ephemeral exchange to derive a shared session key, which also gives forward secrecy."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "بعد ما يُنشأ مفتاح الجلسة، أي شيفرة تشفّر البيانات؟",
+        "en": "Once the session key is established, which cipher encrypts the data?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "دالة هاش مثل SHA-256.",
+          "en": "A hash function such as SHA-256."
+        },
+        {
+          "ar": "خوارزمية توقيع مثل ECDSA.",
+          "en": "A signature algorithm such as ECDSA."
+        },
+        {
+          "ar": "شيفرة متماثلة مثل AES أو ChaCha20.",
+          "en": "A symmetric cipher such as AES or ChaCha20."
+        },
+        {
+          "ar": "شيفرة غير متماثلة مثل RSA أو ECC.",
+          "en": "An asymmetric cipher such as RSA or ECC."
+        }
+      ],
+      "concept_id": "handshake_step4",
+      "explanation": {
+        "ar": "بعد تبادل المفاتيح يحسب الطرفان نفس مفتاح الجلسة المتماثل، وشيفرة متماثلة مثل AES أو ChaCha20 هي اللي تنقل البيانات.",
+        "en": "After the key exchange both parties compute the same symmetric session key, and a symmetric cipher such as AES or ChaCha20 carries the data."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي ترتيب لخطوات مصافحة TLS صحيح؟",
+        "en": "Which ordering of the TLS handshake steps is correct?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ClientHello، ثم ServerHello والشهادة، ثم تبادل المفاتيح، ثم مفتاح الجلسة، ثم الحركة المشفّرة.",
+          "en": "ClientHello, ServerHello and certificate, key exchange, session key, encrypted traffic."
+        },
+        {
+          "ar": "ServerHello، ثم ClientHello، ثم مفتاح الجلسة، ثم تبادل المفاتيح، ثم الحركة المشفّرة.",
+          "en": "ServerHello, ClientHello, session key, key exchange, encrypted traffic."
+        },
+        {
+          "ar": "ClientHello، ثم تبادل المفاتيح، ثم ServerHello والشهادة، ثم مفتاح الجلسة، ثم الحركة المشفّرة.",
+          "en": "ClientHello, key exchange, ServerHello and certificate, session key, encrypted traffic."
+        },
+        {
+          "ar": "ClientHello، ثم ServerHello والشهادة، ثم مفتاح الجلسة، ثم تبادل المفاتيح، ثم الحركة المشفّرة.",
+          "en": "ClientHello, ServerHello and certificate, session key, key exchange, encrypted traffic."
+        }
+      ],
+      "concept_id": "handshake_order",
+      "explanation": {
+        "ar": "الترتيب ثابت: العميل يسلّم أولاً، السيرفر يرد بشهادته، يتبادل الطرفان مواد المفتاح، يُشتق مفتاح الجلسة، وبعدها بس تبدأ الحركة المشفّرة.",
+        "en": "The order is fixed: the client greets first, the server answers with its certificate, the two exchange key material, the session key is derived, and only then does encrypted traffic flow."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "شنو دور الشهادات داخل مصافحة TLS؟",
+        "en": "What role do certificates play inside the TLS handshake?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تشفّر معظم بيانات التطبيق.",
+          "en": "They encrypt the bulk of the application data."
+        },
+        {
+          "ar": "تولّد مفتاح الجلسة على الطرفين.",
+          "en": "They generate the session key on both sides."
+        },
+        {
+          "ar": "تضغط الحركة قبل الإرسال.",
+          "en": "They compress the traffic before transmission."
+        },
+        {
+          "ar": "توفّر الثقة بهوية السيرفر.",
+          "en": "They provide trust in the identity of the server."
+        }
+      ],
+      "concept_id": "tls_pki_role",
+      "explanation": {
+        "ar": "الشهادات، المدعومة بالـ PKI، هي اللي تخلي العميل يثق إنه يتكلّم مع السيرفر الحقيقي مو مع منتحل.",
+        "en": "Certificates, backed by PKI, are what let the client trust that it is talking to the real server and not to an impostor."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "جلسة تستخدم AES-256 و ECDHE-256 و SHA-256. شنو مستوى أمنها الفعلي؟",
+        "en": "A session uses AES-256, ECDHE-256 and SHA-256. What is its effective security level?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "192 بت، لأن المتوسط للثلاثة يُؤخذ.",
+          "en": "192 bits, because the average of the three is taken."
+        },
+        {
+          "ar": "128 بت، لأن الهاش هو المكوّن الأضعف.",
+          "en": "128 bits, because the hash is the weakest component."
+        },
+        {
+          "ar": "256 بت، لأن الشيفرة هي المكوّن الأقوى.",
+          "en": "256 bits, because the cipher is the strongest component."
+        },
+        {
+          "ar": "640 بت، لأن المستويات الثلاثة تُجمع.",
+          "en": "640 bits, because the three levels are added together."
+        }
+      ],
+      "concept_id": "tls_weakest_link",
+      "explanation": {
+        "ar": "مستوى الجلسة هو الأدنى بين مستويي التشفير المتماثل وغير المتماثل ومستوى الهاش، فـ SHA-256 — مقاومة تصادمها 128 بت — تحدّ الجلسة بـ 128 بت مو 256.",
+        "en": "The session level is the minimum of the symmetric, asymmetric and hash levels, so SHA-256 — whose collision resistance is 128 bits — caps the session at 128 bits, not 256."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "أي عبارة عن TLS 1.3 صحيحة؟",
+        "en": "Which statement about TLS 1.3 is correct?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يحذف الشهادات من المصافحة بالكامل.",
+          "en": "It removes certificates from the handshake entirely."
+        },
+        {
+          "ar": "يستبدل التشفير المتماثل بغير متماثل صرف.",
+          "en": "It replaces symmetric encryption with pure asymmetric."
+        },
+        {
+          "ar": "يفرض السرية التقدّمية ويحذف الخوارزميات القديمة.",
+          "en": "It mandates forward secrecy and removes legacy algorithms."
+        },
+        {
+          "ar": "يفرض شيفرة RC4 وبصمات MD5.",
+          "en": "It mandates the RC4 cipher and MD5 digests."
+        }
+      ],
+      "concept_id": "tls_evolution",
+      "explanation": {
+        "ar": "TLS 1.3 يفرض السرية التقدّمية عبر ECDHE، ويحذف الخوارزميات القديمة، ويعطي مصافحات أسرع؛ و SSL 2.0/3.0 و TLS 1.0/1.1 مهجورة بسبب خوارزميات ضعيفة مثل RC4 و MD5.",
+        "en": "TLS 1.3 mandates forward secrecy through ECDHE, removes legacy algorithms, and produces faster handshakes; SSL 2.0/3.0 and TLS 1.0/1.1 were deprecated because of weak ciphers such as RC4 and MD5."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "شنو يبيّن اختراق جهة إصدار شهادات تركية سنة 2011 عن أمن البنوك؟",
+        "en": "What does the 2011 Turkish certificate authority compromise show about banking security?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حتى الخوارزميات القوية تفشل لو حوكمة PKI ضعيفة.",
+          "en": "Even strong algorithms fail if PKI governance is weak."
+        },
+        {
+          "ar": "AES-256 ضعيف جداً على المعاملات البنكية.",
+          "en": "AES-256 is too weak for banking transactions."
+        },
+        {
+          "ar": "على البنوك تترك TLS لصالح بروتوكولات خاصة.",
+          "en": "Banks should abandon TLS for proprietary protocols."
+        },
+        {
+          "ar": "شهادات ECC أقل أماناً من شهادات RSA.",
+          "en": "ECC certificates are less secure than RSA certificates."
+        }
+      ],
+      "concept_id": "banking_failure_case",
+      "explanation": {
+        "ar": "اختُرقت جهة إصدار تركية سنة 2011، فهذا مكّن هجمات الوسيط على مواقع بنكية — درس الفصل إن حتى الخوارزميات القوية تفشل لو حوكمة PKI ضعيفة.",
+        "en": "A Turkish CA was compromised in 2011, enabling MITM attacks on banking websites — the chapter's lesson is that even strong algorithms fail when PKI governance is weak."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "أي من هاي يضمنه TLS بمعاملة تجارة إلكترونية؟",
+        "en": "Which of these does TLS guarantee for an e-commerce transaction?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إن بطاقة ائتمان المشتري ما تُخزَّن بأي مكان.",
+          "en": "That the buyer's credit card is never stored anywhere."
+        },
+        {
+          "ar": "إن عمولة المعاملة يدفعها التاجر.",
+          "en": "That the transaction fee is paid by the merchant."
+        },
+        {
+          "ar": "إن البضاعة توصل خلال مدة محددة.",
+          "en": "That the goods are delivered within a fixed period."
+        },
+        {
+          "ar": "إن هوية التاجر موثّقة بالشهادة.",
+          "en": "That the merchant's identity is verified by a certificate."
+        }
+      ],
+      "concept_id": "ecommerce_guarantees",
+      "explanation": {
+        "ar": "بالتجارة الإلكترونية، يضمن TLS إن تفاصيل بطاقة الائتمان مشفّرة، وإن هوية التاجر موثّقة بالشهادة، وإن المعاملات ما تتحوّل أثناء النقل.",
+        "en": "For e-commerce, TLS ensures that credit card details are encrypted, that the merchant's identity is verified by certificate, and that transactions cannot be modified in transit."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "ليش يقول الفصل إن جلسة TLS بـ 128 بت تقاوم الهجوم الشامل لأسباب اقتصادية؟",
+        "en": "Why does the chapter say a 128-bit TLS session resists brute-force attack on economic grounds?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن مفتاح الجلسة يتغير بعد كل حزمة.",
+          "en": "Because the session key changes after every packet."
+        },
+        {
+          "ar": "لأن كلفة الهجوم تتجاوز قيمة أي احتيال.",
+          "en": "Because the cost of the attack exceeds the value of any fraud."
+        },
+        {
+          "ar": "لأن المهاجم ما عنده الشهادة حتى يبدأ.",
+          "en": "Because the attacker lacks the certificate to begin."
+        },
+        {
+          "ar": "لأن التاجر يقدر يرفض فكّ التشفير.",
+          "en": "Because the merchant can simply refuse to decrypt."
+        }
+      ],
+      "concept_id": "ecommerce_economic",
+      "explanation": {
+        "ar": "الحجة الاقتصادية إن الكلفة المتوقعة للمهاجم أكبر من قيمة الاحتيال المحتملة، فالهجوم ما له معنى حتى لو كان ممكناً نظرياً.",
+        "en": "The economic argument is that the attacker's expected cost is greater than the potential fraud value, so the attack makes no sense even if it is theoretically possible."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "شلون يختلف PGP و S/MIME بموديل الثقة؟",
+        "en": "How do PGP and S/MIME differ in their trust model?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "كلاهما يعتمد حصرياً على جهات إصدار الشهادات.",
+          "en": "Both rely exclusively on certificate authorities."
+        },
+        {
+          "ar": "كلاهما يعتمد حصرياً على توقيع المستخدمين مفاتيح بعضهم.",
+          "en": "Both rely exclusively on users signing each other's keys."
+        },
+        {
+          "ar": "PGP يستخدم شبكة ثقة، و S/MIME يعتمد على PKI.",
+          "en": "PGP uses a web of trust, while S/MIME relies on PKI."
+        },
+        {
+          "ar": "PGP يعتمد على PKI، و S/MIME يستخدم شبكة ثقة.",
+          "en": "PGP relies on PKI, while S/MIME uses a web of trust."
+        }
+      ],
+      "concept_id": "email_pgp_vs_smime",
+      "explanation": {
+        "ar": "المعياران للبريد الآمن يختلفان بمصدر الثقة: PGP يستخدم موديل شبكة الثقة اللي يوقّع الناس فيها مفاتيح بعضهم، و S/MIME يعتمد على PKI ويرتكز على جهات إصدار رسمية.",
+        "en": "The two secure-email standards differ in where trust comes from: PGP uses a web-of-trust model in which people sign each other's keys, while S/MIME is PKI-based and rests on formal certificate authorities."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "أي مكوّنات يجمعها PGP و S/MIME كلاهما؟",
+        "en": "Which primitives do PGP and S/MIME both combine?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الهاش والتواقيع الرقمية والتشفير.",
+          "en": "Hashing, digital signatures and encryption."
+        },
+        {
+          "ar": "الهاش والضغط وإبطال الشهادات.",
+          "en": "Hashing, compression and certificate revocation."
+        },
+        {
+          "ar": "التواقيع الرقمية والتوافق وتقوية المفاتيح.",
+          "en": "Digital signatures, consensus and key strengthening."
+        },
+        {
+          "ar": "التشفير والدفاع عن القناة الجانبية والطابع الزمني.",
+          "en": "Encryption, side-channel defence and timestamping."
+        }
+      ],
+      "concept_id": "email_primitives",
+      "explanation": {
+        "ar": "المعياران يجمعان هاش SHA-256 للسلامة، وتواقيع رقمية بـ RSA أو ECC للأصالة، وتشفير AES للسرية.",
+        "en": "Both standards combine hashing with SHA-256 for integrity, digital signatures with RSA or ECC for authenticity, and encryption with AES for confidentiality."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "ثغرة EFAIL سنة 2018 ما كسرت أي شيفرة. شنو تبيّن؟",
+        "en": "The EFAIL vulnerability of 2018 did not break any cipher. What does it demonstrate?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إن AES ما يصلح لتشفير متن الرسالة.",
+          "en": "That AES is unsuitable for encrypting email bodies."
+        },
+        {
+          "ar": "إن بصمات SHA-256 يقدر المهاجم يعكسها.",
+          "en": "That SHA-256 digests can be reversed by an attacker."
+        },
+        {
+          "ar": "إن جهات إصدار الشهادات غير جديرة بالثقة أساساً.",
+          "en": "That certificate authorities are fundamentally untrustworthy."
+        },
+        {
+          "ar": "إن التكامل الخاطئ بين المكوّنات يقدر يسرّب النص الصريح.",
+          "en": "That improper integration of components can leak plaintext."
+        }
+      ],
+      "concept_id": "efail_case",
+      "explanation": {
+        "ar": "ثغرة EFAIL بيّنت إن خلط عرض HTML مع الرسائل المشفّرة يقدر يسرّب النص الصريح — درس الفصل إن تصميم البروتوكول وتنفيذه مهمين بقدر الخوارزميات نفسها.",
+        "en": "EFAIL showed that mixing HTML rendering with encrypted messages can leak plaintext — the chapter's lesson is that protocol design and implementation matter as much as the algorithms themselves."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "أي ثلاث طبقات تشفير يحدّدها الفصل بأنظمة البلوكتشين؟",
+        "en": "Which three layers of cryptography does the chapter identify in blockchain systems?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التوافق والضغط والشيفرات المتماثلة.",
+          "en": "Consensus, compression and symmetric ciphers."
+        },
+        {
+          "ar": "الهاشات والتواقيع الرقمية وآليات التوافق.",
+          "en": "Hashes, digital signatures and consensus mechanisms."
+        },
+        {
+          "ar": "الهاشات والشهادات وقوائم الإبطال.",
+          "en": "Hashes, certificates and revocation lists."
+        },
+        {
+          "ar": "التواقيع الرقمية وشبكات VPN وتبادل المفاتيح.",
+          "en": "Digital signatures, VPNs and key exchange."
+        }
+      ],
+      "concept_id": "blockchain_layers",
+      "explanation": {
+        "ar": "أنظمة البلوكتشين مثل Bitcoin و Ethereum تستخدم التشفير بثلاث طبقات: هاشات لعدم قابلية التغيير، وتواقيع رقمية لأصالة المعاملات، وآليات توافق للاتفاق بين العقد.",
+        "en": "Blockchain systems such as Bitcoin and Ethereum use cryptography in three layers: hashes for immutability, digital signatures for transaction authenticity, and consensus mechanisms for agreement between nodes."
+      }
+    },
+    {
+      "id": "q21",
+      "stem": {
+        "ar": "شنو تضمن الهاشات داخل البلوكتشين؟",
+        "en": "What do hashes guarantee inside a blockchain?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "السرعة، لأن كل بلوك يُضغط قبل التخزين.",
+          "en": "Speed, since each block is compressed before storage."
+        },
+        {
+          "ar": "الندرة، لأن كل بلوك يحدّ من المعروض.",
+          "en": "Scarcity, since each block limits the coin supply."
+        },
+        {
+          "ar": "عدم قابلية التغيير، لأن كل بلوك يشير لهاش البلوك السابق.",
+          "en": "Immutability, since each block references the previous block's hash."
+        },
+        {
+          "ar": "إخفاء الهوية، لأن كل بلوك يخفي عنوان المرسل.",
+          "en": "Anonymity, since each block hides the sender's address."
+        }
+      ],
+      "concept_id": "blockchain_hash_role",
+      "explanation": {
+        "ar": "الهاشات مثل SHA-256 و Keccak-256 تضمن عدم قابلية التغيير بالسلسلة، لأن كل بلوك يشير لهاش البلوك اللي قبله وأي تغيير ينتشر بالسلسلة.",
+        "en": "Hashes such as SHA-256 and Keccak-256 ensure the immutability of the chain, because every block references the hash of the block before it and any change would cascade."
+      }
+    },
+    {
+      "id": "q22",
+      "stem": {
+        "ar": "شنو توثّق التواقيع الرقمية بمعاملة بلوكتشين؟",
+        "en": "What do digital signatures authenticate in a blockchain transaction?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إن مالك المفتاح الخاص فقط يقدر يصرف الأموال.",
+          "en": "That only the owner of the private key can spend the funds."
+        },
+        {
+          "ar": "إن الشبكة وصلت توافقاً على البلوك.",
+          "en": "That the network has reached consensus on the block."
+        },
+        {
+          "ar": "إن هاش البلوك يطابق هاش البلوك السابق.",
+          "en": "That the block hash matches the previous block hash."
+        },
+        {
+          "ar": "إن عمولة المعاملة تُدفعت مقدماً.",
+          "en": "That the transaction fee has been paid in advance."
+        }
+      ],
+      "concept_id": "blockchain_sig_role",
+      "explanation": {
+        "ar": "التواقيع الرقمية بـ ECDSA أو EdDSA توثّق المعاملات، فما يقدر يصرف الأموال المرتبطة إلا مالك المفتاح الخاص.",
+        "en": "Digital signatures using ECDSA or EdDSA authenticate transactions, so only the holder of the private key can spend the funds associated with it."
+      }
+    },
+    {
+      "id": "q23",
+      "stem": {
+        "ar": "على شنو يرتكز أمن آلية التوافق بالبلوكتشين؟",
+        "en": "On what does the security of a blockchain consensus mechanism rest?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "سرية المفاتيح الخاصة اللي تحملها كل عقدة.",
+          "en": "The secrecy of the private keys held by every node."
+        },
+        {
+          "ar": "سرعة اتصال الشبكة بين العقد.",
+          "en": "The speed of the network connection between nodes."
+        },
+        {
+          "ar": "عدد الشهادات اللي تصدرها الشبكة.",
+          "en": "The number of certificates issued by the network."
+        },
+        {
+          "ar": "الصلابة الحسابية أو الالتزامات التشفيرية.",
+          "en": "Computational hardness or cryptographic commitments."
+        }
+      ],
+      "concept_id": "blockchain_consensus",
+      "explanation": {
+        "ar": "أمن التوافق يرتكز على الصلابة الحسابية بـ Proof-of-Work أو على الالتزامات التشفيرية بـ Proof-of-Stake.",
+        "en": "Consensus security rests on computational hardness in Proof-of-Work or on cryptographic commitments in Proof-of-Stake."
+      }
+    },
+    {
+      "id": "q24",
+      "stem": {
+        "ar": "ثغرة overflow في Bitcoin سنة 2010 ما كانت خللاً تشفيرياً. شنو تبيّن؟",
+        "en": "The 2010 Bitcoin overflow bug was not a cryptographic flaw. What does it show?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إن آليات التوافق غير موثوقة إطلاقاً.",
+          "en": "That consensus mechanisms are fundamentally unreliable."
+        },
+        {
+          "ar": "إن سلامة البروتوكول مهمة بقدر المكوّنات الأولية.",
+          "en": "That protocol integrity matters as much as the primitives."
+        },
+        {
+          "ar": "إن SHA-256 ضعيف جداً على تأمين بلوكتشين.",
+          "en": "That SHA-256 is too weak to secure a blockchain."
+        },
+        {
+          "ar": "إن تواقيع ECDSA تقدر تُزوَّر بسعر رخيص.",
+          "en": "That ECDSA signatures can be forged cheaply."
+        }
+      ],
+      "concept_id": "bitcoin_overflow",
+      "explanation": {
+        "ar": "ثغرة overflow سنة 2010 سمحت بإنشاء مليارات العملات بسبب نقص فحوصات الأعداد الصحيحة — خلل بروتوكولي مو تشفيري — وهالشي يبيّن إن سلامة البروتوكول مهمة بقدر المكوّنات الأولية نفسها.",
+        "en": "The 2010 overflow bug let billions of coins be created through missing integer checks — a protocol flaw, not a cryptographic one — showing that protocol integrity is as important as the primitives themselves."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T06:41:39Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

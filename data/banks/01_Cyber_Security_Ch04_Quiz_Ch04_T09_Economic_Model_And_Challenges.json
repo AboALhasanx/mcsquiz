@@ -1,0 +1,596 @@
+{
+  "topic": {
+    "ar": "الموديل الاقتصادي للأمن والتحديات الناشئة",
+    "en": "Economic Model and Emerging Challenges"
+  },
+  "quiz_id": "Quiz_Ch04_T09_Economic_Model_And_Challenges",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يُعبَّر عن مستوى الأمن المتماثل بالنظام؟",
+        "en": "How is the symmetric security level of a system expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بحجم المفتاح بالبتات، فـ AES-128 يعطي 128 بت.",
+          "en": "As the key size in bits, so AES-128 gives 128 bits."
+        },
+        {
+          "ar": "بنصف حجم المفتاح بالبتات، فـ AES-128 يعطي 64.",
+          "en": "As half the key size in bits, so AES-128 gives 64."
+        },
+        {
+          "ar": "بحجم البلوك بالبتات، فـ AES-128 يعطي 128.",
+          "en": "As the block size in bits, so AES-128 gives 128."
+        },
+        {
+          "ar": "بعدد الجولات، فـ AES-128 يعطي عشر.",
+          "en": "As the number of rounds, so AES-128 gives ten."
+        }
+      ],
+      "concept_id": "econ_s_sym",
+      "explanation": {
+        "ar": "مستوى الأمن المتماثل يساوي حجم المفتاح بالبتات، فـ AES-128 يساهم بـ 128 بت بالأدنى الكلي.",
+        "en": "The symmetric security level equals the key size in bits, so AES-128 contributes 128 bits to the overall minimum."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مستوى أمن ينسبه الفصل لـ RSA-2048 و ECC-256؟",
+        "en": "What security level does the chapter assign to RSA-2048 and ECC-256?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "RSA-2048 حوالي 56 بت و ECC-256 حوالي 64 بت.",
+          "en": "RSA-2048 about 56 bits and ECC-256 about 64 bits."
+        },
+        {
+          "ar": "RSA-2048 حوالي 112 بت و ECC-256 حوالي 128 بت.",
+          "en": "RSA-2048 about 112 bits and ECC-256 about 128 bits."
+        },
+        {
+          "ar": "RSA-2048 حوالي 2048 بت و ECC-256 حوالي 256 بت.",
+          "en": "RSA-2048 about 2048 bits and ECC-256 about 256 bits."
+        },
+        {
+          "ar": "RSA-2048 حوالي 128 بت و ECC-256 حوالي 112 بت.",
+          "en": "RSA-2048 about 128 bits and ECC-256 about 112 bits."
+        }
+      ],
+      "concept_id": "econ_s_asym",
+      "explanation": {
+        "ar": "الأمن غير المتماثل دالة بحجم المفتاح، وقوّته الفعلية أقل بكثير من طول المفتاح الخام: RSA-2048 يعطي حوالي 112 بت و ECC-256 يعطي حوالي 128.",
+        "en": "Asymmetric security is a function of key size, and the effective strength is much lower than the raw key length: RSA-2048 gives about 112 bits while ECC-256 gives about 128."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ليش يُؤخذ مستوى أمن الهاش n/2 بت لبصمة بطول n بت؟",
+        "en": "Why is the hash security level taken as n/2 bits for an n-bit digest?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن الهاشات تُحسب دائماً مرتين للأمان.",
+          "en": "Because hashes are always computed twice for safety."
+        },
+        {
+          "ar": "لأن طول المخرَج ينصفه نظام الحشو.",
+          "en": "Because the output length is halved by the padding scheme."
+        },
+        {
+          "ar": "لأن مقاومة التصادم تحتاج حوالي نصف بتات المخرَج.",
+          "en": "Because collision resistance needs about half the output bits."
+        },
+        {
+          "ar": "لأن البصمة تُضغط إلى نصف حجمها قبل الاستخدام.",
+          "en": "Because the digest is compressed to half its size before use."
+        }
+      ],
+      "concept_id": "econ_s_hash",
+      "explanation": {
+        "ar": "التصادم يُعثر عليه بحوالي اثنان مرفوعان للأس n/2 محاولة حسب حدّ عيد الميلاد، فبصمة بطول n بت تساهم بـ n/2 بت أمان فقط.",
+        "en": "A collision can be found in about two to the power of n/2 attempts by the birthday bound, so an n-bit digest contributes only n/2 bits of security."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يُعرَّف الأمن الكلي للنظام؟",
+        "en": "How is the overall security of the system defined?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كأعلى مستوى بين التماثل واللاتماثل والهاش.",
+          "en": "As the maximum across the symmetric, asymmetric and hash levels."
+        },
+        {
+          "ar": "كمجموع مستويات التماثل واللاتماثل والهاش.",
+          "en": "As the sum of the symmetric, asymmetric and hash levels."
+        },
+        {
+          "ar": "كمتوسط مستويات التماثل واللاتماثل والهاش.",
+          "en": "As the average of the symmetric, asymmetric and hash levels."
+        },
+        {
+          "ar": "كأدنى مستوى بين التماثل واللاتماثل والهاش.",
+          "en": "As the minimum across the symmetric, asymmetric and hash levels."
+        }
+      ],
+      "concept_id": "econ_s_system",
+      "explanation": {
+        "ar": "النظام بقوّة أضعف مكوّناته، فالأمن الكلي هو الأدنى بين المستويات الثلاثة.",
+        "en": "The system is only as strong as its weakest primitive, so overall security is the minimum of the three component levels."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "نظام بنكي يستخدم AES-256 و ECDHE-384 و SHA-256. شنو مستوى أمن النظام؟",
+        "en": "A banking system uses AES-256, ECDHE-384 and SHA-256. What is the system security level?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "576 بت، مجموع المستويات الثلاثة.",
+          "en": "576 bits, the sum of the three component levels."
+        },
+        {
+          "ar": "128 بت، يحدّدها مقاومة التصادم لـ SHA-256.",
+          "en": "128 bits, set by the collision resistance of SHA-256."
+        },
+        {
+          "ar": "192 بت، يحدّدها الأمن الفعلي لـ ECDHE-384.",
+          "en": "192 bits, set by the effective strength of ECDHE-384."
+        },
+        {
+          "ar": "256 بت، يحدّدها حجم مفتاح AES-256.",
+          "en": "256 bits, set by the key size of AES-256."
+        }
+      ],
+      "concept_id": "econ_banking_min",
+      "explanation": {
+        "ar": "المستويات الثلاثة هي 256 وحوالي 192 و 128 بت، والأدنى 128 — فمفتاح AES-256 القوي محدود بالهاش.",
+        "en": "The three levels are 256, about 192 and 128 bits, and the minimum is 128 — so the strong AES-256 key is capped by the hash."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يُقدَّر الزمن اللازم لكسر النظام؟",
+        "en": "How is the time needed to crack the system estimated?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "معدّل الهجوم مقسوماً على اثنان مرفوعان لأسّ مستوى الأمن.",
+          "en": "The attack rate divided by two to the power of the security level."
+        },
+        {
+          "ar": "مستوى الأمن مقسوماً على معدّل الهجوم بالثانية.",
+          "en": "The security level divided by the attack rate per second."
+        },
+        {
+          "ar": "اثنان مرفوعان لأسّ مستوى الأمن ناقص واحد، مقسوماً على معدّل الهجوم.",
+          "en": "Two to the power of the security level minus one, divided by the attack rate."
+        },
+        {
+          "ar": "اثنان مرفوعان لأسّ مستوى الأمن، مضروباً بمعدّل الهجوم.",
+          "en": "Two to the power of the security level, multiplied by the attack rate."
+        }
+      ],
+      "concept_id": "econ_t_crack",
+      "explanation": {
+        "ar": "زمن الكسر يُقارب اثنان مرفوعان لأسّ مستوى الأمن ناقص واحد مقسوماً على معدّل الهجوم، أي عدد المحاولات المتوقّع على المعدّل.",
+        "en": "The cracking time is approximated as two to the power of the security level minus one divided by the attack rate, which is the expected number of trials over the rate."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف تُحسب الكلفة المتوقعة للمهاجم؟",
+        "en": "How is the attacker's expected cost computed?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "معدّل الهجوم × مستوى الأمن × قيمة الأصل.",
+          "en": "Attack rate times security level times value of the asset."
+        },
+        {
+          "ar": "زمن الكسر ÷ معدّل الهجوم × كلفة العملية الواحدة.",
+          "en": "Cracking time divided by attack rate times cost per operation."
+        },
+        {
+          "ar": "مستوى الأمن × كلفة العملية ÷ معدّل الهجوم.",
+          "en": "Security level times cost per operation divided by the rate."
+        },
+        {
+          "ar": "معدّل الهجوم × زمن الكسر × كلفة العملية الواحدة.",
+          "en": "Attack rate times cracking time times cost per operation."
+        }
+      ],
+      "concept_id": "econ_c_attack",
+      "explanation": {
+        "ar": "الكلفة المتوقعة للهجوم هي معدّل الهجوم مضروباً بزمن الكسر وبكلفة العملية الواحدة.",
+        "en": "The expected attack cost is the attack rate multiplied by the cracking time and by the cost of a single operation."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "بأي شرط يعدّ الموديل الاقتصادي النظام آمناً؟",
+        "en": "Under what condition does the economic model call a system secure?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لمّا تتجاوز كلفة الهجوم قيمة الأصل.",
+          "en": "When the attack cost exceeds the value of the asset."
+        },
+        {
+          "ar": "لمّا تكون كلفة الهجوم أقل من قيمة الأصل.",
+          "en": "When the attack cost is below the value of the asset."
+        },
+        {
+          "ar": "لمّا يتجاوز معدّل الهجوم زمن الكسر.",
+          "en": "When the attack rate exceeds the cracking time."
+        },
+        {
+          "ar": "لمّا تتجاوز كلفة العملية قيمة الأصل.",
+          "en": "When the cost per operation exceeds the asset value."
+        }
+      ],
+      "concept_id": "econ_secure_condition",
+      "explanation": {
+        "ar": "النظام يُعدّ آمناً لمّا يكون كسره أغلى من قيمة الأصل، فما يبقى للمهاجم العاقل دافع.",
+        "en": "The system is judged secure when breaking it would cost more than the asset is worth, so a rational attacker has no incentive."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "بمستوى أمن 128 بت، و R = 10^18، و c = 10^-12 دولار، شنو كلفة الهجوم؟",
+        "en": "With a 128-bit system level, R = 10^18 and c = 10^-12 USD, what is the attack cost?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حوالي 1.7 × 10 أسّ 12 دولار.",
+          "en": "About 1.7 times ten to the power of twelve USD."
+        },
+        {
+          "ar": "حوالي 1.7 × 10 أسّ 38 دولار.",
+          "en": "About 1.7 times ten to the power of thirty-eight USD."
+        },
+        {
+          "ar": "حوالي 1.7 × 10 أسّ 26 دولار.",
+          "en": "About 1.7 times ten to the power of twenty-six USD."
+        },
+        {
+          "ar": "حوالي 1.7 × 10 أسّ 20 دولار.",
+          "en": "About 1.7 times ten to the power of twenty USD."
+        }
+      ],
+      "concept_id": "econ_banking_cost",
+      "explanation": {
+        "ar": "زمن الكسر حوالي 1.7 × 10 أسّ 20، فالضرب بـ 10^18 عملية بالثانية و 10^-12 دولار للعملية يعطي حوالي 1.7 × 10 أسّ 26 دولار.",
+        "en": "The cracking time is about 1.7 times ten to the power of twenty, so multiplying by 10^18 operations per second and 10^-12 USD per operation gives about 1.7 times ten to the power of twenty-six USD."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شنو تسوي خوارزمية Shor بالتشفير العام الحالي؟",
+        "en": "What does Shor's algorithm do to current public-key cryptography?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تنصّف حجم المفتاح الفعلي لكل شيفرة متماثلة.",
+          "en": "It halves the effective key size of every symmetric cipher."
+        },
+        {
+          "ar": "تعكس بصمات SHA-256 إلى مدخلها الأصلي.",
+          "en": "It reverses SHA-256 digests back to their original input."
+        },
+        {
+          "ar": "تضاعف سرعة البحث عن المفتاح المتماثل.",
+          "en": "It doubles the speed of symmetric key search."
+        },
+        {
+          "ar": "تكسر RSA و ECC بحلّ التحليل واللوغاريتمات المتقطّعة.",
+          "en": "It breaks RSA and ECC by solving factoring and discrete logs."
+        }
+      ],
+      "concept_id": "quantum_shor",
+      "explanation": {
+        "ar": "خوارزمية Shor تكسر RSA و ECC لأنها تقدر تحلّ التحليل واللوغاريتمات المتقطّعة بكفاءة على حاسوب كمّي.",
+        "en": "Shor's algorithm breaks RSA and ECC because it can solve factoring and discrete logarithms efficiently on a quantum computer."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "شنو تأثير خوارزمية Grover على التشفير المتماثل؟",
+        "en": "What is the effect of Grover's algorithm on symmetric cryptography?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تكسر AES-256 بالكامل بزمن كثير الحدود.",
+          "en": "It breaks AES-256 completely in polynomial time."
+        },
+        {
+          "ar": "تقلّل جهد البحث إلى الجذر التربيعي لفضاء المفاتيح.",
+          "en": "It reduces search effort to a square root of the keyspace."
+        },
+        {
+          "ar": "تلغي الحاجة إلى مفتاح متماثل بالكامل.",
+          "en": "It removes the need for a symmetric key entirely."
+        },
+        {
+          "ar": "تخلي النص المشفّر مقروءاً بدون المفتاح.",
+          "en": "It makes the ciphertext readable without the key."
+        }
+      ],
+      "concept_id": "quantum_grover",
+      "explanation": {
+        "ar": "خوارزمية Grover تعطي تسريعاً تربيعياً فقط، فتنصّف مستوى الأمان الفعلي للشيفرة المتماثلة بدل ما تكسرها.",
+        "en": "Grover's algorithm gives only a quadratic speedup, so it halves the effective security level of a symmetric cipher rather than breaking it."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ليش يقول الفصل إن AES-256 يبقى مقاوم للكمّ؟",
+        "en": "Why does the chapter say AES-256 remains quantum-resistant?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مفتاحه يتجدّد قبل كل استعلام كمّي.",
+          "en": "Its key is regenerated before each quantum query."
+        },
+        {
+          "ar": "يستخدم بنية شبكية تتجاهلها الحواسيب الكمّية.",
+          "en": "It uses a lattice structure that quantum computers ignore."
+        },
+        {
+          "ar": "Grover تنصّف مستواه فقط، فيبقى حوالي 128 بت أمان.",
+          "en": "Grover only halves its level, leaving about 128 bits of security."
+        },
+        {
+          "ar": "Shor ما تنطبق على أي شيفرة بلوك أبداً.",
+          "en": "Shor cannot be applied to any block cipher at all."
+        }
+      ],
+      "concept_id": "quantum_aes256",
+      "explanation": {
+        "ar": "لأن Grover تنصّف الأمان الفعلي، فـ AES-256 ينزل إلى حوالي 128 بت، وهذا ما زال بعيداً جداً عن أي هجوم ممكن.",
+        "en": "Because Grover halves the effective security, AES-256 degrades to roughly 128 bits, which is still far beyond feasible attack."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "شنو يقترح الفصل كمعالجة لما بعد الكم؟",
+        "en": "What does the chapter propose as post-quantum mitigation?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تبادل مفاتيح قائم على الشبكات وتوقيعات قائمة على الهاش.",
+          "en": "Lattice-based key exchange and hash-based signatures."
+        },
+        {
+          "ar": "مفاتيح RSA أطول وجهات إصدار أكبر.",
+          "en": "Longer RSA keys and larger certificate authorities."
+        },
+        {
+          "ar": "جولات أكثر من AES وجدول مفاتيح أقوى.",
+          "en": "More rounds of AES and a stronger key schedule."
+        },
+        {
+          "ar": "قوائم إبطال إضافية و OCSP.",
+          "en": "Additional certificate revocation lists and OCSP."
+        }
+      ],
+      "concept_id": "quantum_mitigation",
+      "explanation": {
+        "ar": "المعالجة هي تشفير ما بعد الكم — تبادل مفاتيح قائم على الشبكات وتوقيعات قائمة على الهاش — مع الاستمرار بالاعتماد على AES-256.",
+        "en": "The mitigation is post-quantum cryptography — lattice-based key exchange and hash-based signatures — together with continued reliance on AES-256."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "أي إجراءات يقترحها الفصل ضد مخاطر جهات إصدار الشهادات؟",
+        "en": "Which measures does the chapter propose against certificate authority risk?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "فترات صلاحية أطول وجهات إصدار أقل.",
+          "en": "Longer certificate lifetimes and fewer issuing authorities."
+        },
+        {
+          "ar": "تعطيل فحوصات الإبطال وتخزين الشهادات محلياً.",
+          "en": "Disabling revocation checks and caching certificates locally."
+        },
+        {
+          "ar": "استبدال الشهادات بأسرار متماثلة مشتركة.",
+          "en": "Replacing certificates with shared symmetric secrets."
+        },
+        {
+          "ar": "سجلات Certificate Transparency والتحقّق متعدد المسارات.",
+          "en": "Certificate Transparency logs and multi-path validation."
+        }
+      ],
+      "concept_id": "ca_risk_mitigation",
+      "explanation": {
+        "ar": "الحلول المقترحة هي سجلات Certificate Transparency، والتحقّق متعدد المسارات، والإبطال الآلي.",
+        "en": "The proposed solutions are Certificate Transparency logs, multi-path validation and automated revocation."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "شنو كانت ثغرة Heartbleed سنة 2014؟",
+        "en": "What was the Heartbleed vulnerability of 2014?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جهة إصدار أصدرت شهادات مزيّفة.",
+          "en": "A certificate authority that issued fraudulent certificates."
+        },
+        {
+          "ar": "خلل بـ OpenSSL سرّب المفاتيح الخاصة ومحتويات الذاكرة.",
+          "en": "An OpenSSL bug that leaked private keys and memory contents."
+        },
+        {
+          "ar": "خلل بـ SHA-256 سمح بتصادم البصمات.",
+          "en": "A flaw in SHA-256 that allowed digest collisions."
+        },
+        {
+          "ar": "هجوم تخفيض أجبر السيرفرات على RC4.",
+          "en": "A downgrade attack that forced servers onto RC4."
+        }
+      ],
+      "concept_id": "heartbleed",
+      "explanation": {
+        "ar": "Heartbleed كان خللاً تنفيذياً بـ OpenSSL سرّب المفاتيح الخاصة، ويثبت إن تأمين الخوارزمية وحده ما يكفي.",
+        "en": "Heartbleed was an implementation bug in OpenSSL that leaked private keys, showing that securing the algorithm is not enough."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "شنو يهدف إليه هجوم تخفيض TLS؟",
+        "en": "What does a TLS downgrade attack aim to achieve?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إجبار الطرفين على مجموعة خوارزميات أضعف.",
+          "en": "Forcing both parties onto a weaker cipher suite."
+        },
+        {
+          "ar": "ترقية الجلسة إلى TLS 1.3 تلقائياً.",
+          "en": "Upgrading the session to TLS 1.3 automatically."
+        },
+        {
+          "ar": "استبدال شهادة السيرفر بشهادة صحيحة.",
+          "en": "Replacing the server certificate with a valid one."
+        },
+        {
+          "ar": "زيادة طول مفتاح الجلسة المتماثل.",
+          "en": "Increasing the length of the symmetric session key."
+        }
+      ],
+      "concept_id": "downgrade_attack",
+      "explanation": {
+        "ar": "هجوم التخفيض يتلاعب بالتفاوض حتى يستقر الطرفان على خوارزميات قديمة ضعيفة، ولهذا حذفتها TLS 1.3.",
+        "en": "A downgrade attack manipulates the negotiation so that both sides settle on weak legacy ciphers, which is why TLS 1.3 removed them."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "شنو تستغل هجمات القناة الجانبية؟",
+        "en": "What do side-channel attacks exploit?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كلمات مرور ضعيفة يختارها مستخدمو النظام.",
+          "en": "Weak passwords chosen by the end users of the system."
+        },
+        {
+          "ar": "شهادات منتهية ما تجدّدت بالوقت.",
+          "en": "Expired certificates that were never renewed in time."
+        },
+        {
+          "ar": "نقص فحوصات الأعداد الصحيحة ببروتوكول المعاملة.",
+          "en": "Missing integer checks in the transaction protocol."
+        },
+        {
+          "ar": "تسريبات التوقيت بالتنفيذ مثل RSA و ECDSA.",
+          "en": "Timing leaks in implementations such as RSA and ECDSA."
+        }
+      ],
+      "concept_id": "side_channel",
+      "explanation": {
+        "ar": "هجمات القناة الجانبية تستغل معلومات يسرّبها التنفيذ نفسه، مثل فروق التوقيت بـ RSA أو ECDSA، مو ضعفاً بالرياضيات.",
+        "en": "Side-channel attacks exploit information leaked by the implementation itself, such as timing differences in RSA or ECDSA, rather than a weakness in the mathematics."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "عبر البنوك والإيميل والبلوكتشين و TLS، شنو الدرس الواحد اللي يكرّره الفصل؟",
+        "en": "Across banking, e-mail, blockchain and TLS, what single lesson does the chapter keep repeating?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الأمن = عدد الطبقات المتراكمة.",
+          "en": "Security equals the number of layers stacked together."
+        },
+        {
+          "ar": "الأمن = كلفة أغلى عتاد.",
+          "en": "Security equals the cost of the most expensive hardware."
+        },
+        {
+          "ar": "الأمن = الخوارزمية × التنفيذ × الحوكمة.",
+          "en": "Security equals algorithm times implementation times governance."
+        },
+        {
+          "ar": "الأمن = طول أطول مفتاح مستخدم.",
+          "en": "Security equals the length of the longest key in use."
+        }
+      ],
+      "concept_id": "chapter_lesson",
+      "explanation": {
+        "ar": "كل حالات الفشل بالفصل — DigiNotar و EFAIL و Bitcoin overflow و Heartbleed — كسرت شيئاً غير الرياضيات، ولهذا يختصر الفصل الأمن إلى الخوارزمية × التنفيذ × الحوكمة.",
+        "en": "Every failure case in the chapter — DigiNotar, EFAIL, the Bitcoin overflow and Heartbleed — broke something other than the mathematics, which is why the chapter reduces security to algorithm times implementation times governance."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T06:41:39Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

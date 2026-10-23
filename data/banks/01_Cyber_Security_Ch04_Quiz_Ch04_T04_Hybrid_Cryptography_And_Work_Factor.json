@@ -1,0 +1,660 @@
+{
+  "topic": {
+    "ar": "التشفير الهجين ونموذج عامل الشغل",
+    "en": "Hybrid cryptography and the work factor model"
+  },
+  "quiz_id": "Quiz_Ch04_T04_Hybrid_Cryptography_And_Work_Factor",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ليش الأنظمة الحديثة تجمع بين التشفير المتماثل وغير المتماثل؟",
+        "en": "Why do modern systems combine symmetric and asymmetric encryption?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن الاثنين لازم يُستخدمان معاً لحساب هاش.",
+          "en": "Because the two must be used together to compute a hash."
+        },
+        {
+          "ar": "لأن كلاً منهما يحلّ ضعف الآخر.",
+          "en": "Because each solves the weakness of the other."
+        },
+        {
+          "ar": "لأن التشفير المتماثل وحده ما يقدر ينتج نصاً مشفّراً.",
+          "en": "Because symmetric encryption alone cannot produce ciphertext."
+        },
+        {
+          "ar": "لأن التشفير غير المتماثل وحده أسرع من أن يكون عملياً.",
+          "en": "Because asymmetric encryption alone is too fast to be practical."
+        }
+      ],
+      "concept_id": "hybrid_rationale",
+      "explanation": {
+        "ar": "غير المتماثل يحلّ توزيع المفتاح بس بطيء؛ والمتماثل سريع بس يحتاج مفتاحاً مشتركاً. استخدام كل منهما حيث يقوى يغطي المشكلتين.",
+        "en": "Asymmetric solves key distribution but is slow; symmetric is fast but needs a shared key. Using each where it is strong covers both problems."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "بالنظام الهجين، لأي شي يُستخدم النصف غير المتماثل؟",
+        "en": "In a hybrid system, what is the asymmetric half used for?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تشفير الجزء الأكبر من البيانات المنقولة.",
+          "en": "Encrypting the bulk of the transmitted data."
+        },
+        {
+          "ar": "تخزين المفتاح الخاص طويل الأمد على الخادم.",
+          "en": "Storing the long-term private key on the server."
+        },
+        {
+          "ar": "التحقق من سلامة كل حزمة على حدة.",
+          "en": "Verifying the integrity of each individual packet."
+        },
+        {
+          "ar": "تبادل مفتاح الجلسة بأمان.",
+          "en": "Securely exchanging the session key."
+        }
+      ],
+      "concept_id": "hybrid_asym_role",
+      "explanation": {
+        "ar": "العملية غير المتماثلة تُدفع ثمنها مرة واحدة بالبداية، فقط للاتفاق على مفتاح.",
+        "en": "The asymmetric operation is paid once, at the start, only to agree on a key."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "بالنظام الهجين، لأي شي يُستخدم النصف المتماثل؟",
+        "en": "In a hybrid system, what is the symmetric half used for?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تشفير البيانات الكبيرة بكفاءة.",
+          "en": "Efficient bulk data encryption."
+        },
+        {
+          "ar": "تبادل مفتاح الجلسة بين الطرفين.",
+          "en": "Exchanging the session key between the parties."
+        },
+        {
+          "ar": "إثبات هوية الخادم البعيد.",
+          "en": "Proving the identity of the remote server."
+        },
+        {
+          "ar": "توقيع سجل الجلسة كاملاً.",
+          "en": "Signing the transcript of the whole session."
+        }
+      ],
+      "concept_id": "hybrid_sym_role",
+      "explanation": {
+        "ar": "متى ما صار مفتاح الجلسة موجوداً، الشيفرة المتماثلة السريعة هي التي تحمل البيانات الفعلية.",
+        "en": "Once the session key exists, the fast symmetric cipher carries the actual data."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو الخطوة الأولى بمصافحة TLS كما يصفها الفصل؟",
+        "en": "What is the first step of the TLS handshake as the chapter describes it?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "العميل يشفّر مفتاح الجلسة بالمفتاح العام للخادم.",
+          "en": "The client encrypts the session key with the server's public key."
+        },
+        {
+          "ar": "الطرفان يبدآن بإرسال بيانات تطبيق مشفّرة.",
+          "en": "Both parties begin sending encrypted application data."
+        },
+        {
+          "ar": "العميل يتصل ويستحضر شهادة الخادم.",
+          "en": "The client connects and retrieves the server's certificate."
+        },
+        {
+          "ar": "العميل يولّد مفتاح جلسة عشوائياً ويرسله.",
+          "en": "The client generates a random session key and sends it."
+        }
+      ],
+      "concept_id": "hybrid_tls_step1",
+      "explanation": {
+        "ar": "الشهادة تحمل المفتاح العام للخادم، وهو ما يحتاجه العميل قبل أن يقدر يحمي أي شي.",
+        "en": "The certificate carries the server's public key, which the client needs before it can protect anything."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "شنو يسوي العميل بعد استحضار الشهادة؟",
+        "en": "What does the client do after retrieving the certificate?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يبدأ بتشفير بيانات التطبيق بالشهادة.",
+          "en": "It begins encrypting application data with the certificate."
+        },
+        {
+          "ar": "يولّد مفتاح جلسة عشوائياً.",
+          "en": "It generates a random session key."
+        },
+        {
+          "ar": "يفكّ تشفير الشهادة بالمفتاح العام للخادم.",
+          "en": "It decrypts the certificate with the server's public key."
+        },
+        {
+          "ar": "يرسل شهادته الخاصة إلى الخادم للتحقق.",
+          "en": "It sends its own certificate to the server for validation."
+        }
+      ],
+      "concept_id": "hybrid_tls_step2",
+      "explanation": {
+        "ar": "مفتاح الجلسة يولّده العميل، جديداً وعشوائياً، لهذه الجلسة وحدها.",
+        "en": "The session key is generated by the client, freshly and randomly, for this one session."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يُحمى مفتاح الجلسة في طريقه إلى الخادم؟",
+        "en": "How is the session key protected on its way to the server?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يُشفّر بالمفتاح الخاص للعميل.",
+          "en": "It is encrypted with the client's private key."
+        },
+        {
+          "ar": "يُهشَّش ويُرسل مع الشهادة.",
+          "en": "It is hashed and sent alongside the certificate."
+        },
+        {
+          "ar": "يُرسل مكشوفاً، لأن القناة مصادَق عليها أصلاً.",
+          "en": "It is sent in the clear, since the channel is already authenticated."
+        },
+        {
+          "ar": "يُشفّر بالمفتاح العام للخادم.",
+          "en": "It is encrypted with the server's public key."
+        }
+      ],
+      "concept_id": "hybrid_tls_step3",
+      "explanation": {
+        "ar": "الخادم وحده يملك المفتاح الخاص المقابل، فالخادم وحده يقدر يستعيد مفتاح الجلسة.",
+        "en": "Only the server holds the matching private key, so only the server can recover the session key."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "بعد ما تُمّ تبادل مفتاح الجلسة، لأي شي يستخدمه الطرفان؟",
+        "en": "Once the session key has been exchanged, what do the two parties use it for?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تشفير البيانات بـ AES أو ChaCha20.",
+          "en": "Encrypting the data with AES or ChaCha20."
+        },
+        {
+          "ar": "توقيع كل رسالة لاحقة بتوقيع رقمي.",
+          "en": "Signing each subsequent message with a digital signature."
+        },
+        {
+          "ar": "إصدار شهادة جديدة للاتصال القادم.",
+          "en": "Issuing a fresh certificate for the next connection."
+        },
+        {
+          "ar": "حساب هاش كل حزمة بالجلسة.",
+          "en": "Computing the hash of every packet in the session."
+        }
+      ],
+      "concept_id": "hybrid_tls_step4",
+      "explanation": {
+        "ar": "الطرفان الآن يملكان نفس المفتاح المتماثل وينتقلان إلى شيفرة سريعة لمعظم الحركة.",
+        "en": "Both parties now hold the same symmetric key and switch to a fast cipher for the bulk of the traffic."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "شنو يقول الفصل إن النموذج الهجين يجمع؟",
+        "en": "What does the chapter say the hybrid model combines?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بساطة الهاش مع قوة الشهادات.",
+          "en": "The simplicity of hashing with the strength of certificates."
+        },
+        {
+          "ar": "إنتاجية شيفرات التيار مع بنية شيفرات الكتل.",
+          "en": "The throughput of stream ciphers with the structure of block ciphers."
+        },
+        {
+          "ar": "قابلية التوسّع عند غير المتماثل مع كفاءة المتماثل.",
+          "en": "The scalability of asymmetric with the efficiency of symmetric."
+        },
+        {
+          "ar": "سرعة غير المتماثل مع أمان المفتاح عند المتماثل.",
+          "en": "The speed of asymmetric with the key safety of symmetric."
+        }
+      ],
+      "concept_id": "hybrid_combines",
+      "explanation": {
+        "ar": "النموذج سُمّي هجيناً بالضبط لهذا الجمع بين قوّتي النموذجين.",
+        "en": "The model is named for exactly this combination of the two paradigms' strengths."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو يقيس نموذج عامل الشغل؟",
+        "en": "What does the work factor model quantify?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "كم شهادة تقدر جهة إصدار واحدة تُصدرها يومياً.",
+          "en": "How many certificates a single CA can issue per day."
+        },
+        {
+          "ar": "كم يقدر النظام يقاوم هجمات القوة الغاشمة أو الرياضية.",
+          "en": "How long a system can resist brute-force or mathematical attacks."
+        },
+        {
+          "ar": "كم مستخدماً منفصلاً يقدر مفتاح واحد يخدمهم بأمان.",
+          "en": "How many separate users a single key can safely serve."
+        },
+        {
+          "ar": "كم عرض نطاق تستهلكه الشيفرة كل ثانية.",
+          "en": "How much bandwidth a cipher consumes every second."
+        }
+      ],
+      "concept_id": "workfactor_definition",
+      "explanation": {
+        "ar": "النموذج يربط التشفير المتماثل وغير المتماثل بالممارسة عبر وضع رقم على المقاومة.",
+        "en": "The model connects symmetric and asymmetric encryption to practice by putting a number on resistance."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "نظام فضاء مفاتيحه 2^k. كم بت أمان يمتلك؟",
+        "en": "A system has a key space of size 2^k. How many bits of security does it have?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "2k بت.",
+          "en": "2k bits."
+        },
+        {
+          "ar": "k مقسوماً على 2 بت.",
+          "en": "k divided by 2 bits."
+        },
+        {
+          "ar": "اللوغاريتم الثنائي لـ k بت.",
+          "en": "log2 of k bits."
+        },
+        {
+          "ar": "k بت.",
+          "en": "k bits."
+        }
+      ],
+      "concept_id": "workfactor_bits_of_security",
+      "explanation": {
+        "ar": "بتات الأمان تُحسب مباشرة من فضاء المفاتيح: فضاء 2^k يعطي k بت.",
+        "en": "Bits of security are counted directly from the key space: a key space of 2^k gives k bits."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "بنموذج عامل الشغل، ماذا يرمز إليه R؟",
+        "en": "In the work factor model, what does R represent?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "معدّل الخصم الحسابي بالعمليات في الثانية.",
+          "en": "The adversary's computational rate in operations per second."
+        },
+        {
+          "ar": "حشو اللغة التي تُشفَّر.",
+          "en": "The redundancy of the language being encrypted."
+        },
+        {
+          "ar": "عدد الجولات التي تطبّقها الشيفرة على كل كتلة.",
+          "en": "The number of rounds the cipher applies per block."
+        },
+        {
+          "ar": "نسبة طول النص المشفّر إلى طول النص الأصلي.",
+          "en": "The ratio of ciphertext length to plaintext length."
+        }
+      ],
+      "concept_id": "workfactor_rate_R",
+      "explanation": {
+        "ar": "نفس فضاء المفاتيح يُكسر أسرع أمام خصم بمعدّل عمليات أعلى.",
+        "en": "The same key space falls faster against an adversary with a higher operation rate."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي تعبير يعطي الزمن المتوسط لكسر مفتاح بطول k بت بمعدّل R؟",
+        "en": "Which expression gives the average time to crack a key of k bits at rate R?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "T_crack تقارب 2 أس k ناقص 1، مضروباً بـ R.",
+          "en": "T_crack is approximately 2 to the power k minus 1, multiplied by R."
+        },
+        {
+          "ar": "T_crack تقارب R مقسوماً على 2 أس k ناقص 1.",
+          "en": "T_crack is approximately R divided by 2 to the power k minus 1."
+        },
+        {
+          "ar": "T_crack تقارب 2 أس k ناقص 1، مقسوماً على R.",
+          "en": "T_crack is approximately 2 to the power k minus 1, divided by R."
+        },
+        {
+          "ar": "T_crack تقارب 2 أس k، مقسوماً على R.",
+          "en": "T_crack is approximately 2 to the power k, divided by R."
+        }
+      ],
+      "concept_id": "workfactor_equation",
+      "explanation": {
+        "ar": "T_crack ≈ 2^{k-1}/R يعطي زمن القوة الغاشمة المتوقع بالثواني متى ما عُرف R.",
+        "en": "T_crack ≈ 2^{k-1}/R puts the expected brute-force time in seconds once R is known."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ليش تستخدم المعادلة 2^{k-1} بدل 2^k؟",
+        "en": "Why does the formula use 2^{k-1} rather than 2^k?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن نصف فضاء المفاتيح غير قابل للوصول بأي خوارزمية.",
+          "en": "Because half the key space is unreachable by any algorithm."
+        },
+        {
+          "ar": "لأنه بالمعدّل يُعثر على المفتاح بعد بحث نصف فضاء المفاتيح.",
+          "en": "Because on average the key is found after searching half the key space."
+        },
+        {
+          "ar": "لأن بتاً واحداً من المفتاح يُحجز دائماً للتحقق من الأخطاء.",
+          "en": "Because one bit of the key is always reserved for error checking."
+        },
+        {
+          "ar": "لأن أول بت من كل مفتاح ثابت بالمعيار.",
+          "en": "Because the first bit of every key is fixed by the standard."
+        }
+      ],
+      "concept_id": "workfactor_half_keyspace",
+      "explanation": {
+        "ar": "الحالة المتوسطة هي نصف فضاء المفاتيح، ونصف 2^k هو 2^{k-1}.",
+        "en": "The average case is half the key space, and half of 2^k is 2^{k-1}."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "خصم بمستوى إكسا-skal ينفّذ 10^18 عملية بالثانية ضد AES-128. قديش يكون زمن القوة الغاشمة؟",
+        "en": "An exascale adversary performs 10^18 operations per second against AES-128. Approximately how long does brute force take?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حوالي 5.4 × 10^19 سنة.",
+          "en": "About 5.4 × 10^19 years."
+        },
+        {
+          "ar": "حوالي 5.4 × 10^21 سنة.",
+          "en": "About 5.4 × 10^21 years."
+        },
+        {
+          "ar": "حوالي 5.4 × 10^38 سنة.",
+          "en": "About 5.4 × 10^38 years."
+        },
+        {
+          "ar": "حوالي 5.4 × 10^20 سنة.",
+          "en": "About 5.4 × 10^20 years."
+        }
+      ],
+      "concept_id": "workfactor_aes128_example",
+      "explanation": {
+        "ar": "T_crack ≈ 2^127 / 10^18 ≈ 5.4 × 10^20 سنة، وهو أبعد بكثير من أي هجوم ممكن.",
+        "en": "T_crack ≈ 2^127 / 10^18 ≈ 5.4 × 10^20 years, which is far beyond any feasible attack."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "أي مستوى أمان متماثل ينسبه الفصل إلى RSA-2048؟",
+        "en": "What symmetric security level does the chapter assign to RSA-2048?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حوالي 112 بت.",
+          "en": "About 112 bits."
+        },
+        {
+          "ar": "حوالي 128 بت.",
+          "en": "About 128 bits."
+        },
+        {
+          "ar": "حوالي 256 بت.",
+          "en": "About 256 bits."
+        },
+        {
+          "ar": "حوالي 2048 بت.",
+          "en": "About 2048 bits."
+        }
+      ],
+      "concept_id": "workfactor_rsa_equiv",
+      "explanation": {
+        "ar": "RSA-2048 ≈ 112 بت من الأمان المتماثل، ولهذا طول المفتاح الخام يبالغ في قوّتها.",
+        "en": "RSA-2048 ≈ 112-bit symmetric security, which is why the raw key length overstates its strength."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "أي مستوى أمان متماثل ينسبه الفصل إلى ECC-256؟",
+        "en": "What symmetric security level does the chapter assign to ECC-256?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حوالي 256 بت.",
+          "en": "About 256 bits."
+        },
+        {
+          "ar": "حوالي 64 بت.",
+          "en": "About 64 bits."
+        },
+        {
+          "ar": "حوالي 128 بت.",
+          "en": "About 128 bits."
+        },
+        {
+          "ar": "حوالي 112 بت.",
+          "en": "About 112 bits."
+        }
+      ],
+      "concept_id": "workfactor_ecc_equiv",
+      "explanation": {
+        "ar": "ECC-256 ≈ 128 بت من الأمان المتماثل، مماثلةً AES-128 بمفتاح أقصر بكثير.",
+        "en": "ECC-256 ≈ 128-bit symmetric security, matching AES-128 with a much shorter key."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "ليش تكافؤات أمان RSA و ECC مهمة؟",
+        "en": "Why do the RSA and ECC security equivalences matter?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تلغي الحاجة لأي شيفرة متماثلة.",
+          "en": "They remove the need for any symmetric cipher at all."
+        },
+        {
+          "ar": "تسمح بتحليل موحّد للمخاطر عبر النموذجين.",
+          "en": "They allow a unified risk analysis across both paradigms."
+        },
+        {
+          "ar": "تسمح باستخدام مفاتيح RSA و ECC بالتبادل.",
+          "en": "They let RSA and ECC keys be used interchangeably."
+        },
+        {
+          "ar": "تُثبت أن المفاتيح غير المتماثلة أقوى دائماً.",
+          "en": "They prove that asymmetric keys are always stronger."
+        }
+      ],
+      "concept_id": "workfactor_unified_risk",
+      "explanation": {
+        "ar": "التعبير عن كل منهما ببتات متماثلة مكافئة يضع كل المكوّنات على مقياس واحد.",
+        "en": "Expressing both in equivalent symmetric bits puts every component on one scale."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "أي تعبير يعطي أمان النظام الهجين على مدى عمره؟",
+        "en": "Which expression gives the security of a hybrid system over its lifetime?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "T_system هو الأكبر بين T_sym و T_asym.",
+          "en": "T_system is the larger of T_sym and T_asym."
+        },
+        {
+          "ar": "T_system هو مجموع T_sym و T_asym.",
+          "en": "T_system is the sum of T_sym and T_asym."
+        },
+        {
+          "ar": "T_system هو حاصل ضرب T_sym و T_asym.",
+          "en": "T_system is the product of T_sym and T_asym."
+        },
+        {
+          "ar": "T_system هو الأصغر بين T_sym و T_asym.",
+          "en": "T_system is the smaller of T_sym and T_asym."
+        }
+      ],
+      "concept_id": "workfactor_hybrid_min",
+      "explanation": {
+        "ar": "T_system = min{T_sym, T_asym}، لأن كسر أي نصف يخرّب الكل.",
+        "en": "T_system = min{T_sym, T_asym}, because breaking either half compromises the whole."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "إذا كان تبادل المفتاح غير المتماثل أضعف بكثير من مفتاح الجلسة المتماثل، شنو يصيب أمان النظام؟",
+        "en": "If the asymmetric key exchange is much weaker than the symmetric session key, what happens to the system's security?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "النظام بقوة تبادل المفتاح الأضعف فقط.",
+          "en": "The system is only as strong as the weaker key exchange."
+        },
+        {
+          "ar": "النظام يحتفظ بالقوة الكاملة لمفتاح الجلسة المتماثل.",
+          "en": "The system keeps the full strength of the symmetric session key."
+        },
+        {
+          "ar": "قوة النظام هي متوسط المكوّنين.",
+          "en": "The system's strength is the average of the two components."
+        },
+        {
+          "ar": "قوة النظام تتضاعف لأن هناك طبقتين.",
+          "en": "The system's strength doubles because there are two layers."
+        }
+      ],
+      "concept_id": "workfactor_weakest_link",
+      "explanation": {
+        "ar": "الحلقة الأضعف هي التي تحكم: مفتاح جلسة AES قوي بلا قيمة إذا كان التبادل الذي أنشأه قابلاً للكسر.",
+        "en": "The weakest link dominates: a strong AES session key is worthless if the exchange that established it can be broken."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "شنو يستنتج الفصل من رقم AES-128 البالغ 5.4 × 10^20 سنة؟",
+        "en": "What does the chapter conclude about the AES-128 figure of 5.4 × 10^20 years?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "هو أقصر من العمر المتوقع لمعظم الأصول.",
+          "en": "It is shorter than the expected lifetime of most assets."
+        },
+        {
+          "ar": "يفترض مهاجماً بطيئاً بصورة غير واقعية.",
+          "en": "It assumes an unrealistically slow attacker."
+        },
+        {
+          "ar": "يتجاوز حدود المعقول بكثير.",
+          "en": "It is well beyond feasibility."
+        },
+        {
+          "ar": "هو في متناول مهاجم دولة مصمّم.",
+          "en": "It is reachable by a determined nation-state attacker."
+        }
+      ],
+      "concept_id": "workfactor_practical_meaning",
+      "explanation": {
+        "ar": "يلاحظ الفصل أن الرقم يتجاوز حدود المعقول بكثير، وهذه هي غاية النموذج.",
+        "en": "The chapter notes the figure is well beyond feasibility, which is the point of the model."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T06:41:39Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
