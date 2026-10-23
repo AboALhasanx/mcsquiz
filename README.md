@@ -108,3 +108,7 @@ python 90_Shared_Toolbox/tools/portal_content.py pull     # refresh the bundled 
 Read [SECURITY.md](SECURITY.md). In one line: the PIN is salted and hashed, the personal
 payload is encrypted on the device with a key derived from that PIN, the personal tables
 are scoped by row, and no third party sees anything at runtime.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
