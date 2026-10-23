@@ -2,11 +2,25 @@ name: ci
 
 on:
   push:
+    branches: [master]
   pull_request:
-  workflow_dispatch:
+  workflow_dispatch:      # the full browser suite is manual: it talks to the live portal
 
 jobs:
   quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: static audit (silent failures, dead code, zombies, orphans)
+        run: python tools/audit.py
+
+  suite:
+    # the behaviour suite creates real accounts on the live project, so it only
+    # runs when someone asks for it from the Actions tab
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,7 +32,5 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install playwright
           python -m playwright install --with-deps chromium
-      - name: static audit (silent failures, dead code, zombies, orphans)
-        run: python tools/audit.py
-      - name: the portal suite (121 checks)
+      - name: the portal suite
         run: python tools/ci.py
