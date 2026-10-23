@@ -2938,6 +2938,10 @@
   async function generateLinkCode() {
     const C = cloud();
     if (!C || !C.login) return;
+    // asking for a link is an explicit sign-in: the "I signed out" guard that
+    // stops background polls from resurrecting a session must not block it
+    try { localStorage.removeItem('portal_signed_out_v1'); } catch (e) {}
+    const startedAt = Date.now();
     const code = String(Math.floor(100000 + Math.random() * 900000));   // six digits
     $('link-title').textContent = 'ربط هذا الجهاز';
     $('link-close').textContent = 'إلغاء الربط';
@@ -2975,6 +2979,19 @@
           try { await C.pullOrPush(); } catch (e) { dbg('sync failed:', (e && e.message) || e); }
           try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) { dbg('league sync failed:', (e && e.message) || e); }
           renderLeague();
+          return;
+        }
+        // approved, but the approving account has no server row: saying nothing
+        // would leave this device spinning on the QR for ever
+        if (row && row.approved) {
+          stopLinkPoll();
+          $('link-wait').textContent = 'الحساب على الجهاز الآخر غير مكتمل — سجّل الدخول عليه مرة، ثم أعد المحاولة.';
+          return;
+        }
+        // the code lives ten minutes; after that there is nothing left to wait for
+        if (Date.now() - startedAt > 10 * 60 * 1000) {
+          stopLinkPoll();
+          $('link-wait').textContent = 'انتهى وقت الرمز — أغلق وأعد المحاولة.';
         }
       } catch (e) { /* audit-ignore: probe only */ }
     }, 3000);
@@ -4039,7 +4056,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.5.1';
+  const SHELL_VERSION = '1.5.2';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

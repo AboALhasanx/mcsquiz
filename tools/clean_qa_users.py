@@ -118,6 +118,9 @@ def main() -> int:
         call(key, 'DELETE', '/login_attempts?key=eq.handle:' + u['handle'])
         call(key, 'DELETE', '/portal_users?id=eq.' + u['id'])
     status, left = call(key, 'GET', '/portal_users?select=handle')
+    # the suite itself spends the per-address budget; reset the dev machine's
+    # counter so the next run does not start against a half-full bucket
+    call(key, 'DELETE', '/login_attempts?key=like.ip:*')
     print('removed %d; %d account(s) left' % (len(doomed), len(left) if isinstance(left, list) else -1))
     return 0
 
