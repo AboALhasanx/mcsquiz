@@ -172,6 +172,8 @@
     try {
       localStorage.removeItem(ACCOUNT_KEY);
       localStorage.removeItem(SYNC_KEY);
+      // the PIN is a credential: it must not outlive the session on a shared device
+      localStorage.removeItem('portal_pin_v1');
       localStorage.setItem('portal_signed_out_v1', '1');
     } catch (e) {}
     cachedUser = null;
@@ -251,6 +253,7 @@
     try {
       localStorage.removeItem(LS_HISTORY);
       localStorage.removeItem(LS_SAVED);
+      localStorage.removeItem('portal_pin_v1');
       for (var i = localStorage.length - 1; i >= 0; i--) {
         var k = localStorage.key(i);
         if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' || k === 'portal_saved_removed_v1' || k === 'portal_history_cleared_v1')) localStorage.removeItem(k);

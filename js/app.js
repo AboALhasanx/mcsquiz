@@ -2800,7 +2800,10 @@
       toast('تم حفظ الملف', 'success');
     } catch (e) {
       const msg = String((e && e.message) || '');
-      toast(msg.indexOf('pin') >= 0 ? 'أعد تسجيل الدخول لتعديل الملف' : 'تعذر الحفظ', 'error');
+      if (msg.indexOf('too_many_attempts') >= 0) toast('محاولات كثيرة — حاول بعد قليل', 'error');
+      else if (msg.indexOf('bad_pin') >= 0) toast('الرمز غير صحيح', 'error');
+      else if (msg.indexOf('pin') >= 0) toast('أعد تسجيل الدخول لتعديل الملف', 'error');
+      else toast('تعذر الحفظ', 'error');
     }
   }
 
@@ -3969,7 +3972,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.4.4';
+  const SHELL_VERSION = '1.4.5';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
