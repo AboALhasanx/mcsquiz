@@ -153,9 +153,8 @@
     // the question grid is meaningless before the quiz starts
     const matrixBtn = $('btn-open-matrix');
     if (matrixBtn) matrixBtn.style.display = (viewId === 'quiz-view') ? '' : 'none';
-    // the saved shortcut belongs to the saved views, not to the home or a quiz
-    const savedBtn = $('btn-open-saved');
-    if (savedBtn) savedBtn.style.display = (viewId === 'deck-catalog' || inQuiz) ? 'none' : '';
+    // the saved shortcut is part of the top bar: always reachable, one tap
+    // (the sound toggle is not — it lives in the burger menu only)
     // the language toggle lives in every app bar and is always visible
     const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
@@ -2566,10 +2565,6 @@
   }
   function setSound(on) {
     S.sound = !!on;
-    const si = $('sound-icon');
-    if (si) si.setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
-    const sh = $('sound-header-icon');
-    if (sh) sh.setAttribute('data-lucide', S.sound ? 'volume-2' : 'volume-x');
     syncMenuToggles();
     icons();
   }
@@ -3889,7 +3884,6 @@
       const m = $('notif-modal');
       if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
     });
-    $('btn-sound-toggle').addEventListener('click', () => { setSound(!S.sound); });
     // pwa.js is loaded after app.js, so its handler stores the prompt after
     // this one runs: read the state on the next tick, not right now
     window.addEventListener('beforeinstallprompt', () => { setTimeout(refreshInstallRow, 0); });
@@ -3904,8 +3898,6 @@
         renderStats();
       });
     });
-    const soundHeader = $('btn-sound-header');
-    if (soundHeader) soundHeader.addEventListener('click', () => { setSound(!S.sound); });
 
     const toggleTheme = () => {
       const root = document.documentElement;
@@ -3976,7 +3968,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.4.1';
+  const SHELL_VERSION = '1.4.3';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -1,0 +1,596 @@
+{
+  "topic": {
+    "ar": "ممارسات دورة الحياة والتكامل والتحديات الاستراتيجية",
+    "en": "Lifecycle practices, integration and strategic challenges"
+  },
+  "quiz_id": "Quiz_Ch06_T07_Lifecycle_Integration_And_Challenges",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي ممارسات تنتمي لمرحلة ما قبل النشر؟",
+        "en": "Which practices belong to the pre-deployment stage?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الرصد وقت التشغيل وإنفاذ السياسة.",
+          "en": "Runtime monitoring and policy enforcement."
+        },
+        {
+          "ar": "الاستجابة للحوادث والتقاط الأدلة.",
+          "en": "Incident response and forensic capture."
+        },
+        {
+          "ar": "مراجعات الكود والتحليل الساكن الآلي.",
+          "en": "Code reviews and automated static analysis."
+        },
+        {
+          "ar": "فحص الحاويات والتحقّق من الأسرار.",
+          "en": "Container scanning and secret validation."
+        }
+      ],
+      "concept_id": "w6_lc_pre",
+      "explanation": {
+        "ar": "التحليل الساكن والمراجعة يصيران والتغيير لا يزال قيد المراجعة، وهي أرخص لحظة لرفضه.",
+        "en": "Static analysis and review happen while the change is still in review, which is the cheapest moment to reject it."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي ممارسات تنتمي لمرحلة النشر؟",
+        "en": "Which practices belong to the deployment stage?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مراجعات الكود والتحليل الساكن الآلي.",
+          "en": "Code reviews and automated static analysis."
+        },
+        {
+          "ar": "الرصد وقت التشغيل والسياسة المتكيّفة.",
+          "en": "Runtime monitoring and adaptive policy."
+        },
+        {
+          "ar": "نمذجة التهديد ومراجعة المعمارية.",
+          "en": "Threat modelling and architecture review."
+        },
+        {
+          "ar": "فحص الحاويات والتحقّق من الأسرار.",
+          "en": "Container scanning and secret validation."
+        }
+      ],
+      "concept_id": "w6_lc_deploy",
+      "explanation": {
+        "ar": "عند النشر يُفحص المخرَج نفسه: شنو داخل الصورة وهل تسرّب سر إليها.",
+        "en": "At deployment the artefact itself is checked: what is inside the image and whether any secret slipped into it."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي ممارسات تنتمي لمرحلة ما بعد النشر؟",
+        "en": "Which practices belong to the post-deployment stage?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الرصد وقت التشغيل وإنفاذ السياسة المتكيّفة.",
+          "en": "Runtime monitoring and adaptive policy enforcement."
+        },
+        {
+          "ar": "مراجعات الكود والتحليل الساكن الآلي.",
+          "en": "Code reviews and automated static analysis."
+        },
+        {
+          "ar": "فحص الحاويات والتحقّق من الأسرار.",
+          "en": "Container scanning and secret validation."
+        },
+        {
+          "ar": "نمذجة التهديد ومراجعة المعمارية.",
+          "en": "Threat modelling and architecture review."
+        }
+      ],
+      "concept_id": "w6_lc_post",
+      "explanation": {
+        "ar": "بعد ما يشتغل، ما يبقى إلا مراقبة السلوك وتكييف السياسة مع الترافيك المرصود.",
+        "en": "Once running, the only defence left is watching behaviour and adapting policy as the observed traffic changes."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو يمنعه تكامل دورة الحياة؟",
+        "en": "What does lifecycle integration prevent?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الحاويات من إعادة البناء كل إصدار.",
+          "en": "Containers from being rebuilt each release."
+        },
+        {
+          "ar": "تراكم الثغرات عبر الدورات.",
+          "en": "Vulnerabilities accumulating across iterations."
+        },
+        {
+          "ar": "المطوّرين من تثبيت أي كود أبداً.",
+          "en": "Developers from committing any code at all."
+        },
+        {
+          "ar": "الفاحصات من إنتاج إنذارات كاذبة.",
+          "en": "Scanners from producing false positives."
+        }
+      ],
+      "concept_id": "w6_lc_purpose",
+      "explanation": {
+        "ar": "كل دورة تضيف كوداً، فبلا تكامل يكبّر مخزون العيوب غير المصلَّحة أسرع من قدرة أي أحد على تصفيته.",
+        "en": "Each iteration adds code, so without integration the backlog of unfixed flaws grows faster than anyone can clear it."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يُنقل عدد الثغرات بين الدورات؟",
+        "en": "How is the vulnerability count carried across iterations?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "العدد السابق ÷ الإزالة، زائد الإدخال.",
+          "en": "Previous count divided by elimination, plus introduction."
+        },
+        {
+          "ar": "العدد السابق + الإزالة، ناقص الإدخال.",
+          "en": "Previous count plus elimination, minus introduction."
+        },
+        {
+          "ar": "العدد السابق × (واحد ناقص الإزالة)، زائد الإدخال.",
+          "en": "Previous count times one minus elimination, plus introduction."
+        },
+        {
+          "ar": "العدد السابق × الإزالة، ناقص الإدخال.",
+          "en": "Previous count times elimination, minus introduction."
+        }
+      ],
+      "concept_id": "w6_lc_recurrence",
+      "explanation": {
+        "ar": "اللي يبقى هو الكسر غير المُزال من العدد القديم، والثغرات الجديدة توصل فوقه.",
+        "en": "What survives is the untouched fraction of the old count, and new flaws arrive on top of it."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي شرط يجعل الممارسة مستدامة؟",
+        "en": "What condition makes the practice sustainable?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "معدّل الإدخال يتجاوز الإزالة نسبةً للعدد.",
+          "en": "Introduction rate exceeds elimination over the count."
+        },
+        {
+          "ar": "الإزالة تساوي الإدخال بالضبط دائماً.",
+          "en": "Elimination equals introduction exactly, always."
+        },
+        {
+          "ar": "العدد يبقى ثابتاً بين الدورات.",
+          "en": "The count remains constant between iterations."
+        },
+        {
+          "ar": "معدّل الإزالة يتجاوز الإدخال نسبةً للعدد.",
+          "en": "Elimination rate exceeds introduction over the count."
+        }
+      ],
+      "concept_id": "w6_lc_sustainability",
+      "explanation": {
+        "ar": "الانخفاض الصافي يتطلّب إزالة أكثر من الإضافة نسبةً لما تحمله أصلاً.",
+        "en": "Net reduction requires removing more than you add relative to what you already carry."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ليش تشبه هذه التكرارية نموذج DevSecOps الاستراتيجي؟",
+        "en": "Why does this recurrence resemble the strategic DevSecOps model?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لأن الاثنين يتتبّعان الإزالة مقابل التدفق الداخل.",
+          "en": "Because both track removal against inflow."
+        },
+        {
+          "ar": "لأن الاثنين نُشرا بنفس المعيار.",
+          "en": "Because both were published in the same standard."
+        },
+        {
+          "ar": "لأن الاثنين يقيسان مرحلة النشر فقط.",
+          "en": "Because both measure only the deployment stage."
+        },
+        {
+          "ar": "لأن الاثنين يتجاهلان دخول ثغرات جديدة.",
+          "en": "Because both ignore the introduction of new flaws."
+        }
+      ],
+      "concept_id": "w6_lc_same_model",
+      "explanation": {
+        "ar": "هي نفس الموازنة من زاوية ثانية: الاستراتيجية تحدّد النيّة، ودورة الحياة هي وين تصير الدورة فعلاً.",
+        "en": "It is the same balance seen from a different angle: strategy sets the intent, the lifecycle is where the iteration actually happens."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "شنو تنتجه الأدوات بلا ممارسات منظّمة؟",
+        "en": "What do tools without disciplined practices produce?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تسليم أسرع بعيوب أقل.",
+          "en": "Faster delivery with fewer defects."
+        },
+        {
+          "ar": "طمأنينة زائفة بأن المؤسسة محمية.",
+          "en": "False assurance that the estate is protected."
+        },
+        {
+          "ar": "امتثال مضمون لكل معيار.",
+          "en": "Guaranteed compliance with every standard."
+        },
+        {
+          "ar": "انخفاض قابل للقياس بكل خطر.",
+          "en": "A measurable reduction in every risk."
+        }
+      ],
+      "concept_id": "w6_int_tools_alone",
+      "explanation": {
+        "ar": "اللوحات خضراء والكونسول يعرض كشوفات، ولهذا بالضبط ما أحد يلاحظ إن العملية وراها غائبة.",
+        "en": "The dashboards are green and the console shows detections, which is precisely why nobody notices that the process behind them is absent."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو يصير للممارسات بلا أدوات داعمة؟",
+        "en": "What happens to practices without supporting tools?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تغني عن الأتمتة.",
+          "en": "They replace the need for automation."
+        },
+        {
+          "ar": "تُرضي المدقّقين بلا دليل.",
+          "en": "They satisfy auditors without evidence."
+        },
+        {
+          "ar": "تصير غير مستدامة على نطاق واسع.",
+          "en": "They become unsustainable at scale."
+        },
+        {
+          "ar": "تصير أكثر فاعلية مع الوقت.",
+          "en": "They become more effective over time."
+        }
+      ],
+      "concept_id": "w6_int_practices_alone",
+      "explanation": {
+        "ar": "عملية مراجعة يدوية تشتغل لفريق واحد وتنهار عند خمسين، ولهذا الأدوات هي اللي تخلي الممارسة تتوسّع.",
+        "en": "A manual review process works for one team and collapses at fifty, which is why tooling is what makes a practice scale."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "كيف تُنمذَج الفاعلية المجمّعة للأدوات والممارسات؟",
+        "en": "How is combined effectiveness of tools and practices modelled?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجموع فاعلية كل أداة وممارسة.",
+          "en": "The sum of every tool and practice effectiveness."
+        },
+        {
+          "ar": "حاصل ضرب فاعلية كل أداة وممارسة.",
+          "en": "The product of every tool and practice effectiveness."
+        },
+        {
+          "ar": "متوسط فاعلية كل أداة وممارسة.",
+          "en": "The average of every tool and practice effectiveness."
+        },
+        {
+          "ar": "واحد ناقص حاصل ضرب كل الضعف المتبقي.",
+          "en": "One minus the product of all residual weaknesses."
+        }
+      ],
+      "concept_id": "w6_int_formula",
+      "explanation": {
+        "ar": "كل أداة وممارسة تترك بقيتها، وحاصل ضرب تلك البقايا هو احتمال فشلها كلها معاً.",
+        "en": "Every tool and practice leaves its own remainder, and the product of those remainders is the chance that everything fails together."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أداة فاعليتها 0.9 وممارسة فاعليتها 0.8 تُجمعان. شنو الفاعلية الكلية؟",
+        "en": "A tool with effectiveness 0.9 and a practice with 0.8 are combined. What is total effectiveness?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.98، لأن البقايا تتضارب إلى 0.02.",
+          "en": "0.98, since the residuals multiply to 0.02."
+        },
+        {
+          "ar": "0.85، متوسط القيمتين.",
+          "en": "0.85, the average of the two values."
+        },
+        {
+          "ar": "1.7، مجموع القيمتين.",
+          "en": "1.7, the sum of the two values."
+        },
+        {
+          "ar": "0.72، حاصل ضرب القيمتين.",
+          "en": "0.72, the product of the two values."
+        }
+      ],
+      "concept_id": "w6_int_worked",
+      "explanation": {
+        "ar": "البقايا هي 0.1 و 0.2، وحاصل ضربهما 0.02، فالفاعلية واحد ناقص ذلك.",
+        "en": "The residuals are 0.1 and 0.2, whose product is 0.02, so effectiveness is one minus that."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ليش جمع أداة مع ممارسة أقوى من تكرار نوع واحد؟",
+        "en": "Why is combining a tool with a practice stronger than repeating one type?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن التكرار يضاعف الفاعلية دائماً.",
+          "en": "Because repetition always doubles effectiveness."
+        },
+        {
+          "ar": "لأن أنماط فشل مختلفة تترك بقية أقل.",
+          "en": "Because different failure modes leave less residual."
+        },
+        {
+          "ar": "لأن الأدوات أرخص من الممارسات عموماً.",
+          "en": "Because tools cost less than practices overall."
+        },
+        {
+          "ar": "لأن الممارسات تُدقَّق أكثر.",
+          "en": "Because practices are audited more often."
+        }
+      ],
+      "concept_id": "w6_int_diversity",
+      "explanation": {
+        "ar": "نسخة ثانية من نفس الضابط تفشل بنفس الطريقة، أما نوع ضابط مختلف فيغطّي النمط اللي الأول ما يقدر يغطّيه.",
+        "en": "A second copy of the same control fails the same way, whereas a different control type covers the mode the first one cannot."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "أي خطر يخلقه الاعتماد المفرط على الأدوات؟",
+        "en": "What risk does over-reliance on tools create?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الأتمتة تبطّئ خط النشر كله.",
+          "en": "Automation slows down the whole deployment pipeline."
+        },
+        {
+          "ar": "الأدوات تكرّر العمل اليدوي للمحلّلين.",
+          "en": "Tools duplicate the manual work done by analysts."
+        },
+        {
+          "ar": "الثقة الزائدة بالأتمتة تفوّت هجمات متطوّرة.",
+          "en": "Excessive trust in automation misses sophisticated attacks."
+        },
+        {
+          "ar": "تراخيص الأدوات تنتهي قبل تاريخ التجديد.",
+          "en": "Tool licences expire before the planned renewal date."
+        }
+      ],
+      "concept_id": "w6_ch_tool_reliance",
+      "explanation": {
+        "ar": "الأتمتة شاطرة باللي انْتِگلها تدوّر عليه، فمهاجم يفهم النموذج يقدر يبقى خارج وصفه.",
+        "en": "Automation is good at what it was told to look for, so an attacker who understands the model can stay outside its description."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "شنو يسبّبه تعقيد التكامل عادة؟",
+        "en": "What does the complexity of integration typically cause?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تقليل عدد الضوابط المطلوبة.",
+          "en": "A reduction in the number of controls needed."
+        },
+        {
+          "ar": "كشف أسرع عبر كل المصادر.",
+          "en": "Faster detection across all the sources."
+        },
+        {
+          "ar": "كلفة تملّك أقل للمؤسسة.",
+          "en": "Lower cost of ownership for the estate."
+        },
+        {
+          "ar": "مشاكل تشغيل بيني بين الطبقات.",
+          "en": "Interoperability issues between the layers."
+        }
+      ],
+      "concept_id": "w6_ch_integration_complexity",
+      "explanation": {
+        "ar": "كل طبقة إضافية منتج ثاني بنموذج بياناته الخاص، فالمفاصل بينها تصير هي المشكلة التشغيلية.",
+        "en": "Every additional layer is another product with its own data model, so the seams between them become the operational problem."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "أي تهديدات ناشئة يذكرها الفصل كاختبار للتكيّف؟",
+        "en": "Which emerging threats does the chapter name as testing adaptability?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "هجمات سلسلة التوريد والبرمجيات الخبيثة بالذكاء الاصطناعي.",
+          "en": "Supply chain attacks and AI-driven malware."
+        },
+        {
+          "ar": "إعادة استخدام كلمات المرور وأسئلة استعادة ضعيفة.",
+          "en": "Password reuse and weak recovery questions."
+        },
+        {
+          "ar": "شهادات منتهية و DNS مسارها خاطئ.",
+          "en": "Expired certificates and misrouted DNS."
+        },
+        {
+          "ar": "أعطال أقراص وانقطاع كهرباء مركز البيانات.",
+          "en": "Disk failures and datacentre power loss."
+        }
+      ],
+      "concept_id": "w6_ch_dynamic_landscape",
+      "explanation": {
+        "ar": "الاثنان يهاجمان افتراضات بُنيت عليها الممارسات: إن التبعيات موثوقة وإن أدوات الهجوم بدائية.",
+        "en": "Both attack the assumptions the practices were built on: that dependencies are trustworthy and that attack tooling is unsophisticated."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "أي عوامل بشرية تبقى ثغرات استراتيجية؟",
+        "en": "Which human factors remain strategic vulnerabilities?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اجتماعات طويلة ومراجعات متأخرة وأحمال ثقيلة.",
+          "en": "Long meetings, late reviews and heavy workloads."
+        },
+        {
+          "ar": "سوء الإعداد والترقيع الضعيف ومقاومة البرمجة الآمنة.",
+          "en": "Misconfiguration, poor patching and coding resistance."
+        },
+        {
+          "ar": "تجميد التوظيف وتخفيض الميزانية ونقل المكتب.",
+          "en": "Hiring freezes, budget cuts and office relocation."
+        },
+        {
+          "ar": "حاسبات بطيئة وشاشات صغيرة ومكاتب مزعجة.",
+          "en": "Slow laptops, small monitors and noisy offices."
+        }
+      ],
+      "concept_id": "w6_ch_human",
+      "explanation": {
+        "ar": "الأدوات والنماذج ما تعوّض فريقاً يعطّب إعداداتها أو يرفض تبنّي الممارسة.",
+        "en": "Tools and models cannot compensate for a team that misconfigures them or refuses to adopt the practice."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "كيف تخفّف النماذج الرياضية هذه التحديات؟",
+        "en": "How do mathematical models mitigate these challenges?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بأتمتة كل إجراء معالجة.",
+          "en": "By automating every remediation action."
+        },
+        {
+          "ar": "بإثبات إن ماكو هجوم ينجح.",
+          "en": "By proving that no attack can succeed."
+        },
+        {
+          "ar": "بترتيب المخاطر بموضوعية.",
+          "en": "By prioritising risks objectively."
+        },
+        {
+          "ar": "بإلغاء الحاجة للحكم البشري.",
+          "en": "By eliminating the need for human judgement."
+        }
+      ],
+      "concept_id": "w6_ch_models_role",
+      "explanation": {
+        "ar": "تحوّل الجدل العاطفي حول أي خطر أسوأ إلى قائمة مرتّبة بأرقام وراها.",
+        "en": "They turn an emotional argument about which risk feels worse into a ranked list with numbers behind it."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "شنو يسمّيه التركيب الختامي الأساس العلمي؟",
+        "en": "What does the closing synthesis call the scientific foundation?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حجم الشراء ودعم المورّد والتدريب.",
+          "en": "Procurement volume, vendor support and training."
+        },
+        {
+          "ar": "التنظيم والشهادات وتواتر التدقيق.",
+          "en": "Regulation, certification and audit frequency."
+        },
+        {
+          "ar": "عدد الكوادر والميزانية ورعاية الإدارة.",
+          "en": "Headcount, budget and executive sponsorship."
+        },
+        {
+          "ar": "الصرامة الكمّية والابتكار والممارسة المنظّمة.",
+          "en": "Quantitative rigour, innovation and disciplined practice."
+        }
+      ],
+      "concept_id": "w6_syn_fusion",
+      "explanation": {
+        "ar": "التزاوج بين الصرامة الكمّية والابتكار التقني والممارسات المنظّمة هو اللي يقدّمه المستند كأساس علمي للمجال.",
+        "en": "The fusion of quantitative rigor, technological innovation and disciplined practices is what the document presents as the field's scientific basis."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T10:20:11Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

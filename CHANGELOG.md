@@ -5,6 +5,18 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.3] — 2026-10-23
+
+### Changed
+- top bar: the saved shortcut is always visible; the sound toggle now lives in the burger menu only
+
+
+## [1.4.2] — 2026-10-23
+
+### Changed
+- content: Cyber chapter 6 published (13 banks / 258 questions); precache refreshed for offline installs
+
+
 ## [1.4.1] — 2026-10-23
 
 ### Changed

@@ -1,0 +1,660 @@
+{
+  "topic": {
+    "ar": "الاستراتيجية القائمة على المخاطر والاتجاهات الحديثة والنماذج الأربعة",
+    "en": "Risk-oriented strategy, modern directions and the four models"
+  },
+  "quiz_id": "Quiz_Ch06_T03_Risk_Models_And_Modern_Directions",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ليش لازم الاستراتيجية ترتكز على قياس المخاطر كمياً؟",
+        "en": "Why must a strategy be anchored in risk quantification?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأن الأنظمة تشترط سجل مخاطر رقمي.",
+          "en": "Because regulations require a numeric risk register."
+        },
+        {
+          "ar": "لأن الفاحصات تُخرج درجات رقمية فقط.",
+          "en": "Because scanners can only output numeric scores."
+        },
+        {
+          "ar": "لأن الميزانيات تُحدَّد قبل معرفة المخاطر.",
+          "en": "Because budgets are set before risks are known."
+        },
+        {
+          "ar": "بلا معاملات قابلة للقياس يصير الترجيح عشوائياً.",
+          "en": "Without measurable parameters prioritization is arbitrary."
+        }
+      ],
+      "concept_id": "w6_risk_anchor",
+      "explanation": {
+        "ar": "بلا معاملات قابلة للقياس، يصبح الترجيح عشوائياً وتُوزَّع الموارد بشكل غير فعّال.",
+        "en": "Without measurable parameters, prioritisation becomes arbitrary and resources are allocated inefficiently."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف يُعرَّف خطر ثغرة واحدة؟",
+        "en": "How is the risk of a single vulnerability defined?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الاحتمال × الخطورة × الأثر.",
+          "en": "Likelihood times severity times impact."
+        },
+        {
+          "ar": "الاحتمال + الخطورة + الأثر.",
+          "en": "Likelihood plus severity plus impact."
+        },
+        {
+          "ar": "الاحتمال ÷ الخطورة × الأثر.",
+          "en": "Likelihood divided by severity times impact."
+        },
+        {
+          "ar": "متوسط الاحتمال والخطورة والأثر.",
+          "en": "The average of likelihood, severity and impact."
+        }
+      ],
+      "concept_id": "w6_risk_formula",
+      "explanation": {
+        "ar": "ثلاثة عوامل قابلة للقياس تُضرب، وهذا اللي يسمح بمقارنة المخاطر بين التطبيقات.",
+        "en": "Three measurable factors are multiplied, which is what lets risks be compared across applications."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "شنو يمثّل عامل الاحتمال؟",
+        "en": "What does the likelihood factor represent?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "كلفة إصلاح الثغرة.",
+          "en": "The cost of fixing the vulnerability."
+        },
+        {
+          "ar": "عدد الأنظمة اللي تحمل العيب.",
+          "en": "The number of systems carrying the flaw."
+        },
+        {
+          "ar": "احتمال استغلال الثغرة.",
+          "en": "The probability the vulnerability is exploited."
+        },
+        {
+          "ar": "درجة الأهمية التقنية للعيب.",
+          "en": "The technical criticality score of the flaw."
+        }
+      ],
+      "concept_id": "w6_L_meaning",
+      "explanation": {
+        "ar": "هو احتمال الاستغلال، والإطارات الحديثة تتنبّأ به بتعلّم الآلة بدل افتراضه.",
+        "en": "It is the exploitation probability, which modern frameworks predict with machine learning rather than assuming."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو يمثّل عامل الخطورة؟",
+        "en": "What does the severity factor represent?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الزمن اللازم لنشر الترقيع.",
+          "en": "The time needed to deploy a patch."
+        },
+        {
+          "ar": "الأهمية التقنية، وغالباً درجة CVSS.",
+          "en": "Technical criticality, often a CVSS score."
+        },
+        {
+          "ar": "الإيراد المرتبط بالأصل.",
+          "en": "The business revenue attached to the asset."
+        },
+        {
+          "ar": "عدد المستخدمين المتأثرين بالعيب.",
+          "en": "The number of users affected by the flaw."
+        }
+      ],
+      "concept_id": "w6_S_meaning",
+      "explanation": {
+        "ar": "هي الأهمية التقنية للعيب، و CVSS هي الطريقة المعتادة للتعبير عنها.",
+        "en": "It is the technical criticality of the flaw, and CVSS is the usual way of expressing it."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "شنو يمثّل عامل الأثر؟",
+        "en": "What does the impact factor represent?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الأثر على جدول إصدارات المورّد.",
+          "en": "The effect on the vendor's release schedule."
+        },
+        {
+          "ar": "الأثر على معدّل الإنذارات الكاذبة.",
+          "en": "The effect on the scanner's false positive rate."
+        },
+        {
+          "ar": "الأثر على مناوبات الفريق.",
+          "en": "The effect on the team's on-call rotation."
+        },
+        {
+          "ar": "الأثر على السرية والسلامة والتوافر.",
+          "en": "The effect on confidentiality, integrity and availability."
+        }
+      ],
+      "concept_id": "w6_I_meaning",
+      "explanation": {
+        "ar": "الأثر يُقاس على ثالوث CIA، ولهذا عيب بنموذج تسجيل الدخول يأخذ درجة عالية جداً.",
+        "en": "Impact is measured against the CIA triad, which is why a flaw on an authentication form scores so highly."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ليش صيغة الضرب مهمة عملياً؟",
+        "en": "Why does the product form matter in practice?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لأن عاملاً قريباً من الصفر يُسقط الدرجة كلها.",
+          "en": "Because a near-zero factor collapses the whole risk score."
+        },
+        {
+          "ar": "لأن الجمع يخلي كل الدرجات متطابقة.",
+          "en": "Because addition would make every score identical."
+        },
+        {
+          "ar": "لأن الضرب يغني عن CVSS.",
+          "en": "Because multiplication removes the need for CVSS."
+        },
+        {
+          "ar": "لأن الخطورة ما تنقاس لوحدها.",
+          "en": "Because severity cannot be measured on its own."
+        }
+      ],
+      "concept_id": "w6_risk_product_not_sum",
+      "explanation": {
+        "ar": "عيب خطير بس احتماله شبه معدوم ينزل بالضرب لحد الصفر تقريباً، وهذا بالضبط التمييز اللي يحتاجه الترجيح.",
+        "en": "A severe flaw that is practically never exploited multiplies down to almost nothing, which is exactly the discrimination prioritisation needs."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف تُحسب درجة الخطر الكلية؟",
+        "en": "How is the aggregate risk score computed?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أقصى خطر ثغرة منفردة.",
+          "en": "The maximum individual vulnerability risk."
+        },
+        {
+          "ar": "متوسط مخاطر الثغرات المنفردة.",
+          "en": "The average of the individual vulnerability risks."
+        },
+        {
+          "ar": "مجموع مخاطر الثغرات المنفردة.",
+          "en": "The sum of the individual vulnerability risks."
+        },
+        {
+          "ar": "حاصل ضرب مخاطر الثغرات المنفردة.",
+          "en": "The product of the individual vulnerability risks."
+        }
+      ],
+      "concept_id": "w6_r_total",
+      "explanation": {
+        "ar": "المخاطر تُجمع عبر الثغرات لأن كل واحدة تعرّض مستقل، والمجموع يخليك تقارن التطبيقات.",
+        "en": "Risks add across vulnerabilities because each one is an independent exposure, and the total lets you compare applications."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي ثلاثة مصادر تغذّي تنبّؤ التعلّم الآلي بالاحتمال؟",
+        "en": "Which three sources feed machine-learning prediction of likelihood?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نتائج التدقيق ونص السياسة وسجلات التدريب.",
+          "en": "Audit findings, policy text and training records."
+        },
+        {
+          "ar": "بيانات الاستغلال التاريخية واستخبارات الخصوم والسياق.",
+          "en": "Historical exploit data, adversary intelligence and context."
+        },
+        {
+          "ar": "مخرجات الفاحص وسجل التذاكر وسرعة السبرنت.",
+          "en": "Scanner output, ticket history and sprint velocity."
+        },
+        {
+          "ar": "سجلات الجدار وسجلات DNS وإجارات DHCP.",
+          "en": "Firewall logs, DNS records and DHCP leases."
+        }
+      ],
+      "concept_id": "w6_ml_likelihood",
+      "explanation": {
+        "ar": "بيانات الاستغلال التاريخية، واستخبارات الخصوم، والسياق البيئي هي المدخلات الثلاثة المذكورة.",
+        "en": "Historical exploit data, adversarial intelligence and environmental context are the three named inputs."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ليش الثغرات المنشورة كأدوات استغلال جاهزة تأخذ أولوية أعلى؟",
+        "en": "Why do vulnerabilities published in exploit kits receive higher priority?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأن أدوات الاستغلال تستهدف دائماً أحدث CVEs.",
+          "en": "Because exploit kits always target the newest CVEs."
+        },
+        {
+          "ar": "لأن درجة CVSS لها تصير أعلى تلقائياً.",
+          "en": "Because their CVSS severity score is automatically higher."
+        },
+        {
+          "ar": "لأن المصنّعين يتوقّفون عن ترقيعها.",
+          "en": "Because vendors stop issuing patches for them."
+        },
+        {
+          "ar": "لأن التسليح يرفع الاحتمال المتوقّع.",
+          "en": "Because weaponisation raises the predicted likelihood."
+        }
+      ],
+      "concept_id": "w6_exploit_kit_priority",
+      "explanation": {
+        "ar": "أداة استغلال جاهزة تزيل كلفة التطوير عن المهاجم، فيرتفع احتمال الاستغلال مو الخطورة التقنية.",
+        "en": "A ready-made exploit removes the attacker's development cost, so the likelihood of exploitation rises rather than the technical severity."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي ثلاث هموم لازم تعالجها الاستراتيجيات للـ APIs والخدمات المصغّرة؟",
+        "en": "Which three concerns must strategies address for APIs and microservices?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "BOLA وانكشاف البيانات وتحديد المعدّل.",
+          "en": "BOLA, insecure data exposure and rate limiting."
+        },
+        {
+          "ar": "XSS وحقن SQL و CSRF.",
+          "en": "Cross-site scripting, SQL injection and CSRF."
+        },
+        {
+          "ar": "طفح المجمّع وسلاسل التنسيق وحالات التسابق.",
+          "en": "Buffer overflow, format strings and race conditions."
+        },
+        {
+          "ar": "تثبيت الشهادات و HSTS وترويسات CSP.",
+          "en": "Certificate pinning, HSTS and CSP headers."
+        }
+      ],
+      "concept_id": "w6_api_three_concerns",
+      "explanation": {
+        "ar": "انكسار التخويل على مستوى الكائن، وانكشاف البيانات عبر APIs ضعيفة التأمين، وتحديد المعدّل ومنع الإساءة.",
+        "en": "Broken object-level authorisation, data exposure through poorly secured APIs, and rate limiting with abuse prevention."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "شنو انكسار التخويل على مستوى الكائن؟",
+        "en": "What is broken object-level authorization?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مستخدم يتجاوز صفحة الدخول بالكامل.",
+          "en": "A user bypasses the login page entirely."
+        },
+        {
+          "ar": "مستخدم يعطّل خدمة التخويل.",
+          "en": "A user disables the authorisation service."
+        },
+        {
+          "ar": "مستخدم يوصل لكائن مو ملكه.",
+          "en": "A user reaches an object they do not own."
+        },
+        {
+          "ar": "مستخدم يخمّن كلمة مرور مستخدم ثاني.",
+          "en": "A user guesses another user's password."
+        }
+      ],
+      "concept_id": "w6_bola",
+      "explanation": {
+        "ar": "الطلب مصادَق عليه، بس التطبيق ما يتحقّق أبداً إن هذا الكائن يخص ذلك المستخدم.",
+        "en": "The request is authenticated but the application never checks that this particular object belongs to that principal."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ليش BOLA مو فشل مصادقة؟",
+        "en": "Why is BOLA not an authentication failure?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن نقطة الدخول كانت محدّدة المعدّل.",
+          "en": "Because the login endpoint was rate limited."
+        },
+        {
+          "ar": "لأن الهوية صحيحة، والملكية ما تُفحص أبداً.",
+          "en": "Because identity is valid; ownership is never checked."
+        },
+        {
+          "ar": "لأن كلمة المرور مخزّنة نصاً صريحاً.",
+          "en": "Because the password was stored in plaintext."
+        },
+        {
+          "ar": "لأن رمز الجلسة ما كان موقّعاً.",
+          "en": "Because the session token was never signed."
+        }
+      ],
+      "concept_id": "w6_bola_vs_auth",
+      "explanation": {
+        "ar": "العيب هو غياب التخويل على مستوى الكائن، فمستخدم صحيح يقدر يقرأ سجل مستخدم ثاني بتغيير المعرّف.",
+        "en": "The flaw is missing object-level authorisation, so a valid user can read another user's record by changing an identifier."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "شنو الأولوية الاستراتيجية بنشر متعدّد السحابات؟",
+        "en": "What is the strategic priority in multi-cloud deployments?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "اختيار أرخص منطقة سحابية متاحة.",
+          "en": "Choosing the cheapest available cloud region."
+        },
+        {
+          "ar": "استبدال الحاويات بأجهزة افتراضية.",
+          "en": "Replacing containers with virtual machines."
+        },
+        {
+          "ar": "تجميع كل الأحمال عند مزوّد واحد.",
+          "en": "Centralising every workload in one provider."
+        },
+        {
+          "ar": "اتساق سياسة الأمن بين البيئات.",
+          "en": "Consistency of security policy across environments."
+        }
+      ],
+      "concept_id": "w6_cloud_consistency",
+      "explanation": {
+        "ar": "الخطر مو الحاوية نفسها، بل سياسة تختلف من بيئة لبيئة، وهذا يترك فراغاً.",
+        "en": "The risk is not the container itself but a policy that differs from one environment to the next, which leaves a gap."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "أي تقنية يذكرها الفصل لضبط قواعد WAF ديناميكياً؟",
+        "en": "What technique does the chapter name for tuning WAF rules dynamically?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التعلّم المعزّز.",
+          "en": "Reinforcement learning."
+        },
+        {
+          "ar": "تجزئة التوقيعات الساكنة.",
+          "en": "Static signature hashing."
+        },
+        {
+          "ar": "مجالس مراجعة القواعد اليدوية.",
+          "en": "Manual rule review boards."
+        },
+        {
+          "ar": "تدوير القواعد بالدوري.",
+          "en": "Round-robin rule rotation."
+        }
+      ],
+      "concept_id": "w6_ai_waf_tuning",
+      "explanation": {
+        "ar": "قواعد الـWAF الساكنة يمكن يتعلّمها المهاجم ويتجاوزها، فالتعلّم المعزّز يخلي مجموعة القواعد تلحق نمط الهجوم.",
+        "en": "Static WAF rules can be learned and bypassed, so reinforcement learning lets the rule set follow the attack pattern."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "شنو تضيف لوائح مثل GDPR و HIPAA و PCI DSS استراتيجياً؟",
+        "en": "What do regulations such as GDPR, HIPAA and PCI DSS contribute strategically?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يضمنون إن ماكو اختراق يمكن يصير.",
+          "en": "They guarantee that no breach can occur."
+        },
+        {
+          "ar": "يحدّدون الفاحص اللي لازم تنصّبه.",
+          "en": "They prescribe the exact scanner to deploy."
+        },
+        {
+          "ar": "يضعون حدّاً أدنى ويفرضون حوكمة منظّمة.",
+          "en": "They set a minimum standard and enforce governance."
+        },
+        {
+          "ar": "يغنون عن الضوابط التقنية.",
+          "en": "They replace the need for technical controls."
+        }
+      ],
+      "concept_id": "w6_compliance_role",
+      "explanation": {
+        "ar": "المواءمة تخفّف المخاطر القانونية، بس كذلك تفرض حوكمة منظّمة، فتحوّل الأمن من اختياري إلى إلزامي.",
+        "en": "Alignment mitigates legal risk, but it also forces structured governance, turning security from optional into mandatory."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "شنو يقلّله نموذج توزيع الموارد، وبأي قيد؟",
+        "en": "What does the resource allocation model minimise, and under what constraint?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد الثغرات، بشرط عدد كوادر ثابت.",
+          "en": "Vulnerability count, subject to a fixed headcount."
+        },
+        {
+          "ar": "الخطر المتبقي، بشرط ألّا يتجاوز الإنفاق الميزانية.",
+          "en": "Residual risk, subject to spending within budget."
+        },
+        {
+          "ar": "الإنفاق، بشرط حدّ أدنى للخطر.",
+          "en": "Budget spent, subject to a minimum risk level."
+        },
+        {
+          "ar": "كلفة التخفيف، بشرط خطر متبقٍّ ثابت.",
+          "en": "Mitigation cost, subject to a fixed residual risk."
+        }
+      ],
+      "concept_id": "w6_opt_model",
+      "explanation": {
+        "ar": "كل ثغرة تساهم بخطرها مقيساً بما يتركه التخفيف، والكلفة الكلية لازم تبقى داخل الميزانية.",
+        "en": "Each vulnerability contributes its risk scaled by what mitigation leaves behind, and the total cost must stay inside the budget."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "ثغرة خطرها 100 وفاعلية تخفيفها 0.8. شنو الخطر المتبقّي؟",
+        "en": "A vulnerability has risk 100 and mitigation effectiveness 0.8. What residual risk remains?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ثمانون، لأنها قيمة الفاعلية.",
+          "en": "Eighty, because that is the effectiveness value."
+        },
+        {
+          "ar": "مئة وثمانون، مجموع الاثنين.",
+          "en": "One hundred and eighty, the sum of both."
+        },
+        {
+          "ar": "صفر، لأن الفاعلية قريبة من الواحد.",
+          "en": "Zero, because effectiveness is close to one."
+        },
+        {
+          "ar": "عشرون، لأن خُمس الخطر فقط يبقى.",
+          "en": "Twenty, since only a fifth of the risk survives."
+        }
+      ],
+      "concept_id": "w6_opt_worked",
+      "explanation": {
+        "ar": "فاعلية 0.8 تزيل ثمانين بالمئة، فالمتبقّي 100 × 0.2 = عشرون.",
+        "en": "Effectiveness of 0.8 removes eighty percent, so the residual is 100 times 0.2, which is twenty."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "كيف تُعبَّر منفعة المدافع بالنموذج النظري اللعبي؟",
+        "en": "How is the defender's utility expressed in the game-theoretic model?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الأثر المتوقّع بالسالب ناقص كلفة الدفاع.",
+          "en": "Negative expected impact minus the cost of defence."
+        },
+        {
+          "ar": "الأثر المتوقّع زائد كلفة الدفاع.",
+          "en": "Expected impact plus the cost of defence."
+        },
+        {
+          "ar": "كلفة الدفاع بالسالب مقسومة على الأثر.",
+          "en": "Negative defence cost divided by the impact."
+        },
+        {
+          "ar": "الأثر المتوقّع مضروباً باحتمال الهجوم.",
+          "en": "Expected impact times the probability of attack."
+        }
+      ],
+      "concept_id": "w6_game_utility",
+      "explanation": {
+        "ar": "المدافع يخسر الضرر المتوقّع ويدفع كلفة الدفاع، فالمنفعة سالبة من الجهتين.",
+        "en": "The defender loses the expected damage and also pays for defence, so the utility is negative on both counts."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "كيف يُقاس تقليل مساحة الهجوم؟",
+        "en": "How is attack surface reduction quantified?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "واحد زائد النقاط المكشوفة على الإجمالي.",
+          "en": "One plus the exposed endpoints over the total."
+        },
+        {
+          "ar": "الإجمالي مقسوماً على النقاط المكشوفة.",
+          "en": "Total endpoints divided by the exposed ones."
+        },
+        {
+          "ar": "واحد ناقص النقاط المكشوفة على الإجمالي.",
+          "en": "One minus the exposed endpoints over the total."
+        },
+        {
+          "ar": "النقاط المكشوفة مقسومة على الإجمالي.",
+          "en": "Exposed endpoints divided by the total endpoints."
+        }
+      ],
+      "concept_id": "w6_asr_formula",
+      "explanation": {
+        "ar": "درجة قريبة من الواحد تعني إن تقريباً ماكو شي قابل للاستغلال مكشوف، وهذا الهدف الاستراتيجي المباشر ببنى API-first.",
+        "en": "A score near one means almost nothing exploitable is exposed, which is the direct strategic objective in API-first designs."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "بخمسة وعشرين نقطة مكشوفة من مئة، شنو الدرجة؟",
+        "en": "With twenty-five exposed endpoints out of one hundred, what is the score?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "1.25، لأن النسبة مقلوبة.",
+          "en": "1.25, because the ratio is inverted."
+        },
+        {
+          "ar": "0.75، وتقليل المكشوف لخمسة يرفعها إلى 0.95.",
+          "en": "0.75, and cutting exposed to five raises it to 0.95."
+        },
+        {
+          "ar": "0.25، لأنها نسبة المكشوف.",
+          "en": "0.25, because that is the exposed fraction."
+        },
+        {
+          "ar": "0.75، وتقليل المكشوف لخمسة ينزّلها إلى 0.05.",
+          "en": "0.75, and cutting exposed to five lowers it to 0.05."
+        }
+      ],
+      "concept_id": "w6_asr_worked",
+      "explanation": {
+        "ar": "واحد ناقص الربع يساوي ثلاثة أرباع، وتقليل التعرض لخمسة بالمئة يرفع الدرجة إلى خمسة وتسعين من المئة.",
+        "en": "One minus a quarter is three quarters, and cutting exposure to five percent lifts the score to ninety-five hundredths."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T10:20:11Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
