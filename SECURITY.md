@@ -10,6 +10,7 @@ what is protected, what is **not**, and what to do when something goes wrong.
 | Asset | How it is protected |
 |---|---|
 | The PIN | never stored in the clear: a per-account salt plus SHA-256 (`_pin_hash`), and the PIN itself only lives in the device's local storage |
+| Changing the PIN | `portal_change_pin` (`db/005_change_pin.sql`) requires the current PIN, rotates the salt, and counts a wrong try exactly like a failed login (5 per account, 100 per address) — a change attempt can never guess faster than the login form |
 | Brute force | `portal_login` counts failures: 5 wrong tries lock one account for 5 minutes, 100 wrong tries lock one address for 10 minutes (`db/004_rate_limit_tuning.sql`) |
 | The history and the saved questions | encrypted **on the device** with AES-GCM; the key is derived from the PIN (PBKDF2, 210k rounds) and a per-account salt. The server stores bytes it cannot read |
 | The personal rows | `portal_data` and the league writes are scoped by row: a request only reaches the row the client claims (`db/003_rls_scope.sql`) |
@@ -39,11 +40,12 @@ what is protected, what is **not**, and what to do when something goes wrong.
 | Concern | Where |
 |---|---|
 | hashed PIN, rate limit, account deletion | `db/001_security_hardening.sql`, `db/002_login_rate_limit.sql`, `db/004_rate_limit_tuning.sql` |
+| changing the PIN | `db/005_change_pin.sql` (`portal_change_pin`) |
 | row scoping | `db/003_rls_scope.sql` |
 | encryption + merge | `js/cloud.js` (`personalKey`, `encryptBundle`, `decryptBundle`, `mergeBundles`) |
 | the client identity header | `js/cloud.js` (`sbClient`), `js/league.js` (`client`) |
 | headers and cache policy | `vercel.json` |
-| the checks | `tests/test_security.py`, `tools/audit.py` |
+| the checks | `tests/test_security.py`, `tests/test_pin_change.py`, `tools/audit.py` |
 
 Apply a migration with:
 
