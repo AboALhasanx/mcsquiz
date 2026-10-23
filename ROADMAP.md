@@ -5,37 +5,14 @@ rule is that a feature is only built when the student asks for it.
 
 ## Next
 
-### Public player card (بطاقة اللاعب العامة)
+### All-time numbers + streak on the player card
 
-**Idea.** In the weekly league, a row is currently just a name and a number.
-Tapping a row should open a small sheet about that classmate: what they are good
-at, how active they are, and nothing private.
-
-**What it would show**
-
-| Field | Where it comes from |
-|---|---|
-| avatar + display name | `league_xp.avatar` / `name` |
-| rank this week, answers, accuracy | the board row (already computed) |
-| best subjects (top 2–3 by answers) | `league_xp.per_subject` |
-| all-time answers and average score | the player's own aggregate, if the account allows it |
-| movement this week (▲▼) | rank delta against the previous snapshot |
-
-**Rules that make it safe**
-
-- Only aggregates: no handle, no PIN, no bookmarks, no question-level history.
-- A player marked `hidden` is shown as «مخفي» and their card stays empty —
-  the same rule the board already follows.
-- Opt-out switch on the account page («إظهار بطاقتي للزملاء»), on by default
-  only if the student wants it; the board keeps working either way.
-- The card is read-only: no messaging, no following, no notifications.
-
-**Why it is worth it.** The league answers "who is first"; a card answers "who
-is good at what", which is the part classmates actually talk about. It also
-gives the profile page a natural place to grow into.
-
-**Cost.** One RPC (`player_card(handle_or_id)` returning aggregates), one sheet
-in the shell, ~120 lines and a spec.
+The card shipped with this week's figures only, because `league_xp` is one row per
+week and the per-question history is encrypted on the device (the server cannot
+read it). All-time answers, average score and a streak need an **aggregate column**
+written on every finished quiz (e.g. `portal_users.total_answered`, `total_xp`,
+`last_played_on`, `streak_days`) and one RPC that returns them. Nothing about the
+card's design changes — it just gets a second line of numbers.
 
 ## Later
 
@@ -50,5 +27,11 @@ in the shell, ~120 lines and a spec.
 
 ## Done
 
+- **2026-10-23** — **public player card v1** (1.7.0): every league row and podium
+  slot opens a sheet with the avatar, name, rank, answers, accuracy and the top
+  three subjects **for this week**, plus a note that it is weekly. No handle, no
+  PIN, no history; the `hidden` rule is inherited from the board. Client-only —
+  the board already carried the fields, so no RPC and no schema change. Spec:
+  `tests/test_player_card.py` (11 checks).
 - **2026-10-23** — the league card no longer mentions the Telegram bot (which
   the app dropped); it says «سجّل حسابك» and opens the sign-up sheet.
