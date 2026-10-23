@@ -31,7 +31,11 @@ python tools/ci.py            # static audit + the behaviour suite (one command)
 python tools/ci.py --fast     # the audit only
 python tools/audit.py         # silent failures, dead code, orphan ids, unclosed timers
 python tools/audit.py --json  # machine readable
+python tools/clean_qa_users.py --dry-run   # throwaway accounts the specs left behind
 ```
+
+`tools/ci.py` runs the sweep after the suite (a missing management token never fails the gate):
+the browser specs create real accounts, and their own cleanup is best-effort.
 
 `tools/audit.py` compares against `.audit-baseline.json`: only **new** findings fail.
 Mark a deliberate exception inline with `// audit-ignore: reason`.

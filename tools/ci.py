@@ -57,6 +57,9 @@ def main() -> int:
         env = dict(os.environ)
         env['PORTAL_BASE_URL'] = 'http://127.0.0.1:%s' % PORT
         rc = run([sys.executable, 'tests/run_all.py'], env=env)
+        # the specs create real accounts; their own cleanup is best effort, so
+        # sweep the synthetic ones. A missing management token must not fail CI.
+        run([sys.executable, 'tools/clean_qa_users.py'], env=env)
     finally:
         server.terminate()
         try:
