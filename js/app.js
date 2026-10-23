@@ -3382,10 +3382,63 @@
         '<span class="league-row-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
         '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
         (accuracyOf(r) !== null && !S.leagueSubject ? '<span class="league-row-acc">' + accuracyOf(r) + '%</span>' : '');
+      wirePlayerCard(row, r);
       box.appendChild(row);
     });
     updateLeagueMe(me, rows);
     icons();
+  }
+
+  // a league row is a person: opening it shows what they are good at this week
+  function openPlayerCard(r) {
+    const card = $('player-card');
+    if (!card || !r) return;
+    const acc = accuracyOf(r);
+    const subs = Object.keys(r.per_subject || {})
+      .map((id) => {
+        const v = r.per_subject[id] || {};
+        return { id, title: v.title || id, n: Number(v.n) || 0, xp: Number(v.xp) || 0 };
+      })
+      .filter((s) => s.n > 0)
+      .sort((a, b) => b.n - a.n)
+      .slice(0, 3);
+    const stat = (label, value) =>
+      '<div class="player-stat"><span class="player-stat-value">' + escapeHtml(String(value)) +
+      '</span><span class="player-stat-label">' + escapeHtml(label) + '</span></div>';
+    card.innerHTML =
+      '<div class="player-head">' +
+        avatarHtml(r.avatar, r.name, 'player-avatar') +
+        '<div class="player-head-text">' +
+          '<h3 dir="auto">' + escapeHtml(r.name || 'لاعب') + '</h3>' +
+          '<p>المركز ' + escapeHtml(String(r.rank || '—')) + ' هذا الأسبوع</p>' +
+        '</div>' +
+      '</div>' +
+      '<div class="player-stats">' +
+        stat('إجابة', r.xp) +
+        stat('الدقة', acc === null ? '—' : acc + '%') +
+        stat('المركز', r.rank || '—') +
+      '</div>' +
+      (subs.length
+        ? '<div class="player-subjects"><span class="player-subjects-title">أكثر المواد</span>' +
+          subs.map((s) =>
+            '<div class="player-subject"><span dir="auto">' + escapeHtml(s.title) + '</span>' +
+            '<b>' + s.n + '</b></div>').join('') +
+          '</div>'
+        : '') +
+      '<p class="player-note">أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.</p>';
+    openDrawer('player-drawer');
+    icons();
+  }
+
+  function wirePlayerCard(el, row) {
+    if (!el) return;
+    el.classList.add('is-clickable');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', 'بطاقة ' + (row.name || 'لاعب'));
+    el.addEventListener('click', () => openPlayerCard(row));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPlayerCard(row); }
+    });
   }
 
   function renderPodium(top, myId, myPhoto) {
@@ -3409,6 +3462,7 @@
         '<span class="podium-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
         '<span class="podium-xp">' + r.xp + ' <small>إجابة</small></span>' +
         '<span class="podium-block">' + r.rank + '</span>';
+      wirePlayerCard(slot, r);
       el.appendChild(slot);
     });
   }
@@ -3945,6 +3999,7 @@
     swipeToClose('login-modal', closeLoginSheet);
     swipeToClose('link-modal', closeLinkModal);
     bindClick('account-link', () => { openLinkApprove(); });
+    bindClick('player-close', () => { closeDrawers(); });
     // the league card offers the way in instead of naming a bot that no longer exists
     const leagueMe = $('league-me');
     if (leagueMe) {
@@ -4248,7 +4303,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.6.3';
+  const SHELL_VERSION = '1.7.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

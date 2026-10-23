@@ -1829,3 +1829,34 @@ html[data-qlang="ar"] .icon-btn.lang-toggle { color: var(--accent); }
   color: var(--text-subtle);
 }
 .notif-row:not(.is-read) { box-shadow: inset 3px 0 0 var(--accent); }
+
+/* --- public player card (league row → what this classmate is good at) --- */
+.player-drawer { max-width: 380px; }
+.player-card { display: flex; flex-direction: column; gap: 0.9rem; }
+.player-head { display: flex; align-items: center; gap: 0.75rem; }
+.player-avatar { width: 64px; height: 64px; flex: 0 0 64px; }
+.player-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+.player-head-text h3 { margin: 0; font-size: 1.05rem; }
+.player-head-text p { margin: 0.15rem 0 0; font-size: 0.8rem; color: var(--text-muted); }
+.player-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.player-stat {
+  display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+  padding: 0.6rem 0.3rem; border: 1px solid var(--border-card);
+  border-radius: 12px; background: var(--bg-card);
+}
+.player-stat-value { font-weight: 800; font-size: 1.05rem; }
+.player-stat-label { font-size: 0.7rem; color: var(--text-muted); }
+.player-subjects { display: flex; flex-direction: column; gap: 0.4rem; }
+.player-subjects-title { font-size: 0.78rem; color: var(--text-muted); font-weight: 700; }
+.player-subject {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  padding: 0.45rem 0.65rem; border-radius: 10px; background: var(--bg-surface);
+  font-size: 0.85rem;
+}
+.player-subject b { color: var(--accent); font-variant-numeric: tabular-nums; }
+.player-note { margin: 0; font-size: 0.72rem; line-height: 1.6; color: var(--text-muted); }
+.league-row.is-clickable, .podium-slot.is-clickable { cursor: pointer; }
+.league-row.is-clickable:hover, .podium-slot.is-clickable:hover { background: var(--bg-surface); }
+.league-row.is-clickable:focus-visible, .podium-slot.is-clickable:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: -2px;
+}

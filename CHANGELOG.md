@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.0] — 2026-10-23
+
+### Changed
+- feat: tap a league row to see that classmate's public card (avatar, rank, answers, accuracy, top subjects - this week only, never the handle)
+
+
 ## [1.6.3] — 2026-10-23
 
 ### Changed
