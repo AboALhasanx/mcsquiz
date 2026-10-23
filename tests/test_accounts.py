@@ -47,8 +47,12 @@ def run():
         # wrong pin must be rejected
         open_account(p1)
         p1.wait_for_selector('#account-view:not(.hidden)', timeout=12000)
+        # signing out now asks first: accept the warning and remember it appeared
+        seen = {}
+        p1.once('dialog', lambda d: (seen.update({'msg': d.message}), d.accept()))
         p1.evaluate("() => document.querySelector('#account-logout').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
         p1.wait_for_timeout(800)
+        check('signing out warns before it happens', 'تسجيل الخروج' in (seen.get('msg') or ''), seen.get('msg'))
         login(p1, handle, name, pin='1111')
         check('a wrong PIN is rejected', not p1.evaluate('() => !!window.PortalCloud.account()'),
               p1.locator('#login-error').text_content())

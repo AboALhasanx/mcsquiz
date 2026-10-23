@@ -637,8 +637,10 @@
                 </button>
                 <h3 id="login-title">ادخل باسمك</h3>
                 <p class="auth-sub">معرّفك هو حسابك — بدون إيميل ولا كلمة مرور. نفس المعرّف على أي جهاز يفتح نفس بياناتك.</p>
-                <label class="auth-label" for="login-name">اسمك</label>
-                <input id="login-name" class="auth-input" maxlength="40" dir="auto" placeholder="مثال: حسن علي" autocomplete="name">
+                <div id="login-name-group">
+                    <label class="auth-label" for="login-name">اسمك</label>
+                    <input id="login-name" class="auth-input" maxlength="40" dir="auto" placeholder="مثال: حسن علي" autocomplete="name">
+                </div>
                 <label class="auth-label" for="login-handle">اسم المستخدم (لا يتغيّر لاحقاً)</label>
                 <input id="login-handle" class="auth-input" maxlength="20" dir="ltr" inputmode="latin"
                        autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="hasan1" autocomplete="username">
@@ -651,6 +653,7 @@
                     <i data-lucide="qr-code"></i>
                     <span>ربط جهاز آخر بمسح رمز QR</span>
                 </button>
+                <button id="login-mode" class="auth-mode-btn" type="button">عندي حساب محفوظ — دخول بالمعرّف والرمز</button>
                 <button id="login-skip" class="tour-link-btn">متابعة بدون حساب</button>
             </div>
         </div>

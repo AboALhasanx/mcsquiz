@@ -683,6 +683,10 @@
 
   function pushSoon() {
     if (!linked() || !activeStore() || !navigator.onLine) return;
+    // without the PIN there is no key: the encrypted server copy is not ours to
+    // overwrite, so a freshly linked device waits for the unlock instead of
+    // firing an upload that can only fail
+    if (!/^[0-9]{4}$/.test(String(lsGet('portal_pin_v1') || ''))) return;
     if (pushTimer) clearTimeout(pushTimer);
     pushTimer = setTimeout(function () {
       pushTimer = null;

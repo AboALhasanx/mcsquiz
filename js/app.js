@@ -836,6 +836,58 @@
     return pool;
   }
 
+  const SNAP_KEY = 'portal_session_v1';
+  function clearSessionSnapshot() {
+    try { sessionStorage.removeItem(SNAP_KEY); } catch (e) {}
+  }
+
+  // a refresh (or a swipe down on the page) must not throw a half-finished quiz
+  // away: every answer/navigation writes a snapshot, and boot can rebuild it
+  function saveSessionSnapshot() {
+    const ses = S.session;
+    if (!ses || !ses.started || ses.finished) { clearSessionSnapshot(); return; }
+    try {
+      const elapsed = Math.max(0, Date.now() - ses.startEpoch - ses.pauseAccum -
+        (ses.pauseStart ? Date.now() - ses.pauseStart : 0));
+      sessionStorage.setItem(SNAP_KEY, JSON.stringify({
+        at: Date.now(), hash: ses.hash, sub: ses.sub, ch: ses.ch, title: ses.title,
+        chapterLabel: ses.chapterLabel, questions: ses.questions, picks: ses.picks,
+        dwells: ses.dwells, idx: ses.idx, maxIdx: ses.maxIdx,
+        retryWrong: !!ses.retryWrong, replay: ses.replay || null, elapsed,
+      }));
+    } catch (e) { /* audit-ignore: a full sessionStorage only costs the resume */ }
+  }
+
+  function restoreSessionSnapshot(hash, quizId) {
+    let snap = null;
+    try { snap = JSON.parse(sessionStorage.getItem(SNAP_KEY) || 'null'); } catch (e) {}
+    if (!snap || !Array.isArray(snap.questions) || !snap.questions.length) return false;
+    if (hash !== snap.hash) return false;
+    if (quizId && snap.ch && snap.ch.quiz_id !== quizId) return false;
+    if (Date.now() - Number(snap.at || 0) > 6 * 60 * 60 * 1000) { clearSessionSnapshot(); return false; }
+    S.session = {
+      sub: snap.sub, ch: snap.ch, title: snap.title, chapterLabel: snap.chapterLabel,
+      questions: snap.questions, picks: snap.picks, dwells: snap.dwells,
+      idx: Math.min(Number(snap.idx) || 0, snap.questions.length - 1),
+      maxIdx: Number(snap.maxIdx) || 0,
+      retryWrong: !!snap.retryWrong, replay: snap.replay || null,
+      hash: snap.hash, finished: false, started: true,
+      startEpoch: Date.now() - Number(snap.elapsed || 0), pauseAccum: 0, pauseStart: null,
+      qStart: Date.now(), timerId: null,
+    };
+    $('question-total-label').textContent = snap.questions.length;
+    show('quiz-view');
+    clearInterval(S.session.timerId);
+    S.session.timerId = setInterval(tickTimer, 500);
+    renderQuestion();
+    renderMatrix();
+    icons();
+    tickTimer();
+    toast('رجعت للكوز من حيث وقفت', 'success');
+    dbg('session restored at', S.session.idx + 1, 'of', snap.questions.length);
+    return true;
+  }
+
   function launchSession(pool, meta) {
     // meta: {subjectId, subjectTitle, chapterNo, chapterLabel?, topic, quizId|null, retryWrong, replay}
     preparePool(pool);
@@ -1190,6 +1242,7 @@
     renderQuestion();
     renderMatrix();
     icons();
+    saveSessionSnapshot();
   }
 
   function elapsedSec() {
@@ -1497,6 +1550,7 @@
     if (i === q.correct) playSound('correct'); else playSound('wrong');
     renderQuestion();
     renderMatrix();
+    saveSessionSnapshot();
   }
 
   function advanceTo(i) {
@@ -1506,6 +1560,7 @@
     ses.qStart = Date.now();
     renderQuestion();
     renderMatrix();
+    saveSessionSnapshot();
   }
 
   function nextQuestion() {
@@ -1550,6 +1605,7 @@
   function finishQuiz() {
     const ses = S.session;
     clearInterval(ses.timerId);
+    clearSessionSnapshot();
     $('progress-bar-fill').style.width = '100%';
     const res = window.PortalAnalytics.analyze(ses.questions, ses.picks, ses.dwells, elapsedSec());
     playSound(res.pct >= 60 ? 'completed' : 'fail');
@@ -2079,24 +2135,28 @@
     const m = h.match(/^#\/quiz\/([^/]+)\/([^/]+)$/);
     if (h === '#/saved' || h === '#/saved/') {
       S.session = null;
+      clearSessionSnapshot();
       renderSaved();
       show('saved-view');
       window.scrollTo(0, 0);
       icons();
     } else if (h === '#/stats' || h === '#/stats/') {
       S.session = null;
+      clearSessionSnapshot();
       renderStats();
       show('stats-view');
       window.scrollTo(0, 0);
       icons();
     } else if (h === '#/account' || h === '#/account/') {
       S.session = null;
+      clearSessionSnapshot();
       renderAccount();
       show('account-view');
       window.scrollTo(0, 0);
       icons();
     } else if (h === '#/league' || h === '#/league/') {
       S.session = null;
+      clearSessionSnapshot();
       renderLeague();
       show('league-view');
       window.scrollTo(0, 0);
@@ -2114,11 +2174,12 @@
           S.session.ch.quiz_id === qz && h === S.session.hash) {
         show(S.session.started ? 'quiz-view' : 'quiz-start-view');
         window.scrollTo(0, 0);
-      } else {
+      } else if (!restoreSessionSnapshot(h, qz)) {
         startSession(decodeURIComponent(m[1]), qz, null);
       }
     } else {
       S.session = null;
+      clearSessionSnapshot();
       renderCatalog();
       show('deck-catalog');
     }
@@ -2871,9 +2932,31 @@
 
   function openLoginModal() {
     loginError('');
+    setLoginMode('create');
     $('login-modal').classList.remove('hidden');
     $('login-modal').setAttribute('aria-hidden', 'false');
     setTimeout(() => { try { $('login-name').focus(); } catch (e) {} }, 120);
+    icons();
+  }
+
+  // two shapes: a new account (name + handle + PIN) and a saved one (handle + PIN)
+  let loginMode = 'create';
+  function setLoginMode(mode) {
+    loginMode = mode === 'login' ? 'login' : 'create';
+    const creating = loginMode === 'create';
+    $('login-title').textContent = creating ? 'ادخل باسمك' : 'ادخل بحسابك';
+    const sub = document.querySelector('#login-modal .auth-sub');
+    if (sub) {
+      sub.textContent = creating
+        ? 'معرّفك هو حسابك — بدون إيميل ولا كلمة مرور. نفس المعرّف على أي جهاز يفتح نفس بياناتك.'
+        : 'اكتب اسم المستخدم والرمز فقط — بدون اسم جديد.';
+    }
+    $('login-name-group').classList.toggle('hidden', !creating);
+    $('login-submit').textContent = creating ? 'دخول أو إنشاء' : 'دخول';
+    $('login-mode').textContent = creating
+      ? 'عندي حساب محفوظ — دخول بالمعرّف والرمز'
+      : 'حساب جديد؟ أنشئ واحد';
+    loginError('');
     icons();
   }
 
@@ -2884,19 +2967,20 @@
 
   async function submitLogin() {
     const C = cloud();
+    const creating = loginMode === 'create';
     const name = ($('login-name').value || '').trim();
     const handle = C && C.normalizeHandle ? C.normalizeHandle($('login-handle').value) : ($('login-handle').value || '').trim();
     const pin = ($('login-pin').value || '').replace(/\D/g, '');
-    if (!name) { loginError('اكتب اسمك أولاً'); return; }
+    if (creating && !name) { loginError('اكتب اسمك أولاً'); return; }
     if (handle.length < 3) { loginError('اسم المستخدم 3 أحرف على الأقل (a-z 0-9 _)'); return; }
     if (pin.length !== 4) { loginError('رمز الدخول 4 أرقام'); return; }
     const btn = $('login-submit');
     btn.disabled = true;
     btn.textContent = 'جارٍ الدخول…';
     try {
-      await C.login(handle, pin, name);
+      const who = await C.login(handle, pin, name);
       closeLoginModal();
-      toast('أهلاً ' + name, 'success');
+      toast('أهلاً ' + ((who && who.name) || name || handle), 'success');
       // an account switch clears the previous account's data: re-read it, then
       // let the pull bring this account's own copy
       try { loadSaved(); } catch (e) {}
@@ -2976,9 +3060,17 @@
           toast('تم ربط هذا الجهاز', 'success');
           S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
           try { loadSaved(); } catch (e) {}
-          try { await C.pullOrPush(); } catch (e) { dbg('sync failed:', (e && e.message) || e); }
+          let sync = { action: '' };
+          try { sync = await C.pullOrPush(); } catch (e) { dbg('sync failed:', (e && e.message) || e); }
           try { if (window.PortalLeague) await window.PortalLeague.syncWeek(); } catch (e) { dbg('league sync failed:', (e && e.message) || e); }
           renderLeague();
+          // the account's saved questions and history are encrypted with the PIN;
+          // a freshly linked device has none, so say what to do instead of
+          // looking like the data vanished
+          if (sync && sync.action === 'needs-pin') {
+            toast('تم الربط — اضغط «تفعيل المزامنة هنا» وأدخل رمزك لتنزيل بياناتك', 'success');
+            goHash('#/account');
+          }
           return;
         }
         // approved, but the approving account has no server row: saying nothing
@@ -3690,6 +3782,55 @@
     }
   }
 
+  // a phone sheet should also close by pulling it down, not only by the ✕
+  function swipeToClose(overlayId, close) {
+    const ov = $(overlayId);
+    if (!ov) return;
+    const card = ov.querySelector('.modal-card');
+    if (!card) return;
+    let startY = 0;
+    let dy = 0;
+    let tracking = false;
+    const reset = (animate) => {
+      card.style.transition = animate ? 'transform .18s ease, opacity .18s ease' : 'none';
+      card.style.transform = '';
+      card.style.opacity = '';
+      ov.style.opacity = '';
+    };
+    ov.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1 || card.scrollTop > 0) return;
+      startY = e.touches[0].clientY;
+      dy = 0;
+      tracking = true;
+      card.style.transition = 'none';
+    }, { passive: true });
+    ov.addEventListener('touchmove', (e) => {
+      if (!tracking) return;
+      dy = e.touches[0].clientY - startY;
+      if (dy <= 0) { reset(false); return; }
+      if (dy > 8 && e.cancelable) e.preventDefault();
+      card.style.transform = 'translateY(' + dy + 'px)';
+      ov.style.opacity = String(Math.max(0.35, 1 - dy / 380));
+    }, { passive: false });
+    ov.addEventListener('touchend', () => {
+      if (!tracking) return;
+      tracking = false;
+      if (dy > 90) {
+        reset(true);
+        close();
+      } else {
+        reset(true);
+      }
+      dy = 0;
+    }, { passive: true });
+    ov.addEventListener('touchcancel', () => { tracking = false; dy = 0; reset(true); }, { passive: true });
+  }
+
+  function closeLoginSheet() {
+    closeLoginModal();
+    closeDrawers();
+  }
+
   // ---------------- wire up ----------------
   function bind() {
     window.addEventListener('keydown', (e) => {
@@ -3701,6 +3842,12 @@
       }
     });
     window.addEventListener('hashchange', onHashChange);
+    // a refresh, a swipe-down on the page or the system killing the tab: keep
+    // the running quiz on disk so the next boot can put the student back in it
+    window.addEventListener('pagehide', saveSessionSnapshot);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') saveSessionSnapshot();
+    });
     // No native beforeunload dialog: the browser renders it in its own language
     // and cannot be styled. Leaving the app is guarded by the Arabic modal above,
     // and Telegram's own close confirmation when the mini app is closed.
@@ -3733,6 +3880,7 @@
       } catch (e) {}
       const target = navPending || '';
       S.session = null;
+      clearSessionSnapshot();
       hideLeaveModal();
       if (location.hash === target) route();
       else location.hash = target;
@@ -3785,8 +3933,13 @@
     bindClick('login-close', () => { closeLoginModal(); closeDrawers(); });
     bindClick('login-skip', () => { closeLoginModal(); toast('تستخدم الآن بدون حساب'); });
     bindClick('login-link-device', () => { closeLoginModal(); generateLinkCode(); });
+    bindClick('login-mode', () => { setLoginMode(loginMode === 'create' ? 'login' : 'create'); });
+    swipeToClose('login-modal', closeLoginSheet);
+    swipeToClose('link-modal', closeLinkModal);
     bindClick('account-link', () => { openLinkApprove(); });
     bindClick('account-logout', async () => {
+      // leaving an account is not a one-tap action on a shared device
+      if (!confirm('تسجيل الخروج؟\n\n• المزامنة تتوقف على هذا الجهاز\n• رمزك ينمسح من الجهاز — تحتاجه لتسجيل الدخول مرة ثانية\n• محفوظاتك وسجلك تبقى على هذا الجهاز')) return;
       const C = cloud();
       stopLinkPoll();
       if (C && C.signOut) C.signOut();
@@ -4056,7 +4209,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.5.2';
+  const SHELL_VERSION = '1.6.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

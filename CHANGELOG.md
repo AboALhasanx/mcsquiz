@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.6.0] — 2026-10-23
+
+### Changed
+- feat: resume a quiz after an accidental refresh, sign-out warning, saved-account login with handle+PIN, swipe-down sheets, linked devices are told to enter the PIN
+
+
 ## [1.5.2] — 2026-10-23
 
 ### Changed
