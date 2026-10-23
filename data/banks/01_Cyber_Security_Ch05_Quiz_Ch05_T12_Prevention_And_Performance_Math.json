@@ -1,0 +1,660 @@
+{
+  "topic": {
+    "ar": "آليات المنع في IPS ورياضيات الأداء",
+    "en": "IPS prevention mechanisms and performance mathematics"
+  },
+  "quiz_id": "Quiz_Ch05_T12_Prevention_And_Performance_Math",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي أربعة إجراءات يقدر الـ IPS يتّخذها عند الكشف؟",
+        "en": "Which four actions can an IPS take on a detection?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إسقاط الحزم وإعادة ضبط TCP وتحديد المعدّل والحجر.",
+          "en": "Packet dropping, TCP reset, rate-limiting and quarantine."
+        },
+        {
+          "ar": "التسجيل والتنبيه والتصعيد والإبلاغ.",
+          "en": "Logging, alerting, escalating and reporting events."
+        },
+        {
+          "ar": "الهاش والتوقيع والتشفير وفكّ التشفير.",
+          "en": "Hashing, signing, encrypting and decrypting payloads."
+        },
+        {
+          "ar": "التوجيه والتبديل والجسر والتكرار.",
+          "en": "Routing, switching, bridging and repeating frames."
+        }
+      ],
+      "concept_id": "prev_four_actions",
+      "explanation": {
+        "ar": "بخلاف الـ IDS اللي يكتشف وينبّه فقط، الـ IPS يتصرّف، وهذي الأربعة هي الإجراءات اللي يذكرها الفصل.",
+        "en": "Unlike an IDS, which only detects and alerts, an IPS acts, and those four are the actions the chapter lists."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي إجراء مخصّص لإيقاف محاولة فيض أو حجب خدمة؟",
+        "en": "Which action is meant to stop a flooding or denial-of-service attempt?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إعادة ضبط TCP، لأنها تغلق اتصالاً واحداً.",
+          "en": "TCP reset, because it closes one connection."
+        },
+        {
+          "ar": "إسقاط الحزم، لأنه يزيل حزماً منفردة.",
+          "en": "Packet dropping, because it removes single packets."
+        },
+        {
+          "ar": "تحديد معدّل المرور، لأنه يحدّ من الحجم.",
+          "en": "Traffic rate-limiting, because it caps the volume."
+        },
+        {
+          "ar": "الحجر، لأنه يعزل المضيف كله.",
+          "en": "Quarantine, because it isolates the whole host."
+        }
+      ],
+      "concept_id": "prev_action_purpose",
+      "explanation": {
+        "ar": "تحديد المعدّل يعالج الحجم مو المحتوى، ولهذا يلائم الفيض أكثر من الإجراءات على مستوى الحزمة.",
+        "en": "Rate-limiting addresses volume rather than content, which is why it fits flooding better than the packet-level actions."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ليش الـ IPS يسوي مقايضة بين الأداء والأمن؟",
+        "en": "Why does an IPS create a performance-security trade-off?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأنه يحتاج تحديث توقيعات قبل كل تدفق.",
+          "en": "Because it needs a signature update before each flow."
+        },
+        {
+          "ar": "لأن إجراءاته الآلية تقدر تعطّل ترافيكاً شرعياً.",
+          "en": "Because its automated actions can disrupt legitimate traffic."
+        },
+        {
+          "ar": "لأن التشفير يبطّئ كل حزمة مفحوصة.",
+          "en": "Because encryption slows every inspected packet down."
+        },
+        {
+          "ar": "لأنه لازم يخزّن نسخة من كل حزمة أولاً.",
+          "en": "Because it must store a copy of every packet first."
+        }
+      ],
+      "concept_id": "prev_tradeoff",
+      "explanation": {
+        "ar": "الـ IDS اللي يغلط يزعج محلّلاً فقط، أما الـ IPS اللي يغلط فيحجب شيئاً فعلاً، فكلفة الخطأ أعلى.",
+        "en": "An IDS that is wrong only annoys an analyst, whereas an IPS that is wrong actually blocks something, so the cost of error is higher."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يضرّ الإنذار الكاذب بالتوافر في IPS مضمّن؟",
+        "en": "How does a false positive damage availability in an inline IPS?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قاعدة التوقيعات تتلف مع الوقت.",
+          "en": "The signature database becomes corrupted over time."
+        },
+        {
+          "ar": "المستشعر يتوقّف عن تسجيل أحداث ذلك المضيف.",
+          "en": "The sensor stops logging events for that host."
+        },
+        {
+          "ar": "المهاجم يعرف أي توقيعات محمّلة.",
+          "en": "The attacker learns which signatures are loaded."
+        },
+        {
+          "ar": "الترافيك الشرعي يُحجب قبل ما يوصل هدفه.",
+          "en": "Legitimate traffic is blocked before it can reach its target."
+        }
+      ],
+      "concept_id": "prev_fp_hurts_availability",
+      "explanation": {
+        "ar": "لأن الجهاز داخل المسار، فالقرار الخاطئ مو مجرد تنبيه مزعج؛ الحزمة فعلاً تُسقط.",
+        "en": "Because the device sits in the path, a wrong decision is not just a noisy alert; the packet is actually discarded."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "شنو يقيس معدّل الإيجابيات الصحيحة بنموذج الـ IPS؟",
+        "en": "What does the true positive rate measure in the IPS model?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كشف الترافيك اللي فعلاً هجوم.",
+          "en": "Detection of traffic that is genuinely an attack."
+        },
+        {
+          "ar": "كشف الترافيك اللي فعلاً بريء.",
+          "en": "Detection of traffic that is actually benign."
+        },
+        {
+          "ar": "الهجمات اللي فوّتها المحرّك بالكامل.",
+          "en": "Attacks that were missed by the engine entirely."
+        },
+        {
+          "ar": "التنبيهات اللي ما راجعها أي محلّل.",
+          "en": "Alerts that no analyst ever reviewed."
+        }
+      ],
+      "concept_id": "prev_p_tp",
+      "explanation": {
+        "ar": "هو معدّل وسم الهجمات الحقيقية بشكل صحيح، وهذا اللي موجود النظام لأجله.",
+        "en": "It is the rate at which real attacks are correctly flagged, which is what the system exists to do."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "شنو يقيس معدّل الإيجابيات الكاذبة؟",
+        "en": "What does the false positive rate measure?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نسبة الحزم اللي تُسقطها الشبكة.",
+          "en": "The share of packets dropped by the network."
+        },
+        {
+          "ar": "الزمن اللي يحتاجه المحرّك لكل تدفق.",
+          "en": "The time the engine needs per inspected flow."
+        },
+        {
+          "ar": "ترافيك بريء صنّفه المحرّك كهجوم.",
+          "en": "Benign traffic that the engine classified as an attack."
+        },
+        {
+          "ar": "ترافيك هجوم فشل المحرّك بملاحظته.",
+          "en": "Attack traffic that the engine failed to notice."
+        }
+      ],
+      "concept_id": "prev_p_fp",
+      "explanation": {
+        "ar": "هو معدّل الإزعاج: ترافيك كان المفروض يُسمح له لكن عُومل كعدائي.",
+        "en": "It is the disruption rate: traffic that should have been allowed but was treated as hostile."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "شنو يقيس معدّل السلبيات الكاذبة؟",
+        "en": "What does the false negative rate measure?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نسبة الأجهزة اللي ما عندها مستشعر.",
+          "en": "The share of hosts with no sensor installed."
+        },
+        {
+          "ar": "الهجمات اللي فشل المحرّك بكشفها.",
+          "en": "Attacks that the engine failed to detect."
+        },
+        {
+          "ar": "تدفقات بريئة حجبها المحرّك خطأً.",
+          "en": "Benign flows that the engine blocked wrongly."
+        },
+        {
+          "ar": "تنبيهات طلعت مكرّرة.",
+          "en": "Alerts that turned out to be duplicates."
+        }
+      ],
+      "concept_id": "prev_p_fn",
+      "explanation": {
+        "ar": "هو معدّل التفويت، وهو الفشل اللي يحاول المهاجم يسبّبه عمداً.",
+        "en": "It is the miss rate, and it is the failure that an attacker is actively trying to cause."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف يُعرَّف مؤشّر الفعالية الأمنية؟",
+        "en": "How is the security effectiveness index defined?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الإيجابيات الصحيحة على (الصحيحة + الكاذبة) فقط.",
+          "en": "True positives over true positives plus false alarms only."
+        },
+        {
+          "ar": "الإنذارات الكاذبة على مجموع الحالات الثلاث.",
+          "en": "False alarms over true positives plus misses plus alarms."
+        },
+        {
+          "ar": "الإيجابيات الصحيحة مضروبة بمجموع معدّلي الخطأ.",
+          "en": "True positives multiplied by the sum of the two error rates."
+        },
+        {
+          "ar": "الإيجابيات الصحيحة على (الصحيحة + الفائتة + الكاذبة).",
+          "en": "True positives over true positives plus misses plus false alarms."
+        }
+      ],
+      "concept_id": "sei_formula",
+      "explanation": {
+        "ar": "البسط هو الكشف الصحيح والمقام يجمع نمطي الفشل، فالمؤشّر يعاقب التفويت والإنذار الكاذب بالتساوي.",
+        "en": "The numerator is correct detection and the denominator adds both failure modes, so the index punishes misses and false alarms alike."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو يعكس مؤشّر فعالية أمنية عالٍ؟",
+        "en": "What does a high security effectiveness index reflect?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كشف قوي مع أقل إزعاج ممكن.",
+          "en": "Strong detection combined with minimal disruption."
+        },
+        {
+          "ar": "أقصى إزعاج مع كشف ضعيف.",
+          "en": "Maximum disruption combined with weak detection."
+        },
+        {
+          "ar": "عدد كبير من التوقيعات محمّل بالذاكرة.",
+          "en": "A large number of signatures loaded in memory."
+        },
+        {
+          "ar": "فترة استبقاء طويلة لسجل التنبيهات.",
+          "en": "A long retention period for the alert history."
+        }
+      ],
+      "concept_id": "sei_meaning",
+      "explanation": {
+        "ar": "المؤشّر يرتفع بس لمّا يمسك النظام الهجمات وبنفس الوقت يتجنّب إزعاج الترافيك الشرعي.",
+        "en": "The index is high only when the system catches attacks and simultaneously avoids bothering legitimate traffic."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "متى يبلغ مؤشّر الفعالية الأمنية قيمته العظمى؟",
+        "en": "When does the security effectiveness index reach its maximum value?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لمّا تكون الإيجابيات الصحيحة صفراً والأخطاء قليلة.",
+          "en": "When the true positive rate is zero but errors are low."
+        },
+        {
+          "ar": "لمّا يكون المقام أكبر من البسط.",
+          "en": "When the denominator is larger than the numerator."
+        },
+        {
+          "ar": "لمّا يكون معدّل التفويت ومعدّل الإنذار الكاذب صفراً.",
+          "en": "When both the miss rate and the false alarm rate are zero."
+        },
+        {
+          "ar": "لمّا يتساوى معدّل التفويت مع معدّل الإنذار الكاذب.",
+          "en": "When the miss rate equals the false alarm rate exactly."
+        }
+      ],
+      "concept_id": "sei_max",
+      "explanation": {
+        "ar": "بصفرية حدّي الخطأ يتساوى البسط والمقام، فالنسبة تشبع عند الواحد.",
+        "en": "With both error terms at zero the numerator equals the denominator, so the ratio saturates at one."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "شنو يسوي معدّل التفويت الكبير بالمؤشّر؟",
+        "en": "What does a large false negative rate do to the index?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يرفعه، لأن البسط يكبر هم.",
+          "en": "It raises it, because the numerator also grows."
+        },
+        {
+          "ar": "ينزّله، لأن الهجمات الفائتة تكبّر المقام.",
+          "en": "It lowers it, because missed attacks enlarge the denominator."
+        },
+        {
+          "ar": "يرفعه، لأن تنبيهات أقل تُنتَج.",
+          "en": "It raises it, because fewer alerts are generated."
+        },
+        {
+          "ar": "يتركه بلا تغيير، لأن التفويت مو تنبيهات.",
+          "en": "It leaves it unchanged, since misses are not alerts."
+        }
+      ],
+      "concept_id": "sei_fn_effect",
+      "explanation": {
+        "ar": "التفويت ما يظهر كتنبيهات، بس يظهر بالمقام، فالفشل الصامت يُعاقب صراحةً.",
+        "en": "Misses do not appear as alerts, but they do appear in the denominator, so silent failure is penalised explicitly."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "كيف يُعبَّر عن الخطر المتبقّي بعد نشر IDS/IPS؟",
+        "en": "How is residual risk after deploying IDS/IPS expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الخطر الابتدائي مقسوماً على واحد ناقص الفاعلية.",
+          "en": "Initial risk divided by one minus the efficacy."
+        },
+        {
+          "ar": "الخطر الابتدائي مضروباً بفاعلية النظام.",
+          "en": "Initial risk times the efficacy of the system."
+        },
+        {
+          "ar": "الخطر الابتدائي زائد فاعلية النظام.",
+          "en": "Initial risk plus the efficacy of the system."
+        },
+        {
+          "ar": "الخطر الابتدائي مضروباً بواحد ناقص الفاعلية.",
+          "en": "Initial risk times one minus the efficacy."
+        }
+      ],
+      "concept_id": "risk_res_formula",
+      "explanation": {
+        "ar": "الفاعلية هي الكسر المُزال من الخطر، فالباقي هو الخطر الابتدائي مضروباً بالكسر المتبقّي.",
+        "en": "Efficacy is the fraction of risk removed, so what survives is the initial risk multiplied by the remaining fraction."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "بخطر ابتدائي 100 وفاعلية 0.8، شنو الخطر المتبقّي؟",
+        "en": "With an initial risk of 100 and efficacy of 0.8, what residual risk remains?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عشرون، لأن خُمس الخطر فقط يبقى.",
+          "en": "Twenty, because only a fifth of the risk survives."
+        },
+        {
+          "ar": "ثمانون، لأنها قيمة الفاعلية نفسها.",
+          "en": "Eighty, because that is the efficacy value itself."
+        },
+        {
+          "ar": "مئة وثمانون، مجموع القيمتين.",
+          "en": "One hundred and eighty, the sum of both values."
+        },
+        {
+          "ar": "صفر، لأن الفاعلية قريبة من الواحد تزيله كله.",
+          "en": "Zero, because efficacy close to one removes it all."
+        }
+      ],
+      "concept_id": "risk_res_worked",
+      "explanation": {
+        "ar": "فاعلية 0.8 تزيل ثمانين بالمئة، فالعشرين بالمئة الباقية من 100 هي عشرون.",
+        "en": "Efficacy of 0.8 removes eighty percent, so the remaining twenty percent of 100 is twenty."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "كيف يُحسب معدّل الإيجابيات الصحيحة بتحليل ROC؟",
+        "en": "How is the true positive rate computed in ROC analysis?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الإيجابيات الكاذبة على (الكاذبة + السلبيات الصحيحة).",
+          "en": "False positives over false positives plus true negatives."
+        },
+        {
+          "ar": "السلبيات الصحيحة على إجمالي الأحداث البريئة.",
+          "en": "True negatives over the total number of benign events."
+        },
+        {
+          "ar": "الإيجابيات الصحيحة على (الصحيحة + السلبيات الكاذبة).",
+          "en": "True positives over true positives plus false negatives."
+        },
+        {
+          "ar": "الإيجابيات الصحيحة على (الصحيحة + الإيجابيات الكاذبة).",
+          "en": "True positives over true positives plus false positives."
+        }
+      ],
+      "concept_id": "roc_tpr",
+      "explanation": {
+        "ar": "المقام هو كل ما كان هجوماً فعلاً، فالمعدّل يقيس شكثر من مجتمع التهديد الحقيقي انمسك.",
+        "en": "The denominator is everything that actually was an attack, so the rate measures how much of the real threat population was caught."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "كيف يُحسب معدّل الإيجابيات الكاذبة؟",
+        "en": "How is the false positive rate computed?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "السلبيات الكاذبة على إجمالي الهجمات المرصودة.",
+          "en": "False negatives over the total number of attacks seen."
+        },
+        {
+          "ar": "الإيجابيات الكاذبة على (الكاذبة + السلبيات الصحيحة).",
+          "en": "False positives over false positives plus true negatives."
+        },
+        {
+          "ar": "الإيجابيات الكاذبة على (الكاذبة + السلبيات الكاذبة).",
+          "en": "False positives over false positives plus false negatives."
+        },
+        {
+          "ar": "السلبيات الصحيحة على (الكاذبة + الصحيحة).",
+          "en": "True negatives over false positives plus true negatives."
+        }
+      ],
+      "concept_id": "roc_fpr",
+      "explanation": {
+        "ar": "المقام هو كل ما كان بريئاً فعلاً، فالمعدّل يقيس شكثر من المجتمع البريء انزعج.",
+        "en": "The denominator is everything that was actually benign, so the rate measures how much of the innocent population was disturbed."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "شنو تختصر المساحة تحت منحنى ROC؟",
+        "en": "What does the area under the ROC curve summarise?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد التوقيعات المحمّلة، حيث الأكثر أفضل.",
+          "en": "The number of signatures loaded, where more is better."
+        },
+        {
+          "ar": "زمن الاستجابة المضاف، حيث الأقل أفضل.",
+          "en": "The latency added, where lower values are better."
+        },
+        {
+          "ar": "فترة استبقاء قاعدة التنبيهات.",
+          "en": "The retention period of the alert database."
+        },
+        {
+          "ar": "أداء الكشف، حيث الواحد ممتاز.",
+          "en": "Detection performance, where one is excellent."
+        }
+      ],
+      "concept_id": "roc_auc",
+      "explanation": {
+        "ar": "المنحنى يرسم الإيجابيات الصحيحة مقابل الكاذبة، والمساحة تختصر تلك المقايضة برقم واحد.",
+        "en": "The curve plots true positives against false positives, and the area compresses that trade-off into a single number."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "بمصفوفة الالتباس، شنو يقع على قطر القرارات الصحيحة؟",
+        "en": "In the confusion matrix, what falls on the diagonal of correct decisions?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الإيجابيات الصحيحة والسلبيات الصحيحة.",
+          "en": "True positives and true negatives."
+        },
+        {
+          "ar": "الإيجابيات الكاذبة والسلبيات الكاذبة.",
+          "en": "False positives and false negatives."
+        },
+        {
+          "ar": "الإيجابيات الصحيحة والإيجابيات الكاذبة.",
+          "en": "True positives and false positives."
+        },
+        {
+          "ar": "السلبيات الكاذبة والسلبيات الصحيحة.",
+          "en": "False negatives and true negatives."
+        }
+      ],
+      "concept_id": "roc_confusion_matrix",
+      "explanation": {
+        "ar": "النتيجتان الصحيحتان هما كشف هجوم حقيقي وتمرير ترافيك بريء؛ والخليتان الأخريان هما الأخطاء.",
+        "en": "The two correct outcomes are detection of a real attack and correct release of benign traffic; the other two cells are the errors."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "كيف يُكتب الاحتمال البعدي للهجوم بمعطى تنبيه؟",
+        "en": "How is the posterior attack probability given an alert written?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الاحتمال المشروط + القبلي، مقسومين على احتمال التنبيه.",
+          "en": "Likelihood plus prior divided by the alert probability."
+        },
+        {
+          "ar": "القبلي مقسوماً على احتمال الإنذار الكاذب.",
+          "en": "Prior divided by the likelihood of a false alarm."
+        },
+        {
+          "ar": "الاحتمال المشروط × القبلي، على الاحتمال الكلي للتنبيه.",
+          "en": "Likelihood times prior over the total probability of the alert."
+        },
+        {
+          "ar": "القبلي × الاحتمال الكلي، على الاحتمال المشروط.",
+          "en": "Prior times the total probability over the likelihood."
+        }
+      ],
+      "concept_id": "bayes_formula",
+      "explanation": {
+        "ar": "هي مبرهنة بايز: البسط هو الاحتمال المشترك للهجوم والتنبيه، والمقام يعيّر على الحالتين.",
+        "en": "It is Bayes' theorem: the numerator is the joint probability of attack and alert, and the denominator normalises over both cases."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "أي كميّتين مرصودتين تقاربان الاحتمالين المشروطين بالمعادلة؟",
+        "en": "Which observed quantities approximate the two likelihoods in that formula?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد التوقيعات وعدد المستشعرات.",
+          "en": "The signature count and the sensor count."
+        },
+        {
+          "ar": "معدّل الإيجابيات الصحيحة ومعدّل الإيجابيات الكاذبة.",
+          "en": "The true positive rate and the false positive rate."
+        },
+        {
+          "ar": "الاحتمال القبلي ومكمّله.",
+          "en": "The prior probability and its complement."
+        },
+        {
+          "ar": "زمن الكشف وفترة الاستبقاء.",
+          "en": "The detection latency and the retention period."
+        }
+      ],
+      "concept_id": "bayes_terms",
+      "explanation": {
+        "ar": "معدّل التنبيه بوجود هجوم هو معدّل الكشف، ومعدّل التنبيه بلا هجوم هو معدّل الإنذار الكاذب.",
+        "en": "The alert rate given an attack is the detection rate, and the alert rate given no attack is the false alarm rate."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "ليش معظم التنبيهات تطلع كاذبة لمّا تكون الهجمات نادرة؟",
+        "en": "Why do most alerts turn out to be false when attacks are rare?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأن معدّل الكشف ينزل كل ما صارت الهجمات أندر.",
+          "en": "Because the detection rate falls as attacks become rarer."
+        },
+        {
+          "ar": "لأن الاحتمال القبلي يُتجاهل بقاعدة بايز.",
+          "en": "Because the prior probability is ignored by Bayes' rule."
+        },
+        {
+          "ar": "لأن المستشعرات ما تعرف تعدّ الترافيك البريء بدقة.",
+          "en": "Because sensors cannot count benign traffic accurately."
+        },
+        {
+          "ar": "لأن الأحداث البريئة الكثيرة تضرب معدّل الإنذار الكاذب الصغير.",
+          "en": "Because the many benign events multiply the small false alarm rate."
+        }
+      ],
+      "concept_id": "bayes_base_rate",
+      "explanation": {
+        "ar": "معدّل إنذار كاذب صغير مطبَّق على مجتمع بريء ضخم ينتج تنبيهات كثيرة، فالمعدّل الأساسي للهجمات يحكم الاحتمال البعدي.",
+        "en": "A small false alarm rate applied to a huge benign population produces many alarms, so the base rate of attacks dominates the posterior."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T08:09:01Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,596 @@
+{
+  "topic": {
+    "ar": "تقسيم الشبكة: المفاهيم والأنواع",
+    "en": "Network segmentation: concepts and types"
+  },
+  "quiz_id": "Quiz_Ch05_T14_Segmentation_Concepts",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ليش المحيط التقليدي للشبكة تآكل؟",
+        "en": "Why has the traditional network perimeter eroded?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بسبب السحابة والعمل الموزّع ونمو إنترنت الأشياء.",
+          "en": "Because of cloud, distributed work and IoT growth."
+        },
+        {
+          "ar": "لأن الجدارات صارت غالية بالترخيص.",
+          "en": "Because firewalls became too expensive to licence."
+        },
+        {
+          "ar": "لأن التشفير خلّى الحزم غير مقروءة.",
+          "en": "Because encryption made packets unreadable."
+        },
+        {
+          "ar": "لأن بروتوكولات التوجيه توقّفت عن التقارب.",
+          "en": "Because routing protocols stopped converging."
+        }
+      ],
+      "concept_id": "seg_why_perimeter_erodes",
+      "explanation": {
+        "ar": "تبنّي السحابة والقوى العاملة الموزّعة وانتشار أجهزة إنترنت الأشياء كلها تموّه الخط بين الداخل والخارج.",
+        "en": "Cloud adoption, distributed workforces and the proliferation of IoT devices all blur the line between inside and outside."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "شنو تقسيم الشبكة؟",
+        "en": "What is network segmentation?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نسخ الشبكة إلى مركز بيانات ثانٍ.",
+          "en": "Copying the network into a second datacentre."
+        },
+        {
+          "ar": "تقسيم الشبكة إلى قطاعات معزولة بضوابط وصول.",
+          "en": "Dividing a network into isolated segments with access controls."
+        },
+        {
+          "ar": "تشفير كل قطاع بمفتاح متماثل منفصل.",
+          "en": "Encrypting every segment with a separate symmetric key."
+        },
+        {
+          "ar": "استبدال كل الموجّهات بمبدّلات طبقة ثانية.",
+          "en": "Replacing all routers with layer-two switches."
+        }
+      ],
+      "concept_id": "seg_definition",
+      "explanation": {
+        "ar": "هي ممارسة تقسيم الشبكة إلى عدة قطاعات، كل واحد معزول بضوابط وصول أو جدارات نارية.",
+        "en": "It is the practice of dividing a network into multiple segments, each isolated by access controls or firewalls."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي ثلاثة أهداف يسعى لها التقسيم؟",
+        "en": "Which three objectives does segmentation pursue?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "النسخ الاحتياطي والتكرار والتعافي من الكوارث.",
+          "en": "Backup, replication and disaster recovery."
+        },
+        {
+          "ar": "المصادقة والتخويل والمحاسبة.",
+          "en": "Authentication, authorization and accounting."
+        },
+        {
+          "ar": "احتواء الاختراق والأداء وفرض السياسات.",
+          "en": "Breach containment, performance and policy enforcement."
+        },
+        {
+          "ar": "التشفير والضغط وإزالة التكرار.",
+          "en": "Encryption, compression and deduplication."
+        }
+      ],
+      "concept_id": "seg_three_objectives",
+      "explanation": {
+        "ar": "يحتوي الاختراقات، ويقلّل الازدحام بالحدّ من حركة البثّ، ويطبّق ضوابط دقيقة على التدفقات الحسّاسة.",
+        "en": "It contains breaches, reduces congestion by limiting broadcast traffic, and applies granular controls to sensitive flows."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو يعني احتواء الاختراق عملياً؟",
+        "en": "What does breach containment mean in practice?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "المهاجم يُحذف من الشبكة فوراً.",
+          "en": "The attacker is deleted from the network immediately."
+        },
+        {
+          "ar": "الاختراق يُبلَّغ للجهة التنظيمية خلال يوم.",
+          "en": "The breach is reported to the regulator within a day."
+        },
+        {
+          "ar": "المنطقة المخترقة تُعاد من نسخة احتياطية.",
+          "en": "The compromised zone is rebuilt from backup."
+        },
+        {
+          "ar": "المهاجم داخل منطقة ما يقدر يوصل الباقي.",
+          "en": "An attacker in one zone cannot reach the others."
+        }
+      ],
+      "concept_id": "seg_containment",
+      "explanation": {
+        "ar": "الاحتواء يتعلّق بتحديد نصف قطر الانفجار، مو بإزالة المهاجم، فهذا مشكل استجابة منفصل.",
+        "en": "Containment is about limiting blast radius, not about removing the attacker, which is a separate response problem."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يحسّن التقسيم الأداء؟",
+        "en": "How does segmentation improve performance?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بالحدّ من حركة البثّ داخل كل قطاع.",
+          "en": "By limiting broadcast traffic within each segment."
+        },
+        {
+          "ar": "بتشفير ترافيك أقل على العمود الفقري.",
+          "en": "By encrypting less traffic on the backbone."
+        },
+        {
+          "ar": "بضغط كل حزمة قبل التوجيه.",
+          "en": "By compressing every packet before routing."
+        },
+        {
+          "ar": "بإضافة قفزات توجيه أكثر بين المناطق.",
+          "en": "By adding more routing hops between zones."
+        }
+      ],
+      "concept_id": "seg_performance",
+      "explanation": {
+        "ar": "نطاقات البثّ تبقى صغيرة، فالقطاع ما ينزعج بترافيك ما له علاقة بيه.",
+        "en": "Broadcast domains stay small, so a segment is not disturbed by traffic that has no business reaching it."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "شنو يضيف هدف فرض السياسات على التقسيم؟",
+        "en": "What does the policy enforcement objective add to segmentation?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ضمان إن أي منطقة ما تنخترق أبداً.",
+          "en": "A guarantee that no zone can ever be breached."
+        },
+        {
+          "ar": "ضوابط دقيقة على التدفقات الحسّاسة أو المنظَّمة.",
+          "en": "Granular controls on sensitive or regulated flows."
+        },
+        {
+          "ar": "سياسة واحدة مسطّحة على كل الشبكة.",
+          "en": "A single flat policy applied to the whole network."
+        },
+        {
+          "ar": "اكتشاف تلقائي لكل أصل بالشبكة.",
+          "en": "Automatic discovery of every asset in the network."
+        }
+      ],
+      "concept_id": "seg_policy",
+      "explanation": {
+        "ar": "التقسيم شرط مسبق للسياسة التفاضلية: ما تقدر تعامل تدفقاً معاملة خاصة إلا إذا تعرف وين رايح.",
+        "en": "Segmentation is the precondition for differential policy: you can only treat a flow specially if you can identify where it is going."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يمكن تنفيذ التقسيم؟",
+        "en": "How can segmentation be implemented?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "منطقياً فقط، لأن العتاد ما ينفصل.",
+          "en": "Only logically, since hardware cannot be separated."
+        },
+        {
+          "ar": "بمفاتيح تشفير بدل الطوبولوجيا.",
+          "en": "Through encryption keys rather than topology."
+        },
+        {
+          "ar": "منطقياً عبر VLANs أو SDN، أو فيزيائياً.",
+          "en": "Logically through VLANs or SDN, or physically."
+        },
+        {
+          "ar": "فيزيائياً فقط بشبكات عتاد منفصلة.",
+          "en": "Only physically, with separate hardware networks."
+        }
+      ],
+      "concept_id": "seg_logical_vs_physical",
+      "explanation": {
+        "ar": "الفصل المنطقي بالإعداد، والفصل الفيزيائي بالكابلات، والاختيار يعتمد على نموذج التهديد والميزانية.",
+        "en": "Logical separation lives in configuration, physical separation lives in cabling, and the choice depends on the threat model and budget."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "شنو يعزله التقسيم القائم على VLAN؟",
+        "en": "What does VLAN-based segmentation isolate?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نطاقات عناوين IP بين الموجّهات.",
+          "en": "IP address ranges between routers."
+        },
+        {
+          "ar": "عمليات التطبيق داخل المضيف.",
+          "en": "Application processes inside the host."
+        },
+        {
+          "ar": "مفاتيح التشفير بين المناطق.",
+          "en": "Encryption keys between the zones."
+        },
+        {
+          "ar": "نطاقات البثّ داخل المبدّلات.",
+          "en": "Broadcast domains inside the switches."
+        }
+      ],
+      "concept_id": "seg_vlan",
+      "explanation": {
+        "ar": "هو فصل منطقي داخل المبدّل، ولهذا رخيص لكن مربوط بطوبولوجيا طبقة الربط.",
+        "en": "It is logical separation within the switch, which is why it is cheap but tied to layer-two topology."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو يتحكّم به التقسيم إلى شبكات فرعية؟",
+        "en": "What does subnetting control?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الاتصال بين نطاقات العناوين عبر سياسة التوجيه.",
+          "en": "Communication between address ranges via routing policy."
+        },
+        {
+          "ar": "نطاقات البثّ بلا أي توجيه.",
+          "en": "Broadcast domains without any routing involved."
+        },
+        {
+          "ar": "تشفير التدفقات بين التطبيقات.",
+          "en": "The encryption of flows between applications."
+        },
+        {
+          "ar": "هوية المستخدمين بكل قطاع.",
+          "en": "The identity of the users on each segment."
+        }
+      ],
+      "concept_id": "seg_subnetting",
+      "explanation": {
+        "ar": "يقسّم نطاقات العناوين إلى قطع أصغر ويتحكّم بالترافيك الناتج عبر سياسات التوجيه.",
+        "en": "It splits address ranges into smaller segments and controls the resulting traffic through routing policies."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شنو يميّز تقسيم الجدار الناري؟",
+        "en": "What characterises firewall segmentation?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اكتشاف تلقائي لأصول الشبكة.",
+          "en": "Automatic discovery of network assets."
+        },
+        {
+          "ar": "قواعد تحدّ من الوصول بين القطاعات.",
+          "en": "Rules that limit access between the segments."
+        },
+        {
+          "ar": "فصل فيزيائي لمجموعة الكابلات.",
+          "en": "Physical separation of the cabling plant."
+        },
+        {
+          "ar": "عزل لكل عملية داخل مضيف واحد.",
+          "en": "Per-process isolation inside one host."
+        }
+      ],
+      "concept_id": "seg_firewall",
+      "explanation": {
+        "ar": "هنا حدّ القطاع يُعبَّر عنه كسياسة على جهاز، وهذا يخليه مرناً لكن معتمداً على جودة القواعد.",
+        "en": "Here the segment boundary is expressed as policy on a device, which makes it flexible but dependent on rule quality."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "بأي مستوى يعمل التقسيم الدقيق؟",
+        "en": "At what level does micro segmentation operate?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "على مستوى النظام المستقل.",
+          "en": "At the autonomous system level."
+        },
+        {
+          "ar": "على مستوى جهة إصدار الشهادات.",
+          "en": "At the certificate authority level."
+        },
+        {
+          "ar": "على مستوى الحِمل أو التطبيق.",
+          "en": "At the workload or application level."
+        },
+        {
+          "ar": "على مستوى نطاق البثّ فقط.",
+          "en": "At the broadcast domain level only."
+        }
+      ],
+      "concept_id": "seg_micro",
+      "explanation": {
+        "ar": "يعزل أحمال العمل والتطبيقات فرادى، وغالباً يُفرض عبر الشبكات المعرّفة برمجياً.",
+        "en": "It isolates individual workloads and applications, often enforced through software-defined networking."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "شنو يميّز التقسيم الدقيق عن التقسيم القائم على VLAN؟",
+        "en": "What distinguishes micro segmentation from VLAN-based segmentation?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الدقيق يفصل نطاقات البثّ، والـ VLAN يفصل الأحمال.",
+          "en": "Micro separates broadcast domains, VLAN separates workloads."
+        },
+        {
+          "ar": "الدقيق على العتاد الفيزيائي فقط، والـ VLAN افتراضي فقط.",
+          "en": "Micro works only on physical hardware, VLAN only virtual."
+        },
+        {
+          "ar": "الدقيق بلا أي سياسة، والـ VLAN يحتاج توجيهاً.",
+          "en": "Micro requires no policy at all, VLAN requires routing."
+        },
+        {
+          "ar": "الدقيق سياسة هوية لكل حِمل، والـ VLAN لكل نطاق بثّ.",
+          "en": "Micro uses identity policy per workload, VLAN per broadcast domain."
+        }
+      ],
+      "concept_id": "seg_vlan_vs_micro",
+      "explanation": {
+        "ar": "الاثنان يعزلان، لكن بحبيبية مختلفة: واحد يرسم خطاً حول نطاق مبدّل، والثاني حول محادثات حِمل واحد.",
+        "en": "Both isolate, but at different granularity: one draws a line around a switch domain, the other around a single workload's conversations."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ليش الشبكات المسطّحة خطيرة؟",
+        "en": "Why are flat networks dangerous?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تسمح للمهاجم بالحركة من منخفض القيمة لعاليه.",
+          "en": "They let an attacker move from low to high value."
+        },
+        {
+          "ar": "ما تقدر تحمل حركة بثّ أبداً.",
+          "en": "They cannot carry broadcast traffic at all."
+        },
+        {
+          "ar": "تحتاج موجّهات أكثر من المقسّمة.",
+          "en": "They require more routers than segmented ones."
+        },
+        {
+          "ar": "تشفّر الترافيك بقوة زيادة افتراضياً.",
+          "en": "They encrypt traffic too aggressively by default."
+        }
+      ],
+      "concept_id": "seg_flat_network_danger",
+      "explanation": {
+        "ar": "بلا حدود داخلية، محطة عمل مخترقة واحدة تصير مجاورة فعلياً لكل سيرفر بالمؤسسة.",
+        "en": "Without internal boundaries, one compromised workstation is effectively adjacent to every server in the estate."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "بالنموذج الشكلي، شنو تمثّل عقد المخطّط وحوافه؟",
+        "en": "In the formal model, what do the vertices and edges of the network graph represent?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "العقد سياسات والحواف قواعد.",
+          "en": "Nodes are policies and edges are rules."
+        },
+        {
+          "ar": "العقد أجهزة والحواف وصلات اتصال.",
+          "en": "Nodes are devices, edges are communication links."
+        },
+        {
+          "ar": "العقد حزم والحواف فواصل زمنية.",
+          "en": "Nodes are packets and edges are time intervals."
+        },
+        {
+          "ar": "العقد مستخدمون والحواف بيانات اعتماد.",
+          "en": "Nodes are users and edges are credentials."
+        }
+      ],
+      "concept_id": "seg_graph_model",
+      "explanation": {
+        "ar": "اختزال الشبكة إلى مخطّط هو اللي يخلي الوصول يُعدّ بدل ما يُجادل فيه.",
+        "en": "Reducing the network to a graph is what lets reachability be counted rather than argued about."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "كيف يُعبَّر عن احتمال الوصول للهدف بدون تقسيم؟",
+        "en": "How is the probability of reaching the target expressed without segmentation?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد العقد على عدد مسارات الهجوم.",
+          "en": "The number of vertices over the number of attack paths."
+        },
+        {
+          "ar": "حاصل ضرب المسارات والحواف بالمخطّط.",
+          "en": "The product of paths and edges in the graph."
+        },
+        {
+          "ar": "عدد مسارات الهجوم الممكنة على عدد الحواف.",
+          "en": "The number of possible attack paths over the number of edges."
+        },
+        {
+          "ar": "عدد الحواف على عدد مسارات الهجوم الممكنة.",
+          "en": "The number of edges over the number of possible attack paths."
+        }
+      ],
+      "concept_id": "seg_p_reach_formula",
+      "explanation": {
+        "ar": "الوصول يُعامل كحصة من اتصالية المخطّط يقدر المهاجم يستغلها.",
+        "en": "Reachability is treated as a share of the graph's connectivity that the attacker can exploit."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "كيف يغيّر التقسيم تلك الاحتمالية؟",
+        "en": "How does segmentation change that probability?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تُحتسب كل المسارات لكن بمقام أكبر.",
+          "en": "All paths are counted but with a larger denominator."
+        },
+        {
+          "ar": "المسارات تُضرب بعدد المناطق.",
+          "en": "The paths are multiplied by the number of zones."
+        },
+        {
+          "ar": "الحواف تُزال من المخطّط بالكامل.",
+          "en": "The edges are removed from the graph entirely."
+        },
+        {
+          "ar": "تُحتسب فقط المسارات اللي تعبر البوابات المتحكَّم بها.",
+          "en": "Only paths crossing the controlled gateways are counted."
+        }
+      ],
+      "concept_id": "seg_p_reach_seg_formula",
+      "explanation": {
+        "ar": "مجموعة القطع هي حواف البوابات المتحكَّم بها، والاتصال بين المناطق لازم يعبرها.",
+        "en": "The cut-set is the set of controlled gateway edges, and communication between zones has to cross them."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "شنو يصير للحركة الجانبية كل ما كبرت مجموعة القطع المتحكَّم بها؟",
+        "en": "What happens to lateral movement as the controlled cut-set grows?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مسارات أقل تبقى متاحة، فتنزل الاحتمالية.",
+          "en": "Fewer paths remain available, so the probability falls."
+        },
+        {
+          "ar": "مسارات أكثر تنفتح، فترتفع الاحتمالية.",
+          "en": "More paths open up, so the probability rises."
+        },
+        {
+          "ar": "الاحتمالية تبقى نفسها بس زمن الاستجابة يتحسّن.",
+          "en": "The probability stays the same but latency improves."
+        },
+        {
+          "ar": "المخطّط يفقد حوافه وينفصل.",
+          "en": "The graph loses its edges and becomes disconnected."
+        }
+      ],
+      "concept_id": "seg_cutset_effect",
+      "explanation": {
+        "ar": "كل بوابة متحكَّم بها إضافية تزيل مسارات كان المهاجم يقدر يسلكها، وهذا هدف مجموعة القطع كله.",
+        "en": "Every additional controlled gateway removes routes the attacker could otherwise take, which is the whole point of the cut-set."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "شنو يحدّه التقسيم أساساً؟",
+        "en": "What does segmentation primarily limit?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد الشهادات بالسلسلة.",
+          "en": "The number of certificates in the chain."
+        },
+        {
+          "ar": "الحركة الجانبية بعد الاختراق الأولي.",
+          "en": "Lateral movement after an initial breach."
+        },
+        {
+          "ar": "الإصابة الأولى للمضيف الأول.",
+          "en": "The initial infection of the first host."
+        },
+        {
+          "ar": "سرعة العمود الفقري للشبكة.",
+          "en": "The speed of the network backbone."
+        }
+      ],
+      "concept_id": "seg_lateral_movement",
+      "explanation": {
+        "ar": "ما يمنع الاختراق الأول؛ يمنع إن ذلك الاختراق يصير جولة بكل المؤسسة.",
+        "en": "It does not prevent the first compromise; it prevents that compromise from becoming a tour of the estate."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T08:09:01Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

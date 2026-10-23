@@ -1,0 +1,660 @@
+{
+  "topic": {
+    "ar": "الشبكات الخاصة الافتراضية",
+    "en": "Virtual private networks"
+  },
+  "quiz_id": "Quiz_Ch05_T08_VPNs",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو ينشئ الـ VPN عبر شبكة غير موثوقة؟",
+        "en": "What does a VPN create across an untrusted network?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نفقاً مشفّراً بين الطرفين.",
+          "en": "An encrypted tunnel between the endpoints."
+        },
+        {
+          "ar": "نفقاً مضغوطاً بين الطرفين.",
+          "en": "A compressed tunnel between the endpoints."
+        },
+        {
+          "ar": "مساراً موجّهاً يتجنّب كل الأجهزة الوسيطة.",
+          "en": "A routed path that avoids all middleboxes."
+        },
+        {
+          "ar": "جلسة مخزّنة يشترك بها كل المستخدمين.",
+          "en": "A cached session shared by all users."
+        }
+      ],
+      "concept_id": "vpn_fundamental_role",
+      "explanation": {
+        "ar": "يؤمّن الاتصالات عبر الشبكات غير الموثوقة بإنشاء أنفاق مشفّرة، فالإنترنت العام يتصرّف كامتداد للشبكة الخاصة.",
+        "en": "It secures communications across untrusted networks by creating encrypted tunnels, so the public internet behaves like an extension of the private network."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي ثلاث خصائص يوفّرها الـ VPN؟",
+        "en": "Which three properties does a VPN provide?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المصادقة والضغط والتخزين المؤقت.",
+          "en": "Authentication, compression and caching."
+        },
+        {
+          "ar": "السرية والسلامة ومصادقة الأطراف.",
+          "en": "Confidentiality, integrity and endpoint authentication."
+        },
+        {
+          "ar": "السرية والتوافر وموازنة الحمل.",
+          "en": "Confidentiality, availability and load balancing."
+        },
+        {
+          "ar": "السلامة وإخفاء الهوية وعدم الإنكار.",
+          "en": "Integrity, anonymity and non-repudiation."
+        }
+      ],
+      "concept_id": "vpn_three_properties",
+      "explanation": {
+        "ar": "هذي الثلاثة هي اللي تخلي الشبكة الخاصة تمتد فوق الإنترنت العام بلا ثقة بالمسار.",
+        "en": "Those three are what let a private network be extended over the public internet without trusting the path."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "بأي طبقة يعمل IPsec؟",
+        "en": "At which layer does IPsec operate?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عند طبقة التطبيق، حسب RFC 8484.",
+          "en": "At the application layer, per RFC 8484."
+        },
+        {
+          "ar": "عند طبقة الربط، حسب RFC 6105.",
+          "en": "At the link layer, per RFC 6105."
+        },
+        {
+          "ar": "عند طبقة IP، حسب RFC 4301.",
+          "en": "At the IP layer, per RFC 4301."
+        },
+        {
+          "ar": "عند طبقة النقل، حسب RFC 8446.",
+          "en": "At the transport layer, per RFC 8446."
+        }
+      ],
+      "concept_id": "vpn_ipsec_layer",
+      "explanation": {
+        "ar": "IPsec عائلة بطبقة IP، ولهذا يقدر يحمي أي بروتوكول فوقه بلا ما تتغيّر التطبيقات.",
+        "en": "IPsec is an IP-layer family, which is why it can protect any protocol carried above it without changing the applications."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي نمطين يدعمهما IPsec؟",
+        "en": "Which two modes does IPsec support?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نمط الجسر ونمط التوجيه.",
+          "en": "Bridge mode and routed mode."
+        },
+        {
+          "ar": "النمط الأمامي والنمط العكسي.",
+          "en": "Forward mode and reverse mode."
+        },
+        {
+          "ar": "النمط المتتبّع والنمط عديم الحالة.",
+          "en": "Stateful mode and stateless mode."
+        },
+        {
+          "ar": "نمط النفق ونمط النقل.",
+          "en": "Tunnel mode and transport mode."
+        }
+      ],
+      "concept_id": "vpn_ipsec_modes",
+      "explanation": {
+        "ar": "نمط النفق يلفّ الحزمة الأصلية كاملة، ونمط النقل يحمي الحمولة ويترك ترويسة IP الأصلية بمكانها.",
+        "en": "Tunnel mode wraps the whole original packet, while transport mode protects the payload and leaves the original IP header in place."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يتقاسم ESP و AH العمل داخل IPsec؟",
+        "en": "What is the division of labour between ESP and AH in IPsec?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ESP يعطي السرية، و AH يعطي المصادقة.",
+          "en": "ESP gives confidentiality, AH gives authentication."
+        },
+        {
+          "ar": "ESP يعطي المصادقة، و AH يعطي السرية.",
+          "en": "ESP gives authentication, AH gives confidentiality."
+        },
+        {
+          "ar": "الاثنان يعطيان السرية وما يصادقان.",
+          "en": "Both give confidentiality and neither authenticates."
+        },
+        {
+          "ar": "الاثنان يصادقان وما يشفّران الحمولات.",
+          "en": "Both authenticate but neither encrypts payloads."
+        }
+      ],
+      "concept_id": "vpn_ipsec_esp_ah",
+      "explanation": {
+        "ar": "ESP يحمل التشفير، و AH يحمل سلامة الحزمة ومصادقتها.",
+        "en": "Encapsulating Security Payload carries the encryption, while Authentication Header carries integrity and authentication of the packet."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "بأي طبقات تعمل شبكات SSL و TLS الخاصة؟",
+        "en": "At which layers do SSL and TLS VPNs operate?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عند الطبقتين الفيزيائية وربط البيانات.",
+          "en": "At the physical and data-link layers."
+        },
+        {
+          "ar": "عند طبقتي النقل والتطبيق.",
+          "en": "At the transport and application layers."
+        },
+        {
+          "ar": "عند طبقتي الشبكة والربط.",
+          "en": "At the network and link layers."
+        },
+        {
+          "ar": "عند طبقتي الجلسة والعرض فقط.",
+          "en": "At the session and presentation layers only."
+        }
+      ],
+      "concept_id": "vpn_ssl_tls_family",
+      "explanation": {
+        "ar": "تستفيد من TLS، فتجلس أعلى بالمكدّس من IPsec وتُقدَّم عادة عبر متصفح أو تطبيق عميل.",
+        "en": "They leverage TLS, so they sit higher in the stack than IPsec and are typically delivered through a browser or a client application."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "على أي مكوّنات حديثة يعتمد WireGuard؟",
+        "en": "Which modern primitives does WireGuard rely on?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "Diffie-Hellman بالحقل المحدود وثلاثي DES.",
+          "en": "Finite-field Diffie-Hellman and triple DES."
+        },
+        {
+          "ar": "توقيعات ECDSA وشيفرة RC4 الانسيابية.",
+          "en": "ECDSA signatures and the RC4 stream cipher."
+        },
+        {
+          "ar": "Curve25519 و ChaCha20-Poly1305.",
+          "en": "Curve25519 and ChaCha20-Poly1305."
+        },
+        {
+          "ar": "RSA-2048 لتبادل المفاتيح و AES-256-CBC.",
+          "en": "RSA-2048 for key exchange and AES-256-CBC."
+        }
+      ],
+      "concept_id": "vpn_wireguard_primitives",
+      "explanation": {
+        "ar": "WireGuard يستخدم عمداً مجموعة حديثة صغيرة بدل ما يعرض قائمة خيارات قديمة، وهذا اللي يخلي قاعدة شيفرته ضئيلة.",
+        "en": "WireGuard deliberately uses a small modern set rather than offering a menu of legacy options, which is what keeps its codebase tiny."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "على شنو يشدّد WireGuard بتصميمه؟",
+        "en": "What does WireGuard emphasise in its design?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "اكتمال الميزات والتوافق مع القديم.",
+          "en": "Feature completeness and legacy compatibility."
+        },
+        {
+          "ar": "تسريع عتادي وشهادة مورّد.",
+          "en": "Hardware acceleration and vendor certification."
+        },
+        {
+          "ar": "إدارة مركزية وفحص عميق.",
+          "en": "Centralised management and deep inspection."
+        },
+        {
+          "ar": "البساطة وقاعدة شيفرة ضئيلة.",
+          "en": "Simplicity and a minimal codebase."
+        }
+      ],
+      "concept_id": "vpn_wireguard_philosophy",
+      "explanation": {
+        "ar": "سطح أصغر أسهل بالتدقيق، و WireGuard يقايض القابلية للتخصيص مقابل تلك القابلية للتدقيق.",
+        "en": "A smaller surface is easier to audit, and WireGuard trades configurability for that auditability."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي نموذج نشر يلائم عاملاً عن بُعد يتصل من بيته؟",
+        "en": "Which deployment model fits a teleworker connecting from home?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "شبكة خاصة للوصول عن بُعد.",
+          "en": "A remote access VPN."
+        },
+        {
+          "ar": "شبكة خاصة بين موقعين.",
+          "en": "A site-to-site VPN."
+        },
+        {
+          "ar": "شبكة خاصة سحابية المنشأ.",
+          "en": "A cloud-native VPN."
+        },
+        {
+          "ar": "نشر بروكسي عكسي.",
+          "en": "A reverse proxy deployment."
+        }
+      ],
+      "concept_id": "vpn_deployment_remote",
+      "explanation": {
+        "ar": "شبكات الوصول عن بُعد موجودة لتأمين اتصالات العاملين عن بُعد رجوعاً لشبكة الشركة.",
+        "en": "Remote access VPNs exist to secure teleworker connections back into the corporate network."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شنو تربط شبكات الموقعين؟",
+        "en": "What do site-to-site VPNs connect?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جهات إصدار الشهادات بمخزن الجذور.",
+          "en": "Certificate authorities to the root store."
+        },
+        {
+          "ar": "مواقع المؤسسة المتباعدة جغرافياً.",
+          "en": "Geographically dispersed enterprise sites."
+        },
+        {
+          "ar": "العاملين الأفراد بالمكتب الرئيسي.",
+          "en": "Individual teleworkers to the head office."
+        },
+        {
+          "ar": "مستأجري السحابة العامة ببيانات بعضهم.",
+          "en": "Public cloud tenants to each other's data."
+        }
+      ],
+      "concept_id": "vpn_deployment_site",
+      "explanation": {
+        "ar": "شبكات الموقعين تربط مواقع المؤسسة المتباعدة بشبكة منطقية واحدة فوق الإنترنت العام.",
+        "en": "Site-to-site VPNs join dispersed enterprise locations into one logical network over the public internet."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "مع شنو تتكامل الشبكات السحابية المنشأ؟",
+        "en": "What do cloud-native VPNs integrate with?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "شبكات التحكّم الصناعي و SCADA.",
+          "en": "Industrial control and SCADA networks."
+        },
+        {
+          "ar": "وصلات الأقمار وروابط الراديو.",
+          "en": "Satellite links and radio backhauls."
+        },
+        {
+          "ar": "البيئات متعدّدة السحابات والهجينة.",
+          "en": "Multi-cloud and hybrid environments."
+        },
+        {
+          "ar": "أنظمة الحاسوب المركزي والطرفيات القديمة.",
+          "en": "Legacy mainframe and terminal systems."
+        }
+      ],
+      "concept_id": "vpn_deployment_cloud",
+      "explanation": {
+        "ar": "الشبكات السحابية المنشأ مبنية للطوبولوجيات متعدّدة السحابات والهجينة اللي صارت موجودة فعلاً ببيئات المؤسسات.",
+        "en": "Cloud-native VPNs are built for the multi-cloud and hybrid topologies that enterprise estates now actually have."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي نقاط ضعف ينسبها الفصل لنشر الشبكات الخاصة؟",
+        "en": "Which weaknesses does the chapter attribute to VPN deployments?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تجزئة الحزم وإعادة كتابة الترويسات ومشاكل MTU.",
+          "en": "Packet fragmentation, header rewriting and MTU issues."
+        },
+        {
+          "ar": "تسميم الكاش ونقل المنطقة واختطاف المحلّل.",
+          "en": "Cache poisoning, zone transfer and resolver hijack."
+        },
+        {
+          "ar": "انحراف الساعة وترتيب السجلات وعمر التذاكر.",
+          "en": "Clock drift, log ordering and ticket lifetime."
+        },
+        {
+          "ar": "أخطاء الإعداد والمصادقة الضعيفة وسرقة بيانات الاعتماد.",
+          "en": "Misconfiguration, weak authentication and credential theft."
+        }
+      ],
+      "concept_id": "vpn_vuln_list",
+      "explanation": {
+        "ar": "أخطاء الإعداد والمصادقة الضعيفة والبروتوكولات المتقادمة وسرقة بيانات الاعتماد هي اللي تقوّض الـ VPN عملياً.",
+        "en": "Misconfiguration, weak authentication, obsolete protocols and stolen credentials are what actually undermine VPNs in practice."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "أي بروتوكولات يسمّيها الفصل متقادمة لاستخدام VPN؟",
+        "en": "Which protocols does the chapter name as obsolete for VPN use?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "PPTP و L2TP بدون IPsec.",
+          "en": "PPTP and L2TP without IPsec."
+        },
+        {
+          "ar": "WireGuard والشبكات المبنية على TLS الحديث.",
+          "en": "WireGuard and modern TLS-based VPNs."
+        },
+        {
+          "ar": "IPsec بنمط النفق و IKEv2.",
+          "en": "IPsec in tunnel mode and IKEv2."
+        },
+        {
+          "ar": "DNS-over-TLS و DNS-over-HTTPS.",
+          "en": "DNS-over-TLS and DNS-over-HTTPS."
+        }
+      ],
+      "concept_id": "vpn_obsolete_protocols",
+      "explanation": {
+        "ar": "PPTP و L2TP بدون IPsec يفتقدان حماية تشفيرية كافية، فلهذا يُذكران كإرث قديم مو كتوصية.",
+        "en": "PPTP and L2TP without IPsec lack adequate cryptographic protection, so they are listed as legacy rather than recommended."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "ليش اختراق بوابة VPN خطير بشكل خاص؟",
+        "en": "Why is compromising a VPN gateway especially severe?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يجبر كل مستخدم على مجموعة تشفير أضعف.",
+          "en": "It forces every user onto a weaker cipher suite."
+        },
+        {
+          "ar": "يعطي المهاجم حركة جانبية واسعة بالداخل.",
+          "en": "It gives the attacker broad lateral movement inside."
+        },
+        {
+          "ar": "يكشف مفاتيح التشفير لكل عميل.",
+          "en": "It exposes the encryption keys of every client."
+        },
+        {
+          "ar": "يعطّل كل الشهادات على الأجهزة الداخلية.",
+          "en": "It disables all certificates on the internal hosts."
+        }
+      ],
+      "concept_id": "vpn_gateway_compromise",
+      "explanation": {
+        "ar": "البوابة هي النقطة الوحيدة اللي يُوثق فيها بالخارج داخل الشبكة، فاللي يمسكها يرث تلك الثقة على كل الشبكة الداخلية.",
+        "en": "The gateway is the single point where the outside is trusted inside, so whoever holds it inherits that trust for the whole internal network."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "هل نشر VPN يزيل خطر الشبكة غير الموثوقة؟",
+        "en": "Does deploying a VPN remove the risk of an untrusted network?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نعم، لأن الترافيك يصير غير مقروء للجميع.",
+          "en": "Yes, because the traffic becomes unreadable to all."
+        },
+        {
+          "ar": "لا، لأن النفق يضعّف التشفير المستخدم.",
+          "en": "No, because the tunnel weakens the encryption used."
+        },
+        {
+          "ar": "لا، بل ينقل الثقة إلى الأطراف والبوابة.",
+          "en": "No, it shifts the trust to the endpoints and gateway."
+        },
+        {
+          "ar": "نعم، لأن النفق ما يمكن اعتراضه.",
+          "en": "Yes, because the tunnel cannot be intercepted."
+        }
+      ],
+      "concept_id": "vpn_shifts_trust",
+      "explanation": {
+        "ar": "النفق يحمي المسار، بس الأطراف والبوابة تصير التجمّع الجديد للثقة، وهناك تنتقل الهجمات بعدها.",
+        "en": "The tunnel protects the path, but the endpoints and the gateway become the new concentration of trust, and that is where attacks then go."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "كيف يُعبَّر عن احتمال الاعتراض المتبقّي؟",
+        "en": "How is the residual interception probability expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "واحد زائد فاعلية الـ VPN، مضروباً بالاحتمال السابق.",
+          "en": "One plus VPN efficacy, times the prior probability."
+        },
+        {
+          "ar": "فاعلية الـ VPN مقسومة على الاحتمال السابق.",
+          "en": "VPN efficacy divided by the prior probability."
+        },
+        {
+          "ar": "الاحتمال السابق مقسوماً على فاعلية الـ VPN.",
+          "en": "Prior probability divided by the VPN efficacy."
+        },
+        {
+          "ar": "واحد ناقص فاعلية الـ VPN، مضروباً بالاحتمال السابق.",
+          "en": "One minus VPN efficacy, times the prior probability."
+        }
+      ],
+      "concept_id": "vpn_p_int_formula",
+      "explanation": {
+        "ar": "يتبع نفس نمط الفاعلية المستخدم بكل الفصل: التشفير يزيل كسراً من احتمال الاعتراض.",
+        "en": "It follows the same efficacy pattern used throughout the chapter: the encryption removes a fraction of the interception probability."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "شنو يصير لاحتمال الاعتراض المتبقّي عند طرفي فاعلية الـ VPN؟",
+        "en": "What happens to the residual interception probability at the two extremes of VPN efficacy?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يساوي الاحتمال السابق عند فاعلية صفر ويقترب من الصفر عند الفاعلية الكاملة.",
+          "en": "It equals the prior at zero efficacy and nears zero at full."
+        },
+        {
+          "ar": "يتضاعف عند فاعلية صفر وينصف عند الفاعلية الكاملة.",
+          "en": "It doubles at zero efficacy and halves at full efficacy."
+        },
+        {
+          "ar": "يبقى ثابتاً بغض النظر عن قيمة الفاعلية.",
+          "en": "It stays fixed regardless of the efficacy value."
+        },
+        {
+          "ar": "يرتفع كل ما ارتفعت الفاعلية، بسبب الكلفة.",
+          "en": "It rises as efficacy rises, because of the overhead."
+        }
+      ],
+      "concept_id": "vpn_efficacy_limits",
+      "explanation": {
+        "ar": "بلا فاعلية النفق ما يغيّر شي، وبفاعلية كاملة يُدفع احتمال الاعتراض إلى الصفر.",
+        "en": "With no efficacy the tunnel changes nothing, and with perfect efficacy the interception probability is driven to zero."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "كيف يُعبَّر عن زمن الإرسال مع الـ VPN؟",
+        "en": "How is the transmission time with a VPN expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الزمن الأساسي مقسوماً على كلفة التشفير.",
+          "en": "Baseline time divided by the encryption overhead."
+        },
+        {
+          "ar": "الزمن الأساسي زائد كلفة التشفير.",
+          "en": "Baseline time plus the encryption overhead."
+        },
+        {
+          "ar": "الزمن الأساسي ناقص كلفة التشفير.",
+          "en": "Baseline time minus the encryption overhead."
+        },
+        {
+          "ar": "الزمن الأساسي مضروباً بكلفة التشفير.",
+          "en": "Baseline time multiplied by the encryption overhead."
+        }
+      ],
+      "concept_id": "vpn_latency_formula",
+      "explanation": {
+        "ar": "النفق يضيف شغلاً لكل حزمة، فالزمن هو الأساسي زائد تلك الكلفة، مو كسراً منه.",
+        "en": "The tunnel adds work to every packet, so the latency is the baseline plus that added cost rather than a fraction of it."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "شنو الهدف العملي عند اختيار قوة الـ VPN؟",
+        "en": "What is the practical goal when choosing VPN strength?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تقليل الزمن وقبول أي تشفير.",
+          "en": "Minimise latency and accept any encryption."
+        },
+        {
+          "ar": "مطابقة الشيفرة لافتراضي المورّد.",
+          "en": "Match the cipher to the vendor's default."
+        },
+        {
+          "ar": "تحسين الفاعلية مقابل زمن استجابة مقبول.",
+          "en": "Optimise efficacy against an acceptable latency."
+        },
+        {
+          "ar": "تعظيم الفاعلية بغض النظر عن الزمن.",
+          "en": "Maximise efficacy regardless of the latency."
+        }
+      ],
+      "concept_id": "vpn_tradeoff_optimise",
+      "explanation": {
+        "ar": "المقايضة صريحة: تشفير أقوى يشتري أماناً ويكلّف زمن استجابة، فالجواب الصح هو التوازن اللي يتحمّله الاستخدام.",
+        "en": "The trade-off is explicit: stronger encryption buys security and costs latency, so the right answer is the balance the use case can tolerate."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "ليش الـ VPN مو آلية تخويل؟",
+        "en": "Why is a VPN not an authorization mechanism?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يشفّر الترافيك بس ما يصادق الأطراف أبداً.",
+          "en": "It encrypts the traffic but never authenticates endpoints."
+        },
+        {
+          "ar": "يخوّل المستخدمين بس ما يشفّر ترافيكهم.",
+          "en": "It authorizes users but does not encrypt their traffic."
+        },
+        {
+          "ar": "يستبدل خدمات الدليل لهوية المستخدم.",
+          "en": "It replaces directory services for user identity."
+        },
+        {
+          "ar": "ينقل الترافيك بأمان بس ما يقرّر الصلاحيات.",
+          "en": "It transports traffic securely but does not decide permissions."
+        }
+      ],
+      "concept_id": "vpn_is_not_authorization",
+      "explanation": {
+        "ar": "الـ VPN يوفّر نقلاً مشفّراً ومصادقة أطراف؛ أما شنو مسموح للمستخدم يسوي فهذا قرار تخويل منفصل.",
+        "en": "A VPN provides encrypted transport and endpoint authentication; what a user is then allowed to do is a separate authorization decision."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T08:09:01Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

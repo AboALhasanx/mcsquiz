@@ -1,0 +1,660 @@
+{
+  "topic": {
+    "ar": "التقارب والحالات ونماذج المخاطر والحوكمة",
+    "en": "Convergence, case studies, risk models and governance"
+  },
+  "quiz_id": "Quiz_Ch05_T09_Convergence_Risk_And_Governance",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي وظائف يدمجها جدار الجيل الجديد حسب قسم التقارب؟",
+        "en": "Which functions does an NGFW integrate according to the convergence section?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إصدار الهوية وإبطالها وتدقيقها.",
+          "en": "Identity issuance, revocation and auditing."
+        },
+        {
+          "ar": "فحص عميق وفحص شبيه بالبروكسي ودعم VPN.",
+          "en": "DPI, proxy-like inspection and VPN support."
+        },
+        {
+          "ar": "توجيه وتبديل وترجمة عناوين.",
+          "en": "Routing, switching and address translation."
+        },
+        {
+          "ar": "نسخ احتياطي وتكرار وأرشفة طويلة الأمد.",
+          "en": "Backup, replication and long-term archiving."
+        }
+      ],
+      "concept_id": "conv_ngfw_integrates",
+      "explanation": {
+        "ar": "التقارب يعني إن صندوق واحد يسوي الفحص العميق اللي كان يُنسب للبروكسي وينهي الـ VPN هم.",
+        "en": "Convergence means one box performs the deep inspection once associated with proxies and also terminates VPNs."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "شنو يدمج إطار SASE؟",
+        "en": "What does a SASE framework merge?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نسخ احتياطي وتعافي كوارث وأرشفة واستبقاء.",
+          "en": "Backup, disaster recovery, archiving and retention."
+        },
+        {
+          "ar": "توجيه وتبديل و NAT وخدمات DHCP.",
+          "en": "Routing, switching, NAT and DHCP services."
+        },
+        {
+          "ar": "هاش وتوقيع وتشفير وتدوير مفاتيح.",
+          "en": "Hashing, signing, encryption and key rotation."
+        },
+        {
+          "ar": "نفق VPN و Zero Trust وجدار ناري وبروكسي سحابي.",
+          "en": "VPN tunnelling, Zero Trust, firewalling and cloud proxy."
+        }
+      ],
+      "concept_id": "conv_sase_definition",
+      "explanation": {
+        "ar": "SASE يجمع النفق وسياسة Zero Trust والجدار الناري وفحص البروكسي السحابي بإطار واحد مُقدَّم.",
+        "en": "SASE brings tunnelling, Zero Trust policy, firewalling and cloud-based proxy inspection into one delivered framework."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "شنو يغيّر Zero Trust Network Access بالنسبة للـ VPN التقليدي؟",
+        "en": "What does Zero Trust Network Access change relative to a traditional VPN?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يستبدل الثقة الضمنية بسياسة هوية لكل جلسة.",
+          "en": "It replaces implicit trust with per-session identity policy."
+        },
+        {
+          "ar": "يستبدل التشفير بضغط لكل جلسة.",
+          "en": "It replaces encryption with per-session compression."
+        },
+        {
+          "ar": "يزيل الحاجة لأي مصادقة مستخدم.",
+          "en": "It removes the need for any user authentication."
+        },
+        {
+          "ar": "يبقي الثقة الضمنية ويضيف أنفاقاً أكثر.",
+          "en": "It keeps implicit trust but adds more tunnels."
+        }
+      ],
+      "concept_id": "conv_ztna_shift",
+      "explanation": {
+        "ar": "الـ VPN يثق بالطرف مرة وحدة بعد ما يدخل، أما ZTNA فيقيّم الهوية والسياسة على كل جلسة بدلاً من ذلك.",
+        "en": "A VPN trusts the endpoint once it is inside, whereas ZTNA evaluates identity and policy on every session instead."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي قوى تدفع تقارب الجدارات والبروكسيات والـ VPN؟",
+        "en": "Which forces drive the convergence of firewalls, proxies and VPNs?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "شبكات أبطأ ومراكز بيانات أكبر وأقراص أرخص.",
+          "en": "Slower networks, larger datacentres and cheaper disks."
+        },
+        {
+          "ar": "قوانين جديدة وانقطاعات أقصر وعتاد أسرع.",
+          "en": "New laws, shorter outages and faster hardware."
+        },
+        {
+          "ar": "انتشار التشفير والعمل عن بُعد والسحابة وقوة الخصوم.",
+          "en": "Encryption ubiquity, remote work, cloud and stronger adversaries."
+        },
+        {
+          "ar": "كلف تراخيص أقل وتدقيق أبسط ومورّدون أقل.",
+          "en": "Lower licensing costs, simpler audits and fewer vendors."
+        }
+      ],
+      "concept_id": "conv_drivers",
+      "explanation": {
+        "ar": "انتشار التشفير وقوة العمل عن بُعد وتبنّي السحابة وتطوّر الخصوم كلها تدفع الوظائف الثلاثة لمعمارية واحدة.",
+        "en": "Ubiquitous encryption, a remote workforce, cloud adoption and more sophisticated adversaries all push the three functions into one architecture."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي خطأ إعداد بجدار ناري مكّن WannaCry من الانتشار؟",
+        "en": "What firewall misconfiguration enabled WannaCry to spread?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قاعدة المنع الافتراضي طُبّقت بصرامة زائدة.",
+          "en": "The default deny rule was applied too strictly."
+        },
+        {
+          "ar": "حركة SMB الخارجة كانت مسموحة عبر الحافة.",
+          "en": "Outbound SMB traffic was allowed through the edge."
+        },
+        {
+          "ar": "حركة HTTPS الداخلة كانت محجوبة عند الحافة.",
+          "en": "Inbound HTTPS traffic was blocked at the edge."
+        },
+        {
+          "ar": "الجدار كان يسجّل الحزم بس ما يرشّحها.",
+          "en": "The firewall logged packets but never filtered."
+        }
+      ],
+      "concept_id": "case_wannacry_cause",
+      "explanation": {
+        "ar": "الدودة انتشرت أبعد من نقطة دخولها الأولى لأن الأجهزة الداخلية كانت حرّة تفتح اتصالات SMB خارجة.",
+        "en": "The worm propagated beyond its first foothold because internal hosts were free to open outbound SMB connections."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي ضابط كان سيحصر تفشّي WannaCry؟",
+        "en": "What control would have contained the WannaCry outbreak?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قائمة تحكّم وصول أطول بالجدار.",
+          "en": "A longer firewall access control list."
+        },
+        {
+          "ar": "تشفير كل حركة SMB الداخلية.",
+          "en": "Encrypting all internal SMB traffic."
+        },
+        {
+          "ar": "استبدال الجدار ببروكسي.",
+          "en": "Replacing the firewall with a proxy."
+        },
+        {
+          "ar": "فلترة خروج صارمة عند حافة الشبكة.",
+          "en": "Tight egress filtering at the network edge."
+        }
+      ],
+      "concept_id": "case_wannacry_lesson",
+      "explanation": {
+        "ar": "الدرس إن الخروج يستحق نفس اهتمام الدخول، لأن حجب القناة الخارجة يقطع مسار انتشار الدودة.",
+        "en": "The lesson is that egress deserves the same attention as ingress, because blocking the outbound channel breaks the worm's propagation path."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "شنو يبيّن البروكسي المعطوب الإعداد اللي ينهي TLS؟",
+        "en": "What does the misconfigured TLS-terminating proxy demonstrate?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إن الاعتراض نفسه لازم يكون مؤمَّناً.",
+          "en": "That interception itself must be secured."
+        },
+        {
+          "ar": "إن TLS ضعيف جداً للفحص المؤسسي.",
+          "en": "That TLS is too weak for enterprise inspection."
+        },
+        {
+          "ar": "إن البروكسيات ما لازم تنهي TLS أبداً.",
+          "en": "That proxies should never terminate TLS."
+        },
+        {
+          "ar": "إن الشهادات غير ضرورية للبروكسيات.",
+          "en": "That certificates are unnecessary for proxies."
+        }
+      ],
+      "concept_id": "case_proxy_tls_lesson",
+      "explanation": {
+        "ar": "إنهاء TLS بلا تحقّق صارم من الشهادات حوّل نقطة الفحص إلى وسيط هجوم على مستخدمي المؤسسة نفسها.",
+        "en": "Terminating TLS without rigorous certificate validation turned the inspection point into a man-in-the-middle against the organisation's own users."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "شنو استخدمت حملة SolarWinds للبقاء داخل الشبكة؟",
+        "en": "What did the SolarWinds campaign use to maintain persistence?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "كاش محلّل DNS مسموم.",
+          "en": "A poisoned DNS resolver cache."
+        },
+        {
+          "ar": "شهادة TLS داخلية منتهية.",
+          "en": "An expired internal TLS certificate."
+        },
+        {
+          "ar": "بيانات اعتماد VPN مسروقة.",
+          "en": "Compromised VPN credentials."
+        },
+        {
+          "ar": "شهادة جذر X.509 مزيّفة.",
+          "en": "A forged X.509 root certificate."
+        }
+      ],
+      "concept_id": "case_solarwinds_cause",
+      "explanation": {
+        "ar": "بيانات اعتماد VPN المسروقة أعطت المهاجمين مساراً موثوقاً رجوعاً للشبكة وخليتهم يذوبون مع الوصول الشرعي عن بُعد.",
+        "en": "Stolen VPN credentials gave the attackers a trusted path back into the network and let them blend in with legitimate remote access."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو تثبت حالة SolarWinds عن الـ VPN؟",
+        "en": "What does the SolarWinds case prove about VPNs?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تشفّر الترافيك بس ما تصادق المستخدمين أبداً.",
+          "en": "They encrypt traffic but never authenticate users."
+        },
+        {
+          "ar": "تنقل الثقة بس ما تلغي الخطر.",
+          "en": "They shift trust but do not eliminate risk."
+        },
+        {
+          "ar": "تلغي الخطر لمّا تكون بيانات الاعتماد قوية.",
+          "en": "They eliminate risk when credentials are strong."
+        },
+        {
+          "ar": "صارت متقادمة للوصول عن بُعد بالكامل.",
+          "en": "They are obsolete for remote access entirely."
+        }
+      ],
+      "concept_id": "case_solarwinds_lesson",
+      "explanation": {
+        "ar": "بعد سرقة بيانات الاعتماد، النفق ينقل المهاجم بكل سرور، فقوة المصادقة والتخويل مسألتان منفصلتان.",
+        "en": "Once credentials are stolen, the tunnel happily carries the attacker, so authentication strength and authorization are separate problems."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شنو المشترك بين الحالات الثلاث؟",
+        "en": "What do the three case studies have in common?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كل واحدة تضمّنت ضعفاً جديداً بالشيفرة.",
+          "en": "Each involved a newly discovered cipher weakness."
+        },
+        {
+          "ar": "كل واحدة سببها مورّد جدارات قديم.",
+          "en": "Each was caused by an outdated firewall vendor."
+        },
+        {
+          "ar": "كل واحدة احتاجت هجرة ما بعد الكم للإصلاح.",
+          "en": "Each required a post-quantum migration to fix."
+        },
+        {
+          "ar": "كل واحدة فشلت بثقة في غير موضعها، مو بأساس مكسور.",
+          "en": "Each failed through misplaced trust, not a broken primitive."
+        }
+      ],
+      "concept_id": "case_common_theme",
+      "explanation": {
+        "ar": "الجدار وثق بالترافيك الخارج، والبروكسي وثق بنفسه، والـ VPN وثق ببيانات اعتماد مسروقة؛ وكل حالة التقنية اشتغلت كما ضُبطت.",
+        "en": "The firewall trusted outbound traffic, the proxy trusted itself, and the VPN trusted stolen credentials; in each case the technology worked exactly as configured."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "كيف يُنمذَج الخطر المتبقي عبر عدة ضوابط مستقلة؟",
+        "en": "How is residual risk across several independent controls modelled?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الخطر الأولي مضروباً بحاصل ضرب واحد ناقص كل فاعلية.",
+          "en": "Initial risk times the product of one minus each efficacy."
+        },
+        {
+          "ar": "الخطر الأولي زائد مجموع واحد ناقص كل فاعلية.",
+          "en": "Initial risk plus the sum of one minus each efficacy."
+        },
+        {
+          "ar": "الخطر الأولي مقسوماً على حاصل ضرب كل فاعلية.",
+          "en": "Initial risk divided by the product of each efficacy."
+        },
+        {
+          "ar": "الخطر الأولي ناقص أقصى فاعلية منفردة.",
+          "en": "Initial risk minus the maximum single efficacy."
+        }
+      ],
+      "concept_id": "risk_residual_formula",
+      "explanation": {
+        "ar": "كل طبقة تزيل كسرها الخاص من المتبقّي، فالبقايا تتضارب مو تتجمع.",
+        "en": "Each layer removes its own fraction of what remains, so the survivors multiply rather than add."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ثلاث طبقات فاعلياتها 0.4 و 0.5 و 0.3. أي كسر من الخطر الأصلي يبقى؟",
+        "en": "Three layers have efficacies 0.4, 0.5 and 0.3. What fraction of the original risk remains?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حوالي اثني عشر بالمئة، حاصل ضرب الفاعليات.",
+          "en": "About twelve percent, the product of the efficacies."
+        },
+        {
+          "ar": "حوالي أربعين بالمئة، أكبر بقية منفردة.",
+          "en": "About forty percent, the largest single remainder."
+        },
+        {
+          "ar": "حوالي واحد وعشرين بالمئة، حاصل ضرب البقايا.",
+          "en": "About twenty-one percent, the product of the remainders."
+        },
+        {
+          "ar": "حوالي ستين بالمئة، مجموع البقايا الثلاث.",
+          "en": "About sixty percent, the sum of the three remainders."
+        }
+      ],
+      "concept_id": "risk_residual_worked",
+      "explanation": {
+        "ar": "البقايا هي 0.6 و 0.5 و 0.7، وحاصل ضربها 0.21، فما يبقى إلا حوالي الخُمس من الخطر الأصلي.",
+        "en": "The remainders are 0.6, 0.5 and 0.7, and their product is 0.21, so only about a fifth of the original risk survives."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "شنو يفترض نموذج الخطر المتبقي الضربي؟",
+        "en": "What does the multiplicative residual-risk model assume?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إن الخطر ما ينزل أبداً تحت النصف.",
+          "en": "That risk can never fall below one half."
+        },
+        {
+          "ar": "إن الضوابط تعمل باستقلال عن بعضها.",
+          "en": "That the controls act independently of each other."
+        },
+        {
+          "ar": "إن كل الضوابط متساوية بالكلفة.",
+          "en": "That the controls are all equally expensive."
+        },
+        {
+          "ar": "إن المهاجم يعرف كل ضابط موجود.",
+          "en": "That the attacker knows every control in place."
+        }
+      ],
+      "concept_id": "risk_independence_assumption",
+      "explanation": {
+        "ar": "الاستقلال هو اللي يسمح بضرب البقايا؛ ولو ثغرة واحدة تكسر عدة طبقات، فالنموذج يبالغ بالحماية.",
+        "en": "Independence is what lets the remainders be multiplied; if one flaw defeats several layers, the model overstates the protection."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "كيف تُعبَّر الإتاحية المركّبة للجدار والبروكسي والـ VPN على التوالي؟",
+        "en": "How is composite availability of firewall, proxy and VPN in series expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجموع الإتاحيات الثلاث المنفردة.",
+          "en": "The sum of the three individual availabilities."
+        },
+        {
+          "ar": "متوسط الإتاحيات الثلاث المنفردة.",
+          "en": "The average of the three individual availabilities."
+        },
+        {
+          "ar": "أدنى الإتاحيات الثلاث المنفردة.",
+          "en": "The minimum of the three individual availabilities."
+        },
+        {
+          "ar": "حاصل ضرب الإتاحيات الثلاث المنفردة.",
+          "en": "The product of the three individual availabilities."
+        }
+      ],
+      "concept_id": "reliability_series_formula",
+      "explanation": {
+        "ar": "على التوالي كل مكوّن لازم يشتغل، فالإتاحيات تتضارب والسلسلة دائماً أضعف من أفضل جزء بيها.",
+        "en": "In series every component must work, so the availabilities multiply and the chain is always weaker than its best part."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "ليش سلسلة التوالي أضعف من كل مكوّناتها؟",
+        "en": "Why is a series chain weaker than each of its components?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لأن احتمالات الفشل تتراكم على طول السلسلة.",
+          "en": "Because the failure probabilities accumulate."
+        },
+        {
+          "ar": "لأن كل مكوّن يشتغل أبطأ من حاله منفرداً.",
+          "en": "Because each component runs slower than alone."
+        },
+        {
+          "ar": "لأن السلسلة تستخدم جولات تشفير أكثر.",
+          "en": "Because the chain uses more encryption rounds."
+        },
+        {
+          "ar": "لأن التكرار يُضاف عند كل قفزة.",
+          "en": "Because redundancy is added at every hop."
+        }
+      ],
+      "concept_id": "reliability_series_effect",
+      "explanation": {
+        "ar": "ثلاثة مكوّنات بإتاحية 0.99 لكل واحد تعطي حوالي 0.97 على التوالي، لأن أي فشل واحد ينزّل السلسلة كلها.",
+        "en": "Three components at 0.99 each give about 0.97 in series, because any one failure takes the whole chain down."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "كيف تُكتب دالة المنفعة للمؤسسة؟",
+        "en": "How is the organisational utility function written?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حاصل ضرب الأمن والأداء والكلفة.",
+          "en": "The product of security, performance and cost."
+        },
+        {
+          "ar": "متوسط الأمن والأداء والكلفة.",
+          "en": "The average of security, performance and cost."
+        },
+        {
+          "ar": "ألفا × الأمن زائد بيتا × الأداء ناقص غاما × الكلفة.",
+          "en": "Alpha security plus beta performance minus gamma cost."
+        },
+        {
+          "ar": "ألفا × الأمن ناقص بيتا × الأداء زائد غاما × الكلفة.",
+          "en": "Alpha security minus beta performance plus gamma cost."
+        }
+      ],
+      "concept_id": "utility_function",
+      "explanation": {
+        "ar": "الأمن والأداء يضيفان قيمة والكلفة تنقص منها، والأوزان تعبّر عن أولويات المؤسسة الفعلية.",
+        "en": "Security and performance add value while cost subtracts from it, and the weights express what the organisation actually prioritises."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "ليش حد الكلفة يحمل إشارة سالبة؟",
+        "en": "Why does the cost term carry a negative sign?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن الأوزان لازم تجمع لواحد بالضبط.",
+          "en": "Because the weights must sum to exactly one."
+        },
+        {
+          "ar": "لأن الكلفة تنقص المنفعة بدل ما تضيف لها.",
+          "en": "Because cost reduces utility rather than adding to it."
+        },
+        {
+          "ar": "لأن الكلفة تُقاس بعملة مختلفة.",
+          "en": "Because cost is measured in a different currency."
+        },
+        {
+          "ar": "لأن الكلفة دائماً أكبر من الأمن.",
+          "en": "Because cost is always larger than security."
+        }
+      ],
+      "concept_id": "utility_signs",
+      "explanation": {
+        "ar": "أمن وأداء أعلى يرفعان المنفعة، وكلفة أعلى تنزّلها، فالإشارات ترمز لاتجاه كل حد.",
+        "en": "Higher security and performance raise utility, while higher cost lowers it, so the signs encode the direction each term pushes."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "أي معيار يقرن الفصل بكل واحدة من التقنيات الثلاث؟",
+        "en": "Which standard does the chapter pair with each of the three technologies?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ISO 27001 للجدارات، و FIPS 140-3 للبروكسيات، و NIST 800-41 للـ VPN.",
+          "en": "ISO 27001 for firewalls, FIPS 140-3 for proxies, NIST 800-41 for VPNs."
+        },
+        {
+          "ar": "FIPS 140-3 للجدارات، و NIST 800-41 للبروكسيات، و ISO 27001 للـ VPN.",
+          "en": "FIPS 140-3 for firewalls, NIST 800-41 for proxies, ISO 27001 for VPNs."
+        },
+        {
+          "ar": "NIST SP 800-41 للثلاثة، بلا معيار منفصل للبروكسي أو الـ VPN.",
+          "en": "NIST SP 800-41 for all three, with no separate proxy or VPN standard."
+        },
+        {
+          "ar": "NIST SP 800-41 للجدارات، و ISO 27001 للبروكسيات، و FIPS 140-3 للـ VPN.",
+          "en": "NIST SP 800-41 for firewalls, ISO 27001 for proxies, FIPS 140-3 for VPNs."
+        }
+      ],
+      "concept_id": "gov_three_standards",
+      "explanation": {
+        "ar": "الجدارات تتبع NIST SP 800-41، والبروكسيات تتوافق مع ISO 27001 Annex A بالمراقبة وفلترة المحتوى، والـ VPN لازم تحقّق FIPS 140-3 بالقطاعات المنظّمة.",
+        "en": "Firewalls follow NIST SP 800-41, proxies align with ISO 27001 Annex A on monitoring and content filtering, and VPNs must meet FIPS 140-3 in regulated sectors."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "على من ينطبق شرط FIPS 140-3؟",
+        "en": "To whom does the FIPS 140-3 requirement apply?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "للقطاعات المنظّمة مثل البنوك والحكومة والصحة.",
+          "en": "To regulated sectors such as banking, government and health."
+        },
+        {
+          "ar": "لكل مؤسسة تشغّل أي VPN مهما كانت.",
+          "en": "To every organisation that runs any VPN at all."
+        },
+        {
+          "ar": "فقط للمصنّعين اللي ينتجون عتاد جدارات.",
+          "en": "Only to vendors that manufacture firewall hardware."
+        },
+        {
+          "ar": "فقط للمؤسسات الأكاديمية والبحثية.",
+          "en": "Only to academic and research institutions."
+        }
+      ],
+      "concept_id": "gov_fips_scope",
+      "explanation": {
+        "ar": "هو شرط على الوحدة التشفيرية للقطاعات المنظّمة، مو إلزام شامل على كل نشر.",
+        "en": "It is a cryptographic-module requirement for regulated sectors, not a universal obligation for every deployment."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "أي أربعة اتجاهات ناشئة يذكرها الفصل؟",
+        "en": "Which four emerging trends does the chapter list?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مفاتيح أطول وجولات أكثر وبلوكات أكبر وأملاح أكثر.",
+          "en": "Longer keys, more rounds, bigger blocks and more salts."
+        },
+        {
+          "ar": "مورّدون أقل وتدقيق أبسط وسجلات أقصر وكوادر أقل.",
+          "en": "Fewer vendors, simpler audits, shorter logs and less staff."
+        },
+        {
+          "ar": "رؤية بتعلّم الآلة و Zero Trust و service meshes و VPN ما بعد الكم.",
+          "en": "ML visibility, Zero Trust, service meshes and post-quantum VPNs."
+        },
+        {
+          "ar": "عتاد أرخص وأقراص أكبر ومعالجات أسرع وذاكرة أكثر.",
+          "en": "Cheaper hardware, larger disks, faster CPUs and more RAM."
+        }
+      ],
+      "concept_id": "trend_four",
+      "explanation": {
+        "ar": "رؤية بتعلّم الآلة بلا فكّ تشفير كامل، و Zero Trust يستبدل الثقة الضمنية، والجدارات والبروكسيات تنتقل لـ service meshes، و VPN ما بعد الكم بتشفير قائم على الشبكيات.",
+        "en": "Machine-learning visibility without full decryption, Zero Trust replacing implicit trust, firewalls and proxies moving into service meshes, and post-quantum VPNs using lattice-based cryptography."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T08:09:01Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

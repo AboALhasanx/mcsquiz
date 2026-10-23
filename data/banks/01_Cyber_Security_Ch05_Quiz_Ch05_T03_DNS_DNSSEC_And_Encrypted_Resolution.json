@@ -1,0 +1,724 @@
+{
+  "topic": {
+    "ar": "نظام الأسماء DNSSEC والتحليل المشفّر",
+    "en": "DNS, DNSSEC and encrypted resolution"
+  },
+  "quiz_id": "Quiz_Ch05_T03_DNS_DNSSEC_And_Encrypted_Resolution",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "على شنو كان يعتمد DNS الكلاسيكي حتى يصعّب التسميم خارج المسار؟",
+        "en": "What did classic DNS rely on to make off-path poisoning hard?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "توقيع رقمي مرفق بكل رد DNS.",
+          "en": "A digital signature attached to every DNS response."
+        },
+        {
+          "ar": "معرّف معاملة 16-bit ومنفذ مصدر UDP بحجم 16-bit.",
+          "en": "A 16-bit transaction ID and a 16-bit UDP source port."
+        },
+        {
+          "ar": "معرّف معاملة 32-bit ومنفذ مصدر UDP ثابت.",
+          "en": "A 32-bit transaction ID and a fixed UDP source port."
+        },
+        {
+          "ar": "سر مشترك يُتبادل مع السيرفر المرجعي.",
+          "en": "A shared secret exchanged with the authoritative server."
+        }
+      ],
+      "concept_id": "dns_classic_entropy",
+      "explanation": {
+        "ar": "الـ DNS التقليدي استخدم معرّفات معاملة 16-bit ومنافذ مصدر UDP وبلا أي مصادقة، فالحاجز الوحيد كان إنتروبيا التخمين.",
+        "en": "Traditional DNS used 16-bit transaction IDs, UDP source ports and no authentication, so the only barrier was guessing entropy."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ليش كان DNS الكلاسيكي عرضة لتسميم الكاش من الأساس؟",
+        "en": "Why was classic DNS fundamentally vulnerable to cache poisoning?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن السيرفرات المرجعية توقّع بمفاتيح ضعيفة.",
+          "en": "Because authoritative servers sign replies with weak keys."
+        },
+        {
+          "ar": "لأن أي واحد يقدر يعيد حساب مجاميع UDP.",
+          "en": "Because UDP checksums can be recomputed by anyone."
+        },
+        {
+          "ar": "لأن المحلّل يقبل أي رد يطابق استعلامه.",
+          "en": "Because a resolver accepts any reply that matches its query."
+        },
+        {
+          "ar": "لأن المحلّل يخزّن السجلات نصاً صريحاً على القرص.",
+          "en": "Because the resolver stores records in plaintext on disk."
+        }
+      ],
+      "concept_id": "dns_no_auth",
+      "explanation": {
+        "ar": "بلا مصادقة على الجواب، مطابقة الاستعلام المعلّق تكفي، فالرد المزوّر اللي يفوز بالسباق يُقبل كحقيقة.",
+        "en": "With no authentication of the answer, matching the outstanding query is enough, so a forged reply that wins the race is accepted as truth."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف تشتغل تقنية Kaminsky لتسميم الكاش؟",
+        "en": "How does the Kaminsky cache-poisoning technique work?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تغرق المحلّل بردود مزوّرة خلال نافذة استعلامه.",
+          "en": "It floods forged replies during the resolver's query window."
+        },
+        {
+          "ar": "تستغل طفح مجمّع في السيرفر المرجعي.",
+          "en": "It exploits a buffer overflow in the authoritative server."
+        },
+        {
+          "ar": "تسرق مفتاح التوقيع الخاص من ذاكرة المحلّل.",
+          "en": "It steals the resolver's private signing key from memory."
+        },
+        {
+          "ar": "تجبر المحلّل على قبول نقل منطقة.",
+          "en": "It forces the resolver to accept a zone transfer."
+        }
+      ],
+      "concept_id": "kaminsky_mechanism",
+      "explanation": {
+        "ar": "سنة 2008 تقنية عامة بيّنت إن إغراق المحلّل بردود مزوّرة خلال نافذة استعلامه يقدر يحقن سجلات كاذبة بجهد متواضع.",
+        "en": "In 2008 a generalised technique showed that flooding forged replies during the resolver's query window could inject false records with modest effort."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو بيّن حدث DNS سنة 2008 عن الدفاعات الاحتمالية؟",
+        "en": "What did the 2008 DNS event demonstrate about probabilistic defences?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إنها مكافئة للتحقّق التشفيري.",
+          "en": "That they are equivalent to cryptographic validation."
+        },
+        {
+          "ar": "إنها تلغي الحاجة للمناطق الموقّعة بالكامل.",
+          "en": "That they remove the need for signed zones entirely."
+        },
+        {
+          "ar": "إنها تكسر التشغيل البيني بين المصنّعين.",
+          "en": "That they break interoperability between vendors."
+        },
+        {
+          "ar": "إنها تقدر تُتجاوز من خصوم ذوي موارد قوية.",
+          "en": "That they can be outpaced by well-resourced adversaries."
+        }
+      ],
+      "concept_id": "kaminsky_event_character",
+      "explanation": {
+        "ar": "الحادثة بيّنت إن الدفاعات الاحتمالية ترفع كلفة الهجوم بس ما تغيّر نموذج الثقة، ولهذا كان التحقّق التشفيري ضابطاً مختلفاً نوعياً.",
+        "en": "The episode showed that probabilistic defences raise the cost of an attack but do not change the trust model, which is why cryptographic validation was the qualitatively different control."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "شنو التخفيف الطارئ اللي طُبّق بعد كشف 2008؟",
+        "en": "What was the emergency mitigation applied after the 2008 disclosure?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إجبار كل ترافيك DNS على TCP منفذ 53 فقط.",
+          "en": "Forcing all DNS traffic over TCP port 53 only."
+        },
+        {
+          "ar": "عشوائية منفذ مصدر UDP لتوسيع الإنتروبيا.",
+          "en": "Randomising the UDP source port to expand entropy."
+        },
+        {
+          "ar": "توقيع كل منطقة بمفتاح جذر مولّد جديد.",
+          "en": "Signing every zone with a newly generated root key."
+        },
+        {
+          "ar": "تعطيل التخزين المؤقت بكل المحلّلات التكرارية.",
+          "en": "Disabling caching on all recursive resolvers."
+        }
+      ],
+      "concept_id": "emergency_patch",
+      "explanation": {
+        "ar": "التحديثات الطارئة عشّرت منافذ المصدر لتوسيع الإنتروبيا، فرفعت كلفة التخمين بس تركت نموذج ثقة DNS كما هو.",
+        "en": "Emergency patches randomised source ports to expand entropy, which raised the guessing cost but left the trust model of DNS untouched."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "بعد تعشير منفذ المصدر، ليش لازم المهاجم خارج المسار يخمّن قيمة 32-bit؟",
+        "en": "After source-port randomisation, why must an off-path attacker guess a 32-bit value?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن المحلّل يضيف نونس عشوائي 32-bit.",
+          "en": "Because the resolver adds a 32-bit random nonce."
+        },
+        {
+          "ar": "لأن المنطقة موقّعة بوسم 32-bit.",
+          "en": "Because the zone is signed with a 32-bit tag."
+        },
+        {
+          "ar": "لأن المعرّف 16-bit والمنفذ 16-bit كلاهما مجهول.",
+          "en": "Because the 16-bit ID and the 16-bit port are both unknown."
+        },
+        {
+          "ar": "لأن الرد مشفّر بمفتاح 32-bit.",
+          "en": "Because the response is encrypted with a 32-bit key."
+        }
+      ],
+      "concept_id": "entropy_32bit",
+      "explanation": {
+        "ar": "تعشير الحقلين معاً يعني إن المهاجم لازم يطابق الاثنين بنفس الوقت، فاحتمال النجاح لكل رد مزوّر ينزل إلى حوالي اثنان مرفوعان للأس سالب 32.",
+        "en": "Randomising both fields means the attacker must match both at once, so the success probability per forged reply falls to about two to the power of minus thirty-two."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "بـ m محاولة داخل نافذة السباق، كيف يُعبَّر عن احتمال النجاح؟",
+        "en": "With m guesses during the race window, how is the success probability expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "واحد ناقص واحد ناقص p، الكل مرفوع للأس m.",
+          "en": "One minus one minus p all raised to m."
+        },
+        {
+          "ar": "m مضروبة بـ p، بلا أي أس.",
+          "en": "m multiplied by p, without any exponent."
+        },
+        {
+          "ar": "p مقسومة على m، المتوسط لكل محاولة.",
+          "en": "p divided by m, the average per attempt."
+        },
+        {
+          "ar": "واحد على m مضروبة بـ p، المتوسط التوافقي.",
+          "en": "One divided by m times p, the harmonic mean."
+        }
+      ],
+      "concept_id": "success_probability_formula",
+      "explanation": {
+        "ar": "كل رد مزوّر ينجح باستقلال باحتمال p، فاحتمال نجاح واحد على الأقل عبر m محاولة هو واحد ناقص احتمال فشلها كلها.",
+        "en": "Each forged reply independently succeeds with probability p, so the chance of at least one success across m attempts is one minus the chance all of them fail."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "شنو يحقّق تحديد المعدّل وتهدئة الردود بهذا النموذج؟",
+        "en": "What do rate-limiting and response pacing achieve in this model?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ترفعان إنتروبيا معرّف المعاملة.",
+          "en": "They raise the entropy of the transaction identifier."
+        },
+        {
+          "ar": "توقّعان كل رد بمفتاح المنطقة.",
+          "en": "They sign each response with the zone key."
+        },
+        {
+          "ar": "تنقلان المحلّل إلى بروتوكول آخر.",
+          "en": "They move the resolver onto a different protocol."
+        },
+        {
+          "ar": "تحدّان عدد المحاولات داخل نافذة السباق.",
+          "en": "They cap the number of guesses inside the race window."
+        }
+      ],
+      "concept_id": "ratelimiting_effect",
+      "explanation": {
+        "ar": "بما إن النجاح يزيد بعدد المحاولات، فتحديد المحاولات هو الرافعة الوحيدة الباقية للدفاع الاحتمالي.",
+        "en": "Since success grows with the number of attempts, capping attempts is the only lever a probabilistic defence has left."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي أنواع سجلات يقدّمها DNSSEC؟",
+        "en": "Which record types does DNSSEC introduce?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "SPF و DKIM و DMARC و BIMI للثقة.",
+          "en": "SPF, DKIM, DMARC and BIMI for trust."
+        },
+        {
+          "ar": "DNSKEY و RRSIG و DS و NSEC أو NSEC3.",
+          "en": "DNSKEY, RRSIG, DS and NSEC or NSEC3."
+        },
+        {
+          "ar": "A و AAAA و MX و TXT للمنطقة الموقّعة.",
+          "en": "A, AAAA, MX and TXT for the signed zone."
+        },
+        {
+          "ar": "CNAME و PTR و SRV و SOA للتحقّق.",
+          "en": "CNAME, PTR, SRV and SOA for validation."
+        }
+      ],
+      "concept_id": "dnssec_records",
+      "explanation": {
+        "ar": "DNSSEC يضيف DNSKEY و RRSIG و DS وسجلات NSEC أو NSEC3، ويقدّم مفهوم المنطقة الموقّعة.",
+        "en": "DNSSEC adds DNSKEY, RRSIG, DS and the NSEC or NSEC3 records, and introduces the concept of a signed zone."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شنو يعني التحقّق عبر سلسلة ثقة DNSSEC؟",
+        "en": "What does validation along a DNSSEC chain of trust mean?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "العملاء يقارنون أجوبة ثلاثة سيرفرات مختلفة.",
+          "en": "Clients compare answers from three different servers."
+        },
+        {
+          "ar": "السجل يحتفظ بنسخة من كل ملف منطقة.",
+          "en": "The registry keeps a copy of every zone file."
+        },
+        {
+          "ar": "الثقة تنزل هرمياً من الجذر إلى كل منطقة موقّعة.",
+          "en": "Trust descends hierarchically from the root to each signed zone."
+        },
+        {
+          "ar": "كل محلّل يوقّع أجوبته قبل التخزين المؤقت.",
+          "en": "Every resolver signs its own answers before caching."
+        }
+      ],
+      "concept_id": "dnssec_chain_of_trust",
+      "explanation": {
+        "ar": "المحلّل المتحقّق يتبع التوقيعات صعوداً إلى مفتاح يثق به أصلًا عند الجذر، فما تقدر منطقة تشهد لنفسها.",
+        "en": "A validating resolver follows signatures upward to a key it already trusts at the root, so a zone cannot vouch for itself."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ليش DNSSEC يلغي سباق التخمين بالكامل؟",
+        "en": "Why does DNSSEC remove the guessing race entirely?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لأن الرد المزوّر ما يقدر يحمل RRSIG صحيحاً.",
+          "en": "Because a forged answer cannot carry a valid RRSIG."
+        },
+        {
+          "ar": "لأنه يشفّر الجواب فما يقدر يُقرأ.",
+          "en": "Because it encrypts the answer so it cannot be read."
+        },
+        {
+          "ar": "لأنه يجبر كل استعلام على منفذ جديد.",
+          "en": "Because it forces every query onto a new port."
+        },
+        {
+          "ar": "لأنه يحذف السجلات المخزّنة بعد كل استعلام.",
+          "en": "Because it deletes cached records after each query."
+        }
+      ],
+      "concept_id": "dnssec_eliminates_guessing",
+      "explanation": {
+        "ar": "التخمين يفيد بس إذا قُبل الجواب المطابق؛ مع المناطق الموقّعة، الجواب المطابق بلا توقيع صحيح يُرفض، فالفوز بالسباق ما يعطي المهاجم شيئاً.",
+        "en": "Guessing only helps if a matching answer is accepted; with signed zones a matching answer without a valid signature is rejected, so winning the race gains the attacker nothing."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي RFCs تعرّف DNSSEC؟",
+        "en": "Which RFCs define DNSSEC?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "RFC 7858 و RFC 8484.",
+          "en": "RFC 7858 and RFC 8484."
+        },
+        {
+          "ar": "RFC 6480 و RFC 8205.",
+          "en": "RFC 6480 and RFC 8205."
+        },
+        {
+          "ar": "RFC 2827 و RFC 6105.",
+          "en": "RFC 2827 and RFC 6105."
+        },
+        {
+          "ar": "RFC 4033 و RFC 4035.",
+          "en": "RFC 4033 and RFC 4035."
+        }
+      ],
+      "concept_id": "dnssec_rfc",
+      "explanation": {
+        "ar": "RFC 4033 و RFC 4035 يعرّفان DNSSEC، بينما 7858 و 8484 للـ DoT و DoH، و 6480 و 8205 للـ RPKI و BGPsec.",
+        "en": "RFC 4033 and RFC 4035 define DNSSEC, while 7858 and 8484 belong to DoT and DoH, and 6480 and 8205 to RPKI and BGPsec."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "على أي منفذ يشتغل DNS-over-TLS، وحسب أي RFC؟",
+        "en": "On which port does DNS-over-TLS operate, and under which RFC?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المنفذ 853، حسب RFC 8205.",
+          "en": "Port 853, under RFC 8205."
+        },
+        {
+          "ar": "المنفذ 853، حسب RFC 7858.",
+          "en": "Port 853, under RFC 7858."
+        },
+        {
+          "ar": "المنفذ 443، حسب RFC 8484.",
+          "en": "Port 443, under RFC 8484."
+        },
+        {
+          "ar": "المنفذ 53، حسب RFC 4033.",
+          "en": "Port 53, under RFC 4033."
+        }
+      ],
+      "concept_id": "dot_rfc_port",
+      "explanation": {
+        "ar": "DNS-over-TLS يستخدم TLS على المنفذ 853 حسب RFC 7858، بينما DoH يحوّل تبادلات DNS إلى طلبات HTTPS حسب RFC 8484.",
+        "en": "DNS-over-TLS uses TLS on port 853 per RFC 7858, whereas DoH maps DNS exchanges into HTTPS requests per RFC 8484."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "كيف يحمل DNS-over-HTTPS تبادلات DNS؟",
+        "en": "How does DNS-over-HTTPS carry DNS exchanges?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يضغطها في بيانات UDP واحدة.",
+          "en": "It compresses them into a single UDP datagram."
+        },
+        {
+          "ar": "يحوّلها إلى شهادات عميل TLS.",
+          "en": "It converts them into TLS client certificates."
+        },
+        {
+          "ar": "يحوّلها إلى طلبات HTTPS.",
+          "en": "It maps them into HTTPS requests."
+        },
+        {
+          "ar": "ينفقها داخل حمولات ICMP echo.",
+          "en": "It tunnels them inside ICMP echo payloads."
+        }
+      ],
+      "concept_id": "doh_rfc_mechanism",
+      "explanation": {
+        "ar": "DoH يحوّل تبادلات DNS إلى طلبات HTTPS، فيرث مصادقة HTTP وسلوك التخزين المؤقت.",
+        "en": "DoH maps DNS exchanges into HTTPS requests, so it inherits the authentication and caching behaviour of HTTP."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "شنو يرث DoH من ركوبه على HTTPS؟",
+        "en": "What does DoH inherit by riding on HTTPS?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مصادقة HTTP وسلوك التخزين المؤقت.",
+          "en": "HTTP's authentication and caching behaviour."
+        },
+        {
+          "ar": "ضغط HTTP وطلبات النطاق فقط.",
+          "en": "HTTP's compression and range requests only."
+        },
+        {
+          "ar": "بيانات المنطقة المرجعية للمحلّل.",
+          "en": "The resolver's authoritative zone data."
+        },
+        {
+          "ar": "التحقّق من توقيع DNSSEC تلقائياً.",
+          "en": "DNSSEC signature validation automatically."
+        }
+      ],
+      "concept_id": "doh_inherits",
+      "explanation": {
+        "ar": "لأنه ترافيك HTTPS عادي، DoH يعيد استخدام آليات المصادقة والتخزين المؤقت للويب، ولهذا هم أصعب بالحجب الانتقائي.",
+        "en": "Because it is ordinary HTTPS traffic, DoH reuses the web's authentication and caching machinery, which is also why it is harder to block selectively."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "كيف يرتبط DoT و DoH بالـ DNSSEC؟",
+        "en": "How do DoT and DoH relate to DNSSEC?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تستبدلان DNSSEC بتشفير الأجوبة.",
+          "en": "They replace DNSSEC by encrypting the answers."
+        },
+        {
+          "ar": "تحميان البيانات، بينما DNSSEC يحمي المسار.",
+          "en": "They protect the data, while DNSSEC protects the path."
+        },
+        {
+          "ar": "هما تطبيقان لنفس الـ RFC.",
+          "en": "They are two implementations of the same RFC."
+        },
+        {
+          "ar": "تحميان المسار، بينما DNSSEC يحمي البيانات.",
+          "en": "They protect the path, while DNSSEC protects the data."
+        }
+      ],
+      "concept_id": "dot_doh_vs_dnssec",
+      "explanation": {
+        "ar": "DoT و DoH يشفّران قناة المحلّل، فالمراقب ما يقدر يقرأها أو يعدّلها أثناء النقل، و DNSSEC يخلي المحتوى نفسه قابل للتحقّق، فالاثنان مكمّلان.",
+        "en": "DoT and DoH encrypt the resolver channel, so an observer cannot read or alter it in flight, while DNSSEC makes the content itself verifiable; the two are complementary."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "أي تهديد يُفترض إن DoT و DoH يخففانه أساساً؟",
+        "en": "Which threat are DoT and DoH primarily meant to mitigate?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المهاجمون اللي يستنزفون ميزانية استعلامات المحلّل.",
+          "en": "Attackers exhausting the resolver's query budget."
+        },
+        {
+          "ar": "المراقبة السلبية المحلية والتلاعب بـ DNS.",
+          "en": "Local passive surveillance and manipulation of DNS."
+        },
+        {
+          "ar": "السيرفرات المرجعية اللي ترد بيانات قديمة.",
+          "en": "Authoritative servers returning stale zone data."
+        },
+        {
+          "ar": "المحلّلات اللي تخزّن سجلات بعد TTL.",
+          "en": "Resolvers caching records beyond their TTL."
+        }
+      ],
+      "concept_id": "dot_doh_threat",
+      "explanation": {
+        "ar": "موجودين لمنع المراقب المحلي من قراءة أو إعادة كتابة ترافيك تحليل الأسماء، اللي يكشفه DNS النصّي على منفذ UDP 53 بالكامل.",
+        "en": "They exist to stop a local observer from reading or rewriting resolution traffic, which plaintext DNS on UDP port 53 exposes completely."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "شنو الدرس الجوهري من مقارنة تعشير المنافذ مع DNSSEC؟",
+        "en": "What is the core lesson of comparing port randomisation with DNSSEC?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "التحقّق التشفيري يفيد فقط ضد الداخليين.",
+          "en": "Cryptographic validation is only useful against insiders."
+        },
+        {
+          "ar": "الاثنان يغيّران نموذج الثقة بنفس الطريقة.",
+          "en": "Both approaches alter the trust model identically."
+        },
+        {
+          "ar": "الدفاعات الاحتمالية ترفع الكلفة، والتشفيرية تغيّر الثقة.",
+          "en": "Probabilistic defences raise cost, cryptographic ones change trust."
+        },
+        {
+          "ar": "الدفاعات الاحتمالية أقوى تماماً من التوقيعات.",
+          "en": "Probabilistic defences are strictly stronger than signatures."
+        }
+      ],
+      "concept_id": "probabilistic_vs_crypto",
+      "explanation": {
+        "ar": "العشوائية تشتري إنتروبيا فقط، فخصم قوي الموارد يقدر يفوز بالسباق، أما التحقّق التشفيري فيرفض الجواب المزوّر مهما كان عدد المحاولات.",
+        "en": "Randomisation only buys entropy, so a well-resourced adversary can still win the race, whereas cryptographic validation rejects the forged answer regardless of how many guesses were made."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "ليش تعشير منفذ المصدر ما غيّر الوضعية الأمنية لـ DNS؟",
+        "en": "Why did source-port randomisation fail to change the security posture of DNS?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لأن نموذج الثقة ما زال يفترض أجوبة بلا مصادقة.",
+          "en": "Because the trust model still assumes unauthenticated answers."
+        },
+        {
+          "ar": "لأنها قلّلت إنتروبيا معرّف المعاملة.",
+          "en": "Because it reduced the entropy of the transaction ID."
+        },
+        {
+          "ar": "لأنها أجبرت المحلّلات على نقل TCP.",
+          "en": "Because it forced resolvers onto TCP transport."
+        },
+        {
+          "ar": "لأنها عطّلت التخزين المؤقت للمناطق الموقّعة.",
+          "en": "Because it disabled caching for signed zones."
+        }
+      ],
+      "concept_id": "port_randomization_limits",
+      "explanation": {
+        "ar": "رفعت إنتروبيا السباق بس تركت افتراض إن الجواب المطابق هو جواب صحيح، وهذا الافتراض هو اللي يزيله DNSSEC.",
+        "en": "It raised the entropy of the race but left the assumption that a matching answer is a true answer, and that assumption is exactly what DNSSEC removes."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "شنو خلّى استجابة 2008 مميزة كممارسة هندسية؟",
+        "en": "What made the 2008 response notable as an engineering exercise?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مصنّع واحد أعاد كتابة البروتوكول منفرداً.",
+          "en": "A single vendor rewrote the protocol unilaterally."
+        },
+        {
+          "ar": "منطقة الجذر بقيت خارج الخدمة أياماً.",
+          "en": "The root zone was taken offline for several days."
+        },
+        {
+          "ar": "التخزين المؤقت تعطّل نهائياً على كل الإنترنت.",
+          "en": "Caching was permanently disabled across the Internet."
+        },
+        {
+          "ar": "تحديثات من عدة مصنّعين مع إرشادات، بلا كسر الإنترنت.",
+          "en": "Multivendor patches plus guidance, without breaking the Internet."
+        }
+      ],
+      "concept_id": "coordinated_upgrade",
+      "explanation": {
+        "ar": "التحديثات المنسّقة من عدة مصنّعين مع الإرشادات تبقى مثالاً نموذجياً على ترقية بروتوكول حرج بدون كسر الإنترنت.",
+        "en": "The coordinated multivendor patches and guidance remain a canonical example of upgrading a critical protocol without breaking the Internet."
+      }
+    },
+    {
+      "id": "q21",
+      "stem": {
+        "ar": "شنو درس التصميم اللي يعلّمه تسميم كاش DNS؟",
+        "en": "What is the design-level lesson of DNS cache poisoning?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "السيرفرات المرجعية ما لازم توقّع شيئاً.",
+          "en": "Authoritative servers should sign nothing at all."
+        },
+        {
+          "ar": "البروتوكول المبني على ثقة ضمنية يبقى هشّاً.",
+          "en": "A protocol built on implicit trust stays fragile."
+        },
+        {
+          "ar": "التخزين المؤقت ما لازم يستخدمه أي محلّل.",
+          "en": "Caching should never be used by any resolver."
+        },
+        {
+          "ar": "UDP ما يصلح لأي تحليل أسماء.",
+          "en": "UDP is unsuitable for any name resolution."
+        }
+      ],
+      "concept_id": "design_level_lesson",
+      "explanation": {
+        "ar": "لمّا يفترض البروتوكول الثقة، أي ترقيع احتمالي يبقى هشّاً؛ والإصلاح الحقيقي لازم يجي من داخل التصميم عبر التحقّق التشفيري.",
+        "en": "When a protocol assumes trust, any probabilistic patch remains fragile; the real fix has to come from inside the design, through cryptographic validation."
+      }
+    },
+    {
+      "id": "q22",
+      "stem": {
+        "ar": "شنو تسوي المحلّلات المتحقّقة لمّا يفشل سجل بالتحقّق من التوقيع؟",
+        "en": "What do validating resolvers do when a record fails signature validation?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يمرّرونها لسيرفر الجذر لرأي ثانٍ.",
+          "en": "They forward it to the root server for a second opinion."
+        },
+        {
+          "ar": "يرجعون إلى DNS النصّي على منفذ UDP 53.",
+          "en": "They fall back to plaintext DNS on UDP port 53."
+        },
+        {
+          "ar": "يرفضون البيانات بغض النظر عن قدرة المهاجم.",
+          "en": "They reject the data regardless of the attacker's capability."
+        },
+        {
+          "ar": "يخزّنونها مع ذلك بس يوسمونها غير موثوقة.",
+          "en": "They cache it anyway but mark it as untrusted for later."
+        }
+      ],
+      "concept_id": "dnssec_rejects_tampered",
+      "explanation": {
+        "ar": "المحلّلات المتحقّقة ترفض البيانات المتلاعب بها نهائياً، فتمنع تسميم الكاش بغض النظر عن قدرات المنتحل خارج المسار.",
+        "en": "Validating resolvers reject tampered data outright, which prevents cache poisoning regardless of how capable the off-path spoofer is."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T08:09:01Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

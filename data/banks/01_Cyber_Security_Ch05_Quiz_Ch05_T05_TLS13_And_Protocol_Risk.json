@@ -1,0 +1,724 @@
+{
+  "topic": {
+    "ar": "TLS 1.3 وملخّص الثغرات والمخاطر الشكلية للبروتوكولات",
+    "en": "TLS 1.3, the vulnerability precis and formal protocol risk"
+  },
+  "quiz_id": "Quiz_Ch05_T05_TLS13_And_Protocol_Risk",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو يحذف TLS 1.3 من البروتوكول؟",
+        "en": "What does TLS 1.3 eliminate from the protocol?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مجموعات AEAD والمصافحات وطبقة السجل.",
+          "en": "AEAD suites, handshakes and the record layer."
+        },
+        {
+          "ar": "تحية العميل وتحية السيرفر والتنبيه.",
+          "en": "The client hello, the server hello and the alert."
+        },
+        {
+          "ar": "الشيفرات القديمة والضغط ومزالق إعادة التفاوض.",
+          "en": "Legacy ciphers, compression and renegotiation pitfalls."
+        },
+        {
+          "ar": "الشهادات ومفاتيح الجلسة والسرية التقدّمية.",
+          "en": "Certificates, session keys and forward secrecy."
+        }
+      ],
+      "concept_id": "tls13_removes",
+      "explanation": {
+        "ar": "TLS 1.3 يحذف الشيفرات القديمة والضغط ومزالق إعادة التفاوض، وكل واحدة منها أنتجت هجمات حقيقية بالإصدارات السابقة.",
+        "en": "TLS 1.3 removes legacy ciphers, compression and the pitfalls of renegotiation, each of which had produced real attacks in earlier versions."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "شنو يعيّر TLS 1.3 لحماية السجلات؟",
+        "en": "What does TLS 1.3 standardise for record protection?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجموعات الشيفرات الانسيابية فقط.",
+          "en": "Stream cipher suites only."
+        },
+        {
+          "ar": "مجموعات تبدأ بالضغط.",
+          "en": "Compression-first suites."
+        },
+        {
+          "ar": "تبادل مفاتيح RSA الثابت.",
+          "en": "Static RSA key exchange."
+        },
+        {
+          "ar": "مجموعات تشفير AEAD.",
+          "en": "AEAD cipher suites."
+        }
+      ],
+      "concept_id": "tls13_aead",
+      "explanation": {
+        "ar": "يعيّر التشفير الموثّق مع البيانات المرتبطة، فالسلامة والسرية تجي من إنشاء واحد بدل ما تُركّب يدوياً.",
+        "en": "It standardises authenticated encryption with associated data, so integrity and confidentiality come from one construction rather than being bolted together."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "شنو يوفّره TLS 1.3 افتراضياً وما كانت الإصدارات السابقة توفّره؟",
+        "en": "What does TLS 1.3 provide by default that earlier versions did not?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "السرية التقدّمية مع مصافحات أقصر.",
+          "en": "Forward secrecy together with shorter handshakes."
+        },
+        {
+          "ar": "السرية الرجعية مع مصافحات أطول.",
+          "en": "Backward secrecy together with longer handshakes."
+        },
+        {
+          "ar": "عمل بلا شهادات بأسرار مشتركة.",
+          "en": "Certificate-free operation with shared secrets."
+        },
+        {
+          "ar": "تشفير اختياري بتبادل مفتاح ثابت.",
+          "en": "Optional encryption with static key exchange."
+        }
+      ],
+      "concept_id": "tls13_forward_secrecy",
+      "explanation": {
+        "ar": "السرية التقدّمية تعني إن كشف المفتاح لاحقاً ما يقدر يفكّ جلسات سابقة، و TLS 1.3 يخليها الافتراضي مو خياراً.",
+        "en": "Forward secrecy means a later key compromise cannot decrypt past sessions, and TLS 1.3 makes that the default rather than an option."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "شنو التوتر اللي يسويه TLS 1.3 بالمؤسسات؟",
+        "en": "What tension does TLS 1.3 create for enterprises?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "العملاء لازم يخزّنون المفتاح الخاص للسيرفر محلياً.",
+          "en": "Clients must store the server's private key locally."
+        },
+        {
+          "ar": "الفحص لازم يوازن بين الرؤية والتشفير من الطرف للطرف.",
+          "en": "Inspection must reconcile visibility with end-to-end crypto."
+        },
+        {
+          "ar": "الشهادات لازم تُصدر من جديد كل يوم.",
+          "en": "Certificates must be reissued every single day."
+        },
+        {
+          "ar": "السيرفرات لازم تعطّل HTTP/2 و HTTP/3 بالكامل.",
+          "en": "Servers must disable HTTP/2 and HTTP/3 entirely."
+        }
+      ],
+      "concept_id": "tls13_visibility_tension",
+      "explanation": {
+        "ar": "التشفير من الطرف للطرف هو هدف TLS 1.3، فأي سياسة فحص لازم تبرّر الرؤية اللي تحصل عليها مقابل الثقة اللي تكسرها.",
+        "en": "End-to-end cryptography is the point of TLS 1.3, so any inspection policy has to justify the visibility it buys against the trust it breaks."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ليش بروكسي فصل TLS يصير هدفاً عالي القيمة؟",
+        "en": "Why does a split-TLS proxy become a high-value target?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأنه يوقّع شهادات لمخزن الجذور العام.",
+          "en": "Because it signs certificates for the public root store."
+        },
+        {
+          "ar": "لأنه يغني عن أي قاعدة جدار ناري.",
+          "en": "Because it replaces the need for any firewall rule."
+        },
+        {
+          "ar": "لأنه يحمل المفاتيح اللي تنهي كل جلسة مفحوصة.",
+          "en": "Because it holds the keys that terminate every inspected session."
+        },
+        {
+          "ar": "لأنه يخزّن سجلات DNS للمؤسسة كلها.",
+          "en": "Because it caches DNS records for the whole enterprise."
+        }
+      ],
+      "concept_id": "split_tls_proxy_risk",
+      "explanation": {
+        "ar": "البروكسي اللي ينهي TLS يجمع النص الصريح ومفاتيح كل تدفق مفحوص بمكان واحد، فاختراقه يعطي كل شي دفعة واحدة.",
+        "en": "A proxy that terminates TLS concentrates the plaintext and the keys of every inspected flow, so compromising it yields all of them at once."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف تُجمَّع المخاطر المتبقية متعددة البروتوكولات؟",
+        "en": "How is the multi-protocol residual risk aggregated?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حاصل ضرب واحد ناقص الفاعلية بالتأثير عبر البروتوكولات.",
+          "en": "The product of one minus efficacy times impact per protocol."
+        },
+        {
+          "ar": "أقصى احتمال مضروب بالتأثير بين البروتوكولات.",
+          "en": "The maximum of probability times impact across protocols."
+        },
+        {
+          "ar": "متوسط الفاعلية مضروباً بالتأثير عبر البروتوكولات.",
+          "en": "The average of efficacy times impact across protocols."
+        },
+        {
+          "ar": "مجموع واحد ناقص الفاعلية، مضروباً بالاحتمال، مضروباً بالتأثير.",
+          "en": "The sum of one minus efficacy, times probability, times impact."
+        }
+      ],
+      "concept_id": "rnet_formula",
+      "explanation": {
+        "ar": "هو مجموع محفظة خطي على طراز ISO 27005، وكل بروتوكول يساهم بالكسر اللي تتركه الضوابط من خطره فقط.",
+        "en": "It is a linear ISO 27005-style portfolio sum, where each protocol contributes only the fraction of its risk that the controls leave behind."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يُفترض استخدام هكذا نموذج؟",
+        "en": "How is such a model meant to be used?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ارفع الفاعلية وين ما الاحتمال مضروب بالتأثير أكبر.",
+          "en": "Raise efficacy where probability times impact is largest."
+        },
+        {
+          "ar": "ارفع الفاعلية بالتساوي على كل بروتوكول.",
+          "en": "Raise efficacy uniformly across every protocol."
+        },
+        {
+          "ar": "نزّل تقدير التأثير لحد ما يبدو المجموع صغير.",
+          "en": "Lower the impact estimate until the sum looks small."
+        },
+        {
+          "ar": "احذف البروتوكولات اللي عندها ضوابط أقل.",
+          "en": "Remove the protocols with the fewest controls."
+        }
+      ],
+      "concept_id": "rnet_prioritisation",
+      "explanation": {
+        "ar": "بما إن الحدود تُجمع خطياً، فأكبر تخفيض يجي من تحسين الضابط على أكبر حاصل احتمال مضروب بتأثير.",
+        "en": "Because the terms add linearly, the biggest reduction comes from improving the control on the largest probability-times-impact product."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي ضابط يرفع الفاعلية ضد اختطاف BGP بذلك النموذج؟",
+        "en": "Which control raises efficacy against BGP hijacking in that portfolio?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تقييد NTP على الوضعين 6 و 7.",
+          "en": "Restricting NTP mode 6 and mode 7."
+        },
+        {
+          "ar": "تبنّي RPKI والتحقّق من الأصل.",
+          "en": "Adopting RPKI and origin validation."
+        },
+        {
+          "ar": "تبنّي تحقّق DNSSEC عند المحلّلات.",
+          "en": "Adopting DNSSEC validation at resolvers."
+        },
+        {
+          "ar": "تطبيق BCP 38 عند حدود المزوّد.",
+          "en": "Enforcing BCP 38 at provider edges."
+        }
+      ],
+      "concept_id": "rnet_control_examples",
+      "explanation": {
+        "ar": "الفصل يربط DNSSEC بحد DNS، و RPKI بحد BGP، و BCP 38 بحد انعكاس UDP، وكل واحد يرفع فاعليته الخاصة.",
+        "en": "The chapter maps DNSSEC to the DNS term, RPKI to the BGP term and BCP 38 to the UDP-reflection term, each raising its own efficacy."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو يضخّم المهاجم بحجب خدمة عبر آلة الحالة؟",
+        "en": "What does an attacker inflate in a state-machine denial of service?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد الشهادات على المسار.",
+          "en": "The number of certificates on the path."
+        },
+        {
+          "ar": "عدد البتات بمفتاح الجلسة.",
+          "en": "The number of bits in the session key."
+        },
+        {
+          "ar": "عدد نسخ الحالة المتزامنة.",
+          "en": "The number of concurrent state instances."
+        },
+        {
+          "ar": "عدد البايتات بكل ترويسة حزمة.",
+          "en": "The number of bytes in each packet header."
+        }
+      ],
+      "concept_id": "state_exposure",
+      "explanation": {
+        "ar": "البروتوكولات اللي عندها حالة صريحة تتعرض لمّا يدفع المهاجم عدد كائنات الحالة الحيّة فوق ما يقدر الجهاز يديره.",
+        "en": "Protocols with explicit state are exposed when the attacker drives the count of live state objects past what the device can manage."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "بأي شرط يتشبّع نموذج الحالة؟",
+        "en": "Under what condition does the state model saturate?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لمّا يتجاوز معدّل الخدمة معدّل الوصول.",
+          "en": "When the service rate exceeds the arrival rate."
+        },
+        {
+          "ar": "لمّا يتجاوز سقف الحالات معدّل الوصول.",
+          "en": "When the state limit exceeds the arrival rate."
+        },
+        {
+          "ar": "لمّا يساوي التأثير احتمال الاستغلال.",
+          "en": "When the impact equals the exploit probability."
+        },
+        {
+          "ar": "لمّا يبلغ معدّل الوصول على معدّل الخدمة سقف الحالات.",
+          "en": "When arrival rate over service rate reaches the cap."
+        }
+      ],
+      "concept_id": "saturation_condition",
+      "explanation": {
+        "ar": "بنموذج سيرفر غير محدود، عدد الحالات المتزامنة المتوقّع هو معدّل الوصول على معدّل الخدمة، فالنظام يتشبّع لمّا يبلغ هذا الخارج الحد الأقصى القابل للإدارة.",
+        "en": "In an unbounded-server model the expected number of concurrent states is the arrival rate over the service rate, so the system saturates once that quotient reaches the manageable maximum."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "كيف تؤثّر SYN cookies وسقوف الـ peering على ذلك النموذج؟",
+        "en": "How do SYN cookies and peering caps act on that model?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تنزّل النسبة الفعلية أو ترفع الحد الأقصى.",
+          "en": "They lower the realised ratio or raise the maximum."
+        },
+        {
+          "ar": "تشفّر الحالة حتى ما تنعد.",
+          "en": "They encrypt the state so it cannot be counted."
+        },
+        {
+          "ar": "تحذف الحالة قبل ما تُنشأ أصلًا.",
+          "en": "They delete the state before it is created at all."
+        },
+        {
+          "ar": "ترفع معدّل الوصول ليطابق الحد الأقصى.",
+          "en": "They raise the arrival rate to match the maximum."
+        }
+      ],
+      "concept_id": "saturation_controls",
+      "explanation": {
+        "ar": "SYN cookies تخلي كل حالة أرخص وأقصر عمراً، وسقوف الجلسات الصلبة ترفع العدد اللي يتحمّله النظام.",
+        "en": "SYN cookies make each state cheaper and shorter-lived, while hard session caps simply raise the number the system can tolerate."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "شكثر محاولة يتوقّع المهاجم خارج المسار لفرصة نجاح خمسين بالمئة؟",
+        "en": "How many attempts must an off-path attacker expect for a fifty percent chance?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حوالي قيمة الإنتروبيا مربّعة.",
+          "en": "About the entropy value squared."
+        },
+        {
+          "ar": "حوالي اثنان مرفوعان للأس الإنتروبيا ناقص واحد.",
+          "en": "About two raised to the entropy minus one."
+        },
+        {
+          "ar": "حوالي اثنان مرفوعان للأس الإنتروبيا نفسها.",
+          "en": "About two raised to the entropy itself."
+        },
+        {
+          "ar": "حوالي قيمة الإنتروبيا مضروبة باثنين.",
+          "en": "About the entropy value multiplied by two."
+        }
+      ],
+      "concept_id": "entropy_work_factor",
+      "explanation": {
+        "ar": "تغطية نصف فضاء فيه اثنان أسّ H احتمال تحتاج حوالي اثنان أسّ H ناقص واحد محاولة.",
+        "en": "Covering half of a space of two to the power of H possibilities takes about two to the power of H minus one attempts."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "شنو يصير بكلفة المهاجم لمّا تزيد البتات غير المتوقّعة بواحد؟",
+        "en": "What happens to the attacker's cost when the unpredictable bits rise by one?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "العمل المتوقّع يبقى نفسه.",
+          "en": "The expected work stays the same."
+        },
+        {
+          "ar": "العمل المتوقّع ينزل للنصف.",
+          "en": "The expected work falls by half."
+        },
+        {
+          "ar": "العمل المتوقّع يتضاعف.",
+          "en": "The expected work doubles."
+        },
+        {
+          "ar": "العمل المتوقّع يزيد خطوة واحدة.",
+          "en": "The expected work rises by one step."
+        }
+      ],
+      "concept_id": "entropy_doubling",
+      "explanation": {
+        "ar": "الإنتروبيا بالأس، فكل بت إضافي غير متوقّع يضاعف فضاء البحث وبالتالي يضاعف الجهد المتوقّع.",
+        "en": "Entropy is in the exponent, so every extra unpredictable bit doubles the search space and therefore doubles the expected effort."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "شنو حقّقت عشوائية المنافذ وإنتروبيا كل استعلام فعلاً؟",
+        "en": "What did port randomisation and per-query entropy actually achieve?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أزالت تهديد التسميم نهائياً.",
+          "en": "They permanently removed the poisoning threat."
+        },
+        {
+          "ar": "أغنت عن الحاجة للمناطق الموقّعة.",
+          "en": "They replaced the need for signed zones."
+        },
+        {
+          "ar": "شفّرت قناة المحلّل من الطرف للطرف.",
+          "en": "They encrypted the resolver channel end to end."
+        },
+        {
+          "ar": "اشترت وقتاً لطرح DNSSEC.",
+          "en": "They bought time for the DNSSEC rollout."
+        }
+      ],
+      "concept_id": "entropy_bought_time",
+      "explanation": {
+        "ar": "رفع الإنتروبيا غلّى السباق بس ما غيّر نموذج الثقة، فكان حل مؤقت صمد لحد ما ينشر التحقّق التشفيري.",
+        "en": "Raising entropy made the race expensive without changing the trust model, so it was a stop-gap that held the line until cryptographic validation could be deployed."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "ما عدا فيضان SYN، أي هجمات يذكرها الملخّص على TCP؟",
+        "en": "Beyond the SYN flood, which attacks does the precis list against TCP?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حقن RST واختطاف الجلسة.",
+          "en": "RST injection and session hijacking."
+        },
+        {
+          "ar": "تسميم الكاش وإساءة نقل المنطقة.",
+          "en": "Cache poisoning and zone transfer abuse."
+        },
+        {
+          "ar": "إعلانات موجّه مزوّرة وتسميم الجيران.",
+          "en": "Rogue router advertisements and neighbour poisoning."
+        },
+        {
+          "ar": "تحويل الوقت وانعكاس monlist.",
+          "en": "Time shifting and monlist reflection."
+        }
+      ],
+      "concept_id": "precis_tcp_extra",
+      "explanation": {
+        "ar": "الملخّص يقرن فيضان SYN بحقن RST على الروابط الطويلة واختطاف الجلسة حيث نوافذ أرقام التسلسل قابلة للتنبؤ.",
+        "en": "The precis pairs the SYN flood with RST injection on long-haul links and session hijacking where sequence-number windows are predictable."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "أي مجموعة تخفيفات يعطيها الملخّص لـ UDP؟",
+        "en": "Which set of mitigations does the precis give for UDP?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تثبيت الشهادات وسياسة تشفير صارمة.",
+          "en": "Certificate pinning and strict cipher policy."
+        },
+        {
+          "ar": "مكافحة الانتحال وحدود معدّل المُنعكسات وتعطيل الأوامر القديمة.",
+          "en": "Anti-spoofing, rate limits, legacy commands off."
+        },
+        {
+          "ar": "تحقّق DNSSEC وتوقيع المنطقة عند الجذر.",
+          "en": "DNSSEC validation and zone signing at the root."
+        },
+        {
+          "ar": "RA-Guard و SEND على المقطع المحلي.",
+          "en": "RA-Guard and SEND on the local segment."
+        }
+      ],
+      "concept_id": "precis_udp_mitigations",
+      "explanation": {
+        "ar": "الجذر هو الانتحال، فمكافحة الانتحال أولاً، بعدها تحديد المعدّل وتعطيل الأوامر القديمة، وبعدها تحديد حجم الرد.",
+        "en": "The root cause is spoofing, so anti-spoofing comes first, then rate-limiting and disabling legacy commands, then capping response size."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "أي هجمات يذكرها الملخّص على TLS و HTTP؟",
+        "en": "Which attacks does the precis list against TLS and HTTP?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إعلان RA مزوّر وتسميم الجيران واستنزاف DHCP.",
+          "en": "Rogue RA, neighbour poisoning and DHCP starvation."
+        },
+        {
+          "ar": "اختطاف البادئة وتقصير المسار وإساءة monlist.",
+          "en": "Prefix hijack, path shortening and monlist abuse."
+        },
+        {
+          "ar": "تخفيض الإصدار وضعف مجموعات التشفير وفيضان ترويسات HTTP/2.",
+          "en": "Downgrade, weak ciphersuites and HTTP/2 header flooding."
+        },
+        {
+          "ar": "فيضان SYN وحقن RST واختطاف الجلسة.",
+          "en": "SYN flood, RST injection and session hijacking."
+        }
+      ],
+      "concept_id": "precis_tls_attacks",
+      "explanation": {
+        "ar": "التخفيض القديم والمجموعات الضعيفة وأخطاء الضغط أو إعادة التفاوض أُزيلت غالباً بـ TLS 1.3، بس فيضان ترويسات HTTP/2 يبقى إساءة بطبقة التطبيق.",
+        "en": "Legacy downgrade, weak suites and compression or renegotiation bugs are largely removed in TLS 1.3, but HTTP/2 header flooding remains an application-layer abuse."
+      }
+    },
+    {
+      "id": "q18",
+      "stem": {
+        "ar": "أي تخفيفات يعطيها الملخّص لـ TLS و HTTP؟",
+        "en": "Which mitigations does the precis give for TLS and HTTP?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تشغيل TLS 1.0 والسماح بالشيفرات القديمة وإلغاء حدود الجداول.",
+          "en": "Enable TLS 1.0, allow legacy ciphers, remove stream limits."
+        },
+        {
+          "ar": "نشر RA-Guard و SEND و DHCP snooping على المقطع.",
+          "en": "Deploy RA-Guard, SEND and DHCP snooping on the segment."
+        },
+        {
+          "ar": "تبنّي RPKI و BGPsec وتصفية البادئات مع نظافة IRR.",
+          "en": "Adopt RPKI, BGPsec and prefix filtering with IRR hygiene."
+        },
+        {
+          "ar": "فرض TLS 1.3 وسياسة تشفير صارمة وتثبيت ALPN وحدود الجداول.",
+          "en": "Enforce TLS 1.3, strict cipher policy, ALPN pinning, stream limits."
+        }
+      ],
+      "concept_id": "precis_tls_mitigations",
+      "explanation": {
+        "ar": "فرض الإصدار الحديث، وتثبيت التفاوض، وتحديد عدد الطلبات والجداول حتى ما يُستخدم اتصال واحد لإغراق السيرفر.",
+        "en": "Enforce the modern version, pin the negotiation, and bound the number of requests and streams so a single connection cannot be used to flood the server."
+      }
+    },
+    {
+      "id": "q19",
+      "stem": {
+        "ar": "أي أوضاع NTP يقول الملخّص إنها لازم تُقيَّد؟",
+        "en": "Which NTP modes does the precis say should be restricted?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الوضع 6 والوضع 7.",
+          "en": "Mode 6 and mode 7."
+        },
+        {
+          "ar": "الوضع 1 والوضع 2.",
+          "en": "Mode 1 and mode 2."
+        },
+        {
+          "ar": "الوضع 3 والوضع 4.",
+          "en": "Mode 3 and mode 4."
+        },
+        {
+          "ar": "الوضع 0 والوضع 5.",
+          "en": "Mode 0 and mode 5."
+        }
+      ],
+      "concept_id": "precis_ntp_mode",
+      "explanation": {
+        "ar": "الوضعان 6 و 7 هما وضعا التحكّم والمراقبة اللي كشفا تاريخياً أوامر مثل monlist، فلهذا يُقيّدان على السيرفرات العامة.",
+        "en": "Modes 6 and 7 are the control and monitoring modes that historically exposed commands such as monlist, so they are restricted on public servers."
+      }
+    },
+    {
+      "id": "q20",
+      "stem": {
+        "ar": "ليش وجود المعيار مو نفس الحماية؟",
+        "en": "Why is the existence of a standard not the same as protection?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن المعايير تصف الهجمات مو الحلول.",
+          "en": "Because standards describe attacks rather than fixes."
+        },
+        {
+          "ar": "لأن الخطر يعتمد على مدى انتشار تطبيق المعيار.",
+          "en": "Because risk depends on how widely the standard is deployed."
+        },
+        {
+          "ar": "لأن المعايير يكتبها مصنّعون عندهم تضارب.",
+          "en": "Because standards are written by vendors with conflicts."
+        },
+        {
+          "ar": "لأن المعايير تنتهي بعد عدد سنوات محدد.",
+          "en": "Because standards expire after a fixed number of years."
+        }
+      ],
+      "concept_id": "governance_deployment",
+      "explanation": {
+        "ar": "المعايير تُقنّن التخفيفات، بس فاعلية BCP 38 تتدرّج مع التبنّي وفائدة RPKI تتراكم مع زيادة ROAs وزيادة الأنظمة المتحقّقة.",
+        "en": "Standards codify mitigations, but the effectiveness of BCP 38 scales with adoption and the benefit of RPKI compounds with more ROAs and more validating ASes."
+      }
+    },
+    {
+      "id": "q21",
+      "stem": {
+        "ar": "ليش تحقّق DNSSEC عند المحلّلات يظل يفيد لمّا تكون مناطق كثيرة غير موقّعة؟",
+        "en": "Why does DNSSEC validation at recursors still help when many zones are unsigned?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يجبر كل منطقة غير موقّعة على فشل التحليل.",
+          "en": "It forces every unsigned zone to fail resolution completely."
+        },
+        {
+          "ar": "يستبدل جذر الثقة بمخزن مفاتيح محلي.",
+          "en": "It replaces the root of trust with a local key store only."
+        },
+        {
+          "ar": "يظل يمنع تسميم الردود الموقّعة ويحسّن القياسات.",
+          "en": "It still blocks poisoning of signed responses and improves telemetry."
+        },
+        {
+          "ar": "يوقّع المناطق غير الموقّعة نيابة عنها بصمت.",
+          "en": "It silently signs the unsigned zones on their behalf instead."
+        }
+      ],
+      "concept_id": "governance_dnssec_partial",
+      "explanation": {
+        "ar": "التحقّق الجزئي مو كل شي أو لا شي: كل جواب موقّع يجتاز التحقّق هو جواب ما يقدر المهاجم يسمّمه، وقياسات المحلّل تتحسّن هم.",
+        "en": "Partial validation is not all-or-nothing: every signed answer that passes validation is one the attacker cannot poison, and the resolver's telemetry improves too."
+      }
+    },
+    {
+      "id": "q22",
+      "stem": {
+        "ar": "كيف لازم المؤسسة تتعامل مع أمن البروتوكولات؟",
+        "en": "How should an organisation treat protocol security?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كشراء لمرة واحدة لمنتج مطابق للمعيار.",
+          "en": "As a one-time purchase of a compliant product."
+        },
+        {
+          "ar": "كتمرين توثيق للمدقّقين.",
+          "en": "As a documentation exercise for auditors."
+        },
+        {
+          "ar": "كمهمة يملكها فريق الشبكة بالكامل.",
+          "en": "As a task owned entirely by the network team."
+        },
+        {
+          "ar": "كـبرنامج بيئي متكامل، مو كمفتاح يُشغَل مرة واحدة.",
+          "en": "As an ecosystem program, not a one-time toggle."
+        }
+      ],
+      "concept_id": "governance_ecosystem",
+      "explanation": {
+        "ar": "لأن الفاعلية تزيد بتبنّي الآخرين، فأمن البروتوكولات برنامج مستمر لازم يُراجع كل ما تتغيّر بقية الشبكة.",
+        "en": "Because effectiveness grows with the adoption of others, protocol security is a continuous program that has to be revisited as the rest of the network changes."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-23T08:09:01Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
