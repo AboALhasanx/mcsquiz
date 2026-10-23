@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.6.2] — 2026-10-23
+
+### Changed
+- sign-out now wipes this device's records (history, bookmarks, best scores) after syncing them up; the account keeps them
+
+
 ## [1.6.1] — 2026-10-23
 
 ### Changed

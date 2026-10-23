@@ -3945,13 +3945,27 @@
     bindClick('account-link', () => { openLinkApprove(); });
     bindClick('account-logout', async () => {
       // leaving an account is not a one-tap action on a shared device
-      if (!confirm('تسجيل الخروج؟\n\n• المزامنة تتوقف على هذا الجهاز\n• رمزك ينمسح من الجهاز — تحتاجه لتسجيل الدخول مرة ثانية\n• محفوظاتك وسجلك تبقى على هذا الجهاز')) return;
       const C = cloud();
+      const linkable = C && C.account && C.account();
+      if (!confirm('تسجيل الخروج؟\n\n• المزامنة تتوقف على هذا الجهاز\n• محفوظاتك وسجلك تنمسح من هذا الجهاز — وتبقى بحسابك\n• رمزك ينمسح، فتحتاجه لتسجيل الدخول مرة ثانية')) return;
+      if (linkable && C.pinOnDevice && C.pinOnDevice()) {
+        if (navigator.onLine) {
+          // last chance to keep what this device added while it was offline
+          try { await C.pullOrPush(); } catch (e) { dbg('logout sync failed:', (e && e.message) || e); }
+        } else if (!confirm('ماكو إنترنت — أي شي أضفته وما انزام راح ينمسح. تكمل؟')) {
+          return;
+        }
+      }
       stopLinkPoll();
       if (C && C.signOut) C.signOut();
+      if (C && C.clearPersonal) C.clearPersonal();
+      try { loadSaved(); } catch (e) {}
+      S.leagueRows = null; S.leagueMe = null; S.leagueStamp = 0;
       updateAccountRow();
+      updateSavedBadge(); updateMenuCounts();
       goHash('#/');
-      toast('تم تسجيل الخروج — بياناتك باقية على الجهاز');
+      renderCatalog();
+      toast('تم تسجيل الخروج — بياناتك محفوظة بحسابك', 'success');
     });
     bindClick('account-delete', async () => {
       const C = cloud();
@@ -4223,7 +4237,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.6.1';
+  const SHELL_VERSION = '1.6.2';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -256,6 +256,24 @@
   }
 
   // erase the account and everything attached to it (the student asked for it)
+  // Everything the account owns on this device: history, bookmarks, best scores,
+  // and the merge bookkeeping. The server copy is untouched — signing back in
+  // (or linking) brings it down again.
+  function clearPersonal() {
+    try {
+      localStorage.removeItem(LS_HISTORY);
+      localStorage.removeItem(LS_SAVED);
+      localStorage.removeItem('portal_data_owner_v1');
+      localStorage.removeItem('portal_session_v1');
+      for (var i = localStorage.length - 1; i >= 0; i--) {
+        var k = localStorage.key(i);
+        if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' ||
+            k === 'portal_saved_removed_v1' || k === 'portal_history_cleared_v1')) localStorage.removeItem(k);
+      }
+      try { sessionStorage.removeItem('portal_session_v1'); } catch (e) {}
+    } catch (e) {}
+  }
+
   async function deleteAccount(pinOverride) {
     var a = account();
     if (!a) throw new Error('not-linked');
@@ -267,15 +285,7 @@
     var st = (Array.isArray(r.data) ? r.data[0] : r.data) || 'ok';
     if (st !== 'ok') throw statusError({ status: st }, 'delete-failed');
     signOut();
-    try {
-      localStorage.removeItem(LS_HISTORY);
-      localStorage.removeItem(LS_SAVED);
-      localStorage.removeItem('portal_pin_v1');
-      for (var i = localStorage.length - 1; i >= 0; i--) {
-        var k = localStorage.key(i);
-        if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' || k === 'portal_saved_removed_v1' || k === 'portal_history_cleared_v1')) localStorage.removeItem(k);
-      }
-    } catch (e) {}
+    clearPersonal();
     return true;
   }
 
@@ -766,6 +776,7 @@
     deleteAccount: deleteAccount,
     adopt: adopt,
     signOut: signOut,
+    clearPersonal: clearPersonal,
     normalizeHandle: normalizeHandle,
     sb: sbClient,
     avatarUrl: avatarUrl,

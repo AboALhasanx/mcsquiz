@@ -53,6 +53,15 @@ def run():
         p1.evaluate("() => document.querySelector('#account-logout').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
         p1.wait_for_timeout(800)
         check('signing out warns before it happens', 'تسجيل الخروج' in (seen.get('msg') or ''), seen.get('msg'))
+        # the device must not keep the account's records after a sign-out
+        left = p1.evaluate("""() => ({
+            h: JSON.parse(localStorage.getItem('portal_history_v1') || '[]').length,
+            s: Object.keys(JSON.parse(localStorage.getItem('portal_saved_v1') || '{}')).length,
+            best: Object.keys(localStorage).filter((k) => k.indexOf('portal_best_') === 0).length,
+            pin: !!localStorage.getItem('portal_pin_v1'),
+            acc: !!localStorage.getItem('portal_account_v1')})""")
+        check('signing out wipes the local records',
+              left['h'] == 0 and left['s'] == 0 and left['best'] == 0 and not left['pin'] and not left['acc'], left)
         login(p1, handle, name, pin='1111')
         check('a wrong PIN is rejected', not p1.evaluate('() => !!window.PortalCloud.account()'),
               p1.locator('#login-error').text_content())
