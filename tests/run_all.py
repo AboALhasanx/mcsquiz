@@ -19,6 +19,7 @@ PORT = os.environ.get('PORTAL_PORT', '8081')
 SPECS = [
     'test_banks.py',
     'test_accounts.py',
+    'test_pin_change.py',
     'test_catalog.py',
     'test_quiz.py',
     'test_league.py',

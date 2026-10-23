@@ -63,7 +63,7 @@ def run():
         p1.wait_for_selector('#account-view:not(.hidden)', timeout=12000)
         check('profile editor is shown', 'hidden' not in (p1.locator('#account-profile').get_attribute('class') or ''))
         check('the username is labelled as permanent',
-              'لا يمكن تغييره' in (p1.locator('.auth-hint').inner_text() or ''))
+              'لا يمكن تغييره' in (p1.locator('#profile-handle').locator('xpath=..').inner_text() or ''))
         p1.fill('#profile-name', 'اسم جديد')
         p1.evaluate("() => document.querySelectorAll('#avatar-grid .avatar-choice')[1].dispatchEvent(new MouseEvent('click', {bubbles:true}))")
         p1.evaluate("() => document.querySelector('#profile-save').dispatchEvent(new MouseEvent('click', {bubbles:true}))")

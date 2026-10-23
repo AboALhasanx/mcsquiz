@@ -238,6 +238,23 @@
     return account();
   }
 
+  // the PIN is the only credential: rotating it is its own operation, not part
+  // of the profile save, and the device keeps the new one on success.
+  async function changePin(oldPin, newPin) {
+    var a = account();
+    if (!a) throw new Error('not-linked');
+    var sb = await sbClient();
+    var r = await sb.rpc('portal_change_pin', {
+      p_handle: a.handle, p_old_pin: String(oldPin || ''), p_new_pin: String(newPin || ''),
+    });
+    if (r.error) throw new Error(r.error.message || 'pin-change-failed');
+    var row = Array.isArray(r.data) ? r.data[0] : r.data;
+    var st = (row && row.status) || 'ok';
+    if (st !== 'ok') throw statusError(row, 'pin-change-failed');
+    try { lsSet('portal_pin_v1', String(newPin)); } catch (e) {}
+    return true;
+  }
+
   // erase the account and everything attached to it (the student asked for it)
   async function deleteAccount(pinOverride) {
     var a = account();
@@ -740,6 +757,7 @@
     userId: userId,
     login: login,
     updateProfile: updateProfile,
+    changePin: changePin,
     pinOnDevice: function () { return /^[0-9]{4}$/.test(String(lsGet('portal_pin_v1') || '')); },
     deleteAccount: deleteAccount,
     adopt: adopt,

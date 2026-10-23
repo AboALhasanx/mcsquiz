@@ -420,6 +420,15 @@
                             </div>
                             <div id="avatar-grid" class="avatar-grid" role="group" aria-label="اختر صورة للملف"></div>
                         </div>
+                        <div class="account-section">
+                            <span class="account-section-title">الرمز السري</span>
+                            <p class="auth-hint">رمزك الحالي هو اللي بخانة «رمزك» فوق. لتغييره اكتب الجديد مرتين.</p>
+                            <label class="auth-label" for="pin-new">الرمز الجديد (4 أرقام)</label>
+                            <input id="pin-new" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••" autocomplete="off">
+                            <label class="auth-label" for="pin-new2">تأكيد الرمز الجديد</label>
+                            <input id="pin-new2" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••" autocomplete="off">
+                            <button id="pin-change" class="action-btn secondary-btn auth-submit" type="button">تغيير الرمز</button>
+                        </div>
                         <button id="profile-save" class="action-btn primary-btn auth-submit">حفظ التغييرات</button>
                     </div>
                     <div class="account-actions">

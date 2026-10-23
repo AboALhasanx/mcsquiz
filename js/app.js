@@ -2720,6 +2720,9 @@
     $('profile-name').value = acc.name || '';
     $('profile-handle').textContent = '@' + acc.handle;
     try { $('profile-pin').value = localStorage.getItem('portal_pin_v1') || ''; } catch (e) {}
+    // the new-PIN fields are always empty when the page opens
+    if ($('pin-new')) $('pin-new').value = '';
+    if ($('pin-new2')) $('pin-new2').value = '';
     const grid = $('avatar-grid');
     grid.innerHTML = '';
     const current = acc.avatar || '';
@@ -2804,6 +2807,38 @@
       else if (msg.indexOf('bad_pin') >= 0) toast('الرمز غير صحيح', 'error');
       else if (msg.indexOf('pin') >= 0) toast('أعد تسجيل الدخول لتعديل الملف', 'error');
       else toast('تعذر الحفظ', 'error');
+    }
+  }
+
+  async function changePin() {
+    const C = cloud();
+    if (!C || !C.changePin) return;
+    const cur = ($('profile-pin').value || '').replace(/\D/g, '');
+    const next = ($('pin-new').value || '').replace(/\D/g, '');
+    const again = ($('pin-new2').value || '').replace(/\D/g, '');
+    if (cur.length !== 4) { toast('اكتب رمزك الحالي (4 أرقام)', 'error'); return; }
+    if (next.length !== 4) { toast('الرمز الجديد 4 أرقام', 'error'); return; }
+    if (next !== again) { toast('تأكيد الرمز ما مطابق', 'error'); return; }
+    if (next === cur) { toast('الرمز الجديد نفس القديم', 'error'); return; }
+    const btn = $('pin-change');
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'جارٍ التغيير…';
+    try {
+      await C.changePin(cur, next);
+      $('pin-new').value = '';
+      $('pin-new2').value = '';
+      $('profile-pin').value = next;
+      toast('تم تغيير الرمز — استعمله من هسه', 'success');
+    } catch (e) {
+      const msg = String((e && e.message) || '');
+      if (msg.indexOf('too_many_attempts') >= 0) toast('محاولات كثيرة — حاول بعد قليل', 'error');
+      else if (msg.indexOf('bad_pin') >= 0) toast('الرمز الحالي غير صحيح', 'error');
+      else if (msg.indexOf('same_pin') >= 0) toast('الرمز الجديد نفس القديم', 'error');
+      else toast('تعذر تغيير الرمز', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
     }
   }
 
@@ -3771,6 +3806,7 @@
     });
     bindClick('link-scan', startScan);
     bindClick('profile-save', saveProfile);
+    bindClick('pin-change', changePin);
     bindClick('account-close', () => {
       // back to wherever the account was opened from (the catalogue by default)
       goHash(S.accountReturn || '#/');
@@ -3972,7 +4008,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.4.5';
+  const SHELL_VERSION = '1.5.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

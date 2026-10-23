@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.0] — 2026-10-23
+
+### Changed
+- feat: change the 4-digit PIN from the account page (portal_change_pin, same rate limits as login)
+
+
 ## [1.4.5] — 2026-10-23
 
 ### Changed
