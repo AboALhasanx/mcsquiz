@@ -14,6 +14,9 @@ Supabase: content_banks + content_meta                   <- the content portal
 the PWA: service worker + cached manifest + cached banks  <- offline first
 ```
 
+> Working on this repo with an agent? Read [AGENTS.md](AGENTS.md) first — the gate,
+> the release flow, the RTL/copy rules and the data-safety rules live there.
+
 ## Run it locally
 
 ```bash
