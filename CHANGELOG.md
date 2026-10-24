@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.4] — 2026-10-24
+
+### Changed
+- إصلاح عمل الـ PWA أوفلاين بالكامل وإزالة استعلامات النسخ المانعة لتحميل الـ CSS بدون إنترنت وتضمين ملفات KaTeX في التخزين المسبق
+
+
 ## [1.7.3] — 2026-10-24
 
 ### Changed

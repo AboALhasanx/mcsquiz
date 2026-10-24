@@ -218,3 +218,13 @@ PASS | security | the bookmark text is not on the server | {'ct': 'ZGag5VR2LZrsa
 PASS | security | the account can be deleted | ok
 PASS | security | the personal row is gone | []
 PASS | security | the account no longer exists | [{'id': '4ac4f341-cae0-4bd7-a02e-7ca4c65e2f79', 'handle': 'secdat842638', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | offline | service worker takes control | 
+PASS | offline | banks loaded while online | 
+PASS | offline | a question is saved locally | 
+PASS | offline | catalog renders with no network | 
+PASS | offline | subject chips render offline | 
+PASS | offline | a quiz starts, runs and finishes offline | 
+PASS | offline | history is journalled on the device offline | 
+PASS | offline | saved questions open offline | 
+PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 19 – 25 أكتوبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | اللغة الإنجليزية | 
+PASS | offline | no runtime errors | []
