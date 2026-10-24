@@ -35,6 +35,8 @@ PATTERNS = [
     re.compile(r'^tb\d{4,}$'),
     re.compile(r'^qa\d{4,}$'),
     re.compile(r'^tab\d{4,}$'),
+    re.compile(r'^benchuser\d*$'),
+    re.compile(r'^coltest\d*$'),
     re.compile(r'^qla\d+$'),
     re.compile(r'^qlb\d+$'),
     re.compile(r'^lk[ab]\d+$'),
