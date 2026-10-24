@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.2] — 2026-10-24
+
+### Changed
+- مزامنة تلقائية في الخلفية بين الأوفلاين والأونلاين مع دعم إعادة المحاولة ودمج السجل والنتائج
+
+
 ## [1.7.1] — 2026-10-24
 
 ### Changed

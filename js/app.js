@@ -2786,7 +2786,19 @@
     }
     icons();
   }
-  window.PortalCloudUI = function () { try { updateAccountRow(); } catch (e) {} };
+  window.PortalCloudUI = function (res) {
+    try {
+      loadSaved();
+      updateSavedBadge();
+      updateMenuCounts();
+      updateAccountRow();
+      if (location.hash === '#/stats' || location.hash === '#/stats/') renderStats();
+      if (location.hash === '#/saved' || location.hash === '#/saved/') renderSaved();
+      if (res && (res.action === 'uploaded-new' || res.action === 'merged-uploaded')) {
+        toast('تمت مزامنة النتائج تلقائياً ✓', 'success');
+      }
+    } catch (e) {}
+  };
 
   async function handleAccountTap() {
     // picking a drawer item must dismiss the drawer itself, otherwise its overlay
@@ -3962,7 +3974,24 @@
     // the running quiz on disk so the next boot can put the student back in it
     window.addEventListener('pagehide', saveSessionSnapshot);
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') saveSessionSnapshot();
+      if (document.visibilityState === 'hidden') {
+        saveSessionSnapshot();
+      } else if (document.visibilityState === 'visible') {
+        try {
+          const C = cloud();
+          if (navigator.onLine && C && C.linked && C.linked()) {
+            if (C.needsSync && C.needsSync()) C.scheduleAutoSync('visibility', { delayMs: 800, retries: 2 });
+          }
+        } catch (e) {}
+      }
+    });
+    window.addEventListener('focus', () => {
+      try {
+        const C = cloud();
+        if (navigator.onLine && C && C.linked && C.linked()) {
+          if (C.needsSync && C.needsSync()) C.scheduleAutoSync('focus', { delayMs: 1000, retries: 2 });
+        }
+      } catch (e) {}
     });
     // No native beforeunload dialog: the browser renders it in its own language
     // and cannot be styled. Leaving the app is guarded by the Arabic modal above,
@@ -4184,7 +4213,11 @@
       updateOfflineBanner(false);
       updateAccountRow();
       toast('عادت إشارة الإنترنت', 'success');
-      try { window.PortalCloud && window.PortalCloud.pushSoon(); } catch (e) {}
+      try {
+        const C = cloud();
+        if (C && C.scheduleAutoSync) C.scheduleAutoSync('online', { delayMs: 1500, retries: 3 });
+        else if (C && C.pushSoon) C.pushSoon();
+      } catch (e) {}
     });
     window.addEventListener('offline', () => {
       updateOfflineBanner(true);
@@ -4377,7 +4410,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.7.1';
+  const SHELL_VERSION = '1.7.2';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -4496,6 +4529,13 @@
           setTimeout(() => tourShow(Number(resume) || 0), 600);
         } else if (!tourGet(TOUR_KEY)) {
           setTimeout(() => { if (tourIdx < 0) { tourSet(TOUR_KEY); tourShow(0); } }, 1200);
+        }
+      } catch (e) {}
+      // silent background auto-sync on boot (pushes pending offline data or pulls remote updates)
+      try {
+        const C = cloud();
+        if (navigator.onLine && C && C.linked && C.linked()) {
+          C.scheduleAutoSync('boot', { delayMs: 2000, retries: 2 });
         }
       } catch (e) {}
       dbg('boot ok. subjects:', S.index.subjects.length);

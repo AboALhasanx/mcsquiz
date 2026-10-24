@@ -27,6 +27,7 @@
 
   var SYNC_KEY = 'portal_cloud_synced_at';
   var OWNER_KEY = 'portal_data_owner_v1';
+  var PENDING_KEY = 'portal_sync_pending';
 
   // whose data is on this device? a different account must never inherit it
   function dataOwner() { try { return localStorage.getItem(OWNER_KEY) || ''; } catch (e) { return ''; } }
@@ -40,6 +41,7 @@
       }
     } catch (e) {}
     try { localStorage.removeItem('portal_data_touched_v1'); } catch (e) {}
+    try { localStorage.removeItem(PENDING_KEY); } catch (e) {}
   }
   function ownData(id) {
     if (!id) return;
@@ -172,6 +174,7 @@
     try {
       localStorage.removeItem(ACCOUNT_KEY);
       localStorage.removeItem(SYNC_KEY);
+      localStorage.removeItem(PENDING_KEY);
       // the PIN is a credential: it must not outlive the session on a shared device
       localStorage.removeItem('portal_pin_v1');
       localStorage.setItem('portal_signed_out_v1', '1');
@@ -265,6 +268,7 @@
       localStorage.removeItem(LS_SAVED);
       localStorage.removeItem('portal_data_owner_v1');
       localStorage.removeItem('portal_session_v1');
+      localStorage.removeItem(PENDING_KEY);
       for (var i = localStorage.length - 1; i >= 0; i--) {
         var k = localStorage.key(i);
         if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' ||
@@ -675,11 +679,27 @@
   }
 
   var activeSyncPromise = null;
+  var autoSyncTimer = null;
+  var autoSyncRetries = 0;
+  var MAX_AUTO_RETRIES = 3;
+
+  function needsSync() {
+    if (lsGet(PENDING_KEY) === '1') return true;
+    var touched = Number(lsGet('portal_data_touched_v1') || 0);
+    var synced = Number(lsGet(SYNC_KEY) || 0);
+    return touched > synced;
+  }
+  function markNeedsSync() {
+    try { localStorage.setItem(PENDING_KEY, '1'); } catch (e) {}
+  }
+  function clearNeedsSync() {
+    try { localStorage.removeItem(PENDING_KEY); } catch (e) {}
+  }
 
   async function pullOrPush() {
     if (activeSyncPromise) return activeSyncPromise;
     if (!linked()) throw new Error('not-linked');
-    if (!activeStore()) { markSync(); return { action: 'local-only' }; }
+    if (!activeStore()) { markSync(); clearNeedsSync(); return { action: 'local-only' }; }
     syncing = true;
     activeSyncPromise = (async function () {
       try {
@@ -693,10 +713,15 @@
         var local = collectBundle();
         if (!remote) {
           if (localCount() > 0) {
-            try { await upload(local); return { action: 'uploaded-new' }; }
+            try {
+              await upload(local);
+              clearNeedsSync();
+              return { action: 'uploaded-new', count: localCount() };
+            }
             catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
           }
           markSync();
+          clearNeedsSync();
           return { action: 'empty' };
         }
         // the two copies are merged, never swapped: neither device loses what the
@@ -704,10 +729,15 @@
         var merged = mergeBundles(local, remote);
         applyBundle(merged);
         if (!sameBundle(remote, merged)) {
-          try { await upload(merged); return { action: 'merged-uploaded' }; }
+          try {
+            await upload(merged);
+            clearNeedsSync();
+            return { action: 'merged-uploaded', count: (merged.history || []).length };
+          }
           catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
         }
         markSync();
+        clearNeedsSync();
         return { action: 'merged' };
       } finally {
         syncing = false;
@@ -717,22 +747,45 @@
     return activeSyncPromise;
   }
 
-  function pushSoon() {
-    if (!linked() || !activeStore() || !navigator.onLine) return;
-    // without the PIN there is no key: the encrypted server copy is not ours to
-    // overwrite, so a freshly linked device waits for the unlock instead of
-    // firing an upload that can only fail
+  function scheduleAutoSync(reason, opts) {
+    opts = opts || {};
+    var delayMs = typeof opts.delayMs === 'number' ? opts.delayMs : 1500;
+    if (typeof opts.retries === 'number') autoSyncRetries = opts.retries;
+    if (!linked() || !activeStore()) return;
     if (!/^[0-9]{4}$/.test(String(lsGet('portal_pin_v1') || ''))) return;
-    if (pushTimer) clearTimeout(pushTimer);
-    pushTimer = setTimeout(function () {
-      pushTimer = null;
-      if (!navigator.onLine || !linked() || !activeStore()) return;
-      pullOrPush().catch(function (e) {
-        try { console.warn('[sync] pushSoon pullOrPush failed:', (e && e.message) || e); } catch (x) { /* audit-ignore: best-effort console warn */ }
-      }).then(function () {
-        if (typeof global.PortalCloudUI === 'function') { try { global.PortalCloudUI(); } catch (e) {} }
-      });
-    }, 2000);
+
+    if (autoSyncTimer) clearTimeout(autoSyncTimer);
+    autoSyncTimer = setTimeout(async function () {
+      autoSyncTimer = null;
+      if (!navigator.onLine || !linked() || !activeStore()) {
+        markNeedsSync();
+        return;
+      }
+      try {
+        var res = await pullOrPush();
+        autoSyncRetries = 0;
+        if (typeof global.PortalCloudUI === 'function') {
+          try { global.PortalCloudUI(res); } catch (e) {}
+        }
+      } catch (err) {
+        markNeedsSync();
+        if (autoSyncRetries > 0) {
+          autoSyncRetries--;
+          var backoff = autoSyncRetries === 2 ? 3500 : (autoSyncRetries === 1 ? 8000 : 14000);
+          scheduleAutoSync('retry-' + (MAX_AUTO_RETRIES - autoSyncRetries), { delayMs: backoff });
+        }
+      }
+    }, delayMs);
+  }
+
+  function pushSoon() {
+    if (!linked() || !activeStore()) return;
+    if (!/^[0-9]{4}$/.test(String(lsGet('portal_pin_v1') || ''))) return;
+    if (!navigator.onLine) {
+      markNeedsSync();
+      return;
+    }
+    scheduleAutoSync('pushSoon', { delayMs: 1200, retries: 2 });
   }
 
   async function accountInfo() {
@@ -809,6 +862,9 @@
     integrate: integrate,
     captureLaunch: captureLaunch,
     pushSoon: pushSoon,
+    scheduleAutoSync: scheduleAutoSync,
+    needsSync: needsSync,
+    markNeedsSync: markNeedsSync,
     pullOrPush: pullOrPush,
     mergeBundles: mergeBundles,
     upload: upload,
