@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.3] — 2026-10-24
+
+### Changed
+- اعتماد أفاتار قياسي نظيف وحل تداخل لون الخلفية الصفراء لصور المستخدمين بدون صورة شخصية
+
+
 ## [1.7.2] — 2026-10-24
 
 ### Changed

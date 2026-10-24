@@ -1,5 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <rect width="96" height="96" rx="48" fill="#8b97a8" opacity="0.16"/>
-  <circle cx="48" cy="38" r="17" fill="#8b97a8"/>
-  <path d="M16 92a32 32 0 0 1 64 0Z" fill="#8b97a8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <style>
+    .av-bg { fill: #e2e8f0; }
+    .av-fg { fill: #64748b; }
+    @media (prefers-color-scheme: dark) {
+      .av-bg { fill: #334155; }
+      .av-fg { fill: #94a3b8; }
+    }
+  </style>
+  <circle cx="48" cy="48" r="48" class="av-bg"/>
+  <circle cx="48" cy="36" r="16" class="av-fg"/>
+  <path d="M48 56c-17.673 0-32 8.06-32 18v6a4 4 0 0 0 4 4h56a4 4 0 0 0 4-4v-6c0-9.94-14.327-18-32-18z" class="av-fg"/>
 </svg>

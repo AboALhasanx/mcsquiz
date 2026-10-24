@@ -554,8 +554,10 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   font-weight: 700;
   font-size: 1rem;
   color: var(--accent-ink);
-  background-color: var(--accent);
   border: 2px solid rgba(255, 255, 255, 0.14);
+}
+.podium-av:not(.avatar-default) {
+  background-color: var(--accent);
 }
 .podium-slot.p1 .podium-av { width: 62px; height: 62px; border-color: #d9a521; }
 .podium-slot.p2 .podium-av { border-color: #9aa6b8; }
@@ -612,8 +614,13 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
 }
 .league-row.is-top .league-rank { color: #d9a521; font-weight: 700; }
 .menu-avatar.avatar-default,
-.podium-av.avatar-default {
-  background: var(--bg-surface) url('../assets/avatar-default.svg') center / cover no-repeat;
+.podium-av.avatar-default,
+.player-avatar.avatar-default {
+  background-color: transparent !important;
+  background-image: url('../assets/avatar-default.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border: 1px solid var(--border-card);
 }
 .league-row .menu-avatar { width: 30px; height: 30px; font-size: 0.85rem; flex-shrink: 0; }
@@ -1415,11 +1422,8 @@ html[data-theme="light"] .danger-btn { color: #dc2626 !important; }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(217, 178, 106, 0.18);
-  border: 1px solid rgba(217, 178, 106, 0.35);
   background-size: cover;
   background-position: center;
-  color: #e8c887;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
@@ -1428,7 +1432,12 @@ html[data-theme="light"] .danger-btn { color: #dc2626 !important; }
   font-size: 1rem;
   overflow: hidden;
 }
-html[data-theme="light"] .menu-avatar {
+.menu-avatar:not(.avatar-default) {
+  background: rgba(217, 178, 106, 0.18);
+  border: 1px solid rgba(217, 178, 106, 0.35);
+  color: #e8c887;
+}
+html[data-theme="light"] .menu-avatar:not(.avatar-default) {
   background: #fef3c7;
   border: 1px solid #fde68a;
   color: #b45309;
