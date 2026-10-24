@@ -331,12 +331,15 @@
     var saved = {}, history = [], bests = {};
     try { saved = JSON.parse(localStorage.getItem(LS_SAVED) || '{}') || {}; } catch (e) {}
     try { history = JSON.parse(localStorage.getItem(LS_HISTORY) || '[]') || []; } catch (e) {}
-    try {
-      for (var i = 0; i < localStorage.length; i++) {
+    for (var i = 0; i < localStorage.length; i++) {
+      try {
         var k = localStorage.key(i);
-        if (k && k.indexOf(LS_BEST_PREFIX) === 0) bests[k] = JSON.parse(localStorage.getItem(k));
-      }
-    } catch (e) {}
+        if (k && k.indexOf(LS_BEST_PREFIX) === 0) {
+          var bv = JSON.parse(localStorage.getItem(k));
+          if (bv && typeof bv === 'object') bests[k] = bv;
+        }
+      } catch (e) {}
+    }
     // the timestamp of the last real change, not of this sync attempt: a device
     // that has been offline cannot overwrite newer data from another device
     var touched = 0;
@@ -451,11 +454,18 @@
   var keyCache = null;
 
   function b64(buf) {
-    var bytes = new Uint8Array(buf), out = '';
+    var bytes = new Uint8Array(buf);
+    if (typeof bytes.toBase64 === 'function') {
+      try { return bytes.toBase64(); } catch (e) {}
+    }
+    var out = '';
     for (var i = 0; i < bytes.length; i++) out += String.fromCharCode(bytes[i]);
     return btoa(out);
   }
   function unb64(str) {
+    if (typeof Uint8Array.fromBase64 === 'function') {
+      try { return Uint8Array.fromBase64(str).buffer; } catch (e) {}
+    }
     var bin = atob(str), out = new Uint8Array(bin.length);
     for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
     return out.buffer;
@@ -616,9 +626,12 @@
       });
     });
     var now = Date.now(), old = now - 30 * 86400000;
+    var maxFuture = now + 86400000; // max 24h ahead sanity cap against clock-skew poisoning
     Object.keys(saved).forEach(function (k) {
       var rm = Number(removed[k]) || 0;
       var at = Number(saved[k] && saved[k].savedAt) || 0;
+      if (rm > maxFuture) rm = now;
+      if (at > maxFuture) at = now;
       // a removal wins only when it is newer than the item itself: re-saving a
       // question after another device removed it must bring it back
       if (rm && rm >= at) { delete saved[k]; return; }
@@ -626,10 +639,11 @@
     });
     Object.keys(removed).forEach(function (k) {
       if (saved[k]) { delete removed[k]; return; }
-      if (Number(removed[k]) < old) delete removed[k];
+      if (Number(removed[k]) < old || Number(removed[k]) > maxFuture) delete removed[k];
     });
 
     var clearedAt = Math.max(Number(a.clearedAt) || 0, Number(b.clearedAt) || 0);
+    if (clearedAt > maxFuture) clearedAt = now;
     var seen = {}, hist = [];
     [a.history, b.history].forEach(function (arr) {
       (arr || []).forEach(function (h) {
@@ -660,35 +674,47 @@
     try { return JSON.stringify(a || null) === JSON.stringify(b || null); } catch (e) { return false; }
   }
 
+  var activeSyncPromise = null;
+
   async function pullOrPush() {
+    if (activeSyncPromise) return activeSyncPromise;
     if (!linked()) throw new Error('not-linked');
     if (!activeStore()) { markSync(); return { action: 'local-only' }; }
-    var remote = null;
-    try { remote = await download(); } catch (e) { remote = null; }
-    if (remote && remote.locked) {
-      // the server copy is encrypted and this device has no PIN yet: keep the
-      // local data and do not overwrite anything
-      return { action: 'needs-pin' };
-    }
-    var local = collectBundle();
-    if (!remote) {
-      if (localCount() > 0) {
-        try { await upload(local); return { action: 'uploaded-new' }; }
-        catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
+    syncing = true;
+    activeSyncPromise = (async function () {
+      try {
+        var remote = null;
+        try { remote = await download(); } catch (e) { remote = null; }
+        if (remote && remote.locked) {
+          // the server copy is encrypted and this device has no PIN yet: keep the
+          // local data and do not overwrite anything
+          return { action: 'needs-pin' };
+        }
+        var local = collectBundle();
+        if (!remote) {
+          if (localCount() > 0) {
+            try { await upload(local); return { action: 'uploaded-new' }; }
+            catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
+          }
+          markSync();
+          return { action: 'empty' };
+        }
+        // the two copies are merged, never swapped: neither device loses what the
+        // other added while they were apart
+        var merged = mergeBundles(local, remote);
+        applyBundle(merged);
+        if (!sameBundle(remote, merged)) {
+          try { await upload(merged); return { action: 'merged-uploaded' }; }
+          catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
+        }
+        markSync();
+        return { action: 'merged' };
+      } finally {
+        syncing = false;
+        activeSyncPromise = null;
       }
-      markSync();
-      return { action: 'empty' };
-    }
-    // the two copies are merged, never swapped: neither device loses what the
-    // other added while they were apart
-    var merged = mergeBundles(local, remote);
-    applyBundle(merged);
-    if (!sameBundle(remote, merged)) {
-      try { await upload(merged); return { action: 'merged-uploaded' }; }
-      catch (e) { if (String(e && e.message) === 'no-key') return { action: 'needs-pin' }; throw e; }
-    }
-    markSync();
-    return { action: 'merged' };
+    })();
+    return activeSyncPromise;
   }
 
   function pushSoon() {
@@ -700,10 +726,10 @@
     if (pushTimer) clearTimeout(pushTimer);
     pushTimer = setTimeout(function () {
       pushTimer = null;
-      if (syncing || !navigator.onLine || !linked() || !activeStore()) return;
-      syncing = true;
-      upload().catch(function (e) { try { console.warn('[sync] upload failed:', (e && e.message) || e); } catch (x) {} }).then(function () {
-        syncing = false;
+      if (!navigator.onLine || !linked() || !activeStore()) return;
+      pullOrPush().catch(function (e) {
+        try { console.warn('[sync] pushSoon pullOrPush failed:', (e && e.message) || e); } catch (x) { /* audit-ignore: best-effort console warn */ }
+      }).then(function () {
         if (typeof global.PortalCloudUI === 'function') { try { global.PortalCloudUI(); } catch (e) {} }
       });
     }, 2000);
@@ -784,6 +810,7 @@
     captureLaunch: captureLaunch,
     pushSoon: pushSoon,
     pullOrPush: pullOrPush,
+    mergeBundles: mergeBundles,
     upload: upload,
     download: download,
     lastSync: lastSync,

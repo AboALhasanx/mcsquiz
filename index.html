@@ -24,9 +24,9 @@
     <link rel="icon" type="image/png" href="assets/brand-icon-light.png">
     <link rel="preload" href="assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
     <script src="js/lucide.min.js" defer></script>
-    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/quiz.css?v=1.7.1">
     <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/portal.css?v=1.7.1">
     <link rel="stylesheet" href="js/vendor/katex/katex.min.css">
 </head>
 <body id="quiz-root">
@@ -91,10 +91,19 @@
                 </div>
             </div>
         </header>
+
+        <div id="offline-banner" class="offline-banner hidden" role="status" aria-live="polite">
+            <i data-lucide="wifi-off" class="offline-banner-icon"></i>
+            <span>وضع بدون إنترنت — يعمل التطبيق محلياً</span>
+        </div>
         <script>
         // first paint: show the header that matches the URL at once, so a quiz
         // refresh never flashes the catalogue bar before the app boots
         try {
+            if (navigator.onLine === false) {
+                var __b = document.getElementById('offline-banner');
+                if (__b) __b.classList.remove('hidden');
+            }
             var __h = location.hash || '';
             var __s = /^#\/quiz\//.test(__h) || __h.indexOf('#/practice') === 0;
             var __c = document.getElementById('header-catalog-view');
@@ -338,7 +347,7 @@
 
                 <div id="stats-empty" class="stats-empty hidden">
                     <i data-lucide="chart-no-axes-column"></i>
-                    <p>ما في محاولات بعد — ابدأ أول كوز، ونتائجك تتحرك هنا.</p>
+                    <p>لا توجد محاولات بعد — ابدأ أول اختبار لتظهر نتائجك هنا.</p>
                 </div>
 
                 <div class="stats-range" role="group" aria-label="الفترة">
@@ -618,7 +627,7 @@
                         <i data-lucide="moon" id="menu-theme-icon"></i>
                         <span id="menu-theme-label" class="menu-item-label">المظهر: داكن</span>
                     </button>
-                    <button id="menu-debug" class="menu-item" type="button">
+                    <button id="menu-debug" class="menu-item hidden" type="button" aria-hidden="true">
                         <i data-lucide="activity"></i>
                         <span class="menu-item-label">التشخيص والسجل</span>
                     </button>
@@ -659,7 +668,7 @@
                 </div>
                 <label class="auth-label" for="login-handle">اسم المستخدم (لا يتغيّر لاحقاً)</label>
                 <input id="login-handle" class="auth-input" maxlength="20" dir="ltr" inputmode="latin"
-                       autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="hasan1" autocomplete="username">
+                       autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="مثال: hasan1" autocomplete="username">
                 <label class="auth-label" for="login-pin">رمز الدخول (4 أرقام)</label>
                 <input id="login-pin" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric"
                        pattern="[0-9]{4}" placeholder="••••" autocomplete="current-password">
@@ -685,7 +694,7 @@
                     </button>
                 </div>
                 <div id="notif-list" class="notif-list"></div>
-                <p id="notif-empty" class="notif-empty hidden">ما في تنبيهات جديدة — كل شي محدّث.</p>
+                <p id="notif-empty" class="notif-empty hidden">لا توجد تنبيهات جديدة — كل شيء محدّث.</p>
             </div>
         </div>
 
@@ -696,7 +705,7 @@
                 <!-- A) this device is new: it waits, the signed-in device approves -->
                 <div id="link-generate">
                     <ol class="link-steps">
-                        <li>افتح البوابة على الجهاز اللي عليه حسابك.</li>
+                        <li>افتح البوابة على الجهاز الذي يحمل حسابك.</li>
                         <li>القائمة ← حسابي ← «ربط جهاز آخر».</li>
                         <li>امسح الرمز بالكاميرا أو اكتب الأرقام.</li>
                     </ol>
@@ -773,7 +782,7 @@
         <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
 
         <!-- Guided tour overlay (custom spotlight, offline-safe) -->
-        <div id="tour-overlay" class="tour-overlay hidden" aria-hidden="true">
+        <div id="tour-overlay" class="tour-overlay hidden" aria-hidden="true" inert>
             <div class="tour-shade" id="tour-shade-top"></div>
             <div class="tour-shade" id="tour-shade-bottom"></div>
             <div class="tour-shade" id="tour-shade-left"></div>

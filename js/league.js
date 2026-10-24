@@ -251,7 +251,13 @@
         xp: xp, answered: Number(x.answered) || 0, per_subject: x.per_subject || {}, updated_at: x.updated_at,
       };
     });
-    if (subjectId) rows.sort(function (a, b) { return b.xp - a.xp; });
+    rows.sort(function (a, b) {
+      if (b.xp !== a.xp) return b.xp - a.xp;
+      var accA = a.answered > 0 ? (a.xp / a.answered) : 0;
+      var accB = b.answered > 0 ? (b.xp / b.answered) : 0;
+      if (accB !== accA) return accB - accA;
+      return String(a.updated_at || '').localeCompare(String(b.updated_at || ''));
+    });
     rows.forEach(function (x, i) { x.rank = i + 1; });
     return rows;
   }

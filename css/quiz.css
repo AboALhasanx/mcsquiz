@@ -612,6 +612,11 @@ input:focus, textarea:focus {
     color: var(--text-subtle);
 }
 
+.timer-unified-pill .timer-icon rect,
+.timer-unified-pill .timer-icon polygon {
+    fill: currentColor;
+}
+
 .timer-unified-pill:hover {
     border-color: var(--border-focus);
 }
@@ -770,6 +775,12 @@ input:focus, textarea:focus {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    text-decoration: none !important;
+}
+
+#info-sheet-start,
+.info-sheet-start {
+    text-decoration: none !important;
 }
 
 /* Timer Pause Button & States */
@@ -944,46 +955,105 @@ button.timer-unified-pill.is-paused {
     gap: 0.45rem;
 }
 
+@media (orientation: landscape) {
+    .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    .question-card {
+        padding: 0.75rem 0.85rem;
+    }
+    .bottom-nav {
+        padding: 4px 12px;
+        padding-bottom: max(4px, env(safe-area-inset-bottom));
+    }
+    .nav-btn.full-width-btn {
+        min-height: 40px;
+    }
+}
+
 .option-tile {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.65rem;
-    min-height: 40px;
-    padding: 0.5rem 0.75rem;
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
     border: 1.5px solid var(--border-subtle) !important;
     border-radius: var(--radius-md);
     cursor: pointer;
     text-align: left;
     color: var(--text-main);
-    transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+    position: relative;
+    box-shadow: 0 3.5px 0 0 rgba(255, 255, 255, 0.14);
+    transition: transform 0.08s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.08s cubic-bezier(0.2, 0, 0, 1), background-color var(--transition-fast), border-color var(--transition-fast);
     user-select: none;
 }
 
-.option-tile:hover {
-    background: var(--bg-tile-hover) !important;
-    border-color: var(--border-focus) !important;
+[data-theme="light"] .option-tile {
+    box-shadow: 0 3.5px 0 0 #cbd5e1;
 }
 
-.option-tile:hover {
-    background-color: var(--bg-card-hover);
-    border-color: var(--border-focus);
-}
-
+/* Duolingo 3D Pressed State */
 .option-tile:active {
-    transform: scale(0.99);
+    transform: translateY(3.5px);
+    box-shadow: 0 0 0 0 transparent !important;
+}
+
+/* Duolingo Post-Selection Micro-Animations */
+@keyframes duo-pop {
+    0% { transform: scale(0.96) translateY(3px); }
+    50% { transform: scale(1.025) translateY(-2px); }
+    100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes duo-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+}
+
+@keyframes duo-badge-bounce {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.18); }
+    100% { transform: scale(1); }
 }
 
 /* Recitation Mode Feedback */
 .option-tile.correct-answer {
     background-color: var(--success-bg) !important;
     border-color: var(--success) !important;
-    box-shadow: 0 0 0 1px var(--success);
+    box-shadow: 0 3.5px 0 0 var(--success) !important;
+    animation: duo-pop 0.36s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
+}
+
+.option-tile.correct-answer .option-letter {
+    background-color: var(--success) !important;
+    border-color: var(--success) !important;
+    color: #FFFFFF !important;
+    animation: duo-badge-bounce 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
 }
 
 .option-tile.user-wrong {
     background-color: var(--error-bg) !important;
     border-color: var(--error) !important;
-    box-shadow: 0 0 0 1px var(--error);
+    box-shadow: 0 3.5px 0 0 var(--error) !important;
+    animation: duo-shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
+}
+
+.option-tile.user-wrong .option-letter {
+    background-color: var(--error) !important;
+    border-color: var(--error) !important;
+    color: #FFFFFF !important;
+    animation: duo-badge-bounce 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
+}
+
+.option-tile.selected {
+    transform: translateY(2px);
+    border-color: var(--accent) !important;
+    box-shadow: 0 1.5px 0 0 var(--accent) !important;
 }
 
 .options-grid.locked {
@@ -997,6 +1067,7 @@ button.timer-unified-pill.is-paused {
     width: 28px;
     height: 28px;
     min-width: 28px;
+    margin-top: 1px;
     border-radius: var(--radius-sm);
     background-color: var(--letter-bg) !important;
     border: 1px solid var(--letter-border) !important;
@@ -1004,6 +1075,7 @@ button.timer-unified-pill.is-paused {
     font-size: 0.8rem;
     color: var(--letter-text) !important;
     transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+    flex-shrink: 0;
 }
 
 .option-tile.correct-answer .option-letter {
@@ -1029,7 +1101,8 @@ button.timer-unified-pill.is-paused {
     font-size: 0.925rem;
     font-weight: 500;
     color: var(--text-main);
-    line-height: 1.4;
+    line-height: 1.5;
+    padding-top: 2px;
     word-break: normal;
     overflow-wrap: break-word;
     unicode-bidi: plaintext;
@@ -1472,11 +1545,13 @@ button.timer-unified-pill.is-paused {
 }
 
 .review-card.correct-border {
-    border: 1.5px solid var(--success-border);
+    border: 1px solid var(--border-card);
+    border-inline-start: 4.5px solid var(--success-border);
 }
 
 .review-card.wrong-border {
-    border: 1.5px solid var(--error-border);
+    border: 1px solid var(--border-card);
+    border-inline-start: 4.5px solid var(--error-border);
 }
 
 .review-card-header {
@@ -1896,6 +1971,7 @@ input:checked + .slider::before {
         width: 100% !important;
         max-width: 100% !important;
         max-height: 85vh !important;
+        padding-bottom: max(1.2rem, env(safe-area-inset-bottom, 1.2rem)) !important;
         border-left: none !important;
         border-right: none !important;
         border-top: 1px solid var(--border-card) !important;
@@ -1906,6 +1982,16 @@ input:checked + .slider::before {
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s !important;
         visibility: hidden !important;
         z-index: 100 !important;
+    }
+    .drawer::before {
+        content: '';
+        display: block;
+        width: 38px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--border-card);
+        margin: 0.55rem auto 0;
+        flex: 0 0 auto;
     }
 
     .drawer.open,
@@ -2173,7 +2259,9 @@ body:has(.quiz-start-card:not(.hidden)) .progress-section,
 body:has(#deck-catalog:not(.hidden)) .topic-banner,
 body:has(#deck-catalog:not(.hidden)) .progress-section,
 body:has(.deck-catalog:not(.hidden)) .topic-banner,
-body:has(.deck-catalog:not(.hidden)) .progress-section {
+body:has(.deck-catalog:not(.hidden)) .progress-section,
+body:has(#results-view:not(.hidden)) .topic-banner,
+body:has(#results-view:not(.hidden)) .progress-section {
     display: none !important;
 }
 
@@ -2450,8 +2538,11 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 .sketch-score-label {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #34d399;
+    color: #10b981;
 }
+.sketch-score-label.good { color: #10b981; }
+.sketch-score-label.mid { color: #f59e0b; }
+.sketch-score-label.bad { color: #f43f5e; }
 
 /* Right Cell: Direct Play Button (▷) as drawn in sketch */
 .sketch-play-cell {
@@ -3561,6 +3652,10 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
     var(--bg-card);
   border: 1px solid var(--border-card);
 }
+html[data-theme="light"] .stats-hero {
+  background: var(--bg-card);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 .stats-hero-main { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; min-width: 0; }
 .stats-hero-label { font-size: 0.74rem; font-weight: 700; color: var(--text-muted); }
 .stats-hero-value {
@@ -3642,6 +3737,9 @@ body:has(.deck-catalog:not(.hidden)) .progress-section {
 .trend-bar.good { background: #34d399; }
 .trend-bar.ok { background: var(--accent); }
 .trend-bar.low { background: #f87171; }
+html[data-theme="light"] .trend-bar.good { background: #059669; }
+html[data-theme="light"] .trend-bar.ok { background: #d97706; }
+html[data-theme="light"] .trend-bar.low { background: #dc2626; }
 .trend-val {
   font-size: 0.62rem;
   font-weight: 800;

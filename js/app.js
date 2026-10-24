@@ -149,7 +149,7 @@
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
-    $('quiz-session-topbar').style.display = (inQuiz || viewId === 'results-view') ? 'block' : 'none';
+    $('quiz-session-topbar').style.display = inQuiz ? 'block' : 'none';
     // the question grid is meaningless before the quiz starts
     const matrixBtn = $('btn-open-matrix');
     if (matrixBtn) matrixBtn.style.display = (viewId === 'quiz-view') ? '' : 'none';
@@ -363,7 +363,7 @@
         // a missing bank from the portal must not kill the whole boot: keep the
         // cached copy if there is one
         if (cached && cached.b) { S.banks[ch.quiz_id] = cached.b; return; }
-        throw e;
+        dbg('bank load failed (isolated):', ch.quiz_id, (e && e.message) || e);
       }));
     }));
     if (jobs.length) {
@@ -401,7 +401,6 @@
     S.freshChapters = freshChapters;
     setTimeout(notifyNewContent, 1200);
     dbg('data loaded in ms:', Math.round(performance.now() - t0), 'banks:', Object.keys(S.banks), 'fresh:', freshChapters.length);
-    if (DEBUG) $('debug-panel').classList.remove('hidden');
   }
 
   function validateBank(b) {
@@ -767,7 +766,7 @@
           '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '">' + escapeHtml(title) + '</div>' +
           '<div class="sketch-meta-line">' +
             '<span class="sketch-count-tag">' + qCount(bank.questions.length) + '</span>' +
-            (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label">' + Math.round(best.pct) + '%</span>' : '') +
+            (best ? '<span class="sketch-meta-dot">·</span><span class="sketch-score-label ' + pctClass(best.pct) + '">' + Math.round(best.pct) + '%</span>' : '') +
           '</div></a>' +
         '<a href="#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id) + '" class="sketch-cell sketch-play-cell" aria-label="بدء الكوز مباشرة"><i data-lucide="play"></i></a>';
       row.querySelector('.row-info-cell').addEventListener('click', () => openInfo(sub, ch, bank));
@@ -862,7 +861,7 @@
     let snap = null;
     try { snap = JSON.parse(sessionStorage.getItem(SNAP_KEY) || 'null'); } catch (e) {}
     if (!snap || !Array.isArray(snap.questions) || !snap.questions.length) return false;
-    if (hash !== snap.hash) return false;
+    if (String(hash || '').replace(/\/$/, '') !== String(snap.hash || '').replace(/\/$/, '')) return false;
     if (quizId && snap.ch && snap.ch.quiz_id !== quizId) return false;
     if (Date.now() - Number(snap.at || 0) > 6 * 60 * 60 * 1000) { clearSessionSnapshot(); return false; }
     S.session = {
@@ -948,7 +947,7 @@
   }
 
   function startSession(subjectId, quizId, wrongOnlyFrom) {
-    const sub = (S.index.subjects || []).find((s) => s.subject_id === subjectId);
+    const sub = (S.index && S.index.subjects || []).find((s) => s.subject_id === subjectId);
     const ch = sub && (sub.chapters || []).find((c) => c.quiz_id === quizId);
     const bank = S.banks[quizId];
     if (!sub || !ch || !bank) { showError('لم يتم العثور على الكوز المطلوب.'); return; }
@@ -976,17 +975,18 @@
   // Practice session built from saved-question snapshots (device-local).
   function startSavedPractice(items, title, chapterLabel) {
     if (!items.length) return;
-    const pool = items.map((it) => JSON.parse(JSON.stringify(it.snapshot)));
-    const first = items[0].origin;
+    const pool = items.map((it) => JSON.parse(JSON.stringify(it.snapshot || it)));
+    const first = (items[0] && items[0].origin) || {};
     launchSession(pool, {
-      subjectId: first.subjectId, subjectTitle: first.subjectTitle,
-      chapterNo: first.chapterNo, chapterLabel: chapterLabel,
+      subjectId: first.subjectId || 'saved', subjectTitle: first.subjectTitle || 'الأسئلة المحفوظة',
+      chapterNo: first.chapterNo !== undefined ? first.chapterNo : 1, chapterLabel: chapterLabel,
       topic: title,
       quizId: null, retryWrong: false,
       replay: { type: 'saved', keys: items.map((it) => it.key) },
     });
     S.session.hash = '#/practice';
     if (location.hash !== '#/practice') location.hash = '#/practice';
+    saveSessionSnapshot();
   }
 
   // ---------------- saved questions (device-local) ----------------
@@ -1029,7 +1029,7 @@
     const b = $('saved-count-badge');
     if (!b) return;
     const n = Object.keys(S.saved).length;
-    b.textContent = n;
+    b.textContent = n > 99 ? '99+' : n;
     b.classList.toggle('hidden', n === 0);
     updateMenuCounts();
   }
@@ -1039,10 +1039,15 @@
     const bySub = {};
     Object.keys(S.saved).forEach((key) => {
       const it = S.saved[key];
-      const o = it.origin;
-      bySub[o.subjectId] = bySub[o.subjectId] || { subjectId: o.subjectId, subjectTitle: o.subjectTitle, chapters: {} };
-      const ch = bySub[o.subjectId].chapters[o.chapterNo] = bySub[o.subjectId].chapters[o.chapterNo] || { chapterNo: o.chapterNo, topic: o.topic, items: [] };
-      ch.items.push({ key: key, origin: o, snapshot: it.snapshot });
+      if (!it) return;
+      const o = it.origin || {};
+      const sid = o.subjectId || it.sub || it.subjectId || 'other';
+      const stitle = o.subjectTitle || it.subjectTitle || (S.index && S.index.subjects && S.index.subjects.find((s) => s.subject_id === sid) ? S.index.subjects.find((s) => s.subject_id === sid).subject_title : 'أسئلة عامة');
+      const cno = o.chapterNo !== undefined ? o.chapterNo : (it.chapterNo !== undefined ? it.chapterNo : 1);
+      const topic = o.topic || it.topic || '';
+      bySub[sid] = bySub[sid] || { subjectId: sid, subjectTitle: stitle, chapters: {} };
+      const ch = bySub[sid].chapters[cno] = bySub[sid].chapters[cno] || { chapterNo: cno, topic: topic, items: [] };
+      ch.items.push({ key: key, origin: o, snapshot: it.snapshot || it });
     });
     return Object.keys(bySub).map((sid) => ({
       subjectId: sid, subjectTitle: bySub[sid].subjectTitle,
@@ -1160,7 +1165,6 @@
       'اختبار محفوظ ' + sub.subjectTitle + ' ' + 'جابتر ' + c.chapterNo,
       'جابتر ' + c.chapterNo + ' (' + c.items.length + ' أسئلة)'
     ));
-    head.appendChild(train);
     const chExp = document.createElement('button');
     chExp.type = 'button';
     chExp.className = 'icon-btn saved-expand-btn' + (S.savedChapterOpen === c.chapterNo ? ' open' : '');
@@ -1172,7 +1176,11 @@
       saveUI();
       renderSaved();
     });
-    head.appendChild(chExp);
+    const groupActions = document.createElement('div');
+    groupActions.className = 'saved-group-actions';
+    groupActions.appendChild(train);
+    groupActions.appendChild(chExp);
+    head.appendChild(groupActions);
     wrap.appendChild(head);
     if (S.savedChapterOpen !== c.chapterNo) { box.appendChild(wrap); icons(); return; }
     c.items.forEach((it) => {
@@ -1228,6 +1236,7 @@
 
   function beginAnswering() {
     const ses = S.session;
+    if (!ses) return;
     ses.started = true;
     show('quiz-view');
     updateSaveBtn();
@@ -1528,6 +1537,16 @@
       explBody.innerHTML = richHtml(expl);
       explBody.setAttribute('dir', 'auto');
       setExplOpen(boxEl, explToggle, explBody, wasWrong);
+      if (wasWrong) {
+        requestAnimationFrame(() => {
+          const bnav = document.querySelector('.bottom-nav');
+          const navH = bnav ? bnav.offsetHeight : 0;
+          const rect = boxEl.getBoundingClientRect();
+          if (rect.bottom > window.innerHeight - navH - 10) {
+            window.scrollBy({ top: rect.bottom - (window.innerHeight - navH - 10), behavior: 'smooth' });
+          }
+        });
+      }
     }
     if (ses.idx === ses.questions.length - 1) {
       $('next-btn-text').textContent = 'إنهاء الكوز';
@@ -1597,6 +1616,7 @@
         if (ses.pauseStart) { toast('الكوز متوقف مؤقتاً — اضغط استئناف للمتابعة'); return; }
         if (i > ses.maxIdx) { toast('أجب بالترتيب — لا يمكن القفز للأمام'); return; }
         ses.idx = i; ses.qStart = Date.now(); renderQuestion(); renderMatrix(); closeDrawers();
+        saveSessionSnapshot();
       });
       grid.appendChild(c);
     });
@@ -1616,6 +1636,10 @@
     show('results-view');
     window.scrollTo(0, 0);
     dbg('result:', res);
+    if (S.pendingReload) {
+      toast('تحديث جديد متوفر — جارٍ التحديث…', 'info');
+      setTimeout(() => location.reload(), 1800);
+    }
   }
 
   function recordHistory(ses, res) {
@@ -1660,12 +1684,15 @@
   }
   function collectBests() {
     const out = {};
-    try {
-      for (let i = 0; i < localStorage.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
+      try {
         const k = localStorage.key(i);
-        if (k && k.indexOf('portal_best_') === 0) out[k] = JSON.parse(localStorage.getItem(k));
-      }
-    } catch (e) {}
+        if (k && k.indexOf('portal_best_') === 0) {
+          const bv = JSON.parse(localStorage.getItem(k));
+          if (bv && typeof bv === 'object') out[k] = bv;
+        }
+      } catch (e) {}
+    }
     return out;
   }
 
@@ -1796,8 +1823,8 @@
     box.innerHTML = '';
     const cards = [
       ['check', totQ + ' / ' + totTried, 'إجابات صحيحة'],
-      ['target', n ? (Math.round(avg * 10) / 10) + '%' : '—', 'متوسط النتائج'],
-      ['award', n ? best + '%' : '—', 'أفضل نتيجة'],
+      ['target', totTried ? Math.round((totQ / totTried) * 100) + '%' : '—', 'دقة الإجابات'],
+      ['award', H.filter((h) => (h.pct || 0) >= 60).length + ' من ' + n, 'اختبارات ناجحة'],
       ['clock', fmtDur(totSecs), 'زمن المذاكرة'],
     ];
     cards.forEach(([icon, val, label]) => {
@@ -1814,12 +1841,12 @@
     trend.innerHTML = '';
     const last = H.slice(-12);
     if (!last.length) {
-      trend.innerHTML = '<div class="trend-empty">ما في محاولات بهذه الفترة</div>';
+      trend.innerHTML = '<div class="trend-empty">لا توجد محاولات في هذه الفترة</div>';
     } else {
       const bars = last.map((h) => {
         const pct = Math.max(0, Math.min(100, h.pct || 0));
         return '<div class="trend-col" title="' + escapeHtml((h.topic || '') + ' · ' + h.pct + '%') + '">' +
-          '<span class="trend-val" dir="ltr">' + h.pct + '</span>' +
+          '<span class="trend-val" dir="ltr">' + Math.round(h.pct) + '%</span>' +
           '<div class="trend-bar ' + statsBand(h.pct) + '" style="height:' + Math.max(6, pct) + '%"></div>' +
           '<span class="trend-day">' + escapeHtml(shortDay(h.t)) + '</span>' +
           '</div>';
@@ -1841,7 +1868,7 @@
       } else if (prev.length) {
         txt = 'نتائجك على نفس المستوى عن الفترة السابقة.';
       } else {
-        txt = 'ما في محاولة سابقة بنفس الفترة — أول محاولة جديدة تكفي للمقارنة.';
+        txt = 'لا توجد محاولة سابقة في الفترة نفسها — محاولة إضافية تكفي للمقارنة.';
       }
       if (streak >= 2) txt += ' وعندك سلسلة ' + streak + ' أيام متتالية.';
     }
@@ -1852,7 +1879,9 @@
     subs.innerHTML = '';
     const bySub = {};
     H.forEach((h) => {
-      (bySub[h.subjectId] = bySub[h.subjectId] || { title: h.subjectTitle, rows: [] }).rows.push(h);
+      const sid = h.subjectId || h.sub || 'other';
+      const stitle = h.subjectTitle || h.title || 'مادة عامة';
+      (bySub[sid] = bySub[sid] || { title: stitle, rows: [] }).rows.push(h);
     });
     Object.keys(bySub).sort((a, b) => {
       const av = (g) => g.rows.reduce((x, h) => x + (h.pct || 0), 0) / g.rows.length;
@@ -2015,6 +2044,8 @@
     const actualWrong = ses.picks.filter((p, i) => p !== null && p !== undefined && p !== ses.questions[i].correct).length;
     $('filter-count-wrong').textContent = actualWrong;
     $('filter-count-correct').textContent = res.correct;
+    const btnWrong = $('btn-retry-wrong');
+    if (btnWrong) btnWrong.style.display = actualWrong > 0 ? '' : 'none';
 
     const list = $('review-cards-list');
     list.innerHTML = '';
@@ -2038,8 +2069,9 @@
         '<div class="review-q-meta"><span class="review-q-num">سؤال ' + (i + 1) + '</span>' +
         '<span class="review-status-tag ' + verdict + '">' +
         '<i data-lucide="' + statusIcon + '"></i><span>' + statusWord + '</span></span></div>' +
-        '<span class="review-dwell-tag" dir="ltr"><i data-lucide="clock"></i><span>' + dwellSec + 's</span></span>';
-      card.appendChild(header);
+        '<div class="review-header-actions">' +
+        '<span class="review-dwell-tag" dir="ltr"><i data-lucide="clock"></i><span>' + dwellSec + 's</span></span>' +
+        '</div>';
 
       stemPair(q).forEach((sp, si) => {
         const stem = document.createElement('p');
@@ -2088,7 +2120,7 @@
         card.appendChild(exp);
       }
 
-      // save / unsave straight from the review list
+      // save / unsave straight from the review header
       if (q.origin) {
         const key = saveKeyOf(q.origin, q.id);
         const saveBtn = document.createElement('button');
@@ -2109,8 +2141,10 @@
           setState();
           toast(S.saved[key] ? 'تم حفظ السؤال' : 'أُزيل من المحفوظة', S.saved[key] ? 'success' : 'info');
         });
-        card.appendChild(saveBtn);
+        const ha = header.querySelector('.review-header-actions');
+        if (ha) ha.appendChild(saveBtn);
       }
+      card.appendChild(header);
       list.appendChild(card);
     });
     filterReview('all');
@@ -2129,8 +2163,22 @@
     });
   }
 
+  function closeOpenModals() {
+    let closed = false;
+    document.querySelectorAll('.modal-overlay:not(.hidden)').forEach((m) => {
+      if (m.id === 'leave-modal') return;
+      m.classList.add('hidden');
+      m.setAttribute('aria-hidden', 'true');
+      closed = true;
+    });
+    return closed;
+  }
+
   // ---------------- routing ----------------
   function route() {
+    closeOpenModals();
+    closeDrawers();
+    if (!S.index) return;
     const h = location.hash;
     const m = h.match(/^#\/quiz\/([^/]+)\/([^/]+)$/);
     if (h === '#/saved' || h === '#/saved/') {
@@ -2165,8 +2213,8 @@
       if (S.session && !S.session.finished && !S.session.ch.quiz_id) {
         show(S.session.started ? 'quiz-view' : 'quiz-start-view');
         window.scrollTo(0, 0);
-      } else {
-        location.hash = '';
+      } else if (!restoreSessionSnapshot(h, null)) {
+        location.hash = '#/saved';
       }
     } else if (m) {
       const qz = decodeURIComponent(m[2]);
@@ -2187,9 +2235,9 @@
 
   // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
   const TOUR_STEPS = [
-    { title: 'MCSQuiz — جولة كاملة', body: 'كل شي بالبوابة: المواد والكوزات والنتيجة والمحفوظ والإحصائيات والدوري. جولة قصيرة، تقدر تطلع منها بأي وقت.', center: true },
+    { title: 'MCSQuiz — جولة تعريفية', body: 'دليل شامل للبوابة: المواد، الاختبارات، النتيجة، المحفوظات، الإحصائيات، والدوري. يمكنك إنهاء الجولة في أي وقت.', center: true },
 
-    { title: 'أزرار الهيدر', body: 'الجرس للتنبيهات (يطلع رقم لما تنزل أسئلة جديدة)، بعدها المحفوظات وتبديل المظهر والقائمة — والشعار يرجّعك للرئيسية.', target: '.header-catalog-actions' },
+    { title: 'أزرار الشريط العلوي', body: 'الجرس للتنبيهات (يظهر إشعار عند نزول أسئلة جديدة)، ثم المحفوظات وتبديل المظهر والقائمة — والشعار يعيدك للرئيسية.', target: '.header-catalog-actions' },
 
     { title: 'القائمة الجانبية', body: 'المحفوظ والإحصائيات والدوري، وتثبيت التطبيق والنسخة بدون إنترنت، والصوت والمظهر.', open: 'menu', target: '#menu-drawer .menu-list' },
 
@@ -2201,35 +2249,35 @@
 
     { title: 'صف الكوز', body: 'زر التشغيل يبدأ الكوز فوراً، وأيقونة (i) تعرض عدد الأسئلة وأفضل نتيجة.', target: '#deck-catalog .sketch-row:first-child' },
 
-    { title: 'نجرّب كوز', body: 'سنفتح أول كوز حتى تشوف كل شي عملي.', center: true, go: true },
+    { title: 'تجربة اختبار', body: 'سنفتح الاختبار الأول لمعاينة تجربة الحل عملياً.', center: true, go: true },
 
     { title: 'البداية', body: 'هنا عدد الأسئلة والوقت المتوقع. المؤقت يبدأ عند الضغط.', target: '#btn-start-quiz', action: 'start' },
 
     { title: 'الحفظ', body: 'زر الحفظ أعلى البطاقة — يضيف السؤال إلى المحفوظات.', target: '#btn-save-question' },
 
-    { title: 'زر الترجمة', body: 'أيقونة الترجمة ثابتة بالشريط الأعلى بكل الشاشات: صفراء يعني عربي، وبيضاء مثل بقية الأيقونات يعني English. تبدّل السؤال والخيارات والشرح.', target: '#lang-toggle-session' },
+    { title: 'زر الترجمة', body: 'أيقونة الترجمة ثابتة في الشريط العلوي: باللون الذهبي للعربية، والقياسي للإنجليزية. تبدّل لغة السؤال والخيارات والشرح.', target: '#lang-toggle-session' },
 
-    { title: 'أجب', body: 'اختر إجابة — ما فيه زر تخطي. لازم تجاوب حتى تنتقل.', target: '#options-container', action: 'answer' },
+    { title: 'أجب', body: 'اختر إجابة — لا يوجد زر تخطٍ؛ يلزم تحديد خيار للانتقال.', target: '#options-container', action: 'answer' },
 
     { title: 'الشرح فوراً', body: 'بعد الإجابة يظهر الشرح بالعربي تحت الخيارات.', target: '#live-feedback-box' },
 
-    { title: 'التالي', body: 'ينتقل بعد الإجابة فقط، وبآخر سؤال ينهي الكوز ويحسب النتيجة.', target: '#btn-next' },
+    { title: 'التالي', body: 'ينتقل بعد الإجابة فقط، ومع السؤال الأخير يُنهي الاختبار ويحسب النتيجة.', target: '#btn-next' },
 
     { title: 'جدول الأسئلة', body: 'هذا الزر يفتح خريطة الأسئلة.', target: '#btn-open-matrix' },
 
-    { title: 'خريطة الأسئلة', body: 'الصحيح والخطأ، وتقفز للأسئلة السابقة فقط. الكوز ينهي نفسه تلقائياً بعد آخر سؤال.', open: 'matrix', target: '#matrix-drawer .matrix-grid' },
+    { title: 'خريطة الأسئلة', body: 'توضح الإجابات الصحيحة والخاطئة مع إمكانية مراجعة الأسئلة السابقة. يُنهى الاختبار تلقائياً بعد آخر سؤال.', open: 'matrix', target: '#matrix-drawer .matrix-grid' },
 
-    { title: 'شاشة النتيجة', body: 'عرض حقيقي للنتيجة: النسبة، الصحيحة/الخاطئة/لم تُجب، الزمن، ثم مراجعة كل سؤال. السهم يفتح الشرح، وتقدر تحفظ أي سؤال من هنا، والترجمة من الشريط العلوي.', demo: 'results', target: '.results-card' },
+    { title: 'شاشة النتيجة', body: 'عرض تفصيلي للنتيجة: النسبة، الإجابات، الزمن، ومراجعة لكل سؤال مع الشرح وإمكانية حفظ أي سؤال، والترجمة من الشريط العلوي.', demo: 'results', target: '.results-card' },
 
-    { title: 'المحفوظات', body: 'كل سؤال حفظته، مقسم مادة ثم جابتر. كل جابتر عنده زر اختبار، وفيه اختبار لكل المادة.', center: true, route: '#/saved' },
+    { title: 'المحفوظات', body: 'الأسئلة المحفوظة مقسمة حسب المادة والفصل، مع خيار بدء اختبار للفصل أو المادة كاملة.', center: true, route: '#/saved' },
 
     { title: 'الإحصائيات', body: 'أرقامك العامة، متوسط كل مادة، سجل المحاولات، ونسخة احتياطية/استعادة/مسح.', center: true, route: '#/stats' },
 
     { title: 'الدوري الأسبوعي', body: 'ترتيب أسبوعي بالإجابات الصحيحة مع نسبة الدقة. زر «ظاهر» يخفي اسمك أو يرجعه.', target: '#league-view .league-head', route: '#/league' },
 
-    { title: 'شارك ترتيبك', body: 'بطاقة صورة جاهزة: ترتيبك، أعلى ثلاثة، والدقة — تنزلها أو تشاركها بضغطة.', target: '#btn-league-share' },
+    { title: 'شارك ترتيبك', body: 'بطاقة مشاركة مصممة تتضمن ترتيبك وأفضل النتائج والدقة لتنزيلها أو مشاركتها.', target: '#btn-league-share' },
 
-    { title: 'خلصت الجولة', body: 'تعيدها من القائمة الجانبية ← إعادة الجولة التعليمية. والتطبيق يشتغل بدون إنترنت بعد أول زيارة.', center: true },
+    { title: 'انتهت الجولة', body: 'يمكنك إعادتها من القائمة الجانبية ← «إعادة الجولة التعليمية». يعمل التطبيق بدون إنترنت بعد الزيارة الأولى.', center: true },
   ];
 
   let tourIdx = -1;
@@ -2316,6 +2364,7 @@
     }
     ov.classList.remove('hidden');
     ov.setAttribute('aria-hidden', 'false');
+    ov.removeAttribute('inert');
     ov.classList.toggle('tour-dim-light', !!st.center);
     const icon = $('tour-tip-icon');
     if (icon) icon.style.display = st.center ? 'block' : 'none';
@@ -2419,6 +2468,7 @@
     tourIdx = -1;
     $('tour-overlay').classList.add('hidden');
     $('tour-overlay').setAttribute('aria-hidden', 'true');
+    $('tour-overlay').setAttribute('inert', '');
     const f = $('tour-frame');
     if (f) f.classList.add('hidden');
     try { closeDrawers(); } catch (e) {}
@@ -2495,6 +2545,9 @@
   }
 
   function onHashChange() {
+    closeOpenModals();
+    closeDrawers();
+    if (!S.index) return;
     if (navBypass) { navBypass = false; route(); return; }
     if (dirtySession()) {
       const h = location.hash;
@@ -2650,7 +2703,7 @@
     const b = $('menu-saved-count');
     if (!b) return;
     const n = Object.keys(S.saved).length;
-    b.textContent = n;
+    b.textContent = n > 999 ? '999+' : n;
     b.classList.toggle('hidden', n === 0);
   }
   async function installApp() {
@@ -3381,7 +3434,7 @@
         avatarFor(r) +
         '<span class="league-row-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
         '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
-        (accuracyOf(r) !== null && !S.leagueSubject ? '<span class="league-row-acc">' + accuracyOf(r) + '%</span>' : '');
+        (!S.leagueSubject ? '<span class="league-row-acc">' + (accuracyOf(r) !== null ? accuracyOf(r) + '%' : '—') + '</span>' : '');
       wirePlayerCard(row, r);
       box.appendChild(row);
     });
@@ -3620,7 +3673,7 @@
 
     const rowH = 148;
     const header = 330, footerH = 40, mineH = mineOutside ? 148 : 0;
-    const H = Math.max(860, Math.min(1350, header + shown.length * rowH + mineH + footerH));
+    const H = Math.max(520, Math.min(1350, header + Math.max(1, shown.length) * rowH + mineH + footerH + 30));
 
     // avatars are remote (Telegram) — preload with CORS, fall back to the silhouette
     const imgs = {};
@@ -3672,14 +3725,14 @@
     ctx.fillText(data.scope, R, 268);
 
     // column labels — makes it a table, not a list of guesses
-    ctx.font = '500 21px "MCSQuiz Arabic", sans-serif';
-    ctx.fillStyle = FAINT;
+    ctx.font = '600 26px "MCSQuiz Arabic", sans-serif';
+    ctx.fillStyle = '#9ca3af';
     ctx.textAlign = 'right';
     ctx.fillText('اللاعب', R - 162, 306);
     ctx.textAlign = 'left';
     ctx.fillText('إجابات صحيحة', L, 306);
-    ctx.fillStyle = 'rgba(255,255,255,0.05)';
-    ctx.fillRect(L, 318, W - L * 2, 1.5);
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.fillRect(L, 318, W - L * 2, 2);
 
     const medals = ['#d9a521', '#c3ccda', '#c08a5c'];
 
@@ -3899,6 +3952,7 @@
       if (e.key === 'Escape' || e.key === 'Esc') {
         if (!$('leave-modal').classList.contains('hidden')) { hideLeaveModal(); return; }
         if (!$('tour-overlay').classList.contains('hidden')) return; // tour has its own skip
+        if (closeOpenModals()) return;
         closeDrawers();
         return;
       }
@@ -4126,8 +4180,16 @@
     if (offlineBtn) offlineBtn.addEventListener('click', prepareOffline);
     const menuAccount = $('menu-account');
     if (menuAccount) menuAccount.addEventListener('click', () => { handleAccountTap(); });
-    window.addEventListener('online', () => { updateAccountRow(); try { window.PortalCloud && window.PortalCloud.pushSoon(); } catch (e) {} });
-    window.addEventListener('offline', updateAccountRow);
+    window.addEventListener('online', () => {
+      updateOfflineBanner(false);
+      updateAccountRow();
+      toast('عادت إشارة الإنترنت', 'success');
+      try { window.PortalCloud && window.PortalCloud.pushSoon(); } catch (e) {}
+    });
+    window.addEventListener('offline', () => {
+      updateOfflineBanner(true);
+      updateAccountRow();
+    });
     $('menu-sound').addEventListener('click', () => { setSound(!S.sound); });
     $('menu-theme').addEventListener('click', () => toggleTheme());
     const expBtn = $('btn-export-data');
@@ -4215,6 +4277,14 @@
       });
     }
     bindClick('notif-read-all', markAllNotifsRead);
+    document.querySelectorAll('.modal-overlay').forEach((ov) => {
+      ov.addEventListener('click', (e) => {
+        if (e.target === ov && ov.id !== 'leave-modal' && ov.id !== 'tour-overlay') {
+          ov.classList.add('hidden');
+          ov.setAttribute('aria-hidden', 'true');
+        }
+      });
+    });
     bindClick('notif-close', () => {
       const m = $('notif-modal');
       if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
@@ -4266,27 +4336,31 @@
 
     $('btn-retry-quiz').addEventListener('click', () => {
       const ses = S.session;
-      if (ses && ses.replay && ses.replay.type === 'saved') {
-        const items = ses.replay.keys.map((k) => ({ key: k, origin: S.saved[k].origin, snapshot: S.saved[k].snapshot })).filter((it) => it.origin);
-        if (items.length) { startSavedPractice(items); return; }
+      if (!ses) return;
+      if (ses.replay && ses.replay.type === 'saved') {
+        const items = (ses.replay.keys || []).map((k) => {
+          const it = S.saved[k];
+          return it ? { key: k, origin: it.origin || {}, snapshot: it.snapshot || it } : null;
+        }).filter(Boolean);
+        if (items.length) { startSavedPractice(items); beginAnswering(); return; }
       }
       startSession(ses.sub.subject_id, ses.ch.quiz_id, null);
       beginAnswering();
     });
     $('btn-retry-wrong').addEventListener('click', () => {
       const ses = S.session;
+      if (!ses) return;
       const from = { questions: ses.questions, picks: ses.picks };
-      const n0 = ses.questions.length;
       if (ses.replay && ses.replay.type === 'saved') {
         const subset = window.PortalAnalytics.buildWrongOnly(from.questions, from.picks);
-        if (!subset) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
+        if (!subset || !subset.length) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
         const meta = { subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title, chapterNo: ses.ch.chapter_no, chapterLabel: ses.chapterLabel, topic: ses.title, quizId: null, retryWrong: true, replay: ses.replay };
         launchSession(subset, meta);
         beginAnswering();
         return;
       }
       startSession(ses.sub.subject_id, ses.ch.quiz_id, from);
-      if (S.session && S.session.questions.length < n0) beginAnswering();
+      if (S.session && S.session.started === false) beginAnswering();
     });
     $('btn-back-catalog').addEventListener('click', () => goHash(''));
 
@@ -4303,7 +4377,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.7.0';
+  const SHELL_VERSION = '1.7.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -4356,7 +4430,15 @@
     setTimeout(() => { offlineState().then(log).catch(() => {}); }, 6000);
   }
 
+  function updateOfflineBanner(forceState) {
+    const banner = $('offline-banner');
+    if (!banner) return;
+    const isOff = typeof forceState === 'boolean' ? forceState : (navigator.onLine === false);
+    banner.classList.toggle('hidden', !isOff);
+  }
+
   async function boot() {
+    updateOfflineBanner();
     await guardShell();
     try { if (window.PortalLog) { window.PortalLog.restore(); window.PortalLog.info('boot', 'start href=' + location.href.slice(0, 80)); } } catch (e) {}
     try {
@@ -4384,7 +4466,7 @@
       updateAccountRow();
       icons();
       // audit-ignore: debug only (?debug=1)
-      if (DEBUG) { window.__portal = { S: S }; $('debug-panel').classList.remove('hidden'); }
+      if (DEBUG) { window.__portal = { S: S }; }
       {
         const badge = $('test-mode-badge');
         if (badge) {
@@ -4437,6 +4519,13 @@
         try {
           if (sessionStorage.getItem('portal_sw_reloaded') !== ev.data.cache) {
             sessionStorage.setItem('portal_sw_reloaded', ev.data.cache);
+            // If in the middle of a live exam, don't brutally reload in the user's face!
+            if (S.session && S.session.started && !S.session.finished) {
+              saveSessionSnapshot();
+              S.pendingReload = true;
+              toast('تحديث جديد متوفر — سيتفعّل عند انتهاء الاختبار', 'info');
+              return;
+            }
             // a first visit can be reloaded by the worker right as the tour
             // opens: remember it so it resumes instead of disappearing
             if (tourIdx >= 0) sessionStorage.setItem('portal_tour_resume', String(tourIdx));

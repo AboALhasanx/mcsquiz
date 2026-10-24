@@ -1,7 +1,7 @@
-﻿/* MCQ Portal service worker â€” static + data cache, no API fabrication.
+/* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.7.0';
+const VERSION = '1.7.1';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -187,16 +187,20 @@ self.addEventListener('fetch', (e) => {
     e.respondWith(fetch(e.request));
     return;
   }
+  const isNav = e.request.mode === 'navigate';
   e.respondWith(
-    caches.match(e.request).then((hit) => {
-      const net = fetch(e.request).then((res) => {
-        if (res.ok) {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, copy));
-        }
-        return res;
-      }).catch(() => hit);
-      return hit || net;
+    caches.match(e.request, { ignoreSearch: isNav }).then((hit) => {
+      const fallback = hit || (isNav ? caches.match('./index.html') : null);
+      return Promise.resolve(fallback).then((cached) => {
+        const net = fetch(e.request).then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(e.request, copy));
+          }
+          return res;
+        }).catch(() => cached);
+        return cached || net;
+      });
     })
   );
 });

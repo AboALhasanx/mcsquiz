@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.1] — 2026-10-24
+
+### Changed
+- ui: 3d tactile option push and Duolingo pop/shake feedback, in-app offline banner, and calm review card styling
+
+
 ## [1.7.0] — 2026-10-23
 
 ### Changed
