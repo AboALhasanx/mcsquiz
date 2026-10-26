@@ -1,7 +1,7 @@
 {
   "topic": {
     "ar": "أطر التحليل الخمسة",
-    "en": "The five analysis frameworks"
+    "en": "The Five Analysis Frameworks"
   },
   "quiz_id": "Quiz_Ch02_T05_Analysis_Frameworks",
   "has_math": false,
@@ -10,481 +10,321 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "لماذا توصي المحاضرة باستخدام طريقة منهجية في التحليل الأمني؟",
-        "en": "Why does the lecture recommend a systematic method for security analysis?"
+        "ar": "أي خمسة أطر تقدمها المحاضرة للتحليل المنهجي؟",
+        "en": "Which five frameworks does the lecture present for systematic analysis?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "لأن الإجراء المنظّم يحلّل النظام بموثوقية أعلى من التعامل العشوائي.",
-          "en": "Because a structured procedure analyses the system more reliably than an ad hoc one."
+          "ar": "COBIT و COSO و FAIR و ISO/IEC 27002 و OCTAVE.",
+          "en": "COBIT, COSO, FAIR, ISO/IEC 27002, and OCTAVE."
         },
         {
-          "ar": "لأن الطريقة المنهجية تزيل الحاجة إلى أي تدابير مضادة.",
-          "en": "Because a systematic method removes the need for any countermeasures at all."
+          "ar": "COBIT و COSO و FAIR و ISO 9001 و OCTAVE أيضاً.",
+          "en": "COBIT, COSO, FAIR, ISO 9001, and OCTAVE too."
         },
         {
-          "ar": "لأن الأنظمة تُلزم كل شركة بتبنّي أحد الأطر الخمسة.",
-          "en": "Because regulations require every company to adopt one of the five frameworks."
+          "ar": "COBIT و COSO و FAIR و NIST CSF و OCTAVE.",
+          "en": "COBIT, COSO, FAIR, NIST CSF, and OCTAVE."
         },
         {
-          "ar": "لأنها تستبدل مصفوفة الخطر بدرجة رقمية واحدة لكل تهديد.",
-          "en": "Because it replaces the risk matrix with a single numerical score per threat."
+          "ar": "COBIT و COSO و FAIR و GDPR و OCTAVE هنا.",
+          "en": "COBIT, COSO, FAIR, GDPR, and OCTAVE here only."
         }
       ],
-      "concept_id": "why_systematic",
+      "concept_id": "framework_count",
       "explanation": {
-        "ar": "تفتح المحاضرة القسم بأن تطوير نظام آمن يستفيد من استخدام طريقة منهجية، وأن عدة إجراءات منهجية طُوّرت على مر السنين. والأطر الخمسة هي تلك الإجراءات.",
-        "en": "The lecture opens the section by saying that to develop a secure system it is an advantage to use a systematic method, and that several systematic procedures have been developed over the years. The five frameworks are those procedures."
+        "ar": "الخمسة هي: COBIT و COSO و FAIR و ISO/IEC 27002 و OCTAVE. والفرق الوحيد هو الثالث من حيث الترتيب.",
+        "en": "The five are COBIT, COSO, FAIR, ISO/IEC 27002, and OCTAVE. Only the middle one differs from ISO 9001 or NIST CSF."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "كم إطاراً منهجياً تقدّم المحاضرة كأمثلة معروفة؟",
-        "en": "How many systematic frameworks does the lecture present as well-known examples?"
+        "ar": "ماذا يقدم COBIT؟",
+        "en": "What does COBIT offer?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "ثلاثة.",
-          "en": "Three."
+          "ar": "قائمة عمليات داخلية لبلوغ خطر منخفض جداً.",
+          "en": "A list of internal processes to reach low risk."
         },
         {
-          "ar": "خمسة.",
-          "en": "Five."
+          "ar": "أهداف لتدابير يمكن استخدامها لإدارة الخطر.",
+          "en": "Objectives for measures that can manage risk."
         },
         {
-          "ar": "سبعة.",
-          "en": "Seven."
+          "ar": "تصنيف للعوامل التي تكوّن الخطر نفسه هنا.",
+          "en": "A taxonomy of the factors behind risk."
         },
         {
-          "ar": "أربعة.",
-          "en": "Four."
+          "ar": "عملية لتحليل التهديدات والمخاطر معاً دائماً.",
+          "en": "A process for analysing threats and risks."
         }
       ],
-      "concept_id": "framework_count",
+      "concept_id": "cobit_offer",
       "explanation": {
-        "ar": "تسمّي المحاضرة خمسة: COBIT وCOSO وFAIR وISO/IEC 27002 وOCTAVE. وهو العدد نفسه لاستراتيجيات التخفيف، والقائمتان مطلوبتان كمجموعتين.",
-        "en": "The lecture names five: COBIT, COSO, FAIR, ISO/IEC 27002 and OCTAVE. This is the same count as the mitigation strategies, and both lists are examinable as sets."
+        "ar": "COBIT اختصار Control Objectives for Information and Related Technology، وما يقدمه هو أهداف لتدابير تدير الخطر.",
+        "en": "COBIT stands for Control Objectives for Information and Related Technology, and what it offers is objectives for measures that manage risk."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "ماذا يقدّم COBIT وفق المحاضرة؟",
-        "en": "What does COBIT offer, according to the lecture?"
+        "ar": "ماذا يوفر COSO؟",
+        "en": "What does COSO provide?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "وصفاً مفصّلاً للعمليات الداخلية التي يجب أن تتبعها الشركة.",
-          "en": "A detailed description of the internal processes a company must follow."
+          "ar": "تصنيف للعوامل التي تكوّن الخطر نفسه هنا.",
+          "en": "A taxonomy of the factors that form risk."
         },
         {
-          "ar": "تصنيفاً لعوامل الخطر ونموذجاً لحساب الخطر.",
-          "en": "A taxonomy of risk factors and a model for calculating risk."
+          "ar": "عملية لتحليل التهديدات والمخاطر معاً دائماً.",
+          "en": "A process for analysing threats and all their risks."
         },
         {
-          "ar": "أهدافاً لإجراءات يمكن استخدامها في إدارة الخطر.",
-          "en": "Objectives for measures that can be used to manage risk."
+          "ar": "وصف للعمليات الداخلية لبلوغ خطر منخفض.",
+          "en": "A description of internal processes for low risk."
         },
         {
-          "ar": "قائمة تحقّق بما يجب مراعاته للوصول إلى نظام آمن.",
-          "en": "A checklist of what must be considered for a secure system."
+          "ar": "أهداف لتدابير يمكن استخدامها لإدارة الخطر.",
+          "en": "Objectives for measures that can manage risk."
         }
       ],
-      "concept_id": "cobit_offer",
+      "concept_id": "coso_offer",
       "explanation": {
-        "ar": "COBIT هو إطار الأهداف: يعرض أهدافاً لإجراءات يمكن استخدامها في إدارة الخطر. ووصف العمليات الداخلية يعود إلى COSO، وقائمة التحقّق إلى ISO/IEC 27002.",
-        "en": "COBIT is the framework of objectives: it presents objectives for measures that can be used to manage risk. The internal-process description belongs to COSO and the checklist to ISO/IEC 27002."
+        "ar": "COSO يصف العمليات الداخلية التي يجب أن تتبعها الشركة لبلوغ مستوى خطر منخفض ومناسب.",
+        "en": "COSO describes the internal processes a company must follow to reach a suitably low level of risk."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "ماذا يوفّر COSO؟",
-        "en": "What does COSO provide?"
+        "ar": "أي ثلاثة أشياء يقدمها FAIR؟",
+        "en": "What three things does FAIR present?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "أهدافاً لإجراءات يمكن استخدامها في إدارة الخطر.",
-          "en": "Objectives for measures that can be used to manage risk."
+          "ar": "أهداف وعمليات داخلية وضوابط أمنية.",
+          "en": "Objectives, internal processes, and controls."
         },
         {
-          "ar": "قائمة تحقّق بما يجب مراعاته للوصول إلى نظام آمن.",
-          "en": "A checklist of what must be considered for a secure system."
+          "ar": "ثلاث مراحل تنتهي بخطة أمنية كاملة.",
+          "en": "Three phases that end in a security plan."
         },
         {
-          "ar": "تصنيفاً لعوامل الخطر ومعياراً لتسمية الكميات.",
-          "en": "A taxonomy of risk factors and a standard for naming quantities."
+          "ar": "أربعة عشر قسماً من الضوابط الأمنية.",
+          "en": "Fourteen categories of security controls."
         },
         {
-          "ar": "وصفاً مفصّلاً للعمليات الداخلية التي يجب أن تتبعها الشركة.",
-          "en": "A detailed description of the internal processes a company must follow."
+          "ar": "تصنيف ومعيار تسمية ونموذج حساب.",
+          "en": "A taxonomy, a naming standard, and a model."
         }
       ],
-      "concept_id": "coso_offer",
+      "concept_id": "fair_offer",
       "explanation": {
-        "ar": "يعطي COSO وصفاً مفصّلاً للعمليات الداخلية التي يجب اتباعها داخل الشركة للوصول إلى مستوى خطر منخفض بشكل مناسب. وهذا ما يميّزه عن أهداف COBIT.",
-        "en": "COSO gives a detailed description of the internal processes which must be followed within a company in order to achieve a suitably low risk. That is what distinguishes it from the objectives of COBIT."
+        "ar": "FAIR يقدم تصنيفاً للعوامل التي تكوّن الخطر، ومعياراً لتسمية كميات الخطر، ونموذجاً لحساب الخطر.",
+        "en": "FAIR gives a taxonomy of the factors that form risk, a standard for naming risk quantities, and a model for calculating risk."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ما الأشياء الثلاثة التي يعرضها FAIR؟",
-        "en": "What three things does FAIR present?"
+        "ar": "ماذا يعطي ISO/IEC 27002؟",
+        "en": "What does ISO/IEC 27002 give?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "تصنيفاً لعوامل الخطر، ومعياراً للتسمية، ونموذجاً لحساب الخطر.",
-          "en": "A taxonomy of risk factors, a naming standard, and a model for calculating risk."
+          "ar": "إرشادات وضوابط أمنية لأمن المعلومات هنا.",
+          "en": "Guidance and controls for information security."
         },
         {
-          "ar": "قائمة تحقّق، وكتالوج ضوابط، ومقياس نضج للتدقيق.",
-          "en": "A checklist, a control catalogue, and a maturity scale for audits."
+          "ar": "أهداف لتدابير يمكن استخدامها لإدارة الخطر.",
+          "en": "Objectives for measures that can manage risk."
         },
         {
-          "ar": "وصف عملية، ومخطّط مراحل، ومجموعة صيغ.",
-          "en": "A process description, a phase diagram, and a set of variants."
+          "ar": "تصنيف للعوامل التي تكوّن الخطر نفسه هنا.",
+          "en": "A taxonomy of the factors that form risk."
         },
         {
-          "ar": "قائمة أهداف، ومجلس حوكمة، ونموذج تقرير.",
-          "en": "A list of objectives, a governance board, and a reporting template."
+          "ar": "عملية لتحليل التهديدات والمخاطر معاً دائماً.",
+          "en": "A process for analysing threats and all their risks."
         }
       ],
-      "concept_id": "fair_offer",
+      "concept_id": "iso_offer",
       "explanation": {
-        "ar": "يعرض FAIR تصنيفاً للعوامل التي يمكن أن تساهم في تكوّن الخطر، ومعياراً لتسمية الكميات المرتبطة بالخطر، ونموذجاً لحساب الخطر. ولا إطار آخر في القائمة يحمل الثلاثة معاً.",
-        "en": "FAIR presents a taxonomy for the factors that can contribute to risk formation, a standard for naming risk-related quantities, and a model for calculating risk. No other framework in the list carries all three."
+        "ar": "ISO/IEC 27002 معيار دولي يعطي إرشادات وضوابط أمنية لأمن المعلومات.",
+        "en": "ISO/IEC 27002 is an international standard giving security guidance and controls for information security."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ماذا يعطي ISO/IEC 27002 في وصف المحاضرة؟",
-        "en": "What does ISO/IEC 27002 give, in the lecture's description?"
+        "ar": "ماذا يصف OCTAVE؟",
+        "en": "What does OCTAVE describe?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "تصنيفاً للعوامل التي تساهم في تكوّن الخطر.",
-          "en": "A taxonomy of the factors that contribute to risk formation."
+          "ar": "أهداف لتدابير يمكن استخدامها لإدارة الخطر.",
+          "en": "Objectives for measures that can manage risk."
         },
         {
-          "ar": "قائمة تحقّق بما يجب مراعاته للوصول إلى نظام آمن.",
-          "en": "A checklist of things to consider in order to achieve a secure system."
+          "ar": "عملية لتحليل التهديدات والمخاطر معاً.",
+          "en": "A process for analysing threats and risks."
         },
         {
-          "ar": "وصفاً لعملية تحليل التهديدات والمخاطر.",
-          "en": "A description of the process for analysing threats and risks."
+          "ar": "إرشادات وضوابط أمنية لأمن المعلومات هنا.",
+          "en": "Guidance and controls for information security work."
         },
         {
-          "ar": "أهدافاً لإجراءات يمكن استخدامها في إدارة الخطر.",
-          "en": "Objectives for measures that can be used to manage risk."
+          "ar": "تصنيف للعوامل التي تكوّن الخطر نفسه هنا.",
+          "en": "A taxonomy of the factors that form risk."
         }
       ],
-      "concept_id": "iso_offer",
+      "concept_id": "octave_offer",
       "explanation": {
-        "ar": "ISO/IEC 27002 هو إطار قائمة التحقّق: يعطي قائمة بالأمور التي يجب أخذها بنظر الاعتبار للوصول إلى نظام آمن. ووصف العملية هو OCTAVE، والأهداف هي COBIT.",
-        "en": "ISO/IEC 27002 is the checklist framework: it gives a checklist of things which have to be taken into consideration in order to achieve a secure system. The process description is OCTAVE and the objectives are COBIT."
+        "ar": "OCTAVE يصف عملية: تحليل التهديدات ومخاطرها، ثم إيجاد التدابير المضادة المناسبة.",
+        "en": "OCTAVE describes a process: analyse the threats and their risks, then find suitable countermeasures."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "ماذا يوصف OCTAVE؟",
-        "en": "What does OCTAVE describe?"
+        "ar": "أي إطار هو الوحيد الموصوف بنموذج لحساب الخطر؟",
+        "en": "Which framework is the only one credited with a model for calculating risk?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "قائمة تحقّق بما يجب مراعاته للوصول إلى نظام آمن.",
-          "en": "A checklist of things to consider for a secure system."
+          "ar": "OCTAVE، لأنه يعمل بثلاث مراحل واضحة.",
+          "en": "OCTAVE, because it runs in three phases."
         },
         {
-          "ar": "تصنيفاً لعوامل الخطر مع معيار للتسمية.",
-          "en": "A taxonomy of risk factors with a naming standard."
+          "ar": "COBIT، لأنه يضع أهدافاً للتدابير الأمنية.",
+          "en": "COBIT, because it sets objectives for measures."
         },
         {
-          "ar": "عملية تحليل التهديدات والمخاطر لإيجاد تدابير مضادة.",
-          "en": "The process of analysing threats and risks to find countermeasures."
+          "ar": "FAIR، لأنه يتضمن نموذجاً لحساب الخطر.",
+          "en": "FAIR, because it includes a calculation model."
         },
         {
-          "ar": "أهدافاً لإجراءات يمكن استخدامها في إدارة الخطر.",
-          "en": "Objectives for measures that can be used to manage risk."
+          "ar": "COSO، لأنه يصف العمليات الداخلية للمؤسسة.",
+          "en": "COSO, because it describes internal processes."
         }
       ],
-      "concept_id": "octave_offer",
+      "concept_id": "fair_only_with_model",
       "explanation": {
-        "ar": "يوصف OCTAVE عملية تحليل التهديدات والمخاطر المقابلة لها وإيجاد تدابير مضادة مناسبة. وهو المدخل الوحيد في القائمة الموصوف كعملية لا كقائمة تحقّق ولا تصنيف ولا مجموعة أهداف.",
-        "en": "OCTAVE describes the process of analysing threats and the corresponding risks and of finding suitable countermeasures. It is the only entry in the list described as a process rather than a checklist, a taxonomy or a set of objectives."
+        "ar": "FAIR هو الوحيد من الخمسة الذي تنسب له المحاضرة نموذج حساب، ولهذا هو الأقوى في العمل الكمي.",
+        "en": "FAIR is the only one of the five that the lecture credits with a calculation model, which is why it is the strongest for quantitative work."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "أي إطار هو الوحيد الذي تنسب إليه المحاضرة نموذجاً لحساب الخطر؟",
-        "en": "Which framework is the only one the lecture credits with a model for calculating risk?"
+        "ar": "شركة تريد وصفاً موثقاً للعمليات الداخلية التي يجب أن تتبعها لبلوغ خطر منخفض. أي إطار يناسب؟",
+        "en": "A company wants a documented description of the internal processes it must follow to reach low risk. Which framework matches?"
       },
-      "bloom": "Analyze",
+      "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "COBIT.",
-          "en": "COBIT."
+          "ar": "FAIR، لأنه يسمّي كميات الخطر.",
+          "en": "FAIR, which names the risk quantities for you."
         },
         {
-          "ar": "COSO.",
-          "en": "COSO."
+          "ar": "OCTAVE، لأنه يبني ملفات التهديد.",
+          "en": "OCTAVE, which builds threat profiles."
         },
         {
-          "ar": "ISO/IEC 27002.",
-          "en": "ISO/IEC 27002."
+          "ar": "COBIT، لأنه يضع أهدافاً للتدابير.",
+          "en": "COBIT, which sets objectives for measures."
         },
         {
-          "ar": "FAIR.",
-          "en": "FAIR."
+          "ar": "COSO، لأنه يصف العمليات الداخلية.",
+          "en": "COSO, which describes the internal processes."
         }
       ],
-      "concept_id": "fair_unique_calculation",
+      "concept_id": "match_coso_scenario",
       "explanation": {
-        "ar": "FAIR وحده موصوف بنموذج حساب، مع تصنيف ومعيار تسمية. أما COBIT فيقدّم أهدافاً، وCOSO عمليات داخلية، وISO قائمة تحقّق، ولا شيء منها يحسب قيمة خطر.",
-        "en": "Only FAIR is described with a calculation model, alongside a taxonomy and a naming standard. COBIT offers objectives, COSO internal processes and ISO a checklist, none of which computes a risk value."
+        "ar": "الطلب هو عمليات داخلية، وهذا بالضبط ما يقدمه COSO. أما COBIT فيعطي أهدافاً، وFAIR نموذج حساب، وOCTAVE عملية.",
+        "en": "The request is for internal processes, and that is exactly COSO's contribution. COBIT offers objectives, FAIR a calculation model, OCTAVE a process."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "ماذا يعني اختصار COBIT؟",
-        "en": "What does the acronym COBIT stand for?"
+        "ar": "فريق يجب أن يحلّل التهديدات ضد أصوله ثم يجد تدابير مضادة مناسبة. أي إطار يناسب؟",
+        "en": "A team must analyse the threats against its assets and then find suitable countermeasures. Which framework matches?"
       },
-      "bloom": "Remember",
+      "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "أهداف الضبط للمعلومات والتقنية المرتبطة بها.",
-          "en": "Control Objectives for Information and related Technology."
+          "ar": "OCTAVE، لأنه يحلّل التهديدات ويجد الضوابط.",
+          "en": "OCTAVE, which analyses threats for controls."
         },
         {
-          "ar": "لجنة المنظمات الراعية للجنة تريدواي.",
-          "en": "Committee of Sponsoring Organizations of the Treadway Commission."
+          "ar": "COSO، لأنه يصف العمليات الداخلية للمؤسسة.",
+          "en": "COSO, which describes the internal processes."
         },
         {
-          "ar": "قائمة تحقّق ضوابط تقنية المعلومات الأساسية.",
-          "en": "Checklist of Baseline Information Technology controls."
+          "ar": "FAIR، لأنه يسمّي كميات الخطر ويصنّفها كلها.",
+          "en": "FAIR, which names the risk quantities for you."
         },
         {
-          "ar": "خط أساس تشغيلي معتمد لتقنية المعلومات.",
-          "en": "Certified Operational Baseline for Information Technology."
+          "ar": "COBIT، لأنه يضع أهدافاً للتدابير الأمنية.",
+          "en": "COBIT, which sets objectives for measures."
         }
       ],
-      "concept_id": "cobit_acronym",
+      "concept_id": "match_octave_scenario",
       "explanation": {
-        "ar": "COBIT هي أهداف الضبط للمعلومات والتقنية المرتبطة بها. وCOSO هي لجنة المنظمات الراعية، والتوسيعان الآخران مصطنعان ولا يظهران في المحاضرة.",
-        "en": "COBIT is Control Objectives for Information and related Technology. COSO is the Committee of Sponsoring Organizations, and the remaining two are invented expansions that do not appear in the lecture."
+        "ar": "تحليل التهديدات والوصول إلى تدابير مضادة هو العملية التي يصفها OCTAVE.",
+        "en": "Analysing threats and arriving at countermeasures is the process OCTAVE describes."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "ماذا يعني اختصار COSO؟",
-        "en": "What does the acronym COSO stand for?"
+        "ar": "لماذا توصي المحاضرة بمنهج منهجي أصلاً؟",
+        "en": "Why does the lecture recommend a systematic method at all?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "أهداف الضبط للمعلومات والتقنية المرتبطة بها.",
-          "en": "Control Objectives for Information and related Technology."
+          "ar": "لأن المدققين يطلبون مستنداً مطبوعاً.",
+          "en": "Because auditors demand a printed document."
         },
         {
-          "ar": "لجنة المنظمات الراعية.",
-          "en": "Committee of Sponsoring Organizations."
+          "ar": "لأن العمل العشوائي يترك ثغرات في التغطية.",
+          "en": "Because ad hoc effort leaves gaps in coverage."
         },
         {
-          "ar": "عمليات الأمن السيبراني والرقابة الأمنية.",
-          "en": "Cybersecurity Operations and Security Oversight."
+          "ar": "لأن القانون يفرض استخدام أطر جاهزة دائماً.",
+          "en": "Because frameworks are required by the law today."
         },
         {
-          "ar": "أهداف الامتثال لمسؤولي الأمن.",
-          "en": "Compliance Objectives for Security Officers."
+          "ar": "لأن إطاراً واحداً يغني عن كل الضوابط.",
+          "en": "Because one framework replaces all controls."
         }
       ],
-      "concept_id": "coso_acronym",
+      "concept_id": "why_systematic",
       "explanation": {
-        "ar": "COSO هي لجنة المنظمات الراعية. والخيار الأول هو COBIT، والتوسيعان الآخران مصطنعان.",
-        "en": "COSO is the Committee of Sponsoring Organizations. The first option is COBIT, and the other two are invented expansions."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "ماذا يعني اختصار OCTAVE؟",
-        "en": "What does the acronym OCTAVE stand for?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "محرّك التحقق من الضبط التشغيلي وتحليل التهديدات.",
-          "en": "Operational Control and Threat Analysis Verification Engine."
-        },
-        {
-          "ar": "التقييم الموضوعي لتهديدات الأمن السيبراني وثغراته.",
-          "en": "Objective Cybersecurity Threat and Vulnerability Evaluation."
-        },
-        {
-          "ar": "التقييم التشغيلي للتهديدات الحرجة والأصول والثغرات.",
-          "en": "Operationally Critical Threat, Asset and Vulnerability Evaluation."
-        },
-        {
-          "ar": "المعايير المفتوحة لتقييم التهديدات وتقدير الثغرات.",
-          "en": "Open Criteria for Threat Assessment and Vulnerability Estimation."
-        }
-      ],
-      "concept_id": "octave_acronym",
-      "explanation": {
-        "ar": "OCTAVE هي التقييم التشغيلي للتهديدات الحرجة والأصول والثغرات، وتكتبها المحاضرة كاملة. والخيارات الثلاثة الأخرى توسيعات تبدو معقولة لكنها لا تطابق.",
-        "en": "OCTAVE is Operationally Critical Threat, Asset and Vulnerability Evaluation, and the lecture writes it out in full. The three other options are plausible-sounding expansions that do not match."
-      }
-    },
-    {
-      "id": "q12",
-      "stem": {
-        "ar": "تريد شركة وصفاً موثّقاً للعمليات الداخلية التي يجب اتباعها للوصول إلى خطر منخفض بشكل مناسب. أي إطار يطابق؟",
-        "en": "A company wants a documented description of the internal processes it must follow to reach a suitably low risk. Which framework matches?"
-      },
-      "bloom": "Apply",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "ISO/IEC 27002، لأنه يقدّم قائمة تحقّق.",
-          "en": "ISO/IEC 27002, because it supplies a checklist."
-        },
-        {
-          "ar": "FAIR، لأنه يحسب الخطر رقمياً.",
-          "en": "FAIR, because it calculates the risk numerically."
-        },
-        {
-          "ar": "OCTAVE، لأنه يعمل على ثلاث مراحل.",
-          "en": "OCTAVE, because it runs in three phases."
-        },
-        {
-          "ar": "COSO، لأنه يصف العمليات الداخلية التي تُتَّبع.",
-          "en": "COSO, because it describes the internal processes to follow."
-        }
-      ],
-      "concept_id": "match_coso_scenario",
-      "explanation": {
-        "ar": "المطلوب وصف للعمليات الداخلية، وهو بالضبط ما يوفّره COSO. أما ISO فيقدّم قائمة تحقّق، وFAIR نموذج حساب، وOCTAVE عملية تحليل تهديدات من ثلاث مراحل.",
-        "en": "The requirement is a description of internal processes, which is exactly what COSO provides. ISO supplies a checklist, FAIR a calculation model and OCTAVE a three-phase process of threat analysis."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "يطلب مدقّق قائمة بالأمور التي يجب مراعاتها للوصول إلى نظام آمن. أي إطار يطابق؟",
-        "en": "An auditor asks for a list of the things that must be considered to achieve a secure system. Which framework matches?"
-      },
-      "bloom": "Apply",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "ISO/IEC 27002، لأنه قائمة التحقّق.",
-          "en": "ISO/IEC 27002, because it is the checklist."
-        },
-        {
-          "ar": "COBIT، لأنه يضع أهدافاً للإجراءات.",
-          "en": "COBIT, because it sets objectives for measures."
-        },
-        {
-          "ar": "FAIR، لأنه يسمّي كميات الخطر.",
-          "en": "FAIR, because it names risk quantities."
-        },
-        {
-          "ar": "OCTAVE، لأنه يطوّر استراتيجية أمنية.",
-          "en": "OCTAVE, because it develops a security strategy."
-        }
-      ],
-      "concept_id": "match_iso_scenario",
-      "explanation": {
-        "ar": "قائمة الأمور الواجب مراعاتها هي قائمة تحقّق، والمحاضرة تنسبها إلى ISO/IEC 27002. أما COBIT فيعطي أهدافاً، وFAIR معيار تسمية، وOCTAVE عملية تنتهي باستراتيجية أمنية.",
-        "en": "A list of things to consider is a checklist, and the lecture assigns the checklist to ISO/IEC 27002. COBIT gives objectives, FAIR a naming standard and OCTAVE a process ending in a security strategy."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "لماذا يكون FAIR الأقوى بين الخمسة للعمل الكمّي؟",
-        "en": "Why is FAIR the strongest of the five for quantitative work?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأنه يعدّد العمليات الداخلية التي يجب أن تتبعها الشركة.",
-          "en": "Because it lists the internal processes a company must follow."
-        },
-        {
-          "ar": "لأنه يقدّم تصنيفاً ومعيار تسمية ونموذج حساب معاً.",
-          "en": "Because it supplies a taxonomy, a naming standard and a calculation model."
-        },
-        {
-          "ar": "لأنه الإطار الوحيد المنشور كمعيار دولي.",
-          "en": "Because it is the only framework published as an international standard."
-        },
-        {
-          "ar": "لأنه يعرّف ثلاث مراحل تنتج استراتيجية أمنية.",
-          "en": "Because it defines three phases that produce a security strategy."
-        }
-      ],
-      "concept_id": "fair_completeness",
-      "explanation": {
-        "ar": "العمل الكمّي يحتاج طريقة لتسمية الكميات، وبنية عوامل تُسمّى داخلها، ونموذج حساب يجمعها. وFAIR هو الإطار الوحيد الذي تنسب إليه المحاضرة الثلاثة معاً.",
-        "en": "Quantitative work needs a way to name the quantities, a structure of factors to name them within, and a calculation model to combine them. FAIR is the only framework the lecture credits with all three."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "ما الذي يفصل OCTAVE عن ISO/IEC 27002 في قائمة المحاضرة؟",
-        "en": "What separates OCTAVE from ISO/IEC 27002 in the lecture's list?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "OCTAVE يعطي قائمة تحقّق، وISO يوصف عملية.",
-          "en": "OCTAVE gives a checklist, while ISO describes a process."
-        },
-        {
-          "ar": "OCTAVE يضع أهدافاً، وISO يحسب الخطر.",
-          "en": "OCTAVE sets objectives, while ISO calculates the risk."
-        },
-        {
-          "ar": "OCTAVE يوصف عملية، وISO يعطي قائمة تحقّق.",
-          "en": "OCTAVE describes a process, while ISO gives a checklist."
-        },
-        {
-          "ar": "OCTAVE يسمّي كميات، وISO يطوّر استراتيجية.",
-          "en": "OCTAVE names quantities, while ISO develops a strategy."
-        }
-      ],
-      "concept_id": "octave_vs_iso",
-      "explanation": {
-        "ar": "OCTAVE هو مدخل العملية: تحليل التهديدات والمخاطر ثم إيجاد التدابير. وISO/IEC 27002 هو مدخل قائمة التحقّق. وقراءتهما بالعكس هو الخلط الشائع، ويقلب الدورين.",
-        "en": "OCTAVE is the process entry: analyse threats and risks, then find countermeasures. ISO/IEC 27002 is the checklist entry. Reading them the other way round is the classic swap, and it reverses the two roles."
+        "ar": "المنهج المنهجي يغطي الموضوع بترتيب ثابت فلا يُنسى شيء. والمحاضرة تقدم الخمسة كأمثلة معروفة على هذه المناهج.",
+        "en": "A systematic method covers the ground in a fixed order, so nothing is skipped. The lecture presents the five as well-known examples of such methods."
       }
     }
   ],
@@ -493,7 +333,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-26T18:20:32Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

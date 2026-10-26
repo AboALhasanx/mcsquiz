@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "منهجية OCTAVE",
-    "en": "OCTAVE"
+    "ar": "OCTAVE: الطريقة ذات المراحل الثلاث",
+    "en": "OCTAVE: The Three-Phase Method"
   },
   "quiz_id": "Quiz_Ch02_T07_OCTAVE",
   "has_math": false,
@@ -10,481 +10,321 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "لأي منظمة طُوّرت منهجية OCTAVE؟",
-        "en": "For which organisation was OCTAVE developed?"
+        "ar": "أي ثلاثة أشياء يحلّلها OCTAVE بشكل منهجي؟",
+        "en": "Which three things does OCTAVE analyse systematically?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "فريق الاستجابة لحوادث الحاسوب في جامعة كارنيجي ميلون.",
-          "en": "The Computer Emergency Response Team at Carnegie Mellon University."
+          "ar": "الأصول والتهديدات والثغرات.",
+          "en": "Assets, threats, and vulnerabilities."
         },
         {
-          "ar": "المعهد الوطني للمعايير والتقنية في ميريلاند.",
-          "en": "The National Institute of Standards and Technology in Maryland."
+          "ar": "المخاطر والكلف والضوابط.",
+          "en": "Risks, costs, and existing controls."
         },
         {
-          "ar": "لجنة المنظمات الراعية للجنة تريدواي.",
-          "en": "The Committee of Sponsoring Organizations of the Treadway Commission."
+          "ar": "السياسات والأفراد والعمليات.",
+          "en": "Policies, people, and the processes."
         },
         {
-          "ar": "المنظمة الدولية للمعايير في جنيف.",
-          "en": "The International Organization for Standardization in Geneva."
+          "ar": "الأصول والميزانيات والجداول.",
+          "en": "Assets, budgets, and project timelines."
         }
       ],
-      "concept_id": "developed_for",
+      "concept_id": "octave_analyses_three",
       "explanation": {
-        "ar": "تنص المحاضرة على أن OCTAVE طريقة لتحليل المخاطر طُوّرت للمنظمة الدولية CERT، أي فريق الاستجابة لحوادث الحاسوب، في جامعة كارنيجي ميلون بالولايات المتحدة.",
-        "en": "The lecture states that OCTAVE is a method for risk analysis developed for the international organisation CERT, the Computer Emergency Response Team, at Carnegie Mellon University in the USA."
+        "ar": "OCTAVE تحليل منهجي للأصول والتهديدات والثغرات، واسمه مبني من هذه الأفكار الثلاث.",
+        "en": "OCTAVE is a systematic analysis of assets, threats, and vulnerabilities, and its name is built from exactly those three ideas."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "في أي جامعة يقع مقر المنظمة التي طلبت تطوير OCTAVE؟",
-        "en": "At which university is the organisation that commissioned OCTAVE based?"
+        "ar": "ماذا يحدث في المرحلة الأولى من OCTAVE؟",
+        "en": "What happens in the first OCTAVE phase?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "جامعة واسط، كلية علوم الحاسوب وتقنية المعلومات.",
-          "en": "The University of Wasit, College of Computer Science."
+          "ar": "فحص الموظفين قبل منحهم الوصول.",
+          "en": "Screen the personnel before access."
         },
         {
-          "ar": "جامعة كارنيجي ميلون في الولايات المتحدة.",
-          "en": "Carnegie Mellon University in the United States."
+          "ar": "بناء ملفات تهديد مبنية على الأصول.",
+          "en": "Build up asset-based threat profiles."
         },
         {
-          "ar": "معهد ماساتشوستس للتقنية في بوسطن.",
-          "en": "The Massachusetts Institute of Technology in Boston."
+          "ar": "تحديد الثغرات في البنية التحتية.",
+          "en": "Identify vulnerabilities in infrastructure."
         },
         {
-          "ar": "جامعة أوكسفورد في المملكة المتحدة.",
-          "en": "The University of Oxford in the United Kingdom."
+          "ar": "تطوير الاستراتيجية والخطط الأمنية.",
+          "en": "Develop the security strategy and plans."
         }
       ],
-      "concept_id": "commissioning_university",
+      "concept_id": "phase_one",
       "explanation": {
-        "ar": "يقع مقر CERT في جامعة كارنيجي ميلون بالولايات المتحدة، وتسمّي المحاضرة الجامعة صريحاً. وهذا من التفاصيل التي يُسأل عنها مباشرة.",
-        "en": "CERT is based at Carnegie Mellon University in the United States, and the lecture names the university explicitly. This is the kind of detail a direct question asks for."
+        "ar": "المرحلة الأولى تبني ملفات تهديد مبنية على الأصول: تبدأ من الأصول وتستنتج ما يهدد كل واحد منها.",
+        "en": "Phase one builds asset-based threat profiles: you start from the assets and work out what threatens each one."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "كم مرحلة لمنهجية OCTAVE؟",
-        "en": "How many phases does the OCTAVE method have?"
+        "ar": "ماذا يحدث في المرحلة الثانية من OCTAVE؟",
+        "en": "What happens in the second OCTAVE phase?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "مرحلتان.",
-          "en": "Two phases."
+          "ar": "تطوير الاستراتيجية والخطط الأمنية.",
+          "en": "Develop the security strategy and plans."
+        },
+        {
+          "ar": "تعيين مدير أمن قبل أي شيء.",
+          "en": "Appoint a security manager before anything else."
+        },
+        {
+          "ar": "تحديد الثغرات في البنية التحتية.",
+          "en": "Identify vulnerabilities in the infrastructure."
+        },
+        {
+          "ar": "بناء ملفات تهديد مبنية على الأصول.",
+          "en": "Build up the asset-based threat profiles."
+        }
+      ],
+      "concept_id": "phase_two",
+      "explanation": {
+        "ar": "المرحلة الثانية تبحث عن الثغرات في البنية التحتية التي قد تؤدي إلى فعل غير مصرّح به.",
+        "en": "Phase two looks for the vulnerabilities in the infrastructure that could lead to unauthorized action."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يحدث في المرحلة الثالثة من OCTAVE؟",
+        "en": "What happens in the third OCTAVE phase?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "بناء ملفات تهديد مبنية على الأصول.",
+          "en": "Build up the asset-based threat profiles."
+        },
+        {
+          "ar": "تحديد الثغرات في البنية التحتية.",
+          "en": "Identify vulnerabilities in infrastructure."
+        },
+        {
+          "ar": "منح الموظفين شهادة في المعيار.",
+          "en": "Certify the staff on the standard."
+        },
+        {
+          "ar": "تطوير الاستراتيجية والخطط الأمنية.",
+          "en": "Develop the security strategy and plans."
+        }
+      ],
+      "concept_id": "phase_three",
+      "explanation": {
+        "ar": "المرحلة الثالثة تحوّل النتائج إلى استراتيجية وخطط أمنية تعالج المخاطر والثغرات المكتشفة.",
+        "en": "Phase three turns the findings into a security strategy and plans to address the risks and vulnerabilities found."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كم مرحلة لدى OCTAVE؟",
+        "en": "How many phases does OCTAVE have?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ثلاث مراحل.",
+          "en": "Three phases."
         },
         {
           "ar": "أربع مراحل.",
           "en": "Four phases."
         },
         {
-          "ar": "ثلاث مراحل.",
-          "en": "Three phases."
-        },
-        {
           "ar": "خمس مراحل.",
           "en": "Five phases."
+        },
+        {
+          "ar": "ست مراحل.",
+          "en": "Six phases too."
         }
       ],
       "concept_id": "phase_count",
       "explanation": {
-        "ar": "OCTAVE مبنيّة على تحليل منهجي للأصول والتهديدات والثغرات في ثلاث مراحل. وثلاثة هو الرقم الذي تبرزه المحاضرة، وهو أحد العدّين المميّزين بالأحمر في هذا الجابتر.",
-        "en": "OCTAVE is built on a systematic analysis of assets, threats and vulnerabilities in three phases. Three is the number the lecture highlights, and it is one of the two counts it marks in red in this chapter."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "أي ثلاثة أشياء تحلّلها OCTAVE بشكل منهجي؟",
-        "en": "Which three things does OCTAVE analyse systematically?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "السياسات والإجراءات وسجلات التدريب.",
-          "en": "Policies, procedures and training records."
-        },
-        {
-          "ar": "الجدران النارية والنسخ الاحتياطي ومفاتيح التشفير.",
-          "en": "Firewalls, backups and encryption keys."
-        },
-        {
-          "ar": "الموردون والعقود وأدلة الامتثال.",
-          "en": "Suppliers, contracts and compliance evidence."
-        },
-        {
-          "ar": "الأصول والتهديدات والثغرات.",
-          "en": "Assets, threats and vulnerabilities."
-        }
-      ],
-      "concept_id": "what_is_analysed",
-      "explanation": {
-        "ar": "المنهجية مبنية على تحليل منهجي للأصول والتهديدات والثغرات. وهذه الأشياء الثلاثة هي ما تمرّ به المراحل بالترتيب.",
-        "en": "The method is based on a systematic analysis of assets, threats and vulnerabilities. Those three objects are what the phases then walk through in order."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "ماذا يحدث في المرحلة الأولى من OCTAVE؟",
-        "en": "What happens in the first phase of OCTAVE?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "بناء ملفات تهديد مبنية على الأصول.",
-          "en": "Asset-based threat profiles are built up."
-        },
-        {
-          "ar": "تحديد الثغرات في البنية التحتية.",
-          "en": "Vulnerabilities in the infrastructure are identified."
-        },
-        {
-          "ar": "تطوير استراتيجية أمنية وخطط.",
-          "en": "A security strategy and plans are developed."
-        },
-        {
-          "ar": "تدقيق التدابير المضادة مقابل المعيار.",
-          "en": "Countermeasures are audited against the standard."
-        }
-      ],
-      "concept_id": "phase_one",
-      "explanation": {
-        "ar": "المرحلة الأولى هي بناء ملفات تهديد مبنية على الأصول. والثانية تحدد ثغرات البنية التحتية، والثالثة تطوّر الاستراتيجية الأمنية والخطط.",
-        "en": "Phase one is building up asset-based threat profiles. Phase two identifies infrastructure vulnerabilities and phase three develops the security strategy and plans."
+        "ar": "OCTAVE يعمل بثلاث مراحل: الملفات، ثم الثغرات، ثم الاستراتيجية والخطط.",
+        "en": "OCTAVE runs in three phases: profiles, vulnerabilities, then strategy and plans."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ماذا يحدث في المرحلة الثانية من OCTAVE؟",
-        "en": "What happens in the second phase of OCTAVE?"
+        "ar": "فريق يبدأ بجرد ما يملكه وما يهدد كل عنصر. أي مرحلة هذه؟",
+        "en": "A team begins by cataloguing what it owns and what threatens each item. Which phase is this?"
       },
-      "bloom": "Remember",
+      "bloom": "Apply",
       "answer": 1,
       "options": [
         {
-          "ar": "بناء ملفات التهديد المبنية على الأصول من جرد الأصول.",
-          "en": "Asset-based threat profiles are built up from the asset inventory."
+          "ar": "لا شيء منها، لأن هذا خارج العملية.",
+          "en": "None of the phases, because it is outside."
         },
         {
-          "ar": "تحديد الثغرات في البنية التحتية التي تؤدي إلى إجراء غير مصرح به.",
-          "en": "Vulnerabilities in the infrastructure that lead to unauthorized action are identified."
+          "ar": "المرحلة الأولى، بناء ملفات التهديد.",
+          "en": "Phase one, building the threat profiles."
         },
         {
-          "ar": "تطوير استراتيجية أمنية ومجموعة خطط للمؤسسة كلها.",
-          "en": "A security strategy and a set of plans are developed for the whole organisation."
+          "ar": "المرحلة الثانية، إيجاد الثغرات.",
+          "en": "Phase two, finding the vulnerabilities."
         },
         {
-          "ar": "مقارنة الخطر المتبقي بالمستوى المقبول المحدد سابقاً.",
-          "en": "The residual risk is compared against the acceptable level set earlier."
+          "ar": "المرحلة الثالثة، كتابة الاستراتيجية.",
+          "en": "Phase three, writing the strategy."
         }
       ],
-      "concept_id": "phase_two",
+      "concept_id": "scenario_phase_one",
       "explanation": {
-        "ar": "المرحلة الثانية تحدد الثغرات في البنية التحتية التي يمكن أن تؤدي إلى إجراء غير مصرح به. وملفات التهديد تخص المرحلة الأولى، والاستراتيجية تخص الثالثة.",
-        "en": "Phase two identifies the vulnerabilities in the infrastructure which could lead to unauthorized action. The threat profiles belong to phase one, and the strategy belongs to phase three."
+        "ar": "البدء من الأصول والسؤال عما يهدد كل واحد هو بالضبط ملف التهديد المبني على الأصول في المرحلة الأولى.",
+        "en": "Starting from the assets and asking what threatens each one is exactly the asset-based threat profile of phase one."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "ماذا يُنتج في نهاية المرحلة الثالثة من OCTAVE؟",
-        "en": "What is produced at the end of the third OCTAVE phase?"
+        "ar": "فريق أنهى تحديد الثغرات وبدأ يكتب الاستراتيجية الأمنية. أي مرحلة يدخل؟",
+        "en": "A team has finished identifying vulnerabilities and now writes the security strategy. Which phase is it entering?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 2,
       "options": [
         {
-          "ar": "قائمة بكل أصل مع كلفة استبداله.",
-          "en": "A list of every asset with its replacement cost."
+          "ar": "المرحلة الثانية، إيجاد الثغرات في البنية.",
+          "en": "Phase two, finding the vulnerabilities."
         },
         {
-          "ar": "سجل بالثغرات المكتشفة في البنية التحتية.",
-          "en": "A register of the vulnerabilities found in the infrastructure."
+          "ar": "لا شيء منها، لأن العمل انتهى فعلاً في هذه الحالة.",
+          "en": "None of the phases, because the work is done."
         },
         {
-          "ar": "استراتيجية أمنية ومجموعة خطط.",
-          "en": "A security strategy and a set of plans."
+          "ar": "المرحلة الثالثة، كتابة الاستراتيجية والخطط.",
+          "en": "Phase three, writing the strategy and plans."
         },
         {
-          "ar": "تقرير تدقيق موقّع من مدقق خارجي.",
-          "en": "An audit report signed by an external assessor."
+          "ar": "المرحلة الأولى، بناء ملفات التهديد كلها.",
+          "en": "Phase one, building the threat profiles."
         }
       ],
-      "concept_id": "phase_three_output",
+      "concept_id": "scenario_phase_three",
       "explanation": {
-        "ar": "المرحلة الثالثة تطوّر استراتيجية أمنية وخططاً. وسجل الثغرات ناتج المرحلة الثانية، ولا يظهر توقيع تدقيق خارجي في المنهجية كما تصفها المحاضرة.",
-        "en": "Phase three develops a security strategy and plans. The vulnerability register is the output of phase two, and no external audit signature appears in the method as the lecture describes it."
+        "ar": "الثغرات تخص المرحلة الثانية، فالاستراتيجية التي تأتي بعدها هي المرحلة الثالثة.",
+        "en": "Vulnerabilities belong to phase two, so the strategy that follows them is phase three."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "لماذا يهمّ ترتيب مراحل OCTAVE الثلاث؟",
-        "en": "Why does the order of the three OCTAVE phases matter?"
+        "ar": "من طوّر OCTAVE؟",
+        "en": "Who developed OCTAVE?"
       },
-      "bloom": "Analyze",
+      "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "لأن كل مرحلة يمكن تنفيذها مستقلة وبأي ترتيب.",
-          "en": "Because each phase can be run independently in any order."
+          "ar": "منظمتا ISO و IEC بالاشتراك بينهما.",
+          "en": "ISO and IEC, working jointly."
         },
         {
-          "ar": "لأن المرحلة الأخيرة تنتج ملفات التهديد دائماً.",
-          "en": "Because the last phase always produces the threat profiles."
+          "ar": "المعهد الأمريكي للمعايير والتقنية NIST.",
+          "en": "The US National Institute of Standards."
         },
         {
-          "ar": "لأن المراحل تنطبق على المؤسسات الصغيرة فقط.",
-          "en": "Because the phases only apply to small enterprises."
+          "ar": "وكالة تابعة للاتحاد الأوروبي في أثينا.",
+          "en": "A European Union agency in Athens."
         },
         {
-          "ar": "لأن الملفات تأتي أولاً، ثم الثغرات، ثم الاستراتيجية.",
-          "en": "Because profiles come first, then vulnerabilities, then the strategy."
+          "ar": "منظمة CERT في جامعة Carnegie Mellon.",
+          "en": "CERT at Carnegie Mellon University."
         }
       ],
-      "concept_id": "phase_order_logic",
+      "concept_id": "octave_developer",
       "explanation": {
-        "ar": "لا يمكن تحديد أي ثغرات البنية التحتية تهمّ قبل معرفة أصولك وما يهددها، ولا يمكن كتابة استراتيجية قبل معرفة الثغرات. فالتسلسل سلسلة اعتماد لا قائمة اختيار.",
-        "en": "You cannot identify which infrastructure vulnerabilities matter until you know what your assets are and what threatens them, and you cannot write a strategy until the vulnerabilities are known. The sequence is a dependency chain, not a menu."
+        "ar": "طُوّرت OCTAVE لمنظمة CERT، فريق الاستجابة لحوادث الحاسوب، في جامعة Carnegie Mellon بالولايات المتحدة.",
+        "en": "OCTAVE was developed for CERT, the Computer Emergency Response Team, at Carnegie Mellon University in the USA."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "كم صيغة من OCTAVE تعدّد المحاضرة؟",
+        "ar": "كم نوعاً من OCTAVE تسرد المحاضرة؟",
         "en": "How many variants of OCTAVE does the lecture list?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "أربع صيغ.",
+          "ar": "أربعة أنواع.",
           "en": "Four variants."
         },
         {
-          "ar": "ثلاث صيغ.",
+          "ar": "ثلاثة أنواع.",
           "en": "Three variants."
         },
         {
-          "ar": "خمس صيغ.",
+          "ar": "خمسة أنواع.",
           "en": "Five variants."
         },
         {
-          "ar": "صيغتان.",
+          "ar": "نوعان فقط.",
           "en": "Two variants."
         }
       ],
       "concept_id": "variant_count",
       "explanation": {
-        "ar": "تعدّد المحاضرة أربعاً: OCTAVE الأصلية، وOCTAVE-S، وOCTAVE ALLEGRO، وOCTAVE FORTE. ولا تخلط هذا بالمراحل الثلاث.",
-        "en": "The lecture lists four: OCTAVE itself as the original method, OCTAVE-S, OCTAVE ALLEGRO and OCTAVE FORTE. Do not confuse this with the three phases."
+        "ar": "أربعة: الأصلي، وOCTAVE-S، وOCTAVE ALLEGRO، وOCTAVE FORTE.",
+        "en": "Four: the original, OCTAVE-S, OCTAVE ALLEGRO, and OCTAVE FORTE."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "أي صيغة هي المبسّطة للمؤسسات الصغيرة ذات الموارد المحدودة؟",
-        "en": "Which variant is the simplified one for small enterprises with limited resources?"
+        "ar": "أي نوع هو المبسّط للمؤسسات الصغيرة؟",
+        "en": "Which variant is the simplified one for small enterprises?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "OCTAVE ALLEGRO.",
-          "en": "OCTAVE ALLEGRO."
+          "ar": "نسخة تلغي المراحل الثلاث كلها.",
+          "en": "A version that drops all of the three phases."
         },
         {
-          "ar": "OCTAVE-S.",
-          "en": "OCTAVE-S."
+          "ar": "النسخة المبسّطة للمؤسسات الصغيرة.",
+          "en": "The simplified one for small enterprises."
         },
         {
-          "ar": "OCTAVE FORTE.",
-          "en": "OCTAVE FORTE."
+          "ar": "النسخة الموسّعة للمؤسسات المتقدمة.",
+          "en": "The expanded version for advanced IT."
         },
         {
-          "ar": "OCTAVE LITE.",
-          "en": "OCTAVE LITE."
+          "ar": "الطريقة الأصلية دون أي تغيير يذكر.",
+          "en": "The original method, kept unchanged."
         }
       ],
-      "concept_id": "variant_small",
+      "concept_id": "variant_octave_s",
       "explanation": {
-        "ar": "OCTAVE-S هي النسخة المبسّطة للمؤسسات الصغيرة ذات الموارد المحدودة. وALLEGRO هي الموسّعة، وFORTE مذكورة بلا وصف، وOCTAVE LITE غير موجودة في المحاضرة.",
-        "en": "OCTAVE-S is the simplified version for small enterprises with limited resources. ALLEGRO is the expanded one, FORTE is listed without description, and OCTAVE LITE does not exist in the lecture."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "أي صيغة توصف بأنها موسّعة للمؤسسات ذات بنية تقنية متقدمة؟",
-        "en": "Which variant is described as expanded for enterprises with an advanced IT structure?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "OCTAVE-S، لأنها مبسّطة للشركات الأصغر.",
-          "en": "OCTAVE-S, because it is simplified for smaller firms."
-        },
-        {
-          "ar": "OCTAVE FORTE، لأنها تمدّ المنهجية الأصلية.",
-          "en": "OCTAVE FORTE, because it extends the original method."
-        },
-        {
-          "ar": "OCTAVE ALLEGRO، لأنها تستهدف بنية تقنية متقدمة.",
-          "en": "OCTAVE ALLEGRO, because it targets an advanced IT structure."
-        },
-        {
-          "ar": "OCTAVE، لأنها المنهجية الأصلية غير المعدّلة.",
-          "en": "OCTAVE, because it is the original unmodified method."
-        }
-      ],
-      "concept_id": "variant_advanced",
-      "explanation": {
-        "ar": "تربط المحاضرة النسخة الموسّعة بالبنية التقنية المتقدمة وتسمّيها OCTAVE ALLEGRO. أما OCTAVE-S فهي الطرف المقابل، وFORTE لا تحمل أي وصف.",
-        "en": "The lecture attaches the expanded version to an advanced IT structure and names it OCTAVE ALLEGRO. OCTAVE-S is the opposite end, and FORTE carries no description at all."
-      }
-    },
-    {
-      "id": "q12",
-      "stem": {
-        "ar": "ماذا تقول المحاضرة عن OCTAVE FORTE؟",
-        "en": "What does the lecture say about OCTAVE FORTE?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "إنها النسخة المبسّطة للمؤسسات الصغيرة.",
-          "en": "That it is the simplified version for small enterprises."
-        },
-        {
-          "ar": "إنها المنهجية الأصلية قبل وجود أي صيغة.",
-          "en": "That it is the original method before any variant existed."
-        },
-        {
-          "ar": "إنها النسخة الموسّعة للبنيات التقنية المتقدمة.",
-          "en": "That it is the expanded version for advanced IT structures."
-        },
-        {
-          "ar": "إنها موجودة كصيغة، مذكورة دون وصف إضافي.",
-          "en": "That it exists as a variant, listed without further description."
-        }
-      ],
-      "concept_id": "variant_forte",
-      "explanation": {
-        "ar": "تعدّد المحاضرة OCTAVE FORTE كالصيغة الرابعة ولا تقول عنها شيئاً آخر. والقول إنها مبسّطة أو موسّعة اختلاق لتفصيل لا يقدّمه المصدر.",
-        "en": "The lecture lists OCTAVE FORTE as the fourth variant and says nothing further about it. Claiming it is simplified or expanded would be inventing detail the source does not give."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "يبدأ فريق بجرد ما يملكه وما يهدد كل عنصر. أي مرحلة من OCTAVE هذه؟",
-        "en": "A team begins by cataloguing what it owns and what threatens each item. Which OCTAVE phase is this?"
-      },
-      "bloom": "Apply",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "المرحلة الأولى، بناء ملفات تهديد مبنية على الأصول.",
-          "en": "The first phase, building asset-based threat profiles."
-        },
-        {
-          "ar": "المرحلة الثانية، تحديد ثغرات البنية التحتية.",
-          "en": "The second phase, identifying infrastructure vulnerabilities."
-        },
-        {
-          "ar": "المرحلة الثالثة، تطوير استراتيجية أمنية.",
-          "en": "The third phase, developing a security strategy."
-        },
-        {
-          "ar": "لا مرحلة منها، لأن هذا تخفيف للمخاطر.",
-          "en": "None of the phases, because this is risk mitigation."
-        }
-      ],
-      "concept_id": "scenario_phase_one",
-      "explanation": {
-        "ar": "جرد الأصول وقرنها بما يهددها هو بالضبط بناء ملفات تهديد مبنية على الأصول، أي المرحلة الأولى. والثانية تبحث عن ثغرات البنية التحتية، والثالثة تكتب الاستراتيجية.",
-        "en": "Cataloguing assets and pairing them with what threatens them is exactly building asset-based threat profiles, which is phase one. Phase two looks for infrastructure vulnerabilities and phase three writes the strategy."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "أنهى فريق تحديد الثغرات ويكتب الآن الاستراتيجية الأمنية والخطط. أي مرحلة يدخل؟",
-        "en": "A team has finished identifying vulnerabilities and now writes the security strategy and plans. Which phase is it entering?"
-      },
-      "bloom": "Apply",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "المرحلة الأولى، لأنه يجب إعادة بناء الملفات أولاً.",
-          "en": "The first phase, because profiles must be rebuilt first."
-        },
-        {
-          "ar": "المرحلة الثالثة، التي تطوّر الاستراتيجية الأمنية والخطط.",
-          "en": "The third phase, which develops the security strategy and plans."
-        },
-        {
-          "ar": "المرحلة الثانية، لأنه ما زالت تُكتشف ثغرات.",
-          "en": "The second phase, because vulnerabilities are still being found."
-        },
-        {
-          "ar": "مرحلة رابعة تضيفها المنهجية بعد الثالثة.",
-          "en": "A fourth phase, which the method adds after the third."
-        }
-      ],
-      "concept_id": "scenario_phase_three",
-      "explanation": {
-        "ar": "تطوير استراتيجية أمنية وخطط هو المرحلة الثالثة. والمنهجية ثلاث مراحل فلا رابعة لها، وعمل الثغرات الذي يسبق هذا يخص المرحلة الثانية.",
-        "en": "Developing a security strategy and plans is the third phase. The method has three phases, so there is no fourth, and the vulnerability work that precedes this belongs to phase two."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "ما الذي يجعل OCTAVE عملية لا قائمة تحقّق؟",
-        "en": "What makes OCTAVE a process rather than a checklist?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "إنها تعدّد أربع عشرة فئة يجب استيفاء كل منها.",
-          "en": "It lists fourteen categories that must each be satisfied."
-        },
-        {
-          "ar": "إنها تقدّم نموذجاً لحساب الخطر رقمياً.",
-          "en": "It provides a model for calculating the risk numerically."
-        },
-        {
-          "ar": "إنها تسلسل تحليل التهديدات والمخاطر والتدابير.",
-          "en": "It sequences analysis of threats, risks and countermeasures."
-        },
-        {
-          "ar": "إنها تصف العمليات الداخلية التي تتبعها الشركة.",
-          "en": "It describes the internal processes a company must follow."
-        }
-      ],
-      "concept_id": "process_not_checklist",
-      "explanation": {
-        "ar": "تعرّف المحاضرة OCTAVE بأنها تصف عملية تحليل التهديدات والمخاطر المقابلة وإيجاد تدابير مناسبة. والفئات الأربع عشرة هي ISO/IEC 27002، ونموذج الحساب هو FAIR، والعمليات الداخلية هي COSO.",
-        "en": "The lecture defines OCTAVE as describing the process of analysing threats and the corresponding risks and of finding suitable countermeasures. The fourteen categories are ISO/IEC 27002, the calculation model is FAIR and the internal processes are COSO."
+        "ar": "OCTAVE-S هو النوع المبسّط للمؤسسات الصغيرة ذات الموارد المحدودة. أما ALLEGRO فهو الموسّع.",
+        "en": "OCTAVE-S is the simplified variant for small enterprises with limited resources. ALLEGRO is the expanded one."
       }
     }
   ],
@@ -493,7 +333,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-26T18:20:32Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

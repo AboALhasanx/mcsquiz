@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "المعادلتان ومصفوفتاهما",
-    "en": "The two equations and their matrices"
+    "ar": "الخطر الأساسي والمتبقي ومصفوفتاهما",
+    "en": "Basic Risk, Residual Risk & Their Matrices"
   },
   "quiz_id": "Quiz_Ch02_T02_Two_Equations_And_Matrices",
   "has_math": false,
@@ -10,33 +10,33 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي علاقة تعطي الخطر الأساسي S لتهديد في المحاضرة؟",
-        "en": "Which relationship gives the basic risk S of a threat in the lecture?"
+        "ar": "ماذا يعبّر عنه الخطر الأساسي S؟",
+        "en": "What does the basic risk S express?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "التكرار مضروباً في العواقب.",
-          "en": "Frequency multiplied by consequences."
+          "ar": "الخطر قبل تطبيق أي ضابط أمني.",
+          "en": "The risk before countermeasures are applied."
         },
         {
-          "ar": "التكرار مضافاً إلى العواقب.",
-          "en": "Frequency added to consequences."
+          "ar": "الخطر المتبقي بعد عمل الضوابط.",
+          "en": "The risk left after countermeasures act."
         },
         {
-          "ar": "العواقب مقسومة على التكرار.",
-          "en": "Consequences divided by frequency."
+          "ar": "عدد الضوابط الأمنية الموجودة.",
+          "en": "The number of countermeasures in place."
         },
         {
-          "ar": "التكرار مقسوماً على التدابير المضادة.",
-          "en": "Frequency divided by countermeasures."
+          "ar": "تكرار الهجمات خلال سنة واحدة.",
+          "en": "The frequency of attacks over one year."
         }
       ],
-      "concept_id": "basic_risk_formula",
+      "concept_id": "basic_risk_meaning",
       "explanation": {
-        "ar": "المحاضرة تنص على أن الخطر الأساسي S يعتمد على التكرار F لمحاولات الاستغلال وعلى العواقب K لمحاولة ناجحة، وتكتب العلاقة S = F × K.",
-        "en": "The lecture states that the basic risk S depends on the frequency F of attempts and the consequences K of a successful attempt, and writes the relationship as S = F times K."
+        "ar": "الخطر الأساسي هو خطر التهديد كما هو، قبل احتساب أي ضابط. والخطر المتبقي هو ما يبقى بعده.",
+        "en": "Basic risk is the risk of a threat as it stands, before any countermeasure is counted. Residual risk is what is left afterwards."
       }
     },
     {
@@ -49,26 +49,26 @@
       "answer": 1,
       "options": [
         {
-          "ar": "العواقب التي تترتب على محاولة ناجحة ضد النظام.",
-          "en": "The consequences that follow a successful attempt on the system."
+          "ar": "مدة بقاء الأصل متوقفاً بعد الهجوم.",
+          "en": "How long the asset stays offline after an attack."
         },
         {
-          "ar": "تكرار محاولات استغلال الثغرة.",
-          "en": "The frequency of attempts to exploit the vulnerability."
+          "ar": "كم مرة تُشنّ محاولات لاستغلالها.",
+          "en": "How often attempts are made to exploit it."
         },
         {
-          "ar": "مستوى التدابير المضادة القائمة حالياً في المنظومة كلها.",
-          "en": "The level of countermeasures currently in place across the estate."
+          "ar": "مقدار الضرر لو نجحت المحاولة.",
+          "en": "How much damage a success would cause."
         },
         {
-          "ar": "الخطر المتبقي الذي يبقى بعد تطبيق الدفاع.",
-          "en": "The residual risk that remains once the defence has been applied."
+          "ar": "عدد الضوابط التي تحمي الأصل.",
+          "en": "How many controls protect the asset."
         }
       ],
       "concept_id": "frequency_meaning",
       "explanation": {
-        "ar": "F هو تكرار محاولات استغلال الثغرة، أي كم مرة يُحاوَل التهديد. والعواقب تخصّ K ومستوى الحماية يخصّ M.",
-        "en": "F is the frequency of attempts to exploit the vulnerability, meaning how often the threat is tried. Consequences belong to K and the level of protection belongs to M."
+        "ar": "F هو تكرار محاولات استغلال الثغرة، لا عدد المحاولات الناجحة.",
+        "en": "F is the frequency of attempts to exploit the vulnerability, not the number of successes."
       }
     },
     {
@@ -81,570 +81,314 @@
       "answer": 2,
       "options": [
         {
-          "ar": "تكرار محاولات استغلال الثغرة.",
-          "en": "The frequency of attempts to exploit the vulnerability."
+          "ar": "عدد الضوابط الأمنية الموجودة.",
+          "en": "How many countermeasures are in place there."
         },
         {
-          "ar": "مستوى التدابير المضادة القائمة.",
-          "en": "The level of countermeasures in place."
+          "ar": "سرعة كشف الحادث وإغلاقه.",
+          "en": "How quickly the incident is detected and closed."
         },
         {
-          "ar": "العواقب المترتبة على محاولة ناجحة.",
-          "en": "The consequences of a successful attempt."
+          "ar": "حجم الضرر لو نجحت المحاولة.",
+          "en": "The damage a successful attempt would cause."
         },
         {
-          "ar": "عدد الثغرات المكتشفة.",
-          "en": "The number of vulnerabilities found."
+          "ar": "كم مرة تُشنّ المحاولات ضد الأصل.",
+          "en": "How often attempts are made against the asset."
         }
       ],
       "concept_id": "consequences_meaning",
       "explanation": {
-        "ar": "K هو العواقب المترتبة على محاولة ناجحة، أي حجم الضرر إذا نجحت المحاولة. والتكرار هو F، وعدد الثغرات ليس متغيراً في هذه المعادلة.",
-        "en": "K is the consequences of a successful attempt, meaning how much harm follows if the attempt succeeds. Frequency is F, and the number of vulnerabilities is not a variable in this equation."
+        "ar": "K هو عواقب محاولة واحدة ناجحة: حجم الخسارة، لا تكرارها.",
+        "en": "K is the consequences of one successful attempt: the size of the loss, not how often it happens."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "لماذا يكون الخطر الأساسي حاصل ضرب التكرار والعواقب بدل جمعهما؟",
-        "en": "Why is basic risk the product of frequency and consequences rather than their sum?"
+        "ar": "لماذا الخطر الأساسي حاصل ضرب لا مجموع؟",
+        "en": "Why is basic risk a product rather than a sum?"
       },
-      "bloom": "Analyze",
+      "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "لأن الجمع ينتج عدداً أكبر دائماً.",
-          "en": "Because a sum would always produce a larger number."
+          "ar": "لأن الجمع لا يستوعب ثلاثة عوامل.",
+          "en": "Because addition cannot handle three factors."
         },
         {
-          "ar": "لأن التكرار والعواقب يقاسان بالوحدة نفسها.",
-          "en": "Because frequency and consequences are measured in the same unit."
+          "ar": "لأن المحاضرة تفضّل الصيغ الأقصر.",
+          "en": "Because the lecture prefers the shorter formulas."
         },
         {
-          "ar": "لأن المحاضرة تعرّف الخطر كمجموع لا كحاصل ضرب.",
-          "en": "Because the lecture defines risk as a total, not a product."
+          "ar": "لأن الألوان تحتاج رقمين للدمج.",
+          "en": "Because colours need two numbers to combine."
         },
         {
-          "ar": "لأن العاملين يجب أن يهمّا معاً، فلا يعوّض أحدهما عن الآخر.",
-          "en": "Because both factors must matter, so neither can compensate for the other."
+          "ar": "لأن الخطر يعلى فقط إذا علا الاثنان.",
+          "en": "Because both must be high for risk to be high."
         }
       ],
       "concept_id": "multiplication_rationale",
       "explanation": {
-        "ar": "بحاصل الضرب، الصفر في أي عامل يُسقط النتيجة كلها: فتكرار هائل مع عاقبة صفرية لا يُنتج خطراً. أما الجمع فيسمح لتكرار كبير بحمل عاقبة ضئيلة، وهذا بالضبط الخطأ الذي يمنعه الضرب.",
-        "en": "With a product, a zero in either factor collapses the whole result: enormous frequency against zero consequence still yields no risk. A sum would let a large frequency carry a negligible consequence, which is exactly the error the multiplication prevents."
+        "ar": "بالمجموع، عاقبة ضخمة تجعل الخطر عالياً حتى لو كانت المحاولة نادرة جداً. وحاصل الضرب يُبقي الخطر منخفضاً إلا إذا علا العاملان معاً.",
+        "en": "With a sum, a huge consequence would make the risk high even if the attempt almost never happens. A product keeps the risk low unless both factors rise."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "متى يقع التهديد في المنطقة الحمراء من مصفوفة الخطر؟",
-        "en": "When does a threat sit in the red area of the risk matrix?"
+        "ar": "أين يقع المنطقة الحمراء في مصفوفة الخطر؟",
+        "en": "Where does the red area of the risk matrix sit?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "عندما يكون التكرار والعواقب كلاهما عالياً.",
-          "en": "When both frequency and consequences are high."
+          "ar": "تكرار عالٍ وعواقب عالية معاً.",
+          "en": "High frequency and high consequences together."
         },
         {
-          "ar": "عندما يكون التكرار عالياً والعواقب واطئة.",
-          "en": "When frequency is high and consequences are low."
+          "ar": "تكرار عالٍ مع عواقب منخفضة.",
+          "en": "High frequency together with low consequences."
         },
         {
-          "ar": "عندما يكون التكرار واطئاً والعواقب عالية.",
-          "en": "When frequency is low and consequences are high."
+          "ar": "تكرار منخفض مع عواقب عالية.",
+          "en": "Low frequency together with high consequences."
         },
         {
-          "ar": "عندما يكون التكرار والعواقب كلاهما واطئاً.",
-          "en": "When both frequency and consequences are low."
+          "ar": "تكرار منخفض وعواقب منخفضة معاً.",
+          "en": "Low frequency and low consequences together."
         }
       ],
       "concept_id": "risk_matrix_red",
       "explanation": {
-        "ar": "المحاضرة تربط الأحمر بالخطر العالي الذي ينشأ عندما تكون العواقب والتكرار كلاهما عالياً. وعامل واحد عالٍ لا يبلغ الزاوية الحمراء.",
-        "en": "The lecture ties red to a high risk arising when both the consequences of a successful attack and the frequency of attempts are high. One high factor alone does not reach the red corner."
+        "ar": "الأحمر يحتاج المحورين عاليين. واحد عالٍ وواحد منخفض يعطي أصفر، وكلاهما منخفض يعطي أخضر.",
+        "en": "Red needs both axes high. One high and one low gives yellow, and both low gives green."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ماذا تشير إليه المنطقة الخضراء في مصفوفة الخطر؟",
-        "en": "What does the green area of the risk matrix indicate?"
+        "ar": "أين تقع المنطقة الحمراء في مصفوفة الخطر المتبقي؟",
+        "en": "Where does the red area of the residual risk matrix sit?"
       },
-      "bloom": "Understand",
-      "answer": 1,
+      "bloom": "Remember",
+      "answer": 2,
       "options": [
         {
-          "ar": "مستوى متوسط من الخطر.",
-          "en": "A medium level of risk."
+          "ar": "خطر منخفض وضوابط قليلة معاً.",
+          "en": "Low risk and low countermeasures together."
         },
         {
-          "ar": "مستوى منخفض من الخطر.",
-          "en": "A low level of risk."
+          "ar": "خطر منخفض وضوابط كثيرة معاً.",
+          "en": "Low risk and high countermeasures together."
         },
         {
-          "ar": "خطراً تحقق فعلاً.",
-          "en": "A risk that has already been realised."
+          "ar": "خطر عالٍ وضوابط قليلة معاً.",
+          "en": "High risk and low countermeasures together."
         },
         {
-          "ar": "خطراً بلا تدابير مضادة مطبقة.",
-          "en": "A risk with no countermeasures applied."
+          "ar": "خطر عالٍ وضوابط كثيرة معاً.",
+          "en": "High risk and high countermeasures together."
         }
       ],
-      "concept_id": "risk_matrix_green",
+      "concept_id": "residual_matrix_red",
       "explanation": {
-        "ar": "المحاضرة تعطي ثلاثة ألوان: الأحمر للخطر العالي والأصفر للمتوسط والأخضر للمنخفض. فالأخضر يدل على منطقة الخطر المنخفض، لا على خسارة واقعة ولا على غياب الحماية.",
-        "en": "The lecture assigns three colours: red for high risk, yellow for medium and green for low. Green therefore marks the low-risk region, not an already-realised loss and not an unprotected one."
+        "ar": "المصفوفة الثانية محوراها الخطر والضوابط، وهي معكوسة تناظرياً للأولى: الأحمر خطر عالٍ مع ضوابط قليلة.",
+        "en": "The second matrix has risk and countermeasures as its axes, and it is mirror-symmetric to the first: red is high risk with few countermeasures."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "تهديد تكراره 4 محاولات في الفترة وعواقبه 50. ما الخطر الأساسي؟",
-        "en": "A threat has a frequency of 4 attempts per period and consequences rated 50. What is the basic risk?"
-      },
-      "bloom": "Apply",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "S تساوي 12.5.",
-          "en": "S equals 12.5."
-        },
-        {
-          "ar": "S تساوي 54.",
-          "en": "S equals 54."
-        },
-        {
-          "ar": "S تساوي 200.",
-          "en": "S equals 200."
-        },
-        {
-          "ar": "S تساوي 46.",
-          "en": "S equals 46."
-        }
-      ],
-      "concept_id": "basic_risk_numeric",
-      "explanation": {
-        "ar": "الخطر الأساسي هو التكرار مضروباً بالعواقب، فـ S = 4 × 50 = 200. والجمع يعطي 54 والقسمة تعطي 12.5، وهما عمليتان لا تستخدمهما المعادلة.",
-        "en": "Basic risk is frequency multiplied by consequences, so S = 4 times 50 = 200. Adding gives 54 and dividing gives 12.5, which are the two operations the equation does not use."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "التهديد الأول تكراره 10 وعواقبه 2، والثاني تكراره 2 وعواقبه 10. ماذا ينتج؟",
-        "en": "Threat 1 has frequency 10 and consequences 2; Threat 2 has frequency 2 and consequences 10. What follows?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "التهديد الأول له الخطر الأساسي الأكبر.",
-          "en": "Threat 1 has the larger basic risk."
-        },
-        {
-          "ar": "التهديد الثاني له الخطر الأساسي الأكبر.",
-          "en": "Threat 2 has the larger basic risk."
-        },
-        {
-          "ar": "لا يمكن مقارنة الخطر الأساسي دون مستوى التدابير.",
-          "en": "Basic risk cannot be compared without the countermeasure level."
-        },
-        {
-          "ar": "كلاهما له الخطر الأساسي نفسه، وهو 20.",
-          "en": "Both have the same basic risk, which is 20."
-        }
-      ],
-      "concept_id": "equal_basic_risk",
-      "explanation": {
-        "ar": "كلا الحاصلين يساوي 20، فالتهديدان يحملان الخطر الأساسي نفسه. والضرب متماثل، ولهذا لا يتفوق التكرار العالي على العاقبة العالية وحده؛ ومستوى التدابير يخص المعادلة التالية.",
-        "en": "Both products equal 20, so the two threats carry the same basic risk. The multiplication is symmetric, which is why a high frequency cannot outrank a high consequence on its own; the countermeasure level belongs to the next equation."
-      }
-    },
-    {
-      "id": "q9",
-      "stem": {
-        "ar": "كيف يُعرَّف الخطر المتبقي R في المحاضرة؟",
-        "en": "How is the residual risk R defined in the lecture?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "الخطر الأساسي مقسوماً على مستوى التدابير المضادة.",
-          "en": "Basic risk divided by the level of countermeasures."
-        },
-        {
-          "ar": "الخطر الأساسي مضروباً بمستوى التدابير المضادة.",
-          "en": "Basic risk multiplied by the level of countermeasures."
-        },
-        {
-          "ar": "الخطر الأساسي مطروحاً منه مستوى التدابير المضادة.",
-          "en": "Basic risk minus the level of countermeasures."
-        },
-        {
-          "ar": "التدابير المضادة مقسومة على الخطر الأساسي.",
-          "en": "Countermeasures divided by the basic risk."
-        }
-      ],
-      "concept_id": "residual_risk_formula",
-      "explanation": {
-        "ar": "الخطر المتبقي هو الخطر المنخفض الذي يبقى بعد إدخال التدابير المضادة، وتكتبه المحاضرة S ÷ M. والضرب كان سيرفع الخطر والطرح كان سيجعله فرقاً بين مجموعين.",
-        "en": "The residual risk is the reduced risk left after countermeasures are introduced, and the lecture writes it as S divided by M. Multiplying would raise the risk and subtracting would make it a difference of two totals."
-      }
-    },
-    {
-      "id": "q10",
-      "stem": {
-        "ar": "ماذا يشمل مستوى التدابير المضادة M؟",
+        "ar": "ماذا يغطي مستوى الضوابط M؟",
         "en": "What does the level of countermeasures M cover?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "عدد التدابير المضادة المثبتة فقط.",
-          "en": "Only the number of countermeasures installed."
+          "ar": "عدد الهجمات التي صدّتها الضوابط.",
+          "en": "How many attacks the countermeasures blocked this year."
         },
         {
-          "ar": "عدد التدابير المضادة وفاعليتها معاً.",
-          "en": "Both the number of countermeasures and their effectiveness."
+          "ar": "عدد الضوابط الموجودة ومدى فعاليتها.",
+          "en": "How many countermeasures there are and how effective."
         },
         {
-          "ar": "كلفة التدابير المضادة المشتراة فقط.",
-          "en": "Only the cost of the countermeasures purchased."
+          "ar": "عدد الضوابط الموجودة وتكلفتها.",
+          "en": "How many countermeasures there are, and what they cost."
         },
         {
-          "ar": "تكرار المحاولات ضد كل ثغرة.",
-          "en": "The frequency of attempts against each vulnerability."
+          "ar": "مدى فعالية الضوابط وعمرها الزمني.",
+          "en": "How effective the countermeasures are, and their age."
         }
       ],
       "concept_id": "countermeasure_level_covers",
       "explanation": {
-        "ar": "المحاضرة صريحة بأن M يشمل عدد التدابير وفاعليتها معاً. ولهذا قد تترك عدة ضوابط ضعيفة خطراً متبقياً أكبر من ضابط واحد قوي.",
-        "en": "The lecture is explicit that M covers both the number of countermeasures and their effectiveness. That is why several weak controls can leave more residual risk than one strong control."
+        "ar": "M يغطي شيئين معاً: عدد الضوابط ومدى فعاليتها. والمحاضرة تسمّي هذه العوامل المؤثرة.",
+        "en": "M covers two things together: the number of countermeasures and their effectiveness. The lecture calls these the influencing factors."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا يقع M في مقام معادلة الخطر المتبقي؟",
+        "en": "Why does M sit in the denominator of the residual equation?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأن الضوابط تضيف إلى الخطر الكلي.",
+          "en": "Because countermeasures add to the total risk."
+        },
+        {
+          "ar": "لأن المعادلة تحتاج متغيراً ثانياً.",
+          "en": "Because the equation needs a second variable."
+        },
+        {
+          "ar": "لأن الضوابط تُقاس بمستويات.",
+          "en": "Because countermeasures are measured in levels."
+        },
+        {
+          "ar": "لأن زيادة الضوابط تترك خطراً أقل.",
+          "en": "Because more countermeasures leave less risk."
+        }
+      ],
+      "concept_id": "denominator_rationale",
+      "explanation": {
+        "ar": "القسمة تجعل الخطر المتبقي ينخفض كلما علا M. ولو كان M يُجمع أو يُضرب، لرفعت الدفاعات الأقوى الخطر بدل أن تخفضه.",
+        "en": "Division makes residual risk fall as M rises. If M were added or multiplied, stronger defences would raise the risk instead of lowering it."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف ترتبط المعادلتان؟",
+        "en": "How do the two equations relate?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الأولى تنتج S والثانية تستهلكه.",
+          "en": "The first produces S, and the second consumes it."
+        },
+        {
+          "ar": "الاثنتان بديلان لنفس الكمية.",
+          "en": "The two are alternatives for the same quantity."
+        },
+        {
+          "ar": "الثانية تنتج S والأولى تستهلكه.",
+          "en": "The second produces S, and the first consumes it."
+        },
+        {
+          "ar": "مستقلتان ولا تشتركان بأي حد.",
+          "en": "They are independent and never share a term."
+        }
+      ],
+      "concept_id": "two_stage_relationship",
+      "explanation": {
+        "ar": "هما مرحلتان لا خياران: S يُحسب أولاً، ثم يدخل معادلة الخطر المتبقي كبسط لها.",
+        "en": "They are two stages, not two choices: S is computed first, then fed into the residual equation as its numerator."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "تهديد تكراره 4 وعواقبه 50. ما خطرُه الأساسي؟",
+        "en": "A threat has frequency 4 and consequences 50. What is its basic risk?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "100",
+          "en": "100"
+        },
+        {
+          "ar": "200",
+          "en": "200"
+        },
+        {
+          "ar": "240",
+          "en": "240"
+        },
+        {
+          "ar": "160",
+          "en": "160"
+        }
+      ],
+      "concept_id": "basic_risk_numeric",
+      "explanation": {
+        "ar": "الخطر الأساسي هو التكرار ضرب العواقب: 4 × 50 = 200.",
+        "en": "Basic risk is frequency times consequences: 4 x 50 = 200."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "لماذا يقع مستوى التدابير المضادة في مقام معادلة الخطر المتبقي؟",
-        "en": "Why does the level of countermeasures sit in the denominator of the residual risk equation?"
+        "ar": "تهديد خطره الأساسي 200 ومستوى الضوابط عنده 4. ما الخطر المتبقي؟",
+        "en": "A threat has basic risk 200 and the countermeasures reach level 4. What is the residual risk?"
       },
-      "bloom": "Analyze",
+      "bloom": "Apply",
       "answer": 2,
       "options": [
         {
-          "ar": "لأن التدابير المضادة تُقاس بالوحدة نفسها التي يُقاس بها الخطر.",
-          "en": "Because countermeasures are counted in the same unit as risk."
+          "ar": "80",
+          "en": "80"
         },
         {
-          "ar": "لأن زيادة عدد التهديدات يجب أن ترفع الخطر المتبقي.",
-          "en": "Because a larger number of threats should raise the residual risk."
+          "ar": "60",
+          "en": "60"
         },
         {
-          "ar": "لأن الحماية تخفض ما يتبقى، فيجب أن تقسم الخطر نزولاً.",
-          "en": "Because protection reduces what is left, so it must divide the risk down."
+          "ar": "50",
+          "en": "50"
         },
         {
-          "ar": "لأن المحاضرة تعرّف الخطر المتبقي كفرق بين مجموعين.",
-          "en": "Because the lecture defines residual risk as a difference of two totals."
+          "ar": "40",
+          "en": "40"
         }
       ],
-      "concept_id": "denominator_rationale",
+      "concept_id": "residual_numeric",
       "explanation": {
-        "ar": "الكمية الدفاعية يجب أن تُقلّص النتيجة، وهذا ما تفعله القسمة على مستوى حماية. ووضع عدد التهديدات في المقام كان يعني أن تهديدات أكثر تُنتج خطراً أقل، والصفر يقسم على صفر.",
-        "en": "A defensive quantity has to shrink the result, which is what division by a protection level does. Putting a threat count in the denominator would mean more threats produce less risk, and a zero would divide by zero."
+        "ar": "الخطر المتبقي هو الخطر الأساسي مقسوماً على المستوى: 200 ÷ 4 = 50.",
+        "en": "Residual risk is basic risk divided by the level: 200 / 4 = 50."
       }
     },
     {
       "id": "q12",
       "stem": {
-        "ar": "متى يقع التهديد في المنطقة الحمراء من مصفوفة الخطر المتبقي؟",
-        "en": "When does a threat sit in the red area of the residual risk matrix?"
+        "ar": "قسمان يواجهان الخطر الأساسي نفسه. A يطبّق ضابطين فعّالين وB يطبّق ضابطاً ضعيفاً. ماذا ينتج؟",
+        "en": "Two departments face the same basic risk. A applies two effective controls, B applies one weak one. What follows?"
       },
-      "bloom": "Remember",
+      "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "عندما يكون الخطر عالياً والتدابير عالية.",
-          "en": "When the risk is high and the countermeasures are high."
+          "ar": "القسم B عنده خطر متبقٍّ أقل من A.",
+          "en": "Department B has the lower residual risk."
         },
         {
-          "ar": "عندما يكون الخطر واطئاً والتدابير واطئة.",
-          "en": "When the risk is low and the countermeasures are low."
+          "ar": "القسمان عندهما الخطر المتبقي نفسه.",
+          "en": "Both departments have the same residual risk."
         },
         {
-          "ar": "عندما يكون الخطر واطئاً والتدابير عالية.",
-          "en": "When the risk is low and the countermeasures are high."
+          "ar": "الخطر المتبقي لا يعتمد على الضوابط.",
+          "en": "Residual risk does not depend on the controls."
         },
         {
-          "ar": "عندما يكون الخطر عالياً والتدابير واطئة.",
-          "en": "When the risk is high and the countermeasures are low."
-        }
-      ],
-      "concept_id": "residual_matrix_red",
-      "explanation": {
-        "ar": "المحاضرة تنص على أن الخطر المتبقي العالي، المشار إليه بالأحمر، ينشأ عندما يكون الخطر عالياً ومستوى التدابير واطئاً. ولاحظ الانعكاس مقابل المصفوفة الأساسية حيث يجب أن يكون العاملان عاليين.",
-        "en": "The lecture states that a high residual risk, shown in red, arises when the risk is high and the level of countermeasures is low. Note the inversion against the basic matrix, where both factors had to be high."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "تهديد خطره الأساسي 200 ومستوى تدابيره 4. ما الخطر المتبقي؟",
-        "en": "A threat has basic risk 200 and the countermeasures reach level 4. What is the residual risk?"
-      },
-      "bloom": "Apply",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "R تساوي 50.",
-          "en": "R equals 50."
-        },
-        {
-          "ar": "R تساوي 800.",
-          "en": "R equals 800."
-        },
-        {
-          "ar": "R تساوي 204.",
-          "en": "R equals 204."
-        },
-        {
-          "ar": "R تساوي 196.",
-          "en": "R equals 196."
-        }
-      ],
-      "concept_id": "residual_numeric",
-      "explanation": {
-        "ar": "الخطر المتبقي هو الخطر الأساسي مقسوماً على مستوى التدابير، فـ R = 200 ÷ 4 = 50. والضرب يعطي 800 والجمع يعطي 204، وهما لعمليتين أخريين.",
-        "en": "Residual risk is basic risk divided by the countermeasure level, so R = 200 divided by 4 = 50. Multiplying gives 800 and adding gives 204, which belong to other operations."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "تهديد خطره الأساسي 90 وطُبّق عليه تدبير واحد فعّال تماماً، فالمستوى 1. ما الخطر المتبقي؟",
-        "en": "A threat has basic risk 90 and exactly one fully effective countermeasure is applied, so the level is 1. What is the residual risk?"
-      },
-      "bloom": "Apply",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "R تساوي 0، لأن هناك تدبيراً موجوداً.",
-          "en": "R equals 0, because a countermeasure is present."
-        },
-        {
-          "ar": "R تساوي 90، لأن المستوى 1 لا يغيّر شيئاً.",
-          "en": "R equals 90, because a level of 1 changes nothing."
-        },
-        {
-          "ar": "R تساوي 89، لأن التدبير يُطرح.",
-          "en": "R equals 89, because the countermeasure is subtracted."
-        },
-        {
-          "ar": "R تساوي 91، لأن التدبير يُضاف.",
-          "en": "R equals 91, because the countermeasure is added."
-        }
-      ],
-      "concept_id": "countermeasure_level_one",
-      "explanation": {
-        "ar": "القسمة على 1 تترك القيمة كما هي، فيبقى الخطر المتبقي 90. وهذا هو المعنى المفيد لـ M: عامل حماية يبدأ من 1، فالحماية لا تخفض الخطر إلا ولا ترفعه.",
-        "en": "Dividing by 1 leaves the value unchanged, so the residual risk stays at 90. That is the useful reading of M: it is a protective factor starting at 1, so protection can only reduce the risk and never increase it."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "ما العلاقة بين المعادلتين؟",
-        "en": "What is the relationship between the two equations?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "إنهما طريقتان بديلتان لحساب الكمية نفسها.",
-          "en": "They are alternative ways of computing the same quantity."
-        },
-        {
-          "ar": "معادلة الخطر المتبقي تنتج القيمة التي تدخل في معادلة الخطر الأساسي.",
-          "en": "The residual risk equation produces the value fed into the basic risk equation."
-        },
-        {
-          "ar": "معادلة الخطر الأساسي تنتج القيمة التي تدخل في معادلة الخطر المتبقي.",
-          "en": "The basic risk equation produces the value fed into the residual risk equation."
-        },
-        {
-          "ar": "إنهما مستقلتان، ولا تستخدم أي منهما ناتج الأخرى.",
-          "en": "They are independent, and neither uses the output of the other."
-        }
-      ],
-      "concept_id": "two_stage_relationship",
-      "explanation": {
-        "ar": "إنهما مرحلتان لا بديلان: يُحسب S مرة من التكرار والعواقب، ثم يدخل في R كبسط. ومعادلة الخطر المتبقي لا تنتج الخطر الأساسي أبداً.",
-        "en": "They are two stages, not two options: S is computed once from frequency and consequences, then fed into R as the numerator. The residual equation never produces the basic risk."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "في معادلة الخطر المتبقي، ماذا يحدث إذا ارتفع مستوى التدابير وبقي الخطر الأساسي ثابتاً؟",
-        "en": "In the residual risk equation, what happens when the level of countermeasures rises while basic risk stays fixed?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "الخطر المتبقي يرتفع معه.",
-          "en": "The residual risk rises with it."
-        },
-        {
-          "ar": "الخطر المتبقي يبقى كما هو تماماً.",
-          "en": "The residual risk stays exactly the same."
-        },
-        {
-          "ar": "الخطر المتبقي يصبح غير معرّف.",
-          "en": "The residual risk becomes undefined."
-        },
-        {
-          "ar": "الخطر المتبقي ينخفض.",
-          "en": "The residual risk falls."
-        }
-      ],
-      "concept_id": "direction_of_effect",
-      "explanation": {
-        "ar": "لأن مستوى التدابير هو المقام، فرفعه يخفض الناتج. وهذا هو الاتجاه الذي بُنيت المعادلة كلها للتعبير عنه: حماية أكثر، خطر متبقٍ أقل.",
-        "en": "Because the countermeasure level is the denominator, raising it lowers the quotient. That is the direction the whole equation is built to express: more protection, less residual risk."
-      }
-    },
-    {
-      "id": "q17",
-      "stem": {
-        "ar": "وفق المحاضرة، هل يمكن جعل الخطر المتبقي صفراً؟",
-        "en": "According to the lecture, can the residual risk be brought to zero?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لا، يبقى دائماً قدر من الخطر المتبقي ويجب إبقاؤه مقبولاً.",
-          "en": "No, some residual risk always remains and must be kept acceptable."
-        },
-        {
-          "ar": "نعم، بمجرد تثبيت تدابير مضادة كافية.",
-          "en": "Yes, once enough countermeasures are installed."
-        },
-        {
-          "ar": "نعم، بمجرد قياس الخطر الأساسي بدقة.",
-          "en": "Yes, as soon as the basic risk is measured accurately."
-        },
-        {
-          "ar": "لا، لأن معادلة الخطر الأساسي لا يمكن حسابها.",
-          "en": "No, because the basic risk equation cannot be evaluated."
-        }
-      ],
-      "concept_id": "residual_never_zero",
-      "explanation": {
-        "ar": "موقف المحاضرة أن الخطر الصفري غير قابل للوصول وأن الهدف إبقاء الخطر المتبقي عند مستوى مقبول. وتثبيت ضوابط أكثر يخفضه لكنه لا يزيله.",
-        "en": "The lecture's position is that a zero risk is not reachable and the goal is to hold the residual risk at an acceptable level. Installing more controls reduces it but does not eliminate it."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "بأي اسم آخر تشير المحاضرة إلى التدابير المضادة؟",
-        "en": "By what other name does the lecture refer to countermeasures?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "الثغرات.",
-          "en": "Vulnerabilities."
-        },
-        {
-          "ar": "الضوابط.",
-          "en": "Controls."
-        },
-        {
-          "ar": "العواقب.",
-          "en": "Consequences."
-        },
-        {
-          "ar": "التهديدات.",
-          "en": "Threats."
-        }
-      ],
-      "concept_id": "controls_synonym",
-      "explanation": {
-        "ar": "المحاضرة تعرّف التدابير المضادة وتذكر أنها تُعرف أيضاً بالضوابط. والثغرات هي نقاط الضعف، والعواقب هي K، والتهديدات هي القوى التي تعمل ضد النظام.",
-        "en": "The lecture introduces countermeasures and notes that they are also known as controls. Vulnerabilities are the weaknesses, consequences are K, and threats are the forces acting against the system."
-      }
-    },
-    {
-      "id": "q19",
-      "stem": {
-        "ar": "قسمان يواجهان الخطر الأساسي نفسه. القسم A يطبّق تدبيرين فعّالين والقسم B تدبيراً واحداً ضعيفاً. ماذا ينتج؟",
-        "en": "Two departments face the same basic risk. Department A applies two effective countermeasures, Department B applies one weak one. What follows?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "خطراهما المتبقيان متساويان لأن خطريهما الأساسيين متساويان.",
-          "en": "Their residual risks are equal because their basic risks are equal."
-        },
-        {
-          "ar": "القسم A له خطر متبقٍ أعلى، لأنه طبّق أكثر.",
-          "en": "Department A has the higher residual risk, because it applied more."
-        },
-        {
-          "ar": "القسم A له خطر متبقٍ أقل، لأن مستوى تدابيره أعلى.",
-          "en": "Department A has the lower residual risk, because its countermeasure level is higher."
-        },
-        {
-          "ar": "لا يمكن حساب أي من الخطرين المتبقيين دون تكرار المحاولات.",
-          "en": "Neither residual risk can be computed without the frequency of attempts."
+          "ar": "القسم A عنده خطر متبقٍّ أقل من B.",
+          "en": "Department A has the lower residual risk."
         }
       ],
       "concept_id": "same_risk_different_residual",
       "explanation": {
-        "ar": "الخطر الأساسي واحد، فالفرق كله يأتي من M الذي يجمع عدد التدابير وفاعليتها. وتدبيران فعّالان يعطيان مستوى أعلى من تدبير واحد ضعيف، فيبقى عند A خطر متبقٍ أقل.",
-        "en": "The basic risk is the same, so the difference comes entirely from M, which counts both how many countermeasures exist and how effective they are. Two effective controls give a higher level than one weak control, so A keeps less residual risk."
-      }
-    },
-    {
-      "id": "q20",
-      "stem": {
-        "ar": "ما محورا مصفوفة الخطر المتبقي؟",
-        "en": "What are the two axes of the residual risk matrix?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "التكرار والعواقب.",
-          "en": "Frequency and consequences."
-        },
-        {
-          "ar": "التكرار والتدابير المضادة.",
-          "en": "Frequency and countermeasures."
-        },
-        {
-          "ar": "الخطر والعواقب.",
-          "en": "Risk and consequences."
-        },
-        {
-          "ar": "الخطر والتدابير المضادة.",
-          "en": "Risk and countermeasures."
-        }
-      ],
-      "concept_id": "residual_matrix_axes",
-      "explanation": {
-        "ar": "المحاضرة تبني مصفوفة الخطر المتبقي من القسمة، فمحوراها الخطر والتدابير المضادة. أما التكرار والعواقب فهما محورا مصفوفة الخطر الأساسي الناتجة من الضرب.",
-        "en": "The lecture builds the residual matrix from the division, so its axes are risk and countermeasures. Frequency and consequences are the axes of the basic risk matrix, which comes from the multiplication."
+        "ar": "نفس S، وM أعلى، إذن R أقل. A عنده ضوابط أكثر وأفضل، فخطره المتبقي أصغر.",
+        "en": "Same S, higher M, lower R. A has both more controls and better ones, so its residual risk is the smaller of the two."
       }
     }
   ],
@@ -653,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-26T18:20:32Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

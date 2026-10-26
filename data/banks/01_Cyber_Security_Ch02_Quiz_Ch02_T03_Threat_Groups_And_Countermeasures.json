@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "مجموعات التهديد والتدابير المضادة",
-    "en": "Threat groups and countermeasures"
+    "ar": "مجموعات التهديد الأربع والتدابير المضادة",
+    "en": "The Four Threat Groups & Their Countermeasures"
   },
   "quiz_id": "Quiz_Ch02_T03_Threat_Groups_And_Countermeasures",
   "has_math": false,
@@ -10,609 +10,385 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "إلى كم مجموعة رئيسية تقسّم المحاضرة التهديدات التي تواجه أنظمة المعلومات؟",
-        "en": "Into how many main groups does the lecture divide the threats to IT systems?"
+        "ar": "إلى كم مجموعة رئيسية تقسم المحاضرة التهديدات؟",
+        "en": "Into how many main groups does the lecture divide threats?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "أربع مجموعات: العتاد والبرمجيات والبيانات والبشر.",
-          "en": "Four groups: hardware, software, data and liveware."
+          "ar": "أربع مجموعات رئيسية.",
+          "en": "Four main groups."
         },
         {
-          "ar": "مجموعتان: التهديدات الداخلية والتهديدات الخارجية.",
-          "en": "Two groups: internal threats and external threats."
+          "ar": "ثلاث مجموعات رئيسية.",
+          "en": "Three main groups."
         },
         {
-          "ar": "ثلاث مجموعات: التهديدات التقنية والبشرية والقانونية.",
-          "en": "Three groups: technical, human and legal threats."
+          "ar": "خمس مجموعات رئيسية.",
+          "en": "Five main groups."
         },
         {
-          "ar": "خمس مجموعات: مادية ومنطقية واجتماعية وقانونية واقتصادية.",
-          "en": "Five groups: physical, logical, social, legal and economic."
+          "ar": "ست مجموعات رئيسية.",
+          "en": "Six main groups."
         }
       ],
       "concept_id": "threat_groups_count",
       "explanation": {
-        "ar": "المحاضرة تميّز أربع مجموعات رئيسية على الأقل: تهديدات العتاد، والبرمجيات، والبيانات، والبشر. وكل مجموعة تقابل مكوّناً مختلفاً من منظومة الحاسوب.",
-        "en": "The lecture distinguishes at least four main groups of threats: hardware related, software related, data related and liveware related. Each group corresponds to a different component of the computing setup."
+        "ar": "المحاضرة تقول أربع على الأقل: العتاد، البرمجيات، البيانات، والعامل البشري.",
+        "en": "The lecture says at least four: hardware, software, data, and liveware."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "أي اعتقاد خاطئ تسعى المحاضرة إلى تصحيحه؟",
+        "ar": "أي اعتقاد خاطئ تحاول المحاضرة تصحيحه؟",
         "en": "Which mistaken belief does the lecture set out to correct?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "أن البرمجيات الخبيثة هي التهديد الوحيد الذي يواجه الحاسوب.",
-          "en": "That malware is the only threat a computer can face."
+          "ar": "أن أخطاء البرمجيات دائماً متعمّدة.",
+          "en": "That software errors are always deliberate."
         },
         {
-          "ar": "أن التهديد الوحيد هو المهاجمون الذين يخترقون الحاسوب.",
-          "en": "That the only threat is attackers hacking into the computer."
+          "ar": "أن المخترقين الخارجيين وحدهم تهديد.",
+          "en": "That only outside hackers threaten a computer."
         },
         {
-          "ar": "أن أعطال العتاد لا يمكن أن تعطّل الحاسوب أبداً.",
-          "en": "That hardware failures can never interrupt a computer."
+          "ar": "أن أعطال العتاد هي الخطر الأكبر دائماً.",
+          "en": "That hardware faults are the main danger."
         },
         {
-          "ar": "أن الخطأ البشري لا دور له في الحوادث الأمنية.",
-          "en": "That human error plays no part in security incidents."
+          "ar": "أن الداخليين أخطر من المخترقين.",
+          "en": "That insiders are more dangerous than hackers."
         }
       ],
-      "concept_id": "mistaken_belief_corrected",
+      "concept_id": "mistaken_belief",
       "explanation": {
-        "ar": "المحاضرة تفتح القسم بملاحظة أن كثيراً من المستخدمين يعتقدون أن التهديد الوحيد هو المهاجمون الذين يخترقون أجهزتهم، وتردّ بأن نمط التهديدات أكثر تنوعاً بكثير. والمجموعات الأربع هي التصحيح.",
-        "en": "The lecture opens the section by noting that many users believe the only threat is attackers who hack their way in, and answers that the threat pattern is much more varied. The four groups are the correction."
+        "ar": "كثير من المستخدمين يظنون أن التهديد الوحيد هو مهاجم يخترق الجهاز. والمحاضرة تجيب أن نمط التهديدات أوسع بكثير.",
+        "en": "Many users think the only threat is an attacker breaking in. The lecture answers that the threat pattern is far more varied."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "أي مجموعة تعدّد البرامج الخبيثة المذكورة ضمن تهديدات البرمجيات؟",
-        "en": "Which set lists the malicious programs named under software related threats?"
+        "ar": "أي مجموعة تسرد تهديدات متعلقة بالعتاد؟",
+        "en": "Which set lists hardware-related threats?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "الجدران النارية وبرامج مكافحة الفيروسات وأدوات النسخ الاحتياطي.",
-          "en": "Firewalls, antivirus and backup utilities."
+          "ar": "الاستنتاج والتنكّر والحذف غير المصرّح.",
+          "en": "Inference, masquerading, and deletion of data."
+        },
+        {
+          "ar": "التصيّد والاحتيال والتزوير من المستخدمين.",
+          "en": "Phishing, IT fraud, and forgery by the users."
         },
         {
           "ar": "العواصف والسرقة وأعطال البنية التحتية.",
-          "en": "Storms, theft and infrastructure faults."
+          "en": "Storms, theft, and faults in the infrastructure."
         },
         {
-          "ar": "الفيروسات والديدان وأحصنة طروادة والقنابل المنطقية.",
-          "en": "Viruses, worms, trojan horses and logic bombs."
-        },
-        {
-          "ar": "الاستنتاج والتنكّر والوصول غير المصرح به.",
-          "en": "Inference, masquerading and unauthorized access."
+          "ar": "الفيروسات والديدان وأحصنة طروادة في الملفات.",
+          "en": "Viruses, worms, and Trojan horses inside the files."
         }
       ],
-      "concept_id": "software_malware_list",
+      "concept_id": "hardware_group_content",
       "explanation": {
-        "ar": "ضمن تهديدات البرمجيات تسمّي المحاضرة البرمجيات الخبيثة صراحة ثم تعدّد الفيروسات والديدان وأحصنة طروادة والقنابل المنطقية. والمجموعات الأخرى تعود للتدابير والتهديدات المادية وتهديدات البيانات.",
-        "en": "Under software related threats the lecture names malware explicitly and then lists viruses, worms, trojan horses and logic bombs. The other sets belong to countermeasures, hardware threats and data threats."
+        "ar": "تهديدات العتاد تؤثر مادياً على الجهاز أو البنية التي يعتمد عليها: بيئة ضارّة، عواصف، سرقة، وأعطال في البنية.",
+        "en": "Hardware threats act physically on the machine or the infrastructure it depends on: harmful surroundings, storms, theft, and infrastructure faults."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "ماذا تعني المحاضرة بالاستنتاج كتهديد متعلق بالبيانات؟",
-        "en": "What does the lecture mean by inference as a data related threat?"
+        "ar": "أي مجموعة تسرد تهديدات متعلقة بالبرمجيات؟",
+        "en": "Which set lists software-related threats?"
       },
       "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "نسخ قاعدة بيانات إلى قرص قابل للنزع غير مصرح به.",
-          "en": "Copying a database onto an unauthorized removable disk."
+          "ar": "العواصف والسرقة وأعطال البنية التحتية للشبكة كلها معاً.",
+          "en": "Storms, theft, and faults in the infrastructure."
         },
         {
-          "ar": "حذف السجلات بحيث لا يمكن استعادتها بعد ذلك.",
-          "en": "Deleting records so that they can no longer be recovered."
+          "ar": "الاستنتاج والتنكّر والحذف غير المصرّح للبيانات.",
+          "en": "Inference, masquerading, and deletion of data."
         },
         {
-          "ar": "التظاهر بأنك مستخدم آخر من أجل الحصول على الوصول.",
-          "en": "Pretending to be another user in order to gain access."
+          "ar": "التصيّد والاحتيال والتزوير من قبل المستخدمين.",
+          "en": "Phishing, IT fraud, and forgery by the users."
         },
         {
-          "ar": "استنتاج معلومات سرية من بيانات متاحة يمكن الوصول إليها.",
-          "en": "Deducing confidential information from data that is accessible."
+          "ar": "الفيروسات والديدان وأحصنة طروادة والقنابل المنطقية.",
+          "en": "Viruses, worms, Trojan horses, and logic bombs."
         }
       ],
-      "concept_id": "data_inference_meaning",
+      "concept_id": "software_group_content",
       "explanation": {
-        "ar": "الاستنتاج هو جمع بيانات متاحة يمكن منها استنتاج معلومات سرية غير متاحة مباشرة. لا نسخ ولا حذف: الخسارة تأتي من تجميع ما هو مقروء أصلاً.",
-        "en": "Inference is collecting accessible data from which confidential information that is not directly accessible can be deduced. Nothing is copied or deleted: the loss comes from combining what is already readable."
+        "ar": "تهديدات البرمجيات تشمل البرمجيات الخبيثة، والبرامج سيئة التصميم التي فيها ثغرات، والإصدارات القديمة، والنسخ غير المصرّح به.",
+        "en": "Software threats cover malware, badly designed programs with vulnerabilities, out-of-date versions, and unauthorized copying of software."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ماذا يعني التنكّر ضمن تهديدات البيانات في المحاضرة؟",
-        "en": "What does masquerading mean in the lecture's data related threats?"
+        "ar": "ماذا يعني الاستنتاج كتهديد للبيانات؟",
+        "en": "What does inference mean as a data threat?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "التظاهر بأنك شخص آخر من أجل الحصول على الوصول.",
-          "en": "Pretending to be someone else in order to gain access."
+          "ar": "استنتاج معلومات سرية من بيانات متاحة للجميع.",
+          "en": "Deducing secret information from data that is public."
         },
         {
-          "ar": "جمع بيانات متاحة لاستنتاج معلومات مخفية.",
-          "en": "Collecting accessible data to deduce hidden information."
+          "ar": "نسخ ملف إلى وسيط تخزين غير مصرّح به للاستخدام.",
+          "en": "Copying a file onto an unauthorised storage device."
         },
         {
-          "ar": "تخزين بيانات تمنع سياسة الأمن تخزينها.",
-          "en": "Storing data that the security policy forbids storing."
+          "ar": "تشفير قاعدة بيانات وفقدان المفتاح الوحيد.",
+          "en": "Encrypting a database and losing the only key for it."
         },
         {
-          "ar": "نسخ البرمجيات دون تصريح.",
-          "en": "Copying software without authorization."
+          "ar": "حذف سجل بالخطأ أثناء عملية تحديث قاعدة البيانات.",
+          "en": "Deleting a record by accident during an update."
         }
       ],
-      "concept_id": "data_masquerading_meaning",
+      "concept_id": "inference_meaning",
       "explanation": {
-        "ar": "التنكّر هو التظاهر بأنك شخص آخر، وتذكره المحاضرة مع الوصول غير المصرح به ضمن تهديدات البيانات. أما الاستنتاج من بيانات متاحة فهو الاستنتاج، وهو بند آخر في المجموعة نفسها.",
-        "en": "Masquerading is pretending to be someone else, and the lecture lists it with unauthorized access under data related threats. Deduction from accessible data is inference, which is a different item in the same group."
+        "ar": "الاستنتاج هو جمع بيانات متاحة واستنتاج معلومات سرية لم تكن متاحة مباشرة.",
+        "en": "Inference is collecting accessible data and deducing confidential information that was never directly available."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "لماذا تُجمع تهديدات البشر في مجموعة منفصلة عن تهديدات البرمجيات؟",
-        "en": "Why are liveware related threats grouped separately from software threats?"
+        "ar": "ماذا يعني التنكّر؟",
+        "en": "What does masquerading mean?"
       },
-      "bloom": "Understand",
-      "answer": 1,
+      "bloom": "Remember",
+      "answer": 2,
       "options": [
         {
-          "ar": "لأنها تحدث خارج ساعات العمل فقط.",
-          "en": "Because they happen only outside working hours."
+          "ar": "تغيير سجل بحيث لا يظهر التغيير عليه.",
+          "en": "Changing a record so the change cannot be seen."
         },
         {
-          "ar": "لأن مصدرها الخطأ البشري لا البرامج.",
-          "en": "Because their source is human error, not the programs."
+          "ar": "حجب خدمة بحيث لا يستطيع أحد استخدامها.",
+          "en": "Blocking a service so that nobody can use it."
         },
         {
-          "ar": "لأن برامج مكافحة الفيروسات تصدّها كلها.",
-          "en": "Because antivirus software can block all of them."
+          "ar": "التظاهر بأنك شخص آخر للوصول إلى النظام.",
+          "en": "Pretending to be someone else to gain access."
         },
         {
-          "ar": "لأنها تضرّ العتاد لا البيانات.",
-          "en": "Because they damage hardware rather than data."
+          "ar": "إخفاء بيانات داخل ملف آخر قبل إرساله للضحية.",
+          "en": "Hiding data inside another file before sending it."
         }
       ],
-      "concept_id": "liveware_scope",
+      "concept_id": "masquerading_meaning",
       "explanation": {
-        "ar": "تهديدات البشر مرتبطة بالخطأ البشري عند مستخدمي الحاسوب: الهندسة الاجتماعية والتصيّد والاحتيال والتزوير. والمجموعة قائمة لأن نقطة الضعف إنسان، فلا يزيلها ضابط على مستوى البرامج.",
-        "en": "Liveware threats are tied to human error among the computer's users: social engineering, phishing, IT fraud and forgery. The group exists because the weakness is a person, so no program-level control removes it."
+        "ar": "التنكّر هو التظاهر بأنك شخص آخر، والمحاضرة تدرجه تحت تهديدات البيانات بجانب الوصول غير المصرّح.",
+        "en": "Masquerading is pretending to be someone else, and the lecture lists it under data threats next to unauthorized access."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "عاصفة تُغرق الغرفة التي تضم الخوادم. في أي مجموعة تضع المحاضرة هذا التهديد؟",
-        "en": "A storm floods the room holding the servers. Into which group does the lecture place this threat?"
+        "ar": "عاصفة تُغرق الغرفة التي فيها الخوادم. في أي مجموعة تضعها المحاضرة؟",
+        "en": "A storm floods the room holding the servers. Which group does the lecture place this in?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "تهديد برمجيات.",
-          "en": "Software related."
+          "ar": "العامل البشري، لأن أحداً لم يتابع حالة الطقس.",
+          "en": "Liveware, because nobody checked the weather report."
         },
         {
-          "ar": "تهديد بيانات.",
-          "en": "Data related."
+          "ar": "العتاد، لأنه يؤثر مادياً على الجهاز نفسه.",
+          "en": "Hardware, because it acts physically on the machine."
         },
         {
-          "ar": "تهديد عتاد.",
-          "en": "Hardware related."
+          "ar": "البرمجيات، لأنه يوقف البرامج عن العمل.",
+          "en": "Software, because it stops the programs from running."
         },
         {
-          "ar": "تهديد بشر.",
-          "en": "Liveware related."
+          "ar": "البيانات، لأن السجلات على الأقراص تضيع.",
+          "en": "Data, because the records on the disks are lost."
         }
       ],
       "concept_id": "classify_storm",
       "explanation": {
-        "ar": "تهديدات العتاد تؤثر فيزيائياً على الحاسوب أو البنية التحتية التي يعتمد عليها، وتعدّ المحاضرة الكوارث الطبيعية كالعواصف ضمنها. ولا شيء هنا يهاجم البرمجيات أو البيانات أو حكم إنسان.",
-        "en": "Hardware related threats physically affect the computer or the infrastructure it depends on, and the lecture lists natural disasters such as storms among them. Nothing here attacks the software, the data or a person's judgement."
+        "ar": "المحاضرة تذكر الكوارث الطبيعية كالعواصف تحت تهديدات العتاد، لأن الضرر مادي على الجهاز أو محيطه.",
+        "en": "The lecture names natural disasters such as storms under hardware threats, because the damage is physical to the machine or its surroundings."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "يُخدع موظف فيكشف كلمة مروره بمكالمة من منتحل. في أي مجموعة يقع هذا؟",
-        "en": "An employee is tricked into revealing a password by a phone call from an impostor. Into which group does this fall?"
+        "ar": "عامل تنظيف يفصل الخادم عن الكهرباء ليكنس خلفه. أي مجموعة تناسب أكثر؟",
+        "en": "A cleaner unplugs a server to vacuum behind it. Which group fits best?"
       },
-      "bloom": "Apply",
+      "bloom": "Analyze",
       "answer": 3,
       "options": [
         {
-          "ar": "تهديد عتاد، لأن جهازاً استُخدم.",
-          "en": "Hardware related, because a device was used."
+          "ar": "العتاد، لأن الخادم كان الشيء المتأثر.",
+          "en": "Hardware, because the server was the object."
         },
         {
-          "ar": "تهديد برمجيات، لأن كلمة مرور كانت معنية.",
-          "en": "Software related, because a password was involved."
+          "ar": "البرمجيات، لأن الجهاز أُطفئ بشكل غير سليم.",
+          "en": "Software, because the machine shut down uncleanly."
         },
         {
-          "ar": "تهديد بيانات، لأن بياناً سرياً أُفشي.",
-          "en": "Data related, because a credential was disclosed."
+          "ar": "البيانات، لأن السجلات بقيت غير قابلة للقراءة.",
+          "en": "Data, because the records were left unreadable."
         },
         {
-          "ar": "تهديد بشر، لأن نقطة الضعف خطأ بشري.",
-          "en": "Liveware related, because the weakness is human error."
+          "ar": "العامل البشري، لأن شخصاً ارتكب الخطأ.",
+          "en": "Liveware, because a person made the error."
         }
       ],
-      "concept_id": "classify_phishing",
+      "concept_id": "classify_cleaner",
       "explanation": {
-        "ar": "تضع المحاضرة الهندسة الاجتماعية والتصيّد ضمن تهديدات البشر لأن نقطة الضعف المستغلة هي ثقة المستخدم، لا جهاز ولا برنامج. وكلمة المرور المكشوفة نتيجة لا تصنيف.",
-        "en": "The lecture puts social engineering and phishing under liveware threats because the exploited weakness is the user's trust, not a device or a program. The disclosed password is the consequence, not the classification."
+        "ar": "العامل البشري يغطي الخطأ البشري من مستخدمي النظام أنفسهم. الخادم مجرد شيء متأثر، والسبب خطأ شخص.",
+        "en": "Liveware covers human error by the system's own users. The server is only the object; the cause is a person's mistake."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "يجمع محلل ثلاثة تقارير منشورة ليستنتج رقماً سرياً لم يُفشَ قط. إلى أي مجموعة تنسب المحاضرة هذا؟",
-        "en": "An analyst combines three published reports to deduce a confidential figure that was never disclosed. Which group does the lecture assign this to?"
+        "ar": "أي تدبير مضاد تقرنه المحاضرة بتهديدات البرمجيات الخبيثة؟",
+        "en": "Which countermeasure does the lecture pair with threats from malware?"
       },
-      "bloom": "Apply",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "تهديد بيانات، بوصفه استنتاجاً.",
-          "en": "Data related, as inference."
+          "ar": "برامج مكافحة الفيروسات والبرامج الأمنية.",
+          "en": "Antivirus and security programs."
         },
         {
-          "ar": "تهديد بشر، بوصفه هندسة اجتماعية.",
-          "en": "Liveware related, as social engineering."
+          "ar": "جدران الحماية المثبتة داخل الشبكة نفسها.",
+          "en": "Firewalls placed in the network."
         },
         {
-          "ar": "تهديد برمجيات، بوصفه قنبلة منطقية.",
-          "en": "Software related, as a logic bomb."
+          "ar": "نسخ احتياطية منتظمة تُؤخذ من البيانات.",
+          "en": "Regular backup copies of the data."
         },
         {
-          "ar": "تهديد عتاد، بوصفه عطلاً في البنية التحتية.",
-          "en": "Hardware related, as an infrastructure fault."
+          "ar": "غرفة آمنة تُوضع فيها المعدات كلها معاً.",
+          "en": "A secure room for the equipment."
         }
       ],
-      "concept_id": "classify_inference",
+      "concept_id": "cm_malware",
       "explanation": {
-        "ar": "هذا هو تعريف المحاضرة للاستنتاج حرفياً: تُجمع بيانات متاحة ويُستنتج منها قيمة سرية غير متاحة مباشرة. فهو تهديد بيانات، ولم يُخترق أي نظام.",
-        "en": "This is the lecture's definition of inference exactly: accessible data are collected and a confidential value that is not directly accessible is deduced from them. It is a data related threat, and no system was broken into."
+        "ar": "البرمجيات الخبيثة يُجاب عليها بمكافحة الفيروسات مع البرامج الأمنية الأخرى، لأن التهديد داخل الجهاز لا عند حدود الشبكة.",
+        "en": "Malware is answered by antivirus together with the other security programs, because the threat is inside the machine rather than at the network edge."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "يُدخل مبرمج شيفرة تمسح الملفات في تاريخ محدد. في أي مجموعة تضع المحاضرة هذا؟",
-        "en": "A programmer inserts code that wipes files on a chosen date. Into which group does the lecture place this?"
+        "ar": "أي تدبير مضاد تقرنه المحاضرة بالتخريب والسرقة والضرر المادي؟",
+        "en": "Which countermeasure does the lecture pair with vandalism, theft, and physical damage?"
       },
-      "bloom": "Apply",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "تهديد بيانات، لأن الملفات تُحذف.",
-          "en": "Data related, because files are deleted."
+          "ar": "فحص الموظفين وتدريبهم.",
+          "en": "Check the personnel and train them."
         },
         {
-          "ar": "تهديد برمجيات، بوصفه قنبلة منطقية.",
-          "en": "Software related, as a logic bomb."
+          "ar": "وضع المعدات في غرفة آمنة.",
+          "en": "Place the equipment in a secure room."
         },
         {
-          "ar": "تهديد عتاد، لأن القرص يتأثر.",
-          "en": "Hardware related, because the disk is affected."
+          "ar": "أخذ نسخ احتياطية منتظمة.",
+          "en": "Take regular backup copies of data."
         },
         {
-          "ar": "تهديد بشر، لأن شخصاً كتبه.",
-          "en": "Liveware related, because a person wrote it."
+          "ar": "استخدام التشفير وضبط الوصول.",
+          "en": "Use encryption and access control on it."
         }
       ],
-      "concept_id": "classify_logic_bomb",
+      "concept_id": "cm_physical_damage",
       "explanation": {
-        "ar": "تذكر المحاضرة القنابل المنطقية ضمن قائمة البرمجيات الخبيثة في تهديدات البرمجيات. وكون شخص كتب الشيفرة لا ينقله إلى البشر، إذ تغطي تلك المجموعة الخطأ البشري لا البرمجيات الخبيثة المتعمدة.",
-        "en": "The lecture names logic bombs inside the malware list under software related threats. The fact that a person wrote the code does not move it to liveware, which covers human error rather than deliberate malicious software."
+        "ar": "التهديدات المادية يُجاب عليها مادياً: توضع المعدات في غرفة آمنة. وضوابط البرمجيات لا تمنع أحداً من حمل الجهاز.",
+        "en": "Physical threats are answered physically: the equipment goes into a secure room. Software controls cannot stop someone carrying a machine away."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "ماذا تقول المحاضرة عن علاقة التدبير المضاد بالتهديد؟",
-        "en": "What does the lecture say about how a countermeasure must relate to a threat?"
+        "ar": "أي تدبير مضاد تقرنه المحاضرة بالتعديل أو الحذف غير المصرّح به؟",
+        "en": "Which countermeasure does the lecture pair with unauthorized modification or deletion?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "التدبير الواحد يصدّ كل أنواع التهديدات بالتساوي.",
-          "en": "One countermeasure can block every type of threat equally."
+          "ar": "وضع المعدات كلها في غرفة آمنة.",
+          "en": "Place the equipment in a secure room."
         },
         {
-          "ar": "يُختار التدبير على أساس الكلفة وحدها.",
-          "en": "A countermeasure is chosen by cost alone."
+          "ar": "فحص الموظفين وتدريبهم بشكل مناسب.",
+          "en": "Check the personnel and give them training."
         },
         {
-          "ar": "يجب أن يُكيَّف بما يناسب نوع التهديد الذي يعالجه.",
-          "en": "It must be adapted to suit the type of threat it addresses."
+          "ar": "أخذ نسخ احتياطية منتظمة من البيانات.",
+          "en": "Take regular backup copies of the data."
         },
         {
-          "ar": "يُطبَّق التدبير بعد تسجيل الضرر.",
-          "en": "A countermeasure is applied after the damage is recorded."
+          "ar": "استخدام التشفير أو التحكم بالوصول إليها.",
+          "en": "Use encryption or access control on it."
         }
       ],
-      "concept_id": "countermeasure_adaptation",
+      "concept_id": "cm_unauthorized_modification",
       "explanation": {
-        "ar": "تنص المحاضرة على أن التهديد يُسدّ بالسيطرة على ثغرة بواسطة تدابير مناسبة، ويجب تكييفها بما يناسب نوع التهديد. ولهذا يقرن القسم كل تهديد بتدبير مختلف.",
-        "en": "The lecture states that a threat is blocked by controlling a vulnerability with suitable countermeasures, which must be adapted to suit the type of threat. That is why the section pairs each threat with a different measure."
+        "ar": "النسخ الاحتياطية تجيب على التعديل والحذف، لأن الهدف استعادة الحالة السابقة. والتشفير لا يُعيد سجلاً محذوفاً.",
+        "en": "Backups answer modification and deletion, because the point is to restore the earlier state. Encryption would not bring a deleted record back."
       }
     },
     {
       "id": "q12",
       "stem": {
-        "ar": "تريد مؤسسة إيقاف الهجمات القادمة من الإنترنت قبل وصولها إلى خوادمها الداخلية. أي تدبير تقرنه المحاضرة بهذا التهديد؟",
-        "en": "An organisation wants to stop attacks that arrive from the internet before they reach its internal servers. Which countermeasure does the lecture pair with this threat?"
-      },
-      "bloom": "Apply",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "أخذ نسخ احتياطية منتظمة للبيانات المخزنة.",
-          "en": "Taking regular backup copies of the stored data."
-        },
-        {
-          "ar": "فحص الموظفين وإدخال تدريب مناسب.",
-          "en": "Checking personnel and introducing suitable training."
-        },
-        {
-          "ar": "نشر جدران نارية في الشبكة.",
-          "en": "Deploying firewalls in the network."
-        },
-        {
-          "ar": "وضع المعدات في غرفة آمنة مادياً.",
-          "en": "Placing the equipment in a physically secure room."
-        }
-      ],
-      "concept_id": "cm_network_attackers",
-      "explanation": {
-        "ar": "تقرن المحاضرة تهديدات المهاجمين من خارج النظام الذين يهاجمون عبر الإنترنت بالجدران النارية في الشبكة، لمنع حركة المرور الصادرة من المهاجم من الوصول إلى الهدف. فالنسخ الاحتياطي يجيب التعديل، والتدريب يجيب تهديدات الموظفين، والغرفة الآمنة تجيب الضرر المادي.",
-        "en": "The lecture pairs threats from attackers outside the system who attack through the internet with firewalls in the network, used so that traffic from the attacker cannot reach the target. Backups answer modification, training answers personnel threats and a secure room answers physical damage."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "أي تدبير تقرنه المحاضرة بالتهديدات الناتجة عن البرمجيات الخبيثة؟",
-        "en": "Which countermeasure does the lecture pair with threats from malware?"
+        "ar": "لماذا يجب أن يناسب التدبير المضاد نوع التهديد؟",
+        "en": "Why must a countermeasure suit the type of threat?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "وضع جميع المعدات في غرفة آمنة مادياً.",
-          "en": "Placing all of the equipment in a physically secure room."
+          "ar": "لأن ضابطاً قوياً واحداً يكفي لكل تهديد.",
+          "en": "Because one strong control covers every threat."
         },
         {
-          "ar": "أخذ نسخ احتياطية منتظمة لكل البيانات المخزنة.",
-          "en": "Taking regular backup copies of all the stored data."
+          "ar": "لأن الضوابط يجب أن تكون رخيصة أولاً.",
+          "en": "Because countermeasures must be cheap first."
         },
         {
-          "ar": "فحص الموظفين وإدخال تدريب مناسب لهم.",
-          "en": "Checking personnel and introducing suitable training for them."
+          "ar": "لأن السياسة تفرض قائمة ثابتة.",
+          "en": "Because the policy requires a fixed list."
         },
         {
-          "ar": "استخدام برامج مكافحة الفيروسات وبرامج أمنية أخرى.",
-          "en": "Using antivirus programs and other security programs."
+          "ar": "لأن كل تهديد يحتاج ضابطاً يناسبه.",
+          "en": "Because each threat needs a matching control."
         }
       ],
-      "concept_id": "cm_malware",
+      "concept_id": "countermeasure_adaptation",
       "explanation": {
-        "ar": "بالنسبة للبرمجيات الخبيثة توصي المحاضرة ببرامج مكافحة الفيروسات وبرامج أمنية أخرى. فالغرفة الآمنة تجيب الضرر المادي، والنسخ الاحتياطي يجيب التعديل غير المصرح به، والفحص والتدريب يجيبان تهديدات الموظفين.",
-        "en": "For malware the lecture prescribes antivirus programs and other security programs. A secure room answers physical damage, backups answer unauthorized modification, and checks and training answer personnel threats."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "أي تدبير تقرنه المحاضرة بالتخريب والسرقة والأضرار المادية الأخرى للمعدات؟",
-        "en": "Which countermeasure does the lecture pair with vandalism, theft and other physical damage to equipment?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "وضع المعدات في غرفة آمنة.",
-          "en": "Placing the equipment in a secure room."
-        },
-        {
-          "ar": "استخدام التشفير أو التحكم بالوصول.",
-          "en": "Using encryption or access control."
-        },
-        {
-          "ar": "تثبيت جدران نارية على الشبكة.",
-          "en": "Installing firewalls on the network."
-        },
-        {
-          "ar": "أخذ نسخ احتياطية منتظمة.",
-          "en": "Taking regular backup copies."
-        }
-      ],
-      "concept_id": "cm_physical_damage",
-      "explanation": {
-        "ar": "الضرر المادي يُجاب بتدبير مادي: تضع المحاضرة المعدات في غرفة آمنة. والتشفير والتحكم بالوصول يجيبان الوصول غير المصرح به للبيانات، والجدران النارية تجيب المهاجمين القادمين عبر الإنترنت.",
-        "en": "Physical damage is answered by a physical measure: the lecture places the equipment in a secure room. Encryption and access control answer unauthorized access to data, and firewalls answer attackers arriving through the internet."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "أي تدبير تقرنه المحاضرة بالتعديل أو الحذف غير المصرح به للبيانات أو البرمجيات؟",
-        "en": "Which countermeasure does the lecture pair with unauthorized modification or deletion of data or software?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "استخدام برامج مكافحة الفيروسات.",
-          "en": "Using antivirus programs."
-        },
-        {
-          "ar": "أخذ نسخ احتياطية منتظمة.",
-          "en": "Taking regular backup copies."
-        },
-        {
-          "ar": "وضع المعدات في غرفة آمنة.",
-          "en": "Placing equipment in a secure room."
-        },
-        {
-          "ar": "فحص الموظفين قبل التوظيف.",
-          "en": "Checking personnel before hiring."
-        }
-      ],
-      "concept_id": "cm_unauthorized_modification",
-      "explanation": {
-        "ar": "النسخ الاحتياطي المنتظم هو جواب المحاضرة هنا، لأن الضرر هو فقدان البيانات الصحيحة والنسخة تعيدها. ومكافحة الفيروسات تستهدف البرمجيات الخبيثة، والغرفة الآمنة تستهدف الضرر المادي.",
-        "en": "Regular backups are the lecture's answer here, because the harm is the loss of correct data and a copy restores it. Antivirus targets malware, and a secure room targets physical damage."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "أي تدبير تقرنه المحاضرة بالوصول غير المصرح به إلى البيانات؟",
-        "en": "Which countermeasure does the lecture pair with unauthorized access to data?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "أخذ نسخ احتياطية منتظمة.",
-          "en": "Taking regular backup copies."
-        },
-        {
-          "ar": "استخدام برامج مكافحة الفيروسات.",
-          "en": "Using antivirus programs."
-        },
-        {
-          "ar": "استخدام التشفير أو التحكم بالوصول.",
-          "en": "Using encryption or access control."
-        },
-        {
-          "ar": "إدخال تدريب مناسب.",
-          "en": "Introducing suitable training."
-        }
-      ],
-      "concept_id": "cm_unauthorized_access",
-      "explanation": {
-        "ar": "الوصول غير المصرح به يُجاب بالتشفير أو التحكم بالوصول، وهما بالضبط التقنيتان اللتان تنسبهما أركان الأمن إلى السرية. والنسخ الاحتياطي يجيب التعديل، والتدريب يجيب تهديدات الموظفين.",
-        "en": "Unauthorized access is answered by encryption or access control, which are exactly the techniques the security pillars assign to confidentiality. Backups answer modification, and training answers personnel threats."
-      }
-    },
-    {
-      "id": "q17",
-      "stem": {
-        "ar": "تقرن المحاضرة تهديدات الموظفين بفحص الموظفين والتدريب. لماذا التدريب لا الجدار الناري؟",
-        "en": "The lecture pairs threats from personnel with personnel checks and training. Why training rather than a firewall?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "لأن المستخدمين المصرح لهم لا يبلغون محيط الشبكة.",
-          "en": "Because authorized users never reach the network perimeter."
-        },
-        {
-          "ar": "لأن الجدار الناري مكلف جداً للتهديدات الداخلية.",
-          "en": "Because a firewall is too expensive for internal threats."
-        },
-        {
-          "ar": "لأن التدريب تفرضه سياسة الأمن.",
-          "en": "Because training is required by the security policy."
-        },
-        {
-          "ar": "لأن نقطة الضعف إنسان لا مسار شبكي.",
-          "en": "Because the weakness is a person, not a network path."
-        }
-      ],
-      "concept_id": "cm_personnel_reasoning",
-      "explanation": {
-        "ar": "تصنّف المحاضرة هذه التهديدات ضمن البشر، حيث نقطة الضعف خطأ بشري من مستخدم مصرح له عادي. والجدار الناري يرشّح حركة المرور على مسار شبكي، فلا يعالج قراراً يتخذه إنسان.",
-        "en": "The lecture classifies these threats as liveware, where the weakness is human error by an ordinary authorized user. A firewall filters traffic on a network path, so it cannot address a decision a person makes."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "لماذا يجب أن تغطي التدابير المضادة مجموعات التهديد الأربع كلها لا واحدة؟",
-        "en": "Why must countermeasures cover all four threat groups rather than one?"
-      },
-      "bloom": "Analyze",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لأن كل مجموعة تهاجم مكوّناً مختلفاً من النظام.",
-          "en": "Because each group attacks a different component of the system."
-        },
-        {
-          "ar": "لأن المحاضرة تفرض تدبيراً واحداً لكل موظف.",
-          "en": "Because the lecture requires one countermeasure per employee."
-        },
-        {
-          "ar": "لأن التدابير أرخص عند شرائها بكميات.",
-          "en": "Because countermeasures are cheaper when bought in bulk."
-        },
-        {
-          "ar": "لأن مجموعة واحدة فقط تخص أي نظام بعينه.",
-          "en": "Because only one group is relevant to any given system."
-        }
-      ],
-      "concept_id": "coverage_all_groups",
-      "explanation": {
-        "ar": "قائمة التدابير في المحاضرة موزّعة على المجموعات الأربع: غرفة آمنة للعتاد، ومكافحة فيروسات للبرمجيات، ونسخ احتياطي وتشفير للبيانات، وفحص وتدريب للبشر. وترك مجموعة بلا تغطية يترك مكوّنها مكشوفاً.",
-        "en": "The lecture's own countermeasure list spreads across the four groups: a secure room for hardware, antivirus for software, backups and encryption for data, checks and training for liveware. Leaving one group uncovered leaves that component exposed."
-      }
-    },
-    {
-      "id": "q19",
-      "stem": {
-        "ar": "يفصل عامل تنظيف الخادم عن الكهرباء ليكنس خلفه. هل هذا تهديد عتاد أم تهديد بشر؟",
-        "en": "A cleaner unplugs a server to vacuum behind it. Is this a hardware or a liveware threat?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "عتاد، لأن الخادم فقد التغذية.",
-          "en": "Hardware, because the server lost power."
-        },
-        {
-          "ar": "بشر، لأن السبب خطأ بشري.",
-          "en": "Liveware, because the cause is human error."
-        },
-        {
-          "ar": "عتاد، لأن المعدات لُمست.",
-          "en": "Hardware, because the equipment was touched."
-        },
-        {
-          "ar": "لا هذا ولا ذاك، لأن أي سياسة لم تُخرق.",
-          "en": "Neither, because no policy was breached."
-        }
-      ],
-      "concept_id": "hardware_vs_liveware",
-      "explanation": {
-        "ar": "تنسب المحاضرة التهديد إلى المجموعة التي تطابق مصدره. هنا فقدت المعدات التغذية فعلاً، لكن المصدر خطأ شخص، أي خطأ بشري بين المستخدمين، فالمجموعة هي البشر.",
-        "en": "The lecture assigns threats to the group matching their source. Here the equipment did lose power, but the source is a person's mistake, which is human error among users, so the group is liveware."
+        "ar": "المحاضرة تقول إن التدابير المضادة يجب أن تُكيَّف بما يناسب نوع التهديد، ولهذا تقرن القائمة ضابطاً مختلفاً بكل تهديد.",
+        "en": "The lecture says countermeasures must be adapted to suit the type of threat, which is why the list pairs a different control with each threat."
       }
     }
   ],
@@ -621,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-26T18:20:32Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"
