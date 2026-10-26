@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.7] — 2026-10-26
+
+### Changed
+- content: chapters 1 and 2 no longer refer to the handout — 163 questions reworded to stand on their own
+
+
 ## [1.7.6] — 2026-10-26
 
 ### Changed
