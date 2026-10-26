@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.5] — 2026-10-26
+
+### Changed
+- content: Cyber chapter 1 rewritten (71 questions, 6 banks) — plainer wording, no repeated concepts, no length or formula tell
+
+
 ## [1.7.4] — 2026-10-24
 
 ### Changed

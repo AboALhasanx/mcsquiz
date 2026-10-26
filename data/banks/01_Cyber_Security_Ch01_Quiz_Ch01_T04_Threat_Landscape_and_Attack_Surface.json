@@ -1,522 +1,394 @@
 {
   "topic": {
-    "ar": "مشهد التهديدات الحديثة ومعادلة سطح الهجوم AS والاتجاهات",
+    "ar": "مشهد التهديدات الحديث ومقياس سطح الهجوم",
     "en": "Modern Threat Landscape & Attack Surface Metric AS"
   },
   "quiz_id": "Quiz_Ch01_T04_Threat_Landscape_and_Attack_Surface",
-  "has_math": true,
+  "has_math": false,
   "semester": 1,
   "questions": [
     {
       "id": "q1",
       "stem": {
-        "ar": "أي مجموعة كاملة تُعدّد فئات التهديد الخمس الأساسية التي تشكّل مشهد التهديدات الحديث في المحاضرة؟",
-        "en": "Which complete set enumerates the five core threat categories constituting the modern threat landscape in the lecture?"
+        "ar": "أي مجموعة تسرد فئات مشهد التهديدات الحديث الخمس؟",
+        "en": "Which set lists the five categories of the modern threat landscape?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "قطع الكابلات المادية، وانقطاع الكهرباء، وحرائق مراكز البيانات، والزلازل الطبيعية، والفيضانات.",
-          "en": "Physical Cable Severing, Electric Outages, Data Center Fires, Earthquakes, and Floods."
+          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وهجمات إنترنت الأشياء.",
+          "en": "Malware, phishing, insiders, APTs, and IoT attacks."
         },
         {
-          "ar": "انتهاك حقوق النشر البرمجية، وإساءة استخدام العلامة التجارية، وخرق العقود، والتشهير التجاري.",
-          "en": "Copyright Infringement, Trademark Misuse, Breach of Contract, Defamation, and Slander."
+          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والبوتنت والبريد المزعج.",
+          "en": "Malware, phishing, insiders, botnets, and spam mail."
         },
         {
-          "ar": "طفح الذاكرة المؤقتة، وحقن SQL، والبرمجة النصية عبر المواقع، وتزوير DNS، وثغرات اليوم الصفر.",
-          "en": "Buffer Overflows, SQL Injection, Cross-Site Scripting, DNS Spoofing, and Zero-Day Exploits."
+          "ar": "الفيروسات والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وتسريب البيانات.",
+          "en": "Viruses, phishing, insiders, APTs, and data leaks."
         },
         {
-          "ar": "البرمجيات الخبيثة، والتصيد والهندسة الاجتماعية، والتهديدات الداخلية، و APTs، وهجمات IoT.",
-          "en": "Malware, Phishing & Social Engineering, Insider Threats, APTs, and IoT Attacks."
+          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية وهجمات الحجب والسرقة.",
+          "en": "Malware, phishing, insiders, DDoS floods, and theft."
         }
       ],
-      "concept_id": "threat_landscape_five_pillars",
+      "concept_id": "threat_five_categories",
       "explanation": {
-        "ar": "مشهد التهديدات الحديث في المحاضرة يحدد خمسة أشكال رئيسية نصاً: البرمجيات الخبيثة، التصيد والهندسة الاجتماعية، التهديدات الداخلية، التهديدات المتقدمة APTs، وهجمات إنترنت الأشياء IoT.",
-        "en": "The lecture lists exactly five modern threats: Malware, Phishing/Social Engineering, Insider Threats, APTs, and IoT Attacks."
+        "ar": "الخمسة هي: البرمجيات الخبيثة، التصيّد والهندسة الاجتماعية، التهديدات الداخلية، التهديدات المتقدمة، هجمات إنترنت الأشياء. والبوتنت أداة داخل فئة إنترنت الأشياء لا فئة مستقلة.",
+        "en": "The five are malware, phishing and social engineering, insider threats, APTs, and IoT attacks. A botnet is the tool behind the IoT category, not a category of its own."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "ما الحزمة المحددة من البرمجيات الضارة المذكورة نصياً تحت فئة البرمجيات الخبيثة Malware في المنهج؟",
-        "en": "Which explicit suite of malicious programs is detailed under the Malware category in the primary syllabus?"
+        "ar": "أي أربعة برامج تصنّفها المحاضرة تحت البرمجيات الخبيثة؟",
+        "en": "Which four programs does the lecture group under malware?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "البرمجيات الثابتة لفحص ممرات النواقل المادية، وبرامج تشغيل الأجهزة، ونوى استعادة النظام.",
-          "en": "Hardware bus diagnostic firmware, device driver installers, and operating system recovery kernels."
+          "ar": "الفيروسات والبوتات والبرامج الإعلانية ومسجلات المفاتيح.",
+          "en": "Viruses, bots, adware, and keyloggers."
         },
         {
-          "ar": "الفيروسات الحاسوبية، والديدان ذاتية التكاثر، وأحصنة طروادة الخادعة، وبرمجيات الفدية الخبيثة.",
-          "en": "Computer viruses, autonomous worms, deceptive Trojan horses, and extortion ransomware."
+          "ar": "أحصنة طروادة والفدية والديدان والأبواب الخلفية.",
+          "en": "Trojans, ransomware, worms, and backdoors."
         },
         {
-          "ar": "سكربتات تحسين قواعد البيانات المفتوحة، وملحقات التخزين المؤقت للمتصفح، ومعالجات المترجمات.",
-          "en": "Open-source database optimization scripts, web browser caching plugins, and compiler preprocessors."
+          "ar": "الفيروسات والديدان وأحصنة طروادة وبرامج الفدية.",
+          "en": "Viruses, worms, Trojans, and ransomware."
         },
         {
-          "ar": "سمات سطح المكتب للواجهات الرسومية، ومحركات تصيير الخطوط الديناميكية، وبرمجيات شاشات التوقف.",
-          "en": "Graphical user interface desktop themes, dynamic font rendering engines, and screensavers."
+          "ar": "الديدان وأحصنة طروادة وبرامج التجسس والجذور الخفية.",
+          "en": "Worms, Trojans, spyware, and rootkits."
         }
       ],
-      "concept_id": "threat_malware_spectrum",
+      "concept_id": "threat_malware_types",
       "explanation": {
-        "ar": "حددت المحاضرة تحت تصنيف البرمجيات الخبيثة Malware أربعة نماذج أساسية: الفيروسات، الديدان، أحصنة طروادة Trojans، وبرمجيات الفدية Ransomware.",
-        "en": "Under Malware, the lecture specifies: Viruses, worms, Trojans, ransomware."
+        "ar": "المحاضرة تذكر أربعة بالضبط: الفيروسات والديدان وأحصنة طروادة وبرامج الفدية. التجسس والإعلانات والجذور الخفية موجودة فعلاً لكنها ليست في هذه القائمة.",
+        "en": "The lecture names exactly four: viruses, worms, Trojans, and ransomware. Spyware, adware and rootkits are real, but they are not on this list."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "ما الثغرة الجوهرية التي تستهدفها هجمات التصيد الاحتيالي Phishing وحملات الهندسة الاجتماعية تحديداً؟",
-        "en": "What fundamental vulnerability do phishing attacks and social engineering campaigns specifically target?"
+        "ar": "ماذا يستغل التصيّد؟",
+        "en": "What does phishing exploit?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "عيوب تصنيع الترانزستورات شبه الموصلة في الدوائر الإلكترونية داخل وحدات الحساب والمنطق.",
-          "en": "Flaws in microelectronic semiconductor transistor fabrication inside arithmetic logic units."
+          "ar": "بطء روابط الشبكة الداخلية.",
+          "en": "Slow links between the internal networks."
         },
         {
-          "ar": "استغلال الثقة البشرية، والانحيازات النفسية، والخوف المؤسسي للتلاعب بسلوك المستخدمين.",
-          "en": "Exploiting human trust, cognitive biases, and organizational fear to manipulate user behavior."
+          "ar": "ثقة الإنسان والخوف من اللوم.",
+          "en": "Human trust and the fear of being blamed."
         },
         {
-          "ar": "الانهيار الرياضي في خوارزميات تحليل الأعداد الأولية لتشفير المفتاح العام في خوارزمية RSA.",
-          "en": "Mathematical breakdown in multi-prime RSA asymmetric public key encryption factorization."
+          "ar": "أخطاء الذاكرة في البرمجيات.",
+          "en": "Memory errors inside the running software."
         },
         {
-          "ar": "التأخير الزمني الزائد لانتشار حزم البيانات عبر كابلات الاتصالات البحرية العابرة للقارات.",
-          "en": "Excessive packet propagation delay across transcontinental underwater communication cables."
+          "ar": "ضعف مفاتيح التشفير المستخدمة.",
+          "en": "Weak encryption keys used on the server."
         }
       ],
-      "concept_id": "threat_phishing_human_trust",
+      "concept_id": "threat_phishing_exploits_trust",
       "explanation": {
-        "ar": "التصيد والهندسة الاجتماعية يرتكزان نصياً على: «استغلال ثقة الإنسان» (Exploiting human trust) لخداع الموظف ليدلي ببياناته أو ينفذ إجراء يضر بأمان المؤسسة.",
-        "en": "The lecture explicitly defines Phishing & Social Engineering as: Exploiting human trust."
+        "ar": "التصيّد هندسة اجتماعية: يستهدف الشخص لا الآلة. والمحاضرة تضعه تحت استغلال ثقة الإنسان.",
+        "en": "Phishing is social engineering: it targets the person, not the machine. The lecture puts it under exploiting human trust."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "كيف يحدد المنهج المعتمد مفهوم التهديد الداخلي Insider Threat بالمقارنة مع المهاجمين الخارجيين؟",
-        "en": "How does the primary text define an Insider Threat in contrast to external attackers?"
+        "ar": "كيف يُوصف التهديد الداخلي؟",
+        "en": "How is an insider threat described?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 3,
       "options": [
         {
-          "ar": "مجموعات اختراق أجنبية مجهولة تستغل ثغرات اليوم الصفر في موجهات حواف الشبكة الخارجية.",
-          "en": "Unknown foreign hacker collectives exploiting zero-day edge router perimeter vulnerabilities."
+          "ar": "شخص خارجي يخترق الجدار الناري.",
+          "en": "An outsider breaking through the firewall."
         },
         {
-          "ar": "عناكب برمجية مؤتمتة تقوم بجمع البيانات العامة المفهرسة من الواجهات الإلكترونية للمتاجر.",
-          "en": "Autonomous algorithmic crawlers scraping public indexing data from corporate storefronts."
+          "ar": "فيروس ينتشر داخل الشبكة المحلية.",
+          "en": "A virus spreading across the local network."
         },
         {
-          "ar": "موظفون أو متعاقدون أو أشخاص موثوقون داخل المؤسسة يسيئون استخدام صلاحيات وصولهم الممنوحة لهم.",
-          "en": "Employees, contractors, or trusted personnel misusing their legitimate access privileges."
+          "ar": "شبكة بوت تغرق الموقع العام بالطلبات.",
+          "en": "A botnet flooding the public website."
         },
         {
-          "ar": "جهات سيادية خارجية تنفذ هجمات حجب خدمة مغرقة ومؤتمتة من خوادم واقعة خارج حدود الدولة.",
-          "en": "External state actors executing automated denial of service floods from overseas servers."
+          "ar": "موظف يسيء استخدام صلاحياته المشروعة.",
+          "en": "An employee misusing legitimate access."
         }
       ],
-      "concept_id": "threat_insider_abuse_access",
+      "concept_id": "threat_insider_definition",
       "explanation": {
-        "ar": "التهديدات الداخلية Insider Threats يُعرّفها المنهج نصاً بـ: موظفون يسيئون استخدام صلاحيات وصولهم (Employees misusing access)، سواء بدافع التخريب أو السرقة أو الإهمال.",
-        "en": "The lecture defines Insider Threats verbatim: Employees misusing access."
+        "ar": "الداخلي موجود في الداخل أصلاً: موظف أو متعاقد أو شخص موثوق يسيء استخدام صلاحية يملكها بشكل مشروع.",
+        "en": "The insider is inside already: an employee, contractor or trusted person who misuses access they legitimately hold."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ما الخصائص المميزة التي تحدد مفهوم التهديدات المتقدمة المستمرة APTs في المحاضرة؟",
-        "en": "What defining characteristics denote Advanced Persistent Threats (APTs) in the lecture?"
+        "ar": "ما الذي يميّز التهديد المتقدم المستمر؟",
+        "en": "What defines an advanced persistent threat?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "فيروسات قطاع الإقلاع ذاتية التكاثر التي تنتقل حصرياً عبر وسائط تخزين USB المتروكة عمداً.",
-          "en": "Self-replicating boot sector viruses spread strictly through discarded USB thumb drives."
+          "ar": "دعم دولة وخفاء وحضور طويل.",
+          "en": "State backing, stealth, and long presence."
         },
         {
-          "ar": "برمجيات إعلانية استهلاكية مزعجة وعابرة تأتي مدمجة مع البرامج التجريبية التجارية المجانية.",
-          "en": "Opportunistic nuisance pop-up advertising software bundled with commercial shareware."
+          "ar": "انتشار سريع وضجيج وضرر فوري.",
+          "en": "Fast spreading, noise, and instant damage."
         },
         {
-          "ar": "هجمات مدعومة من دول State-sponsored، تتسم بالسرية التامة، وتستمر لفترات زمنية طويلة الأمد.",
-          "en": "State-sponsored, stealthy, and sustained long-term targeted intrusion campaigns."
+          "ar": "مهارة منخفضة وأهداف عشوائية.",
+          "en": "Low skill, random targets, and short visits."
         },
         {
-          "ar": "هجمات هواة عابرة ينفذها هواة باستهداف خوادم المدارس بحزم ping بدائية وسريعة التوقف.",
-          "en": "Transient student script kiddie denial attacks launching unsophisticated ping floods."
+          "ar": "أدوات مفتوحة وأهداف معلنة.",
+          "en": "Open tools, public targets, and one strike."
         }
       ],
-      "concept_id": "threat_apt_state_sponsored",
+      "concept_id": "threat_apt_definition",
       "explanation": {
-        "ar": "الـ APTs تتميز في المحاضرة بثلاث سمات نصية: مدعومة من دول (State-sponsored)، وتتسم بالسرية والتخفي (Stealthy)، وتعمل على المدى الطويل (Long-term attacks).",
-        "en": "APTs are defined as: State-sponsored, stealthy long-term attacks aimed at espionage or sabotage."
+        "ar": "التهديد المتقدم مدعوم من دولة، خفي، ومستمر لفترة طويلة. الضجيج والسرعة نقيض ما يريده.",
+        "en": "An APT is state-sponsored, stealthy, and sustained over a long period. Noise and speed are the opposite of what it wants."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "أي حادثة واقعية معيارية استشهدت بها ملاحظات المنهج لتوضيح هجمات شبكات بوتنت إنترنت الأشياء؟",
-        "en": "Which canonical real-world incident is cited in the course notes to illustrate IoT Botnet attacks?"
+        "ar": "أي مثال تعطيه المحاضرة لهجمات إنترنت الأشياء؟",
+        "en": "Which example does the lecture give for IoT attacks?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "هجوم برنامج الفدية على شركة Colonial Pipeline الذي عطل خط أنابيب نقل الوقود المكرر.",
-          "en": "The Colonial Pipeline operational ransomware attack that disrupted regional refined oil transport."
+          "ar": "فيروس يصيب قطاع الإقلاع في القرص.",
+          "en": "A virus infecting the boot sector area."
         },
         {
-          "ar": "فرض الغرامة المالية لانتهاك اللائحة العامة لحماية البيانات في الاتحاد الأوروبي GDPR.",
-          "en": "The European Union general data protection regulation financial non-compliance penalty."
+          "ar": "شبكة بوت Mirai من الأجهزة المصابة.",
+          "en": "The Mirai botnet of infected devices."
         },
         {
-          "ar": "هجوم شبكة بوتنت Mirai، الذي استغل ثغرات كاميرات وأجهزة إنترنت الأشياء الاستهلاكية في هجوم DDoS.",
-          "en": "The Mirai botnet attack, which weaponized vulnerable internet of things consumer devices."
+          "ar": "دودة تنتشر عبر مرفقات البريد الإلكتروني.",
+          "en": "A worm spreading through email attachments."
         },
         {
-          "ar": "حادثة هجوم Stuxnet على المتحكمات المنطقية القابلة للبرمجة في منشآت تخصيب اليورانيوم.",
-          "en": "The Stuxnet nuclear uranium enrichment facility programmable logic controller incident."
+          "ar": "حصان طروادة مخفي داخل تنزيل مجاني.",
+          "en": "A Trojan hidden inside a free download."
         }
       ],
-      "concept_id": "threat_iot_botnets_mirai",
+      "concept_id": "threat_iot_botnet_example",
       "explanation": {
-        "ar": "تحت فئة هجمات إنترنت الأشياء IoT Attacks، تذكر المحاضرة نصاً: Botnets ومثالها الشهير شبكة Mirai التي جندت مئات الآلاف من كاميرات المراقبة والراوترات الضعيفة لشن هجمات DDoS.",
-        "en": "Under IoT Attacks, the lecture explicitly cites: Botnets (e.g., Mirai)."
+        "ar": "Mirai هو المثال المذكور: شبكة بوت مبنية من أجهزة إنترنت أشياء مخترقة كالكاميرات والموجّهات.",
+        "en": "Mirai is the named example: a botnet built from compromised IoT devices such as cameras and routers."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "في قسم الاتجاهات العالمية (2023–2024)، ما الرقم القياسي المالي المتوقع لخسائر هجمات الفدية عالمياً؟",
-        "en": "In the Global Trends (2023–2024) section, what monetary benchmark is projected for global ransomware damages?"
+        "ar": "موظف ينسخ قائمة العملاء قبل استقالته. أي فئة هذا؟",
+        "en": "An employee copies the customer list before resigning. Which category is this?"
       },
-      "bloom": "Remember",
-      "answer": 0,
+      "bloom": "Apply",
+      "answer": 2,
       "options": [
         {
-          "ar": "خسائر برمجيات الفدية متوقع أن تتجاوز 20 مليار دولار عالمياً (Exceed $20 billion).",
-          "en": "Ransomware damages are expected to exceed twenty billion dollars globally ($20 billion)."
+          "ar": "شبكة بوت لأجهزة.",
+          "en": "An IoT device botnet."
         },
         {
-          "ar": "خسائر برمجيات الفدية متوقع أن تظل دون مليوني دولار على المستوى العالمي العام.",
-          "en": "Ransomware damages are projected to remain below two million dollars globally."
+          "ar": "اختراق متقدم مستمر.",
+          "en": "An APT intrusion."
         },
         {
-          "ar": "خسائر برمجيات الفدية متوقع أن تستقر عند سقف خمسمئة مليون دولار على مستوى العالم.",
-          "en": "Ransomware damages are projected to level off at five hundred million dollars globally."
+          "ar": "تهديد داخلي من موظف.",
+          "en": "An insider threat."
         },
         {
-          "ar": "خسائر برمجيات الفدية متوقع أن تلامس تريليون دولار حصرياً ضمن قطاع تجارة التجزئة.",
-          "en": "Ransomware damages are expected to reach one trillion dollars within the private retail sector."
+          "ar": "حملة تصيّد إلكتروني.",
+          "en": "A phishing campaign."
         }
       ],
-      "concept_id": "trends_ransomware_20b_milestone",
+      "concept_id": "threat_scenario_insider",
       "explanation": {
-        "ar": "نصت الاتجاهات العالمية (2023–2024) في المحاضرة حرفياً على: «خسائر الفدية متوقعة تجاوز 20 مليار دولار» (Ransomware damages expected to exceed $20 billion).",
-        "en": "The global trends bullet states verbatim: Ransomware damages expected to exceed $20 billion."
+        "ar": "كان يملك صلاحية مشروعة واستخدمها لغرض لم تُمنح له، وهذا تعريف التهديد الداخلي.",
+        "en": "He held legitimate access and used it for a purpose it was not granted for, which is the definition of an insider threat."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "ما العامل التشغيلي الجذري المسؤول عن التصاعد الملحوظ في الهجمات السيبرانية على البيئات السحابية؟",
-        "en": "What primary operational root factor is responsible for the documented surge in cloud-related cyber attacks?"
+        "ar": "بريد يدّعي أنه من قسم تقنية المعلومات ويطلب كلمة مرورك. أي فئة هذا؟",
+        "en": "An email claiming to be from IT asks for your password. Which category is this?"
       },
-      "bloom": "Understand",
-      "answer": 0,
+      "bloom": "Apply",
+      "answer": 3,
       "options": [
         {
-          "ar": "تصاعد الهجمات والاختراقات السحابية بصورة رئيسية بسبب سوء الإعدادات والتهيئات الأمنية.",
-          "en": "Cloud-related security breaches rising predominantly due to customer security misconfigurations."
+          "ar": "تهديد داخلي من موظف.",
+          "en": "An insider threat."
         },
         {
-          "ar": "الانقطاع المادي الكارثي لكابلات الألياف الضوئية في القنوات الاتصالية عبر المحيط الهادئ.",
-          "en": "Catastrophic physical fiber cable severance in transpacific oceanic telecommunication channels."
+          "ar": "إصابة ببرمجية خبيثة.",
+          "en": "A malware infection."
         },
         {
-          "ar": "الانهيار الرياضي التام لخوارزميات التجزئة التشفيرية المعتمدة عالمياً مثل SHA-256.",
-          "en": "Complete mathematical breakdown of verified SHA-256 cryptographic hashing algorithms."
+          "ar": "اختراق متقدم مستمر.",
+          "en": "An APT intrusion."
         },
         {
-          "ar": "الارتفاع المفرط لدرجات حرارة المحولات الكهربائية المغذية لمراكز البيانات السحابية.",
-          "en": "Physical component overheating inside primary power substations supplying cloud data centers."
+          "ar": "محاولة تصيّد احتيالية.",
+          "en": "A phishing attempt."
         }
       ],
-      "concept_id": "trends_cloud_misconfigurations_rise",
+      "concept_id": "threat_scenario_phishing",
       "explanation": {
-        "ar": "ورد نصاً في الاتجاهات العالمية: «ارتفاع الهجمات السحابية بسبب سوء الإعدادات» (Misconfigurations)؛ كترك حاويات التخزين مفتوحة أو التهاون في إدارة صلاحيات IAM.",
-        "en": "Global Trends (2023–2024) specifically notes: Cloud-related attacks rising due to misconfigurations (such as public storage buckets and weak IAM)."
+        "ar": "الرسالة تطلب من الشخص تسليم بيانات دخوله، وهذا هندسة اجتماعية لا اختراق تقني.",
+        "en": "It asks the person to hand over a credential, which is social engineering rather than a technical break-in."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "ما مسار التهديد التكنولوجي الناشئ الذي سلّطت اتجاهات 2023–2024 الضوء على نموه وتصاعده السريع؟",
-        "en": "Which emerging technological threat vector is highlighted in the 2023–2024 trends as experiencing rapid growth?"
+        "ar": "أي ثلاثة اتجاهات تسجّلها المحاضرة لعامي 2023 و2024؟",
+        "en": "Which three trends does the lecture record for 2023 and 2024?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "هجمات نسخ الأشرطة الممغنطة لبطاقات الدفع عند مضخات تعبئة الوقود في المناطق النائية.",
-          "en": "Mechanical magnetic card strip skimming attacks at isolated rural fuel filling pumps."
+          "ar": "ارتفاع خسائر الفدية وسوء إعداد السحابة وهجمات الذكاء الاصطناعي.",
+          "en": "Rising ransomware losses, cloud misconfiguration, AI attacks."
         },
         {
-          "ar": "نمو الهجمات المدعومة بالذكاء الاصطناعي، حيث يوظف المهاجمون خوارزميات التعلم الآلي.",
-          "en": "AI-powered attacks growing, where threat actors weaponize machine learning algorithms."
+          "ar": "انخفاض خسائر الفدية والانتقال للسحابة والدفاع بالذكاء الاصطناعي.",
+          "en": "Falling ransomware losses, cloud migration, and AI defence."
         },
         {
-          "ar": "اعتراض إشارات البث التلفزيوني الهوائي عبر الهوائيات الموجهة في الضواحي السكنية.",
-          "en": "Broadcast television antenna signal interception across suburban residential areas."
+          "ar": "ارتفاع حجم البرمجيات الخبيثة والنسخ على الأشرطة والتدقيق اليدوي.",
+          "en": "Rising malware volume, tape backups, and manual auditing."
         },
         {
-          "ar": "التنصت على المكالمات الهاتفية الصوتية التناظرية باستخدام مشابك التوصيل النحاسية اليدوية.",
-          "en": "Analog voice telephone eavesdropping using manual copper line tapping clips."
+          "ar": "ثبات خسائر الفدية والخوادم المحلية والبريد المزعج.",
+          "en": "Flat ransomware losses, on-premise servers, and spam mail."
         }
       ],
-      "concept_id": "trends_ai_powered_attacks_growth",
+      "concept_id": "trends_2023_2024",
       "explanation": {
-        "ar": "سجلت الاتجاهات العالمية نصاً: «نمو الهجمات المدعومة بالذكاء الاصطناعي» (AI-powered attacks growing)، حيث يستخدم المهاجمون أدوات ذكية لتوليد برمجيات فدية متكيفة ورسائل تصيد مقنعة.",
-        "en": "The global trends bullet records: AI-powered attacks growing, enabling automated phishing and adaptive malware."
+        "ar": "الثلاثة هي: خسائر الفدية فوق عشرين مليار دولار، وارتفاع الهجمات السحابية بسبب سوء الإعداد، ونمو الهجمات المدعومة بالذكاء الاصطناعي.",
+        "en": "The three are: ransomware losses above 20 billion dollars, cloud attacks rising from misconfiguration, and AI-powered attacks growing."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "ما المعادلة الرياضية المعيارية المعتمدة لقياس وتكميم سطح الهجوم Attack Surface الكلي للنظام؟",
-        "en": "What is the canonical mathematical formula used to quantify a system's overall Attack Surface (AS)?"
+        "ar": "في مقياس سطح الهجوم، ماذا يمثّل العامل الأوسط؟",
+        "en": "In the attack surface metric, what does the middle factor represent?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "$$R = \\sum_{i=1}^n P_i \\cdot I_i$$",
-          "en": "$$R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$$"
+          "ar": "قيمة الأصل الذي يقف خلف المكوّن.",
+          "en": "The value of the asset behind that component."
         },
         {
-          "ar": "$$PCI = \\frac{\\sum_{k=1}^n w_k \\cdot c_k}{\\sum_{k=1}^n w_k}$$",
-          "en": "$$PCI = \\frac{\\sum_{k=1}^n w_k \\cdot c_k}{\\sum_{k=1}^n w_k}$$"
+          "ar": "تكلفة الضابط الأمني المطبّق عليه.",
+          "en": "The cost of the security control applied to it."
         },
         {
-          "ar": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
-          "en": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$"
+          "ar": "درجة خطورة الثغرة في ذلك المكوّن.",
+          "en": "The severity of the flaw on that component."
         },
         {
-          "ar": "$$P(R > r) = 1 - F$$",
-          "en": "$$P(R > r) = 1 - F(r)$$"
+          "ar": "عدد نقاط الدخول المكشوفة فيه.",
+          "en": "The number of entry points exposed on it."
         }
       ],
-      "concept_id": "attack_surface_metric_formula",
+      "concept_id": "attack_surface_model_symbols",
       "explanation": {
-        "ar": "معادلة سطح الهجوم هي: $AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$؛ وتقيس مدى قابلية النظام للاختراق عبر حساب حاصل ضرب نقاط الدخول في شدة الثغرة في قيمة الأصل لكل مكون.",
-        "en": "The attack surface metric is $AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$, quantifying how attackable a system is across m components."
+        "ar": "العامل الأوسط هو درجة خطورة الثغرة، والمحاضرة تربطها بدرجة CVSS.",
+        "en": "The middle factor is the severity of the vulnerability, which the lecture ties to the CVSS score."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "في معادلة سطح الهجوم $AS = \\sum (E_j \\cdot V_j \\cdot A_j)$، ماذا يمثل المعامل $E_j$ لكل مكوّن $j$؟",
-        "en": "In the attack surface formula $AS = \\sum (E_j \\cdot V_j \\cdot A_j)$, what does parameter $E_j$ represent?"
+        "ar": "مكوّن له نقطتا دخول، وخطورة ثغرة 3، وقيمة أصل 500. ما درجة سطح الهجوم له؟",
+        "en": "A component has 2 entry points, a flaw severity of 3, and an asset value of 500. What is its attack surface score?"
       },
-      "bloom": "Remember",
+      "bloom": "Apply",
       "answer": 1,
       "options": [
         {
           "ar": "زمن التنفيذ بالمللي ثانية لعمليات التحقق من التوقيع الرقمي في خوارزمية RSA.",
-          "en": "The execution latency in milliseconds of asymmetric RSA cryptographic signature verification."
+          "en": "3,500"
         },
         {
           "ar": "عدد نقاط الدخول المكشوفة (مثل المنافذ المفتوحة Open Ports أو الخدمات أو الواجهات).",
-          "en": "The number of exposed entry points (such as open network ports, services, or interfaces)."
+          "en": "3,000"
         },
         {
           "ar": "عدد الموظفين المكلفين بمراقبة تبريد الخوادم ومعدات تنقية الهواء في غرف البيانات.",
-          "en": "The employee headcount assigned to monitor server cooling and air filtration hardware."
+          "en": "1,000"
         },
         {
           "ar": "معدل الإهلاك الاقتصادي لأجهزة الخوادم المادية المسجل في الدفاتر المالية للشركة.",
-          "en": "The economic depreciation rate of hardware servers recorded in corporate fiscal ledgers."
+          "en": "2,500"
         }
       ],
-      "concept_id": "attack_surface_entry_points_e",
+      "concept_id": "attack_surface_compute",
       "explanation": {
-        "ar": "المعامل $E_j$ يمثل عدد نقاط الدخول المكشوفة (Exposed Entry Points) كالمنافذ المفتوحة أو واجهات برمجة التطبيقات APIs التي يستطيع المهاجم الوصول إليها.",
-        "en": "Parameter $E_j$ designates the number of exposed entry points (interfaces, APIs, open ports) through which an adversary could interact with component j."
+        "ar": "اضرب العوامل الثلاثة: 2 × 3 × 500 = 3,000. النموذج حاصل ضرب لا مجموع.",
+        "en": "Multiply the three factors: 2 x 3 x 500 = 3,000. The model is a product, not a sum."
       }
     },
     {
       "id": "q12",
       "stem": {
-        "ar": "في معادلة سطح الهجوم، ماذا يمثل الرمز $V_j$ وما المقياس الدولي المعياري الذي يحكم قيمته؟",
-        "en": "In the attack surface equation, what does $V_j$ denote and what standardized international scoring scale bounds its value?"
+        "ar": "ماذا تخبرك درجة سطح هجوم أعلى؟",
+        "en": "What does a higher attack surface score tell you?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "سعة تدفق حزم البيانات عبر منافذ الشبكة، وتُقاس من صفر إلى عشرة غيغابت في الثانية.",
-          "en": "The volumetric packet throughput bandwidth, measured from zero to ten gigabits per second."
+          "ar": "النظام يملك ضوابط أقوى من قبل.",
+          "en": "The system has stronger controls than before."
         },
         {
-          "ar": "نسبة الامتثال الطوعي للسياسات، وتُقاس كنسبة مئوية من صفر إلى مئة بالمئة في التدقيق.",
-          "en": "The voluntary compliance percentage, measured from zero to one hundred percent."
+          "ar": "النظام يملك مستخدمين أقل من اللازم.",
+          "en": "The system has fewer users than it should."
         },
         {
-          "ar": "حجم الذاكرة الافتراضية المخصصة للصفحات، ويُقاس من صفر إلى واحد غيغابايت في النظام.",
-          "en": "The virtual memory pagination buffer size, measured from zero to one gigabyte."
+          "ar": "النظام يملك عتاداً أقدم من المتوسط.",
+          "en": "The system has older hardware than average."
         },
         {
-          "ar": "درجة خطورة وشدة الثغرة الأمنية، وتؤخذ من مقياس CVSS العالمي وتتراوح من 0.0 إلى 10.0.",
-          "en": "The vulnerability severity score, derived from the CVSS standard scale ranging from 0.0 to 10.0."
+          "ar": "النظام أكثر تعرضاً للهجوم من غيره.",
+          "en": "The system is more exposed to being attacked."
         }
       ],
-      "concept_id": "attack_surface_vulnerability_cvss_v",
+      "concept_id": "attack_surface_meaning",
       "explanation": {
-        "ar": "الرمز $V_j$ يمثل شدة وخطورة الثغرة (Vulnerability Severity)، وتؤخذ قيمته من المعيار العالمي CVSS (Common Vulnerability Scoring System) ومداه بين 0.0 و 10.0.",
-        "en": "$V_j$ represents vulnerability severity, taken directly from the Common Vulnerability Scoring System (CVSS) scale of 0.0 to 10.0."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "ماذا يمثل المعامل $A_j$ في معادلة سطح الهجوم $AS = \\sum (E_j \\cdot V_j \\cdot A_j)$؟",
-        "en": "What does the factor $A_j$ represent in the Attack Surface equation $AS = \\sum (E_j \\cdot V_j \\cdot A_j)$?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "قيمة الأصل والأهمية الاستراتيجية للمكوّن $j$ بالنسبة للمؤسسة.",
-          "en": "The asset value and criticality of component $j$ to the organization."
-        },
-        {
-          "ar": "معدل استهلاك الطاقة الكهربائية السنوي بالواط لكابينة الخوادم الحاضنة للمكون.",
-          "en": "The annual electric power consumption wattage consumed by the component rack."
-        },
-        {
-          "ar": "المهلة الزمنية المسموحة لانتهاء جلسة تسجيل الدخول بالثواني عند شاشات المستخدمين.",
-          "en": "The authentication timeout threshold in seconds configured on endpoint login prompts."
-        },
-        {
-          "ar": "فئة التعقيد الزمني الخوارزمي لنظام التشفير البرمجي المطبق على المكوّن $j$.",
-          "en": "The algorithmic time complexity class of the encryption cipher implemented on component $j$."
-        }
-      ],
-      "concept_id": "attack_surface_asset_value_a",
-      "explanation": {
-        "ar": "المعامل $A_j$ يمثل قيمة الأصل (Asset Value)؛ وهو يعكس القيمة المالية أو الأهمية التشغيلية للبيانات والأنظمة التي يحويها المكوّن $j$.",
-        "en": "$A_j$ represents Asset Value, reflecting the financial or operational worth of the component housing the vulnerability."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "لماذا تعتمد معادلة سطح الهجوم عملية الضرب الحسابي بين $E_j$ و $V_j$ و $A_j$ بدلاً من الجمع الحسابي بينها؟",
-        "en": "Why does the Attack Surface formula multiply $E_j$, $V_j$, and $A_j$ together rather than adding them ($E_j + V_j + A_j$)?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "جمع المتغيرات يؤدي إلى نواتج سالبة كلما انخفضت درجة خطورة الثغرة عن الصفر المئوي.",
-          "en": "Adding the variables causes negative results whenever vulnerability severity drops below zero."
-        },
-        {
-          "ar": "الضرب الحسابي يقلص النواتج العددية لتتلاءم مع سعة مسجلات الذاكرة ذات 16 بت.",
-          "en": "Multiplication generates smaller resulting values that fit into standard 16-bit register memories."
-        },
-        {
-          "ar": "الجمع الحسابي غير مسموح به رياضياً بين الأعداد الصحيحة ودرجات التقييم العشرية.",
-          "en": "Addition is mathematically forbidden between discrete integer values and continuous decimals."
-        },
-        {
-          "ar": "تحقق الخطر الفعلي يتطلب توافر العناصر الثلاثة معاً؛ فإن انعدم أي عنصر زال الخطر وصار صفراً.",
-          "en": "An exploitable risk requires all three elements simultaneously; if any element is zero, risk is eliminated."
-        }
-      ],
-      "concept_id": "attack_surface_multiplication_rationale",
-      "explanation": {
-        "ar": "الضرب يعكس طبيعة الخطر؛ فالخطر لا يتحقق إلا باجتماع الأركان الثلاثة: فلو كان النظام معزولاً بلا نقاط دخول ($E=0$)، أو محصناً بلا ثغرات ($V=0$)، أو بياناته بلا قيمة ($A=0$) ← فإن سطح الهجوم للمكوّن يساوي صفراً.",
-        "en": "Multiplication models necessity: an attack needs entry ($E>0$), vulnerability ($V>0$), and value ($A>0$). If any is 0, the component poses 0 exploitable surface."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "تحتوي قاعدة بيانات على أصول حيوية ($A=1000$) وثغرة خطيرة غير مرقعة ($V=9.0$)، ولكنها معزولة هوائياً Air-gapped بلا أي نقطة دخول شبكية ($E=0$). ما مساهمتها في سطح الهجوم؟",
-        "en": "A database contains highly critical data ($A=1000$) and a severe known zero-day flaw ($V=9.0$), but is completely air-gapped with zero network entry points ($E=0$). What is its attack surface contribution?"
-      },
-      "bloom": "Apply",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "تساهم بصفر وحدة خطر لأن انعدام نقاط الدخول يمنع أي وصول خارجي لاستغلال الثغرة.",
-          "en": "Contribution equals zero units because lack of entry points eliminates accessibility."
-        },
-        {
-          "ar": "تساهم بمقدار 1,009 وحدة ناتجة عن جمع المعاملات غير الصفرية المتبقية في المكون.",
-          "en": "Contribution equals 1,009 units calculated by summing the non-zero parameters."
-        },
-        {
-          "ar": "تساهم بمقدار 9,000 وحدة خطر قياسية على سطح الهجوم الكلي للمؤسسة.",
-          "en": "Contribution equals exactly 9,000 arbitrary attack surface metric units."
-        },
-        {
-          "ar": "تساهم بمقدار 111.1 وحدة خطر ناتجة عن قسمة قيمة الأصل على درجة خطورة الثغرة.",
-          "en": "Contribution equals 111.1 units calculated by dividing asset value by vulnerability."
-        }
-      ],
-      "concept_id": "attack_surface_zero_factor_elimination",
-      "explanation": {
-        "ar": "وفق المعادلة: $AS_j = 0 \\times 9.0 \\times 1000 = 0$؛ فطالما لا توجد أي نقطة وصول أو منفذ مفتوح ($E=0$)، يستحيل على المهاجم استغلال الثغرة عبر الشبكة.",
-        "en": "$AS_j = E_j \\cdot V_j \\cdot A_j = 0 \\times 9.0 \\times 1000 = 0$. Without entry points, an adversary cannot reach the vulnerability."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "يتكون تطبيق ويب من مكوّنين: المكوّن الأول لديه $E_1=3, V_1=8, A_1=100$، والمكوّن الثاني لديه $E_2=2, V_2=5, A_2=300$. ما إجمالي سطح الهجوم الكلي $AS$؟",
-        "en": "A web application has two components: Component 1 has $E_1=3, V_1=8, A_1=100$, and Component 2 has $E_2=2, V_2=5, A_2=300$. What is the total Attack Surface $AS$?"
-      },
-      "bloom": "Apply",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "إجمالي سطح الهجوم الكلي يساوي 7,200 وحدة قياسية.",
-          "en": "Total attack surface equals 7,200 metric units."
-        },
-        {
-          "ar": "إجمالي سطح الهجوم الكلي يساوي 2,400 وحدة قياسية.",
-          "en": "Total attack surface equals 2,400 metric units."
-        },
-        {
-          "ar": "إجمالي سطح الهجوم الكلي يساوي 3,000 وحدة قياسية.",
-          "en": "Total attack surface equals 3,000 metric units."
-        },
-        {
-          "ar": "إجمالي سطح الهجوم الكلي يساوي 5,400 وحدة قياسية.",
-          "en": "Total attack surface equals 5,400 metric units."
-        }
-      ],
-      "concept_id": "attack_surface_worked_calculation",
-      "explanation": {
-        "ar": "المكوّن الأول: $3 \\times 8 \\times 100 = 2400$. المكوّن الثاني: $2 \\times 5 \\times 300 = 3000$. إجمالي سطح الهجوم: $2400 + 3000 = 5400$ وحدة (مطابق تماماً للمثال المحلول في الملاحظات).",
-        "en": "Component 1: $3 \\times 8 \\times 100 = 2400$. Component 2: $2 \\times 5 \\times 300 = 3000$. Total $AS = 2400 + 3000 = 5400$. This matches the solved example in the lecture deep dive."
+        "ar": "الدرجة تقيس مدى قابلية النظام للاختراق. نقاط دخول أكثر أو ثغرات أخطر أو أصول أثمن ترفعها كلها.",
+        "en": "The score measures how attackable the system is. More entry points, worse flaws or more valuable assets all push it up."
       }
     }
   ],
@@ -525,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:00Z",
+  "updated_at": "2026-10-26T17:08:59Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

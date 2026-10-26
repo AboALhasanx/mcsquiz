@@ -1,10 +1,10 @@
 PASS | banks | banks exist | 87
 PASS | banks | every question has English text and a valid answer key | []
-PASS | banks | Arabic question coverage meets the current target | 1320/1320 translated
+PASS | banks | Arabic question coverage meets the current target | 1295/1295 translated
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': 'fe3b3662-92cd-41af-8caa-afd1e9723a34', 'handle': 't308576', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1792842315217}
+PASS | accounts | username + PIN creates an account | {'id': 'a61b3dd7-b4f0-4f62-bbf2-40ffdca70ce9', 'handle': 't945156', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1793034951325}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | signing out warns before it happens | تسجيل الخروج؟
@@ -17,18 +17,18 @@ PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا 
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': 'fe3b3662-92cd-41af-8caa-afd1e9723a34', 'handle': 't308576', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1792842330410}
-PASS | accounts | the avatar is saved | {'id': 'fe3b3662-92cd-41af-8caa-afd1e9723a34', 'handle': 't308576', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1792842330410}
+PASS | accounts | the display name is editable | {'id': 'a61b3dd7-b4f0-4f62-bbf2-40ffdca70ce9', 'handle': 't945156', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793034966383}
+PASS | accounts | the avatar is saved | {'id': 'a61b3dd7-b4f0-4f62-bbf2-40ffdca70ce9', 'handle': 't945156', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793034966383}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': 'fe3b3662-92cd-41af-8caa-afd1e9723a34', 'handle': 't308576', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1792842355755}
+PASS | accounts | same username returns the same account | {'id': 'a61b3dd7-b4f0-4f62-bbf2-40ffdca70ce9', 'handle': 't945156', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793034986264}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has six digits | 174287
+PASS | accounts | the link code has six digits | 682617
 PASS | accounts | a QR is rendered for the link | 
 PASS | accounts | the QR link pre-fills all six digits | 123456
-PASS | accounts | the approved device signs in | {'id': 'fe3b3662-92cd-41af-8caa-afd1e9723a34', 'handle': 't308576', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1792842391310}
-PASS | pin change | the throwaway account is linked | {'id': '92ec1cb2-87ab-498c-af0c-3ae6ba7bf206', 'handle': 'pc406086', 'name': 'PIN test', 'avatar': '', 'at': 1792842412777}
+PASS | accounts | the approved device signs in | {'id': 'a61b3dd7-b4f0-4f62-bbf2-40ffdca70ce9', 'handle': 't945156', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793035021096}
+PASS | pin change | the throwaway account is linked | {'id': '2c3352cd-97e9-45c1-99e6-3a2701a6be18', 'handle': 'pc034304', 'name': 'PIN test', 'avatar': '', 'at': 1793035039607}
 PASS | pin change | the account page offers a PIN change | 
 PASS | pin change | a mismatched confirmation is refused | تأكيد الرمز ما مطابق
 PASS | pin change | the same PIN is refused before the call | الرمز الجديد نفس القديم
@@ -37,7 +37,7 @@ PASS | pin change | a failed change keeps the old PIN on the device | 1357
 PASS | pin change | the owner can change the PIN | تم تغيير الرمز — استعمله من هسه
 PASS | pin change | the device stores the new PIN | 2468
 PASS | pin change | the old PIN no longer signs in | الرمز غير صحيح لهذا المستخدم
-PASS | pin change | the new PIN signs in | {'id': '92ec1cb2-87ab-498c-af0c-3ae6ba7bf206', 'handle': 'pc406086', 'name': 'PIN test', 'avatar': '', 'at': 1792842435739}
+PASS | pin change | the new PIN signs in | {'id': '2c3352cd-97e9-45c1-99e6-3a2701a6be18', 'handle': 'pc034304', 'name': 'PIN test', 'avatar': '', 'at': 1793035062351}
 PASS | pin change | the profile saves with the new PIN | تم حفظ الملف
 PASS | catalog | index exposes subjects | 6
 PASS | catalog | one chip per subject | 6 vs 6
@@ -61,9 +61,9 @@ PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the toggle is yellow in Arabic mode | icon-btn lang-toggle lang-active
 PASS | quiz | the toggle turns the question into English | A
 PASS | quiz | the toggle is plain in English mode | icon-btn lang-toggle
-PASS | quiz | the English stem is used | Which three strategic domains are directly linked to cyberse
+PASS | quiz | the English stem is used | Which threat is characteristic of the current era, 2010s to 
 PASS | quiz | the toggle returns to Arabic | أ
-PASS | quiz | total questions loaded | 16
+PASS | quiz | total questions loaded | 10
 PASS | quiz | saving marks the bookmark | 
 PASS | quiz | saving again removes it | 
 PASS | quiz | explanation appears after a wrong answer | 
@@ -71,15 +71,15 @@ PASS | quiz | a wrong answer opens the explanation automatically |
 PASS | quiz | the explanation can be collapsed on demand | 
 PASS | quiz | the explanation re-opens on demand | 
 PASS | quiz | matrix opens | 
-PASS | quiz | matrix has one cell per question | 16
+PASS | quiz | matrix has one cell per question | 10
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 8, 'wrong': 8, 'acc': '50%', 'hasUnanswered': False, 'time': '0:14'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 8, 'wrong': 8, 'acc': '50%', 'hasUnanswered': False, 'time': '0:14'}
+PASS | quiz | correct + wrong equals the total | {'correct': 3, 'wrong': 7, 'acc': '30%', 'hasUnanswered': False, 'time': '0:09'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 3, 'wrong': 7, 'acc': '30%', 'hasUnanswered': False, 'time': '0:09'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
-PASS | quiz | one review card per question | 16
+PASS | quiz | one review card per question | 10
 PASS | quiz | explanations start collapsed | 
 PASS | quiz | explanation opens with the arrow | 
 PASS | quiz | every card can save the question | 
@@ -174,7 +174,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 20
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/quiz/01_Cyber_Security/Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution', '#/stats', '#/league'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/stats', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
@@ -187,7 +187,7 @@ PASS | offline | subject chips render offline |
 PASS | offline | a quiz starts, runs and finishes offline | 
 PASS | offline | history is journalled on the device offline | 
 PASS | offline | saved questions open offline | 
-PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 19 – 25 أكتوبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | اللغة الإنجليزية | 
+PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 26 أكتوبر – 1 نوفمبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | اللغة الإنج
 PASS | offline | no runtime errors | []
 PASS | a11y | document is RTL Arabic | 
 PASS | a11y | the first tab stop is the skip link | {'cls': 'skip-link', 'top': 8}
@@ -200,31 +200,21 @@ PASS | a11y | the share preview image has alt text |
 PASS | a11y | theme toggle changes the palette | #d9b26a / #b45309
 PASS | a11y | theme choice is remembered | 
 PASS | a11y | no runtime errors | []
-PASS | security | an account can be created | [{'id': '31434004-8655-4581-88bf-bd94616cebf6', 'handle': 'sectest842622', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
-PASS | security | five wrong tries lock the account | [{'id': None, 'handle': 'sectest842622', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
-PASS | security | the lock says how long to wait | [{'id': None, 'handle': 'sectest842622', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
-PASS | security | another handle is not locked by the first | [{'id': 'fb7cec69-ed09-494b-8c17-7cd60e7e38d3', 'handle': 'sectest842622x', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | an account can be created | [{'id': 'a8c095a5-2f8f-436e-8820-e381aa92cfd1', 'handle': 'sectest35218', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | five wrong tries lock the account | [{'id': None, 'handle': 'sectest35218', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
+PASS | security | the lock says how long to wait | [{'id': None, 'handle': 'sectest35218', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
+PASS | security | another handle is not locked by the first | [{'id': 'd3f56b9a-ece8-432a-b21a-7c1ca3a0de10', 'handle': 'sectest35218x', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
 PASS | security | a row can be written for its owner | 201
 PASS | security | the server holds an encrypted envelope | {'ct': 'bbbbbbbb', 'iv': 'aaaaaaaaaaaaaaaa', 'enc': 1}
 PASS | security | no readable history is stored | {'ct': 'bbbbbbbb', 'iv': 'aaaaaaaaaaaaaaaa', 'enc': 1}
 PASS | security | without the account header nothing is readable | []
 PASS | security | a forged account header reads nothing | []
-PASS | security | the owner reads their own row | [{'user_id': 'u:31434004-8655-4581-88bf-bd94616cebf6'}]
-PASS | security | the account is still locked after the wait | [{'id': None, 'handle': 'sectest842622', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 286}]
+PASS | security | the owner reads their own row | [{'user_id': 'u:a8c095a5-2f8f-436e-8820-e381aa92cfd1'}]
+PASS | security | the account is still locked after the wait | [{'id': None, 'handle': 'sectest35218', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 285}]
 PASS | security | the app can sign in | True
 PASS | security | the sync runs | {'action': 'uploaded-new', 'count': 1}
-PASS | security | what the app wrote is encrypted | {'ct': 'ZGag5VR2LZrsakYM7ISnfyu4NRAr0UnqjubRc8NGz/8BHvkQRRZLU3oAfPzgA6Hucndhoizhv8CsWGne72cDLZNyvkfyuq7oghOEf2TJ9zE4159Igd6CAAY6rPEipbGh6yJJlqoUZyQIex+0g/G9CsQK0q0J1Pq/arY/TYcmZs5/KzCQ4gwZ9ljicmfEYSsTkWOLmp8fApmkAeS+OtyvDqU0BZ67cyMxLW3eNkojcUEfexPOvaOgzY8pJAZNgXRAWSdDVQbCkX+3MHNRVHsoK3SGN8CUEqtTgQC9wQfjwyIyM/rdcjwW2xvz4yOZUl6HUa4M3M4z9Y8mMLrrOM+uvuooG8FFJiSMuZsPPJw+Mnn45fUkE7H5uVgTEF2N0a83MsLE+Q/dHGN65A13FlylFbRKlSAYQp40NTm2xXzxOhVd+ZpYND/Fiy/tAEQuoF1Jp/SfylE0M+tWa+ofJw==', 'iv': 'cSuzUeZmY2/Z1Mlw', 'enc': 1}
-PASS | security | the bookmark text is not on the server | {'ct': 'ZGag5VR2LZrsakYM7ISnfyu4NRAr0UnqjubRc8NGz/8BHvkQRRZLU3oAfPzgA6Hucndhoizhv8CsWGne72cDLZNyvkfyuq7oghOEf2TJ9zE4159Igd6CAAY6rPEipbGh6yJJlqoUZyQIex+0g/G9CsQK0q0J1Pq/arY/TYcmZs5/KzCQ4gwZ9ljicmfEYSsTkWOLmp8fApmkAeS+OtyvDqU0BZ67cyMxLW3eNkojcUEfexPOvaOgzY8pJAZNgXRAWSdDVQbCkX+3MHNRVHsoK3SGN8CUEqtTgQC9wQfjwyIyM/rdcjwW2xvz4yOZUl6HUa4M3M4z9Y8mMLrrOM+uvuooG8FFJiSMuZsPPJw+Mnn45fUkE7H5uVgTEF2N0a83MsLE+Q/dHGN65A13FlylFbRKlSAYQp40NTm2xXzxOhVd+ZpYND/Fiy/tAEQuoF1Jp/SfylE0M+tWa+ofJw==', 'iv': 'cSuzUeZmY2/Z1Mlw', 'enc': 1}
+PASS | security | what the app wrote is encrypted | {'ct': 'hexBdOW9/1hPr9wLQpMJAGrSfYbKL58mSSCTUJ0C5eXvmfsSWIhTiMRfdzXf2OELTiHAF85u4efzd04lvwDKxrVHw23NRI3iHya0eSfPpzS4//TpAhGoPt+H8FfJd2axxC+9+rLww33Qd59N/SfzfZ06LJJikfxi7M2fAdWAvDyuRadqrJVwCtd5sujam7qFY7CTisKGf/v0e6sz0Ytg4yc2PLJBc8COg6ZcR7ecCFCPEv6kXZL4wCU2APLZgtwxpfRuT8qvYMCMCpkoyfMDFV9kzgVn2xVc4er09Zi5s4Z2Ku5kk1eWRsrqkLTE8Hh8FAwj9RLR/7yDM1LXCA0qLtcj+m+QAms+BeyNeyZX6xn8JNunLnfAlIL5egzZ9n2B2quOQtda2FEfykCQQ2TM93IyglM4iugaLXqdCRk5toz+rZYPVuXVrbdAmGrGe3UZvfJK2pGNnoHRCnpgGg==', 'iv': 'esVfxvRAL5epybCH', 'enc': 1}
+PASS | security | the bookmark text is not on the server | {'ct': 'hexBdOW9/1hPr9wLQpMJAGrSfYbKL58mSSCTUJ0C5eXvmfsSWIhTiMRfdzXf2OELTiHAF85u4efzd04lvwDKxrVHw23NRI3iHya0eSfPpzS4//TpAhGoPt+H8FfJd2axxC+9+rLww33Qd59N/SfzfZ06LJJikfxi7M2fAdWAvDyuRadqrJVwCtd5sujam7qFY7CTisKGf/v0e6sz0Ytg4yc2PLJBc8COg6ZcR7ecCFCPEv6kXZL4wCU2APLZgtwxpfRuT8qvYMCMCpkoyfMDFV9kzgVn2xVc4er09Zi5s4Z2Ku5kk1eWRsrqkLTE8Hh8FAwj9RLR/7yDM1LXCA0qLtcj+m+QAms+BeyNeyZX6xn8JNunLnfAlIL5egzZ9n2B2quOQtda2FEfykCQQ2TM93IyglM4iugaLXqdCRk5toz+rZYPVuXVrbdAmGrGe3UZvfJK2pGNnoHRCnpgGg==', 'iv': 'esVfxvRAL5epybCH', 'enc': 1}
 PASS | security | the account can be deleted | ok
 PASS | security | the personal row is gone | []
-PASS | security | the account no longer exists | [{'id': '4ac4f341-cae0-4bd7-a02e-7ca4c65e2f79', 'handle': 'secdat842638', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
-PASS | offline | service worker takes control | 
-PASS | offline | banks loaded while online | 
-PASS | offline | a question is saved locally | 
-PASS | offline | catalog renders with no network | 
-PASS | offline | subject chips render offline | 
-PASS | offline | a quiz starts, runs and finishes offline | 
-PASS | offline | history is journalled on the device offline | 
-PASS | offline | saved questions open offline | 
-PASS | offline | league explains itself instead of hanging | الدوري الأسبوعي |  | 19 – 25 أكتوبر |  | طيار | 0 إجابة | ظاهر | العام | الأمن السيبراني | اللغة الإنجليزية | 
-PASS | offline | no runtime errors | []
+PASS | security | the account no longer exists | [{'id': '043ab386-3538-4cee-9e98-b1b619e2e3b3', 'handle': 'secdat35236', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]

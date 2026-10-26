@@ -1,522 +1,394 @@
 {
   "topic": {
-    "ar": "المستويات الأربعة، المجالات الستة، ومعادلة الخطر R(t)",
+    "ar": "المستويات الأربعة والمجالات الستة ونموذج التعرض للمخاطر",
     "en": "4 Levels, 6 Domains & Risk Exposure R(t)"
   },
   "quiz_id": "Quiz_Ch01_T02_Scope_Domains_and_Risk_Exposure",
-  "has_math": true,
+  "has_math": false,
   "semester": 1,
   "questions": [
     {
       "id": "q1",
       "stem": {
-        "ar": "أي مجموعة من الأصول الرقمية تحدد محور الحماية في مستوى الأفراد ضمن نطاق الأمن السيبراني؟",
-        "en": "Which set of digital assets defines the protection focus at the Individuals level of cybersecurity scope?"
+        "ar": "أي مجموعة تسرد المستويات الأربعة لنطاق الأمن السيبراني؟",
+        "en": "Which set lists the four levels of cybersecurity scope?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "مقاسم تسوية العملات المصرفية الدولية العابرة للحدود، وسجلات الشحن البحري التجاري العالمي.",
-          "en": "Cross-border interbank currency clearing switches and international maritime shipping ledgers."
+          "ar": "الأفراد والمؤسسات والحكومات والتجارة العالمية.",
+          "en": "Individuals, enterprises, governments, and global trade."
         },
         {
-          "ar": "سمعة العلامة التجارية للمؤسسات التجارية، وسجلات معاملات العملاء، والملفات الضريبية للشركات.",
-          "en": "Commercial enterprise brand reputation, customer transaction records, and corporate tax files."
+          "ar": "الأفراد والمؤسسات والوزارات والتجارة المحلية.",
+          "en": "Individuals, enterprises, ministries, and local trade."
         },
         {
-          "ar": "الحدود السيادية للدولة، والبرقيات الدبلوماسية الرسمية، وقواعد بيانات الاستخبارات الفدرالية المركزية.",
-          "en": "National territorial borders, sovereign diplomatic cables, and federal intelligence databases."
+          "ar": "المستخدمون والشركات والجهات الرقابية والتجارة الدولية.",
+          "en": "Users, companies, regulators, and international trade."
         },
         {
-          "ar": "الأجهزة الشخصية، وحسابات البريد الإلكتروني، وحسابات التواصل الاجتماعي، وبيانات المصرف الخاصة.",
-          "en": "Personal devices, personal email accounts, social media profiles, and private banking details."
+          "ar": "الأفراد والهيئات والحكومات والقطاع الصناعي.",
+          "en": "Individuals, institutions, governments, and the industry."
         }
       ],
-      "concept_id": "scope_level_individuals_assets",
+      "concept_id": "scope_four_levels",
       "explanation": {
-        "ar": "نص المنهج يحدد مستوى الأفراد بحماية: الأجهزة الشخصية، ورسائل البريد الإلكتروني، وحسابات وسائل التواصل الاجتماعي، والتفاصيل المصرفية الشخصية.",
-        "en": "The lecture text specifies Individuals scope as: Protecting personal devices, emails, social media accounts, and banking details."
+        "ar": "المستويات الأربعة هي: الأفراد، المؤسسات، الحكومات، التجارة العالمية. النطاق يتوسّع في كل خطوة.",
+        "en": "The four levels are individuals, enterprises, governments, and global trade. The scope widens at each step."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "في مستوى المؤسسات Enterprises، ما الأولويات الاستراتيجية التي تقود تطبيق برامج الأمن السيبراني؟",
-        "en": "At the Enterprises level, which strategic priorities drive cybersecurity program implementation?"
+        "ar": "في مستوى الأفراد، ماذا يحمي الأمن السيبراني؟",
+        "en": "At the individuals level, what does cybersecurity protect?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "بناء أسوار خرسانية مسلحة محيطة بالمستودعات المادية لمصانع الشركات في المناطق الصناعية.",
-          "en": "Constructing fortified concrete perimeters surrounding corporate physical manufacturing warehouses."
+          "ar": "أنظمة التداول والإيميل والعقود التجارية.",
+          "en": "Trading systems, email, social accounts, and contracts."
         },
         {
-          "ar": "ضمان استمرارية الأعمال التشغيلية، والحفاظ على ثقة العملاء، والوفاء بالامتثال التشريعي والقانوني.",
-          "en": "Ensuring continuous business operations, preserving customer trust, and fulfilling legal compliance."
+          "ar": "الأجهزة الشخصية والإيميل والحسابات المصرفية.",
+          "en": "Personal devices, email, social accounts, and banking details."
         },
         {
-          "ar": "إلغاء مطالبات ضمان الهواتف الذكية الاستهلاكية في منافذ البيع بالتجزئة التجارية الإقليمية.",
-          "en": "Eliminating consumer smartphone warranty service claims across regional commercial retail stores."
+          "ar": "أجهزة الشركة والإيميل والسجلات المصرفية.",
+          "en": "Company devices, company email, social accounts, and bank records."
         },
         {
-          "ar": "فرض لوائح حظر التجوال المادي الإلزامي في الأحياء السكنية الحضرية التابعة للبلديات المحلية.",
-          "en": "Enforcing mandatory physical curfew regulations across metropolitan residential municipal districts."
+          "ar": "السجلات الوطنية والإيميل وبيانات الدولة الرسمية.",
+          "en": "National records, email, social accounts, and state data."
         }
       ],
-      "concept_id": "scope_level_enterprises_responsibilities",
+      "concept_id": "scope_level_individuals",
       "explanation": {
-        "ar": "يركز مستوى المؤسسات على ثلاث غايات استراتيجية معلنة في المنهج: ضمان استمرارية العمليات، والحفاظ على ثقة العملاء، والامتثال للقوانين واللوائح المنظمة.",
-        "en": "Enterprise cybersecurity focuses on three pillars: business continuity, maintaining client trust, and adhering to regulatory compliance."
+        "ar": "مستوى الأفراد يخص الأجهزة الشخصية والإيميل الشخصي وحسابات التواصل وبيانات المصرف الخاصة.",
+        "en": "The individuals level is about personal devices, personal email, social media accounts, and private banking details."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "ما الأصول السيادية الأساسية التي تخضع للحماية تحت مستوى الحكومات Governments في نطاق الأمن؟",
-        "en": "What core national assets are guarded under the Governments level of cybersecurity scope?"
+        "ar": "ما الذي يحرّك برنامج الأمن في مستوى المؤسسات؟",
+        "en": "What drives a security programme at the enterprises level?"
       },
-      "bloom": "Remember",
-      "answer": 1,
+      "bloom": "Understand",
+      "answer": 2,
       "options": [
         {
-          "ar": "قوائم تشغيل الوسائط الرقمية في الهواتف الذكية وتصنيفات الألعاب الإلكترونية الترفيهية للأفراد.",
-          "en": "Personal smartphone media streaming playlists and online social gaming consumer rankings."
+          "ar": "الدفاع الوطني وضبط الحدود والحكومة الإلكترونية للدولة.",
+          "en": "National defence, border control, and e-government."
         },
         {
-          "ar": "مصالح الأمن الوطني، وأنظمة الدفاع العسكري السيادية، والبنية التحتية للحكومة الإلكترونية.",
-          "en": "National security interests, military defense systems, and public e-governance infrastructure."
+          "ar": "التجارة عبر الحدود وتدفق العملة والشحن.",
+          "en": "Cross-border trade, currency flow, and shipping."
         },
         {
-          "ar": "سجلات جرد المتاجر الفردية الصغيرة وماسحات الباركود الضوئية في نقاط البيع بالتجزئة.",
-          "en": "Small private merchant store inventory catalogues and point-of-sale barcode scanners."
+          "ar": "استمرارية العمل وثقة العملاء والامتثال القانوني.",
+          "en": "Continuity of business, customer trust, and compliance."
         },
         {
-          "ar": "جداول توريد المنتجات الغذائية للمتاجر المحلية ومعدات آلات البيع الذاتي المؤتمتة في الشوارع.",
-          "en": "Local supermarket grocery supply replenishment schedules and automated vending equipment."
+          "ar": "نمو العمل وتصميم المنتج والاحتفاظ بالموظفين.",
+          "en": "Business growth, product design, and the retention of staff."
         }
       ],
-      "concept_id": "scope_level_governments_infrastructure",
+      "concept_id": "scope_level_enterprises",
       "explanation": {
-        "ar": "مستوى الحكومات يختص بحماية الأمن الوطني، وأنظمة الدفاع العسكرية، والبنية التحتية لمنصات الحكومة الإلكترونية والخدمات السيادية للدولة.",
-        "en": "Governments scope protects national security, defense computing networks, and critical e-governance public infrastructure."
+        "ar": "المؤسسات تهتم باستمرار العمل، والحفاظ على ثقة العملاء، والوفاء بالامتثال القانوني.",
+        "en": "Enterprises care about keeping the business running, keeping customer trust, and meeting legal compliance."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "أي وظيفة تعكس بدقة متطلبات مستوى التجارة العالمية Global Trade في نطاق الأمن السيبراني؟",
-        "en": "Which function accurately reflects the Global Trade level of cybersecurity scope?"
+        "ar": "أي أصول تُحمى في مستوى الحكومات؟",
+        "en": "Which assets are protected at the governments level?"
       },
-      "bloom": "Understand",
-      "answer": 2,
+      "bloom": "Remember",
+      "answer": 0,
       "options": [
         {
-          "ar": "إجراء الفحوصات الميكانيكية الروتينية لفرامل المركبات والشاحنات عند المعابر الحدودية البرية.",
-          "en": "Conducting routine physical automobile safety brake inspections at international highway borders."
+          "ar": "الأمن الوطني والدفاع وخدمات الحكومة الإلكترونية.",
+          "en": "National security, defence, and e-government services."
         },
         {
-          "ar": "إدارة كلمات مرور التشفير لشبكات Wi-Fi المنزلية في الأحياء السكنية والضواحي الحضرية.",
-          "en": "Managing personal home Wi-Fi encryption passphrases across suburban residential neighborhoods."
+          "ar": "كتالوجات التجزئة وأنظمة التوصيل والمتاجر الكبرى.",
+          "en": "Retail catalogues, delivery systems, and online shops."
         },
         {
-          "ar": "تأمين التجارة الرقمية العابرة للحدود، وشبكات المقاصة المالية والمصرفية بين الدول عالمياً.",
-          "en": "Safeguarding cross-border digital commerce, interbank telecommunication, and financial systems."
+          "ar": "الصور الشخصية وتطبيقات المراسلة والموجّهات.",
+          "en": "Personal photos, messaging apps, and home routers."
         },
         {
-          "ar": "تقييد صلاحية جوازات السفر الدبلوماسية المحلية الصادرة عن القنصليات الدولية المعتمدة.",
-          "en": "Restricting foreign domestic travel passports issued by sovereign international consulates."
+          "ar": "عقود التجارة وأنظمة الدفع وخطوط الشحن.",
+          "en": "Trade contracts, payment systems, and shipping lanes."
         }
       ],
-      "concept_id": "scope_level_global_trade_digital_commerce",
+      "concept_id": "scope_level_governments",
       "explanation": {
-        "ar": "مستوى التجارة العالمية يُعنى بحماية وتأمين التجارة الرقمية عبر الحدود، والأنظمة المالية والمصرفية المترابطة التي تنقل مليارات الدولارات يومياً.",
-        "en": "Global Trade scope safeguards cross-border digital commerce, international financial transactions, and interbank messaging infrastructure."
+        "ar": "في مستوى الحكومات التركيز على الأمن الوطني والدفاع وبنية الحكومة الإلكترونية.",
+        "en": "At the governments level the focus is national security, defence, and the infrastructure of e-governance."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ما الضوابط والوسائل التقنية المحددة معيارياً لأمن الشبكات Network Security في منهج المادة؟",
-        "en": "Which technical countermeasures are canonically designated for Network Security in the course syllabus?"
+        "ar": "ماذا يحمي مستوى التجارة العالمية في النطاق؟",
+        "en": "What does the global trade level of scope protect?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 3,
       "options": [
         {
-          "ar": "أدوات الفحص الثابت للشيفرة ومعايير OWASP للبرمجة الآمنة في تطبيقات الويب.",
-          "en": "Static code linters and OWASP Top 10 secure software programming guidelines."
+          "ar": "سلاسل التجزئة المحلية وأنظمة الدفع المحلية.",
+          "en": "Domestic retail chains and the local payment systems."
         },
         {
-          "ar": "إدارة الهويات والوصول IAM وعزل البيئات الافتراضية التشاركية في الخوادم.",
-          "en": "Identity and Access Management (IAM) and multi-tenant hypervisor virtualization."
+          "ar": "شبكات الدفاع الوطنية والأنظمة العسكرية للدولة.",
+          "en": "National defence networks and military systems."
         },
         {
-          "ar": "جدران الحماية Firewalls وأنظمة كشف ومنع التسلل والأنشطة المشبوهة IDS/IPS.",
-          "en": "Firewalls and Intrusion Detection / Intrusion Prevention Systems."
+          "ar": "تطبيقات المصرف الشخصية وأجهزة المنزل.",
+          "en": "Personal banking applications and home devices."
         },
         {
-          "ar": "عزل التطبيقات المحمولة في بيئة Sandboxing ومحركات فحص البرمجيات الخبيثة للهواتف.",
-          "en": "Mobile application runtime sandboxing and local cellular malware scanning engines."
+          "ar": "التجارة الرقمية عبر الحدود والأنظمة المالية.",
+          "en": "Cross-border digital commerce and financial systems."
         }
       ],
-      "concept_id": "domain_network_security_core_tools",
+      "concept_id": "scope_level_global_trade",
       "explanation": {
-        "ar": "المجال الأول (أمن الشبكات) يعتمد نصياً على جدران الحماية Firewalls وأنظمة كشف ومنع التسلل IDS/IPS لمراقبة وحجب حركة المرور الضارة.",
-        "en": "Network Security explicitly couples firewalls with IDS/IPS. Code tools belong to Application; IAM belongs to Cloud; sandboxing belongs to Mobile."
+        "ar": "التجارة العالمية تغطي التجارة الرقمية عبر الحدود وحركة البيانات بين المصارف والأنظمة المالية التي تقف خلفها.",
+        "en": "Global trade covers cross-border digital commerce, interbank traffic, and the financial systems behind them."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ما الضوابط الهندسية الأساسية المخصصة لأمن التطبيقات Application Security في تصنيف المحاضرة؟",
-        "en": "What primary engineering controls are assigned to Application Security in the lecture taxonomy?"
+        "ar": "أي مجموعة تسرد المجالات الستة الأساسية للأمن السيبراني؟",
+        "en": "Which set lists the six key domains of cybersecurity?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "تطبيق الأقفال المادية لخزائن الخوادم وتركيب مبردات التكييف البيئي لغرف مراكز البيانات.",
-          "en": "Implementing physical server hardware rack locks and environmental cooling chillers."
+          "ar": "الشبكات والتطبيقات والسحابة والبيانات والموبايل والتحكم الصناعي.",
+          "en": "Network, application, cloud, data, mobile, and ICS."
         },
         {
-          "ar": "ضبط حساسات التشفير ذات المنحنيات الإهليلجية خفيفة الوزن على خطوط الأنابيب الصناعية.",
-          "en": "Configuring lightweight elliptic curve cryptographic sensors on industrial pipelines."
+          "ar": "الشبكات والتطبيقات والسحابة وإنترنت الأشياء والموبايل والتحكم الصناعي.",
+          "en": "Network, application, cloud, IoT, mobile, and ICS."
         },
         {
-          "ar": "الالتزام بقواعد الترميز الآمن Secure Coding وفحوصات ومعايير منظمة OWASP العالمية.",
-          "en": "Adhering to secure coding practices and complying with verified OWASP standards."
+          "ar": "الشبكات والعتاد والسحابة وإنترنت الأشياء والحواسيب والتحكم الصناعي.",
+          "en": "Network, hardware, cloud, IoT, desktop, and ICS."
         },
         {
-          "ar": "نشر جدران الحماية المادية المحيطية وواجهات أجهزة التوجيه المخصصة لفلترة الحزم.",
-          "en": "Deploying perimeter hardware boundary firewalls and packet filtering router interfaces."
+          "ar": "الشبكات والتطبيقات والتخزين وإنترنت الأشياء والموبايل والويب العام.",
+          "en": "Network, application, storage, IoT, mobile, and web."
         }
       ],
-      "concept_id": "domain_application_security_standards",
+      "concept_id": "domains_six_core",
       "explanation": {
-        "ar": "أمن التطبيقات يتحدد بالترميز الآمن Secure Coding ومعايير OWASP (مثل OWASP Top 10) لحماية البرمجيات من ثغرات الحقن والتصميم البرمجي.",
-        "en": "Application Security is explicitly defined by secure coding practices and OWASP standards to eliminate software vulnerabilities like injections."
+        "ar": "المجالات الستة هي: الشبكات، التطبيقات، السحابة، إنترنت الأشياء، الموبايل، وأنظمة التحكم الصناعي.",
+        "en": "The six domains are network, application, cloud, IoT, mobile, and industrial control systems."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "أي مجموعة من التقنيات مخصصة في المنهج لتأمين بيئات الحوسبة السحابية Cloud Security؟",
-        "en": "Which combination of technologies is designated in the syllabus to safeguard Cloud Security environments?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "التشفير التام للبيانات، وإدارة الهويات والصلاحيات IAM، وضوابط البيئات الافتراضية.",
-          "en": "Cryptographic encryption, Identity and Access Management (IAM), and virtualization controls."
-        },
-        {
-          "ar": "أطباق الإرسال اللاسلكي الميكروويفية التناظرية وكابلات التوصيل النحاسية غير المعزولة.",
-          "en": "Analog microwave transmission dishes and unshielded copper telephone patch cables."
-        },
-        {
-          "ar": "مرشحات الخصوصية لشاشات العرض المكتبية ومفاتيح لوحات المفاتيح الميكانيكية للمستخدمين.",
-          "en": "End-user workstation monitor privacy screen filters and mechanical keyboard switches."
-        },
-        {
-          "ar": "محركات الأقراص الضوئية للقراءة فقط في الحواسيب وخزائن الأشرطة الممغنطة الاحتياطية.",
-          "en": "Local desktop optical disc read-only drives and magnetic tape backup storage vaults."
-        }
-      ],
-      "concept_id": "domain_cloud_security_mechanisms",
-      "explanation": {
-        "ar": "المجال الثالث (أمن السحابة) يقوم نصياً على: التشفير Encryption، وإدارة الهويات والوصول IAM لضبط الصلاحيات، وحماية البيئات الافتراضية Virtualization.",
-        "en": "Cloud Security relies on strong encryption (at rest and in transit), robust IAM for least privilege, and hypervisor virtualization security."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "لماذا يتطلب أمن إنترنت الأشياء IoT Security تحديداً خوارزميات تشفير خفيفة وكشفاً للشذوذ؟",
-        "en": "Why does IoT Security specifically require lightweight encryption algorithms and anomaly detection?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "أجهزة إنترنت الأشياء تعاني من محدودية الذاكرة والمعالجة والطاقة، فلا تتحمل التشفير المعقد.",
-          "en": "IoT devices have severe CPU, memory, and battery constraints incapable of running heavy ciphers."
-        },
-        {
-          "ar": "أجهزة إنترنت الأشياء تمتلك قدرات معالجة فائقة تفوق سعة المكتبات التشفيرية القياسية المعتادة.",
-          "en": "IoT devices possess unlimited processing capacity that overwhelms standard cryptographic libraries."
-        },
-        {
-          "ar": "مزودو خدمة الإنترنت يلزمون المشتركين بتعطيل بروتوكولات الأمان عبر منافذ الشبكات المنزلية.",
-          "en": "Internet service providers mandate disabling secure socket layers across all consumer network ports."
-        },
-        {
-          "ar": "القوانين التنظيمية تحظر تماماً على حساسات المنازل الذكية إرسال أي حزم بيانات مشفرة برمجياً.",
-          "en": "Regulatory laws strictly forbid commercial smart home sensors from transmitting encrypted payloads."
-        }
-      ],
-      "concept_id": "domain_iot_security_resource_constraints",
-      "explanation": {
-        "ar": "أجهزة وحساسات إنترنت الأشياء محدودة الطاقة والبطارية والذاكرة والمعالجة؛ لذا صُممت خوارزميات تشفير خفيفة الوزن Lightweight للتوافق معها إلى جانب كشف الشذوذ.",
-        "en": "Embedded microcontrollers lack memory and power for heavy asymmetric algorithms; lightweight ciphers and anomaly detection fit these constraints."
-      }
-    },
-    {
-      "id": "q9",
-      "stem": {
-        "ar": "ما الآليات الدفاعية المعيارية المحددة في المنهج لفرض أمن الهواتف المحمولة Mobile Security؟",
-        "en": "Which defensive mechanisms are canonically highlighted to enforce Mobile Security in smartphones?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "قارئات البطاقات المثقوبة الميكانيكية اليدوية والتدقيق البصري للسجلات الورقية المطبوعة.",
-          "en": "Manual mainframe punch card readers and paper printout log verification audits."
-        },
-        {
-          "ar": "عزل التطبيقات المحمولة في بيئة Sandboxing وأدوات فحص وكشف البرمجيات الخبيثة.",
-          "en": "Application runtime sandboxing and automated endpoint malware detection tools."
-        },
-        {
-          "ar": "اختبارات منطق السلالم للمتحكمات المنطقية القابلة للبرمجة وحساسات الصمامات الصناعية.",
-          "en": "Industrial programmable logic controller ladder logic testing and fluid valve sensors."
-        },
-        {
-          "ar": "تغليف الكابلات البحرية بمواسير عازلة وصمامات محولات الطاقة الكهربائية عالية الجهد.",
-          "en": "Underwater physical conduit casing and high-voltage transmission transformer fuses."
-        }
-      ],
-      "concept_id": "domain_mobile_security_safeguards",
-      "explanation": {
-        "ar": "أمن الموبايل Mobile Security يعتمد نصياً على تقنيتين رئيسيتين: عزل التطبيقات Sandboxing (لمنع التطبيق من اختراق نظام التشغيل) وكشف البرمجيات الخبيثة.",
-        "en": "Mobile Security isolates third-party apps in restricted environments (sandboxing) and monitors devices for malicious apps (malware detection)."
-      }
-    },
-    {
-      "id": "q10",
-      "stem": {
-        "ar": "ما الهدف التشغيلي الأساسي المخصص لمجال أمن أنظمة التحكم الصناعي ICS Security؟",
-        "en": "What is the primary operational objective of Industrial Control Systems (ICS) Security?"
+        "ar": "أي مجال يغطي الجدران النارية وأنظمة كشف التطفل؟",
+        "en": "Which domain covers firewalls and intrusion detection systems?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "إدارة فواتير الاشتراكات الشهرية لخطوط الهواتف المحمولة وتوزيع بطاقات الشحن المدفوعة مسبقاً.",
-          "en": "Managing mobile telephone monthly subscription billing tariffs and credit recharging cards."
+          "ar": "مجال أمن الموبايل.",
+          "en": "The mobile security domain."
         },
         {
-          "ar": "نشر الإعلانات الترويجية الرقمية والتسويقية عبر مواقع التجارة الإلكترونية المخصصة للأزياء.",
-          "en": "Publishing marketing digital promotional banners across consumer fashion retail websites."
+          "ar": "مجال أمن التطبيقات.",
+          "en": "The application security domain."
         },
         {
-          "ar": "حماية البنية التحتية المؤتمتة الحيوية كشبكات توليد الكهرباء، ومحطات المياه، والمصانع الكبرى.",
-          "en": "Protecting automated physical infrastructure such as power grids, water facilities, and factories."
+          "ar": "مجال أمن الشبكات.",
+          "en": "The network security domain."
         },
         {
-          "ar": "تنظيم بطولات الألعاب الإلكترونية التنافسية عبر خوادم الألعاب التفاعلية الموزعة عالمياً.",
-          "en": "Organizing competitive multiplayer online esport tournaments across distributed gaming servers."
+          "ar": "مجال أمن السحابة.",
+          "en": "The cloud security domain."
         }
       ],
-      "concept_id": "domain_ics_security_critical_processes",
+      "concept_id": "domain_network_scope",
       "explanation": {
-        "ar": "أمن أنظمة التحكم الصناعي ICS يحمي البنية التحتية المادية المؤتمتة (مثل محطات الكهرباء والمياه والمصافي) حيث يؤدي الخرق إلى كوارث مادية واقعية.",
-        "en": "ICS Security safeguards supervisory control and physical automation systems (SCADA/PLCs) running essential services like electric grids and water plants."
+        "ar": "الجدران النارية وأنظمة كشف ومنع التطفل هما الأداتان اللتان تذكرهما المحاضرة لأمن الشبكات.",
+        "en": "Firewalls and IDS/IPS are the two tools the lecture names for network security."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مجال يعتمد على التشفير الخفيف وكشف الشذوذ؟",
+        "en": "Which domain relies on lightweight encryption and anomaly detection?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجال أمن السحابة العامة.",
+          "en": "The cloud security domain."
+        },
+        {
+          "ar": "مجال أمن الشبكات الداخلية.",
+          "en": "The network security domain."
+        },
+        {
+          "ar": "مجال أمن التطبيقات.",
+          "en": "The application security domain."
+        },
+        {
+          "ar": "مجال إنترنت الأشياء.",
+          "en": "The internet-of-things domain."
+        }
+      ],
+      "concept_id": "domain_iot_scope",
+      "explanation": {
+        "ar": "أجهزة إنترنت الأشياء صغيرة وقليلة الطاقة، لذلك تقرن المحاضرة التشفير الخفيف بكشف الشذوذ.",
+        "en": "IoT devices are small and low-powered, so the lecture pairs lightweight encryption with anomaly detection."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "المحاضرة تقول إن قائمة المجالات ليست ثابتة. ماذا ينتج عن ذلك؟",
+        "en": "The lecture says the list of domains is not fixed. What follows from that?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تظهر مجالات جديدة مع تطور التقنية، فالستة أمثلة فقط.",
+          "en": "New domains appear as technology develops, so the six are examples."
+        },
+        {
+          "ar": "لا توجد إلا المجالات الستة المذكورة ولن يُضاف غيرها.",
+          "en": "Only the six listed domains exist and no others will ever be added."
+        },
+        {
+          "ar": "المجالات الستة تُستبدل كل سنة بستة مجالات جديدة.",
+          "en": "The six domains are replaced every year by a completely new six."
+        },
+        {
+          "ar": "المجالات ثابتة لكن ترتيب أهميتها هو الذي يتغيّر.",
+          "en": "The domains are fixed but their order of importance changes."
+        }
+      ],
+      "concept_id": "domains_list_is_open",
+      "explanation": {
+        "ar": "قالت إن عدد المجالات قابل للزيادة، فالستة هي المجموعة الحالية من الأمثلة وليست قائمة مغلقة.",
+        "en": "She said the number of domains can grow, so treat the six as the current set of examples, not a closed list."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "في نموذج التعرّض، ماذا يمثّل حاصل ضرب الاحتمال بالتأثير؟",
+        "en": "In the exposure model, what does the product of probability and impact represent?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد نقاط الدخول المكشوفة أمام المهاجم.",
+          "en": "The number of entry points exposed to attack."
+        },
+        {
+          "ar": "نسبة المستخدمين الذين أكملوا التدريب الأمني.",
+          "en": "The share of users who completed security training."
+        },
+        {
+          "ar": "الخطر المتوقع لتهديد واحد في وقت معيّن.",
+          "en": "The expected risk of one threat at a given time."
+        },
+        {
+          "ar": "إجمالي الميزانية المصروفة على ضابط أمني واحد.",
+          "en": "The total budget spent on one security control."
+        }
+      ],
+      "concept_id": "risk_exposure_model_symbols",
+      "explanation": {
+        "ar": "النموذج يجمع حاصل ضرب الاحتمال بالتأثير على كل التهديدات، فكل حد هو الخطر المتوقع لتهديد واحد.",
+        "en": "The model sums probability times impact over all threats, so each term is the expected risk of a single threat."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "ما الملاحظة الإرشادية التي أكدتها أستاذة المادة في المحاضرة بخصوص مجالات الأمن السيبراني الستة؟",
-        "en": "What did the instructor explicitly annotate regarding the six key cybersecurity domains?"
+        "ar": "سؤال يذكر الزمن صراحةً. أي نموذج تستخدم؟",
+        "en": "A question mentions time explicitly. Which model should you apply?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "مجال أمن الشبكات هو الوحيد المعترف به قانونياً، بينما تعتبر المجالات الخمسة الأخرى ثانوية.",
-          "en": "Only the Network Security domain has legal standing, whereas the other five are optional."
+          "ar": "نموذج الامتثال، لأن الزمن يُدقَّق.",
+          "en": "The compliance model, because time is audited."
         },
         {
-          "ar": "عدد مجالات الأمن السيبراني قابل للزيادة والتوسع مع ظهور تقنيات وتحديات رقمية جديدة.",
-          "en": "The number of cybersecurity domains is expandable and subject to growth as technology evolves."
+          "ar": "نموذج التعرّض، لأن الزمن علامته.",
+          "en": "The exposure model, because time marks it."
         },
         {
-          "ar": "المجالات الستة هي تصنيفات أكاديمية نظرية بحتة ليس لها أي تطبيق عملي في الواقع المؤسسي.",
-          "en": "The six domains are purely theoretical academic categories with zero real-world deployment."
+          "ar": "نموذج التحسين، لأن الزمن فيه ثابت.",
+          "en": "The optimisation model, because time is fixed."
         },
         {
-          "ar": "قائمة المجالات الستة مغلقة نهائياً بموجب معاهدات دولية صارمة ولا يمكن زيادتها إطلاقاً.",
-          "en": "The list of six domains is strictly closed by international treaty and can never be expanded."
+          "ar": "نموذج المنفعة، لأن الأوزان تتغيّر.",
+          "en": "The utility model, because weights change."
         }
       ],
-      "concept_id": "domains_expandable_nature_concept",
+      "concept_id": "risk_exposure_time_marker",
       "explanation": {
-        "ar": "وثقت ملاحظات المحاضرة حرفياً: «عدد مجالات السايبر قابلة للزيادة»؛ فالستة المذكورة هي المجالات الأساسية وليست حصراً نهائياً، ومع تطور التكنولوجيا تظهر مجالات جديدة.",
-        "en": "The student annotations explicitly record the instructor's rule: The number of cyber domains is expandable (e.g. AI security, supply chain security)."
+        "ar": "متغيّر الزمن موجود ليدلّك أي قانون تستخدم. وجود الزمن في السؤال يعني نموذج التعرّض لا نموذج التحسين.",
+        "en": "The time variable exists to tell you which law applies. Time in the question means the exposure model, not the optimisation model."
       }
     },
     {
       "id": "q12",
       "stem": {
-        "ar": "ما المعادلة الرياضية المعيارية التي تمثل التعرض للمخاطر السيبرانية كدالة ديناميكية في الزمن؟",
-        "en": "What mathematical formula represents Cyber Risk Exposure as a dynamic function of time?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$",
-          "en": "$$AS = \\sum_{j=1}^m (E_j \\cdot V_j \\cdot A_j)$$"
-        },
-        {
-          "ar": "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$",
-          "en": "$$U(C, I, A) = \\alpha C + \\beta I + \\gamma A$$"
-        },
-        {
-          "ar": "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$",
-          "en": "$$\\min R = \\sum_{i=1}^n P_i \\cdot I_i - \\sum_{j=1}^m C_j$$"
-        },
-        {
-          "ar": "$$R = \\sum_{i=1}^n P_i \\cdot I_i$$",
-          "en": "$$R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$$"
-        }
-      ],
-      "concept_id": "risk_exposure_formula_structure",
-      "explanation": {
-        "ar": "معادلة التعرض للخطر عبر الزمن هي: $R(t) = \\sum P_i(t) \\cdot I_i(t)$؛ حيث يُضرب احتمال كل تهديد بتأثيره عند نفس اللحظة الزمنية $t$ وتُجمع النواتج.",
-        "en": "Cyber Risk Exposure at time t is modeled by $R(t) = \\sum P_i(t) \\cdot I_i(t)$, multiplying probability by impact for each threat at time t."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "ما الدلالة التحليلية الأساسية للمعامل $t$ في المعادلة $R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$ أثناء حل الأسئلة الامتحانية؟",
-        "en": "What is the primary analytical significance of the parameter $t$ in the equation $R(t) = \\sum_{i=1}^n P_i(t) \\cdot I_i(t)$ during exam problem-solving?"
-      },
-      "bloom": "Apply",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "يعمل كعلامة دالة ترشد الطالب لتطبيق هذا القانون الزمني بعينه بدلاً من معادلات التحسين الثابتة.",
-          "en": "Acts as a diagnostic marker signaling the application of the time-dependent model rather than static formulas."
-        },
-        {
-          "ar": "يمثل تردد سرعة ساعة المعالج الدقيق بالغيغاهرتز أثناء تنفيذ خوارزميات التشفير المعقدة.",
-          "en": "Represents the exact clock speed frequency in gigahertz of the CPU executing the cryptographic routine."
-        },
-        {
-          "ar": "يحدد عدد السنوات التقويمية التي يجب أن يقضيها الموظف في الخدمة قبل منحه صلاحيات الدخول.",
-          "en": "Specifies the number of calendar years an employee must serve before receiving access authorization."
-        },
-        {
-          "ar": "يقيس زمن استجابة تأخير الشبكة بالمللي ثانية بين جهاز المستخدم وخادم البوابة الحدودية.",
-          "en": "Measures the network latency ping delay in milliseconds experienced between client and gateway server."
-        }
-      ],
-      "concept_id": "risk_exposure_time_dependence",
-      "explanation": {
-        "ar": "أوضحت الملاحظات والشرح الفهمي أن الـ $t$ وظيفتها الأساسية في الامتحان أنها «علامة تدلّك أي قانون تستخدم»؛ فإذا كان السؤال يتضمن مؤشراً زمنياً، يُطبّق قانون $R(t)$.",
-        "en": "The student notes explain that t is the cue in the exam question: if time is mentioned or indexed, apply $R(t)$, distinguishing it from $\\min R$."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "عند الزمن $t_1$، يواجه نظام تهديدين مستقلين: الأول باحتمال $P_1(t_1)=0.3$ وتأثير $I_1(t_1)=100$، والثاني باحتمال $P_2(t_1)=0.2$ وتأثير $I_2(t_1)=200$. ما قيمة التعرض الكلي للخطر $R(t_1)$؟",
-        "en": "At time $t_1$, a system faces two independent threats: Threat 1 with $P_1(t_1)=0.3$ and $I_1(t_1)=100$, and Threat 2 with $P_2(t_1)=0.2$ and $I_2(t_1)=200$. What is total exposure $R(t_1)$?"
+        "ar": "التهديد A احتماله 0.2 وتأثيره 500. والتهديد B احتماله 0.3 وتأثيره 500. ما إجمالي الخطر المتوقع؟",
+        "en": "Threat A has probability 0.2 and impact 500. Threat B has probability 0.3 and impact 500. What is the total expected risk?"
       },
       "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "إجمالي التعرض للمخاطر يساوي 150 وحدة عبر المكونات التشغيلية للنظام.",
-          "en": "Total risk exposure equals 150 units across operational components."
+          "ar": "150",
+          "en": "150"
         },
         {
-          "ar": "إجمالي التعرض للمخاطر يساوي 100 وحدة عبر المكونات التشغيلية للنظام.",
-          "en": "Total risk exposure equals 100 units across operational components."
+          "ar": "500",
+          "en": "500"
         },
         {
-          "ar": "إجمالي التعرض للمخاطر يساوي 30 وحدة عبر المكونات التشغيلية للنظام.",
-          "en": "Total risk exposure equals 30 units across operational components."
+          "ar": "650",
+          "en": "650"
         },
         {
-          "ar": "إجمالي التعرض للمخاطر يساوي 70 وحدة عبر المكونات التشغيلية للنظام.",
-          "en": "Total risk exposure equals 70 units across operational components."
+          "ar": "250",
+          "en": "250"
         }
       ],
-      "concept_id": "risk_exposure_numerical_computation",
+      "concept_id": "risk_exposure_compute",
       "explanation": {
-        "ar": "بتطبيق المعادلة: $R(t_1) = (0.3 \\times 100) + (0.2 \\times 200) = 30 + 40 = 70$ وحدة خطر.",
-        "en": "$R(t_1) = (0.3 \\times 100) + (0.2 \\times 200) = 30 + 40 = 70$."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "كيف تختلف معادلة التعرض للمخاطر $R(t) = \\sum P_i(t) I_i(t)$ جوهرياً عن معادلة تحسين الخطر $\\min R = \\sum P_i I_i - \\sum C_j$؟",
-        "en": "How does the Cyber Risk Exposure equation $R(t) = \\sum P_i(t) \\cdot I_i(t)$ fundamentally contrast with the risk optimization formula $\\min R = \\sum P_i I_i - \\sum C_j$?"
-      },
-      "bloom": "Analyze",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "معادلة $R$ تقيس التعرض الديناميكي للتهديدات عبر الزمن دون خصم تكاليف الاستثمار الأمني $C_j$.",
-          "en": "$R(t)$ models dynamic threat exposure over time without subtracting security investment costs $C_j$."
-        },
-        {
-          "ar": "معادلة $R$ تشترط متغيرات عد صحيحة، بينما تتطلب $\\min R$ توزيعات احتمالية لوغاريتمية معقدة.",
-          "en": "$R(t)$ requires integer counter variables, whereas $\\min R$ requires logarithmic probability distributions."
-        },
-        {
-          "ar": "معادلة $R$ تقيس أقساط التأمين المالي، بينما تحسب $\\min R$ درجات حرارة خوادم الشبكة المادية.",
-          "en": "$R(t)$ measures only financial insurance premiums, whereas $\\min R$ calculates hardware server temperatures."
-        },
-        {
-          "ar": "معادلة $R$ تطبق على الأبواب المادية فقط، بينما تحكم $\\min R$ عمليات تصريف الشيفرة البرمجية.",
-          "en": "$R(t)$ applies solely to physical door access, whereas $\\min R$ governs software compilation routines."
-        }
-      ],
-      "concept_id": "risk_exposure_vs_static_optimization",
-      "explanation": {
-        "ar": "معادلة $R(t)$ تمثل التعرض للخطر كدالة زمنية دون إدخال تكلفة الضوابط، أما معادلة $\\min R$ فهي مسألة تحسين تطرح الاستثمار في الضوابط الأمنية $C_j$ للوصول للقرار المناسب.",
-        "en": "$R(t)$ evaluates time-varying threat exposure without considering countermeasures ($C_j$), whereas $\\min R$ is an optimization problem balancing threat loss against security investments."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "لماذا يجب على المؤسسة تطبيق الضوابط الأمنية عبر المجالات الستة بالتزامن بدلاً من الاكتفاء بجدران حماية الشبكة؟",
-        "en": "Why must an organization deploy safeguards across all six key domains simultaneously rather than relying solely on network firewalls?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "الخدمات السحابية تستهلك سعات نقل أقل من التطبيقات المكتبية عند توجيهها عبر الأقمار الاصطناعية.",
-          "en": "Cloud services consume less bandwidth than desktop applications when routed through external satellite uplinks."
-        },
-        {
-          "ar": "جدران حماية الشبكة تعجز تقنياً عن فحص الطرود والمراسلات الورقية المادية المنقولة بالبريد الميداني.",
-          "en": "Network firewalls cannot inspect physical paper correspondence delivered by domestic postal messengers."
-        },
-        {
-          "ar": "القوانين التنظيمية تلزم الشركات بتخصيص ميزانيات مالية متطابقة بالتساوي لكل جهاز حاسوبي موجود.",
-          "en": "Regulatory laws mandate allocating identical budget proportions across every existing IT hardware component."
-        },
-        {
-          "ar": "المهاجمون يتجاوزون محيط الشبكة باستغلال ثغرات التطبيقات، أو سوء إعداد السحابة، أو اختراق أجهزة IoT.",
-          "en": "Attacks bypass network perimeters through vulnerable software, cloud misconfigurations, or compromised IoT endpoints."
-        }
-      ],
-      "concept_id": "domain_overlap_and_defense_in_depth",
-      "explanation": {
-        "ar": "مبدأ الدفاع في العمق يستوجب تأمين المجالات الستة معاً؛ لأن المهاجم يستطيع الالتفاف على جدار الحماية باختراق تطبيق ويب غير آمن، أو استغلال إعداد خاطئ في السحابة، أو اختراق جهاز IoT.",
-        "en": "Modern threats exploit the full attack surface: a strong firewall is useless if an application has SQL injection, cloud storage is public, or an IoT device is hacked."
+        "ar": "كل حد هو الاحتمال ضرب التأثير: 0.2 × 500 = 100، و0.3 × 500 = 150. والمجموع 250.",
+        "en": "Each term is probability times impact: 0.2 x 500 = 100 and 0.3 x 500 = 150. The sum is 250."
       }
     }
   ],
@@ -525,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:00Z",
+  "updated_at": "2026-10-26T17:08:59Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"
