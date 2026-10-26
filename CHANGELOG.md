@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.8] — 2026-10-26
+
+### Changed
+- content: Cyber chapter 3 rebuilt (103 questions, 9 banks) — crossed-out material removed, no handout references, no length tell
+
+
 ## [1.7.7] — 2026-10-26
 
 ### Changed

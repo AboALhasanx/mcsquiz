@@ -1,10 +1,10 @@
-PASS | banks | banks exist | 87
+PASS | banks | banks exist | 86
 PASS | banks | every question has English text and a valid answer key | []
-PASS | banks | Arabic question coverage meets the current target | 1252/1252 translated
+PASS | banks | Arabic question coverage meets the current target | 1188/1188 translated
 PASS | banks | found a bilingual question containing numbers | ('01_Cyber_Security', 'Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution')
 PASS | banks | LTR runs inside Arabic are wrapped in bdi dir=ltr | شاهد<bdi dir="ltr"> cloud 20 </bdi>سؤال
 PASS | banks | no runtime errors | []
-PASS | accounts | username + PIN creates an account | {'id': '8079a787-d1fc-4dc8-aa87-3a3dc573fcbd', 'handle': 't713120', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1793040719510}
+PASS | accounts | username + PIN creates an account | {'id': 'd9bda551-534b-4e6e-a602-749d22334f9e', 'handle': 't449900', 'name': 'طالب الاختبار', 'avatar': '', 'at': 1793044455598}
 PASS | accounts | user id derives from the account | 
 PASS | accounts | drawer shows the name | 
 PASS | accounts | signing out warns before it happens | تسجيل الخروج؟
@@ -17,18 +17,18 @@ PASS | accounts | a wrong PIN is rejected | الرمز غير صحيح لهذا 
 PASS | accounts | the right PIN signs in again | 
 PASS | accounts | profile editor is shown | 
 PASS | accounts | the username is labelled as permanent | 
-PASS | accounts | the display name is editable | {'id': '8079a787-d1fc-4dc8-aa87-3a3dc573fcbd', 'handle': 't713120', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793040734838}
-PASS | accounts | the avatar is saved | {'id': '8079a787-d1fc-4dc8-aa87-3a3dc573fcbd', 'handle': 't713120', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793040734838}
+PASS | accounts | the display name is editable | {'id': 'd9bda551-534b-4e6e-a602-749d22334f9e', 'handle': 't449900', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793044470841}
+PASS | accounts | the avatar is saved | {'id': 'd9bda551-534b-4e6e-a602-749d22334f9e', 'handle': 't449900', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793044470841}
 PASS | accounts | device 1 has study data | 1/1
-PASS | accounts | same username returns the same account | {'id': '8079a787-d1fc-4dc8-aa87-3a3dc573fcbd', 'handle': 't713120', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793040755736}
+PASS | accounts | same username returns the same account | {'id': 'd9bda551-534b-4e6e-a602-749d22334f9e', 'handle': 't449900', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793044492294}
 PASS | accounts | device 2 receives the saved questions | 1
 PASS | accounts | device 2 receives the history | 1
 PASS | accounts | the newest write wins across devices | 
-PASS | accounts | the link code has six digits | 253917
+PASS | accounts | the link code has six digits | 736218
 PASS | accounts | a QR is rendered for the link | 
 PASS | accounts | the QR link pre-fills all six digits | 123456
-PASS | accounts | the approved device signs in | {'id': '8079a787-d1fc-4dc8-aa87-3a3dc573fcbd', 'handle': 't713120', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793040791200}
-PASS | pin change | the throwaway account is linked | {'id': 'a37393e3-6d89-4f46-9b14-bbde24c0570e', 'handle': 'pc804803', 'name': 'PIN test', 'avatar': '', 'at': 1793040810974}
+PASS | accounts | the approved device signs in | {'id': 'd9bda551-534b-4e6e-a602-749d22334f9e', 'handle': 't449900', 'name': 'اسم جديد', 'avatar': 'assets/avatars/person-01.png', 'at': 1793044525494}
+PASS | pin change | the throwaway account is linked | {'id': 'a1589512-28fa-42a7-810e-497a2221fc9c', 'handle': 'pc538861', 'name': 'PIN test', 'avatar': '', 'at': 1793044544931}
 PASS | pin change | the account page offers a PIN change | 
 PASS | pin change | a mismatched confirmation is refused | تأكيد الرمز ما مطابق
 PASS | pin change | the same PIN is refused before the call | الرمز الجديد نفس القديم
@@ -37,7 +37,7 @@ PASS | pin change | a failed change keeps the old PIN on the device | 1357
 PASS | pin change | the owner can change the PIN | تم تغيير الرمز — استعمله من هسه
 PASS | pin change | the device stores the new PIN | 2468
 PASS | pin change | the old PIN no longer signs in | الرمز غير صحيح لهذا المستخدم
-PASS | pin change | the new PIN signs in | {'id': 'a37393e3-6d89-4f46-9b14-bbde24c0570e', 'handle': 'pc804803', 'name': 'PIN test', 'avatar': '', 'at': 1793040833862}
+PASS | pin change | the new PIN signs in | {'id': 'a1589512-28fa-42a7-810e-497a2221fc9c', 'handle': 'pc538861', 'name': 'PIN test', 'avatar': '', 'at': 1793044567966}
 PASS | pin change | the profile saves with the new PIN | تم حفظ الملف
 PASS | catalog | index exposes subjects | 6
 PASS | catalog | one chip per subject | 6 vs 6
@@ -61,7 +61,7 @@ PASS | quiz | question starts in Arabic mode | أ
 PASS | quiz | the toggle is yellow in Arabic mode | icon-btn lang-toggle lang-active
 PASS | quiz | the toggle turns the question into English | A
 PASS | quiz | the toggle is plain in English mode | icon-btn lang-toggle
-PASS | quiz | the English stem is used | The definition calls cybersecurity a practice. What does tha
+PASS | quiz | the English stem is used | Cybersecurity is linked directly to which three concerns?
 PASS | quiz | the toggle returns to Arabic | أ
 PASS | quiz | total questions loaded | 10
 PASS | quiz | saving marks the bookmark | 
@@ -75,8 +75,8 @@ PASS | quiz | matrix has one cell per question | 10
 PASS | quiz | answered cell is marked answered | 
 PASS | quiz | matrix has no early-finish button | 
 PASS | quiz | the quiz ends after the last answer | 
-PASS | quiz | correct + wrong equals the total | {'correct': 4, 'wrong': 6, 'acc': '40%', 'hasUnanswered': False, 'time': '0:09'}
-PASS | quiz | accuracy equals the score percentage | {'correct': 4, 'wrong': 6, 'acc': '40%', 'hasUnanswered': False, 'time': '0:09'}
+PASS | quiz | correct + wrong equals the total | {'correct': 5, 'wrong': 5, 'acc': '50%', 'hasUnanswered': False, 'time': '0:09'}
+PASS | quiz | accuracy equals the score percentage | {'correct': 5, 'wrong': 5, 'acc': '50%', 'hasUnanswered': False, 'time': '0:09'}
 PASS | quiz | no unanswered figure | 
 PASS | quiz | results never say "unanswered" | 
 PASS | quiz | one review card per question | 10
@@ -174,7 +174,7 @@ PASS | tour | tour greets a first-time visitor |
 PASS | tour | the tour remembers it started | 
 PASS | tour | skipping the start step still starts the quiz | 
 PASS | tour | the tour has more than ten steps | 20
-PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/quiz/01_Cyber_Security/Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution', '#/league', '#/stats'}
+PASS | tour | the tour visits the quiz, saved, stats and league | {'', '#/saved', '#/stats', '#/league', '#/quiz/01_Cyber_Security/Quiz_Ch01_T01_Cybersecurity_Definition_and_Evolution'}
 PASS | tour | the tour ends by closing itself | 
 PASS | tour | the tour stays dismissed after a reload | 
 PASS | tour | the menu replays the tour | 
@@ -200,21 +200,21 @@ PASS | a11y | the share preview image has alt text |
 PASS | a11y | theme toggle changes the palette | #d9b26a / #b45309
 PASS | a11y | theme choice is remembered | 
 PASS | a11y | no runtime errors | []
-PASS | security | an account can be created | [{'id': 'd8f978e8-800e-4f46-8262-17f3952d6be3', 'handle': 'sectest41001', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
-PASS | security | five wrong tries lock the account | [{'id': None, 'handle': 'sectest41001', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 299}]
-PASS | security | the lock says how long to wait | [{'id': None, 'handle': 'sectest41001', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 299}]
-PASS | security | another handle is not locked by the first | [{'id': 'dc84d0ca-7f8a-4a83-8dc6-ee666cfc712e', 'handle': 'sectest41001x', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | an account can be created | [{'id': '6465fd92-6f82-41d5-9026-f778dc91ea38', 'handle': 'sectest44733', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | five wrong tries lock the account | [{'id': None, 'handle': 'sectest44733', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
+PASS | security | the lock says how long to wait | [{'id': None, 'handle': 'sectest44733', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 300}]
+PASS | security | another handle is not locked by the first | [{'id': '74751bf6-ba23-4cb1-b415-aacf47b10b7b', 'handle': 'sectest44733x', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
 PASS | security | a row can be written for its owner | 201
 PASS | security | the server holds an encrypted envelope | {'ct': 'bbbbbbbb', 'iv': 'aaaaaaaaaaaaaaaa', 'enc': 1}
 PASS | security | no readable history is stored | {'ct': 'bbbbbbbb', 'iv': 'aaaaaaaaaaaaaaaa', 'enc': 1}
 PASS | security | without the account header nothing is readable | []
 PASS | security | a forged account header reads nothing | []
-PASS | security | the owner reads their own row | [{'user_id': 'u:d8f978e8-800e-4f46-8262-17f3952d6be3'}]
-PASS | security | the account is still locked after the wait | [{'id': None, 'handle': 'sectest41001', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 284}]
+PASS | security | the owner reads their own row | [{'user_id': 'u:6465fd92-6f82-41d5-9026-f778dc91ea38'}]
+PASS | security | the account is still locked after the wait | [{'id': None, 'handle': 'sectest44733', 'name': '', 'avatar': '', 'created': False, 'status': 'too_many_attempts', 'retry_after': 285}]
 PASS | security | the app can sign in | True
 PASS | security | the sync runs | {'action': 'uploaded-new', 'count': 1}
-PASS | security | what the app wrote is encrypted | {'ct': '2itAn4zm/5U8YqtRVn5RQTQW3rfA8DlxM63uFre/rfF4gkduptaYwNXrNd/fPgdCPgo26xhLmTr+7YbbbWdyAroGGaHD6fRMD4h644j+CWbtnoEaw7QrYjm0Y+3rd5LlKOHVoDutAXpi8Hceifd6ZQdIZ4LLsru+RJG9KCU7JsZfiae3kTpXLkV0p/0Iz3g3exV92pkXlnUv0PzuhGVpQndCbKh4cEYyA+20IGplHJJF9UNKTnrTOk6fCDcMLkE5UjPOT/5/H0PTdse9arp3uY3iV0WdlVsxeZsmnRHiEq+SLAaJVC3K/GFpz3lIZG09BHIgtNdTPRaspwj4ORN7hS9BtkCOCMJQTgyrZs8QIL1Xs21LpBfe8uFFeZQ8qNneArdDgcopuVD0b40uEAMGqCd8rX+L7syVYOuaFo2OWBEl3QSBkh+z5zFOxlwa5yH8WORduI57ARaACFFfvA==', 'iv': '9RzkN9kPnjheYJyF', 'enc': 1}
-PASS | security | the bookmark text is not on the server | {'ct': '2itAn4zm/5U8YqtRVn5RQTQW3rfA8DlxM63uFre/rfF4gkduptaYwNXrNd/fPgdCPgo26xhLmTr+7YbbbWdyAroGGaHD6fRMD4h644j+CWbtnoEaw7QrYjm0Y+3rd5LlKOHVoDutAXpi8Hceifd6ZQdIZ4LLsru+RJG9KCU7JsZfiae3kTpXLkV0p/0Iz3g3exV92pkXlnUv0PzuhGVpQndCbKh4cEYyA+20IGplHJJF9UNKTnrTOk6fCDcMLkE5UjPOT/5/H0PTdse9arp3uY3iV0WdlVsxeZsmnRHiEq+SLAaJVC3K/GFpz3lIZG09BHIgtNdTPRaspwj4ORN7hS9BtkCOCMJQTgyrZs8QIL1Xs21LpBfe8uFFeZQ8qNneArdDgcopuVD0b40uEAMGqCd8rX+L7syVYOuaFo2OWBEl3QSBkh+z5zFOxlwa5yH8WORduI57ARaACFFfvA==', 'iv': '9RzkN9kPnjheYJyF', 'enc': 1}
+PASS | security | what the app wrote is encrypted | {'ct': '30lp3k99OErV7rOUfJscJWjDyquft4UzyMJ/JwoQO8PoA8/Y+H9KPq7t70izsJ8OkO7yxWId8lWyBqk75sVLPB2iRxkEUT3E18RfeFfMi877MIVzudK9L3bFWvKJcVrnyztSVMnnyZk9s6wDT82LkT3RBS36+XJFzTa2JdlF8yARekWCheWQMCAPqXIfBCndvJcKnZLVYJVYiYpTDDB+k+BWA3KF//83zbgyhYH3YTg5aQIKISp/43aOvlCfRzBzr6LkKNoErc9iUFdVA1/as/yt6CjuI5KRlG8JMaacPbwLr+33ORw7m8ItZbYlY40yTkW1uGOjS+F3t3F4TO1rpj+SdFHYqaCrA4dO/CAKogMPN0CU8tYveh2fdNGSvcBdOWPaVxvdiZmkLr6lNAypoaAXRGKNWsJ3yX3jqk0j/PON8TE1JTPjdCu5braa6aWhCJ9vy4QCL0c+sn44og==', 'iv': 's7yxk/0me6Gd9GyV', 'enc': 1}
+PASS | security | the bookmark text is not on the server | {'ct': '30lp3k99OErV7rOUfJscJWjDyquft4UzyMJ/JwoQO8PoA8/Y+H9KPq7t70izsJ8OkO7yxWId8lWyBqk75sVLPB2iRxkEUT3E18RfeFfMi877MIVzudK9L3bFWvKJcVrnyztSVMnnyZk9s6wDT82LkT3RBS36+XJFzTa2JdlF8yARekWCheWQMCAPqXIfBCndvJcKnZLVYJVYiYpTDDB+k+BWA3KF//83zbgyhYH3YTg5aQIKISp/43aOvlCfRzBzr6LkKNoErc9iUFdVA1/as/yt6CjuI5KRlG8JMaacPbwLr+33ORw7m8ItZbYlY40yTkW1uGOjS+F3t3F4TO1rpj+SdFHYqaCrA4dO/CAKogMPN0CU8tYveh2fdNGSvcBdOWPaVxvdiZmkLr6lNAypoaAXRGKNWsJ3yX3jqk0j/PON8TE1JTPjdCu5braa6aWhCJ9vy4QCL0c+sn44og==', 'iv': 's7yxk/0me6Gd9GyV', 'enc': 1}
 PASS | security | the account can be deleted | ok
 PASS | security | the personal row is gone | []
-PASS | security | the account no longer exists | [{'id': 'ea9ef4f6-c03f-470b-9988-05c0f6749db2', 'handle': 'secdat41020', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | security | the account no longer exists | [{'id': 'f9a2a2d8-a0f3-45af-b4de-0d0e7bfcf7d1', 'handle': 'secdat44751', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]

@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "لماذا الخطر السيبراني مؤسسي",
-    "en": "Why cyber risk is organizational"
+    "ar": "الخطر التنظيمي وسلسلة التهديد",
+    "en": "Organizational Risk and the Threat Chain"
   },
   "quiz_id": "Quiz_Ch03_T01_Organizational_Risk",
   "has_math": false,
@@ -10,140 +10,180 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "كيف كان يُؤطَّر الأمن السيبراني في معظم تاريخه المبكر؟",
+        "ar": "كيف كان الأمن السيبراني يُصاغ في معظم تاريخه المبكر؟",
         "en": "How was cybersecurity framed for much of its early history?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "كتحدٍّ تقني يُحلّ بالجدران النارية ومكافحة الفيروسات وكشف التسلل.",
-          "en": "As a technical challenge solved by firewalls, antivirus and intrusion detection."
+          "ar": "تحدٍّ تقني يُحلّ بالجدران النارية ومكافحة الفيروسات.",
+          "en": "A technical challenge solved by firewalls and antivirus."
         },
         {
-          "ar": "كالتزام قانوني تفرضه الجهات التنظيمية والمحاكم.",
-          "en": "As a legal obligation enforced by regulators, auditors and the courts."
+          "ar": "التزام قانوني تفرضه الجهات التنظيمية والمدققون معاً.",
+          "en": "A legal obligation enforced by regulators and auditors."
         },
         {
-          "ar": "كمسألة سمعة يتولاها قسم التسويق.",
-          "en": "As a reputational matter handled entirely by the marketing department."
+          "ar": "مسألة سمعة يتولاها فريق التسويق وحده بالكامل.",
+          "en": "A reputational matter handled by the marketing team."
         },
         {
-          "ar": "كخطر مالي يحمله المؤمّنون بالكامل.",
-          "en": "As a financial risk carried entirely by external insurance providers."
+          "ar": "خطر مالي يحمله مزوّدو التأمين وحدهم تماماً.",
+          "en": "A financial risk carried entirely by the insurance providers."
         }
       ],
       "concept_id": "early_technical_framing",
       "explanation": {
-        "ar": "يفتتح الفصل بأن الأمن السيبراني كان يُؤطَّر كتحدٍّ تقني: الجدران النارية ومكافحة الفيروسات وأنظمة كشف التسلل كانت تُعدّ كافية، وكان يُفترض أن المشاكل تُحلّ بنشر الحل التقني المناسب.",
-        "en": "The chapter opens by saying cybersecurity was framed as a technical challenge: firewalls, antivirus software and intrusion detection systems were considered sufficient, and problems were assumed to be fixed by deploying the right technological solution."
+        "ar": "في البداية كان الأمن يُعامَل كمشكلة تقنية: الجدران النارية ومكافحة الفيروسات وكشف التطفل كانت تُعدّ كافية، وكل مشكلة كان يُفترض حلها بشراء الأداة الصحيحة.",
+        "en": "Early on, security was treated as a technical problem: firewalls, antivirus and intrusion detection were assumed to be enough, and every problem was expected to be fixed by buying the right tool."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "ماذا أظهر العقدان الأخيران عن إخفاقات الأمن السيبراني؟",
-        "en": "What has the last two decades shown about cybersecurity failures?"
+        "ar": "ماذا أثبت العقدان الماضيان عن إخفاقات الأمن السيبراني؟",
+        "en": "What have the last two decades shown about cybersecurity failures?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "أنها ناتجة دائماً تقريباً عن تواقيع مكافحة فيروسات قديمة.",
-          "en": "That they are almost always caused by outdated antivirus signatures and missing patches."
+          "ar": "أن الإخفاقات تُزال بشراء الأدوات الصحيحة.",
+          "en": "That failures can be removed by buying the right tools."
         },
         {
-          "ar": "أنها تهديدات مؤسسية في جوهرها، لها عواقب مالية وسمعية وتنظيمية.",
-          "en": "That they are fundamentally organizational threats with financial and regulatory consequences."
+          "ar": "أن الإخفاقات تهديدات تنظيمية بالأساس.",
+          "en": "That failures are fundamentally organizational threats."
         },
         {
-          "ar": "أنها تصيب قسم تقنية المعلومات فقط وتتوقف عند حدوده.",
-          "en": "That they affect only the IT department and stop exactly at its organisational boundary."
+          "ar": "أن الإخفاقات سببها توقيعات فيروسات قديمة.",
+          "en": "That failures come mostly from outdated antivirus signatures."
         },
         {
-          "ar": "أنها يمكن إزالتها كلياً بشراء الأدوات الصحيحة.",
-          "en": "That they can be eliminated entirely by buying the right tools and licences."
+          "ar": "أن الإخفاقات تبقى داخل قسم تقنية المعلومات.",
+          "en": "That failures stay inside the IT department boundary."
         }
       ],
-      "concept_id": "organizational_consequences",
+      "concept_id": "failures_are_organizational",
       "explanation": {
-        "ar": "يذكر الفصل أن الإخفاقات تهديدات مؤسسية في جوهرها، كثيراً ما تؤدي إلى خسارة مالية وضرر بالسمعة وعقوبات تنظيمية وحتى مخاطر نظامية على الأمن القومي. وقراءة «الأدوات فقط» هي بالضبط ما يرفضه الفصل.",
-        "en": "The chapter states that failures are fundamentally organizational threats, often leading to financial loss, reputational damage, regulatory penalties and even systemic risks to national security. The tool-only reading is exactly what the chapter rejects."
+        "ar": "عقدان من الحوادث أظهرا عكس الافتراض المبكر: هذه الإخفاقات تهديدات تنظيمية لا أعطال أدوات.",
+        "en": "Two decades of incidents showed the opposite of the early assumption: these failures are organizational threats, not tool failures."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "أي جملة يستخدمها الفصل كدعواه المركزية عن موقع الأمن السيبراني؟",
-        "en": "Which sentence does the chapter use as its central claim about where cybersecurity sits?"
+        "ar": "أي مجموعة نتائج تترتب على إخفاق أمني سيبراني؟",
+        "en": "Which set of consequences follows from a cybersecurity failure?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "الأمن السيبراني لا يمكن عزله داخل قسم تقنية المعلومات.",
-          "en": "Cybersecurity cannot be isolated within the IT department."
+          "ar": "فقدان فريق التقنية كله لمنافسين يدفعون أكثر.",
+          "en": "Loss of the whole IT team to much better-paying competitors."
         },
         {
-          "ar": "الأمن السيبراني يُدار على أفضل وجه بمزوّد خدمة خارجي.",
-          "en": "Cybersecurity is best handled by an external service provider."
+          "ar": "ساعات تدريب إضافية للموظفين الإداريين.",
+          "en": "Extra training hours for the administrative staff every year."
         },
         {
-          "ar": "الأمن السيبراني يخص القسم القانوني افتراضياً.",
-          "en": "Cybersecurity belongs to the legal department by default."
+          "ar": "خسارة مالية وضرر بالسمعة وعقوبات تنظيمية.",
+          "en": "Financial loss, reputation damage, and regulatory penalties."
         },
         {
-          "ar": "الأمن السيبراني منتج يمكن شراؤه جاهزاً.",
-          "en": "Cybersecurity is a product that can be purchased off the shelf."
+          "ar": "شبكات أبطأ وكلفة عتاد أعلى بكثير هنا.",
+          "en": "Slower networks and much higher hardware costs."
         }
       ],
-      "concept_id": "not_isolated_in_it",
+      "concept_id": "consequence_set",
       "explanation": {
-        "ar": "جملة الفصل المركزية أن الأمن السيبراني لا يمكن عزله داخل قسم تقنية المعلومات، وأنه شأن على مستوى مجلس الإدارة. وكل حجّة أخرى في القسم تدعم هذه الدعوى.",
-        "en": "The chapter's central sentence is that cybersecurity cannot be isolated within the IT department, and that it is instead a boardroom-level concern. Every other argument in the section supports that claim."
+        "ar": "الإخفاق يجلب خسارة مالية وضرراً بالسمعة وعقوبات تنظيمية، وعلى المستوى الوطني قد يصبح خطراً نظامياً.",
+        "en": "A failure brings financial loss, reputational damage and regulatory penalties, and at national scale it can become a systemic risk."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "إذا كان الأمن السيبراني شأناً على مستوى مجلس الإدارة، فماذا يقول الفصل إنه يتطلّب؟",
-        "en": "If cybersecurity is a boardroom-level concern, what does the chapter say it requires?"
+        "ar": "أين لا يمكن حصر الأمن السيبراني؟",
+        "en": "Where can cybersecurity not be kept?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "ميزانية أكبر لمكافحة الفيروسات ودورات ترقيع أسرع.",
-          "en": "A larger antivirus budget and much faster patching cycles across the estate."
+          "ar": "ينتمي إلى القسم القانوني بشكل افتراضي.",
+          "en": "It belongs to the legal department by default."
         },
         {
-          "ar": "مركز عمليات أمنية مُسند إلى طرف خارجي.",
-          "en": "An outsourced security operations centre run by a specialist vendor."
+          "ar": "من الأفضل أن يتولاه مزوّد خارجي متخصص.",
+          "en": "It is best handled by an external provider."
         },
         {
-          "ar": "قسماً مستقلاً يرفع تقاريره لمدير تقنية المعلومات فقط.",
-          "en": "A separate security department reporting only to the IT manager."
+          "ar": "منتج يُشترى جاهزاً من السوق مباشرة.",
+          "en": "It is a product that can be bought off the shelf."
         },
         {
-          "ar": "هياكل حوكمة وممارسات إدارة مخاطر وتكاملاً مع الاستراتيجية.",
-          "en": "Governance structures, risk management practices and integration with strategy."
+          "ar": "لا يمكن عزله داخل قسم تقنية المعلومات.",
+          "en": "It cannot be isolated inside the IT department."
         }
       ],
-      "concept_id": "boardroom_level",
+      "concept_id": "not_isolated_in_it",
       "explanation": {
-        "ar": "يقول الفصل إنه يتطلّب هياكل حوكمة وممارسات إدارة مخاطر وتكاملاً مع استراتيجية المؤسسة. ولا واحدة من الثلاثة مشترى تقني.",
-        "en": "The chapter says it requires governance structures, risk management practices, and integration with organizational strategy. None of those three is a technical purchase."
+        "ar": "لا يمكن عزله داخل قسم تقنية المعلومات، بل هو شأن على مستوى مجلس الإدارة.",
+        "en": "It cannot be isolated within the IT department. It is a boardroom-level concern instead."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "كم سبباً يقدّم الفصل لكون الأمن السيبراني مؤسسياً؟",
-        "en": "How many reasons does the chapter give for why cybersecurity is organizational?"
+        "ar": "إذا كان الأمن السيبراني شأناً على مستوى مجلس الإدارة، فماذا يتطلب؟",
+        "en": "If cybersecurity is a boardroom-level concern, what does it require?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
+        {
+          "ar": "حوكمة وممارسات إدارة مخاطر ودمج بالاستراتيجية.",
+          "en": "Governance, risk management, and strategy alignment."
+        },
+        {
+          "ar": "ميزانية مكافحة فيروسات أكبر وتحديث أسرع للنظم.",
+          "en": "A much larger antivirus budget and faster patching."
+        },
+        {
+          "ar": "مركز عمليات أمنية خارجي للمجموعة كلها فعلاً.",
+          "en": "An outsourced security operations centre for the group."
+        },
+        {
+          "ar": "قسم أمني منفصل يتبع مدير التقنية نفسه.",
+          "en": "A separate security department under the IT manager."
+        }
+      ],
+      "concept_id": "boardroom_requirements",
+      "explanation": {
+        "ar": "مستوى مجلس الإدارة يعني هياكل حوكمة وممارسات إدارة مخاطر ودمجاً مع استراتيجية المؤسسة.",
+        "en": "Boardroom level means governance structures, risk management practices, and integration with organizational strategy."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كم سبباً يجعل الأمن السيبراني مسألة تنظيمية؟",
+        "en": "How many reasons make cybersecurity an organizational matter?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "خمسة أسباب.",
+          "en": "Five reasons."
+        },
+        {
+          "ar": "سببان فقط.",
+          "en": "Two reasons."
+        },
         {
           "ar": "أربعة أسباب.",
           "en": "Four reasons."
@@ -151,372 +191,204 @@
         {
           "ar": "ثلاثة أسباب.",
           "en": "Three reasons."
-        },
-        {
-          "ar": "خمسة أسباب.",
-          "en": "Five reasons."
-        },
-        {
-          "ar": "سببان.",
-          "en": "Two reasons."
         }
       ],
       "concept_id": "four_reasons_count",
       "explanation": {
-        "ar": "قائمة «Why» في الفصل أربعة بنود: الرقمنة الشاملة، والاعتماد على المنظومة، والطبيعة العدائية، والسياق القانوني والتنظيمي. وأما ثلاثة فهو عدد أبعاد الخطر، وهو الخلط الواجب تجنّبه.",
-        "en": "The chapter's Why list has four entries: Pervasive Digitization, Ecosystem Dependence, Adversarial Nature, and Legal/Regulatory Context. Three is the number of the risk dimensions, which is the confusion to avoid."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "ماذا تعني الرقمنة الشاملة كسبب للتعرض المؤسسي؟",
-        "en": "What does pervasive digitization mean as a reason for organizational exposure?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "أن معظم المؤسسات استبدلت الورق بالتخزين السحابي فقط.",
-          "en": "That most organizations have replaced paper with cloud storage only."
-        },
-        {
-          "ar": "أن كل عملية أعمال تعتمد على تقنية المعلومات، فالخلل قد يوقف التشغيل.",
-          "en": "That every business process depends on IT, so a failure can halt operations."
-        },
-        {
-          "ar": "أن الرقمنة قلّلت عدد الأنظمة الواجب حمايتها.",
-          "en": "That digitization has reduced the number of systems to protect."
-        },
-        {
-          "ar": "أن الموظفين يفضّلون التواصل الرقمي على الاجتماعات.",
-          "en": "That employees now prefer digital communication over meetings."
-        }
-      ],
-      "concept_id": "pervasive_digitization",
-      "explanation": {
-        "ar": "الرقمنة الشاملة تعني أن كل عملية أعمال اليوم تعتمد على أنظمة تقنية المعلومات في المالية والصحة وسلاسل التوريد، فإخفاق الأمن قد يوقف التشغيل. والخيارات الأخرى تصف آثاراً جانبية لا الاعتماد نفسه.",
-        "en": "Pervasive digitization means every business process today depends on IT systems across finance, healthcare and supply chains, so cybersecurity failures can halt operations. The other options describe side effects rather than the dependency."
+        "ar": "أربعة: الرقمنة الشاملة، والاعتماد على المنظومة، والطبيعة العدائية، والسياق القانوني والتنظيمي.",
+        "en": "Four: pervasive digitization, ecosystem dependence, adversarial nature, and the legal and regulatory context."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "لماذا يجعل الاعتماد على المنظومة خرقاً واحداً خطراً على المؤسسة كلها؟",
-        "en": "Why does ecosystem dependence make a single breach dangerous for the whole enterprise?"
+        "ar": "ماذا تعني الرقمنة الشاملة كسبب؟",
+        "en": "What does pervasive digitization mean as a reason?"
       },
-      "bloom": "Understand",
-      "answer": 2,
+      "bloom": "Remember",
+      "answer": 1,
       "options": [
         {
-          "ar": "لأن الموردين يستخدمون دائماً منتج مكافحة فيروسات واحداً.",
-          "en": "Because all vendors are required to share the same antivirus product."
+          "ar": "قواعد الامتثال تربط الاختراق بعقوبات.",
+          "en": "Compliance rules tie breaches to penalties."
         },
         {
-          "ar": "لأن عقود السحابة تمنع الاختبار الأمني المستقل.",
-          "en": "Because cloud contracts forbid independent security testing by the client."
+          "ar": "كل عملية تجارية اليوم تعتمد على أنظمة تقنية.",
+          "en": "Every business process now depends on IT systems."
         },
         {
-          "ar": "لأن خرقاً في حلقة ضعيفة كأحد الموردين قد يتسلسل إلى أزمة على مستوى المؤسسة.",
-          "en": "Because a breach in one weak link such as a vendor can cascade enterprise-wide."
+          "ar": "الموردون والخدمات السحابية تشكّل سلسلة توريد.",
+          "en": "Vendors and cloud services form a long supply chain."
         },
         {
-          "ar": "لأن سلاسل التوريد ملزمة قانوناً بمعيار واحد.",
-          "en": "Because supply chains are legally required to adopt one common standard."
+          "ar": "المهاجمون يتكيّفون أسرع من المدافعين.",
+          "en": "Attackers adapt faster than the defenders do."
         }
       ],
-      "concept_id": "ecosystem_dependence",
+      "concept_id": "reason_digitization",
       "explanation": {
-        "ar": "تعتمد المؤسسات على موردين خارجيين وخدمات سحابية وسلاسل توريد عالمية، ومقصود الفصل أن خرقاً في حلقة ضعيفة كأحد الموردين قد يتسلسل إلى أزمة على مستوى المؤسسة.",
-        "en": "Organizations rely on third-party vendors, cloud services and global supply chains, and the chapter's point is that a breach in one weak link, such as a vendor, can cascade into enterprise-level crises."
+        "ar": "الرقمنة تخص الانتشار: المالية والرعاية الصحية وسلاسل التوريد كلها تعمل بأنظمة تقنية، فالإخفاق قد يوقف العملية نفسها.",
+        "en": "Digitization is about reach: finance, healthcare and supply chains all run on IT, so a failure can stop the operation itself."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "كيف يميّز الفصل الخطر السيبراني عن المخاطر الطبيعية كالحرائق والفيضانات؟",
-        "en": "How does the chapter distinguish cyber risk from natural risks such as fires and floods?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "المخاطر الطبيعية أرخص تأميناً من السيبرانية.",
-          "en": "Natural risks are cheaper to insure against than cyber risks."
-        },
-        {
-          "ar": "المخاطر الطبيعية تغطّيها الأنظمة والسيبرانية لا.",
-          "en": "Natural risks are covered by regulation while cyber risks are not."
-        },
-        {
-          "ar": "المخاطر الطبيعية تحدث في مراكز البيانات فقط والسيبرانية في أي مكان.",
-          "en": "Natural risks occur only in data centres and cyber risks anywhere."
-        },
-        {
-          "ar": "الخطر السيبراني مصدره خصوم متكيّفون أذكياء لا أحداث سلبية.",
-          "en": "Cyber risks come from adaptive, intelligent adversaries rather than passive events."
-        }
-      ],
-      "concept_id": "adversarial_nature",
-      "explanation": {
-        "ar": "يقابل الفصل المخاطر الطبيعية، وهي أحداث سلبية، بالمخاطر السيبرانية الناتجة عن خصوم متكيّفين أذكياء كالمهاجمين والدول والمطلعين الداخليين. فالخصم يتعلّم ويتغيّر، والفيضان لا.",
-        "en": "The chapter contrasts natural risks, which are passive events, with cyber risks caused by adaptive, intelligent adversaries such as hackers, nation-states and insiders. An adversary learns and changes, which a flood does not."
-      }
-    },
-    {
-      "id": "q9",
-      "stem": {
-        "ar": "أي دور يلعبه السياق القانوني والتنظيمي في حجّة الفصل؟",
-        "en": "Which role does the legal and regulatory context play in the chapter's argument?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يغني عن الحاجة إلى هياكل حوكمة داخلية.",
-          "en": "It replaces the need for internal governance structures."
-        },
-        {
-          "ar": "يضمن ألا تصل الاختراقات إلى الجمهور.",
-          "en": "It guarantees that breaches will not reach the public."
-        },
-        {
-          "ar": "يربط إخفاقات الأمن السيبراني بالمسؤولية القانونية والعقوبات المالية.",
-          "en": "It ties cybersecurity failures to legal liability and financial penalties."
-        },
-        {
-          "ar": "ينطبق فقط على المؤسسات التي تعمل مع الحكومة.",
-          "en": "It applies only to organisations working with government."
-        }
-      ],
-      "concept_id": "legal_regulatory_context",
-      "explanation": {
-        "ar": "التزامات الامتثال كـGDPR وHIPAA وPCI-DSS تربط إخفاقات الأمن مباشرة بالمسؤولية القانونية والعقوبات المالية. فالأنظمة تضيف نتيجة قانونية، ولا تغني عن الحوكمة.",
-        "en": "Compliance obligations such as GDPR, HIPAA and PCI-DSS directly tie cybersecurity failures to legal liabilities and financial penalties. Regulation adds a legal consequence; it does not replace governance."
-      }
-    },
-    {
-      "id": "q10",
-      "stem": {
-        "ar": "الفصل فيه أربعة أسباب وثلاثة أبعاد. ما الذي يفصل بينهما؟",
-        "en": "The chapter has both four reasons and three dimensions. What separates them?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "الأربعة نتائج والثلاثة أسباب.",
-          "en": "The four are consequences of failure and the three are its root causes."
-        },
-        {
-          "ar": "الأربعة تفسّر لماذا الخطر مؤسسي، والثلاثة تصف كلفته.",
-          "en": "The four explain why cyber risk is organizational, and the three describe what it costs."
-        },
-        {
-          "ar": "الأربعة تخص الحكومات والثلاثة تخص الشركات الخاصة.",
-          "en": "The four apply to governments and the three apply only to private firms."
-        },
-        {
-          "ar": "إنهما اسمان لقائمة واحدة مكتوبة بصيغتين.",
-          "en": "They are simply two names for the same list written in different words."
-        }
-      ],
-      "concept_id": "reasons_vs_dimensions",
-      "explanation": {
-        "ar": "الأسباب الأربعة، الرقمنة والمنظومة والخصوم والأنظمة، تجيب لماذا لا يستقر الأمن داخل تقنية المعلومات. والأبعاد الثلاثة، المالي والتشغيلي والسمعي، تصف أنواع الضرر الناتج. وخلط القائمتين هو المصيدة التي ينبّه إليها الفصل نفسه.",
-        "en": "The four reasons, digitization, ecosystem, adversaries and regulation, answer why cybersecurity cannot sit inside IT. The three dimensions, financial, operational and reputational, describe the kinds of harm that follow. Mixing the two lists is the chapter's own flagged trap."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "ما الافتراض التقليدي عن الجهة المالكة للأمن السيبراني؟",
-        "en": "What was the traditional assumption about who owns cybersecurity?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "أنه يخص قسم تقنية المعلومات: جدران نارية تُضبط وفيروسات تُكافح والخطر يُفترض مُداراً.",
-          "en": "That it belonged to the IT department: firewalls configured, antivirus installed, risk assumed managed."
-        },
-        {
-          "ar": "أنه يخص مجلس الإدارة الذي كان يراجع كل حادث بنفسه.",
-          "en": "That it belonged to the board, which personally reviewed every single security incident."
-        },
-        {
-          "ar": "أنه يخص العملاء الذين يُطلب منهم الإبلاغ عن الهجمات.",
-          "en": "That it belonged to customers, who were asked to report any attacks they noticed."
-        },
-        {
-          "ar": "أنه يخص الجهات التنظيمية التي تدقّق الأنظمة باستمرار.",
-          "en": "That it belonged to regulators, who audited every system continuously."
-        }
-      ],
-      "concept_id": "traditional_it_view",
-      "explanation": {
-        "ar": "تقليدياً كان الأمن السيبراني محصوراً بقسم تقنية المعلومات: تُضبط الجدران النارية ويُثبَّت مضاد الفيروسات ويُفترض أن الخطر مُدار. وهذا الافتراض هو ما قلبتْه الاختراقات المذكورة في الفصل.",
-        "en": "Traditionally cybersecurity was relegated to the IT department: firewalls were configured, antivirus was installed, and risk was assumed to be managed. That assumption is what the breaches named in the chapter overturned."
-      }
-    },
-    {
-      "id": "q12",
-      "stem": {
-        "ar": "تكتشف شركة أن مخططات تصميمها وأنظمة التحكم في مصنعها مكشوفة. أي نقاط الفصل يمثّل هذا؟",
-        "en": "A company discovers that its design blueprints and its factory control systems are exposed. Which of the chapter's points does this illustrate?"
-      },
-      "bloom": "Apply",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "أن الامتثال التنظيمي على مستوى المؤسسة.",
-          "en": "That regulatory compliance is enforced across the whole enterprise."
-        },
-        {
-          "ar": "أن السمعة والثقة أصول مؤسسية.",
-          "en": "That reputation and trust are corporate assets worth protecting."
-        },
-        {
-          "ar": "أن عمليات الأعمال تعتمد على تقنية المعلومات.",
-          "en": "That business processes depend heavily on IT systems."
-        },
-        {
-          "ar": "أن أصول المؤسسة متنوعة وتمتد أبعد من سيرفرات تقنية المعلومات.",
-          "en": "That enterprise assets are diverse and extend beyond IT servers."
-        }
-      ],
-      "concept_id": "diverse_assets",
-      "explanation": {
-        "ar": "يعدّ الفصل بيانات العملاء والملكية الفكرية والأنظمة المالية والتقنيات التشغيلية كأصول تمتد إلى الموارد البشرية والمالية والبحث والتطوير وسلسلة التوريد. والمخططات وأنظمة المصنع هي بالضبط هذا الامتداد خارج غرفة الخوادم.",
-        "en": "The chapter lists customer data, intellectual property, financial systems and operational technologies as assets that reach into HR, finance, R&D and the supply chain. Blueprints and factory controls are exactly that spread beyond the server room."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "تضع GDPR وHIPAA المسؤولية على مستوى المؤسسة. ماذا ينتج عن ذلك بالنسبة لقسم تقنية المعلومات؟",
-        "en": "GDPR and HIPAA place accountability at the organizational level. What follows from that for the IT department?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يتحمّل قسم تقنية المعلومات المسؤولية القانونية كاملة لوحده.",
-          "en": "The IT department absorbs the full legal liability on its own."
-        },
-        {
-          "ar": "يُعفى قسم تقنية المعلومات من التدقيق التنظيمي.",
-          "en": "The IT department is exempt from regulatory audits."
-        },
-        {
-          "ar": "ينفّذ القسم الضوابط لكنه لا يحمل المسؤولية وحده.",
-          "en": "The department implements controls but does not carry the liability alone."
-        },
-        {
-          "ar": "يُستبدل القسم بمزوّد امتثال خارجي.",
-          "en": "The department is replaced by an external compliance vendor."
-        }
-      ],
-      "concept_id": "regulatory_enterprise_wide",
-      "explanation": {
-        "ar": "إذا كانت المسؤولية على مستوى المؤسسة، فقسم تقنية المعلومات ينفّذ الضوابط التقنية لكن المسؤولية للمؤسسة. ولهذا بالضبط يقول الفصل إن الامتثال على مستوى المؤسسة لا مسألة قسم تقنية معلومات.",
-        "en": "If accountability sits at the organizational level, the IT department still implements the technical controls but the liability is the enterprise's. That is precisely why the chapter says compliance is enterprise-wide rather than an IT matter."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "لماذا يعامل الفصل السمعة والثقة كأصول مؤسسية؟",
-        "en": "Why does the chapter treat reputation and trust as corporate assets?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأن تعويضات التأمين تُحسب من قيمة العلامة.",
-          "en": "Because insurance payouts are calculated from brand value."
-        },
-        {
-          "ar": "لأن الحوادث السيبرانية تلطّخ العلامة وتؤثر على المبيعات وقيمة المساهمين.",
-          "en": "Because cyber incidents tarnish the brand and affect sales and shareholder value."
-        },
-        {
-          "ar": "لأن الجهات التنظيمية تنشر درجة سمعة علنية لكل شركة.",
-          "en": "Because regulators publish a public reputation score for each firm."
-        },
-        {
-          "ar": "لأن الثقة يمكن استعادتها بسرعة بعد أي حادث.",
-          "en": "Because trust can be rebuilt quickly after any incident."
-        }
-      ],
-      "concept_id": "reputation_asset",
-      "explanation": {
-        "ar": "يقول الفصل إن الحوادث السيبرانية تلطّخ سمعة العلامة وتؤثر مباشرة على المبيعات وقيمة المساهمين. ويحذّر أيضاً أن السمعة متى ضاعت يصعب استرجاعها، ولهذا تتصرف كأصل.",
-        "en": "The chapter says cyber incidents tarnish brand reputation, directly impacting sales and shareholder value. It also warns that reputation once lost is hard to restore, which is why it behaves like an asset."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "أي اختراقات يسمّيها الفصل لبيان أن الإخفاقات تصيب المؤسسة كلها؟",
-        "en": "Which breaches does the chapter name to show that failures affect the whole enterprise?"
+        "ar": "ماذا يعني الاعتماد على المنظومة كسبب؟",
+        "en": "What does ecosystem dependence mean as a reason?"
       },
       "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "ستكسنت ورانسوم وير وسولار ويندز.",
-          "en": "Stuxnet, WannaCry and SolarWinds."
+          "ar": "كل عملية تجارية تعتمد على نظام تقني داخلي.",
+          "en": "Every business process depends on an internal system."
         },
         {
-          "ar": "ياهو ولينكدإن وأدوبي.",
-          "en": "Yahoo, LinkedIn and Adobe."
+          "ar": "المهاجمون أذكياء ويستمرون بالتكيّف مع الدفاع.",
+          "en": "Attackers are intelligent and keep adapting to defences."
         },
         {
-          "ar": "ميراي وهارتبليد وديجينوتار.",
-          "en": "Mirai, Heartbleed and DigiNotar."
+          "ar": "قواعد الامتثال تحوّل الاختراق إلى عقوبة.",
+          "en": "Compliance rules turn a breach into a financial penalty."
         },
         {
-          "ar": "إكويفاكس وتارجت وكولونيال بايبلاين.",
-          "en": "Equifax, Target and Colonial Pipeline."
+          "ar": "حلقة مورّد ضعيفة قد تتسلسل على المؤسسة كلها.",
+          "en": "One weak vendor link can cascade enterprise-wide."
         }
       ],
-      "concept_id": "named_breaches",
+      "concept_id": "reason_ecosystem",
       "explanation": {
-        "ar": "يسمّي الفصل إكويفاكس وتارجت وكولونيال بايبلاين كالاختراقات التي تثبت أن إخفاقات الأمن تصيب منظومة المؤسسة كلها. أما ستكسنت ورانسوم وير فتظهران لاحقاً ضمن مخاطر القطاعات.",
-        "en": "The chapter names Equifax, Target and Colonial Pipeline as the breaches demonstrating that cybersecurity failures affect the entire enterprise ecosystem. Stuxnet and WannaCry appear later under industry-specific risks."
+        "ar": "الاعتماد على المنظومة يخص السلسلة: الموردون والخدمات السحابية وسلاسل التوريد العالمية تعني أن اختراق حلقة واحدة قد يتسلسل.",
+        "en": "Ecosystem dependence is about the chain: vendors, cloud services and global supply chains mean a breach in one weak link can cascade."
       }
     },
     {
-      "id": "q16",
+      "id": "q9",
       "stem": {
-        "ar": "هجوم فدية يشفّر خوادم الرواتب واللوجستيات. أي نقاط الفصل الأربع تفسّر النتيجة؟",
-        "en": "A ransomware attack encrypts the payroll and logistics servers. Which of the chapter's four points explains the consequence?"
+        "ar": "ما الذي يجعل الخطر السيبراني مختلفاً عن الحريق أو الفيضان؟",
+        "en": "What makes cyber risk different from a fire or a flood?"
       },
-      "bloom": "Apply",
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المخاطر السيبرانية من خصوم متكيّفين وأذكياء.",
+          "en": "Cyber risks come from adaptive, intelligent adversaries."
+        },
+        {
+          "ar": "المخاطر السيبرانية من الحرائق والفيضانات.",
+          "en": "Cyber risks come from fires, floods and other natural events."
+        },
+        {
+          "ar": "المخاطر السيبرانية من وثائق قديمة فقط تماماً.",
+          "en": "Cyber risks come from outdated documentation alone."
+        },
+        {
+          "ar": "المخاطر السيبرانية من سلسلة توريد العتاد.",
+          "en": "Cyber risks come from the hardware supply chain itself."
+        }
+      ],
+      "concept_id": "reason_adversarial",
+      "explanation": {
+        "ar": "المخاطر الطبيعية لا تفكّر. أما الخطر السيبراني فيأتي من قراصنة ودول وعناصر داخلية تتكيّف مع أي دفاع يُنشر.",
+        "en": "Natural risks do not think. Cyber risk comes from hackers, nation-states and insiders who adapt to whatever defence is deployed."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي التزامات تربط الاختراق بعقوبة مباشرة؟",
+        "en": "Which obligations tie a breach directly to a penalty?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الحوكمة والاستراتيجية والتقارير لمجلس الإدارة.",
+          "en": "Governance, strategy, and full board reporting."
+        },
+        {
+          "ar": "GDPR و HIPAA و PCI-DSS تربط الاختراق بعقوبات.",
+          "en": "GDPR, HIPAA, and PCI-DSS tie breaches to penalties."
+        },
+        {
+          "ar": "الجدران النارية ومكافحة الفيروسات وكشف التطفل.",
+          "en": "Firewalls, antivirus, and intrusion detection tools."
+        },
+        {
+          "ar": "النسخ الاحتياطي والتشفير وضوابط الوصول.",
+          "en": "Backups, encryption, and access control policies."
+        }
+      ],
+      "concept_id": "reason_legal",
+      "explanation": {
+        "ar": "التزامات الامتثال مثل GDPR و HIPAA و PCI-DSS تربط المسؤولية القانونية والعقوبات المالية بالإخفاق الأمني.",
+        "en": "Compliance obligations such as GDPR, HIPAA and PCI-DSS attach legal liability and financial penalties to a security failure."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أين تقع الأدوات التقنية في الصورة الكاملة؟",
+        "en": "Where do the technical tools sit in the overall picture?"
+      },
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "أن أصول المؤسسة متنوعة وتشمل الملكية الفكرية.",
-          "en": "That enterprise assets are diverse and include intellectual property."
+          "ar": "بديل كامل عن إطار الحوكمة كله هنا.",
+          "en": "A full replacement for the governance framework."
         },
         {
-          "ar": "أن الامتثال التنظيمي يُفرض على مستوى المؤسسة.",
-          "en": "That regulatory compliance is enforced at the organizational level."
+          "ar": "حل مؤقت حتى تُكتب الحوكمة المناسبة.",
+          "en": "A temporary fix until governance is written."
         },
         {
-          "ar": "أن عمليات الأعمال تعتمد على تقنية المعلومات، فالهجوم يوقف التشغيل على مستوى المؤسسة.",
-          "en": "That business processes depend on IT, so the attack halts operations enterprise-wide."
+          "ar": "طبقة واحدة داخل إطار حوكمة أوسع هنا.",
+          "en": "One layer inside a broader governance framework."
         },
         {
-          "ar": "أن السمعة والثقة أصول مؤسسية تتضرر بالحوادث.",
-          "en": "That reputation and trust are corporate assets damaged by incidents."
+          "ar": "الطبقة الوحيدة المهمة عملياً في المؤسسة.",
+          "en": "The only layer that really matters in practice."
         }
       ],
-      "concept_id": "processes_depend_on_it",
+      "concept_id": "tools_are_one_layer",
       "explanation": {
-        "ar": "النقطة الثانية في الفصل أن عمليات الأعمال تعتمد على تقنية المعلومات من الرواتب إلى اللوجستيات، فهجوم فدية على تقنية المعلومات يوقف عمليات المؤسسة كلها. والنقاط الثلاث الأخرى حجج مختلفة: تنوّع الأصول، والمسؤولية التنظيمية، والسمعة.",
-        "en": "The chapter's second point is that business processes depend on IT, from payroll to logistics, so a ransomware attack on IT halts business operations enterprise-wide. The other three points make different arguments: asset diversity, regulatory accountability and reputation."
+        "ar": "الأدوات التقنية طبقة واحدة فقط، داخل إطار أوسع من الحوكمة وإدارة المخاطر. فهي ضرورية لكنها غير كافية.",
+        "en": "Technical tools are one layer only, inside a larger framework of governance and risk management. They are necessary, not sufficient."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ماذا تتيح إدارة المخاطر للمؤسسة؟",
+        "en": "What does risk management let an organization do?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كشف الحوادث بعد أن تكون قد انتشرت فعلاً.",
+          "en": "Detect the incidents after they have already spread."
+        },
+        {
+          "ar": "استبدال الضوابط التقنية بسياسة مكتوبة فقط.",
+          "en": "Replace technical controls with written policy."
+        },
+        {
+          "ar": "نقل الخطر إلى مزوّد تأمين خارجي كبير جداً.",
+          "en": "Move the risk to an external insurance provider."
+        },
+        {
+          "ar": "توقّع المخاطر وترتيبها وتخفيفها قبل الأزمة.",
+          "en": "Anticipate, prioritise, and mitigate before crisis."
+        }
+      ],
+      "concept_id": "risk_management_purpose",
+      "explanation": {
+        "ar": "إدارة المخاطر تتيح للمؤسسة توقّع المخاطر وترتيب أولوياتها وتخفيفها قبل أن تتصاعد إلى أزمات.",
+        "en": "Risk management lets the organization anticipate, prioritize and mitigate risks before they escalate into crises."
       }
     }
   ],
@@ -525,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-26T19:53:06Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

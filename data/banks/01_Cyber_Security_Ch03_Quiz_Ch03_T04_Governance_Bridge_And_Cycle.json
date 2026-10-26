@@ -1,7 +1,7 @@
 {
   "topic": {
     "ar": "جسر الحوكمة ودورة إدارة المخاطر",
-    "en": "The governance bridge and the risk management cycle"
+    "en": "The Governance Bridge & the Risk Cycle"
   },
   "quiz_id": "Quiz_Ch03_T04_Governance_Bridge_And_Cycle",
   "has_math": false,
@@ -10,513 +10,353 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي دور جسري تلعبه إدارة المخاطر بين النتائج التقنية والمديرين التنفيذيين؟",
-        "en": "What bridging role does risk management play between technical findings and executives?"
+        "ar": "أي دور تلعبه إدارة مخاطر الأمن السيبراني بين الجانبين؟",
+        "en": "What role does cybersecurity risk management play between the two sides?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "تترجم الثغرات التقنية إلى مخاطر أعمال يفهمها المديرون التنفيذيون ويقدرون التصرف بناءً عليها.",
-          "en": "It translates technical vulnerabilities into business risks that executives can understand and act on."
+          "ar": "يترجم الخطر التقني إلى خطر أعمال.",
+          "en": "It translates technical risk into business risk."
         },
         {
-          "ar": "تخفي التفاصيل التقنية عن المديرين حتى تبقى القرارات في مستوى عالٍ.",
-          "en": "It hides technical detail from executives so that decisions stay at a high level."
+          "ar": "يستبدل هياكل الحوكمة بالكامل هنا.",
+          "en": "It replaces the governance structures entirely."
         },
         {
-          "ar": "تحوّل كل نتيجة تقنية مباشرة إلى أمر شراء لأدوات جديدة.",
-          "en": "It converts every technical finding directly into a purchase order for new tools."
+          "ar": "يغني عن الضوابط التقنية كلها هنا.",
+          "en": "It removes the need for technical controls here."
         },
         {
-          "ar": "تستبدل الفريق التقني بلجنة حوكمة تضع الأولويات.",
-          "en": "It replaces the technical team with a governance committee that sets priorities."
+          "ar": "يبلّغ عن الحوادث بعد وقوعها فعلاً.",
+          "en": "It reports incidents after they have happened."
         }
       ],
-      "concept_id": "translates_vulnerabilities",
+      "concept_id": "bridge_role",
       "explanation": {
-        "ar": "إدارة المخاطر هي الجسر: تترجم الثغرات التقنية إلى مخاطر أعمال يفهمها المديرون ويقدرون التصرف بناءً عليها. وإخفاء التفاصيل أو استبدال الفريق التقني كلاهما عكس الترجمة.",
-        "en": "Risk management is the bridge: it translates technical vulnerabilities into business risks that executives can understand and act upon. Hiding detail or replacing the technical team are both the opposite of translating."
+        "ar": "هو الجسر: يترجم الثغرات التقنية إلى مخاطر أعمال يفهمها التنفيذيون ويستطيعون التصرف بناءً عليها.",
+        "en": "It is the bridge: it translates technical vulnerabilities into business risks that executives can understand and act on."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "أي مجموعة يعدّها الفصل ضوابط تقنية؟",
-        "en": "Which set does the chapter list as technical controls?"
+        "ar": "أي مجموعة تسرد الضوابط التقنية؟",
+        "en": "Which set lists the technical controls?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "السياسات وأطر الامتثال والإشراف التنفيذي.",
-          "en": "Policies, compliance frameworks and executive oversight."
+          "ar": "العقود والتدقيق والتأمين السنوي.",
+          "en": "Contracts, audits, and insurance."
         },
         {
-          "ar": "الجدران النارية وأنظمة كشف التسلل ومكافحة الفيروسات والترقيع.",
-          "en": "Firewalls, IDS, antivirus and patching."
+          "ar": "الجدران النارية وكشف التطفل والتحديث.",
+          "en": "Firewalls, IDS, antivirus, and patching."
         },
         {
-          "ar": "إشراف المجلس والتدقيق والإيداعات التنظيمية.",
-          "en": "Board oversight, audits and regulatory filings."
+          "ar": "السياسات والامتثال والإشراف التنفيذي.",
+          "en": "Policies, compliance, and oversight."
         },
         {
-          "ar": "سجلات المخاطر والميزانيات ولجان التوجيه.",
-          "en": "Risk registers, budgets and steering committees."
+          "ar": "الميزانيات والموظفون والتدريب المستمر.",
+          "en": "Budgets, staffing, and staff training too."
         }
       ],
       "concept_id": "technical_controls_list",
       "explanation": {
-        "ar": "الضوابط التقنية في الفصل هي الجدران النارية وأنظمة كشف التسلل ومكافحة الفيروسات والترقيع. أما السياسات وأطر الامتثال والإشراف التنفيذي فهي هياكل الحوكمة في الطرف الآخر من الجسر.",
-        "en": "The chapter's technical controls are firewalls, IDS, antivirus and patching. Policies, compliance frameworks and executive oversight are the governance structures on the other side of the bridge."
+        "ar": "الضوابط التقنية هي الجدران النارية وكشف التطفل ومكافحة الفيروسات والتحديث: تدابير مستوى الآلة.",
+        "en": "Technical controls are firewalls, intrusion detection, antivirus, and patching: the machine-level measures."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "أي مجموعة يعدّها الفصل هياكل حوكمة؟",
-        "en": "Which set does the chapter list as governance structures?"
+        "ar": "أي مجموعة تسرد هياكل الحوكمة؟",
+        "en": "Which set lists the governance structures?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "الجدران النارية وأنظمة كشف التسلل ومكافحة الفيروسات والترقيع.",
-          "en": "Firewalls, IDS, antivirus and patching."
+          "ar": "النسخ الاحتياطي والتكرار وخطط الاستجابة.",
+          "en": "Backups, redundancy, and response plans."
         },
         {
-          "ar": "النسخ الاحتياطية والتكرارية وخطط الاستجابة للحوادث.",
-          "en": "Backups, redundancy and incident response plans."
+          "ar": "التشفير والرموز والتحكم بالوصول كله هنا.",
+          "en": "Encryption, tokens, and access control."
         },
         {
           "ar": "السياسات وأطر الامتثال والإشراف التنفيذي.",
-          "en": "Policies, compliance frameworks and executive oversight."
+          "en": "Policies, compliance frameworks, and oversight."
         },
         {
-          "ar": "التشفير والتحكم بالوصول والمصادقة متعددة العوامل.",
-          "en": "Encryption, access control and multi-factor authentication."
+          "ar": "الجدران النارية وكشف التطفل والتحديث.",
+          "en": "Firewalls, IDS, antivirus, and regular patching."
         }
       ],
       "concept_id": "governance_structures_list",
       "explanation": {
-        "ar": "هياكل الحوكمة هي السياسات وأطر الامتثال والإشراف التنفيذي. أما الجدران النارية والترقيع فهي في الجانب التقني، ولهذا بالضبط يحتاج الفصل جسراً بين الاثنين.",
-        "en": "Governance structures are policies, compliance frameworks and executive oversight. Firewalls and patching sit on the technical side, which is exactly why the chapter needs a bridge between the two."
+        "ar": "هياكل الحوكمة هي السياسات وأطر الامتثال والإشراف التنفيذي: طبقة القرار فوق الأدوات.",
+        "en": "Governance structures are policies, compliance frameworks, and executive oversight: the decision layer above the tools."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "ماذا يحدث للضوابط التقنية والحوكمة عند غياب إدارة المخاطر؟",
-        "en": "What happens to technical controls and governance when risk management is absent?"
+        "ar": "ماذا يحدث للجانبين بدون إدارة المخاطر؟",
+        "en": "What happens to the two sides without risk management?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "تندمج تلقائياً في برنامج أمني موحّد واحد.",
-          "en": "They merge automatically into a single unified security programme."
+          "ar": "يندمج الجانبان في فريق واحد.",
+          "en": "The two merge into one single team."
         },
         {
-          "ar": "يبتلع الجانب التقني الحوكمة ويضع الميزانية كلها.",
-          "en": "The technical side absorbs governance and sets the whole budget."
+          "ar": "يستبدل كل جانب الآخر كلياً.",
+          "en": "The two replace each other entirely."
         },
         {
-          "ar": "تستبدل الحوكمة الضوابط التقنية بإجراءات مكتوبة.",
-          "en": "Governance replaces the technical controls with written procedures."
+          "ar": "يُلزَم الجانبان بالاندماج قانوناً.",
+          "en": "The two are legally required to merge."
         },
         {
-          "ar": "تعمل في جزر معزولة، كل جانب بلا لغة مشتركة.",
-          "en": "They operate in silos, each side working without a shared language."
+          "ar": "يعمل الجانبان في جزر معزولة.",
+          "en": "The two operate in silos without it."
         }
       ],
-      "concept_id": "silos_problem",
+      "concept_id": "silos_without_rm",
       "explanation": {
-        "ar": "بلا إدارة مخاطر يعمل الجانبان في جزر معزولة. وحلّ الفصل أن أطر إدارة المخاطر تقيس النتائج التقنية مالياً وتشغيلياً، فتعطي الجانبين لغة مشتركة.",
-        "en": "Without risk management the two operate in silos. The chapter's fix is that risk management frameworks quantify technical findings in financial and operational terms, which gives both sides a shared language."
+        "ar": "بدون إدارة المخاطر يعمل الجانب التقني وجانب الحوكمة في جزر معزولة، لكل منهما لغته وأولوياته.",
+        "en": "Without risk management the technical side and the governance side operate in silos, each with its own language and its own priorities."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "يُكتشف ترقيع ناقص على خادم. كيف تجعل إدارة المخاطر المدير التنفيذي يتصرف، وفق الفصل؟",
-        "en": "A missing patch is found on a server. How does the chapter say risk management makes an executive act on it?"
+        "ar": "تحديث ناقص يُكتشف على خادم. إلى ماذا تحوّله إدارة المخاطر؟",
+        "en": "A missing patch is found on a server. What does risk management turn it into?"
       },
-      "bloom": "Apply",
+      "bloom": "Analyze",
       "answer": 0,
       "options": [
         {
-          "ar": "بتقدير أثره المالي والتشغيلي كمياً حتى تُرتَّب الموارد.",
-          "en": "By quantifying it in terms of financial and operational impact so resources can be prioritized."
+          "ar": "خطر أعمال كمي يستطيع التنفيذيون ترتيبه.",
+          "en": "A quantified business risk executives can rank."
         },
         {
-          "ar": "بتصعيده إلى المجلس مباشرة دون أي سياق أعمال.",
-          "en": "By escalating it directly to the board without any business context attached."
+          "ar": "تذكرة تقنية لفريق التقنية فقط هنا تماماً.",
+          "en": "A technical ticket for the IT team only here."
         },
         {
-          "ar": "بتصنيفه عيباً تقنياً لا يحتاج أن يراه غير فريق تقنية المعلومات.",
-          "en": "By classifying it as a technical defect that only the IT team needs to see."
+          "ar": "استثناء امتثال يُمنح للمدقق هنا.",
+          "en": "A compliance exception granted to the auditor."
         },
         {
-          "ar": "بتأجيله إلى اختبار الاختراق السنوي القادم.",
-          "en": "By deferring it until the next annual penetration test is scheduled."
+          "ar": "تقرير حادث يُكتب بعد الواقعة فعلاً هنا.",
+          "en": "An incident report written after the fact here."
         }
       ],
-      "concept_id": "missing_patch_example",
+      "concept_id": "patch_becomes_business_risk",
       "explanation": {
-        "ar": "مثال الفصل هو الترقيع الناقص بالضبط: تضمن أطر إدارة المخاطر أن تُقاس النتائج التقنية بالأثر المالي والتشغيلي، فيتمكّن المديرون من ترتيب الموارد. والرقم هو ما يصنع القرار.",
-        "en": "The chapter's example is precisely a missing patch: risk management frameworks ensure technical findings are quantified in terms of financial and operational impact, enabling executives to prioritize resources. The number is what creates the decision."
+        "ar": "يقدّر النتيجة مالياً وتشغيلياً، فيصبح التحديث خطر أعمال مرتباً لا تذكرة بلا تمويل.",
+        "en": "It quantifies the finding in financial and operational terms, so a patch becomes a ranked business risk instead of a ticket nobody funds."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "كيف يصف الفصل إدارة المخاطر كنشاط؟",
-        "en": "How does the chapter describe risk management as an activity?"
+        "ar": "هل إدارة المخاطر تقييم يُجرى مرة واحدة؟",
+        "en": "Is risk management a one-time assessment?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "تدقيق سنوي واحد يُغلق الملف حتى السنة القادمة.",
-          "en": "A single annual audit that closes the file completely until the next year."
+          "ar": "فقط عند وقوع حادث أمني كبير.",
+          "en": "Only when an incident actually occurs."
         },
         {
-          "ar": "ليست تقييماً لمرة واحدة بل دورة مستمرة مندمجة في العمليات.",
-          "en": "Not a one-time assessment but a continuous cycle integrated into operations."
+          "ar": "لا، هي دورة مستمرة دائماً.",
+          "en": "No, it is a continuous cycle always."
         },
         {
-          "ar": "مشروع ببداية محددة ونهاية محددة.",
-          "en": "A project with a clearly fixed start date and a fixed end date."
+          "ar": "نعم، مرة واحدة في السنة تكفي.",
+          "en": "Yes, once a year is easily enough."
         },
         {
-          "ar": "تمرين اختياري يُنفَّذ فقط بعد وقوع حادث.",
-          "en": "An optional exercise performed only after a serious security incident."
+          "ar": "نعم، تقييم واحد لكل نظام.",
+          "en": "Yes, one assessment for each system."
         }
       ],
       "concept_id": "not_one_time",
       "explanation": {
-        "ar": "يقول الفصل إن إدارة المخاطر ليست تقييماً لمرة واحدة بل دورة مستمرة مندمجة في عمليات المؤسسة، لأن ثغرات جديدة تظهر كل يوم.",
-        "en": "The chapter says risk management is not a one-time assessment but a continuous cycle integrated into enterprise operations, because new vulnerabilities emerge daily."
+        "ar": "ليست تقييماً يُجرى مرة واحدة، بل دورة مستمرة مندمجة في عمليات المؤسسة.",
+        "en": "It is not a one-time assessment. It is a continuous cycle integrated into enterprise operations."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "أي تسلسل يعطي خطوات دورة إدارة المخاطر الخمس؟",
-        "en": "Which sequence gives the five steps of the risk management cycle?"
+        "ar": "أي خمس خطوات تشكّل دورة إدارة المخاطر؟",
+        "en": "Which five steps make up the risk management cycle?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "خطّط، نفّذ، تحقّق، عدّل، راجع.",
-          "en": "Plan, Do, Check, Act, Review."
+          "ar": "كشف واستجابة وتعافٍ وتعلّم وإغلاق.",
+          "en": "Detect, respond, recover, learn, and then close."
         },
         {
-          "ar": "حدّد، رتّب الأولويات، قيّم، راقب، خفّف.",
-          "en": "Identify, Prioritize, Assess, Monitor, Mitigate."
+          "ar": "تصميم وبناء واختبار ونشر وإيقاف نهائي.",
+          "en": "Design, build, test, deploy, and then retire."
         },
         {
-          "ar": "حدّد، قيّم، رتّب الأولويات، خفّف، راقب.",
-          "en": "Identify, Assess, Prioritize, Mitigate, Monitor."
+          "ar": "تحديد وتقييم وتخفيف ومراقبة ومراجعة.",
+          "en": "Identify, assess, mitigate, monitor, review."
         },
         {
-          "ar": "قيّم، حدّد، خفّف، رتّب الأولويات، راقب.",
-          "en": "Assess, Identify, Mitigate, Prioritize, Monitor."
+          "ar": "تخطيط وتنفيذ وتحقق وتصحيح وتقرير.",
+          "en": "Plan, do, check, act, and then report."
         }
       ],
-      "concept_id": "cycle_five_steps",
+      "concept_id": "cycle_steps",
       "explanation": {
-        "ar": "الدورة تسير: حدّد، قيّم، رتّب الأولويات، خفّف، راقب. والتقييم يجب أن يسبق ترتيب الأولويات، ولهذا يكون تبديلهما في الخيار الثالث مصيدة.",
-        "en": "The cycle runs Identify, Assess, Prioritize, Mitigate and Monitor. Assessment has to precede prioritisation, which is what makes the third option's swap a trap."
+        "ar": "الدورة: تحديد، تقييم، تخفيف، مراقبة، مراجعة. وهي دورة المخاطر لا دورة الاستجابة للحوادث.",
+        "en": "The cycle runs identify, assess, mitigate, monitor, review. It is the risk cycle, not the incident-response cycle."
       }
     },
     {
       "id": "q8",
       "stem": {
         "ar": "ماذا تغطي خطوة التحديد؟",
-        "en": "What does the Identify step cover?"
+        "en": "What does the identify step cover?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "الاحتمالية والتأثير لكل خطر.",
-          "en": "Probability and impact for each risk."
+          "ar": "احتمال كل خطر وتأثيره عليه.",
+          "en": "Probability and impact of each risk."
         },
         {
-          "ar": "ترتيب المخاطر حسب الشدّة.",
-          "en": "Ranking the risks by severity."
+          "ar": "الضوابط وكلفتها لكل أصل هنا.",
+          "en": "Controls and their cost for each asset."
         },
         {
-          "ar": "الضوابط التقنية والتنظيمية.",
-          "en": "Technical and organizational controls."
+          "ar": "الحوادث المسجلة في السنة الماضية.",
+          "en": "Incidents recorded in the last year."
         },
         {
           "ar": "الأصول والثغرات والتهديدات.",
-          "en": "Assets, vulnerabilities and threats."
+          "en": "Assets, vulnerabilities, and threats."
         }
       ],
-      "concept_id": "identify_scope",
+      "concept_id": "identify_step",
       "explanation": {
-        "ar": "التحديد يغطي الأصول والثغرات والتهديدات. والاحتمالية والتأثير تخصّان التقييم، والترتيب يخص ترتيب الأولويات، والضوابط تخص التخفيف.",
-        "en": "Identify covers assets, vulnerabilities and threats. Probability and impact belong to Assess, ranking to Prioritize and controls to Mitigate."
+        "ar": "التحديد يجرد الأصول والثغرات والتهديدات التي قد تصل إليها.",
+        "en": "Identify catalogues the assets, the vulnerabilities, and the threats that could reach them."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "ماذا تحدّده خطوة التقييم؟",
-        "en": "What does the Assess step determine?"
+        "ar": "ماذا تقيس خطوة التقييم؟",
+        "en": "What does the assess step measure?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "الاحتمالية والتأثير للمخاطر المحدَّدة.",
-          "en": "Probability and impact for the identified risks."
+          "ar": "الاحتمال والتأثير.",
+          "en": "Probability and impact."
         },
         {
-          "ar": "أي مورّد يورّد الضوابط التي ستُشترى.",
-          "en": "Which vendor supplies the controls that will be bought."
+          "ar": "الأصول والتهديدات.",
+          "en": "Assets and their threats."
         },
         {
-          "ar": "هل ستُعتمد ميزانية الأمن هذه السنة.",
-          "en": "Whether the security budget will be approved this year."
+          "ar": "الضوابط والكلف.",
+          "en": "Controls and costs."
         },
         {
-          "ar": "كم موظفاً حضر تدريب التوعية.",
-          "en": "How many employees attended the awareness training."
+          "ar": "الحوادث والخسائر.",
+          "en": "Incidents and losses."
         }
       ],
-      "concept_id": "assess_questions",
+      "concept_id": "assess_step",
       "explanation": {
-        "ar": "التقييم هو حيث تُحدَّد الاحتمالية والتأثير لكل خطر. أما الشراء والميزانية وحضور التدريب فتعود إلى خطوات لاحقة أو خارج الدورة.",
-        "en": "Assess is where probability and impact are determined for each risk. Buying, budgeting and training attendance belong to later steps or outside the cycle entirely."
+        "ar": "التقييم يضع احتمالاً وتأثيراً لكل خطر محدد، وهذا ما يجعل الترتيب ممكناً.",
+        "en": "Assess puts a probability and an impact on each identified risk, which is what makes ranking possible."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "أنهى فريق للتو تقدير الاحتمالية والتأثير لاثني عشر خطراً ويرتّبها الآن حسب الشدّة. أي خطوة هذه؟",
-        "en": "A team has just finished estimating probability and impact for twelve risks and now orders them by severity. Which step is this?"
+        "ar": "ماذا يفعل NIST SP 800-37؟",
+        "en": "What does NIST SP 800-37 do?"
       },
-      "bloom": "Apply",
+      "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "ترتيب الأولويات، لأن ترتيب الشدّة يأتي بعد التقييم.",
-          "en": "Prioritize, because severity ranking follows assessment."
+          "ar": "إنه يقيس الامتثال للسياسة فقط.",
+          "en": "It measures policy compliance only."
         },
         {
-          "ar": "التحديد، لأن المخاطر أُدرجت في هذه الخطوة.",
-          "en": "Identify, because the risks were listed in this step."
+          "ar": "إنه يُقنن عملية إدارة المخاطر.",
+          "en": "It formalises the risk management process."
         },
         {
-          "ar": "التخفيف، لأن الترتيب يحدّد أي ضابط يُشترى.",
-          "en": "Mitigate, because ordering decides which control to buy."
+          "ar": "إنه يستبدل الضوابط التقنية.",
+          "en": "It replaces the technical controls entirely."
         },
         {
-          "ar": "المراقبة، لأن الترتيب سيُراجَع لاحقاً.",
-          "en": "Monitor, because the ranking will be reviewed later."
+          "ar": "إنه يسرد القطاعات المعرضة للخطر.",
+          "en": "It lists the industry sectors at risk."
         }
       ],
-      "concept_id": "prioritize_apply",
+      "concept_id": "nist_role",
       "explanation": {
-        "ar": "ترتيب المخاطر حسب الشدّة هو خطوة ترتيب الأولويات، ولا تحدث إلا بعد أن ينتج التقييم الاحتمالية والتأثير. وأما الإدراج فقد حصل في التحديد، لكن الترتيب خطوة قائمة بذاتها.",
-        "en": "Ranking risks by severity is the Prioritize step, and it can only happen after Assess has produced probability and impact. The listing happened in Identify, but the ordering is its own step."
+        "ar": "NIST SP 800-37 يُقنن عملية إدارة المخاطر، ولهذا يُذكر كمرجع للدورة.",
+        "en": "NIST SP 800-37 formalises the risk management process, which is why it is named as the reference for the cycle."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "أي نوع من الضوابط تطبّقه خطوة التخفيف؟",
-        "en": "What kind of controls does the Mitigate step apply?"
+        "ar": "لماذا يجب أن تستمر الدورة؟",
+        "en": "Why must the cycle keep running?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "ضوابط تقنية فقط، لأن الحوكمة مسار منفصل.",
-          "en": "Technical controls only, because governance is a separate track."
+          "ar": "الميزانية تتغير كل سنة.",
+          "en": "The budget changes every single year."
         },
         {
-          "ar": "ضوابط تنظيمية فقط، لأن الأدوات تُشترى في مكان آخر.",
-          "en": "Organizational controls only, because tools are bought elsewhere."
+          "ar": "الموظفون يتغيرون كل سنة.",
+          "en": "The staff changes every single year."
         },
         {
-          "ar": "ضوابط تقنية وتنظيمية معاً.",
-          "en": "Both technical and organizational controls."
+          "ar": "ثغرات جديدة تظهر باستمرار.",
+          "en": "New vulnerabilities emerge constantly."
         },
         {
-          "ar": "الضوابط الأقل كلفة في الترخيص فقط.",
-          "en": "Only the controls that cost the least to licence."
+          "ar": "المدققون يطلبون تقارير فصلية.",
+          "en": "The auditors require quarterly reports."
         }
       ],
-      "concept_id": "mitigate_scope",
+      "concept_id": "why_continuous",
       "explanation": {
-        "ar": "التخفيف يطبّق ضوابط تقنية وتنظيمية معاً. وهذا الاقتران هو مقصود حجّة الجسر في الفصل: إصلاح تقني بلا تغيير حوكمي هو نصف تخفيف.",
-        "en": "Mitigate applies technical and organizational controls together. That pairing is the whole point of the chapter's bridge argument: a technical fix without a governance change is half a mitigation."
-      }
-    },
-    {
-      "id": "q12",
-      "stem": {
-        "ar": "ماذا تتطلّب خطوة المراقبة؟",
-        "en": "What does the Monitor step require?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "اعتماد واحد في نهاية المشروع.",
-          "en": "A single sign-off at the end of the project."
-        },
-        {
-          "ar": "أرشفة سجل المخاطر بعد تشغيل الضوابط.",
-          "en": "Archiving the risk register once controls are live."
-        },
-        {
-          "ar": "استبدال الضوابط كل ربع سنة بصرف النظر عن النتائج.",
-          "en": "Replacing the controls every quarter regardless of findings."
-        },
-        {
-          "ar": "مراجعة وتحديث مستمرين لصورة المخاطر.",
-          "en": "Continuous review and updating of the risk picture."
-        }
-      ],
-      "concept_id": "monitor_scope",
-      "explanation": {
-        "ar": "المراقبة تعني المراجعة والتحديث المستمرين، وهو ما يُبقي الدورة دورة. وأرشفة السجل أو اعتماد واحد يُنهي العملية، وهذا ما يرفضه الفصل صريحاً.",
-        "en": "Monitor means continuously reviewing and updating, which is what keeps the cycle a cycle. Archiving the register or a single sign-off would end the process, which the chapter explicitly rejects."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "دورة المخاطر في الفصل خمس خطوات وPDCA في الكتيّب السابق أربع. كيف يُفصل بينهما؟",
-        "en": "The chapter's risk cycle has five steps and the earlier booklet's PDCA has four. How should the two be kept apart?"
-      },
-      "bloom": "Analyze",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "هما الدورة نفسها باسمين مختلفين في مصدرين مختلفين.",
-          "en": "They are the same cycle with two different names in two different sources."
-        },
-        {
-          "ar": "الدورة الخمسية هي النسخة التشغيلية؛ وPDCA هي نسخة الإدارة بأربع مراحل.",
-          "en": "The five-step cycle is the operational version; PDCA is the four-phase management version."
-        },
-        {
-          "ar": "PDCA هي الصحيحة والدورة الخمسية خطأ في المادة.",
-          "en": "PDCA is the correct one and the five-step cycle is an error in the material."
-        },
-        {
-          "ar": "الدورة الخمسية تخص تقنية المعلومات وPDCA تخص المال فقط.",
-          "en": "The five-step cycle applies to IT and PDCA applies to finance only."
-        }
-      ],
-      "concept_id": "cycle_vs_pdca",
-      "explanation": {
-        "ar": "كلتاهما دورتان مستمرتان، لكنهما تعودان إلى مصدرين مختلفين وعددين مختلفين: خمس خطوات تشغيلية هنا، وأربع مراحل إدارية هناك. والمصيدة أن تذكر أربعاً حين يسأل الفصل عن خمس، أو العكس.",
-        "en": "Both are continuous cycles, but they belong to different sources and different counts: five operational steps here, four management phases there. The exam trap is quoting four when the chapter asks for five, or the reverse."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "أي معيار يسمّيه الفصل مُرسِخاً لإدارة المخاطر في أمن المعلومات؟",
-        "en": "Which standard does the chapter name as formalizing risk management for information security?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "ISO/IEC 27002.",
-          "en": "ISO/IEC 27002."
-        },
-        {
-          "ar": "ISO/IEC 27005.",
-          "en": "ISO/IEC 27005."
-        },
-        {
-          "ar": "NIST SP 800-37.",
-          "en": "NIST SP 800-37."
-        },
-        {
-          "ar": "PCI-DSS.",
-          "en": "PCI-DSS."
-        }
-      ],
-      "concept_id": "iso27005",
-      "explanation": {
-        "ar": "ISO/IEC 27005 يرسّخ إدارة المخاطر لأمن المعلومات. أما ISO/IEC 27002 فقائمة ضوابط، وNIST SP 800-37 هو إطار إدارة المخاطر الفيدرالي، وPCI-DSS معيار بطاقات الدفع.",
-        "en": "ISO/IEC 27005 formalizes risk management for information security. ISO/IEC 27002 is the controls checklist, NIST SP 800-37 is the federal RMF and PCI-DSS is the payment card standard."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "ماذا يقول الفصل إن NIST SP 800-37 يفعله؟",
-        "en": "What does the chapter say NIST SP 800-37 does?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يعدّد الفئات الأربع عشرة لضوابط أمن المعلومات.",
-          "en": "It lists the fourteen categories of information security controls."
-        },
-        {
-          "ar": "يعرّف متطلبات أمن بيانات صناعة بطاقات الدفع.",
-          "en": "It defines the payment card industry data security requirements."
-        },
-        {
-          "ar": "إطاره لإدارة المخاطر يدمج المخاطر في أنظمة تقنية المعلومات الفيدرالية.",
-          "en": "Its Risk Management Framework integrates risk into federal IT systems."
-        },
-        {
-          "ar": "يقدّم المراحل الأربع لدورة PDCA الإدارية.",
-          "en": "It provides the four phases of the PDCA management cycle."
-        }
-      ],
-      "concept_id": "nist_800_37",
-      "explanation": {
-        "ar": "NIST SP 800-37 هو إطار إدارة المخاطر الذي يدمج المخاطر في أنظمة تقنية المعلومات الفيدرالية. والفئات الأربع عشرة تخص ISO/IEC 27002، ومتطلبات البطاقات تخص PCI-DSS.",
-        "en": "NIST SP 800-37 is the Risk Management Framework that integrates risk into federal IT systems. The fourteen categories belong to ISO/IEC 27002 and the card requirements to PCI-DSS."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "لماذا يجب أن تستمر الدورة بدل أن تتوقف بعد تركيب الضوابط؟",
-        "en": "Why must the cycle keep running rather than stop once controls are in place?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "لأن المدققين يطلبون دورة جديدة قبل كل ربع مالي.",
-          "en": "Because auditors require a fresh cycle before every financial quarter."
-        },
-        {
-          "ar": "لأن الضوابط تنتهي صلاحيتها تلقائياً بعد اثني عشر شهراً.",
-          "en": "Because controls expire automatically after twelve months of use."
-        },
-        {
-          "ar": "لأن الخطوات الخمس لا تكتمل إلا بتسلسل متكرر.",
-          "en": "Because the five steps can only be completed in a repeating sequence."
-        },
-        {
-          "ar": "لأن ثغرات جديدة تظهر كل يوم وصورة التهديد تتغير باستمرار.",
-          "en": "Because new vulnerabilities emerge daily and the threat picture keeps changing."
-        }
-      ],
-      "concept_id": "why_cycle_continuous",
-      "explanation": {
-        "ar": "سبب الفصل أن ثغرات جديدة تظهر كل يوم، فالدورة التي تتكيّف مع تهديدات متطوّرة يجب أن تبقى دائرة. ولا شيء في الفصل يربط التكرار بجداول التدقيق أو انتهاء الترخيص.",
-        "en": "The chapter's reason is that new vulnerabilities emerge daily, so a cycle that adapts to evolving threats has to keep turning. Nothing in the chapter ties the repetition to audit schedules or licence expiry."
+        "ar": "ثغرات جديدة تظهر باستمرار ويتحرك ملف المخاطر معها، فتقييم يتوقف يصبح قديماً فوراً.",
+        "en": "New vulnerabilities appear continuously and the risk profile moves with them, so an assessment that stops is already out of date."
       }
     }
   ],
@@ -525,7 +365,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-26T19:43:06Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

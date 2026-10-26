@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.7.7';
+const VERSION = '1.7.8';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -94,8 +94,7 @@ const CORE = [
   './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T04_Governance_Bridge_And_Cycle.json',
   './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T05_Emerging_Challenges.json',
   './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T06_Industry_Specific_Risks.json',
-  './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T07_Risk_Quantification_Method.json',
-  './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T08_Policy_Lifecycle_And_Metrics.json',
+  './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T08_Policy_Challenges_And_Lifecycle.json',
   './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T09_Strategic_Role_Of_Policies.json',
   './data/banks/01_Cyber_Security_Ch03_Quiz_Ch03_T10_Modern_Trends.json',
   './data/banks/01_Cyber_Security_Ch04_Quiz_Ch04_T01_Classical_Ciphers_And_Unicity.json',
