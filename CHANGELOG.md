@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.15] — 2026-10-28
+
+### Changed
+- توحيد الهوية البصرية ونظام الألوان وإلغاء التنافر اللوني
+
+
 ## [1.7.14] — 2026-10-28
 
 ### Changed

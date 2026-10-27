@@ -3631,7 +3631,7 @@
       ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
       ctx.drawImage(fallback, cx - r, cy - r, r * 2, r * 2);
     } else {
-      ctx.fillStyle = '#c9a227';
+      ctx.fillStyle = '#d9b26a';
       ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
       ctx.fillStyle = '#14161c';
       ctx.font = '700 ' + Math.round(r * 0.9) + 'px "MCSQuiz Arabic", sans-serif';
@@ -3671,7 +3671,7 @@
   async function buildLeagueCard(data) {
     const W = 1080;
     const INK = '#f3f4f6', MUTED = '#8b97a8', FAINT = '#6b7280';
-    const ACCENT = '#c9a227', GOLD = '#d9a521';
+    const ACCENT = '#d9b26a', GOLD = '#d9b26a';
     const L = 84, R = W - 84;
 
     // never trust incoming order: rank the rows here so a bigger number can never
@@ -3710,7 +3710,7 @@
     ctx.fillRect(0, 0, W, H);
 
     const glow = ctx.createRadialGradient(W / 2, 190, 40, W / 2, 190, 580);
-    glow.addColorStop(0, 'rgba(201,162,39,0.10)');
+    glow.addColorStop(0, 'rgba(217,178,106,0.14)');
     glow.addColorStop(1, 'rgba(77,163,255,0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, 660);
@@ -3746,7 +3746,7 @@
     ctx.fillStyle = 'rgba(255,255,255,0.08)';
     ctx.fillRect(L, 318, W - L * 2, 2);
 
-    const medals = ['#d9a521', '#c3ccda', '#c08a5c'];
+    const medals = ['#d9b26a', '#c3ccda', '#c08a5c'];
 
     const drawRow = (r, y, opts) => {
       const h = opts.h;
@@ -3756,10 +3756,10 @@
       const cy = y + h / 2;
 
       if (isMe) {
-        ctx.fillStyle = 'rgba(201,162,39,0.10)';
+        ctx.fillStyle = 'rgba(217,178,106,0.14)';
         drawRoundRect(ctx, L - 14, y + 8, W - (L - 14) * 2, h - 16, 16);
         ctx.fill();
-        ctx.strokeStyle = 'rgba(201,162,39,0.35)';
+        ctx.strokeStyle = 'rgba(217,178,106,0.35)';
         ctx.lineWidth = 2;
         ctx.stroke();
       }
@@ -4410,7 +4410,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.7.14';
+  const SHELL_VERSION = '1.7.15';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
