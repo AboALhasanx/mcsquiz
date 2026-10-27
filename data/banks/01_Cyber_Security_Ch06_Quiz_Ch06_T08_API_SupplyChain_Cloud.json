@@ -1,0 +1,404 @@
+{
+  "topic": {
+    "ar": "أمن APIs وسلسلة التوريد والسحابة",
+    "en": "API, Supply Chain and Cloud-Native Security"
+  },
+  "quiz_id": "Quiz_Ch06_T08_API_SupplyChain_Cloud",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو انكسار التخويل على مستوى الكائن؟",
+        "en": "What is broken object-level authorization?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مستخدم يوصل لكائن غير مخوّل له.",
+          "en": "A user accesses an object without permission."
+        },
+        {
+          "ar": "مستخدم يصادق بكلمة مرور مسروقة.",
+          "en": "A user authenticates with a stolen password."
+        },
+        {
+          "ar": "مستخدم يستلم حقولاً أكثر من حاجة الصفحة.",
+          "en": "A user receives more fields than the page needs."
+        },
+        {
+          "ar": "مستخدم يستدعي نقطة ما عادت موجودة.",
+          "en": "A user calls an endpoint that no longer exists."
+        }
+      ],
+      "concept_id": "w6_bola_definition",
+      "explanation": {
+        "ar": "الطلب شرعي والهوية صحيحة، بس التطبيق ما يتحقّق أبداً إن هذا الكائن يخص هذا المستخدم.",
+        "en": "The request is legitimate and the identity is valid, but the application never checks that this object belongs to this principal."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف يختلف الكشف المفرط عن BOLA؟",
+        "en": "How does excessive data exposure differ from BOLA?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "BOLA في البيانات؛ والكشف المفرط يعرض حقولاً زائدة.",
+          "en": "BOLA affects stored data; excess exposure shows extra fields."
+        },
+        {
+          "ar": "BOLA فشل تخويل؛ والكشف المفرط فشل تصفية.",
+          "en": "BOLA is an authorization failure; exposure is a filtering failure."
+        },
+        {
+          "ar": "BOLA فشل تصفية؛ والكشف المفرط فشل تخويل.",
+          "en": "BOLA is a filtering failure; exposure is an authorization failure."
+        },
+        {
+          "ar": "الخللان متشابهان ولا يختلفان إلا في اسم العيب.",
+          "en": "Both are the same defect described with different words."
+        }
+      ],
+      "concept_id": "w6_excessive_vs_bola",
+      "explanation": {
+        "ar": "بـ BOLA المفروض المستخدم ما يحصل السجل أصلاً، أما بالكشف المفرط فقد يكون السجل له لكن يستلم حقولاً ما لازم يشوفها.",
+        "en": "In BOLA the user should not have the record at all, while in excessive exposure they may own it but receive fields they should never see."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي ضوابط تخفّف ثغرات الـAPI؟",
+        "en": "Which controls mitigate API vulnerabilities?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "استعلامات مُعامَلة وإجراءات مخزّنة.",
+          "en": "Parameterised queries and stored procedures."
+        },
+        {
+          "ar": "كوكيز SameSite ورموز مكافحة CSRF.",
+          "en": "SameSite cookies and anti-CSRF tokens."
+        },
+        {
+          "ar": "فحص المخطط ومصادقة قوية وتحديد المعدّل.",
+          "en": "Schema checks, authentication, and rate rules."
+        },
+        {
+          "ar": "ترميز المخرجات وترويسات CSP والتعقيم.",
+          "en": "Output encoding, CSP headers and sanitisation."
+        }
+      ],
+      "concept_id": "w6_api_governance",
+      "explanation": {
+        "ar": "حكامة الـAPI تجمع التحقّق من المخطط والمصادقة القوية وتحديد المعدّل، والبوّابات تضيف كشف الشذوذ.",
+        "en": "API governance combines schema validation, strong authentication and rate limiting, with gateways adding anomaly detection."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "من شنو يحمي تحديد المعدّل الـAPI؟",
+        "en": "What does rate limiting protect an API against?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أخطاء تخويل على كائنات منفردة.",
+          "en": "Authorization errors on individual objects."
+        },
+        {
+          "ar": "مخالفات المخطط في جسم الطلب.",
+          "en": "Malformed API schemas inside request bodies."
+        },
+        {
+          "ar": "شهادات منتهية على البوّابة.",
+          "en": "Expired TLS certificates on the API gateway."
+        },
+        {
+          "ar": "إساءة الحجم بدل عيب منفرد.",
+          "en": "Abuse through volume rather than a single flaw."
+        }
+      ],
+      "concept_id": "w6_api_rate_limiting",
+      "explanation": {
+        "ar": "يحدّ شكثر يقدر متصل مصادَق عليه يستهلك، وهذا يعالج الاستنطاق والسحب اللي ما يكشفه طلب واحد.",
+        "en": "It caps how much an authenticated caller can consume, which addresses enumeration and scraping that no single request reveals."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يشتغل تشويش التبعيات؟",
+        "en": "How does dependency confusion work?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حزمة عامة تنتحل اسم حزمة داخلية.",
+          "en": "A public package impersonates an internal package."
+        },
+        {
+          "ar": "مفتاح خاص يُسرق من سيرفر البناء.",
+          "en": "A private key is stolen from the build server."
+        },
+        {
+          "ar": "صورة حاوية تُعاد من أساس قديم.",
+          "en": "A container image is rebuilt from an outdated base image."
+        },
+        {
+          "ar": "انتهاء شهادة رقمية أثناء نشر التطبيق.",
+          "en": "A certificate expires during the deployment."
+        }
+      ],
+      "concept_id": "w6_sc_dependency_confusion",
+      "explanation": {
+        "ar": "مدير الحزم يحلّ الاسم العام أولاً، فتُسحب الحزمة العدائية بدل الداخلية المقصودة.",
+        "en": "The package manager resolves the public name first, so the hostile package is pulled instead of the intended internal one."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي ضوابط يعطيها الفصل لخطر سلسلة التوريد؟",
+        "en": "Which controls reduce software supply-chain risk?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ترميز المخرجات و CSP وتعقيم المدخلات.",
+          "en": "Output encoding, CSP and input sanitisation."
+        },
+        {
+          "ar": "تدقيق التبعيات وتحليل مكوناتها وتثبيت نسخها.",
+          "en": "Vetting, composition analysis and dependency pinning."
+        },
+        {
+          "ar": "فحص الصور وإنفاذ السياسة والرصد وقت التشغيل.",
+          "en": "Image scanning, policy enforcement and runtime monitoring."
+        },
+        {
+          "ar": "التحقّق من المخطط والمصادقة وتحديد المعدّل.",
+          "en": "Schema validation, authentication and rate limiting."
+        }
+      ],
+      "concept_id": "w6_sc_vetting",
+      "explanation": {
+        "ar": "التدقيق يقرّر شنو يُسمح له يدخل، وتحليل التركيب يكشف اللي دخل فعلاً، والتثبيت يمنعه يتغيّر تحتك.",
+        "en": "Vetting decides what may enter, composition analysis reveals what already did, and pinning stops it changing underneath you."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ليش تثبيت النسخ يقلّل خطر سلسلة التوريد؟",
+        "en": "Why does version pinning reduce supply chain risk?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن التثبيت يشفّر تنزيل الحزمة.",
+          "en": "Because pinning encrypts the package download."
+        },
+        {
+          "ar": "لأن التثبيت يزيل التبعيات غير المباشرة.",
+          "en": "Because pinning removes transitive dependencies."
+        },
+        {
+          "ar": "لئلا يختار البناء حزمة بديلة بصمت.",
+          "en": "Because a build cannot silently pick another package."
+        },
+        {
+          "ar": "لأن النسخ المثبَّتة تُرقَّع تلقائياً.",
+          "en": "Because pinning automatically patches every package version."
+        }
+      ],
+      "concept_id": "w6_sc_pinning",
+      "explanation": {
+        "ar": "المدى المفتوح يخلي الحلّال يختار شي جديد وقت البناء، وهذا بالضبط الفراغ اللي يستغله تشويش التبعيات.",
+        "en": "A range specifier lets the resolver choose something new at build time, which is exactly the gap dependency confusion exploits."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ليش جرد التبعيات مهم لأمن سلسلة التوريد؟",
+        "en": "Why does an inventory of dependencies matter for supply chain security?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأنه يثبت قابلية إعادة بناء الحزمة.",
+          "en": "Because it proves reproducible builds across all platforms."
+        },
+        {
+          "ar": "لأنه يفي بمتطلب التدقيق الأمني فقط.",
+          "en": "Because it satisfies the audit requirement only."
+        },
+        {
+          "ar": "لأنه يشفر سجلات جميع التبعيات غير المباشرة.",
+          "en": "Because it encrypts every transitive dependency."
+        },
+        {
+          "ar": "مكوّن مجهول قد لا يتلقى ترقيعاً أمنياً.",
+          "en": "Unknown components may miss needed security patches."
+        }
+      ],
+      "concept_id": "w6_sc_sbom",
+      "explanation": {
+        "ar": "لمّا تُكشف مكتبة واسعة الاستخدام كضعيفة، الجرد هو اللي يقولك إنك متعرّض خلال دقائق أو أسابيع.",
+        "en": "When a widely used library is disclosed as vulnerable, the inventory is what tells you whether you are exposed within minutes or weeks."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي ضعف سحابي المنشأ يذكره الفصل أولاً؟",
+        "en": "Which cloud-native weakness can expose workloads?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إعدادات غير آمنة للحاويات.",
+          "en": "Unsafe container security configuration."
+        },
+        {
+          "ar": "أخطاء ضغط صور الحاويات.",
+          "en": "Container image compression errors."
+        },
+        {
+          "ar": "نفاد عناوين شبكة الحاويات.",
+          "en": "Container network address exhaustion."
+        },
+        {
+          "ar": "انحراف مزامنة ساعة الحاويات.",
+          "en": "Container clock synchronisation drift."
+        }
+      ],
+      "concept_id": "w6_cn_container_misconfig",
+      "explanation": {
+        "ar": "الصورة عادةً سليمة؛ الغلط بإعدادها وبالصلاحيات اللي انمنحتها لمّا اشتغلت.",
+        "en": "The image is usually fine; what is wrong is how it was configured and what it was granted when it ran."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "إلى شنو تشير الحوكمة غير الآمنة للتنسيق؟",
+        "en": "What does insecure orchestration refer to?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تسجيل مفرط لأحداث مستوى التحكّم.",
+          "en": "Excessive logging from the control plane."
+        },
+        {
+          "ar": "تعرّض واجهة التنسيق مثل Kubernetes.",
+          "en": "Exposure of the Kubernetes control API."
+        },
+        {
+          "ar": "بطء جدولة الـpods عبر العنقود.",
+          "en": "Slow scheduling of pods across the cluster."
+        },
+        {
+          "ar": "غياب نسخ احتياطية للمجلدات الدائمة.",
+          "en": "Missing backups of the persistent volumes."
+        }
+      ],
+      "concept_id": "w6_cn_orchestration",
+      "explanation": {
+        "ar": "واجهة تحكّم مكشوفة تعطي المهاجم سلطة على مستوى العنقود، وهذا أبعد بكثير من أي عيب تطبيق منفرد.",
+        "en": "An exposed control plane API hands the attacker cluster-level power, which is far beyond any single application flaw."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي ضعف خاص بمنصّات serverless؟",
+        "en": "Which weakness is specific to serverless platforms?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إساءة جدولة وحدات العمل داخل العنقود.",
+          "en": "Pod scheduling abuse."
+        },
+        {
+          "ar": "التلاعب بطبقات صورة الحاوية البرمجية.",
+          "en": "Image-layer tampering."
+        },
+        {
+          "ar": "حقن بيانات خبيثة في حمولة الحدث.",
+          "en": "Event data injection."
+        },
+        {
+          "ar": "الخروج غير المصرح به من الحاوية.",
+          "en": "Container breakout."
+        }
+      ],
+      "concept_id": "w6_cn_event_injection",
+      "explanation": {
+        "ar": "الدوال تُشغَّل بأحداث، فحمولة حدث مُصمَّمة تصير ناقل الحقن اللي يكون جسم الطلب بمكان ثاني.",
+        "en": "Functions are triggered by events, so a crafted event payload becomes the injection vector that a request body would be elsewhere."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ليش الانتقال لـserverless ما يزيل خطر الإعداد؟",
+        "en": "Why does moving to serverless not remove configuration risk?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأن مزودي الخدمة يرفضون تحديث أنظمتهم المضيفة.",
+          "en": "Because providers refuse to patch their own hosts."
+        },
+        {
+          "ar": "لأن وظائف serverless لا يمكن مراقبتها أثناء التشغيل.",
+          "en": "Because serverless functions cannot be monitored."
+        },
+        {
+          "ar": "لأن serverless تلغي الحاجة إلى مصادقة المستخدمين.",
+          "en": "Because serverless removes all authentication needs."
+        },
+        {
+          "ar": "المزوّد يؤمّن المنصة، والمؤسسة تضبط إعداداتها.",
+          "en": "Providers secure platforms; customers configure them."
+        }
+      ],
+      "concept_id": "w6_cn_shared_responsibility",
+      "explanation": {
+        "ar": "حدّ المسؤولية المشتركة يضع وقت التشغيل على المزوّد والهوية والصلاحيات ومعالجة المدخلات عليك أنت.",
+        "en": "The shared responsibility boundary puts the runtime on the provider and the identity, permissions and input handling firmly on you."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-27T14:03:52Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

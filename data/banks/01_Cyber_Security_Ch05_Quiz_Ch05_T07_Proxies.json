@@ -14,23 +14,23 @@
         "en": "On whose behalf does a forward proxy act?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "الموجّهات اللي تمرّر حزم بين الشبكات الفرعية.",
-          "en": "Routers forwarding packets between subnets."
+          "ar": "يمثّل العملاء الداخليين عند طلب موارد من خارج المؤسسة.",
+          "en": "It represents internal clients requesting external resources."
         },
         {
-          "ar": "العملاء الداخليين اللي يطلبون موارد خارجية.",
-          "en": "Internal clients requesting external resources."
+          "ar": "يمثّل الخوادم العامة عند الرد على اتصالات العملاء الواردة.",
+          "en": "It represents public servers answering inbound client connections."
         },
         {
-          "ar": "العملاء الخارجيين اللي يطلبون موارد داخلية.",
-          "en": "External clients requesting internal resources."
+          "ar": "يمثّل الموجّهات عند تمرير الحزم بين الشبكات الفرعية.",
+          "en": "It represents routers forwarding packets between separate subnets."
         },
         {
-          "ar": "السيرفرات اللي ترد على اتصالات واردة.",
-          "en": "Servers answering inbound connections."
+          "ar": "يمثّل العملاء الخارجيين عند طلب موارد الشبكة الداخلية.",
+          "en": "It represents external clients requesting internal network resources."
         }
       ],
       "concept_id": "proxy_forward_serves",
@@ -42,27 +42,27 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "أي استخدامات يذكرها الفصل للبروكسي الأمامي؟",
-        "en": "Which uses does the chapter list for forward proxies?"
+        "ar": "ما الاستخدامات الشائعة للوكيل الأمامي؟",
+        "en": "What are common uses for forward proxies?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "التخزين المؤقت والتصفية وإخفاء الهوية والتحكّم بالوصول.",
-          "en": "Caching, filtering, anonymisation and access control."
+          "ar": "تخزين مؤقت وتصفية وإخفاء هوية وضبط وصول المستخدمين.",
+          "en": "Caching, content filtering, anonymisation, and user access control."
         },
         {
-          "ar": "موازنة الحمل وإنهاء TLS وقواعد WAF.",
-          "en": "Load balancing, TLS termination and WAF rules."
+          "ar": "نسخ احتياطي وأرشفة طويلة وإدارة استبقاء البيانات.",
+          "en": "Backup, long-term archiving, and management of data retention."
         },
         {
-          "ar": "التوجيه والتبديل وترجمة العناوين.",
-          "en": "Routing, switching and address translation."
+          "ar": "موازنة حمل وإنهاء TLS وقواعد جدار تطبيقات الويب.",
+          "en": "Load balancing, TLS termination, and application firewall rules."
         },
         {
-          "ar": "النسخ الاحتياطي والأرشفة وإدارة الاستبقاء.",
-          "en": "Backup, archiving and retention management."
+          "ar": "توجيه وتبديل وترجمة لعناوين حركة الشبكة.",
+          "en": "Routing, switching, and translation of network addresses."
         }
       ],
       "concept_id": "proxy_forward_uses",
@@ -74,38 +74,6 @@
     {
       "id": "q3",
       "stem": {
-        "ar": "ليش تنشر المؤسسات البروكسيات الأمامية؟",
-        "en": "Why do enterprises deploy forward proxies?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "لموازنة الحمل على سيرفرات الويب.",
-          "en": "To balance load across the web servers."
-        },
-        {
-          "ar": "لتخصيص العناوين للأجهزة الداخلية.",
-          "en": "To assign addresses to the internal hosts."
-        },
-        {
-          "ar": "لفرض الاستخدام المقبول وتجميع المراقبة.",
-          "en": "To enforce acceptable use and aggregate monitoring."
-        },
-        {
-          "ar": "لإنهاء TLS عن السيرفرات الداخلية.",
-          "en": "To terminate TLS for the internal servers."
-        }
-      ],
-      "concept_id": "proxy_forward_purpose",
-      "explanation": {
-        "ar": "هو المكان اللي تُطبّق فيه سياسة الاستخدام المقبول، ويُحجب فيه المحتوى الضارّ، وتُجمَّع فيه المراقبة.",
-        "en": "It is the place where acceptable-use policy is applied, malicious content is blocked and monitoring is consolidated."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
         "ar": "وين يجلس البروكسي العكسي؟",
         "en": "Where does a reverse proxy sit?"
       },
@@ -113,20 +81,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "خلف العملاء، ويتوسّط الاتصالات الصادرة.",
-          "en": "Behind clients, mediating outbound connections."
+          "ar": "داخل هرمية جهة إصدار الشهادات التي تمنح الهويات الرقمية.",
+          "en": "Within a certificate authority hierarchy that issues identities."
         },
         {
-          "ar": "بين موجّهين على نفس المقطع.",
-          "en": "Between two routers on the same segment."
+          "ar": "خلف العملاء ويتوسط طلباتهم لموارد الشبكة الخارجية.",
+          "en": "Behind clients, mediating requests for external network resources."
         },
         {
-          "ar": "داخل هرمية جهة إصدار الشهادات.",
-          "en": "Inside the certificate authority hierarchy."
+          "ar": "بين موجّهين يتصلان بالمقطع الشبكي المحلي نفسه.",
+          "en": "Between two routers that share one local network segment."
         },
         {
-          "ar": "أمام السيرفرات، ويتوسّط الاتصالات الواردة.",
-          "en": "In front of servers, mediating inbound connections."
+          "ar": "أمام الخوادم ويتوسط اتصالات العملاء الواردة إليها.",
+          "en": "In front of servers, mediating inbound client connections."
         }
       ],
       "concept_id": "proxy_reverse_position",
@@ -136,29 +104,29 @@
       }
     },
     {
-      "id": "q5",
+      "id": "q4",
       "stem": {
         "ar": "أي وظائف يوفّرها البروكسي العكسي؟",
         "en": "Which functions does a reverse proxy provide?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "الهاش والتوقيع وإبطال الشهادات.",
-          "en": "Hashing, signing and certificate revocation."
+          "ar": "تجزئة المحتوى وتوقيع الشهادات وإبطال بيانات الاعتماد.",
+          "en": "Hashing content, signing certificates, and revoking credentials."
         },
         {
-          "ar": "موازنة الحمل وإنهاء TLS والتخزين المؤقت و WAF.",
-          "en": "Load balancing, TLS termination, caching and WAF."
+          "ar": "تصفية المحتوى وإخفاء المستخدمين وضبط صلاحيات الوصول.",
+          "en": "Filtering content, anonymising users, and controlling access."
         },
         {
-          "ar": "تصفية المحتوى وإخفاء الهوية والتحكّم بالوصول.",
-          "en": "Content filtering, anonymisation and access control."
+          "ar": "موازنة الحمل وإنهاء TLS والتخزين المؤقت وفحص الويب.",
+          "en": "Load balancing, TLS termination, caching, and web filtering."
         },
         {
-          "ar": "التوجيه و NAT وتخصيص عناوين DHCP.",
-          "en": "Routing, NAT and DHCP address assignment."
+          "ar": "توجيه الترافيك وترجمة العناوين وتخصيص عقود DHCP.",
+          "en": "Routing traffic, translating addresses, and assigning DHCP leases."
         }
       ],
       "concept_id": "proxy_reverse_functions",
@@ -168,61 +136,29 @@
       }
     },
     {
-      "id": "q6",
-      "stem": {
-        "ar": "شنو يحقّق إخفاء السيرفرات خلف بروكسي عكسي؟",
-        "en": "What does abstracting servers behind a reverse proxy achieve?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "تقلّل مساحة الهجوم وتفرض السياسة باتّساق.",
-          "en": "It reduces attack surface and enforces policy consistently."
-        },
-        {
-          "ar": "تلغي الحاجة لأي شهادة على جانب السيرفر.",
-          "en": "It removes the need for any server-side certificate."
-        },
-        {
-          "ar": "تشفّر قاعدة البيانات اللي خلف السيرفرات.",
-          "en": "It encrypts the database that sits behind the servers."
-        },
-        {
-          "ar": "تغني عن أي قاعدة جدار ناري عند الحافة.",
-          "en": "It replaces the need for any firewall rule at the edge."
-        }
-      ],
-      "concept_id": "proxy_reverse_benefit",
-      "explanation": {
-        "ar": "إخفاء السيرفرات خلف نقطة توسّط واحدة يعني إن العملاء ما يوصلونها مباشرة، والسياسة تُطبَّق بمكان واحد.",
-        "en": "Hiding the servers behind one mediation point means clients never reach them directly, and the policy is applied in one place."
-      }
-    },
-    {
-      "id": "q7",
+      "id": "q5",
       "stem": {
         "ar": "شنو الفرق الجوهري بين البروكسي الأمامي والعكسي؟",
         "en": "What is the essential difference between a forward and a reverse proxy?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "هل يخزّن البروكسي الردود أصلًا.",
-          "en": "Whether the proxy caches responses at all."
+          "ar": "يعتمد الفرق على تخزين البروكسي للردود في الذاكرة المؤقتة.",
+          "en": "Whether the proxy stores responses for later client requests."
         },
         {
-          "ar": "هل يعمل البروكسي على عتاد مخصّص.",
-          "en": "Whether the proxy runs on dedicated hardware."
+          "ar": "يعتمد على أي طرف من تبادل العميل والخادم يمثله البروكسي.",
+          "en": "Which side of the client-server exchange the proxy represents."
         },
         {
-          "ar": "أي طرف من التبادل يمثّله البروكسي.",
-          "en": "Which side of the exchange the proxy represents."
+          "ar": "يعتمد على تشغيل البروكسي فوق عتاد شبكي مخصص.",
+          "en": "Whether the proxy uses dedicated hardware for network processing."
         },
         {
-          "ar": "أي خوارزمية تشفير يفضّلها البروكسي.",
-          "en": "Which encryption algorithm the proxy prefers."
+          "ar": "يعتمد على خوارزمية التشفير التي يختارها للاتصالات.",
+          "en": "Which cipher suite the proxy prefers for TLS connections."
         }
       ],
       "concept_id": "proxy_direction_distinction",
@@ -232,7 +168,7 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q6",
       "stem": {
         "ar": "ليش البروكسيات صارت تحتاج فكّ التشفير حتى تسوي شغلها؟",
         "en": "Why do proxies now require decryption to do their job?"
@@ -241,20 +177,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "لأن السيرفرات ترفض الاتصالات غير المشفّرة.",
-          "en": "Because servers refuse unencrypted connections."
+          "ar": "لأن الخوادم ترفض حالياً كل اتصال لا يستخدم التشفير.",
+          "en": "Because servers now reject every unencrypted connection."
         },
         {
-          "ar": "لأن الكاش ما يقدر يخزّن كائنات مشفّرة.",
-          "en": "Because caches cannot store encrypted objects."
+          "ar": "لأن التخزين المؤقت لا يحتفظ بأي كائن شبكي مشفّر.",
+          "en": "Because caches cannot retain any encrypted network object."
         },
         {
-          "ar": "لأن العملاء ما يعودون يرسلون ترويسات صريحة.",
-          "en": "Because clients no longer send plaintext headers."
+          "ar": "لأن العملاء لا يرسلون ترويسات بروتوكول صريحة مطلقاً.",
+          "en": "Because clients no longer transmit plaintext protocol headers."
         },
         {
-          "ar": "لأن تقريباً كل الترافيك مشفّر بـ TLS.",
-          "en": "Because nearly all traffic is TLS-encrypted."
+          "ar": "لأن أغلب حركة التطبيقات الحالية مشفّرة ببروتوكول TLS.",
+          "en": "Because most current application traffic is encrypted with TLS."
         }
       ],
       "concept_id": "proxy_encrypted_challenge",
@@ -264,7 +200,7 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q7",
       "stem": {
         "ar": "أي ثلاث تحديات يقدّمها فكّ التشفير للبروكسيات؟",
         "en": "Which three challenges does decryption introduce for proxies?"
@@ -273,20 +209,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "انحراف ساعة وترتيب سجلات وانتهاء تذاكر.",
-          "en": "Clock drift, log ordering and ticket expiry."
+          "ar": "انحراف الساعة وترتيب سجلّات الأحداث وانتهاء التذاكر.",
+          "en": "Clock drift, event-log ordering, and expired authentication tickets."
         },
         {
-          "ar": "كلفة أداء ومخاوف خصوصية وتعقيد إدارة الشهادات.",
-          "en": "Performance overhead, privacy and certificate management."
+          "ar": "كلفة الأداء وانكشاف الخصوصية وإدارة الشهادات الرقمية.",
+          "en": "Performance overhead, privacy exposure, and certificate management."
         },
         {
-          "ar": "حلقات توجيه ونفاد عناوين وحدود MTU.",
-          "en": "Routing loops, address exhaustion and MTU limits."
+          "ar": "حلقات التوجيه ونفاد العناوين وحدود وحدة النقل.",
+          "en": "Routing loops, address exhaustion, and transmission-unit limits."
         },
         {
-          "ar": "تدوير مفاتيح وإعادة استخدام ملح وتصادم نونس.",
-          "en": "Key rotation, salt reuse and nonce collisions."
+          "ar": "تدوير المفاتيح وإعادة الملح وتصادم القيم العشوائية.",
+          "en": "Key rotation, salt reuse, and collisions of cryptographic nonces."
         }
       ],
       "concept_id": "proxy_decryption_costs",
@@ -296,29 +232,29 @@
       }
     },
     {
-      "id": "q10",
+      "id": "q8",
       "stem": {
         "ar": "شنو يسبّب كلفة الأداء ببروكسي يفحص المحتوى؟",
         "en": "What causes the performance overhead of an inspecting proxy?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "فك وإعادة تشفير الترافيك بكميات كبيرة.",
-          "en": "Bulk decryption and re-encryption of the traffic."
+          "ar": "تخزين كل كائن مطلوب في الذاكرة المؤقتة للبروكسي.",
+          "en": "Storing each requested object in a local proxy cache."
         },
         {
-          "ar": "استعلامات DNS متكرّرة لكل طلب.",
-          "en": "Repeated DNS lookups for every request."
+          "ar": "إعادة استعلام DNS لكل طلب مستخدم يصل إلى البروكسي.",
+          "en": "Repeating DNS lookups for every user request received."
         },
         {
-          "ar": "ضغط أجسام الردود مرتين.",
-          "en": "Compression of the response bodies twice."
+          "ar": "فك وإعادة تشفير كميات كبيرة من الترافيك المفحوص.",
+          "en": "Bulk decryption and re-encryption of network traffic."
         },
         {
-          "ar": "تخزين كل كائن بالذاكرة المؤقتة المحلية.",
-          "en": "Storage of every object in the local cache."
+          "ar": "ضغط جسم الرد مرتين قبل إرساله إلى العميل.",
+          "en": "Compressing the response body twice before returning it."
         }
       ],
       "concept_id": "proxy_perf_overhead",
@@ -328,29 +264,29 @@
       }
     },
     {
-      "id": "q11",
+      "id": "q9",
       "stem": {
         "ar": "شنو مأخذ الخصوصية اللي يثيره بروكسي فاحص؟",
         "en": "What is the privacy concern raised by an inspecting proxy?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "ينشر العناوين الداخلية على الإنترنت.",
-          "en": "It publishes the internal addresses to the internet."
+          "ar": "يكشف عناوين الشبكة الداخلية لمستخدمي الإنترنت العام.",
+          "en": "It exposes internal network addresses to public internet users."
         },
         {
-          "ar": "يمرّر النص الصريح لجهة إصدار الشهادات.",
-          "en": "It forwards the plaintext to the certificate authority."
+          "ar": "يمكنه فحص المحتوى الصريح لكل جلسة يجري اعتراضها.",
+          "en": "It can inspect plaintext content from each intercepted session."
         },
         {
-          "ar": "يكتسب رؤية للنص الصريح لكل جلسة.",
-          "en": "It gains visibility into the plaintext of every session."
+          "ar": "يمرر حركة المستخدم المفكوكة إلى جهات إصدار الشهادات.",
+          "en": "It forwards all decrypted user traffic to certificate authorities."
         },
         {
-          "ar": "يخزّن المفاتيح الخاصة لكل مستخدم.",
-          "en": "It stores the private keys of every user."
+          "ar": "يخزن مفاتيح التشفير الخاصة لجميع المستخدمين.",
+          "en": "It stores the private encryption keys of every user."
         }
       ],
       "concept_id": "proxy_privacy_concern",
@@ -360,7 +296,7 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q10",
       "stem": {
         "ar": "ليش اعتراض TLS على مستوى المؤسسة معقّد تشغيلياً؟",
         "en": "Why is enterprise TLS interception operationally complex?"
@@ -369,20 +305,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "لأن كل سيرفر لازم يعيد إصدار مفتاحه العام يومياً.",
-          "en": "Because every server must reissue its public key daily."
+          "ar": "كل خادم يصدر مفتاحاً عاماً بديلاً مرة كل يوم.",
+          "en": "Every server must issue a replacement public key each day."
         },
         {
-          "ar": "لأن جهة الإصدار لازم تُغلق أثناء الاعتراض.",
-          "en": "Because the CA must be shut down during interception."
+          "ar": "تُغلق جهة إصدار الشهادات أثناء إجراء الاعتراض.",
+          "en": "The certificate authority must be shut down during interception."
         },
         {
-          "ar": "لأن المتصفحات ترفض تخزين المحتوى المعترَض.",
-          "en": "Because browsers refuse to cache intercepted content."
+          "ar": "ترفض المتصفحات تخزين أي محتوى تفحصه الوكلاء.",
+          "en": "Browsers refuse to store any content inspected by proxies."
         },
         {
-          "ar": "لأن كل عميل لازم يثق بشهادة الاعتراض.",
-          "en": "Because every client must trust the interception certificate."
+          "ar": "كل جهاز مُدار يجب أن يثق بشهادة الاعتراض.",
+          "en": "Every managed client must trust the interception certificate."
         }
       ],
       "concept_id": "proxy_cert_complexity",
@@ -392,29 +328,29 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q11",
       "stem": {
         "ar": "كيف تُعبَّر نسبة إصابة الذاكرة المؤقتة للبروكسي؟",
         "en": "How is the cache hit ratio of a proxy expressed?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "إجمالي الطلبات ناقص إصابات الذاكرة.",
-          "en": "Total requests minus the cache hits."
+          "ar": "إصابات الكاش مقسومة على إجمالي الطلبات التي وصلت.",
+          "en": "Cache hits divided by total requests received by the proxy."
         },
         {
-          "ar": "إصابات الذاكرة المؤقتة مقسومة على إجمالي الطلبات.",
-          "en": "Cache hits divided by total requests."
+          "ar": "إصابات الكاش مضروبة بإجمالي عدد الطلبات الواردة.",
+          "en": "Cache hits multiplied by the total number of requests."
         },
         {
-          "ar": "إجمالي الطلبات مقسوماً على إصابات الذاكرة.",
-          "en": "Total requests divided by cache hits."
+          "ar": "إجمالي الطلبات ناقص إصابات الكاش الناجحة.",
+          "en": "Total requests minus the number of successful cache hits."
         },
         {
-          "ar": "إصابات الذاكرة مضروبة بإجمالي الطلبات.",
-          "en": "Cache hits multiplied by the total requests."
+          "ar": "إجمالي الطلبات مقسوماً على إصابات الكاش المحققة.",
+          "en": "Total requests divided by the number of cache hits."
         }
       ],
       "concept_id": "proxy_chr_formula",
@@ -424,7 +360,7 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q12",
       "stem": {
         "ar": "شنو تدلّ عليه نسبة إصابة عالية بالذاكرة المؤقتة؟",
         "en": "What does a high cache hit ratio indicate?"
@@ -433,20 +369,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "معظم الطلبات تُجاب بلا ما توصل للمصدر.",
-          "en": "Most requests are answered without reaching the origin."
+          "ar": "معظم الطلبات تُجاب دون الاتصال بالخادم الأصلي.",
+          "en": "Most requests are served without contacting the origin server."
         },
         {
-          "ar": "معظم الطلبات يحجبها البروكسي.",
-          "en": "Most requests are being blocked by the proxy."
+          "ar": "يفك البروكسي تشفير نسبة أكبر من الترافيك مقارنة بالسابق.",
+          "en": "The proxy decrypts a greater share of traffic than before."
         },
         {
-          "ar": "البروكسي يفكّ تشفير ترافيك أكثر من قبل.",
-          "en": "The proxy is decrypting more traffic than before."
+          "ar": "الخادم الأصلي يستجيب أسرع من كاش البروكسي المحلي.",
+          "en": "The origin server responds faster than the local proxy cache."
         },
         {
-          "ar": "سيرفر المصدر أسرع من الذاكرة المؤقتة.",
-          "en": "The origin server is faster than the cache."
+          "ar": "تحجب سياسة التصفية معظم طلبات العملاء عند البروكسي.",
+          "en": "Most client requests are blocked by the proxy filtering policy."
         }
       ],
       "concept_id": "proxy_chr_meaning",
@@ -456,61 +392,29 @@
       }
     },
     {
-      "id": "q15",
-      "stem": {
-        "ar": "كيف يُعبَّر عن زمن الاستجابة الموفَّر لكل طلب مخزّن؟",
-        "en": "How is the latency saved per cached request expressed?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "زمن استجابة المصدر مضروباً بزمن الكاش.",
-          "en": "Origin latency multiplied by cache latency."
-        },
-        {
-          "ar": "زمن استجابة المصدر مقسوماً على زمن الكاش.",
-          "en": "Origin latency divided by cache latency."
-        },
-        {
-          "ar": "زمن استجابة المصدر ناقص زمن استجابة الكاش.",
-          "en": "Origin latency minus cache latency."
-        },
-        {
-          "ar": "زمن استجابة الكاش ناقص زمن استجابة المصدر.",
-          "en": "Cache latency minus origin latency."
-        }
-      ],
-      "concept_id": "proxy_delta_l",
-      "explanation": {
-        "ar": "الوفر هو الفرق بين الجلب من المصدر والخدمة من الكاش، ويكون موجباً كل ما كان الكاش أقرب.",
-        "en": "The saving is the difference between fetching from the origin and serving from cache, which is positive whenever the cache is closer."
-      }
-    },
-    {
-      "id": "q16",
+      "id": "q13",
       "stem": {
         "ar": "كيف يُعبَّر عن إجمالي زمن الاستجابة الموفَّر؟",
         "en": "How is the total latency saved expressed?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "إجمالي الطلبات مضروباً بالوفر لكل طلب.",
-          "en": "Total requests times the per-request saving."
+          "ar": "كل الطلبات مضروبة بالوفر المحقق لكل طلب منفرد.",
+          "en": "All requests multiplied by the saving for each request."
         },
         {
-          "ar": "إصابات الذاكرة مقسومة على الوفر لكل طلب.",
-          "en": "Cache hits divided by the per-request saving."
+          "ar": "إصابات الكاش مضروبة بالتأخير الموفّر لكل طلب.",
+          "en": "Cache hits multiplied by the latency saved per request."
         },
         {
-          "ar": "إجمالي الطلبات ناقص الوفر لكل طلب.",
-          "en": "Total requests minus the per-request saving."
+          "ar": "إصابات الكاش مقسومة على التأخير الموفّر لكل طلب.",
+          "en": "Cache hits divided by the latency saved per request."
         },
         {
-          "ar": "إصابات الذاكرة مضروبة بالوفر لكل طلب.",
-          "en": "Cache hits times the per-request saving."
+          "ar": "كل الطلبات ناقص التأخير الموفّر عن كل طلب.",
+          "en": "All requests minus the latency saved for each request."
         }
       ],
       "concept_id": "proxy_l_saved",
@@ -520,61 +424,29 @@
       }
     },
     {
-      "id": "q17",
-      "stem": {
-        "ar": "كيف يُعبَّر عن التعرّض المتوقّع بعد تصفية البروكسي؟",
-        "en": "How is the expected exposure after proxy filtering expressed?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "التعرّض السابق مقسوماً على فاعلية التصفية.",
-          "en": "Prior exposure divided by the filtering efficacy."
-        },
-        {
-          "ar": "واحد ناقص فاعلية التصفية، مضروباً بالتعرّض السابق.",
-          "en": "One minus filtering efficacy, times the prior exposure."
-        },
-        {
-          "ar": "واحد زائد فاعلية التصفية، مضروباً بالتعرّض السابق.",
-          "en": "One plus filtering efficacy, times the prior exposure."
-        },
-        {
-          "ar": "فاعلية التصفية مقسومة على التعرّض السابق.",
-          "en": "Filtering efficacy divided by the prior exposure."
-        }
-      ],
-      "concept_id": "proxy_p_exp_formula",
-      "explanation": {
-        "ar": "يتبع نفس نمط الفاعلية ببقية الفصل: التصفية تزيل كسراً من التعرّض وتترك الباقي.",
-        "en": "It follows the same efficacy pattern as the rest of the chapter: filtering removes a fraction of the exposure and leaves the rest."
-      }
-    },
-    {
-      "id": "q18",
+      "id": "q14",
       "stem": {
         "ar": "شنو يسوي البروكسي فعلاً بهجوم ضارّ؟",
         "en": "What does the proxy actually do to a malicious attack?"
       },
       "bloom": "Analyze",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "يقلّل فرصة الوصول للمحتوى، مو الهجوم نفسه.",
-          "en": "It reduces the chance of reaching the content, not the attack."
+          "ar": "يضمن عدم جلب المحتوى الخبيث مرة ثانية تحت أي ظرف.",
+          "en": "It guarantees the malicious content can never be fetched again."
         },
         {
-          "ar": "يمنع الهجوم من الوجود أصلًا.",
-          "en": "It prevents the attack from existing in the first place."
+          "ar": "يلغي الحاجة إلى حماية الأجهزة الطرفية للمستخدمين.",
+          "en": "It removes the need for protection on client endpoints."
         },
         {
-          "ar": "يضمن إن المحتوى ما يُجلب مرة ثانية.",
-          "en": "It guarantees the content is never fetched again."
+          "ar": "يقلل الوصول للمحتوى الخبيث ولا يزيل الهجوم نفسه.",
+          "en": "It reduces access to malicious content, not the attack itself."
         },
         {
-          "ar": "يغني عن حماية الأجهزة الطرفية.",
-          "en": "It replaces the need for endpoint protection."
+          "ar": "يمنع المهاجم من إنشاء الهجوم أو تنفيذه من الأساس.",
+          "en": "It prevents the attacker from creating the attack at all."
         }
       ],
       "concept_id": "proxy_filtering_limit",
@@ -589,7 +461,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

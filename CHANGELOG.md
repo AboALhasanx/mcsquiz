@@ -5,6 +5,18 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.10] — 2026-10-27
+
+### Changed
+- content: retire superseded Cyber Security Chapter 6 banks
+
+
+## [1.7.9] — 2026-10-27
+
+### Changed
+- content: publish cleaned Cyber Security Chapters 4 and 5
+
+
 ## [1.7.8] — 2026-10-26
 
 ### Changed

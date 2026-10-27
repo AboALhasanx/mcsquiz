@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.7.8';
+const VERSION = '1.7.10';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -128,14 +128,11 @@ const CORE = [
   './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T03_Risk_Models_And_Modern_Directions.json',
   './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T04_Tools.json',
   './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T05_Secure_Coding_And_Identity.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T06_Hardening_And_Monitoring.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T07_Lifecycle_Integration_And_Challenges.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T08_Vulnerability_Management_SQLi_XSS_CSRF.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T09_API_SupplyChain_CloudNative.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T10_Vulnerability_Principles_And_Models.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T11_Modern_Techniques_And_Challenges.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T12_Reliability_Engineering.json',
-  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T13_Business_Continuity_And_Threats.json',
+  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T06_Monitoring_Integration_And_Challenges.json',
+  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T07_SQLi_XSS_CSRF.json',
+  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T08_API_SupplyChain_Cloud.json',
+  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T09_Reliability_Engineering.json',
+  './data/banks/01_Cyber_Security_Ch06_Quiz_Ch06_T10_Business_Continuity_And_Threats.json',
   './data/banks/02_English_Language_Ch01_Quiz_01_Grammar_and_Tenses.json',
   './data/banks/02_English_Language_Ch01_Quiz_Ch01_ModelB_Grammar_and_Tenses.json',
   './data/banks/02_English_Language_Ch02_Quiz_Ch02_ModelA_Reading_and_Vocabulary.json',

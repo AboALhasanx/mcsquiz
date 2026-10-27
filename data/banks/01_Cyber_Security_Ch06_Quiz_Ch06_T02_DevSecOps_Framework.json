@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "DevSecOps كإطار استراتيجي",
-    "en": "DevSecOps as a strategic framework"
+    "ar": "DevSecOps والتسليم الآمن",
+    "en": "DevSecOps and Secure Delivery"
   },
   "quiz_id": "Quiz_Ch06_T02_DevSecOps_Framework",
   "has_math": false,
@@ -10,38 +10,6 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "ليش ظهر DevSecOps كإطار؟",
-        "en": "Why did DevSecOps emerge as a framework?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "لأن مزوّدي السحابة أزالوا المسؤولية المشتركة.",
-          "en": "Because cloud providers removed shared responsibility."
-        },
-        {
-          "ar": "لأن الجدارات صارت أبطأ من ترافيك الويب.",
-          "en": "Because firewalls became too slow for web traffic."
-        },
-        {
-          "ar": "لأن agile و DevOps تطلّبا أمنًا يلحق بالوتيرة.",
-          "en": "Because agile and DevOps required security to keep pace."
-        },
-        {
-          "ar": "لأن المدقّقين طلبوا شهادة جديدة.",
-          "en": "Because auditors demanded a new certification."
-        }
-      ],
-      "concept_id": "w6_devsecops_why",
-      "explanation": {
-        "ar": "الانتقال إلى agile و DevOps فرض تطوّراً موازياً باستراتيجية الأمن، وهذا هو DevSecOps.",
-        "en": "The move to agile and DevOps forced a parallel evolution in security strategy, which is what DevSecOps is."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
         "ar": "شنو يدمج DevSecOps؟",
         "en": "What does DevSecOps embed?"
       },
@@ -49,20 +17,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "اختبار الأمن والمراقبة عبر دورة الحياة كلها.",
-          "en": "Security testing and monitoring across the lifecycle."
+          "ar": "اختبار الأمن ومراقبته بالتطوير.",
+          "en": "Security tests and monitoring in delivery."
         },
         {
           "ar": "اختبار اختراق واحد قبل كل إصدار.",
-          "en": "A single penetration test before each release."
+          "en": "One penetration test before each release."
         },
         {
-          "ar": "مجموعة قواعد جدار تُراجع مرة كل ربع.",
-          "en": "A firewall rule set reviewed once a quarter."
+          "ar": "قواعد جدار تُراجع مرة كل ربع.",
+          "en": "Firewall rules reviewed each quarter."
         },
         {
-          "ar": "فريق أمن منفصل خارج خط الإنتاج.",
-          "en": "A separate security team outside the pipeline."
+          "ar": "فريق أمن منفصل عن خط التطوير.",
+          "en": "A security team outside the pipeline."
         }
       ],
       "concept_id": "w6_devsecops_definition",
@@ -72,189 +40,29 @@
       }
     },
     {
-      "id": "q3",
-      "stem": {
-        "ar": "شنو يعني إن DevSecOps يخلي الأمن جوهرياً مو محيطياً؟",
-        "en": "What does it mean that DevSecOps makes security integral rather than peripheral?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "الأمن يُفحص فقط لمّا تصير حادثة.",
-          "en": "Security is checked only when an incident occurs."
-        },
-        {
-          "ar": "الأمن مبني بكل مرحلة، مو ملحوق بالآخر.",
-          "en": "Security is built into every stage, not bolted on at the end."
-        },
-        {
-          "ar": "الأمن مُفوَّض لاستشارية خارجية.",
-          "en": "Security is delegated to an external consultancy."
-        },
-        {
-          "ar": "الأمن موثّق بس مو مفروض بالكود.",
-          "en": "Security is documented but not enforced in code."
-        }
-      ],
-      "concept_id": "w6_devsecops_integral",
-      "explanation": {
-        "ar": "الأمن المحيطي يصير بعد الحدث وبالآخر؛ والأمن الجوهري صفة كل مرحلة.",
-        "en": "Peripheral security happens after the fact and at the end; integral security is a property of every stage."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "شنو يوفّره التحليل الآلي الساكن والديناميكي؟",
-        "en": "What does automated static and dynamic analysis provide?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "حجب فوري للهجمات على ترافيك الإنتاج.",
-          "en": "Runtime blocking of attacks against production traffic."
-        },
-        {
-          "ar": "تشفير مخرجات البناء أثناء السكون.",
-          "en": "Encryption of the build artefacts at rest."
-        },
-        {
-          "ar": "تراجع عن آخر نشر عند الفشل.",
-          "en": "Rollback of the last deployment on failure."
-        },
-        {
-          "ar": "تعرّف مستمر على الثغرات قبل النشر.",
-          "en": "Continuous vulnerability identification before deployment."
-        }
-      ],
-      "concept_id": "w6_dso_static_dynamic",
-      "explanation": {
-        "ar": "التحليل الساكن يقرأ الكود، والديناميكي يشغّل البناء، والاثنان يعملان باستمرار مو مرة واحدة.",
-        "en": "Static analysis reads the code, dynamic analysis exercises the running build, and both run continuously rather than once."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "شنو يؤمّنه أمن البنية التحتية ككود؟",
-        "en": "What does infrastructure-as-code security protect?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "المفتاح الخاص لجهة إصدار الشهادات.",
-          "en": "The certificate authority private key."
-        },
-        {
-          "ar": "الطرفية الفيزيائية للسيرفر.",
-          "en": "The physical console of the server."
-        },
-        {
-          "ar": "سكربتات النشر وإعداداتها.",
-          "en": "Deployment scripts and their configurations."
-        },
-        {
-          "ar": "ذاكرة التطبيق أثناء التشغيل.",
-          "en": "The runtime memory of the application."
-        }
-      ],
-      "concept_id": "w6_dso_iac",
-      "explanation": {
-        "ar": "لو انخترق تعريف النشر، فكل بيئة ينشئها ترث العيب، فالسكربتات نفسها كود لازم يُؤمَّن.",
-        "en": "If the deployment definition is compromised, every environment it creates inherits the flaw, so the scripts themselves are code to secure."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "شنو يؤتمت الامتثال المستمر؟",
-        "en": "What does continuous compliance automate?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "التوافق مع المتطلبات التنظيمية.",
-          "en": "Alignment with regulatory requirements."
-        },
-        {
-          "ar": "تدوير كل بيانات الاعتماد بالمؤسسة.",
-          "en": "Rotation of every credential in the estate."
-        },
-        {
-          "ar": "التراجع عن تغييرات البنية الفاشلة.",
-          "en": "Rollback of failed infrastructure changes."
-        },
-        {
-          "ar": "تكرار البيانات بين المناطق.",
-          "en": "Replication of data between regions."
-        }
-      ],
-      "concept_id": "w6_dso_compliance",
-      "explanation": {
-        "ar": "بدل إثبات الامتثال مرة بالسنة، الخط يظل يتحقّق إن الضوابط ما زالت مطابقة للتنظيم.",
-        "en": "Instead of proving compliance once a year, the pipeline keeps checking that controls still match the regulation."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "شنو تقيّمه الفرق الحمراء ومحاكاة التهديدات؟",
-        "en": "What does red-teaming and threat simulation assess?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "اكتمال تغطية الاختبارات.",
-          "en": "The completeness of the test coverage."
-        },
-        {
-          "ar": "المرونة أمام أساليب الخصوم المتطوّرة.",
-          "en": "Resilience against evolving adversarial tactics."
-        },
-        {
-          "ar": "دقة فاحص الثغرات.",
-          "en": "The accuracy of the vulnerability scanner."
-        },
-        {
-          "ar": "أداء مجمّع مشغّلات CI.",
-          "en": "The performance of the CI runner pool."
-        }
-      ],
-      "concept_id": "w6_dso_redteam",
-      "explanation": {
-        "ar": "هو تقييم استراتيجي لمدى صمود الدفاعات أمام خصم يتكيّف، مو قائمة تحقّق بمشاكل معروفة.",
-        "en": "It is a strategic assessment of whether the defences still hold against an adversary who adapts, not a checklist of known issues."
-      }
-    },
-    {
-      "id": "q8",
+      "id": "q2",
       "stem": {
         "ar": "أي أربعة مكوّنات استراتيجية يضمّها DevSecOps؟",
         "en": "Which four strategic components does DevSecOps include?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "جدارات وبروكسيات و VPN وتقسيم شبكي.",
-          "en": "Firewalling, proxying, VPN and network segmentation."
+          "ar": "توظيف وتدريب وتوعية وكتابة السياسات.",
+          "en": "Hiring, training, awareness, and policy writing."
         },
         {
-          "ar": "نسخ احتياطي وتكرار وتجاوز فشل وتعافٍ.",
-          "en": "Backup, replication, failover and disaster recovery."
+          "ar": "تحليل آلي وIaC وامتثال وفرق حمراء.",
+          "en": "Automated analysis, IaC, compliance, and red-teaming."
         },
         {
-          "ar": "توظيف وتدريب وتوعية وكتابة سياسات.",
-          "en": "Hiring, training, awareness and policy writing."
+          "ar": "جدران وبروكسيات وVPN وتقسيم شبكي.",
+          "en": "Firewalls, proxies, VPNs, and network segmentation."
         },
         {
-          "ar": "تحليل آلي وأمن IaC وامتثال وفرق حمراء.",
-          "en": "Automated analysis, IaC security, compliance and red-teaming."
+          "ar": "نسخ وتكرار وتجاوز فشل وتعافٍ من الكوارث.",
+          "en": "Backups, replication, failover, and disaster recovery."
         }
       ],
       "concept_id": "w6_dso_four_components",
@@ -264,7 +72,7 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q3",
       "stem": {
         "ar": "كيف يُنمذَج عدد الثغرات عبر دورات DevSecOps؟",
         "en": "How is the vulnerability count across DevSecOps iterations modelled?"
@@ -273,20 +81,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "العدد السابق ÷ الإزالة، زائد الجديد.",
-          "en": "Previous count divided by removal, plus new arrivals."
+          "ar": "العدد الموجود مقسوماً على الإزالة مع ثغرات.",
+          "en": "Existing count divided by removal, plus new flaws."
         },
         {
-          "ar": "العدد السابق + الإزالة، ناقص الجديد.",
-          "en": "Previous count plus removal, minus new arrivals."
+          "ar": "العدد الموجود مع الإزالة بعد طرح ثغرات جديدة.",
+          "en": "Existing count plus removal, minus new flaws."
         },
         {
-          "ar": "العدد السابق × (واحد ناقص الإزالة)، زائد الجديد.",
-          "en": "Previous count times one minus removal, plus new arrivals."
+          "ar": "بقية العدد بعد الإزالة مع الثغرات الجديدة.",
+          "en": "Remaining flaws after removal, plus new arrivals."
         },
         {
-          "ar": "العدد السابق × الإزالة، ناقص الجديد.",
-          "en": "Previous count times removal, minus new arrivals."
+          "ar": "الثغرات المزيلة ناقص الثغرات الجديدة.",
+          "en": "Removed flaws, minus new arrivals each cycle."
         }
       ],
       "concept_id": "w6_recurrence_formula",
@@ -296,71 +104,7 @@
       }
     },
     {
-      "id": "q10",
-      "stem": {
-        "ar": "شنو يمثّل معامل الإزالة؟",
-        "en": "What does the removal parameter represent?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "نسبة الثغرات اللي أُزيلت.",
-          "en": "The proportion of vulnerabilities eliminated."
-        },
-        {
-          "ar": "نسبة الثغرات الجديدة الداخلة.",
-          "en": "The proportion of new vulnerabilities introduced."
-        },
-        {
-          "ar": "عدد الدورات المكتملة لحد الآن.",
-          "en": "The number of iterations completed so far."
-        },
-        {
-          "ar": "متوسط خطورة العيوب المتبقية.",
-          "en": "The average severity of the remaining flaws."
-        }
-      ],
-      "concept_id": "w6_alpha_meaning",
-      "explanation": {
-        "ar": "هي الكسر اللي تزيله ممارسات DevSecOps فعلاً خلال دورة واحدة.",
-        "en": "It is the fraction the DevSecOps practices actually remove during one iteration."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "شنو يمثّل معامل الوصول؟",
-        "en": "What does the arrival parameter represent?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "كلفة معالجة ثغرة واحدة.",
-          "en": "The cost of remediating a single flaw."
-        },
-        {
-          "ar": "ثغرات جديدة تدخل خلال الدورة.",
-          "en": "New vulnerabilities introduced during the iteration."
-        },
-        {
-          "ar": "ثغرات مرّت من الدورة السابقة.",
-          "en": "Vulnerabilities carried over from the previous one."
-        },
-        {
-          "ar": "عدد الطبقات في الخط.",
-          "en": "The number of layers in the pipeline."
-        }
-      ],
-      "concept_id": "w6_beta_meaning",
-      "explanation": {
-        "ar": "التطوير يظل ينتج كوداً جديداً، والكود الجديد يظل ينتج عيوباً، فالنموذج لازم يعترف بالتدفق الداخل.",
-        "en": "Development keeps producing new code, and new code keeps producing new flaws, so the model has to admit inflow."
-      }
-    },
-    {
-      "id": "q12",
+      "id": "q4",
       "stem": {
         "ar": "بأي شرط تكون استراتيجية DevSecOps فعّالة؟",
         "en": "Under what condition is the DevSecOps strategy effective?"
@@ -369,20 +113,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "لمّا يتجاوز الجديد الإزالة مقسومة على العدد.",
-          "en": "When new arrivals exceed removal divided by the count."
+          "ar": "يفوق الجديد معدل إزالة الثغرات القائمة.",
+          "en": "Arrivals beat removal per current flaw."
         },
         {
-          "ar": "لمّا تتساوى الإزالة والجديد بالضبط كل دورة.",
-          "en": "When removal equals new arrivals exactly, every iteration."
+          "ar": "تتساوى الإزالة والإضافة في كل دورة.",
+          "en": "Removal equals arrivals every iteration."
         },
         {
-          "ar": "لمّا يبقى العدد ثابتاً عبر كل الدورات.",
-          "en": "When the count stays constant across all iterations."
+          "ar": "يبقى عدد الثغرات ثابتاً بكل دورة.",
+          "en": "Flaw count stays constant each cycle."
         },
         {
-          "ar": "لمّا تتجاوز الإزالة الجديد مقسوماً على العدد.",
-          "en": "When removal exceeds new arrivals divided by the count."
+          "ar": "تفوق الإزالة معدل دخول الثغرات الجديدة.",
+          "en": "Removal beats arrivals per current flaw."
         }
       ],
       "concept_id": "w6_effectiveness_condition",
@@ -392,29 +136,29 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q5",
       "stem": {
         "ar": "شنو يعني ذلك الشرط بعبارة واضحة؟",
         "en": "What does that condition mean in plain terms?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "الفاحص لازم يُستبدل كل دورة.",
-          "en": "The scanner must be replaced every iteration."
+          "ar": "الإزالة تفوق دخول الثغرات الجديدة.",
+          "en": "Removal must beat new flaws at this scale."
         },
         {
-          "ar": "العدد لازم يُصفَّر كل دورة.",
-          "en": "The count must be reset to zero each cycle."
+          "ar": "يوقف الفريق كتابة الكود الجديد تماماً.",
+          "en": "The team must stop writing new code entirely."
         },
         {
-          "ar": "الإزالة لازم تسبق العيوب الجديدة بذلك الحجم.",
-          "en": "Removal has to outpace the new flaws at that size."
+          "ar": "يستبدل الفريق الفاحص في كل دورة.",
+          "en": "The team must replace the scanner each cycle."
         },
         {
-          "ar": "الفريق لازم يوقف كتابة أي كود جديد.",
-          "en": "The team must stop writing any new code at all."
+          "ar": "يصفّر الفريق عدد الثغرات بكل دورة.",
+          "en": "The team must reset the flaw count each cycle."
         }
       ],
       "concept_id": "w6_condition_interpretation",
@@ -424,163 +168,35 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q6",
       "stem": {
-        "ar": "شنو يدلّ عليه مسار هابط للثغرات المتبقية؟",
-        "en": "What does a declining trajectory of residual vulnerabilities indicate?"
+        "ar": "في العلاقة التكرارية لعدد الثغرات، ماذا يمثّل α وβ؟",
+        "en": "In the vulnerability recurrence, what do α and β represent?"
       },
       "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "الاستراتيجية تزيل أسرع مما تُدخل.",
-          "en": "The strategy removes faster than it introduces."
-        },
-        {
-          "ar": "الفريق توقّف عن نشر أي تغييرات.",
-          "en": "The team has stopped deploying any changes."
-        },
-        {
-          "ar": "الفاحص توقّف عن إيجاد أي جديد.",
-          "en": "The scanner has stopped finding anything new."
-        },
-        {
-          "ar": "المخزون يُتجاهل عمداً.",
-          "en": "The backlog is being ignored deliberately."
-        }
-      ],
-      "concept_id": "w6_declining_trajectory",
-      "explanation": {
-        "ar": "الدورات المتعاقبة تترك أقل، وهذا هو المعنى العملي لتحقّق شرط الفاعلية.",
-        "en": "Successive iterations leave fewer behind, which is the operational meaning of the effectiveness condition being met."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "شنو يصير لو كانت نسبة الإزالة صفراً؟",
-        "en": "What happens if the removal proportion is zero?"
-      },
-      "bloom": "Analyze",
       "answer": 1,
       "options": [
         {
-          "ar": "العدد يصير غير معرّف فوراً.",
-          "en": "The count becomes undefined immediately."
+          "ar": "α معدل الهجوم، وβ عدد الطبقات.",
+          "en": "α is attack rate; β counts security layers."
         },
         {
-          "ar": "العدد يكبر فقط، فالاستراتيجية فشلت.",
-          "en": "The count only grows, so the strategy has failed."
+          "ar": "α نسبة ما يُزال، وβ عدد ما يُضاف.",
+          "en": "α is the removal share; β counts newly added flaws."
         },
         {
-          "ar": "العدد يبقى ثابتاً عند القيمة الأولى.",
-          "en": "The count stays fixed at the initial value."
+          "ar": "α عدد ما يُضاف، وβ نسبة ما يُزال.",
+          "en": "α counts new flaws; β is the share removed per cycle."
         },
         {
-          "ar": "العدد ينزل ببطء لكن بثبات.",
-          "en": "The count falls slowly but steadily."
+          "ar": "α درجة الخطر، وβ ميزانية المعالجة.",
+          "en": "α is total risk; β is the remediation budget."
         }
       ],
-      "concept_id": "w6_alpha_zero_case",
+      "concept_id": "w6_alpha_beta_meaning",
       "explanation": {
-        "ar": "بلا إزالة ومع إضافة دائمة، التكرارية تختزل لجمع متكرّر، وهذا عكس برنامج أمني.",
-        "en": "With nothing removed and something always added, the recurrence reduces to repeated addition, which is the opposite of a security programme."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "شنو يشترط معامل وصول كبير من نسبة الإزالة؟",
-        "en": "What does a large arrival term require of the removal rate?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "لا شي إضافي، لأن الحدود مستقلة.",
-          "en": "Nothing extra, since the terms are independent."
-        },
-        {
-          "ar": "نسبة إزالة أصغر، لتجنّب التصحيح الزائد.",
-          "en": "A smaller removal rate, to avoid over-correcting."
-        },
-        {
-          "ar": "تصفير عدّاد الدورات.",
-          "en": "A reset of the iteration counter to zero."
-        },
-        {
-          "ar": "نسبة إزالة أكبر بالتناسب حتى يستمر النزول.",
-          "en": "A proportionally larger removal rate to keep falling."
-        }
-      ],
-      "concept_id": "w6_beta_large_case",
-      "explanation": {
-        "ar": "بما إن الشرط يقارن الإزالة بالجديد نسبةً للعدد الحالي، فتدفق أعلى يرفع العتبة اللي يعتبر فعّالاً.",
-        "en": "Because the condition compares removal against arrivals relative to the current count, a higher inflow raises the bar for what counts as effective."
-      }
-    },
-    {
-      "id": "q17",
-      "stem": {
-        "ar": "كيف يختلف DevSecOps عن تدقيق أمني دوري؟",
-        "en": "How does DevSecOps differ from a periodic security audit?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يزيل الحاجة لاختبار الاختراق.",
-          "en": "It removes the need for penetration testing."
-        },
-        {
-          "ar": "يُنفَّذ فقط باستشاريين خارجيين.",
-          "en": "It is performed only by external consultants."
-        },
-        {
-          "ar": "يشتغل باستمرار داخل الخط، مو مرة بالسنة.",
-          "en": "It runs continuously inside the pipeline, not once a year."
-        },
-        {
-          "ar": "يغني عن أي سياسة أمنية.",
-          "en": "It replaces the need for any security policy."
-        }
-      ],
-      "concept_id": "w6_dso_vs_audit",
-      "explanation": {
-        "ar": "التدقيق يعاين لحظة؛ والخط يفحص كل تغيير، ولهذا توصل التغذية الراجعة والتغيير لا يزال رخيص الإصلاح.",
-        "en": "An audit samples a moment; a pipeline checks every change, which is why the feedback arrives while the change is still cheap to fix."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "كيف يرتبط DevSecOps بمبدأ الانزياح يساراً؟",
-        "en": "How does DevSecOps relate to the shift-left principle?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "هو الصيغة التشغيلية لانزياح الأمن يساراً.",
-          "en": "It is the operational form of shifting security left."
-        },
-        {
-          "ar": "يناقض الانزياح يساراً بإضافة بوابات متأخرة.",
-          "en": "It contradicts shift-left by adding later gates."
-        },
-        {
-          "ar": "يطبّق الانزياح على كود البنية فقط.",
-          "en": "It applies shift-left only to infrastructure code."
-        },
-        {
-          "ar": "يستبدل الانزياح يساراً بمسح دوري.",
-          "en": "It replaces shift-left with periodic scanning."
-        }
-      ],
-      "concept_id": "w6_dso_shift_left_link",
-      "explanation": {
-        "ar": "الانزياح يساراً هو المبدأ، و DevSecOps هو كيف يُنفَّذ فعلاً بخط تسليم رشيق.",
-        "en": "Shift-left is the principle and DevSecOps is how it is actually implemented in an agile delivery pipeline."
+        "ar": "تقلّل العلاقة العدد الموجود بنسبة α، ثم تضيف β من الثغرات الجديدة.",
+        "en": "The recurrence reduces the existing count by proportion α, then adds β newly introduced vulnerabilities."
       }
     }
   ],
@@ -589,7 +205,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T10:20:11Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

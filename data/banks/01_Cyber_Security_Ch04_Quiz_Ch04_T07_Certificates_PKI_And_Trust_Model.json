@@ -10,59 +10,27 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "شنو المشكلة اللي تحلّها الشهادات الرقمية والـ PKI؟",
-        "en": "What problem do digital certificates and PKI solve?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "توليد مفتاح متماثل جديد لكل جلسة.",
-          "en": "Generating a fresh symmetric key for every single session."
-        },
-        {
-          "ar": "التأكد من أن المفتاح العام يخص فعلاً الهوية المزعومة مو مهاجم.",
-          "en": "Confirming that a public key really belongs to the claimed identity."
-        },
-        {
-          "ar": "تشفير الرسالة حتى ما يقدر أي مهاجم يقراها أثناء النقل.",
-          "en": "Encrypting the message so that no attacker can read it in transit."
-        },
-        {
-          "ar": "ضغط الرسالة حتى تُرسل بشكل أسرع.",
-          "en": "Compressing the message so that it can be transmitted faster."
-        }
-      ],
-      "concept_id": "cert_problem_addressed",
-      "explanation": {
-        "ar": "التوقيع الرقمي يترك سؤالاً مفتوحاً: كيف يتأكد المستخدم إن المفتاح العام يعود لـ Alice مو لمهاجم؟ وهذه بالضبط الفجوة اللي تسدّها الشهادات والـ PKI.",
-        "en": "A signature still leaves open how a user can be sure that a public key belongs to Alice rather than to an attacker, and that is the gap certificates and PKI close."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
         "ar": "شنو تربط الشهادة الرقمية؟",
         "en": "What does a digital certificate bind?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "مفتاحاً عاماً بمفتاح جلسة متماثل.",
-          "en": "A public key to a symmetric session key."
+          "ar": "مفتاحاً عاماً بهوية الشخص أو الجهة التي تحمل الشهادة.",
+          "en": "A public key to the identity of its certificate holder."
         },
         {
-          "ar": "مفتاحاً خاصاً بجهة إصدار الشهادات.",
-          "en": "A private key to a certificate authority."
+          "ar": "مفتاحاً خاصاً بجهة الإصدار المسؤولة عن الشهادة الرقمية.",
+          "en": "A private key to the authority that issues a certificate."
         },
         {
-          "ar": "قيمة هاش ببصمة رسالة.",
-          "en": "A hash value to a message digest."
+          "ar": "هاش رسالة ببصمة تُحسب لمحتوى الرسالة الرقمية ذاتها.",
+          "en": "A message hash to the digest calculated from that message."
         },
         {
-          "ar": "مفتاحاً عاماً بهوية كيان.",
-          "en": "A public key to an entity's identity."
+          "ar": "مفتاحاً عاماً بمفتاح متماثل أُنشئ لاستخدامه في جلسة واحدة.",
+          "en": "A public key to a symmetric key created for one session."
         }
       ],
       "concept_id": "cert_definition",
@@ -72,29 +40,29 @@
       }
     },
     {
-      "id": "q3",
+      "id": "q2",
       "stem": {
         "ar": "أي من هاي مو من محتويات شهادة X.509؟",
         "en": "Which of these is NOT among the contents of an X.509 certificate?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "النص الصريح للرسالة التي وُقّعت.",
-          "en": "The plaintext of the message that was signed."
+          "ar": "تاريخ بداية ونهاية الفترة المسموحة لصلاحية الشهادة.",
+          "en": "The dates that mark the certificate’s allowed validity period."
         },
         {
-          "ar": "هوية الكيان اللي يحمل الشهادة.",
-          "en": "The identity of the entity that holds the certificate."
+          "ar": "المحتوى الصريح للرسالة المنفصلة التي يراد توقيعها رقمياً.",
+          "en": "The original plaintext content of the separate signed message."
         },
         {
-          "ar": "فترة الصلاحية اللي تكون الشهادة قابلة للاستخدام فيها.",
-          "en": "The validity period during which the certificate is usable."
+          "ar": "التوقيع الرقمي الذي أنشأته جهة إصدار الشهادة الرقمية.",
+          "en": "The digital signature created by the certificate issuer."
         },
         {
-          "ar": "التوقيع الرقمي لجهة إصدار الشهادات.",
-          "en": "The digital signature of the certificate authority."
+          "ar": "هوية صاحب الشهادة والبيانات التي تميّزه ضمن السجل.",
+          "en": "The identity and identifying details of the certificate subject."
         }
       ],
       "concept_id": "cert_x509_fields",
@@ -104,29 +72,29 @@
       }
     },
     {
-      "id": "q4",
+      "id": "q3",
       "stem": {
         "ar": "شنو اللي يحوّل الشهادة الرقمية إلى وثيقة موثوقة بدل مجرد ادعاء؟",
         "en": "What turns a digital certificate into a trusted credential rather than a mere claim?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 3,
       "options": [
         {
-          "ar": "ضُغطت الشهادة لمنع التلاعب بها.",
-          "en": "The certificate has been compressed to prevent tampering."
+          "ar": "يُهشّ المفتاح العام مع الهوية الكاملة لصاحب الشهادة.",
+          "en": "The public key is hashed together with the subject’s full identity."
         },
         {
-          "ar": "هُشّ المفتاح العام مع اسم صاحب الشهادة.",
-          "en": "The public key has been hashed together with the subject name."
+          "ar": "يشفّر صاحب الشهادة الملف بمفتاح متماثل مشترك للطرفين.",
+          "en": "The subject encrypts the certificate using a shared symmetric key."
         },
         {
-          "ar": "جهة الإصدار وقّعت الشهادة بمفتاحها الخاص.",
-          "en": "The issuer has signed the certificate with its own private key."
+          "ar": "تُضغط الشهادة الرقمية قبل تقديمها إلى المتصفح للتحقق.",
+          "en": "The certificate is compressed before it is given to the browser."
         },
         {
-          "ar": "صاحب الشهادة شفّر الشهادة بمفتاح متماثل.",
-          "en": "The subject has encrypted the certificate with a symmetric key."
+          "ar": "توقّع جهة الإصدار الشهادة باستخدام مفتاحها الخاص بها.",
+          "en": "The issuing authority signs the certificate using its own private key."
         }
       ],
       "concept_id": "cert_issuer_signature_role",
@@ -136,82 +104,46 @@
       }
     },
     {
-      "id": "q5",
+      "id": "q4",
       "stem": {
         "ar": "أي عبارة عن جهات إصدار الشهادات صحيحة؟",
         "en": "Which statement about certificate authorities is correct?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "مهاجمون يعترضون الشهادات أثناء النقل.",
-          "en": "Attackers that intercept certificates during transmission."
+          "ar": "جهات حكومية تشفر حركة الإنترنت العامة بصورة افتراضية دائماً.",
+          "en": "Government agencies encrypt all public internet traffic by default."
         },
         {
-          "ar": "منظّمات موثوقة تتحقّق من الهويات وتُصدر الشهادات.",
-          "en": "Trusted organizations that verify identities and issue certificates."
+          "ar": "مهاجمون يعترضون شهادات المواقع عندما يتصفح المستخدمون الإنترنت.",
+          "en": "Attackers intercept certificates while users browse websites online."
         },
         {
-          "ar": "هيئات حكومية تشفّر كل حركة الإنترنت افتراضياً.",
-          "en": "Government bodies that encrypt all internet traffic by default."
+          "ar": "مؤسسات موثوقة تتحقق من الهويات ثم تصدر الشهادات الرقمية.",
+          "en": "Trusted organizations verify identities and issue digital certificates."
         },
         {
-          "ar": "متصفحات تخزّن الشهادات نيابة عن المستخدم.",
-          "en": "Browsers that store certificates on behalf of the user."
+          "ar": "متصفحات تحفظ سجلات الشهادات نيابة عن مستخدميها وأجهزتهم.",
+          "en": "Web browsers store certificate records for their users and devices."
         }
       ],
       "concept_id": "ca_definition_examples",
       "explanation": {
         "ar": "الـ CA منظّمة موثوقة تتحقّق من الهويات وتُصدر الشهادات، والفصل يذكر DigiCert و Let's Encrypt و GlobalSign كأمثلة.",
-        "en": "CAs are trusted organizations that verify identities and issue certificates; the chapter names DigiCert, Let's Encrypt and GlobalSign as examples."
+        "en": "CAs are trusted organizations that verify identities and issue certificates; the named items are DigiCert, Let's Encrypt and GlobalSign as examples."
       }
     },
     {
-      "id": "q6",
-      "stem": {
-        "ar": "بأي مفتاح توقّع جهة إصدار الشهادات الشهادة اللي تُصدرها؟",
-        "en": "With which key does a certificate authority sign the certificate it issues?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "المفتاح الخاص لصاحب الشهادة.",
-          "en": "The subject's private key."
-        },
-        {
-          "ar": "المفتاح العام لصاحب الشهادة.",
-          "en": "The subject's public key."
-        },
-        {
-          "ar": "مفتاح متماثل مشترك مع المتصفح.",
-          "en": "A symmetric key shared with the browser."
-        },
-        {
-          "ar": "مفتاحها الخاص.",
-          "en": "Its own private key."
-        }
-      ],
-      "concept_id": "ca_signs_with_private_key",
-      "explanation": {
-        "ar": "الـ CA توقّع الشهادة رقمياً باستخدام مفتاحها الخاص، فأي واحد يملك المفتاح العام للـ CA يقدر يتحقّق من التوقيع.",
-        "en": "The CA digitally signs the certificate using its private key, so anyone holding the CA's public key can verify that signature."
-      }
-    },
-    {
-      "id": "q7",
+      "id": "q5",
       "stem": {
         "ar": "ليش المتصفح يقبل شهادة أصدرتها CA ما تواصل معها أبداً بشكل مباشر؟",
         "en": "Why does a browser accept a certificate issued by a CA it has never contacted directly?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "لأنه يثق بجهات إصدار معروفة ويفحص سلسلة الشهادة.",
-          "en": "Because it trusts recognized CAs and checks the certificate chain."
-        },
         {
           "ar": "لأنه يفكّ تشفير الشهادة باستخدام المفتاح العام للموقع.",
           "en": "Because it decrypts the certificate using the website's public key."
@@ -219,6 +151,10 @@
         {
           "ar": "لأن الموقع يثبت ملكيته عبر تحقّق بكلمة مرور.",
           "en": "Because the website proves ownership with a password challenge."
+        },
+        {
+          "ar": "لأنه يثق بجهات إصدار معروفة ويفحص سلسلة الشهادة.",
+          "en": "Because it trusts recognized CAs and checks the certificate chain."
         },
         {
           "ar": "لأن مزوّد خدمة الإنترنت يعيد تشفير الشهادة.",
@@ -232,29 +168,29 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q6",
       "stem": {
         "ar": "أي من هاي مو من العمليات الثلاث اللي تُدير بها الـ PKI الشهادات؟",
         "en": "Which of these is NOT one of the three operations through which PKI manages certificates?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "التحقّق، حيث يفحص العملاء السلسلة مقابل الجذور الموثوقة.",
-          "en": "Validation, where clients check the chain against trusted roots."
+          "ar": "النسخ يوزع سجلات الشهادات على جميع عقد الشبكة بصورة دورية.",
+          "en": "Replication copies certificate records to every network node."
         },
         {
-          "ar": "إبطال الشهادات المنتهية أو المخترقة.",
-          "en": "Revocation of expired or compromised certificates."
+          "ar": "الإصدار يتحقق من الهوية ويجعل جهة الإصدار توقع الشهادة.",
+          "en": "Issuance verifies the subject and has the CA sign the certificate."
         },
         {
-          "ar": "نسخ الشهادات على كل عقدة بالشبكة.",
-          "en": "Replication of certificates across every network node."
+          "ar": "الإبطال يوقف الشهادات المنتهية أو التي ثبت اختراقها أمنياً.",
+          "en": "Revocation removes certificates that expired or were compromised."
         },
         {
-          "ar": "الإصدار، حيث تتحقّق الـ CA من الهوية وتوقّع الشهادة.",
-          "en": "Issuance, where the CA verifies the identity and signs the certificate."
+          "ar": "التحقق يفحص سلسلة الشهادات بالرجوع إلى سجلات الجذور الموثوقة.",
+          "en": "Validation checks the certificate chain against trusted root records."
         }
       ],
       "concept_id": "pki_three_operations",
@@ -264,7 +200,7 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q7",
       "stem": {
         "ar": "شنو يصير أثناء إصدار الشهادة؟",
         "en": "What happens during certificate issuance?"
@@ -273,20 +209,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "يولّد صاحب الشهادة مفتاح جلسة متماثلاً جديداً.",
-          "en": "The subject generates a new symmetric session key."
+          "ar": "ينشئ صاحب الشهادة مفتاحاً متماثلاً جديداً لكل جلسة اتصال.",
+          "en": "The subject generates a fresh symmetric key for each new session."
         },
         {
-          "ar": "تتحقّق الـ CA من الهوية وتوقّع الشهادة.",
-          "en": "The CA verifies the identity and signs the certificate."
+          "ar": "تتحقق جهة الإصدار من الهوية المزعومة وتوقع الشهادة الجديدة.",
+          "en": "The CA checks the claimed identity and signs the new certificate."
         },
         {
-          "ar": "ينزّل العميل قائمة بالشهادات المبطلة.",
-          "en": "The client downloads a list of revoked certificates."
+          "ar": "ينزّل العميل قائمة حديثة بسجلات الشهادات التي جرى إبطالها.",
+          "en": "The client downloads a current list of revoked certificate records."
         },
         {
-          "ar": "يحذف المتصفح الشهادة من مخزن الثقة.",
-          "en": "The browser deletes the certificate from its trust store."
+          "ar": "يحذف المتصفح شهادة منتهية من مخزن الجذور الموثوقة لديه.",
+          "en": "The browser removes an expired certificate from its trust store."
         }
       ],
       "concept_id": "pki_issuance",
@@ -296,125 +232,29 @@
       }
     },
     {
-      "id": "q10",
-      "stem": {
-        "ar": "شنو يسوي العميل أثناء التحقّق من الشهادة؟",
-        "en": "What does a client do during certificate validation?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "يعيد توقيع الشهادة بمفتاحه الخاص.",
-          "en": "It re-signs the certificate with its own private key."
-        },
-        {
-          "ar": "يطلب من صاحب الشهادة تأكيد محتواها.",
-          "en": "It asks the subject to confirm the certificate contents."
-        },
-        {
-          "ar": "يحوّل الشهادة إلى مفتاح متماثل.",
-          "en": "It converts the certificate into a symmetric key."
-        },
-        {
-          "ar": "يفحص سلسلة الشهادات مقابل الجذور الموثوقة.",
-          "en": "It checks the certificate chain against the trusted roots."
-        }
-      ],
-      "concept_id": "pki_validation",
-      "explanation": {
-        "ar": "التحقّق يعني إن العميل يفحص سلسلة الشهادات مقابل الجذور الموثوقة المخزّنة بالمتصفح أو نظام التشغيل.",
-        "en": "Validation means the client checks the certificate chain against the trusted roots stored in the browser or the operating system."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "شنو هي قائمة إبطال الشهادات CRL؟",
-        "en": "What is a Certificate Revocation List?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "قائمة بالشهادات اللي أُبطلت قبل انتهاء صلاحيتها.",
-          "en": "A list of certificates invalidated before their expiry."
-        },
-        {
-          "ar": "قائمة بكل الشهادات اللي أصدرتها CA واحدة.",
-          "en": "A list of all certificates ever issued by a single CA."
-        },
-        {
-          "ar": "سجل بكل شهادة انتهت صلاحيتها.",
-          "en": "A record of every certificate that has already expired."
-        },
-        {
-          "ar": "ترتيب لجهات إصدار الشهادات حسب الحصة السوقية.",
-          "en": "A ranking of certificate authorities by market share."
-        }
-      ],
-      "concept_id": "crl_definition",
-      "explanation": {
-        "ar": "الإبطال يُبطل الشهادات المنتهية أو المخترقة، وقائمة CRL هي القائمة اللي يسحبها العميل ليعرف أي الأرقام التسلسلية صارت غير موثوقة.",
-        "en": "Revocation invalidates expired or compromised certificates, and a CRL is the list a client can download to see which serial numbers are no longer trustworthy."
-      }
-    },
-    {
-      "id": "q12",
-      "stem": {
-        "ar": "شنو يسمح بروتوكول OCSP للعميل يسويه؟",
-        "en": "What does OCSP allow a client to do?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يولّد شهادة جديدة لنطاق جديد.",
-          "en": "Generate a fresh certificate for a new domain."
-        },
-        {
-          "ar": "يشفّر سلسلة الشهادات بمفتاح جلسة.",
-          "en": "Encrypt the certificate chain with a session key."
-        },
-        {
-          "ar": "يستعلم أونلاين عن حالة شهادة معيّنة واحدة.",
-          "en": "Query the status of one specific certificate online."
-        },
-        {
-          "ar": "يسحب قائمة الإبطال الكاملة من الـ CA.",
-          "en": "Download the complete revocation list from the CA."
-        }
-      ],
-      "concept_id": "ocsp_definition",
-      "explanation": {
-        "ar": "بروتوكول OCSP (Online Certificate Status Protocol) استعلام أونلاين مباشر عن حالة شهادة واحدة بعينها، بخلاف الـ CRL اللي هي قائمة مسحوبة.",
-        "en": "OCSP — the Online Certificate Status Protocol — is a direct online query about the current status of a single certificate, unlike a CRL which is a downloaded list."
-      }
-    },
-    {
-      "id": "q13",
+      "id": "q8",
       "stem": {
         "ar": "العميل لازم يتحقّق من شهادة واحدة ويريد أحدث إجابة من دون ما يسحب قائمة كبيرة. أي آلية تلائم؟",
         "en": "A client must check a single certificate and wants the freshest answer without downloading a large list. Which mechanism fits?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "CRL، لأنه الآلية الوحيدة اللي تشتغل بدون اتصال.",
-          "en": "CRL, because it is the only mechanism that works offline."
+          "ar": "CRL، لأنها تعرض جميع الشهادات التي أصدرتها جهة الإصدار.",
+          "en": "CRL, because it lists all certificates that the CA has ever issued."
         },
         {
-          "ar": "OCSP، لأنه يستعلم عن حالة تلك الشهادة مباشرة.",
-          "en": "OCSP, because it queries the status of that certificate directly."
+          "ar": "OCSP، لأنه يستبدل سلسلة الشهادات كاملةً أثناء التحقق.",
+          "en": "OCSP, because it replaces the certificate chain during validation."
         },
         {
-          "ar": "CRL، لأنها تسرد كل شهادة أصدرتها الـ CA.",
-          "en": "CRL, because it lists every certificate the CA has issued."
+          "ar": "OCSP، لأنه يفحص مباشرةً الحالة الحالية لشهادة واحدة.",
+          "en": "OCSP, because it directly checks the current status of one certificate."
         },
         {
-          "ar": "OCSP، لأنه يستبدل سلسلة الشهادات بالكامل.",
-          "en": "OCSP, because it replaces the certificate chain entirely."
+          "ar": "CRL، لأنها الآلية الوحيدة لفحص الشهادات عند انقطاع الاتصال.",
+          "en": "CRL, because it is the only certificate mechanism that works offline."
         }
       ],
       "concept_id": "crl_vs_ocsp",
@@ -424,93 +264,93 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q9",
       "stem": {
-        "ar": "أي من هاي ما مذكور بالفصل كحالة استخدام للأمن السيبراني عبر الشهادات؟",
-        "en": "Which of the following is NOT listed in the chapter as a cybersecurity use case for certificates?"
+        "ar": "أي خيار ليس استخداماً أمنياً شائعاً للشهادات الرقمية؟",
+        "en": "Which option is not a common cybersecurity use of digital certificates?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "HTTPS، حيث تعرض الخوادم شهاداتها على المتصفحات.",
-          "en": "HTTPS, where servers present certificates to browsers."
+          "ar": "تُصادق خوادم HTTPS على هويتها أمام المتصفحات بواسطة الشهادات.",
+          "en": "HTTPS servers authenticate themselves to browsers with certificates."
         },
         {
-          "ar": "توقيع الشيفرة، اللي يؤكّد شرعية موردي البرمجيات.",
-          "en": "Code signing, which confirms the legitimacy of software vendors."
+          "ar": "تحفظ النسخ الخارجية بيانات المستخدم بأمان في موقع تخزين منفصل.",
+          "en": "Offsite backups preserve user data at a separate storage location."
         },
         {
-          "ar": "شبكات VPN والبريد الآمن، اللي تُصادِق على الأجهزة والمستخدمين.",
-          "en": "VPNs and secure email, which authenticate devices and users."
+          "ar": "يؤكد توقيع الشيفرة ناشر البرامج وسلامة نسخها التي يجري نشرها.",
+          "en": "Code signing confirms the publisher and integrity of released software."
         },
         {
-          "ar": "نسخ بيانات المستخدمين احتياطياً إلى موقع تخزين خارجي.",
-          "en": "Backing up user data to an offsite storage facility."
+          "ar": "تُصادق VPN والبريد الآمن على المستخدمين والخوادم والأجهزة المتصلة.",
+          "en": "VPNs and secure email authenticate users, servers and connected devices."
         }
       ],
       "concept_id": "cert_usecases",
       "explanation": {
         "ar": "الفصل يذكر ثلاث حالات استخدام: HTTPS (TLS/SSL)، وتوقيع الشيفرة، وشبكات VPN مع البريد الآمن — الشهادات تُصادِق على الأطراف قبل أن تكمل أي واحدة منها.",
-        "en": "The chapter lists three use cases: HTTPS (TLS/SSL), code signing, and VPNs together with secure email — certificates authenticate the parties before any of them proceeds."
+        "en": "the listed items are three use cases: HTTPS (TLS/SSL), code signing, and VPNs together with secure email — certificates authenticate the parties before any of them proceeds."
       }
     },
     {
-      "id": "q15",
+      "id": "q10",
       "stem": {
         "ar": "شنو النتيجة لو اختُرقت جهة إصدار الشهادات نفسها؟",
         "en": "What is the consequence if a certificate authority itself is compromised?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "يقدر المهاجمون إصدار شهادات مزيّفة ويظلّ المتصفح يثق بها.",
-          "en": "Attackers can issue fraudulent certificates that browsers still trust."
+          "ar": "تنكشف فوراً جميع مفاتيح الجلسات المتماثلة المستخدمة بالشبكة.",
+          "en": "Every symmetric session key on the network becomes exposed at once."
         },
         {
-          "ar": "كل المفاتيح المتماثلة بالشبكة تنكشف فوراً.",
-          "en": "All symmetric keys on the network are immediately exposed."
+          "ar": "تصبح دالة الهاش المستخدمة بكل التواقيع قابلةً للعكس.",
+          "en": "The hash function used by every digital signature becomes reversible."
         },
         {
-          "ar": "كل شهادة تصير غير مقروءة لصاحبها الشرعي.",
-          "en": "Every certificate becomes unreadable to its legitimate owner."
+          "ar": "يعجز مالكو الشهادات الشرعيون عن قراءة سجلاتهم الخاصة.",
+          "en": "Legitimate certificate owners can no longer read their own records."
         },
         {
-          "ar": "دالة الهاش اللي تبني التواقيع تنعكس.",
-          "en": "The hash function underlying the signatures is reversed."
+          "ar": "يستطيع المهاجم إصدار شهادات مزيفة وما زالت المتصفحات تقبلها.",
+          "en": "Attackers may issue fraudulent certificates that browsers still accept."
         }
       ],
       "concept_id": "weakness_ca_compromise",
       "explanation": {
         "ar": "لو اختُرقت جهة إصدار، يقدر المهاجمون يصدرون شهادات مزيّفة تجتاز التحقّق — واختراق DigiNotar سنة 2011 هو مثال الفصل.",
-        "en": "If a CA is hacked, attackers can issue fake certificates that still pass validation — the DigiNotar breach of 2011 is the chapter's example."
+        "en": "If a CA is hacked, attackers can issue fake certificates that still pass validation — the DigiNotar breach of 2011 is the example."
       }
     },
     {
-      "id": "q16",
+      "id": "q11",
       "stem": {
         "ar": "أي درس يوضحه انقطاع Microsoft Teams سنة 2020؟",
         "en": "What lesson does the Microsoft Teams outage of 2020 illustrate?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "الشهادة المبطلة تسبّب انقطاع خدمة إذا ما يُعاد توقيعها.",
-          "en": "A revoked certificate causes a service outage if it is not re-signed."
+          "ar": "الشهادة المنتهية تسبّب انقطاع خدمة إذا ما تُجدَّد.",
+          "en": "An expired certificate causes a service outage if it is not renewed."
         },
         {
           "ar": "المفتاح الخاص المسروق يسبّب انقطاع خدمة إذا ما يُبدَّل.",
           "en": "A stolen private key causes a service outage if it is not rotated."
         },
         {
-          "ar": "الشهادة المنتهية تسبّب انقطاع خدمة إذا ما تُجدَّد.",
-          "en": "An expired certificate causes a service outage if it is not renewed."
-        },
-        {
           "ar": "جهة الإصدار المخترقة تسبّب انقطاع خدمة إذا ما تُستبدل.",
           "en": "A compromised CA causes a service outage if it is not replaced."
+        },
+        {
+          "ar": "الشهادة المبطلة تسبّب انقطاع خدمة إذا ما يُعاد توقيعها.",
+          "en": "A revoked certificate causes a service outage if it is not re-signed."
         }
       ],
       "concept_id": "weakness_expired_certs",
@@ -520,195 +360,35 @@
       }
     },
     {
-      "id": "q17",
+      "id": "q12",
       "stem": {
         "ar": "أي وصف يطابق حالة DigiNotar سنة 2011؟",
         "en": "Which description matches the DigiNotar case of 2011?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 3,
       "options": [
         {
-          "ar": "انتهت صلاحية شهادة أثناء مؤتمر مرئي مباشر وسبّبت انقطاعاً.",
-          "en": "A certificate expired during a live video conference and caused an outage."
+          "ar": "استُخدم تصادم SHA-256 لتزوير شهادات مواقع إلكترونية عديدة.",
+          "en": "A SHA-256 collision was used to forge certificates for many websites."
         },
         {
-          "ar": "اخترقت CA هولندية واستُخدمت شهادات مزيّفة بهجمات وسيط على Gmail.",
-          "en": "A Dutch CA was compromised and fraudulent certificates were used for MITM attacks on Gmail."
+          "ar": "انتهت صلاحية شهادة أثناء مؤتمر مباشر، فتسببت بانقطاع الخدمة.",
+          "en": "A certificate expired during a live conference and caused a service outage."
         },
         {
-          "ar": "أطلقت شركة متصفح مخزن جذور معطّلاً يرفض كل الشهادات الصحيحة.",
-          "en": "A browser vendor shipped a faulty root store that rejected all valid certificates."
+          "ar": "رفض مخزن جذور متصفح معطّل جميع الشهادات الصحيحة المعتمدة.",
+          "en": "A faulty browser root store rejected every certificate that was valid."
         },
         {
-          "ar": "عُثر على تصادم بهاش SHA-256 واستُغل لتزوير الشهادات.",
-          "en": "A collision was found in the SHA-256 digest and used to forge certificates."
+          "ar": "اختُرقت CA هولندية؛ واستُخدمت شهادات مزيفة لهجمات Gmail.",
+          "en": "A Dutch CA was compromised; fake certificates enabled Gmail MITM attacks."
         }
       ],
       "concept_id": "diginotar_case",
       "explanation": {
         "ar": "DigiNotar كانت جهة إصدار هولندية اختُرقت سنة 2011، والشهادات المزيّفة اللي أصدرتها استُخدمت بهجمات وسيط على Gmail.",
         "en": "DigiNotar was a Dutch CA compromised in 2011, and the fraudulent certificates it issued were used to mount man-in-the-middle attacks on Gmail."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "الخوارزميات اللي بنت شهادات DigiNotar ما انكسرت. شنو يثبت الحالة؟",
-        "en": "The algorithms behind the DigiNotar certificates were not broken. What does the case show?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "دالة الهاش المكسورة تقوّض سلسلة الثقة بأكملها.",
-          "en": "A broken hash function undermines the entire trust chain."
-        },
-        {
-          "ar": "المفتاح المتماثل القصير يقوّض سلسلة الثقة بأكملها.",
-          "en": "A short symmetric key undermines the entire trust chain."
-        },
-        {
-          "ar": "التحقّق البطيء من الشهادات يقوّض سلسلة الثقة بأكملها.",
-          "en": "Slow certificate validation undermines the entire trust chain."
-        },
-        {
-          "ar": "الحوكمة الضعيفة للـ PKI تقوّض سلسلة الثقة بأكملها.",
-          "en": "Weak PKI governance undermines the entire trust chain."
-        }
-      ],
-      "concept_id": "diginotar_lesson",
-      "explanation": {
-        "ar": "درس الفصل: الحوكمة الضعيفة للـ PKI تقوّض سلسلة الثقة بأكملها — الأمن = رياضيات × تنفيذ × عمليات، مو رياضيات بس.",
-        "en": "The chapter's lesson is that weak PKI governance undermines the entire trust chain: security equals mathematics multiplied by implementation multiplied by operations, not mathematics alone."
-      }
-    },
-    {
-      "id": "q19",
-      "stem": {
-        "ar": "إذا كان مخرَج الهاش n بت، شنو الاحتمال التقريبي لمرور رسالة متلاعب بها دون كشفها؟",
-        "en": "If a hash produces an output of n bits, what is the approximate probability that a tampered message goes undetected?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "اثنان مرفوعان للأس سالب n.",
-          "en": "Two to the power of minus n."
-        },
-        {
-          "ar": "اثنان مرفوعان للأس n، ويزيد بزيادة طول البصمة.",
-          "en": "Two to the power of n, which grows with the digest length."
-        },
-        {
-          "ar": "n مقسوماً على اثنين، ويساوي 128 لـ SHA-256.",
-          "en": "n divided by two, which for SHA-256 equals 128."
-        },
-        {
-          "ar": "واحد ناقص n، ويساوي ناقص 255 لـ SHA-256.",
-          "en": "One minus n, which for SHA-256 equals minus 255."
-        }
-      ],
-      "concept_id": "trust_p_int",
-      "explanation": {
-        "ar": "مع مخرَج هاش بطول n بت، احتمال التصادم تقريباً اثنان مرفوعان للأس سالب n، فـ SHA-256 يعطي احتمالاً يقارب اثنان مرفوعان للأس سالب 256 — صفر عملياً.",
-        "en": "With an n-bit hash output the collision probability is approximately two to the power of minus n, so SHA-256 gives a probability of about two to the power of minus 256 — effectively zero."
-      }
-    },
-    {
-      "id": "q20",
-      "stem": {
-        "ar": "كيف يُقارب الزمن اللازم لتزوير التوقيع؟",
-        "en": "How is the time needed to forge a signature approximated?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "الجذر التربيعي لبتات الأمان، مضروباً بمعدّل المهاجم.",
-          "en": "The square root of the security bits, times the attacker rate."
-        },
-        {
-          "ar": "بتات الأمان ناقص معدّل المهاجم.",
-          "en": "The security bits minus the attacker rate."
-        },
-        {
-          "ar": "اثنان مرفوعان لأسّ بتات الأمان، مقسوماً على معدّل المهاجم.",
-          "en": "Two to the power of the security bits, over the attacker rate."
-        },
-        {
-          "ar": "معدّل المهاجم مضروباً ببتات الأمان.",
-          "en": "The attacker rate multiplied by the security bits."
-        }
-      ],
-      "concept_id": "trust_t_forge",
-      "explanation": {
-        "ar": "زمن التزوير يُقارب اثنان مرفوعان لأسّ بتات الأمان الفعلية مقسوماً على معدّل المهاجم، والأصالة تبقى صامدة إذا كان هذا الزمن أكبر بكثير من عمر الأصل.",
-        "en": "The forging time is approximated as two to the power of the effective security bits divided by the attacker rate, and authenticity holds when that time is far greater than the lifetime of the asset."
-      }
-    },
-    {
-      "id": "q21",
-      "stem": {
-        "ar": "كيف يُحسب احتمال الثقة الكلي بشهادة؟",
-        "en": "How is the overall trust probability of a certificate computed?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "احتمال اختراق الـ CA مقسوماً على احتمال فشل التحقّق.",
-          "en": "The CA-compromise probability divided by the validation-failure probability."
-        },
-        {
-          "ar": "واحد ناقص احتمال اختراق الـ CA، مضروباً بواحد ناقص احتمال فشل التحقّق.",
-          "en": "One minus the CA-compromise probability, times one minus the validation-failure probability."
-        },
-        {
-          "ar": "احتمال اختراق الـ CA زائد احتمال فشل التحقّق.",
-          "en": "The CA-compromise probability plus the validation-failure probability."
-        },
-        {
-          "ar": "واحد ناقص احتمال اختراق الـ CA، زائد واحد ناقص احتمال فشل التحقّق.",
-          "en": "One minus the CA-compromise probability, plus one minus the validation failure."
-        }
-      ],
-      "concept_id": "trust_p_trust",
-      "explanation": {
-        "ar": "الثقة تتطلّب شرطين معاً: الـ CA مو مخترقة والتحقّق ما فشل، لذا احتمال الثقة الكلي هو حاصل ضرب الاحتمالين المكمّلين.",
-        "en": "Trust requires two conditions at once — the CA is not compromised and validation does not fail — so the overall trust probability is the product of the two complementary probabilities."
-      }
-    },
-    {
-      "id": "q22",
-      "stem": {
-        "ar": "نموذج الأمن المتكامل يضرب واحد ناقص كل احتمال فشل. شنو يستنتج من هيكل النموذج؟",
-        "en": "The integrated security model multiplies one minus each failure probability. What does that structure imply?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "العامل القوي الواحد يرفع الضمان الكلي إلى الواحد.",
-          "en": "A single strong factor lifts the overall assurance up to one."
-        },
-        {
-          "ar": "العوامل تُلغي بعضها والنتيجة تبقى ثابتة.",
-          "en": "The factors cancel each other and the result stays constant."
-        },
-        {
-          "ar": "العوامل تُجمع، فأي طبقة إضافية تفيد بالقدر نفسه.",
-          "en": "The factors add together, so more layers always help equally."
-        },
-        {
-          "ar": "العامل الضعيف الواحد يهبّط الضمان الكلي قرب الصفر.",
-          "en": "A single weak factor drags the overall assurance down toward zero."
-        }
-      ],
-      "concept_id": "trust_p_secure",
-      "explanation": {
-        "ar": "نموذج الأمن المتكامل يضرب الاحتمالات المكمّلة، فلو ضعف أي عامل فإن حدّه يقترب من الصفر وينهار الحاصل كله — أضعف حلقة تحكم.",
-        "en": "The integrated security model multiplies the complementary probabilities, so if any one factor becomes weak its term approaches zero and the whole product collapses — the weakest link dominates."
       }
     }
   ],
@@ -717,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

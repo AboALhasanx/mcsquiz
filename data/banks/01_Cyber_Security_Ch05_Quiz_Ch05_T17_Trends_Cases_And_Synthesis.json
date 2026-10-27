@@ -10,38 +10,6 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "كيف يتطوّر الدفاع بالعمق حسب الفصل؟",
-        "en": "How is defense in depth evolving according to the chapter?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "من طبقات جامدة إلى تصاميم تكيّفية ومرنة.",
-          "en": "From static layers toward adaptive, resilient designs."
-        },
-        {
-          "ar": "من طبقات كثيرة إلى بوابة واحدة محصّنة.",
-          "en": "From many layers toward a single hardened gateway."
-        },
-        {
-          "ar": "من ضوابط برمجية إلى فيزيائية صرفة.",
-          "en": "From software controls toward purely physical ones."
-        },
-        {
-          "ar": "من طبقات الشبكة إلى جهات إصدار الشهادات.",
-          "en": "From network layers toward certificate authorities."
-        }
-      ],
-      "concept_id": "tr_did_evolution",
-      "explanation": {
-        "ar": "التحوّل من قواعد ثابتة تُكتب مرة إلى تصاميم تعدّل نفسها كل ما توصل قياسات.",
-        "en": "The shift is from fixed rules written once to designs that adjust themselves as telemetry arrives."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
         "ar": "شنو تستخدمه نماذج التعلّم الآلي لتعديل الضوابط ديناميكياً؟",
         "en": "What do machine-learning models use to adjust security controls dynamically?"
       },
@@ -49,20 +17,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "تقارير تدقيق سنوية من الجهة التنظيمية.",
-          "en": "Annual audit reports from the regulator."
+          "ar": "تقارير تدقيق سنوية للجهة التنظيمية عن أداء الأنظمة الأمنية.",
+          "en": "Annual regulatory audit reports that guide security policy."
         },
         {
-          "ar": "ملف إعداد افتراضي من المورّد.",
-          "en": "The vendor's default configuration file."
+          "ar": "مراجعات يدوية للقواعد ينفذها محلّل الأمن السيبراني.",
+          "en": "Manual rule reviews performed by a security analyst."
         },
         {
-          "ar": "مراجعات يدوية للقواعد من المحلّل.",
-          "en": "Manual rule reviews by the analyst."
+          "ar": "ملف الإعداد الافتراضي الذي يوفّره المورّد للمنتج.",
+          "en": "The vendor default configuration shipped with the product."
         },
         {
-          "ar": "قياسات لحظية من البيئة.",
-          "en": "Real-time telemetry from the environment."
+          "ar": "قياسات آنية من البيئة والأجهزة الخاضعة للحماية الأمنية.",
+          "en": "Real-time telemetry from sensors in the protected environment."
         }
       ],
       "concept_id": "tr_ml_telemetry",
@@ -72,93 +40,29 @@
       }
     },
     {
-      "id": "q3",
-      "stem": {
-        "ar": "كيف يُحدَّث الاحتمال البعدي للهجوم بمعطى دليل؟",
-        "en": "How is the posterior probability of an attack updated given evidence?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "الاحتمال المشروط + القبلي، مقسومين على الدليل.",
-          "en": "Likelihood plus prior divided by the evidence."
-        },
-        {
-          "ar": "القبلي مقسوماً على احتمال الإنذار الكاذب.",
-          "en": "Prior divided by the likelihood of a false alarm."
-        },
-        {
-          "ar": "الاحتمال المشروط × القبلي، على احتمال الدليل.",
-          "en": "Likelihood times prior over the evidence probability."
-        },
-        {
-          "ar": "القبلي × الاحتمال الكلي، على الاحتمال المشروط.",
-          "en": "Prior times total probability over the likelihood."
-        }
-      ],
-      "concept_id": "tr_bayes_updating",
-      "explanation": {
-        "ar": "كل دليل جديد يحدّث الاعتقاد بدل ما يستبدله، وهذا اللي يخلي الدفاع تكيّفياً.",
-        "en": "Each new piece of evidence updates the belief rather than replacing it, which is what makes the defence adaptive."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "ليش احتمال إنذار كاذب عالٍ يترك الاحتمال البعدي واطياً؟",
-        "en": "Why does a high false alarm likelihood keep the posterior low?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأن الدليل يُوزن مرتين بالمعادلة.",
-          "en": "Because the evidence is weighted twice in the formula."
-        },
-        {
-          "ar": "لأن نفس الدليل يُنتَج بسهولة بدون هجوم.",
-          "en": "Because the same evidence is easily produced without an attack."
-        },
-        {
-          "ar": "لأن الاحتمال القبلي يُهمل بالكامل.",
-          "en": "Because the prior probability is discarded entirely."
-        },
-        {
-          "ar": "لأن الاحتمال المشروط يُضرب بصفر.",
-          "en": "Because the likelihood is multiplied by zero."
-        }
-      ],
-      "concept_id": "tr_bayes_false_alarm",
-      "explanation": {
-        "ar": "الدليل اللي يظهر باستمرار بالتشغيل الطبيعي يحمل معلومات قليلة، فما يقدر يحرّك الاعتقاد كثير.",
-        "en": "Evidence that appears constantly in normal operation carries little information, so it cannot move the belief much."
-      }
-    },
-    {
-      "id": "q5",
+      "id": "q2",
       "stem": {
         "ar": "شنو يمكّنه التحديث المستمر عملياً؟",
         "en": "What does continuous updating enable in practice?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "عتبات تتكيّف مع السياق الحالي.",
-          "en": "Thresholds that adapt to the current context."
+          "ar": "عتبات يحددها إعداد المورّد الافتراضي فقط دون مراجعة.",
+          "en": "Thresholds copied from vendor defaults and kept unchanged."
         },
         {
-          "ar": "عتبات ثابتة وقت التنصيب.",
-          "en": "Thresholds that are fixed at installation time."
+          "ar": "إزالة كاملة لجميع عتبات التنبيه في بيئة التشغيل.",
+          "en": "A complete removal of every alerting threshold in production."
         },
         {
-          "ar": "إزالة كاملة لكل عتبات التنبيه.",
-          "en": "A complete removal of all alerting thresholds."
+          "ar": "قيم عتبات ثابتة منذ تنصيب النظام ولا تتغير لاحقاً.",
+          "en": "Threshold values fixed permanently at the installation stage."
         },
         {
-          "ar": "عتبات يحدّدها افتراضي المورّد فقط.",
-          "en": "Thresholds set only by the vendor's defaults."
+          "ar": "عتبات تتكيف مع سياق العمل الحالي ومتغيراته الأمنية.",
+          "en": "Thresholds adjusted to match the current operating context."
         }
       ],
       "concept_id": "tr_adaptive_thresholds",
@@ -168,125 +72,29 @@
       }
     },
     {
-      "id": "q6",
-      "stem": {
-        "ar": "كيف تُعبَّر دالة الموثوقية على الزمن؟",
-        "en": "How is the reliability function over time expressed?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "تلاشٍ خطي بمعدّل الفشل مضروباً بالزمن.",
-          "en": "Linear decay with the failure rate times time."
-        },
-        {
-          "ar": "نمو أُسّي بمعدّل الفشل مضروباً بالزمن.",
-          "en": "Exponential growth with the failure rate times time."
-        },
-        {
-          "ar": "ثابت يساوي معدّل الفشل نفسه.",
-          "en": "A constant equal to the failure rate itself."
-        },
-        {
-          "ar": "تلاشٍ أُسّي بمعدّل الفشل مضروباً بالزمن.",
-          "en": "Exponential decay with the failure rate times time."
-        }
-      ],
-      "concept_id": "tr_resilience_function",
-      "explanation": {
-        "ar": "الصيغة هي منحنى البقاء الأُسّي القياسي، وحجّته معدّل الفشل مضروباً بالزمن المنقضي.",
-        "en": "The form is the standard exponential survival curve, where the argument is the failure rate multiplied by elapsed time."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "شنو يمثّل معدّل الفشل بتلك الدالة؟",
-        "en": "What does the failure rate in that function represent?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "كم كلّف نشر الدفاع.",
-          "en": "How much the defence cost to deploy."
-        },
-        {
-          "ar": "كم مستخدم يخدم النظام.",
-          "en": "How many users the system serves."
-        },
-        {
-          "ar": "كم مرة تفشل الدفاعات الطبقية.",
-          "en": "How often the layered defences fail."
-        },
-        {
-          "ar": "كم طبقة موجودة بالتصميم.",
-          "en": "How many layers exist in the design."
-        }
-      ],
-      "concept_id": "tr_lambda_meaning",
-      "explanation": {
-        "ar": "هو معدّل مو عدد، فيلتقط تكرار الفشل لكل وحدة زمن بدل عدد الضوابط.",
-        "en": "It is a rate, not a count, so it captures failure frequency per unit of time rather than the number of controls."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "شنو يعني معدّل فشل أقل بالنسبة للمرونة؟",
-        "en": "What does a lower failure rate imply for resilience?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "كلفة أعلى بمرونة مطابقة.",
-          "en": "Higher cost but identical resilience."
-        },
-        {
-          "ar": "مرونة أعلى، لأن احتمال البقاء مع الوقت أكبر.",
-          "en": "Higher resilience, because survival over time is greater."
-        },
-        {
-          "ar": "مرونة أقل، لأن طبقات أقل شغّالة.",
-          "en": "Lower resilience, because fewer layers are active."
-        },
-        {
-          "ar": "بلا تغيير، لأن المرونة مستقلة عن الفشل.",
-          "en": "No change, since resilience is independent of failure."
-        }
-      ],
-      "concept_id": "tr_lower_lambda",
-      "explanation": {
-        "ar": "التكرار ينزّل معدّل فشل النظام، وهذا يدفع منحنى البقاء للخارج مع الزمن.",
-        "en": "Redundancy lowers the rate at which the system fails, which pushes the survival curve outward in time."
-      }
-    },
-    {
-      "id": "q9",
+      "id": "q3",
       "stem": {
         "ar": "شنو خلّى اختراق Target سنة 2013 يوصل لأنظمة الدفع؟",
         "en": "What allowed the Target 2013 breach to reach payment systems?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "شبكة داخلية مسطّحة بحركة جانبية حرّة.",
-          "en": "A flat internal network with free lateral movement."
+          "ar": "شهادة منتهية الصلاحية على بوابة VPN الخاصة بالمؤسسة.",
+          "en": "An expired certificate installed on the organisation VPN gateway."
         },
         {
-          "ar": "تطبيق TLS معطوب على سيرفر الويب.",
-          "en": "A broken TLS implementation on the web server."
+          "ar": "تطبيق TLS معيب في خادم الويب المتاح للجمهور.",
+          "en": "A defective TLS implementation on its public-facing web server."
         },
         {
-          "ar": "شهادة مزيّفة بسلسلة الدفع.",
-          "en": "A forged certificate in the payment chain."
+          "ar": "شبكة داخلية مسطّحة سمحت بالحركة الجانبية دون قيود.",
+          "en": "A flat internal network enabled unrestricted lateral movement."
         },
         {
-          "ar": "شهادة منتهية على بوابة الـ VPN.",
-          "en": "An expired certificate on the VPN gateway."
+          "ar": "شهادة مزيفة وُثقت ضمن سلسلة نظام الدفع الإلكتروني.",
+          "en": "A forged certificate trusted by the payment processing chain."
         }
       ],
       "concept_id": "case_target_cause",
@@ -296,93 +104,29 @@
       }
     },
     {
-      "id": "q10",
-      "stem": {
-        "ar": "شنو درس حالة Target؟",
-        "en": "What is the lesson of the Target case?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "المورّدون الخارجيون ما لازم يُعطون أي وصول.",
-          "en": "Third-party vendors should never be given any access."
-        },
-        {
-          "ar": "أنظمة الدفع لازم تُنقل خارج الشبكة.",
-          "en": "Payment systems must be moved off the network."
-        },
-        {
-          "ar": "الشهادات وحدها تحمي بيانات البطاقات.",
-          "en": "Certificates alone protect payment card data."
-        },
-        {
-          "ar": "غياب التقسيم يحوّل موطئ قدم واحد إلى وصول كامل.",
-          "en": "Absent segmentation turns one foothold into full access."
-        }
-      ],
-      "concept_id": "case_target_lesson",
-      "explanation": {
-        "ar": "الفشل كان معمارياً مو تشفيرياً: كل شي يقدر يوصل لكل شي، فالاحتواء ما صار أبداً.",
-        "en": "The failure was architectural rather than cryptographic: everything could reach everything, so containment never happened."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "أي قنوات استغل Stuxnet رغم الشبكات الصناعية المقسّمة؟",
-        "en": "Which channels did Stuxnet exploit despite segmented industrial networks?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "مفاتيح WPA ضعيفة ونقاط وصول مزوّرة.",
-          "en": "Weak WPA keys and rogue access points."
-        },
-        {
-          "ar": "شهادات VPN منتهية وsplit tunnelling.",
-          "en": "Expired VPN certificates and split tunnelling."
-        },
-        {
-          "ar": "شهادات موثوقة ووسائط قابلة للإزالة.",
-          "en": "Trusted certificates and removable media."
-        },
-        {
-          "ar": "محلّلات DNS غير المرقّعة واختطاف BGP.",
-          "en": "Unpatched DNS resolvers and BGP hijacks."
-        }
-      ],
-      "concept_id": "case_stuxnet_cause",
-      "explanation": {
-        "ar": "ما كسر التقسيم؛ مشى عبر قنوات كان المشغّلون يثقون بها أصلًا.",
-        "en": "It did not break the segmentation; it walked through channels the operators already trusted."
-      }
-    },
-    {
-      "id": "q12",
+      "id": "q4",
       "stem": {
         "ar": "شنو يثبت Stuxnet عن التقسيم لوحده؟",
         "en": "What does Stuxnet prove about segmentation on its own?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "الشهادات لازم تُزال من الأنظمة الصناعية.",
-          "en": "Certificates should be removed from industrial systems."
+          "ar": "يلزم الدفاع الطبقي لأن القنوات الموثوقة قد تعبر المناطق.",
+          "en": "Layered defence is also needed; trusted channels can cross zones."
         },
         {
-          "ar": "العمق مطلوب هم، لأن القنوات الموثوقة تتجاوز المناطق.",
-          "en": "Depth is also required, since trusted channels bypass zones."
+          "ar": "التقسيم وحده يكفي إذا كانت كل منطقة معزولة فيزيائياً.",
+          "en": "Segmentation alone is sufficient when every zone is physically isolated."
         },
         {
-          "ar": "التقسيم يكفي إذا كانت المناطق فيزيائية.",
-          "en": "Segmentation is sufficient if the zones are physical."
+          "ar": "ينبغي إزالة الشهادات الرقمية من أنظمة التحكم الصناعية.",
+          "en": "Digital certificates should be removed from industrial control systems."
         },
         {
-          "ar": "الفصل الهوائي يغني عن الدفاع الطبقي.",
-          "en": "Air gaps make layered defence unnecessary."
+          "ar": "الفصل الهوائي يجعل طبقات الدفاع الإضافية غير ضرورية.",
+          "en": "Air gaps make all additional layers of defence unnecessary."
         }
       ],
       "concept_id": "case_stuxnet_lesson",
@@ -392,61 +136,29 @@
       }
     },
     {
-      "id": "q13",
-      "stem": {
-        "ar": "أي تقليل للمخاطر أبلغت عنه البنوك من التقسيم الدقيق؟",
-        "en": "What risk reduction did banks report from micro segmentation?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "بين خمسة وثلاثين وأربعين بالمئة.",
-          "en": "Between thirty-five and forty percent."
-        },
-        {
-          "ar": "بين خمسة وعشرة بالمئة.",
-          "en": "Between five and ten percent."
-        },
-        {
-          "ar": "بين ستين وسبعين بالمئة.",
-          "en": "Between sixty and seventy percent."
-        },
-        {
-          "ar": "بين تسعين وخمسة وتسعين بالمئة.",
-          "en": "Between ninety and ninety-five percent."
-        }
-      ],
-      "concept_id": "case_financial_result",
-      "explanation": {
-        "ar": "الرقم جاي من مؤشرات داخلية مو من نظرية، ولهذا يعرضه الفصل كدليل مو كنموذج.",
-        "en": "The figure comes from internal metrics rather than theory, which is why the chapter presents it as evidence rather than a model."
-      }
-    },
-    {
-      "id": "q14",
+      "id": "q5",
       "stem": {
         "ar": "شنو تبيّنه الحالات الثلاث معاً؟",
         "en": "What do the three cases jointly demonstrate?"
       },
       "bloom": "Analyze",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "التقسيم وحده يكفي للشبكات الحديثة.",
-          "en": "Segmentation alone is enough for modern networks."
+          "ar": "لا تفيد أي من الاستراتيجيتين ضد مهاجم حديث ومصمم.",
+          "en": "Segmentation and defence in depth are complementary strategies."
         },
         {
-          "ar": "العمق وحده يلغي الحاجة لأي مناطق.",
-          "en": "Depth alone removes the need for any zones."
+          "ar": "التقسيم والدفاع بالعمق استراتيجيتان متكاملتان للحماية.",
+          "en": "Segmentation and defence in depth complement each other as controls."
         },
         {
-          "ar": "ماكو استراتيجية تنفع ضد مهاجم مصمّم.",
-          "en": "Neither strategy works against determined attackers."
+          "ar": "الدفاع بالعمق وحده يلغي الحاجة إلى تحديد مناطق الشبكة.",
+          "en": "Defence in depth alone eliminates any need to define zones."
         },
         {
-          "ar": "التقسيم والعمق مكمّلان، مو بدائل.",
-          "en": "Segmentation and depth are complementary, not substitutes."
+          "ar": "التقسيم وحده كافٍ لحماية الشبكات المعاصرة من الهجمات.",
+          "en": "Segmentation by itself is sufficient for contemporary networks."
         }
       ],
       "concept_id": "case_both_needed",
@@ -456,61 +168,29 @@
       }
     },
     {
-      "id": "q15",
-      "stem": {
-        "ar": "كيف يُعبَّر عن العائد على الاستثمار الأمني؟",
-        "en": "How is the return on security investment expressed?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "تقليل الخسارة مقسوماً على الميزانية الكلية.",
-          "en": "Loss reduction divided by the total budget."
-        },
-        {
-          "ar": "تقليل الخسارة مضروباً بالكلفة السنوية.",
-          "en": "Loss reduction multiplied by the annual cost."
-        },
-        {
-          "ar": "تقليل الخسارة ناقص الكلفة، مقسوماً على الكلفة.",
-          "en": "Loss reduction minus cost, divided by cost."
-        },
-        {
-          "ar": "الكلفة ناقص تقليل الخسارة، مقسوماً على الكلفة.",
-          "en": "Cost minus loss reduction, divided by cost."
-        }
-      ],
-      "concept_id": "rosi_formula",
-      "explanation": {
-        "ar": "يقارن منفعة الخسارة المتجنَّبة بما كلّفه الضابط.",
-        "en": "It compares the benefit of the avoided loss against what the control cost to put in place."
-      }
-    },
-    {
-      "id": "q16",
+      "id": "q6",
       "stem": {
         "ar": "التقسيم ينزّل كلفة الاختراق السنوية من عشرة ملايين لستة بكلفة مليونين. شنو العائد؟",
         "en": "Segmentation cuts annual breach cost from ten million to six at a cost of two million. What is the return?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "نصف، لأن التقليل ضعف الكلفة.",
-          "en": "Half, because the reduction is twice the cost."
+          "ar": "العائد صفر بالمئة، لأن الاستثمار يساوي مقدار التوفير الكلي.",
+          "en": "Zero percent, because the investment equals the total savings."
         },
         {
-          "ar": "واحد، أي مئة بالمئة، لأن أربعة ناقص اثنين على اثنين.",
-          "en": "One, or one hundred percent, since four minus two over two."
+          "ar": "العائد مئتا بالمئة: نقسم التوفير البالغ أربعة ملايين على اثنين.",
+          "en": "Two hundred percent: divide the four-million saving by two."
         },
         {
-          "ar": "اثنان، أي مئتا بالمئة، لأن أربعة على اثنين.",
-          "en": "Two, or two hundred percent, since four over two."
+          "ar": "العائد مئة بالمئة: [(10−6)−2] مقسومة على كلفة الاستثمار 2.",
+          "en": "One hundred percent: [(10−6)−2] divided by the cost of 2."
         },
         {
-          "ar": "صفر، لأن الكلفة تساوي التقليل.",
-          "en": "Zero, because the cost equals the reduction."
+          "ar": "العائد خمسون بالمئة، لأن التوفير البالغ أربعة ملايين ضعف الكلفة.",
+          "en": "Fifty percent, because the four-million saving is twice the cost."
         }
       ],
       "concept_id": "rosi_worked",
@@ -520,61 +200,29 @@
       }
     },
     {
-      "id": "q17",
-      "stem": {
-        "ar": "شنو يدلّ عليه عائد استثمار أمني موجب؟",
-        "en": "What does a positive security investment return indicate?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "الضابط يوفّر أكثر مما يكلّف تشغيله.",
-          "en": "The control saves more than it costs to run."
-        },
-        {
-          "ar": "الضابط أزال كل الخطر المتبقّي.",
-          "en": "The control has eliminated all residual risk."
-        },
-        {
-          "ar": "الضابط لازم يُستبدل فوراً.",
-          "en": "The control must be replaced immediately."
-        },
-        {
-          "ar": "الميزانية صُرفت كلها على العتاد.",
-          "en": "The budget was spent entirely on hardware."
-        }
-      ],
-      "concept_id": "rosi_interpretation",
-      "explanation": {
-        "ar": "هو حكم اقتصادي مو ضمان أمني: الضابط يدفع ثمن نفسه بالخسارة المتجنَّبة.",
-        "en": "It is an economic judgement, not a security guarantee: the control pays for itself in avoided loss."
-      }
-    },
-    {
-      "id": "q18",
+      "id": "q7",
       "stem": {
         "ar": "شنو يعظّم نموذج التوزيع الأمثل للطبقات، وبأي قيد؟",
         "en": "What does the optimal layer allocation model maximise, and under what constraint?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "إنفاق الميزانية، بشرط حدّ أدنى لتقليل المخاطر.",
-          "en": "Budget spent, subject to a minimum risk reduction."
+          "ar": "تعظيم إنفاق الميزانية لتحقيق هدف تقليل المخاطر المحدد مسبقاً.",
+          "en": "Maximise total budget spending while meeting a risk-reduction target."
         },
         {
-          "ar": "عدد الطبقات، بشرط كلفة كلية ثابتة.",
-          "en": "Number of layers, subject to a fixed total cost."
+          "ar": "تعظيم تقليل المخاطر مع بقاء كلفة الطبقات ضمن الميزانية.",
+          "en": "Maximise risk reduction within the total layer-cost budget."
         },
         {
-          "ar": "التوافر، بشرط حدّ أقصى للخطر المتبقّي.",
-          "en": "Availability, subject to a maximum residual risk."
+          "ar": "تعظيم عدد الطبقات المنشورة ضمن كلفة كلية محددة.",
+          "en": "Maximise the number of deployed layers at one fixed total cost."
         },
         {
-          "ar": "تقليل المخاطر، بشرط ألّا يتجاوز مجموع كلف الطبقات الميزانية.",
-          "en": "Risk reduction, subject to total layer cost within budget."
+          "ar": "تعظيم توافر النظام ضمن الحد الأعلى للخطر المتبقي.",
+          "en": "Maximise system availability under a maximum residual-risk limit."
         }
       ],
       "concept_id": "opt_allocation",
@@ -584,29 +232,29 @@
       }
     },
     {
-      "id": "q19",
+      "id": "q8",
       "stem": {
         "ar": "أي طبقات تحصل على الأولوية بذلك النموذج؟",
         "en": "Which layers get priority under that model?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "أي طبقة انصّبت أولاً.",
-          "en": "Whichever layer was installed first."
+          "ar": "طبقات قليلة الكلفة تحقق خفضاً كبيراً نسبياً للمخاطر.",
+          "en": "Prioritise low-cost layers with a high risk-reduction share."
         },
         {
-          "ar": "الطبقة اللي عندها أكبر ادعاء تسويقي.",
-          "en": "The layer with the largest marketing claim."
+          "ar": "طبقات مرتفعة الكلفة لا تحقق إلا خفضاً محدوداً للمخاطر.",
+          "en": "Costly layers that contribute only a small share of risk reduction."
         },
         {
-          "ar": "الطبقات الرخيصة ذات نسبة التقليل العالية.",
-          "en": "Cheap layers with a high reduction share."
+          "ar": "الطبقة التي جرى تنصيبها قبل الطبقات الأمنية الأخرى.",
+          "en": "The layer that happened to be installed earlier than the others."
         },
         {
-          "ar": "الطبقات الغالية ذات نسبة التقليل الواطية.",
-          "en": "Expensive layers with a low reduction share."
+          "ar": "الطبقة المدعومة بأقوى ادعاء تسويقي من المورّدين.",
+          "en": "The layer supported by the strongest marketing claim from vendors."
         }
       ],
       "concept_id": "opt_priority",
@@ -616,35 +264,67 @@
       }
     },
     {
-      "id": "q20",
+      "id": "q9",
       "stem": {
-        "ar": "أي ثلاثة اتجاهات مستقبلية يذكرها الفصل؟",
-        "en": "Which three future directions does the chapter name?"
+        "ar": "ما الاتجاهات الثلاثة التي ترسم مستقبل أمن الشبكات؟",
+        "en": "Which three trends are shaping future network security?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "مورّدون أقل وسجلات أقصر وكوادر أقل.",
-          "en": "Fewer vendors, shorter logs and less staffing."
+          "ar": "تقسيم ذكي، ومقاومة كمّية، وشبكات ذاتية الشفاء.",
+          "en": "AI-guided segmentation, quantum-resistant security, and self-healing."
         },
         {
-          "ar": "تقسيم مدفوع بالذكاء الاصطناعي ومقاومة كمّية وشبكات ذاتية الشفاء.",
-          "en": "AI-driven segmentation, quantum resistance, self-healing."
+          "ar": "مفاتيح تشفير أطول، وجولات إضافية، وكتل بيانات أكبر.",
+          "en": "Longer cryptographic keys, additional rounds, and larger blocks."
         },
         {
-          "ar": "عتاد أرخص وأقراص أكبر ومعالجات أسرع.",
-          "en": "Cheaper hardware, larger disks and faster CPUs."
+          "ar": "عتاد أقل كلفة، وأقراص بسعة أعلى، ومعالجات أسرع.",
+          "en": "Cheaper hardware, higher-capacity disks, and faster processors."
         },
         {
-          "ar": "مفاتيح أطول وجولات أكثر وبلوكات أكبر.",
-          "en": "Longer keys, more rounds and bigger blocks."
+          "ar": "مورّدون أقل، وسجلات تدقيق أقصر، وكوادر أمنية أقل.",
+          "en": "Fewer suppliers, shorter audit logs, and reduced security staffing."
         }
       ],
       "concept_id": "future_three",
       "explanation": {
         "ar": "مناطق تتكيّف بنفسها، وتشفير يصمد أمام الهجوم الكمّي، ودفاعات تعيد تشكيل نفسها بعد الاختراق.",
         "en": "Zones that adapt by themselves, cryptography that survives quantum attack, and defences that reconfigure after a compromise."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "كيف تُعبَّر دالة الموثوقية على الزمن؟",
+        "en": "How is the reliability function over time expressed?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تناقص خطي مع الزمن، اعتماداً على معدل الفشل والزمن.",
+          "en": "Linear decrease over time, based on failure rate multiplied by time."
+        },
+        {
+          "ar": "تناقص أُسّي مع الزمن، ومعدل λ وفق الصيغة e^(−λt).",
+          "en": "Exponential decrease over time, with rate λ expressed as e^(−λt)."
+        },
+        {
+          "ar": "نمو أُسّي مع الزمن، ومعدل λ وفق الصيغة e^(λt).",
+          "en": "Exponential increase over time, with rate λ expressed as e^(λt)."
+        },
+        {
+          "ar": "قيمة ثابتة مع الزمن، تساوي معدل الفشل λ للنظام.",
+          "en": "A constant value over time, equal to the failure rate λ itself."
+        }
+      ],
+      "concept_id": "tr_resilience_function",
+      "explanation": {
+        "ar": "الصيغة هي منحنى البقاء الأُسّي القياسي، وحجّته معدّل الفشل مضروباً بالزمن المنقضي.",
+        "en": "The form is the standard exponential survival curve, where the argument is the failure rate multiplied by elapsed time."
       }
     }
   ],
@@ -653,7 +333,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

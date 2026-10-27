@@ -1,0 +1,372 @@
+{
+  "topic": {
+    "ar": "هندسة الاعتمادية والتكرار",
+    "en": "Reliability Engineering and Redundancy"
+  },
+  "quiz_id": "Quiz_Ch06_T09_Reliability_Engineering",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو يعني تقاطع تلك الفئات فعلاً؟",
+        "en": "What does the intersection of those classes actually mean?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الهجمات تفاقم مواطن ضعف الأنظمة التشغيلية.",
+          "en": "Attacks amplify weaknesses across operational systems."
+        },
+        {
+          "ar": "الفرق الثلاث تدير فئات المخاطر بصورة منفصلة.",
+          "en": "Separate teams independently manage the three risk classes."
+        },
+        {
+          "ar": "قد تظهر فئة واحدة منفردة في بعض الظروف.",
+          "en": "A single class may appear alone under some conditions."
+        },
+        {
+          "ar": "الأحداث البيئية تنتج دائماً عن مهاجم خارجي.",
+          "en": "Environmental events always originate from an external attacker."
+        }
+      ],
+      "concept_id": "w6_rl_intersection",
+      "explanation": {
+        "ar": "الحالة الخطرة مو كل خطر لحاله، بل مهاجم يستغل سوء تهيئة ليسبّب انقطاعاً.",
+        "en": "The dangerous case is not each risk alone but an attacker exploiting a misconfiguration to produce an outage."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "موازن حمل معطوب الإعداد استُغل لإسقاط الخدمة. أي فئات تتقاطع؟",
+        "en": "A misconfigured load balancer is used to take the service down. Which classes intersect?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إخفاق امتثال لا يمس توافر الخدمة.",
+          "en": "A compliance failure has no effect on availability."
+        },
+        {
+          "ar": "سوء تهيئة تشغيلي استغله فعل عدائي.",
+          "en": "Operational misconfiguration exploited by an adversary."
+        },
+        {
+          "ar": "حدث بيئي يقع من دون تدخّل مهاجم.",
+          "en": "An environmental event occurs without an adversarial actor."
+        },
+        {
+          "ar": "عطل تشغيلي يحدث من دون خصم.",
+          "en": "An operational fault occurs without an adversary."
+        }
+      ],
+      "concept_id": "w6_rl_intersection_example",
+      "explanation": {
+        "ar": "الضعف كان موجوداً تشغيلياً، بس صار انقطاعاً لأن أحداً اختار يستغله.",
+        "en": "The weakness existed operationally, but it only became an outage because someone chose to exploit it."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي ثلاث استراتيجيات تكرار يذكرها الفصل؟",
+        "en": "Which three strategies improve service redundancy?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "موازنة الحمل والتخزين المؤقت وضغط الاستجابات.",
+          "en": "Load balancing, caching, and response compression."
+        },
+        {
+          "ar": "تجزئة البيانات وتقسيمها وتأخر التكرار.",
+          "en": "Data sharding, database partitioning, and replication delay."
+        },
+        {
+          "ar": "N+1، وعنقدة نشطة-نشطة، وتكرار جغرافي.",
+          "en": "N+1, active-active clusters, and geographic redundancy."
+        },
+        {
+          "ar": "احتياطي بارد ودافئ واستعادة من أشرطة النسخ.",
+          "en": "Cold standby, warm standby, and restoration from backup tape."
+        }
+      ],
+      "concept_id": "w6_rl_three_strategies",
+      "explanation": {
+        "ar": "مكوّن زائد فوق الحاجة، وعدة سيرفرات تخدم بنفس الوقت، وتوزيع عبر المناطق.",
+        "en": "One spare beyond need, several servers serving at once, and distribution across regions."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "من شنو يحمي التكرار الجغرافي وما تحميه البقية؟",
+        "en": "What does geo-redundancy protect against that the others do not?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "فشل عملية سيرفر واحدة.",
+          "en": "The failure of a single server process."
+        },
+        {
+          "ar": "خلل برمجي بكود التطبيق.",
+          "en": "A software bug in the application code."
+        },
+        {
+          "ar": "إعداد خاطئ بقاعدة جدار ناري.",
+          "en": "A misconfigured firewall rule."
+        },
+        {
+          "ar": "حدث يعطّل منطقة كاملة.",
+          "en": "An event that disables an entire region."
+        }
+      ],
+      "concept_id": "w6_rl_geo",
+      "explanation": {
+        "ar": "N+1 والنشطة-النشطة يظلّان بمكان واحد، فانقطاع المنطقة ياخذ الاثنين معه.",
+        "en": "N+1 and active-active still sit in one place, so a regional outage takes both of them with it."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يختلف الترتيب التسلسلي عن المتوازي بالأثر؟",
+        "en": "How do series and parallel arrangements differ in effect?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التسلسلي ينزّل الموثوقية بزيادة الأجزاء؛ والمتوازي يرفعها.",
+          "en": "Series reliability falls as parts are added; parallel raises it."
+        },
+        {
+          "ar": "التسلسلي يرفع الموثوقية بزيادة الأجزاء؛ والمتوازي ينزّلها.",
+          "en": "Series raises reliability as parts are added; parallel lowers it."
+        },
+        {
+          "ar": "الاثنان يرفعان الموثوقية بنفس المقدار لكل جزء.",
+          "en": "Both raise reliability by the same amount per part."
+        },
+        {
+          "ar": "الاثنان يتركان الموثوقية ثابتة مهما كان عدد الأجزاء.",
+          "en": "Both leave reliability unchanged regardless of part count."
+        }
+      ],
+      "concept_id": "w6_rl_series_vs_parallel",
+      "explanation": {
+        "ar": "بالتسلسلي أي فشل يكسر السلسلة، وبالمتوازي فقط الفشل المتزامن يكسرها، فالتكرار ترتيب متوازٍ.",
+        "en": "In series any failure breaks the chain, while in parallel only a simultaneous failure does, so redundancy is a parallel arrangement."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يُعبَّر عن التوفّر من تلك المقاييس؟",
+        "en": "How is availability expressed from those metrics?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الزمن بين الأعطال ناقصاً مدة الإصلاح.",
+          "en": "Time between failures minus time to repair."
+        },
+        {
+          "ar": "التشغيل على مجموع التشغيل والإصلاح.",
+          "en": "Time between failures over that plus time to repair."
+        },
+        {
+          "ar": "زمن الإصلاح مقسوماً على مجموع الزمنين.",
+          "en": "Time to repair over time between failures plus repair."
+        },
+        {
+          "ar": "الزمن بين الأعطال مضروباً بزمن الإصلاح.",
+          "en": "Time between failures multiplied by time to repair."
+        }
+      ],
+      "concept_id": "w6_rl_availability_formula",
+      "explanation": {
+        "ar": "البسط هو زمن التشغيل والمقام الدورة كاملة، فالتوفّر يرتفع بطول التشغيل أو بسرعة الإصلاح.",
+        "en": "The numerator is operating time and the denominator is the whole cycle, so availability rises with longer uptime or faster repair."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ليش التوفّر العالي يحتاج أمنًا استباقياً مو بنية متينة فقط؟",
+        "en": "Why does high availability require proactive security and not just robust infrastructure?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأن التوافر يُقاس أثناء الهجمات النشطة فقط.",
+          "en": "Because availability is measured only during active attacks."
+        },
+        {
+          "ar": "لأن الأمن الاستباقي يلغي الحاجة إلى التكرار.",
+          "en": "Because proactive security makes all redundancy unnecessary."
+        },
+        {
+          "ar": "الهجمات تخفض التشغيل وتطيل زمن استعادة الخدمة.",
+          "en": "Attacks reduce uptime while increasing restoration time."
+        },
+        {
+          "ar": "لأن مورّدي البنية لا يدعمون مستوى التوافر المطلوب.",
+          "en": "Because infrastructure vendors do not support the target level."
+        }
+      ],
+      "concept_id": "w6_rl_four_nines",
+      "explanation": {
+        "ar": "الهجوم يدفع الحدّين بالاتجاه الخاطئ، فالتكرار وحده ما يقدر يحفظ أربع تسعات أمام خصم مستمر.",
+        "en": "An attack pushes both terms the wrong way, so redundancy alone cannot hold four nines against a sustained adversary."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف تُعرَّف الموثوقية؟",
+        "en": "How is reliability defined?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نسبة وقت التشغيل التي يضمنها عقد الخدمة.",
+          "en": "The percentage of uptime promised in the service contract."
+        },
+        {
+          "ar": "عدد الحوادث المحلولة ضمن المهلة المتفق عليها.",
+          "en": "The number of incidents resolved within the agreed window."
+        },
+        {
+          "ar": "سرعة استعادة الخدمة بعد حدوث انقطاع.",
+          "en": "The speed at which the service recovers after an outage."
+        },
+        {
+          "ar": "احتمال أداء الوظيفة المطلوبة ضمن ظروف محددة.",
+          "en": "The probability of performing the intended function."
+        }
+      ],
+      "concept_id": "w6_rl_definition",
+      "explanation": {
+        "ar": "هو احتمال بظروف محدّدة ولمدة معيّنة، ولهذا يُنمذَج بدل ما يُدَّعى.",
+        "en": "It is a probability under stated conditions for a specified period, which is why it is modelled rather than asserted."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "شنو يقيس المقياسان؟",
+        "en": "What do the two reliability metrics measure?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الفاصل بين الأعطال وزمن استعادة الخدمة.",
+          "en": "Interval between failures; time to restore the service."
+        },
+        {
+          "ar": "زمن كشف الهجوم، والمدة المطلوبة للاستجابة.",
+          "en": "Time to detect an attack, and time required to respond."
+        },
+        {
+          "ar": "المدة بين الإصدارات، والمدة اللازمة للتراجع.",
+          "en": "Time between releases, and time required to roll back."
+        },
+        {
+          "ar": "مدة الترقيع، والمدة اللازمة للتحقق من الإصلاح.",
+          "en": "Time required to patch, and time to verify the fix."
+        }
+      ],
+      "concept_id": "w6_rl_mtbf_mttr",
+      "explanation": {
+        "ar": "واحد يقيس كم تشتغل الخدمة قبل ما تفشل، والثاني كم تبقى واقفة بعدها.",
+        "en": "One measures how long the service runs before failing, the other how long it stays down afterwards."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ليش فشل تطبيقات الويب يحمل تداعيات نُظُمية؟",
+        "en": "Why do failures in web applications carry systemic implications?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن الجهات التنظيمية تشغّل البنية المتأثرة مباشرة.",
+          "en": "Because regulators directly operate the affected infrastructure."
+        },
+        {
+          "ar": "لأن الخدمات الرقمية تدعم التمويل والصحة والحكومة.",
+          "en": "Digital services support finance, healthcare and government."
+        },
+        {
+          "ar": "لأن التطبيقات تعتمد خادماً مشتركاً لقاعدة البيانات.",
+          "en": "Because all applications depend on a shared database server."
+        },
+        {
+          "ar": "لأن الانقطاعات تنتقل حتماً إلى مؤسسات أخرى.",
+          "en": "Because outages inevitably spread to other organisations."
+        }
+      ],
+      "concept_id": "w6_rl_systemic",
+      "explanation": {
+        "ar": "لمّا تكون الخدمة واجهة وظائف أساسية، فالتوقّف ما يعود إزعاجاً تقنياً بل مشكلة عامة.",
+        "en": "When the service is the interface to essential functions, downtime stops being an IT inconvenience and becomes a public problem."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "شنو يضمن التكرار؟",
+        "en": "What does redundancy ensure?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "خفض كلفة استبدال مكونات الخدمة.",
+          "en": "Making every service component cheaper to replace."
+        },
+        {
+          "ar": "إلغاء الحاجة إلى مراقبة الخدمة.",
+          "en": "Removing every need to monitor the service."
+        },
+        {
+          "ar": "منع موطن فشل منفرد من تعطيل الخدمة.",
+          "en": "Preventing one failure from disrupting service."
+        },
+        {
+          "ar": "ضمان استحالة وقوع أعطال في المكونات.",
+          "en": "Ensuring that component failures never occur at all."
+        }
+      ],
+      "concept_id": "w6_rl_redundancy_goal",
+      "explanation": {
+        "ar": "ما يمنع فشل المكوّن؛ يمنع إن فشل مكوّن واحد يصير فشل الخدمة.",
+        "en": "It does not prevent component failure; it prevents one component's failure from becoming the service's failure."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-27T14:03:52Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

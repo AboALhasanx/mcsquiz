@@ -10,27 +10,27 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي ثلاث تقنيات يسمّيها الفصل أساس الدفاع الشبكي؟",
-        "en": "Which three technologies does the chapter call the foundation of network defence?"
+        "ar": "ما التقنيات الثلاث التي تشكل أساس الدفاع الشبكي؟",
+        "en": "Which three technologies form the foundation of network defense?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "الجدارات النارية والبروكسيات والشبكات الخاصة الافتراضية.",
-          "en": "Firewalls, proxies and virtual private networks."
+          "ar": "مكافحة الفيروسات وكشف الطرفيات وإدارة الترقيع المجدول.",
+          "en": "Antivirus, endpoint detection, and scheduled patch management."
         },
         {
-          "ar": "الموجّهات والمبدّلات وموازنات الحمل.",
-          "en": "Routers, switches and load balancing appliances."
+          "ar": "SIEM وSOAR ومصادر استخبارات التهديد الخارجية.",
+          "en": "SIEM, SOAR, and external threat-intelligence feeds used by analysts."
         },
         {
-          "ar": "مكافح الفيروسات و EDR وإدارة الترقيع.",
-          "en": "Antivirus, endpoint detection and patch management."
+          "ar": "موجّهات ومبدّلات وأجهزة لموازنة الحمل الشبكي.",
+          "en": "Routers, switches, and appliances for balancing network load."
         },
         {
-          "ar": "SIEM و SOAR واستخبارات التهديد.",
-          "en": "SIEM, SOAR and external threat intelligence feeds."
+          "ar": "جدران نارية ووكلاء وبوابات للشبكات الخاصة الافتراضية.",
+          "en": "Firewalls, proxy services, and virtual private network gateways."
         }
       ],
       "concept_id": "fw_triad_intro",
@@ -46,23 +46,23 @@
         "en": "Under which three pressures did these technologies evolve?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "التراخيص ودعم المورّد والتدريب.",
-          "en": "Licensing, vendor support and training."
+          "ar": "الكلفة والكوادر وتأخر الموافقات التنظيمية المطلوبة.",
+          "en": "Cost limits, staffing constraints, and delayed regulatory approval."
         },
         {
-          "ar": "الأداء والتشفير وتعقيد المهاجمين.",
-          "en": "Performance, encryption and attacker sophistication."
+          "ar": "التراخيص ودعم المورّد واحتياجات تدريب الكادر.",
+          "en": "Licensing costs, vendor support, and staff training requirements."
         },
         {
-          "ar": "الكلفة والكوادر وتأخير الموافقات التنظيمية.",
-          "en": "Cost, staffing and regulatory approval delays."
+          "ar": "الأداء والتشفير وتعقيد المهاجمين المتزايد.",
+          "en": "Performance demands, encryption, and attacker sophistication."
         },
         {
-          "ar": "عرض النطاق والتخزين وسعة التبريد.",
-          "en": "Bandwidth, storage and cooling capacity."
+          "ar": "عرض النطاق والتخزين وسعة التبريد المتاحة.",
+          "en": "Bandwidth limits, storage capacity, and cooling requirements."
         }
       ],
       "concept_id": "fw_three_pressures",
@@ -74,27 +74,27 @@
     {
       "id": "q3",
       "stem": {
-        "ar": "شنو يجسّد كل واحد من الثلاثة، حسب الفصل؟",
-        "en": "What does each of the three technologies embody, according to the chapter?"
+        "ar": "ما التجريد الأمني الذي تمثله كل واحدة من التقنيات الثلاث؟",
+        "en": "What security abstraction does each of the three technologies represent?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "نفس تجريد محيط الشبكة.",
-          "en": "The same abstraction of the network perimeter."
+          "ar": "التجريد نفسه لحدود الثقة عند كل محيط شبكي.",
+          "en": "The same trust abstraction is applied at every enterprise network perimeter."
         },
         {
-          "ar": "بديلاً عن سياسة نظام التشغيل.",
-          "en": "A replacement for the operating system policy."
+          "ar": "تجريد مختلف لحدود الثقة التي تمثلها كل تقنية.",
+          "en": "A distinct abstraction of trust boundaries for each technology."
         },
         {
-          "ar": "إثباتاً شكلياً لأمن الشبكة.",
-          "en": "A formal proof of the security of the network."
+          "ar": "بديل عن تطبيق سياسات نظام التشغيل الأمنية.",
+          "en": "A substitute for operating-system policy enforcement controls."
         },
         {
-          "ar": "تجريداً مختلفاً لحدود الثقة.",
-          "en": "A different abstraction of trust boundaries."
+          "ar": "إثبات شكلي يضمن أمن الشبكة بالكامل وفق افتراضات واضحة.",
+          "en": "A formal proof that the whole network is secure by design."
         }
       ],
       "concept_id": "fw_trust_abstraction",
@@ -113,20 +113,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "اعتراض TLS مقابل الحمولات المشفّرة.",
-          "en": "TLS interception against encrypted payloads."
+          "ar": "فحص عميق للحزم مقابل تواقيع التطبيقات المعروفة.",
+          "en": "Deep packet inspection using application signatures and protocol-aware parsing."
         },
         {
-          "ar": "فحص الهوية مقابل خدمات الدليل.",
-          "en": "Identity checks against directory services."
+          "ar": "التحقق من هوية المستخدم عبر خدمات الدليل المركزية.",
+          "en": "Identity checks against users in central directory services."
         },
         {
-          "ar": "ترشيح حزم عديم الحالة مقابل قوائم التحكّم بالوصول.",
-          "en": "Stateless packet filtering against access control lists."
+          "ar": "ترشيح الحزم عديم الحالة وفق قوائم التحكم بالوصول.",
+          "en": "Stateless packet filtering against configured access-control lists."
         },
         {
-          "ar": "فحص عميق للحزم مقابل بصمات التطبيقات.",
-          "en": "Deep packet inspection against application signatures."
+          "ar": "اعتراض TLS لفحص حمولات التطبيقات المشفرة.",
+          "en": "TLS interception used to examine encrypted application payloads."
         }
       ],
       "concept_id": "fw_stateless_mechanism",
@@ -142,23 +142,23 @@
         "en": "What did stateful firewalls add to packet filtering?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "تتبّع حالة الاتصال مثل SYN و ESTABLISHED.",
-          "en": "Tracking connection state such as SYN and ESTABLISHED."
+          "ar": "تشفير ترويسات الحزم قبل تمريرها إلى الوجهة.",
+          "en": "Encrypting packet headers before forwarding them onward."
         },
         {
-          "ar": "تشفير ترويسات الحزم قبل التمرير.",
-          "en": "Encrypting the packet headers before forwarding."
+          "ar": "استبدال قوائم الوصول بتأكيدات هوية موقّعة رقمياً.",
+          "en": "Replacing access lists with signed identity assertions."
         },
         {
-          "ar": "استبدال قوائم الوصول بتأكيدات الهوية.",
-          "en": "Replacing access lists with identity assertions."
+          "ar": "تخزين الردود كي تتجاوز الحزم اللاحقة عملية الفحص.",
+          "en": "Caching responses so subsequent packets bypass inspection."
         },
         {
-          "ar": "تخزين الردود حتى ما تحتاج فحصاً.",
-          "en": "Caching responses so they need no inspection."
+          "ar": "تتبّع حالة الاتصال النشطة مثل SYN وESTABLISHED.",
+          "en": "Tracking connection state, such as SYN and ESTABLISHED."
         }
       ],
       "concept_id": "fw_stateful_mechanism",
@@ -174,23 +174,23 @@
         "en": "What does the perimeter defence model assume?"
       },
       "bloom": "Understand",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "إن الشبكة الداخلية معادية أصلًا.",
-          "en": "That the internal network is already hostile."
+          "ar": "كل طرف يفرض سياسة الأمان الخاصة به بصورة مستقلة.",
+          "en": "Each endpoint independently enforces its own security policy."
         },
         {
-          "ar": "إن حافة المؤسسة نقطة عنق زجاجة واحدة.",
-          "en": "That the enterprise edge is a single chokepoint."
+          "ar": "كل الترافيك مشفّر قبل وصوله إلى حافة المؤسسة.",
+          "en": "All traffic is encrypted before it reaches the enterprise edge."
         },
         {
-          "ar": "إن كل طرف يفرض سياسته بنفسه.",
-          "en": "That every endpoint enforces its own policy."
+          "ar": "حافة المؤسسة تمثل نقطة اختناق مركزية واحدة.",
+          "en": "The enterprise edge acts as one central network chokepoint."
         },
         {
-          "ar": "إن الترافيك مشفّر قبل ما يوصل الحافة.",
-          "en": "That traffic is encrypted before it reaches the edge."
+          "ar": "الشبكة الداخلية معادية منذ البداية وفق النموذج.",
+          "en": "The internal network is assumed hostile from the start."
         }
       ],
       "concept_id": "fw_perimeter_model",
@@ -206,23 +206,23 @@
         "en": "Which four capabilities does a next-generation firewall integrate?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "توجيه وتبديل و NAT وخدمة DHCP.",
-          "en": "Routing, switching, NAT and DHCP service."
+          "ar": "التوجيه والتبديل وترجمة العناوين وخدمة DHCP.",
+          "en": "Routing, switching, network address translation, and DHCP services for clients."
         },
         {
-          "ar": "نسخ احتياطي وتكرار وأرشفة واستبقاء.",
-          "en": "Backup, replication, archiving and retention."
+          "ar": "فحص عميق واعتراض TLS وIPS وتكامل هوية المستخدم.",
+          "en": "Deep inspection, TLS interception, IPS, and identity integration."
         },
         {
-          "ar": "مكافح فيروسات وصندوق رمل وترقيع وتصوير.",
-          "en": "Antivirus, sandboxing, patching and imaging."
+          "ar": "نسخ احتياطي وتكرار وأرشفة واستبقاء البيانات.",
+          "en": "Backup, replication, archiving, and long-term data retention."
         },
         {
-          "ar": "فحص عميق واعتراض TLS ومحرّك IPS وتكامل الهوية.",
-          "en": "DPI, TLS interception, IPS and identity integration."
+          "ar": "مكافحة فيروسات وصندوق رمل وترقيع وتصوير الأنظمة.",
+          "en": "Antivirus, sandboxing, patching, and endpoint imaging tools."
         }
       ],
       "concept_id": "fw_ngfw_components",
@@ -238,23 +238,23 @@
         "en": "Why did firewalls have to move beyond packet and connection semantics?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "لأن الموجّهات توقّفت عن تمرير ترافيك غير مشفّر.",
-          "en": "Because routers stopped forwarding unencrypted traffic."
+          "ar": "لأن الموجّهات توقفت عن تمرير الترافيك غير المشفّر فقط.",
+          "en": "Routers no longer forward network traffic without encryption."
         },
         {
-          "ar": "لأن المصنّعين أزالوا دعم الفحص المتتبّع.",
-          "en": "Because vendors removed stateful inspection support."
+          "ar": "لأن التهديدات انتقلت إلى ترافيك مشفّر ومنافذ متغيرة.",
+          "en": "Threats shifted toward encrypted traffic using agile ports."
         },
         {
-          "ar": "لأن التهديدات انتقلت لترافيك مشفّر يتنقّل بين المنافذ.",
-          "en": "Because threats moved to port-agile encrypted traffic."
+          "ar": "لأن قوائم الوصول أصبحت أكبر من سعة التخزين المتاحة.",
+          "en": "Access-control lists became too large for available storage."
         },
         {
-          "ar": "لأن قوائم التحكّم صارت أطول من أن تُخزَّن.",
-          "en": "Because access control lists became too long to store."
+          "ar": "لأن المورّدين أزالوا دعم فحص حالة الاتصال.",
+          "en": "Vendors removed support for stateful packet inspection."
         }
       ],
       "concept_id": "fw_ngfw_why",
@@ -273,20 +273,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "بصمات التطبيقات بدل أرقام المنافذ.",
-          "en": "Application signatures rather than port numbers."
+          "ar": "بصمات التطبيقات بدلاً من الاعتماد على أرقام المنافذ.",
+          "en": "Application signatures instead of relying only on port numbers."
         },
         {
-          "ar": "عناوين المصدر بدل عناوين الوجهة.",
-          "en": "Source addresses rather than destination addresses."
+          "ar": "أحجام الحزم بدلاً من قياس توقيت وصول كل حزمة.",
+          "en": "Packet sizes instead of measuring the timing between packets."
         },
         {
-          "ar": "أحجام الحزم بدل أوقات الحزم.",
-          "en": "Packet sizes rather than packet timings."
+          "ar": "سلاسل الشهادات بدلاً من مجموعة التشفير المتفاوض عليها.",
+          "en": "Certificate chains instead of inspecting negotiated cipher suites."
         },
         {
-          "ar": "سلاسل الشهادات بدل مجموعات التشفير.",
-          "en": "Certificate chains rather than cipher suites."
+          "ar": "عناوين جهاز المرسِل بدلاً من عناوين المستقبِل.",
+          "en": "Source addresses instead of checking the destination addresses."
         }
       ],
       "concept_id": "fw_dpi_role",
@@ -298,59 +298,27 @@
     {
       "id": "q10",
       "stem": {
-        "ar": "شنو يشترط اعتراض TLS على الجدار الناري؟",
-        "en": "What does TLS interception require the firewall to do?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "يستبدل شهادة السيرفر بشهادة موقّعة ذاتياً.",
-          "en": "Replace the server certificate with a self-signed one."
-        },
-        {
-          "ar": "ينهي TLS ويعيد إنشاءه حتى تصير الحمولات مقروءة.",
-          "en": "Terminate and re-establish TLS so payloads become readable."
-        },
-        {
-          "ar": "يحجب كل جلسة TLS ما يقدر يصنّفها.",
-          "en": "Block every TLS session it cannot classify."
-        },
-        {
-          "ar": "يمرّر الترافيك المشفّر بلا فحص.",
-          "en": "Forward encrypted traffic without inspecting it."
-        }
-      ],
-      "concept_id": "fw_tls_interception",
-      "explanation": {
-        "ar": "حتى يفحص حمولة مشفّرة، الجدار لازم يجلس وسط جلسة TLS، يفكّ التشفير ويعيده على الطرفين.",
-        "en": "To inspect an encrypted payload the firewall must sit in the middle of the TLS session, decrypting and re-encrypting on both sides."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
         "ar": "شنو يعطي تكامل مزوّدي الهوية لجدار الجيل الجديد؟",
         "en": "What does integration with identity providers give an NGFW?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "ترقيعاً تلقائياً لأنظمة تشغيل العملاء.",
-          "en": "Automatic patching of the client operating systems."
+          "ar": "استبدال كامل لجهة إصدار الشهادات الرقمية بالمؤسسة.",
+          "en": "Complete replacement of the organisation certificate authority."
         },
         {
-          "ar": "تشفيراً لقاعدة بيانات السياسة أثناء السكون.",
-          "en": "Encryption of the policy database at rest."
+          "ar": "تحكم وصول لكل مستخدم بدلاً من قواعد لكل عنوان IP.",
+          "en": "Per-user access control instead of rules tied to IP addresses."
         },
         {
-          "ar": "استبدالاً كاملاً لجهة إصدار الشهادات.",
-          "en": "Replacement of the certificate authority entirely."
+          "ar": "ترقيع تلقائي لأنظمة تشغيل العملاء في بيئة العمل.",
+          "en": "Automatic patching for every client operating system in use."
         },
         {
-          "ar": "تحكّماً بالوصول لكل مستخدم بدل قواعد لكل عنوان.",
-          "en": "Per-user access control instead of per-address rules."
+          "ar": "تشفير قاعدة السياسة أثناء تخزينها على القرص.",
+          "en": "Encryption of policy databases while they are stored at rest."
         }
       ],
       "concept_id": "fw_identity_integration",
@@ -360,29 +328,29 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q11",
       "stem": {
-        "ar": "أي تقنيات يذكرها الفصل لتجنّب كشف الجدار الناري؟",
-        "en": "Which techniques does the chapter list for evading firewall detection?"
+        "ar": "ما التقنيات التي يمكن أن تتجاوز كشف الجدار الناري؟",
+        "en": "Which techniques can evade firewall detection?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "المسح والانتحال والإغراق والتشويش.",
-          "en": "Scanning, spoofing, flooding and fuzzing."
+          "ar": "ترقيع وإعادة تشغيل وتدوير سجلات النظام وأرشفتها دورياً.",
+          "en": "Patching, rebooting, log rotation, and scheduled archiving."
         },
         {
-          "ar": "الهاش والتمليح والتوقيع والتحقّق.",
-          "en": "Hashing, salting, signing and verifying."
+          "ar": "تجزئة وتمليح وتوقيع والتحقق من المعلومات المخزونة.",
+          "en": "Hashing, salting, signing, and validating stored information."
         },
         {
-          "ar": "التجزئة والأنفاق وإساءة استخدام التشفير.",
-          "en": "Fragmentation, tunnelling, encryption misuse."
+          "ar": "تجزئة الحزم والأنفاق وإساءة استخدام الترافيك المشفّر.",
+          "en": "Fragmentation, tunnelling, and misuse of encrypted traffic."
         },
         {
-          "ar": "الترقيع وإعادة التشغيل والتدوير والأرشفة.",
-          "en": "Patching, rebooting, rotating and archiving."
+          "ar": "مسح وانتحال عناوين وإغراق واختبار مدخلات البروتوكول.",
+          "en": "Scanning, address spoofing, flooding, and protocol fuzzing."
         }
       ],
       "concept_id": "fw_evasion_fragmentation",
@@ -392,7 +360,7 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q12",
       "stem": {
         "ar": "شنو النفق كتقنية تجنّب؟",
         "en": "What is tunnelling as an evasion technique?"
@@ -401,20 +369,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "تغليف ترافيك محظور داخل HTTP مسموح.",
-          "en": "Encapsulating forbidden traffic inside allowed HTTP."
+          "ar": "تغليف ترافيك محظور داخل طلبات HTTP مسموحة.",
+          "en": "Encapsulating prohibited traffic inside permitted HTTP requests."
         },
         {
-          "ar": "تقسيم الحزمة إلى شذرات أصغر.",
-          "en": "Splitting a packet into many smaller fragments."
+          "ar": "استبدال الحمولة الأصلية بسلسلة من الضجيج العشوائي.",
+          "en": "Replacing the original payload with a stream of random noise."
         },
         {
-          "ar": "تأخير الحزم حتى تبدو الأوقات طبيعية.",
-          "en": "Delaying packets so timings look normal."
+          "ar": "تأخير الحزم حتى يبدو توقيت وصولها طبيعياً.",
+          "en": "Delaying packets until their arrival timing appears to be normal."
         },
         {
-          "ar": "استبدال الحمولة بضجيج عشوائي.",
-          "en": "Replacing the payload with random noise."
+          "ar": "تقسيم حزمة الشبكة إلى شذرات صغيرة متعددة.",
+          "en": "Splitting a network packet into multiple smaller fragments."
         }
       ],
       "concept_id": "fw_evasion_tunneling",
@@ -424,29 +392,29 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q13",
       "stem": {
         "ar": "كيف تواجه الجدارات التكيّفية الترافيك المموّه؟",
         "en": "How do adaptive firewalls counter obfuscated traffic?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "بحجب منافذ كل الخدمات المجهولة.",
-          "en": "With port blocking for all unknown services."
+          "ar": "كشف الشذوذ مع مصنّفات تعلّم آلي للتعامل مع التمويه.",
+          "en": "Anomaly detection combined with machine-learning classifiers."
         },
         {
-          "ar": "بكشف الشذوذ ومصنّفات التعلّم الآلي.",
-          "en": "With anomaly detection and machine-learning classifiers."
+          "ar": "حجب المنافذ المرتبطة بالخدمات الشبكية غير المعروفة فقط.",
+          "en": "Blocking every port associated with an unknown network service."
         },
         {
-          "ar": "بقوائم وصول أطول ومراجعة يدوية.",
-          "en": "With longer access lists and manual review."
+          "ar": "تواقيع ثابتة لا يجري تحديثها إلا مرة واحدة سنوياً.",
+          "en": "Static signature rules that are refreshed once each year."
         },
         {
-          "ar": "ببصمات ثابتة تُحدَّث مرة بالسنة.",
-          "en": "With static signatures updated once a year."
+          "ar": "قوائم وصول أطول تتطلب مراجعة أمنية يدوية متكررة.",
+          "en": "Longer access lists that require repeated manual security review."
         }
       ],
       "concept_id": "fw_adaptive_response",
@@ -456,29 +424,29 @@
       }
     },
     {
-      "id": "q15",
+      "id": "q14",
       "stem": {
         "ar": "كيف تُعرَّف دقة الجدار الناري؟",
         "en": "How is firewall accuracy defined?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "واحد ناقص حاصل ضرب احتمالي الخطأ.",
-          "en": "One minus the product of the two error probabilities."
+          "ar": "واحد ناقص مجموع معدّلي الإيجابيات والسلبيات الكاذبة.",
+          "en": "One minus the sum of the false-positive and false-negative rates."
         },
         {
-          "ar": "مجموع احتمالي القرار الصحيح.",
-          "en": "The sum of the two correct-decision probabilities."
+          "ar": "كمية الترافيك المسموح مقسومة على الترافيك المحجوب.",
+          "en": "The amount of permitted traffic divided by blocked traffic."
         },
         {
-          "ar": "نسبة الترافيك المسموح إلى المحجوب.",
-          "en": "The ratio of allowed traffic to blocked traffic."
+          "ar": "مجموع قرارات السماح الصحيحة وقرارات الحجب الصحيحة.",
+          "en": "The sum of correct allow decisions and correct deny decisions."
         },
         {
-          "ar": "واحد ناقص مجموع احتمالي الخطأ.",
-          "en": "One minus the sum of the two error probabilities."
+          "ar": "واحد ناقص حاصل ضرب معدّلي الإيجابيات والسلبيات الكاذبة.",
+          "en": "One minus the product of the false-positive and false-negative rates."
         }
       ],
       "concept_id": "fw_accuracy_formula",
@@ -488,103 +456,7 @@
       }
     },
     {
-      "id": "q16",
-      "stem": {
-        "ar": "شنو يمثّل احتمال السماح الخاطئ؟",
-        "en": "What does the probability of erroneous allow represent?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "انهيار الجدار تحت حمل ترافيك ثقيل.",
-          "en": "The firewall crashing under heavy traffic load."
-        },
-        {
-          "ar": "تطبيق المسؤولين ترتيب قواعد خاطئ.",
-          "en": "Administrators applying the wrong rule order."
-        },
-        {
-          "ar": "مرور ترافيك ضارّ عبر الجدار.",
-          "en": "Malicious traffic being permitted through the firewall."
-        },
-        {
-          "ar": "حجب الجدار لترافيك سليم.",
-          "en": "Benign traffic being blocked by the firewall."
-        }
-      ],
-      "concept_id": "fw_p_allow_meaning",
-      "explanation": {
-        "ar": "هو معدّل تفويت الكشف، أي نسبة الترافيك العدائي اللي تمرّره السياسة كأنه مقبول.",
-        "en": "It is the missed-detection rate, the share of hostile traffic that the policy lets through as though it were acceptable."
-      }
-    },
-    {
-      "id": "q17",
-      "stem": {
-        "ar": "شنو يمثّل احتمال الحجب الخاطئ؟",
-        "en": "What does the probability of erroneous deny represent?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "حجب الجدار لترافيك سليم.",
-          "en": "Benign traffic being blocked by the firewall."
-        },
-        {
-          "ar": "مرور ترافيك ضارّ عبره.",
-          "en": "Malicious traffic being permitted through it."
-        },
-        {
-          "ar": "نفاد ذاكرة الجدار.",
-          "en": "The firewall running out of memory."
-        },
-        {
-          "ar": "كتابة السياسة بترتيب خاطئ.",
-          "en": "The policy being written in the wrong order."
-        }
-      ],
-      "concept_id": "fw_p_deny_meaning",
-      "explanation": {
-        "ar": "هو معدّل الإنذار الخاطئ، أي نسبة الترافيك الشرعي اللي ترفضه السياسة، وهنا تُفقد الاستعمالية.",
-        "en": "It is the false-positive rate, the share of legitimate traffic that the policy refuses, which is where usability is lost."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "ليش يُجمع احتمالا الخطأ بدل ما يُضربان بمعادلة الدقة؟",
-        "en": "Why are the two error probabilities added rather than multiplied in the accuracy formula?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأن الدقة احتمال اتحاد.",
-          "en": "Because accuracy is a probability of a union."
-        },
-        {
-          "ar": "لأن كل خطأ ينزّل الدقة باستقلال.",
-          "en": "Because each error reduces accuracy independently."
-        },
-        {
-          "ar": "لأن الضرب يبالغ بالدقة.",
-          "en": "Because multiplication would overstate accuracy."
-        },
-        {
-          "ar": "لأن الخطأين ما يمكن يجتمعان أبداً.",
-          "en": "Because the two errors can never co-occur."
-        }
-      ],
-      "concept_id": "fw_accuracy_sum_not_product",
-      "explanation": {
-        "ar": "الخطآن يحرّكان الدقة بنفس الاتجاه، فمساهمتهما تُجمع، والضرب يعني إن خطأ يعوّض الثاني، وهذا غير صحيح.",
-        "en": "Both mistakes move accuracy in the same direction, so their contributions add, whereas a product would imply that one error can offset the other."
-      }
-    },
-    {
-      "id": "q19",
+      "id": "q15",
       "stem": {
         "ar": "كيف يُكتب التعرض المتوقّع للمخاطر بنشر جدار ناري؟",
         "en": "How is the expected risk exposure of a firewall deployment written?"
@@ -593,20 +465,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "نسبة الضارّ × خطأ الحجب × أثره، زائد حد الترافيك السليم.",
-          "en": "Malicious share times deny error times impact, plus the benign term."
+          "ar": "حاصل ضرب حصتي الترافيك بأثري الخطأين الأمنيين معاً.",
+          "en": "The two traffic shares multiplied by both error impacts."
         },
         {
-          "ar": "حاصل ضرب النسبتين والأثرين.",
-          "en": "The product of the two shares and the two impacts."
+          "ar": "حصة الضار × خطأ الحجب × أثره، مع حدّ خطر الترافيك السليم.",
+          "en": "Malicious share × deny error × impact, plus the benign-traffic risk term."
         },
         {
-          "ar": "مجموع النسبتين مقسوماً على الأثرين.",
-          "en": "The sum of the two shares divided by the two impacts."
+          "ar": "مجموع حصص الترافيك مقسوماً على الآثار الخاصة بها.",
+          "en": "The sum of traffic shares divided by their respective impacts."
         },
         {
-          "ar": "نسبة الضارّ × خطأ السماح × أثره، زائد حد الترافيك السليم.",
-          "en": "Malicious share times allow error times impact, plus the benign term."
+          "ar": "حصة الضار × خطأ السماح × أثره، مع حدّ خطر الترافيك السليم.",
+          "en": "Malicious share × allow error × impact, plus the benign-risk term."
         }
       ],
       "concept_id": "fw_risk_formula",
@@ -616,29 +488,29 @@
       }
     },
     {
-      "id": "q20",
+      "id": "q16",
       "stem": {
         "ar": "ليش ما يكفي نعرف معدّلي الخطأ؟",
         "en": "Why is it not enough to know the two error rates?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "لأن نسب الترافيك تتغيّر كل ثانية.",
-          "en": "Because the traffic shares change every second."
+          "ar": "لأن أثر الخطأين قد يختلف بمراتب مقدار متعددة.",
+          "en": "Because the two error impacts can differ by several orders of magnitude."
         },
         {
-          "ar": "لأن الدقة تشمل الأثرين أصلًا.",
-          "en": "Because accuracy already includes both impacts."
+          "ar": "لأن معدلات الخطأ المقاسة تكون غير دقيقة دائماً.",
+          "en": "Because measured error rates are always inaccurate in practice."
         },
         {
-          "ar": "لأن أثر الخطأين يقدر يختلف بمراتب.",
-          "en": "Because the impacts of the two errors can differ by orders."
+          "ar": "لأن حصص الترافيك السليم والضار تتغير باستمرار.",
+          "en": "Because benign and malicious traffic shares can change over time."
         },
         {
-          "ar": "لأن معدّلات الخطأ تُقاس بدقة ناقصة دائماً.",
-          "en": "Because error rates are always measured inaccurately."
+          "ar": "لأن مقياس الدقة يتضمن أثر الخطأين مسبقاً.",
+          "en": "Because the accuracy measure already includes both error impacts."
         }
       ],
       "concept_id": "fw_impact_weighting",
@@ -648,67 +520,35 @@
       }
     },
     {
-      "id": "q21",
+      "id": "q17",
       "stem": {
         "ar": "ليش بعض المؤسسات تختار عمداً وضعاً أشدّ بالحجب؟",
         "en": "Why do some organisations deliberately choose a stricter blocking posture?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "لأن أثر تفويت الكشف أثقل من الحجب.",
-          "en": "Because the impact of a missed detection outweighs blocking."
+          "ar": "لأن منتجات الجدران الأشد أقل كلفة في الترخيص والصيانة.",
+          "en": "Because stricter firewall products cost less to license and maintain."
         },
         {
-          "ar": "لأن الجدارات الأشدّ أرخص بالترخيص.",
-          "en": "Because stricter firewalls are cheaper to licence."
+          "ar": "لأن حجب ترافيك أكثر يحسن زمن استجابة الشبكة دائماً.",
+          "en": "Because denying more traffic always improves network response time."
         },
         {
-          "ar": "لأن حجب ترافيك أكثر يحسّن زمن الاستجابة.",
-          "en": "Because blocking more traffic improves latency."
+          "ar": "لأن الدقة ترتفع حتماً عند حجب ترافيك إضافي.",
+          "en": "Because accuracy necessarily rises whenever additional traffic is denied."
         },
         {
-          "ar": "لأن الدقة ترتفع لمّا يُحجب ترافيك أكثر.",
-          "en": "Because accuracy rises when more traffic is denied."
+          "ar": "لأن أثر تفويت الكشف قد يفوق أثر الحجب الخاطئ.",
+          "en": "Because the impact of a missed detection may exceed a false block."
         }
       ],
       "concept_id": "fw_strict_posture",
       "explanation": {
         "ar": "لمّا يكون أثر تفويت الكشف أكبر بكثير من أثر الإنذار الخاطئ، فتحمّل بعض الانقطاع هو المقايضة العقلانية.",
         "en": "When the missed-detection impact is much larger than the false-positive impact, tolerating some outage is the rational trade."
-      }
-    },
-    {
-      "id": "q22",
-      "stem": {
-        "ar": "ليش نموذج المحيط يضعف لمّا تصير التطبيقات متنقّلة بين المنافذ ومشفّرة؟",
-        "en": "Why does the perimeter model weaken as applications become port-agile and encrypted?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأن قوائم التحكّم تصير صياغتها غير صحيحة.",
-          "en": "Because access control lists become invalid syntax."
-        },
-        {
-          "ar": "لأن نقطة العنق ما تعود تقدر تعرّف الترافيك.",
-          "en": "Because the chokepoint can no longer identify the traffic."
-        },
-        {
-          "ar": "لأن الحافة توقّف تمرير الحزم بالكامل.",
-          "en": "Because the edge stops forwarding packets entirely."
-        },
-        {
-          "ar": "لأن التشفير يخلي الحزم تسافر أسرع.",
-          "en": "Because encryption makes packets travel faster."
-        }
-      ],
-      "concept_id": "fw_port_agile_problem",
-      "explanation": {
-        "ar": "نقطة العنق مفيدة بس إذا تقدر تعرف شنو يمرّ بيها، وأرقام المنافذ والنص الصريح كانا وسيلتها للمعرفة.",
-        "en": "A chokepoint is only useful if it can tell what is passing through it, and port numbers plus plaintext were how it used to tell."
       }
     }
   ],
@@ -717,7 +557,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

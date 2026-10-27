@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "المقدمة والمبادئ الاستراتيجية الأربعة",
-    "en": "Introduction and the four strategic principles"
+    "ar": "الأسس والمبادئ الأساسية",
+    "en": "Foundations and Core Principles"
   },
   "quiz_id": "Quiz_Ch06_T01_Intro_And_Strategic_Principles",
   "has_math": false,
@@ -14,23 +14,23 @@
         "en": "What does web application security encompass?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "ضوابط فيزيائية وتسجيل دخول مركز البيانات.",
-          "en": "Physical controls and datacentre access logging."
+          "ar": "استراتيجيات وأدوات وممارسات لحماية تطبيقات الويب.",
+          "en": "Web app strategies, tools, and practices."
         },
         {
-          "ar": "استراتيجيات وأدوات وممارسات تحمي تطبيقات الويب.",
-          "en": "Strategies, tools and practices that protect web apps."
+          "ar": "أمن الشبكات: ترشيح الاتصال والتوجيه والمراقبة.",
+          "en": "Network edge filters and traffic monitoring."
         },
         {
-          "ar": "جدارات وبروكسيات وشبكات خاصة عند الحافة.",
-          "en": "Firewalls, proxies and VPNs deployed at the edge."
+          "ar": "التشفير: إدارة المفاتيح والشهادات وتدويرها.",
+          "en": "Encryption keys, certificates, and rotation."
         },
         {
-          "ar": "مفاتيح التشفير وإدارة دورة حياة الشهادات.",
-          "en": "Encryption keys and certificate lifecycle management."
+          "ar": "الأمن المادي: دخول المرافق والكاميرات وسجلاتها.",
+          "en": "Physical access controls for server facilities."
         }
       ],
       "concept_id": "w6_scope",
@@ -46,23 +46,23 @@
         "en": "Which consequences can a successful web application breach produce?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "ترجمة أبطأ وملفات تنفيذية أكبر واختبارات أطول.",
-          "en": "Slower compilation, larger binaries and longer tests."
+          "ar": "شهادات أقصر عمراً وتدوير أكثر تكراراً.",
+          "en": "Shorter certificates and more frequent rotation."
         },
         {
-          "ar": "كلف تراخيص أعلى ومناطق سحابية أقل.",
-          "en": "Higher licensing costs and fewer cloud regions."
+          "ar": "خسائر مالية وضرر بالسمعة وعقوبات وتعطل.",
+          "en": "Losses, reputation damage, penalties, and disruption."
         },
         {
-          "ar": "أعمار شهادات أقصر وتدوير أكثر.",
-          "en": "Shorter certificate lifetimes and more rotation."
+          "ar": "بناء أبطأ وملفات أكبر ووقت اختبار أطول.",
+          "en": "Slower builds, larger files, and longer test runs."
         },
         {
-          "ar": "خسائر مالية وضرر بالسمعة وعقوبات وتعطّل منهجي.",
-          "en": "Financial loss, reputational damage, penalties and disruption."
+          "ar": "كلفة تراخيص أعلى ومناطق سحابية أقل.",
+          "en": "Higher licence costs and fewer cloud regions."
         }
       ],
       "concept_id": "w6_stakes",
@@ -74,123 +74,27 @@
     {
       "id": "q3",
       "stem": {
-        "ar": "ما عدا حقن SQL و XSS التقليديين، أي أصناف تهديد يضيفها الفصل؟",
-        "en": "Beyond classic SQL injection and XSS, which threat classes does the chapter add?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "حملات بوتات وسلسلة توريد وإساءة APIs وهجمات حاويات.",
-          "en": "Bot campaigns, supply chain, API abuse and containers."
-        },
-        {
-          "ar": "تسميم ARP وتجاوز VLAN وإغراق MAC.",
-          "en": "ARP poisoning, VLAN hopping and MAC flooding."
-        },
-        {
-          "ar": "اختطاف BGP وتسميم DNS وإساءة NTP.",
-          "en": "BGP hijacking, DNS poisoning and NTP abuse."
-        },
-        {
-          "ar": "مسح أقراص وتلاعب بالسجلات وانحراف ساعة.",
-          "en": "Disk wiping, log tampering and clock skew."
-        }
-      ],
-      "concept_id": "w6_threat_evolution",
-      "explanation": {
-        "ar": "المشهد انتقل لحملات مدفوعة بالبوتات، واختراقات سلسلة التوريد، واستغلال APIs، وهجمات على الخدمات المصغّرة داخل الحاويات.",
-        "en": "The landscape moved to bot-driven campaigns, supply chain compromises, API exploitation and attacks on containerised microservices."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "نحو أي نوع من النماذج تحوّل أمن تطبيقات الويب؟",
-        "en": "Toward which kind of paradigm has web application security shifted?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يدوية ودورية ومدفوعة بالتدقيق.",
-          "en": "Manual, periodic and audit-driven."
-        },
-        {
-          "ar": "سلبية ومعزولة وعلى المحيط فقط.",
-          "en": "Passive, isolated and perimeter-only."
-        },
-        {
-          "ar": "استباقية ومتكيّفة ومدفوعة بالاستخبارات.",
-          "en": "Proactive, adaptive and intelligence-driven."
-        },
-        {
-          "ar": "ردّ فعل وساكنة ومقيّدة بالقواعد.",
-          "en": "Reactive, static and rule-bound."
-        }
-      ],
-      "concept_id": "w6_paradigm_shift",
-      "explanation": {
-        "ar": "انتقل من ردّ الفعل على الحوادث إلى توقّعها، باستخدام الاستخبارات والأتمتة بدل المراجعة اليدوية الدورية.",
-        "en": "It moved from reacting to incidents toward anticipating them, using intelligence and automation rather than periodic manual review."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "أي قدرات يدمجها ذلك النموذج الاستباقي؟",
-        "en": "Which capabilities does that proactive paradigm integrate?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "تدوير نسخ احتياطية وأرشيف شرائط وتخزين بارد.",
-          "en": "Backup rotation, tape archives and cold storage."
-        },
-        {
-          "ar": "كشف شذوذ بتعلّم الآلة وترقيع آلي ومبادئ Zero Trust.",
-          "en": "ML anomaly detection, automated patching and Zero Trust."
-        },
-        {
-          "ar": "مراجعة كود يدوية وتدقيق ربع سنوي وتذاكر.",
-          "en": "Manual code review, quarterly audits and ticketing."
-        },
-        {
-          "ar": "تقسيم شبكي ومركّزات VPN و NAC.",
-          "en": "Network segmentation, VPN concentrators and NAC."
-        }
-      ],
-      "concept_id": "w6_shift_components",
-      "explanation": {
-        "ar": "كشف الشذوذ القائم على تعلّم الآلة، والترقيع الآلي، ومبادئ Zero Trust هي المكوّنات الثلاثة المذكورة.",
-        "en": "Machine-learning anomaly detection, automated patching and Zero Trust principles are the three named ingredients."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
         "ar": "شنو يميّز المقاربة الاستراتيجية عن الاستجابة التكتيكية؟",
         "en": "What distinguishes a strategic approach from a tactical response?"
       },
       "bloom": "Analyze",
-      "answer": 3,
+      "answer": 2,
       "options": [
         {
-          "ar": "الاستراتيجية تصلّح ثغرة فورية، والتكتيك يبني أطراً طويلة.",
-          "en": "Strategy fixes immediate flaws; tactics build long-term frameworks."
+          "ar": "الاستراتيجية تحدد الميزانيات، والتكتيك يختار موردي البرمجيات.",
+          "en": "Strategy sets budgets; tactics select software vendors."
         },
         {
-          "ar": "الاستراتيجية أرخص، والتكتيك دائماً أغلى.",
-          "en": "Strategy is cheaper; tactics are always more expensive."
+          "ar": "الاستراتيجية تسجل الحوادث، والتكتيك يحدد العقوبات القانونية.",
+          "en": "Strategy records incidents; tactics define legal penalties."
         },
         {
-          "ar": "الاستراتيجية تُكتب، والتكتيك يُقال فقط.",
-          "en": "Strategy is written down; tactics are only spoken."
-        },
-        {
-          "ar": "الاستراتيجية تبني أطراً طويلة الأمد، والتكتيك يصلّح ثغرة فورية.",
+          "ar": "الاستراتيجية تبني أطرًا طويلة الأمد، والتكتيك يعالج العيوب الفورية.",
           "en": "Strategy builds long-term frameworks; tactics fix immediate flaws."
+        },
+        {
+          "ar": "الاستراتيجية تعالج العيوب الفورية، والتكتيك يبني أطرًا طويلة الأمد.",
+          "en": "Strategy fixes immediate flaws; tactics build long-term frameworks."
         }
       ],
       "concept_id": "w6_strategic_vs_tactical",
@@ -200,381 +104,125 @@
       }
     },
     {
-      "id": "q7",
+      "id": "q4",
       "stem": {
-        "ar": "ليش الفصل يعدّ تطبيقات الويب جزءاً من نظام اجتماعي-تقني؟",
-        "en": "Why does the chapter call web applications part of a socio-technical system?"
+        "ar": "لماذا تعد تطبيقات الويب أنظمة اجتماعية تقنية؟",
+        "en": "Why are web applications socio-technical systems?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "لأنها تشمل البنية التحتية والبشر والحوكمة والخصوم.",
-          "en": "Because they span infrastructure, people, governance and threats."
+          "ar": "تشمل التخزين والمعالجات والمترجمات وقواعد البيانات.",
+          "en": "They span storage, processors, compilers, and databases."
         },
         {
-          "ar": "لأن أكثر من مبرمج يكتبها.",
-          "en": "Because they are written by more than one programmer."
+          "ar": "تشمل المكاتب والعقود والموردين وأسعار المنتجات.",
+          "en": "They span offices, contracts, suppliers, and product pricing."
         },
         {
-          "ar": "لأنها تعمل على أكثر من نظام تشغيل.",
-          "en": "Because they run on more than one operating system."
+          "ar": "تشمل الشبكات والبروتوكولات والموجهات وأنظمة الكابلات.",
+          "en": "They span networks, protocols, routers, and cable systems."
         },
         {
-          "ar": "لأن أكثر من دولة تنظّمها.",
-          "en": "Because they are regulated by more than one country."
+          "ar": "تشمل البنية التحتية والأشخاص والحوكمة والخصوم.",
+          "en": "They connect technology, people, governance, and adversaries."
         }
       ],
       "concept_id": "w6_socio_technical",
       "explanation": {
-        "ar": "النظام يشمل البنية التحتية وسلوك الإنسان والحوكمة وديناميكيات الخصوم، فالأمن ما ينختزل بالكود.",
+        "ar": "يشمل النظام البنية التحتية وسلوك الإنسان والحوكمة وديناميكيات الخصوم؛ لذلك لا يقتصر الأمن على الشفرة.",
         "en": "The system includes infrastructure, human behaviour, governance and adversarial dynamics, so security cannot be reduced to code."
       }
     },
     {
-      "id": "q8",
+      "id": "q5",
       "stem": {
-        "ar": "أي ثلاث صفات لازم تكون بالاستراتيجية الحديثة؟",
+        "ar": "ما الصفات الثلاث للاستراتيجية الحديثة؟",
         "en": "Which three attributes must a modern strategy have?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "يدوية وموثّقة وربع سنوية.",
-          "en": "Manual, documented and quarterly."
-        },
-        {
-          "ar": "مشفّرة وموقّعة وموثّقة رسمياً.",
-          "en": "Encrypted, signed and notarised."
-        },
-        {
-          "ar": "ديناميكية ومتعددة الطبقات ومتكيّفة.",
-          "en": "Dynamic, multi-layered and adaptive."
-        },
-        {
-          "ar": "ساكنة وأحادية الطبقة وقابلة للتنبؤ.",
-          "en": "Static, single-layered and predictable."
-        }
-      ],
-      "concept_id": "w6_strategy_attributes",
-      "explanation": {
-        "ar": "لازم تكون ديناميكية ومتعددة الطبقات ومتكيّفة حتى تلحق التقنية والتنظيم معاً.",
-        "en": "It has to be dynamic, multi-layered and adaptive to keep pace with both technology and regulation."
-      }
-    },
-    {
-      "id": "q9",
-      "stem": {
-        "ar": "أي نوعين من الضغط لازم تعكسهما الاستراتيجية الحديثة؟",
-        "en": "Which two kinds of pressure must a modern strategy reflect?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "تحديث العتاد وعقود مراكز البيانات.",
-          "en": "Hardware refresh and datacentre leases."
-        },
-        {
-          "ar": "التقدّم التقني والضغوط التنظيمية.",
-          "en": "Technological advances and regulatory pressure."
-        },
-        {
-          "ar": "خطط المورّدين وتجديد التراخيص.",
-          "en": "Vendor roadmaps and licensing renewals."
-        },
-        {
-          "ar": "دوران الكوادر وميزانيات التدريب.",
-          "en": "Staff turnover and training budgets."
-        }
-      ],
-      "concept_id": "w6_pressures",
-      "explanation": {
-        "ar": "السحابة والـAPIs والذكاء الاصطناعي من جهة، و GDPR و CCPA و HIPAA من جهة ثانية، الاثنان يرسمان شكل الاستراتيجية القابلة للبقاء.",
-        "en": "Cloud, APIs and AI on one side, and GDPR, CCPA and HIPAA on the other, both shape what a viable strategy looks like."
-      }
-    },
-    {
-      "id": "q10",
-      "stem": {
-        "ar": "شنو يضمن الدفاع في العمق؟",
-        "en": "What does Defense-in-Depth guarantee?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "إن كل ثغرة تُكتشف قبل النشر.",
-          "en": "That every vulnerability is found before deployment."
-        },
-        {
-          "ar": "إن المهاجمين ما يوصلون للشبكة أبداً.",
-          "en": "That attackers cannot reach the network at all."
-        },
-        {
-          "ar": "إن التشفير مطبَّق بكل طبقة.",
-          "en": "That encryption is applied at every layer."
-        },
-        {
-          "ar": "إن ثغرة واحدة ما تقدر تخترق النظام كله.",
-          "en": "That no single vulnerability compromises the whole system."
-        }
-      ],
-      "concept_id": "w6_did_definition",
-      "explanation": {
-        "ar": "تُنشر طبقات متعددة بحيث يُخفَّف الخطر حتى لو فشلت إحداها.",
-        "en": "Multiple layers are deployed so that risk is mitigated even if one of them fails."
-      }
-    },
-    {
-      "id": "q11",
-      "stem": {
-        "ar": "أي خمس طبقات يذكرها الفصل للدفاع في العمق؟",
-        "en": "Which five layers does the chapter list for Defense-in-Depth?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "تحقّق المدخلات والمصادقة والمراقبة والجدارات والتشفير.",
-          "en": "Input validation, auth, monitoring, firewalls, encryption."
+          "ar": "ديناميكية ومتعددة الطبقات ومتكيّفة.",
+          "en": "Dynamic, multi-layered, and adaptive."
         },
         {
-          "ar": "التوجيه والتبديل و NAT و DNS و DHCP.",
-          "en": "Routing, switching, NAT, DNS and DHCP services."
+          "ar": "ساكنة وأحادية الطبقة وقابلة للتنبؤ.",
+          "en": "Static, single-layered, and predictable."
         },
         {
-          "ar": "النسخ الاحتياطي والتكرار والأرشفة والتصوير والتعافي.",
-          "en": "Backup, replication, archiving, imaging and recovery."
+          "ar": "يدوية وموثقة وتُراجع كل ثلاثة أشهر.",
+          "en": "Manual, logged, and checked quarterly."
         },
         {
-          "ar": "البرمجة والاختبار والتجهيز والإصدار والتراجع.",
-          "en": "Coding, testing, staging, release and rollback gates."
+          "ar": "مشفرة وموقعة وتعتمد على بروتوكولات ثابتة.",
+          "en": "Encrypted, signed, and protocol-bound."
         }
       ],
-      "concept_id": "w6_did_layers",
+      "concept_id": "w6_strategy_attributes",
       "explanation": {
-        "ar": "تحقّق المدخلات، وضوابط المصادقة، ومراقبة الاختراقات، والجدران النارية، والتشفير هي الطبقات الخمس المذكورة.",
-        "en": "Input validation, authentication controls, intrusion monitoring, firewalls and encryption are the five named layers."
+        "ar": "تكون ديناميكية ومتعددة الطبقات وقابلة للتكيّف مع التغيّرات التقنية والتنظيمية.",
+        "en": "It has to be dynamic, multi-layered and adaptive to keep pace with both technology and regulation."
       }
     },
     {
-      "id": "q12",
-      "stem": {
-        "ar": "كيف يُنمذَج احتمال اختراق النظام تحت الدفاع الطبقي؟",
-        "en": "How is the probability of system compromise modelled under layered defence?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "حاصل ضرب فاعلية كل طبقة لوحدها.",
-          "en": "The product of each layer's effectiveness alone."
-        },
-        {
-          "ar": "متوسط قيم فاعلية الطبقات.",
-          "en": "The average of the layers' effectiveness values."
-        },
-        {
-          "ar": "حاصل ضرب واحد ناقص فاعلية كل طبقة.",
-          "en": "The product of one minus each layer's effectiveness."
-        },
-        {
-          "ar": "مجموع واحد ناقص فاعلية كل طبقة.",
-          "en": "The sum of one minus each layer's effectiveness."
-        }
-      ],
-      "concept_id": "w6_did_formula",
-      "explanation": {
-        "ar": "الاختراق يتطلّب فشل كل طبقة مستقلة، فاحتمالات الفشل تتضارب.",
-        "en": "Compromise requires every independent layer to fail, so the failure probabilities multiply."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "ليش إضافة طبقة تقلّل احتمال الاختراق أُسّياً؟",
-        "en": "Why does adding a layer reduce compromise probability exponentially?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأن الفاعلية تُقاس بمقياس لوغاريتمي.",
-          "en": "Because effectiveness is measured on a log scale."
-        },
-        {
-          "ar": "لأن كل عامل أقل من واحد، فالحاصل يصغر.",
-          "en": "Because each factor is below one, so the product shrinks."
-        },
-        {
-          "ar": "لأن كل طبقة تضيف تأخيراً ثابتاً.",
-          "en": "Because each layer adds a fixed amount of delay."
-        },
-        {
-          "ar": "لأن الطبقات تُزال كل ما نضج النظام.",
-          "en": "Because layers are removed as the system matures."
-        }
-      ],
-      "concept_id": "w6_did_exponential",
-      "explanation": {
-        "ar": "ثلاث طبقات بفاعلية 0.9 لكل واحدة تترك 0.001، فالفائدة تتراكم مو تتجمع خطياً.",
-        "en": "Three layers at 0.9 effectiveness each leave 0.001, so the benefit compounds rather than accumulating linearly."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "شنو يرفض Zero Trust؟",
-        "en": "What does Zero Trust reject?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "تشفير الترافيك الداخلي.",
-          "en": "Encryption of internal traffic."
-        },
-        {
-          "ar": "مطالبات المصادقة متعددة العوامل.",
-          "en": "Multi-factor authentication prompts."
-        },
-        {
-          "ar": "تقسيم الشبكات الفرعية الداخلية.",
-          "en": "Segmentation of internal subnets."
-        },
-        {
-          "ar": "الثقة الضمنية داخل الشبكة.",
-          "en": "Implicit trust inside the network."
-        }
-      ],
-      "concept_id": "w6_zt_definition",
-      "explanation": {
-        "ar": "كل طلب، داخلي أو خارجي، يُتحقَّق منه، فوجودك داخل المحيط ما يعطيك شيئاً بحد ذاته.",
-        "en": "Every request, internal or external, is verified, so being inside the perimeter grants nothing by itself."
-      }
-    },
-    {
-      "id": "q15",
+      "id": "q6",
       "stem": {
         "ar": "ضد أي سمات سياقية يتحقّق Zero Trust؟",
         "en": "Which contextual attributes does Zero Trust verify against?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "الهوية وصحة الجهاز والموقع الجغرافي والسلوك.",
-          "en": "Identity, device health, geolocation, behaviour."
+          "ar": "نوع الملف وطراز الخادم وسعة التخزين.",
+          "en": "File type, server model, and storage capacity."
         },
         {
-          "ar": "طول كلمة المرور وتاريخ انتهائها وسجلها.",
-          "en": "Password length, expiry date and history."
+          "ar": "الهوية وصحة الجهاز والموقع والسلوك.",
+          "en": "Identity, device health, location, and behaviour."
         },
         {
-          "ar": "حجم الحزمة وتوقيتها واتجاهها.",
-          "en": "Packet size, timing and direction."
+          "ar": "عمر كلمة المرور ونوع المتصفح وحجم الشاشة.",
+          "en": "Password age, browser brand, and screen size."
         },
         {
-          "ar": "جهة إصدار الشهادة ورقمها وإبطالها.",
-          "en": "Certificate issuer, serial and revocation."
+          "ar": "ملكية الشبكة وموقع المكتب والمسمى الوظيفي.",
+          "en": "Network ownership, office location, and job title."
         }
       ],
       "concept_id": "w6_zt_contextual",
       "explanation": {
-        "ar": "الهوية وصحة الجهاز والموقع الجغرافي والخطوط الأساسية للسلوك هي السمات الأربعة اللي يذكرها الفصل.",
-        "en": "Identity, device health, geolocation and behavioural baselines are the four attributes the chapter names."
+        "ar": "تدعم الهوية وصحة الجهاز والموقع والخطوط السلوكية الأساسية قرارات الوصول السياقي.",
+        "en": "Identity, device health, location and behavioural baselines support contextual access decisions."
       }
     },
     {
-      "id": "q16",
-      "stem": {
-        "ar": "شنو يمنعه Zero Trust تحديداً بتطبيق ويب؟",
-        "en": "What does Zero Trust specifically prevent in a web application?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "حجب الخدمة عن طبقة الويب.",
-          "en": "Denial of service against the web tier."
-        },
-        {
-          "ar": "اختراق سلسلة التوريد لتبعية.",
-          "en": "Supply chain compromise of a dependency."
-        },
-        {
-          "ar": "الحركة الجانبية بعد سرقة بيانات اعتماد.",
-          "en": "Lateral movement after a credential is stolen."
-        },
-        {
-          "ar": "هجمات الحقن على نموذج الدخول.",
-          "en": "Injection attacks against the login form."
-        }
-      ],
-      "concept_id": "w6_zt_lateral",
-      "explanation": {
-        "ar": "بعد اختراق جلسة، التحقّق المستمر يمنع المهاجم من استغلالها للوصول لأنظمة ثانية.",
-        "en": "Once a session is compromised, continuous verification stops the attacker from using it to reach other systems."
-      }
-    },
-    {
-      "id": "q17",
-      "stem": {
-        "ar": "شنو يسوي الأمن بالتصميم مختلفاً عن إضافة الدفاعات لاحقاً؟",
-        "en": "What does security by design do differently from retrofitting?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "يوثّق الضوابط بعد تجميد الكود.",
-          "en": "It documents controls once the code is frozen."
-        },
-        {
-          "ar": "يدمج الأمن من أبكر مراحل التطوير.",
-          "en": "It embeds security from the earliest development phases."
-        },
-        {
-          "ar": "يضيف جداراً نارياً بعد أول اختبار اختراق.",
-          "en": "It adds a firewall after the first penetration test."
-        },
-        {
-          "ar": "يوظّف فريق أمن بعد أول اختراق.",
-          "en": "It hires a security team after the first breach."
-        }
-      ],
-      "concept_id": "w6_sbd_definition",
-      "explanation": {
-        "ar": "بدل إضافة الدفاعات لاحقاً، تدخل البرمجة الآمنة والاختبار الآلي وتقييم الثغرات داخل خط CI/CD.",
-        "en": "Instead of adding defences later, secure coding, automated testing and vulnerability assessment enter the CI/CD pipeline."
-      }
-    },
-    {
-      "id": "q18",
+      "id": "q7",
       "stem": {
         "ar": "شنو يحقّقه انزياح الأمن يساراً؟",
         "en": "What does security shifting left achieve?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 2,
       "options": [
         {
-          "ar": "إنتاجية أعلى لتسليم الميزات.",
-          "en": "Higher throughput of feature delivery."
+          "ar": "يستبدل مراجعة الكود بترشيح حركة المحيط.",
+          "en": "It replaces code review with perimeter filtering."
         },
         {
-          "ar": "بيئات أقل للصيانة عموماً.",
-          "en": "Fewer environments to maintain overall."
+          "ar": "ينقل مسؤولية الأمن خارج فريق التطوير.",
+          "en": "It moves security ownership outside development."
         },
         {
-          "ar": "دورات إصدار أطول بحكم التصميم.",
-          "en": "Longer release cycles by design."
+          "ar": "يدمج الأمن مبكراً فتقل المعالجة اللاحقة.",
+          "en": "It builds security in early, reducing later fixes."
         },
         {
-          "ar": "كلفة أقل وتعقيد أقل للمعالجة.",
-          "en": "Lower cost and complexity of remediation."
+          "ar": "يؤجل الأمن إلى اختبار القبول النهائي.",
+          "en": "It postpones security until final acceptance testing."
         }
       ],
       "concept_id": "w6_sbd_shift_left",
@@ -584,67 +232,99 @@
       }
     },
     {
-      "id": "q19",
-      "stem": {
-        "ar": "ليش الترتيب القائم على المخاطر ضروري؟",
-        "en": "Why is risk-based prioritization necessary?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لأن موارد الأمن محدودة.",
-          "en": "Because security resources are finite."
-        },
-        {
-          "ar": "لأن كل الثغرات متساوية بالخطورة.",
-          "en": "Because all vulnerabilities are equally severe."
-        },
-        {
-          "ar": "لأن الجهات التنظيمية تفرض ترتيباً ثابتاً.",
-          "en": "Because regulators require a fixed order."
-        },
-        {
-          "ar": "لأن الفاحصات ما تعرف ترتّب النتائج.",
-          "en": "Because scanners cannot rank findings."
-        }
-      ],
-      "concept_id": "w6_rbp_rationale",
-      "explanation": {
-        "ar": "بميزانية وانتباه محدودين، لازم الاستراتيجية ترتّب حسب الاحتمالية والخطورة والأثر المحتمل.",
-        "en": "With finite budget and attention, the strategy has to rank by likelihood, severity and potential impact."
-      }
-    },
-    {
-      "id": "q20",
+      "id": "q8",
       "stem": {
         "ar": "أي إطارين يقوم عليهما الترتيب القائم على المخاطر؟",
         "en": "Which two frameworks underpin risk-based prioritization?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 3,
       "options": [
         {
-          "ar": "ISO 27001 و NIST CSF.",
-          "en": "ISO 27001 and NIST CSF."
+          "ar": "OAuth وSAML.",
+          "en": "OAuth and SAML."
         },
         {
-          "ar": "STRIDE و DREAD.",
-          "en": "STRIDE and DREAD."
+          "ar": "TLS وDNSSEC.",
+          "en": "TLS and DNSSEC."
         },
         {
-          "ar": "CVSS و FAIR.",
+          "ar": "NIST وISO.",
+          "en": "NIST and ISO."
+        },
+        {
+          "ar": "CVSS وFAIR.",
           "en": "CVSS and FAIR."
-        },
-        {
-          "ar": "OCTAVE و COBIT.",
-          "en": "OCTAVE and COBIT."
         }
       ],
       "concept_id": "w6_rbp_frameworks",
       "explanation": {
         "ar": "CVSS يعطي درجة تقنية لخطورة الثغرة، و FAIR يحلّل مخاطر المعلومات كمياً ومالياً.",
         "en": "CVSS scores the technical severity of a vulnerability, while FAIR analyses information risk quantitatively and financially."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي مجموعة تسرد المبادئ الأساسية الأربعة وتوضح دورها؟",
+        "en": "Which set names the four core principles and explains their role?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تراكب الضوابط، والتحقق من كل طلب، ودمج الأمن مبكراً، وترتيب الجهد حسب الخطر.",
+          "en": "Layer controls; verify every request; build security in early; rank effort by risk."
+        },
+        {
+          "ar": "الثقة بالشبكة، وتشفير كل حقل، والاختبار بعد النشر، والترقيع حسب الترتيب الأبجدي.",
+          "en": "Trust the network; encrypt every field; test after release; patch flaws alphabetically."
+        },
+        {
+          "ar": "منع كل حركة خارجية، وتوحيد كلمات المرور، وإضافة جدار متأخراً، وإصلاح الدرجات العالية فقط.",
+          "en": "Block all external traffic; centralize passwords; add a firewall late; fix only high scores."
+        },
+        {
+          "ar": "فحص كل إصدار، والثقة بالمستخدم الداخلي، وإسناد التصميم للخارج، وترتيب الأنظمة حسب العمر.",
+          "en": "Scan each release; trust internal users; outsource design; rank systems by age."
+        }
+      ],
+      "concept_id": "w6_four_principles",
+      "explanation": {
+        "ar": "يربط الاختيار الدفاع في العمق بتراكب الضوابط، وZero Trust بالتحقق من الطلب، والأمن بالتصميم بالدمج المبكر، والترتيب بالمخاطر بتوجيه الجهد حسب الخطر.",
+        "en": "The set maps Defense-in-Depth to layered controls, Zero Trust to request verification, Security by Design to early integration, and risk-based prioritization to ordering effort by risk."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما الذي يمنعه Zero Trust تحديداً في تطبيق ويب؟",
+        "en": "What does Zero Trust specifically prevent in a web application?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "زرع شيفرة ضارة في تبعية برمجية موثوقة.",
+          "en": "Supply chain compromise of a dependency."
+        },
+        {
+          "ar": "تنقّل المهاجم بين الأنظمة بعد سرقة الدخول.",
+          "en": "Lateral movement after credential theft."
+        },
+        {
+          "ar": "حقن أوامر ضارة في نموذج تسجيل الدخول.",
+          "en": "Injection attacks against the login form."
+        },
+        {
+          "ar": "إغراق خادم الويب بطلبات لتعطيل الخدمة.",
+          "en": "Denial of service against the web tier."
+        }
+      ],
+      "concept_id": "w6_zt_lateral",
+      "explanation": {
+        "ar": "بعد اختراق جلسة، يمنع التحقّق المستمر استخدامها للوصول إلى أنظمة أخرى.",
+        "en": "Once a session is compromised, continuous verification stops the attacker from using it to reach other systems."
       }
     }
   ],
@@ -653,7 +333,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T10:20:11Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

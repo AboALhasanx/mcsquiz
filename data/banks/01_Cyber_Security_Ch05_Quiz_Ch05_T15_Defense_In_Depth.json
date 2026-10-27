@@ -17,20 +17,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "ضابط واحد قوي جداً عند حافة الشبكة.",
-          "en": "A single very strong control at the network edge."
+          "ar": "استبدال الضوابط المختلفة بكاشف واحد مدفوع بالذكاء الاصطناعي.",
+          "en": "Replacing diverse controls with one AI-driven detector."
         },
         {
-          "ar": "استبدال كل ضابط بكاشف مدفوع بالذكاء الاصطناعي.",
-          "en": "Replacing every control with an AI-driven detector."
+          "ar": "الاعتماد على ضابط مركزي قوي عند حدود الشبكة لمنع الاختراقات.",
+          "en": "Relying on one strong perimeter control to stop intrusions."
         },
         {
-          "ar": "تشفير كل طبقة بخوارزمية مختلفة.",
-          "en": "Encrypting every layer with a different algorithm."
+          "ar": "تشفير كل طبقة بخوارزمية مختلفة لتحقيق حماية مستقلة.",
+          "en": "Encrypting each layer with a different cryptographic algorithm."
         },
         {
-          "ar": "ضوابط طبقية بمستويات مختلفة حتى يُغطّى أي فشل.",
-          "en": "Layered controls at different levels so one failure is covered."
+          "ar": "ضوابط طبقية بمستويات مختلفة حتى يُغطّى فشل أي ضابط.",
+          "en": "Layered controls at separate levels cover for one another."
         }
       ],
       "concept_id": "did_definition",
@@ -42,251 +42,59 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "أي خمس طبقات يحدّدها الفصل؟",
-        "en": "Which five layers does the chapter identify?"
+        "ar": "ما الطبقات الخمس التي يتكون منها الدفاع متعدد الطبقات؟",
+        "en": "Which five layers make up defense in depth?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 0,
       "options": [
-        {
-          "ar": "العتاد والبرنامج الثابت والنواة والخدمة والصدفة.",
-          "en": "Hardware, firmware, kernel, service and shell."
-        },
-        {
-          "ar": "الدخول والخروج والعبور والداخلي والخارجي.",
-          "en": "Ingress, egress, transit, internal and external."
-        },
         {
           "ar": "المحيط والكشف والتطبيق والأجهزة الطرفية والمستخدم.",
           "en": "Perimeter, detection, application, endpoint and user."
         },
         {
-          "ar": "الفيزيائية والشبكة والنقل والجلسة والعرض.",
+          "ar": "الدخول والخروج والعبور والداخلي والخارجي كمسارات للشبكة.",
+          "en": "Ingress, egress, transit, internal and external."
+        },
+        {
+          "ar": "العتاد والبرمجيات الثابتة والنواة والخدمات وواجهات الصدفة.",
+          "en": "Hardware, firmware, kernel, service and shell."
+        },
+        {
+          "ar": "الفيزيائية والشبكة والنقل والجلسة والعرض ضمن طبقات OSI.",
           "en": "Physical, network, transport, session and presentation."
         }
       ],
       "concept_id": "did_five_layers",
       "explanation": {
-        "ar": "هذي الخمسة هي المستويات اللي يتوقّع الفصل وجود ضوابط فيها معاً: الشبكة والمضيف والتطبيق والمستخدم.",
-        "en": "Those five are the levels at which the chapter expects controls to coexist: network, host, application and user."
+        "ar": "تحدد الطبقات الخمس مواضع تضافر الضوابط عبر الشبكة والمضيف والتطبيق وبيئة المستخدم.",
+        "en": "The five layers identify where controls should coexist: across network, host, application and user environments."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "أي ضوابط تنتمي لطبقة المحيط؟",
-        "en": "Which controls belong to the perimeter layer?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "السياسات والتوعية والمصادقة متعددة العوامل.",
-          "en": "Policies, awareness and multi-factor authentication."
-        },
-        {
-          "ar": "الجدارات النارية والشبكات الخاصة والبروكسيات.",
-          "en": "Firewalls, VPNs and proxies."
-        },
-        {
-          "ar": "مكافح الفيروسات والكشف الطرفي.",
-          "en": "Antivirus and endpoint detection."
-        },
-        {
-          "ar": "البرمجة الآمنة وجدران حماية التطبيقات.",
-          "en": "Secure coding and web application firewalls."
-        }
-      ],
-      "concept_id": "did_perimeter_controls",
-      "explanation": {
-        "ar": "طبقة المحيط هي وين يلتقي الترافيك بالسياسة أول مرة، ولهذا تسكنها تقنيات التوسّط الثلاث.",
-        "en": "The perimeter layer is where traffic first meets policy, which is why the three mediation technologies live there."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "أي ضوابط تنتمي لطبقة الكشف؟",
-        "en": "Which controls belong to the detection layer?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "أنظمة IDS/IPS وأنظمة SIEM.",
-          "en": "IDS/IPS and SIEM systems."
-        },
-        {
-          "ar": "الجدارات النارية والبروكسيات العكسية.",
-          "en": "Firewalls and reverse proxies."
-        },
-        {
-          "ar": "مكافح الفيروسات ووكلاء EDR.",
-          "en": "Antivirus and EDR agents."
-        },
-        {
-          "ar": "السياسات وتدريب التوعية.",
-          "en": "Policies and awareness training."
-        }
-      ],
-      "concept_id": "did_detection_controls",
-      "explanation": {
-        "ar": "الكشف طبقة بحد ذاتها لأن رؤية التسلل شغل مختلف عن حجبه عند الحافة.",
-        "en": "Detection is its own layer because seeing an intrusion is a different job from blocking it at the edge."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "أي ضوابط تنتمي لطبقة التطبيق؟",
-        "en": "Which controls belong to the application layer?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "الجدارات النارية والشبكات الخاصة والبروكسيات.",
-          "en": "Firewalls, VPNs and forward proxies."
-        },
-        {
-          "ar": "مكافح الفيروسات و EDR وتشفير الأقراص.",
-          "en": "Antivirus, EDR and disk encryption."
-        },
-        {
-          "ar": "المصادقة متعددة العوامل والسياسات والتوعية.",
-          "en": "MFA, policies and user awareness."
-        },
-        {
-          "ar": "البرمجة الآمنة وجدران حماية تطبيقات الويب.",
-          "en": "Secure coding and web application firewalls."
-        }
-      ],
-      "concept_id": "did_application_controls",
-      "explanation": {
-        "ar": "هذي الطبقة تعيش داخل البرمجية وعند بابها الأمامي، فتعالج عيوباً ما يقدر أي ضابط شبكي يشوفها.",
-        "en": "This layer lives inside the software and at its front door, so it addresses flaws that no network control can see."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "أي ضوابط تنتمي لطبقة الأجهزة الطرفية؟",
-        "en": "Which controls belong to the endpoint layer?"
+        "ar": "كيف يُعبَّر عن الخطر المتبقّي بعد عدة طبقات؟",
+        "en": "How is residual risk after several layers expressed?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "الجدارات النارية والبروكسيات المنهية لـ TLS.",
-          "en": "Firewalls and TLS-terminating proxies."
+          "ar": "جمع الخطر الابتدائي إلى مجموع الانخفاضات الخاصة بالطبقات.",
+          "en": "Initial risk plus the sum of each control's reduction."
         },
         {
-          "ar": "معايير البرمجة الآمنة ومراجعة الكود.",
-          "en": "Secure coding standards and code review."
+          "ar": "قسمة الخطر الابتدائي على حاصل ضرب نسب خفض المخاطر.",
+          "en": "Initial risk divided by the product of layer reductions."
         },
         {
-          "ar": "مكافح الفيروسات والكشف والاستجابة الطرفية.",
-          "en": "Antivirus and endpoint detection and response."
+          "ar": "ضرب الخطر الابتدائي في عوامل الخطر المتبقي لكل طبقة.",
+          "en": "Initial risk times every layer's remaining-risk factor."
         },
         {
-          "ar": "أنظمة IDS/IPS ومحرّكات ربط SIEM.",
-          "en": "IDS/IPS and SIEM correlation engines."
-        }
-      ],
-      "concept_id": "did_endpoint_controls",
-      "explanation": {
-        "ar": "ضوابط الأجهزة الطرفية هي آخر خط لا يزال عنده فرصة يتصرّف على الجهاز نفسه.",
-        "en": "Endpoint controls are the last line that still has a chance to act on the device itself."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "أي ضوابط تنتمي لطبقة المستخدم؟",
-        "en": "Which controls belong to the user layer?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "محرّكات مكافح الفيروسات ووكلاء EDR.",
-          "en": "Antivirus engines and EDR agents."
-        },
-        {
-          "ar": "السياسات والتوعية والمصادقة متعددة العوامل.",
-          "en": "Policies, awareness and multi-factor auth."
-        },
-        {
-          "ar": "الجدارات والشبكات الخاصة والبروكسيات عند الحافة.",
-          "en": "Firewalls, VPNs and proxies at the edge."
-        },
-        {
-          "ar": "مستشعرات IDS/IPS ومنصّات SIEM.",
-          "en": "IDS/IPS sensors and SIEM platforms."
-        }
-      ],
-      "concept_id": "did_user_controls",
-      "explanation": {
-        "ar": "طبقة المستخدم هي وين كلمة مرور مسروقة إما تُوقف بعامل ثانٍ أو تُقبل بدونه.",
-        "en": "The user layer is where a stolen password is either stopped by a second factor or accepted without one."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "شنو المنطق الجوهري للدفاع الطبقي؟",
-        "en": "What is the core logic of layered defence?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لو فشل ضابط واحد، الباقي يظل بالطريق.",
-          "en": "If one control fails, the others still stand in the way."
-        },
-        {
-          "ar": "كل ضابط لازم يكون مطابقاً حتى ما يكون أضعف.",
-          "en": "Every control must be identical so none is weakest."
-        },
-        {
-          "ar": "الضابط الأقوى وحده هو المهم فعلاً.",
-          "en": "Only the strongest control actually matters."
-        },
-        {
-          "ar": "كل ضابط يستبدل اللي انركّب قبله.",
-          "en": "Each control replaces the one installed before it."
-        }
-      ],
-      "concept_id": "did_compensation_logic",
-      "explanation": {
-        "ar": "المقصود مو التكرار لمجرد التكرار، بل إن المهاجم لازم يهزم عدة أشياء غير مترابطة بالتتابع.",
-        "en": "The point is not redundancy for its own sake but the fact that an attacker has to defeat several unrelated things in sequence."
-      }
-    },
-    {
-      "id": "q9",
-      "stem": {
-        "ar": "كيف يُعبَّر عن الخطر المتبقّي بعد عدة طبقات؟",
-        "en": "How is residual risk after several layers expressed?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "الخطر الابتدائي زائد مجموع واحد ناقص كل خفض.",
-          "en": "Initial risk plus the sum of one minus each reduction."
-        },
-        {
-          "ar": "الخطر الابتدائي مقسوماً على حاصل ضرب كل خفض.",
-          "en": "Initial risk divided by the product of each reduction."
-        },
-        {
-          "ar": "الخطر الابتدائي ناقص أكبر خفض منفرد.",
-          "en": "Initial risk minus the largest single reduction."
-        },
-        {
-          "ar": "الخطر الابتدائي مضروباً بحاصل ضرب واحد ناقص كل خفض.",
-          "en": "Initial risk times the product of one minus each reduction."
+          "ar": "طرح أكبر نسبة خفض منفردة من الخطر الابتدائي فقط.",
+          "en": "Initial risk minus its single largest reduction."
         }
       ],
       "concept_id": "did_residual_formula",
@@ -296,29 +104,29 @@
       }
     },
     {
-      "id": "q10",
+      "id": "q4",
       "stem": {
         "ar": "ثلاث طبقات تخفّض الخطر بنسب 40 و 50 و 30 بالمئة. شنو يبقى؟",
         "en": "Three layers reduce risk by 40, 50 and 30 percent. What remains?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 3,
       "options": [
-        {
-          "ar": "حوالي اثني عشر بالمئة، حاصل ضرب نسب الخفض.",
-          "en": "About twelve percent, the product of reductions."
-        },
         {
           "ar": "حوالي أربعين بالمئة، أكبر نسبة خفض.",
           "en": "About forty percent, the largest reduction."
         },
         {
-          "ar": "حوالي واحد وعشرين بالمئة من الخطر الأصلي.",
-          "en": "About twenty-one percent of the original risk."
-        },
-        {
           "ar": "حوالي ستين بالمئة، مجموع نسب الخفض.",
           "en": "About sixty percent, the sum of the reductions."
+        },
+        {
+          "ar": "حوالي اثني عشر بالمئة، حاصل ضرب نسب الخفض.",
+          "en": "About twelve percent, the product of reductions."
+        },
+        {
+          "ar": "حوالي واحد وعشرين بالمئة من الخطر الأصلي.",
+          "en": "About twenty-one percent of the original risk."
         }
       ],
       "concept_id": "did_worked_example",
@@ -328,29 +136,29 @@
       }
     },
     {
-      "id": "q11",
+      "id": "q5",
       "stem": {
         "ar": "ليش مساهمات الطبقات تُضرب بدل ما تُجمع؟",
         "en": "Why are the layer contributions multiplied rather than added?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "لأن الضرب أرخص حسابياً.",
-          "en": "Because multiplication is cheaper to compute."
+          "ar": "لأن جمع التخفيضات يعطي تقديراً غير دقيق للخطر الباقي.",
+          "en": "Because addition misstates the risk left after controls."
         },
         {
-          "ar": "لأن كل طبقة تشتغل على ما تركته اللي قبلها.",
-          "en": "Because each layer acts on what the previous ones left."
+          "ar": "لأن ترتيب تركيب الطبقات يفرض جمع آثارها بالتتابع.",
+          "en": "Because the layers must be installed in a fixed order."
         },
         {
-          "ar": "لأن الجمع يقلّل من قيمة الخطر المتبقّي.",
-          "en": "Because addition would understate the residual risk."
+          "ar": "كل طبقة تخفّض الخطر الذي يبقى بعد عمل الطبقات السابقة.",
+          "en": "Each layer cuts the risk left after the previous layer acts."
         },
         {
-          "ar": "لأن الطبقات تُنصَّب بترتيب ثابت.",
-          "en": "Because the layers are installed in a fixed order."
+          "ar": "لأن الضرب أقل كلفة حسابية من الجمع في هذا النموذج.",
+          "en": "Because multiplication costs less than addition here."
         }
       ],
       "concept_id": "did_multiplicative_not_additive",
@@ -360,29 +168,29 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q6",
       "stem": {
         "ar": "شنو يشترط النموذج الضربي من الطبقات؟",
         "en": "What does the multiplicative model require of the layers?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "إنها تخفّض الخطر باستقلال عن بعضها.",
-          "en": "That they reduce risk independently of one another."
+          "ar": "أن تكون الضوابط مركبة داخل الخزانة نفسها في الشبكة.",
+          "en": "That they are installed inside the same network rack."
         },
         {
-          "ar": "إن كلفتها كلها متقاربة.",
-          "en": "That they all cost roughly the same amount."
+          "ar": "أن تخفّض الضوابط الخطر بصورة مستقلة عن بعضها.",
+          "en": "That each reduces risk independently from the others."
         },
         {
-          "ar": "إنها منصّبة بنفس الخزانة.",
-          "en": "That they are installed in the same rack."
+          "ar": "أن تعتمد جميع الطبقات على منتجات المورّد نفسه.",
+          "en": "That every layer uses products from one vendor."
         },
         {
-          "ar": "إن كل طبقة تستخدم نفس منتج المورّد.",
-          "en": "That each layer uses the same vendor product."
+          "ar": "أن تتقارب كلفة الضوابط عند نشرها في المؤسسة.",
+          "en": "That their implementation costs are roughly equal."
         }
       ],
       "concept_id": "did_independence_requirement",
@@ -392,157 +200,29 @@
       }
     },
     {
-      "id": "q13",
-      "stem": {
-        "ar": "شنو تسوي كل طبقة مستقلة إضافية بالخطر المتبقّي؟",
-        "en": "What does each additional independent layer do to residual risk?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "يطرح منه مقداراً ثابتاً.",
-          "en": "It subtracts a fixed amount from it."
-        },
-        {
-          "ar": "يتركه بلا تغيير لحد عتبة معيّنة.",
-          "en": "It leaves it unchanged until a threshold."
-        },
-        {
-          "ar": "يرفعه قليلاً بسبب التعقيد.",
-          "en": "It raises it slightly because of complexity."
-        },
-        {
-          "ar": "يضربه بكسر آخر أقل من الواحد.",
-          "en": "It multiplies it by another fraction below one."
-        }
-      ],
-      "concept_id": "did_more_layers_effect",
-      "explanation": {
-        "ar": "بما إن المضروب دائماً أقل من واحد، فالمتتالية تنزل هندسياً مو خطوة بخطوة.",
-        "en": "Because the multiplier is always below one, the sequence falls geometrically rather than step by step."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "هل ترتيب الطبقات يغيّر النتيجة الحسابية؟",
-        "en": "Does the order of the layers change the arithmetic result?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "نعم، طبقة المحيط دائماً تحكم.",
-          "en": "Yes, because the perimeter layer always dominates."
-        },
-        {
-          "ar": "فقط إذا كانت الطبقات مستقلة عن بعضها.",
-          "en": "Only when the layers are fully independent of each other."
-        },
-        {
-          "ar": "لا، الضرب تبديلي فالحاصل نفسه.",
-          "en": "No, multiplication is commutative so the product is the same."
-        },
-        {
-          "ar": "نعم، الطبقات اللاحقة تُوزن أكثر.",
-          "en": "Yes, because later layers are weighted more heavily."
-        }
-      ],
-      "concept_id": "did_layer_ordering",
-      "explanation": {
-        "ar": "الترتيب يهم تشغيلياً وبالكلفة، لكن حاصل ضرب الكسور الباقية ما يهمّه أي واحدة جت أول.",
-        "en": "Order matters operationally and for cost, but the product of the surviving fractions does not care which came first."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "ليش الفصل يضمّن طبقة مستخدم أصلاً؟",
-        "en": "Why does the chapter include a user layer at all?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأن كل المعايير تشترطها.",
-          "en": "Because it is required by every standard."
-        },
-        {
-          "ar": "لأن سلوك الإنسان سطح ضبط هم.",
-          "en": "Because human behaviour is a control surface too."
-        },
-        {
-          "ar": "لأن المستخدمين يديرون الجدار فيزيائياً.",
-          "en": "Because users physically administer the firewall."
-        },
-        {
-          "ar": "لأنها تستبدل طبقة الأجهزة الطرفية بالكامل.",
-          "en": "Because it replaces the endpoint layer entirely."
-        }
-      ],
-      "concept_id": "did_user_layer_why_last",
-      "explanation": {
-        "ar": "السياسات والتوعية والعامل الثاني ضوابط مثل غيرها، وتجلس بالضبط وين كانت بيانات اعتماد مسروقة ستنجح.",
-        "en": "Policies, awareness and a second factor are controls like any other, and they sit exactly where a stolen credential would otherwise succeed."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "شنو يصير للحاصل لو كان خفض إحدى الطبقات قريباً من الصفر؟",
-        "en": "What happens to the product if one layer's reduction is close to zero?"
-      },
-      "bloom": "Analyze",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "تبقى باقيتها قريبة من الواحد، فالقليل يُزال.",
-          "en": "Its remainder stays near one, so little is removed."
-        },
-        {
-          "ar": "الطبقات الثانية تعوّضها بالكامل.",
-          "en": "The other layers compensate fully for it."
-        },
-        {
-          "ar": "المعادلة تصير غير صالحة ولازم تُصفَّر.",
-          "en": "The formula becomes invalid and must be reset."
-        },
-        {
-          "ar": "الحاصل ينزل للصفر فوراً.",
-          "en": "The product falls to zero immediately."
-        }
-      ],
-      "concept_id": "did_weakest_layer",
-      "explanation": {
-        "ar": "طبقة ما تزيل تقريباً شي تساهم ببقية قريبة من واحد، والضرب بواحد ما يغيّر شي.",
-        "en": "A layer that removes almost nothing contributes a remainder near one, and multiplying by one changes nothing."
-      }
-    },
-    {
-      "id": "q17",
+      "id": "q7",
       "stem": {
         "ar": "بأي طبقة يجلس جدار حماية تطبيقات الويب؟",
         "en": "In which layer does a web application firewall sit?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "طبقة المحيط.",
-          "en": "The perimeter layer."
+          "ar": "طبقة التطبيق تشمل البرمجة الآمنة وجدران حماية تطبيقات الويب.",
+          "en": "Application controls: secure coding and web application firewalls."
         },
         {
-          "ar": "طبقة الأجهزة الطرفية.",
-          "en": "The endpoint layer."
+          "ar": "طبقة المحيط تشمل الجدران النارية وبوابات VPN وخدمات البروكسي.",
+          "en": "Perimeter controls: firewalls, VPN gateways and proxies."
         },
         {
-          "ar": "طبقة المستخدم.",
-          "en": "The user layer."
+          "ar": "طبقة الأجهزة تضم مكافحة الفيروسات وأدوات رصد الطرفيات.",
+          "en": "Endpoint controls: antivirus and endpoint detection tools."
         },
         {
-          "ar": "طبقة التطبيق.",
-          "en": "The application layer."
+          "ar": "طبقة المستخدم تضم السياسات والتوعية والمصادقة متعددة العوامل.",
+          "en": "User controls: policies, awareness training and multifactor authentication."
         }
       ],
       "concept_id": "did_waf_role",
@@ -552,29 +232,29 @@
       }
     },
     {
-      "id": "q18",
+      "id": "q8",
       "stem": {
         "ar": "بأي طبقة يجلس الكشف والاستجابة الطرفية؟",
         "en": "In which layer does endpoint detection and response sit?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "طبقة التطبيق.",
-          "en": "The application layer."
+          "ar": "طبقة المحيط تشمل الجدران النارية وبوابات VPN وخدمات البروكسي.",
+          "en": "Perimeter controls: firewalls, VPN gateways and proxies."
         },
         {
-          "ar": "طبقة المحيط.",
-          "en": "The perimeter layer."
+          "ar": "طبقة الأجهزة تضم مكافحة الفيروسات وأدوات رصد الطرفيات.",
+          "en": "Endpoint controls: antivirus and endpoint detection tools."
         },
         {
-          "ar": "طبقة الأجهزة الطرفية.",
-          "en": "The endpoint layer."
+          "ar": "طبقة التطبيق تشمل البرمجة الآمنة وجدران حماية تطبيقات الويب.",
+          "en": "Application controls: secure coding and web application firewalls."
         },
         {
-          "ar": "طبقة الكشف فقط.",
-          "en": "The detection layer only."
+          "ar": "طبقة الكشف تضم مستشعرات IDS/IPS وأنظمة SIEM لمراقبة الأحداث.",
+          "en": "Detection controls: IDS/IPS sensors and SIEM monitoring systems."
         }
       ],
       "concept_id": "did_edr_role",
@@ -589,7 +269,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

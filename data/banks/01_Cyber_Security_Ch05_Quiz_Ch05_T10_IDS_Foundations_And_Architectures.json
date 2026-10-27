@@ -10,59 +10,27 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "ليش الجدارات والشبكات الخاصة وحدها ما عادت تكفي؟",
-        "en": "Why are firewalls and VPNs alone no longer sufficient?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "لأن الشبكات الخاصة ما تعود تشفّر ترافيكها.",
-          "en": "Because VPNs no longer encrypt the traffic they carry."
-        },
-        {
-          "ar": "لأن أجهزة المحيط صارت غالية جداً.",
-          "en": "Because perimeter devices have become too expensive."
-        },
-        {
-          "ar": "لأن المهاجمين يتجاوزون الدفاعات الساكنة بتقنيات تهرّب.",
-          "en": "Because attackers bypass static defences with evasive techniques."
-        },
-        {
-          "ar": "لأن الجدارات ما تقدر ترشّح أي ترويسة حزمة.",
-          "en": "Because firewalls cannot filter any packet headers."
-        }
-      ],
-      "concept_id": "ids_why_perimeter_insufficient",
-      "explanation": {
-        "ar": "مع نموّ الشبكات، الدفاعات المحيطية الساكنة تُتجاوز ببرمجيات متعدّدة الأشكال وحمولات مشفّرة وثغرات يوم صفر.",
-        "en": "As networks grow, static perimeter defences are bypassed with polymorphic malware, encrypted payloads and zero-day vulnerabilities."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
-        "ar": "أي ثلاث تقنيات يقول الفصل إنها تتجاوز الدفاعات المحيطية الساكنة؟",
-        "en": "Which three techniques does the chapter say bypass static perimeter defences?"
+        "ar": "ما التقنيات الثلاث التي تتجاوز دفاعات المحيط الثابتة؟",
+        "en": "Which three techniques bypass static perimeter defenses?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "برمجيات متعدّدة الأشكال وحمولات مشفّرة وثغرات يوم صفر.",
-          "en": "Polymorphic malware, encrypted payloads and zero-days."
+          "ar": "برمجيات متعدّدة الأشكال، وحمولات مشفّرة، وثغرات يوم صفر.",
+          "en": "Polymorphic malware, encrypted payloads, and zero-days."
         },
         {
-          "ar": "مسح بطيء وطرق على المنافذ وسحب اللافتات.",
-          "en": "Slow scanning, port knocking and banner grabbing."
+          "ar": "مسح بطيء للمنافذ، وطرق عليها، وجمع معلومات اللافتات.",
+          "en": "Slow scanning, port knocking, and banner grabbing."
         },
         {
-          "ar": "رشّ كلمات المرور وحشو الاعتماد والتصيّد.",
-          "en": "Password spraying, credential stuffing and phishing."
+          "ar": "رشّ كلمات المرور، وحشو بيانات الاعتماد، وهجمات التصيّد.",
+          "en": "Password spraying, credential stuffing, and phishing."
         },
         {
-          "ar": "مسح الأقراص وإفراغ السجلات وتغيير الساعة.",
-          "en": "Disk wiping, log clearing and clock tampering."
+          "ar": "مسح الأقراص، وحذف السجلات، والتلاعب بساعة النظام.",
+          "en": "Disk wiping, log clearing, and clock tampering."
         }
       ],
       "concept_id": "ids_three_bypasses",
@@ -72,7 +40,7 @@
       }
     },
     {
-      "id": "q3",
+      "id": "q2",
       "stem": {
         "ar": "شنو يسوي نظام كشف التسلل؟",
         "en": "What does an intrusion detection system do?"
@@ -81,20 +49,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "يخصّص العناوين للأجهزة الداخلية.",
-          "en": "It assigns addresses to the internal hosts."
+          "ar": "يخصّص عناوين IP خاصة للأجهزة باستخدام خدمة DHCP.",
+          "en": "It assigns private IP addresses to hosts through DHCP."
         },
         {
           "ar": "يراقب النشاط ويصدر تنبيهات عند مؤشرات الاختراق.",
           "en": "It monitors activity and alerts on signs of compromise."
         },
         {
-          "ar": "يحجب الترافيك تلقائياً عند حافة الشبكة.",
-          "en": "It blocks traffic automatically at the network edge."
+          "ar": "يحجب أنواعاً من الترافيك تلقائياً عند حافة الشبكة.",
+          "en": "It blocks selected traffic automatically at the network edge."
         },
         {
-          "ar": "يشفّر الترافيك بين الطرفين.",
-          "en": "It encrypts traffic between the endpoints."
+          "ar": "يشفّر ترافيك التطبيقات المتبادل بين طرفي الاتصال.",
+          "en": "It encrypts application traffic between communicating endpoints."
         }
       ],
       "concept_id": "ids_definition",
@@ -104,39 +72,7 @@
       }
     },
     {
-      "id": "q4",
-      "stem": {
-        "ar": "شنو يضيف نظام منع التسلل على الكشف؟",
-        "en": "What does an intrusion prevention system add to detection?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "فترة استبقاء أطول لقاعدة التنبيهات.",
-          "en": "A longer retention period for the alert database."
-        },
-        {
-          "ar": "نسخة ثانية من كل حزمة للمراجعة لاحقاً.",
-          "en": "A second copy of every packet for later review."
-        },
-        {
-          "ar": "جهة إصدار شهادات للأجهزة الداخلية.",
-          "en": "A certificate authority for the internal hosts."
-        },
-        {
-          "ar": "إجراء آلي للحجب أو الحجر أو تعديل الترافيك.",
-          "en": "Automated action to block, quarantine or modify traffic."
-        }
-      ],
-      "concept_id": "ips_definition",
-      "explanation": {
-        "ar": "ما يكتشف النشاط الخبيث فقط، بل يتّخذ إجراءً آلياً، وهذا اللي يخليه نظام منع مو كشف.",
-        "en": "It not only detects malicious activity but also takes automated action, which is what makes it a prevention rather than a detection system."
-      }
-    },
-    {
-      "id": "q5",
+      "id": "q3",
       "stem": {
         "ar": "شنو الفرق الجوهري بين IDS و IPS؟",
         "en": "What is the essential difference between an IDS and an IPS?"
@@ -145,20 +81,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "الـ IDS مضمّن، والـ IPS خارج المسار.",
-          "en": "The IDS is inline; the IPS is out of band."
+          "ar": "يعمل IDS داخل المسار، بينما يعمل IPS خارجه للمراقبة.",
+          "en": "The IDS is inline, while the IPS operates out of band."
         },
         {
-          "ar": "الـ IPS يستخدم التوقيعات، والـ IDS يستخدم الشذوذ.",
-          "en": "The IPS uses signatures; the IDS uses anomalies."
+          "ar": "يعتمد IPS على التوقيعات، بينما يعتمد IDS على الشذوذ.",
+          "en": "The IPS uses signatures, while the IDS uses anomalies."
         },
         {
-          "ar": "الـ IPS يتصرّف بناءً على الكشف، والـ IDS يبلّغ فقط.",
-          "en": "The IPS acts on the detection; the IDS only reports it."
+          "ar": "يتصرف IPS عند الكشف، بينما يكتفي IDS بالإبلاغ عنه.",
+          "en": "The IPS acts on detection, while the IDS reports it."
         },
         {
-          "ar": "الـ IDS يفحص الحمولات، والـ IPS يفحص الترويسات.",
-          "en": "The IDS inspects payloads; the IPS inspects headers."
+          "ar": "يفحص IDS الحمولات، بينما يفحص IPS ترويسات الحزم.",
+          "en": "The IDS inspects payloads, while the IPS checks headers."
         }
       ],
       "concept_id": "ids_ips_core_difference",
@@ -168,7 +104,7 @@
       }
     },
     {
-      "id": "q6",
+      "id": "q4",
       "stem": {
         "ar": "على شنو ركّز الجيل الأول من IDS؟",
         "en": "What did first-generation IDS focus on?"
@@ -177,20 +113,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "الكشف بالتوقيعات، من الثمانينيات إلى التسعينيات.",
-          "en": "Signature-based detection, from the 1980s to the 1990s."
+          "ar": "الكشف بالتوقيعات، وهو نهج الثمانينيات والتسعينيات.",
+          "en": "Signature-based detection, developed during the 1980s–1990s."
         },
         {
-          "ar": "الكشف بالشذوذ، من الألفينيات وصاعداً.",
-          "en": "Anomaly-based detection, from the 2000s onward."
+          "ar": "الكشف بالشذوذ، وانتشر أساساً مع بداية الألفينيات.",
+          "en": "Anomaly-based detection, introduced mainly from the 2000s."
         },
         {
-          "ar": "مصنّفات تعلّم آلي مدرَّبة على بيانات موسومة.",
-          "en": "Machine-learning classifiers trained on labelled data."
+          "ar": "مصنّفات تعلّم آلي تعتمد أمثلة تدريبية موسومة للفئات.",
+          "en": "Machine-learning classifiers trained with labelled examples."
         },
         {
-          "ar": "نشر موزّع متكامل مع SIEM.",
-          "en": "Distributed deployment integrated with SIEM."
+          "ar": "مستشعرات موزّعة مرتبطة بمنظومات الإبلاغ المركزي SIEM.",
+          "en": "Distributed sensors integrated with central SIEM reporting."
         }
       ],
       "concept_id": "ids_gen1",
@@ -200,7 +136,7 @@
       }
     },
     {
-      "id": "q7",
+      "id": "q5",
       "stem": {
         "ar": "شنو قدّم الجيل الثاني من IDS بالألفينيات؟",
         "en": "What did second-generation IDS introduce in the 2000s?"
@@ -209,20 +145,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "مراقبة على المضيف تستبدل مستشعرات الشبكة.",
-          "en": "Host-based monitoring replacing network sensors."
+          "ar": "مراقبة الأجهزة بدلاً من المستشعرات الشبكية في البيئات المختلفة.",
+          "en": "Host monitoring that replaced network sensors in most sites."
         },
         {
-          "ar": "الكشف بالشذوذ مع تعلّم إحصائي وتعلّم آلي مبكّر.",
-          "en": "Anomaly detection with statistical learning and early ML."
+          "ar": "كشف الشذوذ بالأساليب الإحصائية وبدايات التعلّم الآلي.",
+          "en": "Anomaly detection using statistics and early machine learning."
         },
         {
-          "ar": "مطابقة توقيعات مسرَّعة بعتاد مخصّص.",
-          "en": "Signature matching accelerated by dedicated hardware."
+          "ar": "مطابقة التوقيعات باستخدام عتاد مخصّص لتسريع الفحص.",
+          "en": "Signature matching accelerated by dedicated inspection hardware."
         },
         {
-          "ar": "فحص ترافيك مشفّر بلا فكّ تشفير.",
-          "en": "Encrypted traffic inspection without decryption."
+          "ar": "فحص الترافيك المشفّر من دون فكّ الحمولة أو محتواها.",
+          "en": "Encrypted traffic inspection without decrypting the payload."
         }
       ],
       "concept_id": "ids_gen2",
@@ -232,7 +168,7 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q6",
       "stem": {
         "ar": "شنو يميّز نشر IDS/IPS المعاصر؟",
         "en": "What characterises contemporary IDS/IPS deployments?"
@@ -241,20 +177,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "أجهزة واحدة مونوليثية عند حافة الشبكة فقط.",
-          "en": "Single monolithic appliances at the network edge only."
+          "ar": "أجهزة موحّدة كبيرة تُنشر حصراً عند حافة الشبكة الخارجية.",
+          "en": "Single monolithic appliances deployed only at the network edge."
         },
         {
-          "ar": "قواعد توقيعات تُحدَّث يدوياً مرة بالسنة.",
-          "en": "Signature databases updated manually once a year."
+          "ar": "قواعد توقيعات يصونها المسؤولون يدوياً مرة واحدة سنوياً.",
+          "en": "Signature databases maintained manually once each year."
         },
         {
-          "ar": "مستشعرات معزولة بلا إبلاغ مركزي.",
-          "en": "Air-gapped sensors with no central reporting."
+          "ar": "مستشعرات معزولة تعمل من دون تقارير مركزية للأحداث.",
+          "en": "Isolated sensors operating without central event reporting."
         },
         {
-          "ar": "مقاربات هجينة ونشر موزّع وتكامل مع SIEM.",
-          "en": "Hybrid approaches, distributed deployment and SIEM integration."
+          "ar": "أساليب هجينة، ومستشعرات موزّعة، وتكامل فعّال مع SIEM.",
+          "en": "Hybrid methods, distributed sensors, and SIEM integration."
         }
       ],
       "concept_id": "ids_contemporary",
@@ -264,7 +200,7 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q7",
       "stem": {
         "ar": "شنو قدّم نموذج Denning لكشف التسلل؟",
         "en": "What did Denning's model contribute to intrusion detection?"
@@ -273,20 +209,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "قدّم نمط المنع المضمّن.",
-          "en": "It introduced the inline prevention mode."
+          "ar": "قدّم المنع داخل المسار بوصفه نمط الاستجابة القياسي.",
+          "en": "It introduced inline prevention as the standard response mode."
         },
         {
-          "ar": "حدّد مؤشّر الأداء SEI.",
-          "en": "It specified the SEI performance index."
+          "ar": "حدّد مؤشراً كمياً لقياس أداء أنظمة SEI الأمنية.",
+          "en": "It specified a quantitative index for SEI system performance."
         },
         {
-          "ar": "أسّس الكشف بالشذوذ مفاهيمياً.",
-          "en": "It founded anomaly-based detection conceptually."
+          "ar": "أرسى الأساس المفاهيمي للكشف عن السلوك الشاذ.",
+          "en": "It established the conceptual basis for anomaly detection."
         },
         {
-          "ar": "عرّف أول قاعدة توقيعات عملية.",
-          "en": "It defined the first practical signature database."
+          "ar": "عرّف قاعدة عملية مبكرة لتواقيع الهجمات المعروفة.",
+          "en": "It defined an early practical database of attack signatures."
         }
       ],
       "concept_id": "ids_denning",
@@ -296,39 +232,7 @@
       }
     },
     {
-      "id": "q10",
-      "stem": {
-        "ar": "وين يجلس IDS و IPS بالدفاع الطبقي؟",
-        "en": "Where do IDS and IPS sit in a layered defence?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "بين الدفاعات المحيطية وحماية نقاط النهاية.",
-          "en": "Between perimeter defences and endpoint protection."
-        },
-        {
-          "ar": "خارج المحيط، قبل الجدار الناري.",
-          "en": "Outside the perimeter, before the firewall."
-        },
-        {
-          "ar": "داخل نواة نظام التشغيل فقط.",
-          "en": "Inside the operating system kernel only."
-        },
-        {
-          "ar": "فوق طبقة التطبيق، بالمتصفح.",
-          "en": "Above the application layer, in the browser."
-        }
-      ],
-      "concept_id": "ids_layered_position",
-      "explanation": {
-        "ar": "يحتلّان الطبقة الوسطى، فيمسكان ما عدّى الحافة قبل ما يوصل لنقطة النهاية.",
-        "en": "They occupy the middle layer, catching what the edge let through before it reaches the endpoint."
-      }
-    },
-    {
-      "id": "q11",
+      "id": "q8",
       "stem": {
         "ar": "شنو يعني إن IDS و IPS يعملان كعُقد رؤية؟",
         "en": "What does it mean that IDS and IPS act as visibility nodes?"
@@ -337,20 +241,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "يستبدلان الجدار الناري للمقاطع الداخلية.",
-          "en": "They replace the firewall for internal segments."
+          "ar": "يستبدلان جدران المقاطع الداخلية بمستشعرات كشف فقط.",
+          "en": "They replace internal-segment firewalls with detection sensors."
         },
         {
-          "ar": "يخليان النشاط الداخلي مرئياً اللي ما شافته الحافة.",
-          "en": "They make internal activity visible that the edge never saw."
+          "ar": "يكشفان نشاطاً داخلياً لا تراه مستشعرات حافة الشبكة.",
+          "en": "They reveal internal activity that perimeter sensors cannot see."
         },
         {
-          "ar": "يعرضان خرائط طوبولوجيا الشبكة للمشغّلين.",
-          "en": "They display network topology maps to operators."
+          "ar": "يعرضان للمشغّلين خرائط طوبولوجيا الشبكة من دون تحليل.",
+          "en": "They provide operators with maps of network topology only."
         },
         {
-          "ar": "يمرّران كل الترافيك لـ SIEM للتخزين.",
-          "en": "They forward all traffic to the SIEM for storage."
+          "ar": "يمرّران كل حزمة إلى SIEM لغرض التخزين طويل الأمد.",
+          "en": "They forward every packet to SIEM for long-term storage."
         }
       ],
       "concept_id": "ids_visibility_nodes",
@@ -360,7 +264,7 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q9",
       "stem": {
         "ar": "شنو يفحص نظام الكشف القائم على المضيف؟",
         "en": "What does a host-based IDS inspect?"
@@ -369,20 +273,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "ترويسات الحزم والحمولات على المقطع.",
-          "en": "Packet headers and payloads on the segment."
+          "ar": "ترويسات الحزم وحمولاتها المارة عبر مقطع الشبكة المحلي.",
+          "en": "Packet headers and payloads traversing the local network segment."
         },
         {
-          "ar": "جداول التوجيه وإعلانات الجيران.",
-          "en": "Routing tables and neighbour advertisements."
+          "ar": "جداول التوجيه وإعلانات الجيران التي ترسلها الموجّهات.",
+          "en": "Routing tables and neighbour advertisements sent by routers."
         },
         {
-          "ar": "سلاسل الشهادات وقوائم الإبطال.",
-          "en": "Certificate chains and revocation lists."
+          "ar": "سلاسل الشهادات وقوائم الإبطال التي تستخدمها الخدمات المحلية.",
+          "en": "Certificate chains and revocation lists used by local services."
         },
         {
-          "ar": "استدعاءات النظام وسلامة الملفات وسجلات التطبيقات.",
-          "en": "System calls, file integrity and application logs."
+          "ar": "استدعاءات النظام، وتغيّر سلامة الملفات، وسجلات التطبيقات.",
+          "en": "System calls, file integrity changes, and application logs."
         }
       ],
       "concept_id": "hids_scope",
@@ -392,7 +296,7 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q10",
       "stem": {
         "ar": "شنو مقايضة اختيار نظام كشف قائم على المضيف؟",
         "en": "What is the trade-off of choosing a host-based IDS?"
@@ -401,20 +305,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "فحص ترافيك مشفّر بلا أي فكّ تشفير.",
-          "en": "Encrypted traffic inspection without any decryption."
+          "ar": "فحص ترافيك الشبكة المشفّر من دون فك تشفير الحمولات.",
+          "en": "Inspecting encrypted network traffic without decrypting payloads."
         },
         {
-          "ar": "حجب فوري بلا أي إنذارات كاذبة.",
-          "en": "Real-time blocking with no false positives."
+          "ar": "حجب الهجمات فوراً مع ضمان انعدام الإنذارات الكاذبة.",
+          "en": "Blocking attacks immediately while producing no false positives."
         },
         {
-          "ar": "دقّة محلية عميقة بس بلا رؤية عبر الشبكة.",
-          "en": "Deep local granularity but no view across the network."
+          "ar": "رؤية محلية عميقة لمضيف واحد، من دون رؤية الشبكة كلها.",
+          "en": "Deep visibility on one host, but no broad network-wide view."
         },
         {
-          "ar": "تغطية شبكية واسعة بس بلا أي تفصيل محلي.",
-          "en": "Wide network coverage but no local detail at all."
+          "ar": "تغطية شبكية واسعة، من دون تفاصيل دقيقة عن أي مضيف.",
+          "en": "Broad network coverage, but no detailed view of a single host."
         }
       ],
       "concept_id": "hids_tradeoff",
@@ -424,7 +328,7 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q11",
       "stem": {
         "ar": "وين يُنشر نظام الكشف القائم على الشبكة وشنو يحلّل؟",
         "en": "Where is a network-based IDS deployed and what does it analyse?"
@@ -433,20 +337,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "عند نقاط شبكية استراتيجية، ويحلّل الحزم.",
-          "en": "At strategic network points, analysing packets."
+          "ar": "عند نقاط شبكية استراتيجية، حيث يحلّل الحزم المارّة.",
+          "en": "At strategic network points, where it analyses passing packets."
         },
         {
-          "ar": "داخل مضيف واحد، ويحلّل استدعاءات النظام والسجلات.",
-          "en": "Inside one host, analysing system calls and logs."
+          "ar": "داخل مضيف واحد، حيث يحلّل الاستدعاءات والسجلات المحلية.",
+          "en": "Inside a single host, where it analyses calls and local logs."
         },
         {
-          "ar": "عند جهة إصدار الشهادات، ويحلّل السلاسل.",
-          "en": "At the certificate authority, analysing chains."
+          "ar": "عند جهة إصدار الشهادات، حيث يحلّل سلاسل الثقة الرقمية.",
+          "en": "At the certificate authority, where it analyses trust chains."
         },
         {
-          "ar": "عند جذر DNS، ويحلّل نقل المناطق.",
-          "en": "At the DNS root, analysing zone transfers."
+          "ar": "عند جذر DNS، حيث يحلّل عمليات النقل بين مناطق الأسماء.",
+          "en": "At the DNS root, where it analyses transfers between zones."
         }
       ],
       "concept_id": "nids_scope",
@@ -456,7 +360,7 @@
       }
     },
     {
-      "id": "q15",
+      "id": "q12",
       "stem": {
         "ar": "شنو الضعف الأساسي لنظام الكشف القائم على الشبكة؟",
         "en": "What is the main weakness of a network-based IDS?"
@@ -465,20 +369,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "يشتغل فقط على مقاطع الشبكة اللاسلكية.",
-          "en": "It only works on wireless network segments."
+          "ar": "يعمل على المقاطع اللاسلكية دون الشبكات السلكية المعتادة.",
+          "en": "It operates only on wireless segments, not wired networks."
         },
         {
-          "ar": "الترافيك المشفّر يخفي الحمولة عن الفحص.",
-          "en": "Encrypted traffic hides the payload from inspection."
+          "ar": "قد يخفي التشفير بعض حمولات الحزم عن الفحص الشبكي.",
+          "en": "Encryption can hide packet payloads from network inspection."
         },
         {
-          "ar": "ما يقدر يقرأ ترويسات أي بروتوكول.",
-          "en": "It cannot read packet headers of any protocol."
+          "ar": "يعجز عن قراءة ترويسات الحزم في البروتوكولات الشبكية.",
+          "en": "It cannot read packet headers for any supported protocol."
         },
         {
-          "ar": "يشترط وكيلاً مثبَّتاً على كل مضيف.",
-          "en": "It requires an agent installed on every host."
+          "ar": "يتطلب تثبيت وكيل على كل مضيف تجري مراقبته محلياً.",
+          "en": "It requires an agent installed on every monitored host."
         }
       ],
       "concept_id": "nids_weakness",
@@ -488,7 +392,7 @@
       }
     },
     {
-      "id": "q16",
+      "id": "q13",
       "stem": {
         "ar": "شنو يدمج نظام الكشف الهجين؟",
         "en": "What does a hybrid IDS combine?"
@@ -497,20 +401,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "التوقيعات وقوائم إبطال الشهادات.",
-          "en": "Signature and certificate revocation lists."
+          "ar": "كشف التوقيعات مع قوائم إبطال الشهادات الرقمية.",
+          "en": "Signature detection combined with certificate revocation lists."
         },
         {
-          "ar": "قواعد الجدار الناري ومدخلات كاش البروكسي.",
-          "en": "Firewall rules and proxy cache entries."
+          "ar": "سياسات الجدار الناري ومدخلات التخزين المؤقت للوكيل العكسي.",
+          "en": "Firewall policies combined with reverse-proxy cache entries."
         },
         {
-          "ar": "قاعدتا توقيعات مستقلتان.",
-          "en": "Two independent signature databases."
+          "ar": "قاعدتا توقيعات منفصلتان مع غياب التحليل المشترك.",
+          "en": "Two separate signature databases with no shared analysis."
         },
         {
-          "ar": "مراقبة المضيف والشبكة مع تحليل السجلات.",
-          "en": "Host and network monitoring with log analysis."
+          "ar": "مراقبة المضيف والشبكة مع تحليل سجلات النظام والأحداث.",
+          "en": "Host and network monitoring combined with log analysis."
         }
       ],
       "concept_id": "hybrid_ids",
@@ -520,7 +424,7 @@
       }
     },
     {
-      "id": "q17",
+      "id": "q14",
       "stem": {
         "ar": "وين يجلس نظام المنع المضمّن، وشنو يقدر يسوي؟",
         "en": "Where does an inline IPS sit, and what can it do?"
@@ -529,20 +433,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "داخل نواة المضيف، ويسجّل فقط.",
-          "en": "Inside the host kernel, logging only."
+          "ar": "داخل نواة المضيف، حيث يسجّل الأحداث من دون حجبها.",
+          "en": "Inside the host kernel, where it records events without blocking."
         },
         {
-          "ar": "عند محلّل DNS، ويخزّن الأجوبة.",
-          "en": "At the DNS resolver, caching answers."
+          "ar": "عند محلّل DNS، حيث يخزّن الإجابات مؤقتاً للمستخدمين.",
+          "en": "At the DNS resolver, where it caches responses for clients."
         },
         {
-          "ar": "داخل مسار الترافيك، ويحجب بالزمن الحقيقي.",
-          "en": "In the traffic path, blocking in real time."
+          "ar": "ضمن مسار الترافيك، حيث يمكنه حجب التهديدات فوراً.",
+          "en": "In the traffic path, where it can block threats in real time."
         },
         {
-          "ar": "خارج مسار الترافيك، وينبّه فقط.",
-          "en": "Off the traffic path, alerting only."
+          "ar": "خارج مسار الترافيك، حيث يراقب ويصدر التنبيهات فقط.",
+          "en": "Off the traffic path, where it observes and alerts only."
         }
       ],
       "concept_id": "ips_inline",
@@ -552,7 +456,7 @@
       }
     },
     {
-      "id": "q18",
+      "id": "q15",
       "stem": {
         "ar": "شنو يميّز نشر IDS خارج المسار؟",
         "en": "What characterises an out-of-band IDS deployment?"
@@ -561,20 +465,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "ينبّه المشغّلين ويترك الاستجابة للبشر.",
-          "en": "It alerts operators and leaves response to humans."
+          "ar": "ينبّه المشغّلين ويترك استجابة الحوادث للكادر البشري.",
+          "en": "It alerts operators, leaving response actions to human staff."
         },
         {
-          "ar": "يسقط الحزم قبل ما توصل للمضيف.",
-          "en": "It drops packets before they reach the host."
+          "ar": "يسقط الحزم قبل أن تصل إلى المضيف الخاضع للحماية.",
+          "en": "It drops packets before they can reach the protected host."
         },
         {
-          "ar": "يعيد كتابة الترويسات لتحييد الحمولة.",
-          "en": "It rewrites headers to neutralise the payload."
+          "ar": "يعيد كتابة الترويسات لتحييد محتوى الحمولات الخبيثة.",
+          "en": "It rewrites packet headers to neutralise malicious payloads."
         },
         {
-          "ar": "يحجر المضيف تلقائياً.",
-          "en": "It quarantines the host automatically."
+          "ar": "يعزل الطرف المتأثر تلقائياً عند اكتشاف النشاط المشبوه.",
+          "en": "It quarantines the affected endpoint automatically on detection."
         }
       ],
       "concept_id": "ids_out_of_band",
@@ -584,7 +488,7 @@
       }
     },
     {
-      "id": "q19",
+      "id": "q16",
       "stem": {
         "ar": "شنو الخطر الأساسي لنشر نظام منع مضمّن؟",
         "en": "What is the main risk of deploying an IPS inline?"
@@ -593,20 +497,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "يخزّن نسخاً من كل حزمة للأبد.",
-          "en": "It stores copies of every packet forever."
+          "ar": "يخزّن بصورة دائمة نسخة كاملة من كل حزمة تمرّ عبره.",
+          "en": "It permanently stores a full copy of every passing packet."
         },
         {
-          "ar": "لو فشل الجهاز يقدر ينزّل المسار كله.",
-          "en": "If the device fails, it can take the whole path down."
+          "ar": "قد يؤدي تعطل الجهاز إلى قطع مسار الترافيك بالكامل.",
+          "en": "A device failure can interrupt or disable the entire traffic path."
         },
         {
-          "ar": "ما يقدر يفحص الحمولات المشفّرة أبداً.",
-          "en": "It cannot inspect encrypted payloads at all."
+          "ar": "لا يمكنه فحص أي حمولة مشفّرة تحت أي ظرف.",
+          "en": "It cannot inspect any encrypted payload under any conditions."
         },
         {
-          "ar": "ما يحتاج مصدر طاقة خاص بيه.",
-          "en": "It requires no power supply of its own."
+          "ar": "يعمل من دون الحاجة إلى مصدر طاقة كهربائي خاص به.",
+          "en": "It operates without requiring its own electrical power supply."
         }
       ],
       "concept_id": "ips_inline_risk",
@@ -616,7 +520,7 @@
       }
     },
     {
-      "id": "q20",
+      "id": "q17",
       "stem": {
         "ar": "محلّل يريد يعرف إن ملفاً واحداً تغيّر على سيرفر واحد. أي معمارية تلائم؟",
         "en": "An analyst needs to know that a single file changed on one server. Which architecture fits?"
@@ -625,20 +529,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "نظام كشف قائم على الشبكة، لأنه يشوف كل الحزم.",
-          "en": "A network-based IDS, because it sees all packets."
+          "ar": "نظام كشف شبكي، لأنه يراقب الحزم المارة عبر المقاطع.",
+          "en": "A network-based IDS, because it observes packets across segments."
         },
         {
-          "ar": "نظام منع مضمّن، لأنه يقدر يحجب التغيير.",
-          "en": "An inline IPS, because it can block the change."
+          "ar": "نظام منع مضمّن، لأنه يستطيع حجب تغيير محتوى الملف.",
+          "en": "An inline IPS, because it can block a file modification."
         },
         {
-          "ar": "بروكسي عكسي، لأنه يخزّن الملف.",
-          "en": "A reverse proxy, because it caches the file."
+          "ar": "وكيل عكسي، لأنه يخزّن الملفات الثابتة مؤقتاً للمستخدمين.",
+          "en": "A reverse proxy, because it caches static files for clients."
         },
         {
-          "ar": "نظام كشف قائم على المضيف، لأنه يراقب سلامة الملفات.",
-          "en": "A host-based IDS, because it watches file integrity."
+          "ar": "نظام كشف على المضيف، لأنه يراقب سلامة ملفاته المحلية.",
+          "en": "A host-based IDS, because it monitors local file integrity."
         }
       ],
       "concept_id": "ids_architecture_selection",
@@ -653,7 +557,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

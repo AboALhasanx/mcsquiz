@@ -10,59 +10,27 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "كيف يصف الفصل تاريخ التشفير؟",
-        "en": "How does the chapter describe the history of cryptography?"
+        "ar": "أي انتقال ليس ضمن التحولات التاريخية الثلاثة في علم التشفير؟",
+        "en": "Which transition is not among the three historical shifts in cryptography?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "كمجموعة معايير حكومية تُعدَّل كل عشر سنوات.",
-          "en": "As a set of government standards revised every decade."
+          "ar": "استبدال كلاسيكي تتبعه عملية تبديل.",
+          "en": "Classical substitution followed by transposition."
         },
         {
-          "ar": "كسباق تسلّح بين صانعي الشيفرة وكاسريها.",
-          "en": "As an arms race between code-makers and code-breakers."
+          "ar": "الصعوبة الرياضية ← التحليل الحسابي.",
+          "en": "Mathematical hardness → computational cryptanalysis."
         },
         {
-          "ar": "كتجمّع تدريجي للخوارزميات غير القابلة للكسر.",
-          "en": "As a steady accumulation of unbreakable algorithms."
+          "ar": "السرية الكلاسيكية ← التحليل الإحصائي.",
+          "en": "Classical secrecy → statistical cryptanalysis."
         },
         {
-          "ar": "كفرع من الرياضيات مستقل عن قوة الحوسبة.",
-          "en": "As a branch of mathematics independent of computing power."
-        }
-      ],
-      "concept_id": "crypto_history_arms_race",
-      "explanation": {
-        "ar": "كل «اختراق» في حقبة ما انتهى مكسورًا عبر تقنية تحليلية جديدة أو حاسوب أسرع أو زلة إجرائية، فالمجال يتقدّم كسباق لا كسلّم.",
-        "en": "Each epoch's breakthrough method was eventually broken by a new analytic technique, a faster computer, or a procedural slip, so the field advances as a race rather than a ladder."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
-        "ar": "أي الانتقالات التالية ليس من الثلاثة التي يستخدمها الفصل لتأطير تاريخ التشفير؟",
-        "en": "Which of these transitions is NOT one of the three the chapter uses to frame cryptographic history?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "التعقيد الميكانيكي الذي يفسح المجال للتحليل التشغيلي.",
-          "en": "Mechanical complexity giving way to operational cryptanalysis."
-        },
-        {
-          "ar": "الصعوبة الرياضية التي تفسح المجال للتحليل الحسابي.",
-          "en": "Mathematical hardness giving way to computational cryptanalysis."
-        },
-        {
-          "ar": "الاستبدال الذي يفسح المجال للتبديل.",
-          "en": "Substitution giving way to transposition."
-        },
-        {
-          "ar": "السرية الكلاسيكية التي تفسح المجال للتحليل الإحصائي.",
-          "en": "Classical secrecy giving way to statistical cryptanalysis."
+          "ar": "التعقيد الميكانيكي ← التحليل التشغيلي.",
+          "en": "Mechanical complexity → operational cryptanalysis."
         }
       ],
       "concept_id": "crypto_three_transitions",
@@ -72,29 +40,29 @@
       }
     },
     {
-      "id": "q3",
+      "id": "q2",
       "stem": {
-        "ar": "حسب الفصل، الأمن ليس رياضيات فقط — فما هو؟",
-        "en": "According to the chapter, security is not only math — what is it?"
+        "ar": "ما العوامل الثلاثة التي تحدد الأمن العملي للتشفير معاً؟",
+        "en": "Which three factors jointly determine practical cryptographic security?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "رياضيات مضروبة بالتنفيذ مضروباً بالعمليات.",
-          "en": "Math multiplied by implementation multiplied by operations."
+          "ar": "الرياضيات وكلفة العتاد فقط تحدد الأمان.",
+          "en": "Mathematics and hardware cost alone determine security."
         },
         {
-          "ar": "رياضيات مقسومة على عدد مستخدمي النظام.",
-          "en": "Math divided by the number of users on the system."
+          "ar": "الرياضيات والتنفيذ والممارسات التشغيلية.",
+          "en": "Mathematics, implementation and operating practice."
         },
         {
-          "ar": "رياضيات زائد ثمن العتاد الذي يشغّلها.",
-          "en": "Math plus the price of the hardware running it."
+          "ar": "الرياضيات وسرعة الشبكة فقط تحدد الأمان.",
+          "en": "Mathematics and network speed alone determine security."
         },
         {
-          "ar": "رياضيات مقيّدة بسرعة اتصال الشبكة.",
-          "en": "Math limited by the speed of the network connection."
+          "ar": "الرياضيات وعدد المستخدمين فقط يحددان الأمان.",
+          "en": "Mathematics and user count alone determine security."
         }
       ],
       "concept_id": "crypto_security_formula",
@@ -104,7 +72,7 @@
       }
     },
     {
-      "id": "q4",
+      "id": "q3",
       "stem": {
         "ar": "في شيفرة قيصر، كيف يُحوَّل كل حرف x المُرمَّز 0–25 أثناء التشفير؟",
         "en": "In the Caesar cipher, how is each letter x encoded 0–25 transformed during encryption?"
@@ -113,16 +81,16 @@
       "answer": 3,
       "options": [
         {
-          "ar": "يُستبدل بـ (x × k) mod 26، حيث k مقدار الإزاحة.",
-          "en": "It is replaced with (x × k) mod 26, where k is the shift."
-        },
-        {
           "ar": "يُستبدل بـ (x + k) mod 25، حيث k مقدار الإزاحة.",
           "en": "It is replaced with (x + k) mod 25, where k is the shift."
         },
         {
           "ar": "يُستبدل بـ (x − 26) mod k، حيث k مقدار الإزاحة.",
           "en": "It is replaced with (x − 26) mod k, where k is the shift."
+        },
+        {
+          "ar": "يُستبدل بـ (x × k) mod 26، حيث k مقدار الإزاحة.",
+          "en": "It is replaced with (x × k) mod 26, where k is the shift."
         },
         {
           "ar": "يُستبدل بـ (x + k) mod 26، حيث k مقدار الإزاحة.",
@@ -136,61 +104,61 @@
       }
     },
     {
-      "id": "q5",
+      "id": "q4",
       "stem": {
         "ar": "كم مفتاحاً غير تافه تمتلكها شيفرة قيصر؟",
         "en": "How many nontrivial keys does the Caesar cipher have?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "676.",
-          "en": "676."
+          "ar": "26 مفتاحاً.",
+          "en": "26 keys."
         },
         {
-          "ar": "25.",
-          "en": "25."
+          "ar": "676 مفتاحاً.",
+          "en": "676 keys."
         },
         {
-          "ar": "26.",
-          "en": "26."
+          "ar": "25 مفتاحاً.",
+          "en": "25 keys."
         },
         {
-          "ar": "256.",
-          "en": "256."
+          "ar": "256 مفتاحاً.",
+          "en": "256 keys."
         }
       ],
       "concept_id": "caesar_keyspace",
       "explanation": {
         "ar": "الإزاحة صفر تترك النص كما هو، لذا 25 فقط من الـ 26 إزاحة الممكنة تُعدّ مفاتيح غير تافهة.",
-        "en": "A shift of 0 leaves the text unchanged, so only 25 of the 26 possible shifts are nontrivial keys."
+        "en": "A zero shift leaves each plaintext letter unchanged; therefore, only 25 of the 26 shifts are nontrivial keys."
       }
     },
     {
-      "id": "q6",
+      "id": "q5",
       "stem": {
         "ar": "ليش تكرارات الحروف المحفوظة تجعل شيفرة قيصر قابلة للكسر؟",
         "en": "Why do preserved letter frequencies make the Caesar cipher breakable?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 2,
       "options": [
         {
-          "ar": "التكرارات تصير عشوائية، وهذا يمنع أي تحليل.",
-          "en": "The frequencies become random, which prevents any analysis."
+          "ar": "تجعل الإزاحة تكرارات الحروف عشوائية بالكامل.",
+          "en": "The shift makes letter frequencies completely random."
         },
         {
-          "ar": "التكرارات تُحذف بالكامل بعملية باقي القسمة.",
-          "en": "The frequencies are removed entirely by the modulo operation."
+          "ar": "تحذف عملية باقي القسمة معلومات التكرار كلها.",
+          "en": "Modulo arithmetic removes all frequency information."
         },
         {
-          "ar": "التكرارات تتغير للحركات فقط، وتترك الصوامت سليمة.",
-          "en": "The frequencies change only for vowels, leaving consonants intact."
+          "ar": "تبقى أنماط تكرار الحروف وتكشف قيمة الإزاحة k.",
+          "en": "Letter patterns survive the shift and expose the key."
         },
         {
-          "ar": "نمط تكرار النص الأصلي يبقى بعد الإزاحة ويكشف قيمة k.",
-          "en": "The frequency pattern of the plaintext survives the shift and reveals k."
+          "ar": "تتغير تكرارات الحركات وحدها وتثبت تكرارات الصوامت.",
+          "en": "Only vowel frequencies change; consonant frequencies stay fixed."
         }
       ],
       "concept_id": "caesar_statistics_leak",
@@ -200,61 +168,29 @@
       }
     },
     {
-      "id": "q7",
+      "id": "q6",
       "stem": {
-        "ar": "بأي سرعة يقدر المهاجم استعادة إزاحة قيصر k؟",
-        "en": "How quickly can an attacker recover the Caesar shift k?"
+        "ar": "ما الدرس الأمني الذي توضحه شيفرة قيصر؟",
+        "en": "What security lesson does the Caesar cipher demonstrate?"
       },
       "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "بأجزاء من الثانية، بالبحث الشامل أو تحليل التكرار.",
-          "en": "In milliseconds, by exhaustive search or frequency analysis."
+          "ar": "المفاتيح الصغيرة والبنية المحفوظة تكشفان الشيفرة.",
+          "en": "Small keyspaces and preserved structure expose attacks."
         },
         {
-          "ar": "في حدود ساعة، باستخدام معجم للكلمات الشائعة.",
-          "en": "In about an hour, using a dictionary of common words."
-        },
-        {
-          "ar": "فقط بعد جمع عدة آلاف من أحرف النص المشفّر.",
-          "en": "Only after collecting several thousand characters of ciphertext."
-        },
-        {
-          "ar": "فقط بمعرفة الكلمة الأولى من الرسالة.",
-          "en": "Only with knowledge of the first word of the message."
-        }
-      ],
-      "concept_id": "caesar_break_speed",
-      "explanation": {
-        "ar": "فضاء المفاتيح ضئيل والإحصاءات تسرّب الإزاحة، فالقوة الغاشمة وتحليل التكرار كلاهما يستعيدان k فوراً تقريباً.",
-        "en": "The keyspace is tiny and the statistics leak the shift, so both brute force and frequency analysis recover k essentially instantly."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "شنو الدرس الأمني الذي يستخلصه الفصل من شيفرة قيصر؟",
-        "en": "What cybersecurity lesson does the chapter draw from the Caesar cipher?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "أي شيفرة تصير آمنة متى ما صارت الرسالة قصيرة بما يكفي.",
-          "en": "Any cipher becomes safe once the message is short enough."
+          "ar": "شيفرات الاستبدال آمنة إذا تغيّرت الإزاحة يومياً.",
+          "en": "Substitution ciphers are safe if the shift is changed daily."
         },
         {
           "ar": "تحليل التكرار يشتغل فقط على الرسائل المكتوبة بالإنجليزية.",
           "en": "Frequency analysis only works on messages written in English."
         },
         {
-          "ar": "فضاءات المفاتيح الصغيرة والبنية المحفوظة قاتلة.",
-          "en": "Small keyspaces and preserved structure are fatal."
-        },
-        {
-          "ar": "شيفرات الاستبدال آمنة إذا تغيّرت الإزاحة يومياً.",
-          "en": "Substitution ciphers are safe if the shift is changed daily."
+          "ar": "أي شيفرة تصير آمنة متى ما صارت الرسالة قصيرة بما يكفي.",
+          "en": "Any cipher becomes safe once the message is short enough."
         }
       ],
       "concept_id": "caesar_fatal_lesson",
@@ -264,29 +200,29 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q7",
       "stem": {
         "ar": "كيف تطبّق شيفرة فيجينير مفتاحها؟",
         "en": "How does the Vigenère cipher apply its key?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "تطبّق إزاحة واحدة ثابتة على الرسالة كلها، مأخوذة من أول حرف بالكلمة المفتاحية.",
-          "en": "It applies one fixed shift to the whole message, taken from the keyword's first letter."
+          "ar": "تطبق إزاحة واحدة ثابتة من الحرف الأول للكلمة المفتاحية.",
+          "en": "It applies one fixed shift from the keyword's first letter."
         },
         {
-          "ar": "تستبدل كل حرف بالحرف الذي يليه في الكلمة المفتاحية فقط.",
-          "en": "It substitutes each letter with the next one in the keyword only."
+          "ar": "تكرر الكلمة المفتاحية إزاحة قيصر مختلفة لكل موضع.",
+          "en": "Repeated keyword; a different Caesar shift per position."
         },
         {
-          "ar": "تعكس الأبجدية مرة واحدة عن كل حرف من الكلمة المفتاحية.",
-          "en": "It reverses the alphabet once for every letter of the keyword."
+          "ar": "تستبدل كل حرف بالحرف التالي في الكلمة المفتاحية.",
+          "en": "It substitutes each letter with the next keyword letter."
         },
         {
-          "ar": "تستخدم كلمة مفتاحية متكرّرة، فيأخذ كل موضع إزاحة قيصر مختلفة.",
-          "en": "It uses a repeated keyword so that each position receives a different Caesar shift."
+          "ar": "تعكس الأبجدية مرةً لكل حرف من الكلمة المفتاحية.",
+          "en": "It reverses the alphabet once for each keyword letter."
         }
       ],
       "concept_id": "vigenere_mechanism",
@@ -296,39 +232,7 @@
       }
     },
     {
-      "id": "q10",
-      "stem": {
-        "ar": "ليش بدت شيفرة فيجينير غير قابلة للكسر لقرون؟",
-        "en": "Why did the Vigenère cipher look unbreakable for centuries?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأنها شفّرت الحروف على شكل كتل كاملة لا حرفاً حرفاً.",
-          "en": "Because it encrypted letters in whole blocks rather than one letter at a time."
-        },
-        {
-          "ar": "لأن كل موضع مفتاح أنتج توزيعه الخاص، فأبطل تحليل تكرار واحداً.",
-          "en": "Because each key position produced its own distribution, defeating a single frequency analysis."
-        },
-        {
-          "ar": "لأن فضاء مفاتيحها كان أكبر بكثير مما يقدر أي حاسوب بالعهد بحثه.",
-          "en": "Because its keyspace was far larger than any computer of the era could search."
-        },
-        {
-          "ar": "لأن الكلمة المفتاحية نفسها ما ظهرت أبداً بالنص المشفّر.",
-          "en": "Because the keyword itself never appeared in the ciphertext at any point."
-        }
-      ],
-      "concept_id": "vigenere_why_survived",
-      "explanation": {
-        "ar": "المفتاح المتكرّر يوزّع تكرار حرف واحد على عدة أبجديات، فيبطل الهجوم المبنى على توزيع واحد الذي يُسقط شيفرة قيصر.",
-        "en": "The repeated key spreads one letter's frequency across several alphabets, which defeats the single-distribution attack that topples a Caesar cipher."
-      }
-    },
-    {
-      "id": "q11",
+      "id": "q8",
       "stem": {
         "ar": "أي تقنية تكشف طول مفتاح فيجينير عبر إيجاد مقاطع مكرّرة بالنص المشفّر؟",
         "en": "Which technique reveals the Vigenère key length by finding repeated ciphertext segments?"
@@ -337,20 +241,20 @@
       "answer": 2,
       "options": [
         {
+          "ar": "بحث شامل عن الكلمات المفتاحية.",
+          "en": "Exhaustive search of possible keywords."
+        },
+        {
+          "ar": "مؤشر فريدمان للتطابق الإحصائي.",
+          "en": "Friedman’s coincidence index."
+        },
+        {
+          "ar": "فحص كاسيسكي للمقاطع المتكررة.",
+          "en": "Kasiski test for repeated segments."
+        },
+        {
           "ar": "تحليل تكرار الحروف المفردة.",
-          "en": "Frequency analysis of single letters."
-        },
-        {
-          "ar": "البحث الشامل على كل الكلمات المفتاحية.",
-          "en": "Exhaustive search over all keywords."
-        },
-        {
-          "ar": "فحص كاسيسكي.",
-          "en": "Kasiski examination."
-        },
-        {
-          "ar": "مؤشّر التطابق لفريدمان.",
-          "en": "Friedman's index of coincidence."
+          "en": "Single-letter frequency analysis."
         }
       ],
       "concept_id": "vigenere_kasiski",
@@ -360,29 +264,29 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q9",
       "stem": {
         "ar": "أي قياس إحصائي يقدّر طول مفتاح فيجينير من انتظام التوزيع؟",
         "en": "Which statistical measure estimates the Vigenère key length from the regularity of the distribution?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "مؤشّر التطابق لفريدمان.",
-          "en": "Friedman's index of coincidence."
-        },
-        {
-          "ar": "فحص كاسيسكي للمقاطع المكرّرة.",
+          "ar": "فحص كاسيسكي للمقاطع المتكررة.",
           "en": "Kasiski examination of repeated segments."
         },
         {
-          "ar": "تأثير الانهيار الجليدي لدالة الهاش.",
-          "en": "The avalanche effect of the hash function."
+          "ar": "مؤشر فريدمان لمعامل التطابق.",
+          "en": "Friedman’s index of coincidence measure."
         },
         {
-          "ar": "مبدأ الحمّام على المخرجات ثابتة الطول.",
-          "en": "The pigeonhole principle on fixed-length output."
+          "ar": "تأثير الانهيار في دالة التجزئة.",
+          "en": "The hash function’s avalanche effect."
+        },
+        {
+          "ar": "مبدأ الحمّام للمخرجات الثابتة.",
+          "en": "The fixed-output pigeonhole principle."
         }
       ],
       "concept_id": "vigenere_friedman",
@@ -392,7 +296,7 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q10",
       "stem": {
         "ar": "متى ما تُعرف دورة فيجينير، إلى ماذا تتحوّل الشيفرة؟",
         "en": "Once the Vigenère period is known, what does the cipher reduce to?"
@@ -402,19 +306,19 @@
       "options": [
         {
           "ar": "شيفرة قيصر واحدة بأبجدية أطول.",
-          "en": "A single Caesar cipher with a longer alphabet."
+          "en": "One Caesar cipher with a longer alphabet."
+        },
+        {
+          "ar": "شيفرة تبديل بطول الكلمة المفتاحية.",
+          "en": "A transposition cipher using the keyword length."
         },
         {
           "ar": "شيفرة استبدال على كتل من 26 حرفاً.",
           "en": "A substitution cipher over 26-letter blocks."
         },
         {
-          "ar": "شيفرة تبديل على طول الكلمة المفتاحية.",
-          "en": "A transposition cipher over the keyword length."
-        },
-        {
-          "ar": "عدة شيفرات قيصر مستقلة، واحدة لكل موضع مفتاح.",
-          "en": "Several independent Caesar ciphers, one per key position."
+          "ar": "شيفرات قيصر مستقلة لكل موضع منها.",
+          "en": "Independent Caesar ciphers by key position."
         }
       ],
       "concept_id": "vigenere_reduces_to_caesar",
@@ -424,29 +328,29 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q11",
       "stem": {
         "ar": "طالب يقول إن شيفرة فيجينير غير متماثلة لأنها تستخدم كلمة مفتاحية بدل إزاحة واحدة. هل هذا صحيح؟",
         "en": "A student says the Vigenère cipher is asymmetric because it uses a keyword rather than a single shift. Is that correct?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "لا — هي لا متماثلة ولا غير متماثلة لأنها لا تحمل مفتاحاً.",
-          "en": "No — it is neither symmetric nor asymmetric because it carries no key."
+          "ar": "لا؛ يستخدم المفتاح السري نفسه في تشفير النص وفكّه.",
+          "en": "No; the same secret key encrypts and decrypts Vigenère text."
         },
         {
-          "ar": "لا — نفس المفتاح يشفّر ويفكّ، ففيجينير متماثلة.",
-          "en": "No — the same key encrypts and decrypts, so Vigenère is symmetric."
+          "ar": "نعم؛ تعمل الكلمة المفتاحية كزوج مفاتيح عام وخاص.",
+          "en": "Yes; a keyword functions as a public and private key pair."
         },
         {
-          "ar": "نعم — الكلمة المفتاحية تُعدّ زوج مفاتيح، وهذا يجعلها غير متماثلة.",
-          "en": "Yes — a keyword counts as a key pair, which makes the cipher asymmetric."
+          "ar": "نعم؛ يستخدم الطرفان إزاحات مختلفة مشتقة من المفتاح.",
+          "en": "Yes; sender and receiver use different keyword-derived shifts."
         },
         {
-          "ar": "نعم — المرسل والمستقبل يستخدمان إزاحات مختلفة من الكلمة المفتاحية.",
-          "en": "Yes — the sender and receiver use different shifts drawn from the keyword."
+          "ar": "لا؛ فهي لا تستخدم مفتاحاً وليست متماثلة ولا لامتماثلة.",
+          "en": "No; it has no key and is neither symmetric nor asymmetric."
         }
       ],
       "concept_id": "vigenere_symmetric_trap",
@@ -456,61 +360,29 @@
       }
     },
     {
-      "id": "q15",
-      "stem": {
-        "ar": "شنو الدرس الذي يستخلصه الفصل من سقوط شيفرة فيجينير؟",
-        "en": "What lesson does the chapter draw from the fall of the Vigenère cipher?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "الشيفرات متعددة الأبجديات غير قابلة للكسر عملياً بطبيعتها.",
-          "en": "Polyalphabetic ciphers are inherently unbreakable in practice."
-        },
-        {
-          "ar": "الكلمات المفتاحية الأطول تلغي الحاجة لأي ضابط آخر.",
-          "en": "Longer keywords remove the need for any other control."
-        },
-        {
-          "ar": "الشيفرات الميكانيكية محصّنة ضد الأخطاء الإجرائية.",
-          "en": "Mechanical ciphers are immune to procedural mistakes."
-        },
-        {
-          "ar": "التعقيد المضاف يؤخّر التحليل بس ما يمنعه.",
-          "en": "Added complexity can delay analysis but cannot prevent it."
-        }
-      ],
-      "concept_id": "vigenere_complexity_lesson",
-      "explanation": {
-        "ar": "الأمن المعتمد على سرّية الآلية بدل عامل العمل يتآكل مع الزمن بتطوّر المهاجمين.",
-        "en": "Security that relies on secrecy of the mechanism rather than on work factor erodes with time as attackers evolve."
-      }
-    },
-    {
-      "id": "q16",
+      "id": "q12",
       "stem": {
         "ar": "أي تعبير يعطي المسافة الأحادية U؟",
         "en": "Which expression gives the unicity distance U?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "U تقارب إنتروبيا المفتاح H(K) مقسومة على حشو اللغة D.",
-          "en": "U is approximately the key entropy H(K) divided by the redundancy D."
-        },
-        {
-          "ar": "U تقارب حشو اللغة D مقسوماً على إنتروبيا المفتاح H(K).",
-          "en": "U is approximately the redundancy D divided by the key entropy H(K)."
-        },
-        {
-          "ar": "U تقارب إنتروبيا المفتاح H(K) مضروبة بحشو اللغة D.",
-          "en": "U is approximately the key entropy H(K) multiplied by the redundancy D."
-        },
         {
           "ar": "U تقارب حجم فضاء المفاتيح مقسوماً على طول النص المشفّر.",
           "en": "U is approximately the keyspace size divided by the ciphertext length."
+        },
+        {
+          "ar": "U تقارب حشو اللغة D مقسوماً على إنتروبيا المفتاح H (K).",
+          "en": "U is approximately the redundancy D divided by the key entropy H (K)."
+        },
+        {
+          "ar": "U تقارب إنتروبيا المفتاح H (K) مضروبة بحشو اللغة D.",
+          "en": "U is approximately the key entropy H (K) multiplied by the redundancy D."
+        },
+        {
+          "ar": "U تقارب إنتروبيا المفتاح H (K) مقسومة على حشو اللغة D.",
+          "en": "U is approximately the key entropy H (K) divided by the redundancy D."
         }
       ],
       "concept_id": "unicity_equation",
@@ -520,29 +392,29 @@
       }
     },
     {
-      "id": "q17",
+      "id": "q13",
       "stem": {
         "ar": "بمعادلة المسافة الأحادية، ماذا يرمز إليه D؟",
         "en": "In the unicity distance formula, what does D stand for?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "عدد المفاتيح المتميزة في فضاء المفاتيح.",
-          "en": "The number of distinct keys in the keyspace."
-        },
-        {
-          "ar": "طول بصمة الهاش المستخدم مع الشيفرة.",
-          "en": "The digest length of the hash used with the cipher."
-        },
-        {
-          "ar": "حشو اللغة، بوحدات البت لكل حرف.",
-          "en": "The redundancy of the language, in bits per character."
+          "ar": "تكرار اللغة بوحدة بت لكل محرف.",
+          "en": "Language redundancy measured in bits per character."
         },
         {
           "ar": "المسافة بين المرسل والمستقبل.",
-          "en": "The distance between the sender and the receiver."
+          "en": "The distance between the sender and receiver."
+        },
+        {
+          "ar": "طول بصمة دالة التجزئة المستخدمة.",
+          "en": "The digest length of the hash used with the cipher."
+        },
+        {
+          "ar": "عدد المفاتيح في فضاء المفاتيح.",
+          "en": "The number of distinct keys in the keyspace."
         }
       ],
       "concept_id": "unicity_d_redundancy_trap",
@@ -552,29 +424,29 @@
       }
     },
     {
-      "id": "q18",
+      "id": "q14",
       "stem": {
         "ar": "شيفرة استبدال أحادية الأبجدية فضاء مفاتيحها 26! وحشو اللغة 1.5 بت للحرف. كم مسافتها الأحادية؟",
         "en": "A monoalphabetic substitution cipher has a keyspace of 26! and the language redundancy is 1.5 bits per character. What is its unicity distance?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "حوالي 1.5 حرف.",
+          "en": "About 1.5 characters."
+        },
         {
           "ar": "حوالي 59 حرفاً.",
           "en": "About 59 characters."
-        },
-        {
-          "ar": "حوالي 26 حرفاً.",
-          "en": "About 26 characters."
         },
         {
           "ar": "حوالي 88 حرفاً.",
           "en": "About 88 characters."
         },
         {
-          "ar": "حوالي 1.5 حرف.",
-          "en": "About 1.5 characters."
+          "ar": "حوالي 26 حرفاً.",
+          "en": "About 26 characters."
         }
       ],
       "concept_id": "unicity_worked_example",
@@ -584,67 +456,35 @@
       }
     },
     {
-      "id": "q19",
+      "id": "q15",
       "stem": {
         "ar": "شنو يعني عملياً أن المسافة الأحادية تقارب 59 حرفاً؟",
         "en": "What does a unicity distance of about 59 characters imply in practice?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 2,
       "options": [
         {
-          "ar": "المفتاح ما يُستعاد إلا بحاسوب يعمل بسرعة إكسا-skal.",
-          "en": "The key can only be recovered by a computer running at exascale speed."
+          "ar": "يتطلب استرداد المفتاح حاسوباً فائق السرعة من رتبة إكسا.",
+          "en": "Key recovery requires a computer operating at exascale speed."
         },
         {
-          "ar": "الشيفرة تبقى آمنة لأي رسالة أقصر من 59 كلمة.",
-          "en": "The cipher remains safe for any message shorter than 59 words in length."
+          "ar": "يجب أن يعرف المهاجم النص الأصلي قبل بدء الهجوم.",
+          "en": "The attacker must know the plaintext before starting the attack."
         },
         {
-          "ar": "المهاجم لازم يعرف النص الأصلي مسبقاً قبل بدء الهجوم.",
-          "en": "The attacker must already know the plaintext before starting the attack."
+          "ar": "نحو 59 محرفاً مشفّراً قد تكفي لاستنتاج المفتاح.",
+          "en": "About 59 ciphertext characters may suffice to identify the key."
         },
         {
-          "ar": "بضع فقرات من النص المشفّر تكفي مبدئياً لتحديد المفتاح وحيداً.",
-          "en": "A few paragraphs of ciphertext are enough, in principle, to determine the key uniquely."
+          "ar": "تظل الشيفرة آمنة للرسائل التي تقل عن 59 كلمة.",
+          "en": "The cipher remains secure for messages shorter than 59 words."
         }
       ],
       "concept_id": "unicity_result_meaning",
       "explanation": {
         "ar": "الرقم محسوب بالأحرف لا بالكلمات، ولا يحتاج حاسوباً أبداً — الإحصاء وحده يحدّد المفتاح متى ما تجاوز النص المشفّر قيمة U.",
         "en": "The figure is measured in characters rather than words, and it needs no computer at all — statistics alone resolve the key once the ciphertext exceeds U."
-      }
-    },
-    {
-      "id": "q20",
-      "stem": {
-        "ar": "شنو تحاول تصاميم الشيفرات الحديثة تحقيقه تجاه المسافة الأحادية؟",
-        "en": "What do modern cipher designs try to achieve with respect to unicity distance?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "تجعل U مساوية لطول المفتاح محسوباً بالبايت.",
-          "en": "They set U equal to the key length measured in bytes."
-        },
-        {
-          "ar": "تجعل U غير قابلة للوصول ضمن عمر الأصل وعرض النطاق.",
-          "en": "They make U unreachable within the asset's lifetime and bandwidth."
-        },
-        {
-          "ar": "تُنقص U إلى الصفر حتى لا يُحتاج أي نص مشفّر.",
-          "en": "They reduce U to zero so that no ciphertext at all is ever needed."
-        },
-        {
-          "ar": "تُبقي U ثابتة أيّاً كان طول المفتاح المختار.",
-          "en": "They keep U constant no matter which key length is chosen."
-        }
-      ],
-      "concept_id": "unicity_modern_design",
-      "explanation": {
-        "ar": "متى ما تجاوزت U أي حجم نص مشفّر يقدر الخصم جمعه واقعياً، يتوقف استنفاد المفتاح إحصائياً عن كونه هجوماً عملياً.",
-        "en": "Once U exceeds any volume of ciphertext an adversary could realistically collect, statistical exhaustion of the key stops being a practical attack."
       }
     }
   ],
@@ -653,7 +493,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

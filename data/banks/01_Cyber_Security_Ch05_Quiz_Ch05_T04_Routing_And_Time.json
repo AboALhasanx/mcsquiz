@@ -17,20 +17,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "تبادل السياسات بين الأنظمة المستقلة، بثقة بخصائص المسار.",
-          "en": "Policy exchange between autonomous systems, trusting path attributes."
+          "ar": "تبادل السياسات بين الأنظمة المستقلة مع الثقة بخصائص المسار.",
+          "en": "Policy exchange across autonomous systems with path-attribute trust."
         },
         {
-          "ar": "تخصيص العناوين داخل نطاق واحد، بثقة بالمسارات الثابتة.",
-          "en": "Address assignment inside one domain, trusting static routes."
+          "ar": "تحليل الأسماء بين المناطق مع الثقة بسجلات DNS الموقّعة.",
+          "en": "Name resolution between zones, trusting digitally signed DNS records."
         },
         {
-          "ar": "تحليل الأسماء بين المناطق، بثقة بالسجلات الموقّعة.",
-          "en": "Name resolution between zones, trusting signed records."
+          "ar": "توزيع الوقت بين الأجهزة مع الثقة بمصدر مضبوط واحد.",
+          "en": "Time distribution between hosts, trusting one configured source."
         },
         {
-          "ar": "توزيع الوقت بين الأجهزة، بثقة بمصدر واحد.",
-          "en": "Time distribution between hosts, trusting a single source."
+          "ar": "تخصيص العناوين داخل النطاق مع الثقة بالمسارات الثابتة.",
+          "en": "Address assignment inside a domain, trusting static routes."
         }
       ],
       "concept_id": "bgp_design_trust",
@@ -42,27 +42,27 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "أي هجومين يذكرها الفصل على BGP؟",
-        "en": "Which two attacks does the chapter name against BGP?"
+        "ar": "ما الهجومان اللذان يستهدفان توجيه BGP؟",
+        "en": "Which two attacks target BGP routing?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "إغراق حزم SYN واستنزاف الـ backlog.",
-          "en": "Flooding SYNs and exhausting the backlog."
+          "ar": "تزوير إعلانات الموجّهات وتسميم اكتشاف الجيران الشبكي.",
+          "en": "Forging router advertisements and poisoning neighbour discovery."
         },
         {
-          "ar": "تزوير إعلانات الموجّه وتسميم ND.",
-          "en": "Forging router advertisements and poisoning ND."
+          "ar": "إعلان أصل بادئة الغير وتقديم مسار أقصر منها.",
+          "en": "Originating someone else’s prefix and announcing a shorter path."
         },
         {
-          "ar": "الإعلان الخاطئ عن أصل بادئة وتقصير المسار.",
-          "en": "Mis-originating a prefix and shortening the path."
+          "ar": "تسميم كاش DNS ونقل كامل لملف منطقة النطاق.",
+          "en": "Poisoning a DNS cache and transferring a domain zone file."
         },
         {
-          "ar": "تسميم الكاش ونقل المنطقة.",
-          "en": "Poisoning the cache and transferring the zone."
+          "ar": "إغراق حزم TCP SYN واستنزاف قائمة انتظار الخادم.",
+          "en": "Flooding TCP SYN packets and exhausting the server backlog."
         }
       ],
       "concept_id": "bgp_hijack_types",
@@ -81,20 +81,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "الترافيك يتشفّر فما يقدر المهاجم يقراه.",
-          "en": "Traffic is encrypted so the attacker cannot read it."
+          "ar": "يتأخر الترافيك حتى انتهاء صلاحية المسار المعلن.",
+          "en": "Traffic is delayed until the announced route expires from tables."
         },
         {
-          "ar": "الترافيك يتأخّر لحد ما ينتهي المسار.",
-          "en": "Traffic is delayed until the route expires."
+          "ar": "تُنسخ حركة الترافيك وتُرسل لكل نظام مستقل.",
+          "en": "Traffic is copied and sent to every autonomous system."
         },
         {
-          "ar": "الترافيك يتكرّر لكل نظام مستقل.",
-          "en": "Traffic is replicated to every autonomous system."
+          "ar": "يُشفّر الترافيك فلا يستطيع المهاجم قراءة محتواه.",
+          "en": "Traffic is encrypted so the attacker cannot inspect its content."
         },
         {
-          "ar": "الترافيك يتحوّل للمهاجم أو يُبتلع.",
-          "en": "Traffic is diverted to the attacker or black-holed."
+          "ar": "يتحول الترافيك للمهاجم أو يُسقط في مسار أسود.",
+          "en": "Traffic is diverted to an attacker or dropped into a black hole."
         }
       ],
       "concept_id": "bgp_hijack_effect",
@@ -110,23 +110,23 @@
         "en": "What does RPKI bind together?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "مصادر الوقت والأجهزة بأسرار مشتركة.",
-          "en": "Time sources and hosts to shared secrets."
+          "ar": "تُربط أسماء النطاقات وخوادم البريد بالمفاتيح العامة.",
+          "en": "Domain names and mail exchangers are bound to public keys."
         },
         {
-          "ar": "بادئات IP و ASNs بشهادات في بنية هرمية.",
-          "en": "IP prefixes and ASNs to certificates in a hierarchy."
+          "ar": "تُربط مصادر الوقت والأجهزة بأسرار مشتركة.",
+          "en": "Time sources and network hosts are bound to shared secrets."
         },
         {
-          "ar": "أسماء النطاقات وخوادم البريد بمفاتيح.",
-          "en": "Domain names and mail exchangers to keys."
+          "ar": "تُربط بادئات IP وأرقام AS بشهادات ضمن تسلسل هرمي.",
+          "en": "IP prefixes and AS numbers map to certificates hierarchically."
         },
         {
-          "ar": "عناوين MAC ومنافذ المبدّل بسياسات.",
-          "en": "MAC addresses and switch ports to policies."
+          "ar": "تُربط عناوين MAC ومنافذ المبدلات بسياسات محلية.",
+          "en": "MAC addresses and switch ports are bound to local policies."
         }
       ],
       "concept_id": "rpki_binds",
@@ -142,23 +142,23 @@
         "en": "What do operators publish in RPKI to authorise an announcement?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "تصاريح أصل المسار.",
-          "en": "Route Origin Authorizations."
+          "ar": "مفاتيح توقيع DNSSEC لسجلات النطاقات المرجعية.",
+          "en": "DNSSEC zone-signing keys for authoritative domain records."
         },
         {
-          "ar": "مفاتيح توقيع المناطق.",
-          "en": "Zone signing keys."
+          "ar": "قوائم إبطال الشهادات الرقمية المسحوبة أو الملغاة.",
+          "en": "Certificate revocation lists for withdrawn public-key certificates."
         },
         {
-          "ar": "قوائم إبطال الشهادات.",
-          "en": "Certificate revocation lists."
+          "ar": "تصاريح أصل المسار التي تحدد بادئات AS المسموح بها.",
+          "en": "Route Origin Authorizations that identify permitted prefix origins."
         },
         {
-          "ar": "تفويضات DNS العكسية.",
-          "en": "Reverse DNS delegations."
+          "ar": "تفويضات DNS العكسية التي تربط العناوين بالأسماء.",
+          "en": "Reverse-DNS delegations that map addresses back to names."
         }
       ],
       "concept_id": "rpki_roa",
@@ -170,59 +170,27 @@
     {
       "id": "q6",
       "stem": {
-        "ar": "أي RFC يحدّد RPKI؟",
-        "en": "Which RFC specifies RPKI?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "RFC 6811.",
-          "en": "RFC 6811."
-        },
-        {
-          "ar": "RFC 5905.",
-          "en": "RFC 5905."
-        },
-        {
-          "ar": "RFC 6480.",
-          "en": "RFC 6480."
-        },
-        {
-          "ar": "RFC 8205.",
-          "en": "RFC 8205."
-        }
-      ],
-      "concept_id": "rpki_rfc",
-      "explanation": {
-        "ar": "RFC 6480 يحدّد RPKI، و RFC 6811 يحدّد التحقّق من أصل BGP، و RFC 8205 يحدّد BGPsec، و RFC 5905 يحدّد NTP.",
-        "en": "RFC 6480 specifies RPKI, RFC 6811 specifies BGP origin validation, RFC 8205 specifies BGPsec and RFC 5905 specifies NTP."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
         "ar": "إلى أي ثلاث حالات يصنّف التحقّق من أصل BGP التحديث؟",
         "en": "Into which three states does BGP origin validation classify an update?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "موقّع وغير موقّع ومبطل.",
-          "en": "Signed, unsigned and revoked."
+          "ar": "حالات التحقق من الأصل: صحيح وغير صحيح ومجهول.",
+          "en": "Valid, invalid, and unknown origin-validation states."
         },
         {
-          "ar": "موثوق وغير موثوق ومعزول.",
-          "en": "Trusted, untrusted and quarantined."
+          "ar": "حالات تحديث التوجيه: أصل وعبور ومصرف مؤقت.",
+          "en": "Origin, transit, and sink states for a routing update."
         },
         {
-          "ar": "أصل وعبور ومصرف.",
-          "en": "Origin, transit and sink."
+          "ar": "حالات الموجّه: موثوق وغير موثوق أو معزول.",
+          "en": "Trusted, untrusted, and quarantined states for each router."
         },
         {
-          "ar": "صحيح وغير صحيح ومجهول.",
-          "en": "Valid, invalid and unknown."
+          "ar": "حالات الإعلان: موقّع أو غير موقّع أو مبطل.",
+          "en": "Signed, unsigned, and revoked states for route announcements."
         }
       ],
       "concept_id": "origin_validation_states",
@@ -232,7 +200,7 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q7",
       "stem": {
         "ar": "شنو تقدر سياسة المشغّل تسوي بالمسار غير الصحيح؟",
         "en": "What can an operator's policy do with an invalid path?"
@@ -241,20 +209,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "تمرّره لكل نظير بلا تغيير.",
-          "en": "Forward it to every peer unchanged."
+          "ar": "تمرير المسار غير الصحيح لكل نظير من دون أي تغيير.",
+          "en": "Forward the invalid route unchanged to every peer."
         },
         {
-          "ar": "تُسقطه أو تُقلّل أولويته.",
-          "en": "Drop it or de-prefer it."
+          "ar": "إسقاط المسار غير الصحيح أو خفض تفضيله بشدة.",
+          "en": "Drop the invalid route or assign it a lower preference."
         },
         {
-          "ar": "تعيد توقيعه بمفتاح الموجّه نفسه.",
-          "en": "Re-sign it with the router's own key."
+          "ar": "إعادة توقيع المسار بمفتاح الموجّه المستقبِل.",
+          "en": "Re-sign the invalid route using the receiving router’s key."
         },
         {
-          "ar": "تحوّله إلى إعلان صحيح.",
-          "en": "Convert it into a valid announcement."
+          "ar": "تحويل المسار غير الصحيح إلى إعلان صحيح.",
+          "en": "Convert the invalid route into a valid announcement."
         }
       ],
       "concept_id": "origin_validation_policy",
@@ -264,29 +232,29 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q8",
       "stem": {
         "ar": "كيف يحمي BGPsec مسار AS؟",
         "en": "How does BGPsec protect the AS path?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "بتوقيعات تشفيرية لكل قفزة على المسار.",
-          "en": "With per-hop cryptographic signatures over the path."
+          "ar": "نفق مشفّر يُنشأ بين كل زوج من الأنظمة المستقلة.",
+          "en": "An encrypted tunnel established between every AS pair."
         },
         {
-          "ar": "بتوقيع واحد يطبّقه نظام الأصل.",
-          "en": "With a single signature applied by the origin AS."
+          "ar": "سر مشترك يوزعه السجل على مشغّلي الشبكات.",
+          "en": "A shared secret distributed to operators by the registry."
         },
         {
-          "ar": "بنفق مشفّر بين كل زوج أنظمة مستقلة.",
-          "en": "With an encrypted tunnel between each pair of ASes."
+          "ar": "توقيع تشفيري يضاف عند كل قفزة في مسار AS.",
+          "en": "A cryptographic signature added at each AS path hop."
         },
         {
-          "ar": "بسر مشترك يوزّعه السجل.",
-          "en": "With a shared secret distributed by the registry."
+          "ar": "توقيع واحد يطبقه نظام الأصل مرة واحدة فقط.",
+          "en": "One signature applied once by the originating AS only."
         }
       ],
       "concept_id": "bgpsec_mechanism",
@@ -296,29 +264,29 @@
       }
     },
     {
-      "id": "q10",
+      "id": "q9",
       "stem": {
         "ar": "شنو الثمن اللي يدفعه BGPsec مقابل ضمانته الأقوى؟",
         "en": "What price does BGPsec pay for its stronger guarantee?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "شرط التخلّي عن توجيه IPv4 بالكامل.",
-          "en": "A requirement to abandon IPv4 routing entirely."
+          "ar": "اشتراط التوقف الكامل عن استخدام توجيه IPv4.",
+          "en": "A requirement to stop using IPv4 routing completely."
         },
         {
-          "ar": "إعادة ترقيم إلزامية لكل نظام مستقل.",
-          "en": "Mandatory renumbering of every autonomous system."
+          "ar": "كلفة CPU وذاكرة أعلى مع صعوبة النشر التدريجي.",
+          "en": "Higher CPU and memory use with harder incremental deployment."
         },
         {
-          "ar": "كلفة معالج وذاكرة أعلى ونشر تدريجي أصعب.",
-          "en": "Higher CPU and memory cost and harder incremental deployment."
+          "ar": "إعادة ترقيم إلزامية لكل الأنظمة المستقلة المشاركة.",
+          "en": "Mandatory renumbering of all participating autonomous systems."
         },
         {
-          "ar": "فقدان التحقّق من الأصل وتوافق ROA.",
-          "en": "Loss of origin validation and of ROA compatibility."
+          "ar": "فقدان التحقق من الأصل والتوافق مع تصاريح ROA.",
+          "en": "Loss of origin validation and compatibility with ROAs."
         }
       ],
       "concept_id": "bgpsec_cost",
@@ -328,7 +296,7 @@
       }
     },
     {
-      "id": "q11",
+      "id": "q10",
       "stem": {
         "ar": "شنو يتركه RPKI بلا حماية ويغطّيه BGPsec؟",
         "en": "What does RPKI leave unprotected that BGPsec covers?"
@@ -337,20 +305,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "الأصل نفسه، لأن RPKI يتحقّق من المسار فقط.",
-          "en": "The origin itself, because RPKI only validates the path."
+          "ar": "الأصل نفسه، لأن RPKI يتحقق من المسار بأكمله.",
+          "en": "The origin itself, since RPKI validates the entire path."
         },
         {
-          "ar": "ملكية البادئة، لأن RPKI يتجاهل الشهادات.",
-          "en": "The prefix ownership, because RPKI ignores certificates."
+          "ar": "رقم AS، لأن RPKI يوقّع سجلات أسماء النطاقات فقط.",
+          "en": "The AS number, since RPKI signs only domain-name records."
         },
         {
-          "ar": "رقم AS، لأن RPKI يوقّع أسماء النطاقات فقط.",
-          "en": "The AS number, because RPKI only signs domain names."
+          "ar": "ملكية البادئة، لأن RPKI يتجاهل الشهادات والمفاتيح.",
+          "en": "Prefix ownership, since RPKI ignores certificates and keys."
         },
         {
-          "ar": "المسار نفسه، لأن RPKI يتحقّق من الأصل فقط.",
-          "en": "The path itself, because RPKI only validates the origin."
+          "ar": "مسار AS نفسه، لأن RPKI يتحقق من الأصل فقط.",
+          "en": "The AS path itself, since RPKI validates origin only."
         }
       ],
       "concept_id": "rpki_vs_bgpsec",
@@ -360,157 +328,29 @@
       }
     },
     {
-      "id": "q12",
-      "stem": {
-        "ar": "كيف يُقارَب احتمال نجاح اختطاف عشوائي؟",
-        "en": "How is the probability of a successful random hijack approximated?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "نسبة التغطية مقسومة على طول المسار.",
-          "en": "The coverage fraction divided by the path length."
-        },
-        {
-          "ar": "واحد ناقص نسبة تغطية ROA، مرفوعاً لطول المسار.",
-          "en": "One minus the ROA coverage fraction, raised to the path length."
-        },
-        {
-          "ar": "نسبة تغطية ROA مرفوعة لطول المسار.",
-          "en": "The ROA coverage fraction raised to the path length."
-        },
-        {
-          "ar": "واحد ناقص طول المسار، مرفوعاً لنسبة التغطية.",
-          "en": "One minus the path length, raised to the coverage fraction."
-        }
-      ],
-      "concept_id": "hijack_probability_model",
-      "explanation": {
-        "ar": "كل قفزة لازم تكون غير محميّة حتى ينجح الاختطاف، فاحتمال عدم التغطية لكل قفزة يُضرب على طول المسار.",
-        "en": "Each hop must be unprotected for the hijack to survive, so the per-hop probability of being uncovered is multiplied along the path."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "شنو تمثّل النسبة f بذلك النموذج؟",
-        "en": "What does the fraction f represent in that model?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "نسبة المسارات العالمية المغطّاة بـ ROAs.",
-          "en": "The share of global routes covered by ROAs."
-        },
-        {
-          "ar": "نسبة الموجّهات اللي تعطّلت.",
-          "en": "The share of routers that have crashed."
-        },
-        {
-          "ar": "نسبة الحزم المفقودة بسبب الابتلاع.",
-          "en": "The fraction of packets lost to black-holing."
-        },
-        {
-          "ar": "نسبة الأنظمة اللي ترفض BGP بالكامل.",
-          "en": "The fraction of ASes that refuse BGP entirely."
-        }
-      ],
-      "concept_id": "hijack_model_f",
-      "explanation": {
-        "ar": "هي تغطية جدول التوجيه العالمي بالتصاريح، وهي الرافعة الوحيدة اللي تنزّل الحساب كله.",
-        "en": "It is the coverage of the global routing table by authorisations, and it is the single lever that drives the whole calculation down."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "بـ f = 0.5 ومسار من أربع قفزات، شنو احتمال نجاح الاختطاف تقريباً؟",
-        "en": "With f = 0.5 and a path of four hops, what is the approximate hijack success probability?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "حوالي اثني عشر بالمئة، لأن القفزات تُجمع.",
-          "en": "About twelve percent, since the hops are added."
-        },
-        {
-          "ar": "حوالي أربعة وتسعين بالمئة، مكمّل f.",
-          "en": "About ninety-four percent, the complement of f."
-        },
-        {
-          "ar": "حوالي ستة بالمئة، نصف مرفوعاً للأس أربعة.",
-          "en": "About six percent, one half raised to the fourth."
-        },
-        {
-          "ar": "حوالي خمسين بالمئة، لأن قفزة واحدة تحكم.",
-          "en": "About fifty percent, since only one hop matters."
-        }
-      ],
-      "concept_id": "hijack_model_worked",
-      "explanation": {
-        "ar": "احتمال عدم الحماية لكل قفزة هو النصف، وأربع قفزات مستقلة تعطي واحد على ستة عشر، أي حوالي ستة بالمئة.",
-        "en": "The per-hop chance of being unprotected is one half, and four independent hops give one sixteenth, which is about six percent."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "ليش التبنّي الجزئي لـ ROA يظل يفيد الإنترنت كله؟",
-        "en": "Why does partial ROA adoption still help the whole Internet?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "لأن الـ ROAs تُنسخ لكل كاش محلّل.",
-          "en": "Because ROAs are copied into every resolver cache."
-        },
-        {
-          "ar": "لأن التبنّي يجبر كل النظائر على الترقية فوراً.",
-          "en": "Because adoption forces all peers to upgrade at once."
-        },
-        {
-          "ar": "لأن ROA واحد يغطّي كل بادئات ذلك النظام.",
-          "en": "Because a single ROA covers every prefix of that AS."
-        },
-        {
-          "ar": "أي مسار يمرّ بنظام متحقّق يصير محمياً.",
-          "en": "Any path traversing a validating AS becomes protected."
-        }
-      ],
-      "concept_id": "network_effects",
-      "explanation": {
-        "ar": "التحقّق يصير لكل قفزة، فكل نظام إضافي يتبنّى التحقّق يقصّر الجزء غير المحمي من أي مسار يمرّ بيه.",
-        "en": "Validation happens per hop, so every additional validating AS shortens the unprotected remainder of any path that crosses it."
-      }
-    },
-    {
-      "id": "q16",
+      "id": "q11",
       "stem": {
         "ar": "أي ثلاث آليات أمنية تعتمد على وقت صحيح؟",
         "en": "Which three security mechanisms depend on correct time?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "ترشيح الحزم و NAT وتحويل المنافذ.",
-          "en": "Packet filtering, NAT and port forwarding."
+          "ar": "السجلات وتذاكر Kerberos وصلاحية الشهادات.",
+          "en": "Log ordering, Kerberos ticket validity, and certificate checks."
         },
         {
-          "ar": "ترتيب السجلات وتذاكر Kerberos وصلاحية الشهادات.",
-          "en": "Log ordering, Kerberos tickets and certificate validity."
+          "ar": "هاش كلمات المرور وتمليحها وتقوية المفاتيح.",
+          "en": "Password hashing, password salts, and key stretching."
         },
         {
-          "ar": "هاش كلمات المرور والتمليح وتقوية المفاتيح.",
-          "en": "Password hashing, salting and key stretching."
+          "ar": "جداول التوجيه وكاش الجيران وتعلم عناوين MAC.",
+          "en": "Routing tables, neighbour caches, and MAC address learning."
         },
         {
-          "ar": "جداول التوجيه وكاش ARP وتعلّم MAC.",
-          "en": "Routing tables, ARP caches and MAC learning."
+          "ar": "ترشيح الحزم وترجمة العناوين وتحويل المنافذ.",
+          "en": "Packet filtering, address translation, and port forwarding."
         }
       ],
       "concept_id": "ntp_three_dependencies",
@@ -520,29 +360,29 @@
       }
     },
     {
-      "id": "q17",
+      "id": "q12",
       "stem": {
         "ar": "شنو يصير لو نجح المهاجم بتغيير ساعة المضيف؟",
         "en": "What happens if an attacker successfully shifts a host's clock?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "تذاكر وشهادات منتهية ممكن تبيّن صالحة.",
-          "en": "Expired tickets and certificates may appear valid."
+          "ar": "يُمسح جدول توجيه المضيف تلقائياً عند تغيير الساعة.",
+          "en": "The host routing table is flushed automatically."
         },
         {
-          "ar": "المضيف يفقد عنوان IP فوراً.",
-          "en": "The host immediately loses its IP address."
+          "ar": "يفقد المضيف عنوان الشبكة المخصص له فوراً.",
+          "en": "The host immediately loses its assigned network address."
         },
         {
-          "ar": "كل الشيفرات المتماثلة تصير غير قابلة للكسر.",
-          "en": "All symmetric ciphers become unbreakable."
+          "ar": "تصبح خوارزميات التشفير المتماثل غير قابلة للكسر.",
+          "en": "All symmetric encryption algorithms become unbreakable."
         },
         {
-          "ar": "جدول التوجيه ينمسح تلقائياً.",
-          "en": "The routing table is flushed automatically."
+          "ar": "قد تبدو التذاكر والشهادات المنتهية صالحة.",
+          "en": "Expired tickets and certificates may appear to be valid."
         }
       ],
       "concept_id": "ntp_time_shift_impact",
@@ -552,61 +392,29 @@
       }
     },
     {
-      "id": "q18",
-      "stem": {
-        "ar": "كيف استُغل أمر monlist في NTP؟",
-        "en": "How was the NTP monlist command abused?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "كان يسرّب مفتاح توقيع السيرفر للطالب.",
-          "en": "It leaked the server's signing key to the requester."
-        },
-        {
-          "ar": "كان يعطّل المصادقة لاستعلامات NTP اللاحقة.",
-          "en": "It disabled authentication for later NTP queries."
-        },
-        {
-          "ar": "طلب صغير يرد قائمة أقران كبيرة على ضحية مزيّفة.",
-          "en": "A small request returned a large peer list to a spoofed victim."
-        },
-        {
-          "ar": "كان يعيد كتابة ساعة كل عميل بالشبكة.",
-          "en": "It rewrote the clock of every client on the network."
-        }
-      ],
-      "concept_id": "ntp_monlist_abuse",
-      "explanation": {
-        "ar": "طلب صغير جداً أنتج رداً كبيراً، فانتحال عنوان الضحية حوّل السيرفر إلى مضخّم موجّه على تلك الضحية.",
-        "en": "A tiny request produced a large response, so spoofing the victim's address turned the server into an amplifier aimed at that victim."
-      }
-    },
-    {
-      "id": "q19",
+      "id": "q13",
       "stem": {
         "ar": "كيف يُعبَّر عن معدّل الوارد عند الضحية؟",
         "en": "How is the ingress rate at the victim expressed?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "حاصل ضرب، عبر المُنعكسات، النسبة بمعدّل الطلبات.",
-          "en": "The product over reflectors of ratio times request rate."
+          "ar": "مجموع النسبة مضروبة بمعدل الطلبات عبر كل منعكس.",
+          "en": "Sum across reflectors of response ratio times request rate."
         },
         {
-          "ar": "أقصى نسبة مضروبة بمعدّل الطلبات الكلي.",
-          "en": "The maximum ratio multiplied by the total request rate."
+          "ar": "متوسط نسبة الرد مقسوماً على عدد المنعكسات.",
+          "en": "Average response ratio divided by reflector count."
         },
         {
-          "ar": "متوسط النسبة مقسوماً على عدد المُنعكسات.",
-          "en": "The average ratio divided by the number of reflectors."
+          "ar": "أقصى نسبة رد مضروبة بمعدل الطلبات الكلي.",
+          "en": "Maximum response ratio times the total request rate."
         },
         {
-          "ar": "مجموع، عبر المُنعكسات، النسبة مضروبة بمعدّل الطلبات.",
-          "en": "The sum over reflectors of ratio times request rate."
+          "ar": "حاصل ضرب نسب الردود ومعدلات الطلبات عبر المنعكسات.",
+          "en": "Product across reflectors of response ratio and request rate."
         }
       ],
       "concept_id": "ntp_amplification_equation",
@@ -616,7 +424,7 @@
       }
     },
     {
-      "id": "q20",
+      "id": "q14",
       "stem": {
         "ar": "شنو يحقّق تحديد المعدّل عند المُنعكسات؟",
         "en": "What does rate-limiting at the reflectors accomplish?"
@@ -625,20 +433,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "تحوّل المُنعكس إلى سيرفر متحقّق.",
-          "en": "It converts the reflector into a validating server."
+          "ar": "يشفّر كل رد قبل إرساله إلى الأجهزة الطالبة.",
+          "en": "It encrypts each response before sending it to clients."
         },
         {
-          "ar": "تحدّ معدّل الطلبات اللي يخدمها كل مُنعكس.",
-          "en": "It caps the request rate each reflector will serve."
+          "ar": "يحدّ معدل الطلبات التي يخدمها كل منعكس.",
+          "en": "It caps the request rate that each reflector will serve."
         },
         {
-          "ar": "ترفع نسبة التضخيم لكل مُنعكس.",
-          "en": "It raises the amplification ratio of each reflector."
+          "ar": "يرفع نسبة التضخيم لدى كل منعكس مشارك.",
+          "en": "It raises the amplification ratio of every reflector."
         },
         {
-          "ar": "تشفّر الرد قبل ما يخرج.",
-          "en": "It encrypts the response before it leaves."
+          "ar": "يحوّل كل منعكس إلى خادم وقت متحقق منه.",
+          "en": "It converts each reflector into a validating time server."
         }
       ],
       "concept_id": "ntp_rate_limit_effect",
@@ -648,39 +456,7 @@
       }
     },
     {
-      "id": "q21",
-      "stem": {
-        "ar": "ليش الترشيح بالمنبع يدفع معدّل الهجوم نحو الصفر؟",
-        "en": "Why does upstream filtering drive the attack rate toward zero?"
-      },
-      "bloom": "Analyze",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لأنه بلا مصادر مزيّفة ترجع الردود للمهاجم نفسه.",
-          "en": "Because without spoofed sources the replies go to the attacker."
-        },
-        {
-          "ar": "لأنه يشفّر الطلبات قبل ما تخرج.",
-          "en": "Because it encrypts the requests before they leave."
-        },
-        {
-          "ar": "لأنه يحذف أمر monlist من السيرفرات.",
-          "en": "Because it removes the monlist command from servers."
-        },
-        {
-          "ar": "لأنه يبطّئ وصلة المهاجم نفسه.",
-          "en": "Because it slows the attacker's own uplink."
-        }
-      ],
-      "concept_id": "ntp_bcp38_effect",
-      "explanation": {
-        "ar": "إذا المصدر ما انزوّر، الردود المضخّمة توصل للمهاجم مو للضحية، فالهجوم ما يعود مربحاً.",
-        "en": "If the source cannot be forged, the amplified replies arrive at the attacker rather than the victim, so the attack no longer pays."
-      }
-    },
-    {
-      "id": "q22",
+      "id": "q15",
       "stem": {
         "ar": "شنو الإرشاد الحالي لتحصين نشر NTP؟",
         "en": "What is the current guidance for hardening an NTP deployment?"
@@ -689,20 +465,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "نقل NTP إلى TCP حتى ما ينعكس.",
-          "en": "Move NTP onto TCP so it cannot be reflected."
+          "ar": "نقل NTP إلى TCP لمنع هجمات انعكاس الترافيك.",
+          "en": "Move NTP to TCP to prevent reflected traffic attacks."
         },
         {
-          "ar": "تعطيل مزامنة الوقت والاعتماد على ساعة العتاد.",
-          "en": "Disable time sync and rely on the hardware clock."
+          "ar": "السماح بـ monlist مع تسجيل كل طلب يصل للخادم.",
+          "en": "Allow monlist but record every request that it receives."
         },
         {
-          "ar": "تعطيل الأوامر القديمة وتقييد التعرض العام.",
-          "en": "Disable legacy commands and restrict public exposure."
+          "ar": "تعطيل الأوامر القديمة وتقييد إتاحة NTP للعامة.",
+          "en": "Disable legacy commands and restrict public NTP exposure."
         },
         {
-          "ar": "السماح بـ monlist مع تسجيل كل طلب.",
-          "en": "Allow monlist but log every request it receives."
+          "ar": "تعطيل مزامنة الوقت والاعتماد على ساعة العتاد فقط.",
+          "en": "Disable time synchronisation and rely only on hardware clocks."
         }
       ],
       "concept_id": "ntp_guidance",
@@ -717,7 +493,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

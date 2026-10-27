@@ -17,20 +17,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "بنمذجة السلوك الطبيعي ووسم الانحرافات.",
-          "en": "By modelling normal behaviour and flagging deviations."
+          "ar": "يمثل السلوك الطبيعي ويطلق تنبيهاً عند الانحرافات غير المعتادة.",
+          "en": "It models normal behaviour and flags unusual deviations."
         },
         {
-          "ar": "بتجميع الترافيك غير الموسوم إلى مجموعات.",
-          "en": "By clustering unlabelled traffic into groups."
+          "ar": "يجمع تدفقات الترافيك غير الموسومة وفق خصائصها المرصودة.",
+          "en": "It groups unlabelled traffic flows by their observed features."
         },
         {
-          "ar": "بطلب من المحلّل تصنيف كل تدفق يدوياً.",
-          "en": "By asking the analyst to classify each flow manually."
+          "ar": "بطلب من المحلّل الأمني تصنيف كل تدفق شبكي بصورة يدوية.",
+          "en": "It asks an analyst to classify each network flow manually."
         },
         {
-          "ar": "بمطابقة الترافيك المرصود مع أنماط تهديد معروفة.",
-          "en": "By matching observed traffic against known threat patterns."
+          "ar": "يطابق الترافيك المرصود مع أنماط التهديد المعروفة مسبقاً.",
+          "en": "It matches observed traffic against known threat patterns."
         }
       ],
       "concept_id": "det_signature_logic",
@@ -42,38 +42,6 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "بالنموذج الشكلي، متى ترجع دالة الكشف القيمة واحد؟",
-        "en": "In the formal model, when does the detection function return one?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لمّا يتجاوز متوسط المتتالية انحرافها.",
-          "en": "When the mean of the sequence exceeds its deviation."
-        },
-        {
-          "ar": "لمّا يطابق توقيع واحد على الأقل المتتالية المرصودة.",
-          "en": "When at least one signature matches the observed sequence."
-        },
-        {
-          "ar": "لمّا ما يطابق أي توقيع المتتالية المرصودة.",
-          "en": "When no signature matches the observed sequence at all."
-        },
-        {
-          "ar": "لمّا تكون المتتالية أطول من قاعدة التوقيعات.",
-          "en": "When the sequence is longer than the signature database."
-        }
-      ],
-      "concept_id": "det_signature_formula",
-      "explanation": {
-        "ar": "هو اختبار وجودي: الكشف يشتغل إذا أي توقيع بالقاعدة يطابق المتتالية المرصودة.",
-        "en": "It is an existential test: detection fires if any signature in the database matches the observed sequence."
-      }
-    },
-    {
-      "id": "q3",
-      "stem": {
         "ar": "ليش يُعدّ الكشف بالتوقيعات فعّالاً؟",
         "en": "Why is signature-based detection considered efficient?"
       },
@@ -81,20 +49,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "لأنه يشتغل بلا قاعدة توقيعات.",
-          "en": "Because it needs no signature database to operate."
+          "ar": "يعمل من دون الاحتفاظ بقاعدة توقيعات للتهديدات.",
+          "en": "It operates without maintaining any threat-signature database."
         },
         {
-          "ar": "لأنه يكشف هجمات يوم صفر تلقائياً.",
-          "en": "Because it detects zero-day attacks automatically."
+          "ar": "يكشف هجمات يوم صفر تلقائياً دون توقيعات معروفة.",
+          "en": "It detects previously unseen zero-day attacks automatically."
         },
         {
-          "ar": "لأن المطابقة رخيصة ودقيقة على التهديدات المعروفة.",
-          "en": "Because matching is cheap and precise on known threats."
+          "ar": "مطابقة الأنماط المعروفة قليلة الكلفة وعالية الدقة.",
+          "en": "Matching known patterns is inexpensive and highly precise."
         },
         {
-          "ar": "لأنه يتعلّم نموذج السلوك الطبيعي أولاً.",
-          "en": "Because it learns a model of normal behaviour first."
+          "ar": "يتعلم أولاً خط أساس للسلوك الطبيعي للمستخدمين.",
+          "en": "It first learns a baseline model of normal user behaviour."
         }
       ],
       "concept_id": "det_signature_strength",
@@ -104,7 +72,7 @@
       }
     },
     {
-      "id": "q4",
+      "id": "q3",
       "stem": {
         "ar": "ليش الكشف بالتوقيعات أعمى عن هجمات يوم صفر؟",
         "en": "Why is signature-based detection blind to zero-day attacks?"
@@ -113,20 +81,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "لأنه ماكو توقيع لهجوم ما انشاف من قبل.",
-          "en": "Because no signature exists for an attack never seen before."
+          "ar": "لأنه لا يوجد توقيع لهجوم لم يظهر سابقاً.",
+          "en": "No signature exists yet for an attack never seen before."
         },
         {
-          "ar": "لأن هجمات يوم صفر تستخدم تشفيراً يهزم المطابقة.",
-          "en": "Because zero-days always use encryption that defeats matching."
+          "ar": "لأن تشفير هجمات يوم صفر يهزم المطابقة.",
+          "en": "Zero-day attacks always use encryption that defeats matching."
         },
         {
-          "ar": "لأن القاعدة مخزّنة على وسط للقراءة فقط.",
-          "en": "Because the database is stored on a read-only medium."
+          "ar": "لأن قاعدة التوقيعات مخزّنة على وسيط للقراءة فقط.",
+          "en": "The signature database is stored on read-only media."
         },
         {
-          "ar": "لأن المطابقة تشتغل على ترويسات الحزم فقط.",
-          "en": "Because matching only works on packet headers."
+          "ar": "لأن المطابقة تقتصر على ترويسات الحزم فقط.",
+          "en": "Signature matching inspects packet headers only."
         }
       ],
       "concept_id": "det_signature_blindness",
@@ -136,39 +104,7 @@
       }
     },
     {
-      "id": "q5",
-      "stem": {
-        "ar": "شنو يسوي الكشف بالشذوذ بدل مطابقة التوقيعات؟",
-        "en": "What does anomaly-based detection do instead of matching signatures?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "ينمذج سلوك الهجوم ويوسم المطابقات له.",
-          "en": "It models attack behaviour and flags matches to it."
-        },
-        {
-          "ar": "يشفّر الترافيك ويقارن النتائج.",
-          "en": "It encrypts the traffic and compares the results."
-        },
-        {
-          "ar": "يحجب كل ترافيك ما عنده مدخلة توقيع.",
-          "en": "It blocks all traffic that has no signature entry."
-        },
-        {
-          "ar": "ينمذج السلوك الطبيعي ويوسم الانحرافات عنه.",
-          "en": "It models normal behaviour and flags deviations from it."
-        }
-      ],
-      "concept_id": "det_anomaly_logic",
-      "explanation": {
-        "ar": "بدل ما يوصف العدو، يوصف خط الأساس، وأي شي بعيد كفاية عن ذلك الأساس يُعامل كمشبوه.",
-        "en": "Instead of describing the enemy, it describes the baseline, and anything far enough from that baseline is treated as suspicious."
-      }
-    },
-    {
-      "id": "q6",
+      "id": "q4",
       "stem": {
         "ar": "بنموذج الشذوذ الإحصائي، متى يُوسم القياس؟",
         "en": "In the statistical anomaly model, when is an observation flagged?"
@@ -177,20 +113,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "لمّا يتجاوز ثابت الانحراف قيمة القياس.",
-          "en": "When the deviation constant exceeds the observation."
+          "ar": "عندما يتجاوز ثابت الانحراف قيمة القياس المرصود.",
+          "en": "When the deviation constant exceeds the observed value."
         },
         {
-          "ar": "لمّا ينحرف عن المتوسط بأكثر من k انحرافات.",
-          "en": "When it deviates from the mean by more than k deviations."
+          "ar": "إذا تجاوز انحراف القياس عن المتوسط k انحرافات.",
+          "en": "When distance from the mean exceeds k standard deviations."
         },
         {
-          "ar": "لمّا ينحرف عن المتوسط بأقل من k انحرافات.",
-          "en": "When it deviates from the mean by less than k deviations."
+          "ar": "عندما يبقى البعد عن المتوسط أقل من k انحرافات.",
+          "en": "When distance from the mean stays below k deviations."
         },
         {
-          "ar": "لمّا يساوي متوسط خط الأساس بالضبط.",
-          "en": "When it equals the mean of the baseline exactly."
+          "ar": "عندما تساوي الملاحظة متوسط خط الأساس تماماً.",
+          "en": "When the observation equals the baseline mean exactly."
         }
       ],
       "concept_id": "det_anomaly_formula",
@@ -200,7 +136,7 @@
       }
     },
     {
-      "id": "q7",
+      "id": "q5",
       "stem": {
         "ar": "شنو يتحكّم به ثابت الحساسية k بذلك النموذج؟",
         "en": "What does the sensitivity constant k control in that model?"
@@ -209,20 +145,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "شكثر تُحتفظ بنافذة المراقبة.",
-          "en": "How long the observation window is retained."
+          "ar": "مدة الاحتفاظ بدقائق المراقبة المسجلة بالمستشعر.",
+          "en": "How many minutes of observations the sensor retains."
         },
         {
-          "ar": "كم مضيف يُسمح للمستشعر بمراقبته.",
-          "en": "How many hosts the sensor is allowed to watch."
+          "ar": "عدد المضيفين المسموح للمستشعر أن يراقبهم.",
+          "en": "How many network hosts the sensor is allowed to monitor."
         },
         {
-          "ar": "كم لازم يبعد القياس عن الطبيعي حتى يُعدّ شاذاً.",
-          "en": "How far from normal a value must be to count as an anomaly."
+          "ar": "مقدار البعد عن الطبيعي المطلوب لإطلاق تنبيه.",
+          "en": "How far a value must depart from normal to raise an alert."
         },
         {
-          "ar": "كم توقيع يُحمَّل بقاعدة البيانات.",
-          "en": "How many signatures are loaded into the database."
+          "ar": "عدد توقيعات التهديد المحمّلة في قاعدة النظام.",
+          "en": "How many threat signatures are loaded into its database."
         }
       ],
       "concept_id": "det_anomaly_k_sensitivity",
@@ -232,7 +168,7 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q6",
       "stem": {
         "ar": "ليش الكشف بالشذوذ ينتج إنذارات كاذبة كثيرة؟",
         "en": "Why does anomaly detection produce many false positives?"
@@ -241,20 +177,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "لأن السلوك غير المألوف لكن البريء يبدو هم كأنه انحراف.",
-          "en": "Because unfamiliar but benign behaviour also looks like a deviation."
+          "ar": "لأن السلوك البريء وغير المألوف يبدو أيضاً شاذاً.",
+          "en": "Unfamiliar but benign behaviour can also appear anomalous."
         },
         {
-          "ar": "لأنه ما يثبّت خط أساس للسلوك الطبيعي أبداً.",
-          "en": "Because it never establishes a baseline of normal behaviour."
+          "ar": "لا ينشئ خط أساس للسلوك الطبيعي في الشبكة مطلقاً.",
+          "en": "It never establishes a baseline of normal network behaviour."
         },
         {
-          "ar": "لأنه يفحص ترويسات الحزم فقط مو الحمولات.",
-          "en": "Because it only inspects packet headers and not payloads."
+          "ar": "يفحص ترويسات الحزم ولا يفحص حمولاتها أبداً.",
+          "en": "It inspects packet headers but cannot examine any payloads."
         },
         {
-          "ar": "لأن قاعدة توقيعاته تُحدَّث ببطء شديد.",
-          "en": "Because its signature database is updated too slowly."
+          "ar": "تتأخر تحديثات قاعدة التوقيعات المستخدمة بالكشف.",
+          "en": "Its threat-signature database is updated too slowly."
         }
       ],
       "concept_id": "det_anomaly_fp_problem",
@@ -264,7 +200,7 @@
       }
     },
     {
-      "id": "q9",
+      "id": "q7",
       "stem": {
         "ar": "بنموذج التعلّم الآلي، شنو يربطه المصنّف؟",
         "en": "In the machine-learning model, what does the classifier map?"
@@ -273,20 +209,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "ترويسة الحزمة إلى قرار توجيه.",
-          "en": "A packet header to a routing table decision."
+          "ar": "ترويسة الحزمة إلى قرار توجيه مناسب للشبكة.",
+          "en": "A packet header to a routing decision for the network."
         },
         {
-          "ar": "سلسلة الشهادات إلى مرساة ثقة.",
-          "en": "A certificate chain to a root trust anchor."
+          "ar": "سلسلة الشهادات إلى جذر المفاتيح العامة الموثوق.",
+          "en": "A certificate chain to its trusted public-key root."
         },
         {
-          "ar": "مفتاح الجلسة إلى مجموعة تشفير.",
-          "en": "A session key to a negotiated cipher suite."
+          "ar": "مفتاح الجلسة إلى مجموعة التشفير التي جرى تفاوضها.",
+          "en": "A session key to the negotiated encryption cipher suite."
         },
         {
-          "ar": "متجه السمات إلى تسميتَي بريء أو خبيث.",
-          "en": "A feature vector to benign or malicious labels."
+          "ar": "متجه السمات إلى تصنيف الترافيك بريء أو خبيث.",
+          "en": "A feature vector to benign or malicious traffic labels."
         }
       ],
       "concept_id": "det_ml_setup",
@@ -296,7 +232,7 @@
       }
     },
     {
-      "id": "q10",
+      "id": "q8",
       "stem": {
         "ar": "كيف يُحسَّن حدّ القرار للمصنّف؟",
         "en": "How is the decision boundary of the classifier optimised?"
@@ -305,20 +241,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "بتكبير عدد تسميات الفئات المستخدمة.",
-          "en": "By maximising the number of class labels used."
+          "ar": "بتكبير عدد تسميات الفئات المتاحة للمصنّف.",
+          "en": "By increasing the number of possible class labels."
         },
         {
-          "ar": "بتقليل الخسارة المتوقّعة مقابل الحقيقة الأرضية.",
-          "en": "By minimising the expected loss against ground truth."
+          "ar": "بتقليل الخسارة المتوقعة مقارنة بالحقيقة الموسومة.",
+          "en": "By minimising expected error against labelled ground truth."
         },
         {
-          "ar": "بتكبير عدد السمات المستخرجة.",
-          "en": "By maximising the number of features extracted."
+          "ar": "بتكبير عدد السمات المستخرجة من تدفقات الشبكة.",
+          "en": "By increasing the number of features extracted from flows."
         },
         {
-          "ar": "بتقليل حجم بيانات التدريب.",
-          "en": "By minimising the size of the training dataset."
+          "ar": "بتقليل عدد الأمثلة الموجودة في مجموعة التدريب.",
+          "en": "By minimising the number of examples in the training set."
         }
       ],
       "concept_id": "det_ml_loss",
@@ -328,29 +264,29 @@
       }
     },
     {
-      "id": "q11",
+      "id": "q9",
       "stem": {
-        "ar": "أي عائلات خوارزميات يذكرها الفصل لـ IDS القائم على التعلّم الآلي؟",
-        "en": "Which algorithm families does the chapter list for ML-based IDS?"
+        "ar": "ما عائلات الخوارزميات التي يمكن أن تدعم أنظمة كشف التسلل بالتعلم الآلي؟",
+        "en": "Which algorithm families can support machine-learning IDS?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "Diffie-Hellman و RSA و ECDSA و ChaCha20.",
-          "en": "Diffie-Hellman, RSA, ECDSA and ChaCha20."
+          "ar": "Diffie–Hellman وRSA وECDSA وChaCha20 خوارزميات تشفير.",
+          "en": "Diffie–Hellman, RSA, ECDSA, and ChaCha20 cryptography."
         },
         {
-          "ar": "الدوري وLeast-connection و weighted fair queuing.",
-          "en": "Round-robin, least-connection and weighted fair queuing."
+          "ar": "Round-robin وLeast-connection وجدولة الطوابير الموزونة.",
+          "en": "Round-robin, least-connection, and weighted queue schedulers."
         },
         {
           "ar": "أشجار القرار وآلات المتجهات الداعمة والشبكات العصبية.",
-          "en": "Decision trees, support vector machines and neural networks."
+          "en": "Decision trees, support vector machines, and neural networks."
         },
         {
-          "ar": "سلاسل الهاش وأشجار Merkle ومرشّحات bloom والـ tries.",
-          "en": "Hash chains, Merkle trees, bloom filters and tries."
+          "ar": "سلاسل الهاش وأشجار Merkle ومرشحات Bloom ومحركات البحث.",
+          "en": "Hash chains, Merkle trees, Bloom filters, and search tries."
         }
       ],
       "concept_id": "det_ml_algorithms",
@@ -360,7 +296,7 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q10",
       "stem": {
         "ar": "شنو يميّز التعلّم الخاضع للإشراف عن غير الخاضع بهذا السياق؟",
         "en": "What distinguishes supervised from unsupervised learning in this context?"
@@ -369,20 +305,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "الخاضع للإشراف يستخدم بيانات موسومة، وغير الخاضع يجمع غير الموسومة.",
-          "en": "Supervised uses labelled data; unsupervised groups unlabelled data."
+          "ar": "الموجّه يستخدم الموسوم؛ وغير الموجّه يجمع غير الموسوم.",
+          "en": "Supervised uses labels; unsupervised groups unlabelled data."
         },
         {
-          "ar": "الخاضع للإشراف ما يحتاج بيانات، وغير الخاضع يحتاجها كلها.",
-          "en": "Supervised needs no data; unsupervised needs all of it."
+          "ar": "الموجّه لا يحتاج بيانات، وغير الموجّه يحتاج كل السجلات.",
+          "en": "Supervised needs no data; unsupervised requires every record."
         },
         {
-          "ar": "الخاضع للإشراف يعمل دون اتصال، وغير الخاضع يعمل متصلاً فقط.",
+          "ar": "الموجّه يعمل دون اتصال، وغير الموجّه يعمل متصلاً فقط.",
           "en": "Supervised runs offline; unsupervised runs only online."
         },
         {
-          "ar": "الخاضع للإشراف مشفّر، وغير الخاضع نصّي فقط.",
-          "en": "Supervised is encrypted; unsupervised is plaintext only."
+          "ar": "بيانات الموجّه مشفّرة، وبيانات غير الموجّه نص صريح.",
+          "en": "Supervised data is encrypted; unsupervised data is plaintext."
         }
       ],
       "concept_id": "det_ml_supervised_vs_unsupervised",
@@ -392,7 +328,7 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q11",
       "stem": {
         "ar": "ليش البيانات الموسومة قيد عملي للـ IDS الخاضع للإشراف؟",
         "en": "Why is labelled data a practical constraint for supervised IDS?"
@@ -401,20 +337,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "لأن التسميات ما يمكن تخزينها بقاعدة بيانات.",
+          "ar": "لأن التسميات لا يمكن حفظها داخل قاعدة بيانات.",
           "en": "Because labels cannot be stored in a database."
         },
         {
-          "ar": "لأن التسميات لازم تُشفَّر قبل التدريب.",
-          "en": "Because labels must be encrypted before training."
+          "ar": "لأن كل تسمية يجب أن تُشفّر قبل بدء التدريب.",
+          "en": "Because every label must be encrypted before training."
         },
         {
-          "ar": "لأن مستشعرات الشبكة وحدها تنتج التسميات.",
-          "en": "Because only network sensors can produce labels."
+          "ar": "لأن مستشعرات الشبكة وحدها تستطيع إنتاج التسميات.",
+          "en": "Because only network sensors are able to produce labels."
         },
         {
-          "ar": "لأن الهجمات نادرة، فالأمثلة الموسومة شحيحة.",
-          "en": "Because attacks are rare, so labelled examples are scarce."
+          "ar": "الهجمات نادرة، لذلك أمثلة التدريب الموسومة محدودة.",
+          "en": "Attacks are rare, leaving few labelled training examples."
         }
       ],
       "concept_id": "det_ml_data_need",
@@ -424,7 +360,7 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q12",
       "stem": {
         "ar": "ليش الكاشف القائم على التعلّم الآلي معرّض للتهرّب العدائي؟",
         "en": "Why is an ML-based detector exposed to adversarial evasion?"
@@ -433,20 +369,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "لأنه ما يقدر يعالج أكثر من حزمة واحدة.",
-          "en": "Because it cannot process more than one packet."
+          "ar": "لأنه لا يستطيع معالجة أكثر من حزمة في الوقت الواحد.",
+          "en": "Because it cannot process more than one packet at a time."
         },
         {
-          "ar": "لأن المدخلات تُصمَّم حتى تتجاوز حدّ القرار.",
-          "en": "Because inputs can be crafted to cross the boundary."
+          "ar": "يمكن تصميم المدخلات لتجاوز حد قرار المصنّف.",
+          "en": "Crafted inputs can cross the model’s decision boundary."
         },
         {
-          "ar": "لأن دالة خسارته ما تُقلَّل أبداً.",
-          "en": "Because its loss function is never minimised."
+          "ar": "لأن دالة خسارة النموذج لا تصل إلى قيمة أقل أبداً.",
+          "en": "Because the model’s loss function is never minimised."
         },
         {
-          "ar": "لأنه يخزّن مجموعة التدريب على القرص.",
-          "en": "Because it stores the training set on disk."
+          "ar": "لأنه يخزن بيانات التدريب في قرص محلي فقط.",
+          "en": "Because it stores its training set on a local disk."
         }
       ],
       "concept_id": "det_ml_evasion",
@@ -456,7 +392,7 @@
       }
     },
     {
-      "id": "q15",
+      "id": "q13",
       "stem": {
         "ar": "أي عبارة تقارن العائلات الثلاث بشكل صحيح؟",
         "en": "Which statement correctly contrasts the three detection families?"
@@ -465,20 +401,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "التوقيعات والشذوذ يتجاهلان الهجمات المجهولة بالتساوي.",
-          "en": "Signatures and anomaly both ignore unknown attacks equally."
+          "ar": "التوقيعات والشذوذ يفشلان بالتساوي أمام الهجمات المجهولة.",
+          "en": "Signatures and anomaly detection both miss unknown attacks equally."
         },
         {
-          "ar": "التعلّم الآلي ما يحتاج بيانات ويتفوّق على الاثنين.",
-          "en": "Machine learning needs no data and beats both approaches."
+          "ar": "التعلّم الآلي لا يحتاج بيانات ويتفوق على الطريقتين.",
+          "en": "Machine learning needs no data and outperforms both methods."
         },
         {
-          "ar": "التوقيعات دقيقة على المعروف، والشذوذ يمسك الجديد بضجيج.",
-          "en": "Signatures are precise on known threats; anomaly finds new ones noisily."
+          "ar": "التوقيع يطابق المعروف، والشذوذ قد يكشف نشاطاً جديداً.",
+          "en": "Signatures match known threats; anomalies may reveal new activity."
         },
         {
-          "ar": "الشذوذ دقيق على المعروف، والتوقيعات تمسك الجديد.",
-          "en": "Anomaly is precise on known threats; signatures find new ones."
+          "ar": "الشذوذ يطابق المعروف، والتوقيع يكشف الهجمات الجديدة.",
+          "en": "Anomaly detection matches known threats; signatures find new ones."
         }
       ],
       "concept_id": "det_compare_three",
@@ -488,7 +424,7 @@
       }
     },
     {
-      "id": "q16",
+      "id": "q14",
       "stem": {
         "ar": "أي تقنية أقرب لمسك هجوم جديد فعلاً؟",
         "en": "Which technique is most likely to catch a genuinely new attack?"
@@ -497,20 +433,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "الكشف بالشذوذ، لأنه ما يحتاج توقيعاً.",
-          "en": "Anomaly detection, because it does not need a signature."
+          "ar": "الكشف بالشذوذ، لأنه لا يتطلب توقيع هجوم معروف مسبقاً.",
+          "en": "Anomaly detection, because it does not require a known signature."
         },
         {
-          "ar": "مطابقة التوقيعات، لأنها الأدق.",
-          "en": "Signature matching, because it is the most precise."
+          "ar": "مطابقة التواقيع، لأنها دقيقة للأنماط المعروفة مسبقاً.",
+          "en": "Signature matching, because it is precise for known patterns."
         },
         {
-          "ar": "قاعدة توقيعات أكبر، لأن الحجم تغطية.",
-          "en": "A longer signature database, because size is coverage."
+          "ar": "قاعدة توقيعات أكبر، لأن الحجم يضمن تغطية الهجمات.",
+          "en": "A larger signature database, because size guarantees coverage."
         },
         {
-          "ar": "محرّك مطابقة أسرع، لأن السرعة تجيب الجديد.",
-          "en": "A faster matching engine, because speed finds novelty."
+          "ar": "محرّك مطابقة أسرع، لأن السرعة وحدها تكشف الجديد.",
+          "en": "A faster matcher, because speed alone reveals new attacks."
         }
       ],
       "concept_id": "det_which_for_zero_day",
@@ -520,7 +456,7 @@
       }
     },
     {
-      "id": "q17",
+      "id": "q15",
       "stem": {
         "ar": "أي تقنية تلائم هجوماً معروفاً وموصوفاً جيداً؟",
         "en": "Which technique is best suited to a known, well-described attack?"
@@ -529,20 +465,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "الكشف بالشذوذ، لأنه ما يحتاج خط أساس.",
-          "en": "Anomaly detection, because it needs no baseline."
+          "ar": "الكشف بالشذوذ، لأنه لا يحتاج خط أساس طبيعي.",
+          "en": "Anomaly detection, because it does not need a normal baseline."
         },
         {
-          "ar": "التجميع، لأنه ما يحتاج تسميات.",
-          "en": "Clustering, because it needs no labels."
+          "ar": "التجميع، لأنه يعمل من دون أمثلة موسومة مسبقاً.",
+          "en": "Clustering, because it operates without any labelled examples."
         },
         {
-          "ar": "ثابت حسّاسية أوسع، لأنه أكثر صرامة.",
-          "en": "A wider sensitivity constant, because it is stricter."
+          "ar": "عتبة حساسية أوسع، لأنها أكثر تقييداً للنشاط.",
+          "en": "A wider sensitivity threshold, because it is more restrictive."
         },
         {
-          "ar": "مطابقة التوقيعات، لأنها دقيقة ورخيصة.",
-          "en": "Signature matching, because it is precise and cheap."
+          "ar": "مطابقة التوقيعات، لأنها دقيقة وقليلة الكلفة.",
+          "en": "Signature matching, because it is precise and inexpensive."
         }
       ],
       "concept_id": "det_which_for_known",
@@ -552,39 +488,7 @@
       }
     },
     {
-      "id": "q18",
-      "stem": {
-        "ar": "شنو لازم يُثبَّت قبل ما يشتغل الكشف بالشذوذ؟",
-        "en": "What must be established before anomaly detection can work?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "جهة إصدار شهادات للمستشعرات.",
-          "en": "A certificate authority for the sensors."
-        },
-        {
-          "ar": "نموذج خط أساس موثوق للسلوك الطبيعي.",
-          "en": "A reliable baseline model of normal behaviour."
-        },
-        {
-          "ar": "قاعدة توقيعات كاملة للهجمات.",
-          "en": "A complete signature database of attacks."
-        },
-        {
-          "ar": "موقع مضمّن داخل مسار الترافيك.",
-          "en": "An inline position in the traffic path."
-        }
-      ],
-      "concept_id": "det_anomaly_baseline",
-      "explanation": {
-        "ar": "الانحراف ما له معنى إلا بالنسبة لشيء، فجودة نموذج الطبيعي تحدّد جودة كل قرار لاحق.",
-        "en": "Deviation is only meaningful relative to something, so the quality of the normal model determines the quality of every later decision."
-      }
-    },
-    {
-      "id": "q19",
+      "id": "q16",
       "stem": {
         "ar": "أي عبء مستمر يحمله الكشف بالتوقيعات؟",
         "en": "What ongoing burden does signature-based detection carry?"
@@ -593,20 +497,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "لازم يُعاد بناء المصنّف لكل مضيف.",
-          "en": "The classifier must be recompiled for each host."
+          "ar": "إعادة بناء المصنّف بصورة منفصلة لكل مضيف بالشبكة.",
+          "en": "The classifier must be rebuilt separately for every host."
         },
         {
-          "ar": "لازم ينقل المستشعر لمقطع جديد يومياً.",
-          "en": "The sensor must be moved to a new segment daily."
+          "ar": "نقل المستشعر إلى مقطع شبكي مختلف يومياً بصورة دورية.",
+          "en": "The sensor must move to a new network segment each day."
         },
         {
-          "ar": "لازم تُبقى القاعدة محدَّثة بالتهديدات الجديدة.",
-          "en": "The database must be kept current with new threats."
+          "ar": "إبقاء قاعدة التوقيعات محدّثة مع اكتشاف تهديدات جديدة.",
+          "en": "Keep the database current with newly discovered threats."
         },
         {
-          "ar": "لازم يُعاد تدريب خط الأساس بعد كل تنبيه.",
-          "en": "The baseline must be retrained after every alert."
+          "ar": "إعادة تدريب خط الأساس بعد كل تنبيه أمني جديد.",
+          "en": "The baseline model must be retrained after every alert."
         }
       ],
       "concept_id": "det_signature_maintenance",
@@ -616,7 +520,7 @@
       }
     },
     {
-      "id": "q20",
+      "id": "q17",
       "stem": {
         "ar": "ليش النشر الواقعي يجمع التوقيعات والشذوذ والتعلّم الآلي؟",
         "en": "Why do real deployments combine signature, anomaly and ML detection?"
@@ -625,20 +529,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "لأن كل واحدة تغطّي ضعفاً تتركه الأخريات.",
-          "en": "Because each covers a weakness the others leave open."
+          "ar": "كل طريقة تغطي ضعفاً تتركه الطرق الأخرى دون معالجة.",
+          "en": "Each method covers weaknesses that the other methods leave open."
         },
         {
-          "ar": "لأن القانون يلزم المورّدين بتقديم الثلاثة.",
-          "en": "Because vendors are required to ship all three by law."
+          "ar": "الأنظمة تلزم المورّدين بتضمين محرّكات الكشف الثلاثة.",
+          "en": "Regulations require vendors to include all three detection engines."
         },
         {
-          "ar": "لأن ثلاثة محرّكات تكلّف أقل من محرّك واحد.",
-          "en": "Because three engines cost less than a single one."
+          "ar": "ثلاثة محرّكات منفصلة أقل كلفة دائماً من محرّك واحد.",
+          "en": "Three separate engines always cost less than a single engine."
         },
         {
-          "ar": "لأن كل محرّك يفحص طبقة بروتوكول مختلفة.",
-          "en": "Because each engine inspects a different protocol layer."
+          "ar": "كل محرّك يفحص طبقة مختلفة من بروتوكول الشبكة.",
+          "en": "Each engine inspects a different layer of the network protocol."
         }
       ],
       "concept_id": "det_hybrid_practice",
@@ -653,7 +557,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

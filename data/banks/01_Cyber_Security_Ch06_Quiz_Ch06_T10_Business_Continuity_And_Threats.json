@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "استمرارية الأعمال والتهديدات",
+    "en": "Business Continuity and Threats"
+  },
+  "quiz_id": "Quiz_Ch06_T10_Business_Continuity_And_Threats",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "شنو يغطّي تخطيط التعافي من الكوارث؟",
+        "en": "What does disaster recovery planning cover?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تكرار البيانات وهدف زمن التعافي وهدف نقطة التعافي.",
+          "en": "Replication, recovery-time and recovery-point objectives."
+        },
+        {
+          "ar": "وتيرة الفحص، وجدولة الترقيع، وضوابط الإصدار.",
+          "en": "Scanning frequency, patch cadence and release gates."
+        },
+        {
+          "ar": "خطط التوظيف وميزانيات التدريب وجداول التدقيق.",
+          "en": "Hiring plans, training budgets and audit schedules."
+        },
+        {
+          "ar": "قوة التشفير وطول المفتاح وسياسة تدوير المفاتيح.",
+          "en": "Encryption strength, key length and rotation policy."
+        }
+      ],
+      "concept_id": "w6_bc_drp",
+      "explanation": {
+        "ar": "يضمن التعافي من الأحداث الكارثية عبر التكرار بين المواقع مع الهدفين اللي يحدّان الخسارة المقبولة.",
+        "en": "It ensures recovery from catastrophic events through replication across sites plus the two objectives that bound acceptable loss."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "شنو يفصل الهدفين؟",
+        "en": "What separates the two objectives?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الاثنان يحدّان فقدان البيانات لكن لمناطق مختلفة.",
+          "en": "Both bound data loss but for different regions."
+        },
+        {
+          "ar": "واحد يحدّ التوقّف؛ والثاني يحدّ البيانات المفقودة.",
+          "en": "One bounds downtime; the other bounds lost data."
+        },
+        {
+          "ar": "واحد يحدّ البيانات المفقودة؛ والثاني يحدّ التوقّف.",
+          "en": "One bounds lost data; the other bounds downtime."
+        },
+        {
+          "ar": "الاثنان يحدّان التوقّف لكن لفرق مختلفة.",
+          "en": "Both bound downtime but for different teams."
+        }
+      ],
+      "concept_id": "w6_bc_rto_vs_rpo",
+      "explanation": {
+        "ar": "الاثنان يقيسان أشياء مختلفة: واحد عن الزمن بلا خدمة، والثاني عن كم من التاريخ غير قابل للاستعادة.",
+        "en": "They measure different things: one is about time without service, the other about how much history is unrecoverable."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يؤثّر تكامل الاستجابة للحوادث على الاستمرارية؟",
+        "en": "How does incident response integration affect continuity?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يضمن استمرار الخدمة بلا أي توقف تشغيلي.",
+          "en": "It guarantees the web service never experiences any downtime."
+        },
+        {
+          "ar": "يلغي الحاجة إلى تكرار البيانات عند التعافي.",
+          "en": "It removes the need to replicate data for service recovery."
+        },
+        {
+          "ar": "الاحتواء السريع يبقي الحادثة ضمن نطاقها.",
+          "en": "Containment limits incident spread beyond affected systems."
+        },
+        {
+          "ar": "يستبدل الحاجة إلى خطة تعافٍ من الكوارث.",
+          "en": "It removes the need for tested disaster-recovery plans."
+        }
+      ],
+      "concept_id": "w6_bc_ir_integration",
+      "explanation": {
+        "ar": "عدوى فدية تُحتوى مبكراً تكون عطلاً محدوداً، ونفس العدوى بلا احتواء تصير توقّفاً كاملاً.",
+        "en": "A ransomware infection that is contained early is a limited outage, while the same infection uncontained becomes a full stoppage."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ليش الفدية تهدّد الاستمرارية مو السرية فقط؟",
+        "en": "Why does ransomware threaten continuity rather than only confidentiality?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لأنها تنسخ البيانات بصمت لسيرفر خارجي.",
+          "en": "Because it silently copies data to an external server."
+        },
+        {
+          "ar": "لأنها تحذف سجلات الحوادث الأمنية السابقة.",
+          "en": "Because it deletes the logs of every earlier event."
+        },
+        {
+          "ar": "لأنها تغيّر الشفرة البرمجية للتطبيق.",
+          "en": "Because it changes the application source code."
+        },
+        {
+          "ar": "لأنها تشفّر البيانات المهمة وتوقف المؤسسة.",
+          "en": "Because it encrypts data and stops operations."
+        }
+      ],
+      "concept_id": "w6_th_ransomware",
+      "explanation": {
+        "ar": "الحمولة توقف شغل المؤسسة، فالتعافي يعتمد على نسخ غير متصلة وتخزين غير قابل للتغيير وسير استرداد مُختبَر.",
+        "en": "The payload stops the business working, so recovery depends on offline backups, immutable storage and a tested restore workflow."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مجموعة تسمي التهديدات السيبرانية الأربعة للاعتمادية والاستمرارية؟",
+        "en": "Which set names the four cyber threats to reliability and continuity?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حجب الخدمة، والفدية، وتهديد داخلي، واختراق سلسلة التوريد.",
+          "en": "DDoS, ransomware, insider threats, and supply-chain compromise."
+        },
+        {
+          "ar": "حقن SQL، والبرمجة عبر المواقع، وCSRF، وتجربة كلمات المرور.",
+          "en": "SQL injection, cross-site scripting, CSRF, and password spraying."
+        },
+        {
+          "ar": "انتهاء الشهادات، وشفرات ضعيفة، وفقدان المفاتيح، وهجمات الإعادة.",
+          "en": "Certificate expiry, weak ciphers, key loss, and replay attacks."
+        },
+        {
+          "ar": "انقطاع الطاقة، وتعطل التبريد، وتآكل الأقراص، وإرهاق المشغّلين.",
+          "en": "Power failure, cooling loss, disk wear, and operator fatigue."
+        }
+      ],
+      "concept_id": "w6_continuity_threat_list",
+      "explanation": {
+        "ar": "التهديدات الأربعة هي حجب الخدمة، وبرامج الفدية، والأنشطة الداخلية، واختراقات سلسلة التوريد.",
+        "en": "The four threats are DDoS, ransomware, insider activity and supply-chain compromises."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي مجموعة تسرد المنظورات الحديثة الأربعة للاعتمادية والاستمرارية؟",
+        "en": "Which set lists the four marked modern perspectives on reliability and continuity?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مراجعة الكود، واختبار الحمل، وتجديد الشهادات، وضغط قواعد البيانات.",
+          "en": "Code review, load testing, certificate renewal, and database compression."
+        },
+        {
+          "ar": "مرونة سحابية، وتنبؤ بالذكاء الاصطناعي، وZero Trust، وسجلات بلوكتشين.",
+          "en": "Cloud-native resilience, predictive AI, Zero Trust, and tamper-proof records."
+        },
+        {
+          "ar": "جدران المحيط، والتدقيق السنوي، وتدوير كلمات المرور، وخطط التعافي اليدوية.",
+          "en": "Perimeter firewalls, annual audits, password rotation, and manual recovery plans."
+        },
+        {
+          "ar": "الفحص الساكن، والترقيع الفصلي، والثقة بالشبكات، والنسخ المحلي فقط.",
+          "en": "Static scanning, quarterly patching, trusted networks, and local-only backups."
+        }
+      ],
+      "concept_id": "w6_continuity_perspectives",
+      "explanation": {
+        "ar": "المنظورات الأربعة هي بنى السحابة الأصلية، والتنبؤ المعتمد على AI، وZero Trust، والسجلات القائمة على blockchain.",
+        "en": "The four are cloud-native architectures, AI-driven prediction, Zero Trust and blockchain-based records."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما التحديات الأربعة التي تعقّد تخطيط الاعتمادية والاستمرارية؟",
+        "en": "Which four challenges complicate reliability and continuity planning?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بيانات كبيرة، وإصدارات قصيرة، وإعادة استخدام الكود، وأسعار الموردين.",
+          "en": "Large datasets, short releases, code reuse, and vendor pricing."
+        },
+        {
+          "ar": "مناطق سحابية، ومفاتيح API، وتغطية الاختبارات، وتأخير الشبكة.",
+          "en": "Cloud regions, API keys, test coverage, and network latency."
+        },
+        {
+          "ar": "محدودية الموارد، وتعقيد البنى، وتطور التهديدات، والعوامل البشرية.",
+          "en": "Resource limits, complex systems, evolving threats, and human factors."
+        },
+        {
+          "ar": "كلمات مرور ضعيفة، واستعلامات بطيئة، وشهادات قديمة، وترقيعات ناقصة.",
+          "en": "Weak passwords, slow queries, old certificates, and missing patches."
+        }
+      ],
+      "concept_id": "w6_continuity_challenges",
+      "explanation": {
+        "ar": "التحديات الأربعة هي محدودية الموارد، وتعقيد البنى، وتطور التهديدات، والعوامل البشرية.",
+        "en": "The four are resource constraints, complex architectures, evolving threats and human factors."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مجموعة تضم دراسات الحالات الثلاث المحددة عن الثغرات؟",
+        "en": "Which set contains the three marked vulnerability case studies?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "WannaCry، واختراق Target، وStuxnet.",
+          "en": "WannaCry, the Target breach, and Stuxnet."
+        },
+        {
+          "ar": "SolarWinds، وNotPetya، وColonial Pipeline.",
+          "en": "SolarWinds, NotPetya, and the Colonial Pipeline incident."
+        },
+        {
+          "ar": "دودة Morris، وMirai، وانقطاع خدمة Dyn.",
+          "en": "The Morris worm, Mirai, and the Dyn service outage."
+        },
+        {
+          "ar": "Heartbleed، واختراق Equifax، وLog4Shell.",
+          "en": "Heartbleed, the Equifax breach, and Log4Shell."
+        }
+      ],
+      "concept_id": "w6_marked_case_studies",
+      "explanation": {
+        "ar": "الأمثلة الثلاثة هي Heartbleed وEquifax وLog4Shell، وتمثل مخاطر المكتبات وتأخر الترقيع وسلسلة التوريد.",
+        "en": "The three examples are Heartbleed, Equifax and Log4Shell, illustrating library, delayed-patching and supply-chain risks."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف تدعم التحليلات التنبّؤية الاستمرارية؟",
+        "en": "How does predictive analytics support continuity?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تتنبأ بالتعطلات من السجلات والسلوك والأداء.",
+          "en": "It predicts disruptions from logs and performance trends."
+        },
+        {
+          "ar": "تستعيد الخدمة تلقائياً بعد كل انقطاع تشغيلي.",
+          "en": "It automatically restores the service after every outage."
+        },
+        {
+          "ar": "تلغي الحاجة إلى استراتيجية تكرار مكونات الخدمة.",
+          "en": "It replaces the need for any redundancy strategy."
+        },
+        {
+          "ar": "تشفّر السجلات لمنع المهاجم من قراءتها.",
+          "en": "It encrypts the logs so attackers cannot read them."
+        }
+      ],
+      "concept_id": "w6_mo_ai",
+      "explanation": {
+        "ar": "الأنماط اللي تسبق الانقطاع تصير مرئية مبكراً بما يكفي للتصرف، فيتحوّل الصمود من ردّ فعل إلى استباق.",
+        "en": "Patterns that precede an outage become visible early enough to act, which turns continuity from reactive to proactive."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "كيف تساعد الثقة الصفرية الاستمرارية؟",
+        "en": "How does Zero Trust help continuity?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تستبدل عملية الاستجابة الكاملة للحوادث.",
+          "en": "It replaces all incident-response activities."
+        },
+        {
+          "ar": "تحدّ من الموارد المتاحة ببيانات اعتماد مسروقة.",
+          "en": "It limits access granted to stolen credentials."
+        },
+        {
+          "ar": "تلغي الحاجة إلى نسخ احتياطية لبيانات الخدمة.",
+          "en": "It removes the need for service data backups."
+        },
+        {
+          "ar": "تضمن بقاء الخدمة متاحة طوال الوقت بلا انقطاع.",
+          "en": "It guarantees permanent service availability."
+        }
+      ],
+      "concept_id": "w6_mo_zt",
+      "explanation": {
+        "ar": "لو انخترقت جلسة، التحقّق المستمر يبقي الضرر محلياً بدل ما ينتشر بكل المؤسسة.",
+        "en": "If a session is compromised, continuous verification keeps the damage local instead of letting it spread across the estate."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-27T14:03:52Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

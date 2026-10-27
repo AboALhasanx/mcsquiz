@@ -17,20 +17,20 @@
       "answer": 3,
       "options": [
         {
-          "ar": "يستخدم مفتاحاً واحداً يُغيَّر بعد كل رسالة.",
-          "en": "It uses a single key that is changed after every message."
+          "ar": "يعتمد على إخفاء الخوارزمية ولا يستخدم مفتاحاً.",
+          "en": "It relies only on hiding the algorithm, not a key."
         },
         {
-          "ar": "لا يستخدم أي مفتاح، ويعتمد فقط على سرّية الآلية.",
-          "en": "It uses no key, relying only on the secrecy of the algorithm."
+          "ar": "يطبق المفتاح المتماثل مرتين على كل رسالة.",
+          "en": "It applies the symmetric key twice to each message."
         },
         {
-          "ar": "يستخدم نفس مفتاح التشفير المتماثل بس يطبّقه مرتين.",
-          "en": "It uses the same key as symmetric encryption but applied twice."
+          "ar": "يستخدم مفتاحاً واحداً يتغير بعد كل رسالة.",
+          "en": "It uses one key changed after every message."
         },
         {
-          "ar": "يستخدم مفتاحين مرتبطين رياضياً، أحدهما عام والآخر خاص.",
-          "en": "It uses two mathematically related keys, a public one and a private one."
+          "ar": "يستخدم زوجاً مترابطاً من مفتاح عام ومفتاح خاص.",
+          "en": "It uses a related public and private key pair."
         }
       ],
       "concept_id": "asym_definition",
@@ -46,12 +46,8 @@
         "en": "Which key encrypts and which key decrypts in asymmetric encryption?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 1,
       "options": [
-        {
-          "ar": "المفتاحان يشفّران، والمفتاح العام وحده يفكّ.",
-          "en": "Both keys encrypt, and only the public key decrypts."
-        },
         {
           "ar": "المفتاح الذي يشفّر يعتمد على أي طرف هو المُرسل.",
           "en": "The key that encrypts depends on which party is sending the message."
@@ -63,6 +59,10 @@
         {
           "ar": "المفتاح الخاص يشفّر والمفتاح العام يفكّ التشفير.",
           "en": "The private key encrypts and the public key decrypts."
+        },
+        {
+          "ar": "المفتاحان يشفّران، والمفتاح العام وحده يفكّ.",
+          "en": "Both keys encrypt, and only the public key decrypts."
         }
       ],
       "concept_id": "asym_key_roles",
@@ -78,23 +78,23 @@
         "en": "What does asymmetric encryption eliminate?"
       },
       "bloom": "Understand",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "الحاجة لأن تكون الرسالة بطول محدد.",
-          "en": "The need for the message to be an exact length."
+          "ar": "الحاجة إلى استخدام أي مفتاح تشفير على الإطلاق.",
+          "en": "The need to use any key at all, even a public key."
         },
         {
-          "ar": "الحاجة لمشاركة مفتاح سري مسبقاً.",
-          "en": "The need to share a secret key in advance."
+          "ar": "الحاجة إلى التحقق من هوية الطرف المستقبل.",
+          "en": "The need to verify the receiver’s identity."
         },
         {
-          "ar": "الحاجة لأي مفتاح.",
-          "en": "The need for any key at all."
+          "ar": "الحاجة إلى مشاركة مفتاح سري قبل بدء الاتصال.",
+          "en": "The need to share a secret key before communication."
         },
         {
-          "ar": "الحاجة للتحقق من هوية المستقبل.",
-          "en": "The need to verify the receiver's identity."
+          "ar": "الحاجة إلى أن تكون كل رسالة بطول ثابت.",
+          "en": "The need for messages to have an exact and fixed length."
         }
       ],
       "concept_id": "asym_eliminates_preshared",
@@ -113,20 +113,20 @@
       "answer": 0,
       "options": [
         {
-          "ar": "تحليل الأعداد الكبيرة إلى عواملها، سنة 1978.",
-          "en": "Factoring large integers, in 1978."
+          "ar": "ظهر RSA سنة 1978 ويعتمد على تحليل الأعداد الكبيرة.",
+          "en": "RSA began in 1978 and relies on factoring large integers."
         },
         {
-          "ar": "تحليل الأعداد الكبيرة إلى عواملها الأولية، سنة 1985.",
-          "en": "Factoring large integers into their prime factors, in 1985."
+          "ar": "ظهر RSA سنة 2001 ويعتمد على تحليل الأعداد الكبيرة.",
+          "en": "RSA began in 2001 and relies on factoring large integers."
         },
         {
-          "ar": "تحليل الأعداد الكبيرة، سنة 2001.",
-          "en": "Factoring large integers, in 2001."
+          "ar": "ظهر RSA سنة 1985 ويعتمد على تحليل الأعداد الكبيرة.",
+          "en": "RSA began in 1985 and relies on factoring large integers."
         },
         {
-          "ar": "مسألة اللوغاريتم المتقطّع للمنحنى الإهليلجي، سنة 1978.",
-          "en": "The elliptic curve discrete logarithm problem, in 1978."
+          "ar": "يعتمد RSA على اللوغاريتم المتقطع للمنحنيات الإهليلجية.",
+          "en": "RSA relies on the elliptic-curve discrete-log problem."
         }
       ],
       "concept_id": "rsa_year_hardness",
@@ -138,155 +138,27 @@
     {
       "id": "q5",
       "stem": {
-        "ar": "بتوليد مفاتيح RSA، ما هو المعامل n؟",
-        "en": "In RSA key generation, what is the modulus n?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "مجموع العددين الأوليين المختارين.",
-          "en": "The sum of the two chosen primes."
-        },
-        {
-          "ar": "الأس العام مرفوعاً إلى الأس الخاص.",
-          "en": "The public exponent raised to the private exponent."
-        },
-        {
-          "ar": "دالة أويلر للأس العام.",
-          "en": "Euler's totient of the public exponent."
-        },
-        {
-          "ar": "حاصل ضرب العددين الأوليين المختارين.",
-          "en": "The product of the two chosen primes."
-        }
-      ],
-      "concept_id": "rsa_step_modulus",
-      "explanation": {
-        "ar": "n = p·q، حيث p و q هما العددان الأوليان المختاران في الخطوة الأولى.",
-        "en": "n = p·q, where p and q are the two primes chosen in the first step."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "كيف تُحسب دالة أويلر لمعامل RSA؟",
-        "en": "How is Euler's totient computed for the RSA modulus?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "بجمع p و q، ناقص 1.",
-          "en": "As p plus q, minus 1."
-        },
-        {
-          "ar": "بضرب (p − 1) في (q − 1).",
-          "en": "As (p − 1) multiplied by (q − 1)."
-        },
-        {
-          "ar": "بضرب p في q، ناقص 1.",
-          "en": "As p multiplied by q, minus 1."
-        },
-        {
-          "ar": "بضرب (p + 1) في (q + 1).",
-          "en": "As (p + 1) multiplied by (q + 1)."
-        }
-      ],
-      "concept_id": "rsa_step_totient",
-      "explanation": {
-        "ar": "φ(n) = (p−1)(q−1) كلما كان n = p·q و p و q أوليين.",
-        "en": "φ(n) = (p−1)(q−1) whenever n = p·q with p and q prime."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "شنو الشرط اللي لازم يحققه الأس العام e في RSA؟",
-        "en": "What condition must the public exponent e satisfy in RSA?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "لازم يكون عدداً أولياً أصغر من p.",
-          "en": "It must be a prime number that is smaller than p."
-        },
-        {
-          "ar": "لازم يساوي بالضبط الأس الخاص d.",
-          "en": "It must be exactly equal to the private exponent d."
-        },
-        {
-          "ar": "قاسمه المشترك الأكبر مع دالة أويلر لازم يكون 1.",
-          "en": "Its greatest common divisor with Euler's totient must be 1."
-        },
-        {
-          "ar": "لازم يكون أكبر حتماً من المعامل n نفسه.",
-          "en": "It must be strictly larger than the modulus n itself."
-        }
-      ],
-      "concept_id": "rsa_step_choose_e",
-      "explanation": {
-        "ar": "يُختار e بحيث gcd(e, φ(n)) = 1، وهذا ما يضمن وجود المعكوس.",
-        "en": "e is chosen so that gcd(e, φ(n)) = 1, which is what guarantees an inverse exists."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "كيف يُستخرج المفتاح الخاص d في RSA؟",
-        "en": "How is the RSA private key d obtained?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "كامعكوس ضربي لـ e modulo دالة أويلر.",
-          "en": "As the multiplicative inverse of e modulo the totient."
-        },
-        {
-          "ar": "كامعكوس ضربي لـ n modulo e.",
-          "en": "As the multiplicative inverse of n modulo e."
-        },
-        {
-          "ar": "كحاصل ضرب بسيط بين e ودالة أويلر.",
-          "en": "As the simple product of e and Euler's totient."
-        },
-        {
-          "ar": "كالقاسم المشترك الأكبر بين e و n.",
-          "en": "As the greatest common divisor of e and n."
-        }
-      ],
-      "concept_id": "rsa_step_private_d",
-      "explanation": {
-        "ar": "d ≡ e^{-1} mod φ(n)، وهذا ما يجعل فكّ التشفير يعكس التشفير.",
-        "en": "d ≡ e^{-1} mod φ(n), which is what makes decryption invert encryption."
-      }
-    },
-    {
-      "id": "q9",
-      "stem": {
         "ar": "أي زوج من التعبيرات يعطي تشفير RSA وفكّه؟",
         "en": "Which pair of expressions gives RSA encryption and decryption?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 1,
       "options": [
         {
-          "ar": "C = P^d mod n للتشفير و P = C^e mod n لفكّ التشفير.",
-          "en": "C = P^d mod n for encryption and P = C^e mod n for decryption."
+          "ar": "التشفير بالأس الخاص ثم فكّه بالأس العام.",
+          "en": "Encrypt with the private exponent, then decrypt with the public one."
         },
         {
-          "ar": "C = P + e mod n للتشفير و P = C − d mod n لفكّ التشفير.",
-          "en": "C = P + e mod n for encryption and P = C − d mod n for decryption."
+          "ar": "التشفير بالأس العام وفك الرسالة بالأس الخاص في RSA.",
+          "en": "Encrypt with the public key and decrypt with the private key."
         },
         {
-          "ar": "C = P^e mod φ(n) للتشفير و P = C^d mod φ(n) لفكّ التشفير.",
-          "en": "C = P^e mod φ(n) for encryption and P = C^d mod φ(n) for decryption."
+          "ar": "إضافة الأسس إلى الرسالة في عمليتي التشفير والفك.",
+          "en": "Add the exponents to the message in both operations."
         },
         {
-          "ar": "C = P^e mod n للتشفير و P = C^d mod n لفكّ التشفير.",
-          "en": "C = P^e mod n for encryption and P = C^d mod n for decryption."
+          "ar": "استخدام دالة أويلر بدلاً من المعامل في العمليتين.",
+          "en": "Replace the modulus with Euler’s totient in both operations."
         }
       ],
       "concept_id": "rsa_encrypt_decrypt",
@@ -296,7 +168,7 @@
       }
     },
     {
-      "id": "q10",
+      "id": "q6",
       "stem": {
         "ar": "أي تسلسل يعدّد خطوات RSA بترتيبها الصحيح؟",
         "en": "Which sequence lists the RSA steps in their correct order?"
@@ -305,8 +177,8 @@
       "answer": 2,
       "options": [
         {
-          "ar": "اختر العددين الأوليين، اختر e، احسب n، احسب دالة أويلر، احسب d، شفّر، فكّ.",
-          "en": "Choose primes, choose e, compute n, compute Euler's totient, compute d, encrypt, decrypt."
+          "ar": "اختر العددين الأوليين، احسب دالة أويلر، اختر e، احسب n، احسب d، شفّر، فكّ.",
+          "en": "Choose primes, compute Euler's totient, choose e, compute n, compute d, encrypt, decrypt."
         },
         {
           "ar": "اختر العددين الأوليين، احسب n، اختر e، احسب دالة أويلر، احسب d، شفّر، فكّ.",
@@ -317,8 +189,8 @@
           "en": "Choose primes, compute n, compute Euler's totient, choose e, compute d, encrypt, decrypt."
         },
         {
-          "ar": "اختر العددين الأوليين، احسب دالة أويلر، اختر e، احسب n، احسب d، شفّر، فكّ.",
-          "en": "Choose primes, compute Euler's totient, choose e, compute n, compute d, encrypt, decrypt."
+          "ar": "اختر العددين الأوليين، اختر e، احسب n، احسب دالة أويلر، احسب d، شفّر، فكّ.",
+          "en": "Choose primes, choose e, compute n, compute Euler's totient, compute d, encrypt, decrypt."
         }
       ],
       "concept_id": "rsa_step_order",
@@ -328,21 +200,17 @@
       }
     },
     {
-      "id": "q11",
+      "id": "q7",
       "stem": {
         "ar": "على أي مسألة صعبة تقوم تشفير المنحنيات الإهليلجية، ومتى طُرح؟",
         "en": "On what hard problem is elliptic curve cryptography based, and when was it introduced?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 3,
       "options": [
         {
           "ar": "تحليل الأعداد الكبيرة إلى عواملها الأولية، سنة 1978.",
           "en": "Factoring large integers into their prime factors, in 1978."
-        },
-        {
-          "ar": "مسألة اللوغاريتم المتقطّع للمنحنى الإهليلجي، سنة 1985.",
-          "en": "The elliptic curve discrete logarithm problem, in 1985."
         },
         {
           "ar": "تحليل الأعداد الكبيرة إلى عواملها الأولية، سنة 1985.",
@@ -351,6 +219,10 @@
         {
           "ar": "مسألة اللوغاريتم المتقطّع للمنحنى الإهليلجي، سنة 1978.",
           "en": "The elliptic curve discrete logarithm problem, in 1978."
+        },
+        {
+          "ar": "مسألة اللوغاريتم المتقطّع للمنحنى الإهليلجي، سنة 1985.",
+          "en": "The elliptic curve discrete logarithm problem, in 1985."
         }
       ],
       "concept_id": "ecc_year_problem",
@@ -360,22 +232,14 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q8",
       "stem": {
-        "ar": "أي حجمي مفتاح يعتبره الفصل متكافئين بالأمان؟",
-        "en": "Which key sizes does the chapter treat as offering equivalent security?"
+        "ar": "ما أحجام المفاتيح التي توفر مستوى أمن متقارباً في ECC وRSA؟",
+        "en": "Which key sizes provide comparable security for ECC and RSA?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "ECC بطول 256-bit و RSA بطول 3072-bit.",
-          "en": "256-bit ECC and 3072-bit RSA."
-        },
-        {
-          "ar": "ECC بطول 256-bit و RSA بطول 2048-bit.",
-          "en": "256-bit ECC and 2048-bit RSA."
-        },
         {
           "ar": "ECC بطول 512-bit و RSA بطول 3072-bit.",
           "en": "512-bit ECC and 3072-bit RSA."
@@ -383,6 +247,14 @@
         {
           "ar": "ECC بطول 1024-bit و RSA بطول 3072-bit.",
           "en": "1024-bit ECC and 3072-bit RSA."
+        },
+        {
+          "ar": "ECC بطول 256-bit و RSA بطول 2048-bit.",
+          "en": "256-bit ECC and 2048-bit RSA."
+        },
+        {
+          "ar": "ECC بطول 256-bit و RSA بطول 3072-bit.",
+          "en": "256-bit ECC and 3072-bit RSA."
         }
       ],
       "concept_id": "ecc_key_equivalence",
@@ -392,29 +264,29 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q9",
       "stem": {
-        "ar": "لأي بيئات يقول الفصل إن ECC أكفأ؟",
-        "en": "For which environments does the chapter say ECC is more efficient?"
+        "ar": "في أي بيئات يكون ECC أكثر كفاءة؟",
+        "en": "In which environments is ECC especially efficient?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "الحواسيب المركزية ومراكز البيانات والتخزين الأرشيفي.",
-          "en": "Mainframes, data centres and archival storage."
+          "ar": "الأجهزة المحمولة وأنظمة IoT وسلاسل الكتل.",
+          "en": "Mobile devices, IoT systems and blockchain networks."
         },
         {
-          "ar": "الوصلات الفضائية والراديو ووسائل الطباعة.",
-          "en": "Satellite links, radio and print media."
+          "ar": "الخوادم المركزية ومراكز البيانات الكبيرة.",
+          "en": "Mainframes, large data centres and archival storage."
         },
         {
-          "ar": "الأنظمة المدمجة فقط، والموبايل أبداً.",
-          "en": "Embedded systems only, and never mobile."
+          "ar": "الوصلات الفضائية والراديو وأنظمة الاتصالات.",
+          "en": "Satellite links, radio and print communication systems."
         },
         {
-          "ar": "الموبايل و IoT وسلاسل الكتل.",
-          "en": "Mobile, IoT and blockchain."
+          "ar": "الأنظمة المدمجة وحدها دون أجهزة أخرى.",
+          "en": "Embedded systems only, without phones or networks."
         }
       ],
       "concept_id": "ecc_efficiency",
@@ -424,61 +296,29 @@
       }
     },
     {
-      "id": "q14",
+      "id": "q10",
       "stem": {
-        "ar": "أي مشكلة توزيع مفتاح يحلّها التشفير غير المتماثل؟",
-        "en": "Which key-distribution problem does asymmetric encryption solve?"
+        "ar": "إلى جانب التشفير، ما الوظائف التي يدعمها التشفير اللامتماثل؟",
+        "en": "Besides encryption, what can asymmetric cryptography support?"
       },
       "bloom": "Understand",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "يخلي الطرفين يولّدان نفس المفتاح استقلالاً دون أي تبادل.",
-          "en": "It lets both parties generate the same key independently of any exchange."
+          "ar": "التواقيع الرقمية ومصادقة هوية مرسل الرسالة.",
+          "en": "Digital signatures provide user authentication."
         },
         {
-          "ar": "يلغي الحاجة لسرّ متفق عليه مسبقاً.",
-          "en": "It removes the need for a pre-shared secret."
+          "ar": "تجزئة مقاومة للتصادم لأي حجم من المدخلات.",
+          "en": "Collision-resistant hashing for any input size."
         },
         {
-          "ar": "يقصّر المفتاح حتى يقدر يُرسل أكثر.",
-          "en": "It shortens the key so it can be sent more often."
-        },
-        {
-          "ar": "يشفّر المفتاح حتى يقدر يسافر مكشوفاً.",
-          "en": "It encrypts the key so it can travel in the clear."
-        }
-      ],
-      "concept_id": "asym_strength_distribution",
-      "explanation": {
-        "ar": "لأن مفتاح التشفير عام، فالطرفان ما يحتاجان يتفقان على سرّ مسبقاً.",
-        "en": "Because the encryption key is public, the two sides never have to agree on a secret beforehand."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "بeyond التشفير، شنو غير ذلك يدعمه التشفير غير المتماثل حسب الفصل؟",
-        "en": "Beyond encryption, what else does the chapter say asymmetric cryptography supports?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "هش مقاوم للتصادم لأي مدخل.",
-          "en": "Collision-resistant hashing of arbitrary input."
-        },
-        {
-          "ar": "تدوير مفاتيح آلي دون تدخل المستخدم.",
-          "en": "Automatic key rotation without user action."
-        },
-        {
-          "ar": "التواقيع الرقمية والمصادقة.",
-          "en": "Digital signatures and authentication."
-        },
-        {
-          "ar": "تشفير كمّي أسرع من الشيفرات المتماثلة.",
+          "ar": "تشفير البيانات الكبيرة بكفاءة أعلى من المتماثل.",
           "en": "Faster bulk encryption than symmetric ciphers."
+        },
+        {
+          "ar": "تدوير المفاتيح تلقائياً من دون تدخل المستخدم.",
+          "en": "Automatic key rotation without user involvement."
         }
       ],
       "concept_id": "asym_strength_signatures",
@@ -488,29 +328,29 @@
       }
     },
     {
-      "id": "q16",
+      "id": "q11",
       "stem": {
-        "ar": "شنو يسمّيه الفصل أساساً يقوم عليه التشفير غير المتماثل؟",
-        "en": "What does the chapter call asymmetric encryption the foundation of?"
+        "ar": "ما البنية التحتية التي يعتمد تأسيسها على التشفير اللامتماثل؟",
+        "en": "Which infrastructure relies on asymmetric cryptography as a foundation?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "البنية التحتية للمفاتيح العامة — الشهادات و HTTPS والبريد الآمن.",
-          "en": "Public key infrastructure — certificates, HTTPS and secure email."
+          "ar": "التجزئة وتوافق البلوك تشين وحدهما ضمن الشبكات.",
+          "en": "Hashing and blockchain consensus mechanisms alone."
         },
         {
-          "ar": "تبادل المفاتيح المتماثل وتشفير الأقراص، ولا شي غير ذلك.",
-          "en": "Symmetric key exchange and disk encryption, and nothing else."
+          "ar": "الشهادات وHTTPS والبريد الآمن تعتمد على PKI.",
+          "en": "Public key infrastructure, certificates, HTTPS and secure email."
         },
         {
-          "ar": "دوال الهاش وآليات توافق سلسلة الكتل وحدها.",
-          "en": "Hash functions and blockchain consensus mechanisms alone."
+          "ar": "قواعد الجدار الناري وأنظمة كشف التسلل فقط.",
+          "en": "Firewall rules and intrusion detection systems alone in a network."
         },
         {
-          "ar": "قواعد الجدار الناري وأنظمة كشف التسلل وحدها.",
-          "en": "Firewall rule sets and intrusion detection systems alone."
+          "ar": "تبادل المفاتيح المتماثل وتشفير الأقراص فقط في الشبكات.",
+          "en": "Symmetric key exchange and disk encryption, and nothing else at all."
         }
       ],
       "concept_id": "asym_strength_pki",
@@ -520,131 +360,35 @@
       }
     },
     {
-      "id": "q17",
+      "id": "q12",
       "stem": {
-        "ar": "قديش التشفير غير المتماثل أبطأ من AES حسب الفصل؟",
-        "en": "How much slower is asymmetric encryption than AES, according to the chapter?"
+        "ar": "كم يبلغ تقريباً بطء التشفير اللامتماثل مقارنةً بـ AES؟",
+        "en": "Approximately how much slower is asymmetric encryption than AES?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 2,
       "options": [
         {
-          "ar": "أبطأ بقليل، بمعامل ثابت صغير.",
-          "en": "Slightly slower, by a small constant factor."
+          "ar": "أسرع للبيانات الكبيرة من الشيفرات المتماثلة.",
+          "en": "It is faster for large data than symmetric ciphers."
         },
         {
-          "ar": "أبطأ بالضبط مرتين لكل بايت يُعالج.",
-          "en": "Exactly twice as slow per byte processed."
+          "ar": "أبطأ بدرجة بسيطة بسبب معامل ثابت صغير.",
+          "en": "A little slower by a small constant factor."
         },
         {
-          "ar": "ليس أبطأ؛ بل هو أسرع للبيانات الكبيرة.",
-          "en": "It is not slower; it is faster for bulk data."
+          "ar": "أبطأ بمراتب كثيرة من التشفير المتماثل.",
+          "en": "Several orders slower than symmetric encryption."
         },
         {
-          "ar": "أبطأ بمراتب كثيرة.",
-          "en": "Orders of magnitude slower."
+          "ar": "أبطأ بمرتين بالضبط لكل بايت تتم معالجته.",
+          "en": "Exactly twice as slow for every byte processed."
         }
       ],
       "concept_id": "asym_weak_slower",
       "explanation": {
         "ar": "العمليات غير المتماثلة أبطأ من AES بمراتب كثيرة، ولهذا لا تُستخدم للبيانات الكبيرة.",
         "en": "Asymmetric operations are orders of magnitude slower than AES, which is why they are not used for bulk data."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "ليش التشفير غير المتماثل ما يناسب التشفير الكمّي؟",
-        "en": "Why is asymmetric encryption unsuitable for bulk encryption?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لأنه يتطلّب زوج مفاتيح جديداً لكل رسالة.",
-          "en": "It requires a fresh key pair for every single message."
-        },
-        {
-          "ar": "لأنه مستهلك للموارد وأبطأ بكثير من التشفير المتماثل.",
-          "en": "It is resource intensive and far slower than symmetric encryption."
-        },
-        {
-          "ar": "لأنه ما يقدر يشفّر رسائل أطول من حجم مفتاحه.",
-          "en": "It cannot encrypt messages longer than its key size."
-        },
-        {
-          "ar": "لأنه ينتج نصاً مشفّراً أطول دائماً من النص الأصلي.",
-          "en": "It produces ciphertext that is always longer than the plaintext."
-        }
-      ],
-      "concept_id": "asym_weak_bulk",
-      "explanation": {
-        "ar": "لكونه مستهلكاً للموارد وأبطأ بمراتب من AES، يُحجز للحمولات الصغيرة مثل مفاتيح الجلسة.",
-        "en": "Being resource intensive and orders of magnitude slower than AES, it is reserved for small payloads such as session keys."
-      }
-    },
-    {
-      "id": "q19",
-      "stem": {
-        "ar": "أي خوارزمية كمومية يسمّيها الفصل تهديداً لـ RSA و ECC؟",
-        "en": "Which quantum algorithm does the chapter name as a threat to RSA and ECC?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "خوارزمية دويتش.",
-          "en": "Deutsch's algorithm."
-        },
-        {
-          "ar": "خوارزمية سايمون.",
-          "en": "Simon's algorithm."
-        },
-        {
-          "ar": "خوارزمية شور.",
-          "en": "Shor's algorithm."
-        },
-        {
-          "ar": "خوارزمية غروفر.",
-          "en": "Grover's algorithm."
-        }
-      ],
-      "concept_id": "asym_weak_quantum",
-      "explanation": {
-        "ar": "خوارزمية شور تكسر RSA و ECC؛ أما خوارزمية غروفر فهي التي تؤثر على البحث المتماثل.",
-        "en": "Shor's algorithm can break RSA and ECC; Grover's algorithm is the one that affects symmetric search."
-      }
-    },
-    {
-      "id": "q20",
-      "stem": {
-        "ar": "أي حالات الاستخدام يعدّدها الفصل للتشفير غير المتماثل؟",
-        "en": "Which use cases does the chapter list for asymmetric encryption?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "الاتصالات الآمنة، والبريد المشفّر والموقّع، والمصادقة، ومحافظ العملات الرقمية.",
-          "en": "Secure connections, encrypted and signed email, authentication, and cryptocurrency wallets."
-        },
-        {
-          "ar": "تشفير الأقراص، وتشفير قواعد البيانات، والتشفير الكمّي للنسخ السحابية.",
-          "en": "Disk encryption, database encryption, and bulk encryption of cloud backups."
-        },
-        {
-          "ar": "هش كلمات المرور، والتحقق من سلامة الملفات، وتسجيل مسارات التدقيق.",
-          "en": "Password hashing, file integrity verification, and audit trail logging."
-        },
-        {
-          "ar": "ضبط الجدار الناري، وتقسيم الشبكة، وقوائم التحكم بالوصول.",
-          "en": "Firewall configuration, network segmentation, and access control lists."
-        }
-      ],
-      "concept_id": "asym_usecases",
-      "explanation": {
-        "ar": "الحالات المذكورة هي اتصالات TLS/SSL، وبريد PGP و S/MIME، ومفاتيح SSH والبطاقات الذكية للمصادقة، ومحافظ البيتكوين المبنية على ECC.",
-        "en": "The listed cases are TLS/SSL connections, PGP and S/MIME email, SSH keys and smartcards for authentication, and Bitcoin wallets built on ECC."
       }
     }
   ],
@@ -653,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

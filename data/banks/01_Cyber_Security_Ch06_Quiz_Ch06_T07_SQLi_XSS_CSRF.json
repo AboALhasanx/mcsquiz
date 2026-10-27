@@ -1,0 +1,372 @@
+{
+  "topic": {
+    "ar": "حقن SQL وXSS وCSRF",
+    "en": "SQL Injection, XSS and CSRF"
+  },
+  "quiz_id": "Quiz_Ch06_T07_SQLi_XSS_CSRF",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يشتغل حقن SQL؟",
+        "en": "How does SQL injection work?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مدخلات غير موثوقة تغيّر بنية استعلام قاعدة البيانات.",
+          "en": "Untrusted input alters the structure of a database query."
+        },
+        {
+          "ar": "حمولة JavaScript خبيثة تُنفّذ داخل متصفح المستخدم الموثّق.",
+          "en": "A malicious JavaScript payload runs in the user browser."
+        },
+        {
+          "ar": "يرسل المتصفح طلباً مزوراً بجلسة مستخدم مصادَق عليه.",
+          "en": "A forged request uses the victim's active session."
+        },
+        {
+          "ar": "حزمة خبيثة تستبدل مكوّناً موثوقاً ضمن التطبيق.",
+          "en": "A harmful package replaces a trusted dependency in the application."
+        }
+      ],
+      "concept_id": "w6_sqli_mechanism",
+      "explanation": {
+        "ar": "يبقى عالي الأثر حيث ما يتكلّم التطبيق مع قاعدة بيانات علائقية بلا فصل الكود عن البيانات.",
+        "en": "It remains high impact wherever the application talks to a relational database without separating code from data."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ليش رجعت تنويعات blind SQLi وحقن NoSQL للظهور؟",
+        "en": "Why have blind SQLi and NoSQL injection re-emerged?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لأن التشفير يجعل جميع الاستعلامات غير مقروءة.",
+          "en": "Because encryption makes database queries unreadable."
+        },
+        {
+          "ar": "بسبب انتشار مخازن البيانات غير العلائقية المرنة.",
+          "en": "Because flexible data stores were widely adopted."
+        },
+        {
+          "ar": "لأن قواعد البيانات العلائقية أُلغيت بالكامل.",
+          "en": "Because relational database systems were completely retired."
+        },
+        {
+          "ar": "لأن الاستعلامات ذات المعاملات لم تعد تعمل.",
+          "en": "Because parameterised queries stopped working."
+        }
+      ],
+      "concept_id": "w6_sqli_variants",
+      "explanation": {
+        "ar": "blind SQLi يستنتج النتائج من سلوك التطبيق، وحقن NoSQL يطبّق نفس الفكرة على المخازن المرنة اللي حلت محل العلائقية.",
+        "en": "Blind SQLi infers results from application behaviour, and NoSQL injection applies the same idea to the flexible stores that replaced relational ones."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ليش الاستعلامات المُعامَلة هي الدفاع الأساسي ضد حقن SQL؟",
+        "en": "Why are parameterised queries the primary defence against SQLi?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لأنها تشفّر الاستعلام قبل إرساله إلى قاعدة البيانات.",
+          "en": "Because they encrypt the query before sending it."
+        },
+        {
+          "ar": "لأن جدار الحماية يحجب الطلب قبل وصوله للتطبيق.",
+          "en": "Because they block the request at the firewall."
+        },
+        {
+          "ar": "لأن ربط القيم منفصلة يمنع تغيير بنية الاستعلام.",
+          "en": "Because bound values cannot alter query structure."
+        },
+        {
+          "ar": "لأنها تهرّب المحارف الخطرة تلقائياً قبل التنفيذ.",
+          "en": "Because they escape every dangerous character automatically."
+        }
+      ],
+      "concept_id": "w6_sqli_defence",
+      "explanation": {
+        "ar": "التهريب يعالج العَرَض، أما الربط فيثبّت بنية الاستعلام فالنص المحقون يبقى بيانات مو كود.",
+        "en": "Escaping treats the symptom, while binding keeps the query structure fixed so injected text stays data rather than becoming code."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف تشتغل البرمجة عبر المواقع؟",
+        "en": "How does cross-site scripting work?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "استعلام يُعدّل لكشف بيانات خاصة لمستخدم آخر.",
+          "en": "A query is altered to reveal another user's private database records."
+        },
+        {
+          "ar": "طلب مزوّر يُرسل مستخدماً جلسة الضحية.",
+          "en": "A forged request is sent using the victim's session."
+        },
+        {
+          "ar": "مكوّن موثوق يُستبدل بإصدار برمجي خبيث.",
+          "en": "A dependency is replaced with a malicious version."
+        },
+        {
+          "ar": "JavaScript خبيث ينفّذ في متصفح الضحية.",
+          "en": "Malicious JavaScript executes in the victim's browser."
+        }
+      ],
+      "concept_id": "w6_xss_mechanism",
+      "explanation": {
+        "ar": "السكربت المحقون يشتغل بثقة الصفحة، فيقدر يقرأ ما يراه المستخدم ويتصرّف كما يتصرّف هو.",
+        "en": "The injected script runs with the trust of the page, so it can read what the user sees and act as the user would."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ليش XSS شائعة خصوصاً بتطبيقات الصفحة الواحدة؟",
+        "en": "Why is XSS especially prevalent in single-page applications?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لأن JavaScript يهيمن على معظم مسار العرض.",
+          "en": "Because JavaScript dominates the whole rendering path."
+        },
+        {
+          "ar": "لأن HTTPS لا يعمل مع تطبيقات الصفحة الواحدة.",
+          "en": "Because modern SPAs cannot serve pages over HTTPS."
+        },
+        {
+          "ar": "لأنها تخزّن كل البيانات بالكوكيز فقط.",
+          "en": "Because SPAs store application state only in browser cookies."
+        },
+        {
+          "ar": "لأنها تعمل من دون مكوّن على الخادم.",
+          "en": "Because SPAs operate without any server-side components."
+        }
+      ],
+      "concept_id": "w6_xss_spa",
+      "explanation": {
+        "ar": "لمّا يكون المتصفح هو اللي يعرض، السكربت المحقون يشتغل بنفس السياق اللي يبني الصفحة بدل قالب سيرفر منفصل.",
+        "en": "When the browser does the rendering, injected script runs in the same context that builds the page rather than in a separate server template."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "شنو يميّز XSS القائم على DOM عن بقية التنويعات؟",
+        "en": "What makes DOM-based XSS different from other variants?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تؤثر الحمولة في سجل أخطاء الخادم فقط.",
+          "en": "The payload only changes server-side error reporting."
+        },
+        {
+          "ar": "يقع الخلل في التنفيذ على جانب العميل لا الخادم.",
+          "en": "A client-side execution flaw, not a server-side flaw."
+        },
+        {
+          "ar": "تُخزّن الحمولة في قاعدة البيانات بصورة دائمة.",
+          "en": "The payload is stored in the database permanently."
+        },
+        {
+          "ar": "يشترط الهجوم وصولاً مادياً إلى جهاز المستخدم.",
+          "en": "The attack requires physical access to the device."
+        }
+      ],
+      "concept_id": "w6_xss_dom",
+      "explanation": {
+        "ar": "بما إن الخطوة المصابة ما توصل للسيرفر أبداً، فالفلاتر على جانب السيرفر ما عندها شي تفحصه، وهذا يصعّب كشفها.",
+        "en": "Because the vulnerable step never reaches the server, server-side filters have nothing to inspect, which makes it harder to detect."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ليش ترميز المخرجات و CSP معاً يعالجان XSS؟",
+        "en": "Why do output encoding and CSP together address XSS?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الترميز يحجب الطلبات، وCSP يسجّل محاولات السكربت.",
+          "en": "Encoding blocks each request; CSP records attempted scripts."
+        },
+        {
+          "ar": "الترميز يرقّع المتصفحات، وCSP يحدّث خادم الويب.",
+          "en": "Encoding patches client browsers; CSP patches the web server."
+        },
+        {
+          "ar": "الترميز يحيّد البيانات، وCSP يقيّد تنفيذ السكربتات.",
+          "en": "Encoding neutralises data; CSP limits allowed scripts."
+        },
+        {
+          "ar": "الترميز يشفّر بيانات الصفحة، وCSP يدوّر مفاتيح الخادم.",
+          "en": "Encoding encrypts page data; CSP rotates server-side keys."
+        }
+      ],
+      "concept_id": "w6_xss_defence",
+      "explanation": {
+        "ar": "واحد يمنع تفسير الحمولة ككود، والثاني يحدّد أي كود يقدر يشتغل حتى لو تسرّب شي.",
+        "en": "One stops the payload from being interpreted as code, the other limits what code may run even if something slips through."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف يشتغل تزوير الطلب عبر المواقع؟",
+        "en": "How does cross-site request forgery work?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "شيفرة خبيثة تُنفّذ في سياق صفحة الضحية عند التصفح.",
+          "en": "A script executes inside the victim's page context."
+        },
+        {
+          "ar": "استعلام قاعدة بيانات معدّل يكشف سجلات مستخدم آخر.",
+          "en": "A query returns records belonging to another user."
+        },
+        {
+          "ar": "مكوّن موثوق يستبدله مهاجم بحزمة ضارة أثناء التحديث.",
+          "en": "A dependency is swapped for a malicious version."
+        },
+        {
+          "ar": "يرسل المتصفح طلباً مزوراً بجلسة مستخدم مصادَق عليه.",
+          "en": "A forged request uses the victim's active session."
+        }
+      ],
+      "concept_id": "w6_csrf_mechanism",
+      "explanation": {
+        "ar": "كوكي جلسة الضحية يسافر تلقائياً، فالسيرفر ما يقدر يفرّق الطلب المزوّر عن طلب شرعي.",
+        "en": "The victim's session cookie travels automatically, so the server cannot tell the forged request from a legitimate one."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ليش كوكيز SameSite ورموز مكافحة CSRF تنجح ضد CSRF؟",
+        "en": "Why do SameSite cookies and anti-CSRF tokens work against CSRF?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تمنع إرفاق كوكي الجلسة بطلب صادر من موقع آخر.",
+          "en": "They stop session cookies accompanying cross-site requests."
+        },
+        {
+          "ar": "تشفّر بيانات الطلب قبل إرسالها إلى الخادم.",
+          "en": "They encrypt request data before it reaches the server."
+        },
+        {
+          "ar": "ترفض طلبات المتصفحات غير المعروفة بصورة دائمة.",
+          "en": "They reject requests from browsers without a trusted profile."
+        },
+        {
+          "ar": "تطلب إعادة إدخال كلمة المرور قبل تنفيذ الطلب.",
+          "en": "They require users to re-enter their password for each request."
+        }
+      ],
+      "concept_id": "w6_csrf_defence",
+      "explanation": {
+        "ar": "واحد يمنع إرفاق بيانات الاعتماد تلقائياً، والثاني يثبت إن الطلب جا من صفحة التطبيق نفسه.",
+        "en": "One prevents the credential from being attached automatically, the other proves the request came from the application's own page."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "شنو يفصل CSRF عن XSS؟",
+        "en": "What separates CSRF from XSS?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "كلاهما يُمنع باستخدام ضابط أمني واحد فقط.",
+          "en": "Both are prevented by the same single control."
+        },
+        {
+          "ar": "XSS ينفّذ شيفرة؛ أما CSRF فيستغل جلسة المستخدم.",
+          "en": "XSS executes code; CSRF abuses the session without code."
+        },
+        {
+          "ar": "XSS يستغل الجلسة؛ أما CSRF فينفّذ شيفرة بالمتصفح.",
+          "en": "XSS abuses the session; CSRF executes code in the browser."
+        },
+        {
+          "ar": "كلاهما يتطلب سرقة ملف تعريف ارتباط الجلسة.",
+          "en": "Both require the attacker to steal the session cookie."
+        }
+      ],
+      "concept_id": "w6_csrf_vs_xss",
+      "explanation": {
+        "ar": "بـ XSS المهاجم يقدر يشغّل سكربت؛ وبـ CSRF المهاجم ما يشوف الرد أبداً، بس يسبّب وقوع إجراء.",
+        "en": "In XSS the attacker gets to run script; in CSRF the attacker never sees the response, only causes an action to happen."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ما التحديات الأربعة التي تواجه إدارة الثغرات الحديثة؟",
+        "en": "Which four challenges define modern vulnerability management?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "شبكات بطيئة، وتخزين مكلف، وعتاد قديم، واحتكار الموردين.",
+          "en": "Slow networks, costly storage, old hardware, and vendor lock-in."
+        },
+        {
+          "ar": "تنبيهات زائفة، وحسابات مكررة، وسجلات مفقودة، وإصدارات متأخرة.",
+          "en": "False alerts, duplicate accounts, missing logs, and delayed releases."
+        },
+        {
+          "ar": "ثغرات اليوم الصفري، وتعقيد التوريد، وشح الموارد، وتبدّل البنى.",
+          "en": "Zero-day flaws, supply-chain risk, scarce resources, and changing systems."
+        },
+        {
+          "ar": "شهادات منتهية، وكلمات مرور ضعيفة، ونسخ رديئة، وصلاحيات زائدة.",
+          "en": "Expired certificates, weak passwords, poor backups, and excess permissions."
+        }
+      ],
+      "concept_id": "w6_vm_four_challenges",
+      "explanation": {
+        "ar": "التحديات الأربعة هي ثغرات اليوم الصفري، وسلاسل التوريد المعقدة، وشح الموارد، والبنى الديناميكية.",
+        "en": "The four are zero-day exploits, complex supply chains, resource constraints and dynamic architectures."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. هدى لفتة مجيد",
+    "en": "Asst. Prof. Dr. Huda Lafta Majeed"
+  },
+  "subject_id": "01_Cyber_Security",
+  "updated_at": "2026-10-27T14:03:52Z",
+  "subject_title": "الأمن السيبراني",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

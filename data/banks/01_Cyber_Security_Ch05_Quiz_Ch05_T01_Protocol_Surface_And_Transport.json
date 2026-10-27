@@ -10,101 +10,37 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي أربع وظائف للحزم يستعرضها الفصل كأسطح هجوم؟",
-        "en": "Which four packet functions does the chapter survey as attack surfaces?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "المصادقة والتخويل والتدقيق والتنبيه.",
-          "en": "Authenticating, authorizing, auditing and alerting."
-        },
-        {
-          "ar": "تقسيم الإطارات وجسرها وتبديلها وتكرارها.",
-          "en": "Segmenting, bridging, switching and repeating frames."
-        },
-        {
-          "ar": "نقل الحزم وتحليل أسمائها وتوجيهها وتوقيتها.",
-          "en": "Moving, resolving, routing and timing packets."
-        },
-        {
-          "ar": "تشفير الحزم وضغطها وتخزينها مؤقتاً وتسجيلها.",
-          "en": "Encrypting, compressing, caching and logging packets."
-        }
-      ],
-      "concept_id": "proto_scope_four_functions",
-      "explanation": {
-        "ar": "الفصل يؤطّر خطر البروتوكولات حول ما تفعله الحزم فعلاً: تُنقل، وتُحلّل أسماؤها، وتُوجّه بين الشبكات، ويُزامن وقتها — وكل واحدة من هذي الوظائف سطح هجوم.",
-        "en": "The chapter frames protocol risk around what packets actually do: they are moved, resolved to names, routed between networks and time-synchronised, and each of those functions is a surface."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
-        "ar": "ليش ممكن يكون النظام غير آمن حتى لو كود التطبيق صحيح؟",
-        "en": "Why can a system be insecure even when its application code is correct?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لأن البروتوكولات تحته تحمل ثغرات تصميم خاصة بها.",
-          "en": "Because the protocols beneath it carry their own design weaknesses."
-        },
-        {
-          "ar": "لأن الكود الصحيح يترك دائماً واجهات تنقيح مفتوحة.",
-          "en": "Because correct code always leaves debugging interfaces open."
-        },
-        {
-          "ar": "لأن المترجمات تحذف فحوصات الأمان بصمت.",
-          "en": "Because compilers silently remove the security checks."
-        },
-        {
-          "ar": "لأن أنظمة التشغيل ترفض تطبيق أي سياسة.",
-          "en": "Because operating systems refuse to enforce any policy."
-        }
-      ],
-      "concept_id": "proto_security_not_only_code",
-      "explanation": {
-        "ar": "الموقف الأمني يعتمد مو بس على كود التطبيق، بل على سلوك وثغرات البروتوكولات اللي تنقل الحزم وتحلّل أسماءها وتوجّهها وتوقّتها.",
-        "en": "Security posture depends not only on application code but on the behaviour and weaknesses of the protocols that move, resolve, route and time the packets."
-      }
-    },
-    {
-      "id": "q3",
-      "stem": {
-        "ar": "لأي هدفين انهندست حزمة TCP/IP الكانونية؟",
-        "en": "What two goals was the canonical TCP/IP stack engineered for?"
+        "ar": "ما وظائف الحزم الأربع التي تشكل أسطح هجوم في الشبكات؟",
+        "en": "Which four packet functions create network attack surfaces?"
       },
       "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "السرية والسلامة.",
-          "en": "Confidentiality and integrity."
+          "ar": "تقسيم الإطارات وجسرها وتبديلها وتكرارها على الرابط.",
+          "en": "Segmenting, bridging, switching and repeating frames."
         },
         {
-          "ar": "المساءلة وعدم الإنكار.",
-          "en": "Accountability and non-repudiation."
+          "ar": "تشفير الحزم وضغطها وتخزينها مؤقتاً وتسجيلها.",
+          "en": "Encrypting, compressing, caching and logging packets."
         },
         {
-          "ar": "الإنتاجية والضغط.",
-          "en": "Throughput and compression."
+          "ar": "المصادقة والتخويل والتدقيق والاستجابة للحوادث.",
+          "en": "Authentication, authorization, auditing and security alert handling."
         },
         {
-          "ar": "الوصولية والصمود.",
-          "en": "Reachability and resilience."
+          "ar": "نقل حركة الشبكة وتحليلها وتوجيهها وضبط توقيتها.",
+          "en": "Moving, resolving, routing and timing network traffic."
         }
       ],
-      "concept_id": "stack_design_goals",
+      "concept_id": "proto_scope_four_functions",
       "explanation": {
-        "ar": "انهندست للوصولية — أي طرف يوصل لأي طرف — وللصمود — الشبكة تبقى شغّالة لو انكسر جزء.",
-        "en": "It was engineered for reachability, meaning any endpoint can reach any other, and for resilience, meaning the network keeps working when a part fails."
+        "ar": "الفصل يؤطّر خطر البروتوكولات حول ما تفعله الحزم فعلاً: تُنقل، وتُحلّل أسماؤها، وتُوجّه بين الشبكات، ويُزامن وقتها — وكل واحدة من هذي الوظائف سطح هجوم.",
+        "en": "protocol risk arises from what packets actually do: they are moved, resolved to names, routed between networks and time-synchronised, and each of those functions is a surface."
       }
     },
     {
-      "id": "q4",
+      "id": "q2",
       "stem": {
         "ar": "أي افتراض مبني بالبروتوكولات الأصلية هو جذر كثير من الثغرات؟",
         "en": "What assumption built into the original protocols is the root of many weaknesses?"
@@ -113,20 +49,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "إن كل الأجهزة تحت نطاق إداري واحد.",
-          "en": "That all hosts share one administrative domain."
+          "ar": "الثقة الضمنية بموثوقية العتاد نفسه.",
+          "en": "Implicit trust in the strength of the hardware."
         },
         {
           "ar": "الثقة الضمنية بالأطراف والوسطاء.",
           "en": "Implicit trust in endpoints and intermediaries."
         },
         {
-          "ar": "الثقة الضمنية بقوة العتاد.",
-          "en": "Implicit trust in the strength of the hardware."
-        },
-        {
           "ar": "إن الحزم تسلك دائماً مساراً واحداً.",
           "en": "That packets always travel on a single path."
+        },
+        {
+          "ar": "إن كل الأجهزة تحت نطاق إداري واحد.",
+          "en": "That all hosts share one administrative domain."
         }
       ],
       "concept_id": "stack_not_adversarial",
@@ -136,82 +72,14 @@
       }
     },
     {
-      "id": "q5",
-      "stem": {
-        "ar": "شنو الترقيع الأمني بهذا السياق؟",
-        "en": "What is a security retrofit in this context?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "قاعدة جدار ناري تحجب البروتوكول المعطوب.",
-          "en": "A firewall rule that blocks the vulnerable protocol."
-        },
-        {
-          "ar": "ترقيع يحذف الميزة المعطوبة بالكامل.",
-          "en": "A patch that removes the vulnerable feature entirely."
-        },
-        {
-          "ar": "إضافة بروتوكولية لاحقة تقيّد أصناف هجمات معروفة.",
-          "en": "A later protocol addition that constrains known attack classes."
-        },
-        {
-          "ar": "مكدّس بديل يتخلّى عن التشغيل البيني.",
-          "en": "A replacement stack that abandons interoperability."
-        }
-      ],
-      "concept_id": "retrofit_concept",
-      "explanation": {
-        "ar": "الترقيعات مثل DNSSEC و TLS 1.3 و QUIC و RPKI/BGPsec و DoT/DoH و RA-Guard و SEND جت لاحقاً لتقييد أصناف هجمات معروفة دون التضحية بالتشغيل البيني أو الأداء.",
-        "en": "Retrofits such as DNSSEC, TLS 1.3, QUIC, RPKI/BGPsec, DoT/DoH, RA-Guard and SEND were added later to constrain known attack classes without sacrificing interoperability or performance."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "أي ترقيع يعالج تكامل DNS، وأي واحد يعالج سريته؟",
-        "en": "Which retrofit addresses DNS integrity, and which addresses DNS confidentiality?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "DNSSEC يعطي التكامل، و DoH و DoT يعطيان السرية.",
-          "en": "DNSSEC gives integrity; DoH and DoT give confidentiality."
-        },
-        {
-          "ar": "DoH يعطي التكامل، و DNSSEC يعطي السرية.",
-          "en": "DoH gives integrity; DNSSEC gives confidentiality."
-        },
-        {
-          "ar": "RPKI يعطي التكامل، و BGPsec يعطي السرية.",
-          "en": "RPKI gives integrity; BGPsec gives confidentiality."
-        },
-        {
-          "ar": "SEND يعطي التكامل، و RA-Guard يعطي السرية.",
-          "en": "SEND gives integrity; RA-Guard gives confidentiality."
-        }
-      ],
-      "concept_id": "retrofit_map_dns",
-      "explanation": {
-        "ar": "DNSSEC (RFC 4033/4035) يتحقّق من صحة بيانات DNS، بينما DoH (RFC 8484) و DoT يشفّران قناة الاستعلام — مكمّلين مو بدائل.",
-        "en": "DNSSEC (RFC 4033/4035) validates the authenticity of DNS data, while DoH (RFC 8484) and DoT encrypt the resolution channel; they are complementary, not alternatives."
-      }
-    },
-    {
-      "id": "q7",
+      "id": "q3",
       "stem": {
         "ar": "أي ترقيع يتحقّق من أصل إعلان BGP، وأي واحد يتحقّق من المسار؟",
         "en": "Which retrofit validates the origin of a BGP announcement, and which validates the path?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 2,
       "options": [
-        {
-          "ar": "BGPsec يتحقّق من الأصل، و RPKI يتحقّق من المسار.",
-          "en": "BGPsec validates the origin; RPKI validates the path."
-        },
         {
           "ar": "DNSSEC يتحقّق من الأصل، و RPKI يتحقّق من المسار.",
           "en": "DNSSEC validates the origin; RPKI validates the path."
@@ -223,6 +91,10 @@
         {
           "ar": "RPKI يتحقّق من الأصل، و BGPsec يتحقّق من المسار.",
           "en": "RPKI validates the origin; BGPsec validates the path."
+        },
+        {
+          "ar": "BGPsec يتحقّق من الأصل، و RPKI يتحقّق من المسار.",
+          "en": "BGPsec validates the origin; RPKI validates the path."
         }
       ],
       "concept_id": "retrofit_map_routing",
@@ -232,25 +104,25 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q4",
       "stem": {
         "ar": "أي ترقيع يحمي من إعلانات الموجّه المزيّفة في IPv6؟",
         "en": "Which retrofit guards against spoofed IPv6 router advertisements?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "DoH، المحدد في RFC 793 و RFC 8446.",
-          "en": "DoH, specified in RFC 793 and RFC 8446."
-        },
-        {
-          "ar": "RA-Guard، المحدد في RFC 6105 و RFC 7113.",
-          "en": "RA-Guard, specified in RFC 6105 and RFC 7113."
+          "ar": "تصفية إعلانات الموجّه في طبقة الربط.",
+          "en": "Layer-two filtering at the access switch."
         },
         {
           "ar": "SEND، المحدد في RFC 4033 و RFC 4035.",
           "en": "SEND, specified in RFC 4033 and RFC 4035."
+        },
+        {
+          "ar": "DoH، المحدد في RFC 793 و RFC 8446.",
+          "en": "DoH, specified in RFC 793 and RFC 8446."
         },
         {
           "ar": "DNSSEC، المحدد في RFC 6480 و RFC 8205.",
@@ -264,53 +136,21 @@
       }
     },
     {
-      "id": "q9",
-      "stem": {
-        "ar": "ليش الحالة لكل اتصال اللي تخلي TCP موثوق هي نفسها نقطة ضعف؟",
-        "en": "Why is the per-connection state that makes TCP reliable also a liability?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "لأن الحالة مشتركة بين كل الأجهزة على المقطع.",
-          "en": "Because the state is shared by every host on the segment."
-        },
-        {
-          "ar": "لأن الحالة مشفّرة ولا يمكن فحصها.",
-          "en": "Because the state is encrypted and cannot be inspected."
-        },
-        {
-          "ar": "لأن الاتصالات نصف المفتوحة تستهلك موارد الـ backlog.",
-          "en": "Because half-open connections consume backlog resources."
-        },
-        {
-          "ar": "لأن الحالة تُكتب على القرص ويمكن إعادة إرسالها.",
-          "en": "Because the state is written to disk and can be replayed."
-        }
-      ],
-      "concept_id": "tcp_state_weaponized",
-      "explanation": {
-        "ar": "TCP يحتفظ بحالة لكل اتصال، فالمهاجم اللي يرسل معدلاً عالياً من SYN يقدر يجبر السيرفر يحتفظ باتصالات نصف مفتوحة لحد ما ينستنزف الـ backlog.",
-        "en": "TCP keeps per-connection state, so an adversary who sends a high rate of SYNs can force the server to hold half-open connections until the backlog is exhausted."
-      }
-    },
-    {
-      "id": "q10",
+      "id": "q5",
       "stem": {
         "ar": "شنو يهدف هجوم SYN flooding إلى استنزافه؟",
         "en": "What does a SYN flooding attack aim to exhaust?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
-        {
-          "ar": "طابور الاتصالات نصف المفتوحة.",
-          "en": "The backlog of half-open connections."
-        },
         {
           "ar": "مساحة القرص اللي يستخدمها سجل الاتصالات.",
           "en": "The disk space used by the connection log."
+        },
+        {
+          "ar": "طابور الخادم للاتصالات نصف المفتوحة.",
+          "en": "The server's queue of half-open connections."
         },
         {
           "ar": "ذاكرة المعالج اللي تستخدمها مصافحة TLS.",
@@ -328,61 +168,29 @@
       }
     },
     {
-      "id": "q11",
-      "stem": {
-        "ar": "ليش هجوم SYN flood يعتمد عادة على عناوين مصدر مزيّفة؟",
-        "en": "Why does a SYN flood usually rely on spoofed source addresses?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "حتى لا يقدر السيرفر يسجّل الهجوم بسجل الوصول.",
-          "en": "So the server cannot log the attack in its access log."
-        },
-        {
-          "ar": "حتى يقدر المهاجم يعيد استخدام نفس المنفذ لكل SYN.",
-          "en": "So the attacker can reuse the same port for every SYN."
-        },
-        {
-          "ar": "حتى يمرّر موجّه الضحية حزمة SYN أسرع.",
-          "en": "So the victim's router forwards the SYN faster."
-        },
-        {
-          "ar": "حتى لا يصل ACK الأخير وتبقى المدخلة نصف المفتوحة.",
-          "en": "So the final ACK never arrives and the half-open entry persists."
-        }
-      ],
-      "concept_id": "syn_flood_spoofing",
-      "explanation": {
-        "ar": "بمصدر مزيّف ما تُرسل حزمة ACK المكمّلة، فيحتفظ السيرفر بكل مدخلة لحد ما ينتهي مؤقت SYN-RECEIVED.",
-        "en": "With a spoofed source the completing ACK is never sent, so the server holds each entry until its SYN-RECEIVED timer expires."
-      }
-    },
-    {
-      "id": "q12",
+      "id": "q6",
       "stem": {
         "ar": "بنموذج الطابور، كيف تقلّل SYN cookies احتمال الحجب؟",
         "en": "In the queueing model, how do SYN cookies reduce the blocking probability?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 2,
       "options": [
         {
-          "ar": "تلغي الحاجة إلى مصافحة ثلاثية.",
-          "en": "They remove the need for a three-way handshake."
-        },
-        {
-          "ar": "ترفع معدّل الخدمة بعدم الاحتفاظ بحالة حتى يجي ACK.",
-          "en": "They raise the service rate by keeping no state until the ACK."
+          "ar": "تقلّل معدّل الوصول بترشيح المصادر المزيّفة.",
+          "en": "They lower the arrival rate by filtering spoofed sources."
         },
         {
           "ar": "ترفع سعة الـ backlog بتخصيص ذاكرة أكبر.",
           "en": "They raise the backlog capacity by allocating more memory."
         },
         {
-          "ar": "تقلّل معدّل الوصول بترشيح المصادر المزيّفة.",
-          "en": "They lower the arrival rate by filtering spoofed sources."
+          "ar": "لا يحجز الخادم حالة اتصال قبل وصول الإقرار.",
+          "en": "They reserve no connection state before an ACK arrives."
+        },
+        {
+          "ar": "تلغي المصافحة الثلاثية بين الطرفين بالكامل.",
+          "en": "They remove the need for a three-way handshake."
         }
       ],
       "concept_id": "syn_cookie_effect",
@@ -392,29 +200,29 @@
       }
     },
     {
-      "id": "q13",
+      "id": "q7",
       "stem": {
         "ar": "بنفس النموذج، شنو تغيّره BCP 38 للترشيح الداخلي؟",
         "en": "In the same model, what does BCP 38 ingress filtering change?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 3,
       "options": [
         {
           "ar": "تكبّر الـ backlog حتى تتّسع دائماً لـ SYN الشرعية.",
           "en": "It enlarges the backlog so honest SYNs always fit."
         },
         {
-          "ar": "تشفّر حزمة SYN حتى ما ينزوّر المصدر.",
-          "en": "It encrypts the SYN so the source cannot be forged."
-        },
-        {
-          "ar": "تقلّل معدّل الوصول بحجب المصادر المزيّفة بالمنبع.",
-          "en": "It lowers the arrival rate by blocking spoofed sources upstream."
+          "ar": "ترشيح الحزم الصادرة عند الضحية لمنع ردود الهجوم.",
+          "en": "It encrypts the SYN packet, preventing address forgery."
         },
         {
           "ar": "ترفع معدّل الخدمة بإكمال المصافحات أسرع.",
           "en": "It raises the service rate by completing handshakes faster."
+        },
+        {
+          "ar": "تقلّل معدّل الوصول بحجب المصادر المزيّفة بالمنبع.",
+          "en": "Ingress filtering blocks spoofed sources upstream."
         }
       ],
       "concept_id": "bcp38_effect",
@@ -424,39 +232,7 @@
       }
     },
     {
-      "id": "q14",
-      "stem": {
-        "ar": "بنموذج Erlang loss لهجوم SYN flood، شنو يمثّل rho؟",
-        "en": "In the Erlang loss model of a SYN flood, what does rho represent?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "الحمل المعروض، ويساوي معدّل الوصول على معدّل الخدمة.",
-          "en": "The offered load, equal to the arrival rate over the service rate."
-        },
-        {
-          "ar": "سعة الـ backlog، معبَّرة بعدد المدخلات.",
-          "en": "The backlog capacity, expressed as a number of entries."
-        },
-        {
-          "ar": "احتمال الحجب اللي تُسقط به SYN الشرعية.",
-          "en": "The blocking probability that an honest SYN is dropped."
-        },
-        {
-          "ar": "عامل تضخيم شبكة المُنعكسات.",
-          "en": "The amplification factor of the reflector network."
-        }
-      ],
-      "concept_id": "erlang_symbols",
-      "explanation": {
-        "ar": "الحمل المعروض هو معدّل وصول SYN نصف المفتوحة مقسوماً على معدّل خروجها من هذي الحالة.",
-        "en": "Offered load is the half-open SYN arrival rate divided by the rate at which half-opens leave that state."
-      }
-    },
-    {
-      "id": "q15",
+      "id": "q8",
       "stem": {
         "ar": "شنو يخبرك احتمال الحجب بمعادلة Erlang loss؟",
         "en": "What does the blocking probability in the Erlang loss formula tell you?"
@@ -465,20 +241,20 @@
       "answer": 3,
       "options": [
         {
+          "ar": "نسبة عرض النطاق التي يستهلكها الهجوم.",
+          "en": "The fraction of bandwidth used by the attack."
+        },
+        {
+          "ar": "زمن انتظار انتهاء مؤقت TCP SYN-RECEIVED للحزمة.",
+          "en": "The time until the SYN-RECEIVED timer expires."
+        },
+        {
           "ar": "احتمال وصول SYN مزيّفة إلى الـ backlog.",
           "en": "The chance that a spoofed SYN reaches the backlog."
         },
         {
-          "ar": "نسبة عرض النطاق اللي يستهلكه الهجوم.",
-          "en": "The fraction of bandwidth used by the attack."
-        },
-        {
-          "ar": "الزمن حتى انتهاء مؤقت SYN-RECEIVED.",
-          "en": "The time until the SYN-RECEIVED timer expires."
-        },
-        {
-          "ar": "احتمال إسقاط حزمة SYN شرعية تحت الحمل.",
-          "en": "The chance that a legitimate SYN is dropped under load."
+          "ar": "احتمال إسقاط SYN شرعية عند ارتفاع الحمل.",
+          "en": "The probability of dropping a legitimate SYN."
         }
       ],
       "concept_id": "erlang_blocking_meaning",
@@ -488,71 +264,39 @@
       }
     },
     {
-      "id": "q16",
-      "stem": {
-        "ar": "حسب معادلة Erlang loss، شنو يصير لمّا يصغر الـ backlog أو يكبر الحمل؟",
-        "en": "According to the Erlang loss formula, what happens when the backlog shrinks or the load grows?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "احتمال الحجب يعتمد على نوع الهجوم فقط.",
-          "en": "The blocking probability depends only on the attack type."
-        },
-        {
-          "ar": "يرتفع احتمال الحجب، فتُسقط SYN الشرعية أكثر.",
-          "en": "The blocking probability rises, so honest SYNs are dropped more."
-        },
-        {
-          "ar": "ينخفض احتمال الحجب، فتمرّ SYN الشرعية.",
-          "en": "The blocking probability falls, so honest SYNs get through."
-        },
-        {
-          "ar": "يبقى احتمال الحجب ثابتاً عند النصف.",
-          "en": "The blocking probability stays fixed at one half."
-        }
-      ],
-      "concept_id": "erlang_direction",
-      "explanation": {
-        "ar": "كل ما صغر الـ backlog أو كبر الحمل المعروض، كل ما ارتفع احتمال الحجب — ولهذا التخفيفات تهاجم السعة والحمل معاً.",
-        "en": "The smaller the backlog or the larger the offered load, the higher the blocking probability, which is why the mitigations attack both the capacity and the load."
-      }
-    },
-    {
-      "id": "q17",
+      "id": "q9",
       "stem": {
         "ar": "ليش UDP يمكّن هجمات الانعكاس من الأساس؟",
         "en": "Why does UDP make reflection attacks possible in the first place?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 0,
       "options": [
+        {
+          "ar": "لأن غياب المصافحة يمنع التحقق من عنوان المرسل.",
+          "en": "Because no handshake verifies the sender address."
+        },
         {
           "ar": "لأنه يعيد إرسال البيانات المفقودة افتراضياً.",
           "en": "Because it retransmits lost datagrams by default."
         },
         {
-          "ar": "لأنه يحجز منفذاً لكل مُنعكس معروف.",
+          "ar": "لأنه يحجز منافذ ثابتة لكل خادم انعكاس معروف.",
           "en": "Because it reserves a port for every known reflector."
         },
         {
-          "ar": "لأنه بلا مصافحة، فالمصدر ما يتحقّق منه أبداً.",
-          "en": "Because it has no handshake, so the source is never verified."
-        },
-        {
-          "ar": "لأنه يشفّر الحمولة بس مو الترويسة.",
+          "ar": "لأنه يشفّر الحمولة ويترك ترويسة الحزمة مكشوفة.",
           "en": "Because it encrypts the payload but not the header."
         }
       ],
       "concept_id": "udp_stateless_risk",
       "explanation": {
-        "ar": "انعدام الحالة بلا مصافحة يعني إن المرسل ما يثبت أبداً إنه يملك عنوان المصدر، فالضحية تكدر تستقبل ردود ما طلبتها.",
-        "en": "UDP's statelessness and lack of handshake mean a sender never proves it owns the source address, so a victim can be made to receive responses it never asked for."
+        "ar": "بسبب غياب المصافحة، لا يتحقق UDP من ملكية عنوان الإرسال؛ لذلك قد تتلقى الضحية ردوداً لم تطلبها.",
+        "en": "UDP's statelessness and lack of handshake mean a sender never proves it owns the sender address, so a victim can be made to receive responses it never asked for."
       }
     },
     {
-      "id": "q18",
+      "id": "q10",
       "stem": {
         "ar": "كيف يُعرَّف عامل التضخيم؟",
         "en": "How is the amplification factor defined?"
@@ -569,12 +313,12 @@
           "en": "Request bytes divided by response bytes."
         },
         {
-          "ar": "عدد المُنعكسات مضروباً بمعدّل الطلبات.",
-          "en": "Reflector count multiplied by the request rate."
-        },
-        {
           "ar": "عرض نطاق الضحية مقسوماً بعرض نطاق المهاجم.",
           "en": "Victim bandwidth divided by attacker bandwidth."
+        },
+        {
+          "ar": "عدد المُنعكسات مضروباً بمعدّل الطلبات.",
+          "en": "Reflector count multiplied by the request rate."
         }
       ],
       "concept_id": "amplification_factor",
@@ -584,93 +328,29 @@
       }
     },
     {
-      "id": "q19",
-      "stem": {
-        "ar": "ليش انعكاس UDP يعتمد على انتحال عنوان المصدر؟",
-        "en": "Why does UDP reflection depend on source-address spoofing?"
-      },
-      "bloom": "Analyze",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "بلا انتحال المصدر يرفض المُنعكس الاستعلام نهائياً.",
-          "en": "Without spoofing the reflector would refuse the query outright."
-        },
-        {
-          "ar": "بلا انتحال المصدر يكون الرد صغيراً بلا تأثير.",
-          "en": "Without spoofing the response would be too small to matter."
-        },
-        {
-          "ar": "بلا انتحال المصدر تلاحظ الضحية الطلب فوراً.",
-          "en": "Without spoofing the victim would notice the request immediately."
-        },
-        {
-          "ar": "بلا انتحال المصدر ترجع الردود المضخّمة للمهاجم نفسه.",
-          "en": "Without spoofing the amplified replies would return to the attacker."
-        }
-      ],
-      "concept_id": "reflection_requires_spoofing",
-      "explanation": {
-        "ar": "الضحية تستقبل الترافيك بس لأن الاستعلام حمل عنوانها، ولهذا الترشيح الداخلي بشبكات المنبع هو الحل البنيوي.",
-        "en": "The victim only receives the traffic because the query carried its address, which is precisely why ingress filtering at the source networks is the structural fix."
-      }
-    },
-    {
-      "id": "q20",
-      "stem": {
-        "ar": "ليش كان أمر monlist في NTP خطيراً؟",
-        "en": "Why was the NTP monlist command dangerous?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "كان يعطّل المصادقة لكل الاستعلامات اللاحقة.",
-          "en": "It disabled authentication for all later queries."
-        },
-        {
-          "ar": "كان يرد قائمة كبيرة، فيعطي عامل تضخيم عالياً جداً.",
-          "en": "It returned a large list, giving a very high amplification."
-        },
-        {
-          "ar": "كان يسمح للمهاجم بإعادة كتابة ساعة السيرفر.",
-          "en": "It allowed an attacker to rewrite the server's clock."
-        },
-        {
-          "ar": "كان يكشف المفتاح الخاص للسيرفر لأي عميل.",
-          "en": "It exposed the server's private key to any client."
-        }
-      ],
-      "concept_id": "ntp_monlist",
-      "explanation": {
-        "ar": "NTP يشتغل فوق UDP بلا مصافحة، و monlist كان يرد بقائمة أقران طويلة، فكان عامل التضخيم مرتفعاً بشكل خطير إلى أن تم ترقيعه وتعطيله على نطاق واسع.",
-        "en": "NTP runs over UDP without a handshake, and monlist answered with a long peer list, so the amplification factor was dangerously high until it was patched and widely disabled."
-      }
-    },
-    {
-      "id": "q21",
+      "id": "q11",
       "stem": {
         "ar": "شنو يدمج QUIC، وفوق شنو يشتغل؟",
         "en": "What does QUIC integrate, and where does it run?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "DNSSEC مدمجاً في المحلّل، فوق UDP.",
-          "en": "DNSSEC integrated into the resolver, running over UDP."
+          "ar": "يحمي IPsec طبقة الشبكة فوق TCP.",
+          "en": "IPsec protects the network layer over TCP."
         },
         {
-          "ar": "IPsec مدمجاً في طبقة الشبكة، فوق TCP.",
-          "en": "IPsec integrated into the network layer, running over TCP."
+          "ar": "يعمل TLS 1.3 ضمن طبقة النقل فوق UDP.",
+          "en": "TLS 1.3 runs within the transport over UDP."
         },
         {
-          "ar": "TLS 1.3 مدمجاً في طبقة النقل، فوق UDP.",
-          "en": "TLS 1.3 integrated into the transport, running over UDP."
+          "ar": "يعمل TLS 1.2 فوق TCP، وتحته طبقة IP.",
+          "en": "TLS 1.2 runs above TCP, with IP underneath."
         },
         {
-          "ar": "TLS 1.2 فوق TCP، فوق IP.",
-          "en": "TLS 1.2 layered on top of TCP, running over IP."
+          "ar": "يعمل DNSSEC في تحليل DNS عبر UDP.",
+          "en": "DNSSEC runs during DNS resolution over UDP."
         }
       ],
       "concept_id": "quic_integration",
@@ -680,29 +360,29 @@
       }
     },
     {
-      "id": "q22",
+      "id": "q12",
       "stem": {
         "ar": "شنو المقايضة الأمنية لتبنّي QUIC؟",
         "en": "What is the security trade-off of adopting QUIC?"
       },
       "bloom": "Analyze",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "يسدّ المراقبة السلبية والحقن، بس ينقل التعقيد لمساحة المستخدم.",
-          "en": "It closes passive observation and injection but moves complexity into user space."
+          "ar": "يسرّع المصافحة، لكنه يعطل ترحيل الاتصال.",
+          "en": "It speeds the handshake but disables connection migration."
         },
         {
-          "ar": "يسدّ حجب الخدمة، بس يضعّف مصادقة السيرفرات.",
-          "en": "It closes denial of service but weakens the authentication of servers."
+          "ar": "يخفف حجب الخدمة، لكنه يضعف مصادقة الخوادم.",
+          "en": "It limits denial of service but weakens server authentication."
         },
         {
-          "ar": "يلغي الحاجة للشهادات، بس يكشف مفاتيح الجلسة.",
-          "en": "It removes the need for certificates but exposes the session keys."
+          "ar": "يمنع الرصد والحقن وينقل التعقيد للمستخدم.",
+          "en": "It shifts complexity into user-space stacks and middleboxes."
         },
         {
-          "ar": "يسرّع المصافحة، بس يعطّل ترحيل الاتصال.",
-          "en": "It speeds up the handshake but disables connection migration."
+          "ar": "يلغي الشهادات، لكنه يكشف مفاتيح الجلسة.",
+          "en": "It removes certificate needs but exposes session keys."
         }
       ],
       "concept_id": "quic_tradeoff",
@@ -717,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

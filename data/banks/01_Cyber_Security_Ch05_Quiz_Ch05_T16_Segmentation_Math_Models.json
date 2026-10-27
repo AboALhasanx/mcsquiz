@@ -14,23 +14,23 @@
         "en": "How is the risk of a single segment expressed?"
       },
       "bloom": "Remember",
-      "answer": 2,
+      "answer": 3,
       "options": [
-        {
-          "ar": "احتمال التهديد مقسوماً على درجة الثغرة.",
-          "en": "Threat probability divided by the vulnerability score."
-        },
-        {
-          "ar": "متوسط احتمال التهديد والثغرة.",
-          "en": "The average of threat probability and vulnerability."
-        },
-        {
-          "ar": "احتمال التهديد مضروباً بدرجة الثغرة.",
-          "en": "Threat probability times the vulnerability score."
-        },
         {
           "ar": "احتمال التهديد زائد درجة الثغرة.",
           "en": "Threat probability plus the vulnerability score."
+        },
+        {
+          "ar": "متوسط الاحتمالين، للتهديد والثغرة.",
+          "en": "The average of threat probability and vulnerability."
+        },
+        {
+          "ar": "احتمال التهديد ÷ درجة الثغرة الأمنية.",
+          "en": "Threat probability divided by the vulnerability score."
+        },
+        {
+          "ar": "احتمال التهديد × درجة الثغرة الأمنية.",
+          "en": "Threat probability times the vulnerability score."
         }
       ],
       "concept_id": "mm_segment_risk",
@@ -53,16 +53,16 @@
           "en": "The sum of the per-segment risks."
         },
         {
-          "ar": "حاصل ضرب مخاطر القطاعات.",
-          "en": "The product of the per-segment risks."
+          "ar": "متوسط مخاطر القطاعات.",
+          "en": "The average of the per-segment risks."
         },
         {
           "ar": "أقصى خطر قطاع منفرد.",
           "en": "The maximum per-segment risk alone."
         },
         {
-          "ar": "متوسط مخاطر القطاعات.",
-          "en": "The average of the per-segment risks."
+          "ar": "حاصل ضرب مخاطر القطاعات.",
+          "en": "The product of the per-segment risks."
         }
       ],
       "concept_id": "mm_net_risk",
@@ -78,12 +78,8 @@
         "en": "How is the effective risk after segmentation expressed?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 2,
       "options": [
-        {
-          "ar": "معامل التقسيم زائد المخاطر الكلية.",
-          "en": "The segmentation factor plus the aggregate risk."
-        },
         {
           "ar": "المخاطر الكلية مقسومة على معامل التقسيم.",
           "en": "The aggregate risk divided by the segmentation factor."
@@ -95,6 +91,10 @@
         {
           "ar": "معامل التقسيم مضروباً بالمخاطر الكلية.",
           "en": "The segmentation factor times the aggregate risk."
+        },
+        {
+          "ar": "معامل التقسيم زائد المخاطر الكلية.",
+          "en": "The segmentation factor plus the aggregate risk."
         }
       ],
       "concept_id": "mm_alpha",
@@ -110,23 +110,23 @@
         "en": "What does a segmentation factor of one mean?"
       },
       "bloom": "Understand",
-      "answer": 1,
+      "answer": 3,
       "options": [
         {
           "ar": "كل القطاعات متساوية بالثغرة.",
           "en": "That the segments are all equally vulnerable."
         },
         {
-          "ar": "ماكو عزل، فالخطر الكامل يبقى.",
-          "en": "That no isolation exists, so the full risk remains."
+          "ar": "الخطر تضاعف عن خط الأساس.",
+          "en": "That the risk has doubled from the baseline."
         },
         {
           "ar": "العزل تام والخطر يختفي.",
           "en": "That isolation is perfect and risk disappears."
         },
         {
-          "ar": "الخطر تضاعف عن خط الأساس.",
-          "en": "That the risk has doubled from the baseline."
+          "ar": "ماكو عزل فيبقى الخطر الكامل.",
+          "en": "No isolation exists, so baseline risk remains."
         }
       ],
       "concept_id": "mm_alpha_range",
@@ -138,91 +138,27 @@
     {
       "id": "q5",
       "stem": {
-        "ar": "شنو يدلّ عليه معامل تقسيم يقترب من الصفر؟",
-        "en": "What does a segmentation factor approaching zero indicate?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "إن كل قطاع مكشوف بالكامل.",
-          "en": "That every segment is fully exposed."
-        },
-        {
-          "ar": "إن نموذج المخاطر انهار.",
-          "en": "That the risk model has broken down."
-        },
-        {
-          "ar": "عزل شبه تام، كما في التقسيم الدقيق.",
-          "en": "Near-total isolation, as in micro segmentation."
-        },
-        {
-          "ar": "إن الشبكة بلا قطاعات أبداً.",
-          "en": "That the network has no segments at all."
-        }
-      ],
-      "concept_id": "mm_alpha_one",
-      "explanation": {
-        "ar": "التقسيم الدقيق بالأنظمة الافتراضية يدفع المعامل قرب الصفر، وهذا ينهار بالرقم الكلي.",
-        "en": "Micro segmentation in virtualised systems drives the factor close to zero, which collapses the aggregate figure."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "أي تقنية تدفع معامل التقسيم أقرب للصفر؟",
-        "en": "Which technique pushes the segmentation factor closest to zero?"
-      },
-      "bloom": "Analyze",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "التقسيم الدقيق على مستوى الحِمل.",
-          "en": "Micro segmentation at the workload level."
-        },
-        {
-          "ar": "فصل VLAN داخل مبدّل واحد.",
-          "en": "VLAN separation inside one switch."
-        },
-        {
-          "ar": "تقسيم نطاق عناوين واحد.",
-          "en": "Subnetting a single address range."
-        },
-        {
-          "ar": "جدار ناري عند الحافة.",
-          "en": "A perimeter firewall at the edge."
-        }
-      ],
-      "concept_id": "mm_alpha_zero",
-      "explanation": {
-        "ar": "كل ما كان الحدّ أدق، قلّ الاتصال غير الضروري الباقي، وهذا بالضبط اللي يقيسه المعامل.",
-        "en": "The finer the boundary, the less unnecessary communication survives, which is exactly what the factor is measuring."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
         "ar": "كيف يُعبَّر عن احتمال نجاح الهجوم عبر كل الطبقات؟",
         "en": "How is the probability that an attack succeeds across all layers expressed?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 2,
       "options": [
-        {
-          "ar": "مجموع احتمال فشل كل طبقة.",
-          "en": "The sum of each layer's failure probability."
-        },
         {
           "ar": "حاصل ضرب احتمال نجاح كل طبقة.",
           "en": "The product of each layer's success probability."
         },
         {
-          "ar": "متوسط احتمالات الفشل.",
+          "ar": "متوسط احتمال فشل الطبقات.",
           "en": "The average of the failure probabilities."
         },
         {
-          "ar": "حاصل ضرب احتمال فشل كل طبقة.",
+          "ar": "حاصل ضرب احتمالات فشل الطبقات.",
           "en": "The product of each layer's failure probability."
+        },
+        {
+          "ar": "مجموع احتمالات فشل الطبقات.",
+          "en": "The sum of each layer's failure probability."
         }
       ],
       "concept_id": "mm_p_success",
@@ -232,57 +168,25 @@
       }
     },
     {
-      "id": "q8",
-      "stem": {
-        "ar": "شنو يمثّل رمز احتمال كل طبقة؟",
-        "en": "What does the symbol for each layer's probability represent?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "عدد الضوابط داخل تلك الطبقة.",
-          "en": "The number of controls inside this layer."
-        },
-        {
-          "ar": "احتمال فشل تلك الطبقة بعينها.",
-          "en": "The probability that this particular layer fails."
-        },
-        {
-          "ar": "احتمال كشف تلك الطبقة بشكل صحيح.",
-          "en": "The probability that this layer detects correctly."
-        },
-        {
-          "ar": "كلفة تشغيل تلك الطبقة سنوياً.",
-          "en": "The cost of operating this layer per year."
-        }
-      ],
-      "concept_id": "mm_q_meaning",
-      "explanation": {
-        "ar": "هو احتمال فشل من منظور المهاجم، ولهذا النجاح يتطلّب ضربها.",
-        "en": "It is a failure probability from the attacker's point of view, which is why success requires multiplying them."
-      }
-    },
-    {
-      "id": "q9",
+      "id": "q6",
       "stem": {
         "ar": "بمتوسط احتمال فشل 0.2 عبر خمس طبقات، شنو احتمال النجاح؟",
         "en": "With an average layer failure probability of 0.2 across five layers, what is the success probability?"
       },
       "bloom": "Analyze",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "حوالي واحد بالمئة، احتمال الفشل مقسوماً على خمسة.",
-          "en": "About one percent, the failure probability divided by five."
-        },
-        {
-          "ar": "حوالي ثمانين بالمئة، مكمّل الفشل.",
+          "ar": "حوالي ثمانين بالمئة، وهي قيمة مكمّلة للفشل الكلي.",
           "en": "About eighty percent, the complement of failure."
         },
         {
-          "ar": "حوالي 0.032 بالمئة، لأن 0.2 أسّ خمسة رقم ضئيل.",
+          "ar": "حوالي 0.032%، لأن (0.2)^5 قيمة صغيرة جداً.",
           "en": "About 0.032 percent, since the fifth power of 0.2 is tiny."
+        },
+        {
+          "ar": "حوالي 1%، وهو احتمال الفشل مقسوماً على خمسة.",
+          "en": "About one percent, the failure probability divided by five."
         },
         {
           "ar": "حوالي عشرين بالمئة، متوسط احتمال الفشل.",
@@ -296,61 +200,29 @@
       }
     },
     {
-      "id": "q10",
-      "stem": {
-        "ar": "ليش يوصف التخفيض بأنه أُسّي مو خطي؟",
-        "en": "Why is the reduction described as exponential rather than linear?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "لأن كل طبقة إضافية تضرب بنفس الكسر مرة ثانية.",
-          "en": "Because each extra layer multiplies by the same fraction again."
-        },
-        {
-          "ar": "لأن عدد الطبقات ينمو أُسّياً مع الوقت.",
-          "en": "Because the number of layers grows exponentially over time."
-        },
-        {
-          "ar": "لأن احتمال الهجوم يُقاس بمقياس لوغاريتمي.",
-          "en": "Because the attack probability is measured on a log scale."
-        },
-        {
-          "ar": "لأن الخطر يُقسَّم بالتساوي على الطبقات.",
-          "en": "Because the risk is divided equally among the layers."
-        }
-      ],
-      "concept_id": "mm_exponential",
-      "explanation": {
-        "ar": "مضروب ثابت يُطبَّق مراراً هو تعريف التلاشي الهندسي، وهذا اللي يخلي العمق مربحاً بهذي الحدة.",
-        "en": "A constant multiplier applied repeatedly is the definition of geometric decay, which is what makes depth pay off so sharply."
-      }
-    },
-    {
-      "id": "q11",
+      "id": "q7",
       "stem": {
         "ar": "ليش معادلة الدفاع تضرب واحد ناقص الخفض، ومعادلة الهجوم تضرب الفشل؟",
         "en": "Why does the defence formula multiply one-minus-reduction while the attack formula multiplies failure?"
       },
       "bloom": "Analyze",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "هما نفس المعادلة بحروف مختلفة.",
-          "en": "They are the same formula written with different letters."
+          "ar": "الأولى تقيس ما يبقى من الضوابط، والثانية ما يلزم فشله.",
+          "en": "One tracks surviving controls; the other tracks failures."
         },
         {
-          "ar": "واحدة للشبكات والثانية للمضيفين فقط.",
+          "ar": "الأولى تخص الشبكات، والثانية تخص الأنظمة المضيفة فقط.",
           "en": "One applies to networks, the other only to hosts."
         },
         {
-          "ar": "واحدة بالمال والثانية بالاحتمال.",
-          "en": "One is measured in money, the other in probability."
+          "ar": "هما معادلتان مختلفتان بالرموز فقط دون تغيير المعنى.",
+          "en": "They are the same formula written with different letters."
         },
         {
-          "ar": "واحدة تتتبّع ما يبقى، والثانية ما لازم يفشل.",
-          "en": "One tracks what survives, the other tracks what must go wrong."
+          "ar": "الأولى تقاس بالمال، والثانية باحتمال نجاح الهجوم.",
+          "en": "One is measured in money, the other in probability."
         }
       ],
       "concept_id": "mm_defence_vs_attack",
@@ -360,7 +232,7 @@
       }
     },
     {
-      "id": "q12",
+      "id": "q8",
       "stem": {
         "ar": "كيف تُعبَّر فعالية التقسيم الدقيق؟",
         "en": "How is micro segmentation effectiveness expressed?"
@@ -369,282 +241,26 @@
       "answer": 1,
       "options": [
         {
-          "ar": "المسموح مضروباً بإجمالي الاتصالات.",
-          "en": "Allowed communications times total communications."
-        },
-        {
-          "ar": "إجمالي الاتصالات ناقص المسموح، على الإجمالي.",
-          "en": "Total communications minus allowed, over total."
-        },
-        {
           "ar": "الاتصالات المسموح بها على إجمالي الاتصالات.",
           "en": "Allowed communications over total communications."
         },
         {
-          "ar": "إجمالي الاتصالات مقسوماً على المسموح.",
+          "ar": "الاتصالات المسموحة ÷ إجمالي الاتصالات الكلي.",
+          "en": "Total communications minus allowed, over total."
+        },
+        {
+          "ar": "إجمالي الاتصالات مقسوماً على الاتصالات المسموحة.",
           "en": "Total communications divided by allowed ones."
+        },
+        {
+          "ar": "الاتصالات المسموحة مضروبة بإجمالي الاتصالات.",
+          "en": "Allowed communications times total communications."
         }
       ],
       "concept_id": "mm_emicro",
       "explanation": {
         "ar": "يقيس كسر الاتصال اللي أزالته السياسة، فيرتفع كل ما احتُوي ترافيك غير ضروري.",
         "en": "It measures the fraction of communication that policy removed, so it rises as unnecessary traffic is contained."
-      }
-    },
-    {
-      "id": "q13",
-      "stem": {
-        "ar": "شنو تدلّ عليه فعالية عالية للتقسيم الدقيق؟",
-        "en": "What does a high micro segmentation effectiveness score indicate?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "إن سياسة التقسيم ما انطبّقت.",
-          "en": "That the segmentation policy has not been applied."
-        },
-        {
-          "ar": "إن الشبكة عندها حواف أكثر من قبل.",
-          "en": "That the network has more edges than before."
-        },
-        {
-          "ar": "إن معظم الاتصال غير الضروري احتُوي.",
-          "en": "That most unnecessary communication has been contained."
-        },
-        {
-          "ar": "إن معظم الاتصال ما زال مسموحاً.",
-          "en": "That most communication is still allowed through."
-        }
-      ],
-      "concept_id": "mm_emicro_meaning",
-      "explanation": {
-        "ar": "النتيجة هي حصة المحادثات اللي رفضتها السياسة، فالقيمة العالية تعني إن السياسة فعلاً تضيّق المخطّط.",
-        "en": "The score is the share of conversations that policy denied, so a high value means the policy is actually narrowing the graph."
-      }
-    },
-    {
-      "id": "q14",
-      "stem": {
-        "ar": "أي أربع حالات يستخدمها نموذج Markov للثقة الصفرية؟",
-        "en": "Which four states does the Zero Trust Markov model use?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "الطلب والتحقّق والمنح المشروط والرفض.",
-          "en": "Request, verification, conditional grant and denial."
-        },
-        {
-          "ar": "الدخول والخروج والمهلة الخاملة وانتهاء الجلسة.",
-          "en": "Login, logout, idle timeout and session expiry."
-        },
-        {
-          "ar": "الاتصال والنقل والإغلاق وإعادة الضبط.",
-          "en": "Connect, transfer, close and reset the socket."
-        },
-        {
-          "ar": "التشفير وفكّه والتوقيع والتحقّق.",
-          "en": "Encrypt, decrypt, sign and verify a message."
-        }
-      ],
-      "concept_id": "mm_markov_states",
-      "explanation": {
-        "ar": "السلسلة تمشي من طلب وصول عبر التحقّق إلى إما وصول مشروط أو رفض وحجر.",
-        "en": "The chain runs from an access request through verification to either conditional access or denial and quarantine."
-      }
-    },
-    {
-      "id": "q15",
-      "stem": {
-        "ar": "كيف يُعرَّف توزيع الحالة المستقرة لتلك السلسلة؟",
-        "en": "How is the steady-state distribution of that chain defined?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "المتجه اللي يساوي مقلوب مصفوفة الانتقال.",
-          "en": "The vector equal to the transition matrix inverted."
-        },
-        {
-          "ar": "مجموع كل احتمالات الانتقال بسطر واحد.",
-          "en": "The sum of all transition probabilities in a row."
-        },
-        {
-          "ar": "الحالة الابتدائية مضروبة بعدد الخطوات.",
-          "en": "The initial state multiplied by the number of steps."
-        },
-        {
-          "ar": "المتجه اللي يساوي نفسه مضروباً بمصفوفة الانتقال.",
-          "en": "The vector equal to itself times the transition matrix."
-        }
-      ],
-      "concept_id": "mm_markov_steady",
-      "explanation": {
-        "ar": "الحالة المستقرة توزيع تتركه مصفوفة الانتقال بلا تغيير، ومجموع مدخلاته لازم يساوي واحد.",
-        "en": "A steady state is a distribution that the transition matrix leaves unchanged, and its entries must sum to one."
-      }
-    },
-    {
-      "id": "q16",
-      "stem": {
-        "ar": "شنو تعكسه احتمالات الانتقال بتلك السلسلة؟",
-        "en": "What do the transition probabilities in that chain reflect?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "كلفة ترخيص مزوّد الهوية.",
-          "en": "The cost of the identity provider licence."
-        },
-        {
-          "ar": "صرامة خطوة التحقّق.",
-          "en": "The rigour of the verification step."
-        },
-        {
-          "ar": "عرض نطاق الشبكة الداخلية.",
-          "en": "The bandwidth of the internal network."
-        },
-        {
-          "ar": "عدد المستخدمين بكل قسم.",
-          "en": "The number of users in each department."
-        }
-      ],
-      "concept_id": "mm_markov_strictness",
-      "explanation": {
-        "ar": "التحقّق الأصرم يغيّر كم مرة توصل الجلسات لحالة المنح بدل ما تُرفض.",
-        "en": "Stricter verification changes how often sessions reach the granted state rather than being refused."
-      }
-    },
-    {
-      "id": "q17",
-      "stem": {
-        "ar": "شنو يُقلَّل لمّا يصير التحقّق صارماً؟",
-        "en": "What is minimised when verification is made strict?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "كلفة التشفير لكل جلسة.",
-          "en": "The encryption overhead per session."
-        },
-        {
-          "ar": "عدد القطاعات بالشبكة.",
-          "en": "The number of segments in the network."
-        },
-        {
-          "ar": "احتمال الاختراق في الحالة المستقرة.",
-          "en": "The steady-state probability of compromise."
-        },
-        {
-          "ar": "عدد المستخدمين اللي يحتاجون وصولاً.",
-          "en": "The number of users who need access."
-        }
-      ],
-      "concept_id": "mm_markov_goal",
-      "explanation": {
-        "ar": "التحقّق الصارم ينزّل الاحتمال طويل الأمد للوصول لحالة المنح لهوية خاطئة.",
-        "en": "Strict verification lowers the long-run chance of landing in the granted state for the wrong principal."
-      }
-    },
-    {
-      "id": "q18",
-      "stem": {
-        "ar": "شنو يفرض service mesh مثل Istio؟",
-        "en": "What does a service mesh such as Istio enforce?"
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "اتصالاً مشفّراً وموثّقاً بين الشرق والغرب.",
-          "en": "Encrypted, authenticated east-west communication."
-        },
-        {
-          "ar": "فصلاً فيزيائياً لمضيفي الحاويات.",
-          "en": "Physical separation of the container hosts."
-        },
-        {
-          "ar": "توجيهاً بين الأنظمة المستقلة.",
-          "en": "Routing between autonomous systems."
-        },
-        {
-          "ar": "إبطال شهادات الويب العام.",
-          "en": "Certificate revocation for the public web."
-        }
-      ],
-      "concept_id": "mm_service_mesh",
-      "explanation": {
-        "ar": "الـ mesh يحمل السياسة والمصادقة المتبادلة إلى الترافيك بين الخدمات، وهناك تشتغل الهجمات الحديثة فعلاً.",
-        "en": "The mesh carries policy and mutual authentication into the traffic between services, which is where modern attacks actually operate."
-      }
-    },
-    {
-      "id": "q19",
-      "stem": {
-        "ar": "إلى شنو يمتد التقسيم السحابي المنشأ؟",
-        "en": "What does cloud-native segmentation extend to?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "الموجّهات والمبدّلات والـ hubs.",
-          "en": "Routers, switches and hubs."
-        },
-        {
-          "ar": "المستخدمين والمجموعات والأدوار.",
-          "en": "Users, groups and roles."
-        },
-        {
-          "ar": "الشهادات والمفاتيح والرموز.",
-          "en": "Certificates, keys and tokens."
-        },
-        {
-          "ar": "الحاويات والـ pods والخدمات المصغّرة.",
-          "en": "Containers, pods and microservices."
-        }
-      ],
-      "concept_id": "mm_container_scope",
-      "explanation": {
-        "ar": "التقسيم يتبع حِمل العمل، فببيئات السحابة الحدّ يُرسم حول الـ pods والخدمات.",
-        "en": "Segmentation follows the workload, so in cloud-native estates the boundary is drawn around pods and services."
-      }
-    },
-    {
-      "id": "q20",
-      "stem": {
-        "ar": "عبر شنو يُفرض التقسيم الدقيق غالباً؟",
-        "en": "Through what is micro segmentation often enforced?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "مراجعات يدوية لقواعد الجدار.",
-          "en": "Manual firewall rule reviews."
-        },
-        {
-          "ar": "الشبكات المعرّفة برمجياً.",
-          "en": "Software-defined networking."
-        },
-        {
-          "ar": "قوائم تحكّم وصول ثابتة على الموجّهات.",
-          "en": "Static access control lists on routers."
-        },
-        {
-          "ar": "تغييرات كابلات فيزيائية بالخزانة.",
-          "en": "Physical cabling changes in the rack."
-        }
-      ],
-      "concept_id": "mm_sdn",
-      "explanation": {
-        "ar": "سياسة كل حِمل تتغيّر أكثر من أن تتحمّلها قواعد العتاد، فمستوى التحكّم لازم يكون برمجياً.",
-        "en": "Per-workload policy changes too often for hardware rules, so the control plane has to be software."
       }
     }
   ],
@@ -653,7 +269,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-10-27T14:03:52Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"
