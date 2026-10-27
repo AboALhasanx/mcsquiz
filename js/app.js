@@ -1027,10 +1027,11 @@
 
   function updateSavedBadge() {
     const b = $('saved-count-badge');
-    if (!b) return;
-    const n = Object.keys(S.saved).length;
-    b.textContent = n > 99 ? '99+' : n;
-    b.classList.toggle('hidden', n === 0);
+    if (b) {
+      const n = Object.keys(S.saved).length;
+      b.textContent = n > 99 ? '99+' : n;
+      b.classList.toggle('hidden', n === 0);
+    }
     updateMenuCounts();
   }
 
@@ -4410,7 +4411,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.7.16';
+  const SHELL_VERSION = '1.7.17';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

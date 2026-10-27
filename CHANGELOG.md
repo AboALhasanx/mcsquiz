@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.17] — 2026-10-28
+
+### Changed
+- إلغاء شارة الإشعار عن أيقونة المحفوظات في الشريط العلوي نهائياً
+
+
 ## [1.7.16] — 2026-10-28
 
 ### Changed

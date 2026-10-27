@@ -151,26 +151,10 @@ body[data-quizlive="yes"] .toast-region {
 }
 .chapter-pct { font-variant-numeric: tabular-nums; font-weight: 700; }
 
-/* --- saved badge on header icon --- */
+/* --- saved badge on header icon: hidden completely per user preference --- */
 #btn-open-saved { position: relative; }
 .saved-count-badge {
-  position: absolute;
-  top: -2px;
-  inset-inline-end: -2px;
-  min-width: 17px;
-  height: 17px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  box-shadow: 0 0 0 2px var(--bg-base);
-  font-size: 0.62rem;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 3px;
-  pointer-events: none;
+  display: none !important;
 }
 
 /* --- saved view --- */
@@ -1687,7 +1671,6 @@ body:not([data-quizlive="yes"]) #btn-exit {
 :root .filter-chip.active { color: var(--accent-ink); }
 :root .menu-avatar,
 :root .podium-av { color: var(--accent-ink); }
-:root .saved-count-badge,
 :root .bell-dot { color: var(--accent-ink); }
 :root .league-vis input:checked { background: var(--accent); border-color: var(--accent); }
 :root .league-vis input:checked::after { background: var(--accent-ink); }
