@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.7.13';
+const VERSION = '1.7.14';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -156,6 +156,17 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T05_Time_Series_Representations.json',
   './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T06_Image_Spatial_Sequence_Graph.json',
   './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T07_Portability_Tradeoffs.json',
+  './data/banks/03_Data_Mining_Ch04_Quiz_Ch04_T01_Feature_Selection_Foundations.json',
+  './data/banks/03_Data_Mining_Ch04_Quiz_Ch04_T02_Filter_Methods.json',
+  './data/banks/03_Data_Mining_Ch04_Quiz_Ch04_T03_Wrapper_Methods.json',
+  './data/banks/03_Data_Mining_Ch04_Quiz_Ch04_T04_Embedded_Methods_And_Comparison.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T01_Association_Foundations.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T02_Rule_Measures.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T03_Applications_And_Challenges.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T04_Frequent_Itemsets_And_Brute_Force.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T05_Apriori.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T06_FP_Growth_And_Enumeration_Trees.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T07_Sequential_Pattern_Growth.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_ModelB_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_ModelA_SDLC_Models.json',

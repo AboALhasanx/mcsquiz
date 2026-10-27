@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "الطرائق المدمجة والمقارنة",
+    "en": "Embedded Methods and Comparison"
+  },
+  "quiz_id": "Quiz_Ch04_T04_Embedded_Methods_And_Comparison",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي تنظيم يستخدمه LASSO؟",
+        "en": "Which regularization does LASSO use?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ارتباط بيرسون",
+          "en": "Pearson correlation"
+        },
+        {
+          "ar": "استخدام تنظيم L1",
+          "en": "L1 regularization"
+        },
+        {
+          "ar": "أربع فئات رئيسية",
+          "en": "four main categories"
+        },
+        {
+          "ar": "اختبار كاي-تربيع",
+          "en": "a Chi-square test"
+        }
+      ],
+      "concept_id": "lasso_l1",
+      "explanation": {
+        "ar": "استخدام تنظيم L1",
+        "en": "L1 regularization"
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يمكن لعقوبة L1 أن تفعل ببعض المعاملات؟",
+        "en": "What can the L1 penalty do to some coefficients?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مقدار مساهمة الخصائص في تقليل عدم النقاء",
+          "en": "how much features contribute to reducing impurity"
+        },
+        {
+          "ar": "بعد إزالة كل خاصية ذات تباين فقط",
+          "en": "only after removing every feature with variance"
+        },
+        {
+          "ar": "قبل تدريب النموذج باستخدام مقاييس إحصائية",
+          "en": "before model training using statistical measures"
+        },
+        {
+          "ar": "جعل بعض المعاملات تساوي صفراً تماماً",
+          "en": "force some coefficients to become exactly zero"
+        }
+      ],
+      "concept_id": "lasso_zero",
+      "explanation": {
+        "ar": "جعل بعض المعاملات تساوي صفراً تماماً",
+        "en": "The L1 penalty can force some coefficients to become exactly zero."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "متى تختار أشجار القرار الخصائص؟",
+        "en": "When do Decision Trees select features?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عند إنشاء الشجرة",
+          "en": "when constructing the tree"
+        },
+        {
+          "ar": "قبل جمع أي مشاهدات",
+          "en": "before collecting any observations"
+        },
+        {
+          "ar": "يبدأ بكل الخصائص.",
+          "en": "Starts with all features."
+        },
+        {
+          "ar": "ضمن تدريب النموذج",
+          "en": "as part of model training"
+        }
+      ],
+      "concept_id": "tree_selection",
+      "explanation": {
+        "ar": "عند إنشاء الشجرة",
+        "en": "Decision trees select features when constructing the tree."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يمكن أن يقيس تقدير أهمية الخصائص في الغابة العشوائية؟",
+        "en": "What can Random Forest feature importance measure?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد الفروع الموجودة في شجرة البحث",
+          "en": "how many branches exist in a search tree"
+        },
+        {
+          "ar": "بعد تحويل مجموعة البيانات إلى شجرة FP فقط",
+          "en": "only after a dataset is converted into an FP-tree"
+        },
+        {
+          "ar": "مقدار مساهمة الخصائص في تقليل عدم النقاء",
+          "en": "how much features contribute to reducing impurity"
+        },
+        {
+          "ar": "مدى تكرار ظهور العناصر معاً في المعاملات",
+          "en": "how frequently items occur together in transactions"
+        }
+      ],
+      "concept_id": "rf_importance",
+      "explanation": {
+        "ar": "مقدار مساهمة الخصائص في تقليل عدم النقاء",
+        "en": "Random Forest can calculate feature importance based on how much features contribute to reducing impurity or, depending on the method, how much they affect prediction performance."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يمكن فعله بالخصائص ذات الأهمية المنخفضة جداً؟",
+        "en": "What may be done with features of very low importance?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بعد التنقيب التكراري في قاعدة بيانات مسقطة فقط",
+          "en": "only after recursively mining a projected database"
+        },
+        {
+          "ar": "بعد تحويل مجموعة البيانات إلى شجرة FP فقط",
+          "en": "only after a dataset is converted into an FP-tree"
+        },
+        {
+          "ar": "يمكن إزالة الخصائص ذات الأهمية المنخفضة جداً.",
+          "en": "Features with very low importance may be removed."
+        },
+        {
+          "ar": "تصبح الخصائص ذات الأهمية المنخفضة جداً متغير الهدف.",
+          "en": "Features with very low importance become the target variable."
+        }
+      ],
+      "concept_id": "rf_low_remove",
+      "explanation": {
+        "ar": "يمكن إزالة الخصائص ذات الأهمية المنخفضة جداً.",
+        "en": "Features with very low importance may be removed."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "متى تختار طرائق الترشيح الخصائص مقارنة بتدريب النموذج؟",
+        "en": "When do Filter Methods select features relative to model training?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قبل تدريب النموذج",
+          "en": "before model training"
+        },
+        {
+          "ar": "اختبار كاي-تربيع",
+          "en": "a Chi-square test"
+        },
+        {
+          "ar": "العلاقات غير الخطية",
+          "en": "nonlinear relationships"
+        },
+        {
+          "ar": "استخدام تنظيم L1",
+          "en": "L1 regularization"
+        }
+      ],
+      "concept_id": "filter_before_training",
+      "explanation": {
+        "ar": "قبل تدريب النموذج",
+        "en": "Filter methods select features before model training. Wrapper methods select features by repeatedly evaluating a model. Embedded methods select features as part of model training."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "متى تختار الطرائق المدمجة الخصائص؟",
+        "en": "When do Embedded Methods select features?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تقليل الكلفة الحسابية.",
+          "en": "Reduce computational cost."
+        },
+        {
+          "ar": "جزءاً من تدريب النموذج",
+          "en": "as part of model training"
+        },
+        {
+          "ar": "قبل تدريب النموذج",
+          "en": "before model training"
+        },
+        {
+          "ar": "كل العلاقات غير الخطية",
+          "en": "every nonlinear relationship"
+        }
+      ],
+      "concept_id": "embedded_during_training",
+      "explanation": {
+        "ar": "جزءاً من تدريب النموذج",
+        "en": "Filter methods select features before model training. Wrapper methods select features by repeatedly evaluating a model. Embedded methods select features as part of model training."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:57:37Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

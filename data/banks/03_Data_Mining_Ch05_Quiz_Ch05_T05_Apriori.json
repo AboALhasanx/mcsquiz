@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "خوارزمية Apriori",
+    "en": "Apriori Algorithm"
+  },
+  "quiz_id": "Quiz_Ch05_T05_Apriori",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا تساعد خوارزمية Apriori على إيجاده؟",
+        "en": "What does the Apriori algorithm help find?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تعمل الخوارزمية مستوى بعد مستوى",
+          "en": "The algorithm works level by level"
+        },
+        {
+          "ar": "تستخدم لإيجاد مجموعات العناصر المتكررة",
+          "en": "used to find frequent itemsets"
+        },
+        {
+          "ar": "كل مجموعات العناصر غير الفارغة الممكنة",
+          "en": "all possible non-empty itemsets"
+        },
+        {
+          "ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
+          "en": "none of its supersets can be frequent"
+        }
+      ],
+      "concept_id": "apriori_goal",
+      "explanation": {
+        "ar": "تستخدم لإيجاد مجموعات العناصر المتكررة",
+        "en": "The Apriori Algorithm is a frequent itemset mining algorithm used to find frequent itemsets in a transaction database and then generate association rules from them."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "إذا كانت مجموعة عناصر متكررة، فماذا تشترط خاصية Apriori لمجموعاتها الفرعية غير الفارغة؟",
+        "en": "If an itemset is frequent, what does the Apriori property require of its non-empty subsets?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تعمل الخوارزمية بمسح واحد غير مشذّب لقاعدة البيانات",
+          "en": "The algorithm works by one unpruned database pass"
+        },
+        {
+          "ar": "أن تكون كل مجموعاتها الأعلى احتواءً غير متكررة",
+          "en": "all of its supersets must be infrequent"
+        },
+        {
+          "ar": "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+          "en": "Remove candidates that contain an infrequent subset."
+        },
+        {
+          "ar": "أن تكون كل مجموعاتها الفرعية غير الفارغة متكررة أيضاً",
+          "en": "all of its non-empty subsets must also be frequent"
+        }
+      ],
+      "concept_id": "apriori_property_frequent",
+      "explanation": {
+        "ar": "أن تكون كل مجموعاتها الفرعية غير الفارغة متكررة أيضاً",
+        "en": "If an itemset is frequent, all of its non-empty subsets must also be frequent."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "إذا لم تكن مجموعة عناصر متكررة، فما حكم مجموعاتها الأعلى احتواءً؟",
+        "en": "If an itemset is not frequent, what follows for its supersets?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
+          "en": "none of its supersets can be frequent"
+        },
+        {
+          "ar": "يجب أن تكون كل مجموعاتها الأعلى احتواءً متكررة",
+          "en": "all of its supersets must be frequent"
+        },
+        {
+          "ar": "تعمل الخوارزمية من الأطول إلى الأقصر",
+          "en": "The algorithm works from longest to shortest"
+        },
+        {
+          "ar": "إضافة عنصر إلى مجموعة العناصر الحالية",
+          "en": "adding an item to the current itemset"
+        }
+      ],
+      "concept_id": "apriori_property_infrequent",
+      "explanation": {
+        "ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
+        "en": "If an itemset is not frequent, none of its supersets can be frequent."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف تتقدم خوارزمية Apriori؟",
+        "en": "How does the Apriori algorithm proceed?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
+          "en": "none of its supersets can be frequent"
+        },
+        {
+          "ar": "عندما يصبح كل ترتيب ممكن سببياً",
+          "en": "when every possible order is causal"
+        },
+        {
+          "ar": "تعمل الخوارزمية مستوى بعد مستوى",
+          "en": "The algorithm works level by level"
+        },
+        {
+          "ar": "حال العثور على عنصر مفرد متكرر",
+          "en": "as soon as one singleton is found frequent"
+        }
+      ],
+      "concept_id": "apriori_level",
+      "explanation": {
+        "ar": "تعمل الخوارزمية مستوى بعد مستوى",
+        "en": "The algorithm works level by level"
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف تولد مجموعات العناصر المرشحة ذات العنصرين؟",
+        "en": "How are candidate 2-itemsets generated?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إزالة المجموعات المرشحة التي تحتوي مجموعات فرعية متكررة فقط.",
+          "en": "Remove candidates that contain only frequent subsets."
+        },
+        {
+          "ar": "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+          "en": "Remove candidates that contain an infrequent subset."
+        },
+        {
+          "ar": "دمج مجموعات العناصر المتكررة ذات العنصر الواحد لتكوين أزواج ممكنة.",
+          "en": "Combine the frequent 1-itemsets to create possible pairs."
+        },
+        {
+          "ar": "دمج مجموعات العناصر غير المتكررة ذات العنصر الواحد لتكوين أزواج مستحيلة.",
+          "en": "Combine infrequent 1-itemsets to create impossible pairs."
+        }
+      ],
+      "concept_id": "apriori_candidates",
+      "explanation": {
+        "ar": "دمج مجموعات العناصر المتكررة ذات العنصر الواحد لتكوين أزواج ممكنة.",
+        "en": "Combine the frequent 1-itemsets to create possible pairs."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "لماذا تشذب Apriori مجموعة مرشحة؟",
+        "en": "Why does Apriori prune a candidate?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+          "en": "Remove candidates that contain an infrequent subset."
+        },
+        {
+          "ar": "أن تكون كل مجموعاتها الفرعية غير الفارغة متكررة أيضاً",
+          "en": "all of its non-empty subsets must also be frequent"
+        },
+        {
+          "ar": "دمج مجموعات العناصر المتكررة ذات العنصر الواحد لتكوين أزواج ممكنة.",
+          "en": "Combine the frequent 1-itemsets to create possible pairs."
+        },
+        {
+          "ar": "إزالة المجموعات المرشحة التي تحتوي مجموعات فرعية متكررة فقط.",
+          "en": "Remove candidates that contain only frequent subsets."
+        }
+      ],
+      "concept_id": "apriori_prune",
+      "explanation": {
+        "ar": "إزالة المجموعات المرشحة التي تحتوي مجموعة فرعية غير متكررة.",
+        "en": "Remove candidates that contain an infrequent subset."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "متى تتوقف Apriori عن تمديد مجموعات العناصر المتكررة؟",
+        "en": "When does Apriori stop extending frequent itemsets?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تستخدم لإيجاد لواحق الأنماط التسلسلية المرتبة",
+          "en": "used to find ordered suffixes of sequential patterns"
+        },
+        {
+          "ar": "إلى أن يتعذر توليد مجموعات عناصر متكررة أخرى",
+          "en": "until no more frequent itemsets can be generated"
+        },
+        {
+          "ar": "عند اختبار كل مجموعة ممكنة بالقوة الغاشمة",
+          "en": "when every possible itemset has been tested by brute force"
+        },
+        {
+          "ar": "تعمل الخوارزمية بمسح واحد غير مشذّب لقاعدة البيانات",
+          "en": "The algorithm works by one unpruned database pass"
+        }
+      ],
+      "concept_id": "apriori_stops",
+      "explanation": {
+        "ar": "إلى أن يتعذر توليد مجموعات عناصر متكررة أخرى",
+        "en": "and so on, until no more frequent itemsets can be generated."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:57:37Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "التطبيقات والتحديات",
+    "en": "Applications and Challenges"
+  },
+  "quiz_id": "Quiz_Ch05_T03_Applications_And_Challenges",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يكشف تحليل سلة السوق في البيع بالتجزئة؟",
+        "en": "What does Market Basket Analysis discover in retail?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ظهور عناصر معينة دائماً بترتيب ثابت في المعاملة",
+          "en": "certain items always occur in a fixed transaction order"
+        },
+        {
+          "ar": "المنتجات التي يشتريها الزبائن معاً على نحو متكرر",
+          "en": "products that customers frequently purchase together"
+        },
+        {
+          "ar": "توليفات أو أنماط غير مألوفة في المعاملات المالية",
+          "en": "unusual combinations or patterns in financial transactions"
+        },
+        {
+          "ar": "المعاملات التي تُجبر على أن تساوي صفراً تماماً",
+          "en": "coefficients forced to become exactly zero"
+        }
+      ],
+      "concept_id": "market_basket",
+      "explanation": {
+        "ar": "المنتجات التي يشتريها الزبائن معاً على نحو متكرر",
+        "en": "Association rules are widely used in retail to discover products that customers frequently purchase together."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يستطيع تجار التجزئة فهمه من المنتجات التي تُشترى معاً كثيراً؟",
+        "en": "What can retailers understand from products frequently bought together?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لواحق تسلسلات الزبائن",
+          "en": "customer sequence suffixes"
+        },
+        {
+          "ar": "معاملات خصائص الزبائن",
+          "en": "customer feature coefficients"
+        },
+        {
+          "ar": "مسح قاعدة المعاملات",
+          "en": "scanning the transaction database"
+        },
+        {
+          "ar": "أنماط شراء الزبائن",
+          "en": "customer purchasing patterns"
+        }
+      ],
+      "concept_id": "retail_use",
+      "explanation": {
+        "ar": "أنماط شراء الزبائن",
+        "en": "customer purchasing patterns"
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف تدعم قواعد الارتباط البيع المتقاطع؟",
+        "en": "How can association rules support cross-selling?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
+          "en": "recommend additional products to customers based on their current selections"
+        },
+        {
+          "ar": "تحول خصائص معينة دائماً إلى الصفر تماماً أثناء تدريب النموذج",
+          "en": "certain features always become exactly zero during model training"
+        },
+        {
+          "ar": "قد يصبح عدد توليفات العناصر الممكنة كبيراً جداً",
+          "en": "The number of possible item combinations can become very large"
+        },
+        {
+          "ar": "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+          "en": "their actual co-occurrence with the co-occurrence expected if they were independent"
+        }
+      ],
+      "concept_id": "cross_sell",
+      "explanation": {
+        "ar": "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
+        "en": "Association rules can help businesses recommend additional products to customers based on their current selections."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا قد يكتشف الباحثون عن الأعراض لدى مجموعة من المرضى؟",
+        "en": "What may researchers discover about symptoms in a patient group?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قد يصبح عدد توليفات العناصر الممكنة كبيراً جداً",
+          "en": "The number of possible item combinations can become very large"
+        },
+        {
+          "ar": "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+          "en": "their actual co-occurrence with the co-occurrence expected if they were independent"
+        },
+        {
+          "ar": "تكرار ظهور أعراض معينة معاً لدى مجموعة محددة من المرضى",
+          "en": "certain symptoms frequently occur together in a particular group of patients"
+        },
+        {
+          "ar": "تحول خصائص معينة دائماً إلى الصفر تماماً أثناء تدريب النموذج",
+          "en": "certain features always become exactly zero during model training"
+        }
+      ],
+      "concept_id": "healthcare_use",
+      "explanation": {
+        "ar": "تكرار ظهور أعراض معينة معاً لدى مجموعة محددة من المرضى",
+        "en": "For example, researchers may discover that certain symptoms frequently occur together in a particular group of patients."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الذي قد تساعد الأنماط الترابطية على كشفه في المعاملات المالية؟",
+        "en": "What can association patterns help identify in financial transactions?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قد يصبح عدد توليفات العناصر الممكنة كبيراً جداً",
+          "en": "The number of possible item combinations can become very large"
+        },
+        {
+          "ar": "المنتجات التي يشتريها الزبائن معاً على نحو متكرر",
+          "en": "products that customers frequently purchase together"
+        },
+        {
+          "ar": "توليفات أو أنماط غير مألوفة في المعاملات المالية",
+          "en": "unusual combinations or patterns in financial transactions"
+        },
+        {
+          "ar": "ظهور عناصر معينة دائماً بترتيب ثابت في المعاملة",
+          "en": "certain items always occur in a fixed transaction order"
+        }
+      ],
+      "concept_id": "fraud_detection",
+      "explanation": {
+        "ar": "توليفات أو أنماط غير مألوفة في المعاملات المالية",
+        "en": "Association patterns can help identify unusual combinations or patterns in financial transactions that may be associated with fraudulent activity."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما التحدي الذي قد ينشأ عند زيادة عدد العناصر؟",
+        "en": "What challenge can result as the number of items increases?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قد يصبح عدد توليفات العناصر الممكنة كبيراً جداً",
+          "en": "The number of possible item combinations can become very large"
+        },
+        {
+          "ar": "توليفات أو أنماط غير مألوفة في المعاملات المالية",
+          "en": "unusual combinations or patterns in financial transactions"
+        },
+        {
+          "ar": "الخصائص التي تقلل عدم اليقين بشأن هدف فئوي",
+          "en": "features that reduce uncertainty about a categorical target"
+        },
+        {
+          "ar": "يصبح عدد توليفات العناصر الممكنة صفراً",
+          "en": "The number of possible item combinations becomes zero"
+        }
+      ],
+      "concept_id": "rule_count_challenge",
+      "explanation": {
+        "ar": "قد يصبح عدد توليفات العناصر الممكنة كبيراً جداً",
+        "en": "The number of possible item combinations can become very large as the number of items increases."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما الصعوبة في اختيار عتبتي الدعم والثقة؟",
+        "en": "What is difficult about choosing support and confidence thresholds?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+          "en": "their actual co-occurrence with the co-occurrence expected if they were independent"
+        },
+        {
+          "ar": "قد يكون اختيار قيم مناسبة للحد الأدنى للدعم والحد الأدنى للثقة صعباً.",
+          "en": "Choosing suitable minimum support and minimum confidence values can be difficult."
+        },
+        {
+          "ar": "مجموعات العناصر التي تتكرر بما يكفي وفق عتبة الحد الأدنى للدعم",
+          "en": "itemsets that occur frequently enough according to a minimum-support threshold"
+        },
+        {
+          "ar": "الميزة الرئيسية هي معالجة مجموعات البيانات الكبيرة بكفاءة دائماً.",
+          "en": "The main advantage is always handling very large datasets efficiently."
+        }
+      ],
+      "concept_id": "threshold_challenge",
+      "explanation": {
+        "ar": "قد يكون اختيار قيم مناسبة للحد الأدنى للدعم والحد الأدنى للثقة صعباً.",
+        "en": "Choosing suitable minimum support and minimum confidence values can be difficult. Very high values may remove useful rules, while very low values may generate too many rules."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:57:37Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

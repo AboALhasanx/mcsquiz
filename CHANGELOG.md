@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.14] — 2026-10-28
+
+### Changed
+- chore: cache Data Mining chapters 4 and 5
+
+
 ## [1.7.13] — 2026-10-27
 
 ### Changed

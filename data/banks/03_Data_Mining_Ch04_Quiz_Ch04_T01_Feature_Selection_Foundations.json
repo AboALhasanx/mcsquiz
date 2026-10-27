@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "أساسيات اختيار الخصائص",
+    "en": "Feature Selection Foundations"
+  },
+  "quiz_id": "Quiz_Ch04_T01_Feature_Selection_Foundations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يحتفظ اختيار الخصائص من مجموعة البيانات؟",
+        "en": "What does feature selection retain from a dataset?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جعل النموذج أسهل تفسيراً.",
+          "en": "Make the model easier to interpret."
+        },
+        {
+          "ar": "اختيار الخصائص الأكثر صلة",
+          "en": "selecting the most relevant features"
+        },
+        {
+          "ar": "يقلل عدم اليقين بشأن الهدف",
+          "en": "reduces uncertainty about the target"
+        },
+        {
+          "ar": "قياس العلاقة بين متغيرين",
+          "en": "measures the relationship between two variables"
+        }
+      ],
+      "concept_id": "fs_definition",
+      "explanation": {
+        "ar": "اختيار الخصائص الأكثر صلة",
+        "en": "Feature selection is the process of selecting the most relevant features (attributes) from a dataset while removing irrelevant or redundant features."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الأثر الحسابي الذي قد ينتج عن اختيار الخصائص؟",
+        "en": "Which computational effect can feature selection have?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "جزءاً من تدريب النموذج",
+          "en": "as part of model training"
+        },
+        {
+          "ar": "جعل النموذج أسهل تفسيراً.",
+          "en": "Make the model easier to interpret."
+        },
+        {
+          "ar": "كل العلاقات غير الخطية",
+          "en": "every nonlinear relationship"
+        },
+        {
+          "ar": "تقليل الكلفة الحسابية.",
+          "en": "Reduce computational cost."
+        }
+      ],
+      "concept_id": "fs_reduce_cost",
+      "explanation": {
+        "ar": "تقليل الكلفة الحسابية.",
+        "en": "Reduce computational cost."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي خطر نمذجة قد يقلله اختيار الخصائص؟",
+        "en": "Which modeling risk can feature selection reduce?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقليل خطر فرط التكيّف.",
+          "en": "Reduce the risk of overfitting."
+        },
+        {
+          "ar": "تقليل الكلفة الحسابية.",
+          "en": "Reduce computational cost."
+        },
+        {
+          "ar": "أثناء عملية تدريب النموذج",
+          "en": "during the model training process"
+        },
+        {
+          "ar": "جعل النموذج أسهل تفسيراً.",
+          "en": "Make the model easier to interpret."
+        }
+      ],
+      "concept_id": "fs_overfit",
+      "explanation": {
+        "ar": "تقليل خطر فرط التكيّف.",
+        "en": "Reduce the risk of overfitting."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "إلى كم فئة رئيسية تُقسم تقنيات اختيار الخصائص عادة؟",
+        "en": "Into how many main categories are feature-selection techniques commonly divided?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "خمس فئات رئيسية",
+          "en": "five main categories"
+        },
+        {
+          "ar": "فئتين رئيسيتين",
+          "en": "two main categories"
+        },
+        {
+          "ar": "ثلاث فئات رئيسية",
+          "en": "three main categories"
+        },
+        {
+          "ar": "أربع فئات رئيسية",
+          "en": "four main categories"
+        }
+      ],
+      "concept_id": "fs_three_families",
+      "explanation": {
+        "ar": "ثلاث فئات رئيسية",
+        "en": "Feature selection techniques are commonly divided into three main categories:"
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف تختار طرائق الترشيح الخصائص؟",
+        "en": "How do Filter Methods select features?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تحسين أداء النموذج في بعض الحالات.",
+          "en": "Improve model performance in some cases."
+        },
+        {
+          "ar": "اختيار الخصائص أثناء تدريب النموذج",
+          "en": "select features during model training"
+        },
+        {
+          "ar": "استناداً إلى خصائصها الإحصائية",
+          "en": "based on their statistical characteristics"
+        },
+        {
+          "ar": "الخصائص أثناء عملية تدريب النموذج",
+          "en": "features during the model training process"
+        }
+      ],
+      "concept_id": "fs_filter_signature",
+      "explanation": {
+        "ar": "استناداً إلى خصائصها الإحصائية",
+        "en": "Filter methods select features based on their statistical characteristics, without using a data mining algorithm to evaluate the final feature subset."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا تقيّم الطرائق الغلافية؟",
+        "en": "What do Wrapper Methods evaluate?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مجموعات فرعية مختلفة من الخصائص",
+          "en": "different subsets of features"
+        },
+        {
+          "ar": "الخصائص ذات التباين المنخفض جداً",
+          "en": "features with very low variance"
+        },
+        {
+          "ar": "مجموعات البيانات الخالية من المشاهدات",
+          "en": "datasets with no observations"
+        },
+        {
+          "ar": "اختيار الخصائص أثناء تدريب النموذج",
+          "en": "select features during model training"
+        }
+      ],
+      "concept_id": "fs_wrapper_signature",
+      "explanation": {
+        "ar": "مجموعات فرعية مختلفة من الخصائص",
+        "en": "Wrapper methods use a data mining or machine learning algorithm to evaluate different subsets of features."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "متى تنفذ الطرائق المدمجة اختيار الخصائص؟",
+        "en": "When do Embedded Methods perform feature selection?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اختيار الخصائص الأكثر صلة",
+          "en": "selecting the most relevant features"
+        },
+        {
+          "ar": "أثناء عملية تدريب النموذج",
+          "en": "during the model training process"
+        },
+        {
+          "ar": "جعل النموذج أسهل تفسيراً.",
+          "en": "Make the model easier to interpret."
+        },
+        {
+          "ar": "تقليل خطر فرط التكيّف.",
+          "en": "Reduce the risk of overfitting."
+        }
+      ],
+      "concept_id": "fs_embedded_signature",
+      "explanation": {
+        "ar": "أثناء عملية تدريب النموذج",
+        "en": "Embedded methods perform feature selection during the model training process."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:57:37Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "أساسيات الأنماط الترابطية",
+    "en": "Association Pattern Foundations"
+  },
+  "quiz_id": "Quiz_Ch05_T01_Association_Foundations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما نوع الأنماط التي يجدها تنقيب الأنماط الترابطية بين العناصر؟",
+        "en": "What kind of patterns does Association Pattern Mining find among items?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مجموعات العناصر التي تظهر عناصرها بترتيب ثابت",
+          "en": "itemsets whose items occur in a fixed order"
+        },
+        {
+          "ar": "أنماط تزامن الظهور بين العناصر في مجموعة البيانات",
+          "en": "co-occurrence patterns among items in a dataset"
+        },
+        {
+          "ar": "مجموعات العناصر التي تظهر في كل معاملة بحكم التعريف",
+          "en": "itemsets that appear in every transaction by definition"
+        },
+        {
+          "ar": "الجزء الثاني من القاعدة المستنتج من المقدمة",
+          "en": "a rule's second part inferred from the antecedent"
+        }
+      ],
+      "concept_id": "assoc_definition",
+      "explanation": {
+        "ar": "أنماط تزامن الظهور بين العناصر في مجموعة البيانات",
+        "en": "Association Pattern Mining is a data mining technique used to discover interesting relationships, associations, or co-occurrence patterns among items in a dataset."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما المقصود بالعنصر في مثال مجموعة العناصر؟",
+        "en": "What is an item in an itemset example?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الجزء الثاني من القاعدة المستنتج من المقدمة",
+          "en": "a rule's second part inferred from the antecedent"
+        },
+        {
+          "ar": "عتبة حد أدنى للدعم يحددها المستخدم",
+          "en": "a minimum-support threshold selected by a user"
+        },
+        {
+          "ar": "أنماط عدم يقين الهدف قبل مشاهدة خاصية",
+          "en": "target-uncertainty patterns before observing a feature"
+        },
+        {
+          "ar": "عناصر مفردة مثل الخبز والحليب والقهوة",
+          "en": "individual elements, such as Bread, Milk, Coffee"
+        }
+      ],
+      "concept_id": "item_definition",
+      "explanation": {
+        "ar": "عناصر مفردة مثل الخبز والحليب والقهوة",
+        "en": "Items – individual elements, such as Bread, Milk, Coffee."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا تحتوي مجموعة العناصر؟",
+        "en": "What does an itemset contain?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مجموعات من العناصر مثل {Bread, Milk}",
+          "en": "collections of items, such as {Bread, Milk}"
+        },
+        {
+          "ar": "أنماط خصائص رقمية في مجموعة بيانات",
+          "en": "numerical-attribute patterns in a dataset"
+        },
+        {
+          "ar": "عتبة حد أدنى للدعم يحددها المستخدم",
+          "en": "a minimum-support threshold selected by a user"
+        },
+        {
+          "ar": "عناصر مفردة مثل الخبز والحليب والقهوة",
+          "en": "individual elements, such as Bread, Milk, Coffee"
+        }
+      ],
+      "concept_id": "itemset_definition",
+      "explanation": {
+        "ar": "مجموعات من العناصر مثل {Bread, Milk}",
+        "en": "Itemsets – collections of items, such as {Bread, Milk}."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "متى تعد مجموعة العناصر متكررة؟",
+        "en": "When is an itemset considered frequent?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
+          "en": "their actual co-occurrence with the co-occurrence expected if they were independent"
+        },
+        {
+          "ar": "قد يكون اختيار قيم مناسبة للحد الأدنى للدعم والحد الأدنى للثقة صعباً.",
+          "en": "Choosing suitable minimum support and minimum confidence values can be difficult."
+        },
+        {
+          "ar": "مجموعات العناصر التي تتكرر بما يكفي وفق عتبة الحد الأدنى للدعم",
+          "en": "itemsets that occur frequently enough according to a minimum-support threshold"
+        },
+        {
+          "ar": "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
+          "en": "recommend additional products to customers based on their current selections"
+        }
+      ],
+      "concept_id": "frequent_itemset",
+      "explanation": {
+        "ar": "مجموعات العناصر التي تتكرر بما يكفي وفق عتبة الحد الأدنى للدعم",
+        "en": "Frequent Itemsets – itemsets that occur frequently enough according to a minimum-support threshold."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف تكتب قاعدة الارتباط عادة؟",
+        "en": "How is an association rule commonly written?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "{X} × {Y}",
+          "en": "{X} × {Y}"
+        },
+        {
+          "ar": "{X} + {Y}",
+          "en": "{X} + {Y}"
+        },
+        {
+          "ar": "{X} ← {Y}",
+          "en": "{X} → {Y}"
+        },
+        {
+          "ar": "{X} = {Y}",
+          "en": "{X} = {Y}"
+        }
+      ],
+      "concept_id": "rule_form",
+      "explanation": {
+        "ar": "{X} ← {Y}",
+        "en": "· These rules are expressed in the form of “If-Then” statements, typically written as {X} → {Y}, where X and Y are different sets of items."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي جزء من القاعدة هو المقدمة؟",
+        "en": "Which part of a rule is the antecedent?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الجزء الأول من القاعدة، أي الشرط",
+          "en": "the first part of the rule, the condition"
+        },
+        {
+          "ar": "أنماط خصائص رقمية في مجموعة بيانات",
+          "en": "numerical-attribute patterns in a dataset"
+        },
+        {
+          "ar": "مجموعة معاملات ذات معرفات فريدة",
+          "en": "a collection of transactions with unique IDs"
+        },
+        {
+          "ar": "الجزء الثاني المستنتج من المقدمة",
+          "en": "the second part inferred from the antecedent"
+        }
+      ],
+      "concept_id": "antecedent",
+      "explanation": {
+        "ar": "الجزء الأول من القاعدة، أي الشرط",
+        "en": "Antecedent (X): This is the first part of the rule, the condition. It’s the set of items found in the database that you are examining for patterns. In the rule {X} →{Y}, X is the antecedent."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي جزء من القاعدة هو النتيجة؟",
+        "en": "Which part of a rule is the consequent?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عتبة الحد الأدنى للدعم",
+          "en": "the minimum-support threshold"
+        },
+        {
+          "ar": "الجزء الثاني من القاعدة",
+          "en": "the second part of the rule"
+        },
+        {
+          "ar": "مجموعة التكرارات المشاهدة",
+          "en": "the set of observed frequencies"
+        },
+        {
+          "ar": "العدد الكلي للمعاملات",
+          "en": "the total number of transactions"
+        }
+      ],
+      "concept_id": "consequent",
+      "explanation": {
+        "ar": "الجزء الثاني من القاعدة",
+        "en": "Consequent (Y): This is the second part of the rule, which is inferred from the presence of the antecedent in transactions. In the rule {X} →{Y}, Y is the consequent."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:57:37Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
