@@ -1,0 +1,372 @@
+{
+  "topic": {
+    "ar": "أساسيات Naive Bayes والاحتمالات",
+    "en": "Naive Bayes Foundations and Probability"
+  },
+  "quiz_id": "Quiz_Ch07_T04_Naive_Bayes_Foundations_And_Probability",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما المهمة التي تؤديها Naive Bayes؟",
+        "en": "What task does Naive Bayes perform?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أول قاعدة منطبقة",
+          "en": "the first matching rule"
+        },
+        {
+          "ar": "إحدى فئتين فقط",
+          "en": "one of two classes only"
+        },
+        {
+          "ar": "فروع شجرة مرتبة",
+          "en": "ordered tree branches"
+        },
+        {
+          "ar": "مستخدمة للتصنيف",
+          "en": "used for classification"
+        }
+      ],
+      "concept_id": "c7_nb_supervised",
+      "explanation": {
+        "ar": "مستخدمة للتصنيف",
+        "en": "Naive Bayes is a supervised machine learning algorithm used for classification. It predicts the class of a new record by calculating the probability that the record belongs to each possible class."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي احتمال يحسب Naive Bayes لسجل جديد؟",
+        "en": "What probability does Naive Bayes calculate for a new record?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الفئة ذات الدرجة الأعلى",
+          "en": "the class with the highest score"
+        },
+        {
+          "ar": "الاحتمال الكلي لملاحظة X",
+          "en": "overall probability of observing X"
+        },
+        {
+          "ar": "تغطية كل قاعدة منطبقة",
+          "en": "the coverage of every matching rule"
+        },
+        {
+          "ar": "ينتمي إلى كل فئة ممكنة",
+          "en": "belongs to each possible class"
+        }
+      ],
+      "concept_id": "c7_nb_output",
+      "explanation": {
+        "ar": "ينتمي إلى كل فئة ممكنة",
+        "en": "Naive Bayes is a supervised machine learning algorithm used for classification. It predicts the class of a new record by calculating the probability that the record belongs to each possible class."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا تحسب مبرهنة Bayes؟",
+        "en": "What does Bayes’ theorem calculate?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "احتمال ملاحظة X عندما تكون الفئة C",
+          "en": "probability of observing X when the class is C"
+        },
+        {
+          "ar": "احتمال الفئة C قبل أخذ X بالحسبان",
+          "en": "the probability of class C before considering X"
+        },
+        {
+          "ar": "احتمال فئة عند معرفة الدليل المشاهد",
+          "en": "the probability of a class given observed evidence"
+        },
+        {
+          "ar": "نسبة السجلات التي تغطيها خاصية",
+          "en": "the proportion of records covered by a feature"
+        }
+      ],
+      "concept_id": "c7_nb_bayes_theorem",
+      "explanation": {
+        "ar": "احتمال فئة عند معرفة الدليل المشاهد",
+        "en": "Bayes' theorem calculates the probability of a class given observed evidence:"
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يعني الاحتمال اللاحق؟",
+        "en": "What does posterior probability mean?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "احتمال الفئة C عند معرفة السمات X",
+          "en": "probability of class C given attributes X"
+        },
+        {
+          "ar": "الفئة ذات الاحتمال السابق الأدنى",
+          "en": "the class with the lowest prior probability"
+        },
+        {
+          "ar": "الفئة المتنبأ بها ذات الدرجة الأعلى",
+          "en": "the predicted class with the highest score"
+        },
+        {
+          "ar": "احتمال الفئة C قبل أخذ السمات بالحسبان",
+          "en": "probability of class C before considering attributes"
+        }
+      ],
+      "concept_id": "c7_nb_posterior",
+      "explanation": {
+        "ar": "احتمال الفئة C عند معرفة السمات X",
+        "en": "P(C | X): Posterior probability — probability of class C given attributes X."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يمثل Likelihood؟",
+        "en": "What does likelihood represent?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "احتمال فئة عند معرفة الدليل المشاهد",
+          "en": "the probability of a class given observed evidence"
+        },
+        {
+          "ar": "احتمال ملاحظة X عندما تكون الفئة C",
+          "en": "probability of observing X when the class is C"
+        },
+        {
+          "ar": "احتمال الفئة C قبل أخذ X بالحسبان",
+          "en": "the probability of class C before considering X"
+        },
+        {
+          "ar": "الفئة المتنبأ بها ذات الدرجة الأعلى",
+          "en": "the predicted class with the highest score"
+        }
+      ],
+      "concept_id": "c7_nb_likelihood",
+      "explanation": {
+        "ar": "احتمال ملاحظة X عندما تكون الفئة C",
+        "en": "P(X | C): Likelihood — probability of observing X when the class is C."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يمثل الاحتمال السابق؟",
+        "en": "What does the prior probability represent?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "احتمال الفئة C بعد أخذ السمات بالحسبان",
+          "en": "probability of class C after considering the attributes"
+        },
+        {
+          "ar": "نسبة السجلات المغطاة المصنفة بصورة صحيحة",
+          "en": "the fraction of covered records classified correctly"
+        },
+        {
+          "ar": "احتمال الفئة C قبل أخذ السمات بالحسبان",
+          "en": "probability of class C before considering the attributes"
+        },
+        {
+          "ar": "يفترض أن لكل فئة العدد نفسه من السجلات",
+          "en": "it assumes every class has the same number of records"
+        }
+      ],
+      "concept_id": "c7_nb_prior",
+      "explanation": {
+        "ar": "احتمال الفئة C قبل أخذ السمات بالحسبان",
+        "en": "P(C): Prior probability — probability of class C before considering the attributes."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا يمثل الدليل P(X)؟",
+        "en": "What does evidence P(X) represent?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تغطية كل قاعدة منطبقة",
+          "en": "the coverage of every matching rule"
+        },
+        {
+          "ar": "الاحتمال الكلي لملاحظة X",
+          "en": "overall probability of observing X"
+        },
+        {
+          "ar": "الفئة ذات الدرجة الأعلى",
+          "en": "the class with the highest score"
+        },
+        {
+          "ar": "احتمال X عند معرفة الفئة C",
+          "en": "the probability of X given class C"
+        }
+      ],
+      "concept_id": "c7_nb_evidence",
+      "explanation": {
+        "ar": "الاحتمال الكلي لملاحظة X",
+        "en": "P(X): Evidence — overall probability of observing X."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما افتراض الاستقلال الذي يجعل Naive Bayes ساذجة؟",
+        "en": "What independence assumption makes Naive Bayes naive?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مستقلة شرطياً عند معرفة الفئة",
+          "en": "conditionally independent when the class is known"
+        },
+        {
+          "ar": "يفترض أن خصائص الإدخال بلا قيم",
+          "en": "it assumes the input features have no values"
+        },
+        {
+          "ar": "نسبة السجلات التي تغطيها خاصية",
+          "en": "the proportion of records covered by a feature"
+        },
+        {
+          "ar": "احتمال الفئة C قبل أخذ X بالحسبان",
+          "en": "the probability of class C before considering X"
+        }
+      ],
+      "concept_id": "c7_nb_naive",
+      "explanation": {
+        "ar": "مستقلة شرطياً عند معرفة الفئة",
+        "en": "It is called naive because it assumes input attributes are conditionally independent when the class is known."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف يُحسب الاحتمال الشرطي عند افتراض الاستقلال الشرطي؟",
+        "en": "How is likelihood calculated under conditional independence?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حاصل ضرب",
+          "en": "a product"
+        },
+        {
+          "ar": "نسبة قسمة",
+          "en": "a quotient"
+        },
+        {
+          "ar": "متوسط عام",
+          "en": "an average"
+        },
+        {
+          "ar": "حاصل جمع",
+          "en": "a sum term"
+        }
+      ],
+      "concept_id": "c7_nb_product",
+      "explanation": {
+        "ar": "حاصل ضرب",
+        "en": "Under the conditional independence assumption, the likelihood is calculated as a product:"
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "لماذا يمكن إهمال الدليل عند مقارنة درجات الفئات المرشحة؟",
+        "en": "Why can the evidence be omitted when comparing candidate class scores?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تغطية كل قاعدة منطبقة",
+          "en": "the coverage of every matching rule"
+        },
+        {
+          "ar": "متساوٍ لكل فئة مرشحة",
+          "en": "is the same for each candidate class"
+        },
+        {
+          "ar": "الاحتمال الكلي لملاحظة X",
+          "en": "overall probability of observing X"
+        },
+        {
+          "ar": "الفئة ذات الدرجة الأعلى",
+          "en": "the class with the highest score"
+        }
+      ],
+      "concept_id": "c7_nb_evidence_compare",
+      "explanation": {
+        "ar": "متساوٍ لكل فئة مرشحة",
+        "en": "The evidence P(X) is the same for each candidate class, so it can be omitted when comparing class scores."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي فئة يتنبأ بها Naive Bayes؟",
+        "en": "Which class does Naive Bayes predict?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الاحتمال الكلي لملاحظة X",
+          "en": "overall probability of observing X"
+        },
+        {
+          "ar": "تغطية كل قاعدة منطبقة",
+          "en": "the coverage of every matching rule"
+        },
+        {
+          "ar": "الفئة ذات الدرجة الأعلى",
+          "en": "the class with the highest score"
+        },
+        {
+          "ar": "ينتمي إلى كل فئة ممكنة",
+          "en": "belongs to each possible class"
+        }
+      ],
+      "concept_id": "c7_nb_predict",
+      "explanation": {
+        "ar": "الفئة ذات الدرجة الأعلى",
+        "en": "15. Predict the class with the highest score."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

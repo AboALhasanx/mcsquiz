@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أنواع التصنيف والتمييز بين المهام",
+    "en": "Classification Types and Task Differences"
+  },
+  "quiz_id": "Quiz_Ch06_T02_Classification_Types_And_Task_Differences",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كم فئة يحتويها التصنيف الثنائي؟",
+        "en": "How many classes does binary classification contain?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نتيجة",
+          "en": "an outcome"
+        },
+        {
+          "ar": "شرطاً",
+          "en": "a condition"
+        },
+        {
+          "ar": "جزأين",
+          "en": "two parts"
+        },
+        {
+          "ar": "فئتين",
+          "en": "two classes"
+        }
+      ],
+      "concept_id": "c6_binary_classes",
+      "explanation": {
+        "ar": "فئتين",
+        "en": "Binary classification contains two classes . Examples:"
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "بماذا يتميز التصنيف متعدد الفئات؟",
+        "en": "What characterizes multiclass classification?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أكثر من فئتين",
+          "en": "more than two classes"
+        },
+        {
+          "ar": "طيات تحقق جديدة",
+          "en": "new validation folds"
+        },
+        {
+          "ar": "فئتان بالضبط",
+          "en": "exactly two classes"
+        },
+        {
+          "ar": "خطر فرط التكيّف",
+          "en": "the risk of overfitting"
+        }
+      ],
+      "concept_id": "c6_multiclass_classes",
+      "explanation": {
+        "ar": "أكثر من فئتين",
+        "en": "Multiclass classification contains more than two classes."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "إلى كم فئة يمكن أن تنتمي الحالة في التصنيف متعدد التسميات؟",
+        "en": "In multilabel classification, how many classes can an instance belong to?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "فئتان بالضبط",
+          "en": "exactly two classes"
+        },
+        {
+          "ar": "قيمة عددية",
+          "en": "a numerical value"
+        },
+        {
+          "ar": "أكثر من فئة",
+          "en": "more than one class"
+        },
+        {
+          "ar": "أكثر من فئتين",
+          "en": "more than two classes"
+        }
+      ],
+      "concept_id": "c6_multilabel",
+      "explanation": {
+        "ar": "أكثر من فئة",
+        "en": "In multilabel classification, one instance can belong to more than one class at the same time."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في التصنيف متعدد الفئات، إلى ماذا تنتمي الحالة الواحدة؟",
+        "en": "In multiclass classification, what does one instance map to?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قيمة عددية",
+          "en": "a number"
+        },
+        {
+          "ar": "المتنبئات",
+          "en": "Predictors"
+        },
+        {
+          "ar": "فئة تصنيف",
+          "en": "a category"
+        },
+        {
+          "ar": "فئة واحدة",
+          "en": "One class"
+        }
+      ],
+      "concept_id": "c6_multiclass_vs_multilabel",
+      "explanation": {
+        "ar": "فئة واحدة",
+        "en": "The model normally assigns one class to each instance."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما نوع المخرجات التي يتنبأ بها التصنيف؟",
+        "en": "What type of output does classification predict?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قيمة عددية",
+          "en": "a number"
+        },
+        {
+          "ar": "المتنبئات",
+          "en": "Predictors"
+        },
+        {
+          "ar": "فئة تصنيف",
+          "en": "a category"
+        },
+        {
+          "ar": "فئة واحدة",
+          "en": "One class"
+        }
+      ],
+      "concept_id": "c6_classification_output",
+      "explanation": {
+        "ar": "فئة",
+        "en": "a category"
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما نوع المخرجات التي يتنبأ بها الانحدار؟",
+        "en": "What type of output does regression predict?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "فئتان بالضبط",
+          "en": "exactly two classes"
+        },
+        {
+          "ar": "قيمة عددية",
+          "en": "a numerical value"
+        },
+        {
+          "ar": "أداء عشوائي",
+          "en": "Random performance"
+        },
+        {
+          "ar": "أكثر من فئة",
+          "en": "more than one class"
+        }
+      ],
+      "concept_id": "c6_regression_output",
+      "explanation": {
+        "ar": "قيمة عددية",
+        "en": "Patient → Disease or No Disease Regression Predicts a numerical value."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "هل يستخدم التصنيف بيانات معنونة أم غير معنونة؟",
+        "en": "Does classification use labeled or unlabeled data?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بيانات معنونة",
+          "en": "labeled data"
+        },
+        {
+          "ar": "التقليم اللاحق",
+          "en": "Post-pruning"
+        },
+        {
+          "ar": "تسميات الفئات",
+          "en": "class labels"
+        },
+        {
+          "ar": "ترتيب القواعد",
+          "en": "rule ordering"
+        }
+      ],
+      "concept_id": "c6_classification_clustering_labels",
+      "explanation": {
+        "ar": "بيانات معنونة",
+        "en": "Classification is the process of learning from previously labeled data and using the learned knowledge to assign a class to new data."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يمكن أن يكتشف التجميع بين سجلات البريد غير المعنونة؟",
+        "en": "What can clustering discover among unlabeled email records?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "درجات عددية للرسائل",
+          "en": "numerical email grades"
+        },
+        {
+          "ar": "مجموعات رسائل متشابهة",
+          "en": "groups of similar emails"
+        },
+        {
+          "ar": "Accuracy وSpecificity",
+          "en": "accuracy and specificity"
+        },
+        {
+          "ar": "المساحة تحت منحنى ROC",
+          "en": "Area Under the ROC Curve"
+        }
+      ],
+      "concept_id": "c6_cluster_goal",
+      "explanation": {
+        "ar": "مجموعات رسائل متشابهة",
+        "en": "If we have thousands of emails without labels and want to discover groups of similar emails, this is clustering."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

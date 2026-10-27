@@ -1,0 +1,468 @@
+{
+  "topic": {
+    "ar": "تدريب Logistic Regression وتفسيره ومقارنته",
+    "en": "Logistic Regression Training, Interpretation, and Comparison"
+  },
+  "quiz_id": "Quiz_Ch07_T07_Logistic_Regression_Training_Interpretation_And_Comparison",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "للمعادلة z = −4 + 1.2x وعند دراسة 4 ساعات، ما الدرجة الخطية؟",
+        "en": "For z = −4 + 1.2x and x = 4 study hours, what linear score is calculated?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.8",
+          "en": "0.8"
+        },
+        {
+          "ar": "0.6",
+          "en": "0.6"
+        },
+        {
+          "ar": "0.4",
+          "en": "0.4"
+        },
+        {
+          "ar": "2.0",
+          "en": "2.0"
+        }
+      ],
+      "concept_id": "c7_lr_example_z4",
+      "explanation": {
+        "ar": "0.8",
+        "en": "If z = 2, then P(Y = 1 | X) ≈ 1 / (1 + 0.1353) ≈ 0.8808."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "يدرس طالب أربع ساعات. ما احتمال النجاح المحسوب؟",
+        "en": "A student studies for four hours. What probability of passing is calculated?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.6900",
+          "en": "0.6900"
+        },
+        {
+          "ar": "0.1192",
+          "en": "0.1192"
+        },
+        {
+          "ar": "0.8808",
+          "en": "0.8808"
+        },
+        {
+          "ar": "0.5000",
+          "en": "0.5000"
+        }
+      ],
+      "concept_id": "c7_lr_example_prob4",
+      "explanation": {
+        "ar": "0.6900",
+        "en": "P(Pass = 1 | x = 4) = 1 / (1 + e ⁻ ⁰·⁸) ≈ 1 / (1 + 0.4493) ≈ 0.6900"
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "مع احتمال 0.6900 وعتبة 0.5، ما الفئة المتنبأ بها؟",
+        "en": "With probability 0.6900 and threshold 0.5, what class is predicted?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "فرط التكيّف",
+          "en": "overfitting"
+        },
+        {
+          "ar": "قواعد IF-THEN",
+          "en": "IF-THEN rules"
+        },
+        {
+          "ar": "التنبؤ بالرسوب",
+          "en": "predict Fail"
+        },
+        {
+          "ar": "التنبؤ بالنجاح",
+          "en": "predict Pass"
+        }
+      ],
+      "concept_id": "c7_lr_example_class4",
+      "explanation": {
+        "ar": "التنبؤ بالنجاح",
+        "en": "Because 0.6900 ≥ 0.5, predict Pass (Class 1). Example B: A student studies for 2 hours."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يدرس طالب ساعتين. ما احتمال النجاح المحسوب؟",
+        "en": "A student studies for two hours. What probability of passing is calculated?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "0.1192",
+          "en": "0.1192"
+        },
+        {
+          "ar": "0.5000",
+          "en": "0.5000"
+        },
+        {
+          "ar": "0.1680",
+          "en": "0.1680"
+        },
+        {
+          "ar": "0.8808",
+          "en": "0.8808"
+        }
+      ],
+      "concept_id": "c7_lr_example_prob2",
+      "explanation": {
+        "ar": "0.1680",
+        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "مع احتمال 0.1680 وعتبة 0.5، ما الفئة المتنبأ بها؟",
+        "en": "With probability 0.1680 and threshold 0.5, what class is predicted?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نجاح أو الفئة 1",
+          "en": "Pass, or Class 1"
+        },
+        {
+          "ar": "التنبؤ بالرسوب",
+          "en": "predict Fail"
+        },
+        {
+          "ar": "التنبؤ بالنجاح",
+          "en": "predict Pass"
+        },
+        {
+          "ar": "جودة القاعدة",
+          "en": "rule quality"
+        }
+      ],
+      "concept_id": "c7_lr_example_class2",
+      "explanation": {
+        "ar": "التنبؤ بالرسوب",
+        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا تلائم الاحتمالات المتنبأ بها أثناء التدريب؟",
+        "en": "What do the predicted probabilities fit during training?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "باستخدام البحث الإرشادي",
+          "en": "using heuristic search"
+        },
+        {
+          "ar": "Binary Cross-Entropy",
+          "en": "binary cross-entropy"
+        },
+        {
+          "ar": "تقديرات احتمالات الفئات",
+          "en": "class probability estimates"
+        },
+        {
+          "ar": "ملاءمة التسميات المشاهدة",
+          "en": "fit the observed labels"
+        }
+      ],
+      "concept_id": "c7_lr_coeff_learn",
+      "explanation": {
+        "ar": "ملاءمة التسميات المشاهدة",
+        "en": "The coefficients are not normally chosen by hand. The training algorithm adjusts them to make the predicted probabilities fit the observed labels. For binary classification, a common objective is binary cross-entropy (log loss):"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي هدف يستخدم عادة في Logistic Regression الثنائي؟",
+        "en": "Which objective is commonly used for binary Logistic Regression?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "درجة عدم نقاء الشجرة",
+          "en": "tree impurity score"
+        },
+        {
+          "ar": "Binary Cross-Entropy",
+          "en": "binary cross-entropy"
+        },
+        {
+          "ar": "قياس تغطية القاعدة",
+          "en": "rule coverage measure"
+        },
+        {
+          "ar": "معدل خطأ التصنيف",
+          "en": "classification error"
+        }
+      ],
+      "concept_id": "c7_lr_loss",
+      "explanation": {
+        "ar": "الخسارة الثنائية Cross-Entropy",
+        "en": "30. Learn coefficients: Estimate the intercept and feature coefficients by optimizing the logistic loss, commonly binary cross-entropy, often with regularization."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الذي قد يساعد التنظيم على التحكم به في Logistic Regression؟",
+        "en": "What can regularization help control in Logistic Regression?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بيانات صورة",
+          "en": "image data"
+        },
+        {
+          "ar": "جودة القاعدة",
+          "en": "rule quality"
+        },
+        {
+          "ar": "فرط التكيّف",
+          "en": "overfitting"
+        },
+        {
+          "ar": "التنبؤ بالنجاح",
+          "en": "predict Pass"
+        }
+      ],
+      "concept_id": "c7_lr_regularization",
+      "explanation": {
+        "ar": "فرط التكيّف",
+        "en": "Can use regularization to help control overfitting."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي تغير يصفه معامل Logistic Regression؟",
+        "en": "What change does a Logistic Regression coefficient describe?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التغير في عدد الفئات بعد إزالة خاصية",
+          "en": "the change in class count after removing a feature"
+        },
+        {
+          "ar": "التغير في لوغاريتم أرجحية الفئة الموجبة",
+          "en": "change in the log-odds of the positive class"
+        },
+        {
+          "ar": "احتمال الفئة قبل مشاهدة أي خاصية",
+          "en": "the probability of the class before seeing any features"
+        },
+        {
+          "ar": "من سالب ما لا نهاية إلى موجب ما لا نهاية",
+          "en": "from negative infinity to positive infinity"
+        }
+      ],
+      "concept_id": "c7_lr_coeff_logodds",
+      "explanation": {
+        "ar": "التغير في لوغاريتم أرجحية الفئة الموجبة",
+        "en": "A coefficient describes the change in the log-odds of the positive class associated with a one-unit increase in that feature, holding the other features constant. The odds ratio for a one-unit increase is exp(bᵢ)."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "إذا كان المعامل 0.7، فما نسبة الأرجحية الناتجة عن زيادة وحدة واحدة؟",
+        "en": "If a coefficient is 0.7, what odds ratio follows from a one-unit increase?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "0.24",
+          "en": "0.24"
+        },
+        {
+          "ar": "0.40",
+          "en": "0.40"
+        },
+        {
+          "ar": "0.30",
+          "en": "0.30"
+        },
+        {
+          "ar": "2.01",
+          "en": "2.01"
+        }
+      ],
+      "concept_id": "c7_lr_odds_ratio",
+      "explanation": {
+        "ar": "2.01",
+        "en": "For example, if bᵢ = 0.7, then exp(0.7) ≈ 2.01. Under the model, a one-unit increase in that feature multiplies the odds of Class 1 by about 2.01, holding other features constant. This is an odds interpretation, not a direct doubling of probability."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "مع معامل 0.7، ماذا تعني نسبة أرجحية تقارب 2.01؟",
+        "en": "With coefficient 0.7, what does an odds ratio of about 2.01 mean?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يضرب أرجحية الفئة 1 بنحو 2.01",
+          "en": "multiplies the odds of Class 1 by about 2.01"
+        },
+        {
+          "ar": "احتمال الفئة قبل مشاهدة أي خاصية",
+          "en": "the probability of the class before seeing any features"
+        },
+        {
+          "ar": "التغير في عدد الفئات بعد إزالة خاصية",
+          "en": "the change in class count after removing a feature"
+        },
+        {
+          "ar": "يتضاعف احتمال الفئة 1 مباشرة",
+          "en": "the probability of Class 1 directly doubles"
+        }
+      ],
+      "concept_id": "c7_lr_odds_not_prob",
+      "explanation": {
+        "ar": "يضرب أرجحية الفئة 1 بنحو 2.01",
+        "en": "For example, if bᵢ = 0.7, then exp(0.7) ≈ 2.01. Under the model, a one-unit increase in that feature multiplies the odds of Class 1 by about 2.01, holding other features constant. This is an odds interpretation, not a direct doubling of probability."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ما نوع نموذج Logistic Regression؟",
+        "en": "What model type is Logistic Regression?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تمييزياً",
+          "en": "Discriminative"
+        },
+        {
+          "ar": "المقدّمة",
+          "en": "the antecedent"
+        },
+        {
+          "ar": "تجميعياً",
+          "en": "Rule-based type"
+        },
+        {
+          "ar": "قاعدياً",
+          "en": "Linear model"
+        }
+      ],
+      "concept_id": "c7_lr_discriminative",
+      "explanation": {
+        "ar": "تمييزياً",
+        "en": "|Model type|Discriminative: models P(Y | X).|Generative: models P(X | Y) and P(Y).|"
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ما نوع نموذج Naive Bayes؟",
+        "en": "What model type is Naive Bayes?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قاعدياً",
+          "en": "Linear model"
+        },
+        {
+          "ar": "توليدياً",
+          "en": "Generative"
+        },
+        {
+          "ar": "تجميعياً",
+          "en": "Tree model"
+        },
+        {
+          "ar": "تمييزياً",
+          "en": "Rule model"
+        }
+      ],
+      "concept_id": "c7_nb_generative",
+      "explanation": {
+        "ar": "توليدياً",
+        "en": "|Model type|Discriminative: models P(Y | X).|Generative: models P(X | Y) and P(Y).|"
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "أي افتراض لا تتطلبه Logistic Regression؟",
+        "en": "Which assumption is not required by Logistic Regression?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قياس تغطية القاعدة",
+          "en": "rule coverage measure"
+        },
+        {
+          "ar": "قيم خصائص الإدخال",
+          "en": "input feature values"
+        },
+        {
+          "ar": "الاستقلال الشرطي",
+          "en": "conditional-independence"
+        },
+        {
+          "ar": "قيمة عتبة القرار",
+          "en": "decision threshold value"
+        }
+      ],
+      "concept_id": "c7_lr_no_independence",
+      "explanation": {
+        "ar": "الاستقلال الشرطي",
+        "en": "|Feature assumption|No conditional-independence assumption is required.|Uses a conditional- independence assumption in its standard form.|"
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

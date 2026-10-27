@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.7.17';
+const VERSION = '1.7.18';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -167,6 +167,20 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T05_Apriori.json',
   './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T06_FP_Growth_And_Enumeration_Trees.json',
   './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T07_Sequential_Pattern_Growth.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T01_Classification_Foundations_And_Data_Splits.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T02_Classification_Types_And_Task_Differences.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T03_Decision_Tree_Induction_And_Pruning.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T04_Confusion_Matrix_And_Error_Types.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T05_Classification_Metrics_And_ROC.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T06_Classification_Challenges_And_Improvements.json',
+  './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T07_Classification_Workflow_And_Model_Choice.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T01_Rule_Based_Classifier_Foundations.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T02_Rule_Coverage_Accuracy_And_Conflicts.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T03_Rule_Learning_Algorithms_And_Tradeoffs.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T04_Naive_Bayes_Foundations_And_Probability.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T05_Naive_Bayes_Examples_Smoothing_And_Variants.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T06_Logistic_Regression_Probability_And_Threshold.json',
+  './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T07_Logistic_Regression_Training_Interpretation_And_Comparison.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_ModelB_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_ModelA_SDLC_Models.json',

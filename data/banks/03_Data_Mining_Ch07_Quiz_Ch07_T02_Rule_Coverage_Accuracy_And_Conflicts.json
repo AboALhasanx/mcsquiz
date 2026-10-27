@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "تغطية القواعد ودقتها وتعارضها",
+    "en": "Rule Coverage, Accuracy, and Conflicts"
+  },
+  "quiz_id": "Quiz_Ch07_T02_Rule_Coverage_Accuracy_And_Conflicts",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا تقيس تغطية القاعدة؟",
+        "en": "What does rule coverage measure?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد مرات تنبؤ القاعدة بالفئة الصحيحة ضمن السجلات المغطاة",
+          "en": "how often the rule predicts the correct class among covered records"
+        },
+        {
+          "ar": "يستخدم قياسا التغطية والدقة البسط والمقام نفسيهما.",
+          "en": "Coverage and accuracy use the same numerator and denominator."
+        },
+        {
+          "ar": "يجب بناء كل مصنف قائم على القواعد من شجرة كاملة.",
+          "en": "Every rule-based classifier must be built from a complete tree."
+        },
+        {
+          "ar": "التغطية هي نسبة السجلات التي تحقق شروط القاعدة.",
+          "en": "Coverage is the proportion of records that satisfy a rule's conditions."
+        }
+      ],
+      "concept_id": "c7_coverage_meaning",
+      "explanation": {
+        "ar": "التغطية هي نسبة السجلات التي تحقق شروط القاعدة.",
+        "en": "Coverage is the proportion of records that satisfy a rule's conditions."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "إذا حقق 40 طالباً من أصل 100 شروط قاعدة، فما تغطيتها؟",
+        "en": "If 40 of 100 students satisfy a rule, what is its coverage?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "0.10 أو 10 بالمئة",
+          "en": "0.10, or 10%"
+        },
+        {
+          "ar": "0.90 أو 90 بالمئة",
+          "en": "0.90, or 90%"
+        },
+        {
+          "ar": "0.36 أو 36 بالمئة",
+          "en": "0.36, or 36%"
+        },
+        {
+          "ar": "0.40 أو 40 بالمئة",
+          "en": "0.40, or 40%"
+        }
+      ],
+      "concept_id": "c7_coverage_example",
+      "explanation": {
+        "ar": "0.40 أو 40 بالمئة",
+        "en": "Example: If 40 of 100 students satisfy a rule, coverage = 40 / 100 = 0.40, or 40%."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "إلى أي فئة تنتمي السجلات المغطاة الصحيحة عند قياس دقة القاعدة؟",
+        "en": "To which class do correctly covered records belong when measuring rule accuracy?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عندما لا تنطبق أي قاعدة على سجل",
+          "en": "when no rule matches a record"
+        },
+        {
+          "ar": "تختار بيانات الاختبار خاصية",
+          "en": "the test data selects a feature"
+        },
+        {
+          "ar": "الفئة التي تنبأت بها القاعدة",
+          "en": "class predicted by that rule"
+        },
+        {
+          "ar": "القاعدة ذات الأولوية الأعلى",
+          "en": "the rule with higher priority"
+        }
+      ],
+      "concept_id": "c7_accuracy_meaning",
+      "explanation": {
+        "ar": "الفئة التي تنبأت بها القاعدة",
+        "en": "Rule accuracy is the proportion of records covered by a rule that belong to the class predicted by that rule."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "تغطي قاعدة 40 طالباً وتصنف 36 منهم بصورة صحيحة. ما دقتها؟",
+        "en": "A rule covers 40 students and correctly classifies 36. What accuracy is reported?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.90 أو 90 بالمئة",
+          "en": "0.90, or 90%"
+        },
+        {
+          "ar": "0.10 أو 10 بالمئة",
+          "en": "0.10, or 10%"
+        },
+        {
+          "ar": "0.40 أو 40 بالمئة",
+          "en": "0.40, or 40%"
+        },
+        {
+          "ar": "0.36 أو 36 بالمئة",
+          "en": "0.36, or 36%"
+        }
+      ],
+      "concept_id": "c7_accuracy_example",
+      "explanation": {
+        "ar": "0.90 أو 90 بالمئة",
+        "en": "Example: If a rule covers 40 students and correctly classifies 36, accuracy = 36 / 40 = 0.90, or 90%."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "بماذا تختلف تغطية القاعدة عن دقتها؟",
+        "en": "How does rule coverage differ from rule accuracy?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يستخدم قياسا التغطية والدقة البسط والمقام نفسيهما.",
+          "en": "Coverage and accuracy use the same numerator and denominator."
+        },
+        {
+          "ar": "تقيس التغطية عدد السجلات التي تنطبق عليها القاعدة.",
+          "en": "Coverage measures how many records a rule applies to."
+        },
+        {
+          "ar": "يحسب المقياسان السجلات غير المغطاة بالقاعدة فقط.",
+          "en": "Both measures count only records not covered by the rule."
+        },
+        {
+          "ar": "حضّر مجموعة البيانات بجمع البيانات وتنظيفها.",
+          "en": "Prepare the dataset by collecting and cleaning the data."
+        }
+      ],
+      "concept_id": "c7_coverage_accuracy_difference",
+      "explanation": {
+        "ar": "تقيس التغطية عدد السجلات التي تنطبق عليها القاعدة.",
+        "en": "Coverage measures how many records a rule applies to. Accuracy measures how often the rule predicts the correct class among those records."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا تفعل القواعد المنطبقة عند حدوث تعارض؟",
+        "en": "What do matching rules do when a conflict occurs?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قاعدة منطبقة عشوائية",
+          "en": "a random matching rule"
+        },
+        {
+          "ar": "التعويض الإحصائي",
+          "en": "statistical imputation"
+        },
+        {
+          "ar": "تتنبأ بفئات مختلفة",
+          "en": "predict different classes"
+        },
+        {
+          "ar": "يغير تسميات فئاتها",
+          "en": "change their class labels"
+        }
+      ],
+      "concept_id": "c7_conflict",
+      "explanation": {
+        "ar": "تتنبأ بفئات مختلفة",
+        "en": "Conflicting rules may predict different classes."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا يفضل أسلوب أولوية القواعد؟",
+        "en": "What does the rule-priority approach prefer?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تختار بيانات الاختبار خاصية",
+          "en": "the test data selects a feature"
+        },
+        {
+          "ar": "القاعدة ذات الأولوية الأعلى",
+          "en": "the rule with higher priority"
+        },
+        {
+          "ar": "القاعدة ذات التغطية الأقل",
+          "en": "the rule with the lowest coverage"
+        },
+        {
+          "ar": "القاعدة الأخيرة أبجدياً",
+          "en": "the last rule alphabetically"
+        }
+      ],
+      "concept_id": "c7_priority",
+      "explanation": {
+        "ar": "القاعدة ذات الأولوية الأعلى",
+        "en": "Rule priority: prefer the rule with higher priority."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي أداء قد تفضله جودة القاعدة؟",
+        "en": "What performance can rule quality prefer?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أداء أقوى على بيانات التدريب",
+          "en": "stronger performance on training data"
+        },
+        {
+          "ar": "القاعدة ذات الموقع الأحدث فقط",
+          "en": "the rule with the latest position only"
+        },
+        {
+          "ar": "القاعدة ذات المقدمة الأطول",
+          "en": "the rule with the longest antecedent"
+        },
+        {
+          "ar": "القاعدة ذات تسميات الفئات الأقل",
+          "en": "the rule with the fewest class labels"
+        }
+      ],
+      "concept_id": "c7_rule_quality",
+      "explanation": {
+        "ar": "أداء أقوى على بيانات التدريب",
+        "en": "Rule quality: select the rule with stronger performance on training data."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف يحل التصويت تعارض القواعد المنطبقة؟",
+        "en": "How does voting resolve matching-rule conflicts?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تصوت القواعد المنطبقة لفئة",
+          "en": "matching rules vote for a class"
+        },
+        {
+          "ar": "تختار بيانات الاختبار خاصية",
+          "en": "the test data selects a feature"
+        },
+        {
+          "ar": "القاعدة ذات التغطية الأقل",
+          "en": "the rule with the lowest coverage"
+        },
+        {
+          "ar": "تنشئ كل قاعدة فئة جديدة",
+          "en": "each rule creates a new class"
+        }
+      ],
+      "concept_id": "c7_voting",
+      "explanation": {
+        "ar": "تصوت القواعد المنطبقة لفئة",
+        "en": "matching rules vote for a class"
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي أسلوب لحل التعارض يستخدم أول قاعدة منطبقة؟",
+        "en": "Which conflict approach uses the first matching rule?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جودة القاعدة",
+          "en": "rule quality"
+        },
+        {
+          "ar": "ترتيب القواعد",
+          "en": "rule ordering"
+        },
+        {
+          "ar": "قواعد IF-THEN",
+          "en": "IF-THEN rules"
+        },
+        {
+          "ar": "المقطع الثابت",
+          "en": "the intercept"
+        }
+      ],
+      "concept_id": "c7_rule_order_conflict",
+      "explanation": {
+        "ar": "ترتيب القواعد",
+        "en": "Rule pruning, rule ordering, default classes, and validation on unseen data can help address these limitations."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

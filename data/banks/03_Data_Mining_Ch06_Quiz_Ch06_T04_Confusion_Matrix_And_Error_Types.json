@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مصفوفة الالتباس وأنواع الأخطاء",
+    "en": "Confusion Matrix and Error Types"
+  },
+  "quiz_id": "Quiz_Ch06_T04_Confusion_Matrix_And_Error_Types",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا تلخص مصفوفة الالتباس؟",
+        "en": "What does a confusion matrix summarize?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إحدى الفئات المحددة مسبقاً",
+          "en": "one of a set of predefined classes"
+        },
+        {
+          "ar": "عدد القواعد المتولدة لكل فئة",
+          "en": "the number of rules generated for each class"
+        },
+        {
+          "ar": "الخصائص في تسمية فئة واحدة",
+          "en": "features into a single class label"
+        },
+        {
+          "ar": "التنبؤات الصحيحة والخاطئة",
+          "en": "correct and incorrect predictions"
+        }
+      ],
+      "concept_id": "c6_confusion_matrix",
+      "explanation": {
+        "ar": "التنبؤات الصحيحة والخاطئة",
+        "en": "A confusion matrix shows the correct and incorrect predictions made by a classification model."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "مريض مصاب بالسرطان والنموذج يتنبأ بالسرطان. ما هذه النتيجة؟",
+        "en": "A patient has cancer and the model predicts cancer. Which outcome is this?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إيجابي حقيقي",
+          "en": "True Positive"
+        },
+        {
+          "ar": "سلبي حقيقي",
+          "en": "True Negative"
+        },
+        {
+          "ar": "إيجابي كاذب",
+          "en": "False Positive"
+        },
+        {
+          "ar": "العمق الأقصى",
+          "en": "maximum depth"
+        }
+      ],
+      "concept_id": "c6_true_positive",
+      "explanation": {
+        "ar": "إيجابي حقيقي",
+        "en": "A patient has cancer. The model predicts cancer. This is a True Positive ."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "مريض غير مصاب بالسرطان والنموذج يتنبأ بعدم الإصابة. ما هذه النتيجة؟",
+        "en": "A patient does not have cancer and the model predicts no cancer. Which outcome is this?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إيجابي صحيح",
+          "en": "True Positive"
+        },
+        {
+          "ar": "سلبي كاذب",
+          "en": "False Negative"
+        },
+        {
+          "ar": "سلبي حقيقي",
+          "en": "True Negative"
+        },
+        {
+          "ar": "إيجابي كاذب",
+          "en": "False Positive"
+        }
+      ],
+      "concept_id": "c6_true_negative",
+      "explanation": {
+        "ar": "سلبي حقيقي",
+        "en": "The model predicts no cancer. This is a True Negative ."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي نتيجة يمكن اعتبارها إنذاراً كاذباً؟",
+        "en": "Which outcome can be considered a false alarm?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "سلبي حقيقي",
+          "en": "True Negative"
+        },
+        {
+          "ar": "سلبي كاذب",
+          "en": "False Negative"
+        },
+        {
+          "ar": "إيجابي صحيح",
+          "en": "True Positive"
+        },
+        {
+          "ar": "إيجابي كاذب",
+          "en": "False Positive"
+        }
+      ],
+      "concept_id": "c6_false_positive",
+      "explanation": {
+        "ar": "إيجابي كاذب",
+        "en": "Both false positives and false negatives are important"
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي نتيجة تحدث عندما تكون الفئة الفعلية موجبة لكن النموذج يتنبأ بالسلبية؟",
+        "en": "Which outcome occurs when the actual class is positive but the model predicts negative?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "موجب صحيح",
+          "en": "True Positive"
+        },
+        {
+          "ar": "إيجابي كاذب",
+          "en": "False Positive"
+        },
+        {
+          "ar": "سلبي كاذب",
+          "en": "False Negative"
+        },
+        {
+          "ar": "سلبي صحيح",
+          "en": "True Negative"
+        }
+      ],
+      "concept_id": "c6_false_negative",
+      "explanation": {
+        "ar": "سلبي كاذب",
+        "en": "Both false positives and false negatives are important"
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "في الإيجابي الكاذب، ما الفئة الفعلية؟",
+        "en": "In a False Positive, what is the actual class?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مجهولة",
+          "en": "unknown"
+        },
+        {
+          "ar": "سلبية",
+          "en": "negative"
+        },
+        {
+          "ar": "جزأين",
+          "en": "two parts"
+        },
+        {
+          "ar": "موجبة",
+          "en": "positive"
+        }
+      ],
+      "concept_id": "c6_fp_actual",
+      "explanation": {
+        "ar": "سلبية",
+        "en": "Both false positives and false negatives are important"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "في السلبي الكاذب، ماذا يتنبأ النموذج؟",
+        "en": "In a False Negative, what does the model predict?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "سلبية",
+          "en": "negative"
+        },
+        {
+          "ar": "مجهولة",
+          "en": "unknown"
+        },
+        {
+          "ar": "موجبة",
+          "en": "positive"
+        },
+        {
+          "ar": "جزأين",
+          "en": "two parts"
+        }
+      ],
+      "concept_id": "c6_fn_predicted",
+      "explanation": {
+        "ar": "سلبية",
+        "en": "Both false positives and false negatives are important"
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي خطأ قد يكون خطيراً على نحو خاص في بعض التطبيقات الطبية؟",
+        "en": "Which error can be particularly serious in some medical applications?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "السلبيات الحقيقية",
+          "en": "true negatives"
+        },
+        {
+          "ar": "السلبيات الكاذبة",
+          "en": "false negatives"
+        },
+        {
+          "ar": "الإيجابيات الحقيقية",
+          "en": "true positives"
+        },
+        {
+          "ar": "تسميات غير صحيحة",
+          "en": "incorrect labels"
+        }
+      ],
+      "concept_id": "c6_fn_medical",
+      "explanation": {
+        "ar": "السلبيات الكاذبة",
+        "en": "Both false positives and false negatives are important"
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

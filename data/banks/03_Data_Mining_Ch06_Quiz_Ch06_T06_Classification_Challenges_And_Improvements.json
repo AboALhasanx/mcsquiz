@@ -1,0 +1,564 @@
+{
+  "topic": {
+    "ar": "تحديات التصنيف وتحسين الأداء",
+    "en": "Classification Challenges and Improvements"
+  },
+  "quiz_id": "Quiz_Ch06_T06_Classification_Challenges_And_Improvements",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "متى يحدث اختلال توازن الفئات؟",
+        "en": "When does class imbalance occur?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "من كل الإيجابيات الفعلية، كم حالة حددها النموذج؟",
+          "en": "Of all actual positives, how many did the model identify?"
+        },
+        {
+          "ar": "تكون الخوارزمية نفسها الأفضل كلما قِيست الدقة.",
+          "en": "The same algorithm is best whenever accuracy is measured."
+        },
+        {
+          "ar": "عندما تكون مجموعة التحقق أكبر من مجموعة التدريب",
+          "en": "when the validation set is larger than the training set"
+        },
+        {
+          "ar": "عندما تحتوي فئة على سجلات أكثر بكثير من فئة أخرى",
+          "en": "when one class contains significantly more records than another"
+        }
+      ],
+      "concept_id": "c6_imbalance_definition",
+      "explanation": {
+        "ar": "عندما تحتوي فئة على سجلات أكثر بكثير من فئة أخرى",
+        "en": "Class imbalance occurs when one class contains significantly more records than another."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "تضم البيانات 9000 سليم و1000 مريض. يتنبأ النموذج بأن الجميع سليمون. ما الدقة التي قد يحققها؟",
+        "en": "A dataset has 9,000 healthy and 1,000 diseased patients. A model predicts every patient as healthy. What accuracy can it achieve?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "خمسة أجزاء",
+          "en": "five parts"
+        },
+        {
+          "ar": "50 بالمئة",
+          "en": "50 percent"
+        },
+        {
+          "ar": "90 بالمئة",
+          "en": "90 percent"
+        },
+        {
+          "ar": "أربعة أجزاء",
+          "en": "four parts"
+        }
+      ],
+      "concept_id": "c6_imbalance_accuracy",
+      "explanation": {
+        "ar": "90 بالمئة",
+        "en": "90 percent"
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الذي لا تشير إليه الدقة العالية دائماً؟",
+        "en": "What does high accuracy not always indicate?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عتبات قرار إضافية",
+          "en": "additional decision thresholds"
+        },
+        {
+          "ar": "أن نموذج التصنيف جيد",
+          "en": "a classification model is good"
+        },
+        {
+          "ar": "تحريك عتبة القرار",
+          "en": "decision-threshold shifting"
+        },
+        {
+          "ar": "ترميز البيانات الفئوية",
+          "en": "encoding categorical data"
+        }
+      ],
+      "concept_id": "c6_imbalance_lesson",
+      "explanation": {
+        "ar": "أن نموذج التصنيف جيد",
+        "en": "High accuracy does not always mean that a classification model is good."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يحدث في فرط التكيّف؟",
+        "en": "What happens in overfitting?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يستخدم النموذج بيانات التحقق متغيراً مستهدفاً",
+          "en": "the model uses validation data as a target variable"
+        },
+        {
+          "ar": "يكون النموذج بسيطاً جداً لتعلم الأنماط المهمة",
+          "en": "the model is too simple to learn important patterns"
+        },
+        {
+          "ar": "يتعلم النموذج بيانات التدريب بصورة مفرطة",
+          "en": "the model learns the training data too closely"
+        },
+        {
+          "ar": "يتنبأ النموذج بكل سجل على أنه الفئة الأكبر",
+          "en": "the model predicts every record as the majority class"
+        }
+      ],
+      "concept_id": "c6_overfit_definition",
+      "explanation": {
+        "ar": "يتعلم النموذج بيانات التدريب بصورة مفرطة",
+        "en": "Overfitting occurs when the model learns the training data too closely."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا قد يكون النموذج قد تعلم بدلاً من الأنماط العامة؟",
+        "en": "What may the model have learned instead of general patterns?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تسميات فئات معروفة",
+          "en": "known class labels"
+        },
+        {
+          "ar": "نوع النواة فقط",
+          "en": "kernel type only"
+        },
+        {
+          "ar": "السجلات المكررة",
+          "en": "Duplicate records"
+        },
+        {
+          "ar": "بيانات التدريب",
+          "en": "the training data"
+        }
+      ],
+      "concept_id": "c6_overfit_gap",
+      "explanation": {
+        "ar": "بيانات التدريب",
+        "en": "The algorithm examines the training data and learns patterns."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي حالة في البيانات يمكن أن تسبب فرط التكيّف؟",
+        "en": "Which data condition can cause overfitting?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "النموذج لا يحتوي أي خصائص",
+          "en": "Model has no features"
+        },
+        {
+          "ar": "لدى البيانات تسميات معروفة",
+          "en": "Dataset has known labels"
+        },
+        {
+          "ar": "مجموعة البيانات صغيرة جداً",
+          "en": "Dataset is too small"
+        },
+        {
+          "ar": "السجلات متوازنة بصورة كاملة",
+          "en": "Records are balanced"
+        }
+      ],
+      "concept_id": "c6_overfit_cause",
+      "explanation": {
+        "ar": "مجموعة البيانات صغيرة جداً",
+        "en": "Dataset is too small"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يوصف النموذج ضعيف التكيّف؟",
+        "en": "How is an underfitting model described?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عندما يتعلم النموذج بيانات التدريب بصورة مفرطة",
+          "en": "when the model learns the training data too closely"
+        },
+        {
+          "ar": "بسيط جداً ليتعلم الأنماط المهمة في البيانات",
+          "en": "too simple to learn the important patterns in the data"
+        },
+        {
+          "ar": "عندما تحتوي الشجرة على فروع غير ضرورية فقط",
+          "en": "when a tree contains unnecessary branches only"
+        },
+        {
+          "ar": "يتنبأ النموذج بكل سجل على أنه الفئة الأكبر",
+          "en": "the model predicts every record as the majority class"
+        }
+      ],
+      "concept_id": "c6_underfit_definition",
+      "explanation": {
+        "ar": "بسيط جداً ليتعلم الأنماط المهمة في البيانات",
+        "en": "Underfitting occurs when the model is too simple to learn the important patterns in the data."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "دقة التدريب 65 بالمئة ودقة الاختبار 63 بالمئة وكلتاهما ضعيفة. ما المشكلة الموصوفة؟",
+        "en": "Training accuracy is 65 percent and testing accuracy is 63 percent, and both are poor. What problem is described?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "إيجابي كاذب",
+          "en": "false positive"
+        },
+        {
+          "ar": "نقص التكيّف",
+          "en": "underfitting"
+        },
+        {
+          "ar": "خمسة أجزاء",
+          "en": "five parts"
+        },
+        {
+          "ar": "أربعة أجزاء",
+          "en": "four parts"
+        }
+      ],
+      "concept_id": "c6_underfit_pattern",
+      "explanation": {
+        "ar": "نقص التكيّف",
+        "en": "Underfitting occurs when the model is too simple to learn the important patterns in the data."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ما الذي قد تسببه كثرة الخصائص غير الملائمة؟",
+        "en": "What can too many irrelevant features increase?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "خطر فرط التكيّف",
+          "en": "the risk of overfitting"
+        },
+        {
+          "ar": "تحريك عتبة القرار",
+          "en": "decision-threshold shifting"
+        },
+        {
+          "ar": "تفويت حالة موجبة",
+          "en": "missing a positive case"
+        },
+        {
+          "ar": "احتمالات متنبأ بها",
+          "en": "predicted probabilities"
+        }
+      ],
+      "concept_id": "c6_irrelevant_effect",
+      "explanation": {
+        "ar": "خطر فرط التكيّف",
+        "en": "the risk of overfitting"
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي أسلوب يمكنه معالجة البيانات المفقودة؟",
+        "en": "Which approach can handle missing data?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تفويت حالة موجبة",
+          "en": "missing a positive case"
+        },
+        {
+          "ar": "التعويض الإحصائي",
+          "en": "statistical imputation"
+        },
+        {
+          "ar": "احتمالات متنبأ بها",
+          "en": "predicted probabilities"
+        },
+        {
+          "ar": "تحريك عتبة القرار",
+          "en": "decision-threshold shifting"
+        }
+      ],
+      "concept_id": "c6_missing_methods",
+      "explanation": {
+        "ar": "التعويض الإحصائي",
+        "en": "statistical imputation"
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي عنصر يمكن أن يمثل بيانات مشوشة؟",
+        "en": "Which item can represent noisy data?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بيانات التدريب",
+          "en": "the training data"
+        },
+        {
+          "ar": "نوع النواة فقط",
+          "en": "kernel type only"
+        },
+        {
+          "ar": "تسميات غير صحيحة",
+          "en": "incorrect labels"
+        },
+        {
+          "ar": "السجلات المكررة",
+          "en": "Duplicate records"
+        }
+      ],
+      "concept_id": "c6_noise_examples",
+      "explanation": {
+        "ar": "تسميات غير صحيحة",
+        "en": "incorrect labels"
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي إجراء يندرج ضمن المعالجة المسبقة للبيانات؟",
+        "en": "Which action belongs to data preprocessing?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ترميز البيانات الفئوية",
+          "en": "encoding categorical data"
+        },
+        {
+          "ar": "قابلية التفسير المطلوبة",
+          "en": "required interpretability"
+        },
+        {
+          "ar": "أن نموذج التصنيف جيد",
+          "en": "a classification model is good"
+        },
+        {
+          "ar": "لدى البيانات تسميات معروفة",
+          "en": "Dataset has known labels"
+        }
+      ],
+      "concept_id": "c6_preprocessing_tasks",
+      "explanation": {
+        "ar": "ترميز البيانات الفئوية",
+        "en": "encoding categorical data"
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "ماذا يفعل Oversampling بأمثلة الفئة الأقلية؟",
+        "en": "What does oversampling do to minority-class examples?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "زيادة عدد أمثلة الفئة الأقلية.",
+          "en": "Increase the number of minority-class examples."
+        },
+        {
+          "ar": "يقلل عدد أمثلة الفئة الأكبر",
+          "en": "reduces the number of majority-class examples"
+        },
+        {
+          "ar": "أمثلة اصطناعية للفئة الأكبر فقط",
+          "en": "synthetic examples for the majority class only"
+        },
+        {
+          "ar": "يحوّل الهدف إلى خاصية عددية",
+          "en": "changes the target into a numerical feature"
+        }
+      ],
+      "concept_id": "c6_oversampling",
+      "explanation": {
+        "ar": "زيادة عدد أمثلة الفئة الأقلية.",
+        "en": "Increase the number of minority-class examples."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "ماذا يفعل Undersampling بأمثلة الفئة الأكثرية؟",
+        "en": "What does undersampling do to majority-class examples?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقليل عدد أمثلة الفئة الأكثرية.",
+          "en": "Reduce the number of majority-class examples."
+        },
+        {
+          "ar": "أمثلة اصطناعية للفئة الأكبر فقط",
+          "en": "synthetic examples for the majority class only"
+        },
+        {
+          "ar": "يضيف فروعاً أكثر إلى شجرة القرار",
+          "en": "adds more branches to a decision tree"
+        },
+        {
+          "ar": "يزيد عدد أمثلة الفئة الأقلية",
+          "en": "increases the number of minority-class examples"
+        }
+      ],
+      "concept_id": "c6_undersampling",
+      "explanation": {
+        "ar": "تقليل عدد أمثلة الفئة الأكثرية.",
+        "en": "Reduce the number of majority-class examples."
+      }
+    },
+    {
+      "id": "q15",
+      "stem": {
+        "ar": "ماذا ينشئ SMOTE؟",
+        "en": "What does SMOTE create?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يحوّل الهدف إلى خاصية عددية",
+          "en": "changes the target into a numerical feature"
+        },
+        {
+          "ar": "طيات التحقق في سجل تدريب واحد",
+          "en": "validation folds into one training record"
+        },
+        {
+          "ar": "يقلل عدد أمثلة الفئة الأكبر",
+          "en": "reduces the number of majority-class examples"
+        },
+        {
+          "ar": "أمثلة اصطناعية للفئة الأقلية",
+          "en": "synthetic examples for the minority class"
+        }
+      ],
+      "concept_id": "c6_smote",
+      "explanation": {
+        "ar": "أمثلة اصطناعية للفئة الأقلية",
+        "en": "SMOTE creates synthetic examples for the minority class."
+      }
+    },
+    {
+      "id": "q16",
+      "stem": {
+        "ar": "في التحقق المتقاطع ذي الطيات الخمس، إلى كم جزء تقسم البيانات؟",
+        "en": "In five-fold cross-validation, into how many parts is the dataset divided?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "خمسة أجزاء",
+          "en": "five parts"
+        },
+        {
+          "ar": "50 بالمئة",
+          "en": "50 percent"
+        },
+        {
+          "ar": "عشرة أجزاء",
+          "en": "ten parts"
+        },
+        {
+          "ar": "أربعة أجزاء",
+          "en": "four parts"
+        }
+      ],
+      "concept_id": "c6_cv_folds",
+      "explanation": {
+        "ar": "خمسة أجزاء",
+        "en": "In five-fold cross-validation, the dataset is divided into five parts."
+      }
+    },
+    {
+      "id": "q17",
+      "stem": {
+        "ar": "ماذا تجمع طريقة Ensemble؟",
+        "en": "What does an ensemble method combine?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "زيادة عدد أمثلة الفئة الأقلية.",
+          "en": "Increase the number of minority-class examples."
+        },
+        {
+          "ar": "يزيد عدد أمثلة الفئة الأقلية",
+          "en": "increases the number of minority-class examples"
+        },
+        {
+          "ar": "أمثلة اصطناعية للفئة الأكبر فقط",
+          "en": "synthetic examples for the majority class only"
+        },
+        {
+          "ar": "نماذج متعددة لإنتاج تنبؤ أقوى",
+          "en": "multiple models to produce a stronger prediction"
+        }
+      ],
+      "concept_id": "c6_ensemble",
+      "explanation": {
+        "ar": "نماذج متعددة لإنتاج تنبؤ أقوى",
+        "en": "An ensemble method combines multiple models to produce a stronger prediction."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

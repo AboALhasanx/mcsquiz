@@ -1,0 +1,372 @@
+{
+  "topic": {
+    "ar": "سير عمل التصنيف واختيار النموذج",
+    "en": "Classification Workflow and Model Choice"
+  },
+  "quiz_id": "Quiz_Ch06_T07_Classification_Workflow_And_Model_Choice",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يوفر التحقق المتقاطع؟",
+        "en": "What does cross-validation provide?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يكون النموذج الأكبر دائماً الأنسب.",
+          "en": "The largest model is always the most appropriate."
+        },
+        {
+          "ar": "عدد الفئات في مجموعة غير معنونة",
+          "en": "the number of classes in an unlabeled dataset"
+        },
+        {
+          "ar": "الفئة المتنبأ بها لسجل جديد واحد فقط",
+          "en": "only the predicted class of one new record"
+        },
+        {
+          "ar": "تقديراً أكثر موثوقية لأداء النموذج",
+          "en": "a more reliable estimate of model performance"
+        }
+      ],
+      "concept_id": "c6_cv_reliable",
+      "explanation": {
+        "ar": "تقديراً أكثر موثوقية لأداء النموذج",
+        "en": "Cross-validation is used to obtain a more reliable estimate of model performance."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يحدث لنتائج الطيات بعد التحقق المتقاطع ذي k طيات؟",
+        "en": "What happens to fold results after k-fold cross-validation?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "اكتشاف تسميات الفئات مسبقاً",
+          "en": "discover class labels early"
+        },
+        {
+          "ar": "قيماً مناسبة لهذه الإعدادات",
+          "en": "suitable values for these settings"
+        },
+        {
+          "ar": "تُختار أكبر نتيجة دائماً",
+          "en": "the largest result is always selected"
+        },
+        {
+          "ar": "ثم يُحسب متوسط النتائج.",
+          "en": "The results are then averaged."
+        }
+      ],
+      "concept_id": "c6_cv_average",
+      "explanation": {
+        "ar": "ثم يُحسب متوسط النتائج.",
+        "en": "Each part is used as the validation set while the remaining parts are used for training. The results are then averaged."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الذي يسعى ضبط المعاملات الفائقة إلى إيجاده؟",
+        "en": "What does hyperparameter tuning attempt to find?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "التنبؤات النهائية بعد النشر",
+          "en": "the final predictions after deployment"
+        },
+        {
+          "ar": "دقة الاختبار النهائية وAUC فقط",
+          "en": "only the final test accuracy and AUC"
+        },
+        {
+          "ar": "قيماً مناسبة لهذه الإعدادات",
+          "en": "suitable values for these settings"
+        },
+        {
+          "ar": "أفضل اسم خاصية حسب الترتيب الأبجدي",
+          "en": "the best feature name alphabetically"
+        }
+      ],
+      "concept_id": "c6_hyperparameter_tune",
+      "explanation": {
+        "ar": "قيماً مناسبة لهذه الإعدادات",
+        "en": "Hyperparameter tuning attempts to find suitable values for these settings."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي طريقة يمكن أن تضبط المعاملات الفائقة؟",
+        "en": "Which method can tune hyperparameters?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "البحث الشبكي",
+          "en": "Grid Search"
+        },
+        {
+          "ar": "فرط التكيّف",
+          "en": "overfitting"
+        },
+        {
+          "ar": "Naive Bayes",
+          "en": "Naive Bayes"
+        },
+        {
+          "ar": "Random Forest",
+          "en": "Random Forest"
+        }
+      ],
+      "concept_id": "c6_grid_search",
+      "explanation": {
+        "ar": "البحث الشبكي",
+        "en": "Grid Search"
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي إعداد يعد معاملاً فائقاً في KNN؟",
+        "en": "Which setting is a KNN hyperparameter?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "توزيع الفئات",
+          "en": "Class distribution"
+        },
+        {
+          "ar": "عدد الجيران",
+          "en": "number of neighbors"
+        },
+        {
+          "ar": "عدد الأشجار",
+          "en": "number of trees"
+        },
+        {
+          "ar": "أكثر من فئة",
+          "en": "more than one class"
+        }
+      ],
+      "concept_id": "c6_knn_hyperparameter",
+      "explanation": {
+        "ar": "عدد الجيران",
+        "en": "number of neighbors"
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي خوارزمية تُعد طريقة تجميعية؟",
+        "en": "Which algorithm is an ensemble method?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "البحث الشبكي",
+          "en": "Grid Search"
+        },
+        {
+          "ar": "عدد الأشجار",
+          "en": "number of trees"
+        },
+        {
+          "ar": "Random Forest",
+          "en": "Random Forest"
+        },
+        {
+          "ar": "ترتيب القواعد",
+          "en": "rule ordering"
+        }
+      ],
+      "concept_id": "c6_ensemble_examples",
+      "explanation": {
+        "ar": "Random Forest",
+        "en": "|Random Forest|Robust and accurate|Less interpretable|"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي عنصر يُفحص عند فهم البيانات؟",
+        "en": "Which item is checked when understanding the data?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "فئتان بالضبط",
+          "en": "exactly two classes"
+        },
+        {
+          "ar": "توزيع الفئات",
+          "en": "Class distribution"
+        },
+        {
+          "ar": "عدد الأشجار",
+          "en": "number of trees"
+        },
+        {
+          "ar": "عدد الجيران",
+          "en": "number of neighbors"
+        }
+      ],
+      "concept_id": "c6_workflow_understanding",
+      "explanation": {
+        "ar": "توزيع الفئات",
+        "en": "Class distribution"
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مشكلة في السجلات ينبغي معالجتها أثناء تنظيف البيانات؟",
+        "en": "Which record issue should be addressed during data cleaning?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "السجلات المكررة",
+          "en": "Duplicate records"
+        },
+        {
+          "ar": "توزيع الفئات",
+          "en": "Class distribution"
+        },
+        {
+          "ar": "بيانات التدريب",
+          "en": "the training data"
+        },
+        {
+          "ar": "طيات تحقق جديدة",
+          "en": "new validation folds"
+        }
+      ],
+      "concept_id": "c6_workflow_cleaning",
+      "explanation": {
+        "ar": "السجلات المكررة",
+        "en": "Duplicate records"
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "فيمَ تستخدم خطوة التنبؤ النهائي؟",
+        "en": "What is the final-prediction step used for?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تصنيف بيانات جديدة غير مرئية",
+          "en": "classify new unseen data"
+        },
+        {
+          "ar": "إزالة جميع خصائص الإدخال",
+          "en": "remove all input features"
+        },
+        {
+          "ar": "اكتشاف تسميات الفئات مسبقاً",
+          "en": "discover class labels early"
+        },
+        {
+          "ar": "ملاءمة النموذج بسجلات الاختبار",
+          "en": "fit using test records"
+        }
+      ],
+      "concept_id": "c6_workflow_final",
+      "explanation": {
+        "ar": "لتصنيف بيانات جديدة غير مرئية",
+        "en": "Use the final model to classify new unseen data."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "هل يمكن لخوارزمية تصنيف واحدة أن تكون الأفضل لكل مجموعة بيانات؟",
+        "en": "Can one classification algorithm be best for every dataset?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تتطلب كل مجموعة بيانات شجرة قرار.",
+          "en": "Every dataset requires a decision tree."
+        },
+        {
+          "ar": "لا توجد خوارزمية تصنيف واحدة",
+          "en": "There is no single classification algorithm"
+        },
+        {
+          "ar": "عدد أمثلة القواعد في الملاحظات",
+          "en": "the number of rule examples in the notes"
+        },
+        {
+          "ar": "عدد الفئات في مجموعة غير معنونة",
+          "en": "the number of classes in an unlabeled dataset"
+        }
+      ],
+      "concept_id": "c6_no_best_algo",
+      "explanation": {
+        "ar": "لا توجد خوارزمية تصنيف واحدة",
+        "en": "There is no single classification algorithm that is best for every dataset."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ما العامل الذي ينبغي أخذه بالحسبان عند اختيار خوارزمية تصنيف؟",
+        "en": "What factor should be considered when choosing a classification algorithm?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إزالة جميع خصائص الإدخال",
+          "en": "remove all input features"
+        },
+        {
+          "ar": "اكتشاف تسميات الفئات مسبقاً",
+          "en": "discover class labels early"
+        },
+        {
+          "ar": "قابلية التفسير المطلوبة",
+          "en": "required interpretability"
+        },
+        {
+          "ar": "ثم يُحسب متوسط النتائج.",
+          "en": "The results are then averaged."
+        }
+      ],
+      "concept_id": "c6_model_choice",
+      "explanation": {
+        "ar": "قابلية التفسير المطلوبة",
+        "en": "required interpretability"
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

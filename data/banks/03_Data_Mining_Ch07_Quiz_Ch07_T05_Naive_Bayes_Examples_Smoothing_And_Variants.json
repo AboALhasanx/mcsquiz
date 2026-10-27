@@ -1,0 +1,468 @@
+{
+  "topic": {
+    "ar": "أمثلة Naive Bayes والتنعيم وأنواعه",
+    "en": "Naive Bayes Examples, Smoothing, and Variants"
+  },
+  "quiz_id": "Quiz_Ch07_T05_Naive_Bayes_Examples_Smoothing_And_Variants",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تضم مجموعة البيانات 100 سجل، منها 60 في الفئة A و40 في B. فما قيمة P(A)؟",
+        "en": "A dataset has 100 records, with 60 in Class A and 40 in Class B. What is P(A)?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.6",
+          "en": "0.6"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.8",
+          "en": "0.8"
+        },
+        {
+          "ar": "0.4",
+          "en": "0.4"
+        }
+      ],
+      "concept_id": "c7_nb_prior_ex_a",
+      "explanation": {
+        "ar": "0.6",
+        "en": "21. P(A) = 60 / 100 = 0.6; P(B) = 40 / 100 = 0.4."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "باستخدام مجموعة البيانات نفسها ذات 100 سجل، فما قيمة P(B)؟",
+        "en": "Using the same 100-record dataset, what is P(B)?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.4",
+          "en": "0.4"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.8",
+          "en": "0.8"
+        },
+        {
+          "ar": "0.6",
+          "en": "0.6"
+        }
+      ],
+      "concept_id": "c7_nb_prior_ex_b",
+      "explanation": {
+        "ar": "0.4",
+        "en": "21. P(A) = 60 / 100 = 0.6; P(B) = 40 / 100 = 0.4."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "في الفئة A، لدى 30 سجلاً من أصل 60 طقس Sunny. فما قيمة P(Sunny | A)؟",
+        "en": "In Class A, 30 of 60 records have Weather = Sunny. What is P(Sunny | A)?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "0.4",
+          "en": "0.4"
+        },
+        {
+          "ar": "0.8",
+          "en": "0.8"
+        },
+        {
+          "ar": "0.6",
+          "en": "0.6"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        }
+      ],
+      "concept_id": "c7_nb_likelihood_ex",
+      "explanation": {
+        "ar": "0.5",
+        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "إذا كانت P(A)=0.6 وP(Sunny|A)=0.5 وP(Mild|A)=0.8، فما Score(A)؟",
+        "en": "Given P(A) = 0.6, P(Sunny | A) = 0.5, and P(Mild | A) = 0.8, what is Score(A)?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "0.40",
+          "en": "0.40"
+        },
+        {
+          "ar": "0.30",
+          "en": "0.30"
+        },
+        {
+          "ar": "0.24",
+          "en": "0.24"
+        },
+        {
+          "ar": "0.48",
+          "en": "0.48"
+        }
+      ],
+      "concept_id": "c7_nb_score_ex",
+      "explanation": {
+        "ar": "0.24",
+        "en": "0.24"
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الدرجة غير المطَبّعة المحسوبة لفئة Play = Yes؟",
+        "en": "What unnormalized score is calculated for Play = Yes?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "0.923",
+          "en": "0.923"
+        },
+        {
+          "ar": "0.375",
+          "en": "0.375"
+        },
+        {
+          "ar": "0.077",
+          "en": "0.077"
+        },
+        {
+          "ar": "0.24",
+          "en": "0.24"
+        }
+      ],
+      "concept_id": "c7_nb_weather_yes_score",
+      "explanation": {
+        "ar": "0.375",
+        "en": "The Yes score (0.375) is greater than the No score (0.03125), so the prediction is Play = Yes."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الدرجة غير المطَبّعة المحسوبة لفئة Play = No؟",
+        "en": "What unnormalized score is calculated for Play = No?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "0.37500",
+          "en": "0.37500"
+        },
+        {
+          "ar": "0.07700",
+          "en": "0.07700"
+        },
+        {
+          "ar": "0.92300",
+          "en": "0.92300"
+        },
+        {
+          "ar": "0.03125",
+          "en": "0.03125"
+        }
+      ],
+      "concept_id": "c7_nb_weather_no_score",
+      "explanation": {
+        "ar": "0.03125",
+        "en": "The Yes score (0.375) is greater than the No score (0.03125), so the prediction is Play = Yes."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما الاحتمال المطَبّع لفئة Play = Yes؟",
+        "en": "What is the normalized probability for Play = Yes?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نحو 7.7 بالمئة",
+          "en": "approximately 7.7%"
+        },
+        {
+          "ar": "نحو 92.3 بالمئة",
+          "en": "approximately 92.3%"
+        },
+        {
+          "ar": "نحو 50 بالمئة",
+          "en": "approximately 50%"
+        },
+        {
+          "ar": "تسمية فئة جديدة",
+          "en": "a new class label"
+        }
+      ],
+      "concept_id": "c7_nb_weather_normalized",
+      "explanation": {
+        "ar": "نحو 92.3 بالمئة",
+        "en": "After normalization, the probabilities are approximately 92.3% for Yes and 7.7% for No. The unnormalized scores are sufficient for comparing classes."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا قد يحدث إذا لم تظهر قيمة سمة مطلقاً ضمن فئة؟",
+        "en": "What can happen if an attribute value never occurs in a class?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يتحول المصنف إلى التجميع",
+          "en": "the classifier changes to clustering"
+        },
+        {
+          "ar": "مجموعات بيانات بلا فئات ممكنة",
+          "en": "datasets with no possible classes"
+        },
+        {
+          "ar": "يصبح احتمالها المقدّر صفراً",
+          "en": "its estimated likelihood is zero"
+        },
+        {
+          "ar": "يصبح احتمالها السابق واحداً",
+          "en": "its class prior becomes one"
+        }
+      ],
+      "concept_id": "c7_nb_zero_problem",
+      "explanation": {
+        "ar": "يصبح احتمالها المقدّر صفراً",
+        "en": "If an attribute value never occurs in a class, its estimated likelihood is zero. Multiplying by zero can make the entire score for that class zero."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ماذا يضيف تنعيم Laplace إلى كل قيمة فئوية ممكنة؟",
+        "en": "What does Laplace smoothing add to each possible categorical value?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بيانات ثنائية",
+          "en": "binary data"
+        },
+        {
+          "ar": "عدداً صغيراً",
+          "en": "a small count"
+        },
+        {
+          "ar": "قيمة الخاصية",
+          "en": "an input term"
+        },
+        {
+          "ar": "قواعد IF-THEN",
+          "en": "IF-THEN rules"
+        }
+      ],
+      "concept_id": "c7_nb_laplace",
+      "explanation": {
+        "ar": "عدداً صغيراً",
+        "en": "Laplace smoothing adds a small count to each possible value. For a categorical attribute:"
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي سمات تلائم Gaussian Naive Bayes؟",
+        "en": "Which attributes suit Gaussian Naive Bayes?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "سمات ثنائية",
+          "en": "binary attributes"
+        },
+        {
+          "ar": "نحو 7.7 بالمئة",
+          "en": "approximately 7.7%"
+        },
+        {
+          "ar": "نحو 50 بالمئة",
+          "en": "approximately 50%"
+        },
+        {
+          "ar": "عددية مستمرة",
+          "en": "continuous numeric"
+        }
+      ],
+      "concept_id": "c7_nb_gaussian",
+      "explanation": {
+        "ar": "عددية مستمرة",
+        "en": "|Gaussian Naive Bayes|Continuous numeric attributes|Height, weight, laboratory measurements|"
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي نوع بيانات يلائم Multinomial Naive Bayes؟",
+        "en": "Which data type is suitable for Multinomial Naive Bayes?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بيانات العدّ",
+          "en": "count data"
+        },
+        {
+          "ar": "مستويات شجرية",
+          "en": "tree data"
+        },
+        {
+          "ar": "بيانات ثنائية",
+          "en": "binary data"
+        },
+        {
+          "ar": "بيانات صورة",
+          "en": "image data"
+        }
+      ],
+      "concept_id": "c7_nb_multinomial",
+      "explanation": {
+        "ar": "بيانات العدّ",
+        "en": "|Multinomial Naive Bayes|Count data|Word counts in documents|"
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي نوع بيانات يلائم Bernoulli Naive Bayes؟",
+        "en": "Which data type is useful for Bernoulli Naive Bayes?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "سمات ثنائية",
+          "en": "binary attributes"
+        },
+        {
+          "ar": "قيمة الخاصية",
+          "en": "an input term"
+        },
+        {
+          "ar": "عددية مستمرة",
+          "en": "continuous numeric"
+        },
+        {
+          "ar": "نحو 50 بالمئة",
+          "en": "approximately 50%"
+        }
+      ],
+      "concept_id": "c7_nb_bernoulli",
+      "explanation": {
+        "ar": "سمات ثنائية",
+        "en": "|Bernoulli Naive Bayes|Binary attributes|Whether a word occurs or does not occur|"
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "مع أي إعداد للبيانات قد يعمل Naive Bayes جيداً؟",
+        "en": "Which data setting can Naive Bayes work well with?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا يمكن أن يبقى أي سجل بلا مطابقة",
+          "en": "no record can be left unmatched"
+        },
+        {
+          "ar": "مجموعات بيانات كثيرة وعالية الأبعاد",
+          "en": "many high-dimensional datasets"
+        },
+        {
+          "ar": "اعتماد السمات بعضها على بعض بشدة",
+          "en": "attributes are strongly dependent"
+        },
+        {
+          "ar": "مجموعات بيانات بلا أمثلة معنونة",
+          "en": "datasets with no labeled examples"
+        }
+      ],
+      "concept_id": "c7_nb_adv_highdim",
+      "explanation": {
+        "ar": "مجموعات بيانات كثيرة وعالية الأبعاد",
+        "en": "Works well for many high-dimensional datasets."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "أي محدودية قد تضعف أداء Naive Bayes؟",
+        "en": "What limitation can weaken Naive Bayes performance?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مجموعات بيانات كثيرة وعالية الأبعاد",
+          "en": "many high-dimensional datasets"
+        },
+        {
+          "ar": "مجموعات بيانات بلا فئات ممكنة",
+          "en": "datasets with no possible classes"
+        },
+        {
+          "ar": "اعتماد السمات بعضها على بعض بشدة",
+          "en": "attributes are strongly dependent"
+        },
+        {
+          "ar": "مجموعات بيانات بلا أمثلة معنونة",
+          "en": "datasets with no labeled examples"
+        }
+      ],
+      "concept_id": "c7_nb_limit_dependence",
+      "explanation": {
+        "ar": "اعتماد السمات بعضها على بعض بشدة",
+        "en": "Performance may be weaker when attributes are strongly dependent."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

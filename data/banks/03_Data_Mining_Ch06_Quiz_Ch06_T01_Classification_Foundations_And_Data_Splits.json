@@ -1,0 +1,372 @@
+{
+  "topic": {
+    "ar": "أساسيات التصنيف وتقسيم البيانات",
+    "en": "Classification Foundations and Data Splits"
+  },
+  "quiz_id": "Quiz_Ch06_T01_Classification_Foundations_And_Data_Splits",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يعيّن التصنيف لسجل البيانات؟",
+        "en": "What does classification assign to a data record?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قيمة عددية على مقياس مستمر",
+          "en": "a numerical value on a continuous scale"
+        },
+        {
+          "ar": "ترتيباً ثابتاً لسجلات التحقق",
+          "en": "a fixed order of validation records"
+        },
+        {
+          "ar": "الاختيار بين نماذج مختلفة",
+          "en": "Select between different models"
+        },
+        {
+          "ar": "إحدى الفئات المحددة مسبقاً",
+          "en": "one of a set of predefined classes"
+        }
+      ],
+      "concept_id": "c6_definition",
+      "explanation": {
+        "ar": "إحدى الفئات المحددة مسبقاً",
+        "en": "It is used to assign a data record to one of a set of predefined classes."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الذي يجعل التصنيف تقنية تعلّم خاضع للإشراف؟",
+        "en": "What makes classification a supervised-learning technique?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تُستخدم بيانات الاختبار لملاءمة النموذج",
+          "en": "the test data is used to fit the model"
+        },
+        {
+          "ar": "تقييم النموذج النهائي فقط على بيانات غير مرئية",
+          "en": "evaluating only the final model on unseen data"
+        },
+        {
+          "ar": "تكتشف الخوارزمية مجموعات من دون فئات مستهدفة",
+          "en": "the algorithm discovers groups without target classes"
+        },
+        {
+          "ar": "تحتوي بيانات التدريب على الإجابات الصحيحة",
+          "en": "the training data contains the correct answers"
+        }
+      ],
+      "concept_id": "c6_supervised",
+      "explanation": {
+        "ar": "تحتوي بيانات التدريب على الإجابات الصحيحة",
+        "en": "The term supervised means that the training data contains the correct answers."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما المصطلح الآخر المستخدم للخصائص؟",
+        "en": "Which term is also used for features?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "سجل بيانات",
+          "en": "data record"
+        },
+        {
+          "ar": "قيمة هدف",
+          "en": "target value"
+        },
+        {
+          "ar": "المتنبئات",
+          "en": "Predictors"
+        },
+        {
+          "ar": "تسمية فئة",
+          "en": "class label"
+        }
+      ],
+      "concept_id": "c6_feature_role",
+      "explanation": {
+        "ar": "المتنبئات",
+        "en": "Predictors"
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "بماذا تسمى تسمية الفئة أيضاً عادة؟",
+        "en": "What is the class label also commonly called?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المتغير المستهدف",
+          "en": "the target variable"
+        },
+        {
+          "ar": "التنبؤات الصحيحة",
+          "en": "correct predictions"
+        },
+        {
+          "ar": "التغطية التسلسلية",
+          "en": "Sequential Covering"
+        },
+        {
+          "ar": "الاحتمال المتنبأ به",
+          "en": "the predicted probability"
+        }
+      ],
+      "concept_id": "c6_target_name",
+      "explanation": {
+        "ar": "المتغير المستهدف",
+        "en": "The class label is also commonly called the target variable."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "فيمَ تُستخدم بيانات التدريب؟",
+        "en": "What is training data used for?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قيمة عددية على مقياس مستمر",
+          "en": "a numerical value on a continuous scale"
+        },
+        {
+          "ar": "لتعليم خوارزمية التصنيف",
+          "en": "to teach the classification algorithm"
+        },
+        {
+          "ar": "لاستبدال كل سجل تحقق",
+          "en": "to replace every validation record"
+        },
+        {
+          "ar": "إحدى الفئات المحددة مسبقاً",
+          "en": "one of a set of predefined classes"
+        }
+      ],
+      "concept_id": "c6_training_role",
+      "explanation": {
+        "ar": "لتعليم خوارزمية التصنيف",
+        "en": "Training data is the data used to teach the classification algorithm."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي تسميات تتضمنها بيانات التدريب؟",
+        "en": "Which labels are included in training data?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المخرجات متعددة الفئات",
+          "en": "multiclass output"
+        },
+        {
+          "ar": "التغطية التسلسلية",
+          "en": "Sequential Covering"
+        },
+        {
+          "ar": "تسميات الفئات المعروفة",
+          "en": "Known class labels"
+        },
+        {
+          "ar": "احتمالات فئات الرسائل",
+          "en": "probable email classes"
+        }
+      ],
+      "concept_id": "c6_training_contents",
+      "explanation": {
+        "ar": "تسميات الفئات المعروفة",
+        "en": "Known class labels"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي مهمة لاختيار النموذج يمكن أن تدعمها بيانات التحقق؟",
+        "en": "Which model-selection task can validation data support?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نموذج التصنيف النهائي",
+          "en": "the final classification model"
+        },
+        {
+          "ar": "الاختيار بين نماذج مختلفة",
+          "en": "Select between different models"
+        },
+        {
+          "ar": "إحدى الفئات المحددة مسبقاً",
+          "en": "one of a set of predefined classes"
+        },
+        {
+          "ar": "استبدال المتغير المستهدف",
+          "en": "replacing the target variable"
+        }
+      ],
+      "concept_id": "c6_validation_use",
+      "explanation": {
+        "ar": "الاختيار بين نماذج مختلفة",
+        "en": "Select between different models"
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مشكلة في النموذج يمكن لبيانات التحقق أن تساعد على اكتشافها؟",
+        "en": "Which model problem can validation data help detect?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "فرط التكيّف",
+          "en": "overfitting"
+        },
+        {
+          "ar": "تسميات الفئات",
+          "en": "class labels"
+        },
+        {
+          "ar": "سجل بيانات",
+          "en": "data record"
+        },
+        {
+          "ar": "Naive Bayes",
+          "en": "Naive Bayes"
+        }
+      ],
+      "concept_id": "c6_validation_overfit",
+      "explanation": {
+        "ar": "فرط التكيّف",
+        "en": "Pruning helps avoid overfitting by removing unnecessary branches."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ما الذي تستخدم بيانات الاختبار لتقييمه؟",
+        "en": "What is test data used to evaluate?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نموذج التصنيف النهائي",
+          "en": "the final classification model"
+        },
+        {
+          "ar": "لاستبدال كل سجل تحقق",
+          "en": "to replace every validation record"
+        },
+        {
+          "ar": "الاختيار بين نماذج مختلفة",
+          "en": "Select between different models"
+        },
+        {
+          "ar": "استبدال المتغير المستهدف",
+          "en": "replacing the target variable"
+        }
+      ],
+      "concept_id": "c6_test_purpose",
+      "explanation": {
+        "ar": "نموذج التصنيف النهائي",
+        "en": "Test data is used to evaluate the final classification model."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "يستخدم فريق سجلات الاختبار أثناء ملاءمة المصنف. أي قاعدة يخالف؟",
+        "en": "A team uses its test records while fitting the classifier. Which rule does this violate?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يجب أن تحتوي بيانات التدريب على تسميات فئات معروفة.",
+          "en": "The training data must contain known class labels."
+        },
+        {
+          "ar": "ينبغي ألا يستخدم النموذج بيانات الاختبار أثناء التدريب.",
+          "en": "The model should not use the test data during training."
+        },
+        {
+          "ar": "يمكن لبيانات التحقق أن تساعد على الاختيار بين النماذج.",
+          "en": "Validation data can help select between models."
+        },
+        {
+          "ar": "تكتشف الخوارزمية مجموعات من دون فئات مستهدفة",
+          "en": "the algorithm discovers groups without target classes"
+        }
+      ],
+      "concept_id": "c6_test_leakage",
+      "explanation": {
+        "ar": "ينبغي ألا يستخدم النموذج بيانات الاختبار أثناء التدريب.",
+        "en": "The model should not use the test data during training."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ماذا تتعلم الخوارزمية من فحص بيانات التدريب؟",
+        "en": "What does the algorithm learn by examining training data?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قائمة فئات من دون خصائص إدخال",
+          "en": "a list of classes without input features"
+        },
+        {
+          "ar": "نسبة جميع التنبؤات الصحيحة",
+          "en": "the percentage of all predictions that are correct"
+        },
+        {
+          "ar": "أنماطاً تميّز فئة عن أخرى",
+          "en": "patterns that distinguish one class from another"
+        },
+        {
+          "ar": "قيمة عددية على مقياس مستمر",
+          "en": "a numerical value on a continuous scale"
+        }
+      ],
+      "concept_id": "c6_learned_patterns",
+      "explanation": {
+        "ar": "أنماطاً تميّز فئة عن أخرى",
+        "en": "It tries to learn patterns that distinguish one class from another."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

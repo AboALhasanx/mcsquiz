@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.18] — 2026-10-28
+
+### Changed
+- content: add Data Mining Chapters 6–7 quiz banks
+
+
 ## [1.7.17] — 2026-10-28
 
 ### Changed

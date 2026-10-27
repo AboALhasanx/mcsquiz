@@ -1,0 +1,468 @@
+{
+  "topic": {
+    "ar": "مقاييس التصنيف ومنحنى ROC",
+    "en": "Classification Metrics and ROC"
+  },
+  "quiz_id": "Quiz_Ch06_T05_Classification_Metrics_And_ROC",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا تقيس الدقة؟",
+        "en": "What does accuracy measure?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نسبة جميع التنبؤات الصحيحة",
+          "en": "the percentage of all predictions that are correct"
+        },
+        {
+          "ar": "أنماطاً تميّز فئة عن أخرى",
+          "en": "patterns that distinguish one class from another"
+        },
+        {
+          "ar": "يواصل التقسيم حتى عزل كل سجل.",
+          "en": "Continue splitting until every record is isolated."
+        },
+        {
+          "ar": "عندما تكون أسماء الفئات متطابقة",
+          "en": "when the classes have identical names"
+        }
+      ],
+      "concept_id": "c6_accuracy_meaning",
+      "explanation": {
+        "ar": "نسبة جميع التنبؤات الصحيحة",
+        "en": "Accuracy measures the percentage of all predictions that are correct."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "إذا صنّف نموذج 95 مريضاً من أصل 100 بصورة صحيحة، فما الدقة؟",
+        "en": "If a model correctly classifies 95 of 100 patients, what accuracy is reported?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "95 بالمئة",
+          "en": "95 percent"
+        },
+        {
+          "ar": "85 بالمئة",
+          "en": "85 percent"
+        },
+        {
+          "ar": "75 بالمئة",
+          "en": "75 percent"
+        },
+        {
+          "ar": "90 بالمئة",
+          "en": "90 percent"
+        }
+      ],
+      "concept_id": "c6_accuracy_example",
+      "explanation": {
+        "ar": "95 بالمئة",
+        "en": "95 percent"
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "عن أي سؤال تجيب قيمة Precision؟",
+        "en": "Which question does precision answer?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تضمن الدقة العالية العثور على كل حالة من الفئة الأقلية.",
+          "en": "High accuracy guarantees that every minority case is found."
+        },
+        {
+          "ar": "ينبغي ألا يستخدم النموذج بيانات الاختبار أثناء التدريب.",
+          "en": "The model should not use the test data during training."
+        },
+        {
+          "ar": "من كل الإيجابيات الفعلية، كم حالة حددها النموذج؟",
+          "en": "Of all actual positives, how many did the model identify?"
+        },
+        {
+          "ar": "عندما يتنبأ النموذج بالإيجابية، كم مرة يكون تنبؤه صحيحاً؟",
+          "en": "When the model predicts positive, how often is it correct?"
+        }
+      ],
+      "concept_id": "c6_precision_question",
+      "explanation": {
+        "ar": "عندما يتنبأ النموذج بالإيجابية، كم مرة يكون تنبؤه صحيحاً؟",
+        "en": "When the model predicts positive, how often is it correct?"
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يتنبأ النموذج بالمرض لدى 100 مريض، و90 منهم مصابون فعلاً. ما قيمة Precision؟",
+        "en": "The model predicts disease in 100 patients and 90 actually have it. What precision is reported?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "70 بالمئة",
+          "en": "70 percent"
+        },
+        {
+          "ar": "80 بالمئة",
+          "en": "80 percent"
+        },
+        {
+          "ar": "90 بالمئة",
+          "en": "90 percent"
+        },
+        {
+          "ar": "95 بالمئة",
+          "en": "95 percent"
+        }
+      ],
+      "concept_id": "c6_precision_example",
+      "explanation": {
+        "ar": "90 بالمئة",
+        "en": "90 percent"
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "متى ينبغي إعطاء الأولوية لـPrecision؟",
+        "en": "When should precision be prioritized?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عندما يكون تفويت حالة موجبة هو مصدر القلق الوحيد",
+          "en": "when missing a positive case is the only concern"
+        },
+        {
+          "ar": "عندما تكون التنبؤات الإيجابية الكاذبة مكلفة",
+          "en": "when false positive predictions are costly"
+        },
+        {
+          "ar": "عندما تكون جميع الفئات متساوية التكرار",
+          "en": "when every class has equal frequency"
+        },
+        {
+          "ar": "ما نسبة التنبؤات الصحيحة من جميع التنبؤات؟",
+          "en": "What percentage of all predictions is correct?"
+        }
+      ],
+      "concept_id": "c6_precision_cost",
+      "explanation": {
+        "ar": "عندما تكون التنبؤات الإيجابية الكاذبة مكلفة",
+        "en": "Precision is important when false positive predictions are costly."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "عن أي نوع من الحالات يسأل Recall؟",
+        "en": "Recall asks about cases of which kind?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "درجات التحقق",
+          "en": "validation scores"
+        },
+        {
+          "ar": "أداء مقبول",
+          "en": "Acceptable performance"
+        },
+        {
+          "ar": "سلبية فعلياً",
+          "en": "actually negative"
+        },
+        {
+          "ar": "موجبة فعلياً",
+          "en": "actually positive"
+        }
+      ],
+      "concept_id": "c6_recall_question",
+      "explanation": {
+        "ar": "موجبة فعلياً",
+        "en": "Of all the cases that are actually positive, how many did the model correctly identify?"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "يحدد النموذج 95 مريضاً من أصل 100 مصاب فعلياً بالمرض. ما قيمة Recall؟",
+        "en": "The model correctly identifies 95 of 100 patients who actually have a disease. What recall is reported?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "90 بالمئة",
+          "en": "90 percent"
+        },
+        {
+          "ar": "95 بالمئة",
+          "en": "95 percent"
+        },
+        {
+          "ar": "85 بالمئة",
+          "en": "85 percent"
+        },
+        {
+          "ar": "75 بالمئة",
+          "en": "75 percent"
+        }
+      ],
+      "concept_id": "c6_recall_example",
+      "explanation": {
+        "ar": "95 بالمئة",
+        "en": "95 percent"
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "متى يكون Recall مهماً بصورة خاصة؟",
+        "en": "When is recall especially important?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ترتيبات قواعد مختلفة",
+          "en": "different rule orders"
+        },
+        {
+          "ar": "التعويض الإحصائي",
+          "en": "statistical imputation"
+        },
+        {
+          "ar": "تفويت حالة موجبة",
+          "en": "missing a positive case"
+        },
+        {
+          "ar": "Precision وRecall",
+          "en": "precision and recall"
+        }
+      ],
+      "concept_id": "c6_recall_cost",
+      "explanation": {
+        "ar": "تفويت حالة موجبة",
+        "en": "Recall is especially important when missing a positive case can have serious consequences."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "عن أي نوع من الحالات تسأل Specificity؟",
+        "en": "Specificity asks about cases of which kind?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "موجبة فعلياً",
+          "en": "actually positive"
+        },
+        {
+          "ar": "سلبية فعلياً",
+          "en": "actually negative"
+        },
+        {
+          "ar": "درجات التحقق",
+          "en": "validation scores"
+        },
+        {
+          "ar": "أداء مقبول",
+          "en": "Acceptable performance"
+        }
+      ],
+      "concept_id": "c6_specificity_question",
+      "explanation": {
+        "ar": "سلبية فعلياً",
+        "en": "Of all the cases that are actually negative, how many did the model correctly identify?"
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "يحدد النموذج 90 شخصاً سليماً من أصل 100 بصورة صحيحة. ما قيمة Specificity؟",
+        "en": "A model correctly identifies 90 of 100 healthy patients. What specificity is reported?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "95 بالمئة",
+          "en": "95 percent"
+        },
+        {
+          "ar": "75 بالمئة",
+          "en": "75 percent"
+        },
+        {
+          "ar": "85 بالمئة",
+          "en": "85 percent"
+        },
+        {
+          "ar": "90 بالمئة",
+          "en": "90 percent"
+        }
+      ],
+      "concept_id": "c6_specificity_example",
+      "explanation": {
+        "ar": "90 بالمئة",
+        "en": "90 percent"
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي مقياسين تجمعهما F1-score؟",
+        "en": "Which two measures does F1-score combine?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Precision وRecall",
+          "en": "precision and recall"
+        },
+        {
+          "ar": "التعويض الإحصائي",
+          "en": "statistical imputation"
+        },
+        {
+          "ar": "تفويت حالة موجبة",
+          "en": "missing a positive case"
+        },
+        {
+          "ar": "عدد استخدام السمات",
+          "en": "Attribute Use Count"
+        }
+      ],
+      "concept_id": "c6_f1",
+      "explanation": {
+        "ar": "Precision وRecall",
+        "en": "F1-score combines precision and recall into one measure."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "على ماذا يقيّم منحنى ROC النموذج؟",
+        "en": "What does the ROC curve evaluate across?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عتبات قرار مختلفة",
+          "en": "different decision thresholds"
+        },
+        {
+          "ar": "التصنيف والانحدار",
+          "en": "classification and regression"
+        },
+        {
+          "ar": "أحجام تدريب مختلفة",
+          "en": "different training-set sizes"
+        },
+        {
+          "ar": "متوسط منفعة التصنيف",
+          "en": "Average Utility of Classification"
+        }
+      ],
+      "concept_id": "c6_roc_threshold",
+      "explanation": {
+        "ar": "عتبات قرار مختلفة",
+        "en": "It evaluates the model at different decision thresholds."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "إلى ماذا يشير الاختصار AUC؟",
+        "en": "What does AUC stand for?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "Accuracy وSpecificity",
+          "en": "accuracy and specificity"
+        },
+        {
+          "ar": "المساحة تحت منحنى ROC",
+          "en": "Area Under the ROC Curve"
+        },
+        {
+          "ar": "مجموعات رسائل متشابهة",
+          "en": "groups of similar emails"
+        },
+        {
+          "ar": "الدقة في التحقق المتقاطع",
+          "en": "Accuracy Under Cross-validation"
+        }
+      ],
+      "concept_id": "c6_auc_meaning",
+      "explanation": {
+        "ar": "المساحة تحت منحنى ROC",
+        "en": "Area Under the ROC Curve"
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "إلى ماذا تشير قيمة AUC البالغة 0.50؟",
+        "en": "What does an AUC of 0.50 indicate?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "درجات التحقق",
+          "en": "validation scores"
+        },
+        {
+          "ar": "سلبية فعلياً",
+          "en": "actually negative"
+        },
+        {
+          "ar": "أداء عشوائي",
+          "en": "Random performance"
+        },
+        {
+          "ar": "موجبة فعلياً",
+          "en": "actually positive"
+        }
+      ],
+      "concept_id": "c6_auc_random",
+      "explanation": {
+        "ar": "أداء عشوائي",
+        "en": "Random performance"
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

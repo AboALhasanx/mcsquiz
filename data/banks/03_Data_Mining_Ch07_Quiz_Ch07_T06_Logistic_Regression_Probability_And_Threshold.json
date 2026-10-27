@@ -1,0 +1,404 @@
+{
+  "topic": {
+    "ar": "احتمال Logistic Regression والعتبة",
+    "en": "Logistic Regression Probability and Threshold"
+  },
+  "quiz_id": "Quiz_Ch07_T06_Logistic_Regression_Probability_And_Threshold",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "يتعلق الاحتمال المقدّر بالانتماء إلى ماذا؟",
+        "en": "The estimated probability concerns belonging to what?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نحو 0.70",
+          "en": "approximately 0.70"
+        },
+        {
+          "ar": "نحو 1.70",
+          "en": "approximately 1.70"
+        },
+        {
+          "ar": "إحدى فئتين",
+          "en": "one of two classes"
+        },
+        {
+          "ar": "فئة معينة",
+          "en": "a particular class"
+        }
+      ],
+      "concept_id": "c7_lr_purpose",
+      "explanation": {
+        "ar": "فئة معينة",
+        "en": "Logistic Regression is a supervised machine learning algorithm used mainly for classification. It estimates the probability that an observation belongs to a particular class. Although its name contains the word “regression,” it is commonly used for classification tasks."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "على الرغم من اسمه، فيمَ يستخدم Logistic Regression أساساً؟",
+        "en": "Despite its name, what is Logistic Regression mainly used for?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "النتيجة",
+          "en": "the consequent"
+        },
+        {
+          "ar": "التصنيف",
+          "en": "classification"
+        },
+        {
+          "ar": "قاعدياً",
+          "en": "Cluster method"
+        },
+        {
+          "ar": "التجميع",
+          "en": "clustering"
+        }
+      ],
+      "concept_id": "c7_lr_name",
+      "explanation": {
+        "ar": "التصنيف",
+        "en": "Course: Data Mining | Topic: Classification Techniques"
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا يتنبأ Binary Logistic Regression؟",
+        "en": "What does Binary Logistic Regression predict?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عتبة القرار",
+          "en": "class threshold"
+        },
+        {
+          "ar": "سمات ثنائية",
+          "en": "binary attributes"
+        },
+        {
+          "ar": "إحدى فئتين",
+          "en": "one of two classes"
+        },
+        {
+          "ar": "فئة معينة",
+          "en": "a particular class"
+        }
+      ],
+      "concept_id": "c7_lr_binary",
+      "explanation": {
+        "ar": "إحدى فئتين",
+        "en": "Binary Logistic Regression: predicts one of two classes, such as Yes or No."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يتنبأ Multinomial Logistic Regression؟",
+        "en": "What does Multinomial Logistic Regression predict?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إحدى ثلاث فئات غير مرتبة أو أكثر",
+          "en": "one of three or more unordered classes"
+        },
+        {
+          "ar": "يختار القاعدة ذات التغطية الأعلى",
+          "en": "selects the rule with the highest coverage"
+        },
+        {
+          "ar": "78 بالمئة من سجلات التدريب موجبة",
+          "en": "78% of the training records are positive"
+        },
+        {
+          "ar": "من سالب ما لا نهاية إلى موجب ما لا نهاية",
+          "en": "from negative infinity to positive infinity"
+        }
+      ],
+      "concept_id": "c7_lr_multinomial",
+      "explanation": {
+        "ar": "إحدى ثلاث فئات غير مرتبة أو أكثر",
+        "en": "Multinomial Logistic Regression: predicts one of three or more unordered classes."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما نوع الفئات التي ينمذجها Ordinal Logistic Regression؟",
+        "en": "What kind of categories does Ordinal Logistic Regression model?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "خصائص مستمرة بلا هدف",
+          "en": "continuous features with no target"
+        },
+        {
+          "ar": "فئات لها ترتيب ذو معنى",
+          "en": "categories that have a meaningful order"
+        },
+        {
+          "ar": "عتبة القرار تساوي 0.78",
+          "en": "the decision threshold equals 0.78"
+        },
+        {
+          "ar": "تغطية القاعدة للحالة",
+          "en": "the rule coverage for the observation"
+        }
+      ],
+      "concept_id": "c7_lr_ordinal",
+      "explanation": {
+        "ar": "فئات لها ترتيب ذو معنى",
+        "en": "Ordinal Logistic Regression: models categories that have a meaningful order, such as Low, Medium, and High. Specific ordinal models use assumptions that differ from ordinary binary Logistic Regression."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يفعل Logistic Regression قبل تطبيق دالة Sigmoid؟",
+        "en": "What does Logistic Regression do before applying the sigmoid function?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "78 بالمئة من سجلات التدريب موجبة",
+          "en": "78% of the training records are positive"
+        },
+        {
+          "ar": "يختار القاعدة ذات التغطية الأعلى",
+          "en": "selects the rule with the highest coverage"
+        },
+        {
+          "ar": "يحسب درجة خطية من خصائص الإدخال",
+          "en": "calculates a linear score from the input features"
+        },
+        {
+          "ar": "يزيل خصائص الإدخال ذات القيم الأكبر",
+          "en": "removes the input features with the largest values"
+        }
+      ],
+      "concept_id": "c7_lr_linear_score",
+      "explanation": {
+        "ar": "يحسب درجة خطية من خصائص الإدخال",
+        "en": "Logistic Regression first calculates a linear score from the input features. It then applies the sigmoid function to convert that score into a value between 0 and 1, interpreted as a probability."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا يمثل b₀ في الدرجة الخطية؟",
+        "en": "What does b₀ represent in the linear score?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "درجة النموذج",
+          "en": "model bias term"
+        },
+        {
+          "ar": "عتبة القرار",
+          "en": "class threshold"
+        },
+        {
+          "ar": "قواعد IF-THEN",
+          "en": "IF-THEN rules"
+        },
+        {
+          "ar": "المقطع الثابت",
+          "en": "the intercept"
+        }
+      ],
+      "concept_id": "c7_lr_intercept",
+      "explanation": {
+        "ar": "المقطع",
+        "en": "where x is the number of hours studied. The intercept and coefficient are assumed to have been learned during training."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما المجال الذي يقع فيه خرج دالة Sigmoid؟",
+        "en": "What range does the sigmoid output occupy?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مستخدمة للتصنيف",
+          "en": "used for classification"
+        },
+        {
+          "ar": "الاستقلال الشرطي",
+          "en": "conditional-independence"
+        },
+        {
+          "ar": "إحدى فئتين فقط",
+          "en": "one of two classes only"
+        },
+        {
+          "ar": "بين 0 و1 حصراً",
+          "en": "strictly between 0 and 1"
+        }
+      ],
+      "concept_id": "c7_lr_sigmoid_map",
+      "explanation": {
+        "ar": "بين 0 و1 حصراً",
+        "en": "The sigmoid function maps any real-valued score z to a value strictly between 0 and 1. This output can be interpreted as the estimated probability of the positive class."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ما الاحتمال الذي تنتجه Sigmoid عندما تكون z = 0؟",
+        "en": "What probability does the sigmoid produce when z = 0?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.0",
+          "en": "0.0"
+        },
+        {
+          "ar": "0.1",
+          "en": "0.1"
+        },
+        {
+          "ar": "0.7",
+          "en": "0.7"
+        }
+      ],
+      "concept_id": "c7_lr_sigmoid_zero",
+      "explanation": {
+        "ar": "0.5",
+        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما الاحتمال الذي تنتجه Sigmoid عندما تكون z = 2؟",
+        "en": "What probability does the sigmoid produce when z = 2?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "0.8808",
+          "en": "0.8808"
+        },
+        {
+          "ar": "0.6900",
+          "en": "0.6900"
+        },
+        {
+          "ar": "0.1680",
+          "en": "0.1680"
+        },
+        {
+          "ar": "0.1192",
+          "en": "0.1192"
+        }
+      ],
+      "concept_id": "c7_lr_sigmoid_two",
+      "explanation": {
+        "ar": "0.8808",
+        "en": "If z = 2, then P(Y = 1 | X) ≈ 1 / (1 + 0.1353) ≈ 0.8808."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ما عتبة القرار الافتراضية الشائعة للتصنيف الثنائي؟",
+        "en": "What is the common default threshold for binary classification?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "0.0",
+          "en": "0.0"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.1",
+          "en": "0.1"
+        },
+        {
+          "ar": "1.0",
+          "en": "1.0"
+        }
+      ],
+      "concept_id": "c7_lr_default_threshold",
+      "explanation": {
+        "ar": "0.5",
+        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ماذا يعني الاحتمال 0.78 المقدّر للفئة 1؟",
+        "en": "What does the 0.78 probability estimate for Class 1 mean?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تسمية فئة واحدة لكل خاصية",
+          "en": "one class label per feature"
+        },
+        {
+          "ar": "دقة النموذج 78 بالمئة",
+          "en": "the model has 78% accuracy"
+        },
+        {
+          "ar": "احتمال 78 بالمئة للفئة 1",
+          "en": "78% probability for Class 1"
+        },
+        {
+          "ar": "عتبة القرار تساوي 0.78",
+          "en": "the decision threshold equals 0.78"
+        }
+      ],
+      "concept_id": "c7_lr_probability_vs_accuracy",
+      "explanation": {
+        "ar": "احتمال 78 بالمئة للفئة 1",
+        "en": "Example: if the predicted probability is 0.78 and the threshold is 0.5, the predicted class is 1. This does not mean the model is 78% accurate; it means the model estimates a 78% probability for Class 1."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T22:03:42Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
