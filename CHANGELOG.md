@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.11] — 2026-10-27
+
+### Changed
+- content: Data Mining Chapter 1 topic-bank replacement
+
+
 ## [1.7.10] — 2026-10-27
 
 ### Changed
