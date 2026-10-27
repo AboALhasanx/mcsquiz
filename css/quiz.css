@@ -933,7 +933,7 @@ button.timer-unified-pill.is-paused {
 
 /* Question Body */
 .question-body {
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.95rem;
 }
 
 .question-text {
@@ -952,14 +952,14 @@ button.timer-unified-pill.is-paused {
 .options-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.75rem;
 }
 
 @media (orientation: landscape) {
     .options-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+        gap: 0.75rem;
     }
     .question-card {
         padding: 0.75rem 0.85rem;
@@ -2298,7 +2298,7 @@ body:has(#results-view:not(.hidden)) .progress-section {
 /* Catalog Badges & Filter Bar */
 .catalog-filter-bar {
     display: flex;
-    gap: 0.4rem;
+    gap: 0.55rem;
     overflow-x: auto;
     padding: 0.25rem 0 0.5rem 0;
     scrollbar-width: none;

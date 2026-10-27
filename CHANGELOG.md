@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.13] — 2026-10-27
+
+### Changed
+- زيادة المسافات بين أزرار الخيارات والشرائح وتأكيد تسجيل الحساب
+
+
 ## [1.7.12] — 2026-10-27
 
 ### Changed
