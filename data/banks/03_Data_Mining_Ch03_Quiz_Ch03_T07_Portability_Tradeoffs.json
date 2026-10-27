@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "فوائد قابلية النقل وقيودها واختيار الطريقة",
+    "en": "Portability Benefits, Limitations, and Method Choice"
+  },
+  "quiz_id": "Quiz_Ch03_T07_Portability_Tradeoffs",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي فائدة تتعلق بمجموعات تضم أنواع بيانات مختلفة؟",
+        "en": "Which benefit concerns datasets containing different data types?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إزالة كل العلاقات بين كائنات البيانات.",
+          "en": "Remove all relationships between objects."
+        },
+        {
+          "ar": "فرض بنية أصلية متطابقة على كل الأنواع.",
+          "en": "Force every type into one identical structure."
+        },
+        {
+          "ar": "ضمان انعدام الحساب لكل الخوارزميات.",
+          "en": "Guarantee zero computation for algorithms."
+        },
+        {
+          "ar": "جعل البيانات غير المتجانسة أسهل معالجةً.",
+          "en": "Make heterogeneous data easier to process."
+        }
+      ],
+      "concept_id": "portability_heterogeneous_benefit",
+      "explanation": {
+        "ar": "قد تسهل قابلية النقل معالجة البيانات غير المتجانسة؛ ولا توحد أشكالها الأصلية أو تلغي الحساب.",
+        "en": "Portability can ease processing of heterogeneous data; it does not make original forms identical or remove computation."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف تساعد قابلية النقل الخوارزميات الموجودة؟",
+        "en": "How can portability help existing algorithms?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تمكين الخوارزميات الموجودة من العمل مع أنواع مختلفة بعد تحويلها.",
+          "en": "Allow existing algorithms to work with different data types after conversion."
+        },
+        {
+          "ar": "استبدال الخوارزميات الموجودة بمصنف شامل واحد لكل مهام التنقيب.",
+          "en": "Replace existing algorithms with one universal classifier for all mining tasks."
+        },
+        {
+          "ar": "جعل كل خوارزمية تعالج كل نوع خام دون تحويل أو تهيئة مسبقة.",
+          "en": "Make every algorithm process every raw type without conversion or preparation."
+        },
+        {
+          "ar": "إلغاء الحاجة إلى اختيار التمثيل المناسب لكل نوع من البيانات.",
+          "en": "Remove the need to choose a suitable representation for each data type."
+        }
+      ],
+      "concept_id": "portability_reuse_algorithms",
+      "explanation": {
+        "ar": "الفائدة المذكورة تمكين الطرائق الموجودة عبر تمثيلات مناسبة، لا إلغاء متطلبات مدخلاتها.",
+        "en": "The stated benefit is enabling existing methods to work through suitable representations, not eliminating their input requirements."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي فائدة تتعلق باستخدام معلومات مصادر مختلفة معاً؟",
+        "en": "Which benefit concerns using information from different sources together?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "منع دمج المعلومات من مصادر البيانات المختلفة.",
+          "en": "Prevent combining information from different data sources."
+        },
+        {
+          "ar": "اشتراط صيغة ملف واحدة لجميع المصادر.",
+          "en": "Require all sources to share a single file format."
+        },
+        {
+          "ar": "تسهيل تكامل مصادر البيانات المختلفة.",
+          "en": "Facilitate integration of different data sources."
+        },
+        {
+          "ar": "استبدال تكامل المصادر بحذف القيم الشاذة.",
+          "en": "Replace source integration with outlier removal."
+        }
+      ],
+      "concept_id": "portability_integrate_sources_benefit",
+      "explanation": {
+        "ar": "ورد تسهيل التكامل فائدةً صريحة؛ أما البدائل فتناقض هذه الفائدة.",
+        "en": "Facilitating integration is explicitly listed as an advantage; the alternatives contradict that benefit."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي قيد لتحويل البيانات ورد في المادة؟",
+        "en": "Which limitation of data conversion is stated?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تختفي كلفة المعالجة تماماً.",
+          "en": "Processing cost disappears."
+        },
+        {
+          "ar": "تأخذ الفئات رتبة طبيعية.",
+          "en": "Nominal categories gain order."
+        },
+        {
+          "ar": "تُحفظ القيم دائماً بدقة.",
+          "en": "Every value stays intact."
+        },
+        {
+          "ar": "قد تُفقد بعض المعلومات.",
+          "en": "Some information can be lost."
+        }
+      ],
+      "concept_id": "portability_information_loss",
+      "explanation": {
+        "ar": "ورد فقدان المعلومات ضمن القيود؛ أما البدائل فتدعي فوائد غير مضمونة.",
+        "en": "Information loss is listed as a limitation; the other choices claim benefits the source does not guarantee."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا قد يحدث للتنظيم الأصلي للبيانات بعد التحويل؟",
+        "en": "What may happen to the original organization of data after conversion?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تصبح البيانات جدولاً مترابطاً.",
+          "en": "Data becomes a relational table."
+        },
+        {
+          "ar": "تأخذ كل قيمة رتبة ترتيبية.",
+          "en": "Every value gains an ordinal rank."
+        },
+        {
+          "ar": "قد تُفقد البنية الأصلية.",
+          "en": "The original structure may be lost."
+        },
+        {
+          "ar": "تُحفظ البنية دائماً بدقة.",
+          "en": "The original structure stays intact."
+        }
+      ],
+      "concept_id": "portability_structure_loss",
+      "explanation": {
+        "ar": "فقدان البنية الأصلية قيد مذكور للتحويل، وليس حفظاً مضموناً لها.",
+        "en": "Loss of original structure is a stated limitation of conversion, not a guaranteed preservation outcome."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي قيد متعلق بالعلاقات ذُكر لتحويل البيانات؟",
+        "en": "Which relational limitation is listed for data conversion?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تساوي مسافات السجلات",
+          "en": "Equal record distances automatically"
+        },
+        {
+          "ar": "احتمال تشويه العلاقات",
+          "en": "Possible distortion of relationships"
+        },
+        {
+          "ar": "حذف اعتماديات الخصائص",
+          "en": "Removal of attribute dependencies"
+        },
+        {
+          "ar": "اكتشاف كل العلاقات",
+          "en": "Guaranteed discovery of relationships"
+        }
+      ],
+      "concept_id": "portability_relationship_distortion",
+      "explanation": {
+        "ar": "تحذر المادة من احتمال تشويه العلاقات؛ ولا تضمن اكتشافها كلها أو توحيد المسافات.",
+        "en": "The material warns relationships may be distorted; it does not promise complete discovery or uniform distances."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما أثر الأبعاد الذي قد ينتج عن التمثيل المحول؟",
+        "en": "What dimensional effect may a converted representation have?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تمثيلات عالية الأبعاد",
+          "en": "High-dimensional representations"
+        },
+        {
+          "ar": "يزيل التحويل الأبعاد كلها.",
+          "en": "Conversion always removes dimensions"
+        },
+        {
+          "ar": "لكل تمثيل بُعد واحد.",
+          "en": "Every representation has one dimension"
+        },
+        {
+          "ar": "تصبح الفئات قيماً مفردة.",
+          "en": "Each category becomes one scalar"
+        }
+      ],
+      "concept_id": "portability_high_dimension_limit",
+      "explanation": {
+        "ar": "وردت الأبعاد العالية قيداً محتملاً؛ ولا يضمن التحويل ناتجاً أحادي البعد.",
+        "en": "High dimensionality is listed as a possible limitation; conversion does not guarantee a one-dimensional output."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي كلفة قد يضيفها تحويل البيانات؟",
+        "en": "Which cost can data conversion add?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "زمن معالجة صفري",
+          "en": "Zero processing time guaranteed"
+        },
+        {
+          "ar": "كلفة حسابية إضافية",
+          "en": "Additional computational cost"
+        },
+        {
+          "ar": "خفض متطلبات التخزين",
+          "en": "All storage needs are reduced"
+        },
+        {
+          "ar": "تحسن الدقة تلقائياً",
+          "en": "Classification accuracy always rises"
+        }
+      ],
+      "concept_id": "portability_computational_cost",
+      "explanation": {
+        "ar": "تسرد المادة الكلفة الحسابية الإضافية قيداً؛ أما الدقة والتخزين فيعتمدان على الطريقة والمهمة.",
+        "en": "The source lists additional computational cost as a limitation; accuracy and storage outcomes depend on the method and task."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

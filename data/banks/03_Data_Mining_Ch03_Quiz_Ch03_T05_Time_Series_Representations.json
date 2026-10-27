@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "تمثيلات السلاسل الزمنية",
+    "en": "Time-Series Representations"
+  },
+  "quiz_id": "Quiz_Ch03_T05_Time_Series_Representations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي خصائص رقمية وردت للسلسلة الزمنية؟",
+        "en": "Which numerical features are listed for a time series?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الشكل والملمس والحواف واللون والخصائص العميقة للصور",
+          "en": "Shape, texture, edges, color, deep features, and pixel intensities"
+        },
+        {
+          "ar": "المتوسط والانحراف المعياري وخصائص التردد وخصائص المويجات",
+          "en": "Mean, standard deviation, frequency features, and wavelet features"
+        },
+        {
+          "ar": "حقيبة الكلمات وTF-IDF وتضمينات الكلمات والوثائق",
+          "en": "Bag of Words, TF-IDF, word embeddings, and document vectors"
+        },
+        {
+          "ar": "الدرجة والمركزية والاتصال والمسارات والتضمينات البيانية",
+          "en": "Degree, centrality, connectivity, graph paths, and node embeddings"
+        }
+      ],
+      "concept_id": "timeseries_numeric_feature_list",
+      "explanation": {
+        "ar": "وردت هذه الخصائص الرقمية مستخرجةً من سلسلة زمنية؛ أما البدائل فتخص بيانات بيانية أو صوراً أو نصوصاً.",
+        "en": "These values are listed as numerical features extracted from a time series; the alternatives belong to graph, image, or text data."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا ينتج بعد استخراج الخصائص الرقمية من سلسلة زمنية؟",
+        "en": "What is produced after numerical characteristics are extracted from a time series?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حواف بيانية",
+          "en": "Graph edge sequence"
+        },
+        {
+          "ar": "فقرة نصية",
+          "en": "Raw text paragraph"
+        },
+        {
+          "ar": "فئات مرتبة",
+          "en": "Ordered category list"
+        },
+        {
+          "ar": "متجه رقمي",
+          "en": "A numerical vector"
+        }
+      ],
+      "concept_id": "timeseries_numeric_vector",
+      "explanation": {
+        "ar": "تكون الإحصاءات وخصائص التردد المستخرجة متجهاً رقمياً يمكن تقديمه إلى خوارزمية.",
+        "en": "The extracted statistics and frequency features form a numerical vector that can be supplied to an algorithm."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي طريقة تحول السلسلة الزمنية إلى خصائص رقمية؟",
+        "en": "Which method maps a time series to numerical features?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "DFT/DWT أو استخراج الخصائص",
+          "en": "DFT/DWT or feature extraction"
+        },
+        {
+          "ar": "ترميز One-hot أو ترتيب الفئات",
+          "en": "One-hot encoding or ranking"
+        },
+        {
+          "ar": "حاويات تكرارية أو مركزية بيانية",
+          "en": "Equal-frequency bins or centrality"
+        },
+        {
+          "ar": "حقيبة كلمات أو تضمينات وثائق",
+          "en": "Bag of Words or embeddings"
+        }
+      ],
+      "concept_id": "timeseries_numeric_map",
+      "explanation": {
+        "ar": "تعطي قائمة التحويل DFT/DWT أو استخراج الخصائص لتحويل السلاسل الزمنية إلى أرقام.",
+        "en": "The conversion table gives DFT/DWT or feature extraction for time-series-to-numerical conversion."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يمكن تحويل سلسلة زمنية إلى تسلسل رمزي؟",
+        "en": "How can a time series be converted into a symbolic sequence?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إنشاء حافة بيانية لكل قياس رقمي ضمن السلسلة الزمنية.",
+          "en": "Create one graph edge for each numerical measurement in the series."
+        },
+        {
+          "ar": "إسناد وثيقة نصية مستقلة لكل نقطة زمنية لأغراض التحليل.",
+          "en": "Assign every time point a separate text document for later analysis."
+        },
+        {
+          "ar": "ربط المديات الرقمية برموز مثل Low = A وMedium = B وHigh = C.",
+          "en": "Map numerical ranges to symbols such as Low = A, Medium = B, and High = C."
+        },
+        {
+          "ar": "استبدال كل القياسات بمتوسطها وحذف ترتيبها الزمني الأصلي.",
+          "en": "Replace all measurements with their average and discard their original temporal order."
+        }
+      ],
+      "concept_id": "timeseries_symbolic_map",
+      "explanation": {
+        "ar": "يربط التمثيل الرمزي مديات القيم برموز مع الاحتفاظ بالتسلسل؛ أما البدائل فتحذف البنية أو تغيرها.",
+        "en": "Symbolic representation maps value ranges to symbols while retaining the sequence; the alternatives discard or change the data structure."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "وفق Low = A وMedium = B وHigh = C، كيف تمثل القيم 20 و22 و21 و25 و27 و30؟",
+        "en": "In the example mapping Low = A, Medium = B, High = C, how is 20, 22, 21, 25, 27, 30 represented?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "C, C, C, B, B, A",
+          "en": "C, C, C, B, B, A"
+        },
+        {
+          "ar": "A, A, B, B, C, C",
+          "en": "A, A, B, B, C, C"
+        },
+        {
+          "ar": "A, A, A, B, B, C",
+          "en": "A, A, A, B, B, C"
+        },
+        {
+          "ar": "A, B, A, C, B, C",
+          "en": "A, B, A, C, B, C"
+        }
+      ],
+      "concept_id": "timeseries_symbolic_example",
+      "explanation": {
+        "ar": "تتحول القيم الست بالترتيب إلى A وA وA وB وB وC في المثال.",
+        "en": "The six values map in order to A, A, A, B, B, C in the stated example."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي شكلين مستهدفين عُرضا لقابلية نقل السلاسل الزمنية؟",
+        "en": "Which two target forms are presented for time-series portability?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "خصائص رقمية أو تسلسل رمزي",
+          "en": "Numerical features or a symbolic sequence"
+        },
+        {
+          "ar": "مجموعة معاملات أو وثيقة نصية",
+          "en": "A transaction set or a text document"
+        },
+        {
+          "ar": "مخطط قاعدة بيانات أو سجل مطبع",
+          "en": "A database schema or a normalized record"
+        },
+        {
+          "ar": "جدول اسمي أو مصفوفة صورة",
+          "en": "A nominal table or an image matrix"
+        }
+      ],
+      "concept_id": "timeseries_representation_choice",
+      "explanation": {
+        "ar": "تعرض المادة استخراج خصائص إلى متجهات رقمية والتحويل الرمزي إلى تسلسلات.",
+        "en": "The material shows both feature extraction into numeric vectors and symbolic conversion into sequences."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "فيمَ يمكن استخدام الخصائص الرقمية المستخرجة من السلسلة الزمنية؟",
+        "en": "What can the numerical features extracted from a time series be used for?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أدوات لرسم المخططات",
+          "en": "Graph-drawing applications"
+        },
+        {
+          "ar": "خوارزميات التعلم الآلي",
+          "en": "Machine learning algorithms"
+        },
+        {
+          "ar": "نظم إدارة قواعد البيانات",
+          "en": "Database management systems"
+        },
+        {
+          "ar": "نماذج إدخال البيانات",
+          "en": "Manual data-entry forms"
+        }
+      ],
+      "concept_id": "timeseries_features_use",
+      "explanation": {
+        "ar": "تذكر المادة أن الخصائص الرقمية الناتجة يمكن استخدامها لاحقاً من قبل خوارزميات التعلم الآلي. أما الخيارات الأخرى فليست الاستخدام المذكور لمتجه الخصائص المستخرجة.",
+        "en": "The source states that the resulting numerical features can then be used by machine learning algorithms. The other choices are not the stated use of the extracted feature vector."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

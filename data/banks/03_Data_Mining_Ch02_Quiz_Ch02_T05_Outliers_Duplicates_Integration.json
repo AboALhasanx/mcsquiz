@@ -1,0 +1,404 @@
+{
+  "topic": {
+    "ar": "القيم الشاذة والتكرار وعدم الاتساق وتكامل البيانات",
+    "en": "Outliers, Duplicates, Inconsistency, and Integration"
+  },
+  "quiz_id": "Quiz_Ch02_T05_Outliers_Duplicates_Integration",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي عبارة تصف القيمة الشاذة مقارنة بمعظم المشاهدات؟",
+        "en": "Which phrase describes an outlier relative to most observations?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قيمة تظهر بتكرار أعلى من بقية القيم.",
+          "en": "a value occurring more frequently than other observed values."
+        },
+        {
+          "ar": "فئات بلا ترتيب طبيعي أو فواصل قابلة للقياس.",
+          "en": "categories that have no natural order or measurable gaps."
+        },
+        {
+          "ar": "معلومات خاصية لا تكون متاحة في السجل.",
+          "en": "information for an attribute is unavailable in the record."
+        },
+        {
+          "ar": "تختلف كثيراً عن معظم المشاهدات الأخرى.",
+          "en": "significantly different from most other observations."
+        }
+      ],
+      "concept_id": "outlier_definition",
+      "explanation": {
+        "ar": "تختلف القيمة الشاذة على نحو ملحوظ عن معظم المشاهدات؛ أما الفقدان والتكرار والترتيب الاسمي فخصائص أخرى.",
+        "en": "An outlier is unusually different from most observations; missingness, frequency, and nominal ordering are separate properties."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي قيمة عمر حُددت بوصفها شاذة محتملة في المثال؟",
+        "en": "Which age value is identified as a potential outlier in the example?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "العمر 68 رقم",
+          "en": "Age value 68"
+        },
+        {
+          "ar": "قيمة العمر 300",
+          "en": "Age value 300"
+        },
+        {
+          "ar": "قيمة العمر 70.",
+          "en": "Age value: 70"
+        },
+        {
+          "ar": "العمر 65 قيمة",
+          "en": "Age value 65"
+        }
+      ],
+      "concept_id": "outlier_numeric_example",
+      "explanation": {
+        "ar": "يحدد المثال 300 قيمة بعيدة محتملة عن بقية المشاهدات؛ لكنها تظل بحاجة إلى فحص.",
+        "en": "The example marks 300 as potentially distant from the other observations; it still requires investigation."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا لا ينبغي حذف قراءة ضغط دم غير مألوفة تلقائياً؟",
+        "en": "Why should an unusual patient blood-pressure value not be deleted automatically?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تظهر القيم الشاذة في الصور فقط.",
+          "en": "Outliers can only occur in image data."
+        },
+        {
+          "ar": "القيمة العالية تعني اختلاف وحدة.",
+          "en": "A high value always indicates a unit mismatch."
+        },
+        {
+          "ar": "القيمة الشاذة ليست بالضرورة خطأ.",
+          "en": "An outlier is not necessarily an error."
+        },
+        {
+          "ar": "كل قيمة شاذة هي سجل مكرر.",
+          "en": "Every outlier is a duplicate record."
+        }
+      ],
+      "concept_id": "outlier_not_automatically_error",
+      "explanation": {
+        "ar": "تورد المادة قراءة مرتفعة حقيقية للمريض مثالاً ممكناً، لذلك ينبغي فحص القيم الشاذة قبل حذفها.",
+        "en": "The source gives a genuinely high patient reading as a possible real observation, so outliers should be investigated before removal."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا ينبغي فعله قبل حذف قيمة شاذة؟",
+        "en": "What should be done before removing an outlier?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ينبغي فحص القيم الشاذة قبل حذفها.",
+          "en": "Outliers should be investigated before removing them."
+        },
+        {
+          "ar": "تحويل جميع الخصائص إلى فئات اسمية.",
+          "en": "Convert all attributes into nominal categories."
+        },
+        {
+          "ar": "تعويض كل قيم مجموعة البيانات بالمتوسط.",
+          "en": "Replace every value in the dataset with the mean."
+        },
+        {
+          "ar": "دمج السجل مع أقرب جدول قاعدة بيانات.",
+          "en": "Merge the record with the closest database table."
+        }
+      ],
+      "concept_id": "outlier_investigation",
+      "explanation": {
+        "ar": "تنص المادة على فحص القيم الشاذة قبل حذفها لأنها قد تكون صحيحة؛ والبدائل لا تعالج هذه المسألة.",
+        "en": "The material explicitly says outliers should be investigated before removal because they may be valid; the alternatives are unrelated."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مجموعة تسرد طرائق كشف القيم الشاذة؟",
+        "en": "Which set lists methods for detecting outliers?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تعويض القيم المفقودة بالمتوسط والوسيط والمنوال والإدخال اليدوي",
+          "en": "Mean, median, mode, and manual imputation of missing values in records"
+        },
+        {
+          "ar": "طرائق إحصائية وقائمة على المسافة والتجميع والتصور والتعلم الآلي",
+          "en": "Statistical, distance-based, clustering, visualization, and Machine Learning methods"
+        },
+        {
+          "ar": "التطبيع والتجميع والترميز وبناء خصائص البيانات الرقمية والفئوية",
+          "en": "Normalization, aggregation, encoding, and feature construction for numerical data"
+        },
+        {
+          "ar": "حقيبة الكلمات وTF-IDF وتضمينات الكلمات والوثائق لتمثيل النص",
+          "en": "Bag of Words, TF-IDF, and word embeddings for text and document representation"
+        }
+      ],
+      "concept_id": "outlier_detection_methods",
+      "explanation": {
+        "ar": "ترد هذه العائلات الخمس لكشف القيم الشاذة؛ أما المجموعات الأخرى فتصف تعويضاً أو تحويلاً أو طرائق نصية.",
+        "en": "These five families are listed for outlier detection; the other sets describe missing-value, transformation, or text methods."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "متى يحدث تكرار البيانات؟",
+        "en": "When does duplicate data occur?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عندما ترتبط المشاهدات بزمن محدد ضمن البيانات.",
+          "en": "When observations are linked with a particular time."
+        },
+        {
+          "ar": "عندما يكون لفئتين ترتيب ذو معنى في البيانات.",
+          "en": "When two categories have an order that is meaningful."
+        },
+        {
+          "ar": "عندما يظهر كائن البيانات نفسه أكثر من مرة.",
+          "en": "When the same data object appears more than once."
+        },
+        {
+          "ar": "عندما لا تتوفر قيمة خاصية في كائن البيانات نفسه.",
+          "en": "When one attribute has no available value in a data object."
+        }
+      ],
+      "concept_id": "duplicate_data_definition",
+      "explanation": {
+        "ar": "يعيد تكرار البيانات كائن البيانات نفسه؛ أما البدائل فتصف قيمة مفقودة أو فئات ترتيبية أو بيانات زمنية.",
+        "en": "Duplicate data repeats the same object; the alternatives describe missingness, ordinal values, or temporal data."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي أثر للسجلات المكررة ورد في المادة؟",
+        "en": "Which effect of duplicate records is stated in the material?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تحفظ المعلومات المفقودة وتقلل تعقيد النموذج",
+          "en": "preserve missing information and reduce model complexity"
+        },
+        {
+          "ar": "تضمن اتساق الفئات وتحسن أداء الخوارزميات",
+          "en": "guarantee consistent categories and improve algorithms"
+        },
+        {
+          "ar": "تحول البيانات المكانية إلى تمثيل زمني",
+          "en": "convert spatial data into a time-series representation"
+        },
+        {
+          "ar": "تؤثر في حساب التكرارات وأداء النموذج",
+          "en": "affect frequency calculations and model performance"
+        }
+      ],
+      "concept_id": "duplicate_effects",
+      "explanation": {
+        "ar": "تشمل الأضرار المذكورة زيادة الحجم والتحيز وتشويه التكرارات والتأثير في الأداء؛ ولا تضمن المادة أياً من مزايا البدائل.",
+        "en": "The listed harms are unnecessary size, biased analysis, frequency distortion, and performance effects; none of the alternatives is promised."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي عبارة تصف القيم غير المتسقة في المثال؟",
+        "en": "Which phrase describes inconsistent values in the example?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تحول سلسلة زمنية إلى تسلسل رمزي بعناصر مرتبة.",
+          "en": "convert a time series into a symbolic sequence of values."
+        },
+        {
+          "ar": "تقسم فترة رقمية إلى حاويات ذات عرض متساوٍ.",
+          "en": "divide a numerical interval into bins of equal width."
+        },
+        {
+          "ar": "تخزن مجموعة العناصر في معاملات متعددة بمعرّفات مختلفة.",
+          "en": "store the same item set in several separate transactions."
+        },
+        {
+          "ar": "تمثل الفئات نفسها لكنها تستخدم صيغاً مختلفة.",
+          "en": "represent the same categories but use different formats."
+        }
+      ],
+      "concept_id": "inconsistent_data_definition",
+      "explanation": {
+        "ar": "يشمل عدم الاتساق صيغاً متعددة للفئة نفسها؛ أما البدائل فتصف أشكال بيانات أو تحويلات صحيحة.",
+        "en": "Inconsistency includes multiple formats for the same category; the other choices describe valid data forms or transformations."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف تُمثل القيم Male وM وmale بعد توحيدها؟",
+        "en": "How are Male, M, and male represented after standardization?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Male category",
+          "en": "Male category"
+        },
+        {
+          "ar": "Female label",
+          "en": "Female label"
+        },
+        {
+          "ar": "Other category",
+          "en": "Other category"
+        },
+        {
+          "ar": "Unknown label",
+          "en": "Unknown label"
+        }
+      ],
+      "concept_id": "standardize_inconsistent_gender",
+      "explanation": {
+        "ar": "توحد المادة الصيغ الثلاث إلى Male؛ والإبقاء عليها جميعاً يبقي عدم الاتساق.",
+        "en": "The source standardizes the three formats to Male; retaining all forms would leave the inconsistency."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي عبارة تصف تكامل البيانات؟",
+        "en": "Which phrase describes data integration?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يدمج البيانات من مصادر متعددة",
+          "en": "Combines data from multiple sources"
+        },
+        {
+          "ar": "يحول القيم المستمرة إلى فترات",
+          "en": "Converts continuous values into intervals"
+        },
+        {
+          "ar": "يستخرج خصائص من صورة واحدة",
+          "en": "Extracts image features from one image"
+        },
+        {
+          "ar": "يحذف السجلات المختلفة عن المتوسط",
+          "en": "Removes records unlike the mean"
+        }
+      ],
+      "concept_id": "integration_definition",
+      "explanation": {
+        "ar": "يدمج التكامل المصادر؛ أما تحويل الفترات وحذف الشواذ واستخراج الخصائص فعمليات مختلفة.",
+        "en": "Integration combines sources; interval conversion, outlier deletion, and feature extraction are different operations."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي مفتاح يُستخدم لدمج قاعدتي بيانات الطلبة والدرجات؟",
+        "en": "Which key is used to integrate the student and grade databases?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قيمة المعدل",
+          "en": "Department ID"
+        },
+        {
+          "ar": "معرّف الطالب",
+          "en": "The student ID"
+        },
+        {
+          "ar": "جنس الطالب",
+          "en": "Student gender"
+        },
+        {
+          "ar": "القسم الجامعي",
+          "en": "The GPA value"
+        }
+      ],
+      "concept_id": "integration_student_id",
+      "explanation": {
+        "ar": "يدمج المثال المصدرين باستخدام معرّف الطالب؛ أما الحقول الأخرى فهي خصائص وليست المفتاح المذكور.",
+        "en": "The example integrates the two sources using the student ID; the other fields are attributes, not the stated key."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي إجراء يعالج اختلاف وحدات الوزن بين مصادر البيانات؟",
+        "en": "Which action handles different weight units across data sources?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ترميز اسم المصدر بوصفه عقدة بيانية مستقلة.",
+          "en": "Encode each source name as a node in a graph structure."
+        },
+        {
+          "ar": "اعتبار الوحدات فئات اسمية وترك القيم.",
+          "en": "Treat unit labels as nominal categories and retain values."
+        },
+        {
+          "ar": "يجب تحويل هذه القيم إلى وحدة موحدة.",
+          "en": "These values must be converted to a consistent unit."
+        },
+        {
+          "ar": "حذف سجلات مصدر قبل تكامل البيانات.",
+          "en": "Delete one source’s records before data integration."
+        }
+      ],
+      "concept_id": "integration_problems_and_units",
+      "explanation": {
+        "ar": "اختلاف الوحدات مشكلة تكامل، وتذكر المادة ضرورة تحويل القيم إلى وحدة موحدة.",
+        "en": "Different units are an integration problem, and the source says values must be converted to a consistent unit."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

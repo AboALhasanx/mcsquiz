@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.7.11';
+const VERSION = '1.7.12';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -142,10 +142,20 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch01_Quiz_Ch01_T03_Disadvantages_of_Data_Mining.json',
   './data/banks/03_Data_Mining_Ch01_Quiz_Ch01_T04_Data_Mining_Applications.json',
   './data/banks/03_Data_Mining_Ch01_Quiz_Ch01_T05_Implementation_Challenges.json',
-  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_ModelA_Data_Types_and_Preparation.json',
-  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_ModelB_Data_Types_and_Preparation.json',
-  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_ModelA_Feature_Extraction.json',
-  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_ModelB_Feature_Extraction.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T01_Data_Objects_and_Attribute_Types.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T02_Data_Structures.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T03_Data_Preparation_Foundations.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T04_Missing_Values_and_Noise.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T05_Outliers_Duplicates_Integration.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T06_Transformation_and_Normalization.json',
+  './data/banks/03_Data_Mining_Ch02_Quiz_Ch02_T07_Reduction_Selection_Discretization.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T01_Feature_Extraction.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T02_Portability_Foundations.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T03_Numerical_to_Categorical.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T04_Categorical_and_Text_Representations.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T05_Time_Series_Representations.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T06_Image_Spatial_Sequence_Graph.json',
+  './data/banks/03_Data_Mining_Ch03_Quiz_Ch03_T07_Portability_Tradeoffs.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_ModelB_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_ModelA_SDLC_Models.json',

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أسس قابلية نقل نوع البيانات",
+    "en": "Data Type Portability Foundations"
+  },
+  "quiz_id": "Quiz_Ch03_T02_Portability_Foundations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي عبارة تذكر العملية الأساسية في قابلية نقل أنواع البيانات؟",
+        "en": "Which phrase states the central action in Data Type Portability?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "دمج قواعد من مصادر مختلفة بعد حذف السجلات",
+          "en": "combining databases from separate sources after deleting their shared records"
+        },
+        {
+          "ar": "اكتشاف أنماط مفيدة دون تغيير تمثيل البيانات",
+          "en": "discovering useful patterns without changing the original data representation"
+        },
+        {
+          "ar": "اختيار خصائص للتنقيب دون إنشاء تمثيل جديد",
+          "en": "selecting existing attributes for mining without creating a new representation"
+        },
+        {
+          "ar": "تحويل البيانات من تمثيل أو نوع إلى تمثيل آخر",
+          "en": "converting data from one representation or type into another representation"
+        }
+      ],
+      "concept_id": "portability_definition",
+      "explanation": {
+        "ar": "تحول قابلية النقل التمثيل إلى صيغة تعالجها الخوارزمية؛ أما اكتشاف الأنماط فهو التنقيب نفسه.",
+        "en": "Portability converts a representation into one an algorithm can process; discovering patterns is Data Mining itself."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مثال يضم أنواع بيانات متعددة في مجموعة واحدة؟",
+        "en": "Which example contains several data types in one dataset?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مجموعة طبية تضم العمر والجنس والتقارير الطبية وقياسات نبض القلب",
+          "en": "A medical dataset with age, gender, medical reports, and heart-rate measurements"
+        },
+        {
+          "ar": "معاملة تسجل العناصر المشتراة وحدها دون تقارير أو قياسات",
+          "en": "A transaction listing purchased items only, without reports, attributes, or measurements."
+        },
+        {
+          "ar": "مجموعة تضم خاصية رقمية واحدة مثل العمر أو الراتب دون أنواع أخرى",
+          "en": "A dataset containing one numerical field, such as age or salary, with no other data types."
+        },
+        {
+          "ar": "رسم بياني يحتوي العقد والحواف فقط دون معلومات من أنواع أخرى",
+          "en": "A graph containing nodes and edges only, without reports, measurements, or other data types."
+        }
+      ],
+      "concept_id": "heterogeneous_medical_dataset",
+      "explanation": {
+        "ar": "يجمع المثال بيانات رقمية وفئوية ونصية وزمنية قد تحتاج إلى تمثيلات مختلفة.",
+        "en": "The example combines numerical, categorical, text, and time-series data, which may need different representations."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا قد تحتاج البيانات إلى تحويل قبل تطبيق خوارزمية تنقيب؟",
+        "en": "Why may data need conversion before a mining algorithm is applied?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تتطلب جميع الخوارزميات تمثيلاً واحداً مهما كان شكل البيانات.",
+          "en": "All algorithms require the same input representation regardless of data form."
+        },
+        {
+          "ar": "تكتشف خطوة التحويل الأنماط النهائية بنفسها من البيانات الخام.",
+          "en": "The conversion step itself discovers final patterns from raw data."
+        },
+        {
+          "ar": "صُممت خوارزميات مختلفة للعمل مع أشكال مختلفة من البيانات.",
+          "en": "Different algorithms are designed to work with different forms of data."
+        },
+        {
+          "ar": "تعالج كل خوارزمية كل أنواع البيانات الخام دون تحويل.",
+          "en": "Every algorithm directly processes every raw data type without conversion."
+        }
+      ],
+      "concept_id": "algorithm_input_forms",
+      "explanation": {
+        "ar": "تختلف متطلبات مدخلات الخوارزميات؛ ويهيئ التحويل صيغة مناسبة بدلاً من افتراض دعم كل البيانات الخام.",
+        "en": "Algorithm input requirements differ; conversion prepares a suitable form instead of assuming universal raw-data support."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي سؤال يميز التنقيب عن قابلية نقل نوع البيانات؟",
+        "en": "Which question distinguishes Data Mining from data-type portability?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كيف تُمثل الفئات باستخدام أعمدة ثنائية منفصلة؟",
+          "en": "How can categories be represented using separate binary columns?"
+        },
+        {
+          "ar": "كيف توحد وحدات القياس بين مصادر البيانات المختلفة؟",
+          "en": "How can measurement units be made consistent across data sources?"
+        },
+        {
+          "ar": "كيف يُعد تمثيل متوافق مع الخوارزمية للبيانات؟",
+          "en": "How can an algorithm-compatible representation be prepared for the data?"
+        },
+        {
+          "ar": "كيف تُكتشف أنماط أو معرفة مفيدة من البيانات؟",
+          "en": "How can useful patterns or knowledge be discovered from the data?"
+        }
+      ],
+      "concept_id": "portability_vs_mining",
+      "explanation": {
+        "ar": "يبحث التنقيب عن الأنماط أو المعرفة؛ أما تحويل التمثيل والترميز وتوحيد الوحدات فعمليات تحضير.",
+        "en": "Data Mining seeks patterns or knowledge; representation conversion, encoding, and unit harmonization are preparation operations."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي طريقة تحول البيانات النصية إلى بيانات رقمية؟",
+        "en": "Which method converts text data into numerical data?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نص ← رقمي: ترميز الفئات",
+          "en": "Text → Numerical: Encoding"
+        },
+        {
+          "ar": "نص ← رقمي: تضمين الكلمات",
+          "en": "Text → Numerical: Word embedding"
+        },
+        {
+          "ar": "نص ← رقمي: التمثيل المتجهي",
+          "en": "Text → Numerical: Vectorization"
+        },
+        {
+          "ar": "نصوص ← رقمية: التقطيع المتصل",
+          "en": "Text → Numerical: Discretization"
+        }
+      ],
+      "concept_id": "portability_conversion_map_text",
+      "explanation": {
+        "ar": "تطابق القائمة النص مع التمثيل المتجهي؛ أما الطرائق الأخرى فتخص الرسوم أو السلاسل الزمنية أو الفئات.",
+        "en": "The mapping pairs text with vectorization; the other methods belong to graph, time-series, or categorical conversion."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي تسلسل يضع التحويل قبل خوارزمية التنقيب؟",
+        "en": "Which sequence places conversion before the mining algorithm?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تمثيل مناسب ← أنماط ← بيانات خام ← تحضير",
+          "en": "Suitable Representation → Patterns → Raw Data → Preparation"
+        },
+        {
+          "ar": "تحويل النوع ← تمثيل مناسب ← خوارزمية التنقيب",
+          "en": "Type Conversion → Suitable Representation → Data Mining Algorithm"
+        },
+        {
+          "ar": "أنماط ← تحويل النوع ← تمثيل مناسب ← بيانات خام",
+          "en": "Patterns → Type Conversion → Suitable Representation → Raw Data"
+        },
+        {
+          "ar": "خوارزمية التنقيب ← بيانات خام ← أنماط ← تحويل النوع",
+          "en": "Data Mining Algorithm → Raw Data → Patterns → Type Conversion"
+        }
+      ],
+      "concept_id": "portability_global_pipeline",
+      "explanation": {
+        "ar": "يسبق التحضير والتحويل عملية التنقيب؛ وتلي الخوارزمية الأنماط أو التنبؤات أو المعرفة.",
+        "en": "Preparation and conversion precede mining; patterns, predictions, or knowledge follow the algorithm."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف ينبغي اختيار طريقة تحويل البيانات؟",
+        "en": "How should a data-conversion method be selected?"
+      },
+      "bloom": "Evaluate",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "وفقاً للبيانات ومهمة التنقيب.",
+          "en": "According to the data and the mining task."
+        },
+        {
+          "ar": "اختيار المتجه الأكبر الناتج فقط.",
+          "en": "Choose only the largest output vector."
+        },
+        {
+          "ar": "اعتماد تحويل ثابت لكل نوع بيانات.",
+          "en": "Use one conversion for every data type."
+        },
+        {
+          "ar": "تحديد التحويل من صيغة الملف.",
+          "en": "Select it by the source file format."
+        }
+      ],
+      "concept_id": "type_specific_conversion",
+      "explanation": {
+        "ar": "تعتمد الطريقة على البيانات ومهمة التنقيب معاً؛ لذلك لا يناسبهما تحويل ثابت شامل.",
+        "en": "The material says method choice depends on both the data and mining task; a fixed universal mapping is unsuitable."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي مجموعة تسرد أشكال البيانات التي تشملها قابلية النقل؟",
+        "en": "Which set lists possible data forms covered by portability?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "خصائص رقمية وثنائية وترتيبية ضمن سجلات البيانات المفردة",
+          "en": "Only numerical, binary, and ordinal attributes from a single record"
+        },
+        {
+          "ar": "رقمية وفئوية ونصية وزمنية وصورية ومكانية وتسلسلية وبيانية",
+          "en": "Numerical, categorical, text, time-series, image, spatial, sequence, and graph"
+        },
+        {
+          "ar": "سجلات ومعاملات وصور وسلاسل زمنية دون نصوص أو رسوم أخرى",
+          "en": "Record, transaction, image, and time series without text or graphs"
+        },
+        {
+          "ar": "نصوص وصور ورسوم وتسلسلات مع استبعاد البيانات العددية",
+          "en": "Text, image, graph, and sequence while excluding numerical and spatial data types."
+        }
+      ],
+      "concept_id": "portability_data_types",
+      "explanation": {
+        "ar": "تحدد المادة الأشكال الثمانية؛ وقد يحتاج كل منها تمثيلاً يلائم الخوارزمية المقصودة.",
+        "en": "The source identifies all eight forms; each may need a representation suited to the intended algorithm."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

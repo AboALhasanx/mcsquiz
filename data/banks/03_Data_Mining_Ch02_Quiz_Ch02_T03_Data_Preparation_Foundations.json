@@ -1,0 +1,244 @@
+{
+  "topic": {
+    "ar": "أسس تحضير البيانات وسير العمل",
+    "en": "Data Preparation Foundations and Workflow"
+  },
+  "quiz_id": "Quiz_Ch02_T03_Data_Preparation_Foundations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي عملية تهيئ البيانات الخام لتستخدمها خوارزميات التنقيب بفاعلية؟",
+        "en": "Which process prepares raw data for effective use by Data Mining algorithms?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تكامل البيانات",
+          "en": "Data Integration"
+        },
+        {
+          "ar": "إعداد البيانات",
+          "en": "Data Preparation"
+        },
+        {
+          "ar": "تحويل البيانات",
+          "en": "Data Transformation"
+        },
+        {
+          "ar": "تنظيف البيانات",
+          "en": "Data Cleaning step"
+        }
+      ],
+      "concept_id": "preparation_definition",
+      "explanation": {
+        "ar": "يهيئ التحضير البيانات الخام لتصبح قابلة للاستخدام في التنقيب؛ أما البدائل فتصف ناتج التنقيب أو تحويلاً واحداً غير لازم.",
+        "en": "Preparation makes raw data usable for mining; the other choices describe mining output or an unjustified single conversion."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي حالة شائعة تشير إلى أن بيانات الواقع قد تستخدم صيغاً غير متسقة؟",
+        "en": "Which common condition indicates that real-world data may use inconsistent formats?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قيم القياس تتضمن ضوضاء",
+          "en": "noisy measurement values"
+        },
+        {
+          "ar": "معلومات الخصائص غير مكتملة",
+          "en": "incomplete information fields"
+        },
+        {
+          "ar": "سجلات قاعدة البيانات مكررة",
+          "en": "duplicate database records"
+        },
+        {
+          "ar": "تُخزّن البيانات بصيغ مختلفة",
+          "en": "stored in different formats"
+        }
+      ],
+      "concept_id": "real_world_data_conditions",
+      "explanation": {
+        "ar": "تفسر الحالات المذكورة الحاجة إلى التحضير؛ أما البدائل فتصف بيانات مثالية أو محضرة مسبقاً.",
+        "en": "The listed conditions explain why preparation is needed; the alternatives describe idealized or already-prepared data."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مجموعة تسمي خطوات إعداد البيانات الخمس الرئيسية؟",
+        "en": "Which set names the five main data-preparation steps?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التنظيف، والتكامل، والتحويل، والاختزال، والتقسيم إلى فئات",
+          "en": "Cleaning, integration, transformation, reduction, and discretization"
+        },
+        {
+          "ar": "بيانات السجلات، والمعاملات، والنصوص، والتسلسلات، والمكان",
+          "en": "Record, transaction, text, sequence, and spatial data"
+        },
+        {
+          "ar": "القيم الاسمية، والترتيبية، والثنائية، والرقمية، والمستمرة",
+          "en": "Nominal, ordinal, binary, numerical, and continuous values"
+        },
+        {
+          "ar": "الاتجاهات، والأنماط الموسمية، والدورية، والشذوذات، والقياسات",
+          "en": "Trends, seasonal patterns, periodic patterns, anomalies, and measurements"
+        }
+      ],
+      "concept_id": "preparation_five_steps",
+      "explanation": {
+        "ar": "هذه هي خطوات التحضير الخمس المذكورة؛ أما البدائل فتخلط بينها وبين مهام تنقيب أو أنشطة دورة عمل.",
+        "en": "These are the five preparation steps listed; the alternatives mix mining tasks or lifecycle activities."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا ورد عن ترتيب خطوات إعداد البيانات؟",
+        "en": "What is stated about the order of data-preparation steps?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يعتمد ترتيب خطوات الإعداد فقط على عدد السجلات في مجموعة البيانات.",
+          "en": "The order of preparation steps depends only on the number of records in the dataset."
+        },
+        {
+          "ar": "يجب أن تنتهي جميع خطوات إعداد البيانات قبل بدء الخطوة التالية.",
+          "en": "Each preparation activity must finish before another step can begin."
+        },
+        {
+          "ar": "لا تُنفّذ هذه الخطوات بالضرورة بالترتيب نفسه تماماً لكل مجموعة بيانات.",
+          "en": "These steps are not necessarily performed in exactly the same order for every dataset."
+        },
+        {
+          "ar": "تُنجز أنشطة الإعداد الخمسة دائماً بترتيب ثابت واحد لكل مجموعة بيانات.",
+          "en": "The five preparation activities are always completed in one fixed order for every dataset."
+        }
+      ],
+      "concept_id": "preparation_step_order",
+      "explanation": {
+        "ar": "تذكر المادة أن الترتيب يختلف بحسب مجموعة البيانات؛ ولا تفرض تسلسلاً ثابتاً عاماً.",
+        "en": "The source says the order varies with the dataset; it does not prescribe a universal fixed sequence."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي تسلسل يوضح المسار الأساسي لإعداد البيانات؟",
+        "en": "Which sequence shows the basic data-preparation flow?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "إعداد البيانات ← البيانات الخام ← المعرفة/الأنماط ← تنقيب البيانات",
+          "en": "Data Preparation → Raw Data → Knowledge/Patterns → Data Mining"
+        },
+        {
+          "ar": "المعرفة/الأنماط ← تنقيب البيانات ← إعداد البيانات ← البيانات الخام",
+          "en": "Knowledge/Patterns → Data Mining → Data Preparation → Raw Data"
+        },
+        {
+          "ar": "البيانات الخام ← إعداد البيانات ← تنقيب البيانات ← المعرفة/الأنماط",
+          "en": "Raw Data → Data Preparation → Data Mining → Knowledge/Patterns"
+        },
+        {
+          "ar": "البيانات الخام ← تنقيب البيانات ← إعداد البيانات ← المعرفة/الأنماط",
+          "en": "Raw Data → Data Mining → Data Preparation → Knowledge/Patterns"
+        }
+      ],
+      "concept_id": "basic_preparation_flow",
+      "explanation": {
+        "ar": "يقع التحضير بين البيانات الخام والتنقيب؛ وتظهر الأنماط أو المعرفة بعد عملية التنقيب.",
+        "en": "Preparation occurs between raw data and mining; patterns or knowledge are the output after mining."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الذي يمكن أن تتأثر جودته بشدة بجودة البيانات المُعدّة؟",
+        "en": "What can the quality of prepared data strongly affect?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "جودة الأنماط المكتشفة وأداء نموذج التنقيب",
+          "en": "the quality of discovered patterns and performance of the mining model"
+        },
+        {
+          "ar": "عدد الخصائص وصيغ الملفات وجداول قواعد البيانات",
+          "en": "the number of attributes, file formats, and database tables"
+        },
+        {
+          "ar": "عدد الخوارزميات وخطوات المعالجة وأجهزة التخزين",
+          "en": "the number of algorithms, processing steps, and storage devices"
+        },
+        {
+          "ar": "عدد السجلات وصيغ البيانات وبنى قواعد البيانات",
+          "en": "the number of records, data formats, and structures of the databases"
+        }
+      ],
+      "concept_id": "preparation_quality_effect",
+      "explanation": {
+        "ar": "تربط المادة جودة التحضير بجودة الأنماط وأداء النموذج، لا بالخصائص غير المرتبطة في البدائل.",
+        "en": "The source links preparation quality to pattern quality and model performance, not to those unrelated properties."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي إجراء إعداد قد يلزم بعد ترميز البيانات الفئوية؟",
+        "en": "Which preparation action may be required after encoding categorical data?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حذف جميع القيم الشاذة قبل تدريب نموذج التصنيف المختار.",
+          "en": "Remove every outlier before training the selected classification model."
+        },
+        {
+          "ar": "تطبيع الخصائص الرقمية إذا تطلبت الخوارزمية المختارة ذلك.",
+          "en": "Normalize numerical attributes if required by the selected algorithm."
+        },
+        {
+          "ar": "ترميز البيانات الفئوية قبل تطبيق خوارزمية التنقيب المختارة.",
+          "en": "Encode categorical data before applying the selected mining algorithm."
+        },
+        {
+          "ar": "دمج مصادر قواعد البيانات المختلفة قبل تطبيق خوارزمية التنقيب.",
+          "en": "Combine database sources after normalizing every category."
+        }
+      ],
+      "concept_id": "medical_preparation_pipeline",
+      "explanation": {
+        "ar": "يتضمن سير العمل الطبي ترميزاً مناسباً وتطبيعاً عند الحاجة؛ ولا يفرض التحويل إلى رسوم أو الحذف الأعمى.",
+        "en": "The medical workflow includes suitable encoding and conditional normalization; it does not mandate graph conversion or blind deletion."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

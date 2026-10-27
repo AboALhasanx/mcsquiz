@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "تحويل البيانات الرقمية إلى فئوية",
+    "en": "Numerical-to-Categorical Conversion"
+  },
+  "quiz_id": "Quiz_Ch03_T03_Numerical_to_Categorical",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يحول التقطيع؟",
+        "en": "What does discretization convert?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الوثائق النصية إلى عقد وحواف بيانية لإجراء التحليل.",
+          "en": "Text documents are represented as numerical vectors for later mining."
+        },
+        {
+          "ar": "التسميات الفئوية إلى قياسات رقمية مرتبة تلائم الخوارزميات.",
+          "en": "Categorical labels into ordered numerical measurements for algorithms."
+        },
+        {
+          "ar": "المشاهدات الزمنية إلى مخططات قواعد بيانات مترابطة.",
+          "en": "Time-series observations are converted to ordered symbols for processing."
+        },
+        {
+          "ar": "القيم الرقمية المستمرة إلى عدد قليل من الفئات أو الفترات.",
+          "en": "Continuous numerical values into a small number of categories or intervals."
+        }
+      ],
+      "concept_id": "discretization_definition",
+      "explanation": {
+        "ar": "يجمع التقطيع القيم الرقمية المستمرة ضمن فئات أو فترات؛ أما البدائل فتصف تحويلات مختلفة.",
+        "en": "Discretization groups continuous numerical values into categories or intervals; the other choices describe different conversions."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ضمن فترات الأعمار المذكورة، أي فترة تشمل العمر 25؟",
+        "en": "In the given age intervals, which interval contains age 25?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "18–40 سنة",
+          "en": "18–40 years"
+        },
+        {
+          "ar": "41–60 سنة",
+          "en": "41–60 years"
+        },
+        {
+          "ar": "0–17 سنة.",
+          "en": "0–17 years"
+        },
+        {
+          "ar": "61+ سنة.",
+          "en": "61+ years"
+        }
+      ],
+      "concept_id": "discretization_age_example",
+      "explanation": {
+        "ar": "يحول المثال الأعمار 18–40 إلى فئة Adult، لذلك ينتمي العمر 25 إليها.",
+        "en": "The example maps ages 18–40 to Adult, so 25 belongs to that interval."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي فائدة للتقطيع وردت في المادة؟",
+        "en": "Which advantage of discretization is stated?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يحفظ كل الفروق الرقمية الدقيقة",
+          "en": "Preserves every exact numerical difference"
+        },
+        {
+          "ar": "يضمن تساوي السجلات في كل فئة",
+          "en": "Guarantees equal records in every category"
+        },
+        {
+          "ar": "يجعل البيانات الرقمية أسهل فهماً",
+          "en": "Makes numerical data easier to understand"
+        },
+        {
+          "ar": "يحول كل فئة اسمية إلى قيمة مستمرة",
+          "en": "Converts every nominal category into a continuous value"
+        }
+      ],
+      "concept_id": "discretization_advantages",
+      "explanation": {
+        "ar": "تذكر المادة سهولة الفهم وملاءمة الخوارزميات الفئوية؛ ولا تضمن تساوي التكرارات أو انعدام فقدان المعلومات.",
+        "en": "The source lists easier interpretation and categorical-algorithm suitability; it does not promise equal frequencies or zero information loss."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الذي يضيع عندما يصبح العمران 21 و39 ضمن فئة Adult؟",
+        "en": "What is lost when ages 21 and 39 both become Adult?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يتحول ترتيبهما الأصلي إلى حافة بيانية.",
+          "en": "Their original order is converted into a graph edge."
+        },
+        {
+          "ar": "تستبدل قيمتاهما بتضمينات نصية.",
+          "en": "Their values are replaced by text embeddings."
+        },
+        {
+          "ar": "لا يعود انتماؤهما إلى الفئة ممثلاً.",
+          "en": "Their category membership is no longer represented."
+        },
+        {
+          "ar": "لا يعود الفرق الدقيق بينهما ممثلاً.",
+          "en": "Their exact difference is no longer represented."
+        }
+      ],
+      "concept_id": "discretization_information_loss",
+      "explanation": {
+        "ar": "ينتمي العمران إلى فئة واحدة، لذلك يختفي الفرق الدقيق من التمثيل الجديد.",
+        "en": "Both ages map to one category, so their exact difference disappears from the new representation."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف تتكون الفترات في التقطيع متساوي العرض؟",
+        "en": "How are intervals formed by equal-width discretization?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تحدد الفترات بتسميات الفئات دون حدود رقمية واضحة.",
+          "en": "Intervals are determined only by category labels, without numerical boundaries."
+        },
+        {
+          "ar": "يقسم المدى وفق قياسات مركزية الرسم البياني فقط.",
+          "en": "The numerical range is divided according to graph-centrality measurements."
+        },
+        {
+          "ar": "يقسم المدى الرقمي إلى فترات متقاربة في الحجم العددي.",
+          "en": "The numerical range is divided into intervals of approximately equal numerical size."
+        },
+        {
+          "ar": "يجعل كل فترة تضم تقريباً العدد نفسه من المشاهدات.",
+          "en": "Each interval is made to contain approximately the same number of observations."
+        }
+      ],
+      "concept_id": "equal_width_definition",
+      "explanation": {
+        "ar": "يركز تساوي العرض على حجم الفترة؛ أما تساوي التكرار فيركز على عدد المشاهدات بكل فترة.",
+        "en": "Equal-width focuses on interval size; equal-frequency focuses on how many observations each interval contains."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف قُسم المدى 0–80 في مثال تساوي العرض؟",
+        "en": "How is the range 0–80 divided in the equal-width example?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "0–17 و18–40 و41–60 و61–80",
+          "en": "0–17, 18–40, 41–60, and 61–80"
+        },
+        {
+          "ar": "0–20 و21–40 و41–60 و61–80",
+          "en": "0–20, 21–40, 41–60, and 61–80"
+        },
+        {
+          "ar": "0–20 و20–40 و40–60 و60–80",
+          "en": "0–20, 20–40, 40–60, and 60–80"
+        },
+        {
+          "ar": "0–10 و11–35 و36–65 و66–80",
+          "en": "0–10, 11–35, 36–65, and 66–80"
+        }
+      ],
+      "concept_id": "equal_width_example",
+      "explanation": {
+        "ar": "يستخدم المثال أربع فترات رقمية متقاربة؛ أما البدائل فمديات غير متساوية أو تقسيم بحسب التكرار.",
+        "en": "The example uses four approximately equal numerical intervals; the other choices are unequal or equal-frequency groupings."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما الذي يكون متقارباً في فترات تساوي التكرار؟",
+        "en": "What is approximately equal across equal-frequency intervals?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدد المشاهدات في كل فترة",
+          "en": "The number of observations in each interval"
+        },
+        {
+          "ar": "عدد الخصائص ضمن السجل",
+          "en": "The number of attributes in each record"
+        },
+        {
+          "ar": "العرض الرقمي لكل فترة",
+          "en": "The numerical width of each interval"
+        },
+        {
+          "ar": "عدد الفئات بكامل البيانات",
+          "en": "The number of categories in the source dataset"
+        }
+      ],
+      "concept_id": "equal_frequency_definition",
+      "explanation": {
+        "ar": "يهدف تساوي التكرار إلى تقارب عدد المشاهدات بكل فترة؛ أما تساوي العرض فيستهدف الحجم الرقمي للفترة.",
+        "en": "Equal-frequency aims for similar observation counts per interval; equal-width instead targets numerical interval size."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مجموعتين تطابقان مثال تساوي التكرار للقيم 10 و12 و15 و18 و20 و30 و35 و40؟",
+        "en": "Which groups match the equal-frequency example for 10, 12, 15, 18, 20, 30, 35, 40?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المجموعة 1: 10 و12؛ المجموعة 2: 15 و18 و20 و30 و35 و40",
+          "en": "Group 1: 10, 12; Group 2: 15, 18, 20, 30, 35, 40"
+        },
+        {
+          "ar": "المجموعة 1: 10 و12 و15 و18؛ المجموعة 2: 20 و30 و35 و40",
+          "en": "Group 1: 10, 12, 15, 18; Group 2: 20, 30, 35, 40"
+        },
+        {
+          "ar": "المجموعة 1: 10 و20 و30 و40؛ المجموعة 2: 12 و15 و18 و35",
+          "en": "Group 1: 10, 20, 30, 40; Group 2: 12, 15, 18, 35"
+        },
+        {
+          "ar": "المجموعة 1: 10 و12 و15؛ المجموعة 2: 18 و20 و30 و35 و40",
+          "en": "Group 1: 10, 12, 15; Group 2: 18, 20, 30, 35, 40"
+        }
+      ],
+      "concept_id": "equal_frequency_example",
+      "explanation": {
+        "ar": "يضع المثال أربع مشاهدات في كل مجموعة؛ أما البدائل فتقسم السجلات بأعداد غير متساوية.",
+        "en": "The example places four observations in each group; the distractors divide the records unevenly."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

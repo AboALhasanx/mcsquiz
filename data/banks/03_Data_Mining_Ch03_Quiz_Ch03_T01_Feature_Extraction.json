@@ -1,0 +1,180 @@
+{
+  "topic": {
+    "ar": "استخراج الخصائص",
+    "en": "Feature Extraction"
+  },
+  "quiz_id": "Quiz_Ch03_T01_Feature_Extraction",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا ينشئ استخراج الخصائص؟",
+        "en": "What does feature extraction create?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "دمج قواعد بيانات متعددة من مصادر مختلفة",
+          "en": "combining source datasets into one table"
+        },
+        {
+          "ar": "تحويل القيم الرقمية إلى فترات محددة",
+          "en": "converting numerical values into intervals"
+        },
+        {
+          "ar": "اختيار الخصائص الموجودة لأغراض التحليل",
+          "en": "selecting existing attributes for analysis"
+        },
+        {
+          "ar": "إنشاء خصائص جديدة من البيانات الموجودة",
+          "en": "creating new features from existing data"
+        }
+      ],
+      "concept_id": "feature_extraction_definition",
+      "explanation": {
+        "ar": "ينشئ الاستخراج خصائص تمثل السمات المهمة؛ أما انتقاء الخصائص الموجودة فهو Feature Selection.",
+        "en": "Extraction creates features that represent important characteristics; selecting existing attributes is Feature Selection."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي خصائص تُستخرج في مثال صورة الأشعة؟",
+        "en": "Which characteristics are extracted in the X-ray example?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المتوسط والانحراف وخصائص التردد",
+          "en": "Mean, deviation, and frequency features"
+        },
+        {
+          "ar": "الملمس والشكل والحواف والشدة",
+          "en": "Texture, shape, edges, and intensity"
+        },
+        {
+          "ar": "الدرجة والمركزية والاتصال",
+          "en": "Degree, centrality, and connectivity"
+        },
+        {
+          "ar": "العمر والجنس وBMI وضغط الدم",
+          "en": "Age, gender, BMI, and blood pressure"
+        }
+      ],
+      "concept_id": "xray_extraction_features",
+      "explanation": {
+        "ar": "هذه خصائص للصورة في مثال الأشعة؛ أما البدائل فتصف خصائص مريض أو سلسلة زمنية أو رسم بياني.",
+        "en": "These are image characteristics in the X-ray flow; the alternatives describe patient attributes, temporal features, or graph features."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مجموعة تصف صعوبات قد تواجه البيانات الخام؟",
+        "en": "Which set describes difficulties that raw data may have?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مطبعة ومتكاملة وخالية من الخصائص غير الملائمة والسجلات المكررة وجاهزة للتحليل",
+          "en": "Already normalized, integrated, and free of irrelevant attributes and duplicate records"
+        },
+        {
+          "ar": "صغيرة وبسيطة وسهلة المعالجة ومنخفضة الأبعاد ومناسبة لجميع الخوارزميات دائماً",
+          "en": "Very small, simple, easy to process, low-dimensional, and suitable for every algorithm"
+        },
+        {
+          "ar": "كبيرة جداً أو معقدة أو صعبة المعالجة أو عالية الأبعاد أو غير مناسبة لبعض الخوارزميات",
+          "en": "Very large, complex, difficult to process, high-dimensional, or unsuitable for some algorithms"
+        },
+        {
+          "ar": "مرتبة وثنائية ومحدودة بقيمتين ومناسبة لكل خوارزميات التنقيب المستخدمة في البيانات",
+          "en": "Ordered, binary, limited to two values, and suitable for all data-mining algorithms"
+        }
+      ],
+      "concept_id": "raw_data_difficulties",
+      "explanation": {
+        "ar": "تفسر هذه الخصائص فائدة الاستخراج؛ أما البدائل فتصف بيانات مثالية أو خاصية ثنائية.",
+        "en": "These properties explain why extraction can help; the distractors describe idealized data or a binary attribute."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يمكن لاستخراج الخصائص أن يساعد الخوارزميات على معالجة البيانات؟",
+        "en": "How can feature extraction help algorithms process data?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "جعل البيانات أسهل معالجةً للخوارزميات.",
+          "en": "Make data easier for algorithms to process."
+        },
+        {
+          "ar": "جعل كل خوارزمية تقبل جميع أنواع البيانات الخام.",
+          "en": "Make every algorithm accept all raw data."
+        },
+        {
+          "ar": "إلغاء اختيار مهمة التنقيب من عملية التحليل.",
+          "en": "Remove the need to select a mining task."
+        },
+        {
+          "ar": "ضمان نتائج متطابقة لكل النماذج دائماً.",
+          "en": "Guarantee identical results across all models."
+        }
+      ],
+      "concept_id": "feature_extraction_easier_processing",
+      "explanation": {
+        "ar": "تذكر المادة تسهيل المعالجة فائدةً محتملة؛ ولا تلغي قيود الخوارزميات أو تضمن أداءً متطابقاً.",
+        "en": "The material lists easier processing as a possible benefit; it does not remove algorithm constraints or guarantee identical performance."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما أثر الأداء الذي وُصف بأنه ممكن لا مؤكد؟",
+        "en": "What performance effect is described as possible rather than certain?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تحسين أداء التنبؤ أو التصنيف أحياناً.",
+          "en": "Sometimes improve prediction or classification performance."
+        },
+        {
+          "ar": "خفض أداء التصنيف والتنبؤ دائماً.",
+          "en": "Always reduce prediction and classification performance."
+        },
+        {
+          "ar": "ضمان النموذج الصحيح قبل التدريب.",
+          "en": "Guarantee the correct model and its performance before training."
+        },
+        {
+          "ar": "تحسين كل نتائج التصنيف والتنبؤ دائماً.",
+          "en": "Always improve every prediction and classification result."
+        }
+      ],
+      "concept_id": "feature_extraction_performance",
+      "explanation": {
+        "ar": "قيد «أحياناً» مهم: قد يحسن الاستخراج الأداء، لكن لا يوجد ضمان عام بذلك.",
+        "en": "The qualification 'sometimes' matters: extraction may improve performance, but no universal guarantee is stated."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

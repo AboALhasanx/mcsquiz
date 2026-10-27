@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "تحويل البيانات وتطبيعها وترميزها",
+    "en": "Data Transformation, Normalization, and Encoding"
+  },
+  "quiz_id": "Quiz_Ch02_T06_Transformation_and_Normalization",
+  "has_math": true,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يفعل تحويل البيانات؟",
+        "en": "What does data transformation do?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يدمج المصادر في مجموعة واحدة لتصبح مدخلات مناسبة للتنقيب.",
+          "en": "Combines sources into a single dataset for a unified data-mining input."
+        },
+        {
+          "ar": "يكتشف السجلات المكررة فقط ويترك القيم والخصائص الأخرى كما هي.",
+          "en": "Identifies only duplicate records and leaves all other values unchanged."
+        },
+        {
+          "ar": "يختزل مجموعة البيانات إلى خاصية واحدة قبل تطبيق الخوارزمية.",
+          "en": "Reduces every dataset to one attribute before applying a mining algorithm."
+        },
+        {
+          "ar": "يحول البيانات إلى صيغة مناسبة لخوارزميات تنقيب البيانات.",
+          "en": "Converts data into a suitable format for Data Mining algorithms."
+        }
+      ],
+      "concept_id": "transformation_definition",
+      "explanation": {
+        "ar": "يغير التحويل تمثيل البيانات ليلائم الخوارزميات؛ أما التكامل ومعالجة التكرار فعمليتان مختلفتان.",
+        "en": "Transformation changes representation to suit algorithms; integration and duplicate handling are distinct preparation operations."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تضم طرائق شائعة لتحويل البيانات؟",
+        "en": "Which group contains common data-transformation techniques?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التصنيف والانحدار والتجميع وقواعد الارتباط والتحليل",
+          "en": "Classification, regression, clustering, association rules, and feature selection"
+        },
+        {
+          "ar": "الوسيط والمنوال والإدخال اليدوي وحذف السجلات",
+          "en": "Median, mode, manual entry, record deletion, and missing-value prediction"
+        },
+        {
+          "ar": "الاتجاهات والمجتمعات والمسارات والمشاعر وتكرار الكلمات",
+          "en": "Trends, communities, graph paths, sentiment, and word-frequency analysis"
+        },
+        {
+          "ar": "التطبيع والتجميع والتعميم والترميز وبناء الخصائص",
+          "en": "Normalization, aggregation, generalization, encoding, and feature construction"
+        }
+      ],
+      "concept_id": "transformation_techniques",
+      "explanation": {
+        "ar": "ترد القائمة الأولى ضمن التحويل؛ أما البدائل فمهام تنقيب أو طرائق تعويض أو نواتج اكتشاف.",
+        "en": "The first list appears under transformation; the alternatives are mining tasks, missing-value methods, or discovery outputs."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا يستخدم التطبيع؟",
+        "en": "Why is normalization used?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لإسناد ترتيب طبيعي إلى الفئات الاسمية.",
+          "en": "To assign a natural order to nominal categories."
+        },
+        {
+          "ar": "لدمج المعاملات المكررة في حواف بيانية.",
+          "en": "To merge duplicate transactions into graph edges."
+        },
+        {
+          "ar": "لتحويل القيم الرقمية إلى مقياس متقارب.",
+          "en": "To transform numerical values into a similar scale."
+        },
+        {
+          "ar": "لاستبدال كل قيمة رقمية باسم فئتها.",
+          "en": "To replace every value with a category name."
+        }
+      ],
+      "concept_id": "normalization_purpose",
+      "explanation": {
+        "ar": "يعالج التطبيع اختلاف مقاييس القيم الرقمية؛ ولا يفرض ترتيباً على التسميات الاسمية أو ينفذ التحويلات الأخرى.",
+        "en": "Normalization addresses numerical scale differences; it does not impose order on nominal labels or perform those other conversions."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لماذا قد يهيمن المدى الرقمي الكبير على بعض الخوارزميات؟",
+        "en": "Why can a large numerical range dominate some algorithms?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يمكن لمدى رقمي كبير أن يهيمن على بعض الخوارزميات.",
+          "en": "A large numerical range can dominate some algorithms."
+        },
+        {
+          "ar": "تملك كل الخصائص الوحدات والمدى نفسيهما دائماً.",
+          "en": "All attributes always have the same units and range."
+        },
+        {
+          "ar": "تقاس الفئات الاسمية بطبيعتها بوحدة الكيلوغرام.",
+          "en": "Nominal categories are inherently measured in kilograms."
+        },
+        {
+          "ar": "يزيل التطبيع جميع العلاقات الموجودة بين السجلات.",
+          "en": "Normalization removes every relationship between records."
+        }
+      ],
+      "concept_id": "normalization_range_motivation",
+      "explanation": {
+        "ar": "تعلل المادة التطبيع باختلاف المديات الرقمية؛ ولا تدعي تماثل المقاييس أو زوال كل العلاقات.",
+        "en": "The source motivates normalization by different numerical ranges; it does not claim identical scales or loss of every relationship."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي صيغة تطبّع القيمة بالاعتماد على أصغر قيمة وأكبر قيمة؟",
+        "en": "Which expression scales a value using the observed minimum and maximum?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "$x' = \\frac{x - \\min}{\\max + \\min}$",
+          "en": "$x' = \\frac{x - \\min}{\\max - 1}$"
+        },
+        {
+          "ar": "$x' = \\frac{x - \\min}{\\max - \\min}$",
+          "en": "$x' = \\frac{x - \\min}{\\max - \\min}$"
+        },
+        {
+          "ar": "$x' = \\frac{x - \\min}{\\max - 1}$",
+          "en": "$x' = \\frac{x - \\min}{\\max + \\min}$"
+        },
+        {
+          "ar": "$x' = \\frac{x - \\max}{\\max - \\min}$",
+          "en": "$x' = \\frac{x - \\max}{\\max - \\min}$"
+        }
+      ],
+      "concept_id": "minmax_formula",
+      "explanation": {
+        "ar": "تستخدم Min–Max المدى الكامل، أي أكبر قيمة ناقص أصغر قيمة؛ إضافة الحد الأدنى إلى المقام لا تعطي هذا المدى.",
+        "en": "Min–max uses the full range, max minus min; adding the minimum in the denominator does not give that range."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "إلى أي مدى يحول أسلوب Min–Max القيم عادةً؟",
+        "en": "Into what range does the given min–max method usually transform values?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "من −1 إلى 1",
+          "en": "−1 to 1"
+        },
+        {
+          "ar": "من 0 إلى 10",
+          "en": "0 to 10"
+        },
+        {
+          "ar": "من 0 إلى 1",
+          "en": "0 to 1"
+        },
+        {
+          "ar": "من 1 إلى 0",
+          "en": "1 to 0"
+        }
+      ],
+      "concept_id": "minmax_zero_one",
+      "explanation": {
+        "ar": "تذكر المادة أن التحويل يعطي عادةً المدى من 0 إلى 1؛ أما المديات الأخرى فليست النتيجة المذكورة.",
+        "en": "The material says the transformation usually yields the range 0 to 1; the other ranges are not the stated result."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "إذا كان الحد الأدنى للعمر 20 والأعلى 60 والعمر 40، فما القيمة المطبعة المعروضة؟",
+        "en": "With minimum age 20, maximum age 60, and age 40, what normalized value is shown?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "0.6",
+          "en": "0.6"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.3",
+          "en": "0.3"
+        },
+        {
+          "ar": "0.4",
+          "en": "0.4"
+        }
+      ],
+      "concept_id": "minmax_worked_example",
+      "explanation": {
+        "ar": "يحسب المثال (40 − 20) / (60 − 20) = 20/40 = 0.5.",
+        "en": "The example computes (40 − 20) / (60 − 20) = 20/40 = 0.5."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي صيغة توحّد القيمة نسبةً إلى المتوسط والانحراف المعياري؟",
+        "en": "Which expression standardizes a value relative to the mean and standard deviation?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "$z = \\frac{x - \\mu}{\\sigma}$",
+          "en": "$z = \\frac{x - \\mu}{\\sigma}$"
+        },
+        {
+          "ar": "$x' = \\frac{x - \\min}{\\max}$",
+          "en": "$x' = \\frac{x - \\min}{\\max}$"
+        },
+        {
+          "ar": "$z = \\frac{\\mu - x}{\\sigma^2}$",
+          "en": "$z = \\frac{\\mu - x}{\\sigma^2}$"
+        },
+        {
+          "ar": "$z = \\frac{x - \\sigma}{\\mu}$",
+          "en": "$z = \\frac{x - \\sigma}{\\mu}$"
+        }
+      ],
+      "concept_id": "zscore_formula",
+      "explanation": {
+        "ar": "يطرح Z-score المتوسط من القيمة الأصلية ثم يقسم على الانحراف المعياري؛ أما البديل الأول فهو Min–Max.",
+        "en": "Z-score subtracts the mean from the original value and divides by the standard deviation; the first distractor is min–max."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "في صيغة Z-score، إلى ماذا يرمز μ وσ؟",
+        "en": "In the Z-score formula, what do μ and σ represent?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "μ = المتوسط؛ σ = الانحراف المعياري",
+          "en": "μ = mean; σ = standard deviation"
+        },
+        {
+          "ar": "قيمة الحد الأدنى وقيمة الحد الأعلى",
+          "en": "The minimum and maximum values"
+        },
+        {
+          "ar": "قيمتا الوسيط والمنوال في البيانات",
+          "en": "The median and mode values"
+        },
+        {
+          "ar": "عدد الحاويات وعدد السجلات المسجلة",
+          "en": "The number of bins and records"
+        }
+      ],
+      "concept_id": "zscore_symbols",
+      "explanation": {
+        "ar": "تعرف الصيغة μ بأنه المتوسط وσ بأنه الانحراف المعياري؛ أما الأزواج الأخرى فتخص مقاييس أو أعداداً مختلفة.",
+        "en": "The formula defines μ as the mean and σ as the standard deviation; the other pairs refer to unrelated statistics or counts."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "لماذا قد تُرمز القيم الفئوية؟",
+        "en": "Why may categorical values be encoded?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "القيم الفئوية بيانات غير صالحة دائماً ويجب حذفها من كل مجموعة.",
+          "en": "Categorical values are always invalid data and must be removed from every dataset."
+        },
+        {
+          "ar": "تتطلب خوارزميات كثيرة في التنقيب والتعلم الآلي مدخلات رقمية.",
+          "en": "Many Data Mining and Machine Learning algorithms require numerical input."
+        },
+        {
+          "ar": "يلزم الترميز فقط عندما تكون القيم الفئوية عقداً بيانية.",
+          "en": "Encoding is needed only when categorical values form graph nodes."
+        },
+        {
+          "ar": "لا تستطيع الخوارزميات معالجة القيم الرقمية المطَبَّعة بعد التحويل.",
+          "en": "Algorithms cannot process normalized numerical values after transformation."
+        }
+      ],
+      "concept_id": "categorical_encoding_need",
+      "explanation": {
+        "ar": "تتطلب خوارزميات كثيرة مدخلات رقمية، لذلك قد تحتاج القيم الفئوية إلى تمثيل رقمي. أما البدائل فتعد الفئات غير صالحة، أو تحصر الترميز بالعقد البيانية، أو تنفي معالجة القيم الرقمية المطَبَّعة.",
+        "en": "Many Data Mining and Machine Learning algorithms require numerical input, so categorical values may need a numerical representation. The alternatives incorrectly call categories invalid, restrict encoding to graphs, or deny that algorithms can process normalized numerical values."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "هياكل البيانات ومهام التنقيب المرتبطة بها",
+    "en": "Data Structures and Their Mining Tasks"
+  },
+  "quiz_id": "Quiz_Ch02_T02_Data_Structures",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يحتوي كل سجل في بيانات السجلات؟",
+        "en": "What does each record contain in record data?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تضم المعاملة مجموعة عناصر.",
+          "en": "Each transaction contains a set of items."
+        },
+        {
+          "ar": "ترتب السلسلة عناصرها بترتيب محدد.",
+          "en": "Sequence data contains elements in a specific order."
+        },
+        {
+          "ar": "يتكون الرسم البياني من عقد وحواف.",
+          "en": "Graph data consists of nodes and edges."
+        },
+        {
+          "ar": "يحتوي كل سجل مجموعة من الخصائص.",
+          "en": "Each record contains a set of attributes."
+        }
+      ],
+      "concept_id": "record_data_definition",
+      "explanation": {
+        "ar": "تتكون بيانات السجلات من سجلات، ويحتوي كل سجل مجموعة خصائص؛ أما البدائل فتصف معاملات أو تسلسلاً أو رسماً بيانياً.",
+        "en": "Record data is a collection of records, and each record contains attributes; the other choices describe transaction, sequence, or graph forms."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تسرد التطبيقات المرتبطة ببيانات السجلات؟",
+        "en": "Which set lists the applications associated with record data?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حقيبة الكلمات، TF-IDF، تضمينات الكلمات، والوثائق",
+          "en": "Bag of Words, TF-IDF, word embeddings, and document embeddings"
+        },
+        {
+          "ar": "الكائنات، الأشكال، الأنماط، الأنسجة، والمناطق",
+          "en": "Objects, shapes, patterns, textures, and regions"
+        },
+        {
+          "ar": "الأنماط الزمنية: الاتجاهات، الموسمية، الدورية، والشذوذ",
+          "en": "Trends, seasonal patterns, periodic patterns, and anomalies"
+        },
+        {
+          "ar": "التصنيف، التجميع، الانحدار، وكشف القيم الشاذة",
+          "en": "Classification, clustering, regression, and outlier detection"
+        }
+      ],
+      "concept_id": "record_mining_tasks",
+      "explanation": {
+        "ar": "ترد القائمة الأولى ضمن تطبيقات بيانات السجلات؛ أما البقية فترتبط بالتنقيب في المعاملات أو البيانات الزمنية أو البيانية.",
+        "en": "The first list is given under record-data applications; the others are associated with transaction, temporal, or graph mining."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا تحتوي كل معاملة؟",
+        "en": "What does each transaction contain?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يتكون الرسم البياني من عقد وحواف.",
+          "en": "A graph consists of nodes and edges."
+        },
+        {
+          "ar": "الصورة الرمادية مصفوفة من شدات البكسلات.",
+          "en": "A grayscale image is a pixel matrix."
+        },
+        {
+          "ar": "تحتوي كل معاملة مجموعة من العناصر.",
+          "en": "Each transaction contains a set of items."
+        },
+        {
+          "ar": "يحتوي كل سجل مجموعة من الخصائص.",
+          "en": "Each record contains a set of attributes."
+        }
+      ],
+      "concept_id": "transaction_items",
+      "explanation": {
+        "ar": "تمثل بيانات المعاملات كل معاملة كمجموعة عناصر؛ أما البدائل فتصف بيانات زمنية أو صوراً أو سجلات.",
+        "en": "Transaction data represents each transaction as an item set; the other choices describe time-series, image, or record data."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي مهمة تنقيب ترتبط ببيانات المعاملات؟",
+        "en": "Which mining task is associated with transaction data?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تنقيب قواعد الارتباط",
+          "en": "Association Rule Mining"
+        },
+        {
+          "ar": "تجميع كائنات البيانات",
+          "en": "Data-object clustering"
+        },
+        {
+          "ar": "انحدار القيم الرقمية",
+          "en": "Numerical-value regression"
+        },
+        {
+          "ar": "تصنيف بيانات السجلات",
+          "en": "Record-data classification"
+        }
+      ],
+      "concept_id": "transaction_association",
+      "explanation": {
+        "ar": "يربط المصدر مجموعات عناصر المعاملات بتنقيب قواعد الارتباط؛ والبدائل تخص أشكالاً أو مهام أخرى.",
+        "en": "The source connects transaction item sets with Association Rule Mining; the alternatives concern other data forms or tasks."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا قد تشير إليه قاعدة Bread → Milk عن الزبائن؟",
+        "en": "What may the rule Bread → Milk indicate about customers?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الزبائن الذين يشترون الحليب غالباً ما يشترون الخبز.",
+          "en": "Customers who buy milk often buy bread."
+        },
+        {
+          "ar": "الزبائن الذين يشترون الخبز غالباً ما يشترون الحليب.",
+          "en": "Customers who buy bread often buy milk."
+        },
+        {
+          "ar": "الزبائن الذين يشترون الخبز لا يشترون الحليب أبداً.",
+          "en": "Customers who buy bread never buy milk."
+        },
+        {
+          "ar": "الزبون الذي يشتري الخبز يشتري الحليب دائماً.",
+          "en": "Every customer who buys bread also buys milk."
+        }
+      ],
+      "concept_id": "transaction_rule_example",
+      "explanation": {
+        "ar": "يصف المثال ارتباطاً في سلوك الشراء، لا ترتيباً زمنياً أو علاقة سببية أو قاعدة مطلقة.",
+        "en": "The example describes an association in purchasing behavior, not temporal order, causation, or a universal rule."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي مجموعة تسرد مهاماً يستطيع تنقيب النصوص تنفيذها؟",
+        "en": "Which set lists tasks that text mining can perform?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مهام السجلات: التصنيف، التجميع، الانحدار، كشف الشذوذ، وتحليل الارتباط",
+          "en": "Record-data applications: classification, clustering, regression, and outlier detection"
+        },
+        {
+          "ar": "الأنماط الزمنية: الاتجاهات، الموسمية، الدورية، الشذوذ، وقياسات المستشعرات",
+          "en": "Temporal patterns: trends, seasonal patterns, periodic patterns, anomalies, and sensor data"
+        },
+        {
+          "ar": "الكلمات المتكررة، الموضوعات، المشاعر، تشابه الوثائق، وتصنيف النصوص",
+          "en": "Frequent words, topics, sentiment, document similarity, and text classification"
+        },
+        {
+          "ar": "تنقيب الصور: الكائنات، الأشكال، الأنماط، الأنسجة، المناطق، وطرائق CNN",
+          "en": "Image Mining: objects, shapes, patterns, textures, regions, and CNN methods"
+        }
+      ],
+      "concept_id": "text_mining_tasks",
+      "explanation": {
+        "ar": "هذه مهام تحليل النصوص المذكورة؛ أما البدائل فتصف تحليلاً مكانياً أو صورياً أو زمنياً.",
+        "en": "These are the text-analysis tasks listed; the alternatives describe spatial, image, or temporal analysis."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي ترتيب أحداث استُخدم مثالاً لسلوك الزبون؟",
+        "en": "Which event order is used as an example of customer behavior?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الشراء ← تسجيل الدخول ← البحث ← المنتج",
+          "en": "Purchase → Login → Search → Product"
+        },
+        {
+          "ar": "تسجيل الدخول ← البحث ← المنتج ← الشراء",
+          "en": "Login → Search → Product → Purchase"
+        },
+        {
+          "ar": "المنتج ← الشراء ← تسجيل الدخول ← البحث",
+          "en": "Product → Purchase → Login → Search"
+        },
+        {
+          "ar": "البحث ← تسجيل الدخول ← الشراء ← المنتج",
+          "en": "Search → Login → Purchase → Product"
+        }
+      ],
+      "concept_id": "sequence_examples",
+      "explanation": {
+        "ar": "يتبع مثال المصدر تسجيل الدخول ثم البحث فالمنتج فالشراء؛ ويحمل ترتيب التسلسل نمط السلوك.",
+        "en": "The source's example follows Login, Search, Product, Purchase; sequence order carries the behavior pattern."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي عبارة تعرّف البيانات الزمنية؟",
+        "en": "Which statement defines temporal data?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تحتوي البيانات الزمنية مشاهدات مرتبطة بالزمن.",
+          "en": "Temporal data contains observations associated with time."
+        },
+        {
+          "ar": "تمثل البيانات المكانية مشاهدات مرتبطة بالمواقع.",
+          "en": "Spatial data represents observations associated with locations."
+        },
+        {
+          "ar": "تضم كل معاملة شراء مجموعتها المسجلة من العناصر.",
+          "en": "Each purchase transaction contains its own set of recorded items."
+        },
+        {
+          "ar": "تحتوي بيانات التسلسل عناصر بترتيب محدد.",
+          "en": "Sequence data contains elements in a specific order."
+        }
+      ],
+      "concept_id": "temporal_data_definition",
+      "explanation": {
+        "ar": "تربط البيانات الزمنية المشاهدات بالوقت؛ أما البدائل فتصف تمثيلات مكانية أو معاملية أو بيانية.",
+        "en": "Temporal data pairs observations with time; the alternatives describe spatial, transaction, or graph representations."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي مجموعة تضم الأنماط التي يمكن اكتشافها في البيانات الزمنية؟",
+        "en": "Which set contains the patterns discoverable in temporal data?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الاتجاهات، الأنماط الموسمية، الأنماط الدورية، والشذوذات",
+          "en": "Trends, seasonal patterns, periodic patterns, and anomalies"
+        },
+        {
+          "ar": "الكائنات، الأشكال، الأنماط، الأنسجة، والمناطق في الصور",
+          "en": "Objects, shapes, patterns, textures, regions, and deep features"
+        },
+        {
+          "ar": "المتوسط، الوسيط، المنوال، الإدخال اليدوي، والتنبؤ",
+          "en": "Mean, median, mode, manual filling, and predictive methods"
+        },
+        {
+          "ar": "مهام السجلات: التصنيف، التجميع، الانحدار، وكشف الشذوذ",
+          "en": "Classification, clustering, regression, and outlier detection"
+        }
+      ],
+      "concept_id": "temporal_discoveries",
+      "explanation": {
+        "ar": "ترد المجموعة الأولى ضمن تحليل البيانات الزمنية؛ أما البقية فتخص تنقيب الرسوم والنصوص والصور.",
+        "en": "The first group is listed for temporal analysis; the others belong to graph, text, and image mining."
+      }
+    },
+    {
+      "id": "q14",
+      "stem": {
+        "ar": "أي تحويل يوضح دورَي المكوّنين الرئيسيين للرسم البياني؟",
+        "en": "Which mapping gives the roles of the two main graph components?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الصفوف (السجلات) ← المشاهدات؛ الحقول ← الخصائص",
+          "en": "Rows → observations; fields → attributes"
+        },
+        {
+          "ar": "العقد (الرؤوس) ← الكائنات؛ الحواف ← العلاقات",
+          "en": "Nodes → objects; edges → relationships"
+        },
+        {
+          "ar": "البكسلات ← قيم الصورة؛ القنوات ← مكونات RGB",
+          "en": "Pixels → values; channels → RGB components"
+        },
+        {
+          "ar": "العناصر ← المعاملات؛ الأحداث ← التسلسلات المرتبة",
+          "en": "Items → transactions; events → time sequences"
+        }
+      ],
+      "concept_id": "graph_nodes_edges",
+      "explanation": {
+        "ar": "تستخدم الرسوم البيانية العقد لتمثيل الكائنات والحواف لتمثيل العلاقات؛ أما البدائل فتخلط هياكل غير مرتبطة.",
+        "en": "Graphs use nodes to represent objects and edges to represent relationships; the alternatives mix unrelated structures."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

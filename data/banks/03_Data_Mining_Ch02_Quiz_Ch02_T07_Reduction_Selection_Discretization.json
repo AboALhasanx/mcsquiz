@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "اختزال البيانات واختيار الخصائص وتقطيعها",
+    "en": "Data Reduction, Feature Selection, and Discretization"
+  },
+  "quiz_id": "Quiz_Ch02_T07_Reduction_Selection_Discretization",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يحاول اختزال البيانات أن يفعل؟",
+        "en": "What does data reduction attempt to do?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تحويل كل سجل إلى مجموعة عناصر معاملة قبل تحليل خصائص البيانات الأصلية.",
+          "en": "Data Reduction converts each record into a transaction item set before analysis of the dataset begins."
+        },
+        {
+          "ar": "حذف كل خاصية بلا اعتبار لفائدتها اللاحقة في مهام التنقيب والتحليل العلمي.",
+          "en": "Data Reduction removes every attribute from a dataset regardless of its usefulness to later mining tasks."
+        },
+        {
+          "ar": "زيادة عدد أبعاد البيانات حتى تحتفظ عملية التنقيب بكل التفاصيل الأصلية.",
+          "en": "Data Reduction increases the number of dimensions so mining can retain all original details."
+        },
+        {
+          "ar": "يحاول اختزال البيانات تقليل حجمها أو تعقيدها مع الحفاظ على المعلومات المهمة.",
+          "en": "Data Reduction attempts to reduce the size or complexity of the data while preserving important information."
+        }
+      ],
+      "concept_id": "data_reduction_definition",
+      "explanation": {
+        "ar": "يستهدف الاختزال الحجم أو التعقيد مع الإبقاء على المعلومات المهمة؛ أما البدائل فتحذف أو تزيد البيانات بلا تمييز.",
+        "en": "Reduction targets size or complexity while retaining important information; the alternatives discard or expand data indiscriminately."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تضم طرائق شائعة لاختزال البيانات؟",
+        "en": "Which set contains common data-reduction techniques?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقليل الأبعاد واختيار الخصائص وأخذ العينات والتجميع وتقليل العددية",
+          "en": "Dimensionality reduction, feature selection, sampling, aggregation, and numerosity reduction"
+        },
+        {
+          "ar": "المتوسط والوسيط والمنوال والإدخال اليدوي والتنبؤ بالقيم المفقودة",
+          "en": "Mean, median, mode, manual filling, and predictive imputation of missing values"
+        },
+        {
+          "ar": "التصنيف والانحدار وقواعد الارتباط وتحليل المشاعر وكشف القيم الشاذة",
+          "en": "Classification, regression, association rules, sentiment analysis, and outlier detection"
+        },
+        {
+          "ar": "التقطيع وتمثيل النص والتضمين البياني والقنوات اللونية وبناء الخصائص",
+          "en": "Binning, text vectorization, graph embedding, color channels, and feature construction"
+        }
+      ],
+      "concept_id": "data_reduction_methods",
+      "explanation": {
+        "ar": "وردت هذه الطرائق الخمس ضمن اختزال البيانات؛ أما البدائل فتخلط بين التنقيب والتعويض والتمثيل.",
+        "en": "These five methods are listed under data reduction; the alternatives mix mining, imputation, or representation methods."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا يفعل اختيار الخصائص؟",
+        "en": "What does Feature Selection do?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ينشئ مجموعة جديدة من الخصائص المشتقة من خصائص البيانات الأصلية.",
+          "en": "Creates a new set of derived features from the original data attributes."
+        },
+        {
+          "ar": "يحول القيم الرقمية المستمرة إلى فترات متساوية التكرار للتحليل.",
+          "en": "Converts continuous values into equal-frequency intervals for later analysis."
+        },
+        {
+          "ar": "ينتقي الخصائص الأكثر فائدة ويزيل غير الملائم أو الزائد منها.",
+          "en": "Selects the most useful attributes and removes irrelevant or redundant ones."
+        },
+        {
+          "ar": "يدمج سجلات من قواعد بيانات متعددة في جدول بيانات موحد.",
+          "en": "Combines data records from multiple databases in one integrated table."
+        }
+      ],
+      "concept_id": "feature_selection_definition",
+      "explanation": {
+        "ar": "يحتفظ الاختيار بالخصائص الموجودة والمفيدة ويزيل غير الملائم أو الزائد؛ أما إنشاء خصائص جديدة فهو الاستخراج.",
+        "en": "Selection keeps useful existing attributes and removes irrelevant or redundant ones; creating new features is extraction."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "للتنبؤ بالمرض، أي خصائص ذُكرت للإبقاء عليها في المثال؟",
+        "en": "For disease prediction, which attributes are listed as useful to retain in the example?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "معرّف المعاملة والمنتج ووقت الشراء المسجل",
+          "en": "Transaction product and purchase time"
+        },
+        {
+          "ar": "عرض الصورة وارتفاعها ودرجة العقدة البيانية",
+          "en": "Image width, height, and pixel values"
+        },
+        {
+          "ar": "اسم المريض ورقم الهاتف والعنوان المسجل",
+          "en": "Patient name and contact details"
+        },
+        {
+          "ar": "العمر والجنس ومؤشر كتلة الجسم وضغط الدم",
+          "en": "Age, gender, BMI, and blood pressure"
+        }
+      ],
+      "concept_id": "feature_selection_medical_example",
+      "explanation": {
+        "ar": "يحتفظ المثال بخصائص طبية ذات صلة ويزيل معرّفات لا تقدم معلومات مفيدة للتنبؤ.",
+        "en": "The example retains medically relevant attributes and removes identifiers that do not contribute useful prediction information."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي عبارة تميز اختيار الخصائص عن استخراجها؟",
+        "en": "Which statement distinguishes Feature Selection from Feature Extraction?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تحدد العمليتان السجلات المكررة وتحذفانها قبل بدء عملية التنقيب عن البيانات في المجموعة.",
+          "en": "Both operations identify repeated records and delete them before the data-mining process begins."
+        },
+        {
+          "ar": "يحول الاختيار النص إلى متجهات؛ ويدمج الاستخراج جداول المصادر في مجموعة موحدة قبل التحليل.",
+          "en": "Selection converts text into vectors; extraction combines source tables into one integrated dataset."
+        },
+        {
+          "ar": "Feature Selection: اختيار الخصائص الموجودة. Feature Extraction: إنشاء خصائص جديدة من الخصائص الأصلية.",
+          "en": "Feature Selection: Select existing features. Feature Extraction: Create new features from original features."
+        },
+        {
+          "ar": "ينشئ الاختيار خصائص جديدة من الموجودة؛ ويحفظ الاستخراج الخصائص الأصلية فقط في البيانات قبل التنقيب.",
+          "en": "Selection creates new features from existing ones; extraction keeps only the original attributes in the dataset."
+        }
+      ],
+      "concept_id": "selection_extraction_difference",
+      "explanation": {
+        "ar": "تقابل المادة بين اختيار خصائص موجودة وبناء تمثيلات جديدة؛ أما البدائل فتعكس العمليتين أو تخلط بينهما.",
+        "en": "The material contrasts selecting existing attributes with constructing new representations; the distractors reverse or conflate the operations."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي تقنية سميت طريقة شائعة لتقليل الأبعاد؟",
+        "en": "Which technique is named as a common method for dimensionality reduction?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ترميز One-hot للفئات الاسمية",
+          "en": "One-hot encoding (OHE) for categories"
+        },
+        {
+          "ar": "تحليل المكونات الرئيسية PCA",
+          "en": "Principal Component Analysis (PCA)"
+        },
+        {
+          "ar": "كشف القيم الشاذة بطرائق المسافة",
+          "en": "Outlier detection by distance methods"
+        },
+        {
+          "ar": "تنقيب قواعد الارتباط ARM",
+          "en": "Association Rule Mining (ARM)"
+        }
+      ],
+      "concept_id": "pca_dimensionality_reduction",
+      "explanation": {
+        "ar": "ورد PCA تقنيةً لتقليل الأبعاد؛ أما البدائل فتخدم مهام مختلفة.",
+        "en": "PCA is the named dimensionality-reduction technique; the alternatives serve different tasks."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي تحويل يوضح تقليل الأبعاد في مثال PCA؟",
+        "en": "What transformation illustrates dimensionality reduction in the PCA example?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "100 خاصية أصلية ← 10 مكونات رئيسية",
+          "en": "100 original features → 10 principal components"
+        },
+        {
+          "ar": "100 سجل ← 10 قيم مفقودة بعد الاختزال",
+          "en": "100 records → 10 missing values after reduction"
+        },
+        {
+          "ar": "10 خصائص أصلية ← 100 مكون رئيسي",
+          "en": "10 original features → 100 principal components"
+        },
+        {
+          "ar": "10 فئات ← 100 عقدة بيانية بعد الترميز",
+          "en": "10 categories → 100 graph nodes after encoding"
+        }
+      ],
+      "concept_id": "pca_example",
+      "explanation": {
+        "ar": "يخفض المثال 100 بُعد إلى 10 مكونات؛ أما البدائل فتزيد العدد أو تغير كميات غير مرتبطة.",
+        "en": "The example reduces 100 dimensions to 10 components; the alternatives increase or change unrelated quantities."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي فائدة لاختزال الأبعاد وردت في المادة؟",
+        "en": "Which benefit of dimensionality reduction is listed?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "دقة مضمونة",
+          "en": "Accuracy guarantee"
+        },
+        {
+          "ar": "كلفة الحساب",
+          "en": "Computational cost"
+        },
+        {
+          "ar": "فقدان معلومات",
+          "en": "Information loss"
+        },
+        {
+          "ar": "تعقيد النموذج",
+          "en": "Model complexity"
+        }
+      ],
+      "concept_id": "dimensionality_reduction_benefits",
+      "explanation": {
+        "ar": "تسرد المادة فوائد الكلفة والتخزين والتعقيد واحتمال التصور، ولا تضمن دقة مثالية أو فقداناً صفرياً.",
+        "en": "The material lists cost, storage, complexity, and possible visualization benefits, not perfect accuracy or zero loss."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-10-27T20:02:22Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

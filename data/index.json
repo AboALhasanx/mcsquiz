@@ -1,8 +1,8 @@
 {
   "portal": "MCQ Portal",
   "test_mode": false,
-  "version": 46,
-  "updated_at": "2026-10-27T15:14:13+00:00",
+  "version": 52,
+  "updated_at": "2026-10-27T20:02:58+00:00",
   "subjects": [
     {
       "subject_id": "01_Cyber_Security",
@@ -974,57 +974,197 @@
         },
         {
           "chapter_no": 2,
-          "quiz_id": "Quiz_Ch02_ModelA_Data_Types_and_Preparation",
-          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_ModelA_Data_Types_and_Preparation.json",
+          "quiz_id": "Quiz_Ch02_T01_Data_Objects_and_Attribute_Types",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T01_Data_Objects_and_Attribute_Types.json",
           "topic": {
-            "ar": "أنواع البيانات وتحضيرها: الجودة والتنظيف والتحويل — النموذج أ",
-            "en": "Data Types and Preparation — Model A"
+            "ar": "كائنات البيانات والخصائص وأنواعها",
+            "en": "Data Objects, Attributes, and Attribute Types"
           },
-          "count": 5,
+          "count": 10,
           "version": 1,
-          "updated_at": "2026-10-23T08:09:01Z",
+          "updated_at": "2026-10-27T20:02:22Z",
           "has_math": false,
           "material_url": ""
         },
         {
           "chapter_no": 2,
-          "quiz_id": "Quiz_Ch02_ModelB_Data_Types_and_Preparation",
-          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_ModelB_Data_Types_and_Preparation.json",
+          "quiz_id": "Quiz_Ch02_T02_Data_Structures",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T02_Data_Structures.json",
           "topic": {
-            "ar": "أنواع البيانات وتحضيرها: الجودة والتنظيف والتحويل — النموذج ب",
-            "en": "Data Types and Preparation — Model B"
+            "ar": "هياكل البيانات ومهام التنقيب المرتبطة بها",
+            "en": "Data Structures and Their Mining Tasks"
           },
-          "count": 5,
+          "count": 10,
           "version": 1,
-          "updated_at": "2026-10-23T08:09:01Z",
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 2,
+          "quiz_id": "Quiz_Ch02_T03_Data_Preparation_Foundations",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T03_Data_Preparation_Foundations.json",
+          "topic": {
+            "ar": "أسس تحضير البيانات وسير العمل",
+            "en": "Data Preparation Foundations and Workflow"
+          },
+          "count": 7,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 2,
+          "quiz_id": "Quiz_Ch02_T04_Missing_Values_and_Noise",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T04_Missing_Values_and_Noise.json",
+          "topic": {
+            "ar": "القيم المفقودة والبيانات المشوشة",
+            "en": "Missing Values and Noisy Data"
+          },
+          "count": 12,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 2,
+          "quiz_id": "Quiz_Ch02_T05_Outliers_Duplicates_Integration",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T05_Outliers_Duplicates_Integration.json",
+          "topic": {
+            "ar": "القيم الشاذة والتكرار وعدم الاتساق وتكامل البيانات",
+            "en": "Outliers, Duplicates, Inconsistency, and Integration"
+          },
+          "count": 12,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 2,
+          "quiz_id": "Quiz_Ch02_T06_Transformation_and_Normalization",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T06_Transformation_and_Normalization.json",
+          "topic": {
+            "ar": "تحويل البيانات وتطبيعها وترميزها",
+            "en": "Data Transformation, Normalization, and Encoding"
+          },
+          "count": 10,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": true,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 2,
+          "quiz_id": "Quiz_Ch02_T07_Reduction_Selection_Discretization",
+          "bank": "banks/03_Data_Mining_Ch02_Quiz_Ch02_T07_Reduction_Selection_Discretization.json",
+          "topic": {
+            "ar": "اختزال البيانات واختيار الخصائص وتقطيعها",
+            "en": "Data Reduction, Feature Selection, and Discretization"
+          },
+          "count": 8,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
           "has_math": false,
           "material_url": ""
         },
         {
           "chapter_no": 3,
-          "quiz_id": "Quiz_Ch03_ModelA_Feature_Extraction",
-          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_ModelA_Feature_Extraction.json",
+          "quiz_id": "Quiz_Ch03_T01_Feature_Extraction",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T01_Feature_Extraction.json",
           "topic": {
-            "ar": "استخراج السمات واختيارها وقابلية النقل — النموذج أ",
-            "en": "Feature Extraction and Portability — Model A"
+            "ar": "استخراج الخصائص",
+            "en": "Feature Extraction"
           },
           "count": 5,
           "version": 1,
-          "updated_at": "2026-10-23T08:09:01Z",
+          "updated_at": "2026-10-27T20:02:22Z",
           "has_math": false,
           "material_url": ""
         },
         {
           "chapter_no": 3,
-          "quiz_id": "Quiz_Ch03_ModelB_Feature_Extraction",
-          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_ModelB_Feature_Extraction.json",
+          "quiz_id": "Quiz_Ch03_T02_Portability_Foundations",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T02_Portability_Foundations.json",
           "topic": {
-            "ar": "استخراج السمات واختيارها وقابلية النقل — النموذج ب",
-            "en": "Feature Extraction and Portability — Model B"
+            "ar": "أسس قابلية نقل نوع البيانات",
+            "en": "Data Type Portability Foundations"
           },
-          "count": 5,
+          "count": 8,
           "version": 1,
-          "updated_at": "2026-10-23T08:09:01Z",
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 3,
+          "quiz_id": "Quiz_Ch03_T03_Numerical_to_Categorical",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T03_Numerical_to_Categorical.json",
+          "topic": {
+            "ar": "تحويل البيانات الرقمية إلى فئوية",
+            "en": "Numerical-to-Categorical Conversion"
+          },
+          "count": 8,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 3,
+          "quiz_id": "Quiz_Ch03_T04_Categorical_and_Text_Representations",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T04_Categorical_and_Text_Representations.json",
+          "topic": {
+            "ar": "تمثيل البيانات الفئوية والنصية",
+            "en": "Categorical and Text Representations"
+          },
+          "count": 7,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 3,
+          "quiz_id": "Quiz_Ch03_T05_Time_Series_Representations",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T05_Time_Series_Representations.json",
+          "topic": {
+            "ar": "تمثيلات السلاسل الزمنية",
+            "en": "Time-Series Representations"
+          },
+          "count": 7,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 3,
+          "quiz_id": "Quiz_Ch03_T06_Image_Spatial_Sequence_Graph",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T06_Image_Spatial_Sequence_Graph.json",
+          "topic": {
+            "ar": "تمثيلات الصور والبيانات المكانية والتسلسلية والبيانية",
+            "en": "Image, Spatial, Sequence, and Graph Representations"
+          },
+          "count": 12,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
+          "has_math": false,
+          "material_url": ""
+        },
+        {
+          "chapter_no": 3,
+          "quiz_id": "Quiz_Ch03_T07_Portability_Tradeoffs",
+          "bank": "banks/03_Data_Mining_Ch03_Quiz_Ch03_T07_Portability_Tradeoffs.json",
+          "topic": {
+            "ar": "فوائد قابلية النقل وقيودها واختيار الطريقة",
+            "en": "Portability Benefits, Limitations, and Method Choice"
+          },
+          "count": 8,
+          "version": 1,
+          "updated_at": "2026-10-27T20:02:22Z",
           "has_math": false,
           "material_url": ""
         }
