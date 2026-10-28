@@ -31,6 +31,7 @@ PATTERNS = [
     re.compile(r'^sectest\d+x?$'),
     re.compile(r'^t\d{4,}$'),
     re.compile(r'^pc\d{4,}$'),
+    re.compile(r'^pctest\d*$'),
     re.compile(r'^lt\d{4,}$'),
     re.compile(r'^tb\d{4,}$'),
     re.compile(r'^qa\d{4,}$'),
