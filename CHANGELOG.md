@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.0] — 2026-10-28
+
+### Changed
+- مبارزة مباشرة 1 ضد 1: تنافس حي برمز 4 أرقام ونقاط السرعة وتزامن الحضور بدون ضغط قاعدة البيانات
+
+
 ## [1.7.19] — 2026-10-28
 
 ### Changed

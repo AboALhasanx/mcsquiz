@@ -2278,3 +2278,479 @@ html[data-theme="light"] .offline-banner {
   color: var(--accent);
   border-bottom-color: var(--accent-border);
 }
+
+/* ==========================================================================
+   1v1 VS Competitive Mode
+   ========================================================================== */
+.vs-view {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem 3rem;
+}
+.vs-hero-card {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.vs-badge-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.vs-hero-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 0.5rem;
+}
+.vs-hero-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+.vs-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 600px) {
+  .vs-actions-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.vs-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md, 12px);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+.vs-box-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.vs-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.vs-box-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+.vs-box-sub {
+  font-size: 0.78rem;
+  color: var(--text-subtle);
+  margin: 0 0 1rem;
+}
+.vs-field-group {
+  margin-bottom: 0.85rem;
+}
+.vs-field-group .field-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.vs-field-group select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  background: var(--bg-input, #12141A);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 0.85rem;
+}
+.vs-code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.vs-pin-digit {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: var(--bg-input, #12141A);
+  border: 2px solid var(--border-card);
+  border-radius: 10px;
+  color: var(--text-main);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.vs-pin-digit:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-subtle);
+  outline: none;
+}
+.vs-cta-btn {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+.vs-status-note {
+  font-size: 0.8rem;
+  color: var(--error-text, #FB7185);
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Waiting Room */
+.vs-waiting-card {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg, 16px);
+  padding: 2rem 1.25rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.vs-waiting-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.vs-code-display {
+  margin-bottom: 1rem;
+}
+.vs-big-code {
+  font-family: monospace;
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent-glow);
+  padding-left: 0.35em;
+}
+.vs-waiting-instructions {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.vs-qr-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto 1.5rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  border-radius: 12px;
+  width: 160px;
+  height: 160px;
+}
+.vs-waiting-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Match Arena */
+.vs-scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 0.85rem 0.75rem;
+  margin-bottom: 1rem;
+}
+.vs-player-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.vs-player-card.is-opp {
+  flex-direction: row-reverse;
+  text-align: left;
+}
+.vs-player-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.vs-player-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.vs-player-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75px;
+}
+.vs-player-role {
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+}
+.vs-player-score-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: auto;
+}
+.vs-player-card.is-opp .vs-player-score-wrap {
+  margin-right: 0;
+  margin-left: auto;
+}
+.vs-score-num {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+.vs-score-label {
+  font-size: 0.65rem;
+  color: var(--text-subtle);
+}
+.vs-center-hub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.25rem;
+}
+.vs-timer-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  box-shadow: 0 0 10px var(--accent-subtle);
+}
+.vs-seconds {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.vs-round-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+  white-space: nowrap;
+}
+.vs-opp-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: var(--accent-subtle);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  border-radius: 20px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  animation: viewFadeIn 0.2s ease;
+}
+.vs-question-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 1.25rem 1rem;
+  margin-bottom: 1rem;
+}
+.vs-question-stem {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+}
+.vs-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.vs-opt-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-card);
+  border-radius: 12px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: right;
+  transition: all 0.15s ease;
+  min-height: 48px;
+}
+.vs-opt-btn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  border-color: var(--border-focus);
+}
+.vs-opt-btn.picked {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+.vs-opt-btn.is-correct {
+  border-color: var(--success) !important;
+  background: var(--success-bg) !important;
+  color: var(--success-text) !important;
+}
+.vs-opt-btn.is-wrong {
+  border-color: var(--error) !important;
+  background: var(--error-bg) !important;
+  color: var(--error-text) !important;
+}
+.vs-opt-letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--letter-bg);
+  border: 1px solid var(--letter-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.vs-round-flash {
+  text-align: center;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  animation: viewFadeIn 0.25s ease;
+}
+.vs-round-flash.flash-correct {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
+}
+.vs-round-flash.flash-wrong {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+}
+
+/* Result Card */
+.vs-result-card {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg, 16px);
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+}
+.vs-result-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--accent-subtle);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+.vs-result-icon svg {
+  width: 36px;
+  height: 36px;
+}
+.vs-result-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 0.35rem;
+}
+.vs-result-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem;
+}
+.vs-final-scores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+.vs-final-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vs-final-label {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin-bottom: 0.25rem;
+}
+.vs-final-value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+.vs-final-divider {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+}
+.vs-result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+

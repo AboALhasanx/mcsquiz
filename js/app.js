@@ -147,7 +147,7 @@
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
-    'results-view', 'saved-view', 'stats-view', 'league-view', 'account-view'];
+    'results-view', 'saved-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
@@ -158,7 +158,7 @@
     // the saved shortcut is part of the top bar: always reachable, one tap
     // (the sound toggle is not — it lives in the burger menu only)
     // the language toggle lives in every app bar and is always visible
-    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view'];
+    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
     document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
@@ -2208,6 +2208,12 @@
       renderLeague();
       show('league-view');
       window.scrollTo(0, 0);
+    } else if (h === '#/vs' || h === '#/vs/' || h.startsWith('#/vs/')) {
+      S.session = null;
+      clearSessionSnapshot();
+      renderVs(h);
+      show('vs-view');
+      window.scrollTo(0, 0);
     } else if (h === '#/practice' || h === '#/practice/') {
       if (S.session && !S.session.finished && !S.session.ch.quiz_id) {
         show(S.session.started ? 'quiz-view' : 'quiz-start-view');
@@ -4077,6 +4083,580 @@
     }
   }
 
+  // ==========================================================================
+  // 1v1 Real-Time Competitive Mode (VS Mode) Controller
+  // ==========================================================================
+  const vsState = {
+    room: null,
+    channel: null,
+    role: null,
+    opponent: null,
+    questions: [],
+    roundIndex: 0,
+    myScore: 0,
+    oppScore: 0,
+    myPick: null,
+    oppPick: null,
+    myTimeMs: 0,
+    oppTimeMs: 0,
+    roundTimer: null,
+    timeLeftSec: 12,
+    roundStartMs: 0,
+    myLockedIn: false,
+    oppLockedIn: false,
+    resolved: false
+  };
+  window.vsState = vsState;
+
+  function vsPlayerInfo() {
+    let uid = '';
+    let uname = 'طالب';
+    let uav = '';
+    try {
+      const C = window.PortalCloud;
+      const a = (C && C.account) ? C.account() : null;
+      if (a) {
+        uid = 'u:' + a.id;
+        uname = a.username || 'طالب';
+        uav = a.avatar || '';
+      }
+    } catch (e) {} // audit-ignore: optional account lookup
+    if (!uid) {
+      let g = '';
+      try { g = localStorage.getItem('portal_guest_id'); } catch (e) {} // audit-ignore: storage read
+      if (!g) {
+        g = 'g_' + Math.floor(Math.random() * 1000000);
+        try { localStorage.setItem('portal_guest_id', g); } catch (e) {} // audit-ignore: storage write
+      }
+      uid = 'g:' + g;
+      try { uname = localStorage.getItem('portal_guest_name') || 'ضيف'; } catch (e) {} // audit-ignore: guest name
+    }
+    return { id: uid, name: uname, avatar: uav };
+  }
+
+  function gatherVsQuestions(subjectId, chapterId, seed) {
+    let pool = [];
+    const banks = S.banks || {};
+    Object.keys(banks).forEach((k) => {
+      const b = banks[k];
+      if (!b || !b.questions || !b.questions.length) return;
+      if (subjectId && subjectId !== 'all' && b.subject_id !== subjectId) return;
+      if (chapterId && chapterId !== 'all' && b.quiz_id !== chapterId) return;
+      b.questions.forEach((q) => { pool.push(q); });
+    });
+    if (pool.length < 5) {
+      Object.keys(banks).forEach((k) => {
+        const b = banks[k];
+        if (b && b.questions && b.questions.length) {
+          b.questions.forEach((q) => { pool.push(q); });
+        }
+      });
+    }
+    return window.PortalVS ? window.PortalVS.pickVsQuestions(pool, seed || 12345, 5) : pool.slice(0, 5);
+  }
+
+  function renderVs(hash) {
+    const offCard = $('vs-offline-card');
+    const lobby = $('vs-lobby');
+    const waiting = $('vs-waiting');
+    const arena = $('vs-arena');
+    const result = $('vs-result');
+
+    if (!navigator.onLine || !window.PortalVS || !window.PortalVS.configured()) {
+      if (offCard) offCard.classList.remove('hidden');
+      if (lobby) lobby.classList.add('hidden');
+      if (waiting) waiting.classList.add('hidden');
+      if (arena) arena.classList.add('hidden');
+      if (result) result.classList.add('hidden');
+      return;
+    }
+    if (offCard) offCard.classList.add('hidden');
+
+    if (!vsState.room) {
+      if (lobby) lobby.classList.remove('hidden');
+      if (waiting) waiting.classList.add('hidden');
+      if (arena) arena.classList.add('hidden');
+      if (result) result.classList.add('hidden');
+      setupVsLobby();
+
+      const m = (hash || '').match(/^#\/vs\/([0-9]{4})$/);
+      if (m && m[1]) {
+        const code = m[1];
+        const pins = [$('vs-pin-1'), $('vs-pin-2'), $('vs-pin-3'), $('vs-pin-4')].filter(Boolean);
+        for (let i = 0; i < code.length && i < pins.length; i++) {
+          pins[i].value = code[i];
+        }
+        if (pins[3]) pins[3].focus();
+      }
+    }
+    icons();
+  }
+
+  function setupVsLobby() {
+    const subSelect = $('vs-select-subject');
+    const chSelect = $('vs-select-chapter');
+    if (subSelect && S.index && S.index.subjects) {
+      subSelect.innerHTML = '<option value="all">جميع المواد (عشوائي)</option>' +
+        S.index.subjects.map((s) => '<option value="' + escapeHtml(s.subject_id) + '">' + escapeHtml(s.subject_title || s.subject_id) + '</option>').join('');
+      const updateChapters = () => {
+        const sid = subSelect.value;
+        if (!chSelect) return;
+        if (sid === 'all') {
+          chSelect.innerHTML = '<option value="all">جميع الفصول (عشوائي)</option>';
+          chSelect.disabled = true;
+          return;
+        }
+        chSelect.disabled = false;
+        const sub = S.index.subjects.find((s) => s.subject_id === sid);
+        const chs = (sub && sub.chapters) || [];
+        chSelect.innerHTML = '<option value="all">جميع الفصول</option>' +
+          chs.map((c) => '<option value="' + escapeHtml(c.quiz_id) + '">' + escapeHtml(c.topicLabel ? (c.topicLabel + ' · ' + (c.topic && (c.topic.ar || c.topic.en) || '')) : (c.quiz_id)) + '</option>').join('');
+      };
+      subSelect.onchange = updateChapters;
+      updateChapters();
+    }
+
+    const pin1 = $('vs-pin-1');
+    const pin2 = $('vs-pin-2');
+    const pin3 = $('vs-pin-3');
+    const pin4 = $('vs-pin-4');
+    const pins = [pin1, pin2, pin3, pin4].filter(Boolean);
+    pins.forEach((p, idx) => {
+      p.oninput = () => {
+        p.value = p.value.replace(/\D/g, '').slice(-1);
+        if (p.value && idx < pins.length - 1) pins[idx + 1].focus();
+      };
+      p.onkeydown = (e) => {
+        if (e.key === 'Backspace' && !p.value && idx > 0) {
+          pins[idx - 1].focus();
+        }
+      };
+      p.onpaste = (e) => {
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 4);
+        for (let i = 0; i < text.length && i < pins.length; i++) {
+          pins[i].value = text[i];
+        }
+        if (text.length >= 4 && pins[3]) pins[3].focus();
+      };
+    });
+
+    const btnCreate = $('vs-btn-create-room');
+    if (btnCreate) {
+      btnCreate.onclick = async () => {
+        btnCreate.disabled = true;
+        try {
+          const subId = (subSelect && subSelect.value) || 'all';
+          const chId = (chSelect && chSelect.value) || 'all';
+          const p = vsPlayerInfo();
+          const room = await window.PortalVS.createRoom(subId, chId, p.id, p.name, p.avatar);
+          enterVsWaiting(room);
+        } catch (e) {
+          toast('تعذر إنشاء الغرفة: ' + ((e && e.message) || ''), 'error');
+        } finally {
+          btnCreate.disabled = false;
+        }
+      };
+    }
+
+    const btnJoin = $('vs-btn-join-room');
+    const joinStatus = $('vs-join-status');
+    if (btnJoin) {
+      btnJoin.onclick = async () => {
+        const code = pins.map((p) => p.value).join('');
+        if (code.length < 4) {
+          if (joinStatus) {
+            joinStatus.textContent = 'يرجى إدخال الرمز المكون من 4 أرقام';
+            joinStatus.classList.remove('hidden');
+          }
+          return;
+        }
+        if (joinStatus) joinStatus.classList.add('hidden');
+        btnJoin.disabled = true;
+        try {
+          const p = vsPlayerInfo();
+          const room = await window.PortalVS.joinRoom(code, p.id, p.name, p.avatar);
+          enterVsArenaAsGuest(room);
+        } catch (e) {
+          if (joinStatus) {
+            joinStatus.textContent = 'تعذر الانضمام: الرمز غير صحيح أو الغرفة ممتلئة';
+            joinStatus.classList.remove('hidden');
+          }
+        } finally {
+          btnJoin.disabled = false;
+        }
+      };
+    }
+  }
+
+  function enterVsWaiting(roomData) {
+    vsState.room = roomData;
+    vsState.role = 'host';
+    vsState.myScore = 0;
+    vsState.oppScore = 0;
+    vsState.opponent = null;
+
+    $('vs-lobby').classList.add('hidden');
+    $('vs-waiting').classList.remove('hidden');
+    $('vs-arena').classList.add('hidden');
+    $('vs-result').classList.add('hidden');
+
+    const codeEl = $('vs-waiting-code');
+    if (codeEl) codeEl.textContent = roomData.code;
+
+    const qrWrap = $('vs-qr-container');
+    if (qrWrap && window.qrcode) {
+      try {
+        const qr = window.qrcode(0, 'M');
+        const joinUrl = location.origin + location.pathname + '#/vs/' + roomData.code;
+        qr.addData(joinUrl);
+        qr.make();
+        qrWrap.innerHTML = qr.createSvgTag({ scalable: true, margin: 1 });
+      } catch (e) { // audit-ignore: optional qr render
+        qrWrap.innerHTML = '';
+      }
+    }
+
+    const btnCopy = $('vs-btn-copy-link');
+    const copyText = $('vs-copy-btn-text');
+    if (btnCopy) {
+      btnCopy.onclick = async () => {
+        const joinUrl = location.origin + location.pathname + '#/vs/' + roomData.code;
+        try {
+          await navigator.clipboard.writeText(joinUrl);
+          if (copyText) copyText.textContent = 'تم نسخ الرابط!';
+          setTimeout(() => { if (copyText) copyText.textContent = 'نسخ رابط الانضمام'; }, 2000);
+        } catch (e) { // audit-ignore: clipboard fallback
+          toast('تعذر نسخ الرابط', 'info');
+        }
+      };
+    }
+
+    const btnCancel = $('vs-btn-cancel-waiting');
+    if (btnCancel) {
+      btnCancel.onclick = () => {
+        window.PortalVS.leaveRoom();
+        vsState.room = null;
+        $('vs-waiting').classList.add('hidden');
+        $('vs-lobby').classList.remove('hidden');
+      };
+    }
+
+    const p = vsPlayerInfo();
+    window.PortalVS.connectRoom(roomData.room_id, 'host', p, {
+      onPresenceSync: (presenceState) => {
+        const guests = presenceState['guest'];
+        if (guests && guests.length > 0 && !vsState.opponent) {
+          vsState.opponent = guests[0];
+          startVsMatchAsHost();
+        }
+      },
+      onPresenceLeave: () => {
+        toast('غادر المنافس الغرفة', 'info');
+      },
+      onOpponentReady: () => {},
+      onOpponentLockedIn: (payload) => {
+        handleVsOpponentLockedIn(payload);
+      },
+      onOpponentReveal: (payload) => {
+        handleVsOpponentReveal(payload);
+      }
+    });
+    icons();
+  }
+
+  function startVsMatchAsHost() {
+    vsState.questions = gatherVsQuestions(vsState.room.subject_id, vsState.room.chapter_id, vsState.room.seed);
+    const p = vsPlayerInfo();
+    const p1Name = $('vs-p1-name');
+    const p1Score = $('vs-p1-score');
+    const p2Name = $('vs-p2-name');
+    const p2Score = $('vs-p2-score');
+    if (p1Name) p1Name.textContent = p.name;
+    if (p1Score) p1Score.textContent = '0';
+    if (p2Name) p2Name.textContent = (vsState.opponent && vsState.opponent.name) || 'المنافس';
+    if (p2Score) p2Score.textContent = '0';
+
+    $('vs-waiting').classList.add('hidden');
+    $('vs-arena').classList.remove('hidden');
+
+    setTimeout(() => {
+      window.PortalVS.sendStartRound(0, Date.now());
+      startVsRound(0);
+    }, 600);
+    icons();
+  }
+
+  function enterVsArenaAsGuest(roomData) {
+    vsState.room = roomData;
+    vsState.role = 'guest';
+    vsState.myScore = 0;
+    vsState.oppScore = 0;
+    vsState.questions = gatherVsQuestions(roomData.subject_id, roomData.chapter_id, roomData.seed);
+
+    const p = vsPlayerInfo();
+    const p1Name = $('vs-p1-name');
+    const p1Score = $('vs-p1-score');
+    const p2Name = $('vs-p2-name');
+    const p2Score = $('vs-p2-score');
+    if (p1Name) p1Name.textContent = roomData.host_name || 'المضيف';
+    if (p1Score) p1Score.textContent = '0';
+    if (p2Name) p2Name.textContent = p.name;
+    if (p2Score) p2Score.textContent = '0';
+
+    window.PortalVS.connectRoom(roomData.room_id, 'guest', p, {
+      onStartRound: (payload) => {
+        startVsRound(payload.qIndex);
+      },
+      onOpponentLockedIn: (payload) => {
+        handleVsOpponentLockedIn(payload);
+      },
+      onOpponentReveal: (payload) => {
+        handleVsOpponentReveal(payload);
+      },
+      onPresenceLeave: () => {
+        toast('انقطع اتصال المنافس', 'info');
+      }
+    });
+
+    $('vs-lobby').classList.add('hidden');
+    $('vs-arena').classList.remove('hidden');
+    window.PortalVS.sendReady(true);
+    icons();
+  }
+
+  function startVsRound(roundIndex) {
+    vsState.roundIndex = roundIndex;
+    vsState.myPick = null;
+    vsState.oppPick = null;
+    vsState.myLockedIn = false;
+    vsState.oppLockedIn = false;
+    vsState.resolved = false;
+    vsState.timeLeftSec = 12;
+    vsState.roundStartMs = Date.now();
+
+    const oppInd = $('vs-opp-indicator');
+    const flash = $('vs-round-flash');
+    if (oppInd) oppInd.classList.add('hidden');
+    if (flash) flash.classList.add('hidden');
+
+    const isFinal = (roundIndex === vsState.questions.length - 1);
+    const pill = $('vs-round-pill');
+    if (pill) {
+      pill.textContent = isFinal
+        ? 'الجولة 5 من 5 (نقاط مضاعفة)'
+        : ('الجولة ' + (roundIndex + 1) + ' من ' + vsState.questions.length);
+    }
+
+    const q = vsState.questions[roundIndex] || { question: { ar: 'السؤال غير متوفر' }, options: [], answer: 0 };
+    const stems = stemPair(q);
+    const qStem = $('vs-question-stem');
+    if (qStem) qStem.innerHTML = richHtml(stems[0].t);
+
+    const box = $('vs-options-list');
+    if (box) {
+      box.innerHTML = '';
+      const letters = qLetters();
+      const opts = (q.options || []);
+      opts.forEach((o, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'vs-opt-btn';
+        btn.type = 'button';
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', 'false');
+        const pair = optsPair(q, idx);
+        const text = pair[0] ? pair[0].t : '';
+        btn.innerHTML = '<span class="vs-opt-letter">' + letters[idx] + '</span><span class="vs-opt-text" dir="auto">' + richHtml(text) + '</span>';
+        btn.onclick = () => onVsPickOption(idx);
+        box.appendChild(btn);
+      });
+    }
+
+    if (vsState.roundTimer) clearInterval(vsState.roundTimer);
+    const timerText = $('vs-timer-text');
+    if (timerText) timerText.textContent = '12';
+    vsState.roundTimer = setInterval(() => {
+      vsState.timeLeftSec--;
+      const left = Math.max(0, vsState.timeLeftSec);
+      if (timerText) timerText.textContent = String(left);
+      if (left <= 0) {
+        clearInterval(vsState.roundTimer);
+        vsState.roundTimer = null;
+        if (!vsState.myLockedIn) {
+          vsState.myLockedIn = true;
+          vsState.myPick = -1;
+          vsState.myTimeMs = 12000;
+          window.PortalVS.sendLockedIn(12000);
+        }
+        resolveVsRound();
+      }
+    }, 1000);
+    icons();
+  }
+
+  function onVsPickOption(idx) {
+    if (vsState.myLockedIn || vsState.resolved) return;
+    vsState.myLockedIn = true;
+    vsState.myPick = idx;
+    vsState.myTimeMs = Math.min(12000, Date.now() - vsState.roundStartMs);
+
+    const box = $('vs-options-list');
+    if (box) {
+      const btns = box.querySelectorAll('.vs-opt-btn');
+      btns.forEach((b, i) => {
+        if (i === idx) b.classList.add('picked');
+        b.disabled = true;
+      });
+    }
+
+    window.PortalVS.sendLockedIn(vsState.myTimeMs);
+    if (vsState.oppLockedIn) {
+      resolveVsRound();
+    }
+  }
+
+  function handleVsOpponentLockedIn(payload) {
+    vsState.oppLockedIn = true;
+    vsState.oppTimeMs = payload.timeMs || 0;
+    const oppInd = $('vs-opp-indicator');
+    if (oppInd) oppInd.classList.remove('hidden');
+    if (vsState.myLockedIn) {
+      resolveVsRound();
+    }
+  }
+
+  function resolveVsRound() {
+    if (vsState.resolved) return;
+    vsState.resolved = true;
+    if (vsState.roundTimer) {
+      clearInterval(vsState.roundTimer);
+      vsState.roundTimer = null;
+    }
+
+    const q = vsState.questions[vsState.roundIndex] || { answer: 0 };
+    const isCorrect = (vsState.myPick === q.answer);
+    const isFinal = (vsState.roundIndex === vsState.questions.length - 1);
+    const earned = window.PortalVS ? window.PortalVS.computeScore(isCorrect, vsState.myTimeMs, 12000, isFinal) : 0;
+    vsState.myScore += earned;
+
+    if (window.PortalVS) {
+      window.PortalVS.sendReveal(vsState.roundIndex, vsState.myPick, earned, vsState.myTimeMs);
+    }
+
+    const box = $('vs-options-list');
+    if (box) {
+      const btns = box.querySelectorAll('.vs-opt-btn');
+      btns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === q.answer) b.classList.add('is-correct');
+        else if (i === vsState.myPick && !isCorrect) b.classList.add('is-wrong');
+      });
+    }
+
+    const p1Score = $('vs-p1-score');
+    const p2Score = $('vs-p2-score');
+    if (vsState.role === 'host') {
+      if (p1Score) p1Score.textContent = String(vsState.myScore);
+      if (p2Score) p2Score.textContent = String(vsState.oppScore);
+    } else {
+      if (p2Score) p2Score.textContent = String(vsState.myScore);
+      if (p1Score) p1Score.textContent = String(vsState.oppScore);
+    }
+
+    const flash = $('vs-round-flash');
+    if (flash) {
+      flash.className = 'vs-round-flash ' + (isCorrect ? 'flash-correct' : 'flash-wrong');
+      flash.textContent = isCorrect ? ('إجابة صحيحة +' + earned + ' نقطة') : 'إجابة غير صحيحة +0 نقطة';
+      flash.classList.remove('hidden');
+    }
+
+    setTimeout(() => {
+      if (vsState.roundIndex < vsState.questions.length - 1) {
+        const nextIdx = vsState.roundIndex + 1;
+        if (vsState.role === 'host' && window.PortalVS) {
+          window.PortalVS.sendStartRound(nextIdx, Date.now());
+        }
+        startVsRound(nextIdx);
+      } else {
+        showVsResult();
+      }
+    }, 2500);
+  }
+
+  function handleVsOpponentReveal(payload) {
+    vsState.oppPick = payload.pickIndex;
+    vsState.oppScore += (payload.score || 0);
+
+    const p1Score = $('vs-p1-score');
+    const p2Score = $('vs-p2-score');
+    if (vsState.role === 'host') {
+      if (p2Score) p2Score.textContent = String(vsState.oppScore);
+    } else {
+      if (p1Score) p1Score.textContent = String(vsState.oppScore);
+    }
+  }
+
+  function showVsResult() {
+    if (vsState.roundTimer) {
+      clearInterval(vsState.roundTimer);
+      vsState.roundTimer = null;
+    }
+
+    if (vsState.role === 'host' && vsState.room && vsState.room.room_id && window.PortalVS) {
+      let winnerId = null;
+      const p = vsPlayerInfo();
+      if (vsState.myScore > vsState.oppScore) winnerId = p.id;
+      else if (vsState.oppScore > vsState.myScore) winnerId = vsState.opponent ? vsState.opponent.user_id : null;
+      window.PortalVS.finishMatch(vsState.room.room_id, vsState.myScore, vsState.oppScore, winnerId).catch(() => {});
+    }
+
+    const iconEl = $('vs-result-icon');
+    const titleEl = $('vs-result-title');
+    const subEl = $('vs-result-sub');
+    if (vsState.myScore > vsState.oppScore) {
+      if (titleEl) titleEl.textContent = 'فوز مستحق!';
+      if (subEl) subEl.textContent = 'أداء استثنائي ودقة وسرعة في الإجابة';
+      if (iconEl) iconEl.innerHTML = '<i data-lucide="trophy"></i>';
+    } else if (vsState.myScore === vsState.oppScore) {
+      if (titleEl) titleEl.textContent = 'تعادل قوي!';
+      if (subEl) subEl.textContent = 'مواجهة متكافئة حتى اللحظة الأخيرة';
+      if (iconEl) iconEl.innerHTML = '<i data-lucide="swords"></i>';
+    } else {
+      if (titleEl) titleEl.textContent = 'مبارزة قوية!';
+      if (subEl) subEl.textContent = 'المنافس كان أسرع، جرب مرة أخرى لتنتزع الصدارة';
+      if (iconEl) iconEl.innerHTML = '<i data-lucide="target"></i>';
+    }
+
+    const s1 = $('vs-final-p1-score');
+    const s2 = $('vs-final-p2-score');
+    if (s1) s1.textContent = String(vsState.myScore);
+    if (s2) s2.textContent = String(vsState.oppScore);
+
+    const btnRematch = $('vs-btn-rematch');
+    if (btnRematch) {
+      btnRematch.onclick = () => {
+        if (window.PortalVS) window.PortalVS.leaveRoom();
+        vsState.room = null;
+        $('vs-result').classList.add('hidden');
+        $('vs-lobby').classList.remove('hidden');
+        setupVsLobby();
+      };
+    }
+
+    const btnExit = $('vs-btn-exit');
+    if (btnExit) {
+      btnExit.onclick = () => {
+        if (window.PortalVS) window.PortalVS.leaveRoom();
+        vsState.room = null;
+        location.hash = '#/';
+      };
+    }
+
+    $('vs-arena').classList.add('hidden');
+    $('vs-result').classList.remove('hidden');
+    icons();
+  }
+
   // a phone sheet should also close by pulling it down, not only by the ✕
   function swipeToClose(overlayId, close) {
     const ov = $(overlayId);
@@ -4611,7 +5191,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.7.19';
+  const SHELL_VERSION = '1.8.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

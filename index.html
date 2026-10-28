@@ -522,6 +522,186 @@
             </div>
         </div>
 
+        <!-- VS 1v1 Competitive Mode -->
+        <div id="vs-view" class="vs-view hidden" role="region" aria-label="المبارزة المباشرة 1 ضد 1">
+            <!-- Offline / Not Configured State -->
+            <div id="vs-offline-card" class="league-empty hidden">
+                <i data-lucide="cloud-off" class="league-empty-icon"></i>
+                <p>تحتاج اتصالاً بالإنترنت لخوض المبارزة المباشرة</p>
+            </div>
+
+            <!-- Sub-view 1: Lobby -->
+            <div id="vs-lobby">
+                <div class="vs-hero-card">
+                    <span class="vs-badge-hero">
+                        <i data-lucide="swords" aria-hidden="true"></i>
+                        <span>مباشر · 1 ضد 1</span>
+                    </span>
+                    <h2 class="vs-hero-title">المبارزة المباشرة</h2>
+                    <p class="vs-hero-desc">تنافس حي مع زميلك على نفس الأسئلة وبنفس اللحظة. الفائز من يحصد نقاطاً أعلى بالدقة والسرعة.</p>
+                </div>
+
+                <div class="vs-actions-grid">
+                    <!-- Host card -->
+                    <div class="vs-box">
+                        <div class="vs-box-header">
+                            <span class="vs-step-num" aria-hidden="true">1</span>
+                            <h3>إنشاء غرفة جديدة</h3>
+                        </div>
+                        <p class="vs-box-sub">اختر المادة والفصل ثم شارك الرمز</p>
+
+                        <div class="vs-field-group">
+                            <label for="vs-select-subject" class="field-label">المادة</label>
+                            <select id="vs-select-subject" aria-label="اختيار مادة المبارزة"></select>
+                        </div>
+
+                        <div class="vs-field-group">
+                            <label for="vs-select-chapter" class="field-label">الفصل</label>
+                            <select id="vs-select-chapter" aria-label="اختيار فصل المبارزة"></select>
+                        </div>
+
+                        <button id="vs-btn-create-room" class="action-btn primary-btn vs-cta-btn" type="button">
+                            <span>إنشاء الغرفة</span>
+                            <i data-lucide="arrow-left" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <!-- Guest card -->
+                    <div class="vs-box">
+                        <div class="vs-box-header">
+                            <span class="vs-step-num" aria-hidden="true">2</span>
+                            <h3>الانضمام برمز الغرفة</h3>
+                        </div>
+                        <p class="vs-box-sub">أدخل الرمز المكون من 4 أرقام</p>
+
+                        <div class="vs-code-inputs" dir="ltr">
+                            <input type="text" id="vs-pin-1" class="vs-pin-digit" inputmode="numeric" maxlength="1" pattern="[0-9]*" aria-label="الرقم الأول" autocomplete="off">
+                            <input type="text" id="vs-pin-2" class="vs-pin-digit" inputmode="numeric" maxlength="1" pattern="[0-9]*" aria-label="الرقم الثاني" autocomplete="off">
+                            <input type="text" id="vs-pin-3" class="vs-pin-digit" inputmode="numeric" maxlength="1" pattern="[0-9]*" aria-label="الرقم الثالث" autocomplete="off">
+                            <input type="text" id="vs-pin-4" class="vs-pin-digit" inputmode="numeric" maxlength="1" pattern="[0-9]*" aria-label="الرقم الرابع" autocomplete="off">
+                        </div>
+
+                        <div id="vs-join-status" class="vs-status-note hidden" role="alert"></div>
+
+                        <button id="vs-btn-join-room" class="action-btn secondary-btn vs-cta-btn" type="button">
+                            <span>دخول المبارزة</span>
+                            <i data-lucide="arrow-left" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-view 2: Waiting Room -->
+            <div id="vs-waiting" class="hidden">
+                <div class="vs-waiting-card">
+                    <div class="vs-waiting-header">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        <span id="vs-waiting-title">بانتظار انضمام المنافس...</span>
+                    </div>
+
+                    <div class="vs-code-display">
+                        <span id="vs-waiting-code" class="vs-big-code" dir="ltr">----</span>
+                    </div>
+
+                    <p class="vs-waiting-instructions">شارك الرمز أو امسح الباركود على جهاز المنافس للبدء فوراً</p>
+
+                    <div id="vs-qr-container" class="vs-qr-wrap" aria-label="رمز الاستجابة السريعة للانضمام"></div>
+
+                    <div class="vs-waiting-actions">
+                        <button id="vs-btn-copy-link" class="action-btn secondary-btn" type="button">
+                            <i data-lucide="copy" aria-hidden="true"></i>
+                            <span id="vs-copy-btn-text">نسخ رابط الانضمام</span>
+                        </button>
+                        <button id="vs-btn-cancel-waiting" class="action-btn text-btn" type="button">
+                            <span>إلغاء الغرفة والعودة</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-view 3: Arena -->
+            <div id="vs-arena" class="hidden">
+                <div class="vs-scoreboard">
+                    <div class="vs-player-card" id="vs-p1-card">
+                        <span class="vs-player-avatar" id="vs-p1-avatar" aria-hidden="true">أ</span>
+                        <div class="vs-player-meta">
+                            <span class="vs-player-name" id="vs-p1-name">أنا</span>
+                            <span class="vs-player-role">مضيف</span>
+                        </div>
+                        <div class="vs-player-score-wrap">
+                            <span class="vs-score-num" id="vs-p1-score">0</span>
+                            <span class="vs-score-label">نقطة</span>
+                        </div>
+                    </div>
+
+                    <div class="vs-center-hub">
+                        <div class="vs-timer-ring" aria-label="الوقت المتبقي">
+                            <span class="vs-seconds" id="vs-timer-text">12</span>
+                        </div>
+                        <span class="vs-round-pill" id="vs-round-pill">الجولة 1 من 5</span>
+                    </div>
+
+                    <div class="vs-player-card is-opp" id="vs-p2-card">
+                        <span class="vs-player-avatar" id="vs-p2-avatar" aria-hidden="true">م</span>
+                        <div class="vs-player-meta">
+                            <span class="vs-player-name" id="vs-p2-name">المنافس</span>
+                            <span class="vs-player-role">ضيف</span>
+                        </div>
+                        <div class="vs-player-score-wrap">
+                            <span class="vs-score-num" id="vs-p2-score">0</span>
+                            <span class="vs-score-label">نقطة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vs-opp-indicator" class="vs-opp-indicator hidden" aria-live="polite">
+                    <i data-lucide="zap" aria-hidden="true"></i>
+                    <span>المنافس اختار إجابته</span>
+                </div>
+
+                <div class="vs-question-card">
+                    <div id="vs-question-stem" class="vs-question-stem" dir="auto"></div>
+                    <div id="vs-options-list" class="vs-options-list" role="radiogroup" aria-label="خيارات الإجابة"></div>
+                </div>
+
+                <div id="vs-round-flash" class="vs-round-flash hidden" aria-live="polite"></div>
+            </div>
+
+            <!-- Sub-view 4: Result -->
+            <div id="vs-result" class="hidden">
+                <div class="vs-result-card">
+                    <div class="vs-result-icon" id="vs-result-icon">
+                        <i data-lucide="trophy" aria-hidden="true"></i>
+                    </div>
+
+                    <h2 class="vs-result-title" id="vs-result-title">فوز مستحق!</h2>
+                    <p class="vs-result-sub" id="vs-result-sub">أداء استثنائي ودقة وسرعة في الإجابة</p>
+
+                    <div class="vs-final-scores">
+                        <div class="vs-final-col">
+                            <span class="vs-final-label" id="vs-final-p1-label">نقاطي</span>
+                            <span class="vs-final-value" id="vs-final-p1-score">0</span>
+                        </div>
+                        <span class="vs-final-divider">مقابل</span>
+                        <div class="vs-final-col">
+                            <span class="vs-final-label" id="vs-final-p2-label">المنافس</span>
+                            <span class="vs-final-value" id="vs-final-p2-score">0</span>
+                        </div>
+                    </div>
+
+                    <div class="vs-result-actions">
+                        <button id="vs-btn-rematch" class="action-btn primary-btn" type="button">
+                            <i data-lucide="rotate-cw" aria-hidden="true"></i>
+                            <span>مبارزة جديدة</span>
+                        </button>
+                        <button id="vs-btn-exit" class="action-btn secondary-btn" type="button">
+                            <span>العودة للمكتبة</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         </main>
 
         <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
@@ -618,6 +798,10 @@
                     <a id="menu-league" class="menu-item" href="#/league">
                         <i data-lucide="trophy"></i>
                         <span class="menu-item-label">الدوري الأسبوعي</span>
+                    </a>
+                    <a id="menu-vs" class="menu-item" href="#/vs">
+                        <i data-lucide="swords"></i>
+                        <span class="menu-item-label">المبارزة المباشرة</span>
                     </a>
                 </div>
 
@@ -847,6 +1031,7 @@
     <script src="js/content.js" defer></script>
     <script src="js/cloud.js" defer></script>
     <script src="js/league.js" defer></script>
+    <script src="js/vs.js" defer></script>
     <script src="js/qrcode.min.js" defer></script>
     <script src="js/vendor/katex/katex.min.js" defer></script>
     <script src="js/app.js" defer></script>

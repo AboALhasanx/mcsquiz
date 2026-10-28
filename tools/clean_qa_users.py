@@ -116,11 +116,13 @@ def main() -> int:
     if dry:
         return 0
     for u in doomed:
-        for table, column in (('league_xp', 'user_id'), ('portal_data', 'user_id'), ('login_links', 'user_id')):
+        for table, column in (('league_xp', 'user_id'), ('portal_data', 'user_id'), ('login_links', 'user_id'), ('vs_rooms', 'host_id'), ('vs_rooms', 'guest_id')):
             for uid in (u['id'], 'u:' + u['id'], u['handle']):
                 call(key, 'DELETE', '/%s?%s=eq.%s' % (table, column, uid))
         call(key, 'DELETE', '/login_attempts?key=eq.handle:' + u['handle'])
         call(key, 'DELETE', '/portal_users?id=eq.' + u['id'])
+    # sweep any leftover test vs_rooms
+    call(key, 'DELETE', '/vs_rooms?host_id=like.u:test_h_%')
     # league rows left behind by a test account whose user row is gone (the
     # "Avatar" entry the student saw). Only the names the specs use are touched.
     TEST_NAMES = {'Avatar', 'Av2', 'Av3', 'Tick', 'Dbg', 'QA', 'Link A', 'Link B',

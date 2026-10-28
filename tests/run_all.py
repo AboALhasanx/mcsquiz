@@ -23,6 +23,7 @@ SPECS = [
     'test_catalog.py',
     'test_quiz.py',
     'test_league.py',
+    'test_vs.py',
     'test_player_card.py',
     'test_share.py',
     'test_tour.py',
