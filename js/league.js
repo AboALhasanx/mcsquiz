@@ -25,6 +25,11 @@
     return !!(c.url && c.key);
   }
 
+  function prewarm() {
+    if (injectedClient) return Promise.resolve(injectedClient);
+    try { return client().catch(function () {}); } catch (e) { return Promise.resolve(); }
+  }
+
   function _setClient(c) { injectedClient = c; clientPromise = null; }
 
   // Never let a network call hold the UI: offline / a stalled CDN import must
@@ -127,6 +132,30 @@
     t.setDate(t.getDate() - day);
     var m = '' + (t.getMonth() + 1), dd = '' + t.getDate();
     return t.getFullYear() + '-' + (m.length < 2 ? '0' + m : m) + '-' + (dd.length < 2 ? '0' + dd : dd);
+  }
+
+  function prevWeekStart(d) {
+    var t = d ? new Date(d) : new Date();
+    var curMonday = new Date(weekStart(t) + 'T00:00:00');
+    return weekStart(new Date(curMonday.getTime() - 7 * 86400000));
+  }
+
+  function weekRemaining(now) {
+    var t = now ? new Date(now) : new Date();
+    var curMonStr = weekStart(t);
+    var monday = new Date(curMonStr + 'T00:00:00');
+    var sundayEnd = new Date(monday.getTime() + 7 * 86400000);
+    var diffMs = sundayEnd.getTime() - t.getTime();
+    if (diffMs <= 0) return { days: 0, hours: 0, label: 'ينتهي اليوم' };
+    var days = Math.floor(diffMs / 86400000);
+    var hours = Math.floor((diffMs % 86400000) / 3600000);
+    if (days === 0) {
+      return { days: 0, hours: hours, label: 'ينتهي خلال ' + (hours || 1) + ' س' };
+    }
+    if (days === 1) {
+      return { days: 1, hours: hours, label: 'ينتهي غداً' };
+    }
+    return { days: days, hours: hours, label: 'باقي ' + days + ' أيام' };
   }
 
   function xpFromHistory(history, weekId) {
@@ -262,6 +291,58 @@
     return rows;
   }
 
+  async function allTimeBoard(subjectId) {
+    var sb = await withTimeout(client(), 6000);
+    var r = await withTimeout(
+      sb.from('league_xp').select('*').eq('hidden', false).limit(500),
+      8000);
+    if (r.error) throw new Error(r.error.message || 'read-failed');
+    var byUser = {};
+    (r.data || []).forEach(function (x) {
+      var uid = x.user_id;
+      if (!uid) return;
+      if (!byUser[uid]) {
+        byUser[uid] = {
+          rank: 0, user_id: uid, name: x.name || 'لاعب', username: x.username || '',
+          avatar: x.avatar || '', xp: 0, answered: 0, per_subject: {}, updated_at: x.updated_at
+        };
+      }
+      var u = byUser[uid];
+      if (x.name && (!u.name || u.name === 'لاعب')) u.name = x.name;
+      if (x.avatar && !u.avatar) u.avatar = x.avatar;
+      u.xp += Number(x.xp) || 0;
+      u.answered += Number(x.answered) || 0;
+      var ps = x.per_subject || {};
+      Object.keys(ps).forEach(function (sid) {
+        if (!u.per_subject[sid]) {
+          u.per_subject[sid] = { title: ps[sid].title || sid, xp: 0, n: 0 };
+        }
+        u.per_subject[sid].xp += Number(ps[sid].xp) || 0;
+        u.per_subject[sid].n += Number(ps[sid].n) || 0;
+      });
+      if (x.updated_at && String(x.updated_at) > String(u.updated_at || '')) {
+        u.updated_at = x.updated_at;
+      }
+    });
+    var rows = Object.values(byUser).map(function (x) {
+      var xp = subjectId && x.per_subject && x.per_subject[subjectId] ? (Number(x.per_subject[subjectId].xp) || 0) : Number(x.xp) || 0;
+      return {
+        rank: 0, user_id: x.user_id, name: x.name || 'لاعب', username: x.username || '',
+        avatar: x.avatar || '', xp: xp, answered: Number(x.answered) || 0,
+        per_subject: x.per_subject || {}, updated_at: x.updated_at
+      };
+    });
+    rows.sort(function (a, b) {
+      if (b.xp !== a.xp) return b.xp - a.xp;
+      var accA = a.answered > 0 ? (a.xp / a.answered) : 0;
+      var accB = b.answered > 0 ? (b.xp / b.answered) : 0;
+      if (accB !== accA) return accB - accA;
+      return String(a.updated_at || '').localeCompare(String(b.updated_at || ''));
+    });
+    rows.forEach(function (x, i) { x.rank = i + 1; });
+    return rows;
+  }
+
   function shareText(me, boardRows, scopeLabel) {
     var lines = boardRows.slice(0, 3).map(function (r) {
       return r.rank + '. ' + r.name + ' — ' + r.xp + ' نقطة';
@@ -274,7 +355,11 @@
     invalidateClient: function () { clientPromise = null; },
     configured: configured,
     linked: linked,
+    userId: myUserId,
     weekStart: weekStart,
+    prevWeekStart: prevWeekStart,
+    weekRemaining: weekRemaining,
+    allTimeBoard: allTimeBoard,
     weeklyXp: weeklyXp,
     xpFromHistory: xpFromHistory,
     syncWeek: syncWeek,
@@ -286,5 +371,6 @@
     displayName: displayName,
     _setClient: _setClient,
     loadLocal: loadLocal,
+    prewarm: prewarm,
   };
 })(window);

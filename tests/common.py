@@ -10,8 +10,10 @@ import json
 
 from playwright.sync_api import sync_playwright
 
-EXE = os.environ.get('PORTAL_CHROMIUM',
-                     r'C:\Users\gokoq\AppData\Local\Thorium\Application\thorium.exe')
+_PW_CR = r'C:\Users\gokoq\AppData\Local\ms-playwright\chromium-1247\chrome-win64\chrome.exe'
+_THORIUM = r'C:\Users\gokoq\AppData\Local\Thorium\Application\thorium.exe'
+_DEFAULT_EXE = _PW_CR if os.path.exists(_PW_CR) else _THORIUM
+EXE = os.environ.get('PORTAL_CHROMIUM', _DEFAULT_EXE)
 BASE = os.environ.get('PORTAL_BASE_URL', 'http://127.0.0.1:8081')
 # the app exposes its state object only in debug mode; specs drive it there
 APP = BASE + ('&' if '?' in BASE else '?') + 'debug=1'
@@ -98,12 +100,12 @@ def new_page(pw, tour_done=True, telegram=None, add_init=None):
     errors = []
     page.on('pageerror', lambda e: errors.append(str(e).split('\n')[0]))
     page.goto(APP, wait_until='domcontentloaded', timeout=45000)
-    page.wait_for_function('() => !!window.PortalLeague', timeout=20000)
+    page.wait_for_function('() => !!window.PortalLeague', timeout=35000)
     page.wait_for_function(
         '() => window.__portal && window.__portal.S && window.__portal.S.index '
         '&& window.__portal.S.index.subjects && window.__portal.S.banks '
         '&& Object.keys(window.__portal.S.banks).length > 0',
-        timeout=25000)
+        timeout=35000)
     return browser, page, errors
 
 

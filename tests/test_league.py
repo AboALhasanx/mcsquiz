@@ -88,6 +88,32 @@ def run():
         check('default avatar silhouette is used',
               page.locator('.menu-avatar.avatar-default').count() > 0)
 
+        # ---- week selector: switch between this week and previous week
+        check('week selector exists', page.locator('#league-week-bar button').count() == 2)
+        page.locator('#league-week-bar button[data-week="prev"]').click()
+        page.wait_for_timeout(400)
+        check('previous week button becomes active',
+              'active' in (page.locator('#league-week-bar button[data-week="prev"]').get_attribute('class') or ''))
+        check('previous week header label updates',
+              'الأسبوع السابق' in (page.locator('#league-week-line').text_content() or ''))
+        page.locator('#league-week-bar button[data-week="current"]').click()
+        page.wait_for_timeout(400)
+        check('current week restores active',
+              'active' in (page.locator('#league-week-bar button[data-week="current"]').get_attribute('class') or ''))
+
+        # ---- mode switcher: weekly vs all-time
+        check('mode switcher exists', page.locator('#league-mode-bar button').count() == 2)
+        page.locator('#league-mode-bar button[data-mode="alltime"]').click()
+        page.wait_for_timeout(400)
+        check('all-time button becomes active',
+              'active' in (page.locator('#league-mode-bar button[data-mode="alltime"]').get_attribute('class') or ''))
+        check('week stepper is hidden in all-time mode',
+              not page.locator('#league-week-bar').is_visible())
+        page.locator('#league-mode-bar button[data-mode="weekly"]').click()
+        page.wait_for_timeout(400)
+        check('weekly mode restores week stepper',
+              page.locator('#league-week-bar').is_visible())
+
         check('no runtime errors', not errors, errors[:2])
     finally:
         browser.close()

@@ -477,6 +477,34 @@
                 </button>
             </div>
 
+            <!-- Mode switcher: Weekly League vs All-time -->
+            <div class="stats-range league-mode-bar" id="league-mode-bar" role="group" aria-label="نوع الترتيب">
+                <button type="button" class="range-opt active" data-mode="weekly">الدوري الأسبوعي</button>
+                <button type="button" class="range-opt" data-mode="alltime">الترتيب العام</button>
+            </div>
+
+            <!-- Week stepper: previous vs current week -->
+            <div class="league-stepper" id="league-week-bar" role="group" aria-label="اختيار الأسبوع">
+                <button type="button" class="stepper-nav-btn" data-week="prev" aria-label="الأسبوع السابق" title="الأسبوع السابق">
+                    <i data-lucide="chevron-right"></i>
+                    <span class="stepper-btn-label">الأسبوع السابق</span>
+                </button>
+                <div class="stepper-center">
+                    <span id="league-week-title" class="stepper-week-title">26 أكتوبر – 1 نوفمبر</span>
+                    <span id="league-week-status" class="league-status-pill is-live"></span>
+                </div>
+                <button type="button" class="stepper-nav-btn active" data-week="current" aria-label="الأسبوع الحالي" title="الأسبوع الحالي">
+                    <span class="stepper-btn-label">الأسبوع الحالي</span>
+                    <i data-lucide="chevron-left"></i>
+                </button>
+            </div>
+
+            <!-- Winner celebration banner for concluded week -->
+            <div id="league-winner-banner" class="league-winner-banner hidden"></div>
+
+            <!-- Join callout for inactive student in current week -->
+            <div id="league-join-callout" class="league-join-callout hidden"></div>
+
             <!-- Your row: rank + the only control on this screen -->
             <div id="league-me" class="league-me" hidden></div>
 

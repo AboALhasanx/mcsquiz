@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.7.19] — 2026-10-28
+
+### Changed
+- دوري متطور: فلتر أسابيع احترافي، شيمر وسكيليتون لودر فوري، كاش SWR وتحسين التباين في الداكن والفاتح
+
+
 ## [1.7.18] — 2026-10-28
 
 ### Changed

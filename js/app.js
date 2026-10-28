@@ -79,6 +79,8 @@
     savedChapter: null, // saved-view filter
     savedExpanded: null, // saved-view accordion
     leagueSubject: null, // league filter: null = overall
+    leagueWeek: 'current', // league week filter: 'current' | 'prev'
+    leagueMode: 'weekly', // league mode: 'weekly' | 'alltime'
     cloudName: null, // linked Telegram account display name
   };
 
@@ -2188,28 +2190,24 @@
       renderSaved();
       show('saved-view');
       window.scrollTo(0, 0);
-      icons();
     } else if (h === '#/stats' || h === '#/stats/') {
       S.session = null;
       clearSessionSnapshot();
       renderStats();
       show('stats-view');
       window.scrollTo(0, 0);
-      icons();
     } else if (h === '#/account' || h === '#/account/') {
       S.session = null;
       clearSessionSnapshot();
       renderAccount();
       show('account-view');
       window.scrollTo(0, 0);
-      icons();
     } else if (h === '#/league' || h === '#/league/') {
       S.session = null;
       clearSessionSnapshot();
       renderLeague();
       show('league-view');
       window.scrollTo(0, 0);
-      icons();
     } else if (h === '#/practice' || h === '#/practice/') {
       if (S.session && !S.session.finished && !S.session.ch.quiz_id) {
         show(S.session.started ? 'quiz-view' : 'quiz-start-view');
@@ -3323,6 +3321,72 @@
     return s ? s.subject_title : 'الترتيب العام';
   }
 
+  function renderLeagueModeBar() {
+    const bar = $('league-mode-bar');
+    if (!bar) return;
+    bar.querySelectorAll('button[data-mode]').forEach((b) => {
+      b.classList.toggle('active', (S.leagueMode || 'weekly') === b.dataset.mode);
+    });
+  }
+
+  function renderLeagueWeekBar(isPrev, rangeText, rem) {
+    const bar = $('league-week-bar');
+    if (!bar) return;
+    if (S.leagueMode === 'alltime') {
+      bar.style.display = 'none';
+      return;
+    }
+    bar.style.display = 'flex';
+    bar.querySelectorAll('button[data-week]').forEach((b) => {
+      const active = (S.leagueWeek || 'current') === b.dataset.week;
+      b.classList.toggle('active', active);
+    });
+    const titleEl = $('league-week-title');
+    if (titleEl) titleEl.textContent = rangeText || '';
+    const statusEl = $('league-week-status');
+    if (statusEl) {
+      if (isPrev) {
+        statusEl.className = 'league-status-pill is-concluded';
+        statusEl.innerHTML = '<i data-lucide="trophy"></i><span>أسبوع منتهي</span>';
+      } else {
+        statusEl.className = 'league-status-pill is-live';
+        statusEl.innerHTML = '<span class="pulse-dot"></span><span>مباشر · ' + ((rem && rem.label) || 'ينتهي الأحد') + '</span>';
+      }
+    }
+  }
+
+  function renderLeagueWinnerBanner(rows, isPrev) {
+    const el = $('league-winner-banner');
+    if (!el) return;
+    if (isPrev && Array.isArray(rows) && rows.length > 0 && rows[0].xp > 0) {
+      el.innerHTML = '<i data-lucide="crown"></i><span>بطل الأسبوع الماضي: <b>' +
+        escapeHtml(rows[0].name || 'لاعب') + '</b> برصيد ' + rows[0].xp + ' إجابة ودقة ' +
+        (accuracyOf(rows[0]) !== null ? accuracyOf(rows[0]) + '%' : '—') + '</span>';
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+      el.innerHTML = '';
+    }
+  }
+
+  function renderLeagueJoinCallout(me, isLive) {
+    const el = $('league-join-callout');
+    if (!el) return;
+    const isUnranked = !me || (Number(me.answered) === 0 && Number(me.xp) === 0);
+    if (isLive && isUnranked && (window.PortalLeague && window.PortalLeague.linked && window.PortalLeague.linked())) {
+      el.innerHTML = '<div class="league-join-text">' +
+        '<strong>لم تشارك بعد هذا الأسبوع!</strong>' +
+        '<span>أجب عن كويز واحد للانضمام لمنافسة هذا الأسبوع مع زملائك</span>' +
+        '</div>' +
+        '<a href="#/" class="action-btn primary-btn league-cta-btn">' +
+        '<i data-lucide="play"></i><span>ابدأ كويز</span></a>';
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+      el.innerHTML = '';
+    }
+  }
+
   function renderLeagueChips() {
     const bar = $('league-subject-bar');
     if (!bar) return;
@@ -3339,6 +3403,42 @@
     ((S.index && S.index.subjects) || []).forEach((s) => mk(s.subject_id, s.subject_title));
   }
 
+  function leagueSkeletonHtml() {
+    return '<div class="skeleton-league-wrap" aria-hidden="true">' +
+      '<div class="skeleton-league-podium">' +
+      '  <div class="skeleton-slot p2">' +
+      '    <div class="skeleton-avatar" style="width: 52px; height: 52px;"></div>' +
+      '    <div class="skeleton-line" style="width: 54px; height: 12px; margin-top: 6px;"></div>' +
+      '    <div class="skeleton-line" style="width: 36px; height: 10px; margin-top: 3px;"></div>' +
+      '    <div class="skeleton-block" style="height: 48px; width: 100%;"></div>' +
+      '  </div>' +
+      '  <div class="skeleton-slot p1">' +
+      '    <div class="skeleton-avatar" style="width: 62px; height: 62px;"></div>' +
+      '    <div class="skeleton-line" style="width: 64px; height: 14px; margin-top: 6px;"></div>' +
+      '    <div class="skeleton-line" style="width: 44px; height: 10px; margin-top: 3px;"></div>' +
+      '    <div class="skeleton-block" style="height: 64px; width: 100%;"></div>' +
+      '  </div>' +
+      '  <div class="skeleton-slot p3">' +
+      '    <div class="skeleton-avatar" style="width: 52px; height: 52px;"></div>' +
+      '    <div class="skeleton-line" style="width: 50px; height: 12px; margin-top: 6px;"></div>' +
+      '    <div class="skeleton-line" style="width: 34px; height: 10px; margin-top: 3px;"></div>' +
+      '    <div class="skeleton-block" style="height: 36px; width: 100%;"></div>' +
+      '  </div>' +
+      '</div>' +
+      '<div class="skeleton-rows">' +
+      [1, 2, 3].map(function () {
+        return '<div class="skeleton-row">' +
+          '<div class="skeleton-line" style="width: 16px; height: 14px;"></div>' +
+          '<div class="skeleton-avatar" style="width: 30px; height: 30px;"></div>' +
+          '<div class="skeleton-line" style="flex: 1; height: 14px; max-width: 130px;"></div>' +
+          '<div class="skeleton-line" style="width: 44px; height: 14px;"></div>' +
+          '</div>';
+      }).join('') +
+      '</div></div>';
+  }
+
+  let leagueRenderSeq = 0;
+
   function avatarHtml(photo, name, cls) {
     if (photo) {
       // two layers: the picture on top, the silhouette underneath, so a file that
@@ -3351,33 +3451,48 @@
   }
 
   async function renderLeague() {
+    const renderSeq = ++leagueRenderSeq;
     const box = $('league-board');
     const emptyEl = $('league-empty-state');
     const offEl = $('league-offline-note');
-    if (box) box.innerHTML = '';
     const L = window.PortalLeague;
-    const wk = L && L.weekStart ? L.weekStart(Date.now()) : '';
+    const isAllTime = S.leagueMode === 'alltime';
+    const isPrev = S.leagueWeek === 'prev';
+    const wk = L ? (isPrev ? (L.prevWeekStart ? L.prevWeekStart(Date.now()) : '') : (L.weekStart ? L.weekStart(Date.now()) : '')) : '';
     const wl = $('league-week-line');
+    let rangeText = '';
+    let rem = null;
+    if (wk && L) {
+      const start = new Date(wk + 'T00:00:00');
+      const end = new Date(start.getTime() + 6 * 86400000);
+      const dayFmt = new Intl.DateTimeFormat('ar', { day: 'numeric' });
+      const monFmt = new Intl.DateTimeFormat('ar', { month: 'long' });
+      rangeText = start.getMonth() === end.getMonth()
+        ? dayFmt.format(start) + ' – ' + dayFmt.format(end) + ' ' + monFmt.format(start)
+        : dayFmt.format(start) + ' ' + monFmt.format(start) + ' – ' + dayFmt.format(end) + ' ' + monFmt.format(end);
+      if (L.weekRemaining) rem = L.weekRemaining(Date.now());
+    }
     if (wl) {
-      if (wk) {
-        const start = new Date(wk + 'T00:00:00');
-        const end = new Date(start.getTime() + 6 * 86400000);
-        const dayFmt = new Intl.DateTimeFormat('ar', { day: 'numeric' });
-        const monFmt = new Intl.DateTimeFormat('ar', { month: 'long' });
-        wl.textContent = start.getMonth() === end.getMonth()
-          ? dayFmt.format(start) + ' – ' + dayFmt.format(end) + ' ' + monFmt.format(start)
-          : dayFmt.format(start) + ' ' + monFmt.format(start) + ' – ' + dayFmt.format(end) + ' ' + monFmt.format(end);
+      if (isAllTime) {
+        wl.textContent = 'الترتيب العام التراكمي';
+      } else if (wk) {
+        wl.textContent = isPrev ? ('الأسبوع السابق · ' + rangeText) : rangeText;
       } else {
         wl.textContent = '';
       }
     }
+    renderLeagueModeBar();
+    renderLeagueWeekBar(isPrev, rangeText, rem);
     renderLeagueChips();
 
     if (!L || !L.configured()) {
+      if (box) box.innerHTML = '';
       if (emptyEl) emptyEl.classList.add('hidden');
       if (offEl) offEl.classList.add('hidden');
       const chips = $('league-subject-bar');
       if (chips) chips.style.display = 'none';
+      renderLeagueWinnerBanner([], false);
+      renderLeagueJoinCallout(null, false);
       updateLeagueMe(null, []);
       icons();
       return;
@@ -3387,27 +3502,69 @@
     if (offEl) offEl.classList.toggle('hidden', navigator.onLine !== false);
     if (emptyEl) emptyEl.classList.add('hidden');
 
+    // SWR check: do we have cached rows?
+    const cachedRows = isAllTime
+      ? S.leagueRowsAllTime
+      : (isPrev ? S.leagueRowsPrev : S.leagueRows);
+    const cachedMe = isAllTime
+      ? S.leagueMeAllTime
+      : (isPrev ? S.leagueMePrev : S.leagueMe);
+    const hasCache = Array.isArray(cachedRows) && cachedRows.length > 0;
+
+    // Show skeleton ONLY if no cached rows exist (0ms blank void)
+    if (!hasCache && box) {
+      box.innerHTML = leagueSkeletonHtml();
+    }
+
     let rows = [];
     let me = null;
     try {
-      const fresh = Array.isArray(S.leagueRows) && Date.now() - (S.leagueStamp || 0) < 45000;
-      if (fresh) {
-        rows = S.leagueRows;
-        me = S.leagueMe || null;
+      if (isAllTime) {
+        const fresh = Array.isArray(S.leagueRowsAllTime) && Date.now() - (S.leagueStampAllTime || 0) < 45000;
+        if (fresh) {
+          rows = S.leagueRowsAllTime;
+          me = S.leagueMeAllTime || null;
+        } else {
+          rows = L.allTimeBoard ? await L.allTimeBoard() : await L.board();
+          const myId = (L.userId ? L.userId() : null) || (window.PortalCloud && window.PortalCloud.userId ? window.PortalCloud.userId() : null);
+          me = myId ? ((rows || []).find((r) => r.user_id === myId) || null) : null;
+          S.leagueRowsAllTime = rows;
+          S.leagueMeAllTime = me;
+          S.leagueStampAllTime = Date.now();
+        }
       } else {
-        rows = await L.board();
-        me = (L.linked && L.linked()) ? await L.myRow() : null;
-        S.leagueRows = rows;
-        S.leagueMe = me;
-        S.leagueStamp = Date.now();
-        // refresh my row in the background — never on the render path
-        if (L.linked && L.linked() && navigator.onLine !== false && Date.now() - (S.leagueSyncStamp || 0) > 600000) {
-          S.leagueSyncStamp = Date.now();
-          L.syncWeek().then(() => L.board()).then((r2) => {
-            S.leagueRows = r2;
+        const fresh = isPrev
+          ? (Array.isArray(S.leagueRowsPrev) && Date.now() - (S.leagueStampPrev || 0) < 45000)
+          : (Array.isArray(S.leagueRows) && Date.now() - (S.leagueStamp || 0) < 45000);
+        if (fresh) {
+          rows = isPrev ? S.leagueRowsPrev : S.leagueRows;
+          me = isPrev ? (S.leagueMePrev || null) : (S.leagueMe || null);
+        } else {
+          // Parallel fetch: board + myRow together
+          const [resRows, resMe] = await Promise.all([
+            L.board(wk),
+            (L.linked && L.linked()) ? L.myRow(wk) : Promise.resolve(null)
+          ]);
+          rows = resRows;
+          me = resMe;
+          if (isPrev) {
+            S.leagueRowsPrev = rows;
+            S.leagueMePrev = me;
+            S.leagueStampPrev = Date.now();
+          } else {
+            S.leagueRows = rows;
+            S.leagueMe = me;
             S.leagueStamp = Date.now();
-            if (location.hash.indexOf('#/league') === 0) renderLeague();
-          }).catch(() => {});
+          }
+          // refresh my row in the background — never on the render path
+          if (!isPrev && L.linked && L.linked() && navigator.onLine !== false && Date.now() - (S.leagueSyncStamp || 0) > 600000) {
+            S.leagueSyncStamp = Date.now();
+            L.syncWeek().then(() => L.board(wk)).then((r2) => {
+              S.leagueRows = r2;
+              S.leagueStamp = Date.now();
+              if (location.hash.indexOf('#/league') === 0 && (S.leagueWeek || 'current') === 'current' && (S.leagueMode || 'weekly') === 'weekly') renderLeague();
+            }).catch(() => {});
+          }
         }
       }
     } catch (e) {
@@ -3419,19 +3576,28 @@
         emptyEl.querySelector('p').textContent = 'تعذر تحميل اللوحة';
         emptyEl.classList.remove('hidden');
       }
+      renderLeagueWinnerBanner([], false);
+      renderLeagueJoinCallout(null, false);
       updateLeagueMe(null, []);
       icons();
       return;
     }
+    renderLeagueWinnerBanner(rows, !isAllTime && isPrev);
+    renderLeagueJoinCallout(me, !isAllTime && !isPrev);
+
+    if (renderSeq !== leagueRenderSeq) return;
     rows = scopeRows(rows, S.leagueSubject);
     if (!rows.length && emptyEl) {
-      emptyEl.querySelector('p').textContent = 'لا أحد في الترتيب بعد هذا الأسبوع';
+      emptyEl.querySelector('p').textContent = isAllTime
+        ? 'لا يوجد متنافسون في الترتيب العام بعد'
+        : (isPrev ? 'لا توجد بيانات للأسبوع السابق' : 'لا أحد في الترتيب بعد هذا الأسبوع · حل أول كويز للانضمام!');
       emptyEl.classList.remove('hidden');
     }
 
     const myId = me && me.user_id;
     const myPhoto = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
     const avatarFor = (r) => avatarHtml(r.user_id === myId && !r.avatar ? myPhoto : r.avatar, r.name, 'menu-avatar');
+    if (box) box.innerHTML = '';
     const usePodium = rows.length >= 3;
     const top = usePodium ? rows.slice(0, 3) : [];
     const rest = usePodium ? rows.slice(3) : rows;
@@ -3562,13 +3728,14 @@
     const name = (me && me.name) || S.cloudName || 'أنت';
     const photo = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
     const facts = [];
+    const isPrev = S.leagueWeek === 'prev';
     if (mine) facts.push('المركز ' + mine.rank);
     facts.push(ansCount(mine ? mine.xp : (Number(me && me.xp) || 0)));
     const acc = accuracyOf(mine);
     if (acc !== null && !S.leagueSubject) facts.push('دقة ' + acc + '%');
-    if (hidden) facts.push('مخفي');
+    if (hidden && !isPrev) facts.push('مخفي');
     let gapLine = '';
-    if (!hidden && mine && mine.rank > 1) {
+    if (!hidden && mine && mine.rank > 1 && !isPrev) {
       const above = (rows || [])[mine.rank - 2];
       if (above) {
         const gap = Math.max(0, above.xp - mine.xp);
@@ -4240,6 +4407,39 @@
     });
     const shareBtn = $('btn-league-share');
     if (shareBtn) shareBtn.addEventListener('click', shareMyRank);
+        const modeBar = $('league-mode-bar');
+    if (modeBar) {
+      modeBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-mode]');
+        if (!btn) return;
+        const mode = btn.dataset.mode;
+        if ((S.leagueMode || 'weekly') === mode) return;
+        S.leagueMode = mode;
+        renderLeague();
+      });
+    }
+const weekBar = $('league-week-bar');
+    if (weekBar) {
+      weekBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-week]');
+        if (!btn) return;
+        const wkMode = btn.dataset.week;
+        if ((S.leagueWeek || 'current') === wkMode) return;
+        S.leagueWeek = wkMode;
+        renderLeague();
+      });
+    }
+    // Pre-warm league client in idle time so opening league is instant
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(function () {
+        if (window.PortalLeague && window.PortalLeague.prewarm) window.PortalLeague.prewarm();
+      });
+    } else {
+      setTimeout(function () {
+        if (window.PortalLeague && window.PortalLeague.prewarm) window.PortalLeague.prewarm();
+      }, 1200);
+    }
+
     // league: sync my row when opening the board so the rank is always fresh
     const leagueLink = $('menu-league');
     if (leagueLink) leagueLink.addEventListener('click', () => {
@@ -4411,7 +4611,7 @@
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.7.18';
+  const SHELL_VERSION = '1.7.19';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
