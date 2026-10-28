@@ -1442,12 +1442,14 @@
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       b.classList.toggle('active', on);
     });
+    const inlineText = $('vs-inline-lang-text');
+    if (inlineText) inlineText.textContent = ar ? 'English' : 'عربي';
   }
 
   function toggleLang() { setLang(S.lang === 'en' ? 'ar' : 'en'); }
 
   // The switch: Arabic <-> English for the question, the options and the
-  // explanation — in the quiz, in the saved questions and in the review.
+  // explanation — in the quiz, in the saved questions, in the review and in VS mode.
   function setLang(lang) {
     S.lang = (lang === 'en') ? 'en' : 'ar';
     try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
@@ -1458,7 +1460,34 @@
       else if (S.session && S.lastResults && !$('results-view').classList.contains('hidden')) renderResults(S.lastResults);
       else if (!$('saved-view').classList.contains('hidden')) renderSaved();
       else if (!$('deck-catalog').classList.contains('hidden')) renderCatalog();
+      else if (!$('vs-view').classList.contains('hidden')) updateVsLanguage();
     } catch (e) {}
+  }
+
+  function updateVsLanguage() {
+    const inlineText = $('vs-inline-lang-text');
+    if (inlineText) inlineText.textContent = S.lang === 'en' ? 'عربي' : 'English';
+    if (!vsState.questions || vsState.roundIndex == null) return;
+    const q = vsState.questions[vsState.roundIndex];
+    if (!q) return;
+
+    const stems = stemPair(q);
+    const qStem = $('vs-question-stem');
+    if (qStem && stems[0]) qStem.innerHTML = richHtml(stems[0].t);
+
+    const box = $('vs-options-list');
+    if (box) {
+      const letters = qLetters();
+      const btns = box.querySelectorAll('.vs-opt-btn');
+      btns.forEach((btn, idx) => {
+        const pair = optsPair(q, idx);
+        const text = pair[0] ? pair[0].t : '';
+        const letterSpan = btn.querySelector('.vs-opt-letter');
+        const textSpan = btn.querySelector('.vs-opt-text');
+        if (letterSpan) letterSpan.textContent = letters[idx] || '';
+        if (textSpan) textSpan.innerHTML = richHtml(text);
+      });
+    }
   }
 
   function stemPair(q) {
@@ -4368,14 +4397,28 @@
   function startVsMatchAsHost() {
     vsState.questions = gatherVsQuestions(vsState.room.subject_id, vsState.room.chapter_id, vsState.room.seed);
     const p = vsPlayerInfo();
-    const p1Name = $('vs-p1-name');
-    const p1Score = $('vs-p1-score');
-    const p2Name = $('vs-p2-name');
-    const p2Score = $('vs-p2-score');
-    if (p1Name) p1Name.textContent = p.name;
-    if (p1Score) p1Score.textContent = '0';
-    if (p2Name) p2Name.textContent = (vsState.opponent && vsState.opponent.name) || 'المنافس';
-    if (p2Score) p2Score.textContent = '0';
+    const meName = $('vs-me-name');
+    const meScore = $('vs-me-score');
+    const meAv = $('vs-me-avatar');
+    const oppName = $('vs-opp-name');
+    const oppScore = $('vs-opp-score');
+    const oppAv = $('vs-opp-avatar');
+    const oppBubble = $('vs-opp-locked-bubble');
+
+    if (meName) meName.textContent = p.name;
+    if (meScore) meScore.textContent = '0';
+    if (meAv) meAv.textContent = (p.name || 'أ').trim()[0].toUpperCase();
+
+    const opp = vsState.opponent;
+    if (oppName) oppName.textContent = (opp && opp.name) || 'المنافس';
+    if (oppScore) oppScore.textContent = '0';
+    if (oppAv) oppAv.textContent = ((opp && opp.name) || 'م').trim()[0].toUpperCase();
+    if (oppBubble) oppBubble.classList.add('hidden');
+
+    for (let i = 0; i < 5; i++) {
+      const dot = $('vs-dot-' + i);
+      if (dot) dot.className = 'vs-dot' + (i === 0 ? ' is-current' : '');
+    }
 
     $('vs-waiting').classList.add('hidden');
     $('vs-arena').classList.remove('hidden');
@@ -4395,14 +4438,27 @@
     vsState.questions = gatherVsQuestions(roomData.subject_id, roomData.chapter_id, roomData.seed);
 
     const p = vsPlayerInfo();
-    const p1Name = $('vs-p1-name');
-    const p1Score = $('vs-p1-score');
-    const p2Name = $('vs-p2-name');
-    const p2Score = $('vs-p2-score');
-    if (p1Name) p1Name.textContent = roomData.host_name || 'المضيف';
-    if (p1Score) p1Score.textContent = '0';
-    if (p2Name) p2Name.textContent = p.name;
-    if (p2Score) p2Score.textContent = '0';
+    const meName = $('vs-me-name');
+    const meScore = $('vs-me-score');
+    const meAv = $('vs-me-avatar');
+    const oppName = $('vs-opp-name');
+    const oppScore = $('vs-opp-score');
+    const oppAv = $('vs-opp-avatar');
+    const oppBubble = $('vs-opp-locked-bubble');
+
+    if (meName) meName.textContent = p.name;
+    if (meScore) meScore.textContent = '0';
+    if (meAv) meAv.textContent = (p.name || 'أ').trim()[0].toUpperCase();
+
+    if (oppName) oppName.textContent = roomData.host_name || 'المضيف';
+    if (oppScore) oppScore.textContent = '0';
+    if (oppAv) oppAv.textContent = (roomData.host_name || 'م').trim()[0].toUpperCase();
+    if (oppBubble) oppBubble.classList.add('hidden');
+
+    for (let i = 0; i < 5; i++) {
+      const dot = $('vs-dot-' + i);
+      if (dot) dot.className = 'vs-dot' + (i === 0 ? ' is-current' : '');
+    }
 
     window.PortalVS.connectRoom(roomData.room_id, 'guest', p, {
       onStartRound: (payload) => {
@@ -4435,23 +4491,50 @@
     vsState.timeLeftSec = 12;
     vsState.roundStartMs = Date.now();
 
-    const oppInd = $('vs-opp-indicator');
+    const oppBubble = $('vs-opp-locked-bubble');
     const flash = $('vs-round-flash');
-    if (oppInd) oppInd.classList.add('hidden');
+    if (oppBubble) oppBubble.classList.add('hidden');
     if (flash) flash.classList.add('hidden');
 
-    const isFinal = (roundIndex === vsState.questions.length - 1);
+    for (let i = 0; i < 5; i++) {
+      const dot = $('vs-dot-' + i);
+      if (dot) {
+        if (i === roundIndex) {
+          dot.classList.add('is-current');
+        } else if (i > roundIndex) {
+          dot.className = 'vs-dot';
+        }
+      }
+    }
+
+    const qCount = (vsState.questions && vsState.questions.length) || 5;
+    const isFinal = (roundIndex === qCount - 1);
     const pill = $('vs-round-pill');
     if (pill) {
       pill.textContent = isFinal
         ? 'الجولة 5 من 5 (نقاط مضاعفة)'
-        : ('الجولة ' + (roundIndex + 1) + ' من ' + vsState.questions.length);
+        : ('الجولة ' + (roundIndex + 1) + ' من ' + qCount);
     }
 
-    const q = vsState.questions[roundIndex] || { question: { ar: 'السؤال غير متوفر' }, options: [], answer: 0 };
+    const catPill = $('vs-category-pill');
+    if (catPill) {
+      let catText = 'سؤال تنافسي';
+      if (vsState.room && vsState.room.subject_id && vsState.room.subject_id !== 'all' && S.index && S.index.subjects) {
+        const sub = S.index.subjects.find((s) => s.subject_id === vsState.room.subject_id);
+        if (sub) catText = sub.subject_title || sub.subject_id;
+      }
+      catPill.textContent = catText;
+    }
+
+    const inlineLangText = $('vs-inline-lang-text');
+    if (inlineLangText) {
+      inlineLangText.textContent = S.lang === 'en' ? 'عربي' : 'English';
+    }
+
+    const q = (vsState.questions && vsState.questions[roundIndex]) || { question: { ar: 'السؤال غير متوفر' }, options: [], answer: 0 };
     const stems = stemPair(q);
     const qStem = $('vs-question-stem');
-    if (qStem) qStem.innerHTML = richHtml(stems[0].t);
+    if (qStem && stems[0]) qStem.innerHTML = richHtml(stems[0].t);
 
     const box = $('vs-options-list');
     if (box) {
@@ -4474,11 +4557,29 @@
 
     if (vsState.roundTimer) clearInterval(vsState.roundTimer);
     const timerText = $('vs-timer-text');
+    const timerCircle = $('vs-timer-svg-circle');
     if (timerText) timerText.textContent = '12';
+    if (timerCircle) {
+      timerCircle.style.strokeDashoffset = '0';
+      timerCircle.style.stroke = 'var(--accent)';
+    }
+
     vsState.roundTimer = setInterval(() => {
       vsState.timeLeftSec--;
       const left = Math.max(0, vsState.timeLeftSec);
       if (timerText) timerText.textContent = String(left);
+      if (timerCircle) {
+        const fraction = left / 12;
+        const offset = 144.5 * (1 - fraction);
+        timerCircle.style.strokeDashoffset = String(offset);
+        if (left <= 4) {
+          timerCircle.style.stroke = 'var(--error, #EF4444)';
+        } else if (left <= 7) {
+          timerCircle.style.stroke = '#F59E0B';
+        } else {
+          timerCircle.style.stroke = 'var(--accent)';
+        }
+      }
       if (left <= 0) {
         clearInterval(vsState.roundTimer);
         vsState.roundTimer = null;
@@ -4518,8 +4619,8 @@
   function handleVsOpponentLockedIn(payload) {
     vsState.oppLockedIn = true;
     vsState.oppTimeMs = payload.timeMs || 0;
-    const oppInd = $('vs-opp-indicator');
-    if (oppInd) oppInd.classList.remove('hidden');
+    const oppBubble = $('vs-opp-locked-bubble');
+    if (oppBubble) oppBubble.classList.remove('hidden');
     if (vsState.myLockedIn) {
       resolveVsRound();
     }
@@ -4533,11 +4634,21 @@
       vsState.roundTimer = null;
     }
 
-    const q = vsState.questions[vsState.roundIndex] || { answer: 0 };
+    const oppBubble = $('vs-opp-locked-bubble');
+    if (oppBubble) oppBubble.classList.add('hidden');
+
+    const q = (vsState.questions && vsState.questions[vsState.roundIndex]) || { answer: 0 };
     const isCorrect = (vsState.myPick === q.answer);
-    const isFinal = (vsState.roundIndex === vsState.questions.length - 1);
+    const qCount = (vsState.questions && vsState.questions.length) || 5;
+    const isFinal = (vsState.roundIndex === qCount - 1);
     const earned = window.PortalVS ? window.PortalVS.computeScore(isCorrect, vsState.myTimeMs, 12000, isFinal) : 0;
     vsState.myScore += earned;
+
+    const curDot = $('vs-dot-' + vsState.roundIndex);
+    if (curDot) {
+      curDot.classList.remove('is-current');
+      curDot.classList.add(isCorrect ? 'is-correct-dot' : 'is-wrong-dot');
+    }
 
     if (window.PortalVS) {
       window.PortalVS.sendReveal(vsState.roundIndex, vsState.myPick, earned, vsState.myTimeMs);
@@ -4553,15 +4664,8 @@
       });
     }
 
-    const p1Score = $('vs-p1-score');
-    const p2Score = $('vs-p2-score');
-    if (vsState.role === 'host') {
-      if (p1Score) p1Score.textContent = String(vsState.myScore);
-      if (p2Score) p2Score.textContent = String(vsState.oppScore);
-    } else {
-      if (p2Score) p2Score.textContent = String(vsState.myScore);
-      if (p1Score) p1Score.textContent = String(vsState.oppScore);
-    }
+    const meScore = $('vs-me-score');
+    if (meScore) meScore.textContent = String(vsState.myScore);
 
     const flash = $('vs-round-flash');
     if (flash) {
@@ -4571,7 +4675,7 @@
     }
 
     setTimeout(() => {
-      if (vsState.roundIndex < vsState.questions.length - 1) {
+      if (vsState.roundIndex < qCount - 1) {
         const nextIdx = vsState.roundIndex + 1;
         if (vsState.role === 'host' && window.PortalVS) {
           window.PortalVS.sendStartRound(nextIdx, Date.now());
@@ -4587,13 +4691,8 @@
     vsState.oppPick = payload.pickIndex;
     vsState.oppScore += (payload.score || 0);
 
-    const p1Score = $('vs-p1-score');
-    const p2Score = $('vs-p2-score');
-    if (vsState.role === 'host') {
-      if (p2Score) p2Score.textContent = String(vsState.oppScore);
-    } else {
-      if (p1Score) p1Score.textContent = String(vsState.oppScore);
-    }
+    const oppScore = $('vs-opp-score');
+    if (oppScore) oppScore.textContent = String(vsState.oppScore);
   }
 
   function showVsResult() {
@@ -4631,6 +4730,11 @@
     const s2 = $('vs-final-p2-score');
     if (s1) s1.textContent = String(vsState.myScore);
     if (s2) s2.textContent = String(vsState.oppScore);
+
+    const p2Label = $('vs-final-p2-label');
+    if (p2Label && vsState.opponent && vsState.opponent.name) {
+      p2Label.textContent = vsState.opponent.name;
+    }
 
     const btnRematch = $('vs-btn-rematch');
     if (btnRematch) {
@@ -5066,7 +5170,7 @@ const weekBar = $('league-week-bar');
     document.querySelectorAll('.lang-opt').forEach((b) => {
       b.addEventListener('click', () => setLang(b.dataset.lang));
     });
-    ['lang-toggle-catalog', 'lang-toggle-session'].forEach((id) => {
+    ['lang-toggle-catalog', 'lang-toggle-session', 'vs-inline-lang-btn'].forEach((id) => {
       const b = $(id);
       if (b) b.addEventListener('click', toggleLang);
     });
@@ -5191,7 +5295,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.0';
+  const SHELL_VERSION = '1.8.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

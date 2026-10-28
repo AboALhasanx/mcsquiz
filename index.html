@@ -621,45 +621,73 @@
 
             <!-- Sub-view 3: Arena -->
             <div id="vs-arena" class="hidden">
-                <div class="vs-scoreboard">
-                    <div class="vs-player-card" id="vs-p1-card">
-                        <span class="vs-player-avatar" id="vs-p1-avatar" aria-hidden="true">أ</span>
-                        <div class="vs-player-meta">
-                            <span class="vs-player-name" id="vs-p1-name">أنا</span>
-                            <span class="vs-player-role">مضيف</span>
+                <div class="vs-scoreboard-pro">
+                    <!-- Player 1 Pod (Me) -->
+                    <div class="vs-pod is-me" id="vs-pod-me">
+                        <div class="vs-pod-av-wrap">
+                            <span class="vs-pod-avatar" id="vs-me-avatar" aria-hidden="true">أ</span>
+                            <span class="vs-pod-tag" id="vs-me-badge">أنت</span>
                         </div>
-                        <div class="vs-player-score-wrap">
-                            <span class="vs-score-num" id="vs-p1-score">0</span>
-                            <span class="vs-score-label">نقطة</span>
+                        <div class="vs-pod-info">
+                            <span class="vs-pod-name" id="vs-me-name">أنا</span>
+                            <div class="vs-pod-score-row">
+                                <span class="vs-pod-score" id="vs-me-score">0</span>
+                                <span class="vs-pod-pts">نقطة</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="vs-center-hub">
-                        <div class="vs-timer-ring" aria-label="الوقت المتبقي">
-                            <span class="vs-seconds" id="vs-timer-text">12</span>
+                    <!-- Center Duel Engine & Circular SVG Timer -->
+                    <div class="vs-engine-center">
+                        <div class="vs-timer-dial" aria-label="الوقت المتبقي">
+                            <svg class="vs-timer-svg" viewBox="0 0 54 54" aria-hidden="true">
+                                <circle class="vs-timer-bg" cx="27" cy="27" r="23"></circle>
+                                <circle class="vs-timer-progress" id="vs-timer-svg-circle" cx="27" cy="27" r="23"></circle>
+                            </svg>
+                            <span class="vs-timer-digit" id="vs-timer-text">12</span>
                         </div>
-                        <span class="vs-round-pill" id="vs-round-pill">الجولة 1 من 5</span>
+                        <div class="vs-round-tracker">
+                            <span class="vs-round-badge" id="vs-round-pill">الجولة 1 / 5</span>
+                        </div>
                     </div>
 
-                    <div class="vs-player-card is-opp" id="vs-p2-card">
-                        <span class="vs-player-avatar" id="vs-p2-avatar" aria-hidden="true">م</span>
-                        <div class="vs-player-meta">
-                            <span class="vs-player-name" id="vs-p2-name">المنافس</span>
-                            <span class="vs-player-role">ضيف</span>
+                    <!-- Player 2 Pod (Opponent) -->
+                    <div class="vs-pod is-opp" id="vs-pod-opp">
+                        <div class="vs-pod-info">
+                            <span class="vs-pod-name" id="vs-opp-name">المنافس</span>
+                            <div class="vs-pod-score-row">
+                                <span class="vs-pod-score" id="vs-opp-score">0</span>
+                                <span class="vs-pod-pts">نقطة</span>
+                            </div>
                         </div>
-                        <div class="vs-player-score-wrap">
-                            <span class="vs-score-num" id="vs-p2-score">0</span>
-                            <span class="vs-score-label">نقطة</span>
+                        <div class="vs-pod-av-wrap">
+                            <span class="vs-pod-avatar" id="vs-opp-avatar" aria-hidden="true">م</span>
+                            <span class="vs-pod-tag" id="vs-opp-badge">المنافس</span>
+                            <span class="vs-opp-locked-bubble hidden" id="vs-opp-locked-bubble" title="المنافس اختار إجابته" aria-label="المنافس اختار إجابته">
+                                <i data-lucide="zap" aria-hidden="true"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <div id="vs-opp-indicator" class="vs-opp-indicator hidden" aria-live="polite">
-                    <i data-lucide="zap" aria-hidden="true"></i>
-                    <span>المنافس اختار إجابته</span>
+                <!-- 5-Segment Match Progression Track -->
+                <div class="vs-round-dots-bar" id="vs-round-dots-bar" aria-label="تقدم الجولات الخمس">
+                    <span class="vs-dot is-current" id="vs-dot-0" title="الجولة 1"></span>
+                    <span class="vs-dot" id="vs-dot-1" title="الجولة 2"></span>
+                    <span class="vs-dot" id="vs-dot-2" title="الجولة 3"></span>
+                    <span class="vs-dot" id="vs-dot-3" title="الجولة 4"></span>
+                    <span class="vs-dot" id="vs-dot-4" title="الجولة 5 — نقاط مضاعفة"></span>
                 </div>
 
                 <div class="vs-question-card">
+                    <div class="vs-question-head">
+                        <span class="vs-category-pill" id="vs-category-pill">سؤال تنافسي</span>
+                        <button type="button" class="vs-inline-lang-btn" id="vs-inline-lang-btn" aria-label="تبديل لغة السؤال">
+                            <i data-lucide="languages" aria-hidden="true"></i>
+                            <span id="vs-inline-lang-text">English</span>
+                        </button>
+                    </div>
+
                     <div id="vs-question-stem" class="vs-question-stem" dir="auto"></div>
                     <div id="vs-options-list" class="vs-options-list" role="radiogroup" aria-label="خيارات الإجابة"></div>
                 </div>

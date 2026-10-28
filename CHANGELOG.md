@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.1] — 2026-10-28
+
+### Changed
+- ترقية واجهة المبارزة المباشرة: لوحة نتائج بطولية، تبديل فوري للترجمة، وتوسيع المساحة البصرية
+
+
 ## [1.8.0] — 2026-10-28
 
 ### Changed
