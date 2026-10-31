@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.2] — 2026-10-31
+
+### Changed
+- إضافة تحدي أساطير كرة القدم بمحاكي التفكير البشري والديناميكية الحرارية
+
+
 ## [1.8.1] — 2026-10-28
 
 ### Changed

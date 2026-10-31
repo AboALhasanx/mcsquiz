@@ -85,6 +85,13 @@ def run():
         check('navigating to #/vs reveals #vs-view', not page.evaluate("() => document.getElementById('vs-view').classList.contains('hidden')"))
         check('lobby screen is active', not page.evaluate("() => document.getElementById('vs-lobby').classList.contains('hidden')"))
 
+        # Verify legends challenge shelf
+        check('PortalVSBot is exposed on window', page.evaluate("() => !!window.PortalVSBot"))
+        legend_count = page.evaluate("() => window.PortalVSBot.getLegends().length")
+        check('5 football legends available in bot engine', legend_count == 5, legend_count)
+        rendered_cards = page.locator(".vs-legend-card").count()
+        check('5 legend challenge cards rendered in lobby', rendered_cards == 5, rendered_cards)
+
         # Verify subject options in lobby
         opt_count = page.evaluate("() => document.getElementById('vs-select-subject').options.length")
         check('subject select is populated with options', opt_count > 1, opt_count)

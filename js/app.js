@@ -2212,6 +2212,12 @@
     closeDrawers();
     if (!S.index) return;
     const h = location.hash;
+    if (!h.startsWith('#/vs')) {
+      const botTimer = vsState.botTimer;
+      if (botTimer) clearTimeout(botTimer);
+      vsState.botTimer = null;
+      if (vsState.roundTimer) { clearInterval(vsState.roundTimer); vsState.roundTimer = null; }
+    }
     const m = h.match(/^#\/quiz\/([^/]+)\/([^/]+)$/);
     if (h === '#/saved' || h === '#/saved/') {
       S.session = null;
@@ -4133,7 +4139,12 @@
     roundStartMs: 0,
     myLockedIn: false,
     oppLockedIn: false,
-    resolved: false
+    resolved: false,
+    isBot: false,
+    botLegend: null,
+    botDecision: null,
+    botTimer: null,
+    botStreak: 0
   };
   window.vsState = vsState;
 
@@ -4316,6 +4327,96 @@
         }
       };
     }
+
+    document.querySelectorAll('.vs-legend-btn').forEach((btn) => {
+      btn.onclick = () => {
+        const legendId = btn.getAttribute('data-legend');
+        startVsLegendDuel(legendId);
+      };
+    });
+  }
+
+  function startVsLegendDuel(legendId) {
+    if (!window.PortalVSBot) return;
+    const legend = window.PortalVSBot.getLegend(legendId);
+    if (!legend) return;
+
+    const subSelect = $('vs-select-subject');
+    const chSelect = $('vs-select-chapter');
+    const subId = (subSelect && subSelect.value) || 'all';
+    const chId = (chSelect && chSelect.value) || 'all';
+
+    const p = vsPlayerInfo();
+    const seed = Math.floor(Math.random() * 1000000) + 1;
+    vsState.isBot = true;
+    vsState.botLegend = legend;
+    vsState.botStreak = 0;
+    vsState.botDecision = null;
+    if (vsState.botTimer) {
+      clearTimeout(vsState.botTimer);
+      vsState.botTimer = null;
+    }
+    vsState.room = {
+      room_id: 'legend_' + legend.id + '_' + Date.now(),
+      subject_id: subId,
+      chapter_id: chId,
+      seed: seed
+    };
+    vsState.role = 'host';
+    vsState.myScore = 0;
+    vsState.oppScore = 0;
+    vsState.opponent = {
+      user_id: 'legend:' + legend.id,
+      name: legend.name,
+      avatar: legend.avatar
+    };
+    vsState.questions = gatherVsQuestions(subId, chId, seed);
+
+    $('vs-lobby').classList.add('hidden');
+    $('vs-waiting').classList.remove('hidden');
+    $('vs-arena').classList.add('hidden');
+    $('vs-result').classList.add('hidden');
+
+    const waitTitle = $('vs-waiting-title');
+    if (waitTitle) waitTitle.textContent = 'جاري الاتصال بحلبة المنافسة المباشرة...';
+    const codeEl = $('vs-waiting-code');
+    if (codeEl) codeEl.textContent = '----';
+
+    setTimeout(() => {
+      if (waitTitle) waitTitle.textContent = 'تم الاتصال وقبول التحدي من ' + legend.name + '!';
+      setTimeout(() => {
+        $('vs-waiting').classList.add('hidden');
+        $('vs-arena').classList.remove('hidden');
+
+        const meName = $('vs-me-name');
+        const meScore = $('vs-me-score');
+        const meAv = $('vs-me-avatar');
+        const oppName = $('vs-opp-name');
+        const oppScore = $('vs-opp-score');
+        const oppAv = $('vs-opp-avatar');
+        const oppBadge = $('vs-opp-badge');
+        const oppBubble = $('vs-opp-locked-bubble');
+
+        if (meName) meName.textContent = p.name;
+        if (meScore) meScore.textContent = '0';
+        if (meAv) meAv.textContent = (p.name || 'أ').trim()[0].toUpperCase();
+
+        if (oppName) oppName.textContent = legend.name;
+        if (oppScore) oppScore.textContent = '0';
+        if (oppAv) oppAv.textContent = legend.avatar;
+        if (oppBadge) oppBadge.textContent = legend.title;
+        if (oppBubble) oppBubble.classList.add('hidden');
+
+        for (let i = 0; i < 5; i++) {
+          const dot = $('vs-dot-' + i);
+          if (dot) dot.className = 'vs-dot' + (i === 0 ? ' is-current' : '');
+        }
+
+        startVsRound(0);
+        icons();
+      }, 500);
+    }, 700);
+    icons();
   }
 
   function enterVsWaiting(roomData) {
@@ -4555,6 +4656,28 @@
       });
     }
 
+    // Schedule Simulated Annealing Bot decision if playing vs Legend
+    if (vsState.botTimer) {
+      clearTimeout(vsState.botTimer);
+      vsState.botTimer = null;
+    }
+    if (vsState.isBot && window.PortalVSBot && vsState.botLegend) {
+      const botDec = window.PortalVSBot.decide(
+        vsState.botLegend,
+        q,
+        roundIndex,
+        vsState.myScore,
+        vsState.oppScore,
+        vsState.botStreak
+      );
+      vsState.botDecision = botDec;
+      vsState.botTimer = setTimeout(() => {
+        if (!vsState.resolved) {
+          handleVsOpponentLockedIn({ timeMs: botDec.timeMs });
+        }
+      }, botDec.timeMs);
+    }
+
     if (vsState.roundTimer) clearInterval(vsState.roundTimer);
     const timerText = $('vs-timer-text');
     const timerCircle = $('vs-timer-svg-circle');
@@ -4587,7 +4710,7 @@
           vsState.myLockedIn = true;
           vsState.myPick = -1;
           vsState.myTimeMs = 12000;
-          window.PortalVS.sendLockedIn(12000);
+          if (!vsState.isBot && window.PortalVS) window.PortalVS.sendLockedIn(12000);
         }
         resolveVsRound();
       }
@@ -4610,7 +4733,9 @@
       });
     }
 
-    window.PortalVS.sendLockedIn(vsState.myTimeMs);
+    if (!vsState.isBot && window.PortalVS) {
+      window.PortalVS.sendLockedIn(vsState.myTimeMs);
+    }
     if (vsState.oppLockedIn) {
       resolveVsRound();
     }
@@ -4633,6 +4758,10 @@
       clearInterval(vsState.roundTimer);
       vsState.roundTimer = null;
     }
+    if (vsState.botTimer) {
+      clearTimeout(vsState.botTimer);
+      vsState.botTimer = null;
+    }
 
     const oppBubble = $('vs-opp-locked-bubble');
     if (oppBubble) oppBubble.classList.add('hidden');
@@ -4650,7 +4779,17 @@
       curDot.classList.add(isCorrect ? 'is-correct-dot' : 'is-wrong-dot');
     }
 
-    if (window.PortalVS) {
+    if (vsState.isBot && vsState.botDecision) {
+      const botPick = vsState.botDecision.pickIndex;
+      const botIsCorrect = vsState.botDecision.isCorrect;
+      const botEarned = window.PortalVS ? window.PortalVS.computeScore(botIsCorrect, vsState.botDecision.timeMs, 12000, isFinal) : 0;
+      handleVsOpponentReveal({ pickIndex: botPick, score: botEarned });
+      if (botIsCorrect) {
+        vsState.botStreak = Math.max(1, vsState.botStreak + 1);
+      } else {
+        vsState.botStreak = Math.min(-1, vsState.botStreak - 1);
+      }
+    } else if (window.PortalVS) {
       window.PortalVS.sendReveal(vsState.roundIndex, vsState.myPick, earned, vsState.myTimeMs);
     }
 
@@ -4677,7 +4816,7 @@
     setTimeout(() => {
       if (vsState.roundIndex < qCount - 1) {
         const nextIdx = vsState.roundIndex + 1;
-        if (vsState.role === 'host' && window.PortalVS) {
+        if (!vsState.isBot && vsState.role === 'host' && window.PortalVS) {
           window.PortalVS.sendStartRound(nextIdx, Date.now());
         }
         startVsRound(nextIdx);
@@ -4700,8 +4839,12 @@
       clearInterval(vsState.roundTimer);
       vsState.roundTimer = null;
     }
+    if (vsState.botTimer) {
+      clearTimeout(vsState.botTimer);
+      vsState.botTimer = null;
+    }
 
-    if (vsState.role === 'host' && vsState.room && vsState.room.room_id && window.PortalVS) {
+    if (!vsState.isBot && vsState.role === 'host' && vsState.room && vsState.room.room_id && window.PortalVS) {
       let winnerId = null;
       const p = vsPlayerInfo();
       if (vsState.myScore > vsState.oppScore) winnerId = p.id;
@@ -4712,17 +4855,18 @@
     const iconEl = $('vs-result-icon');
     const titleEl = $('vs-result-title');
     const subEl = $('vs-result-sub');
+    const oppLabel = (vsState.isBot && vsState.botLegend) ? vsState.botLegend.name : 'المنافس';
     if (vsState.myScore > vsState.oppScore) {
-      if (titleEl) titleEl.textContent = 'فوز مستحق!';
+      if (titleEl) titleEl.textContent = vsState.isBot ? ('فوز مستحق على ' + oppLabel + '!') : 'فوز مستحق!';
       if (subEl) subEl.textContent = 'أداء استثنائي ودقة وسرعة في الإجابة';
       if (iconEl) iconEl.innerHTML = '<i data-lucide="trophy"></i>';
     } else if (vsState.myScore === vsState.oppScore) {
-      if (titleEl) titleEl.textContent = 'تعادل قوي!';
+      if (titleEl) titleEl.textContent = vsState.isBot ? ('تعادل بطولي مع ' + oppLabel + '!') : 'تعادل قوي!';
       if (subEl) subEl.textContent = 'مواجهة متكافئة حتى اللحظة الأخيرة';
       if (iconEl) iconEl.innerHTML = '<i data-lucide="swords"></i>';
     } else {
-      if (titleEl) titleEl.textContent = 'مبارزة قوية!';
-      if (subEl) subEl.textContent = 'المنافس كان أسرع، جرب مرة أخرى لتنتزع الصدارة';
+      if (titleEl) titleEl.textContent = vsState.isBot ? ('مبارزة قوية أمام ' + oppLabel + '!') : 'مبارزة قوية!';
+      if (subEl) subEl.textContent = oppLabel + ' كان أسرع، جرب مرة أخرى لتنتزع الصدارة';
       if (iconEl) iconEl.innerHTML = '<i data-lucide="target"></i>';
     }
 
@@ -4732,26 +4876,37 @@
     if (s2) s2.textContent = String(vsState.oppScore);
 
     const p2Label = $('vs-final-p2-label');
-    if (p2Label && vsState.opponent && vsState.opponent.name) {
-      p2Label.textContent = vsState.opponent.name;
+    if (p2Label) {
+      p2Label.textContent = oppLabel;
     }
 
     const btnRematch = $('vs-btn-rematch');
     if (btnRematch) {
       btnRematch.onclick = () => {
-        if (window.PortalVS) window.PortalVS.leaveRoom();
+        if (!vsState.isBot && window.PortalVS) window.PortalVS.leaveRoom();
+        if (vsState.botTimer) clearTimeout(vsState.botTimer);
+        const prevLegend = vsState.isBot ? vsState.botLegend : null;
         vsState.room = null;
-        $('vs-result').classList.add('hidden');
-        $('vs-lobby').classList.remove('hidden');
-        setupVsLobby();
+        vsState.isBot = false;
+        vsState.botLegend = null;
+        if (prevLegend) {
+          startVsLegendDuel(prevLegend.id);
+        } else {
+          $('vs-result').classList.add('hidden');
+          $('vs-lobby').classList.remove('hidden');
+          setupVsLobby();
+        }
       };
     }
 
     const btnExit = $('vs-btn-exit');
     if (btnExit) {
       btnExit.onclick = () => {
-        if (window.PortalVS) window.PortalVS.leaveRoom();
+        if (!vsState.isBot && window.PortalVS) window.PortalVS.leaveRoom();
+        if (vsState.botTimer) clearTimeout(vsState.botTimer);
         vsState.room = null;
+        vsState.isBot = false;
+        vsState.botLegend = null;
         location.hash = '#/';
       };
     }
@@ -5295,7 +5450,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.1';
+  const SHELL_VERSION = '1.8.2';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

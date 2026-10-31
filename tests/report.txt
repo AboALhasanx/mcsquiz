@@ -241,3 +241,44 @@ PASS | security | the bookmark text is not on the server | {'ct': 'xoEsTW84XaF2d
 PASS | security | the account can be deleted | ok
 PASS | security | the personal row is gone | []
 PASS | security | the account no longer exists | [{'id': '061599b7-e0fe-4f84-9434-07d1762c1583', 'handle': 'secdat188544', 'name': 'sec', 'avatar': '', 'created': True, 'status': 'ok', 'retry_after': 0}]
+PASS | vs_mode | PortalVS is exposed on window | 
+PASS | vs_mode | same seed produces identical question selection | [9, 8, 7, 6, 2]
+PASS | vs_mode | different seed produces different selection | 
+PASS | vs_mode | wrong answer yields 0 points | 0
+PASS | vs_mode | fast answer scores higher than slow answer | 958 vs 541
+PASS | vs_mode | fast answer is in 900-1000 range | 958
+PASS | vs_mode | final round doubles the score | 1916 vs 958
+PASS | vs_mode | createRoom returns 4-digit code | {'ok': True, 'code': '8283', 'seed': 986636, 'room_id': '03241b16-97f0-4cda-a226-b08c96492f97', 'chapter_id': 'Quiz_Ch01', 'subject_id': '01_Cyber_Security'}
+PASS | vs_mode | createRoom returns seed | 986636
+PASS | vs_mode | joinRoom accepts the 4-digit code | {'ok': True, 'code': '8283', 'role': 'guest', 'seed': 986636, 'host_id': 'u:test_h_1793458067506', 'room_id': '03241b16-97f0-4cda-a226-b08c96492f97', 'guest_id': 'u:test_g_1793458067940', 'host_name': 'مضيف تجريبي', 'chapter_id': 'Quiz_Ch01', 'guest_name': 'ضيف تجريبي', 'subject_id': '01_Cyber_Security', 'host_avatar': '', 'guest_avatar': ''}
+PASS | vs_mode | joinRoom assigns guest role | guest
+PASS | vs_mode | both participants receive the identical seed | 986636 vs 986636
+PASS | vs_mode | finishMatch marks match completed | {'ok': True}
+PASS | vs_mode | navigating to #/vs reveals #vs-view | 
+PASS | vs_mode | lobby screen is active | 
+PASS | vs_mode | subject select is populated with options | 7
+PASS | vs_mode | typing in pin-1 focuses pin-2 | vs-pin-2
+PASS | vs_mode | drawer menu item points to #/vs | #/vs
+PASS | vs_mode | no runtime errors | []
+PASS | vs_mode | PortalVS is exposed on window | 
+PASS | vs_mode | same seed produces identical question selection | [9, 8, 7, 6, 2]
+PASS | vs_mode | different seed produces different selection | 
+PASS | vs_mode | wrong answer yields 0 points | 0
+PASS | vs_mode | fast answer scores higher than slow answer | 958 vs 541
+PASS | vs_mode | fast answer is in 900-1000 range | 958
+PASS | vs_mode | final round doubles the score | 1916 vs 958
+PASS | vs_mode | createRoom returns 4-digit code | {'ok': True, 'code': '5061', 'seed': 955930, 'room_id': 'dbeff2b5-71f2-479b-a4f1-3e1fd6633962', 'chapter_id': 'Quiz_Ch01', 'subject_id': '01_Cyber_Security'}
+PASS | vs_mode | createRoom returns seed | 955930
+PASS | vs_mode | joinRoom accepts the 4-digit code | {'ok': True, 'code': '5061', 'role': 'guest', 'seed': 955930, 'host_id': 'u:test_h_1793458831835', 'room_id': 'dbeff2b5-71f2-479b-a4f1-3e1fd6633962', 'guest_id': 'u:test_g_1793458832204', 'host_name': 'مضيف تجريبي', 'chapter_id': 'Quiz_Ch01', 'guest_name': 'ضيف تجريبي', 'subject_id': '01_Cyber_Security', 'host_avatar': '', 'guest_avatar': ''}
+PASS | vs_mode | joinRoom assigns guest role | guest
+PASS | vs_mode | both participants receive the identical seed | 955930 vs 955930
+PASS | vs_mode | finishMatch marks match completed | {'ok': True}
+PASS | vs_mode | navigating to #/vs reveals #vs-view | 
+PASS | vs_mode | lobby screen is active | 
+PASS | vs_mode | PortalVSBot is exposed on window | 
+PASS | vs_mode | 5 football legends available in bot engine | 5
+PASS | vs_mode | 5 legend challenge cards rendered in lobby | 5
+PASS | vs_mode | subject select is populated with options | 7
+PASS | vs_mode | typing in pin-1 focuses pin-2 | vs-pin-2
+PASS | vs_mode | drawer menu item points to #/vs | #/vs
+PASS | vs_mode | no runtime errors | []
