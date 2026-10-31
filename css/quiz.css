@@ -3656,7 +3656,7 @@ html[data-theme="light"] .stats-hero {
   background: var(--bg-card);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
-.stats-hero-main { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; min-width: 0; }
+.stats-hero-main { display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem; flex: 1; min-width: 0; }
 .stats-hero-label { font-size: 0.74rem; font-weight: 700; color: var(--text-muted); }
 .stats-hero-value {
   font-size: 2.35rem;
@@ -3664,6 +3664,7 @@ html[data-theme="light"] .stats-hero {
   line-height: 1.1;
   color: var(--text-main);
   letter-spacing: -0.02em;
+  text-align: start;
 }
 .stats-hero-trend {
   display: inline-flex;
@@ -3711,8 +3712,8 @@ html[data-theme="light"] .stats-hero {
   align-items: flex-end;
   justify-content: center;
   gap: 0.35rem;
-  height: 128px;
-  padding-bottom: 1.35rem;
+  height: 136px;
+  padding: 0 1.25rem 1.45rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 .trend-col {
@@ -3734,11 +3735,11 @@ html[data-theme="light"] .stats-hero {
   opacity: 0.9;
   transition: height 0.3s ease;
 }
-.trend-bar.good { background: #34d399; }
-.trend-bar.ok { background: var(--accent); }
-.trend-bar.low { background: #f87171; }
+.trend-bar.good { background: #10b981; }
+.trend-bar.ok { background: #f59e0b; }
+.trend-bar.low { background: #ef4444; }
 html[data-theme="light"] .trend-bar.good { background: #059669; }
-html[data-theme="light"] .trend-bar.ok { background: var(--accent); }
+html[data-theme="light"] .trend-bar.ok { background: #d97706; }
 html[data-theme="light"] .trend-bar.low { background: #dc2626; }
 .trend-val {
   font-size: 0.62rem;
@@ -3766,13 +3767,14 @@ html[data-theme="light"] .trend-bar.low { background: #dc2626; }
 }
 .trend-pass b {
   position: absolute;
-  inset-inline-start: 0;
-  top: -0.55rem;
-  font-size: 0.6rem;
+  inset-inline-end: 0.5rem;
+  top: -0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
   color: var(--text-subtle);
   background: var(--bg-page);
-  padding: 0 0.25rem;
+  padding: 0 0.35rem;
+  border-radius: 4px;
 }
 .trend-empty {
   padding: 1.5rem 0;

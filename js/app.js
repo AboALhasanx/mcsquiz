@@ -1705,14 +1705,15 @@
   }
 
   function pctClass(p) { return p >= 75 ? 'good' : (p >= 60 ? 'mid' : 'bad'); }
-  function fmtDate(t) {
-    try { return new Intl.DateTimeFormat('ar', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(t)); }
-    catch (e) { return ''; }
-  }
   function fmtDur(s) {
     s = Math.round(Number(s) || 0);
-    const m = Math.floor(s / 60);
-    return m > 0 ? m + ' د ' + (s % 60) + ' ث' : s + ' ث';
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    if (h > 0) {
+      return m > 0 ? (h + ' س ' + m + ' د') : (h + ' س');
+    }
+    const sec = s % 60;
+    return m > 0 ? (m + ' د' + (sec > 0 ? ' ' + sec + ' ث' : '')) : (sec + ' ث');
   }
   function collectBests() {
     const out = {};
@@ -1731,7 +1732,7 @@
   // ---------------- statistics & history ----------------
   // The screen follows the pattern the good study apps use: one headline
   // number, the trend behind it, a breakdown by subject, then the raw log.
-  const STATS_RANGES = [7, 30, 0];
+  const STATS_RANGES = [1, 7, 30, 0];
   const PASS_MARK = 60;   // the pass mark used everywhere in this app
 
   function statsRange() {
@@ -1783,6 +1784,96 @@
     return streak;
   }
 
+  function buildTrendNodes(items, days) {
+    if (!items.length) return { nodes: [], subtitle: 'لا توجد محاولات في هذه الفترة' };
+
+    const fmtTime = (ts) => {
+      try {
+        const d = new Date(ts || 0);
+        return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+      } catch (e) { return ''; }
+    };
+
+    const uniqueDays = [];
+    const byDay = {};
+    items.forEach((h) => {
+      const k = dayKey(h.t);
+      if (!byDay[k]) {
+        byDay[k] = { key: k, t: h.t, rows: [] };
+        uniqueDays.push(byDay[k]);
+      }
+      byDay[k].rows.push(h);
+    });
+
+    // If single calendar day (or 'Today' filter) -> show up to 10 recent individual attempts with HH:mm
+    if (days === 1 || uniqueDays.length <= 2) {
+      const recent = items.slice(-10);
+      let prevD = '';
+      const nodes = recent.map((h, idx) => {
+        const dStr = shortDay(h.t);
+        const tStr = fmtTime(h.t);
+        let label = tStr;
+        if (uniqueDays.length > 1 && (idx === 0 || dStr !== prevD)) {
+          label = dStr + ' ' + tStr;
+        }
+        prevD = dStr;
+        return {
+          pct: Math.max(0, Math.min(100, h.pct || 0)),
+          label: label,
+          tooltip: (h.topic || '') + ' · ' + Math.round(h.pct || 0) + '% (' + dStr + ' ' + tStr + ')'
+        };
+      });
+      const subPrefix = days === 1
+        ? 'محاولات اليوم'
+        : (uniqueDays.length === 1 ? ('محاولات ' + dayLabel(uniqueDays[0].t)) : 'أحدث المحاولات');
+      const countText = items.length > 10
+        ? ('آخر 10 من ' + items.length + ' محاولة')
+        : arCount(items.length, { one: 'محاولة واحدة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' });
+      return { nodes: nodes, subtitle: subPrefix + ' · ' + countText };
+    }
+
+    // Multiple days (3 to 12 active days) -> aggregate by day (daily average)
+    if (uniqueDays.length <= 12) {
+      const nodes = uniqueDays.map((g) => {
+        const avgPct = g.rows.reduce((s, r) => s + (r.pct || 0), 0) / g.rows.length;
+        const dStr = shortDay(g.t);
+        const cnt = arCount(g.rows.length, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' });
+        return {
+          pct: Math.max(0, Math.min(100, avgPct)),
+          label: dStr,
+          tooltip: dStr + ' · المتوسط ' + Math.round(avgPct) + '% (' + cnt + ')'
+        };
+      });
+      const rangeTag = days === 7 ? 'آخر 7 أيام' : (days === 30 ? 'آخر 30 يوماً' : 'كل السجل');
+      return {
+        nodes: nodes,
+        subtitle: 'المتوسط اليومي · ' + rangeTag + ' (' + arCount(uniqueDays.length, { one: 'يوم نشاط', two: 'يوما نشاط', few: 'أيام نشاط', many: 'يوم نشاط' }) + ')'
+      };
+    }
+
+    // Long history (> 12 active days) -> bucket into 10 chronological windows
+    const BUCKETS = 10;
+    const chunkSize = Math.ceil(uniqueDays.length / BUCKETS);
+    const nodes = [];
+    for (let i = 0; i < uniqueDays.length; i += chunkSize) {
+      const slice = uniqueDays.slice(i, i + chunkSize);
+      const allRows = [];
+      slice.forEach((g) => { g.rows.forEach((r) => allRows.push(r)); });
+      const avgPct = allRows.reduce((s, r) => s + (r.pct || 0), 0) / allRows.length;
+      const firstD = shortDay(slice[0].t);
+      const lastD = shortDay(slice[slice.length - 1].t);
+      nodes.push({
+        pct: Math.max(0, Math.min(100, avgPct)),
+        label: lastD,
+        tooltip: (firstD === lastD ? firstD : (firstD + ' – ' + lastD)) + ' · المتوسط ' + Math.round(avgPct) + '% (' + allRows.length + ' محاولة)'
+      });
+    }
+    return {
+      nodes: nodes,
+      subtitle: 'المتوسط المرحلي عبر ' + uniqueDays.length + ' يوم نشاط (' + items.length + ' محاولة)'
+    };
+  }
+
   function renderStats() {
     try {
       const h = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
@@ -1790,13 +1881,22 @@
     } catch (e) {}
     const ALL = S.history.slice().sort((a, b) => (a.t || 0) - (b.t || 0));
     const days = statsRange();
-    const H = days ? ALL.filter((h) => (Date.now() - (h.t || 0)) <= days * 86400000) : ALL;
-    const prev = days
-      ? ALL.filter((h) => {
-        const age = Date.now() - (h.t || 0);
-        return age > days * 86400000 && age <= days * 2 * 86400000;
-      })
-      : [];
+    const nowTs = Date.now();
+    const todayStart = (() => {
+      const d = new Date();
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+    })();
+    const H = days === 1
+      ? ALL.filter((h) => (h.t || 0) >= todayStart)
+      : (days ? ALL.filter((h) => (nowTs - (h.t || 0)) <= days * 86400000) : ALL);
+    const prev = days === 1
+      ? ALL.filter((h) => (h.t || 0) >= (todayStart - 86400000) && (h.t || 0) < todayStart)
+      : (days
+        ? ALL.filter((h) => {
+          const age = nowTs - (h.t || 0);
+          return age > days * 86400000 && age <= days * 2 * 86400000;
+        })
+        : []);
 
     document.querySelectorAll('.range-opt').forEach((b) => {
       const on = Number(b.dataset.range) === days;
@@ -1809,19 +1909,18 @@
     const totTried = H.reduce((a, h) => a + (h.total || 0), 0);
     const totSecs = H.reduce((a, h) => a + (h.secs || 0), 0);
     const avg = n ? H.reduce((a, h) => a + (h.pct || 0), 0) / n : 0;
-    const best = n ? Math.max.apply(null, H.map((h) => h.pct || 0)) : 0;
     const prevAvg = prev.length ? prev.reduce((a, h) => a + (h.pct || 0), 0) / prev.length : null;
-    const rangeName = days === 7 ? 'آخر أسبوع' : (days === 30 ? 'آخر شهر' : 'الكل');
+    const rangeName = days === 1 ? 'اليوم' : (days === 7 ? 'آخر 7 أيام' : (days === 30 ? 'آخر 30 يوماً' : 'كل السجل'));
 
-    $('stats-total-line').textContent = n
-      ? (arCount(n, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + ' · ' + rangeName)
-      : '';
+    $('stats-total-line').textContent = '';
 
     // ---- with no attempts at all, the screen shows one honest empty state ----
     const empty = $('stats-empty');
     const hasAny = ALL.length > 0;
     if (empty) empty.classList.toggle('hidden', hasAny);
-    ['stats-hero', 'stats-overall', 'stats-trend', 'stats-insight', 'stats-subjects'].forEach((id) => {
+    const ledger = document.querySelector('.stats-ledger');
+    if (ledger) ledger.classList.toggle('hidden', !hasAny);
+    ['stats-hero', 'stats-overall', 'stats-trend', 'stats-insight', 'stats-subjects', 'history-section'].forEach((id) => {
       const el = $(id);
       if (el) el.classList.toggle('hidden', !hasAny);
     });
@@ -1830,79 +1929,186 @@
     const subsBlock = document.querySelector('#stats-subjects') ? document.querySelector('#stats-subjects').closest('.stats-block') : null;
     if (subsBlock) subsBlock.classList.toggle('hidden', !hasAny);
 
-    // ---- hero: the one number that matters, with the movement behind it ----
+    // ---- unified architectural KPI ledger (hero + 4 operational dimensions) ----
     const hero = $('stats-hero');
     hero.innerHTML = '';
     const delta = prevAvg === null ? null : avg - prevAvg;
+    const passedCount = H.filter((h) => (h.pct || 0) >= 60).length;
+    const passRate = n ? Math.round((passedCount / n) * 100) : 0;
+    const streak = streakDays(ALL);
+    const secPerQ = totTried ? Math.round(totSecs / totTried) : 0;
+    const activeSubIds = new Set(H.map((h) => h.subjectId || h.sub).filter(Boolean));
+    const allSubs = (S.index && Array.isArray(S.index.subjects)) ? S.index.subjects.length : 6;
+
     const heroMain = document.createElement('div');
     heroMain.className = 'stats-hero-main';
     heroMain.innerHTML =
-      '<span class="stats-hero-label">متوسط نتائجك</span>' +
-      '<span class="stats-hero-value" dir="ltr">' + (n ? (Math.round(avg * 10) / 10) + '%' : '—') + '</span>' +
-      (delta === null ? '' :
-        '<span class="stats-hero-trend ' + (delta >= 0 ? 'up' : 'down') + '">' +
-        (delta >= 0 ? '▲' : '▼') + ' ' + Math.abs(Math.round(delta * 10) / 10) + ' نقطة عن الفترة السابقة</span>');
+      '<div class="stats-hero-info">' +
+        '<span class="stats-hero-label">المتوسط العام · ' + escapeHtml(rangeName) + '</span>' +
+        '<div class="stats-hero-num-row">' +
+          '<span class="stats-hero-value" dir="ltr">' + (n ? (Math.round(avg * 10) / 10) + '%' : '—') + '</span>' +
+          (delta === null || Math.abs(delta) < 0.5 ? '' :
+            '<span class="stats-hero-trend ' + (delta >= 0 ? 'up' : 'down') + '" dir="ltr">' +
+            (delta >= 0 ? '+' : '−') + Math.abs(Math.round(delta * 10) / 10) + '%</span>') +
+        '</div>' +
+      '</div>';
     hero.appendChild(heroMain);
+
+    const streakLabel = streak >= 1
+      ? arCount(streak, { one: 'يوم واحد', two: 'يومان', few: 'أيام', many: 'يوماً' })
+      : '—';
     const heroSide = document.createElement('div');
     heroSide.className = 'stats-hero-side';
     heroSide.innerHTML =
-      '<div><span class="stats-hero-side-value" dir="ltr">' + n + '</span><span class="stats-hero-side-label">محاولة</span></div>' +
-      '<div><span class="stats-hero-side-value" dir="ltr">' + (n ? best + '%' : '—') + '</span><span class="stats-hero-side-label">أفضل نتيجة</span></div>';
+      '<div class="stats-hero-stat"><span class="stats-hero-side-label">الاستمرارية</span><span class="stats-hero-side-value">' + escapeHtml(streakLabel) + '</span></div>' +
+      '<div class="stats-hero-stat"><span class="stats-hero-side-label">تغطية المنهاج</span><span class="stats-hero-side-value">' + activeSubIds.size + ' من ' + allSubs + ' مواد</span></div>';
     hero.appendChild(heroSide);
 
-    // ---- four small facts ----
     const box = $('stats-overall');
     box.innerHTML = '';
     const cards = [
-      ['check', totQ + ' / ' + totTried, 'إجابات صحيحة'],
-      ['target', totTried ? Math.round((totQ / totTried) * 100) + '%' : '—', 'دقة الإجابات'],
-      ['award', H.filter((h) => (h.pct || 0) >= 60).length + ' من ' + n, 'اختبارات ناجحة'],
-      ['clock', fmtDur(totSecs), 'زمن المذاكرة'],
+      ['الاختبارات', String(n), n ? (passedCount + ' باجتياز · ' + passRate + '%') : '—'],
+      ['الأسئلة', String(totTried), totQ + ' إجابة صحيحة'],
+      ['زمن الدراسة', fmtDur(totSecs), 'إجمالي الوقت'],
+      ['معدل السرعة', secPerQ > 0 ? (secPerQ + ' ث') : '—', 'لكل سؤال'],
     ];
-    cards.forEach(([icon, val, label]) => {
+    cards.forEach(([label, val, sub]) => {
       const d = document.createElement('div');
-      d.className = 'stat-card stat-card-wide';
-      d.innerHTML = '<div class="stat-icon-wrapper time-accent"><i data-lucide="' + icon + '"></i></div>' +
-        '<div class="stat-info"><span class="stat-value">' + (typeof val === 'string' && val.indexOf('/') !== -1 ? '<span dir="ltr">' + escapeHtml(val) + '</span>' : escapeHtml(val)) + '</span>' +
-        '<span class="stat-label">' + escapeHtml(label) + '</span></div>';
+      d.className = 'stat-card';
+      d.innerHTML =
+        '<span class="stat-label">' + escapeHtml(label) + '</span>' +
+        '<span class="stat-value">' + escapeHtml(val) + '</span>' +
+        '<span class="stat-sub">' + escapeHtml(sub) + '</span>';
       box.appendChild(d);
     });
 
-    // ---- the trend: one bar per attempt, with the pass mark ----
+    // ---- the trend: smart adaptive aggregation + smooth monotone spline curve ----
     const trend = $('stats-trend');
     trend.innerHTML = '';
-    const last = H.slice(-12);
+    const trendMeta = buildTrendNodes(H, days);
+    const trendSubEl = $('stats-trend-subtitle');
+    if (trendSubEl) trendSubEl.textContent = trendMeta.subtitle;
+
+    const last = trendMeta.nodes;
     if (!last.length) {
-      trend.innerHTML = '<div class="trend-empty">لا توجد محاولات في هذه الفترة</div>';
+      trend.innerHTML = '<div class="trend-empty">لا توجد محاولات مسجّلة في (' + escapeHtml(rangeName) + ')</div>';
     } else {
-      const bars = last.map((h) => {
-        const pct = Math.max(0, Math.min(100, h.pct || 0));
-        return '<div class="trend-col" title="' + escapeHtml((h.topic || '') + ' · ' + h.pct + '%') + '">' +
-          '<span class="trend-val" dir="ltr">' + Math.round(h.pct) + '%</span>' +
-          '<div class="trend-bar ' + statsBand(h.pct) + '" style="height:' + Math.max(6, pct) + '%"></div>' +
-          '<span class="trend-day">' + escapeHtml(shortDay(h.t)) + '</span>' +
-          '</div>';
-      }).join('');
-      trend.innerHTML = '<div class="trend-chart"><div class="trend-bars">' + bars +
-        '<span class="trend-pass" style="bottom:' + PASS_MARK + '%"><i></i><b>' + PASS_MARK + '%</b></span>' +
-        '</div></div>';
+      const W = 520;
+      const H_SVG = 156;
+      const PAD_L = 22;
+      const PAD_R = 34;
+      const PAD_TOP = 24;
+      const PAD_BOT = 26;
+      const plotW = W - PAD_L - PAD_R;
+      const plotH = H_SVG - PAD_TOP - PAD_BOT;
+      const plotBottom = PAD_TOP + plotH;
+      const m = last.length;
+
+      const pts = last.map((node, idx) => {
+        const pct = Math.max(0, Math.min(100, node.pct || 0));
+        const x = m === 1 ? (PAD_L + plotW / 2) : (W - PAD_R - (idx / (m - 1)) * plotW);
+        const y = plotBottom - (pct / 100) * plotH;
+        return {
+          x: x,
+          y: y,
+          pctRound: Math.round(pct),
+          band: statsBand(pct),
+          label: node.label,
+          tooltip: node.tooltip
+        };
+      });
+
+      const ordered = pts.slice().sort((a, b) => a.x - b.x);
+      let linePath = '';
+      let areaPath = '';
+      if (ordered.length === 1) {
+        const py = ordered[0].y.toFixed(1);
+        linePath = 'M ' + PAD_L + ',' + py + ' L ' + (W - PAD_R) + ',' + py;
+        areaPath = linePath + ' L ' + (W - PAD_R) + ',' + plotBottom + ' L ' + PAD_L + ',' + plotBottom + ' Z';
+      } else {
+        const k = ordered.length;
+        const dx = [];
+        const sec = [];
+        for (let i = 0; i < k - 1; i++) {
+          const dxi = Math.max(1e-4, ordered[i + 1].x - ordered[i].x);
+          dx.push(dxi);
+          sec.push((ordered[i + 1].y - ordered[i].y) / dxi);
+        }
+        const tan = new Array(k);
+        tan[0] = sec[0];
+        tan[k - 1] = sec[k - 2];
+        for (let i = 1; i < k - 1; i++) {
+          tan[i] = (sec[i - 1] * sec[i] <= 0) ? 0 : (sec[i - 1] + sec[i]) / 2;
+        }
+        for (let i = 0; i < k - 1; i++) {
+          if (sec[i] === 0) {
+            tan[i] = 0;
+            tan[i + 1] = 0;
+          } else {
+            const a = tan[i] / sec[i];
+            const b = tan[i + 1] / sec[i];
+            const hyp = Math.hypot(a, b);
+            if (hyp > 3) {
+              const scale = 3 / hyp;
+              tan[i] = scale * a * sec[i];
+              tan[i + 1] = scale * b * sec[i];
+            }
+          }
+        }
+        linePath = 'M ' + ordered[0].x.toFixed(1) + ',' + ordered[0].y.toFixed(1);
+        for (let i = 0; i < k - 1; i++) {
+          const cp1x = ordered[i].x + dx[i] / 3;
+          const cp1y = ordered[i].y + (tan[i] * dx[i]) / 3;
+          const cp2x = ordered[i + 1].x - dx[i] / 3;
+          const cp2y = ordered[i + 1].y - (tan[i + 1] * dx[i]) / 3;
+          linePath += ' C ' + cp1x.toFixed(1) + ',' + cp1y.toFixed(1) + ' ' +
+            cp2x.toFixed(1) + ',' + cp2y.toFixed(1) + ' ' +
+            ordered[i + 1].x.toFixed(1) + ',' + ordered[i + 1].y.toFixed(1);
+        }
+        areaPath = linePath + ' L ' + ordered[k - 1].x.toFixed(1) + ',' + plotBottom.toFixed(1) +
+          ' L ' + ordered[0].x.toFixed(1) + ',' + plotBottom.toFixed(1) + ' Z';
+      }
+
+      const yPass = (plotBottom - (PASS_MARK / 100) * plotH).toFixed(1);
+      const nodesSvg = pts.map((p) =>
+        '<g class="trend-node">' +
+          '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3.6" class="trend-dot ' + p.band + '">' +
+            '<title>' + escapeHtml(p.tooltip) + '</title>' +
+          '</circle>' +
+          '<text x="' + p.x.toFixed(1) + '" y="' + (p.y - 9).toFixed(1) + '" class="trend-svg-val ' + p.band + '" text-anchor="middle" direction="ltr">' + p.pctRound + '%</text>' +
+          '<text x="' + p.x.toFixed(1) + '" y="' + (plotBottom + 17).toFixed(1) + '" class="trend-svg-day" text-anchor="middle">' + escapeHtml(p.label) + '</text>' +
+        '</g>'
+      ).join('');
+
+      trend.innerHTML =
+        '<div class="trend-chart">' +
+          '<svg class="trend-svg" viewBox="0 0 ' + W + ' ' + H_SVG + '" role="img" aria-label="منحنى تطوّر المستوى">' +
+            '<defs>' +
+              '<linearGradient id="trend-area-grad" x1="0" y1="0" x2="0" y2="1">' +
+                '<stop offset="0%" stop-color="#10b981" stop-opacity="0.24"/>' +
+                '<stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>' +
+              '</linearGradient>' +
+            '</defs>' +
+            '<line x1="' + PAD_L + '" y1="' + PAD_TOP + '" x2="' + (W - PAD_R) + '" y2="' + PAD_TOP + '" class="trend-grid-line" />' +
+            '<text x="' + (W - 4) + '" y="' + (PAD_TOP + 3) + '" class="trend-axis-tag" text-anchor="end" direction="ltr">100%</text>' +
+            '<line x1="' + PAD_L + '" y1="' + yPass + '" x2="' + (W - PAD_R) + '" y2="' + yPass + '" class="trend-pass-line" />' +
+            '<text x="' + (W - 4) + '" y="' + (Number(yPass) + 3).toFixed(1) + '" class="trend-axis-tag pass" text-anchor="end" direction="ltr">60%</text>' +
+            '<line x1="' + PAD_L + '" y1="' + plotBottom + '" x2="' + (W - PAD_R) + '" y2="' + plotBottom + '" class="trend-axis-line" />' +
+            '<text x="' + (W - 4) + '" y="' + (plotBottom + 3) + '" class="trend-axis-tag" text-anchor="end" direction="ltr">0%</text>' +
+            '<path d="' + areaPath + '" class="trend-area-path" fill="url(#trend-area-grad)" />' +
+            '<path d="' + linePath + '" class="trend-line-path" />' +
+            nodesSvg +
+          '</svg>' +
+        '</div>';
     }
 
-    // ---- one honest sentence about the movement ----
+    // ---- quiet movement note only when there is a real comparison ----
     const insight = $('stats-insight');
-    const streak = streakDays(ALL);
     let txt = '';
-    if (n) {
-      if (delta !== null && Math.abs(delta) >= 0.5) {
-        txt = delta > 0
-          ? 'تحسّن متوسطك ' + Math.round(delta) + ' نقطة عن الفترة السابقة.'
-          : 'انخفض متوسطك ' + Math.abs(Math.round(delta)) + ' نقاط عن الفترة السابقة.';
-      } else if (prev.length) {
-        txt = 'نتائجك على نفس المستوى عن الفترة السابقة.';
-      } else {
-        txt = 'لا توجد محاولة سابقة في الفترة نفسها — محاولة إضافية تكفي للمقارنة.';
-      }
-      if (streak >= 2) txt += ' وعندك سلسلة ' + streak + ' أيام متتالية.';
+    if (n && delta !== null && Math.abs(delta) >= 0.5) {
+      txt = delta > 0
+        ? 'تحسّن المتوسط بمقدار ' + Math.round(delta) + ' نقطة عن الفترة السابقة.'
+        : 'تراجع المتوسط بمقدار ' + Math.abs(Math.round(delta)) + ' نقاط عن الفترة السابقة.';
     }
     insight.textContent = txt;
 
@@ -1922,50 +2128,216 @@
       const g = bySub[sid];
       const rows = g.rows;
       const a2 = rows.reduce((x, h) => x + (h.pct || 0), 0) / rows.length;
-      const b2 = Math.max.apply(null, rows.map((h) => h.pct || 0));
-      const lastRow = rows[rows.length - 1];
+      const subTotalQ = rows.reduce((x, h) => x + (h.total || 0), 0);
       const wrap = document.createElement('div');
-      wrap.className = 'saved-group';
+      wrap.className = 'saved-group stats-subject-card';
+      wrap.setAttribute('role', 'button');
+      wrap.setAttribute('tabindex', '0');
+      wrap.setAttribute('title', 'عرض اختبارات ' + g.title);
+      wrap.onclick = () => {
+        if (sid && sid !== 'other') location.hash = '#/catalog/' + encodeURIComponent(sid);
+      };
+      wrap.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wrap.click(); }
+      };
+
+      const band = a2 >= 75 ? 'good' : (a2 >= 60 ? 'ok' : 'low');
+      const countLabel = arCount(rows.length, { one: 'اختبار واحد', two: 'اختباران', few: 'اختبارات', many: 'اختبار' });
       const head = document.createElement('div');
-      head.className = 'saved-group-head';
-      head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml(g.title) + '</div>' +
-        '<div class="saved-group-sub">' + (rows.length > 1 ? 'المتوسط ' + (Math.round(a2 * 10) / 10) + '% · الأفضل ' + b2 + '%' : 'محاولة واحدة · ' + (lastRow ? lastRow.pct : 0) + '%') + '</div></div>' +
-        '<div class="stat-value" dir="ltr">' + Math.round(a2) + '%</div>';
+      head.className = 'saved-group-head stats-subject-head';
+      head.innerHTML =
+        '<div class="stats-subject-main">' +
+          '<span class="saved-group-title stats-subject-title">' + escapeHtml(g.title) + '</span>' +
+          '<span class="saved-group-sub stats-subject-meta">' + countLabel + ' · ' + subTotalQ + ' سؤال</span>' +
+        '</div>' +
+        '<span class="stats-subject-pct ' + band + '" dir="ltr">' + Math.round(a2) + '%</span>';
       wrap.appendChild(head);
+
       const track = document.createElement('div');
       track.className = 'stat-bar-track';
-      track.innerHTML = '<div class="stat-bar-fill" style="width:' + Math.max(0, Math.min(100, a2)) + '%"></div>';
+      track.innerHTML = '<div class="stat-bar-fill ' + band + '" style="width:' + Math.max(4, Math.min(100, a2)) + '%"></div>';
       wrap.appendChild(track);
       subs.appendChild(wrap);
     });
 
-    // ---- the log, grouped by day ----
+    // ---- scalable history log: subject filter + paginated ledger ----
     const list = $('history-list');
     list.innerHTML = '';
     const rangeBar = document.querySelector('.stats-range');
     if (rangeBar) rangeBar.classList.toggle('hidden', !hasAny);
-    const recent = ALL.slice(-30).reverse();
-    let currentKey = '';
-    recent.forEach((h) => {
-      const key = dayKey(h.t);
-      if (key !== currentKey) {
-        currentKey = key;
-        const dayBox = document.createElement('div');
-        dayBox.className = 'history-day';
-        const count = ALL.filter((x) => dayKey(x.t) === key).length;
-        dayBox.innerHTML = '<div class="history-day-head"><span class="history-day-name">' +
-          escapeHtml(dayLabel(h.t)) + '</span><span class="history-day-count">' +
-          arCount(count, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + '</span></div>';
-        list.appendChild(dayBox);
+    const histSection = $('history-section');
+    if (histSection) histSection.classList.toggle('hidden', !hasAny);
+
+    // Build subject filter pills from H (period-filtered attempts)
+    const toolbar = $('history-toolbar');
+    const totalBadge = $('history-total-badge');
+    const histSubjects = [];
+    const seenSub = {};
+    H.forEach((h) => {
+      const sid = h.subjectId || h.sub || 'other';
+      const stitle = h.subjectTitle || h.title || 'مادة عامة';
+      if (!seenSub[sid]) {
+        seenSub[sid] = { id: sid, title: stitle, count: 0 };
+        histSubjects.push(seenSub[sid]);
       }
-      const row = document.createElement('div');
-      row.className = 'history-row';
-      row.innerHTML = '<span class="history-pct ' + pctClass(h.pct) + '" dir="ltr">' + h.pct + '%</span>' +
-        '<div class="history-meta"><div class="history-topic">' + escapeHtml(h.topic || '') + '</div>' +
-        '<div class="history-sub">' + escapeHtml(h.subjectTitle + (h.chapterLabel ? ' · ' + h.chapterLabel : '')) +
-        ' · ' + fmtDate(h.t) + ' · ' + h.correct + '/' + h.total + '</div></div>';
-      list.appendChild(row);
+      seenSub[sid].count++;
     });
+
+    if (S.historySubFilter && S.historySubFilter !== 'all' && !seenSub[S.historySubFilter]) {
+      S.historySubFilter = 'all';
+    }
+    const activeSubFilter = S.historySubFilter || 'all';
+    const filteredH = activeSubFilter === 'all'
+      ? H.slice().reverse()
+      : H.filter((h) => (h.subjectId || h.sub || 'other') === activeSubFilter).reverse();
+
+    if (totalBadge) {
+      totalBadge.textContent = arCount(filteredH.length, { one: 'محاولة واحدة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' }) + ' · ' + rangeName;
+    }
+
+    if (toolbar) {
+      toolbar.innerHTML = '';
+      if (histSubjects.length > 1) {
+        const allBtn = document.createElement('button');
+        allBtn.type = 'button';
+        allBtn.className = 'history-filter-chip' + (activeSubFilter === 'all' ? ' active' : '');
+        allBtn.textContent = 'الكل (' + H.length + ')';
+        allBtn.onclick = () => {
+          S.historySubFilter = 'all';
+          S.historyPage = 1;
+          renderStats();
+        };
+        toolbar.appendChild(allBtn);
+
+        histSubjects.forEach((sub) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'history-filter-chip' + (activeSubFilter === sub.id ? ' active' : '');
+          btn.textContent = sub.title + ' (' + sub.count + ')';
+          btn.onclick = () => {
+            S.historySubFilter = sub.id;
+            S.historyPage = 1;
+            renderStats();
+          };
+          toolbar.appendChild(btn);
+        });
+        toolbar.classList.remove('hidden');
+      } else {
+        toolbar.classList.add('hidden');
+      }
+    }
+
+    const PAGE_SIZE = 8;
+    const totalPages = Math.max(1, Math.ceil(filteredH.length / PAGE_SIZE));
+    let curPage = Number(S.historyPage) || 1;
+    if (curPage < 1) curPage = 1;
+    if (curPage > totalPages) curPage = totalPages;
+    S.historyPage = curPage;
+
+    const startIdx = (curPage - 1) * PAGE_SIZE;
+    const visibleAttempts = filteredH.slice(startIdx, startIdx + PAGE_SIZE);
+
+    if (!visibleAttempts.length) {
+      list.innerHTML = '<div class="trend-empty">لا توجد محاولات في هذه الفترة</div>';
+    } else {
+      let currentKey = '';
+      let currentDayRows = null;
+      visibleAttempts.forEach((h) => {
+        const key = dayKey(h.t);
+        if (key !== currentKey) {
+          currentKey = key;
+          const dayBox = document.createElement('div');
+          dayBox.className = 'history-day';
+          const count = filteredH.filter((x) => dayKey(x.t) === key).length;
+          const shownInDay = visibleAttempts.filter((x) => dayKey(x.t) === key).length;
+          const dayCountText = shownInDay < count
+            ? (shownInDay + ' من ' + arCount(count, { one: 'محاولة', two: 'محاولتين', few: 'محاولات', many: 'محاولة' }))
+            : arCount(count, { one: 'محاولة', two: 'محاولتان', few: 'محاولات', many: 'محاولة' });
+          dayBox.innerHTML = '<div class="history-day-head"><span class="history-day-name">' +
+            escapeHtml(dayLabel(h.t)) + '</span><span class="history-day-count">' +
+            dayCountText + '</span></div>';
+          currentDayRows = document.createElement('div');
+          currentDayRows.className = 'history-day-rows';
+          dayBox.appendChild(currentDayRows);
+          list.appendChild(dayBox);
+        }
+        const row = document.createElement('div');
+        row.className = 'history-row';
+        const cleanLabel = (h.chapterLabel || '').replace(/^موضوع:\s*/, 'موضوع ');
+        const subInfo = (h.subjectTitle || '') + (cleanLabel ? ' · ' + cleanLabel : '');
+        let timeStr = '';
+        try {
+          timeStr = new Intl.DateTimeFormat('ar', { hour: '2-digit', minute: '2-digit' }).format(new Date(h.t || 0));
+        } catch (e) { timeStr = ''; }
+        const fracStr = (h.correct || 0) + '/' + (h.total || 0);
+
+        const hasQuizLink = Boolean(h.subjectId && h.quizId);
+        if (hasQuizLink) {
+          row.setAttribute('role', 'button');
+          row.setAttribute('tabindex', '0');
+          row.setAttribute('title', 'إعادة الاختبار');
+          row.onclick = () => {
+            location.hash = '#/quiz/' + encodeURIComponent(h.subjectId) + '/' + encodeURIComponent(h.quizId);
+          };
+          row.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.click(); }
+          };
+        }
+
+        row.innerHTML =
+          '<span class="history-pct ' + pctClass(h.pct) + '" dir="ltr"><i class="history-dot"></i>' + Math.round(h.pct) + '%</span>' +
+          '<div class="history-meta">' +
+            '<div class="history-topic">' + escapeHtml(h.topic || '') + '</div>' +
+            '<div class="history-sub">' + escapeHtml(subInfo) + '</div>' +
+          '</div>' +
+          '<div class="history-tail">' +
+            '<span class="history-frac" dir="ltr">' + escapeHtml(fracStr) + '</span>' +
+            (timeStr ? '<span class="history-time">' + escapeHtml(timeStr) + '</span>' : '') +
+          '</div>' +
+          (hasQuizLink ? '<i data-lucide="chevron-left" class="history-arrow" aria-hidden="true"></i>' : '');
+        if (currentDayRows) currentDayRows.appendChild(row);
+      });
+    }
+
+    if (totalPages > 1) {
+      const pager = document.createElement('div');
+      pager.className = 'history-pager';
+      const fromRow = startIdx + 1;
+      const toRow = Math.min(filteredH.length, startIdx + PAGE_SIZE);
+      pager.innerHTML =
+        '<button type="button" class="history-page-btn" id="history-prev-page" ' + (curPage <= 1 ? 'disabled' : '') + ' aria-label="الصفحة السابقة">' +
+          '<i data-lucide="chevron-right" aria-hidden="true"></i>' +
+          '<span>الأحدث</span>' +
+        '</button>' +
+        '<span class="history-page-info">' +
+          'صفحة <strong>' + curPage + '</strong> من <strong>' + totalPages + '</strong>' +
+          '<span class="history-page-range"> · (' + fromRow + '–' + toRow + ' من ' + filteredH.length + ')</span>' +
+        '</span>' +
+        '<button type="button" class="history-page-btn" id="history-next-page" ' + (curPage >= totalPages ? 'disabled' : '') + ' aria-label="الصفحة التالية">' +
+          '<span>الأقدم</span>' +
+          '<i data-lucide="chevron-left" aria-hidden="true"></i>' +
+        '</button>';
+      list.appendChild(pager);
+
+      const prevBtn = pager.querySelector('#history-prev-page');
+      const nextBtn = pager.querySelector('#history-next-page');
+      if (prevBtn) {
+        prevBtn.onclick = () => {
+          if (S.historyPage > 1) {
+            S.historyPage--;
+            renderStats();
+          }
+        };
+      }
+      if (nextBtn) {
+        nextBtn.onclick = () => {
+          if (S.historyPage < totalPages) {
+            S.historyPage++;
+            renderStats();
+          }
+        };
+      }
+    }
     icons();
   }
 
@@ -3742,7 +4114,7 @@
             '<b>' + s.n + '</b></div>').join('') +
           '</div>'
         : '') +
-      '<p class="player-note">' + (r.isBot ? 'منافس أسطوري ذكي يتفاعل مع وتيرة أدائك ومبارزاتك' : 'أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.') + '</p>';
+      '<p class="player-note">' + (r.isBot ? 'منافس أسطوري ذكي يتفاعل مع وتيرة أدائك وتحدياتك' : 'أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.') + '</p>';
     openDrawer('player-drawer');
     icons();
   }
@@ -5150,7 +5522,7 @@
       if (subEl) subEl.textContent = 'مواجهة متكافئة حتى اللحظة الأخيرة';
       if (iconEl) iconEl.innerHTML = '<i data-lucide="swords"></i>';
     } else {
-      if (titleEl) titleEl.textContent = vsState.isBot ? ('مبارزة قوية أمام ' + oppLabel + '!') : 'مبارزة قوية!';
+      if (titleEl) titleEl.textContent = vsState.isBot ? ('تحدٍ قوي أمام ' + oppLabel + '!') : 'تحدٍ قوي!';
       if (subEl) subEl.textContent = oppLabel + ' كان أسرع، جرب مرة أخرى لتنتزع الصدارة';
       if (iconEl) iconEl.innerHTML = '<i data-lucide="target"></i>';
     }
@@ -5673,6 +6045,7 @@ const weekBar = $('league-week-bar');
     document.querySelectorAll('.range-opt').forEach((b) => {
       b.addEventListener('click', () => {
         S.statsRange = Number(b.dataset.range);
+        S.historyPage = 1;
         saveUI();
         renderStats();
       });
@@ -5751,7 +6124,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.7';
+  const SHELL_VERSION = '1.8.8';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -338,31 +338,40 @@
 
             <!-- Statistics & history view -->
             <div id="stats-view" class="state-view hidden">
-                <div class="saved-topbar">
+                <div class="saved-topbar stats-topbar">
                     <div>
                         <h2 class="saved-title">الإحصائيات والسجل</h2>
                         <p id="stats-total-line" class="saved-total-line"></p>
+                    </div>
+                    <div class="stats-range" role="group" aria-label="الفترة">
+                        <button type="button" class="range-opt" data-range="1">اليوم</button>
+                        <button type="button" class="range-opt" data-range="7">7 أيام</button>
+                        <button type="button" class="range-opt" data-range="30">30 يوماً</button>
+                        <button type="button" class="range-opt" data-range="0">الكل</button>
                     </div>
                 </div>
 
                 <div id="stats-empty" class="stats-empty hidden">
                     <i data-lucide="chart-no-axes-column"></i>
                     <p>لا توجد محاولات بعد — ابدأ أول اختبار لتظهر نتائجك هنا.</p>
+                    <a href="#/catalog" class="action-btn secondary-btn stats-start-btn">
+                        <span>استعراض المواد</span>
+                        <i data-lucide="arrow-left" aria-hidden="true"></i>
+                    </a>
                 </div>
 
-                <div class="stats-range" role="group" aria-label="الفترة">
-                    <button type="button" class="range-opt" data-range="7">آخر أسبوع</button>
-                    <button type="button" class="range-opt" data-range="30">آخر شهر</button>
-                    <button type="button" class="range-opt" data-range="0">الكل</button>
+                <div class="stats-ledger">
+                    <div id="stats-hero" class="stats-hero"></div>
+                    <div id="stats-overall" class="stats-summary-grid"></div>
                 </div>
-
-                <div id="stats-hero" class="stats-hero"></div>
-                <div id="stats-overall" class="stats-summary-grid"></div>
 
                 <section class="stats-block" aria-label="تطوّر النتائج">
                     <div class="stats-block-head">
-                        <h3>نتائجك عبر الوقت</h3>
-                        <span class="stats-block-note">حدّ النجاح <span dir="ltr">60%</span></span>
+                        <div class="stats-block-title-group">
+                            <h3>تطوّر المستوى</h3>
+                            <span id="stats-trend-subtitle" class="stats-block-sub"></span>
+                        </div>
+                        <span class="stats-block-note">خط الاجتياز <span dir="ltr">60%</span></span>
                     </div>
                     <div id="stats-trend" class="stats-trend"></div>
                     <p id="stats-insight" class="stats-insight"></p>
@@ -373,9 +382,13 @@
                     <div id="stats-subjects" class="saved-groups"></div>
                 </section>
 
-                <section class="breakdown-section" aria-label="سجل المحاولات">
-                    <div class="breakdown-header">
-                        <h2>سجل المحاولات</h2>
+                <section id="history-section" class="breakdown-section" aria-label="سجل المحاولات">
+                    <div class="breakdown-header history-section-head">
+                        <div class="history-head-title-row">
+                            <h2>سجل المحاولات</h2>
+                            <span id="history-total-badge" class="history-total-badge"></span>
+                        </div>
+                        <div id="history-toolbar" class="history-toolbar"></div>
                     </div>
                     <div id="history-list" class="review-cards-list"></div>
                 </section>
@@ -523,11 +536,11 @@
         </div>
 
         <!-- VS 1v1 Competitive Mode -->
-        <div id="vs-view" class="vs-view hidden" role="region" aria-label="المبارزة المباشرة 1 ضد 1">
+        <div id="vs-view" class="vs-view hidden" role="region" aria-label="التحدي المباشر 1 ضد 1">
             <!-- Offline / Not Configured State -->
             <div id="vs-offline-card" class="league-empty hidden">
                 <i data-lucide="cloud-off" class="league-empty-icon"></i>
-                <p>تحتاج اتصالاً بالإنترنت لخوض المبارزة المباشرة</p>
+                <p>تحتاج اتصالاً بالإنترنت لخوض التحدي المباشر</p>
             </div>
 
             <!-- Sub-view 1: Lobby -->
@@ -537,7 +550,7 @@
                         <i data-lucide="swords" aria-hidden="true"></i>
                         <span>مباشر · 1 ضد 1</span>
                     </span>
-                    <h2 class="vs-hero-title">المبارزة المباشرة</h2>
+                    <h2 class="vs-hero-title">التحدي المباشر</h2>
                     <p class="vs-hero-desc">تنافس حي على نفس الأسئلة وبنفس اللحظة. الفائز من يحصد نقاطاً أعلى بالدقة والسرعة.</p>
                 </div>
 
@@ -552,12 +565,12 @@
 
                         <div class="vs-field-group">
                             <label for="vs-select-subject" class="field-label">المادة</label>
-                            <select id="vs-select-subject" aria-label="اختيار مادة المبارزة"></select>
+                            <select id="vs-select-subject" aria-label="اختيار مادة التحدي"></select>
                         </div>
 
                         <div class="vs-field-group">
                             <label for="vs-select-chapter" class="field-label">الفصل</label>
-                            <select id="vs-select-chapter" aria-label="اختيار فصل المبارزة"></select>
+                            <select id="vs-select-chapter" aria-label="اختيار فصل التحدي"></select>
                         </div>
 
                         <button id="vs-btn-create-room" class="action-btn primary-btn vs-cta-btn" type="button">
@@ -585,7 +598,7 @@
 
                         <div class="vs-join-actions">
                             <button id="vs-btn-join-room" class="action-btn secondary-btn vs-cta-btn" type="button">
-                                <span>دخول المبارزة</span>
+                                <span>دخول الغرفة</span>
                                 <i data-lucide="arrow-left" aria-hidden="true"></i>
                             </button>
                             <button id="vs-btn-scan-qr" class="action-btn text-btn vs-scan-btn" type="button" aria-label="مسح رمز الاستجابة السريعة">
@@ -887,7 +900,7 @@
                     <div class="vs-result-actions">
                         <button id="vs-btn-rematch" class="action-btn primary-btn" type="button">
                             <i data-lucide="rotate-cw" aria-hidden="true"></i>
-                            <span>مبارزة جديدة</span>
+                            <span>تحدٍ جديد</span>
                         </button>
                         <button id="vs-btn-exit" class="action-btn secondary-btn" type="button">
                             <span>العودة للمكتبة</span>
@@ -996,7 +1009,7 @@
                     </a>
                     <a id="menu-vs" class="menu-item" href="#/vs">
                         <i data-lucide="swords"></i>
-                        <span class="menu-item-label">المبارزة المباشرة</span>
+                        <span class="menu-item-label">التحدي المباشر</span>
                     </a>
                 </div>
 
