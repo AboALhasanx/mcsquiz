@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.3] — 2026-10-31
+
+### Changed
+- محاكاة إدراكية بشرية متكاملة للأساطير في طور المبارزة VS
+
+
 ## [1.8.2] — 2026-10-31
 
 ### Changed

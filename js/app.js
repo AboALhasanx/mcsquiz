@@ -2216,6 +2216,10 @@
       const botTimer = vsState.botTimer;
       if (botTimer) clearTimeout(botTimer);
       vsState.botTimer = null;
+      if (vsState.botStageTimers && vsState.botStageTimers.length) {
+        vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+        vsState.botStageTimers = [];
+      }
       if (vsState.roundTimer) { clearInterval(vsState.roundTimer); vsState.roundTimer = null; }
     }
     const m = h.match(/^#\/quiz\/([^/]+)\/([^/]+)$/);
@@ -4334,6 +4338,20 @@
         startVsLegendDuel(legendId);
       };
     });
+
+    const rivalIds = [$('vs-rival-ronaldinho'), $('vs-rival-zidane'), $('vs-rival-messi'), $('vs-rival-cristiano'), $('vs-rival-maradona')];
+    const legendKeys = ['ronaldinho', 'zidane', 'messi', 'cristiano', 'maradona'];
+    legendKeys.forEach((key, idx) => {
+      const el = rivalIds[idx];
+      if (el && window.PortalVSBot && window.PortalVSBot.getRivalStats) {
+        const st = window.PortalVSBot.getRivalStats(key);
+        if (!st || st.played === 0) {
+          el.textContent = 'المواجهات: لم تواجهه بعد';
+        } else {
+          el.textContent = 'المواجهات: ' + st.wins + ' فوز - ' + st.losses + ' خسارة' + (st.ties ? (' - ' + st.ties + ' تعادل') : '');
+        }
+      }
+    });
   }
 
   function startVsLegendDuel(legendId) {
@@ -4356,6 +4374,10 @@
       clearTimeout(vsState.botTimer);
       vsState.botTimer = null;
     }
+    if (vsState.botStageTimers && vsState.botStageTimers.length) {
+      vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+    }
+    vsState.botStageTimers = [];
     vsState.room = {
       room_id: 'legend_' + legend.id + '_' + Date.now(),
       subject_id: subId,
@@ -4656,11 +4678,28 @@
       });
     }
 
-    // Schedule Simulated Annealing Bot decision if playing vs Legend
+    // Schedule Human Cognitive Opponent decision if playing vs Legend
     if (vsState.botTimer) {
       clearTimeout(vsState.botTimer);
       vsState.botTimer = null;
     }
+    if (vsState.botStageTimers && vsState.botStageTimers.length) {
+      vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+      vsState.botStageTimers = [];
+    } else {
+      vsState.botStageTimers = [];
+    }
+
+    const oppBadge = $('vs-opp-badge');
+    const oppPod = $('vs-pod-opp');
+    if (oppPod) {
+      oppPod.classList.remove('is-reading', 'is-deliberating', 'is-hesitating', 'is-locked', 'is-correct', 'is-wrong');
+    }
+    if (oppBadge) {
+      oppBadge.className = 'vs-pod-tag';
+      oppBadge.textContent = (vsState.isBot && vsState.botLegend) ? 'يقرأ السؤال...' : 'المنافس';
+    }
+
     if (vsState.isBot && window.PortalVSBot && vsState.botLegend) {
       const botDec = window.PortalVSBot.decide(
         vsState.botLegend,
@@ -4671,6 +4710,22 @@
         vsState.botStreak
       );
       vsState.botDecision = botDec;
+
+      if (Array.isArray(botDec.stages)) {
+        botDec.stages.forEach((st) => {
+          const botStageTimer = setTimeout(() => {
+            if (vsState.resolved || vsState.oppLockedIn) return;
+            if (oppBadge && st.text) oppBadge.textContent = st.text;
+            if (oppBadge && st.phase) oppBadge.className = 'vs-pod-tag is-' + st.phase;
+            if (oppPod) {
+              oppPod.classList.remove('is-reading', 'is-deliberating', 'is-hesitating');
+              if (st.phase && st.phase !== 'locked') oppPod.classList.add('is-' + st.phase);
+            }
+          }, st.delayMs);
+          vsState.botStageTimers.push(botStageTimer);
+        });
+      }
+
       vsState.botTimer = setTimeout(() => {
         if (!vsState.resolved) {
           handleVsOpponentLockedIn({ timeMs: botDec.timeMs });
@@ -4746,6 +4801,16 @@
     vsState.oppTimeMs = payload.timeMs || 0;
     const oppBubble = $('vs-opp-locked-bubble');
     if (oppBubble) oppBubble.classList.remove('hidden');
+    const oppBadge = $('vs-opp-badge');
+    if (oppBadge) {
+      oppBadge.textContent = 'قفل الإجابة';
+      oppBadge.className = 'vs-pod-tag is-locked';
+    }
+    const oppPod = $('vs-pod-opp');
+    if (oppPod) {
+      oppPod.classList.remove('is-reading', 'is-deliberating', 'is-hesitating');
+      oppPod.classList.add('is-locked');
+    }
     if (vsState.myLockedIn) {
       resolveVsRound();
     }
@@ -4761,6 +4826,10 @@
     if (vsState.botTimer) {
       clearTimeout(vsState.botTimer);
       vsState.botTimer = null;
+    }
+    if (vsState.botStageTimers && vsState.botStageTimers.length) {
+      vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+      vsState.botStageTimers = [];
     }
 
     const oppBubble = $('vs-opp-locked-bubble');
@@ -4801,6 +4870,18 @@
         if (i === q.answer) b.classList.add('is-correct');
         else if (i === vsState.myPick && !isCorrect) b.classList.add('is-wrong');
       });
+
+      if (typeof vsState.oppPick === 'number' && vsState.oppPick >= 0 && vsState.oppPick < btns.length) {
+        const oppB = btns[vsState.oppPick];
+        if (oppB) {
+          oppB.classList.add('is-opp-picked');
+          const oppTag = document.createElement('span');
+          oppTag.className = 'vs-opt-opp-indicator';
+          const oppName = (vsState.isBot && vsState.botLegend) ? vsState.botLegend.name : 'المنافس';
+          oppTag.textContent = oppName;
+          oppB.appendChild(oppTag);
+        }
+      }
     }
 
     const meScore = $('vs-me-score');
@@ -4832,6 +4913,27 @@
 
     const oppScore = $('vs-opp-score');
     if (oppScore) oppScore.textContent = String(vsState.oppScore);
+
+    const oppBadge = $('vs-opp-badge');
+    const oppPod = $('vs-pod-opp');
+    if (oppBadge && vsState.isBot && vsState.botDecision) {
+      if (vsState.botDecision.isCorrect) {
+        oppBadge.textContent = 'صائب (+' + (payload.score || 0) + ')';
+        oppBadge.className = 'vs-pod-tag is-correct';
+        if (oppPod) {
+          oppPod.classList.remove('is-reading', 'is-deliberating', 'is-hesitating', 'is-locked', 'is-wrong');
+          oppPod.classList.add('is-correct');
+        }
+      } else {
+        const reason = vsState.botDecision.decisionReason || 'أخطأ في التقدير';
+        oppBadge.textContent = reason;
+        oppBadge.className = 'vs-pod-tag is-wrong';
+        if (oppPod) {
+          oppPod.classList.remove('is-reading', 'is-deliberating', 'is-hesitating', 'is-locked', 'is-correct');
+          oppPod.classList.add('is-wrong');
+        }
+      }
+    }
   }
 
   function showVsResult() {
@@ -4842,6 +4944,10 @@
     if (vsState.botTimer) {
       clearTimeout(vsState.botTimer);
       vsState.botTimer = null;
+    }
+    if (vsState.botStageTimers && vsState.botStageTimers.length) {
+      vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+      vsState.botStageTimers = [];
     }
 
     if (!vsState.isBot && vsState.role === 'host' && vsState.room && vsState.room.room_id && window.PortalVS) {
@@ -4870,6 +4976,14 @@
       if (iconEl) iconEl.innerHTML = '<i data-lucide="target"></i>';
     }
 
+    if (vsState.isBot && vsState.botLegend && window.PortalVSBot && window.PortalVSBot.recordMatchResult) {
+      const outcome = (vsState.myScore > vsState.oppScore) ? 'win' : (vsState.myScore < vsState.oppScore ? 'loss' : 'tie');
+      const st = window.PortalVSBot.recordMatchResult(vsState.botLegend.id, outcome);
+      if (st && subEl) {
+        subEl.textContent += ' • المواجهات: ' + st.wins + ' فوز - ' + st.losses + ' خسارة';
+      }
+    }
+
     const s1 = $('vs-final-p1-score');
     const s2 = $('vs-final-p2-score');
     if (s1) s1.textContent = String(vsState.myScore);
@@ -4885,6 +4999,10 @@
       btnRematch.onclick = () => {
         if (!vsState.isBot && window.PortalVS) window.PortalVS.leaveRoom();
         if (vsState.botTimer) clearTimeout(vsState.botTimer);
+        if (vsState.botStageTimers && vsState.botStageTimers.length) {
+          vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+          vsState.botStageTimers = [];
+        }
         const prevLegend = vsState.isBot ? vsState.botLegend : null;
         vsState.room = null;
         vsState.isBot = false;
@@ -4904,6 +5022,10 @@
       btnExit.onclick = () => {
         if (!vsState.isBot && window.PortalVS) window.PortalVS.leaveRoom();
         if (vsState.botTimer) clearTimeout(vsState.botTimer);
+        if (vsState.botStageTimers && vsState.botStageTimers.length) {
+          vsState.botStageTimers.forEach((botStageTimer) => { clearTimeout(botStageTimer); });
+          vsState.botStageTimers = [];
+        }
         vsState.room = null;
         vsState.isBot = false;
         vsState.botLegend = null;
@@ -5450,7 +5572,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.2';
+  const SHELL_VERSION = '1.8.3';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
