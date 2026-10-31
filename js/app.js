@@ -4425,7 +4425,10 @@
 
         if (oppName) oppName.textContent = legend.name;
         if (oppScore) oppScore.textContent = '0';
-        if (oppAv) oppAv.textContent = legend.avatar;
+        if (oppAv) {
+          oppAv.innerHTML = '<span>' + legend.avatar + '</span>';
+          oppAv.className = 'vs-pod-avatar av-' + legend.id;
+        }
         if (oppBadge) oppBadge.textContent = legend.title;
         if (oppBubble) oppBubble.classList.add('hidden');
 
@@ -5572,7 +5575,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.3';
+  const SHELL_VERSION = '1.8.4';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

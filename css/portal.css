@@ -2420,41 +2420,159 @@ html[data-theme="light"] .offline-banner {
   align-items: center;
   gap: 0.75rem;
 }
+.vs-legend-av-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.vs-legend-shape-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+.vs-legend-shape-badge svg {
+  width: 10px;
+  height: 10px;
+}
+.vs-legend-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.vs-legend-crest-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid;
+}
+.vs-legend-crest-tag.tag-ronaldinho {
+  background: rgba(245, 158, 11, 0.12);
+  color: #F59E0B;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.vs-legend-crest-tag.tag-zidane {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3B82F6;
+  border-color: rgba(59, 130, 246, 0.35);
+}
+.vs-legend-crest-tag.tag-messi {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.vs-legend-crest-tag.tag-cristiano {
+  background: rgba(239, 68, 68, 0.12);
+  color: #EF4444;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+.vs-legend-crest-tag.tag-maradona {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8B5CF6;
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
 .vs-legend-av {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
   font-size: 1.15rem;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
-.vs-legend-av.av-ronaldinho {
-  background: rgba(245, 158, 11, 0.15);
-  color: #F59E0B;
-  border: 1.5px solid #F59E0B;
+
+/* Unique Legend Geometric Shapes & Colors for Pods and Lobby Cards */
+.vs-legend-av.av-ronaldinho,
+.vs-pod.is-opp .vs-pod-avatar.av-ronaldinho {
+  border-radius: 18px 4px 18px 4px !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(217, 119, 6, 0.08)) !important;
+  color: #F59E0B !important;
+  border: 2px solid #F59E0B !important;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.35) !important;
+  transform: rotate(-3deg);
 }
-.vs-legend-av.av-zidane {
-  background: rgba(59, 130, 246, 0.15);
-  color: #3B82F6;
-  border: 1.5px solid #3B82F6;
+
+.vs-legend-av.av-zidane,
+.vs-pod.is-opp .vs-pod-avatar.av-zidane {
+  border-radius: 6px 6px 22px 22px !important;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(29, 78, 216, 0.08)) !important;
+  color: #3B82F6 !important;
+  border: 2px solid #3B82F6 !important;
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.35) !important;
+  transform: none;
 }
-.vs-legend-av.av-messi {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10B981;
-  border: 1.5px solid #10B981;
+
+.vs-legend-av.av-messi,
+.vs-pod.is-opp .vs-pod-avatar.av-messi {
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(4, 120, 87, 0.08)) !important;
+  color: #10B981 !important;
+  border: 2px solid #10B981 !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.35) !important;
+  transform: rotate(45deg);
 }
-.vs-legend-av.av-cristiano {
-  background: rgba(236, 72, 153, 0.15);
-  color: #EC4899;
-  border: 1.5px solid #EC4899;
+.vs-legend-av.av-messi > span,
+.vs-pod.is-opp .vs-pod-avatar.av-messi > span {
+  display: inline-block;
+  transform: rotate(-45deg);
 }
-.vs-legend-av.av-maradona {
-  background: rgba(139, 92, 246, 0.15);
-  color: #8B5CF6;
-  border: 1.5px solid #8B5CF6;
+
+.vs-legend-av.av-cristiano,
+.vs-pod.is-opp .vs-pod-avatar.av-cristiano {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%) !important;
+  border-radius: 0 !important;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.28), rgba(185, 28, 28, 0.12)) !important;
+  color: #EF4444 !important;
+  border: 2px solid #EF4444 !important;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.4) !important;
+  transform: none;
+}
+
+.vs-legend-av.av-maradona,
+.vs-pod.is-opp .vs-pod-avatar.av-maradona {
+  border-radius: 50% 18% 50% 18% !important;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(109, 40, 217, 0.1)) !important;
+  color: #8B5CF6 !important;
+  border: 2px solid #8B5CF6 !important;
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.35) !important;
+  transform: rotate(8deg);
+}
+.vs-legend-av.av-maradona > span,
+.vs-pod.is-opp .vs-pod-avatar.av-maradona > span {
+  display: inline-block;
+  transform: rotate(-8deg);
+}
+
+.vs-legend-card[data-legend="ronaldinho"]:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.15);
+}
+.vs-legend-card[data-legend="zidane"]:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+}
+.vs-legend-card[data-legend="messi"]:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+}
+.vs-legend-card[data-legend="cristiano"]:hover {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.15);
+}
+.vs-legend-card[data-legend="maradona"]:hover {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15);
 }
 .vs-legend-meta {
   display: flex;

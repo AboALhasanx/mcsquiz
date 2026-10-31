@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.4] — 2026-10-31
+
+### Changed
+- Distinct geometric shapes, badges and arena styles for football legend rivals
+
+
 ## [1.8.3] — 2026-10-31
 
 ### Changed
