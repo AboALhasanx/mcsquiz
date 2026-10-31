@@ -31,6 +31,7 @@
   }
 
   function _setClient(c) { injectedClient = c; clientPromise = null; }
+  function isMock() { return !!injectedClient; }
 
   // Never let a network call hold the UI: offline / a stalled CDN import must
   // surface as a normal rejection so the board can say "needs internet".
@@ -370,6 +371,7 @@
     shareText: shareText,
     displayName: displayName,
     _setClient: _setClient,
+    isMock: isMock,
     loadLocal: loadLocal,
     prewarm: prewarm,
   };

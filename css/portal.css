@@ -2334,18 +2334,49 @@ html[data-theme="light"] .offline-banner {
 }
 
 /* Legends Challenge Section */
-.vs-legends-section {
+details.vs-legends-section {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg, 16px);
-  padding: 1.25rem 1rem;
+  padding: 1rem 1.15rem;
   margin-bottom: 1.25rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.2s ease;
+}
+details.vs-legends-section[open] {
+  padding: 1.25rem 1rem 1.5rem;
 }
 @media (min-width: 680px) {
-  .vs-legends-section {
+  details.vs-legends-section[open] {
     padding: 1.5rem 1.25rem;
   }
+}
+details.vs-legends-section summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+details.vs-legends-section summary::-webkit-details-marker {
+  display: none;
+}
+.vs-legends-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+details.vs-legends-section[open] .vs-legends-summary {
+  margin-bottom: 0.5rem;
+}
+.vs-summary-chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+details.vs-legends-section[open] .vs-summary-chevron {
+  transform: rotate(180deg);
 }
 .vs-section-header {
   display: flex;
@@ -2449,9 +2480,10 @@ html[data-theme="light"] .offline-banner {
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
-  border: 2px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   display: inline-block;
+  overflow: hidden;
   transition: transform 0.2s ease;
 }
 .vs-legend-card:hover .vs-legend-img-av {
@@ -2474,15 +2506,15 @@ html[data-theme="light"] .offline-banner {
   color: #F59E0B;
   border-color: rgba(245, 158, 11, 0.35);
 }
-.vs-legend-crest-tag.tag-zidane {
-  background: rgba(59, 130, 246, 0.12);
-  color: #3B82F6;
-  border-color: rgba(59, 130, 246, 0.35);
-}
-.vs-legend-crest-tag.tag-messi {
+.vs-legend-crest-tag.tag-maldini {
   background: rgba(16, 185, 129, 0.12);
   color: #10B981;
   border-color: rgba(16, 185, 129, 0.35);
+}
+.vs-legend-crest-tag.tag-messi {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0EA5E9;
+  border-color: rgba(14, 165, 233, 0.35);
 }
 .vs-legend-crest-tag.tag-cristiano {
   background: rgba(239, 68, 68, 0.12);
@@ -2490,14 +2522,15 @@ html[data-theme="light"] .offline-banner {
   border-color: rgba(239, 68, 68, 0.35);
 }
 .vs-legend-crest-tag.tag-maradona {
-  background: rgba(139, 92, 246, 0.12);
-  color: #8B5CF6;
-  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(234, 179, 8, 0.12);
+  color: #EAB308;
+  border-color: rgba(234, 179, 8, 0.35);
 }
 
 .vs-legend-av {
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   font-size: 1.15rem;
   font-weight: 900;
   display: flex;
@@ -2507,87 +2540,25 @@ html[data-theme="light"] .offline-banner {
   transition: transform 0.2s ease;
 }
 
-/* Unique Legend Geometric Shapes & Colors for Pods and Lobby Cards */
-.vs-legend-av.av-ronaldinho,
-.vs-pod.is-opp .vs-pod-avatar.av-ronaldinho {
-  border-radius: 18px 4px 18px 4px !important;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(217, 119, 6, 0.08)) !important;
-  color: #F59E0B !important;
-  border: 2px solid #F59E0B !important;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.35) !important;
-  transform: rotate(-3deg);
-}
-
-.vs-legend-av.av-zidane,
-.vs-pod.is-opp .vs-pod-avatar.av-zidane {
-  border-radius: 6px 6px 22px 22px !important;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(29, 78, 216, 0.08)) !important;
-  color: #3B82F6 !important;
-  border: 2px solid #3B82F6 !important;
-  box-shadow: 0 0 14px rgba(59, 130, 246, 0.35) !important;
-  transform: none;
-}
-
-.vs-legend-av.av-messi,
-.vs-pod.is-opp .vs-pod-avatar.av-messi {
-  border-radius: 12px !important;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(4, 120, 87, 0.08)) !important;
-  color: #10B981 !important;
-  border: 2px solid #10B981 !important;
-  box-shadow: 0 0 14px rgba(16, 185, 129, 0.35) !important;
-  transform: rotate(45deg);
-}
-.vs-legend-av.av-messi > span,
-.vs-pod.is-opp .vs-pod-avatar.av-messi > span {
-  display: inline-block;
-  transform: rotate(-45deg);
-}
-
-.vs-legend-av.av-cristiano,
-.vs-pod.is-opp .vs-pod-avatar.av-cristiano {
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%) !important;
-  border-radius: 0 !important;
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.28), rgba(185, 28, 28, 0.12)) !important;
-  color: #EF4444 !important;
-  border: 2px solid #EF4444 !important;
-  box-shadow: 0 0 14px rgba(239, 68, 68, 0.4) !important;
-  transform: none;
-}
-
-.vs-legend-av.av-maradona,
-.vs-pod.is-opp .vs-pod-avatar.av-maradona {
-  border-radius: 50% 18% 50% 18% !important;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(109, 40, 217, 0.1)) !important;
-  color: #8B5CF6 !important;
-  border: 2px solid #8B5CF6 !important;
-  box-shadow: 0 0 14px rgba(139, 92, 246, 0.35) !important;
-  transform: rotate(8deg);
-}
-.vs-legend-av.av-maradona > span,
-.vs-pod.is-opp .vs-pod-avatar.av-maradona > span {
-  display: inline-block;
-  transform: rotate(-8deg);
-}
-
 .vs-legend-card[data-legend="ronaldinho"]:hover {
   border-color: rgba(245, 158, 11, 0.6);
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.15);
 }
-.vs-legend-card[data-legend="zidane"]:hover {
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
-}
-.vs-legend-card[data-legend="messi"]:hover {
+.vs-legend-card[data-legend="maldini"]:hover {
   border-color: rgba(16, 185, 129, 0.6);
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.15);
+}
+.vs-legend-card[data-legend="messi"]:hover {
+  border-color: rgba(14, 165, 233, 0.6);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
 }
 .vs-legend-card[data-legend="cristiano"]:hover {
   border-color: rgba(239, 68, 68, 0.6);
   box-shadow: 0 6px 20px rgba(239, 68, 68, 0.15);
 }
 .vs-legend-card[data-legend="maradona"]:hover {
-  border-color: rgba(139, 92, 246, 0.6);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15);
+  border-color: rgba(234, 179, 8, 0.6);
+  box-shadow: 0 6px 20px rgba(234, 179, 8, 0.15);
 }
 .vs-legend-meta {
   display: flex;
@@ -3364,3 +3335,146 @@ html[data-theme="light"] .offline-banner {
 }
 
 
+
+
+/* QR Code Scanner */
+.vs-join-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.vs-scan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm, 8px);
+  border: 1px dashed rgba(217, 119, 6, 0.45);
+  color: var(--accent);
+  background: rgba(217, 119, 6, 0.08);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.vs-scan-btn:hover {
+  background: rgba(217, 119, 6, 0.16);
+  border-color: var(--accent);
+}
+.vs-scan-btn:active {
+  transform: scale(0.98);
+}
+.vs-scan-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.vs-qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.vs-qr-modal.hidden {
+  display: none !important;
+}
+.vs-qr-modal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg, 16px);
+  width: 100%;
+  max-width: 360px;
+  padding: 1.25rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.vs-qr-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vs-qr-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.vs-qr-modal-title svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+.vs-qr-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+.vs-qr-close:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+.vs-qr-close svg {
+  width: 18px;
+  height: 18px;
+}
+.vs-qr-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vs-qr-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.vs-qr-guide {
+  position: absolute;
+  width: 72%;
+  height: 72%;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+.vs-qr-laser-line {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: qrLaserScan 2s ease-in-out infinite alternate;
+}
+@keyframes qrLaserScan {
+  0% { top: 10%; opacity: 0.85; }
+  100% { top: 90%; opacity: 0.85; }
+}
+.vs-qr-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+}

@@ -3496,6 +3496,7 @@
   }
 
   function mergeLeagueLegends(realRows, opts) {
+    if (window.PortalLeague && window.PortalLeague.isMock && window.PortalLeague.isMock()) return realRows || [];
     if (!window.PortalVSBot || !window.PortalVSBot.getLeagueRows) return realRows || [];
     const botRows = window.PortalVSBot.getLeagueRows(Object.assign({}, opts, {
       subjects: (S.index && S.index.subjects) || []
@@ -3694,7 +3695,6 @@
         avatarFor(r) +
         '<span class="league-row-name" dir="auto">' +
           escapeHtml(r.name || 'لاعب') +
-          (r.crest ? (' <span class="vs-legend-crest-tag tag-' + escapeHtml(r.legend_id || '') + ' league-crest-inline">' + escapeHtml(r.crest) + '</span>') : '') +
         '</span>' +
         '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
         (!S.leagueSubject ? '<span class="league-row-acc">' + (accuracyOf(r) !== null ? accuracyOf(r) + '%' : '—') + '</span>' : '');
@@ -3726,9 +3726,7 @@
       '<div class="player-head">' +
         avHtml +
         '<div class="player-head-text">' +
-          '<h3 dir="auto">' + escapeHtml(r.name || 'لاعب') +
-            (r.crest ? (' <span class="vs-legend-crest-tag tag-' + escapeHtml(r.legend_id || '') + '">' + escapeHtml(r.crest) + '</span>') : '') +
-          '</h3>' +
+          '<h3 dir="auto">' + escapeHtml(r.name || 'لاعب') + '</h3>' +
           '<p>' + (r.title ? escapeHtml(r.title) + ' · ' : '') + 'المركز ' + escapeHtml(String(r.rank || '—')) + ' هذا الأسبوع</p>' +
         '</div>' +
       '</div>' +
@@ -4375,6 +4373,125 @@
       };
     }
 
+    let qrStream = null;
+    let qrScanTimer = null;
+
+    const stopQrScanner = () => {
+      if (qrScanTimer) {
+        cancelAnimationFrame(qrScanTimer);
+        qrScanTimer = null;
+      }
+      if (qrStream) {
+        try {
+          qrStream.getTracks().forEach((t) => t.stop());
+        } catch (e) {} // audit-ignore: optional stream stop
+        qrStream = null;
+      }
+      const modal = $('vs-qr-modal');
+      if (modal) modal.classList.add('hidden');
+      const video = $('vs-qr-video');
+      if (video) video.srcObject = null;
+    };
+
+    const startQrScanner = async () => {
+      const modal = $('vs-qr-modal');
+      const video = $('vs-qr-video');
+      if (!modal || !video) return;
+
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        showToast('الكاميرا غير متاحة في هذا الجهاز');
+        return;
+      }
+
+      try {
+        modal.classList.remove('hidden');
+        icons();
+        qrStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: 'environment' } }
+        });
+        video.srcObject = qrStream;
+        await video.play();
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        let detector = null;
+        if ('BarcodeDetector' in window) {
+          try {
+            detector = new window.BarcodeDetector({ formats: ['qr_code'] });
+          } catch (e) {} // audit-ignore: BarcodeDetector fallback
+        }
+
+        const checkCode = (raw) => {
+          if (!raw) return false;
+          const m = String(raw).match(/(?:#\/vs\/|)([0-9]{4})/);
+          if (m && m[1]) {
+            const code = m[1];
+            stopQrScanner();
+            for (let i = 0; i < code.length && i < pins.length; i++) {
+              pins[i].value = code[i];
+            }
+            if (btnJoin) btnJoin.click();
+            return true;
+          }
+          return false;
+        };
+
+        const scanFrame = async () => {
+          if (!qrStream || video.readyState < 2) {
+            qrScanTimer = requestAnimationFrame(scanFrame);
+            return;
+          }
+
+          if (detector) {
+            try {
+              const barcodes = await detector.detect(video);
+              if (barcodes && barcodes.length) {
+                for (const b of barcodes) {
+                  if (checkCode(b.rawValue)) return;
+                }
+              }
+            } catch (e) {} // audit-ignore: detector frame scan
+          }
+
+          if (window.jsQR && ctx) {
+            if (canvas.width !== video.videoWidth || canvas.height !== video.videoHeight) {
+              canvas.width = video.videoWidth || 320;
+              canvas.height = video.videoHeight || 320;
+            }
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            try {
+              const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+              const res = window.jsQR(imgData.data, imgData.width, imgData.height, {
+                inversionAttempts: 'dontInvert'
+              });
+              if (res && res.data && checkCode(res.data)) return;
+            } catch (e) {} // audit-ignore: canvas scan frame error
+          }
+
+          qrScanTimer = requestAnimationFrame(scanFrame);
+        };
+
+        qrScanTimer = requestAnimationFrame(scanFrame);
+      } catch (err) {
+        stopQrScanner();
+        showToast('تعذر الوصول إلى الكاميرا');
+      }
+    };
+
+    const btnScan = $('vs-btn-scan-qr');
+    if (btnScan) btnScan.onclick = startQrScanner;
+
+    const btnCloseScan = $('vs-btn-close-scanner');
+    if (btnCloseScan) btnCloseScan.onclick = stopQrScanner;
+
+    const qrModal = $('vs-qr-modal');
+    if (qrModal && !qrModal._wired) {
+      qrModal._wired = true;
+      qrModal.onclick = (e) => {
+        if (e.target === qrModal) stopQrScanner();
+      };
+    }
+
     document.querySelectorAll('.vs-legend-btn').forEach((btn) => {
       btn.onclick = () => {
         const legendId = btn.getAttribute('data-legend');
@@ -4382,8 +4499,8 @@
       };
     });
 
-    const rivalIds = [$('vs-rival-ronaldinho'), $('vs-rival-zidane'), $('vs-rival-messi'), $('vs-rival-cristiano'), $('vs-rival-maradona')];
-    const legendKeys = ['ronaldinho', 'zidane', 'messi', 'cristiano', 'maradona'];
+    const rivalIds = [$('vs-rival-ronaldinho'), $('vs-rival-maldini'), $('vs-rival-messi'), $('vs-rival-cristiano'), $('vs-rival-maradona')];
+    const legendKeys = ['ronaldinho', 'maldini', 'messi', 'cristiano', 'maradona'];
     legendKeys.forEach((key, idx) => {
       const el = rivalIds[idx];
       if (el && window.PortalVSBot && window.PortalVSBot.getRivalStats) {
@@ -4395,6 +4512,14 @@
         }
       }
     });
+
+    const legDetails = document.querySelector('details.vs-legends-section');
+    if (legDetails && !legDetails._wired) {
+      legDetails._wired = true;
+      legDetails.addEventListener('toggle', () => {
+        if (legDetails.open) icons();
+      });
+    }
   }
 
   function startVsLegendDuel(legendId) {
@@ -5626,7 +5751,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.6';
+  const SHELL_VERSION = '1.8.7';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

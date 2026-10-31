@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.7] — 2026-10-31
+
+### Changed
+- Collapsible legends shelf at bottom, pure circular cartoon avatars without badges, and QR code camera scanner for joining duel rooms
+
+
 ## [1.8.6] — 2026-10-31
 
 ### Changed
