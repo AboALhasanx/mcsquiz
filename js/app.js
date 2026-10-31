@@ -3675,10 +3675,8 @@
     const myId = me && me.user_id;
     const myPhoto = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
     const avatarFor = (r) => {
-      if (r && r.legend_id) {
-        return '<span class="menu-avatar vs-legend-av av-' + escapeHtml(r.legend_id) + '"><span>' + escapeHtml(r.avatarChar || r.name.charAt(0)) + '</span></span>';
-      }
-      return avatarHtml(r.user_id === myId && !r.avatar ? myPhoto : r.avatar, r.name, 'menu-avatar');
+      const photo = (r.user_id === myId && !r.avatar) ? myPhoto : r.avatar;
+      return avatarHtml(photo, r.name, 'menu-avatar');
     };
     if (box) box.innerHTML = '';
     const usePodium = rows.length >= 3;
@@ -3723,9 +3721,7 @@
     const stat = (label, value) =>
       '<div class="player-stat"><span class="player-stat-value">' + escapeHtml(String(value)) +
       '</span><span class="player-stat-label">' + escapeHtml(label) + '</span></div>';
-    const avHtml = (r && r.legend_id)
-      ? '<span class="player-avatar vs-legend-av av-' + escapeHtml(r.legend_id) + '"><span>' + escapeHtml(r.avatarChar || r.name.charAt(0)) + '</span></span>'
-      : avatarHtml(r.avatar, r.name, 'player-avatar');
+    const avHtml = avatarHtml(r.avatar, r.name, 'player-avatar');
     card.innerHTML =
       '<div class="player-head">' +
         avHtml +
@@ -3777,9 +3773,7 @@
       const first = r.rank === 1;
       const photo = (myId && r.user_id === myId && !r.avatar) ? (myPhoto || '') : r.avatar;
       slot.className = 'podium-slot p' + r.rank + (myId && r.user_id === myId ? ' is-me' : '');
-      const avHtml = (r && r.legend_id)
-        ? '<span class="podium-av vs-legend-av av-' + escapeHtml(r.legend_id) + '"><span>' + escapeHtml(r.avatarChar || r.name.charAt(0)) + '</span></span>'
-        : avatarHtml(photo, r.name, 'podium-av');
+      const avHtml = avatarHtml(photo, r.name, 'podium-av');
       slot.innerHTML =
         '<span class="podium-av-wrap">' +
         (first ? '<span class="podium-crown" aria-hidden="true"><i data-lucide="crown"></i></span>' : '') +
@@ -4475,8 +4469,16 @@
         if (oppName) oppName.textContent = legend.name;
         if (oppScore) oppScore.textContent = '0';
         if (oppAv) {
-          oppAv.innerHTML = '<span>' + legend.avatar + '</span>';
-          oppAv.className = 'vs-pod-avatar av-' + legend.id;
+          if (legend.avatar && legend.avatar.indexOf('/') !== -1) {
+            oppAv.className = 'vs-pod-avatar avatar-default';
+            oppAv.style.backgroundImage = 'url("' + legend.avatar + '"),url("assets/avatar-default.svg")';
+            oppAv.style.backgroundSize = 'cover';
+            oppAv.style.backgroundPosition = 'center';
+            oppAv.innerHTML = '';
+          } else {
+            oppAv.innerHTML = '<span>' + (legend.avatarChar || legend.avatar) + '</span>';
+            oppAv.className = 'vs-pod-avatar av-' + legend.id;
+          }
         }
         if (oppBadge) oppBadge.textContent = legend.title;
         if (oppBubble) oppBubble.classList.add('hidden');
@@ -5624,7 +5626,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.5';
+  const SHELL_VERSION = '1.8.6';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

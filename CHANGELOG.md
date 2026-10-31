@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.6] — 2026-10-31
+
+### Changed
+- Add authentic user photo avatars for football legend rivals across league and arena
+
+
 ## [1.8.5] — 2026-10-31
 
 ### Changed
