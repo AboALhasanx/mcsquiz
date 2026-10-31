@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.9] — 2026-11-01
+
+### Changed
+- إعادة تصميم شاشة الأسئلة المحفوظة: بطاقات مراجعة فورية، وضع اختبر ذاكرتك (Active Recall)، ونظام صفحات للفصول الكبيرة
+
+
 ## [1.8.8] — 2026-11-01
 
 ### Changed

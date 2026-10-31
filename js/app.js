@@ -1040,6 +1040,12 @@
   function savedGroups() {
     // [{subjectId, subjectTitle, chapters: [{chapterNo, topic, items: [{key, origin, snapshot}]}]}]
     const bySub = {};
+    const strTopic = (v) => {
+      if (!v) return '';
+      if (typeof v === 'string') return v;
+      if (typeof v === 'object') return v.ar || v.en || '';
+      return '';
+    };
     Object.keys(S.saved).forEach((key) => {
       const it = S.saved[key];
       if (!it) return;
@@ -1047,9 +1053,10 @@
       const sid = o.subjectId || it.sub || it.subjectId || 'other';
       const stitle = o.subjectTitle || it.subjectTitle || (S.index && S.index.subjects && S.index.subjects.find((s) => s.subject_id === sid) ? S.index.subjects.find((s) => s.subject_id === sid).subject_title : 'أسئلة عامة');
       const cno = o.chapterNo !== undefined ? o.chapterNo : (it.chapterNo !== undefined ? it.chapterNo : 1);
-      const topic = o.topic || it.topic || '';
+      const topic = strTopic(o.topic) || strTopic(it.topic);
       bySub[sid] = bySub[sid] || { subjectId: sid, subjectTitle: stitle, chapters: {} };
       const ch = bySub[sid].chapters[cno] = bySub[sid].chapters[cno] || { chapterNo: cno, topic: topic, items: [] };
+      if (!ch.topic && topic) ch.topic = topic;
       ch.items.push({ key: key, origin: o, snapshot: it.snapshot || it });
     });
     return Object.keys(bySub).map((sid) => ({
@@ -1065,6 +1072,9 @@
     } catch (e) {}
     const box = $('saved-groups');
     box.innerHTML = '';
+    const topActions = $('saved-top-actions');
+    if (topActions) topActions.innerHTML = '';
+
     const groups = savedGroups();
     let total = 0;
     groups.forEach((g) => g.chapters.forEach((c) => { total += c.items.length; }));
@@ -1072,7 +1082,6 @@
       savedCount(total) + ' في ' + arCount(groups.length, { one: 'مادة واحدة', two: 'مادتين', few: 'مواد', many: 'مادة' });
     $('saved-empty-state').classList.toggle('hidden', total !== 0);
 
-    // Filter bars (same pattern as catalog): subject chips, then chapter chips. No "all".
     const subBar = $('saved-subject-bar');
     const chBar = $('saved-chapter-bar');
     if (total === 0) {
@@ -1081,41 +1090,95 @@
       icons();
       return;
     }
-    if (subBar) subBar.style.display = '';
+
     if (!S.savedSubject || !groups.some((g) => g.subjectId === S.savedSubject)) {
       S.savedSubject = groups[0].subjectId;
       S.savedChapter = null;
     }
     const sub = groups.find((g) => g.subjectId === S.savedSubject) || groups[0];
+    const subAll = [];
+    sub.chapters.forEach((c) => c.items.forEach((it) => subAll.push(it)));
+
+    // Topbar action: practice whole subject (or all saved) right in the header
+    if (topActions && subAll.length > 0) {
+      const genSub = document.createElement('button');
+      genSub.type = 'button';
+      genSub.className = 'action-btn secondary-btn saved-gen-btn';
+      genSub.innerHTML = '<i data-lucide="layers"></i><span>اختبار المادة (' + subAll.length + ')</span>';
+      genSub.setAttribute('aria-label', 'توليد اختبار من كل محفوظ ' + sub.subjectTitle);
+      genSub.addEventListener('click', () => startSavedPractice(
+        subAll,
+        'اختبار محفوظ ' + sub.subjectTitle,
+        'اختبار شامل (' + subAll.length + ' أسئلة)'
+      ));
+      topActions.appendChild(genSub);
+    }
+
+    // Subject filter bar: only show if there are 2+ subjects (avoid redundant 1-subject pill)
     if (subBar) {
       subBar.innerHTML = '';
-      groups.forEach((g) => {
-        const n = g.chapters.reduce((a, c) => a + c.items.length, 0);
-        const b = document.createElement('button');
-        b.className = 'filter-chip' + (S.savedSubject === g.subjectId ? ' active' : '');
-        b.textContent = g.subjectTitle + ' (' + n + ')';
-        b.setAttribute('aria-pressed', S.savedSubject === g.subjectId ? 'true' : 'false');
-        b.addEventListener('click', () => { S.savedSubject = g.subjectId; S.savedChapter = null; saveUI(); renderSaved(); });
-        subBar.appendChild(b);
-      });
+      if (groups.length <= 1) {
+        subBar.style.display = 'none';
+        $('saved-total-line').textContent = sub.subjectTitle + ' · ' + savedCount(total);
+      } else {
+        subBar.style.display = '';
+        groups.forEach((g) => {
+          const n = g.chapters.reduce((a, c) => a + c.items.length, 0);
+          const b = document.createElement('button');
+          b.className = 'filter-chip' + (S.savedSubject === g.subjectId ? ' active' : '');
+          b.textContent = g.subjectTitle + ' (' + n + ')';
+          b.setAttribute('aria-pressed', S.savedSubject === g.subjectId ? 'true' : 'false');
+          b.addEventListener('click', () => {
+            S.savedSubject = g.subjectId;
+            S.savedChapter = null;
+            S.savedPage = 1;
+            saveUI();
+            renderSaved();
+          });
+          subBar.appendChild(b);
+        });
+      }
     }
+
+    // Chapter filter bar: include "الكل" (0) + each chapter with its saved count
     const chNos = sub.chapters.map((c) => c.chapterNo);
-    if (!S.savedChapter || !chNos.includes(S.savedChapter)) S.savedChapter = chNos[0];
-    const expanded = true; // subject block always open; chapters collapse individually
+    if (S.savedChapter === null || S.savedChapter === undefined || (S.savedChapter !== 0 && !chNos.includes(S.savedChapter))) {
+      S.savedChapter = chNos[0];
+    }
     if (chBar) {
       chBar.innerHTML = '';
-      if (!expanded || chNos.length <= 1) { chBar.style.display = 'none'; }
-      else {
+      if (chNos.length <= 1) {
+        chBar.style.display = 'none';
+      } else {
         chBar.style.display = '';
-        chBar.appendChild(filterBarLabel('جابتر'));
-        chNos.forEach((n) => {
+        const allChBtn = document.createElement('button');
+        allChBtn.type = 'button';
+        allChBtn.className = 'filter-chip chapter-chip' + (S.savedChapter === 0 ? ' active' : '');
+        allChBtn.textContent = 'كل الفصول (' + subAll.length + ')';
+        allChBtn.setAttribute('aria-pressed', S.savedChapter === 0 ? 'true' : 'false');
+        allChBtn.addEventListener('click', () => {
+          S.savedChapter = 0;
+          S.savedPage = 1;
+          saveUI();
+          renderSaved();
+        });
+        chBar.appendChild(allChBtn);
+
+        sub.chapters.forEach((chObj) => {
+          const n = chObj.chapterNo;
           const b = document.createElement('button');
+          b.type = 'button';
           b.className = 'filter-chip chapter-chip' + (S.savedChapter === n ? ' active' : '');
-          b.textContent = n;
-          b.setAttribute('aria-label', 'جابتر ' + n);
-          b.title = 'جابتر ' + n;
+          b.textContent = 'فصل ' + n + ' (' + chObj.items.length + ')';
+          b.setAttribute('aria-label', 'فصل ' + n);
+          b.title = chObj.topic ? ('فصل ' + n + ' · ' + chObj.topic) : ('فصل ' + n);
           b.setAttribute('aria-pressed', S.savedChapter === n ? 'true' : 'false');
-          b.addEventListener('click', () => { S.savedChapter = n; S.savedChapterOpen = null; saveUI(); renderSaved(); });
+          b.addEventListener('click', () => {
+            S.savedChapter = n;
+            S.savedPage = 1;
+            saveUI();
+            renderSaved();
+          });
           chBar.appendChild(b);
         });
         const act = chBar.querySelector('.filter-chip.active');
@@ -1123,116 +1186,218 @@
       }
     }
 
-    const letters = S.lang === 'ar' ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
-    // Subject-level block: title + whole-subject test generation
-    const subAll = [];
-    sub.chapters.forEach((c) => c.items.forEach((it) => subAll.push(it)));
-    const subWrap = document.createElement('div');
-    subWrap.className = 'saved-group saved-subject-block';
-    const subHead = document.createElement('div');
-    subHead.className = 'saved-group-head';
-    const subTitle = document.createElement('div');
-    subTitle.innerHTML = '<div class="saved-group-title">' + escapeHtml(sub.subjectTitle) +
-      '</div><div class="saved-group-sub">' + savedCount(subAll.length) + '</div>';
-    subHead.appendChild(subTitle);
-    const genSub = document.createElement('button');
-    genSub.type = 'button';
-    genSub.className = 'action-btn secondary-btn saved-gen-btn';
-    genSub.innerHTML = '<i data-lucide="layers"></i><span>اختبار المادة</span>';
-    genSub.setAttribute('aria-label', 'توليد اختبار من كل محفوظ ' + sub.subjectTitle);
-    genSub.addEventListener('click', () => startSavedPractice(
-      subAll,
-      'اختبار محفوظ ' + sub.subjectTitle,
-      'اختبار شامل (' + subAll.length + ' أسئلة)'
-    ));
-    subHead.appendChild(genSub);
-    subWrap.appendChild(subHead);
-    box.appendChild(subWrap);
+    const activeCh = S.savedChapter === 0
+      ? null
+      : (sub.chapters.find((x) => x.chapterNo === S.savedChapter) || sub.chapters[0]);
+    const activeItems = activeCh ? activeCh.items : subAll;
 
+    // Resolve chapter topic title from index/bank if not on origin
+    let chTopic = activeCh ? (activeCh.topic || '') : '';
+    if (activeCh && !chTopic && S.index && Array.isArray(S.index.subjects)) {
+      const idxSub = S.index.subjects.find((s) => s.subject_id === sub.subjectId);
+      const idxCh = idxSub && (idxSub.chapters || []).find((ch) => Number(ch.chapter_no) === Number(activeCh.chapterNo));
+      if (idxCh && idxCh.topic) chTopic = idxCh.topic.ar || idxCh.topic.en || '';
+    }
 
-    // Selected chapter block: items + chapter-only test generation
-    const c = sub.chapters.find((x) => x.chapterNo === S.savedChapter) || sub.chapters[0];
     const wrap = document.createElement('div');
-    wrap.className = 'saved-group';
+    wrap.className = 'saved-group saved-ledger-wrap';
+
+    // Context Deck Header: Chapter/Subject Title + Study Mode Switch + Start Quiz Button
     const head = document.createElement('div');
-    head.className = 'saved-group-head';
-    head.innerHTML = '<div><div class="saved-group-title">' + escapeHtml('جابتر ' + c.chapterNo) +
-      '</div><div class="saved-group-sub">' + qCount(c.items.length) + '</div></div>';
-    const train = document.createElement('button');
-    train.type = 'button';
-    train.className = 'action-btn secondary-btn saved-train-btn';
-    train.innerHTML = '<i data-lucide="play"></i><span>اختبار</span>';
-    train.setAttribute('aria-label', 'توليد اختبار لجابتر ' + c.chapterNo);
-    train.addEventListener('click', () => startSavedPractice(
-      c.items,
-      'اختبار محفوظ ' + sub.subjectTitle + ' ' + 'جابتر ' + c.chapterNo,
-      'جابتر ' + c.chapterNo + ' (' + c.items.length + ' أسئلة)'
-    ));
-    const chExp = document.createElement('button');
-    chExp.type = 'button';
-    chExp.className = 'icon-btn saved-expand-btn' + (S.savedChapterOpen === c.chapterNo ? ' open' : '');
-    chExp.setAttribute('aria-label', 'فتح أو طي أسئلة الجابتر');
-    chExp.setAttribute('aria-expanded', S.savedChapterOpen === c.chapterNo ? 'true' : 'false');
-    chExp.innerHTML = '<i data-lucide="chevron-down"></i>';
-    chExp.addEventListener('click', () => {
-      S.savedChapterOpen = S.savedChapterOpen === c.chapterNo ? null : c.chapterNo;
-      saveUI();
+    head.className = 'saved-deck-header';
+    const headInfo = document.createElement('div');
+    headInfo.className = 'saved-deck-info';
+    const deckTitle = activeCh
+      ? ('الفصل ' + activeCh.chapterNo + (chTopic ? ' · ' + chTopic : ''))
+      : ('كل فصول ' + sub.subjectTitle);
+    headInfo.innerHTML =
+      '<div class="saved-group-title">' + escapeHtml(deckTitle) + '</div>' +
+      '<div class="saved-group-sub">' + qCount(activeItems.length) + ' للمراجعة</div>';
+    head.appendChild(headInfo);
+
+    const headControls = document.createElement('div');
+    headControls.className = 'saved-deck-controls';
+
+    // Recall Mode toggle: Hide answers vs Reveal answers
+    const hideAnswers = Boolean(S.savedHideAnswers);
+    const modeBtn = document.createElement('button');
+    modeBtn.type = 'button';
+    modeBtn.id = 'btn-saved-recall-mode';
+    modeBtn.className = 'action-btn secondary-btn saved-mode-btn' + (hideAnswers ? ' active' : '');
+    modeBtn.innerHTML = '<i data-lucide="' + (hideAnswers ? 'eye' : 'eye-off') + '"></i><span>' + (hideAnswers ? 'إظهار الحلول' : 'اختبر ذاكرتك') + '</span>';
+    modeBtn.setAttribute('aria-pressed', hideAnswers ? 'true' : 'false');
+    modeBtn.title = hideAnswers ? 'إظهار الإجابات الصحيحة لكل الأسئلة' : 'إخفاء الإجابات لتخمين الحل بنفسك قبل كشفه';
+    modeBtn.addEventListener('click', () => {
+      S.savedHideAnswers = !S.savedHideAnswers;
       renderSaved();
     });
-    const groupActions = document.createElement('div');
-    groupActions.className = 'saved-group-actions';
-    groupActions.appendChild(train);
-    groupActions.appendChild(chExp);
-    head.appendChild(groupActions);
+    headControls.appendChild(modeBtn);
+
+    if (activeCh) {
+      const train = document.createElement('button');
+      train.type = 'button';
+      train.className = 'action-btn secondary-btn saved-train-btn';
+      train.innerHTML = '<i data-lucide="play"></i><span>اختبار الفصل</span>';
+      train.setAttribute('aria-label', 'توليد اختبار لجابتر ' + activeCh.chapterNo);
+      train.addEventListener('click', () => startSavedPractice(
+        activeCh.items,
+        'اختبار محفوظ ' + sub.subjectTitle + ' جابتر ' + activeCh.chapterNo,
+        'جابتر ' + activeCh.chapterNo + ' (' + activeCh.items.length + ' أسئلة)'
+      ));
+      headControls.appendChild(train);
+    }
+
+    head.appendChild(headControls);
     wrap.appendChild(head);
-    if (S.savedChapterOpen !== c.chapterNo) { box.appendChild(wrap); icons(); return; }
-    c.items.forEach((it) => {
+
+    // Paginate saved questions (8 per page so 62+ questions never cause endless scroll)
+    const PAGE_SIZE = 8;
+    const totalPages = Math.max(1, Math.ceil(activeItems.length / PAGE_SIZE));
+    let curPage = Number(S.savedPage) || 1;
+    if (curPage < 1) curPage = 1;
+    if (curPage > totalPages) curPage = totalPages;
+    S.savedPage = curPage;
+
+    const startIdx = (curPage - 1) * PAGE_SIZE;
+    const visibleItems = activeItems.slice(startIdx, startIdx + PAGE_SIZE);
+
+    const cardsList = document.createElement('div');
+    cardsList.className = 'saved-cards-list';
+
+    visibleItems.forEach((it, idx) => {
       const q = it.snapshot;
-      const card = document.createElement('div');
-      card.className = 'review-card correct-border saved-card';
+      const globalNum = startIdx + idx + 1;
+      const card = document.createElement('article');
+      card.className = 'saved-q-card' + (hideAnswers ? ' is-masked' : '');
+
+      // Card Topbar: Question Badge + Chapter Tag (if in All view) + Subtle Unsave Icon
+      const cardTop = document.createElement('div');
+      cardTop.className = 'saved-q-top';
+      const metaLeft = document.createElement('div');
+      metaLeft.className = 'saved-q-meta';
+      const chBadge = (!activeCh && it.origin && it.origin.chapterNo)
+        ? '<span class="saved-q-ch-tag">فصل ' + escapeHtml(String(it.origin.chapterNo)) + '</span>'
+        : '';
+      metaLeft.innerHTML = '<span class="saved-q-num" dir="ltr">#' + globalNum + '</span>' + chBadge;
+      cardTop.appendChild(metaLeft);
+
+      const rm = document.createElement('button');
+      rm.type = 'button';
+      rm.className = 'icon-btn saved-unsave-btn';
+      rm.innerHTML = '<i data-lucide="bookmark-minus"></i><span>إزالة</span>';
+      rm.setAttribute('aria-label', 'إزالة السؤال من المحفوظ');
+      rm.title = 'إزالة من المحفوظات';
+      rm.addEventListener('click', () => {
+        delete S.saved[it.key];
+        markSavedRemoved(it.key);
+        if (Object.keys(S.saved).length === 0) { S.savedSubject = null; S.savedChapter = null; }
+        persistSaved(); updateSavedBadge(); renderSaved(); icons();
+        toast('أُزيل من المحفوظ');
+      });
+      cardTop.appendChild(rm);
+      card.appendChild(cardTop);
+
+      // Question Stem
+      const stemWrap = document.createElement('div');
+      stemWrap.className = 'saved-q-stem';
       stemPair(q).forEach((sp, si) => {
         const stem = document.createElement('p');
         stem.className = 'review-question-text' + (si > 0 ? ' review-question-text-sub' : '');
         stem.innerHTML = richHtml(sp.t);
         stem.setAttribute('dir', 'auto');
-        card.appendChild(stem);
+        stemWrap.appendChild(stem);
       });
-      const optionsList = document.createElement('div');
-      optionsList.className = 'review-options-list';
+      card.appendChild(stemWrap);
+
+      // Reveal button when in Self-Test (Recall) mode
+      if (hideAnswers) {
+        const revealBtn = document.createElement('button');
+        revealBtn.type = 'button';
+        revealBtn.className = 'saved-reveal-btn';
+        revealBtn.innerHTML = '<i data-lucide="eye"></i><span>إظهار الإجابة والشرح</span>';
+        revealBtn.addEventListener('click', () => {
+          card.classList.remove('is-masked');
+          revealBtn.remove();
+        });
+        card.appendChild(revealBtn);
+      }
+
+      // Answer + Explanation container
+      const solutionWrap = document.createElement('div');
+      solutionWrap.className = 'saved-q-solution';
+
       for (let oi = 0; oi < 4; oi++) {
         if (oi !== q.correct) continue;
         const pair = optsPair(q, oi);
         const item = document.createElement('div');
-        item.className = 'review-option-item correct-answer';
+        item.className = 'saved-correct-answer';
         item.setAttribute('dir', 'auto');
         const li = lettersFor(pair[0].lang);
-        item.innerHTML = '<span class="review-option-indicator">' + li[oi] +
-          '</span><span class="review-option-text">' + pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + richHtml(p.t) + '</span>').join('') + '</span>';
-        optionsList.appendChild(item);
+        item.innerHTML =
+          '<span class="saved-ans-badge">' + li[oi] + '</span>' +
+          '<div class="saved-ans-text">' +
+            pair.map((p) => '<span class="opt-line opt-' + p.lang + '">' + richHtml(p.t) + '</span>').join('') +
+          '</div>';
+        solutionWrap.appendChild(item);
       }
-      card.appendChild(optionsList);
+
       const expl = explText(q);
       if (expl) {
         const exp = document.createElement('div');
-        exp.className = 'review-explanation-box';
+        exp.className = 'saved-q-expl';
         exp.setAttribute('dir', 'auto');
-        exp.innerHTML = '<strong>الشرح</strong><span>' + richHtml(expl) + '</span>';
-        card.appendChild(exp);
+        exp.innerHTML = '<span class="saved-expl-label">الشرح</span><div class="saved-expl-body">' + richHtml(expl) + '</div>';
+        solutionWrap.appendChild(exp);
       }
-      const rm = document.createElement('button');
-      rm.type = 'button';
-      rm.className = 'action-btn secondary-btn saved-remove-btn';
-      rm.innerHTML = '<i data-lucide="trash-2"></i><span>إزالة</span>';
-      rm.setAttribute('aria-label', 'إزالة السؤال من المحفوظ');
-      rm.addEventListener('click', () => {
-        delete S.saved[it.key];
-        if (Object.keys(S.saved).length === 0) { S.savedSubject = null; S.savedChapter = null; }
-        persistSaved(); updateSavedBadge(); renderSaved(); icons();
-        toast('أُزيل من المحفوظ');
-      });
-      card.appendChild(rm);
-      wrap.appendChild(card);
+
+      card.appendChild(solutionWrap);
+      cardsList.appendChild(card);
     });
+
+    wrap.appendChild(cardsList);
+
+    if (totalPages > 1) {
+      const pager = document.createElement('div');
+      pager.className = 'history-pager saved-pager';
+      const fromRow = startIdx + 1;
+      const toRow = Math.min(activeItems.length, startIdx + PAGE_SIZE);
+      pager.innerHTML =
+        '<button type="button" class="history-page-btn" id="saved-prev-page" ' + (curPage <= 1 ? 'disabled' : '') + ' aria-label="الصفحة السابقة">' +
+          '<i data-lucide="chevron-right" aria-hidden="true"></i>' +
+          '<span>السابق</span>' +
+        '</button>' +
+        '<span class="history-page-info">' +
+          'صفحة <strong>' + curPage + '</strong> من <strong>' + totalPages + '</strong>' +
+          '<span class="history-page-range"> · (' + fromRow + '–' + toRow + ' من ' + activeItems.length + ')</span>' +
+        '</span>' +
+        '<button type="button" class="history-page-btn" id="saved-next-page" ' + (curPage >= totalPages ? 'disabled' : '') + ' aria-label="الصفحة التالية">' +
+          '<span>التالي</span>' +
+          '<i data-lucide="chevron-left" aria-hidden="true"></i>' +
+        '</button>';
+      wrap.appendChild(pager);
+
+      const prevBtn = pager.querySelector('#saved-prev-page');
+      const nextBtn = pager.querySelector('#saved-next-page');
+      if (prevBtn) {
+        prevBtn.onclick = () => {
+          if (S.savedPage > 1) {
+            S.savedPage--;
+            renderSaved();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        };
+      }
+      if (nextBtn) {
+        nextBtn.onclick = () => {
+          if (S.savedPage < totalPages) {
+            S.savedPage++;
+            renderSaved();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        };
+      }
+    }
+
     box.appendChild(wrap);
     icons();
   }
@@ -6124,7 +6289,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.8';
+  const SHELL_VERSION = '1.8.9';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

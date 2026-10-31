@@ -322,17 +322,23 @@
 
             <!-- Saved Questions View (organized Subject -> Chapter) -->
             <div id="saved-view" class="state-view hidden">
-                <div class="saved-topbar">
+                <div class="saved-topbar saved-head-bar">
                     <div>
                         <h2 class="saved-title">الأسئلة المحفوظة</h2>
                         <p id="saved-total-line" class="saved-total-line"></p>
                     </div>
+                    <div id="saved-top-actions" class="saved-top-actions"></div>
                 </div>
                 <div class="catalog-filter-bar" id="saved-subject-bar" role="group" aria-label="فلتر المواد المحفوظة"></div>
                 <div class="catalog-filter-bar chapter-bar" id="saved-chapter-bar" role="group" aria-label="فلتر الجابترات المحفوظة"></div>
                 <div id="saved-groups" class="saved-groups"></div>
-                <div id="saved-empty-state" class="catalog-empty-state hidden">
-                    لا توجد أسئلة محفوظة بعد — افتح أي كوز واضغط زر الحفظ أعلى السؤال
+                <div id="saved-empty-state" class="stats-empty hidden">
+                    <i data-lucide="bookmark"></i>
+                    <p>لا توجد أسئلة محفوظة بعد — اضغط أيقونة الحفظ أعلى أي سؤال أثناء الاختبار للرجوع إليه هنا.</p>
+                    <a href="#/catalog" class="action-btn secondary-btn stats-start-btn">
+                        <span>استعراض المواد</span>
+                        <i data-lucide="arrow-left" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
 
