@@ -30,6 +30,8 @@
       id: 'ronaldinho',
       name: 'رونالدينيو',
       title: 'الساحر المباغت',
+      crest: 'ساحر السامبا',
+      shape: 'squircle',
       avatar: 'ر',
       archetype: 'حدسي عفوي',
       description: 'يعتمد على الانطباع الأول وسرعة البديهة؛ نادر التردد لكنه يقع في فخاخ النفي والمشتتات الخادعة.',
@@ -46,6 +48,8 @@
       id: 'zidane',
       name: 'زيدان',
       title: 'المايسترو المتزن',
+      crest: 'درع المايسترو',
+      shape: 'shield',
       avatar: 'ز',
       archetype: 'محلل منهجي',
       description: 'يستبعد الخيارات خطوة بخطوة بهدوء؛ محصن ضد فخاخ النفي والمشتتات السطحية لكنه يتأنى في الحسم.',
@@ -62,6 +66,8 @@
       id: 'messi',
       name: 'ميسي',
       title: 'الموهبة الخارقة',
+      crest: 'النجم الألماسي',
+      shape: 'diamond',
       avatar: 'م',
       archetype: 'ذكي متزن',
       description: 'قراءة شاملة واستيعاب سريع للأنماط؛ يوازن بذكاء بين سرعة الوقت ودقة الاختيار.',
@@ -78,6 +84,8 @@
       id: 'cristiano',
       name: 'كريستيانو',
       title: 'الحاسم تحت الضغط',
+      crest: 'المقاتل الفولاذي',
+      shape: 'octagon',
       avatar: 'ك',
       archetype: 'مقاتل تنافسي',
       description: 'انضباط تكتيكي وتركيز تصاعدي؛ يشتعل حماسه ودقته إلى أقصى حد في الجولة الحاسمة وعند التأخر.',
@@ -94,6 +102,8 @@
       id: 'maradona',
       name: 'مارادونا',
       title: 'العبقري المندفع',
+      crest: 'شمس الأسطورة',
+      shape: 'oval',
       avatar: 'د',
       archetype: 'مجازف متقلب',
       description: 'انفعالي وعفوي؛ يباغتك بلمحات عبقرية في أصعب الأسئلة لكنه يتأثر بالارتباك إذا خسر جولة.',
@@ -372,13 +382,122 @@
     } catch (e) {}
   }
 
+  function pseudoHash(str) {
+    var h = 0;
+    for (var i = 0; i < str.length; i++) {
+      h = ((h << 5) - h) + str.charCodeAt(i);
+      h |= 0;
+    }
+    return Math.abs(h);
+  }
+
+  /**
+   * Generates dynamic, realistic league standing rows for the 5 football legends.
+   * Matches weekly cadence, simulates human study progression, and integrates rivalry stats.
+   */
+  function getLeagueRows(opts) {
+    opts = opts || {};
+    var isPrev = !!opts.isPrev;
+    var isAllTime = !!opts.isAllTime;
+    var subjects = opts.subjects && opts.subjects.length ? opts.subjects : [
+      { subject_id: '01_Cyber_Security', subject_title: 'الأمن السيبراني' },
+      { subject_id: '02_English_Language', subject_title: 'اللغة الإنجليزية' },
+      { subject_id: '03_Data_Mining', subject_title: 'تنقيب البيانات' },
+      { subject_id: '04_Advanced_Software_Eng', subject_title: 'هندسة البرمجيات' },
+      { subject_id: '05_Soft_Computing', subject_title: 'الحوسبة اللينة' },
+      { subject_id: '06_Artificial_Intelligence', subject_title: 'الذكاء الاصطناعي' }
+    ];
+
+    var weekId = opts.weekId || (window.PortalLeague && window.PortalLeague.weekStart ? window.PortalLeague.weekStart(Date.now()) : '2026-10-26');
+    var now = Date.now();
+    var monday = new Date(weekId + 'T00:00:00').getTime();
+    var elapsedDays = Math.max(0.6, Math.min(7.0, (now - monday) / 86400000));
+    var weekRatio = isPrev ? 1.0 : (elapsedDays / 7.0);
+
+    var subjectWeights = {
+      cristiano: { '01_Cyber_Security': 0.18, '02_English_Language': 0.16, '03_Data_Mining': 0.16, '04_Advanced_Software_Eng': 0.18, '05_Soft_Computing': 0.15, '06_Artificial_Intelligence': 0.17 },
+      messi:     { '01_Cyber_Security': 0.10, '02_English_Language': 0.10, '03_Data_Mining': 0.28, '04_Advanced_Software_Eng': 0.14, '05_Soft_Computing': 0.18, '06_Artificial_Intelligence': 0.20 },
+      zidane:    { '01_Cyber_Security': 0.28, '02_English_Language': 0.16, '03_Data_Mining': 0.12, '04_Advanced_Software_Eng': 0.24, '05_Soft_Computing': 0.08, '06_Artificial_Intelligence': 0.12 },
+      ronaldinho:{ '01_Cyber_Security': 0.12, '02_English_Language': 0.26, '03_Data_Mining': 0.14, '04_Advanced_Software_Eng': 0.20, '05_Soft_Computing': 0.16, '06_Artificial_Intelligence': 0.12 },
+      maradona:  { '01_Cyber_Security': 0.16, '02_English_Language': 0.10, '03_Data_Mining': 0.24, '04_Advanced_Software_Eng': 0.12, '05_Soft_Computing': 0.14, '06_Artificial_Intelligence': 0.24 }
+    };
+
+    var weekTargets = {
+      cristiano: 236,
+      messi:     222,
+      zidane:    204,
+      ronaldinho:182,
+      maradona:  168
+    };
+
+    var rows = [];
+    var rivalry = {};
+    try {
+      rivalry = JSON.parse(localStorage.getItem(RIVALRY_KEY) || '{}');
+    } catch (e) {}
+
+    LEGENDS.forEach(function (leg) {
+      var key = leg.id;
+      var hash = pseudoHash(weekId + '_' + key);
+      var jitter = (hash % 15) - 7;
+      var baseTarget = (weekTargets[key] || 200) + jitter;
+      
+      var riv = rivalry[key] || { played: 0, wins: 0, losses: 0 };
+      var duelBonus = (riv.played * 6) + (riv.wins * 4);
+
+      var xp = 0;
+      if (isAllTime) {
+        xp = Math.round(baseTarget * 4.4) + duelBonus + (hash % 120);
+      } else {
+        xp = Math.round(baseTarget * weekRatio) + duelBonus;
+      }
+      xp = Math.max(12, xp);
+
+      var answered = Math.round(xp / leg.baseAccuracy);
+      var weights = subjectWeights[key] || {};
+      var perSub = {};
+
+      subjects.forEach(function (sub) {
+        var w = weights[sub.subject_id] || (1.0 / subjects.length);
+        var subXp = Math.max(1, Math.round(xp * w));
+        var subAns = Math.max(subXp, Math.round(subXp / leg.baseAccuracy));
+        perSub[sub.subject_id] = {
+          title: sub.subject_title || sub.subject_id,
+          xp: subXp,
+          n: subAns
+        };
+      });
+
+      rows.push({
+        rank: 0,
+        user_id: 'legend:' + leg.id,
+        legend_id: leg.id,
+        isBot: true,
+        name: leg.name,
+        username: leg.id,
+        avatar: '',
+        avatarChar: leg.avatar,
+        shape: leg.shape,
+        crest: leg.crest,
+        title: leg.title,
+        xp: xp,
+        answered: answered,
+        per_subject: perSub,
+        updated_at: new Date(now - ((hash % 3600) * 1000)).toISOString()
+      });
+    });
+
+    return rows;
+  }
+
   global.PortalVSBot = {
     getLegends: getLegends,
     getLegend: getLegend,
     decide: decide,
     getRivalStats: getRivalStats,
     recordMatchResult: recordMatchResult,
-    resetRivalStats: resetRivalStats
+    resetRivalStats: resetRivalStats,
+    getLeagueRows: getLeagueRows
   };
 
 })(window);

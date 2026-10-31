@@ -3495,6 +3495,29 @@
     return '<span class="' + cls + ' avatar-default" aria-hidden="true"></span>';
   }
 
+  function mergeLeagueLegends(realRows, opts) {
+    if (!window.PortalVSBot || !window.PortalVSBot.getLeagueRows) return realRows || [];
+    const botRows = window.PortalVSBot.getLeagueRows(Object.assign({}, opts, {
+      subjects: (S.index && S.index.subjects) || []
+    }));
+    const combined = Array.isArray(realRows) ? realRows.slice() : [];
+    const seen = new Set(combined.map((r) => r.user_id));
+    botRows.forEach((b) => {
+      if (!seen.has(b.user_id)) {
+        combined.push(b);
+      }
+    });
+    combined.sort((a, b) => {
+      if (b.xp !== a.xp) return b.xp - a.xp;
+      const accA = a.answered > 0 ? (a.xp / a.answered) : 0;
+      const accB = b.answered > 0 ? (b.xp / b.answered) : 0;
+      if (accB !== accA) return accB - accA;
+      return String(a.updated_at || '').localeCompare(String(b.updated_at || ''));
+    });
+    combined.forEach((r, idx) => { r.rank = idx + 1; });
+    return combined;
+  }
+
   async function renderLeague() {
     const renderSeq = ++leagueRenderSeq;
     const box = $('league-board');
@@ -3570,7 +3593,8 @@
           rows = S.leagueRowsAllTime;
           me = S.leagueMeAllTime || null;
         } else {
-          rows = L.allTimeBoard ? await L.allTimeBoard() : await L.board();
+          const rawAll = L.allTimeBoard ? await L.allTimeBoard() : await L.board();
+          rows = mergeLeagueLegends(rawAll, { isAllTime: true, weekId: wk });
           const myId = (L.userId ? L.userId() : null) || (window.PortalCloud && window.PortalCloud.userId ? window.PortalCloud.userId() : null);
           me = myId ? ((rows || []).find((r) => r.user_id === myId) || null) : null;
           S.leagueRowsAllTime = rows;
@@ -3590,8 +3614,12 @@
             L.board(wk),
             (L.linked && L.linked()) ? L.myRow(wk) : Promise.resolve(null)
           ]);
-          rows = resRows;
+          rows = mergeLeagueLegends(resRows, { isPrev: isPrev, weekId: wk });
           me = resMe;
+          if (me) {
+            const foundMe = rows.find((r) => r.user_id === me.user_id);
+            if (foundMe) me.rank = foundMe.rank;
+          }
           if (isPrev) {
             S.leagueRowsPrev = rows;
             S.leagueMePrev = me;
@@ -3605,7 +3633,8 @@
           if (!isPrev && L.linked && L.linked() && navigator.onLine !== false && Date.now() - (S.leagueSyncStamp || 0) > 600000) {
             S.leagueSyncStamp = Date.now();
             L.syncWeek().then(() => L.board(wk)).then((r2) => {
-              S.leagueRows = r2;
+              const merged2 = mergeLeagueLegends(r2, { isPrev: false, weekId: wk });
+              S.leagueRows = merged2;
               S.leagueStamp = Date.now();
               if (location.hash.indexOf('#/league') === 0 && (S.leagueWeek || 'current') === 'current' && (S.leagueMode || 'weekly') === 'weekly') renderLeague();
             }).catch(() => {});
@@ -3632,6 +3661,10 @@
 
     if (renderSeq !== leagueRenderSeq) return;
     rows = scopeRows(rows, S.leagueSubject);
+    if (me && me.user_id) {
+      const foundMe = rows.find((r) => r.user_id === me.user_id);
+      if (foundMe) me.rank = foundMe.rank;
+    }
     if (!rows.length && emptyEl) {
       emptyEl.querySelector('p').textContent = isAllTime
         ? 'لا يوجد متنافسون في الترتيب العام بعد'
@@ -3641,7 +3674,12 @@
 
     const myId = me && me.user_id;
     const myPhoto = (me && me.avatar) || (function () { try { return L.avatarUrl ? L.avatarUrl() : ''; } catch (e) { return ''; } })();
-    const avatarFor = (r) => avatarHtml(r.user_id === myId && !r.avatar ? myPhoto : r.avatar, r.name, 'menu-avatar');
+    const avatarFor = (r) => {
+      if (r && r.legend_id) {
+        return '<span class="menu-avatar vs-legend-av av-' + escapeHtml(r.legend_id) + '"><span>' + escapeHtml(r.avatarChar || r.name.charAt(0)) + '</span></span>';
+      }
+      return avatarHtml(r.user_id === myId && !r.avatar ? myPhoto : r.avatar, r.name, 'menu-avatar');
+    };
     if (box) box.innerHTML = '';
     const usePodium = rows.length >= 3;
     const top = usePodium ? rows.slice(0, 3) : [];
@@ -3656,7 +3694,10 @@
       row.innerHTML =
         '<span class="league-rank" dir="ltr">' + r.rank + '</span>' +
         avatarFor(r) +
-        '<span class="league-row-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
+        '<span class="league-row-name" dir="auto">' +
+          escapeHtml(r.name || 'لاعب') +
+          (r.crest ? (' <span class="vs-legend-crest-tag tag-' + escapeHtml(r.legend_id || '') + ' league-crest-inline">' + escapeHtml(r.crest) + '</span>') : '') +
+        '</span>' +
         '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
         (!S.leagueSubject ? '<span class="league-row-acc">' + (accuracyOf(r) !== null ? accuracyOf(r) + '%' : '—') + '</span>' : '');
       wirePlayerCard(row, r);
@@ -3682,12 +3723,17 @@
     const stat = (label, value) =>
       '<div class="player-stat"><span class="player-stat-value">' + escapeHtml(String(value)) +
       '</span><span class="player-stat-label">' + escapeHtml(label) + '</span></div>';
+    const avHtml = (r && r.legend_id)
+      ? '<span class="player-avatar vs-legend-av av-' + escapeHtml(r.legend_id) + '"><span>' + escapeHtml(r.avatarChar || r.name.charAt(0)) + '</span></span>'
+      : avatarHtml(r.avatar, r.name, 'player-avatar');
     card.innerHTML =
       '<div class="player-head">' +
-        avatarHtml(r.avatar, r.name, 'player-avatar') +
+        avHtml +
         '<div class="player-head-text">' +
-          '<h3 dir="auto">' + escapeHtml(r.name || 'لاعب') + '</h3>' +
-          '<p>المركز ' + escapeHtml(String(r.rank || '—')) + ' هذا الأسبوع</p>' +
+          '<h3 dir="auto">' + escapeHtml(r.name || 'لاعب') +
+            (r.crest ? (' <span class="vs-legend-crest-tag tag-' + escapeHtml(r.legend_id || '') + '">' + escapeHtml(r.crest) + '</span>') : '') +
+          '</h3>' +
+          '<p>' + (r.title ? escapeHtml(r.title) + ' · ' : '') + 'المركز ' + escapeHtml(String(r.rank || '—')) + ' هذا الأسبوع</p>' +
         '</div>' +
       '</div>' +
       '<div class="player-stats">' +
@@ -3702,7 +3748,7 @@
             '<b>' + s.n + '</b></div>').join('') +
           '</div>'
         : '') +
-      '<p class="player-note">أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.</p>';
+      '<p class="player-note">' + (r.isBot ? 'منافس أسطوري ذكي يتفاعل مع وتيرة أدائك ومبارزاتك' : 'أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.') + '</p>';
     openDrawer('player-drawer');
     icons();
   }
@@ -3731,10 +3777,13 @@
       const first = r.rank === 1;
       const photo = (myId && r.user_id === myId && !r.avatar) ? (myPhoto || '') : r.avatar;
       slot.className = 'podium-slot p' + r.rank + (myId && r.user_id === myId ? ' is-me' : '');
+      const avHtml = (r && r.legend_id)
+        ? '<span class="podium-av vs-legend-av av-' + escapeHtml(r.legend_id) + '"><span>' + escapeHtml(r.avatarChar || r.name.charAt(0)) + '</span></span>'
+        : avatarHtml(photo, r.name, 'podium-av');
       slot.innerHTML =
         '<span class="podium-av-wrap">' +
         (first ? '<span class="podium-crown" aria-hidden="true"><i data-lucide="crown"></i></span>' : '') +
-        avatarHtml(photo, r.name, 'podium-av') +
+        avHtml +
         '</span>' +
         '<span class="podium-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
         '<span class="podium-xp">' + r.xp + ' <small>إجابة</small></span>' +
@@ -5575,7 +5624,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.8.4';
+  const SHELL_VERSION = '1.8.5';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

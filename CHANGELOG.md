@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.5] — 2026-10-31
+
+### Changed
+- Integrate football legend competitors into weekly and all-time league boards
+
+
 ## [1.8.4] — 2026-10-31
 
 ### Changed

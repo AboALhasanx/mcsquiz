@@ -3317,3 +3317,35 @@ html[data-theme="light"] .offline-banner {
   margin: 0 auto;
 }
 
+/* League integration: Legend custom shapes in podium, rows, and player drawer */
+.league-crest-inline {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.podium-av.vs-legend-av {
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 1.3rem !important;
+}
+.podium-slot.p1 .podium-av.vs-legend-av {
+  width: 62px !important;
+  height: 62px !important;
+  font-size: 1.5rem !important;
+}
+.player-avatar.vs-legend-av {
+  width: 48px !important;
+  height: 48px !important;
+  font-size: 1.2rem !important;
+}
+.menu-avatar.vs-legend-av {
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 1.05rem !important;
+}
+
+
