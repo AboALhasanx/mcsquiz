@@ -315,21 +315,21 @@
 
     // 5. Observable Cognitive Stages during the 12-second round
     var stages = [
-      { delayMs: 0, text: 'يقرأ السؤال...', phase: 'reading' },
-      { delayMs: Math.round(readDelayMs), text: 'يفاضل بين خيارين...', phase: 'deliberating' }
+      { delayMs: 0, text: 'يقرأ', phase: 'reading' },
+      { delayMs: Math.round(readDelayMs), text: 'يفاضل', phase: 'deliberating' }
     ];
 
     if (finalTimeMs - readDelayMs > 2400) {
       stages.push({
         delayMs: Math.round(readDelayMs + 1800),
-        text: 'يتردد في الحسم...',
+        text: 'يتردد',
         phase: 'hesitating'
       });
     }
 
     stages.push({
       delayMs: finalTimeMs,
-      text: 'قفل الإجابة',
+      text: 'جاهز',
       phase: 'locked'
     });
 
@@ -353,6 +353,7 @@
       var raw = localStorage.getItem(RIVALRY_KEY);
       if (!raw) return { played: 0, wins: 0, losses: 0, ties: 0 };
       var all = JSON.parse(raw);
+      if (!all || typeof all !== 'object') return { played: 0, wins: 0, losses: 0, ties: 0 };
       return all[legendId] || { played: 0, wins: 0, losses: 0, ties: 0 };
     } catch (e) {
       return { played: 0, wins: 0, losses: 0, ties: 0 };
@@ -363,6 +364,7 @@
     try {
       var raw = localStorage.getItem(RIVALRY_KEY);
       var all = raw ? JSON.parse(raw) : {};
+      if (!all || typeof all !== 'object') all = {};
       var st = all[legendId] || { played: 0, wins: 0, losses: 0, ties: 0 };
       st.played++;
       if (outcome === 'win') st.wins++;
@@ -393,7 +395,11 @@
 
   /**
    * Generates dynamic, realistic league standing rows for the 5 football legends.
-   * Matches weekly cadence, simulates human study progression, and integrates rivalry stats.
+   * Features:
+   *  1. Weekly Form & Role Rotation (seeded by weekId) so podium leaders rotate across weeks.
+   *  2. Discrete Human Study Sessions (4 daily study windows) instead of a flat linear drip.
+   *  3. Competitive Pace / Rubber-banding against top human / student score.
+   *  4. 1v1 Rivalry duel bonuses & subject-specific focus shifts.
    */
   function getLeagueRows(opts) {
     opts = opts || {};
@@ -409,12 +415,13 @@
     ];
 
     var weekId = opts.weekId || (window.PortalLeague && window.PortalLeague.weekStart ? window.PortalLeague.weekStart(Date.now()) : '2026-10-26');
-    var now = Date.now();
+    var now = typeof opts.nowMs === 'number' && !isNaN(opts.nowMs) ? opts.nowMs : Date.now();
     var monday = new Date(weekId + 'T00:00:00').getTime();
-    var elapsedDays = Math.max(0.6, Math.min(7.0, (now - monday) / 86400000));
-    var weekRatio = isPrev ? 1.0 : (elapsedDays / 7.0);
+    if (isNaN(monday)) monday = now - (3.5 * 86400000);
+    var elapsedMs = isPrev ? (7 * 86400000) : Math.max(3600000, Math.min(7 * 86400000, Math.max(0, now - monday)));
+    var elapsedHours = Math.max(1, elapsedMs / 3600000);
 
-    var subjectWeights = {
+    var baseSubjectWeights = {
       cristiano: { '01_Cyber_Security': 0.18, '02_English_Language': 0.16, '03_Data_Mining': 0.16, '04_Advanced_Software_Eng': 0.18, '05_Soft_Computing': 0.15, '06_Artificial_Intelligence': 0.17 },
       messi:     { '01_Cyber_Security': 0.10, '02_English_Language': 0.10, '03_Data_Mining': 0.28, '04_Advanced_Software_Eng': 0.14, '05_Soft_Computing': 0.18, '06_Artificial_Intelligence': 0.20 },
       maldini:   { '01_Cyber_Security': 0.28, '02_English_Language': 0.16, '03_Data_Mining': 0.12, '04_Advanced_Software_Eng': 0.24, '05_Soft_Computing': 0.08, '06_Artificial_Intelligence': 0.12 },
@@ -422,45 +429,155 @@
       maradona:  { '01_Cyber_Security': 0.16, '02_English_Language': 0.10, '03_Data_Mining': 0.24, '04_Advanced_Software_Eng': 0.12, '05_Soft_Computing': 0.14, '06_Artificial_Intelligence': 0.24 }
     };
 
-    var weekTargets = {
-      cristiano: 236,
-      messi:     222,
-      maldini:   204,
-      ronaldinho:182,
-      maradona:  168
+    var baseRatings = {
+      cristiano: 224,
+      messi:     218,
+      maldini:   206,
+      ronaldinho:192,
+      maradona:  184
     };
+
+    // 1. Weekly Form Rotation: permute form tiers deterministically from weekId
+    // so different legends peak as #1/#2 in different weeks.
+    var formTiers = [
+      { mult: 1.24, tag: 'في قمة مستواه هذا الأسبوع' },
+      { mult: 1.12, tag: 'سلسلة انتصارات متتالية' },
+      { mult: 1.02, tag: 'وتيرة مذاكرة ثابتة' },
+      { mult: 0.92, tag: 'يركّز على المراجعة الدقيقة' },
+      { mult: 0.84, tag: 'أسبوع هادئ نسبياً' }
+    ];
+    var orderIdx = [0, 1, 2, 3, 4];
+    for (var s = 4; s > 0; s--) {
+      var swapWith = pseudoHash(weekId + '_form_slot_' + s) % (s + 1);
+      var tmp = orderIdx[s];
+      orderIdx[s] = orderIdx[swapWith];
+      orderIdx[swapWith] = tmp;
+    }
+
+    // Check human competition level for adaptive pacing (rubber-banding)
+    var humanTopXp = Number(opts.humanTopXp) || 0;
+    var myXp = Number(opts.myXp) || 0;
+    var refHumanXp = Math.max(humanTopXp, myXp);
+
+    // 2. Simulate discrete study sessions across the week (4 study windows per day: 09:00, 14:00, 19:00, 22:30)
+    var studyWindows = [9.0, 14.0, 19.0, 22.5];
 
     var rows = [];
     var rivalry = {};
     try {
       rivalry = JSON.parse(localStorage.getItem(RIVALRY_KEY) || '{}');
-    } catch (e) {}
+      if (!rivalry || typeof rivalry !== 'object') rivalry = {};
+    } catch (e) { rivalry = {}; }
 
-    LEGENDS.forEach(function (leg) {
+    LEGENDS.forEach(function (leg, legIdx) {
       var key = leg.id;
       var hash = pseudoHash(weekId + '_' + key);
-      var jitter = (hash % 15) - 7;
-      var baseTarget = (weekTargets[key] || 200) + jitter;
-      
+      var form = formTiers[orderIdx[legIdx] || 0];
+      var jitter = (hash % 23) - 11;
+      var weeklyTarget = Math.round((baseRatings[key] || 200) * form.mult) + jitter;
+
       var riv = rivalry[key] || { played: 0, wins: 0, losses: 0 };
       var duelBonus = (riv.played * 6) + (riv.wins * 4);
 
       var xp = 0;
+      var lastSessionAgoSec = (hash % 3200) + 300;
+
       if (isAllTime) {
-        xp = Math.round(baseTarget * 4.4) + duelBonus + (hash % 120);
+        // Cumulative all-time: sum across 5 virtual weeks + current progress
+        var allTimeSum = 0;
+        for (var w = 1; w <= 5; w++) {
+          var wh = pseudoHash('alltime_w' + w + '_' + key);
+          var wf = 0.88 + ((wh % 35) / 100);
+          allTimeSum += Math.round((baseRatings[key] || 200) * wf);
+        }
+        xp = allTimeSum + duelBonus + Math.round(weeklyTarget * (elapsedHours / 168));
+      } else if (isPrev) {
+        xp = weeklyTarget + duelBonus;
+        lastSessionAgoSec = 3600 + (hash % 7200);
       } else {
-        xp = Math.round(baseTarget * weekRatio) + duelBonus;
+        // Discrete session accumulation up to `elapsedHours`
+        var sessionWeights = [];
+        var totalWeight = 0;
+        for (var day = 0; day < 7; day++) {
+          for (var win = 0; win < studyWindows.length; win++) {
+            var sh = pseudoHash(weekId + '_' + key + '_d' + day + '_w' + win);
+            // Legends take ~25% of windows off and study harder in others
+            var active = (sh % 100) >= 24;
+            var wVal = active ? (0.7 + ((sh % 90) / 100)) : 0.08;
+            // Cristiano & Maldini push harder on weekends (days 4, 5, 6)
+            if ((key === 'cristiano' || key === 'maldini') && day >= 4) wVal *= 1.18;
+            var jitterHr = ((sh % 70) - 35) / 60; // +-35 min around window
+            var sessionHour = (day * 24) + studyWindows[win] + jitterHr;
+            sessionWeights.push({ hour: Math.max(0.5, sessionHour), weight: wVal });
+            totalWeight += wVal;
+          }
+        }
+
+        // Starter baseline on Monday morning so nobody sits at 0
+        var starterXp = 14 + (hash % 11);
+        var remainingTarget = Math.max(40, weeklyTarget - starterXp);
+        var earnedSoFar = starterXp;
+        var latestCompletedHr = 0.2;
+
+        for (var i = 0; i < sessionWeights.length; i++) {
+          var sw = sessionWeights[i];
+          var sessPoints = remainingTarget * (sw.weight / totalWeight);
+          if (elapsedHours >= sw.hour) {
+            earnedSoFar += sessPoints;
+            if (sw.hour > latestCompletedHr) latestCompletedHr = sw.hour;
+          } else if (elapsedHours >= sw.hour - 0.75) {
+            // Currently in the middle of a live study session!
+            var part = (elapsedHours - (sw.hour - 0.75)) / 0.75;
+            earnedSoFar += sessPoints * Math.max(0, Math.min(1, part));
+            latestCompletedHr = elapsedHours;
+          }
+        }
+
+        xp = Math.round(earnedSoFar) + duelBonus;
+        lastSessionAgoSec = Math.max(60, Math.round((elapsedHours - latestCompletedHr) * 3600));
       }
-      xp = Math.max(12, xp);
 
-      var answered = Math.round(xp / leg.baseAccuracy);
-      var weights = subjectWeights[key] || {};
+      // 3. Competitive Rubber-Banding: if a human student surges ahead, the top in-form
+      // legends step up their study pace so the race for #1 / Podium stays thrilling.
+      if (!isPrev && !isAllTime && refHumanXp > xp && orderIdx[legIdx] <= 1) {
+        var gap = refHumanXp - xp;
+        var catchupRatio = orderIdx[legIdx] === 0 ? 0.82 : 0.68;
+        var maxBoost = Math.round(weeklyTarget * 0.65);
+        var boost = Math.min(maxBoost, Math.round(gap * catchupRatio));
+        var closeOffset = ((hash % 9) - 4); // -4 to +4 around the student
+        xp = Math.min(refHumanXp + closeOffset, xp + boost);
+      }
+
+      xp = Math.max(14, xp);
+
+      // Dynamic accuracy variance per week (+-2%)
+      var accShift = ((hash % 5) - 2) * 0.01;
+      var effAcc = Math.max(0.70, Math.min(0.95, leg.baseAccuracy + accShift));
+      var answered = Math.max(xp + 1, Math.round(xp / effAcc));
+
+      // Rotate subject focus slightly each week so per-subject leaderboards also shift
+      var baseW = baseSubjectWeights[key] || {};
       var perSub = {};
+      var subRaw = [];
+      var subSum = 0;
 
-      subjects.forEach(function (sub) {
-        var w = weights[sub.subject_id] || (1.0 / subjects.length);
-        var subXp = Math.max(1, Math.round(xp * w));
-        var subAns = Math.max(subXp, Math.round(subXp / leg.baseAccuracy));
+      subjects.forEach(function (sub, sIdx) {
+        var bw = baseW[sub.subject_id] || (1.0 / subjects.length);
+        var sh = pseudoHash(weekId + '_' + key + '_sub_' + sIdx);
+        var factor = 0.75 + ((sh % 55) / 100); // 0.75x to 1.30x weekly subject focus
+        var w = bw * factor;
+        subRaw.push({ sub: sub, w: w });
+        subSum += w;
+      });
+
+      var allocatedXp = 0;
+      subRaw.forEach(function (item, idx) {
+        var sub = item.sub;
+        var subXp = (idx === subRaw.length - 1)
+          ? Math.max(1, xp - allocatedXp)
+          : Math.max(1, Math.round(xp * (item.w / (subSum || 1))));
+        allocatedXp += subXp;
+        var subAns = Math.max(subXp + 1, Math.round(subXp / effAcc));
         perSub[sub.subject_id] = {
           title: sub.subject_title || sub.subject_id,
           xp: subXp,
@@ -478,11 +595,19 @@
         avatar: leg.avatar,
         avatarChar: leg.avatarChar,
         shape: leg.shape,
-        title: leg.title,
+        title: leg.title + (isAllTime ? '' : (' · ' + form.tag)),
+        formTag: form.tag,
         xp: xp,
         answered: answered,
         per_subject: perSub,
-        updated_at: new Date(now - ((hash % 3600) * 1000)).toISOString()
+        updated_at: (function () {
+          try {
+            var d = new Date(now - (lastSessionAgoSec * 1000));
+            return !isNaN(d.getTime()) ? d.toISOString() : new Date().toISOString();
+          } catch (e) {
+            return new Date().toISOString();
+          }
+        })()
       });
     });
 

@@ -2814,6 +2814,9 @@ details.vs-legends-section[open] .vs-summary-chevron {
   background: var(--bg-input, #1E222D);
   color: var(--text-muted);
   border: 1px solid var(--border-card);
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .vs-pod-info {
   display: flex;

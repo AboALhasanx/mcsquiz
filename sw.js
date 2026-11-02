@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.8.9';
+const VERSION = '1.9.0';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -16,8 +16,12 @@ const CORE = [
   './js/content.js',
   './js/debug.js',
   './js/league.js',
+  './js/league_ui.js',
+  './js/saved_ui.js',
+  './js/stats_ui.js',
   './js/vs.js',
   './js/vs_bot.js',
+  './js/vs_ui.js',
   './js/lucide.min.js',
   './js/pwa.js',
   './js/qrcode.min.js',
@@ -210,7 +214,11 @@ const CORE = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => Promise.allSettled(CORE.map((u) => c.add(u)))).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      .then((c) => Promise.allSettled(CORE.map((u) => c.add(new Request(u, { cache: 'reload' })))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', (e) => {
@@ -226,14 +234,24 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
-  // versioned URLs (?v=) ask for one specific revision: try network first, fallback to cache
-  if (url.searchParams.has('v')) {
+  const isNav = e.request.mode === 'navigate';
+  // versioned or cache-busted URLs (?v= or ?t=) ask for a fresh revision: try network first, fallback to cache
+  if (url.searchParams.has('v') || url.searchParams.has('t')) {
     e.respondWith(
-      fetch(e.request).catch(() => caches.match(e.request, { ignoreSearch: true }))
+      fetch(e.request).then((res) => {
+        if (res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(isNav ? './index.html' : e.request, copy));
+        }
+        return res;
+      }).catch(() => {
+        return caches.match(e.request, { ignoreSearch: isNav }).then((hit) => {
+          return hit || (isNav ? caches.match('./index.html') : null);
+        });
+      })
     );
     return;
   }
-  const isNav = e.request.mode === 'navigate';
   e.respondWith(
     caches.match(e.request, { ignoreSearch: isNav }).then((hit) => {
       const fallback = hit || (isNav ? caches.match('./index.html') : null);

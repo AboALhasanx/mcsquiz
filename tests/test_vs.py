@@ -106,6 +106,38 @@ def run():
         menu_vs_href = page.evaluate("() => { const a = document.getElementById('menu-vs'); return a ? a.getAttribute('href') : ''; }")
         check('drawer menu item points to #/vs', menu_vs_href == '#/vs', menu_vs_href)
 
+        # 8. Modular UI Controllers & Dynamic Legends League Engine
+        mods_ok = page.evaluate("""() => !!(
+          window.PortalSavedUI &&
+          window.PortalStatsUI &&
+          window.PortalLeagueUI &&
+          window.PortalVsUI
+        )""")
+        check('4 modular UI controllers exposed on window', mods_ok)
+
+        dyn_test = page.evaluate("""() => {
+          const weeks = ['2026-09-28', '2026-10-05', '2026-10-12', '2026-10-19', '2026-10-26', '2026-11-02'];
+          const winners = new Set();
+          weeks.forEach((wk) => {
+            const rows = window.PortalVSBot.getLeagueRows({ isPrev: true, weekId: wk });
+            rows.sort((a, b) => b.xp - a.xp);
+            if (rows[0]) winners.add(rows[0].legend_id);
+          });
+          const baseRows = window.PortalVSBot.getLeagueRows({ isPrev: false, weekId: '2026-10-26', humanTopXp: 0, myXp: 0 });
+          baseRows.sort((a, b) => b.xp - a.xp);
+          const chaseRows = window.PortalVSBot.getLeagueRows({ isPrev: false, weekId: '2026-10-26', humanTopXp: 520, myXp: 520 });
+          chaseRows.sort((a, b) => b.xp - a.xp);
+          return {
+            uniqueWinners: winners.size,
+            baseTopXp: baseRows[0] ? baseRows[0].xp : 0,
+            chaseTopXp: chaseRows[0] ? chaseRows[0].xp : 0,
+            hasFormTag: !!(baseRows[0] && baseRows[0].formTag)
+          };
+        }""")
+        check('legends rotate weekly #1 champion dynamically', dyn_test['uniqueWinners'] >= 2, dyn_test['uniqueWinners'])
+        check('legends rubber-band upward when human XP surges', dyn_test['chaseTopXp'] > dyn_test['baseTopXp'], dyn_test)
+        check('legends include weekly form tags', dyn_test['hasFormTag'])
+
         check('no runtime errors', not errors, errors[:2])
     finally:
         browser.close()
