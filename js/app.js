@@ -666,38 +666,74 @@
     const fresh = (S.freshChapters || []).filter((f) => !f.read);
     const readAllBtn = $('notif-read-all');
     if (readAllBtn) readAllBtn.classList.toggle('hidden', fresh.length === 0);
+    const countBadge = $('notif-unread-badge');
+    if (countBadge) {
+      countBadge.textContent = fresh.length ? String(fresh.length) : '';
+      countBadge.classList.toggle('hidden', fresh.length === 0);
+    }
     if (!fresh.length) {
       list.innerHTML = '';
       if (empty) empty.classList.remove('hidden');
       return;
     }
     if (empty) empty.classList.add('hidden');
-    list.innerHTML = fresh.map((f) =>
-      '<a class="notif-row" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '"' +
-      ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
-      '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
-      '<span class="notif-text"><span class="notif-title">تمت إضافة أسئلة لـ' + escapeHtml(f.chapterLabel || '') + '</span>' +
-      '<span class="notif-sub">في ' + escapeHtml(chLabelLong({ chapter_no: f.chapter })) + ' لمادة ' + escapeHtml(f.subject) + ' · ' + (f.count || 0) + ' سؤال</span></span>' +
-      '<i data-lucide="chevron-left" class="notif-chev"></i></a>').join('');
+    list.innerHTML = fresh.map((f) => {
+      const title = f.topic || f.chapterLabel || ('موضوع ' + (f.chapter || 1));
+      const subMeta = f.subject ? (escapeHtml(f.subject) + ' · ') : '';
+      const chMeta = escapeHtml(chLabelLong({ chapter_no: f.chapter }));
+      const countMeta = f.count ? (' · ' + f.count + ' سؤال') : '';
+      return '<div class="notif-row" data-quiz="' + escapeHtml(f.quiz_id) + '">' +
+        '<a class="notif-link" href="#/quiz/' + encodeURIComponent(f.subject_id || '') + '/' + encodeURIComponent(f.quiz_id) + '"' +
+        ' data-quiz="' + escapeHtml(f.quiz_id) + '">' +
+        '<span class="notif-icon"><i data-lucide="sparkles"></i></span>' +
+        '<span class="notif-text">' +
+        '<span class="notif-title">' + escapeHtml(title) + '</span>' +
+        '<span class="notif-sub">' + subMeta + chMeta + countMeta + '</span>' +
+        '</span>' +
+        '</a>' +
+        '<button class="notif-check-btn" type="button" aria-label="تحديد كمقروء" title="تحديد كمقروء" data-quiz="' + escapeHtml(f.quiz_id) + '">' +
+        '<i data-lucide="check"></i>' +
+        '</button>' +
+        '</div>';
+    }).join('');
     icons();
   }
 
   // tapping a notification marks it read; the bell count follows
-  function markNotifRead(quizId) {
+  function markNotifRead(quizId, skipCatalog) {
     const item = (S.freshChapters || []).find((f) => f.quiz_id === quizId);
     if (!item || item.read) return;
     item.read = true;
-    markChapterSeen(quizId);
+    const seen = loadSeen();
+    const ch = findChapter(quizId);
+    if (ch) {
+      seen[quizId] = Number(ch.version || 1);
+      saveSeen(seen);
+    }
     renderBell();
-    renderNotifList();
+    if (!skipCatalog) renderCatalog();
   }
 
   function markAllNotifsRead() {
-    (S.freshChapters || []).forEach((f) => {
-      if (!f.read) { f.read = true; markChapterSeen(f.quiz_id); }
+    const unread = (S.freshChapters || []).filter((f) => !f.read);
+    if (!unread.length) return;
+
+    // Single-pass batch update for instant, lag-free performance
+    const seen = loadSeen();
+    const idx = S.index || {};
+    const verMap = {};
+    (idx.subjects || []).forEach((sub) => (sub.chapters || []).forEach((ch) => {
+      verMap[ch.quiz_id] = Number(ch.version || 1);
+    }));
+
+    unread.forEach((f) => {
+      f.read = true;
+      seen[f.quiz_id] = verMap[f.quiz_id] || 1;
     });
+
+    saveSeen(seen);
     renderBell();
-    renderNotifList();
+    renderCatalog();
     toast('تم تحديد الكل كمقروء', 'success');
   }
 
@@ -3631,9 +3667,29 @@ const weekBar = $('league-week-bar');
     const notifList = $('notif-list');
     if (notifList) {
       notifList.addEventListener('click', (e) => {
+        const checkBtn = e.target && e.target.closest ? e.target.closest('.notif-check-btn') : null;
+        if (checkBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          const qId = checkBtn.getAttribute('data-quiz');
+          const row = checkBtn.closest('.notif-row');
+          if (row) {
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(-16px)';
+            setTimeout(() => {
+              markNotifRead(qId);
+            }, 180);
+          } else {
+            markNotifRead(qId);
+          }
+          return;
+        }
         const row = e.target && e.target.closest ? e.target.closest('.notif-row') : null;
         if (!row) return;
-        markNotifRead(row.getAttribute('data-quiz'));
+        const qId = row.getAttribute('data-quiz');
+        markNotifRead(qId);
+        const m = $('notif-modal');
+        if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
       });
     }
     bindClick('notif-read-all', markAllNotifsRead);
@@ -3649,6 +3705,21 @@ const weekBar = $('league-week-bar');
       const m = $('notif-modal');
       if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
     });
+    const notifCard = document.querySelector('#notif-modal .notif-card');
+    if (notifCard) {
+      let startY = 0;
+      notifCard.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches[0]) startY = e.touches[0].clientY;
+      }, { passive: true });
+      notifCard.addEventListener('touchmove', (e) => {
+        if (!e.touches || !e.touches[0]) return;
+        const delta = e.touches[0].clientY - startY;
+        if (delta > 75) {
+          const m = $('notif-modal');
+          if (m) { m.classList.add('hidden'); m.setAttribute('aria-hidden', 'true'); }
+        }
+      }, { passive: true });
+    }
     // pwa.js is loaded after app.js, so its handler stores the prompt after
     // this one runs: read the state on the next tick, not right now
     window.addEventListener('beforeinstallprompt', () => { setTimeout(refreshInstallRow, 0); });
@@ -3764,7 +3835,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.13';
+  const SHELL_VERSION = '1.11.14';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
