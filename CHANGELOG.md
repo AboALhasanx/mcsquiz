@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.0] — 2026-11-04
+
+### Changed
+- feat: admin question QA flags tool (@aboalhasan) + offline JSON export
+
+
 ## [1.10.12] — 2026-11-04
 
 ### Changed
