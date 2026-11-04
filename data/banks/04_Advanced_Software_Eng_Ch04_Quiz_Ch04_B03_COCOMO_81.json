@@ -1,9 +1,9 @@
 {
   "topic": {
-    "ar": "COCOMO 81 والنماذج الساكنة للتكلفة",
-    "en": "COCOMO '81 and Static Cost Models"
+    "ar": "COCOMO: الأساسي والمتوسط والمفصّل",
+    "en": "COCOMO: Basic, Intermediate and Detailed"
   },
-  "quiz_id": "Quiz_Ch04_T02_COCOMO_81_And_Static_Models",
+  "quiz_id": "Quiz_Ch04_B03_COCOMO_81",
   "has_math": false,
   "semester": 1,
   "questions": [
@@ -14,8 +14,12 @@
         "en": "COCOMO was developed initially by..."
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "راجيف غوبتا هنا هنا مجدداً",
+          "en": "Rajiv Gupta here"
+        },
         {
           "ar": "بي دبليو بوم أيضاً أيضاً",
           "en": "B. W. Boehm here"
@@ -27,10 +31,6 @@
         {
           "ar": "بي بيزر هنا الآن الآن",
           "en": "B. Beizer here"
-        },
-        {
-          "ar": "راجيف غوبتا هنا هنا مجدداً",
-          "en": "Rajiv Gupta here"
         }
       ],
       "concept_id": "ch4_cocomo_author",
@@ -142,12 +142,8 @@
         "en": "How many cost drivers does Intermediate COCOMO '81 use?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "خمسة عشر عاملاً في أربع فئات",
-          "en": "fifteen drivers across four categories"
-        },
         {
           "ar": "سبعة عشر عاملاً في أربع فئات",
           "en": "seventeen drivers across four categories"
@@ -159,6 +155,10 @@
         {
           "ar": "سبعة عوامل في فئتين هنا الآن",
           "en": "seven drivers across two categories"
+        },
+        {
+          "ar": "خمسة عشر عاملاً في أربع فئات",
+          "en": "fifteen drivers across four categories"
         }
       ],
       "concept_id": "ch4_cost_drivers",
@@ -169,38 +169,6 @@
     },
     {
       "id": "q6",
-      "stem": {
-        "ar": "عند مقارنة النماذج الساكنة أحادية المتغير على 100 KLOC، أيها صحيح؟",
-        "en": "Comparing single-variable static models at 100 KLOC, which is true?"
-      },
-      "bloom": "Analyze",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "لا ينطبق أي منهما على هذا الحجم أيضاً",
-          "en": "neither model applies at that size here"
-        },
-        {
-          "ar": "Walston-Felix يتوقع جهداً أعلى بكثير",
-          "en": "Walston-Felix predicts much higher effort"
-        },
-        {
-          "ar": "SEL يتوقع جهداً أعلى بكثير هنا الآن",
-          "en": "SEL predicts much higher effort here now here"
-        },
-        {
-          "ar": "النموذجان يتوقعان جهداً متطابقاً",
-          "en": "both models predict identical effort"
-        }
-      ],
-      "concept_id": "ch4_static_compare",
-      "explanation": {
-        "ar": "النموذجان الأحاديا المتغير يتباعدان بشدة، وWalston-Felix هو الأعلى بينهما.",
-        "en": "The two single-variable models diverge sharply, with Walston-Felix the higher of the pair."
-      }
-    },
-    {
-      "id": "q7",
       "stem": {
         "ar": "مشروع بتعقيد عالٍ وقيود عتاد صارمة هو...",
         "en": "A project with high complexity and strict hardware constraints is..."
@@ -232,35 +200,67 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q7",
       "stem": {
-        "ar": "ما الذي يحدد نموذج الكلفة الساكن أحادي المتغير؟",
-        "en": "What defines a static single-variable cost model?"
+        "ar": "ما الذي يفصل COCOMO الأساسي عن المتوسط؟",
+        "en": "What separates basic from intermediate COCOMO?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "الجهد يعتمد على عوامل كثيرة",
-          "en": "effort depends on many drivers here"
+          "ar": "المتوسط يضيف عوامل الكلفة",
+          "en": "the intermediate adds cost drivers"
         },
         {
-          "ar": "الجهد يتغير مع كل مرحلة الآن",
-          "en": "effort changes with each phase"
+          "ar": "الأساسي يضيف عوامل الكلفة",
+          "en": "the basic adds cost drivers here"
         },
         {
-          "ar": "الجهد ثابت قبل التصميم هنا أيضاً",
-          "en": "effort is fixed before design"
+          "ar": "الأساسي ينمذج كل مرحلة",
+          "en": "the basic models each phase now"
         },
         {
-          "ar": "الجهد يعتمد على مُدخل حجم واحد",
-          "en": "effort depends on one size input"
+          "ar": "المتوسط يتجاهل الحجم هنا",
+          "en": "the intermediate ignores size too here"
         }
       ],
-      "concept_id": "ch4_static_models",
+      "concept_id": "ch4_basic_vs_inter",
       "explanation": {
-        "ar": "النموذج الساكن أحادي المتغير يقرأ الجهد من مقياس حجم واحد فقط بلا حد زمني.",
-        "en": "A single-variable static model reads effort from one size measure alone, with no time term."
+        "ar": "الأساسي يستخدم الحجم وحده، والمتوسط يضرب بخمسة عشر مضاعف جهد.",
+        "en": "Basic uses size alone; intermediate multiplies in fifteen effort multipliers."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يضيف COCOMO المفصّل؟",
+        "en": "What does detailed COCOMO add?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "جهد وعوامل كلفة لكل مرحلة",
+          "en": "per-phase effort and cost drivers"
+        },
+        {
+          "ar": "مقياس حجم ثانٍ مجدداً",
+          "en": "a second size measure here too"
+        },
+        {
+          "ar": "سجل مخاطر هنا أيضاً أيضاً",
+          "en": "a risk register here too now here"
+        },
+        {
+          "ar": "سجل أجايل الآن هنا الآن",
+          "en": "an agile backlog now again again"
+        }
+      ],
+      "concept_id": "ch4_detailed_model",
+      "explanation": {
+        "ar": "النموذج المفصّل يطبّق العوامل مرحلة بمرحلة بدل مرة واحدة للمشروع.",
+        "en": "The detailed model applies the drivers phase by phase rather than once for the whole project."
       }
     }
   ],
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T19:43:50Z",
+  "updated_at": "2026-11-04T20:38:56Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

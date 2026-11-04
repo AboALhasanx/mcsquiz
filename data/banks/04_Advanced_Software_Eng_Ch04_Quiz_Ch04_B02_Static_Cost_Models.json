@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "النماذج الساكنة أحادية ومتعددة المتغيرات",
+    "en": "Static Single-Variable and Multivariable Models"
+  },
+  "quiz_id": "Quiz_Ch04_B02_Static_Cost_Models",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "عند مقارنة النماذج الساكنة أحادية المتغير على 100 KLOC، أيها صحيح؟",
+        "en": "Comparing single-variable static models at 100 KLOC, which is true?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا ينطبق أي منهما على هذا الحجم أيضاً",
+          "en": "neither model applies at that size here"
+        },
+        {
+          "ar": "Walston-Felix يتوقع جهداً أعلى بكثير",
+          "en": "Walston-Felix predicts much higher effort"
+        },
+        {
+          "ar": "SEL يتوقع جهداً أعلى بكثير هنا الآن",
+          "en": "SEL predicts much higher effort here now here"
+        },
+        {
+          "ar": "النموذجان يتوقعان جهداً متطابقاً",
+          "en": "both models predict identical effort"
+        }
+      ],
+      "concept_id": "ch4_static_compare",
+      "explanation": {
+        "ar": "النموذجان الأحاديا المتغير يتباعدان بشدة، وWalston-Felix هو الأعلى بينهما.",
+        "en": "The two single-variable models diverge sharply, with Walston-Felix the higher of the pair."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الذي يحدد نموذج الكلفة الساكن أحادي المتغير؟",
+        "en": "What defines a static single-variable cost model?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الجهد يعتمد على عوامل كثيرة",
+          "en": "effort depends on many drivers here"
+        },
+        {
+          "ar": "الجهد يتغير مع كل مرحلة الآن",
+          "en": "effort changes with each phase"
+        },
+        {
+          "ar": "الجهد ثابت قبل التصميم هنا أيضاً",
+          "en": "effort is fixed before design"
+        },
+        {
+          "ar": "الجهد يعتمد على مُدخل حجم واحد",
+          "en": "effort depends on one size input"
+        }
+      ],
+      "concept_id": "ch4_static_models",
+      "explanation": {
+        "ar": "النموذج الساكن أحادي المتغير يقرأ الجهد من مقياس حجم واحد فقط بلا حد زمني.",
+        "en": "A single-variable static model reads effort from one size measure alone, with no time term."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الذي يحدد النموذج الساكن متعدد المتغيرات؟",
+        "en": "What defines a static multivariable model?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الجهد يعتمد على التقويم",
+          "en": "effort depends on the calendar too"
+        },
+        {
+          "ar": "الجهد يحدده العميل الآن",
+          "en": "effort is set by the customer now"
+        },
+        {
+          "ar": "الجهد من عدة عوامل حجم",
+          "en": "effort comes from several size drivers"
+        },
+        {
+          "ar": "الجهد من عامل واحد هنا",
+          "en": "effort comes from one driver here again"
+        }
+      ],
+      "concept_id": "ch4_static_multivar",
+      "explanation": {
+        "ar": "النموذج متعدد المتغيرات يقرأ الجهد من أكثر من مقياس حجم معاً.",
+        "en": "A multivariable model reads effort from more than one size measure at once."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا تعني كلمة ساكن في نماذج الكلفة؟",
+        "en": "What does static mean in these cost models?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الفريق ثابت الآن مجدداً",
+          "en": "the team is fixed here again here"
+        },
+        {
+          "ar": "لا بُعد زمني في النموذج",
+          "en": "no time dimension is modelled"
+        },
+        {
+          "ar": "التقدير لا يتغير أبداً",
+          "en": "the estimate never changes"
+        },
+        {
+          "ar": "الكود مجمّد هنا أيضاً",
+          "en": "the code is frozen now too"
+        }
+      ],
+      "concept_id": "ch4_static_meaning",
+      "explanation": {
+        "ar": "ساكن يعني أن النموذج يتجاهل زمن التطوير، فيُقرأ الجهد من الحجم مباشرة.",
+        "en": "Static means the model ignores development time; effort is read straight from size."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي زوج يمثل نماذج ساكنة أحادية المتغير؟",
+        "en": "Which pair are single-variable static models?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بوتنام ورايلي هنا أيضاً",
+          "en": "Putnam and Rayleigh"
+        },
+        {
+          "ar": "نقاط الوظائف وأسطر الكود هنا",
+          "en": "Function points and LOC"
+        },
+        {
+          "ar": "Walston-Felix وSEL مجدداً",
+          "en": "Walston-Felix and SEL"
+        },
+        {
+          "ar": "COCOMO وCOCOMO II الآن",
+          "en": "COCOMO and COCOMO II"
+        }
+      ],
+      "concept_id": "ch4_static_example",
+      "explanation": {
+        "ar": "Walston-Felix ونموذج SEL يقرآن الجهد من مُدخل حجم واحد.",
+        "en": "Walston-Felix and the SEL model both read effort from a single size input."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما القيد الأساسي للنموذج الساكن؟",
+        "en": "What is the main limitation of a static model?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يحتاج الكود المكتمل مجدداً",
+          "en": "it needs the finished code here here"
+        },
+        {
+          "ar": "لا يستخدم KLOC الآن هنا",
+          "en": "it cannot use KLOC here too now"
+        },
+        {
+          "ar": "يحتاج مترجماً هنا أيضاً",
+          "en": "it needs a compiler now again"
+        },
+        {
+          "ar": "يتجاهل الزمن وعوامل الفريق",
+          "en": "it ignores time and team factors"
+        }
+      ],
+      "concept_id": "ch4_static_limit",
+      "explanation": {
+        "ar": "لأنه بلا حد زمني لا يستطيع إظهار أثر ضغط الجدول على الجهد.",
+        "en": "Because it has no time term, it cannot show how schedule pressure changes effort."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "متى يناسب النموذج الساكن؟",
+        "en": "When is a static model appropriate?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لتقدير أولي خشن أيضاً أيضاً",
+          "en": "for a rough early estimate"
+        },
+        {
+          "ar": "لسعر العقد النهائي هنا مجدداً",
+          "en": "for the final contract price"
+        },
+        {
+          "ar": "لخطة الاختبار هنا مجدداً",
+          "en": "for the test plan here now"
+        },
+        {
+          "ar": "لمرحلة الصيانة الآن الآن",
+          "en": "for the maintenance phase"
+        }
+      ],
+      "concept_id": "ch4_static_when",
+      "explanation": {
+        "ar": "بساطته تناسب تقديراً أولياً قبل توفر بيانات مفصّلة.",
+        "en": "Its simplicity suits a first order-of-magnitude estimate before detailed data exists."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما المُدخل الذي تأخذه النماذج الساكنة؟",
+        "en": "What input do static models take?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الحجم بوحدة KLOC",
+          "en": "size in KLOC here too"
+        },
+        {
+          "ar": "عدد المختبِرين",
+          "en": "the number of testers"
+        },
+        {
+          "ar": "ميزانية العتاد",
+          "en": "the hardware budget"
+        },
+        {
+          "ar": "تاريخ الإصدار هنا",
+          "en": "the release date now"
+        }
+      ],
+      "concept_id": "ch4_static_input",
+      "explanation": {
+        "ar": "الحجم بآلاف الأسطر هو العامل الوحيد الذي تقرأه هذه النماذج.",
+        "en": "Size in thousands of lines is the only driver these models read."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T20:38:56Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
