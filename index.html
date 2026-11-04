@@ -256,6 +256,8 @@
                         </div>
                     </div>
 
+                    <div id="results-achievement-celebration" class="results-achievement-celebration hidden"></div>
+
                     <div class="stats-summary-grid">
                         <div class="stat-card">
                             <div class="stat-icon-wrapper correct-accent"><i data-lucide="check"></i></div>
@@ -419,68 +421,229 @@
                 </section>
             </div>
 
-        <!-- League (weekly board) -->
+        <!-- Account / Profile (Bento Grid & Student Identity) -->
             <div id="account-view" class="state-view account-view hidden">
                 <div class="account-page-head">
-                    <div class="account-avatar-preview account-avatar-large" id="account-avatar-preview" aria-hidden="true"></div>
-                    <div class="account-head-text">
-                        <h2 class="saved-title" id="account-title">الحساب</h2>
-                        <p id="account-body" class="saved-total-line"></p>
-                    </div>
-                    <button id="account-close" class="icon-btn account-close-btn" type="button" aria-label="رجوع للرئيسة" title="رجوع">
+                    <button id="account-close" class="icon-btn account-close-btn" type="button" aria-label="رجوع للرئيسية" title="رجوع">
                         <i data-lucide="arrow-right"></i>
                     </button>
-                </div>
-                <div class="account-page-body">
-                    <div id="account-profile" class="hidden">
-                        <div class="account-section">
-                            <span class="account-section-title">بياناك</span>
-                            <label class="auth-label" for="profile-name">اسمك</label>
-                            <input id="profile-name" class="auth-input" maxlength="40" dir="auto" placeholder="اسمك">
-                            <p class="auth-hint">اسم المسخدم: <b id="profile-handle" dir="ltr"></b> — لا يمكن تغييره لاحقاً.</p>
-                            <label class="auth-label" for="profile-pin">رمزك (4 أرقام) لتأكيد التغديل</label>
-                            <input id="profile-pin" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••">
-                        </div>
-                        <div class="account-section">
-                            <div class="account-section-head">
-                                <span class="account-section-title">صورتك</span>
-                            </div>
-                            <div id="avatar-grid" class="avatar-grid collapsed" role="group" aria-label="اختر صورة للملف"></div>
-                            <button id="avatar-more" class="avatar-more" type="button" aria-expanded="false" aria-controls="avatar-grid">
-                                <span id="avatar-more-label">إظهار المزيد</span>
-                                <i data-lucide="chevron-down" id="avatar-more-icon" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div class="account-section">
-                            <span class="account-section-title">الرمز السري</span>
-                            <p class="auth-hint">رمزك الحالي هو اللي بخانة «رمزك» فوق. لتغييره اكتب الجديد مرتين.</p>
-                            <label class="auth-label" for="pin-new">الرمز الجديد (4 أرقام)</label>
-                            <input id="pin-new" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••" autocomplete="off">
-                            <label class="auth-label" for="pin-new2">تأكيد الرمز الجديد</label>
-                            <input id="pin-new2" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••" autocomplete="off">
-                            <button id="pin-change" class="action-btn secondary-btn auth-submit" type="button">تغيير الرمز</button>
-                        </div>
-                        <button id="profile-save" class="action-btn primary-btn auth-submit">حفظ التغييرات</button>
+                    <h2 class="saved-title" id="account-title">الملف الشخصي</h2>
+                    <div class="account-head-actions">
+                        <button id="account-settings-btn" class="icon-btn" type="button" aria-label="إعدادات الحساب والأمان" title="الإعدادات">
+                            <i data-lucide="settings"></i>
+                        </button>
                     </div>
-                    <div class="account-actions">
-                        <button id="account-open-bot" class="account-action hidden" type="button">
-                            <i data-lucide="bot"></i><span>فتح البوت</span>
+                </div>
+
+                <div class="account-page-body">
+                    <!-- 1. Hero Identity Card -->
+                    <div class="profile-hero-card">
+                        <div class="profile-avatar-wrap">
+                            <div class="account-avatar-preview account-avatar-large" id="account-avatar-preview" aria-hidden="true"></div>
+                        </div>
+                        <div class="profile-identity-info">
+                            <div class="profile-name-row">
+                                <h3 class="profile-display-name" id="profile-display-name">طالب</h3>
+                                <span class="profile-verified-badge" title="طالب مسجل" aria-label="طالب مسجل">
+                                    <i data-lucide="badge-check"></i>
+                                </span>
+                            </div>
+                            <div class="profile-handle-row">
+                                <button id="profile-handle-pill" class="profile-handle-pill" type="button" dir="ltr" aria-label="نسخ المعرف" title="انقر لنسخ المعرف">
+                                    <span id="account-body" class="profile-handle-text" dir="ltr">@guest</span>
+                                    <span id="profile-copy-status" class="handle-copy-icon" aria-hidden="true">
+                                        <i data-lucide="copy"></i>
+                                    </span>
+                                </button>
+                                <button id="profile-copy-handle" class="visually-hidden-input" type="button" aria-hidden="true" tabindex="-1" style="display:none;"></button>
+                            </div>
+                            <div class="profile-league-standing" id="profile-league-standing">
+                                <i data-lucide="trophy" class="profile-league-standing-icon"></i>
+                                <span id="profile-league-standing-text">الدوري الأسبوعي · في انتظار المنافسة</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Bento Stats Grid (Pinterest / Dribbble Craftsmanship) -->
+                    <div class="profile-bento-grid">
+                        <!-- Hero Card (Full Width): Streak & 7-Day Habit Tracker -->
+                        <div class="bento-card bento-card-streak-featured">
+                            <div class="bento-streak-top">
+                                <div class="bento-streak-stat-group">
+                                    <div class="bento-card-icon-wrap icon-amber">
+                                        <i data-lucide="flame"></i>
+                                    </div>
+                                    <div class="bento-streak-numbers">
+                                        <div class="bento-val-row">
+                                            <span class="bento-val font-num" id="profile-stat-streak">0</span>
+                                            <span class="bento-unit">أيام</span>
+                                        </div>
+                                        <span class="bento-card-sub" id="profile-streak-sub">شعلة المذاكرة المتتالية</span>
+                                    </div>
+                                </div>
+                                <div class="bento-streak-badge">
+                                    <i data-lucide="sparkles" class="bento-streak-badge-icon"></i>
+                                    <span id="profile-streak-status-text">حماسة مستمرة</span>
+                                </div>
+                            </div>
+                            <div class="bento-habit-timeline">
+                                <div class="profile-streak-dots" id="profile-streak-dots" role="group" aria-label="أيام النشاط الأسبوعي"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: League Standing (Warm Gold) -->
+                        <div class="bento-card bento-card-league">
+                            <div class="bento-card-head">
+                                <span class="bento-card-label">الدوري الأسبوعي</span>
+                                <div class="bento-card-icon-wrap icon-gold">
+                                    <i data-lucide="trophy"></i>
+                                </div>
+                            </div>
+                            <div class="bento-card-body">
+                                <div class="bento-val-row">
+                                    <span class="bento-val font-num" id="profile-stat-league-xp">0</span>
+                                    <span class="bento-unit font-num">XP</span>
+                                </div>
+                                <div class="bento-pill-tier">
+                                    <i data-lucide="shield" class="bento-pill-tier-icon"></i>
+                                    <span id="profile-stat-league-desc">الفئة البرونزية</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Overall Accuracy (Radial Progress Donut Ring) -->
+                        <div class="bento-card bento-card-accuracy">
+                            <div class="bento-card-head">
+                                <span class="bento-card-label">الدقة العامة</span>
+                                <div class="bento-card-icon-wrap icon-emerald">
+                                    <i data-lucide="target"></i>
+                                </div>
+                            </div>
+                            <div class="bento-card-body bento-accuracy-body">
+                                <div class="bento-ring-wrap">
+                                    <svg class="bento-ring-svg" viewBox="0 0 54 54" aria-hidden="true">
+                                        <circle class="bento-ring-bg" cx="27" cy="27" r="22"></circle>
+                                        <circle class="bento-ring-fill" id="profile-stat-accuracy-ring" cx="27" cy="27" r="22" style="stroke-dasharray: 138.23; stroke-dashoffset: 138.23;"></circle>
+                                    </svg>
+                                    <div class="bento-ring-center">
+                                        <span class="bento-ring-val font-num" id="profile-stat-accuracy">0</span><span class="bento-ring-pct font-num">%</span>
+                                    </div>
+                                </div>
+                                <span class="bento-ring-sub font-num" id="profile-stat-accuracy-detail">0 / 0</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 (Full Width): Quizzes & Saved Vault (Duo Pod) -->
+                        <div class="bento-card bento-card-vault">
+                            <div class="bento-card-head">
+                                <span class="bento-card-label">محفظة المعرفة والإنجاز</span>
+                                <div class="bento-card-icon-wrap icon-indigo">
+                                    <i data-lucide="layers"></i>
+                                </div>
+                            </div>
+                            <div class="bento-vault-grid">
+                                <div class="bento-vault-pod pod-quizzes">
+                                    <div class="vault-pod-icon-wrap">
+                                        <i data-lucide="zap"></i>
+                                    </div>
+                                    <div class="vault-pod-info">
+                                        <span class="vault-pod-val font-num" id="profile-stat-quizzes">0</span>
+                                        <span class="vault-pod-label">كويز مكتمل</span>
+                                    </div>
+                                </div>
+                                <div class="bento-vault-pod pod-saved">
+                                    <div class="vault-pod-icon-wrap">
+                                        <i data-lucide="bookmark"></i>
+                                    </div>
+                                    <div class="vault-pod-info">
+                                        <span class="vault-pod-val font-num" id="profile-stat-saved-count">0</span>
+                                        <span class="vault-pod-label">سؤال بالمحفوظات</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Honors & Badges Shelf -->
+                    <div class="profile-honors-card">
+                        <div class="profile-honors-head">
+                            <div class="profile-honors-title-wrap">
+                                <span class="profile-honors-icon"><i data-lucide="award"></i></span>
+                                <span class="profile-honors-title">أوسمة الإنجاز</span>
+                            </div>
+                            <span class="profile-honors-count font-num" id="profile-badges-count">0 / 5</span>
+                        </div>
+                        <div class="profile-badges-grid" id="profile-badges-grid" role="list" aria-label="أوسمة الإنجاز"></div>
+                    </div>
+
+                    <!-- 4. Settings & Security Section (Collapsible Accordion) -->
+                    <div id="account-profile" class="account-profile-container hidden">
+                        <button type="button" class="account-profile-header-strip" id="account-profile-toggle" aria-expanded="false" aria-controls="account-profile-content">
+                            <div class="account-profile-header-info">
+                                <div class="account-strip-icon-box">
+                                    <i data-lucide="sliders" class="account-strip-icon"></i>
+                                </div>
+                                <div class="account-strip-text">
+                                    <h4 class="account-strip-title">إعدادات الحساب والأمان</h4>
+                                    <p class="account-strip-desc">تعديل الاسم والرمز السري وإدارة المزامنة</p>
+                                </div>
+                            </div>
+                            <span class="account-strip-chevron-wrap">
+                                <i data-lucide="chevron-down" class="account-strip-chevron"></i>
+                            </span>
                         </button>
-                        <button id="account-sync-now" class="account-action hidden" type="button">
-                            <i data-lucide="refresh-cw"></i><span>مزامنة الآن</span>
-                        </button>
-                        <button id="account-link" class="account-action hidden" type="button">
-                            <i data-lucide="qr-code"></i><span>ربط جهاز آخر</span>
-                        </button>
-                        <button id="account-logout" class="account-action account-action-danger hidden" type="button">
-                            <i data-lucide="log-out"></i><span>تسجيل الخروج</span>
-                        </button>
-                        <button id="account-unlock" class="account-action hidden" type="button">
-                            <i data-lucide="key-round"></i><span>تفعيل المزامنة هنا</span>
-                        </button>
-                        <button id="account-delete" class="account-action account-action-danger hidden" type="button">
-                            <i data-lucide="trash-2"></i><span>حذف حسابي</span>
-                        </button>
+
+                        <div id="account-profile-content" class="account-profile-content collapsed">
+                            <div class="account-section">
+                                <span class="account-section-title">بياناتك</span>
+                                <label class="auth-label" for="profile-name">اسمك</label>
+                                <input id="profile-name" class="auth-input" maxlength="40" dir="auto" placeholder="اسمك">
+                                <p class="auth-hint">اسم المستخدم: <b id="profile-handle" dir="ltr"></b> — لا يمكن تغييره لاحقاً.</p>
+                                <label class="auth-label" for="profile-pin">رمزك (4 أرقام) لتأكيد التعديل</label>
+                                <input id="profile-pin" class="auth-input" type="password" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••">
+                            </div>
+                            <div class="account-section">
+                                <div class="account-section-head">
+                                    <span class="account-section-title">صورتك</span>
+                                </div>
+                                <div id="avatar-grid" class="avatar-grid collapsed" role="group" aria-label="اختر صورة للملف"></div>
+                                <button id="avatar-more" class="avatar-more" type="button" aria-expanded="false" aria-controls="avatar-grid">
+                                    <span id="avatar-more-label">إظهار المزيد</span>
+                                    <i data-lucide="chevron-down" id="avatar-more-icon" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="account-section">
+                                <span class="account-section-title">الرمز السري</span>
+                                <p class="auth-hint">أدخل الرمز الحالي في خانة «رمزك» أعلاه، ثم اكتب الرمز الجديد مرتين لتأكيده.</p>
+                                <label class="auth-label" for="pin-new">الرمز الجديد (4 أرقام)</label>
+                                <input id="pin-new" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••" autocomplete="off">
+                                <label class="auth-label" for="pin-new2">تأكيد الرمز الجديد</label>
+                                <input id="pin-new2" class="auth-input" maxlength="4" dir="ltr" inputmode="numeric" placeholder="••••" autocomplete="off">
+                                <button id="pin-change" class="action-btn secondary-btn auth-submit" type="button">تغيير الرمز</button>
+                            </div>
+                            <button id="profile-save" class="action-btn primary-btn auth-submit">حفظ التغييرات</button>
+
+                            <div class="account-actions">
+                                <button id="account-open-bot" class="account-action hidden" type="button">
+                                    <i data-lucide="bot"></i><span>فتح البوت</span>
+                                </button>
+                                <button id="account-sync-now" class="account-action hidden" type="button">
+                                    <i data-lucide="refresh-cw"></i><span>مزامنة الآن</span>
+                                </button>
+                                <button id="account-link" class="account-action hidden" type="button">
+                                    <i data-lucide="qr-code"></i><span>ربط جهاز آخر</span>
+                                </button>
+                                <button id="account-unlock" class="account-action hidden" type="button">
+                                    <i data-lucide="key-round"></i><span>تفعيل المزامنة هنا</span>
+                                </button>
+                                <button id="account-logout" class="account-action account-action-danger hidden" type="button">
+                                    <i data-lucide="log-out"></i><span>تسجيل الخروج</span>
+                                </button>
+                                <button id="account-delete" class="account-action account-action-danger hidden" type="button">
+                                    <i data-lucide="trash-2"></i><span>حذف حسابي</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1205,6 +1368,59 @@
             </div>
         </div>
 
+        <!-- Badge Details Bottom Sheet -->
+        <div id="badge-sheet-overlay" class="sheet-backdrop hidden" aria-hidden="true"></div>
+        <aside id="badge-sheet" class="badge-bottom-sheet hidden" role="dialog" aria-modal="true" aria-labelledby="badge-sheet-title" aria-hidden="true">
+            <div class="sheet-drag-handle" aria-hidden="true"></div>
+            <div class="badge-sheet-header">
+                <button id="badge-sheet-close" class="icon-btn sheet-close-btn" type="button" aria-label="إغلاق تفاصيل الوسام">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="badge-sheet-body">
+                <div class="badge-sheet-emblem-wrap" id="badge-sheet-emblem"></div>
+                <div class="badge-sheet-info">
+                    <div class="badge-sheet-rank-tag" id="badge-sheet-rank">الفئة البرونزية</div>
+                    <h3 class="badge-sheet-title" id="badge-sheet-title">اسم الوسام</h3>
+                    <p class="badge-sheet-desc" id="badge-sheet-desc">وصف الوسام ومتطلباته</p>
+                </div>
+                
+                <div class="badge-sheet-progress-box">
+                    <div class="sheet-progress-head">
+                        <span class="sheet-progress-label" id="badge-sheet-progress-label">التقدم نحو الرتبة التالية</span>
+                        <span class="sheet-progress-val font-num" id="badge-sheet-progress-val">0 / 0</span>
+                    </div>
+                    <div class="sheet-progress-bar-track">
+                        <div class="sheet-progress-bar-fill" id="badge-sheet-progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="badge-sheet-actions">
+                    <button id="badge-sheet-share-btn" class="action-btn secondary-btn sheet-share-btn hidden" type="button" aria-label="مشاركة بطاقة الوسام">
+                        <i data-lucide="share-2"></i>
+                        <span>مشاركة الإنجاز</span>
+                    </button>
+                </div>
+
+                <div class="badge-sheet-footer-info">
+                    <span class="sheet-date-text" id="badge-sheet-date">—</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Achievement Unlock Floating Pill HUD -->
+        <aside id="achievement-hud-pill" class="achievement-hud-pill hidden" role="status" aria-live="polite">
+            <div class="hud-pill-inner">
+                <div class="hud-icon-box" id="hud-pill-icon">
+                    <i data-lucide="award"></i>
+                </div>
+                <div class="hud-text-group">
+                    <span class="hud-kicker" id="hud-pill-kicker">وسام جديد أُحرز!</span>
+                    <span class="hud-title" id="hud-pill-title">اسم الوسام</span>
+                </div>
+            </div>
+        </aside>
+
         <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
 
         <!-- Guided tour overlay (custom spotlight, offline-safe) -->
@@ -1254,6 +1470,8 @@
     <script src="js/stats_ui.js" defer></script>
     <script src="js/league_ui.js" defer></script>
     <script src="js/vs_ui.js" defer></script>
+    <script src="js/achievements.js" defer></script>
+    <script src="js/account_ui.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/pwa.js" defer></script>
 </body>

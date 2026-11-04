@@ -405,6 +405,41 @@
         '</span><span class="player-stat-label">' + escapeHtml(label) + '</span></div>';
       };
       var avHtml = avatarHtml(r.avatar, r.name, 'player-avatar');
+
+      var honorsHtml = '';
+      try {
+        var L = window.PortalLeague;
+        var localAcc = {};
+        try { localAcc = JSON.parse(localStorage.getItem('portal_account_v1') || '{}'); } catch (e) {}
+        var currentUserId = (L && L.userId ? L.userId() : null) ||
+                            (window.PortalCloud && window.PortalCloud.userId ? window.PortalCloud.userId() : null) ||
+                            localAcc.id;
+        var isMe = !!((currentUserId && r.user_id === currentUserId) || (localAcc.id && r.user_id === localAcc.id) || r.isMe);
+        if (isMe && window.PortalAchievements && window.PortalAchievements.evaluateAll) {
+          var ev = window.PortalAchievements.evaluateAll();
+          var pills = [];
+          if (ev.stats && ev.stats.streak > 0) {
+            pills.push('<span class="player-honor-pill streak"><i data-lucide="flame"></i> استمرارية ' + ev.stats.streak + ' أيام</span>');
+          }
+          var unlocked = (ev.results || []).filter(function (x) { return x.isUnlocked; });
+          if (unlocked.length > 0) {
+            unlocked.sort(function (a, b) {
+              var ta = (a.evalRes && a.evalRes.achievedTier) || 1;
+              var tb = (b.evalRes && b.evalRes.achievedTier) || 1;
+              return tb - ta;
+            });
+            var topB = unlocked[0];
+            var tierCls = (topB.tierMeta && topB.tierMeta.accentClass) ? ('badge-' + topB.tierMeta.accentClass) : 'badge-tier-gold';
+            pills.push('<span class="player-honor-pill ' + tierCls + '"><i data-lucide="' + escapeHtml(topB.badge.icon) + '"></i> ' + escapeHtml(topB.evalRes.currentTierTitle || topB.badge.title) + '</span>');
+          }
+          if (pills.length > 0) {
+            honorsHtml = '<div class="player-honors-highlight">' + pills.join('') + '</div>';
+          }
+        } else if (r.isBot) {
+          honorsHtml = '<div class="player-honors-highlight"><span class="player-honor-pill badge-tier-diamond"><i data-lucide="sparkles"></i> ذكاء أسطوري متكيف</span></div>';
+        }
+      } catch (e) {} // audit-ignore: optional honors highlight
+
       card.innerHTML =
         '<div class="player-head">' +
           avHtml +
@@ -418,6 +453,7 @@
           stat('الدقة', acc === null ? '—' : acc + '%') +
           stat('المركز', r.rank || '—') +
         '</div>' +
+        honorsHtml +
         (subs.length
           ? '<div class="player-subjects"><span class="player-subjects-title">أكثر المواد</span>' +
             subs.map(function (s) {
@@ -837,7 +873,8 @@
     return {
       scopeRows: scopeRows,
       renderLeague: renderLeague,
-      shareMyRank: shareMyRank
+      shareMyRank: shareMyRank,
+      openPlayerCard: openPlayerCard
     };
   }
 

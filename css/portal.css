@@ -905,6 +905,8 @@ body, .app-container, button, input, select, textarea, .filter-chip, .menu-item 
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  border-radius: 50%;
+  overflow: hidden;
   border: 1px solid var(--border-card);
 }
 .league-row .menu-avatar { width: 30px; height: 30px; font-size: 0.85rem; flex-shrink: 0; }
@@ -1155,18 +1157,1385 @@ html[data-theme="light"] .league-row-acc {
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  padding: 1rem 0.9rem 2.5rem;
+  padding: 1.1rem 0.9rem 3rem;
   text-align: start;
 }
 .account-page-head {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.85rem;
   padding-bottom: 0.9rem;
   border-bottom: 1px solid var(--border-subtle);
 }
+.account-head-actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 .account-page-body { display: flex; flex-direction: column; }
-.account-avatar-large { width: 64px; height: 64px; flex: 0 0 64px; }
+.account-avatar-large {
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
+  border-radius: 50%;
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+}
+
+/* ---- Bento Profile Hero & Identity ---- */
+.profile-hero-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.35rem 1rem 1.25rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+.profile-avatar-wrap {
+  position: relative;
+  margin-bottom: 0.65rem;
+}
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.profile-display-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+.profile-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+.profile-verified-badge svg {
+  width: 18px;
+  height: 18px;
+}
+.profile-handle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.35rem;
+}
+.profile-handle-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.32rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  direction: ltr;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.profile-handle-pill:hover {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  box-shadow: 0 3px 12px rgba(56, 189, 248, 0.15);
+  transform: translateY(-1px);
+}
+.profile-handle-pill:active {
+  transform: scale(0.97);
+}
+.profile-handle-text {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.01em;
+}
+.handle-copy-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+  margin-inline-start: 0.15rem;
+}
+.profile-handle-pill:hover .handle-copy-icon {
+  color: var(--accent);
+}
+.handle-copy-icon svg {
+  width: 14px;
+  height: 14px;
+}
+.copy-success-icon {
+  color: #10b981 !important;
+}
+.profile-league-standing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding: 0.38rem 0.95rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-main);
+  max-width: 100%;
+}
+.profile-league-standing-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+#profile-league-standing-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Bento Stats Grid (Pinterest / Dribbble Craftsmanship) ---- */
+.profile-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+.bento-card {
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 118px;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.14);
+}
+
+/* Featured Streak Hero Card (Full Width) */
+.bento-card-streak-featured {
+  grid-column: 1 / -1;
+  background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.12), transparent 70%), var(--bg-surface);
+  min-height: auto;
+  gap: 0.95rem;
+}
+.bento-card-streak-featured:hover {
+  border-color: rgba(249, 115, 22, 0.45);
+  box-shadow: 0 8px 26px rgba(249, 115, 22, 0.12);
+}
+.bento-streak-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.bento-streak-stat-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.bento-streak-stat-group .bento-card-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+.bento-streak-stat-group .bento-card-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+.bento-streak-numbers {
+  display: flex;
+  flex-direction: column;
+}
+.bento-streak-numbers .bento-val-row {
+  margin-top: 0;
+}
+.bento-card-sub {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  margin-top: 0.15rem;
+}
+.bento-streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.28);
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #f97316;
+}
+.bento-streak-badge-icon {
+  width: 14px;
+  height: 14px;
+}
+.bento-habit-timeline {
+  width: 100%;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.profile-streak-dots {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 100%;
+}
+.habit-day-capsule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
+}
+.habit-day-letter {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+}
+.habit-day-capsule.is-today .habit-day-letter {
+  color: #f97316;
+  font-weight: 800;
+}
+.habit-day-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-subtle);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.habit-day-capsule.is-active .habit-day-dot {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border-color: #f97316;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.45);
+  color: #ffffff;
+}
+.habit-day-capsule.is-today:not(.is-active) .habit-day-dot {
+  border-color: #f97316;
+  border-style: dashed;
+}
+.habit-check-icon {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3px;
+  color: #ffffff;
+}
+
+/* Card 2: League Card */
+.bento-card-league {
+  background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.1), transparent 65%), var(--bg-surface);
+}
+.bento-card-league:hover { border-color: rgba(234, 179, 8, 0.45); }
+
+/* Card 3: Accuracy Card */
+.bento-card-accuracy {
+  background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.1), transparent 65%), var(--bg-surface);
+}
+.bento-card-accuracy:hover { border-color: rgba(16, 185, 129, 0.45); }
+
+/* Card 4: Knowledge Vault (Full Width Duo Pod) */
+.bento-card-vault {
+  grid-column: 1 / -1;
+  background: radial-gradient(circle at top right, rgba(129, 140, 248, 0.1), transparent 70%), var(--bg-surface);
+  min-height: auto;
+  gap: 0.65rem;
+}
+.bento-card-vault:hover {
+  border-color: rgba(129, 140, 248, 0.45);
+  box-shadow: 0 8px 26px rgba(129, 140, 248, 0.12);
+}
+.bento-vault-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+.bento-vault-pod {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bento-vault-pod:hover {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.vault-pod-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pod-quizzes .vault-pod-icon-wrap {
+  background: rgba(129, 140, 248, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(129, 140, 248, 0.25);
+}
+.pod-saved .vault-pod-icon-wrap {
+  background: rgba(45, 212, 191, 0.15);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.25);
+}
+.vault-pod-icon-wrap svg {
+  width: 18px;
+  height: 18px;
+}
+.vault-pod-info {
+  display: flex;
+  flex-direction: column;
+}
+.vault-pod-val {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+.vault-pod-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  margin-top: 0.1rem;
+}
+
+/* Common Bento card header & badges */
+.bento-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+.bento-card-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+  letter-spacing: -0.01em;
+}
+.bento-card-icon-wrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+.bento-card:hover .bento-card-icon-wrap {
+  transform: scale(1.08);
+}
+.bento-card-icon-wrap svg {
+  width: 16px;
+  height: 16px;
+}
+.icon-gold {
+  background: rgba(234, 179, 8, 0.14);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.25);
+}
+.icon-amber {
+  background: rgba(249, 115, 22, 0.14);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+.icon-emerald {
+  background: rgba(16, 185, 129, 0.14);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.icon-indigo {
+  background: rgba(129, 140, 248, 0.14);
+  color: #818cf8;
+  border: 1px solid rgba(129, 140, 248, 0.25);
+}
+
+.bento-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+.bento-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+.bento-unit {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Card 1: League Tier Pill */
+.bento-pill-tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+  padding: 0.22rem 0.6rem;
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.28);
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #eab308;
+  max-width: 100%;
+}
+.bento-pill-tier-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+.bento-pill-tier span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card 3: Donut Progress Ring */
+.bento-accuracy-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.15rem 0 0;
+}
+.bento-ring-wrap {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bento-ring-svg {
+  width: 54px;
+  height: 54px;
+  transform: rotate(-90deg);
+}
+.bento-ring-bg {
+  fill: none;
+  stroke: var(--border-subtle);
+  stroke-width: 4.5px;
+}
+.bento-ring-fill {
+  fill: none;
+  stroke: #10b981;
+  stroke-width: 4.5px;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bento-ring-center {
+  position: absolute;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  line-height: 1;
+}
+.bento-ring-val {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+.bento-ring-pct {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-inline-start: 1px;
+}
+.bento-ring-sub {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+  margin-top: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Honors & Badges Shelf ---- */
+.profile-honors-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 0.95rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+.profile-honors-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+.profile-honors-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.profile-honors-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-honors-icon svg {
+  width: 16px;
+  height: 16px;
+}
+.profile-honors-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.profile-honors-count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+.profile-badges-grid {
+  display: flex;
+  gap: 0.55rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.25rem 0.15rem 0.5rem;
+}
+.profile-badges-grid::-webkit-scrollbar {
+  display: none;
+}
+.profile-badge-item {
+  flex: 0 0 82px;
+  min-width: 82px;
+  max-width: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.65rem 0.35rem 0.55rem;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.profile-badge-item:hover {
+  transform: translateY(-3px);
+}
+.profile-badge-item:active {
+  transform: scale(0.96);
+}
+
+/* Metallic Tiers for Honors Shelf */
+.profile-badge-item.tier-bronze {
+  border-color: rgba(217, 119, 6, 0.45);
+  background: radial-gradient(circle at top, rgba(217, 119, 6, 0.14), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.tier-bronze:hover {
+  border-color: #d97706;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.2);
+}
+.profile-badge-item.tier-bronze .profile-badge-icon-box {
+  background: rgba(217, 119, 6, 0.16);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  color: #d97706;
+}
+
+.profile-badge-item.tier-silver {
+  border-color: rgba(148, 163, 184, 0.5);
+  background: radial-gradient(circle at top, rgba(148, 163, 184, 0.14), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.tier-silver:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 18px rgba(148, 163, 184, 0.2);
+}
+.profile-badge-item.tier-silver .profile-badge-icon-box {
+  background: rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #94a3b8;
+}
+
+.profile-badge-item.tier-gold {
+  border-color: rgba(234, 179, 8, 0.55);
+  background: radial-gradient(circle at top, rgba(234, 179, 8, 0.18), transparent 75%), var(--bg-card);
+  box-shadow: 0 2px 10px rgba(234, 179, 8, 0.1);
+}
+.profile-badge-item.tier-gold:hover {
+  border-color: #eab308;
+  box-shadow: 0 6px 20px rgba(234, 179, 8, 0.25);
+}
+.profile-badge-item.tier-gold .profile-badge-icon-box {
+  background: rgba(234, 179, 8, 0.2);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  color: #eab308;
+}
+
+.profile-badge-item.tier-diamond {
+  border-color: rgba(56, 189, 248, 0.6);
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 75%), var(--bg-card);
+  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.12);
+}
+.profile-badge-item.tier-diamond:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.28);
+}
+.profile-badge-item.tier-diamond .profile-badge-icon-box {
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+.profile-badge-item.tier-locked {
+  border: 1px dashed var(--border-subtle);
+  background: var(--bg-surface);
+  opacity: 0.38;
+  filter: grayscale(1);
+}
+.profile-badge-item.tier-locked .profile-badge-icon-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.profile-badge-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.35rem;
+  transition: transform 0.15s ease;
+}
+.profile-badge-item:hover .profile-badge-icon-box {
+  transform: scale(1.08);
+}
+.profile-badge-icon-box svg {
+  width: 19px;
+  height: 19px;
+}
+.profile-badge-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-main);
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.25;
+  min-height: 2.5em;
+  text-align: center;
+  word-break: break-word;
+}
+.profile-badge-status {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   Badge Details Bottom Sheet (iOS & Apple Activity Inspired)
+   ========================================================================== */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10040;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.sheet-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.badge-bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-card);
+  border-radius: 28px 28px 0 0;
+  padding: 0.85rem 1.25rem 2rem;
+  z-index: 10041;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -8px 36px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  user-select: none;
+}
+.badge-bottom-sheet.is-open {
+  transform: translateY(0);
+}
+.sheet-drag-handle {
+  width: 38px;
+  height: 4.5px;
+  border-radius: 9999px;
+  background: var(--border-card);
+  margin: 0 auto 0.4rem;
+  opacity: 0.75;
+}
+.badge-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 24px;
+}
+.sheet-close-btn {
+  background: transparent;
+  border: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sheet-close-btn:hover {
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+.sheet-close-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.badge-sheet-emblem-wrap {
+  width: 78px;
+  height: 78px;
+  margin: 0.2rem auto 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sheet-emblem-halo {
+  position: absolute;
+  inset: -6px;
+  border-radius: 24px;
+  opacity: 0.35;
+  filter: blur(8px);
+}
+.sheet-emblem-disc {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+.sheet-emblem-disc svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Emblem Tiers */
+.badge-sheet-emblem-wrap.tier-bronze .sheet-emblem-halo { background: #d97706; }
+.badge-sheet-emblem-wrap.tier-bronze .sheet-emblem-disc {
+  background: radial-gradient(circle at top right, rgba(217, 119, 6, 0.25), transparent 70%), var(--bg-card);
+  border: 2px solid #d97706;
+  color: #d97706;
+}
+
+.badge-sheet-emblem-wrap.tier-silver .sheet-emblem-halo { background: #94a3b8; }
+.badge-sheet-emblem-wrap.tier-silver .sheet-emblem-disc {
+  background: radial-gradient(circle at top right, rgba(148, 163, 184, 0.25), transparent 70%), var(--bg-card);
+  border: 2px solid #94a3b8;
+  color: #94a3b8;
+}
+
+.badge-sheet-emblem-wrap.tier-gold .sheet-emblem-halo { background: #eab308; }
+.badge-sheet-emblem-wrap.tier-gold .sheet-emblem-disc {
+  background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.3), transparent 70%), var(--bg-card);
+  border: 2px solid #eab308;
+  color: #eab308;
+}
+
+.badge-sheet-emblem-wrap.tier-diamond .sheet-emblem-halo { background: #38bdf8; }
+.badge-sheet-emblem-wrap.tier-diamond .sheet-emblem-disc {
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.3), transparent 70%), var(--bg-card);
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+}
+
+.badge-sheet-emblem-wrap.tier-locked .sheet-emblem-halo { display: none; }
+.badge-sheet-emblem-wrap.tier-locked .sheet-emblem-disc {
+  background: var(--bg-card);
+  border: 2px dashed var(--border-subtle);
+  color: var(--text-muted);
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.badge-sheet-rank-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.badge-sheet-rank-tag.tier-bronze { background: rgba(217, 119, 6, 0.12); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.28); }
+.badge-sheet-rank-tag.tier-silver { background: rgba(148, 163, 184, 0.14); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.28); }
+.badge-sheet-rank-tag.tier-gold { background: rgba(234, 179, 8, 0.14); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.32); }
+.badge-sheet-rank-tag.tier-diamond { background: rgba(56, 189, 248, 0.14); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.32); }
+.badge-sheet-rank-tag.tier-locked { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border-subtle); }
+
+.badge-sheet-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+.badge-sheet-desc {
+  margin: 0 auto 1.1rem;
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  line-height: 1.35;
+  max-width: 380px;
+}
+
+.badge-sheet-progress-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.95rem;
+  text-align: start;
+}
+.sheet-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.sheet-progress-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.sheet-progress-val {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.sheet-progress-bar-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--border-subtle);
+  overflow: hidden;
+}
+.sheet-progress-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #f97316, #eab308);
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.badge-sheet-footer-info {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.badge-sheet-actions {
+  margin: 0.2rem 0 0.85rem;
+  display: flex;
+  justify-content: center;
+}
+.sheet-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 240px;
+  padding: 0.65rem 1.1rem;
+  border-radius: 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.sheet-share-btn:hover {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.sheet-share-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+/* Player Drawer Honors Highlight */
+.player-honors-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.65rem 0 0.4rem;
+}
+.player-honor-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+}
+.player-honor-pill svg {
+  width: 14px;
+  height: 14px;
+}
+.player-honor-pill.streak {
+  border-color: rgba(249, 115, 22, 0.4);
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+}
+.player-honor-pill.badge-tier-gold {
+  border-color: rgba(234, 179, 8, 0.45);
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.1);
+}
+.player-honor-pill.badge-tier-silver {
+  border-color: rgba(148, 163, 184, 0.45);
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.1);
+}
+.player-honor-pill.badge-tier-bronze {
+  border-color: rgba(217, 119, 6, 0.45);
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+}
+.player-honor-pill.badge-tier-diamond {
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+/* ==========================================================================
+   Achievement Floating Pill HUD (Non-blocking Celebration)
+   ========================================================================== */
+.achievement-hud-pill {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 28px);
+  left: 50%;
+  transform: translate(-50%, 150%);
+  z-index: 10055;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(234, 179, 8, 0.45);
+  border-radius: 9999px;
+  padding: 0.45rem 1.1rem 0.45rem 0.75rem;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(234, 179, 8, 0.3);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+.achievement-hud-pill.is-active {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.hud-pill-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.hud-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(234, 179, 8, 0.18);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.hud-icon-box svg {
+  width: 17px;
+  height: 17px;
+}
+.hud-text-group {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+.hud-kicker {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #eab308;
+  line-height: 1.1;
+}
+.hud-title {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   In-Quiz Results Celebration Card (End-of-Quiz Macro Milestone)
+   ========================================================================== */
+.results-achievement-celebration {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--accent);
+  border-radius: 18px;
+  padding: 0.95rem 1.1rem;
+  margin: 0.85rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: start;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.18s ease;
+}
+.results-achievement-celebration:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.results-achievement-celebration:active {
+  transform: scale(0.98);
+}
+.results-achievement-celebration.tier-gold {
+  border-color: #eab308;
+  background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.14), transparent 75%), var(--bg-surface);
+}
+.results-achievement-celebration.tier-silver {
+  border-color: #94a3b8;
+  background: radial-gradient(circle at top right, rgba(148, 163, 184, 0.14), transparent 75%), var(--bg-surface);
+}
+.results-achievement-celebration.tier-bronze {
+  border-color: #d97706;
+  background: radial-gradient(circle at top right, rgba(217, 119, 6, 0.14), transparent 75%), var(--bg-surface);
+}
+.results-cel-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(234, 179, 8, 0.18);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #eab308;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.results-achievement-celebration.tier-bronze .results-cel-icon-wrap {
+  background: rgba(217, 119, 6, 0.18);
+  border-color: rgba(217, 119, 6, 0.35);
+  color: #d97706;
+}
+.results-achievement-celebration.tier-silver .results-cel-icon-wrap {
+  background: rgba(148, 163, 184, 0.18);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #94a3b8;
+}
+.results-cel-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+.results-cel-info {
+  display: flex;
+  flex-direction: column;
+}
+.results-cel-kicker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #eab308;
+}
+.results-achievement-celebration.tier-bronze .results-cel-kicker { color: #d97706; }
+.results-achievement-celebration.tier-silver .results-cel-kicker { color: #94a3b8; }
+.results-cel-title {
+  margin: 0.1rem 0 0.15rem;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+.results-cel-desc {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--text-subtle);
+  line-height: 1.25;
+}
+
+/* Light Mode Overrides for Achievements */
+html[data-theme="light"] .badge-bottom-sheet {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 -8px 36px rgba(0, 0, 0, 0.12);
+}
+html[data-theme="light"] .badge-sheet-progress-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+html[data-theme="light"] .achievement-hud-pill {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: #eab308;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 16px rgba(234, 179, 8, 0.2);
+}
+html[data-theme="light"] .hud-title {
+  color: #0f172a;
+}
+html[data-theme="light"] .results-achievement-celebration {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+/* ---- Settings & Security Container (Collapsible Accordion) ---- */
+.account-profile-container {
+  margin-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.95rem;
+}
+.account-profile-header-strip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.9rem 1.15rem;
+  background: var(--bg-surface);
+  border-radius: 18px;
+  border: 1px solid var(--border-card);
+  cursor: pointer;
+  text-align: start;
+  font-family: inherit;
+  color: inherit;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.account-profile-header-strip:hover {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.12);
+  transform: translateY(-1px);
+}
+.account-profile-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+.account-strip-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+  transition: transform 0.18s ease;
+}
+.account-profile-header-strip:hover .account-strip-icon-box {
+  transform: scale(1.06);
+}
+.account-strip-icon {
+  width: 20px;
+  height: 20px;
+}
+.account-strip-text {
+  min-width: 0;
+}
+.account-strip-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+.account-strip-desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.74rem;
+  color: var(--text-subtle);
+  line-height: 1.2;
+}
+.account-strip-chevron-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.account-strip-chevron {
+  width: 17px;
+  height: 17px;
+  color: var(--text-muted);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.15s ease;
+}
+.account-profile-header-strip[aria-expanded="true"] .account-strip-chevron-wrap {
+  background: var(--accent-subtle);
+  border-color: var(--accent);
+}
+.account-profile-header-strip[aria-expanded="true"] .account-strip-chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+.account-profile-content {
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.25s ease;
+}
+.account-profile-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  margin-top: 0;
+}
+.account-profile-content:not(.collapsed) {
+  max-height: 1400px;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  margin-top: 0.5rem;
+}
+
+/* ---- Light Theme Overrides for Bento Profile ---- */
+html[data-theme="light"] .profile-hero-card,
+html[data-theme="light"] .bento-card,
+html[data-theme="light"] .profile-honors-card,
+html[data-theme="light"] .account-profile-header-strip {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+html[data-theme="light"] .bento-vault-pod,
+html[data-theme="light"] .profile-handle-pill {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+html[data-theme="light"] .account-strip-icon-box {
+  background: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.25);
+  color: #0284c7;
+}
+html[data-theme="light"] .account-strip-chevron-wrap {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+html[data-theme="light"] .habit-day-dot {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+html[data-theme="light"] .profile-badge-item {
+  background: var(--bg-tile);
+  border-color: var(--border-subtle);
+}
+html[data-theme="light"] .profile-league-standing {
+  background: var(--accent-subtle);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+html[data-theme="light"] .badge-accent-gold {
+  background: rgba(202, 138, 4, 0.12);
+  color: #a16207;
+}
+html[data-theme="light"] .badge-accent-purple {
+  background: rgba(147, 51, 234, 0.12);
+  color: #7e22ce;
+}
+html[data-theme="light"] .badge-accent-cyan {
+  background: rgba(8, 145, 178, 0.12);
+  color: #0e7490;
+}
+html[data-theme="light"] .badge-accent-orange {
+  background: rgba(234, 88, 12, 0.12);
+  color: #c2410c;
+}
+html[data-theme="light"] .badge-accent-emerald {
+  background: rgba(5, 150, 105, 0.12);
+  color: #047857;
+}
 
 .account-head {
   display: flex;
@@ -1174,7 +2543,7 @@ html[data-theme="light"] .league-row-acc {
   gap: 0.75rem;
   margin-bottom: 0.9rem;
 }
-.account-close-btn { margin-inline-start: auto; flex: 0 0 auto; }
+.account-close-btn { margin-inline-start: 0; flex: 0 0 auto; }
 
 /* the account actions read as a list of choices, not a stack of buttons */
 .account-actions {
@@ -1541,6 +2910,9 @@ body:has(.drawer.open) {
   padding: 1rem;
   overflow-y: auto;
   overscroll-behavior: contain;
+}
+#share-modal {
+  z-index: 10060;
 }
 .modal-card {
   background: var(--bg-surface);
@@ -2216,7 +3588,16 @@ html[data-qlang="ar"] .icon-btn.lang-toggle { color: var(--accent); }
 .player-drawer { max-width: 380px; }
 .player-card { display: flex; flex-direction: column; gap: 0.9rem; }
 .player-head { display: flex; align-items: center; gap: 0.75rem; }
-.player-avatar { width: 64px; height: 64px; flex: 0 0 64px; }
+.player-avatar {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .player-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
 .player-head-text h3 { margin: 0; font-size: 1.05rem; }
 .player-head-text p { margin: 0.15rem 0 0; font-size: 0.8rem; color: var(--text-muted); }

@@ -16,17 +16,20 @@ card's design changes — it just gets a second line of numbers.
 
 ## Later
 
-- **Streak** (أيام متتالية): count consecutive days with at least one finished
-  quiz; show it on the card and in the league row.
 - **Subject badges**: a small mark on the row when a player passes 80% in a
   subject's chapter set.
-- **Share my card as an image**: reuse the league share-card canvas for one
-  player instead of the whole board.
 - **Class group code**: join a specific class (e.g. `CS-2026-A`) so the league
   can be filtered to classmates only.
 
 ## Done
 
+- **2026-11-04** — **achievements engine, honors shelf & badge share card** (1.10.0):
+  8 tiered badges (bronze/silver/gold/diamond) evaluated from encrypted local
+  history and stats, interactive bottom sheet with metallic glow, high-DPI (800x960)
+  offline Canvas share card generator with native share support, collapsible
+  account settings accordion, public player card honors & streak highlights, and
+  quiz finish celebration HUD. Specs: `tests/test_achievements.py` (15 checks),
+  `tests/test_achievements_flow.py` (10 checks).
 - **2026-10-23** — **public player card v1** (1.7.0): every league row and podium
   slot opens a sheet with the avatar, name, rank, answers, accuracy and the top
   three subjects **for this week**, plus a note that it is weekly. No handle, no

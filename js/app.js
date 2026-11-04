@@ -1455,7 +1455,11 @@
     if (ses.ch.quiz_id) setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
     ses.finished = true;
     recordHistory(ses, res);
-    renderResults(res);
+    let newBadges = [];
+    if (window.PortalAchievements && window.PortalAchievements.checkAfterQuiz) {
+      newBadges = window.PortalAchievements.checkAfterQuiz(ses, res) || [];
+    }
+    renderResults(res, newBadges);
     show('results-view');
     window.scrollTo(0, 0);
     dbg('result:', res);
@@ -1539,7 +1543,7 @@
     return true;
   }
 
-  function renderResults(res) {
+  function renderResults(res, newBadges) {
     S.lastResults = res;
     const resultsCard = document.querySelector('.results-card');
     if (resultsCard) {
@@ -1550,6 +1554,44 @@
         b.className = 'demo-banner';
         b.textContent = 'عرض تجريبي من الجولة — ليست نتيجتك';
         resultsCard.prepend(b);
+      }
+    }
+
+    const celEl = $('results-achievement-celebration');
+    if (celEl) {
+      if (newBadges && newBadges.length > 0) {
+        const top = newBadges[0];
+        const tierClass = (top.tierMeta && top.tierMeta.accentClass) ? top.tierMeta.accentClass : 'tier-gold';
+        celEl.className = 'results-achievement-celebration ' + tierClass;
+        celEl.innerHTML = '<div class="results-cel-icon-wrap">' +
+          '<i data-lucide="' + escapeHtml(top.badge.icon) + '"></i>' +
+          '</div>' +
+          '<div class="results-cel-info">' +
+          '<span class="results-cel-kicker">وسام شرفي جديد أُحرز!</span>' +
+          '<h4 class="results-cel-title">' + escapeHtml(top.title) + '</h4>' +
+          '<p class="results-cel-desc">' + escapeHtml(top.desc) + '</p>' +
+          '</div>';
+        celEl.classList.remove('hidden');
+        celEl.setAttribute('role', 'button');
+        celEl.setAttribute('tabindex', '0');
+        celEl.setAttribute('aria-label', 'عرض تفاصيل وسام ' + top.title);
+        celEl.onclick = function () {
+          if (window.PortalAchievements && window.PortalAchievements.showBadgeSheet) {
+            window.PortalAchievements.showBadgeSheet(top.badge.id);
+          }
+        };
+        celEl.onkeydown = function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (window.PortalAchievements && window.PortalAchievements.showBadgeSheet) {
+              window.PortalAchievements.showBadgeSheet(top.badge.id);
+            }
+          }
+        };
+        if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+      } else {
+        celEl.classList.add('hidden');
+        celEl.innerHTML = '';
       }
     }
     $('score-percentage').textContent = res.pct + '%';
@@ -2358,6 +2400,9 @@
     const acc = (C && C.account) ? C.account() : null;
     if (!acc) { openLoginModal(); return; }
     $('account-body').textContent = '@' + acc.handle + (navigator.onLine ? '' : ' · غير متصل');
+    if (window.PortalAccountUI && window.PortalAccountUI.render) {
+      window.PortalAccountUI.render(acc);
+    }
     renderProfileEditor(acc);
     $('account-link').classList.remove('hidden');
     $('account-logout').classList.remove('hidden');
@@ -2855,6 +2900,7 @@
   function scopeRows(rows, subjectId) { const ui = getLeagueUI(); return ui ? ui.scopeRows(rows, subjectId) : (rows || []); }
   function renderLeague() { const ui = getLeagueUI(); if (ui) return ui.renderLeague(); }
   function shareMyRank() { const ui = getLeagueUI(); if (ui) return ui.shareMyRank(); }
+  window.getLeagueUI = getLeagueUI;
 
   // ---------------- 1v1 VS Mode (delegated to js/vs_ui.js) ----------------
   let _vsUI = null;
@@ -3415,7 +3461,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.9.0';
+  const SHELL_VERSION = '1.10.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
