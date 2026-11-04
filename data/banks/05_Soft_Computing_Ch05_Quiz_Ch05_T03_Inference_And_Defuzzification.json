@@ -262,6 +262,134 @@
         "ar": "تاكاغي-سوغينو يستخدم متوسطاً موزوناً لمواضع القمم.",
         "en": "Takagi-Sugeno uses a weighted average of the peak positions."
       }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "نظام المنطق الضبابي يحوّل قراءة حسّاس حاسمة إلى قيمة سيطرة قابلة للاستخدام. أي تسلسل يوصف التدفق الصحيح للبيانات؟",
+        "en": "A Fuzzy Logic System converts a crisp sensor reading into a usable control value. Which sequence describes the correct data flow?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قاعدة القواعد ← التحويل الضبابي ← إزالة الضبابية ← الاستدلال",
+          "en": "Rule Base, then Fuzzification, then Defuzzification, then Inference."
+        },
+        {
+          "ar": "الاستدلال ← التحويل الضبابي ← قاعدة القواعد ← إزالة الضبابية",
+          "en": "Inference, then Fuzzification, then Rule Base, then Defuzzification."
+        },
+        {
+          "ar": "إزالة الضبابية ← قاعدة القواعد والاستدلال ← التحويل الضبابي",
+          "en": "Defuzzification, then Rule Base and Inference, then Fuzzification."
+        },
+        {
+          "ar": "التحويل الضبابي ← قاعدة القواعد والاستدلال ← إزالة الضبابية",
+          "en": "Fuzzification, then Rule Base and Inference, then Defuzzification."
+        }
+      ],
+      "concept_id": "fuzzy_system_pipeline",
+      "explanation": {
+        "ar": "معمارية النظام الضبابي في الكتيّب: المدخل الحاسم يدخل إلى المُضبِّب (Fuzzifier) فتتحوّل إلى درجات عضوية، ثم تُطابَق مع قاعدة القواعد (Rule Base) ويشتغل محرك الاستدلال (Inference Engine)، وأخيراً يُعيد مزيل الضبابية (Defuzzifier) الناتج قيمة حاسمة واحدة. الترتيب المقلوب هو الفخ الأكثر شيوعاً.",
+        "en": "The crisp input is fuzzified into grades, matched against the rule base by the inference engine, and then defuzzified back into a crisp control value."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ماذا يفعل محرك الاستدلال في النظام الضبابي؟",
+        "en": "What does the inference engine do in a fuzzy system?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تخزين القواعد في الذاكرة",
+          "en": "it stores all the rules here"
+        },
+        {
+          "ar": "قياس الحساسات في النظام",
+          "en": "it measures the sensors"
+        },
+        {
+          "ar": "تطبيق القواعد على الدرجات",
+          "en": "it applies rules to grades"
+        },
+        {
+          "ar": "طباعة التقرير للمستخدم",
+          "en": "it prints the report now"
+        }
+      ],
+      "concept_id": "inference_engine_role",
+      "explanation": {
+        "ar": "المحرك يطابق الدرجات المُضبَّبة مع القواعد ويستخرج درجات المخرَج.",
+        "en": "The engine matches the fuzzified grades against the rules and derives the output grades."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "لماذا نحتاج إزالة الضبابية عند المخرَج؟",
+        "en": "Why is defuzzification needed at the output?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لتخزين قاعدة القواعد",
+          "en": "to store the rule base"
+        },
+        {
+          "ar": "لتوسيع المدى كله",
+          "en": "to widen the whole range"
+        },
+        {
+          "ar": "لتسريع الحساس هنا",
+          "en": "to speed up the sensor"
+        },
+        {
+          "ar": "لإرجاع قيمة حاسمة",
+          "en": "to return a crisp value"
+        }
+      ],
+      "concept_id": "defuzz_purpose",
+      "explanation": {
+        "ar": "المنظومة تحتاج رقماً واحداً ملموساً، فتُعاد النتيجة الضبابية قيمة حاسمة.",
+        "en": "The plant needs one concrete number, so the fuzzy result is turned back into a crisp value."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي عبارة تميّز بدقة بين التحويل الضبابي وإزالة الضبابية؟",
+        "en": "Which statement correctly distinguishes fuzzification from defuzzification?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التحويل الضبابي يطابق القواعد مع المدخل، وإزالة الضبابية تنشئ القاعدة اللغوية.",
+          "en": "Fuzzification matches rules against the input; defuzzification creates the linguistic rule base."
+        },
+        {
+          "ar": "التحويل الضبابي يُعيد الناتج قيمة حاسمة، وإزالة الضبابية تحوّل المدخل إلى درجات.",
+          "en": "Fuzzification returns a crisp output value; defuzzification converts the input into grades."
+        },
+        {
+          "ar": "التحويل الضبابي يبني قاعدة القواعد، وإزالة الضبابية تُشعل القواعد الفعّالة وتدمجها عملياً.",
+          "en": "Fuzzification builds the Rule Base; defuzzification fires and combines the active rules in practice."
+        },
+        {
+          "ar": "التحويل الضبابي يحوّل المدخل الحاسم إلى درجات، وإزالة الضبابية تُعيد الناتج قيمة حاسمة.",
+          "en": "Fuzzification converts the crisp input into grades; defuzzification returns a crisp output value."
+        }
+      ],
+      "concept_id": "fuzzification_vs_defuzzification",
+      "explanation": {
+        "ar": "القاعدة الذهبية: التحويل الضبابي = تحويل المدخل (crisp → fuzzy)، وإزالة الضبابية = تحويل المخرج (fuzzy → crisp). أي خيار يعكسهن هو خطأ. هذا الفخ مذكور صريحاً في كتيّب الأسبوع الثاني.",
+        "en": "Fuzzification converts the crisp input into grades, while defuzzification converts the fuzzy result back into a crisp output value."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +397,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T18:57:19Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

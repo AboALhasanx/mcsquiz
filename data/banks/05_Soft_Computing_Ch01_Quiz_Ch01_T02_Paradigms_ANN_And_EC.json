@@ -1,14 +1,110 @@
 {
   "topic": {
-    "ar": "مقدمة في الحوسبة الناعمة: المفاهيم والأدوات — النموذج ب",
-    "en": "Introduction to Soft Computing — Model B"
+    "ar": "أُطُر الحوسبة الناعمة: الشبكات العصبية والحساب التطوري",
+    "en": "Soft Computing Paradigms: ANN and Evolutionary Computation"
   },
-  "quiz_id": "Quiz_Ch01_ModelB_Soft_Computing_Intro",
+  "quiz_id": "Quiz_Ch01_T02_Paradigms_ANN_And_EC",
   "has_math": true,
   "semester": 1,
   "questions": [
     {
       "id": "q1",
+      "stem": {
+        "ar": "في المطابقة الهيكلية بين العصبون البيولوجي والشبكة العصبية الاصطناعية (ANN)، أي جزء حيوي يقابل المدخلات والأوزان المشبكية؟",
+        "en": "In the structural mapping between a biological neuron and an Artificial Neural Network (ANN), which biological part corresponds to the inputs and synaptic weights?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المحور العصبي الذي ينقل الإشارة المخرجة النهائية إلى الخلايا العصبية المجاورة في الشبكة في هذا الربط.",
+          "en": "The Axon which conducts the final output signal to neighboring downstream neurons in this mapping."
+        },
+        {
+          "ar": "جسم الخلية العصبية الذي يقوم بالجمع الخطي للإشارات العصبية الواردة من المستقبلات الحسية.",
+          "en": "The cell body soma which performs linear summation of incoming nervous impulses."
+        },
+        {
+          "ar": "التفرعات العصبية ونقاط التشابك المشبكي التي تستقبل الإشارات وتعدل شدة الاتصال النسبي.",
+          "en": "The Dendrites and Synapses which receive signals and modulate their relative connection strength."
+        },
+        {
+          "ar": "غمد النخاعين العازل الذي يسرع تدفق النبضات الكهربائية عبر الألياف العصبية الممتدة.",
+          "en": "The Myelin Sheath which accelerates the propagation of electrical pulses along nerve fibers."
+        }
+      ],
+      "concept_id": "biological_neuron_mapping",
+      "explanation": {
+        "ar": "المطابقة القياسية المعترف بها: التغصنات (Dendrites) تقابل خطوط الإدخال (Inputs)، ونقاط التشابك (Synapses) تقابل الأوزان (Weights)، وجسم الخلية (Soma) يقابل دالة التجميع والتنشيط (Summation & Activation)، والمحور (Axon) يقابل المخرج (Output).",
+        "en": "Dendrites map to the inputs, synapses to the weights, the soma to summation and activation, and the axon to the output."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "من أين تستمد الشبكة العصبية معرفتها؟",
+        "en": "Where does an artificial neural network get its knowledge?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "من قواعد مكتوبة يدوياً الآن",
+          "en": "from hand written rules here"
+        },
+        {
+          "ar": "من أمثلة الإدخال والإخراج",
+          "en": "from input and output examples"
+        },
+        {
+          "ar": "من مخطط قاعدة البيانات",
+          "en": "from the database schema here"
+        },
+        {
+          "ar": "من ساعة العتاد هنا هنا",
+          "en": "from the hardware clock here"
+        }
+      ],
+      "concept_id": "ann_learns_from",
+      "explanation": {
+        "ar": "الشبكة تُدرَّب على أزواج من المدخلات والمخرجات، وتعمّم منها.",
+        "en": "An ANN is trained on pairs of inputs and outputs, and it generalises from them."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي ركن في الحوسبة الناعمة يتولى الاستمثال؟",
+        "en": "Which soft-computing pillar handles optimisation?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المنطق الضبابي",
+          "en": "fuzzy logic here now"
+        },
+        {
+          "ar": "الشبكات العصبية",
+          "en": "neural networks here now"
+        },
+        {
+          "ar": "الحساب التطوري",
+          "en": "evolutionary computation"
+        },
+        {
+          "ar": "استدلال احتمالي",
+          "en": "probabilistic reasoning"
+        }
+      ],
+      "concept_id": "pillar_optimisation",
+      "explanation": {
+        "ar": "الحساب التطوري يبحث عن حلول جيدة، وهو ركن الاستمثال.",
+        "en": "Evolutionary computation searches for good solutions, which is the optimisation pillar."
+      }
+    },
+    {
+      "id": "q4",
       "stem": {
         "ar": "تعطي شريحة المحاضرة الدماغ نحو $10^{2}$ Hz مقابل $10^{12}$ Hz للحاسوب الكلاسيكي، ومع ذلك يستهلك الدماغ طاقة أقل بكثير في كل عملية. ما تفسير هذا الفارق؟",
         "en": "The brain runs at about a hundred hertz against a trillion hertz for a classical computer, yet the brain spends far less energy on each operation. What explains that gap?"
@@ -40,39 +136,7 @@
       }
     },
     {
-      "id": "q2",
-      "stem": {
-        "ar": "ماذا تعني خاصية عدم اليقين في خوارزمية الحوسبة الناعمة؟",
-        "en": "What does uncertainty mean for a soft-computing algorithm?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "أن الخوارزمية تحذف كل عناصر العشوائية من عملية البحث الداخلية.",
-          "en": "It deletes all random elements from the internal search process."
-        },
-        {
-          "ar": "أن الخوارزمية قد تعطي نتيجة مختلفة في كل تشغيل للمسألة نفسها.",
-          "en": "It may return a different result each time for the same problem."
-        },
-        {
-          "ar": "أن الخوارزمية تضمن ناتجاً ثابتاً واحداً لكل مستوى من ضوضاء الإدخال.",
-          "en": "It guarantees one fixed answer for every level of input noise."
-        },
-        {
-          "ar": "أن الخوارزمية ترفض البدء ما لم تكن كل قيمة إدخال دقيقة تماماً.",
-          "en": "It refuses to start unless every input value is fully precise."
-        }
-      ],
-      "concept_id": "few_facts_uncertainty",
-      "explanation": {
-        "ar": "عدم اليقين يعني أن خوارزمية الحوسبة الناعمة قد تعطي نتائج مختلفة في كل مرة للمسألة نفسها، وهذه خاصية في النمط لا خطأ.",
-        "en": "Uncertainty means the soft-computing algorithm may give different results every time for the same problem. This is treated as a property of the paradigm rather than a defect."
-      }
-    },
-    {
-      "id": "q3",
+      "id": "q5",
       "stem": {
         "ar": "بعد تدريب Neural Network على أزواج من المدخلات والمخرجات، أين تُخزَّن المعرفة المكتسبة فعلياً؟",
         "en": "After an Artificial Neural Network is trained on input-output pairs, where is the learned knowledge actually stored?"
@@ -104,7 +168,7 @@
       }
     },
     {
-      "id": "q4",
+      "id": "q6",
       "stem": {
         "ar": "أي ترتيب يطابق دورة الخوارزمية التطورية كما وردت في المحاضرة؟",
         "en": "Which ordering matches the evolutionary algorithm cycle?"
@@ -136,7 +200,7 @@
       }
     },
     {
-      "id": "q5",
+      "id": "q7",
       "stem": {
         "ar": "يبقى البحث المحلي لدى الفريق عائداً إلى التصميم الضعيف نفسه. أي ميزة للحوسبة الناعمة تعالج ذلك؟",
         "en": "A team's local search keeps returning the same poor design. Which soft-computing advantage does soft computing offer as the remedy?"
@@ -168,7 +232,7 @@
       }
     },
     {
-      "id": "q6",
+      "id": "q8",
       "stem": {
         "ar": "ماذا يفعل الدماغ ولا يفعله الحاسوب التقليدي؟",
         "en": "What does the brain do that a classic computer does not?"
@@ -200,7 +264,7 @@
       }
     },
     {
-      "id": "q7",
+      "id": "q9",
       "stem": {
         "ar": "ماذا تخزّن الشبكة العصبية بعد التدريب؟",
         "en": "What does a trained artificial neural network store?"
@@ -232,7 +296,7 @@
       }
     },
     {
-      "id": "q8",
+      "id": "q10",
       "stem": {
         "ar": "أي خطوة تلي الطفرة في الدورة التطورية؟",
         "en": "Which step follows mutation in the evolutionary cycle?"
@@ -269,8 +333,8 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T18:45:42Z",
-  "subject_title": "الحوسبة اللينة",
+  "updated_at": "2026-11-04T18:57:19Z",
+  "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"
 }

@@ -262,6 +262,38 @@
         "ar": "مقطع الاتحاد يساوي اتحاد المقاطع، وكذلك للتقاطع.",
         "en": "The cut of a union equals the union of the cuts, and the same holds for intersection."
       }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "قاعدة القواعد في متحكم ضبابي تخزّن أي نوع من المعرفة؟",
+        "en": "The Rule Base of a fuzzy controller stores which kind of knowledge?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "توزيعات احتمالية إحصائية للمتغيرات التي يجري التحكم بها.",
+          "en": "Statistical probability distributions of the controlled variables."
+        },
+        {
+          "ar": "قواعد لغوية شرطية من نوع IF-THEN مصدرها خبراء المجال عملياً.",
+          "en": "Linguistic IF-THEN rules supplied by domain experts in practice."
+        },
+        {
+          "ar": "مصفوفات أوزان مشبكية مُدرَّبة تعلّمت من بيانات موسومة.",
+          "en": "Trained synaptic weight matrices learned from labelled data."
+        },
+        {
+          "ar": "جداول معايرة عددية للحساسات سُجّلت أثناء الاختبار الميداني.",
+          "en": "Numerical sensor calibration tables recorded during field testing."
+        }
+      ],
+      "concept_id": "rule_base_linguistic",
+      "explanation": {
+        "ar": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية.",
+        "en": "The rule base stores expert linguistic IF-THEN knowledge, not sensor calibration and not network weights."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +301,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T13:14:36Z",
+  "updated_at": "2026-11-04T18:57:19Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -734,7 +734,10 @@
     }
 
     if (progValEl) progValEl.textContent = evalRes.statusText;
-    if (progFillEl) progFillEl.style.width = evalRes.progressPct + '%';
+    if (progFillEl) {
+      progFillEl.style.width = evalRes.progressPct + '%';
+      progFillEl.style.background = (tierMeta && tierMeta.color) ? tierMeta.color : '#eab308';
+    }
     if (progLabelEl) {
       progLabelEl.textContent = isUnlocked && evalRes.progressPct === 100
         ? 'تم إكمال أعلى رتبة بالكامل'
@@ -827,7 +830,10 @@
     }
 
     if (progValEl) progValEl.textContent = sub.completedQuizzes + ' / ' + sub.totalQuizzes + ' كوزاً مكتملة';
-    if (progFillEl) progFillEl.style.width = sub.progressPct + '%';
+    if (progFillEl) {
+      progFillEl.style.width = sub.progressPct + '%';
+      progFillEl.style.background = (sub.tierMeta && sub.tierMeta.color) ? sub.tierMeta.color : '#eab308';
+    }
     if (progLabelEl) {
       if (isUnlocked) {
         progLabelEl.textContent = 'تم إتقان المادة بنجاح (المعدل الإجمالي: ' + sub.avgPct + '%)';

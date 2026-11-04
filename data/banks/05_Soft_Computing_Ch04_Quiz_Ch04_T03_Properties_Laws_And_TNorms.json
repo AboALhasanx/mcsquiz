@@ -262,6 +262,38 @@
         "ar": "الـS-norm أي عامل يعمل كـOR ضبابي عام.",
         "en": "An S-norm is any operator acting as a general fuzzy OR."
       }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي مجموعة معادلات تمثّل خاصية الهوية كاملة كما وردت في الكتيّب؟",
+        "en": "Which set of equations is the complete Identity Property ?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "A ∪ φ = A · A ∩ X = A · A ∩ φ = φ · A ∪ X = X",
+          "en": "A union phi = A; A intersect X = A; A intersect phi = phi; A union X = X"
+        },
+        {
+          "ar": "A ∪ φ = A · A ∩ X = A · A ∪ A = A · A ∩ A = A",
+          "en": "A union phi = A; A intersect X = A; A union A = A; A intersect A = A"
+        },
+        {
+          "ar": "A ∪ φ = A · A ∩ X = A · وقف عند قانونين اثنين فقط",
+          "en": "A union phi = A; A intersect X = A, and it stops at only these two laws"
+        },
+        {
+          "ar": "A ∪ X = A · A ∩ φ = A · A ∪ φ = φ · A ∩ X = X",
+          "en": "A union X = A; A intersect phi = A; A union phi = phi; A intersect X = X"
+        }
+      ],
+      "concept_id": "classical_identity_property",
+      "explanation": {
+        "ar": "خاصية الهوية في الكتيّب لها أربعة قوانين لا قانونان: A ∪ φ = A، و A ∩ X = A، و A ∩ φ = φ، و A ∪ X = X. علماً أن φ رمز المجموعة الخالية في هذا الكتيّب و X رمز المجموعة الشاملة على شريحة الهوية. الخيار الذي يتوقف عند قانونين هو الفخ الشائع.",
+        "en": "The identity property has four laws: union with the empty set, intersection with the universe, intersection with the empty set, and union with the universe."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +301,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T18:57:19Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

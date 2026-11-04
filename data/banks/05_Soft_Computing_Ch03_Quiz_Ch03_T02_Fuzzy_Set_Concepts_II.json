@@ -262,6 +262,134 @@
         "ar": "التناظر يعني أن درجة c زائد x تساوي درجة c ناقص x.",
         "en": "Symmetry means the grade at c plus x equals the grade at c minus x."
       }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "في الترميز الضبابي البديل A = Σ μ(xᵢ)/xᵢ، ماذا تعني الشرطة المائلة؟",
+        "en": "In the alternative fuzzy notation A = sum of mu(x_i)/x_i, what does the slash mean?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "إنها وسم فاصل بين الدرجة وعنصرها، وليست عملية قسمة.",
+          "en": "It is a marker separating the grade from its element, not a division."
+        },
+        {
+          "ar": "إنها قسمة عادية لدرجة العضوية على العنصر المقابل لها.",
+          "en": "It is an ordinary division of the membership grade by its element."
+        },
+        {
+          "ar": "إنها نسبة احتمالية بين العنصر وكل عناصر الكون المطلق.",
+          "en": "It is a probability ratio between the element and the whole universe."
+        },
+        {
+          "ar": "إنها دليل تجميع يربط العنصر بمجال الخطاب الخاص به.",
+          "en": "It is a summation index binding the element to its universe of discourse."
+        }
+      ],
+      "concept_id": "fuzzy_notation_slash_marker",
+      "explanation": {
+        "ar": "النص الأزرق على شريحة الترميز البديل يقول صريحاً: الشرطة المائلة «/» هي علامة وسم (marker) ولا تعني القسمة إطلاقاً. فلا تحسب μ/x كناتج قسمة — إنها تعني «العنصر x بعضوية مقدارها μ».",
+        "en": "The slash is only a marker separating the element from its grade, so it never means division."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي زوج يطابق بدقة كل حالة تمثيل للمجموعة الضبابية مع كونها؟",
+        "en": "Which pair correctly matches each fuzzy-set representation case to its universe?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الحالة 1: منفصل ومنتهي · الحالة 2: مستمر ولا نهائي.",
+          "en": "Case 1: discrete and finite; Case 2: continuous and infinite."
+        },
+        {
+          "ar": "الحالة 1: مستمر ولا نهائي · الحالة 2: منفصل ومنتهي.",
+          "en": "Case 1: continuous and infinite; Case 2: discrete and finite."
+        },
+        {
+          "ar": "الحالة 1: منفصل ولا نهائي · الحالة 2: مستمر ومنتهي.",
+          "en": "Case 1: discrete and infinite; Case 2: continuous and finite."
+        },
+        {
+          "ar": "الحالة 1: مستمر ومنتهي · الحالة 2: منفصل ولا نهائي.",
+          "en": "Case 1: continuous and finite; Case 2: discrete and infinite."
+        }
+      ],
+      "concept_id": "fuzzy_representation_cases",
+      "explanation": {
+        "ar": "الحالة 1 في الكتيّب: كون المعلومات منفصل ومنتهي (discrete and finite) فيُكتب المجموع Σ. الحالة 2: كون المعلومات مستمر ولا نهائي (continuous and infinite) فيُكتب التكامل ∫. نفس الدلالة في الحالتين، والفرق فقط في رمز الجمع.",
+        "en": "A discrete and finite universe is written with a summation, while a continuous and infinite universe is written with an integral; only the symbol changes."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "في ترميز الكتيّب، ماذا يمثّل الرمزان Σ و ∫؟",
+        "en": "What do the summation and integral symbols stand for?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "توحيد درجات العضوية على كل عناصر الكون لا أكثر.",
+          "en": "The union of the membership grades across every element of the universe."
+        },
+        {
+          "ar": "كتلة الاحتمال الكلية الموزعة على عناصر الكون.",
+          "en": "The total probability mass distributed over the elements of the universe."
+        },
+        {
+          "ar": "معدّل درجات العضوية لكل عنصر داخل المجموعة.",
+          "en": "The average membership grade of all the elements inside the set."
+        },
+        {
+          "ar": "المجموع الحسابي العادي لدرجات العضوية كلها مجتمعة.",
+          "en": "The ordinary arithmetic sum of all the membership grades together."
+        }
+      ],
+      "concept_id": "fuzzy_notation_sigma_integral",
+      "explanation": {
+        "ar": "نص الكتيّب: رمزا Σ و ∫ يمثّلان «توحيد درجات العضوية» (union of membership grades) على عناصر الكون — وليسا مجموعاً حسابياً عادياً ولا كتلة احتمالية. هذا يفرّق بين الترميز الضبابي والترميز الاحتمالي.",
+        "en": "The summation and integral signs stand for the union of membership grades across the universe, not an arithmetic total and not a probability mass."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "المجموعة الضبابية على الكون X تُكتب كمجموعة أزواج مرتّبة. ما الدور الدقيق للجداء الديكارتي في هذا التمثيل؟",
+        "en": "A fuzzy set on universe X is written as a set of ordered pairs. What is the precise role of the Cartesian product in that representation?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الجداء X × [0, 1] وحده يحدّد الأزواج المنتمية، فأي مجموعة جزئية منه مجموعة ضبابية.",
+          "en": "The product X x [0, 1] alone determines which pairs belong, so any subset of it is a fuzzy set."
+        },
+        {
+          "ar": "الجداء X × [0, 1] يوفّر فضاء الأزواج الممكنة، ودالة العضوية هي التي تختار الأزواج.",
+          "en": "The product X x [0, 1] supplies the space of possible pairs; the membership function is what selects the pairs."
+        },
+        {
+          "ar": "المجموعة الضبابية هي الجداء الديكارتي نفسه بين الكون X والمجال [0, 1] في هذا التمثيل.",
+          "en": "The fuzzy set is itself the Cartesian product of the universe X with the interval [0, 1] in this representation."
+        },
+        {
+          "ar": "الجداء يبني الأزواج من عنصرين حاسمين، ودرجة العضوية هي العنصر الثاني فيها.",
+          "en": "The product builds pairs from two crisp elements, and the membership grade is the second element."
+        }
+      ],
+      "concept_id": "cartesian_product_ambient_space",
+      "explanation": {
+        "ar": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. والمجموعة الضبابية على X تقابل دالة من X إلى [0, 1]، فرسمها مجموعة دالية، وليست أي مجموعة جزئية عشوائية من الجداء.",
+        "en": "The Cartesian product supplies the ambient space of possible pairs, while the membership function selects which pairs actually belong to the fuzzy set."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +397,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T18:57:19Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

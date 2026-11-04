@@ -262,6 +262,70 @@
         "ar": "المتمم يحوي كل عنصر في الفضاء ليس في A.",
         "en": "The complement holds every element of the universe that is not in A."
       }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف تختلف دالة الانتماء في المجموعات الضبابية (Fuzzy Set) جذرياً عن الدالة المميزة للمجموعات التقليدية الحاسمة (Crisp Set)؟",
+        "en": "How does the membership function of a Fuzzy Set fundamentally differ from the characteristic function of a traditional Crisp/Boolean Set?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المجموعات الضبابية تقتصر على الحسابات الإحصائية، بينما المجموعات التقليدية تطبق في معالجة الإشارات الرقمية.",
+          "en": "Fuzzy sets are restricted to statistical counting, whereas crisp sets apply to digital signal filtering."
+        },
+        {
+          "ar": "المجموعات التقليدية ثنائية تماماً {0, 1}، بينما المجموعات الضبابية تمنح درجات انتماء مستمرة في المجال [0, 1].",
+          "en": "Crisp sets are strictly binary {0, 1}, whereas fuzzy sets assign continuous membership degrees in the range [0, 1]."
+        },
+        {
+          "ar": "المجموعات التقليدية تسمح بتداخل العناصر بين فئات متناقضة، بينما المجموعات الضبابية تمنع أي تداخل تصنيفي.",
+          "en": "Crisp sets permit element overlap across contradictory classes, whereas fuzzy sets prevent any classification overlap."
+        },
+        {
+          "ar": "المجموعات الضبابية تقبل قيماً سالبة، بينما المجموعات التقليدية تقبل الأعداد الصحيحة الموجبة فقط.",
+          "en": "Fuzzy sets accept negative values, whereas crisp sets accept only positive whole integers."
+        }
+      ],
+      "concept_id": "boolean_vs_fuzzy_sets",
+      "explanation": {
+        "ar": "في المنطق الثنائي التقليدي (Crisp)، العنصر إما ينتمي تماماً (1) أو لا ينتمي تماماً (0). في المنطق الضبابي (Fuzzy Logic)، يمتلك العنصر درجة انتماء مستمرة تتراوح بين 0 و 1 (مثلاً: ماء دافئ بدرجة 0.7 وبارد بدرجة 0.3).",
+        "en": "A crisp set gives an element full membership or none, while a fuzzy set allows any continuous grade between zero and one, such as warm water at 0.7."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "في مقارنة الكتيّب، المنطق الحاسم ثنائي القيمة، أما المنطق الضبابي فأفضل وصف له أنه:",
+        "en": "Crisp logic is bi-valued while fuzzy logic is best described as:"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ثلاثي القيمة، يستخدم فقط الصفر والنصف والواحد الصحيح.",
+          "en": "Tri-valued, using only zero, one half, and the whole number one."
+        },
+        {
+          "ar": "لا نهائي القيمة، بعضوية متدرجة على المجال [0, 1].",
+          "en": "Infinite-valued, with graded membership across the interval [0, 1]."
+        },
+        {
+          "ar": "ثنائي القيمة أيضاً لكن مع نطاق تسامح أوسع حول كل عتبة.",
+          "en": "Also bi-valued, but with a wider tolerance band around each threshold."
+        },
+        {
+          "ar": "احتمالي القيمة، مجموعه يساوي الواحد على كل عناصر الكون.",
+          "en": "Probability-valued, summing to exactly one across all universe elements."
+        }
+      ],
+      "concept_id": "crisp_vs_fuzzy_logic",
+      "explanation": {
+        "ar": "الكتيّب يقابل بين المنطق الحاسم ثنائي القيمة (bi-valued) والمنطق الضبابي لا نهائي القيمة (infinite-valued)، لأن درجة العضوية تقبل أي عدد حقيقي في المجال [0, 1] وليس قيمتين فقط.",
+        "en": "Crisp logic is bi-valued, while fuzzy logic is infinite-valued because membership accepts any real number in the interval from zero to one."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +333,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T13:14:36Z",
+  "updated_at": "2026-11-04T18:57:19Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

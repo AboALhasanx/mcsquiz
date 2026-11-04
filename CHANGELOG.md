@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.8] — 2026-11-04
+
+### Changed
+- content: SC legacy banks merged into topic banks (v76)
+
+
 ## [1.11.7] — 2026-11-04
 
 ### Changed

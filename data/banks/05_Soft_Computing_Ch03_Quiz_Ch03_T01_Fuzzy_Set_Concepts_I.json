@@ -262,6 +262,102 @@
         "ar": "الأساسية هي مجموع كل درجات الانتماء على الفضاء.",
         "en": "Cardinality is the sum of all membership grades over the universe."
       }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "مجموعة ضبابية تعطي نيودلهي درجة راحة 0.7. ماذا تعني هذه القيمة؟",
+        "en": "A fuzzy set assigns New Delhi a comfort grade of 0.7. What does this value mean?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أن سبعين بالمئة من الزوار يجدون نيودلهي مدينة مريحة فعلاً.",
+          "en": "Seventy per cent of all visitors find New Delhi to be a genuinely comfortable city."
+        },
+        {
+          "ar": "أن نيودلهي مريحة باحتمال يساوي 0.7 تماماً كأي حدث عشوائي.",
+          "en": "New Delhi is comfortable with a probability of exactly 0.7, like any random event."
+        },
+        {
+          "ar": "أن نيودلهي متوافقة مع المفهوم الضبابي بدرجة 0.7 وليست احتمالاً.",
+          "en": "New Delhi is compatible with the vague concept to degree 0.7, which is not a probability."
+        },
+        {
+          "ar": "أن نيودلهي تنتمي للمجموعة الحاسمة في 0.7 من كل الحالات في هذا المثال.",
+          "en": "New Delhi belongs to the crisp comfort set in 0.7 of all the observed cases."
+        }
+      ],
+      "concept_id": "membership_not_probability",
+      "explanation": {
+        "ar": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث.",
+        "en": "A membership grade is the degree of compatibility with a vague concept, not the probability that an event occurs."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "كيف تُكتب دالة العضوية لمجموعة ضبابية كتابةً رسمية؟",
+        "en": "How is the membership function of a fuzzy set formally written?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "μ_Ã : X → [0, 1) بحيث يُستبعد الطرف الأعلى من المجال.",
+          "en": "mu_A : X to [0, 1), so the upper endpoint is excluded from the range."
+        },
+        {
+          "ar": "μ_Ã : X → (0, 1) بحيث يُستبعد الطرفان صفر وواحد.",
+          "en": "mu_A : X to (0, 1), so both endpoints zero and one are excluded."
+        },
+        {
+          "ar": "μ_Ã : X → [0, 1] بحيث يُضمَّن الطرفان صفر وواحد معاً.",
+          "en": "mu_A : X to [0, 1], so both endpoints zero and one are included."
+        },
+        {
+          "ar": "μ_Ã : X → {0, 1} بحيث يُسمح بالطرفين فقط دون غيرهما.",
+          "en": "mu_A : X to {0, 1}, so only the two endpoints are permitted."
+        }
+      ],
+      "concept_id": "membership_function_range",
+      "explanation": {
+        "ar": "التعريف الرسمي: دالة العضوية ترفع كل عنصر من مجال الخطاب X إلى درجة في المجال [0, 1] والطرفان مضغمان (both inclusive) — أي أن الصفر والواحد قيمتان مشروعتان تماماً. μ = 1 انتماء كامل، μ = 0 لا انتماء، وما بينهما انتماء جزئي.",
+        "en": "The membership function maps each element of the universe into the closed interval from zero to one, so both endpoints are allowed."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "ماذا تعني درجة عضوية تساوي صفراً؟",
+        "en": "What does a membership grade of zero mean?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "انتماء كامل هنا",
+          "en": "the full membership here"
+        },
+        {
+          "ar": "انتماء جزئي هنا",
+          "en": "the partial membership"
+        },
+        {
+          "ar": "لا انتماء إطلاقاً",
+          "en": "no membership at all"
+        },
+        {
+          "ar": "احتمال يساوي واحداً",
+          "en": "a probability of one"
+        }
+      ],
+      "concept_id": "membership_zero",
+      "explanation": {
+        "ar": "الصفر هو أدنى المدى، فالعنصر ليس في المجموعة الضبابية إطلاقاً.",
+        "en": "Zero is the bottom of the range, so the element is not in the fuzzy set at all."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +365,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T18:57:19Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"
