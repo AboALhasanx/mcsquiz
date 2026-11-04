@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.2] — 2026-11-04
+
+### Changed
+- content: ASE Ch03 requirements (v70)
+
+
 ## [1.11.1] — 2026-11-04
 
 ### Changed
