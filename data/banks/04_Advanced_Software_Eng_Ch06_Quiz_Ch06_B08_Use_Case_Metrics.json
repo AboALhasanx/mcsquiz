@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "المقاييس الموجهة بحالات الاستخدام",
+    "en": "Use-Case Oriented Metrics"
+  },
+  "quiz_id": "Quiz_Ch06_B08_Use_Case_Metrics",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يُبنى مجموع نقاط حالات الاستخدام غير المعدّل؟",
+        "en": "How is the unadjusted use case point total built?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "وزن الفاعلين زائد وزن الحالات",
+          "en": "actor weight plus use case weight now"
+        },
+        {
+          "ar": "وزن الفاعلين مضروباً بوزن الحالات",
+          "en": "actor weight times use case weight"
+        },
+        {
+          "ar": "العامل التقني زائد العامل البيئي",
+          "en": "technical factor plus environmental factor"
+        },
+        {
+          "ar": "الأسطر مقسومة على أشهر العمل",
+          "en": "lines divided by person-months here"
+        }
+      ],
+      "concept_id": "ch6_uucp",
+      "explanation": {
+        "ar": "المجموع غير المعدّل يجمع وزن الفاعلين مع وزن الحالات.",
+        "en": "The unadjusted total simply adds the actor weight to the use case weight."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الذي يحدد وزن الفاعل؟",
+        "en": "What sets an actor's weight?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد الاختبارات التي يشغلها",
+          "en": "how many tests it runs now"
+        },
+        {
+          "ar": "مدى تعقيد واجهته أيضاً هنا",
+          "en": "how complex its interface is"
+        },
+        {
+          "ar": "عدد الطرق التي يناديها",
+          "en": "how many methods it calls too"
+        },
+        {
+          "ar": "عمر الفاعل هنا الآن مجدداً",
+          "en": "how old the actor is here"
+        }
+      ],
+      "concept_id": "ch6_actor_weight",
+      "explanation": {
+        "ar": "الفاعل البسيط عبر واجهة برمجية وزنه أقل من مستخدم رسومي معقد.",
+        "en": "A simple actor through an API weighs less than a complex graphical user."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الذي يحدد وزن حالة الاستخدام؟",
+        "en": "What sets a use case's weight?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "اللغة المستخدمة أيضاً",
+          "en": "the language used here too now again here"
+        },
+        {
+          "ar": "منصة العتاد هنا مجدداً",
+          "en": "the hardware platform now here here"
+        },
+        {
+          "ar": "عدد المعاملات التي تحويها",
+          "en": "the number of transactions it contains"
+        },
+        {
+          "ar": "عدد المطورين الآن هنا الآن",
+          "en": "the number of developers again too"
+        }
+      ],
+      "concept_id": "ch6_usecase_weight",
+      "explanation": {
+        "ar": "الحالات تصنَّف بسيطة أو متوسطة أو معقدة حسب عدد معاملاتها.",
+        "en": "Use cases are classed simple, average or complex by how many transactions they carry."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يغطي عامل التعقيد التقني؟",
+        "en": "What does the technical complexity factor cover?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "رواتب الفريق هنا مجدداً مجدداً",
+          "en": "the salaries of the team here again again too here"
+        },
+        {
+          "ar": "تخطيط المكتب الآن هنا أيضاً الآن",
+          "en": "the office layout here again too now here"
+        },
+        {
+          "ar": "جدول الاختبار أيضاً الآن هنا أيضاً",
+          "en": "the test schedule now too now here too now"
+        },
+        {
+          "ar": "التوزيع والأداء والحاجات المشابهة",
+          "en": "distributedness, performance and similar needs"
+        }
+      ],
+      "concept_id": "ch6_tcf",
+      "explanation": {
+        "ar": "العامل التقني يقيّم المتطلبات غير الوظيفية التي يجب أن يلبيها النظام.",
+        "en": "The TCF rates the non-functional demands the system must satisfy."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يغطي العامل البيئي؟",
+        "en": "What does the environmental factor cover?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مهارة الفريق ونضج العملية",
+          "en": "team skill and process maturity"
+        },
+        {
+          "ar": "إصدار المترجم الآن مجدداً",
+          "en": "the compiler version too now"
+        },
+        {
+          "ar": "حجم قاعدة البيانات هنا",
+          "en": "the database size here here too"
+        },
+        {
+          "ar": "سرعة الشبكة هنا أيضاً الآن",
+          "en": "the network speed now again"
+        }
+      ],
+      "concept_id": "ch6_ecf",
+      "explanation": {
+        "ar": "العامل البيئي يلتقط قدرة الفريق ونضج عمليته.",
+        "en": "The ECF captures how capable and how mature the team and its process are."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يُقدَّر الجهد من نقاط حالات الاستخدام؟",
+        "en": "How is effort estimated from use case points?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بتربيع مجموع النقاط هنا أيضاً الآن",
+          "en": "square the point total here too here here"
+        },
+        {
+          "ar": "بضرب النقاط المعدّلة بمعدل إنتاجية",
+          "en": "multiply the adjusted points by a rate"
+        },
+        {
+          "ar": "بقسمة النقاط على حجم الفريق هنا",
+          "en": "divide the points by the team size"
+        },
+        {
+          "ar": "بجمع النقاط مع الأسطر الآن مجدداً",
+          "en": "add the points to the LOC now again"
+        }
+      ],
+      "concept_id": "ch6_ucp_effort",
+      "explanation": {
+        "ar": "النقاط المعدّلة تُضرب بمعدل إنتاجية للوصول إلى ساعات عمل.",
+        "en": "Adjusted points are scaled by a productivity rate to reach person-hours."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف تختلف نقاط حالات الاستخدام عن نقاط الوظائف؟",
+        "en": "How do use case points differ from function points?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تحتاج الشيفرة هنا مجدداً مجدداً",
+          "en": "they need the finished code again"
+        },
+        {
+          "ar": "تعدّ الملفات فقط أيضاً الآن",
+          "en": "they count only the files now here"
+        },
+        {
+          "ar": "تُعدّ من نماذج حالات الاستخدام",
+          "en": "they are counted from use case models"
+        },
+        {
+          "ar": "تتجاهل الفاعلين الآن هنا أيضاً",
+          "en": "they ignore the actors here too now here"
+        }
+      ],
+      "concept_id": "ch6_ucp_vs_fp",
+      "explanation": {
+        "ar": "UCP يعمل من نموذج حالات الاستخدام، وFP من وظائف البيانات والمعاملات.",
+        "en": "UCP works from the use case model, while FP works from the data and transaction functions."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "متى تكون UCP مقياس الحجم الأفضل؟",
+        "en": "When is UCP the better size measure?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "بعد انتهاء الكود هنا",
+          "en": "after the code is finished"
+        },
+        {
+          "ar": "أثناء الصيانة فقط الآن",
+          "en": "only during maintenance here here"
+        },
+        {
+          "ar": "لمشاريع العتاد فقط أيضاً",
+          "en": "only for hardware projects"
+        },
+        {
+          "ar": "مبكراً قبل وجود أي كود",
+          "en": "early, before any code exists"
+        }
+      ],
+      "concept_id": "ch6_ucp_when",
+      "explanation": {
+        "ar": "حالات الاستخدام موجودة وقت المتطلبات، فـUCP يقيس المشروع قبل التصميم.",
+        "en": "Use cases exist at requirements time, so UCP can size a project before design."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T21:17:27Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

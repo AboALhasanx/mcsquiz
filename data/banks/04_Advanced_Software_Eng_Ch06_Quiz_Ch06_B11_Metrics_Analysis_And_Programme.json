@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "تحليل المقاييس وبرنامج القياس",
+    "en": "Metrics Analysis and the Metrics Programme"
+  },
+  "quiz_id": "Quiz_Ch06_B11_Metrics_Analysis_And_Programme",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي خلل يصف تغيير الناس سلوكهم ليطابق المقياس؟",
+        "en": "Which pitfall describes people changing behaviour to fit the metric?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قانون بروكس الآن",
+          "en": "Brooks' Law here now"
+        },
+        {
+          "ar": "خلل القياس هنا",
+          "en": "measurement dysfunction"
+        },
+        {
+          "ar": "مبدأ باريتو أيضاً",
+          "en": "the Pareto principle"
+        },
+        {
+          "ar": "عشوائية البرمجيات",
+          "en": "software entropy too"
+        }
+      ],
+      "concept_id": "ch6_measurement_dysfunction",
+      "explanation": {
+        "ar": "عندما يصبح المقياس هدفاً، يحسّن الناس الرقم بدل الهدف.",
+        "en": "When a measure becomes a target, people optimise the number rather than the goal."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يُظهر الارتباط بين مقياسين؟",
+        "en": "What does correlation between two metrics show?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أن أياً منهما لا يُقاس هنا",
+          "en": "neither can be measured here again"
+        },
+        {
+          "ar": "أنهما يتحركان معاً بدرجة ما",
+          "en": "they move together to some degree"
+        },
+        {
+          "ar": "أن أحدهما يسبب الآخر أيضاً",
+          "en": "one causes the other too now too"
+        },
+        {
+          "ar": "أن كليهما خطأ هنا الآن مجدداً",
+          "en": "both are wrong here now again"
+        }
+      ],
+      "concept_id": "ch6_correlation",
+      "explanation": {
+        "ar": "الارتباط يُظهر المصاحبة فقط، والسببية تحتاج دليلاً أكثر.",
+        "en": "Correlation shows association only; causation needs more evidence."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "فيمَ يُستخدم الانحدار على بيانات المقاييس؟",
+        "en": "What is regression used for on metric data?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لتسمية الأعمدة أيضاً الآن",
+          "en": "to rename columns now again here too"
+        },
+        {
+          "ar": "لترتيب الصفوف الآن هنا مجدداً",
+          "en": "to sort the rows here here again again"
+        },
+        {
+          "ar": "لنمذجة تتبع متغير لمتغير آخر",
+          "en": "to model how one variable tracks another"
+        },
+        {
+          "ar": "لحذف الشواذ هنا مجدداً أيضاً",
+          "en": "to delete outliers too now too now here here"
+        }
+      ],
+      "concept_id": "ch6_regression",
+      "explanation": {
+        "ar": "خط الانحدار يقدّر القيمة المتوقعة لمقياس من مقياس آخر.",
+        "en": "A regression line estimates the expected value of one metric from another."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لماذا يهم الشاذ في تحليل المقاييس؟",
+        "en": "Why does an outlier matter in metric analysis?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يثبت خطأ المقياس",
+          "en": "it proves the metric is wrong"
+        },
+        {
+          "ar": "يجب حذفه دائماً",
+          "en": "it must always be deleted"
+        },
+        {
+          "ar": "لا أثر له هنا الآن",
+          "en": "it has no effect here now"
+        },
+        {
+          "ar": "قد يشوّه المتوسط",
+          "en": "it can distort the average"
+        }
+      ],
+      "concept_id": "ch6_outlier",
+      "explanation": {
+        "ar": "وحدة متطرفة واحدة قد تسحب المتوسط بعيداً عما تفعله معظم الوحدات.",
+        "en": "One extreme module can pull a mean far from what most modules do."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يفحص التحقق النظري من المقياس؟",
+        "en": "What does theoretical validation of a metric check?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أنه يحقق الخصائص التي يدّعيها",
+          "en": "that it obeys the properties it claims"
+        },
+        {
+          "ar": "أنه يُترجم الآن مجدداً أيضاً",
+          "en": "that it compiles here here too now"
+        },
+        {
+          "ar": "أن المستخدمين يحبونه الآن",
+          "en": "that users like it too now again again"
+        },
+        {
+          "ar": "أنه رخيص هنا أيضاً هنا مجدداً",
+          "en": "that it is cheap now again here too"
+        }
+      ],
+      "concept_id": "ch6_theoretical_valid",
+      "explanation": {
+        "ar": "المقياس يجب أن يحقق خصائص نظرية القياس التي يفترضها، مثل نوع المقياس.",
+        "en": "A metric must satisfy the measurement-theory properties it assumes, such as scale type."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يفحص التحقق التجريبي؟",
+        "en": "What does empirical validation check?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أن الأداة منصّبة أيضاً الآن هنا أيضاً",
+          "en": "that the tool is installed here too"
+        },
+        {
+          "ar": "أن المقياس يتنبأ بما يجب أن يتنبأ به",
+          "en": "that the metric predicts what it should"
+        },
+        {
+          "ar": "أن الكود يُترجم هنا مجدداً مجدداً",
+          "en": "that the code compiles now again again here"
+        },
+        {
+          "ar": "أن الفريق يوافق الآن هنا أيضاً الآن",
+          "en": "that the team agrees here too now here"
+        }
+      ],
+      "concept_id": "ch6_empirical_valid",
+      "explanation": {
+        "ar": "التحقق التجريبي يقابل المقياس بنتائج مرصودة في مشاريع حقيقية.",
+        "en": "Empirical validation compares the metric against outcomes observed in real projects."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا جمع البيانات المتسق أساسي؟",
+        "en": "Why is consistent data collection essential?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يسرّع المترجم هنا مجدداً مجدداً",
+          "en": "it speeds the compiler now here too now here"
+        },
+        {
+          "ar": "يخفض الميزانية أيضاً الآن هنا",
+          "en": "it lowers the budget here again again again too here"
+        },
+        {
+          "ar": "الجمع غير المتسق يبطل المقارنات",
+          "en": "inconsistent collection makes comparisons invalid"
+        },
+        {
+          "ar": "يقلل حجم الكود الآن هنا أيضاً",
+          "en": "it reduces the code size too now here too now"
+        }
+      ],
+      "concept_id": "ch6_data_collection",
+      "explanation": {
+        "ar": "إذا عُدّت فترتان بطرق مختلفة، فكل اتجاه بينهما مصطنع.",
+        "en": "If two periods are counted differently, any trend between them is an artefact."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما أول خطوة في برنامج قياس؟",
+        "en": "What is the first step of a metrics programme?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تنصيب أكبر أداة هنا مجدداً مجدداً",
+          "en": "install the biggest tool now here"
+        },
+        {
+          "ar": "جمع كل شيء ممكن الآن هنا أيضاً",
+          "en": "collect everything possible again"
+        },
+        {
+          "ar": "نشر لوحة مؤشرات أيضاً الآن هنا",
+          "en": "publish a dashboard here too now too here"
+        },
+        {
+          "ar": "تحديد الهدف الذي تخدمه المقاييس",
+          "en": "state the goal the metrics must serve"
+        }
+      ],
+      "concept_id": "ch6_metric_program",
+      "explanation": {
+        "ar": "الأهداف أولاً، فالمقياس بلا سؤال وراءه مجرد ضجيج.",
+        "en": "Goals come first, because a metric without a question behind it is just noise."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T21:17:27Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
