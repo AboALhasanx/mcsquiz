@@ -98,6 +98,7 @@ def to_v3(bank: dict) -> dict:
     """Read any known bank shape and return a clean v3 bank."""
     if not isinstance(bank, dict):
         raise ValueError("bank is not an object")
+    en_only = str(bank.get("lang") or "").lower() == "en"
     if bank.get("schema_version") == SCHEMA_VERSION and isinstance(bank.get("questions"), list):
         # still normalise the pairs, the file may have been hand-edited
         out = dict(bank)
@@ -120,7 +121,7 @@ def to_v3(bank: dict) -> dict:
             "en": pick_en(bank.get("topic"), bank.get("topic_en")),
         }
         for q in bank.get("questions") or []:
-            out["questions"].append(_q_to_v3(q))
+            out["questions"].append(_q_to_v3(q, en_only))
 
     # topic + instructor may be plain strings in a v3 file
     if isinstance(out.get("topic"), str):
@@ -137,8 +138,12 @@ def to_v3(bank: dict) -> dict:
     return out
 
 
-def _q_to_v3(q: dict) -> dict:
-    opts_ar = pick_opts_ar(q.get("options_ar"), q.get("options"))
+def _q_to_v3(q: dict, en_only: bool = False) -> dict:
+    if en_only:
+        # Single-language bank: do not copy English into the Arabic slot.
+        opts_ar = q.get("options_ar") if isinstance(q.get("options_ar"), list) else []
+    else:
+        opts_ar = pick_opts_ar(q.get("options_ar"), q.get("options"))
     opts_en = pick_opts_en(q.get("options_en"), q.get("options"))
     options = []
     for i in range(max(len(opts_ar), len(opts_en))):
@@ -165,13 +170,13 @@ def _q_to_v3(q: dict) -> dict:
         "concept_id": q.get("concept_id") or "",
         "bloom": q.get("bloom") or q.get("bloom_level") or "",
         "stem": {
-            "ar": pick_ar(q.get("question_ar"), q.get("text"), q.get("question")),
+            "ar": (q.get("question_ar") or "") if en_only else pick_ar(q.get("question_ar"), q.get("text"), q.get("question")),
             "en": pick_en(q.get("question_en"), q.get("text_en"), q.get("question")),
         },
         "options": options,
         "answer": correct,
         "explanation": {
-            "ar": pick_ar(q.get("explanation_ar"), q.get("explanation")),
+            "ar": (q.get("explanation_ar") or "") if en_only else pick_ar(q.get("explanation_ar"), q.get("explanation")),
             "en": pick_en(q.get("explanation_en"), q.get("explanation")),
         },
     }

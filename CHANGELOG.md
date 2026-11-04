@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.5] — 2026-11-04
+
+### Changed
+- content: English EN-only banks, 12 banks / 116 q (v61)
+
+
 ## [1.10.4] — 2026-11-04
 
 ### Changed

@@ -151,12 +151,6 @@ body[data-quizlive="yes"] .toast-region {
 }
 .chapter-pct { font-variant-numeric: tabular-nums; font-weight: 700; }
 
-/* --- saved badge on header icon: hidden completely per user preference --- */
-#btn-open-saved { position: relative; }
-.saved-count-badge {
-  display: none !important;
-}
-
 /* --- saved view --- */
 .saved-topbar {
   display: flex;
@@ -974,6 +968,11 @@ html[data-theme="light"] .league-row-acc {
 
 /* --- filter bars are sliders: subjects scroll, chapters scroll in a squarer geometry --- */
 .catalog-filter-bar {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -2950,18 +2949,24 @@ body:has(.drawer.open) {
   display: block;
 }
 
-/* --- saved / stats: list layouts, not centred slides --- */
+/* --- saved / stats / search / review: list layouts, not centred slides --- */
 #saved-view,
+#review-view,
+#search-view,
 #stats-view,
 #league-view {
   align-items: stretch;
   text-align: start;
   padding: 0.75rem 0 1.5rem;
   gap: 0.6rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* column flex views must never squeeze their cards when content is short */
 #saved-view > *,
+#review-view > *,
+#search-view > *,
 #stats-view > *,
 #league-view > * {
   flex-shrink: 0;
@@ -5571,15 +5576,23 @@ html[data-theme="light"] .stat-bar-fill.low  { background: #dc2626; }
   color: var(--accent);
 }
 
-/* Filter bars inside #saved-view — neutral architectural pills, no loud yellow block */
-#saved-view .catalog-filter-bar {
+/* Filter bars inside #saved-view & #search-view — neutral architectural pills, no loud yellow block */
+#saved-view .catalog-filter-bar,
+#search-view .catalog-filter-bar {
   display: flex;
   align-items: center;
   gap: 0.4rem;
   margin: 0;
   padding: 0.1rem 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
-#saved-view .filter-chip {
+#saved-view .filter-chip,
+#search-view .filter-chip {
   border-radius: 8px !important;
   padding: 0.34rem 0.75rem !important;
   font-size: 0.75rem !important;
@@ -5591,17 +5604,20 @@ html[data-theme="light"] .stat-bar-fill.low  { background: #dc2626; }
   box-shadow: none !important;
   min-height: 34px;
 }
-#saved-view .filter-chip:hover {
+#saved-view .filter-chip:hover,
+#search-view .filter-chip:hover {
   color: var(--text-main) !important;
   border-color: var(--border-card) !important;
 }
-#saved-view .filter-chip.active {
+#saved-view .filter-chip.active,
+#search-view .filter-chip.active {
   background: var(--bg-card) !important;
   color: var(--text-main) !important;
   border-color: var(--accent-border) !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
-html[data-theme="light"] #saved-view .filter-chip.active {
+html[data-theme="light"] #saved-view .filter-chip.active,
+html[data-theme="light"] #search-view .filter-chip.active {
   background: #ffffff !important;
   color: var(--text-main) !important;
   border-color: var(--accent-border) !important;
@@ -6196,6 +6212,9 @@ html[data-theme="light"] .saved-ans-badge {
   flex-direction: column;
   gap: 0.8rem;
   margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 .search-result-card {
   background: var(--bg-surface);
@@ -6205,6 +6224,12 @@ html[data-theme="light"] .saved-ans-badge {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
   transition: border-color 0.16s ease;
 }
 .search-result-card:hover {
