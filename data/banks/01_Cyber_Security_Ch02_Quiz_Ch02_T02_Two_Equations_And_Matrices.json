@@ -14,8 +14,12 @@
         "en": "What does the basic risk S express?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "تكرار الهجمات خلال سنة واحدة.",
+          "en": "The frequency of attacks over one year."
+        },
         {
           "ar": "الخطر قبل تطبيق أي ضابط أمني.",
           "en": "The risk before countermeasures are applied."
@@ -27,10 +31,6 @@
         {
           "ar": "عدد الضوابط الأمنية الموجودة.",
           "en": "The number of countermeasures in place."
-        },
-        {
-          "ar": "تكرار الهجمات خلال سنة واحدة.",
-          "en": "The frequency of attacks over one year."
         }
       ],
       "concept_id": "basic_risk_meaning",
@@ -74,8 +74,8 @@
     {
       "id": "q3",
       "stem": {
-        "ar": "في المعادلة نفسها، ماذا يمثّل K؟",
-        "en": "In the same equation, what does K represent?"
+        "ar": "في معادلة الخطر الأساسية، ماذا يمثل العامل K؟",
+        "en": "In the basic risk equation, what does the factor K represent?"
       },
       "bloom": "Remember",
       "answer": 2,
@@ -85,11 +85,11 @@
           "en": "How many countermeasures are in place there."
         },
         {
-          "ar": "سرعة كشف الحادث وإغلاقه.",
+          "ar": "سرعة كشف الحادث وإغلاقه نهائياً.",
           "en": "How quickly the incident is detected and closed."
         },
         {
-          "ar": "حجم الضرر لو نجحت المحاولة.",
+          "ar": "حجم الضرر لو نجحت المحاولة فعلاً.",
           "en": "The damage a successful attempt would cause."
         },
         {
@@ -142,16 +142,8 @@
         "en": "Where does the red area of the risk matrix sit?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "تكرار عالٍ وعواقب عالية معاً.",
-          "en": "High frequency and high consequences together."
-        },
-        {
-          "ar": "تكرار عالٍ مع عواقب منخفضة.",
-          "en": "High frequency together with low consequences."
-        },
         {
           "ar": "تكرار منخفض مع عواقب عالية.",
           "en": "Low frequency together with high consequences."
@@ -159,6 +151,14 @@
         {
           "ar": "تكرار منخفض وعواقب منخفضة معاً.",
           "en": "Low frequency and low consequences together."
+        },
+        {
+          "ar": "تكرار عالٍ وعواقب عالية معاً.",
+          "en": "High frequency and high consequences together."
+        },
+        {
+          "ar": "تكرار عالٍ مع عواقب منخفضة.",
+          "en": "High frequency together with low consequences."
         }
       ],
       "concept_id": "risk_matrix_red",
@@ -298,65 +298,65 @@
     {
       "id": "q10",
       "stem": {
-        "ar": "تهديد تكراره 4 وعواقبه 50. ما خطرُه الأساسي؟",
-        "en": "A threat has frequency 4 and consequences 50. What is its basic risk?"
+        "ar": "أي كميتين يضربهما الخطر الأساسي؟",
+        "en": "Which two quantities does basic risk multiply?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "100",
-          "en": "100"
+          "ar": "التكرار والعواقب معاً",
+          "en": "frequency and consequences"
         },
         {
-          "ar": "200",
-          "en": "200"
+          "ar": "الاحتمال والضوابط معاً",
+          "en": "probability and controls"
         },
         {
-          "ar": "240",
-          "en": "240"
+          "ar": "التأثير وزمن التعافي",
+          "en": "impact and recovery time"
         },
         {
-          "ar": "160",
-          "en": "160"
+          "ar": "الاحتمال وقيمة الأصل",
+          "en": "likelihood and asset value"
         }
       ],
       "concept_id": "basic_risk_numeric",
       "explanation": {
-        "ar": "الخطر الأساسي هو التكرار ضرب العواقب: 4 × 50 = 200.",
-        "en": "Basic risk is frequency times consequences: 4 x 50 = 200."
+        "ar": "معادلة الخطر الأساسي تضرب تكرار التهديد في سوء العواقب.",
+        "en": "The basic risk equation multiplies how often the threat occurs by how bad the consequences are."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "تهديد خطره الأساسي 200 ومستوى الضوابط عنده 4. ما الخطر المتبقي؟",
-        "en": "A threat has basic risk 200 and the countermeasures reach level 4. What is the residual risk?"
+        "ar": "ماذا يمثّل الخطر المتبقي؟",
+        "en": "What does residual risk represent?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "80",
-          "en": "80"
+          "ar": "ما يتبقى بعد الضوابط",
+          "en": "what remains after controls"
         },
         {
-          "ar": "60",
-          "en": "60"
+          "ar": "الخطر قبل الضوابط",
+          "en": "the risk before controls"
         },
         {
-          "ar": "50",
-          "en": "50"
+          "ar": "كلفة الضوابط نفسها",
+          "en": "the cost of the controls"
         },
         {
-          "ar": "40",
-          "en": "40"
+          "ar": "احتمال وقوع التهديد",
+          "en": "the probability of a threat"
         }
       ],
       "concept_id": "residual_numeric",
       "explanation": {
-        "ar": "الخطر المتبقي هو الخطر الأساسي مقسوماً على المستوى: 200 ÷ 4 = 50.",
-        "en": "Residual risk is basic risk divided by the level: 200 / 4 = 50."
+        "ar": "الخطر المتبقي هو التعرّض الذي يبقى بعد تطبيق التدابير المضادة.",
+        "en": "Residual risk is the exposure still left once the countermeasures have been applied."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T18:38:04Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

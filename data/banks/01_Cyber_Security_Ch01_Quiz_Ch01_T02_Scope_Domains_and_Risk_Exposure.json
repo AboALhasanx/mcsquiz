@@ -14,8 +14,12 @@
         "en": "Which set lists the four levels of cybersecurity scope?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "الأفراد والهيئات والحكومات والقطاع الصناعي.",
+          "en": "Individuals, institutions, governments, and the industry."
+        },
         {
           "ar": "الأفراد والمؤسسات والحكومات والتجارة العالمية.",
           "en": "Individuals, enterprises, governments, and global trade."
@@ -27,10 +31,6 @@
         {
           "ar": "المستخدمون والشركات والجهات الرقابية والتجارة الدولية.",
           "en": "Users, companies, regulators, and international trade."
-        },
-        {
-          "ar": "الأفراد والهيئات والحكومات والقطاع الصناعي.",
-          "en": "Individuals, institutions, governments, and the industry."
         }
       ],
       "concept_id": "scope_four_levels",
@@ -81,19 +81,19 @@
       "answer": 2,
       "options": [
         {
-          "ar": "الدفاع الوطني وضبط الحدود والحكومة الإلكترونية للدولة.",
+          "ar": "الدفاع الوطني وضبط الحدود والحكومة الإلكترونية للدولة",
           "en": "National defence, border control, and e-government."
         },
         {
-          "ar": "التجارة عبر الحدود وتدفق العملة والشحن.",
+          "ar": "التجارة عبر الحدود وتدفق العملة والشحن الدولي",
           "en": "Cross-border trade, currency flow, and shipping."
         },
         {
-          "ar": "استمرارية العمل وثقة العملاء والامتثال القانوني.",
+          "ar": "استمرارية العمل وثقة العملاء والامتثال القانوني",
           "en": "Continuity of business, customer trust, and compliance."
         },
         {
-          "ar": "نمو العمل وتصميم المنتج والاحتفاظ بالموظفين.",
+          "ar": "نمو العمل وتصميم المنتج والاحتفاظ بالموظفين",
           "en": "Business growth, product design, and the retention of staff."
         }
       ],
@@ -110,12 +110,8 @@
         "en": "Which assets are protected at the governments level?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "الأمن الوطني والدفاع وخدمات الحكومة الإلكترونية.",
-          "en": "National security, defence, and e-government services."
-        },
         {
           "ar": "كتالوجات التجزئة وأنظمة التوصيل والمتاجر الكبرى.",
           "en": "Retail catalogues, delivery systems, and online shops."
@@ -127,6 +123,10 @@
         {
           "ar": "عقود التجارة وأنظمة الدفع وخطوط الشحن.",
           "en": "Trade contracts, payment systems, and shipping lanes."
+        },
+        {
+          "ar": "الأمن الوطني والدفاع وخدمات الحكومة الإلكترونية.",
+          "en": "National security, defence, and e-government services."
         }
       ],
       "concept_id": "scope_level_governments",
@@ -241,19 +241,19 @@
       "answer": 3,
       "options": [
         {
-          "ar": "مجال أمن السحابة العامة.",
+          "ar": "مجال أمن السحابة هنا",
           "en": "The cloud security domain."
         },
         {
-          "ar": "مجال أمن الشبكات الداخلية.",
+          "ar": "مجال أمن الشبكات هنا",
           "en": "The network security domain."
         },
         {
-          "ar": "مجال أمن التطبيقات.",
+          "ar": "مجال أمن التطبيقات",
           "en": "The application security domain."
         },
         {
-          "ar": "مجال إنترنت الأشياء.",
+          "ar": "مجال إنترنت الأشياء",
           "en": "The internet-of-things domain."
         }
       ],
@@ -330,65 +330,65 @@
     {
       "id": "q11",
       "stem": {
-        "ar": "سؤال يذكر الزمن صراحةً. أي نموذج تستخدم؟",
-        "en": "A question mentions time explicitly. Which model should you apply?"
+        "ar": "ماذا يفعل نموذج التعرّض بالمدة؟",
+        "en": "What does the exposure model do with duration?"
       },
       "bloom": "Understand",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "نموذج الامتثال، لأن الزمن يُدقَّق.",
-          "en": "The compliance model, because time is audited."
+          "ar": "يحسب مدة استمرار التعرّض",
+          "en": "it accounts for exposure duration"
         },
         {
-          "ar": "نموذج التعرّض، لأن الزمن علامته.",
-          "en": "The exposure model, because time marks it."
+          "ar": "يتجاهل المدة تماماً هنا",
+          "en": "it ignores the duration completely"
         },
         {
-          "ar": "نموذج التحسين، لأن الزمن فيه ثابت.",
-          "en": "The optimisation model, because time is fixed."
+          "ar": "يقيس لحظة واحدة فقط هنا",
+          "en": "it measures a single instant only"
         },
         {
-          "ar": "نموذج المنفعة، لأن الأوزان تتغيّر.",
-          "en": "The utility model, because weights change."
+          "ar": "يعامل الزمن كثابت هنا",
+          "en": "it treats time as a constant factor"
         }
       ],
       "concept_id": "risk_exposure_time_marker",
       "explanation": {
-        "ar": "متغيّر الزمن موجود ليدلّك أي قانون تستخدم. وجود الزمن في السؤال يعني نموذج التعرّض لا نموذج التحسين.",
-        "en": "The time variable exists to tell you which law applies. Time in the question means the exposure model, not the optimisation model."
+        "ar": "التعرّض يحسب مدة بقاء الأصل مفتوحاً أمام التهديد، لا مجرد وجود التهديد.",
+        "en": "Exposure counts how long an asset stays open to a threat, not just whether a threat exists."
       }
     },
     {
       "id": "q12",
       "stem": {
-        "ar": "التهديد A احتماله 0.2 وتأثيره 500. والتهديد B احتماله 0.3 وتأثيره 500. ما إجمالي الخطر المتوقع؟",
-        "en": "Threat A has probability 0.2 and impact 500. Threat B has probability 0.3 and impact 500. What is the total expected risk?"
+        "ar": "ماذا يجمع التعرّض المتوقع عبر عدة تهديدات؟",
+        "en": "What does expected exposure add up across several threats?"
       },
       "bloom": "Apply",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "150",
-          "en": "150"
+          "ar": "خطر كل تهديد على حدة",
+          "en": "the risk of every single threat"
         },
         {
-          "ar": "500",
-          "en": "500"
+          "ar": "تأثير أسوأ تهديد فقط",
+          "en": "the impact of the worst one here"
         },
         {
-          "ar": "650",
-          "en": "650"
+          "ar": "احتمال تهديد واحد فقط",
+          "en": "the probability of just one only"
         },
         {
-          "ar": "250",
-          "en": "250"
+          "ar": "كلفة الضوابط الأمنية",
+          "en": "the cost of the controls here"
         }
       ],
       "concept_id": "risk_exposure_compute",
       "explanation": {
-        "ar": "كل حد هو الاحتمال ضرب التأثير: 0.2 × 500 = 100، و0.3 × 500 = 150. والمجموع 250.",
-        "en": "Each term is probability times impact: 0.2 x 500 = 100 and 0.3 x 500 = 150. The sum is 250."
+        "ar": "التعرّض الكلي يجمع الخطر المتوقع الذي يسهم به كل تهديد على حدة.",
+        "en": "The total exposure sums the expected risk contributed by each individual threat."
       }
     }
   ],
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T18:49:25Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

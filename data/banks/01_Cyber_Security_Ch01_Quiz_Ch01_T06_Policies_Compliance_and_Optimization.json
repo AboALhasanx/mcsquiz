@@ -209,7 +209,7 @@
       "answer": 3,
       "options": [
         {
-          "ar": "مقدار ما تنفقه المؤسسة على ضوابطها.",
+          "ar": "مقدار ما تنفقه المؤسسة على ضوابطها الأمنية.",
           "en": "How much the organisation spends on its controls."
         },
         {
@@ -217,7 +217,7 @@
           "en": "How many controls the organisation has written."
         },
         {
-          "ar": "عدد مرات تدقيق المؤسسة على ضوابطها.",
+          "ar": "عدد مرات تدقيق المؤسسة على ضوابطها هنا.",
           "en": "How often the organisation audits its controls."
         },
         {
@@ -266,33 +266,33 @@
     {
       "id": "q9",
       "stem": {
-        "ar": "متطلبان: وزناهما 3 و1، ودرجتاهما 1.0 و0.6. ما مؤشر الامتثال؟",
-        "en": "Two requirements: weights 3 and 1, scores 1.0 and 0.6. What is the compliance index?"
+        "ar": "كيف يُبنى مؤشر الامتثال الموزون؟",
+        "en": "How is a weighted compliance index built?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "0.90",
-          "en": "0.90"
+          "ar": "كل درجة مضروبة بوزنها",
+          "en": "each score times its weight"
         },
         {
-          "ar": "0.80",
-          "en": "0.80"
+          "ar": "كل درجة مقسومة على وزنها",
+          "en": "each score divided by its weight"
         },
         {
-          "ar": "0.60",
-          "en": "0.60"
+          "ar": "أكبر درجة واحدة فقط",
+          "en": "the single largest score only"
         },
         {
-          "ar": "0.75",
-          "en": "0.75"
+          "ar": "متوسط الدرجات الخام",
+          "en": "the average of the raw scores"
         }
       ],
       "concept_id": "pci_compute",
       "explanation": {
-        "ar": "اضرب كل درجة بوزنها واقسم على مجموع الأوزان: (3 × 1.0 + 1 × 0.6) ÷ 4 = 0.90.",
-        "en": "Multiply each score by its weight and divide by the sum of weights: (3 x 1.0 + 1 x 0.6) divided by 4 gives 0.90."
+        "ar": "المؤشر الموزون يضرب درجة كل متطلب بوزنه قبل جمعها.",
+        "en": "A weighted index multiplies every requirement score by its weight before summing them."
       }
     },
     {
@@ -345,7 +345,7 @@
           "en": "A result above 100 means the model is invalid."
         },
         {
-          "ar": "نتيجة فوق 100 تعني وجود استثمار.",
+          "ar": "نتيجة فوق 100 تعني وجود استثمار مجدٍ.",
           "en": "A result above 100 means there is investment."
         },
         {
@@ -365,7 +365,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T18:49:25Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

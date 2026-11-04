@@ -14,23 +14,23 @@
         "en": "Which set lists the five categories of the modern threat landscape?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية وهجمات الحجب والسرقة هنا فعلاً تماماً.",
+          "en": "Malware, phishing, insiders, DDoS floods, and theft."
+        },
         {
           "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وهجمات إنترنت الأشياء.",
           "en": "Malware, phishing, insiders, APTs, and IoT attacks."
         },
         {
-          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والبوتنت والبريد المزعج.",
+          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية والبوتنت والبريد المزعج هنا فعلاً تماماً.",
           "en": "Malware, phishing, insiders, botnets, and spam mail."
         },
         {
-          "ar": "الفيروسات والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وتسريب البيانات.",
+          "ar": "الفيروسات والتصيّد والتهديدات الداخلية والتهديدات المتقدمة وتسريب البيانات هنا تماماً.",
           "en": "Viruses, phishing, insiders, APTs, and data leaks."
-        },
-        {
-          "ar": "البرمجيات الخبيثة والتصيّد والتهديدات الداخلية وهجمات الحجب والسرقة.",
-          "en": "Malware, phishing, insiders, DDoS floods, and theft."
         }
       ],
       "concept_id": "threat_five_categories",
@@ -330,33 +330,33 @@
     {
       "id": "q11",
       "stem": {
-        "ar": "مكوّن له نقطتا دخول، وخطورة ثغرة 3، وقيمة أصل 500. ما درجة سطح الهجوم له؟",
-        "en": "A component has 2 entry points, a flaw severity of 3, and an asset value of 500. What is its attack surface score?"
+        "ar": "أي عامل يوسّع سطح هجوم المكوّن؟",
+        "en": "Which factors enlarge a component's attack surface?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "3,500",
-          "en": "3,500"
+          "ar": "مداخل أكثر وثغرات أكثر",
+          "en": "more entry points and more flaws"
         },
         {
-          "ar": "3,000",
-          "en": "3,000"
+          "ar": "مستخدمون أقل ومنافذ أقل",
+          "en": "fewer users and fewer ports"
         },
         {
-          "ar": "1,000",
-          "en": "1,000"
+          "ar": "تشفير أقوى وتدقيق أكثر",
+          "en": "stronger encryption and audits"
         },
         {
-          "ar": "2,500",
-          "en": "2,500"
+          "ar": "كلمات مرور أقصر وبلا سجلات",
+          "en": "shorter passwords and no logs"
         }
       ],
       "concept_id": "attack_surface_compute",
       "explanation": {
-        "ar": "اضرب العوامل الثلاثة: 2 × 3 × 500 = 3,000. النموذج حاصل ضرب لا مجموع.",
-        "en": "Multiply the three factors: 2 x 3 x 500 = 3,000. The model is a product, not a sum."
+        "ar": "كل مدخل إضافي وكل ثغرة إضافية تمنح المهاجم طريقاً آخر للدخول.",
+        "en": "Every extra entry point and every extra weakness gives an attacker one more way in."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T18:49:25Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

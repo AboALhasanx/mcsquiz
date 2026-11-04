@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.8] — 2026-11-04
+
+### Changed
+- content: Cyber Security audit, no numbers/context gaps (v64)
+
+
 ## [1.10.7] — 2026-11-04
 
 ### Changed

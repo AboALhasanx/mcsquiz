@@ -216,9 +216,14 @@
                 <div class="question-card" id="question-card">
                     <div class="card-header">
                         <span class="card-hint">اختر الإجابة الصحيحة</span>
-                        <button id="btn-save-question" class="icon-btn bookmark-btn" aria-label="حفظ السؤال" title="حفظ السؤال لمراجعته لاحقاً">
-                            <i data-lucide="bookmark" id="save-icon"></i>
-                        </button>
+                        <div class="card-actions" style="display:flex; align-items:center; gap:0.25rem;">
+                            <button id="btn-flag-question" class="icon-btn flag-btn hidden" type="button" aria-label="تدقيق وإبلاغ عن السؤال (Admin)" title="تسجيل ملاحظة تدقيق">
+                                <i data-lucide="flag"></i>
+                            </button>
+                            <button id="btn-save-question" class="icon-btn bookmark-btn" aria-label="حفظ السؤال" title="حفظ السؤال لمراجعته لاحقاً">
+                                <i data-lucide="bookmark" id="save-icon"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="question-body">
                         <p id="question-text" class="question-text" dir="auto"></p>
@@ -789,6 +794,13 @@
                                 </button>
                                 <button id="account-sync-now" class="account-action hidden" type="button">
                                     <i data-lucide="refresh-cw"></i><span>مزامنة الآن</span>
+                                </button>
+                                <button id="account-export-flags" class="account-action hidden" type="button">
+                                    <i data-lucide="file-down"></i><span>دفع التبليغات (JSON)</span>
+                                    <span id="admin-flags-count" class="menu-item-badge hidden">0</span>
+                                </button>
+                                <button id="account-clear-flags" class="account-action hidden" type="button">
+                                    <i data-lucide="check-check"></i><span>تفريغ التبليغات المعالجة</span>
                                 </button>
                                 <button id="account-link" class="account-action hidden" type="button">
                                     <i data-lucide="qr-code"></i><span>ربط جهاز آخر</span>
@@ -1590,6 +1602,37 @@
             </div>
         </aside>
 
+        <!-- Admin Question Flag / QA Modal (strictly aboalhasan) -->
+        <div id="flag-modal" class="modal-overlay hidden" aria-hidden="true">
+            <div class="modal-card flag-modal-card" role="dialog" aria-modal="true" aria-labelledby="flag-modal-title">
+                <div class="modal-header flag-modal-head">
+                    <div class="flag-modal-title-wrap">
+                        <div class="flag-admin-badge"><i data-lucide="shield-check"></i><span>تدقيق الأدمن</span></div>
+                        <h3 id="flag-modal-title" class="flag-modal-title">ملاحظة تصحيح السؤال</h3>
+                        <p id="flag-modal-meta" class="flag-modal-meta"></p>
+                    </div>
+                    <button type="button" class="icon-btn modal-close" id="btn-close-flag" aria-label="إغلاق" title="إغلاق">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="flag-modal-body">
+                    <label class="flag-section-label">نوع الخلل في السؤال:</label>
+                    <div class="flag-tags-grid" id="flag-tags-grid">
+                        <button type="button" class="flag-tag-chip active" data-tag="wrong_answer">إجابة غير صحيحة</button>
+                        <button type="button" class="flag-tag-chip" data-tag="wording">صياغة أو ترجمة</button>
+                        <button type="button" class="flag-tag-chip" data-tag="explanation">الشرح غير دقيق</button>
+                        <button type="button" class="flag-tag-chip" data-tag="options">خلل في الخيارات</button>
+                    </div>
+                    <label class="flag-section-label" for="flag-note-input">تفاصيل الملاحظة للإصلاح لاحقاً:</label>
+                    <textarea id="flag-note-input" class="flag-textarea" placeholder="مثال: الخيار الصحيح في البنك هو C وليس B لأن الخوارزمية..." rows="3"></textarea>
+                </div>
+                <div class="flag-modal-actions">
+                    <button type="button" id="btn-save-flag" class="action-btn primary-btn">حفظ الملاحظة</button>
+                    <button type="button" id="btn-delete-flag" class="action-btn danger-btn hidden">حذف التبليغ</button>
+                </div>
+            </div>
+        </div>
+
         <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
 
         <!-- Guided tour overlay (custom spotlight, offline-safe) -->
@@ -1644,6 +1687,7 @@
     <script src="js/search.js" defer></script>
     <script src="js/search_ui.js" defer></script>
     <script src="js/achievements.js" defer></script>
+    <script src="js/admin_flags.js" defer></script>
     <script src="js/account_ui.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/pwa.js" defer></script>

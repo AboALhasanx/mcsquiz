@@ -14,16 +14,8 @@
         "en": "Through which dimensions is the need for risk management explained?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "مالية وتشغيلية وسمعة معاً.",
-          "en": "Financial, operational, and reputational."
-        },
-        {
-          "ar": "تقنية وقانونية وإدارية فقط.",
-          "en": "Technical, legal, and managerial ones."
-        },
         {
           "ar": "استراتيجية وتكتيكية وتشغيلية.",
           "en": "Strategic, tactical, and operational."
@@ -31,6 +23,14 @@
         {
           "ar": "داخلية وخارجية وتنظيمية هنا.",
           "en": "Internal, external, and regulatory ones."
+        },
+        {
+          "ar": "مالية وتشغيلية وسمعة معاً.",
+          "en": "Financial, operational, and reputational."
+        },
+        {
+          "ar": "تقنية وقانونية وإدارية فقط.",
+          "en": "Technical, legal, and managerial ones."
         }
       ],
       "concept_id": "three_dimensions",
@@ -330,33 +330,33 @@
     {
       "id": "q11",
       "stem": {
-        "ar": "تهديدان: احتمال 0.2 لخسارة 10، واحتمال 0.1 لخسارة 5. ما الخسارة المتوقعة؟",
-        "en": "Two threats: a 0.2 chance of a 10 loss, and a 0.1 chance of a 5 loss. What is the expected loss?"
+        "ar": "ماذا تجمع الخسارة المتوقعة لكل تهديد؟",
+        "en": "What does expected loss combine for each threat?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "1.5",
-          "en": "1.5"
+          "ar": "احتماله وخسارته معاً",
+          "en": "its probability and its loss"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "ضوابطه ومالكه معاً",
+          "en": "its controls and its owner"
         },
         {
-          "ar": "2.5",
-          "en": "2.5"
+          "ar": "مدته ومالكه معاً هنا",
+          "en": "its duration and its owner"
         },
         {
-          "ar": "3.0",
-          "en": "3.0"
+          "ar": "فئته وعدده معاً هنا",
+          "en": "its category and its count"
         }
       ],
       "concept_id": "efl_numeric",
       "explanation": {
-        "ar": "كل حد هو الاحتمال ضرب التأثير: 0.2 × 10 = 2، و0.1 × 5 = 0.5. والمجموع 2.5.",
-        "en": "Each term is probability times impact: 0.2 x 10 = 2 and 0.1 x 5 = 0.5. The sum is 2.5."
+        "ar": "الخسارة المتوقعة تضرب احتمال الحدث في حجم الخسارة الناتجة عنه.",
+        "en": "Expected loss multiplies the chance of the event by the size of the loss it would cause."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T19:43:06Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

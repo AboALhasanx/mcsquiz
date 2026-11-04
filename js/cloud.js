@@ -276,6 +276,7 @@
       localStorage.removeItem('portal_achievements_v1');
       localStorage.removeItem('portal_review_v1');
       localStorage.removeItem('portal_days_v1');
+      localStorage.removeItem('portal_flags_v1');
       for (var i = localStorage.length - 1; i >= 0; i--) {
         var k = localStorage.key(i);
         if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' ||
@@ -358,12 +359,13 @@
     var removed = {}, clearedAt = 0;
     try { removed = JSON.parse(localStorage.getItem('portal_saved_removed_v1') || '{}') || {}; } catch (e) {}
     try { clearedAt = Number(localStorage.getItem('portal_history_cleared_v1')) || 0; } catch (e) {}
-    var review = {}, days = {};
+    var review = {}, days = {}, flags = {};
     try { review = JSON.parse(localStorage.getItem('portal_review_v1') || '{}') || {}; } catch (e) {}
     try { days = JSON.parse(localStorage.getItem('portal_days_v1') || '{}') || {}; } catch (e) {}
+    try { flags = JSON.parse(localStorage.getItem('portal_flags_v1') || '{}') || {}; } catch (e) {}
     return { app: 'mcq-portal', version: 2, exportedAt: new Date().toISOString(), updatedAt: touched || Date.now(),
              saved: saved, history: history, bests: bests, removed: removed, clearedAt: clearedAt,
-             review: review, days: days };
+             review: review, days: days, flags: flags };
   }
 
   function applyBundle(d) {
@@ -392,6 +394,9 @@
     }
     if (d.days && typeof d.days === 'object') {
       try { localStorage.setItem('portal_days_v1', JSON.stringify(d.days)); } catch (e) {}
+    }
+    if (d.flags && typeof d.flags === 'object') {
+      try { localStorage.setItem('portal_flags_v1', JSON.stringify(d.flags)); } catch (e) {}
     }
     // the downloaded copy is the current state: remember its write time so the
     // next comparison is a tie and the server keeps winning it
@@ -710,8 +715,18 @@
       }
     }
 
+    if (a.flags || b.flags) {
+      out.flags = Object.assign({}, a.flags || {}, b.flags || {});
+      var af = a.flags || {}, bf = b.flags || {};
+      Object.keys(bf).forEach(function (k) {
+        if (!af[k] || (bf[k].updatedAt || 0) >= (af[k].updatedAt || 0)) {
+          out.flags[k] = bf[k];
+        }
+      });
+    }
+
     // preserve forward-compatible sections (e.g. review store, study days)
-    var known = { app: 1, version: 1, exportedAt: 1, updatedAt: 1, saved: 1, history: 1, bests: 1, removed: 1, clearedAt: 1, review: 1, days: 1 };
+    var known = { app: 1, version: 1, exportedAt: 1, updatedAt: 1, saved: 1, history: 1, bests: 1, removed: 1, clearedAt: 1, review: 1, days: 1, flags: 1 };
     var allKeys = {};
     Object.keys(a).concat(Object.keys(b)).forEach(function (k) {
       if (!known[k]) allKeys[k] = 1;

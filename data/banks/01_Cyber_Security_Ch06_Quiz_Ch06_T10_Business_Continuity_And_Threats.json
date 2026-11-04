@@ -14,12 +14,8 @@
         "en": "What does disaster recovery planning cover?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "تكرار البيانات وهدف زمن التعافي وهدف نقطة التعافي.",
-          "en": "Replication, recovery-time and recovery-point objectives."
-        },
         {
           "ar": "وتيرة الفحص، وجدولة الترقيع، وضوابط الإصدار.",
           "en": "Scanning frequency, patch cadence and release gates."
@@ -31,6 +27,10 @@
         {
           "ar": "قوة التشفير وطول المفتاح وسياسة تدوير المفاتيح.",
           "en": "Encryption strength, key length and rotation policy."
+        },
+        {
+          "ar": "تكرار البيانات وهدف زمن التعافي وهدف نقطة التعافي.",
+          "en": "Replication, recovery-time and recovery-point objectives."
         }
       ],
       "concept_id": "w6_bc_drp",
@@ -170,33 +170,33 @@
     {
       "id": "q6",
       "stem": {
-        "ar": "أي مجموعة تسرد المنظورات الحديثة الأربعة للاعتمادية والاستمرارية؟",
-        "en": "Which set lists the four marked modern perspectives on reliability and continuity?"
+        "ar": "أي مجموعة تسمّي المنظورات الحديثة الأربعة للموثوقية والاستمرارية؟",
+        "en": "Which set names the four modern perspectives on reliability and continuity?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "مراجعة الكود، واختبار الحمل، وتجديد الشهادات، وضغط قواعد البيانات.",
+          "ar": "مراجعة الكود، واختبار الحمل، وتجديد الشهادات، وضغط قواعد البيانات هنا تماماً.",
           "en": "Code review, load testing, certificate renewal, and database compression."
         },
         {
-          "ar": "مرونة سحابية، وتنبؤ بالذكاء الاصطناعي، وZero Trust، وسجلات بلوكتشين.",
+          "ar": "مرونة سحابية، وتنبؤ بالذكاء الاصطناعي، وZero Trust، وسجلات غير قابلة للتلاعب.",
           "en": "Cloud-native resilience, predictive AI, Zero Trust, and tamper-proof records."
         },
         {
-          "ar": "جدران المحيط، والتدقيق السنوي، وتدوير كلمات المرور، وخطط التعافي اليدوية.",
+          "ar": "جدران محيطية، وتدقيق سنوي، وتدوير كلمات المرور، وخطط استعادة يدوية هنا تماماً.",
           "en": "Perimeter firewalls, annual audits, password rotation, and manual recovery plans."
         },
         {
-          "ar": "الفحص الساكن، والترقيع الفصلي، والثقة بالشبكات، والنسخ المحلي فقط.",
+          "ar": "فحص ساكن، وترقيع فصلي، وشبكات موثوقة، ونسخ احتياطي محلي فقط هنا تماماً.",
           "en": "Static scanning, quarterly patching, trusted networks, and local-only backups."
         }
       ],
       "concept_id": "w6_continuity_perspectives",
       "explanation": {
-        "ar": "المنظورات الأربعة هي بنى السحابة الأصلية، والتنبؤ المعتمد على AI، وZero Trust، والسجلات القائمة على blockchain.",
-        "en": "The four are cloud-native architectures, AI-driven prediction, Zero Trust and blockchain-based records."
+        "ar": "المجموعة الحديثة تنتقل إلى المرونة السحابية والتنبؤ وZero Trust والسجلات المحصّنة.",
+        "en": "The modern set moves to cloud resilience, prediction, Zero Trust and tamper-proof records."
       }
     },
     {
@@ -234,33 +234,33 @@
     {
       "id": "q8",
       "stem": {
-        "ar": "أي مجموعة تضم دراسات الحالات الثلاث المحددة عن الثغرات؟",
-        "en": "Which set contains the three marked vulnerability case studies?"
+        "ar": "أي حادثة هي المثال الكلاسيكي لاختراق سلسلة التوريد؟",
+        "en": "Which incident is the classic example of a supply-chain compromise?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "WannaCry، واختراق Target، وStuxnet.",
-          "en": "WannaCry, the Target breach, and Stuxnet."
+          "ar": "اختراق SolarWinds",
+          "en": "the SolarWinds compromise"
         },
         {
-          "ar": "SolarWinds، وNotPetya، وColonial Pipeline.",
-          "en": "SolarWinds, NotPetya, and the Colonial Pipeline incident."
+          "ar": "هجوم WannaCry هنا",
+          "en": "the WannaCry global outbreak"
         },
         {
-          "ar": "دودة Morris، وMirai، وانقطاع خدمة Dyn.",
-          "en": "The Morris worm, Mirai, and the Dyn service outage."
+          "ar": "بوتنت Mirai الواسع",
+          "en": "the Mirai botnet attack"
         },
         {
-          "ar": "Heartbleed، واختراق Equifax، وLog4Shell.",
-          "en": "Heartbleed, the Equifax breach, and Log4Shell."
+          "ar": "ثغرة Heartbleed",
+          "en": "the Heartbleed design flaw"
         }
       ],
       "concept_id": "w6_marked_case_studies",
       "explanation": {
-        "ar": "الأمثلة الثلاثة هي Heartbleed وEquifax وLog4Shell، وتمثل مخاطر المكتبات وتأخر الترقيع وسلسلة التوريد.",
-        "en": "The three examples are Heartbleed, Equifax and Log4Shell, illustrating library, delayed-patching and supply-chain risks."
+        "ar": "SolarWinds هي الحالة الكلاسيكية: تحديث من مورّد موثوق أدخل المهاجم إلى الأنظمة.",
+        "en": "SolarWinds is the textbook supply-chain case: a trusted vendor update carried the attacker in."
       }
     },
     {
@@ -333,7 +333,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-27T14:03:52Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

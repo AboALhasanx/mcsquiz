@@ -14,16 +14,8 @@
         "en": "How is risk defined?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "دالة للاحتمالية وحجم التأثير.",
-          "en": "A function of likelihood and impact."
-        },
-        {
-          "ar": "دالة لتكلفة الضابط والوقت.",
-          "en": "A function of control cost and time."
-        },
         {
           "ar": "دالة لعدد المستخدمين والأجهزة.",
           "en": "A function of user count and devices."
@@ -31,6 +23,14 @@
         {
           "ar": "دالة لقوة السياسة والتدقيق.",
           "en": "A function of policy strength and audit."
+        },
+        {
+          "ar": "دالة للاحتمالية وحجم التأثير.",
+          "en": "A function of likelihood and impact."
+        },
+        {
+          "ar": "دالة لتكلفة الضابط والوقت.",
+          "en": "A function of control cost and time."
         }
       ],
       "concept_id": "risk_is_function_of_two",
@@ -189,7 +189,7 @@
           "en": "GDPR, HIPAA, and ISO 27001."
         },
         {
-          "ar": "OWASP و CVE و CVSS.",
+          "ar": "OWASP و CVE و CVSS فقط.",
           "en": "OWASP, CVE, and CVSS scores."
         }
       ],
@@ -330,33 +330,33 @@
     {
       "id": "q11",
       "stem": {
-        "ar": "إذا كانت F(50) تساوي 0.85، فما احتمال أن تتجاوز الخسارة 50؟",
-        "en": "If F(50) equals 0.85, what is the probability that loss exceeds 50?"
+        "ar": "ماذا يعطي متمّم توزيع الخسائر؟",
+        "en": "What does the complement of a loss distribution give?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.35",
-          "en": "0.35"
+          "ar": "احتمال تجاوز قيمة معينة",
+          "en": "the chance of exceeding a value"
         },
         {
-          "ar": "1.85",
-          "en": "1.85"
+          "ar": "احتمال البقاء تحت تلك القيمة",
+          "en": "the chance of staying below it"
         },
         {
-          "ar": "0.15",
-          "en": "0.15"
+          "ar": "متوسط الخسارة عند القيمة",
+          "en": "the average loss at that value"
         },
         {
-          "ar": "0.85",
-          "en": "0.85"
+          "ar": "العدد الكلي لحوادث الخسارة",
+          "en": "the total number of loss events"
         }
       ],
       "concept_id": "distribution_compute",
       "explanation": {
-        "ar": "الجزءان مجموعهما واحد، فالجواب 1 ناقص 0.85 ويساوي 0.15.",
-        "en": "The two parts sum to one, so the answer is 1 minus 0.85, which is 0.15."
+        "ar": "واحد ناقص التوزيع يعطي احتمال أن تكون الخسارة أكبر من تلك القيمة.",
+        "en": "One minus the distribution gives the probability that the loss is larger than that value."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T18:38:04Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"

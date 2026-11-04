@@ -1079,6 +1079,171 @@
   function updateSavedBadge() { const ui = getSavedUI(); if (ui) ui.updateSavedBadge(); }
   function renderSaved() { const ui = getSavedUI(); if (ui) ui.renderSaved(); }
 
+  // Admin Flag / QA Management (@aboalhasan)
+  let activeFlagKey = null;
+  let activeFlagOrigin = null;
+  let activeFlagQ = null;
+
+  function pauseSessionTimer() {
+    const ses = S.session;
+    if (!ses || ses.pauseStart) return;
+    ses.pauseStart = Date.now();
+    try { if ($('timer-icon')) $('timer-icon').setAttribute('data-lucide', 'play'); } catch (e) {}
+    icons();
+  }
+
+  function resumeSessionTimer() {
+    const ses = S.session;
+    if (!ses || !ses.pauseStart) return;
+    ses.pauseAccum += Date.now() - ses.pauseStart;
+    ses.pauseStart = null;
+    ses.qStart = Date.now();
+    try { if ($('timer-icon')) $('timer-icon').setAttribute('data-lucide', 'pause'); } catch (e) {}
+    icons();
+  }
+
+  function updateFlagBtn() {
+    const btn = $('btn-flag-question');
+    if (!btn) return;
+    const isAdm = window.PortalAdminFlags && window.PortalAdminFlags.isAdmin();
+    btn.classList.toggle('hidden', !isAdm);
+    if (!isAdm) return;
+
+    const ses = S.session;
+    const q = ses && ses.questions ? ses.questions[ses.idx] : null;
+    const key = q && q.origin ? saveKeyOf(q.origin, q.id) : (q ? q.id : null);
+    const existing = key && window.PortalAdminFlags ? window.PortalAdminFlags.getFlag(key) : null;
+    btn.classList.toggle('is-flagged', !!existing);
+    btn.setAttribute('aria-pressed', existing ? 'true' : 'false');
+    btn.setAttribute('title', existing ? 'تم تسجيل ملاحظة لهذا السؤال (اضغط للتعديل)' : 'تسجيل ملاحظة تدقيق (Admin)');
+  }
+
+  function openFlagModal() {
+    const ses = S.session;
+    if (!ses || !ses.questions) return;
+    const q = ses.questions[ses.idx];
+    if (!q) return;
+
+    activeFlagQ = q;
+    activeFlagOrigin = q.origin || {
+      subjectId: ses.sub ? ses.sub.subject_id : 'unknown',
+      subjectTitle: ses.sub ? ses.sub.subject_title : 'مادة',
+      chapterNo: ses.ch ? ses.ch.chapter_no : 1,
+      quizId: ses.ch ? ses.ch.quiz_id : (ses.topic || 'custom')
+    };
+    activeFlagKey = saveKeyOf(activeFlagOrigin, q.id);
+
+    pauseSessionTimer();
+
+    const metaEl = $('flag-modal-meta');
+    if (metaEl) {
+      metaEl.textContent = (activeFlagOrigin.subjectTitle || activeFlagOrigin.subjectId) +
+        ' · ' + (activeFlagOrigin.quizId || 'quiz') + ' · [' + q.id + ']';
+    }
+
+    const existing = window.PortalAdminFlags ? window.PortalAdminFlags.getFlag(activeFlagKey) : null;
+    const tagChips = document.querySelectorAll('#flag-tags-grid .flag-tag-chip');
+    let curTag = existing ? existing.tag : 'wrong_answer';
+
+    tagChips.forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.tag === curTag);
+    });
+
+    const noteInput = $('flag-note-input');
+    if (noteInput) {
+      noteInput.value = existing ? (existing.note || '') : '';
+    }
+
+    const delBtn = $('btn-delete-flag');
+    if (delBtn) {
+      delBtn.classList.toggle('hidden', !existing);
+    }
+
+    const modal = $('flag-modal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    icons();
+  }
+
+  function closeFlagModal() {
+    const modal = $('flag-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    resumeSessionTimer();
+    updateFlagBtn();
+  }
+
+  function saveCurrentFlag() {
+    if (!activeFlagKey || !activeFlagQ) {
+      closeFlagModal();
+      return;
+    }
+    const activeChip = document.querySelector('#flag-tags-grid .flag-tag-chip.active');
+    const tag = activeChip ? activeChip.dataset.tag : 'wrong_answer';
+    const tagLabel = activeChip ? activeChip.textContent.trim() : 'إجابة غير صحيحة';
+    const note = ($('flag-note-input') ? $('flag-note-input').value : '').trim();
+
+    const stemPairObj = stemPair(activeFlagQ);
+    const stemText = stemPairObj && stemPairObj[0] ? stemPairObj[0].t : '';
+
+    if (window.PortalAdminFlags) {
+      window.PortalAdminFlags.setFlag(activeFlagKey, {
+        subjectId: activeFlagOrigin.subjectId,
+        subjectTitle: activeFlagOrigin.subjectTitle,
+        chapterNo: activeFlagOrigin.chapterNo,
+        quizId: activeFlagOrigin.quizId,
+        qid: activeFlagQ.id,
+        stem: stemText,
+        tag: tag,
+        tagLabel: tagLabel,
+        note: note
+      });
+    }
+
+    toast('تم حفظ ملاحظة التدقيق بنجاح', 'success');
+    closeFlagModal();
+    updateFlagBtn();
+    updateAdminFlagsUI();
+  }
+
+  function deleteCurrentFlag() {
+    if (activeFlagKey && window.PortalAdminFlags) {
+      window.PortalAdminFlags.removeFlag(activeFlagKey);
+      toast('تم حذف ملاحظة التدقيق', 'info');
+    }
+    closeFlagModal();
+    updateFlagBtn();
+    updateAdminFlagsUI();
+  }
+
+  function updateAdminFlagsUI() {
+    const isAdm = window.PortalAdminFlags && window.PortalAdminFlags.isAdmin();
+    const exportBtn = $('account-export-flags');
+    const clearBtn = $('account-clear-flags');
+    const badge = $('admin-flags-count');
+    if (!exportBtn) return;
+
+    if (!isAdm) {
+      exportBtn.classList.add('hidden');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      return;
+    }
+
+    const n = window.PortalAdminFlags.count();
+    exportBtn.classList.remove('hidden');
+    if (badge) {
+      badge.textContent = n;
+      badge.classList.toggle('hidden', n === 0);
+    }
+    if (clearBtn) {
+      clearBtn.classList.toggle('hidden', n === 0);
+    }
+  }
+
   function beginAnswering() {
     const ses = S.session;
     if (!ses) return;
@@ -1420,6 +1585,7 @@
       $('next-btn-icon').setAttribute('data-lucide', 'arrow-left');
     }
     updateSaveBtn();
+    updateFlagBtn();
     icons();
   }
 
@@ -2430,6 +2596,7 @@
         const t = fmtSyncTime();
         sub.textContent = '@' + acc.handle + (t ? ' · مزامن ' + t : '');
       }
+      updateAdminFlagsUI();
       icons();
       return;
     }
@@ -2437,6 +2604,7 @@
       name.textContent = 'زائر — بدون حساب';
       sub.textContent = 'ادخل باسمك لتُحفظ بياناتك وتظهر في الدوري';
       setAvatar('', 'ز');
+      updateAdminFlagsUI();
       icons();
       return;
     }
@@ -2497,6 +2665,7 @@
     $('account-unlock').classList.toggle('hidden', hasPin);
     $('account-open-bot').classList.add('hidden');
     $('account-sync-now').classList.remove('hidden');
+    updateAdminFlagsUI();
     icons();
   }
 
@@ -3133,6 +3302,24 @@
     $('btn-close-menu').addEventListener('click', closeDrawers);
     const saveBtn = $('btn-save-question');
     if (saveBtn) saveBtn.addEventListener('click', toggleSaveCurrent);
+    const flagBtn = $('btn-flag-question');
+    if (flagBtn) flagBtn.addEventListener('click', openFlagModal);
+    bindClick('btn-close-flag', closeFlagModal);
+    bindClick('btn-save-flag', saveCurrentFlag);
+    bindClick('btn-delete-flag', deleteCurrentFlag);
+    const flagModal = $('flag-modal');
+    if (flagModal) {
+      flagModal.addEventListener('click', (e) => {
+        if (e.target === flagModal) closeFlagModal();
+      });
+    }
+    const tagChips = document.querySelectorAll('#flag-tags-grid .flag-tag-chip');
+    tagChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        tagChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
     $('menu-tour').addEventListener('click', () => { closeDrawers(); tourShow(0); });
     const dbgBtn = $('menu-debug');
     if (dbgBtn) dbgBtn.addEventListener('click', () => {
@@ -3260,6 +3447,21 @@
         if (r && r.action === 'needs-pin') toast('بياناتك محمية — أدخل رمز الدخول على هذا الجهاز لتفعيل المزامنة', 'info');
         else toast('تمت المزامنة', 'success');
       } catch (e) { toast('تعذر المزامنة', 'error'); }
+    });
+    bindClick('account-export-flags', () => {
+      if (window.PortalAdminFlags) {
+        window.PortalAdminFlags.downloadJson();
+        toast('تم تصدير ملف التبليغات (JSON)', 'success');
+      }
+    });
+    bindClick('account-clear-flags', () => {
+      if (!window.PortalAdminFlags) return;
+      if (confirm('هل أنت متأكد من تفريغ كافة التبليغات المعالجة؟')) {
+        window.PortalAdminFlags.clearAll();
+        updateAdminFlagsUI();
+        updateFlagBtn();
+        toast('تم تفريغ التبليغات', 'info');
+      }
     });
     bindClick('link-scan', startScan);
     bindClick('profile-save', saveProfile);
@@ -3559,7 +3761,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.10.7';
+  const SHELL_VERSION = '1.10.8';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

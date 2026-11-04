@@ -14,12 +14,8 @@
         "en": "In its technical sense, what is risk?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "احتمال أن يسبب خطأ ما ضرراً.",
-          "en": "The probability that an error causes damage."
-        },
         {
           "ar": "الضرر الذي وقع فعلاً بالفعل.",
           "en": "The damage that has already happened to you."
@@ -31,6 +27,10 @@
         {
           "ar": "تكلفة الضوابط المطبّقة حالياً.",
           "en": "The cost of the controls already applied."
+        },
+        {
+          "ar": "احتمال أن يسبب خطأ ما ضرراً.",
+          "en": "The probability that an error causes damage."
         }
       ],
       "concept_id": "risk_technical_meaning",
@@ -106,33 +106,33 @@
     {
       "id": "q4",
       "stem": {
-        "ar": "ما هي الثغرة؟",
-        "en": "What is a vulnerability?"
+        "ar": "في سلسلة الخطر، ما الذي تحتاجه الثغرة لتصبح مهمة؟",
+        "en": "In the risk chain, what does a vulnerability need in order to matter?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "تهديد وقع وأحدث ضرراً فعلياً بالنظام.",
-          "en": "A threat that has already caused real damage."
+          "ar": "تهديداً قادراً على استغلالها",
+          "en": "a threat that can exploit it"
         },
         {
-          "ar": "ضابط أمني يمنع التهديد من الوصول.",
-          "en": "A control that blocks a threat from arriving."
+          "ar": "ضابطاً يمنعها من الحدوث هنا",
+          "en": "a control that blocks it fully"
         },
         {
-          "ar": "سياسة تمنع سلوكاً خطراً في العمل.",
-          "en": "A policy that forbids a risky behaviour at work."
+          "ar": "سياسة تمنعها في العمل هنا",
+          "en": "a policy that forbids it here"
         },
         {
-          "ar": "نقطة ضعف قابلة للاستغلال لإحداث ضرر.",
-          "en": "A weakness that can be exploited for damage."
+          "ar": "نسخة احتياطية تعيدها هنا",
+          "en": "a backup that restores it here"
         }
       ],
       "concept_id": "vulnerability_meaning",
       "explanation": {
-        "ar": "الثغرة نقطة ضعف يمكن استغلالها لإلحاق الضرر بالنظام. ليست المهاجم ولا الخسارة الناتجة.",
-        "en": "A vulnerability is a weakness that can be exploited to damage the system. It is not the attacker and not the resulting loss."
+        "ar": "نقطة الضعف تصبح خطرة فقط عند وجود تهديد قادر على استغلالها.",
+        "en": "A weakness becomes dangerous only when a threat exists that is able to exploit it."
       }
     },
     {
@@ -273,7 +273,7 @@
       "answer": 0,
       "options": [
         {
-          "ar": "العيب في إحكام السطح.",
+          "ar": "العيب في إحكام سطح المبنى.",
           "en": "The cracked seal on the roof."
         },
         {
@@ -333,7 +333,7 @@
     "en": "Asst. Prof. Dr. Huda Lafta Majeed"
   },
   "subject_id": "01_Cyber_Security",
-  "updated_at": "2026-10-26T18:38:04Z",
+  "updated_at": "2026-11-04T16:43:43Z",
   "subject_title": "الأمن السيبراني",
   "schema_version": 3,
   "semester_label": "كورس أول"
