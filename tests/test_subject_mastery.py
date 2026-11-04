@@ -143,21 +143,16 @@ try:
     p.wait_for_timeout(350)
 
     # -------------------------------------------------------------
-    # 3. Subject Filter Chips on #deck-catalog
+    # 3. Subject Filter Chips on #deck-catalog (Clean without badge clutter)
     # -------------------------------------------------------------
     p.evaluate("() => { location.hash = '#/'; }")
     p.wait_for_selector('#deck-catalog', timeout=10000)
     p.wait_for_timeout(500)
 
-    # Check that the AI chip has the shield-check mastery icon
+    # Check that filter chips exist and stay clean (no shield icon clutter)
     ai_chip = p.locator('#subject-filter-bar button[data-subject="06_Artificial_Intelligence"]')
     common.check('AI chip exists in filter bar', ai_chip.count() == 1)
-    has_mastery_icon = ai_chip.locator('.chip-mastery-icon').count() > 0
-    common.check('mastered AI chip displays shield-check mastery icon', has_mastery_icon)
-
-    # Check unmastered subject (e.g. Cyber Security) has NO mastery icon
-    cyber_chip = p.locator('#subject-filter-bar button[data-subject="01_Cyber_Security"]')
-    common.check('cyber security chip has no mastery icon', cyber_chip.locator('.chip-mastery-icon').count() == 0)
+    common.check('AI chip has no mastery icon clutter', ai_chip.locator('.chip-mastery-icon').count() == 0)
 
     # -------------------------------------------------------------
     # 4. Public Player Card Honors Highlight

@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "سيناريوهات التصميم والتصميم الكائني ومقارنة المخططات",
+    "en": "Design Scenarios, OOD and Diagram Comparisons"
+  },
+  "quiz_id": "Quiz_Ch05_T02_Design_Scenarios_And_Comparisons",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تُمرِّر الوحدة A سجل طالب كاملاً إلى الوحدة B مع أنها تحتاج رقم الطالب فقط. أي اقتران يصف هذا؟",
+        "en": "Module A passes an entire student record to Module B although B needs only the student identifier. Which coupling does this describe?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "Content coupling لأن B تعدّل بيانات A الداخلية مباشرة",
+          "en": "Content coupling, because B modifies internal data of A directly here"
+        },
+        {
+          "ar": "Stamp coupling لأن بنية بيانات كاملة تعبر الواجهة",
+          "en": "Stamp coupling, because a whole data structure crosses the interface"
+        },
+        {
+          "ar": "Common coupling لأن الوحدتين تتشاركان منطقة شاملة",
+          "en": "Common coupling, because both modules share a global area here"
+        },
+        {
+          "ar": "Data coupling لأن عناصر بيانات أولية فقط تُتبادل",
+          "en": "Data coupling, because only primitive data items are exchanged"
+        }
+      ],
+      "concept_id": "stamp_coupling",
+      "explanation": {
+        "ar": "تمرير سجل كامل مع الحاجة إلى حقل واحد هو Stamp coupling، أما Data coupling فيمرر رقم الطالب فقط، وهو اقتران ضعيف وأفضل.",
+        "en": "Passing a complete record when one field is needed is stamp coupling. Data coupling would pass just the identifier, which is loose and therefore preferable."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "تجمع وحدة إجراءات التهيئة والإعداد والإغلاق فقط لأنها تُنفَّذ في الفترة الزمنية نفسها. أي تماسك هذا؟",
+        "en": "A module groups initialisation, setup, and shutdown routines only because they run in the same time span. Which cohesion is this?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "Logical cohesion لأن المهام تنتمي إلى صنف منطقي واحد",
+          "en": "Logical cohesion, since the tasks belong to one logical category here"
+        },
+        {
+          "ar": "Sequential cohesion لأن كل مهمة تغذي مدخل التالية",
+          "en": "Sequential cohesion, since each task feeds the next task input"
+        },
+        {
+          "ar": "Functional cohesion لأن كل المهام تخدم غرضاً واحداً",
+          "en": "Functional cohesion, since all tasks serve one single purpose"
+        },
+        {
+          "ar": "Temporal cohesion لأن المهام تتشارك فترة تنفيذ واحدة",
+          "en": "Temporal cohesion, since the tasks share a common execution period"
+        }
+      ],
+      "concept_id": "temporal_cohesion",
+      "explanation": {
+        "ar": "يربط Temporal cohesion المهام بفترة تنفيذ مشتركة، كما في التهيئة والإعداد والإغلاق، بينما يشترط Functional cohesion غرضاً واحداً.",
+        "en": "Temporal cohesion binds tasks by a common execution time span, as in initialisation, setup, and shutdown. Functional cohesion would require one single purpose instead."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مجموعة فوائد تنتج عن التماسك العالي والاقتران المنخفض في التصميم المعياري؟",
+        "en": "Which set of benefits follows from high cohesion and low coupling in a modular design?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تجميد المتطلبات وقصر الجداول وتقليل أصحاب المصلحة",
+          "en": "Frozen requirements, shorter schedules, and fewer stakeholders here"
+        },
+        {
+          "ar": "تسريع الترجمة وتصغير الملفات التنفيذية ورخص العتاد هنا",
+          "en": "Faster compilation, smaller binaries, and cheaper hardware"
+        },
+        {
+          "ar": "عزل الأخطاء وتوسيع نطاق إعادة الاستخدام وسهولة الفهم",
+          "en": "Error isolation, wider scope of reuse, and easier understanding"
+        },
+        {
+          "ar": "اختبار آلي وإثباتات شكلية كاملة وانعدام الصيانة",
+          "en": "Automatic testing, full formal proofs, and zero maintenance"
+        }
+      ],
+      "concept_id": "functional_independence_benefits",
+      "explanation": {
+        "ar": "يحقق الاستقلال الوظيفي عزل الأخطاء وتوسيع نطاق إعادة الاستخدام وسهولة الفهم، ولهذا كانت القاعدة المركزية تماسكاً عالياً واقتراناً منخفضاً.",
+        "en": "Functional independence yields error isolation, a wider scope of reuse, and easier understanding. That is why high cohesion with low coupling is the central design rule."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يجب على فريق إعادة استخدام عدة وحدات مكتبية جاهزة مع تنقيح التحكم في المستوى الأعلى. أي استراتيجية تصميم أكثر عملية؟",
+        "en": "A team must reuse several existing library modules while refining top-level control. Which design strategy is most practical?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Hybrid بالجمع بين تحكم top-down وإعادة استخدام bottom-up",
+          "en": "Hybrid, combining top-down control with bottom-up reuse"
+        },
+        {
+          "ar": "تنقيح top-down خالص من الجذر إلى الأوراق أيضاً الآن",
+          "en": "Pure top-down refinement from the root to the leaves"
+        },
+        {
+          "ar": "تجميع bottom-up خالص دون أي خطة عليا هنا مجدداً أيضاً",
+          "en": "Pure bottom-up assembly without any top-level plan"
+        },
+        {
+          "ar": "Embedded design يفرضه لوح العتاد الهدف الآن هنا مجدداً هنا",
+          "en": "Embedded design, dictated by the target hardware board here"
+        }
+      ],
+      "concept_id": "hybrid_design_strategy",
+      "explanation": {
+        "ar": "استراتيجية Hybrid هي الأكثر شيوعاً وعملية، فالتنقيح top-down يثبت التحكم والتجميع bottom-up يتيح إعادة استخدام وحدات المكتبة، أما Embedded design فليست استراتيجية تصميم.",
+        "en": "Hybrid is the most popular and practical strategy: top-down refinement fixes control while bottom-up assembly lets existing library modules be reused. Embedded design is not a design strategy at all."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مستند هو المُخرَج الرسمي لمرحلة التصميم وفق IEEE 1016؟",
+        "en": "Which document is the official output of the design phase, described by IEEE 1016?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Software Design Description وهو مخطط التنفيذ هنا",
+          "en": "Software Design Description, the blueprint for implementation"
+        },
+        {
+          "ar": "Project Management Plan وهو أساس الجدول والتوظيف",
+          "en": "Project Management Plan, the schedule and staffing baseline"
+        },
+        {
+          "ar": "Software Requirements Specification وهو أساس التصميم",
+          "en": "Software Requirements Specification, the baseline for design here"
+        },
+        {
+          "ar": "Test Readiness Report وهو دليل ما قبل اختبار النظام",
+          "en": "Test Readiness Report, the evidence before system testing"
+        }
+      ],
+      "concept_id": "software_design_description",
+      "explanation": {
+        "ar": "تنتج مرحلة التصميم مستند Software Design Description الذي يعده IEEE 1016 مخططاً يوجه التنفيذ، أما SRS فينتمي إلى المتطلبات لا إلى التصميم.",
+        "en": "The design phase produces the Software Design Description, which IEEE 1016 treats as the blueprint guiding implementation. The SRS belongs to requirements, not to design."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "تجمع وحدة كل إجراءات الإدخال وتختار أحدها عبر flag يمرره المستدعي. أي اقتران ينشئه هذا التصميم على الأرجح؟",
+        "en": "A module bundles all input routines and selects one through a flag passed by its caller. Which coupling does this design most likely create?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Control coupling لأن flag يوجّه مسار تنفيذ الوحدة المستدعاة",
+          "en": "Control coupling, because a flag directs the callee execution path"
+        },
+        {
+          "ar": "Stamp coupling لأن بنية سجل تُمرَّر كاملة هنا أيضاً الآن",
+          "en": "Stamp coupling, because a record structure is passed whole now here"
+        },
+        {
+          "ar": "External coupling لأن بروتوكول جهاز خارجي معني مجدداً",
+          "en": "External coupling, because a device protocol is involved here"
+        },
+        {
+          "ar": "Data coupling لأن flag قيمة أولية واحدة فقط الآن هنا أيضاً هنا",
+          "en": "Data coupling, because the flag is a single primitive value"
+        }
+      ],
+      "concept_id": "logical_cohesion_control_coupling",
+      "explanation": {
+        "ar": "تمرير flag يختار فرعاً داخل الوحدة المستدعاة يمثل معلومة تحكم، لذا ينشأ Control coupling، وهو ما ينتج عادة عن Logical cohesion.",
+        "en": "A flag that selects a branch inside the callee is control information, so the design creates control coupling. Logical cohesion commonly produces exactly this coupling."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "يسبب عيب في وحدة واحدة فشلاً في أربع وحدات بعيدة. أي نتيجة للاقتران العالي يوضح هذا؟",
+        "en": "A defect in one module triggers failures in four distant modules. Which consequence of high coupling does this illustrate?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حالة التعطيل حيث ينتظر الأعضاء المنتهون المرحلة",
+          "en": "The blocking state, where finished members wait for the phase too here"
+        },
+        {
+          "ar": "زحف النطاق حيث توسّع متطلبات جديدة الأساس",
+          "en": "Scope creep, where new requirements expand the baseline here now"
+        },
+        {
+          "ar": "Ripple effect حيث ينتشر الخطأ عبر حدود الوحدات",
+          "en": "The ripple effect, where an error propagates across module boundaries"
+        },
+        {
+          "ar": "متلازمة 99 بالمئة حيث يبدو التقدم منجزاً",
+          "en": "The 99 per cent complete syndrome, where progress looks finished"
+        }
+      ],
+      "concept_id": "ripple_effect_high_coupling",
+      "explanation": {
+        "ar": "ينتج عن الاقتران العالي Ripple effect، حيث ينتشر العيب من وحدة إلى الوحدات المعتمدة عليها، فتصبح عملية التنقيح مكلفة وإعادة الاستخدام صعبة.",
+        "en": "High coupling produces the ripple effect: a fault in one module propagates to modules that depend on it, which makes debugging expensive and reuse difficult."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف يحلل التصميم الكائني النظام بشكل مختلف عن التصميم الوظيفي؟",
+        "en": "How does object-oriented design decompose a system differently from function-oriented design?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حول الأفعال والإجراءات الشاملة لا حول الأسماء والأصناف أيضاً هنا",
+          "en": "Around verbs and global procedures rather than nouns and classes here here"
+        },
+        {
+          "ar": "حول طبقات العتاد ومشغلات الأجهزة لا حول كيانات المجال الآن",
+          "en": "Around hardware layers and device drivers rather than domain entities"
+        },
+        {
+          "ar": "حول حالات الاختبار وأهداف التغطية لا حول المسؤوليات هنا",
+          "en": "Around test cases and coverage goals rather than responsibilities"
+        },
+        {
+          "ar": "حول الأسماء والكائنات المغلفة لا حول الأفعال والحالة المشتركة",
+          "en": "Around nouns and encapsulated objects rather than verbs and shared state"
+        }
+      ],
+      "concept_id": "ood_vs_function_oriented",
+      "explanation": {
+        "ar": "يحلل التصميم الكائني حول الأسماء والكائنات المغلفة، بينما يحلل التصميم الوظيفي حول الأفعال والحالة الشاملة المشتركة، والمنظوران متعامدان.",
+        "en": "Object-oriented design decomposes around nouns and encapsulated objects, while function-oriented design decomposes around verbs and shared global state. The two perspectives are orthogonal."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "هل يمكن لهرمية أصناف أن تستخدم الوراثة دون إظهار polymorphism؟",
+        "en": "Can a class hierarchy use inheritance without exhibiting polymorphism?"
+      },
+      "bloom": "Evaluate",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نعم لكن فقط عندما يُعلن الصنف الأساس abstract",
+          "en": "Yes, but only when the base class is declared abstract"
+        },
+        {
+          "ar": "نعم إذا لم تُعَد تعريف أي عملية وبقي الربط ساكناً",
+          "en": "Yes, if no operation is overridden and binding stays static"
+        },
+        {
+          "ar": "لا لأن polymorphism شرط لتعريف أي صنف مشتق",
+          "en": "No, because polymorphism is required to define any subclass"
+        },
+        {
+          "ar": "لا لأن الوراثة تفرض دائماً ربطاً ديناميكياً للدوال",
+          "en": "No, because inheritance always forces dynamic method binding"
+        }
+      ],
+      "concept_id": "inheritance_without_polymorphism",
+      "explanation": {
+        "ar": "الوراثة آلية إعادة استخدام ويمكن أن توجد دون إعادة تعريف، فيبقى الربط ساكناً، وpolymorphism يفترض وراثة لكن الوراثة لا تفترض polymorphism.",
+        "en": "Inheritance is a reuse mechanism and can exist without overriding, so binding may stay static. Polymorphism requires inheritance, but inheritance does not require polymorphism."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي عبارة تقارن structure chart مع flow chart بشكل صحيح؟",
+        "en": "Which statement contrasts a structure chart with a flow chart correctly?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "structure chart يعرض الهرمية، وflow chart يعرض تسلسل المنطق",
+          "en": "A structure chart shows module hierarchy, while a flow chart shows logic sequence"
+        },
+        {
+          "ar": "structure chart يعرض تسلسل المنطق، وflow chart يعرض الهرمية",
+          "en": "A structure chart shows logic sequence, while a flow chart shows module hierarchy"
+        },
+        {
+          "ar": "structure chart يعرض تخزين البيانات، وflow chart يعرض خطط التوظيف",
+          "en": "A structure chart shows data storage, while a flow chart shows staffing plans"
+        },
+        {
+          "ar": "structure chart يعرض جدول المشروع، وflow chart يعرض تقديرات الكلفة",
+          "en": "A structure chart shows project schedule, while a flow chart shows cost estimates"
+        }
+      ],
+      "concept_id": "structure_chart_vs_flow_chart",
+      "explanation": {
+        "ar": "يوثق structure chart التفكيك الهرمي للوحدات ومعاملاتها وواجهاتها في التصميم المعماري، بينما يوثق flow chart تسلسل المنطق والتحكم.",
+        "en": "A structure chart documents the hierarchical module decomposition, its parameters, and its interfaces during architectural design. A flow chart documents the logic and control sequence instead."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T19:09:39Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

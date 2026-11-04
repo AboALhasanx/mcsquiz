@@ -564,24 +564,11 @@
       S.subjectFilter = subjects[0].subject_id;
       S.chapterFilter = null;
     }
-    const masteryMap = {};
-    if (window.PortalAchievements && window.PortalAchievements.evaluateSubjectMastery) {
-      try {
-        const sm = window.PortalAchievements.evaluateSubjectMastery(subjects, getBest);
-        (sm.subjects || []).forEach((s) => { masteryMap[s.subjectId] = s; });
-      } catch (e) {} // audit-ignore: optional mastery lookup
-    }
     const mk = (id, label) => {
       const b = document.createElement('button');
       b.className = 'filter-chip' + (S.subjectFilter === id ? ' active' : '');
       b.dataset.subject = id;
-      const isMastered = !!(masteryMap[id] && masteryMap[id].isMastered);
-      if (isMastered) {
-        b.innerHTML = '<span class="chip-label">' + escapeHtml(label) + '</span>' +
-          '<i data-lucide="shield-check" class="chip-mastery-icon" aria-label="مادة مُتقنة"></i>';
-      } else {
-        b.textContent = label;
-      }
+      b.textContent = label;
       b.setAttribute('aria-pressed', S.subjectFilter === id ? 'true' : 'false');
       b.addEventListener('click', () => {
         S.subjectFilter = id;
@@ -592,7 +579,6 @@
       return b;
     };
     subjects.forEach((s) => bar.appendChild(mk(s.subject_id, s.subject_title)));
-    icons();
   }
   function visibleChapters() {
     const sub = currentSubject();
@@ -3778,7 +3764,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.8';
+  const SHELL_VERSION = '1.11.9';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

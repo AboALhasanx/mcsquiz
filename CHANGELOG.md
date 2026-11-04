@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.9] — 2026-11-04
+
+### Changed
+- content: ASE Ch05 rebuilt from official Q5.1-5.12 (v77)
+
+
 ## [1.11.8] — 2026-11-04
 
 ### Changed
