@@ -391,6 +391,18 @@
   /* Check immediately after quiz completion */
   function checkAfterQuiz(ses, res) {
     var stats = getAggregateStats();
+    if (res) {
+      var rTotal = Number(res.total) || 0;
+      var rCorrect = Number(res.correct != null ? res.correct : (res.score != null ? res.score : 0));
+      var rSecs = Number(res.secs) || 0;
+      var rPct = Number(res.pct) || 0;
+      if (rTotal >= 5 && (rCorrect === rTotal || rPct === 100)) {
+        stats.hasPerfectQuiz = true;
+      }
+      if (rTotal >= 8 && rSecs > 0 && (rSecs / rTotal) <= 15 && rPct >= 80) {
+        stats.hasSpeedDemon = true;
+      }
+    }
     var state = loadState();
     var newlyUnlocked = [];
 

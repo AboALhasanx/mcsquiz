@@ -697,7 +697,13 @@
       }
     }
     if (a.days || b.days) {
-      if (global.PortalReview && global.PortalReview.mergeDays) {
+      if (Array.isArray(a.days) || Array.isArray(b.days)) {
+        if (Array.isArray(a.days) && Array.isArray(b.days)) {
+          out.days = Array.from(new Set(a.days.concat(b.days)));
+        } else {
+          out.days = Array.isArray(b.days) ? b.days.slice() : a.days.slice();
+        }
+      } else if (global.PortalReview && global.PortalReview.mergeDays) {
         out.days = global.PortalReview.mergeDays(a.days || {}, b.days || {});
       } else {
         out.days = Object.assign({}, a.days || {}, b.days || {});

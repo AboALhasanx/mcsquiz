@@ -114,8 +114,8 @@ try:
     # Test 3: Quiz Finish Celebration Flow on Results View
     # -------------------------------------------------------------
     p.evaluate("""() => {
-        // Clear previous notifications so this quiz unlocks sniper fresh
-        localStorage.removeItem('portal_achievements_v1');
+        // Reset achievements state with hasBootstrapped: true so this fresh quiz celebrates sniper
+        localStorage.setItem('portal_achievements_v1', JSON.stringify({ hasBootstrapped: true, unlocked: {} }));
 
         const ses = {
             subjectId: 'demo',
