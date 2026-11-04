@@ -166,6 +166,102 @@
         "ar": "الميزة الجوهرية للمنطق الضبابي في التطبيقات الواقعية (مثل وزن الغسيل ودرجة اتساخه أو انزلاق العجلات) أنه لا يتطلب اشتقاق معادلات تفاضلية غير خطية معقدة (No exact mathematical model needed)، بل يعتمد على قواعد لغوية بديهية (IF-THEN rules) تحاكي الخبرة البشرية.",
         "en": "A fuzzy controller works from linguistic IF-THEN rules, so it needs no exact non-linear model of the load or the fabric."
       }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "من أين تستمد الشبكة العصبية معرفتها؟",
+        "en": "Where does an artificial neural network get its knowledge?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "من قواعد مكتوبة يدوياً الآن",
+          "en": "from hand written rules here"
+        },
+        {
+          "ar": "من أمثلة الإدخال والإخراج",
+          "en": "from input and output examples"
+        },
+        {
+          "ar": "من مخطط قاعدة البيانات",
+          "en": "from the database schema here"
+        },
+        {
+          "ar": "من ساعة العتاد هنا هنا",
+          "en": "from the hardware clock here"
+        }
+      ],
+      "concept_id": "ann_learns_from",
+      "explanation": {
+        "ar": "الشبكة تُدرَّب على أزواج من المدخلات والمخرجات، وتعمّم منها.",
+        "en": "An ANN is trained on pairs of inputs and outputs, and it generalises from them."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي ركن في الحوسبة الناعمة يتولى الاستمثال؟",
+        "en": "Which soft-computing pillar handles optimisation?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المنطق الضبابي",
+          "en": "fuzzy logic here now"
+        },
+        {
+          "ar": "الشبكات العصبية",
+          "en": "neural networks here now"
+        },
+        {
+          "ar": "الحساب التطوري",
+          "en": "evolutionary computation"
+        },
+        {
+          "ar": "استدلال احتمالي",
+          "en": "probabilistic reasoning"
+        }
+      ],
+      "concept_id": "pillar_optimisation",
+      "explanation": {
+        "ar": "الحساب التطوري يبحث عن حلول جيدة، وهو ركن الاستمثال.",
+        "en": "Evolutionary computation searches for good solutions, which is the optimisation pillar."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الذي يجعل الحوسبة الناعمة متسامحة مع عدم الدقة؟",
+        "en": "What makes soft computing tolerant of imprecision?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نماذج تحليلية دقيقة",
+          "en": "exact analytical models here now"
+        },
+        {
+          "ar": "عتاد أسرع هنا الآن",
+          "en": "faster hardware here now too"
+        },
+        {
+          "ar": "قواعد بيانات أكبر",
+          "en": "larger databases here now too"
+        },
+        {
+          "ar": "حقيقة جزئية وتقريب",
+          "en": "partial truth and approximation"
+        }
+      ],
+      "concept_id": "tolerance_source",
+      "explanation": {
+        "ar": "الحوسبة الناعمة تقبل الحقيقة الجزئية والتقريب بدل اشتراط الدقة التامة.",
+        "en": "Soft computing accepts partial truth and approximation instead of demanding exactness."
+      }
     }
   ],
   "instructor": {
@@ -173,7 +269,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T16:54:29Z",
+  "updated_at": "2026-11-04T18:45:42Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

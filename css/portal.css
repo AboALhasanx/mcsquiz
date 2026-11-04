@@ -1793,9 +1793,10 @@ html[data-theme="light"] .league-row-acc {
   box-shadow: 0 6px 18px rgba(217, 119, 6, 0.2);
 }
 .profile-badge-item.tier-bronze .profile-badge-icon-box {
-  background: rgba(217, 119, 6, 0.16);
-  border: 1px solid rgba(217, 119, 6, 0.35);
-  color: #d97706;
+  background: radial-gradient(circle at 35% 30%, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #d97706;
+  color: #fed7aa;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
 .profile-badge-item.tier-silver {
@@ -1807,9 +1808,10 @@ html[data-theme="light"] .league-row-acc {
   box-shadow: 0 6px 18px rgba(148, 163, 184, 0.2);
 }
 .profile-badge-item.tier-silver .profile-badge-icon-box {
-  background: rgba(148, 163, 184, 0.16);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  color: #94a3b8;
+  background: radial-gradient(circle at 35% 30%, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #cbd5e1;
+  color: #f8fafc;
+  box-shadow: 0 4px 12px rgba(148, 163, 184, 0.3);
 }
 
 .profile-badge-item.tier-gold {
@@ -1822,9 +1824,10 @@ html[data-theme="light"] .league-row-acc {
   box-shadow: 0 6px 20px rgba(234, 179, 8, 0.25);
 }
 .profile-badge-item.tier-gold .profile-badge-icon-box {
-  background: rgba(234, 179, 8, 0.2);
-  border: 1px solid rgba(234, 179, 8, 0.4);
-  color: #eab308;
+  background: radial-gradient(circle at 35% 30%, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #eab308;
+  color: #fef08a;
+  box-shadow: 0 4px 14px rgba(234, 179, 8, 0.35);
 }
 
 .profile-badge-item.tier-diamond {
@@ -1837,9 +1840,10 @@ html[data-theme="light"] .league-row-acc {
   box-shadow: 0 6px 22px rgba(56, 189, 248, 0.28);
 }
 .profile-badge-item.tier-diamond .profile-badge-icon-box {
-  background: rgba(56, 189, 248, 0.2);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  color: #38bdf8;
+  background: radial-gradient(circle at 35% 30%, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #38bdf8;
+  color: #e0f2fe;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
 }
 
 .profile-badge-item.tier-locked {
@@ -1855,14 +1859,15 @@ html[data-theme="light"] .league-row-acc {
 }
 
 .profile-badge-icon-box {
-  width: 36px;
-  height: 36px;
-  border-radius: 11px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.35rem;
-  transition: transform 0.15s ease;
+  margin-bottom: 0.4rem;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .profile-badge-item:hover .profile-badge-icon-box {
   transform: scale(1.08);
@@ -2054,9 +2059,9 @@ html[data-theme="light"] .league-row-acc {
 }
 
 .badge-sheet-emblem-wrap {
-  width: 78px;
-  height: 78px;
-  margin: 0.2rem auto 0.75rem;
+  width: 92px;
+  height: 92px;
+  margin: 0.35rem auto 0.85rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -2064,53 +2069,76 @@ html[data-theme="light"] .league-row-acc {
 }
 .sheet-emblem-halo {
   position: absolute;
-  inset: -6px;
-  border-radius: 24px;
-  opacity: 0.35;
-  filter: blur(8px);
+  inset: -8px;
+  border-radius: 50%;
+  opacity: 0.28;
+  filter: blur(14px);
+  pointer-events: none;
 }
 .sheet-emblem-disc {
   position: relative;
-  width: 66px;
-  height: 66px;
-  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  background: radial-gradient(circle at 35% 28%, #1e293b 0%, #0f172a 70%, #020617 100%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+.sheet-emblem-disc::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  pointer-events: none;
 }
 .sheet-emblem-disc svg {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
 }
 
 /* Emblem Tiers */
 .badge-sheet-emblem-wrap.tier-bronze .sheet-emblem-halo { background: #d97706; }
 .badge-sheet-emblem-wrap.tier-bronze .sheet-emblem-disc {
-  background: radial-gradient(circle at top right, rgba(217, 119, 6, 0.25), transparent 70%), var(--bg-card);
-  border: 2px solid #d97706;
-  color: #d97706;
+  border: 3.5px solid #d97706;
+  color: #fed7aa;
+  box-shadow: 0 10px 28px rgba(217, 119, 6, 0.32), inset 0 2px 4px rgba(254, 215, 170, 0.4), inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+}
+.badge-sheet-emblem-wrap.tier-bronze .sheet-emblem-disc::after {
+  border-color: rgba(217, 119, 6, 0.45);
 }
 
 .badge-sheet-emblem-wrap.tier-silver .sheet-emblem-halo { background: #94a3b8; }
 .badge-sheet-emblem-wrap.tier-silver .sheet-emblem-disc {
-  background: radial-gradient(circle at top right, rgba(148, 163, 184, 0.25), transparent 70%), var(--bg-card);
-  border: 2px solid #94a3b8;
-  color: #94a3b8;
+  border: 3.5px solid #cbd5e1;
+  color: #f8fafc;
+  box-shadow: 0 10px 28px rgba(148, 163, 184, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+}
+.badge-sheet-emblem-wrap.tier-silver .sheet-emblem-disc::after {
+  border-color: rgba(203, 213, 225, 0.45);
 }
 
 .badge-sheet-emblem-wrap.tier-gold .sheet-emblem-halo { background: #eab308; }
 .badge-sheet-emblem-wrap.tier-gold .sheet-emblem-disc {
-  background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.3), transparent 70%), var(--bg-card);
-  border: 2px solid #eab308;
-  color: #eab308;
+  border: 3.5px solid #eab308;
+  color: #fef08a;
+  box-shadow: 0 10px 32px rgba(234, 179, 8, 0.38), inset 0 2px 4px rgba(254, 240, 138, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+}
+.badge-sheet-emblem-wrap.tier-gold .sheet-emblem-disc::after {
+  border-color: rgba(234, 179, 8, 0.5);
 }
 
 .badge-sheet-emblem-wrap.tier-diamond .sheet-emblem-halo { background: #38bdf8; }
 .badge-sheet-emblem-wrap.tier-diamond .sheet-emblem-disc {
-  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.3), transparent 70%), var(--bg-card);
-  border: 2px solid #38bdf8;
-  color: #38bdf8;
+  border: 3.5px solid #38bdf8;
+  color: #e0f2fe;
+  box-shadow: 0 10px 32px rgba(56, 189, 248, 0.38), inset 0 2px 4px rgba(224, 242, 254, 0.6), inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+}
+.badge-sheet-emblem-wrap.tier-diamond .sheet-emblem-disc::after {
+  border-color: rgba(56, 189, 248, 0.5);
 }
 
 .badge-sheet-emblem-wrap.tier-locked .sheet-emblem-halo { display: none; }
@@ -2120,6 +2148,10 @@ html[data-theme="light"] .league-row-acc {
   color: var(--text-muted);
   opacity: 0.45;
   filter: grayscale(1);
+  box-shadow: none;
+}
+.badge-sheet-emblem-wrap.tier-locked .sheet-emblem-disc::after {
+  display: none;
 }
 
 .badge-sheet-rank-tag {

@@ -198,6 +198,70 @@
         "ar": "التمثيل Ã = {(x, μ_Ã(x)) | x ∈ X} هو رسم دالة العضوية، وهو مجموعة جزئية من الجداء الديكارتي X × [0, 1]. فالجداء يوفّر فضاء الأزواج الممكنة، لكنه وحده لا يبني المجموعة الضبابية: الذي يختار الأزواج هو دالة العضوية μ_Ã، لأنها تحدد لكل عنصر درجة واحدة فقط. والمجموعة الضبابية على X تقابل دالة من X إلى [0, 1]، فرسمها مجموعة دالية، وليست أي مجموعة جزئية عشوائية من الجداء.",
         "en": "The Cartesian product supplies the ambient space of possible pairs, while the membership function selects which pairs actually belong to the fuzzy set."
       }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا تعني درجة عضوية تساوي صفراً؟",
+        "en": "What does a membership grade of zero mean?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "انتماء كامل هنا",
+          "en": "the full membership here"
+        },
+        {
+          "ar": "انتماء جزئي هنا",
+          "en": "the partial membership"
+        },
+        {
+          "ar": "لا انتماء إطلاقاً",
+          "en": "no membership at all"
+        },
+        {
+          "ar": "احتمال يساوي واحداً",
+          "en": "a probability of one"
+        }
+      ],
+      "concept_id": "membership_zero",
+      "explanation": {
+        "ar": "الصفر هو أدنى المدى، فالعنصر ليس في المجموعة الضبابية إطلاقاً.",
+        "en": "Zero is the bottom of the range, so the element is not in the fuzzy set at all."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي عامل يستخدمه اتحاد مجموعتين ضبابيتين؟",
+        "en": "Which operator does the union of two fuzzy sets use?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الأدنى هنا",
+          "en": "the minimum"
+        },
+        {
+          "ar": "الضرب هنا",
+          "en": "the product"
+        },
+        {
+          "ar": "المتوسط هنا",
+          "en": "the average"
+        },
+        {
+          "ar": "الأعلى هنا",
+          "en": "the maximum"
+        }
+      ],
+      "concept_id": "fuzzy_union_max",
+      "explanation": {
+        "ar": "الاتحاد يحتفظ بأكبر الدرجتين عند كل عنصر، وهو الأعلى.",
+        "en": "Union keeps the larger of the two grades at every element, which is the maximum."
+      }
     }
   ],
   "instructor": {
@@ -205,7 +269,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T16:54:29Z",
+  "updated_at": "2026-11-04T18:45:42Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -198,6 +198,70 @@
         "ar": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي.",
         "en": "The complement reverses the operation: the complement of an intersection is the union of the complements, and the reverse also holds."
       }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا يفعل محرك الاستدلال في النظام الضبابي؟",
+        "en": "What does the inference engine do in a fuzzy system?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تخزين القواعد في الذاكرة",
+          "en": "it stores all the rules here"
+        },
+        {
+          "ar": "قياس الحساسات في النظام",
+          "en": "it measures the sensors"
+        },
+        {
+          "ar": "تطبيق القواعد على الدرجات",
+          "en": "it applies rules to grades"
+        },
+        {
+          "ar": "طباعة التقرير للمستخدم",
+          "en": "it prints the report now"
+        }
+      ],
+      "concept_id": "inference_engine_role",
+      "explanation": {
+        "ar": "المحرك يطابق الدرجات المُضبَّبة مع القواعد ويستخرج درجات المخرَج.",
+        "en": "The engine matches the fuzzified grades against the rules and derives the output grades."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا نحتاج إزالة الضبابية عند المخرَج؟",
+        "en": "Why is defuzzification needed at the output?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لتخزين قاعدة القواعد",
+          "en": "to store the rule base"
+        },
+        {
+          "ar": "لتوسيع المدى كله",
+          "en": "to widen the whole range"
+        },
+        {
+          "ar": "لتسريع الحساس هنا",
+          "en": "to speed up the sensor"
+        },
+        {
+          "ar": "لإرجاع قيمة حاسمة",
+          "en": "to return a crisp value"
+        }
+      ],
+      "concept_id": "defuzz_purpose",
+      "explanation": {
+        "ar": "المنظومة تحتاج رقماً واحداً ملموساً، فتُعاد النتيجة الضبابية قيمة حاسمة.",
+        "en": "The plant needs one concrete number, so the fuzzy result is turned back into a crisp value."
+      }
     }
   ],
   "instructor": {
@@ -205,7 +269,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T16:54:29Z",
+  "updated_at": "2026-11-04T18:45:42Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

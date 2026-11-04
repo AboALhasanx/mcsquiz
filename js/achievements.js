@@ -327,7 +327,7 @@
     '03_Data_Mining': { icon: 'database', color: '#eab308', accentClass: 'mastery-mining', shortTitle: 'تنقيب البيانات' },
     '04_Advanced_Software_Eng': { icon: 'cpu', color: '#3b82f6', accentClass: 'mastery-swe', shortTitle: 'هندسة البرمجيات' },
     '05_Soft_Computing': { icon: 'network', color: '#a855f7', accentClass: 'mastery-soft', shortTitle: 'الحوسبة اللينة' },
-    '06_Artificial_Intelligence': { icon: 'bot', color: '#10b981', accentClass: 'mastery-ai', shortTitle: 'الذكاء الاصطناعي' }
+    '06_Artificial_Intelligence': { icon: 'sparkles', color: '#10b981', accentClass: 'mastery-ai', shortTitle: 'الذكاء الاصطناعي' }
   };
 
   function getSubjectMeta(subjectId, fallbackTitle) {
@@ -806,8 +806,8 @@
     var emblemClass = isUnlocked ? (sub.tierMeta ? sub.tierMeta.accentClass : 'tier-gold') : 'tier-locked';
 
     if (emblemEl) {
-      emblemEl.className = 'badge-sheet-emblem-wrap ' + emblemClass + (sub.accentClass ? (' ' + sub.accentClass) : '');
-      emblemEl.innerHTML = '<div class="sheet-emblem-halo" style="' + (isUnlocked ? ('background:' + sub.color + ';') : '') + '"></div>' +
+      emblemEl.className = 'badge-sheet-emblem-wrap ' + emblemClass;
+      emblemEl.innerHTML = '<div class="sheet-emblem-halo"></div>' +
         '<div class="sheet-emblem-disc">' +
         '<i data-lucide="' + escapeHtml(sub.icon) + '"></i>' +
         '</div>';

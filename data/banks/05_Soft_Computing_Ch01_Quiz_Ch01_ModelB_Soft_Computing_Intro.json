@@ -166,6 +166,102 @@
         "ar": "استراتيجيات الاستمثال الشامل تمنع الحلول من السقوط في الحلول المحلية، أما بقية الخيارات فتصف سمات لا تنطبق.",
         "en": "Global optimization strategies can prevent solutions from falling into local minima. The other three options describe hard-computing traits that do not address a trapped local search."
       }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يفعل الدماغ ولا يفعله الحاسوب التقليدي؟",
+        "en": "What does the brain do that a classic computer does not?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يستخدم ساعة واحدة هنا",
+          "en": "it uses a single clock"
+        },
+        {
+          "ar": "يعمل بتوازٍ هائل هنا",
+          "en": "it works in parallel here"
+        },
+        {
+          "ar": "يحتاج برنامجاً مكتوباً",
+          "en": "it needs a written program"
+        },
+        {
+          "ar": "يخزّن البيانات بالبايت",
+          "en": "it stores data in bytes"
+        }
+      ],
+      "concept_id": "brain_parallel",
+      "explanation": {
+        "ar": "الدماغ يعالج إشارات كثيرة في آن واحد، والحاسوب التقليدي يسير بساعة واحدة.",
+        "en": "The brain processes many signals at once, while a classic machine steps through one clock."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا تخزّن الشبكة العصبية بعد التدريب؟",
+        "en": "What does a trained artificial neural network store?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مجموعة بيانات التدريب",
+          "en": "the training data set here"
+        },
+        {
+          "ar": "الشيفرة المصدرية هنا",
+          "en": "the original source code"
+        },
+        {
+          "ar": "الأوزان المتعلَّمة هنا",
+          "en": "the learned weights here"
+        },
+        {
+          "ar": "قراءات الحساسات هنا",
+          "en": "the raw sensor readings"
+        }
+      ],
+      "concept_id": "ann_stores_weights",
+      "explanation": {
+        "ar": "التدريب يترك أوزان الروابط، ولا يحتفظ ببيانات التدريب نفسها.",
+        "en": "Training leaves behind the connection weights; the training data itself is not kept."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي خطوة تلي الطفرة في الدورة التطورية؟",
+        "en": "Which step follows mutation in the evolutionary cycle?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تهيئة الجمهرة هنا هنا",
+          "en": "initialisation of the population"
+        },
+        {
+          "ar": "تقييم اللياقة هنا",
+          "en": "evaluation of fitness here"
+        },
+        {
+          "ar": "اختيار الآباء هنا",
+          "en": "selection of the parents now"
+        },
+        {
+          "ar": "لا شيء، تتكرر الدورة",
+          "en": "nothing, the cycle repeats"
+        }
+      ],
+      "concept_id": "evo_cycle_after",
+      "explanation": {
+        "ar": "الطفرة تُغلق الحلقة: الذرية الجديدة تُقيَّم من جديد في الجيل التالي.",
+        "en": "Mutation closes the loop: the new offspring are evaluated again in the next generation."
+      }
     }
   ],
   "instructor": {
@@ -173,7 +269,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T16:54:29Z",
+  "updated_at": "2026-11-04T18:45:42Z",
   "subject_title": "الحوسبة اللينة",
   "schema_version": 3,
   "semester_label": "كورس أول"

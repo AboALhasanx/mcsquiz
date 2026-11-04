@@ -5,6 +5,18 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.7] — 2026-11-04
+
+### Changed
+- content: ASE Ch01-Ch03 to 8 each (v75)
+
+
+## [1.11.6] — 2026-11-04
+
+### Changed
+- content: SC banks to the 8-question floor (v74)
+
+
 ## [1.11.5] — 2026-11-04
 
 ### Changed
