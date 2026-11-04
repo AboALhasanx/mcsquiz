@@ -14,12 +14,8 @@
         "en": "What may an organization do with customer data?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "بيعها لمنظمات أخرى",
-          "en": "sell it to other organizations"
-        },
         {
           "ar": "حذفها خلال يوم واحد",
           "en": "delete it within one working day"
@@ -31,6 +27,10 @@
         {
           "ar": "تشفيرها لكل مستخدم",
           "en": "encrypt it for all the users"
+        },
+        {
+          "ar": "بيعها لمنظمات أخرى",
+          "en": "sell it to other organizations"
         }
       ],
       "concept_id": "ch1_dis_sell",
@@ -230,6 +230,38 @@
         "ar": "لأن الأدوات تختلف يصبح اختيار المناسبة للمهمة تحدياً حقيقياً.",
         "en": "Because the tools differ, selecting the right one for the task becomes a real challenge."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي خطر يضر بثقة العميل مباشرة؟",
+        "en": "Which risk most directly damages customer trust?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بيع بيانات العملاء هنا",
+          "en": "selling the customer data"
+        },
+        {
+          "ar": "بطء أكبر في التشغيل",
+          "en": "running much slower here"
+        },
+        {
+          "ar": "كلفة تخزين أعلى هنا",
+          "en": "costing much more storage"
+        },
+        {
+          "ar": "وقت تدريب أطول هنا فعلاً",
+          "en": "taking much longer to train"
+        }
+      ],
+      "concept_id": "ch1_dis_trust",
+      "explanation": {
+        "ar": "بيع بيانات العملاء يكسر الثقة التي تعتمد عليها المنظمة.",
+        "en": "Selling customer data breaks the trust the organization depends on."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T16:24:54Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

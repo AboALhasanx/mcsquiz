@@ -38,6 +38,7 @@ SPECS = [
     'test_search.py',
     'test_search_flow.py',
     'test_admin_flags.py',
+    'test_subject_mastery.py',
 ]
 
 

@@ -14,12 +14,8 @@
         "en": "Which areas can implementation challenges relate to?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "الأداء والبيانات والطرائق",
-          "en": "performance, data and methods"
-        },
         {
           "ar": "الأسعار والضرائب والقوانين",
           "en": "prices, taxes and the law"
@@ -31,6 +27,10 @@
         {
           "ar": "الألوان والخطوط والصور",
           "en": "colours, fonts and images"
+        },
+        {
+          "ar": "الأداء والبيانات والطرائق",
+          "en": "performance, data and methods"
         }
       ],
       "concept_id": "ch1_ch_categories",
@@ -230,6 +230,38 @@
         "ar": "المخرجات يجب أن توصل المعنى المقصود بدقة، وتحقيق هذه الدقة صعب.",
         "en": "The output must convey the exact intended meaning, and that precision is hard to achieve."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي تحدٍّ يخص بيانات موزعة بأماكن كثيرة؟",
+        "en": "Which challenge concerns data held in many separate places?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "البيانات الموزعة",
+          "en": "distributed data"
+        },
+        {
+          "ar": "البيانات المشفّرة",
+          "en": "encrypted data here"
+        },
+        {
+          "ar": "البيانات المضغوطة",
+          "en": "compressed data"
+        },
+        {
+          "ar": "البيانات المؤرشفة",
+          "en": "archived data here"
+        }
+      ],
+      "concept_id": "ch1_ch_scattered",
+      "explanation": {
+        "ar": "تشتّت المصادر يجعل الجمع في مركز واحد صعباً، وهذا تحدّي التوزيع.",
+        "en": "Scattered sources make central collection hard, which is the distribution challenge."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T16:24:54Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

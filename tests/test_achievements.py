@@ -74,7 +74,7 @@ try:
     common.check('badges count displayed on shelf', '/' in badges_count_text)
 
     # Check that badge items are rendered on shelf
-    badge_items = p.locator('.profile-badge-item')
+    badge_items = p.locator('#profile-badges-grid .profile-badge-item')
     common.check('shelf has 8 badges', badge_items.count() == 8)
 
     # 4. Click a badge item to open the Bottom Sheet

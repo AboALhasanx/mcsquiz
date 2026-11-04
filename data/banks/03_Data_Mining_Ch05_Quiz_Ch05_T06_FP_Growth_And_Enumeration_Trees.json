@@ -78,12 +78,8 @@
         "en": "How are remaining frequent items ordered before the FP-tree is built?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "بترتيب تنازلي حسب تكرارها",
-          "en": "in descending order of their frequency"
-        },
         {
           "ar": "بترتيب تصاعدي حسب ثقتها",
           "en": "in ascending order of their confidence"
@@ -95,6 +91,10 @@
         {
           "ar": "بحسب طول لاحقة التسلسل فقط",
           "en": "according to the sequence suffix length only"
+        },
+        {
+          "ar": "بترتيب تنازلي حسب تكرارها",
+          "en": "in descending order of their frequency"
         }
       ],
       "concept_id": "fpgrowth_order",
@@ -230,6 +230,38 @@
         "ar": "إضافة عنصر إلى مجموعة العناصر الحالية",
         "en": "Each branch represents adding an item to the current itemset."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يتجنب FP-Growth مما يكرره Apriori؟",
+        "en": "What does FP-Growth avoid that Apriori repeats?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "توليد المرشحات المتكرر",
+          "en": "repeated candidate generation"
+        },
+        {
+          "ar": "تخزين أي نوع من الشجرة",
+          "en": "storing any kind of tree here"
+        },
+        {
+          "ar": "عدّ كل عنصر على حدة",
+          "en": "counting every single item"
+        },
+        {
+          "ar": "قراءة البيانات كلها دفعة",
+          "en": "reading all the data at once"
+        }
+      ],
+      "concept_id": "ch5_fp_avoids",
+      "explanation": {
+        "ar": "FP-Growth يضغط البيانات في شجرة، فلا يولّد مجموعات مرشحة إطلاقاً.",
+        "en": "FP-Growth compresses the data into a tree, so it never generates candidate sets."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T12:07:52Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.5] — 2026-11-04
+
+### Changed
+- content: DM banks to the 8-question floor (v73)
+
+
 ## [1.11.4] — 2026-11-04
 
 ### Changed

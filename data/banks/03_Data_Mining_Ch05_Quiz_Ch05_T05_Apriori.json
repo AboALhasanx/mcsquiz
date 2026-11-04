@@ -78,12 +78,8 @@
         "en": "If an itemset is not frequent, what follows for its supersets?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
-          "en": "none of its supersets can be frequent"
-        },
         {
           "ar": "يجب أن تكون كل مجموعاتها الأعلى احتواءً متكررة",
           "en": "all of its supersets must be frequent"
@@ -95,6 +91,10 @@
         {
           "ar": "إضافة عنصر إلى مجموعة العناصر الحالية",
           "en": "adding an item to the current itemset"
+        },
+        {
+          "ar": "لا تكون أي مجموعة أعلى احتواءً متكررة",
+          "en": "none of its supersets can be frequent"
         }
       ],
       "concept_id": "apriori_property_infrequent",
@@ -230,6 +230,38 @@
         "ar": "إلى أن يتعذر توليد مجموعات عناصر متكررة أخرى",
         "en": "and so on, until no more frequent itemsets can be generated."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا تنص خاصية Apriori؟",
+        "en": "What does the Apriori property state?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كل مجموعة متكررة لها مجموعات فرعية متكررة",
+          "en": "a frequent set has frequent subsets"
+        },
+        {
+          "ar": "المجموعة النادرة لها مجموعات فرعية متكررة",
+          "en": "a rare set has frequent subsets here"
+        },
+        {
+          "ar": "كل المجموعات متساوية في التكرار هنا",
+          "en": "all sets are equally frequent here"
+        },
+        {
+          "ar": "التكرار لا يتغير أبداً في أي حال هنا",
+          "en": "frequency never changes at all here"
+        }
+      ],
+      "concept_id": "ch5_apriori_property",
+      "explanation": {
+        "ar": "إذا كانت المجموعة متكررة فكل مجموعة فرعية منها متكررة أيضاً.",
+        "en": "If an itemset is frequent then every subset of it must be frequent too."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T12:07:52Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

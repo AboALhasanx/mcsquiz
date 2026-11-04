@@ -14,12 +14,8 @@
         "en": "What does data mining extract from large data sets?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "أنماط واتجاهات وبيانات مفيدة",
-          "en": "patterns, trends and useful data"
-        },
         {
           "ar": "أعطال العتاد وأخطاء النظام",
           "en": "hardware faults and system errors"
@@ -31,6 +27,10 @@
         {
           "ar": "كابلات الشبكة والخوادم الرئيسية",
           "en": "network cables and main servers"
+        },
+        {
+          "ar": "أنماط واتجاهات وبيانات مفيدة",
+          "en": "patterns, trends and useful data"
         }
       ],
       "concept_id": "ch1_dm_definition",
@@ -230,6 +230,38 @@
         "ar": "البحث يجري تلقائياً في مخازن كبيرة من المعلومات، لا في سجل واحد.",
         "en": "The search runs automatically across large stores of information, not one record at a time."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أين يبحث تنقيب البيانات عن أنماطه؟",
+        "en": "Where does data mining look for its patterns?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "داخل مخازن بيانات كبيرة",
+          "en": "inside large data stores"
+        },
+        {
+          "ar": "داخل الشيفرة المصدرية",
+          "en": "inside the source code here"
+        },
+        {
+          "ar": "داخل العتاد نفسه هنا",
+          "en": "inside the hardware here"
+        },
+        {
+          "ar": "داخل ملفات الموظفين هنا",
+          "en": "inside the staff files here"
+        }
+      ],
+      "concept_id": "ch1_dm_where",
+      "explanation": {
+        "ar": "البحث يجري في مخازن كبيرة من البيانات المجموعة، لا في الشيفرة أو العتاد.",
+        "en": "The search runs over large stores of collected data, not over code or hardware."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T16:24:54Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

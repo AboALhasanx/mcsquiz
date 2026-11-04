@@ -142,12 +142,8 @@
         "en": "How is a time series converted into symbols?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "بربط مديات القيم برموز",
-          "en": "by mapping value ranges to symbols"
-        },
         {
           "ar": "بحذف كل قيمة ثانية",
           "en": "by deleting every second value now"
@@ -159,6 +155,10 @@
         {
           "ar": "بحساب متوسط كل القيم",
           "en": "by averaging all the values here"
+        },
+        {
+          "ar": "بربط مديات القيم برموز",
+          "en": "by mapping value ranges to symbols"
         }
       ],
       "concept_id": "timeseries_symbolic_example",
@@ -230,6 +230,38 @@
         "ar": "الخصائص الرقمية الناتجة يمكن استخدامها لاحقاً من قبل خوارزميات التعلم الآلي. أما الخيارات الأخرى فليست الاستخدام المقصود لمتجه الخصائص المستخرجة.",
         "en": "The resulting numerical features can then be used by machine learning algorithms. The other choices are not the stated use of the extracted feature vector."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا تفعل النافذة المنزلقة على السلسلة الزمنية؟",
+        "en": "What does a sliding window do on a time series?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يستخرج الخصائص لكل نافذة",
+          "en": "it extracts features per window"
+        },
+        {
+          "ar": "يحذف السلسلة كاملة هنا",
+          "en": "it deletes the whole series here"
+        },
+        {
+          "ar": "يرتب القيم حسب الحجم هنا",
+          "en": "it sorts the values by size"
+        },
+        {
+          "ar": "يحوّل النص إلى أرقام هنا",
+          "en": "it converts text to numbers"
+        }
+      ],
+      "concept_id": "ch3_sliding_window",
+      "explanation": {
+        "ar": "النافذة تتحرك على السلسلة وكل مقطع يعطي خصائصه.",
+        "en": "The window moves along the series and each slice yields its own features."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

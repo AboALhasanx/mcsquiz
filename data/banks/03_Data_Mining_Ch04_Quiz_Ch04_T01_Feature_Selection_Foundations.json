@@ -78,12 +78,8 @@
         "en": "Which modeling risk can feature selection reduce?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "تقليل خطر فرط التكيّف.",
-          "en": "Reduce the risk of overfitting."
-        },
         {
           "ar": "تقليل الكلفة الحسابية.",
           "en": "Reduce computational cost."
@@ -95,6 +91,10 @@
         {
           "ar": "جعل النموذج أسهل تفسيراً.",
           "en": "Make the model easier to interpret."
+        },
+        {
+          "ar": "تقليل خطر فرط التكيّف.",
+          "en": "Reduce the risk of overfitting."
         }
       ],
       "concept_id": "fs_overfit",
@@ -230,6 +230,38 @@
         "ar": "أثناء عملية تدريب النموذج",
         "en": "Embedded methods perform feature selection during the model training process."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يحتفظ به اختيار السمات؟",
+        "en": "What does feature selection keep?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أكثر السمات الأصلية فائدة",
+          "en": "the most useful original features"
+        },
+        {
+          "ar": "مجموعة سمات مبنية جديدة",
+          "en": "a set of newly built features"
+        },
+        {
+          "ar": "كل سمة دون تغيير هنا هنا",
+          "en": "every feature left unchanged"
+        },
+        {
+          "ar": "القيم المفقودة فقط هنا",
+          "en": "only the values that were missing"
+        }
+      ],
+      "concept_id": "ch4_fs_keeps",
+      "explanation": {
+        "ar": "الاختيار يحذف صفات لكنه لا يبني جديدة، بخلاف الاستخراج.",
+        "en": "Selection drops attributes but never builds new ones, unlike extraction."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -78,12 +78,8 @@
         "en": "What does a projected database contain for a particular pattern?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط",
-          "en": "the relevant suffixes of sequences where that pattern occurs"
-        },
         {
           "ar": "كل مجموعات العناصر المرشحة بترتيب تكرار تنازلي",
           "en": "all candidate itemsets in descending frequency order"
@@ -95,6 +91,10 @@
         {
           "ar": "باستخدام كل مجموعات العناصر الممكنة بصرف النظر عن الدعم",
           "en": "using all possible itemsets regardless of support"
+        },
+        {
+          "ar": "اللواحق ذات الصلة من التسلسلات التي يظهر فيها ذلك النمط",
+          "en": "the relevant suffixes of sequences where that pattern occurs"
         }
       ],
       "concept_id": "projected_db",
@@ -230,6 +230,38 @@
         "ar": "يركز على ترتيب وقوع العناصر أو الأحداث، لا مجرد ظهورها معاً.",
         "en": "Sequential mining focuses on the order in which items or events occur."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يضيف تنقيب الأنماط التسلسلية لقواعد الارتباط؟",
+        "en": "What does sequential pattern mining add to association rules?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ترتيب الأحداث",
+          "en": "the order of the events"
+        },
+        {
+          "ar": "سعر العناصر",
+          "en": "the price of the items"
+        },
+        {
+          "ar": "صيغة الملف هنا",
+          "en": "the format of the file"
+        },
+        {
+          "ar": "عدد المستخدمين",
+          "en": "the number of the users"
+        }
+      ],
+      "concept_id": "ch5_seq_adds",
+      "explanation": {
+        "ar": "التسلسل مهم: العناصر نفسها بترتيب آخر تصنع نمطاً مختلفاً.",
+        "en": "The sequence matters: the same items in another order make a different pattern."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T12:07:52Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

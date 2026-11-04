@@ -78,12 +78,8 @@
         "en": "How does Forward Selection begin?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "يبدأ دون خصائص.",
-          "en": "Starts with no features."
-        },
         {
           "ar": "يبدأ بكل الخصائص.",
           "en": "Starts with all features."
@@ -95,6 +91,10 @@
         {
           "ar": "ضمن تدريب النموذج",
           "en": "as part of model training"
+        },
+        {
+          "ar": "يبدأ دون خصائص.",
+          "en": "Starts with no features."
         }
       ],
       "concept_id": "forward_start",
@@ -230,6 +230,38 @@
         "ar": "تدرب نموذجاً وتزيل الخصائص الأقل أهمية",
         "en": "RFE repeatedly trains a model and removes the least important features."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "بماذا يقيس أسلوب التغليف جودة مجموعة فرعية؟",
+        "en": "What does a wrapper method use to score a subset?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "دقة النموذج نفسه هنا",
+          "en": "the accuracy of the model itself"
+        },
+        {
+          "ar": "حجم ملف البيانات هنا",
+          "en": "the file size of the whole data"
+        },
+        {
+          "ar": "عدد أعمدة الجدول",
+          "en": "the number of the table columns"
+        },
+        {
+          "ar": "ترتيب صفوف البيانات",
+          "en": "the order of the data rows"
+        }
+      ],
+      "concept_id": "ch4_wrap_score",
+      "explanation": {
+        "ar": "التغليف يدرّب النموذج على كل مجموعة ويقيسها بدقة ذلك النموذج.",
+        "en": "A wrapper trains the model on each subset and scores it by that model's accuracy."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

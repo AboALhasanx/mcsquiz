@@ -78,12 +78,8 @@
         "en": "What does an itemset contain?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "مجموعات من العناصر مثل {Bread, Milk}",
-          "en": "collections of items, such as {Bread, Milk}"
-        },
         {
           "ar": "أنماط خصائص رقمية في مجموعة بيانات",
           "en": "numerical-attribute patterns in a dataset"
@@ -95,6 +91,10 @@
         {
           "ar": "عناصر مفردة مثل الخبز والحليب والقهوة",
           "en": "individual elements, such as Bread, Milk, Coffee"
+        },
+        {
+          "ar": "مجموعات من العناصر مثل {Bread, Milk}",
+          "en": "collections of items, such as {Bread, Milk}"
         }
       ],
       "concept_id": "itemset_definition",
@@ -230,6 +230,38 @@
         "ar": "الجزء الثاني من القاعدة Y الذي يُستنتج من وجود الشرط X في المعاملات.",
         "en": "Consequent is the second part, Y, inferred from the presence of the antecedent X."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا تعبّر عنه قاعدة الارتباط؟",
+        "en": "What does an association rule express?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "رابط بين مجموعات العناصر",
+          "en": "a link between item sets"
+        },
+        {
+          "ar": "ترتيب فرز للعناصر هنا هنا",
+          "en": "a sort order for the items"
+        },
+        {
+          "ar": "سعر لكل عنصر في القائمة",
+          "en": "a price for each item"
+        },
+        {
+          "ar": "عدد الملفات في المجلد",
+          "en": "a count of the files here"
+        }
+      ],
+      "concept_id": "ch5_rule_meaning",
+      "explanation": {
+        "ar": "القاعدة تقول إن ظهور مجموعة يعني ميل مجموعة أخرى للظهور معها.",
+        "en": "A rule says that when one item set occurs, another tends to occur with it."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

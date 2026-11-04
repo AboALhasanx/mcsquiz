@@ -78,12 +78,8 @@
         "en": "When do Decision Trees select features?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "عند إنشاء الشجرة",
-          "en": "when constructing the tree"
-        },
         {
           "ar": "قبل جمع أي مشاهدات",
           "en": "before collecting any observations"
@@ -95,6 +91,10 @@
         {
           "ar": "ضمن تدريب النموذج",
           "en": "as part of model training"
+        },
+        {
+          "ar": "عند إنشاء الشجرة",
+          "en": "when constructing the tree"
         }
       ],
       "concept_id": "tree_selection",
@@ -230,6 +230,38 @@
         "ar": "جزءاً من تدريب النموذج",
         "en": "Filter methods select features before model training. Wrapper methods select features by repeatedly evaluating a model. Embedded methods select features as part of model training."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الذي يميّز الأسلوب المضمّن؟",
+        "en": "What makes an embedded method different?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تختار أثناء التدريب",
+          "en": "it selects during training"
+        },
+        {
+          "ar": "تختار قبل التدريب",
+          "en": "it selects before training"
+        },
+        {
+          "ar": "لا تختار أي سمة هنا",
+          "en": "it never selects features"
+        },
+        {
+          "ar": "تختار بعد الاختبار",
+          "en": "it selects after testing"
+        }
+      ],
+      "concept_id": "ch4_embedded_when",
+      "explanation": {
+        "ar": "الأساليب المضمّنة تختار السمات داخل تدريب النموذج نفسه.",
+        "en": "Embedded methods choose features inside the training of the model itself."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

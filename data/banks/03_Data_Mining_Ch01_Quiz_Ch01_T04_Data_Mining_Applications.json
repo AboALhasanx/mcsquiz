@@ -14,12 +14,8 @@
         "en": "How does a retailer use point-of-sale records?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "لتخطيط المنتجات والعروض",
-          "en": "to plan products and promotions"
-        },
         {
           "ar": "لإصلاح معدات المتجر هنا",
           "en": "to repair the shop equipment"
@@ -31,6 +27,10 @@
         {
           "ar": "لتصميم المبنى بالكامل",
           "en": "to design the whole building"
+        },
+        {
+          "ar": "لتخطيط المنتجات والعروض",
+          "en": "to plan products and promotions"
         }
       ],
       "concept_id": "ch1_app_retail",
@@ -230,6 +230,38 @@
         "ar": "يُدرَّب على سجلات موسومة مسبقاً كاحتيال أو طبيعية، ثم يصنّف الجديدة.",
         "en": "It is trained on sample records already marked as fraudulent or normal, then classifies new ones."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي قطاعات تعتمد على التنقيب لكشف الاحتيال؟",
+        "en": "Which sectors rely on data mining for fraud detection?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المصارف والتأمين",
+          "en": "banking and insurance"
+        },
+        {
+          "ar": "الزراعة والفلاحة",
+          "en": "agriculture and farming"
+        },
+        {
+          "ar": "البناء والتشييد",
+          "en": "construction and building"
+        },
+        {
+          "ar": "التعدين والمقالع",
+          "en": "mining and quarrying"
+        }
+      ],
+      "concept_id": "ch1_app_sector",
+      "explanation": {
+        "ar": "المصارف وشركات التأمين تنقّب في المعاملات تحديداً لكشف الاحتيال مبكراً.",
+        "en": "Banks and insurers mine transactions precisely to catch fraud early."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T16:24:54Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

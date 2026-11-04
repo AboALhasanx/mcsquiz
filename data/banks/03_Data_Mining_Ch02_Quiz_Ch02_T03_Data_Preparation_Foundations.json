@@ -78,12 +78,8 @@
         "en": "Which set names the five main data-preparation steps?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "التنظيف، والتكامل، والتحويل، والاختزال، والتقسيم إلى فئات",
-          "en": "Cleaning, integration, transformation, reduction, and discretization"
-        },
         {
           "ar": "بيانات السجلات، والمعاملات، والنصوص، والتسلسلات، والمكان",
           "en": "Record, transaction, text, sequence, and spatial data"
@@ -95,6 +91,10 @@
         {
           "ar": "الاتجاهات، والأنماط الموسمية، والدورية، والشذوذات، والقياسات",
           "en": "Trends, seasonal patterns, periodic patterns, anomalies, and measurements"
+        },
+        {
+          "ar": "التنظيف، والتكامل، والتحويل، والاختزال، والتقسيم إلى فئات",
+          "en": "Cleaning, integration, transformation, reduction, and discretization"
         }
       ],
       "concept_id": "preparation_five_steps",
@@ -230,6 +230,38 @@
         "ar": "يتضمن سير العمل الطبي ترميزاً مناسباً وتطبيعاً عند الحاجة؛ ولا يفرض التحويل إلى رسوم أو الحذف الأعمى.",
         "en": "The medical workflow includes suitable encoding and conditional normalization; it does not mandate graph conversion or blind deletion."
       }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي خطوة تلي تنظيف البيانات عادة؟",
+        "en": "Which step normally follows data cleaning?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تحويل البيانات",
+          "en": "data transformation"
+        },
+        {
+          "ar": "حذف كل السجلات",
+          "en": "deleting all records"
+        },
+        {
+          "ar": "طباعة التقارير",
+          "en": "printing the reports"
+        },
+        {
+          "ar": "أرشفة الملفات",
+          "en": "archiving the files"
+        }
+      ],
+      "concept_id": "ch2_prep_after_clean",
+      "explanation": {
+        "ar": "بعد التنظيف تُحوَّل البيانات إلى الشكل الذي تحتاجه الخوارزمية.",
+        "en": "Once the data is clean it is transformed into the form the algorithm needs."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

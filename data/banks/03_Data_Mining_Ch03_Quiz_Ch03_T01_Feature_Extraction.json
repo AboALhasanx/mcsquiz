@@ -110,8 +110,12 @@
         "en": "How can feature extraction help algorithms process data?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "ضمان نتائج متطابقة لكل النماذج دائماً.",
+          "en": "Guarantee identical results across all models."
+        },
         {
           "ar": "جعل البيانات أسهل معالجةً للخوارزميات.",
           "en": "Make data easier for algorithms to process."
@@ -123,10 +127,6 @@
         {
           "ar": "إلغاء اختيار مهمة التنقيب من عملية التحليل.",
           "en": "Remove the need to select a mining task."
-        },
-        {
-          "ar": "ضمان نتائج متطابقة لكل النماذج دائماً.",
-          "en": "Guarantee identical results across all models."
         }
       ],
       "concept_id": "feature_extraction_easier_processing",
@@ -142,16 +142,8 @@
         "en": "What performance effect is described as possible rather than certain?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "تحسين أداء التنبؤ أو التصنيف أحياناً.",
-          "en": "Sometimes improve prediction or classification performance."
-        },
-        {
-          "ar": "خفض أداء التصنيف والتنبؤ دائماً.",
-          "en": "Always reduce prediction and classification performance."
-        },
         {
           "ar": "ضمان النموذج الصحيح قبل التدريب.",
           "en": "Guarantee the correct model and its performance before training."
@@ -159,12 +151,116 @@
         {
           "ar": "تحسين كل نتائج التصنيف والتنبؤ دائماً.",
           "en": "Always improve every prediction and classification result."
+        },
+        {
+          "ar": "تحسين أداء التنبؤ أو التصنيف أحياناً.",
+          "en": "Sometimes improve prediction or classification performance."
+        },
+        {
+          "ar": "خفض أداء التصنيف والتنبؤ دائماً.",
+          "en": "Always reduce prediction and classification performance."
         }
       ],
       "concept_id": "feature_extraction_performance",
       "explanation": {
         "ar": "قيد «أحياناً» مهم: قد يحسن الاستخراج الأداء، لكن لا يوجد ضمان عام بذلك.",
         "en": "The qualification 'sometimes' matters: extraction may improve performance, but no universal guarantee is stated."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا ينتج استخراج السمات؟",
+        "en": "What does feature extraction produce?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجموعة أكبر من سجلات خام",
+          "en": "a larger set of raw records"
+        },
+        {
+          "ar": "نسخة مطابقة من البيانات",
+          "en": "an exact copy of the data here"
+        },
+        {
+          "ar": "قائمة بالقيم المفقودة هنا",
+          "en": "a list of missing values here"
+        },
+        {
+          "ar": "مجموعة أصغر من سمات جديدة",
+          "en": "a smaller set of new features"
+        }
+      ],
+      "concept_id": "ch3_fe_output",
+      "explanation": {
+        "ar": "الاستخراج يبني سمات جديدة تمثّل البيانات بأبعاد أقل.",
+        "en": "Extraction builds new features that represent the data with fewer dimensions."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا يُطبَّق استخراج السمات قبل النمذجة؟",
+        "en": "Why is feature extraction applied before modelling?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لتقليل الأبعاد هنا",
+          "en": "to reduce the dimensionality"
+        },
+        {
+          "ar": "لزيادة حجم الملف",
+          "en": "to increase the file size"
+        },
+        {
+          "ar": "لإبطاء النموذج هنا",
+          "en": "to slow the model down here"
+        },
+        {
+          "ar": "لإخفاء البيانات هنا",
+          "en": "to hide the data away here"
+        }
+      ],
+      "concept_id": "ch3_fe_purpose",
+      "explanation": {
+        "ar": "أبعاد أقل تعني تدريباً أرخص وضجيجاً أقل للنموذج.",
+        "en": "Fewer dimensions mean cheaper training and less noise for the model."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي زوج يميّز الاستخراج عن الاختيار؟",
+        "en": "Which pair distinguishes extraction from selection?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "سمات جديدة مقابل القائمة",
+          "en": "new against existing features"
+        },
+        {
+          "ar": "بيانات قديمة مقابل جديدة",
+          "en": "old data versus the new data"
+        },
+        {
+          "ar": "ملفات كبيرة مقابل صغيرة",
+          "en": "large files versus small ones"
+        },
+        {
+          "ar": "نماذج سريعة مقابل بطيئة",
+          "en": "fast models versus slow ones"
+        }
+      ],
+      "concept_id": "ch3_fe_vs_select",
+      "explanation": {
+        "ar": "الاختيار يحتفظ بالصفات القائمة، والاستخراج يبني منها صفات جديدة.",
+        "en": "Selection keeps existing attributes; extraction builds new ones from them."
       }
     }
   ],
@@ -173,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -78,12 +78,8 @@
         "en": "How can association rules support cross-selling?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
-          "en": "recommend additional products to customers based on their current selections"
-        },
         {
           "ar": "تحول خصائص معينة دائماً إلى الصفر تماماً أثناء تدريب النموذج",
           "en": "certain features always become exactly zero during model training"
@@ -95,6 +91,10 @@
         {
           "ar": "تزامن ظهورهما الفعلي بتزامن الظهور المتوقع لو كانا مستقلين",
           "en": "their actual co-occurrence with the co-occurrence expected if they were independent"
+        },
+        {
+          "ar": "اقتراح منتجات إضافية للزبائن استناداً إلى اختياراتهم الحالية",
+          "en": "recommend additional products to customers based on their current selections"
         }
       ],
       "concept_id": "cross_sell",
@@ -230,6 +230,38 @@
         "ar": "قد يكون اختيار قيم مناسبة للحد الأدنى للدعم والحد الأدنى للثقة صعباً.",
         "en": "Choosing suitable minimum support and minimum confidence values can be difficult. Very high values may remove useful rules, while very low values may generate too many rules."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي تحدٍّ يجعل عدد القواعد ينفجر؟",
+        "en": "Which challenge makes the rule set explode?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مجموعات مرشحة كثيرة جداً",
+          "en": "too many candidate itemsets"
+        },
+        {
+          "ar": "معاملات قليلة جداً هنا",
+          "en": "too few of the transactions"
+        },
+        {
+          "ar": "سجلات بيانات قصيرة هنا",
+          "en": "too short the data records"
+        },
+        {
+          "ar": "أقراص تخزين بطيئة هنا هنا",
+          "en": "too slow the storage disks"
+        }
+      ],
+      "concept_id": "ch5_rules_explode",
+      "explanation": {
+        "ar": "المجموعات المرشحة تنمو أُسّياً، ولهذا يهمّ التقليم والعتبات.",
+        "en": "Candidate itemsets grow exponentially, which is why pruning and thresholds matter."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T12:07:52Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

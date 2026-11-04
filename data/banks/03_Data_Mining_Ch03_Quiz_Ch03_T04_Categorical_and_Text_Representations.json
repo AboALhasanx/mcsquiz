@@ -78,12 +78,8 @@
         "en": "With categories A, B, and O, what vector represents patient P2 with category B?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "[0, 1, 0]",
-          "en": "[0, 1, 0]"
-        },
         {
           "ar": "[1, 0, 0]",
           "en": "[1, 0, 0]"
@@ -95,6 +91,10 @@
         {
           "ar": "[1, 1, 0]",
           "en": "[1, 1, 0]"
+        },
+        {
+          "ar": "[0, 1, 0]",
+          "en": "[0, 1, 0]"
         }
       ],
       "concept_id": "onehot_blood_type_example",
@@ -230,6 +230,38 @@
         "ar": "تعرض المادة متجهاً رقمياً ناتجاً ممكناً، ويمكن بعده استخدام طرائق التنقيب أو التعلم الآلي.",
         "en": "A numerical vector is a possible output, which mining or machine-learning methods can then use."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا ينتج الترميز الأحادي لصفة فئوية؟",
+        "en": "What does one-hot encoding produce for a categorical attribute?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عمود ثنائي لكل فئة",
+          "en": "a binary column per category"
+        },
+        {
+          "ar": "عمود واحد لكل الفئات",
+          "en": "one column for all the categories"
+        },
+        {
+          "ar": "قيمة متوسطة واحدة",
+          "en": "a single numeric average value"
+        },
+        {
+          "ar": "قائمة نصية مرتبة",
+          "en": "a sorted list of the text here"
+        }
+      ],
+      "concept_id": "ch3_onehot",
+      "explanation": {
+        "ar": "كل فئة تصبح عموداً خاصاً بقيم صفر أو واحد، فلا يُفهم ترتيب ضمني.",
+        "en": "Each category becomes its own zero-or-one column, so no order is implied."
+      }
     }
   ],
   "instructor": {
@@ -237,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T17:05:55Z",
+  "updated_at": "2026-11-04T18:38:07Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"
