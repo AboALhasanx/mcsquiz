@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.1] — 2026-11-04
+
+### Changed
+- content: ASE Ch02 official MCQ banks (v69)
+
+
 ## [1.11.0] — 2026-11-04
 
 ### Changed
