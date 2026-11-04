@@ -110,8 +110,12 @@
         "en": "What does Multinomial Logistic Regression predict?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "من سالب ما لا نهاية إلى موجب ما لا نهاية",
+          "en": "from negative infinity to positive infinity"
+        },
         {
           "ar": "إحدى ثلاث فئات غير مرتبة أو أكثر",
           "en": "one of three or more unordered classes"
@@ -123,10 +127,6 @@
         {
           "ar": "78 بالمئة من سجلات التدريب موجبة",
           "en": "78% of the training records are positive"
-        },
-        {
-          "ar": "من سالب ما لا نهاية إلى موجب ما لا نهاية",
-          "en": "from negative infinity to positive infinity"
         }
       ],
       "concept_id": "c7_lr_multinomial",
@@ -266,97 +266,97 @@
     {
       "id": "q9",
       "stem": {
-        "ar": "ما الاحتمال الذي تنتجه Sigmoid عندما تكون z = 0؟",
-        "en": "What probability does the sigmoid produce when z = 0?"
+        "ar": "ما الاحتمال الذي تعطيه دالة السيجمويد عندما تكون الدرجة الخطية صفراً؟",
+        "en": "What probability does the sigmoid give when the linear score is zero?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "منتصف المدى تماماً",
+          "en": "the midpoint of the range"
         },
         {
-          "ar": "0.0",
-          "en": "0.0"
+          "ar": "الطرف الأدنى للمدى",
+          "en": "the lower end of the range"
         },
         {
-          "ar": "0.1",
-          "en": "0.1"
+          "ar": "الطرف الأعلى للمدى",
+          "en": "the upper end of the range"
         },
         {
-          "ar": "0.7",
-          "en": "0.7"
+          "ar": "قيمة غير معرّفة",
+          "en": "an undefined value here"
         }
       ],
       "concept_id": "c7_lr_sigmoid_zero",
       "explanation": {
-        "ar": "0.5",
-        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+        "ar": "الدرجة الخطية صفر تقع في منتصف السيجمويد، فتعطي نصفاً.",
+        "en": "A linear score of zero sits at the midpoint of the sigmoid, which gives one half."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "ما الاحتمال الذي تنتجه Sigmoid عندما تكون z = 2؟",
-        "en": "What probability does the sigmoid produce when z = 2?"
+        "ar": "ماذا يحدث لمخرج السيجمويد عندما تكبر الدرجة الخطية كثيراً؟",
+        "en": "What happens to the sigmoid output as the linear score grows large?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "0.8808",
-          "en": "0.8808"
+          "ar": "يقترب من الواحد",
+          "en": "it approaches one"
         },
         {
-          "ar": "0.6900",
-          "en": "0.6900"
+          "ar": "يقترب من الصفر",
+          "en": "it approaches zero"
         },
         {
-          "ar": "0.1680",
-          "en": "0.1680"
+          "ar": "يبقى عند النصف",
+          "en": "it stays at one half"
         },
         {
-          "ar": "0.1192",
-          "en": "0.1192"
+          "ar": "يصبح سالب القيمة",
+          "en": "it becomes negative"
         }
       ],
       "concept_id": "c7_lr_sigmoid_two",
       "explanation": {
-        "ar": "0.8808",
-        "en": "If z = 2, then P(Y = 1 | X) ≈ 1 / (1 + 0.1353) ≈ 0.8808."
+        "ar": "الدرجات الموجبة الكبيرة تدفع السيجمويد نحو الواحد، فيبدو الصنف مرجّحاً جداً.",
+        "en": "Large positive scores push the sigmoid towards one, so the class looks very likely."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "ما عتبة القرار الافتراضية الشائعة للتصنيف الثنائي؟",
-        "en": "What is the common default threshold for binary classification?"
+        "ar": "لماذا يكون النصف هو العتبة الافتراضية للقرار؟",
+        "en": "Why is one half the usual default decision threshold?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.0",
-          "en": "0.0"
+          "ar": "لأنه يعامل الصنفين بالتساوي",
+          "en": "it treats both classes equally"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "لأنه يزيد دقة النموذج كثيراً",
+          "en": "it maximises model accuracy"
         },
         {
-          "ar": "0.1",
-          "en": "0.1"
+          "ar": "لأنه يلغي الحاجة للتدريب",
+          "en": "it removes the need for training"
         },
         {
-          "ar": "1.0",
-          "en": "1.0"
+          "ar": "لأنه يضمن توازن البيانات",
+          "en": "it guarantees balanced data"
         }
       ],
       "concept_id": "c7_lr_default_threshold",
       "explanation": {
-        "ar": "0.5",
-        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+        "ar": "عتبة النصف تتوقع الصنف الذي يراه النموذج أكثر ترجيحاً.",
+        "en": "A threshold of one half predicts the class that the model judges more likely."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T22:03:42Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

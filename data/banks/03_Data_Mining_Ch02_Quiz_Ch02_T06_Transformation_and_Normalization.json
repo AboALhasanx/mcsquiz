@@ -4,7 +4,7 @@
     "en": "Data Transformation, Normalization, and Encoding"
   },
   "quiz_id": "Quiz_Ch02_T06_Transformation_and_Normalization",
-  "has_math": true,
+  "has_math": false,
   "semester": 1,
   "questions": [
     {
@@ -110,8 +110,12 @@
         "en": "Why can a large numerical range dominate some algorithms?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "يزيل التطبيع جميع العلاقات الموجودة بين السجلات.",
+          "en": "Normalization removes every relationship between records."
+        },
         {
           "ar": "يمكن لمدى رقمي كبير أن يهيمن على بعض الخوارزميات.",
           "en": "A large numerical range can dominate some algorithms."
@@ -123,10 +127,6 @@
         {
           "ar": "تقاس الفئات الاسمية بطبيعتها بوحدة الكيلوغرام.",
           "en": "Nominal categories are inherently measured in kilograms."
-        },
-        {
-          "ar": "يزيل التطبيع جميع العلاقات الموجودة بين السجلات.",
-          "en": "Normalization removes every relationship between records."
         }
       ],
       "concept_id": "normalization_range_motivation",
@@ -138,129 +138,129 @@
     {
       "id": "q5",
       "stem": {
-        "ar": "أي صيغة تطبّع القيمة بالاعتماد على أصغر قيمة وأكبر قيمة؟",
-        "en": "Which expression scales a value using the observed minimum and maximum?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "$x' = \\frac{x - \\min}{\\max + \\min}$",
-          "en": "$x' = \\frac{x - \\min}{\\max - 1}$"
-        },
-        {
-          "ar": "$x' = \\frac{x - \\min}{\\max - \\min}$",
-          "en": "$x' = \\frac{x - \\min}{\\max - \\min}$"
-        },
-        {
-          "ar": "$x' = \\frac{x - \\min}{\\max - 1}$",
-          "en": "$x' = \\frac{x - \\min}{\\max + \\min}$"
-        },
-        {
-          "ar": "$x' = \\frac{x - \\max}{\\max - \\min}$",
-          "en": "$x' = \\frac{x - \\max}{\\max - \\min}$"
-        }
-      ],
-      "concept_id": "minmax_formula",
-      "explanation": {
-        "ar": "تستخدم Min–Max المدى الكامل، أي أكبر قيمة ناقص أصغر قيمة؛ إضافة الحد الأدنى إلى المقام لا تعطي هذا المدى.",
-        "en": "Min–max uses the full range, max minus min; adding the minimum in the denominator does not give that range."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "إلى أي مدى يحول أسلوب Min–Max القيم عادةً؟",
-        "en": "Into what range does the given min–max method usually transform values?"
+        "ar": "ماذا يفعل التطبيع بالحدين بقيمة ما؟",
+        "en": "What does min–max normalization do to a value?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "من −1 إلى 1",
-          "en": "−1 to 1"
+          "ar": "يرتب القيم حسب حجمها هنا",
+          "en": "it sorts the values by their size"
         },
         {
-          "ar": "من 0 إلى 10",
-          "en": "0 to 10"
+          "ar": "يقرّب كل قيمة للأعلى هنا",
+          "en": "it rounds every value upward now"
         },
         {
-          "ar": "من 0 إلى 1",
-          "en": "0 to 1"
+          "ar": "يعيد قياسها إلى مدى ثابت",
+          "en": "it rescales it into a fixed range"
         },
         {
-          "ar": "من 1 إلى 0",
-          "en": "1 to 0"
+          "ar": "يحذف أصغر قيمة هنا تماماً",
+          "en": "it deletes the smallest value here"
+        }
+      ],
+      "concept_id": "minmax_formula",
+      "explanation": {
+        "ar": "التطبيع يعيد قياس كل قيمة ليدخل الصفة كلها في مدى مختار، عادة من صفر إلى واحد.",
+        "en": "Min–max rescales each value so the whole attribute fits a chosen range, usually zero to one."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "إلى أي مدى يحوّل التطبيع بالحدين القيم عادة؟",
+        "en": "Into what range does min–max normalization usually transform values?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "من واحد إلى صفر هنا",
+          "en": "from one to zero here"
+        },
+        {
+          "ar": "من صفر إلى واحد تماماً",
+          "en": "from zero to one here"
+        },
+        {
+          "ar": "من سالب واحد إلى واحد",
+          "en": "from minus one to one"
+        },
+        {
+          "ar": "من صفر إلى عشرة هنا",
+          "en": "from zero to ten here"
         }
       ],
       "concept_id": "minmax_zero_one",
       "explanation": {
-        "ar": "تذكر المادة أن التحويل يعطي عادةً المدى من 0 إلى 1؛ أما المديات الأخرى فليست النتيجة المذكورة.",
-        "en": "The material says the transformation usually yields the range 0 to 1; the other ranges are not the stated result."
+        "ar": "المدى المعتاد من صفر إلى واحد، وأصغر قيمة مرصودة تُقابل الصفر.",
+        "en": "The usual target range is zero to one, the smallest observed value mapping to zero."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "إذا كان الحد الأدنى للعمر 20 والأعلى 60 والعمر 40، فما القيمة المطبعة المعروضة؟",
-        "en": "With minimum age 20, maximum age 60, and age 40, what normalized value is shown?"
+        "ar": "ما الغاية من التطبيع بالحدين؟",
+        "en": "What is the purpose of min–max normalization?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.6",
-          "en": "0.6"
+          "ar": "لإدخال القيم في مقياس مشترك",
+          "en": "to fit values into a common scale"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "لحذف السجلات المكررة هنا",
+          "en": "to remove the duplicate records"
         },
         {
-          "ar": "0.3",
-          "en": "0.3"
+          "ar": "لتحويل النص إلى أرقام هنا",
+          "en": "to convert text into numbers here"
         },
         {
-          "ar": "0.4",
-          "en": "0.4"
+          "ar": "لترتيب السجلات حسب تاريخها",
+          "en": "to sort records by their date"
         }
       ],
       "concept_id": "minmax_worked_example",
       "explanation": {
-        "ar": "يحسب المثال (40 − 20) / (60 − 20) = 20/40 = 0.5.",
-        "en": "The example computes (40 − 20) / (60 − 20) = 20/40 = 0.5."
+        "ar": "يجعل الصفات ذات المديات المختلفة على مقياس واحد كي لا تطغى إحداها.",
+        "en": "It brings attributes with different ranges onto one scale so none dominates the model."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "أي صيغة توحّد القيمة نسبةً إلى المتوسط والانحراف المعياري؟",
-        "en": "Which expression standardizes a value relative to the mean and standard deviation?"
+        "ar": "ماذا يعبّر عنه توحيد الدرجة المعيارية؟",
+        "en": "What does Z-score standardization express?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "$z = \\frac{x - \\mu}{\\sigma}$",
-          "en": "$z = \\frac{x - \\mu}{\\sigma}$"
+          "ar": "مدى بعد القيمة عن المتوسط",
+          "en": "how far a value sits from the mean"
         },
         {
-          "ar": "$x' = \\frac{x - \\min}{\\max}$",
-          "en": "$x' = \\frac{x - \\min}{\\max}$"
+          "ar": "عدد السجلات الناقصة هنا",
+          "en": "how many records are missing here"
         },
         {
-          "ar": "$z = \\frac{\\mu - x}{\\sigma^2}$",
-          "en": "$z = \\frac{\\mu - x}{\\sigma^2}$"
+          "ar": "تكرار القيمة نفسها هنا",
+          "en": "how often a value repeats itself"
         },
         {
-          "ar": "$z = \\frac{x - \\sigma}{\\mu}$",
-          "en": "$z = \\frac{x - \\sigma}{\\mu}$"
+          "ar": "حجم المدى الكلي هنا تماماً",
+          "en": "how large the whole range is"
         }
       ],
       "concept_id": "zscore_formula",
       "explanation": {
-        "ar": "يطرح Z-score المتوسط من القيمة الأصلية ثم يقسم على الانحراف المعياري؛ أما البديل الأول فهو Min–Max.",
-        "en": "Z-score subtracts the mean from the original value and divides by the standard deviation; the first distractor is min–max."
+        "ar": "الدرجة المعيارية تعدّ كم انحرافاً معيارياً تبعد القيمة عن المتوسط.",
+        "en": "The Z-score counts how many standard deviations a value lies away from the mean."
       }
     },
     {
@@ -333,7 +333,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:02:22Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

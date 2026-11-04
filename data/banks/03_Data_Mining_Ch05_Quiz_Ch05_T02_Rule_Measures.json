@@ -110,8 +110,12 @@
         "en": "When the Lift measure exceeds 1, how are the items associated?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "لا يوجد ارتباط عند Lift = 1",
+          "en": "No association exists"
+        },
         {
           "ar": "ارتباط إيجابي عند Lift > 1",
           "en": "Positive association"
@@ -123,10 +127,6 @@
         {
           "ar": "ارتباط سببي عند Lift > 1",
           "en": "Causal association occurs"
-        },
-        {
-          "ar": "لا يوجد ارتباط عند Lift = 1",
-          "en": "No association exists"
         }
       ],
       "concept_id": "lift_positive",
@@ -202,97 +202,97 @@
     {
       "id": "q7",
       "stem": {
-        "ar": "ما قيمة الدعم عندما يظهر الخبز والحليب معاً في 3 من أصل 5 معاملات؟",
-        "en": "What support value results when Bread and Milk occur together in 3 of 5 transactions?"
+        "ar": "ماذا يشير إليه دعم منخفض جداً للقاعدة؟",
+        "en": "What does a very low Support value suggest about a rule?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.30",
-          "en": "0.30"
+          "ar": "تنطبق على معاملات قليلة",
+          "en": "it applies to few transactions"
         },
         {
-          "ar": "0.60",
-          "en": "0.60"
+          "ar": "أنها خاطئة دائماً هنا",
+          "en": "it is always completely wrong"
         },
         {
-          "ar": "0.75",
-          "en": "0.75"
+          "ar": "أن رفعها عالٍ جداً هنا",
+          "en": "it must have a very high lift"
         },
         {
-          "ar": "0.40",
-          "en": "0.40"
+          "ar": "أنها لا تحتاج عتبة هنا",
+          "en": "it needs no minimum threshold"
         }
       ],
       "concept_id": "support_example_value",
       "explanation": {
-        "ar": "الدعم = 3/5 = 0.60، أي أن 60% من المعاملات تحوي العنصرين معاً.",
-        "en": "Support equals 3/5 = 0.60, so 60% of transactions contain both items."
+        "ar": "الدعم المنخفض يعني أن المجموعة تظهر في نسبة صغيرة من المعاملات.",
+        "en": "Low support means the itemset appears in only a small share of the transactions."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "ما قيمة الثقة عندما يظهر الخبز في 4 معاملات والخبز مع الحليب في 3؟",
-        "en": "What confidence value results when Bread appears in 4 transactions and Bread with Milk appears in 3?"
+        "ar": "ماذا تعني ثقة بمئة بالمئة؟",
+        "en": "What does a Confidence of one hundred percent mean?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "0.75",
-          "en": "0.75"
+          "ar": "Y يظهر دائماً مع X",
+          "en": "Y always appears with X"
         },
         {
-          "ar": "0.60",
-          "en": "0.60"
+          "ar": "X يظهر وحده دائماً",
+          "en": "X always appears alone"
         },
         {
-          "ar": "0.40",
-          "en": "0.40"
+          "ar": "القاعدة بلا دعم",
+          "en": "the rule has no support"
         },
         {
-          "ar": "0.50",
-          "en": "0.50"
+          "ar": "الرفع يساوي صفراً",
+          "en": "the lift equals zero"
         }
       ],
       "concept_id": "confidence_example_value",
       "explanation": {
-        "ar": "الثقة = 3/4 = 0.75، أي أن 75% من معاملات الخبز تحوي الحليب أيضاً.",
-        "en": "Confidence equals 3/4 = 0.75, so 75% of Bread rows also contain Milk."
+        "ar": "الثقة الكاملة تعني أن كل معاملة تحوي X تحوي Y أيضاً.",
+        "en": "Full confidence means every transaction containing X also contains Y."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "ما قيمة الرفع الناتجة لقاعدة الخبز إلى الحليب في المثال؟",
-        "en": "What Lift value is obtained for the Bread-to-Milk rule in the example?"
+        "ar": "ماذا يعني رفع يساوي واحداً بالضبط؟",
+        "en": "What does a Lift of exactly one mean?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "1.5",
-          "en": "1.5"
+          "ar": "العنصران مستقلان",
+          "en": "the items are independent"
         },
         {
-          "ar": "1.0",
-          "en": "1.0"
+          "ar": "العنصران متطابقان",
+          "en": "the items are identical here"
         },
         {
-          "ar": "2.5",
-          "en": "2.5"
+          "ar": "القاعدة صحيحة دائماً",
+          "en": "the rule is always true here"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "الدعم يساوي صفراً",
+          "en": "the support is zero here"
         }
       ],
       "concept_id": "lift_example_value",
       "explanation": {
-        "ar": "الرفع = 1.5، فالخبز والحليب يجتمعان أكثر مما تتوقعه الاستقلالية.",
-        "en": "Lift equals 1.5, so Bread and Milk co-occur more than independence predicts."
+        "ar": "الرفع يساوي واحداً يعني أن ظهورهما معاً يطابق ما تتوقعه الاستقلالية تماماً.",
+        "en": "Lift of one means the two items occur together exactly as often as independence predicts."
       }
     },
     {
@@ -333,7 +333,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T12:07:52Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

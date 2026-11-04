@@ -10,225 +10,225 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "تضم مجموعة البيانات 100 سجل، منها 60 في الفئة A و40 في B. فما قيمة P(A)؟",
-        "en": "A dataset has 100 records, with 60 in Class A and 40 in Class B. What is P(A)?"
+        "ar": "ماذا تقيس الاحتمالية الأولية للصنف؟",
+        "en": "What does the prior probability of a class measure?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "0.6",
-          "en": "0.6"
+          "ar": "نصيبها بعد رؤية السمات",
+          "en": "its share after attributes are seen"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "نصيبها بين الأجوبة الخاطئة",
+          "en": "its share among the wrong answers"
         },
         {
-          "ar": "0.8",
-          "en": "0.8"
+          "ar": "نصيبها في مجموعة الاختبار",
+          "en": "its share in the test set only"
         },
         {
-          "ar": "0.4",
-          "en": "0.4"
+          "ar": "نصيبها قبل رؤية السمات",
+          "en": "its share before attributes are seen"
         }
       ],
       "concept_id": "c7_nb_prior_ex_a",
       "explanation": {
-        "ar": "0.6",
-        "en": "21. P(A) = 60 / 100 = 0.6; P(B) = 40 / 100 = 0.4."
+        "ar": "الأولية هي نصيب الصنف المعروف قبل فحص أي قيمة سمة.",
+        "en": "The prior is the class share known before any attribute value is examined."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "باستخدام مجموعة البيانات نفسها ذات 100 سجل، فما قيمة P(B)؟",
-        "en": "Using the same 100-record dataset, what is P(B)?"
+        "ar": "لماذا تُسمى احتمالية الصنف أولية؟",
+        "en": "Why is the class probability called a prior?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 1,
       "options": [
         {
-          "ar": "0.4",
-          "en": "0.4"
+          "ar": "يختارها المحلل بحرية",
+          "en": "it is chosen by the analyst freely"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "تُحدد قبل رؤية الدليل",
+          "en": "it is fixed before the evidence"
         },
         {
-          "ar": "0.8",
-          "en": "0.8"
+          "ar": "تُحسب بعد رؤية الدليل",
+          "en": "it is computed after the evidence"
         },
         {
-          "ar": "0.6",
-          "en": "0.6"
+          "ar": "تُقدَّر من مجموعة الاختبار",
+          "en": "it is estimated from the test set"
         }
       ],
       "concept_id": "c7_nb_prior_ex_b",
       "explanation": {
-        "ar": "0.4",
-        "en": "21. P(A) = 60 / 100 = 0.6; P(B) = 40 / 100 = 0.4."
+        "ar": "سُميت أولية لأنها تُثبت قبل دليل السمات المرصود.",
+        "en": "It is named prior because it is established before the observed attribute evidence."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "في الفئة A، لدى 30 سجلاً من أصل 60 طقس Sunny. فما قيمة P(Sunny | A)؟",
-        "en": "In Class A, 30 of 60 records have Weather = Sunny. What is P(Sunny | A)?"
-      },
-      "bloom": "Apply",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "0.4",
-          "en": "0.4"
-        },
-        {
-          "ar": "0.8",
-          "en": "0.8"
-        },
-        {
-          "ar": "0.6",
-          "en": "0.6"
-        },
-        {
-          "ar": "0.5",
-          "en": "0.5"
-        }
-      ],
-      "concept_id": "c7_nb_likelihood_ex",
-      "explanation": {
-        "ar": "0.5",
-        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "إذا كانت P(A)=0.6 وP(Sunny|A)=0.5 وP(Mild|A)=0.8، فما Score(A)؟",
-        "en": "Given P(A) = 0.6, P(Sunny | A) = 0.5, and P(Mild | A) = 0.8, what is Score(A)?"
+        "ar": "ماذا تقيس إمكانية قيمة سمة معينة؟",
+        "en": "What does the likelihood of an attribute value measure?"
       },
       "bloom": "Apply",
       "answer": 2,
       "options": [
         {
-          "ar": "0.40",
-          "en": "0.40"
+          "ar": "دقة النموذج على البيانات",
+          "en": "accuracy of the model on the data"
         },
         {
-          "ar": "0.30",
-          "en": "0.30"
+          "ar": "ندرة القيمة في البيانات",
+          "en": "rarity of the value in the data"
         },
         {
-          "ar": "0.24",
-          "en": "0.24"
+          "ar": "تكرار القيمة داخل الصنف",
+          "en": "frequency of the value in the class"
         },
         {
-          "ar": "0.48",
-          "en": "0.48"
+          "ar": "تكرار الصنف في البيانات",
+          "en": "frequency of the class in the data"
+        }
+      ],
+      "concept_id": "c7_nb_likelihood_ex",
+      "explanation": {
+        "ar": "الإمكانية تسأل عن شيوع القيمة بين سجلات ذلك الصنف فقط.",
+        "en": "The likelihood asks how common the value is among records of that class only."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف تُبنى الدرجة غير المطبَّعة للصنف؟",
+        "en": "How is the unnormalized score of a class built?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الأولية زائد الإمكانات كلها",
+          "en": "prior plus the likelihoods"
+        },
+        {
+          "ar": "الأولية تقسيم الإمكانات",
+          "en": "prior divided by the likelihoods"
+        },
+        {
+          "ar": "الإمكانات دون الأولية",
+          "en": "likelihoods without the prior"
+        },
+        {
+          "ar": "الأولية مضروبة بالإمكانات",
+          "en": "prior times the likelihoods"
         }
       ],
       "concept_id": "c7_nb_score_ex",
       "explanation": {
-        "ar": "0.24",
-        "en": "0.24"
+        "ar": "الدرجة تضرب أولية الصنف في إمكانات القيم المرصودة.",
+        "en": "The score multiplies the class prior by the likelihoods of the observed values."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ما الدرجة غير المطَبّعة المحسوبة لفئة Play = Yes؟",
-        "en": "What unnormalized score is calculated for Play = Yes?"
+        "ar": "عند مقارنة صنفين، لماذا يمكن إسقاط الدليل؟",
+        "en": "When comparing two classes, why can the evidence be dropped?"
       },
       "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "0.923",
-          "en": "0.923"
+          "ar": "لأنها أكبر للصنف الأول",
+          "en": "it is larger for the first class"
         },
         {
-          "ar": "0.375",
-          "en": "0.375"
+          "ar": "لأنها متساوية للصنفين معاً",
+          "en": "it is identical for both classes"
         },
         {
-          "ar": "0.077",
-          "en": "0.077"
+          "ar": "لأنها تساوي الواحد دائماً",
+          "en": "it always equals exactly one"
         },
         {
-          "ar": "0.24",
-          "en": "0.24"
+          "ar": "لأنها مجهولة للسجلات الجديدة",
+          "en": "it is unknown for new records"
         }
       ],
       "concept_id": "c7_nb_weather_yes_score",
       "explanation": {
-        "ar": "0.375",
-        "en": "The Yes score (0.375) is greater than the No score (0.03125), so the prediction is Play = Yes."
+        "ar": "الدليل مقام واحد لكل صنف مرشح، فلا يغيّر الفائز.",
+        "en": "The evidence is the same denominator for every candidate class, so it cannot change the winner."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ما الدرجة غير المطَبّعة المحسوبة لفئة Play = No؟",
-        "en": "What unnormalized score is calculated for Play = No?"
+        "ar": "ماذا تعني درجة غير مطبَّعة صغيرة جداً لصنف؟",
+        "en": "What does a very small unnormalized score for a class mean?"
       },
       "bloom": "Remember",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.37500",
-          "en": "0.37500"
+          "ar": "أن هذا الصنف غير محتمل",
+          "en": "that class is very unlikely"
         },
         {
-          "ar": "0.07700",
-          "en": "0.07700"
+          "ar": "أن هذا الصنف محتمل جداً",
+          "en": "that class is very likely"
         },
         {
-          "ar": "0.92300",
-          "en": "0.92300"
+          "ar": "أن السجل غير مصنّف",
+          "en": "the record is unclassified"
         },
         {
-          "ar": "0.03125",
-          "en": "0.03125"
+          "ar": "أن الدليل مفقود كلياً",
+          "en": "the evidence is missing"
         }
       ],
       "concept_id": "c7_nb_weather_no_score",
       "explanation": {
-        "ar": "0.03125",
-        "en": "The Yes score (0.375) is greater than the No score (0.03125), so the prediction is Play = Yes."
+        "ar": "الدرجة الصغيرة تعني أن الأولية والإمكانات تجعل الصنف غير مرجّح.",
+        "en": "A small score means the prior and likelihoods combine to make that class improbable."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "ما الاحتمال المطَبّع لفئة Play = Yes؟",
-        "en": "What is the normalized probability for Play = Yes?"
+        "ar": "كيف تتحول درجات الأصناف إلى احتمالات؟",
+        "en": "How are class scores turned into probabilities?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "نحو 7.7 بالمئة",
-          "en": "approximately 7.7%"
+          "ar": "كل درجة على مجموع الدرجات",
+          "en": "each score over the sum of scores"
         },
         {
-          "ar": "نحو 92.3 بالمئة",
-          "en": "approximately 92.3%"
+          "ar": "كل درجة على أكبر درجة",
+          "en": "each score over the largest score"
         },
         {
-          "ar": "نحو 50 بالمئة",
-          "en": "approximately 50%"
+          "ar": "كل درجة في مجموع الدرجات",
+          "en": "each score times the sum of scores"
         },
         {
-          "ar": "تسمية فئة جديدة",
-          "en": "a new class label"
+          "ar": "كل درجة ناقص أصغر درجة",
+          "en": "each score minus the smallest score"
         }
       ],
       "concept_id": "c7_nb_weather_normalized",
       "explanation": {
-        "ar": "نحو 92.3 بالمئة",
-        "en": "After normalization, the probabilities are approximately 92.3% for Yes and 7.7% for No. The unnormalized scores are sufficient for comparing classes."
+        "ar": "التطبيع يقسم كل درجة على مجموع درجات الأصناف كلها.",
+        "en": "Normalizing divides each class score by the total of all class scores."
       }
     },
     {
@@ -461,7 +461,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T22:03:42Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "مفهوم التنقيب عن البيانات",
-    "en": "What is Data Mining?"
+    "ar": "ما هو تنقيب البيانات",
+    "en": "What Data Mining Is"
   },
   "quiz_id": "Quiz_Ch01_T01_What_Is_Data_Mining",
   "has_math": false,
@@ -10,225 +10,225 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "في التعريف الأول، ما الذي يُستخرج لتحديد الأنماط والاتجاهات؟",
-        "en": "In the first definition, what is extracted to identify patterns and trends?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "extracting information to identify patterns, trends, and useful data",
-          "en": "extracting information to identify patterns, trends, and useful data"
-        },
-        {
-          "ar": "Market basket analysis is a modeling method based on a hypothesis",
-          "en": "Market basket analysis is a modeling method based on a hypothesis"
-        },
-        {
-          "ar": "It might be in a database, individual systems, or even on the internet",
-          "en": "It might be in a database, individual systems, or even on the internet"
-        },
-        {
-          "ar": "An ideal fraud detection system should protect the data of all the users",
-          "en": "An ideal fraud detection system should protect the data of all the users"
-        }
-      ],
-      "concept_id": "definition_extracting_information",
-      "explanation": {
-        "ar": "النص يعرّف التنقيب بأنه استخراج المعلومات لتحديد الأنماط والاتجاهات والبيانات المفيدة من مجموعات ضخمة.",
-        "en": "The process of extracting information to identify patterns, trends, and useful data that would allow the business to take the data-driven decision from huge sets of data is called Data Mining."
-      }
-    },
-    {
-      "id": "q2",
-      "stem": {
-        "ar": "أي عبارة تصف نشاط الاستقصاء في التعريف الثاني؟",
-        "en": "Which phrase describes the second definition's investigation activity?"
-      },
-      "bloom": "Understand",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "An ideal fraud detection system should protect the data of all the users",
-          "en": "An ideal fraud detection system should protect the data of all the users"
-        },
-        {
-          "ar": "investigating hidden patterns of information to various perspectives",
-          "en": "investigating hidden patterns of information to various perspectives"
-        },
-        {
-          "ar": "Market basket analysis is a modeling method based on a hypothesis",
-          "en": "Market basket analysis is a modeling method based on a hypothesis"
-        },
-        {
-          "ar": "It might be in a database, individual systems, or even on the internet",
-          "en": "It might be in a database, individual systems, or even on the internet"
-        }
-      ],
-      "concept_id": "definition_hidden_patterns",
-      "explanation": {
-        "ar": "يوضح النص أن العملية تستقصي الأنماط الخفية من وجهات نظر متعددة لغرض تصنيفها إلى بيانات مفيدة.",
-        "en": "In other words, is the process of investigating hidden patterns of information to various perspectives for categorization into useful data, which is collected and assembled in particular areas such as data warehouses, efficient analysis, data mining algorithm, helping decision making and other data requirement to eventually cost-cutting and generating revenue."
-      }
-    },
-    {
-      "id": "q3",
-      "stem": {
-        "ar": "ما الذي يميز عملية البحث في التعريف الثالث؟",
-        "en": "What distinguishes the third definition's search process?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "Data mining also enables healthcare insurers to recognize fraud and abuse",
-          "en": "Data mining also enables healthcare insurers to recognize fraud and abuse"
-        },
-        {
-          "ar": "An ideal fraud detection system should protect the data of all the users",
-          "en": "An ideal fraud detection system should protect the data of all the users"
-        },
-        {
-          "ar": "automatically searching for large stores of information to find trends",
-          "en": "automatically searching for large stores of information to find trends"
-        },
-        {
-          "ar": "Can be induced in the new system as well as the existing platforms",
-          "en": "Can be induced in the new system as well as the existing platforms"
-        }
-      ],
-      "concept_id": "definition_automatic_search",
-      "explanation": {
-        "ar": "يصف النص البحث بأنه آلي ويجري في مخازن كبيرة من المعلومات للعثور على الاتجاهات والأنماط.",
-        "en": "is the act of automatically searching for large stores of information to find trends and patterns that go beyond simple analysis procedures."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "ماذا تقيّم الخوارزميات الرياضية وفق التعريف الثالث؟",
-        "en": "What does the third definition say the mathematical algorithms evaluate?"
-      },
-      "bloom": "Understand",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "Therefore, data mining requires the development of tools and algorithms that allow the mining of distributed data",
-          "en": "Therefore, data mining requires the development of tools and algorithms that allow the mining of distributed data"
-        },
-        {
-          "ar": "The manager may find these data for better targeting, acquiring, retaining, segmenting, and maintain a profitable customer",
-          "en": "The manager may find these data for better targeting, acquiring, retaining, segmenting, and maintain a profitable customer"
-        },
-        {
-          "ar": "This data may assist the retailer in understanding the requirements of the buyer and altering the store's layout accordingly",
-          "en": "This data may assist the retailer in understanding the requirements of the buyer and altering the store's layout accordingly"
-        },
-        {
-          "ar": "Data mining utilizes complex mathematical algorithms for data segments and evaluates the probability of future events.",
-          "en": "Data mining utilizes complex mathematical algorithms for data segments and evaluates the probability of future events."
-        }
-      ],
-      "concept_id": "definition_future_events",
-      "explanation": {
-        "ar": "يذكر النص أن الخوارزميات الرياضية المعقدة تقيّم احتمال وقوع أحداث مستقبلية.",
-        "en": "Data mining utilizes complex mathematical algorithms for data segments and evaluates the probability of future events."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "ما الاسم الآخر الذي يذكره النص للتنقيب عن البيانات؟",
-        "en": "What other name does the lecture give to Data Mining?"
+        "ar": "ماذا يستخرج تنقيب البيانات من مجموعات البيانات الكبيرة؟",
+        "en": "What does data mining extract from large data sets?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "Knowledge Discovery of Data",
-          "en": "Knowledge Discovery of Data"
+          "ar": "أنماط واتجاهات وبيانات مفيدة",
+          "en": "patterns, trends and useful data"
         },
         {
-          "ar": "Data Mining Applications",
-          "en": "Data Mining Applications"
+          "ar": "أعطال العتاد وأخطاء النظام",
+          "en": "hardware faults and system errors"
         },
         {
-          "ar": "Market Basket Analysis",
-          "en": "Market Basket Analysis"
+          "ar": "سجلات الموظفين ورواتبهم هنا",
+          "en": "staff records and their salaries"
         },
         {
-          "ar": "Disadvantages of Data Mining",
-          "en": "Disadvantages of Data Mining"
+          "ar": "كابلات الشبكة والخوادم الرئيسية",
+          "en": "network cables and main servers"
         }
       ],
-      "concept_id": "definition_kdd_name",
+      "concept_id": "ch1_dm_definition",
       "explanation": {
-        "ar": "يسمي النص التنقيب عن البيانات أيضاً Knowledge Discovery of Data ويرمز له KDD.",
-        "en": "Data Mining is also called Knowledge Discovery of Data (KDD)."
+        "ar": "تنقيب البيانات يستخرج معلومات تكشف الأنماط والاتجاهات والبيانات المفيدة.",
+        "en": "Data mining extracts information that reveals patterns, trends and useful data."
       }
     },
     {
-      "id": "q6",
+      "id": "q2",
       "stem": {
-        "ar": "أين قد تُجمع المعلومات وفق التعريف الثاني؟",
-        "en": "Where does the second definition say collected information may be assembled?"
+        "ar": "لماذا تطبق الشركة تنقيب البيانات؟",
+        "en": "Why does a business apply data mining?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "For example, various regional offices may have their servers to store their data",
-          "en": "For example, various regional offices may have their servers to store their data"
+          "ar": "لتخفيض إيجار المكتب تماماً",
+          "en": "to reduce the office rent"
         },
         {
-          "ar": "which is collected and assembled in particular areas such as data warehouses",
-          "en": "which is collected and assembled in particular areas such as data warehouses"
+          "ar": "لاتخاذ قرارات بالبيانات",
+          "en": "to make data-driven decisions"
         },
         {
-          "ar": "Data mining also enables healthcare insurers to recognize fraud and abuse",
-          "en": "Data mining also enables healthcare insurers to recognize fraud and abuse"
+          "ar": "لتصميم عتاد جديد بالكامل",
+          "en": "to design brand new hardware"
         },
         {
-          "ar": "The process of extracting useful data from large volumes of data is data mining",
-          "en": "The process of extracting useful data from large volumes of data is data mining"
+          "ar": "لتوظيف موظفين بسرعة كبيرة",
+          "en": "to hire many staff quickly"
         }
       ],
-      "concept_id": "definition_data_warehouses",
+      "concept_id": "ch1_dm_purpose",
       "explanation": {
-        "ar": "يذكر النص أن البيانات تُجمع وتُرتب في أماكن محددة مثل مستودعات البيانات.",
-        "en": "which is collected and assembled in particular areas such as data warehouses"
+        "ar": "الغرض أن تقرر الشركة على أساس الدليل لا على أساس التخمين.",
+        "en": "The purpose is to let the business decide on the basis of evidence rather than guesswork."
       }
     },
     {
-      "id": "q7",
+      "id": "q3",
       "stem": {
-        "ar": "أي عملية تبحث عن أنماط تتجاوز إجراءات التحليل البسيطة؟",
-        "en": "Which process looks for patterns beyond simple analysis procedures?"
+        "ar": "أي نوع من الأنماط يحققه تنقيب البيانات؟",
+        "en": "What kind of patterns does data mining investigate?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "Managing these various types of data and extracting useful information is a tough task",
-          "en": "Managing these various types of data and extracting useful information is a tough task"
+          "ar": "أسعار معلنة في السوق",
+          "en": "public prices inside a market"
         },
         {
-          "ar": "Various challenges could be related to performance, data, methods, and techniques, etc",
-          "en": "Various challenges could be related to performance, data, methods, and techniques, etc"
+          "ar": "قواعد ظاهرة في دليل ما",
+          "en": "visible rules inside a manual"
         },
         {
-          "ar": "automatically searching for large stores of information to find trends and patterns",
-          "en": "automatically searching for large stores of information to find trends and patterns"
+          "ar": "أنماط خفية في المعلومات",
+          "en": "hidden patterns in information"
         },
         {
-          "ar": "For example, various regional offices may have their servers to store their data",
-          "en": "For example, various regional offices may have their servers to store their data"
+          "ar": "صفحات مطبوعة في مكتبة",
+          "en": "printed pages inside a library"
         }
       ],
-      "concept_id": "definition_beyond_simple_analysis",
+      "concept_id": "ch1_dm_hidden",
       "explanation": {
-        "ar": "يذكر النص أن البحث الآلي عن الاتجاهات والأنماط يتجاوز إجراءات التحليل البسيطة.",
-        "en": "is the act of automatically searching for large stores of information to find trends and patterns that go beyond simple analysis procedures."
+        "ar": "الأنماط خفية، فلا تُرى بلا تحليل يبحث فيها ويستخرجها.",
+        "en": "The patterns are hidden, so they are not visible without analysis."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "بأي اسم آخر يُعرف تنقيب البيانات؟",
+        "en": "By what other name is data mining known?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "إدخال البيانات ومعالجتها",
+          "en": "data entry and its processing"
+        },
+        {
+          "ar": "طرائق ضغط الملفات الرقمية",
+          "en": "file compression methods here"
+        },
+        {
+          "ar": "جداول توجيه الشبكة المحلية",
+          "en": "network routing tables here"
+        },
+        {
+          "ar": "اكتشاف المعرفة في البيانات",
+          "en": "knowledge discovery in data"
+        }
+      ],
+      "concept_id": "ch1_dm_kdd",
+      "explanation": {
+        "ar": "يُسمى تنقيب البيانات أيضاً اكتشاف المعرفة في البيانات، لأنه يحوّل السجلات الخام إلى معرفة.",
+        "en": "Data mining is also called knowledge discovery in data, because it turns raw records into knowledge."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "إلى ماذا يفضي تحقيق الأنماط الخفية؟",
+        "en": "What does investigating hidden patterns allow?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التصنيف إلى بيانات مفيدة",
+          "en": "categorization into useful data"
+        },
+        {
+          "ar": "حذف كل السجلات تماماً",
+          "en": "deletion of all the records here"
+        },
+        {
+          "ar": "تشفير كل البيانات المخزنة",
+          "en": "encryption of all the data here"
+        },
+        {
+          "ar": "طباعة كل التقارير هنا",
+          "en": "printing of every single report"
+        }
+      ],
+      "concept_id": "ch1_dm_category",
+      "explanation": {
+        "ar": "التحقيق يتيح تصنيف البيانات المجموعة إلى مجموعات مفيدة.",
+        "en": "The investigation allows the collected data to be categorized into useful groups."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الذي يميّز تنقيب البيانات عن التقرير البسيط؟",
+        "en": "What makes data mining different from simple reporting?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يصلح سجلات تالفة",
+          "en": "it repairs broken records"
+        },
+        {
+          "ar": "يكتشف أنماطاً خفية",
+          "en": "it discovers hidden patterns"
+        },
+        {
+          "ar": "يطبع تقارير ثابتة",
+          "en": "it prints fixed reports only"
+        },
+        {
+          "ar": "يخزّن ملفات بمجلدات",
+          "en": "it stores files in folders"
+        }
+      ],
+      "concept_id": "ch1_dm_vs_report",
+      "explanation": {
+        "ar": "التقرير يعيد ما هو معروف، أما التنقيب فيبحث عن أنماط لم يصرّح بها أحد.",
+        "en": "Reporting restates what is already known, while mining searches for patterns nobody stated."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي عبارة تصف البحث الذي ينفذه تنقيب البيانات؟",
+        "en": "Which phrase describes the search performed by data mining?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بحث عشوائي في مواقع مفتوحة",
+          "en": "random search in open sites here"
+        },
+        {
+          "ar": "بحث واحد في سجل واحد",
+          "en": "single search in one record here"
+        },
+        {
+          "ar": "بحث تلقائي في مخازن كبيرة",
+          "en": "automatic search in large stores"
+        },
+        {
+          "ar": "بحث يدوي في ملفات صغيرة",
+          "en": "manual search in small files here"
+        }
+      ],
+      "concept_id": "ch1_dm_search",
+      "explanation": {
+        "ar": "البحث يجري تلقائياً في مخازن كبيرة من المعلومات، لا في سجل واحد.",
+        "en": "The search runs automatically across large stores of information, not one record at a time."
       }
     }
   ],
@@ -237,7 +237,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T15:13:26Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

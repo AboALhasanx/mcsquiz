@@ -78,12 +78,8 @@
         "en": "What does correlation measure?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
-        {
-          "ar": "العلاقة بين متغيرين",
-          "en": "the relationship between two variables"
-        },
         {
           "ar": "الخاصية والهدف مترابطان.",
           "en": "The feature and the target are associated."
@@ -95,6 +91,10 @@
         {
           "ar": "معامل ارتباط بيرسون",
           "en": "Pearson correlation coefficient"
+        },
+        {
+          "ar": "العلاقة بين متغيرين",
+          "en": "the relationship between two variables"
         }
       ],
       "concept_id": "correlation_definition",
@@ -490,129 +490,129 @@
     {
       "id": "q16",
       "stem": {
-        "ar": "ما معامل ارتباط بيرسون الناتج من مثال العمر وضغط الدم؟",
-        "en": "What Pearson correlation coefficient results from the age and blood-pressure example?"
+        "ar": "ماذا يقيس معامل بيرسون؟",
+        "en": "What does the Pearson coefficient measure?"
       },
       "bloom": "Apply",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.9",
-          "en": "0.9"
+          "ar": "قوة العلاقة الخطية بينهما",
+          "en": "the strength of a linear relation"
         },
         {
-          "ar": "1.1",
-          "en": "1.1"
+          "ar": "قوة أي نوع من العلاقات",
+          "en": "the strength of any kind of relation"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "عدد القيم المشتركة بينهما",
+          "en": "the number of shared attribute values"
         },
         {
-          "ar": "1.0",
-          "en": "1.0"
+          "ar": "ترتيب الفئات المسجلة هنا",
+          "en": "the order of the recorded categories"
         }
       ],
       "concept_id": "pearson_example_result",
       "explanation": {
-        "ar": "1.0",
-        "en": "1.0"
+        "ar": "بيرسون يقيس مدى قرب متغيرين من علاقة خطية مستقيمة.",
+        "en": "Pearson captures how closely two variables follow a straight-line relationship."
       }
     },
     {
       "id": "q17",
       "stem": {
-        "ar": "ما قيمة إحصائية كاي-تربيع الناتجة من مثال التدخين ومرض القلب؟",
-        "en": "What Chi-square statistic is obtained in the smoking and heart-disease example?"
+        "ar": "ماذا يقارن اختبار كاي مربع؟",
+        "en": "What does the Chi-square test compare?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "29.63",
-          "en": "29.63"
+          "ar": "التكرارات المرصودة والمتوقعة",
+          "en": "observed and expected frequencies"
         },
         {
-          "ar": "19.63",
-          "en": "19.63"
+          "ar": "متوسطي عينتين رقميتين هنا",
+          "en": "the means of two numeric samples"
         },
         {
-          "ar": "29.53",
-          "en": "29.53"
+          "ar": "تباين ثلاث مجموعات هنا تماماً",
+          "en": "the variances of three groups"
         },
         {
-          "ar": "49.63",
-          "en": "49.63"
+          "ar": "رتب القيم المزدوجة هنا تماماً",
+          "en": "the ranks of the paired values"
         }
       ],
       "concept_id": "chi_square_example_result",
       "explanation": {
-        "ar": "29.63",
-        "en": "29.63"
+        "ar": "يقارن التكرارات المرصودة فعلاً بما يُتوقع لو كان المتغيران مستقلين.",
+        "en": "It compares the counts actually seen with the counts expected if the two variables were independent."
       }
     },
     {
       "id": "q18",
       "stem": {
-        "ar": "كم درجة حرية تستخدم لجدول 2×2؟",
-        "en": "What degrees of freedom are used for the 2×2 table?"
+        "ar": "كيف تُحدد درجات الحرية لجدول تقاطعي؟",
+        "en": "How are degrees of freedom found for a contingency table?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "1",
-          "en": "1"
+          "ar": "من أبعاد الجدول نفسه",
+          "en": "from the table dimensions"
         },
         {
-          "ar": "3",
-          "en": "3"
+          "ar": "من متوسط العينة هنا",
+          "en": "from the sample mean value"
         },
         {
-          "ar": "2",
-          "en": "2"
+          "ar": "من قيمة p المحسوبة",
+          "en": "from the computed p-value"
         },
         {
-          "ar": "4",
-          "en": "4"
+          "ar": "من مجاميع الصفوف هنا",
+          "en": "from the row totals only"
         }
       ],
       "concept_id": "chi_square_df_example",
       "explanation": {
-        "ar": "1",
-        "en": "So, if Attendance had an Information Gain of 0.35 and Study Hours had 0.12, we would select Attendance as the more informative feature."
+        "ar": "درجات الحرية تُشتق من عدد صفوف الجدول وأعمدته.",
+        "en": "Degrees of freedom come from the number of rows and columns of the table."
       }
     },
     {
       "id": "q19",
       "stem": {
-        "ar": "ما قيمة كسب المعلومات التي تحصل عليها كل خاصية في المثال؟",
-        "en": "What Information Gain value does each feature receive in the example?"
+        "ar": "أي سمة يفضلها كسب المعلومات؟",
+        "en": "Which feature does Information Gain favour?"
       },
       "bloom": "Apply",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.289",
-          "en": "0.289"
+          "ar": "التي تخفض عدم اليقين أكثر",
+          "en": "the one reducing uncertainty most"
         },
         {
-          "ar": "0.089",
-          "en": "0.089"
+          "ar": "التي فيها قيم مفقودة أكثر",
+          "en": "the one with most missing values"
         },
         {
-          "ar": "0.489",
-          "en": "0.489"
+          "ar": "التي لها أكبر مدى بينها",
+          "en": "the one with the largest range"
         },
         {
-          "ar": "0.189",
-          "en": "0.189"
+          "ar": "التي تُستخدم أقل في البيانات",
+          "en": "the one used least in the data"
         }
       ],
       "concept_id": "information_gain_example_value",
       "explanation": {
-        "ar": "0.189",
-        "en": "0.189"
+        "ar": "كسب المعلومات يفضّل السمة التي تزيل أكبر قدر من عدم اليقين حول الصنف.",
+        "en": "Information gain prefers the feature that removes the most uncertainty about the class."
       }
     }
   ],
@@ -621,7 +621,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:57:37Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

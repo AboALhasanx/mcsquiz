@@ -14,16 +14,8 @@
         "en": "What does accuracy measure?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "نسبة جميع التنبؤات الصحيحة",
-          "en": "the percentage of all predictions that are correct"
-        },
-        {
-          "ar": "أنماطاً تميّز فئة عن أخرى",
-          "en": "patterns that distinguish one class from another"
-        },
         {
           "ar": "يواصل التقسيم حتى عزل كل سجل.",
           "en": "Continue splitting until every record is isolated."
@@ -31,6 +23,14 @@
         {
           "ar": "عندما تكون أسماء الفئات متطابقة",
           "en": "when the classes have identical names"
+        },
+        {
+          "ar": "نسبة جميع التنبؤات الصحيحة",
+          "en": "the percentage of all predictions that are correct"
+        },
+        {
+          "ar": "أنماطاً تميّز فئة عن أخرى",
+          "en": "patterns that distinguish one class from another"
         }
       ],
       "concept_id": "c6_accuracy_meaning",
@@ -42,33 +42,33 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "إذا صنّف نموذج 95 مريضاً من أصل 100 بصورة صحيحة، فما الدقة؟",
-        "en": "If a model correctly classifies 95 of 100 patients, what accuracy is reported?"
+        "ar": "أي مقياس يحسب كل توقع صحيح؟",
+        "en": "Which metric counts every correct prediction?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "95 بالمئة",
-          "en": "95 percent"
+          "ar": "الدقة الموجبة فقط",
+          "en": "precision over positives"
         },
         {
-          "ar": "85 بالمئة",
-          "en": "85 percent"
+          "ar": "الاستدعاء على الموجبة",
+          "en": "recall over positives"
         },
         {
-          "ar": "75 بالمئة",
-          "en": "75 percent"
+          "ar": "النوعية على السالبة",
+          "en": "specificity over negatives"
         },
         {
-          "ar": "90 بالمئة",
-          "en": "90 percent"
+          "ar": "الدقة على كل السجلات",
+          "en": "accuracy over all records"
         }
       ],
       "concept_id": "c6_accuracy_example",
       "explanation": {
-        "ar": "95 بالمئة",
-        "en": "95 percent"
+        "ar": "الدقة وحدها تقسم على كل السجلات، لا على صنف واحد.",
+        "en": "Accuracy is the only one of the four that divides by all records rather than one class."
       }
     },
     {
@@ -106,33 +106,33 @@
     {
       "id": "q4",
       "stem": {
-        "ar": "يتنبأ النموذج بالمرض لدى 100 مريض، و90 منهم مصابون فعلاً. ما قيمة Precision؟",
-        "en": "The model predicts disease in 100 patients and 90 actually have it. What precision is reported?"
+        "ar": "عن أي سؤال تجيب الدقة الموجبة؟",
+        "en": "What question does precision answer?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "70 بالمئة",
-          "en": "70 percent"
+          "ar": "ما متوسط سرعة النموذج",
+          "en": "how fast the model runs on average"
         },
         {
-          "ar": "80 بالمئة",
-          "en": "80 percent"
+          "ar": "كم من الموجبة المتوقعة صحيح",
+          "en": "how many predicted positives are right"
         },
         {
-          "ar": "90 بالمئة",
-          "en": "90 percent"
+          "ar": "كم من الموجبة الفعلية وُجد",
+          "en": "how many actual positives are found"
         },
         {
-          "ar": "95 بالمئة",
-          "en": "95 percent"
+          "ar": "كم سجلاً جرى اختباره فعلاً",
+          "en": "how many records were actually tested"
         }
       ],
       "concept_id": "c6_precision_example",
       "explanation": {
-        "ar": "90 بالمئة",
-        "en": "90 percent"
+        "ar": "الدقة الموجبة تسأل عن نسبة ما وُسم موجباً وهو موجب فعلاً.",
+        "en": "Precision asks what share of the records flagged positive really are positive."
       }
     },
     {
@@ -202,33 +202,33 @@
     {
       "id": "q7",
       "stem": {
-        "ar": "يحدد النموذج 95 مريضاً من أصل 100 مصاب فعلياً بالمرض. ما قيمة Recall؟",
-        "en": "The model correctly identifies 95 of 100 patients who actually have a disease. What recall is reported?"
+        "ar": "عن أي سؤال تجيب الاستدعاء؟",
+        "en": "What question does recall answer?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "90 بالمئة",
-          "en": "90 percent"
+          "ar": "كم من الموجبة الفعلية وُجد",
+          "en": "how many actual positives are found"
         },
         {
-          "ar": "95 بالمئة",
-          "en": "95 percent"
+          "ar": "كم من الموجبة المتوقعة صحيح",
+          "en": "how many predicted positives are right"
         },
         {
-          "ar": "85 بالمئة",
-          "en": "85 percent"
+          "ar": "كم سجلاً موجوداً في البيانات",
+          "en": "how many records exist in the data"
         },
         {
-          "ar": "75 بالمئة",
-          "en": "75 percent"
+          "ar": "كم سمة يستخدم النموذج هنا",
+          "en": "how many features the model uses"
         }
       ],
       "concept_id": "c6_recall_example",
       "explanation": {
-        "ar": "95 بالمئة",
-        "en": "95 percent"
+        "ar": "الاستدعاء يسأل عن نسبة الحالات الموجبة فعلاً التي أمسك بها النموذج.",
+        "en": "Recall asks what share of the truly positive cases the model managed to catch."
       }
     },
     {
@@ -298,33 +298,33 @@
     {
       "id": "q10",
       "stem": {
-        "ar": "يحدد النموذج 90 شخصاً سليماً من أصل 100 بصورة صحيحة. ما قيمة Specificity؟",
-        "en": "A model correctly identifies 90 of 100 healthy patients. What specificity is reported?"
+        "ar": "عن أي سؤال تجيب النوعية؟",
+        "en": "What question does specificity answer?"
       },
       "bloom": "Apply",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "95 بالمئة",
-          "en": "95 percent"
+          "ar": "كم من السالبة الفعلية وُجد",
+          "en": "how many actual negatives are found"
         },
         {
-          "ar": "75 بالمئة",
-          "en": "75 percent"
+          "ar": "كم من الموجبة الفعلية وُجد",
+          "en": "how many actual positives are found"
         },
         {
-          "ar": "85 بالمئة",
-          "en": "85 percent"
+          "ar": "كم سجلاً جرى حذفه هنا",
+          "en": "how many records were dropped here"
         },
         {
-          "ar": "90 بالمئة",
-          "en": "90 percent"
+          "ar": "كم صنفاً موجود في البيانات",
+          "en": "how many classes exist in total"
         }
       ],
       "concept_id": "c6_specificity_example",
       "explanation": {
-        "ar": "90 بالمئة",
-        "en": "90 percent"
+        "ar": "النوعية تسأل عن نسبة الحالات السالبة فعلاً التي صنّفها النموذج سالبة.",
+        "en": "Specificity asks what share of the truly negative cases the model correctly cleared."
       }
     },
     {
@@ -461,7 +461,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T22:03:42Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

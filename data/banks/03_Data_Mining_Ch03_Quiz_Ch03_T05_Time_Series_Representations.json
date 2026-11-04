@@ -78,16 +78,8 @@
         "en": "Which method maps a time series to numerical features?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "DFT/DWT أو استخراج الخصائص",
-          "en": "DFT/DWT or feature extraction"
-        },
-        {
-          "ar": "ترميز One-hot أو ترتيب الفئات",
-          "en": "One-hot encoding or ranking"
-        },
         {
           "ar": "حاويات تكرارية أو مركزية بيانية",
           "en": "Equal-frequency bins or centrality"
@@ -95,6 +87,14 @@
         {
           "ar": "حقيبة كلمات أو تضمينات وثائق",
           "en": "Bag of Words or embeddings"
+        },
+        {
+          "ar": "DFT/DWT أو استخراج الخصائص",
+          "en": "DFT/DWT or feature extraction"
+        },
+        {
+          "ar": "ترميز One-hot أو ترتيب الفئات",
+          "en": "One-hot encoding or ranking"
         }
       ],
       "concept_id": "timeseries_numeric_map",
@@ -138,33 +138,33 @@
     {
       "id": "q5",
       "stem": {
-        "ar": "وفق Low = A وMedium = B وHigh = C، كيف تمثل القيم 20 و22 و21 و25 و27 و30؟",
-        "en": "In the example mapping Low = A, Medium = B, High = C, how is 20, 22, 21, 25, 27, 30 represented?"
+        "ar": "كيف تُحوَّل السلسلة الزمنية إلى رموز؟",
+        "en": "How is a time series converted into symbols?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "C, C, C, B, B, A",
-          "en": "C, C, C, B, B, A"
+          "ar": "بربط مديات القيم برموز",
+          "en": "by mapping value ranges to symbols"
         },
         {
-          "ar": "A, A, B, B, C, C",
-          "en": "A, A, B, B, C, C"
+          "ar": "بحذف كل قيمة ثانية",
+          "en": "by deleting every second value now"
         },
         {
-          "ar": "A, A, A, B, B, C",
-          "en": "A, A, A, B, B, C"
+          "ar": "بترتيب القيم حسب الحجم",
+          "en": "by sorting all values by size"
         },
         {
-          "ar": "A, B, A, C, B, C",
-          "en": "A, B, A, C, B, C"
+          "ar": "بحساب متوسط كل القيم",
+          "en": "by averaging all the values here"
         }
       ],
       "concept_id": "timeseries_symbolic_example",
       "explanation": {
-        "ar": "تتحول القيم الست بالترتيب إلى A وA وA وB وB وC في المثال.",
-        "en": "The six values map in order to A, A, A, B, B, C in the stated example."
+        "ar": "كل مدى عددي يأخذ رمزاً، فتصبح السلسلة تسلسلاً من الحروف.",
+        "en": "Each numeric range is given a symbol, so the series becomes a sequence of letters."
       }
     },
     {
@@ -237,7 +237,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:02:22Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

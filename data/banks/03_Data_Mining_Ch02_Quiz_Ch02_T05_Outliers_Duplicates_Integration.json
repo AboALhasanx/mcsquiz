@@ -42,33 +42,33 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "أي قيمة عمر حُددت بوصفها شاذة محتملة في المثال؟",
-        "en": "Which age value is identified as a potential outlier in the example?"
+        "ar": "ما الذي يجعل قيمة ما شاذة محتملة؟",
+        "en": "What makes a value a potential outlier?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 3,
       "options": [
         {
-          "ar": "العمر 68 رقم",
-          "en": "Age value 68"
+          "ar": "لأنه أصغر قيمة فقط هنا",
+          "en": "it is simply the smallest value"
         },
         {
-          "ar": "قيمة العمر 300",
-          "en": "Age value 300"
+          "ar": "لأنه يتكرر مرات كثيرة",
+          "en": "it is repeated many times over"
         },
         {
-          "ar": "قيمة العمر 70.",
-          "en": "Age value: 70"
+          "ar": "لأنه مفقود من البيانات",
+          "en": "it is missing entirely from data"
         },
         {
-          "ar": "العمر 65 قيمة",
-          "en": "Age value 65"
+          "ar": "لأنه يختلف عن بقية القيم",
+          "en": "it differs greatly from the rest"
         }
       ],
       "concept_id": "outlier_numeric_example",
       "explanation": {
-        "ar": "يحدد المثال 300 قيمة بعيدة محتملة عن بقية المشاهدات؛ لكنها تظل بحاجة إلى فحص.",
-        "en": "The example marks 300 as potentially distant from the other observations; it still requires investigation."
+        "ar": "القيمة الشاذة تبتعد بحدة عن نمط بقية المشاهدات.",
+        "en": "An outlier departs sharply from the pattern of the other observations."
       }
     },
     {
@@ -110,8 +110,12 @@
         "en": "What should be done before removing an outlier?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "دمج السجل مع أقرب جدول قاعدة بيانات.",
+          "en": "Merge the record with the closest database table."
+        },
         {
           "ar": "ينبغي فحص القيم الشاذة قبل حذفها.",
           "en": "Outliers should be investigated before removing them."
@@ -123,10 +127,6 @@
         {
           "ar": "تعويض كل قيم مجموعة البيانات بالمتوسط.",
           "en": "Replace every value in the dataset with the mean."
-        },
-        {
-          "ar": "دمج السجل مع أقرب جدول قاعدة بيانات.",
-          "en": "Merge the record with the closest database table."
         }
       ],
       "concept_id": "outlier_investigation",
@@ -202,65 +202,65 @@
     {
       "id": "q7",
       "stem": {
-        "ar": "أي أثر للسجلات المكررة ورد في المادة؟",
-        "en": "Which effect of duplicate records is stated in the material?"
+        "ar": "ما أثر السجلات المكررة؟",
+        "en": "Which effect do duplicate records have?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "تحفظ المعلومات المفقودة وتقلل تعقيد النموذج",
-          "en": "preserve missing information and reduce model complexity"
+          "ar": "ترفع دقة النموذج كثيراً",
+          "en": "they improve model accuracy"
         },
         {
-          "ar": "تضمن اتساق الفئات وتحسن أداء الخوارزميات",
-          "en": "guarantee consistent categories and improve algorithms"
+          "ar": "تحذف القيم المفقودة هنا",
+          "en": "they remove missing values"
         },
         {
-          "ar": "تحول البيانات المكانية إلى تمثيل زمني",
-          "en": "convert spatial data into a time-series representation"
+          "ar": "تطبّع المديات الرقمية",
+          "en": "they normalise numeric ranges"
         },
         {
-          "ar": "تؤثر في حساب التكرارات وأداء النموذج",
-          "en": "affect frequency calculations and model performance"
+          "ar": "تشوّه حساب التكرارات",
+          "en": "they distort frequency counts"
         }
       ],
       "concept_id": "duplicate_effects",
       "explanation": {
-        "ar": "تشمل الأضرار المذكورة زيادة الحجم والتحيز وتشويه التكرارات والتأثير في الأداء؛ ولا تضمن المادة أياً من مزايا البدائل.",
-        "en": "The listed harms are unnecessary size, biased analysis, frequency distortion, and performance effects; none of the alternatives is promised."
+        "ar": "التكرار يضخّم ظهور النمط، فتتأثر التكرارات وأداء النموذج.",
+        "en": "Duplicates inflate how often a pattern appears, so counts and model performance are affected."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "أي عبارة تصف القيم غير المتسقة في المثال؟",
-        "en": "Which phrase describes inconsistent values in the example?"
+        "ar": "ماذا يعني أن تكون القيم المخزنة غير متسقة؟",
+        "en": "What does it mean when stored values are inconsistent?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "تحول سلسلة زمنية إلى تسلسل رمزي بعناصر مرتبة.",
-          "en": "convert a time series into a symbolic sequence of values."
+          "ar": "الفئة نفسها بصيغ مختلفة",
+          "en": "same category, different formats"
         },
         {
-          "ar": "تقسم فترة رقمية إلى حاويات ذات عرض متساوٍ.",
-          "en": "divide a numerical interval into bins of equal width."
+          "ar": "فئات مختلفة بصيغة واحدة",
+          "en": "different categories, same format"
         },
         {
-          "ar": "تخزن مجموعة العناصر في معاملات متعددة بمعرّفات مختلفة.",
-          "en": "store the same item set in several separate transactions."
+          "ar": "قيم مفقودة في عمود واحد",
+          "en": "missing values in one column"
         },
         {
-          "ar": "تمثل الفئات نفسها لكنها تستخدم صيغاً مختلفة.",
-          "en": "represent the same categories but use different formats."
+          "ar": "صفوف مكررة في جدول واحد",
+          "en": "duplicate rows in one table"
         }
       ],
       "concept_id": "inconsistent_data_definition",
       "explanation": {
-        "ar": "يشمل عدم الاتساق صيغاً متعددة للفئة نفسها؛ أما البدائل فتصف أشكال بيانات أو تحويلات صحيحة.",
-        "en": "Inconsistency includes multiple formats for the same category; the other choices describe valid data forms or transformations."
+        "ar": "القيم غير المتسقة تصف الفئة الواقعية نفسها لكن بطرائق كتابة مختلفة.",
+        "en": "Inconsistent values describe the same real category but are written in different ways."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:02:22Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

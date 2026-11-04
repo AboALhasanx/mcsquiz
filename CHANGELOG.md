@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.7] — 2026-11-04
+
+### Changed
+- content: Data Mining question audit, no numbers/formulas (v63)
+
+
 ## [1.10.6] — 2026-11-04
 
 ### Changed

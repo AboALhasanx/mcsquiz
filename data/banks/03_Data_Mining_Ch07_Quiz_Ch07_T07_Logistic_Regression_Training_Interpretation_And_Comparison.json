@@ -10,65 +10,65 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "للمعادلة z = −4 + 1.2x وعند دراسة 4 ساعات، ما الدرجة الخطية؟",
-        "en": "For z = −4 + 1.2x and x = 4 study hours, what linear score is calculated?"
+        "ar": "ماذا تجمع الدرجة الخطية في نموذج الانحدار اللوجستي؟",
+        "en": "What does the linear score of a logistic model combine?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "0.8",
-          "en": "0.8"
+          "ar": "الاحتمالات الأولية للأصناف",
+          "en": "the class priors of each single class"
         },
         {
-          "ar": "0.6",
-          "en": "0.6"
+          "ar": "إمكانات كل سمة على حدة",
+          "en": "the likelihoods of every attribute"
         },
         {
-          "ar": "0.4",
-          "en": "0.4"
+          "ar": "سمات موزونة مع حد ثابت",
+          "en": "weighted attributes plus an intercept"
         },
         {
-          "ar": "2.0",
-          "en": "2.0"
+          "ar": "قيم السمات الخام وحدها",
+          "en": "only the raw attribute values here"
         }
       ],
       "concept_id": "c7_lr_example_z4",
       "explanation": {
-        "ar": "0.8",
-        "en": "If z = 2, then P(Y = 1 | X) ≈ 1 / (1 + 0.1353) ≈ 0.8808."
+        "ar": "الدرجة الخطية تجمع الحد الثابت مع كل قيمة سمة مضروبة بوزنها.",
+        "en": "The linear score adds the intercept to each attribute value multiplied by its weight."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "يدرس طالب أربع ساعات. ما احتمال النجاح المحسوب؟",
-        "en": "A student studies for four hours. What probability of passing is calculated?"
+        "ar": "كيف يحوّل النموذج الدرجة الخطية إلى احتمالية؟",
+        "en": "How does the model turn a linear score into a probability?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "0.6900",
-          "en": "0.6900"
+          "ar": "يقسم على عدد السجلات",
+          "en": "it divides by the number of records"
         },
         {
-          "ar": "0.1192",
-          "en": "0.1192"
+          "ar": "يضرب الناتج في العتبة",
+          "en": "it multiplies by the threshold"
         },
         {
-          "ar": "0.8808",
-          "en": "0.8808"
+          "ar": "يأخذ متوسط قيم السمات",
+          "en": "it averages the attribute values"
         },
         {
-          "ar": "0.5000",
-          "en": "0.5000"
+          "ar": "يطبّق دالة السيجمويد",
+          "en": "it applies the sigmoid function"
         }
       ],
       "concept_id": "c7_lr_example_prob4",
       "explanation": {
-        "ar": "0.6900",
-        "en": "P(Pass = 1 | x = 4) = 1 / (1 + e ⁻ ⁰·⁸) ≈ 1 / (1 + 0.4493) ≈ 0.6900"
+        "ar": "السيجمويد يحوّل أي درجة خطية إلى قيمة بين الصفر والواحد.",
+        "en": "The sigmoid maps any linear score into a value between zero and one."
       }
     },
     {
@@ -106,33 +106,33 @@
     {
       "id": "q4",
       "stem": {
-        "ar": "يدرس طالب ساعتين. ما احتمال النجاح المحسوب؟",
-        "en": "A student studies for two hours. What probability of passing is calculated?"
+        "ar": "ماذا ينتج احتمال أقل من العتبة؟",
+        "en": "What does a probability below the threshold produce?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.1192",
-          "en": "0.1192"
+          "ar": "توقّع الصنف الآخر",
+          "en": "a prediction of the other class"
         },
         {
-          "ar": "0.5000",
-          "en": "0.5000"
+          "ar": "توقّع الصنف نفسه",
+          "en": "a prediction of the same class"
         },
         {
-          "ar": "0.1680",
-          "en": "0.1680"
+          "ar": "لا توقّع إطلاقاً هنا",
+          "en": "no prediction made at all here"
         },
         {
-          "ar": "0.8808",
-          "en": "0.8808"
+          "ar": "خطأ تلقائي في النظام",
+          "en": "an automatic system error here"
         }
       ],
       "concept_id": "c7_lr_example_prob2",
       "explanation": {
-        "ar": "0.1680",
-        "en": "Because 0.1680 < 0.5, predict Fail (Class 0)."
+        "ar": "عندما يبقى الاحتمال المقدَّر تحت العتبة يُتوقع الصنف الآخر.",
+        "en": "When the estimated probability stays under the threshold, the other class is predicted."
       }
     },
     {
@@ -298,33 +298,33 @@
     {
       "id": "q10",
       "stem": {
-        "ar": "إذا كان المعامل 0.7، فما نسبة الأرجحية الناتجة عن زيادة وحدة واحدة؟",
-        "en": "If a coefficient is 0.7, what odds ratio follows from a one-unit increase?"
+        "ar": "ماذا تشير إليه نسبة الأرجحية الأكبر من واحد؟",
+        "en": "What does an odds ratio above one indicate?"
       },
       "bloom": "Apply",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "0.24",
-          "en": "0.24"
+          "ar": "أن الأرجحية تزيد مع السمة",
+          "en": "the odds rise with the attribute"
         },
         {
-          "ar": "0.40",
-          "en": "0.40"
+          "ar": "أن الأرجحية تقل مع السمة",
+          "en": "the odds fall with the attribute"
         },
         {
-          "ar": "0.30",
-          "en": "0.30"
+          "ar": "أن الأرجحية تبقى ثابتة",
+          "en": "the odds stay quite unchanged"
         },
         {
-          "ar": "2.01",
-          "en": "2.01"
+          "ar": "أن الصنف يصبح مستحيلاً",
+          "en": "the class becomes impossible"
         }
       ],
       "concept_id": "c7_lr_odds_ratio",
       "explanation": {
-        "ar": "2.01",
-        "en": "For example, if bᵢ = 0.7, then exp(0.7) ≈ 2.01. Under the model, a one-unit increase in that feature multiplies the odds of Class 1 by about 2.01, holding other features constant. This is an odds interpretation, not a direct doubling of probability."
+        "ar": "نسبة أكبر من واحد تعني أن زيادة وحدة في السمة تضاعف الأرجحية صعوداً.",
+        "en": "An odds ratio above one means a one-unit rise in the attribute multiplies the odds upward."
       }
     },
     {
@@ -461,7 +461,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T22:03:42Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

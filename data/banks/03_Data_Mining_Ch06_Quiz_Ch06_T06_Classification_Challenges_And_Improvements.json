@@ -42,33 +42,33 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "تضم البيانات 9000 سليم و1000 مريض. يتنبأ النموذج بأن الجميع سليمون. ما الدقة التي قد يحققها؟",
-        "en": "A dataset has 9,000 healthy and 1,000 diseased patients. A model predicts every patient as healthy. What accuracy can it achieve?"
+        "ar": "لماذا قد تخدع الدقة العالية في البيانات غير المتوازنة؟",
+        "en": "Why can high accuracy mislead on imbalanced data?"
       },
       "bloom": "Analyze",
       "answer": 2,
       "options": [
         {
-          "ar": "خمسة أجزاء",
-          "en": "five parts"
+          "ar": "لأن مجموعة الاختبار صغيرة جداً هنا",
+          "en": "the test set is far too small"
         },
         {
-          "ar": "50 بالمئة",
-          "en": "50 percent"
+          "ar": "لأن السمات مترابطة جداً هنا",
+          "en": "the features are highly correlated"
         },
         {
-          "ar": "90 بالمئة",
-          "en": "90 percent"
+          "ar": "لأن الصنف الأكبر يهيمن على النتيجة",
+          "en": "the majority class dominates it"
         },
         {
-          "ar": "أربعة أجزاء",
-          "en": "four parts"
+          "ar": "لأن النموذج يتدرب ببطء شديد هنا",
+          "en": "the model trains far too slowly"
         }
       ],
       "concept_id": "c6_imbalance_accuracy",
       "explanation": {
-        "ar": "90 بالمئة",
-        "en": "90 percent"
+        "ar": "توقع الصنف الأكبر دائماً يعطي دقة عالية، فتخفي الدقة الحالات النادرة المفقودة.",
+        "en": "Predicting the majority class every time already scores high, so accuracy hides the missed minority."
       }
     },
     {
@@ -557,7 +557,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T22:03:42Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

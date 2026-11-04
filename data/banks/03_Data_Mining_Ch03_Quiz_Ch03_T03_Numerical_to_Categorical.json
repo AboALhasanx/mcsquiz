@@ -42,33 +42,33 @@
     {
       "id": "q2",
       "stem": {
-        "ar": "ضمن فترات الأعمار المذكورة، أي فترة تشمل العمر 25؟",
-        "en": "In the given age intervals, which interval contains age 25?"
+        "ar": "ماذا يفعل التقطيع بصفة عددية؟",
+        "en": "What does discretization do to a numerical attribute?"
       },
       "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "18–40 سنة",
-          "en": "18–40 years"
+          "ar": "يجمع القيم في فترات",
+          "en": "it groups values into intervals"
         },
         {
-          "ar": "41–60 سنة",
-          "en": "41–60 years"
+          "ar": "يحذف القيم المتطرفة",
+          "en": "it deletes the extreme values"
         },
         {
-          "ar": "0–17 سنة.",
-          "en": "0–17 years"
+          "ar": "يحوّل النص إلى أرقام",
+          "en": "it converts text into numbers"
         },
         {
-          "ar": "61+ سنة.",
-          "en": "61+ years"
+          "ar": "يرتب السجلات بالتاريخ",
+          "en": "it sorts records by their date"
         }
       ],
       "concept_id": "discretization_age_example",
       "explanation": {
-        "ar": "يحول المثال الأعمار 18–40 إلى فئة Adult، لذلك ينتمي العمر 25 إليها.",
-        "en": "The example maps ages 18–40 to Adult, so 25 belongs to that interval."
+        "ar": "التقطيع يستبدل قيماً عددية كثيرة بعدد قليل من الفترات الموسومة.",
+        "en": "Discretization replaces many numeric values with a small number of labelled intervals."
       }
     },
     {
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:02:22Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

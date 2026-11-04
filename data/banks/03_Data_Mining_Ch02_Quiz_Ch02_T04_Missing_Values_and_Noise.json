@@ -110,8 +110,12 @@
         "en": "Who may determine a missing value manually?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "قد يستدل نموذج آلي على القيمة المفقودة.",
+          "en": "A machine-learning model may infer the missing value."
+        },
         {
           "ar": "قد يحدد خبير المجال القيمة المفقودة.",
           "en": "A domain expert may determine the missing value."
@@ -123,10 +127,6 @@
         {
           "ar": "قد تقدر خوارزمية التنقيب القيمة المفقودة.",
           "en": "A Data Mining algorithm may estimate the missing value."
-        },
-        {
-          "ar": "قد يستدل نموذج آلي على القيمة المفقودة.",
-          "en": "A machine-learning model may infer the missing value."
         }
       ],
       "concept_id": "manual_missing_value",
@@ -138,33 +138,33 @@
     {
       "id": "q5",
       "stem": {
-        "ar": "باستخدام المتوسط، ما القيمة التي تستبدل المدخل المفقود في 60 و70 و80 و90؟",
-        "en": "Using the mean, what value replaces the missing entry in 60, 70, 80, and 90?"
+        "ar": "لماذا يُستخدم المتوسط لملء قيمة عددية مفقودة؟",
+        "en": "Why is the mean used to fill a missing numerical value?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "70",
-          "en": "70"
+          "ar": "لأنه يلخص القيم الموجودة",
+          "en": "it summarises existing values"
         },
         {
-          "ar": "75",
-          "en": "75"
+          "ar": "لأنه يحذف السجل كله هنا",
+          "en": "it removes the whole record"
         },
         {
-          "ar": "80",
-          "en": "80"
+          "ar": "لأنه يكرر آخر قيمة هنا",
+          "en": "it repeats the last value here"
         },
         {
-          "ar": "90",
-          "en": "90"
+          "ar": "لأنه يختار قيمة عشوائية",
+          "en": "it picks a random value here"
         }
       ],
       "concept_id": "mean_imputation_value",
       "explanation": {
-        "ar": "المتوسط هو (60 + 70 + 80 + 90) / 4 = 75؛ وهو تقدير لقيمة رقمية مفقودة.",
-        "en": "The mean is (60 + 70 + 80 + 90) / 4 = 75; it is a numerical missing-value estimate."
+        "ar": "المتوسط تلخيص للقيم الموجودة، فيُبقي السجل قابلاً للاستخدام.",
+        "en": "The mean is a summary of the values already present, so it keeps the record usable."
       }
     },
     {
@@ -397,7 +397,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:02:22Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

@@ -46,8 +46,12 @@
         "en": "Who defines the minimum-support threshold?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "ارتباط سببي عند Lift > 1",
+          "en": "Causal association occurs"
+        },
         {
           "ar": "عتبة يحددها المستخدم",
           "en": "a user-defined threshold"
@@ -59,10 +63,6 @@
         {
           "ar": "عقوبات نماذج الزبائن",
           "en": "customer model penalties"
-        },
-        {
-          "ar": "ارتباط سببي عند Lift > 1",
-          "en": "Causal association occurs"
         }
       ],
       "concept_id": "minsup_user",
@@ -234,33 +234,33 @@
     {
       "id": "q8",
       "stem": {
-        "ar": "كم مجموعة عناصر غير فارغة ممكنة عند وجود أربعة عناصر؟",
-        "en": "How many non-empty itemsets are possible for four items?"
+        "ar": "كيف ينمو عدد المجموعات الممكنة بزيادة العناصر؟",
+        "en": "How does the number of possible itemsets grow as items increase?"
       },
       "bloom": "Apply",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "12",
-          "en": "12"
+          "ar": "ينمو أسّياً",
+          "en": "it grows exponentially"
         },
         {
-          "ar": "15",
-          "en": "15"
+          "ar": "يبقى ثابتاً",
+          "en": "it stays quite constant"
         },
         {
-          "ar": "16",
-          "en": "16"
+          "ar": "ينمو خطياً",
+          "en": "it grows in a linear way"
         },
         {
-          "ar": "18",
-          "en": "18"
+          "ar": "يتقلص ببطء",
+          "en": "it shrinks very slowly"
         }
       ],
       "concept_id": "brute_four_itemsets_count",
       "explanation": {
-        "ar": "عدد المجموعات غير الفارغة = 2 أس 4 ناقص 1 = 15 مجموعة.",
-        "en": "The count is 2 to the power 4 minus 1, which equals 15 non-empty itemsets."
+        "ar": "كل عنصر جديد يضاعف عدد المجموعات المرشحة، فالنمو أُسّي.",
+        "en": "Every added item doubles the number of candidate itemsets, so growth is exponential."
       }
     }
   ],
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T12:07:52Z",
+  "updated_at": "2026-11-04T16:24:54Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"
