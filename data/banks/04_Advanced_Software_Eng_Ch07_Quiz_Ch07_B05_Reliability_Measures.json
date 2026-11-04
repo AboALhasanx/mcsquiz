@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "مقاييس الموثوقية وطبيعة النماذج",
+    "en": "Reliability Measures and the Nature of the Models"
+  },
+  "quiz_id": "Quiz_Ch07_B05_Reliability_Measures",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "يمكن تمثيل حوادث الأعطال بـ...",
+        "en": "Failure occurrences can be represented by..."
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "زمن الفشل هنا الآن مجدداً",
+          "en": "the time to failure here now again"
+        },
+        {
+          "ar": "الفاصل بين الفشلتين هنا",
+          "en": "the interval between failures"
+        },
+        {
+          "ar": "عدد الأعطال داخل فترة الآن",
+          "en": "the failures inside a time interval"
+        },
+        {
+          "ar": "كل ما سبق أعلاه أيضاً",
+          "en": "all of the above answers too here"
+        }
+      ],
+      "concept_id": "ch7_failure_representation",
+      "explanation": {
+        "ar": "الثلاثة رؤى للبيانات نفسها تُستخدم حسب النموذج.",
+        "en": "All three views of the same data are used, depending on the model."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما أقصى قيمة ممكنة للموثوقية؟",
+        "en": "What is the maximum possible value of reliability?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "صفر الآن الآن الآن الآن",
+          "en": "zero too now again"
+        },
+        {
+          "ar": "مئة هنا هنا مجدداً هنا",
+          "en": "one hundred too too"
+        },
+        {
+          "ar": "عشرة أيضاً أيضاً مجدداً",
+          "en": "ten here here here here"
+        },
+        {
+          "ar": "واحد مجدداً هنا أيضاً",
+          "en": "one now again now"
+        }
+      ],
+      "concept_id": "ch7_max_reliability",
+      "explanation": {
+        "ar": "الموثوقية احتمال، فالواحد هو السقف والصفر هو الأرضية.",
+        "en": "Reliability is a probability, so one is the ceiling and zero is the floor."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما أدنى قيمة ممكنة للموثوقية؟",
+        "en": "What is the minimum possible value of reliability?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "واحد مجدداً هنا أيضاً",
+          "en": "one now again now"
+        },
+        {
+          "ar": "صفر الآن الآن الآن الآن",
+          "en": "zero too now again"
+        },
+        {
+          "ar": "مئة هنا هنا مجدداً هنا",
+          "en": "one hundred too too"
+        },
+        {
+          "ar": "عشرة أيضاً أيضاً مجدداً",
+          "en": "ten here here here here"
+        }
+      ],
+      "concept_id": "ch7_min_reliability",
+      "explanation": {
+        "ar": "النظام الذي يفشل دائماً موثوقيته صفر.",
+        "en": "A system that always fails has reliability of zero."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "مع زيادة الموثوقية، شدة الأعطال...",
+        "en": "As reliability increases, failure intensity..."
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ترتفع الآن مجدداً",
+          "en": "increases now too"
+        },
+        {
+          "ar": "لا تأثير لها هنا",
+          "en": "has no effect again"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        },
+        {
+          "ar": "تنخفض هنا أيضاً",
+          "en": "decreases here here"
+        }
+      ],
+      "concept_id": "ch7_intensity_relation",
+      "explanation": {
+        "ar": "تُزال أعطال أكثر مع نضج المنتج، فتنخفض الشدة.",
+        "en": "More failures are removed as the product matures, so the intensity falls."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "بشدة 0.005 عطل بالساعة على عشر ساعات، احتمال عدم العطل يقارب...",
+        "en": "With an intensity of 0.005 failures per hour over ten hours, the probability of no failure is about..."
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عشرة بالمئة هنا الآن",
+          "en": "ten per cent here now"
+        },
+        {
+          "ar": "اثنان وتسعون بالمئة",
+          "en": "ninety two per cent"
+        },
+        {
+          "ar": "خمسة وتسعون بالمئة",
+          "en": "ninety five per cent"
+        },
+        {
+          "ar": "ثمانية وتسعون بالمئة",
+          "en": "ninety eight per cent"
+        }
+      ],
+      "concept_id": "ch7_intensity_example",
+      "explanation": {
+        "ar": "على عشر ساعات العدد المتوقع 0.05، فالنجاة قريبة من الواحد.",
+        "en": "Over ten hours the expected count is 0.05, so survival is close to one."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي واحد ليس نموذج موثوقية برمجية؟",
+        "en": "Which one is NOT a software reliability model?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا شيء مما سبق هنا أيضاً",
+          "en": "none of the above now again"
+        },
+        {
+          "ar": "نموذج جيلينسكي-موراندا",
+          "en": "the Jelinski-Moranda model"
+        },
+        {
+          "ar": "نموذج زمن التنفيذ الأساسي",
+          "en": "the basic execution time model"
+        },
+        {
+          "ar": "النموذج الحلزوني الآن",
+          "en": "the spiral model here too"
+        }
+      ],
+      "concept_id": "ch7_not_model",
+      "explanation": {
+        "ar": "النموذج الحلزوني نموذج دورة حياة، لا نموذج موثوقية.",
+        "en": "The spiral model is a life-cycle model, not a reliability model."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "في نماذج الموثوقية، التركيز على...",
+        "en": "In reliability models, the emphasis is on..."
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الأعطال أيضاً الآن",
+          "en": "failures again"
+        },
+        {
+          "ar": "الأخطاء البرمجية",
+          "en": "bugs here here"
+        },
+        {
+          "ar": "الأخطاء الآن هنا",
+          "en": "errors now now"
+        },
+        {
+          "ar": "العيوب هنا مجدداً",
+          "en": "faults too too"
+        }
+      ],
+      "concept_id": "ch7_emphasis",
+      "explanation": {
+        "ar": "النماذج تعدّ الأعطال الملاحظة، لا الأخطاء التي سبّتها.",
+        "en": "The models count observed failures, not the errors that caused them."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "طوّر نموذج زمن التنفيذ الأساسي...",
+        "en": "The basic execution time model was developed by..."
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "جي دي موسى أيضاً",
+          "en": "J. D. Musa here"
+        },
+        {
+          "ar": "باري بوم هنا هنا",
+          "en": "Barry Boehm too"
+        },
+        {
+          "ar": "جيم مكال الآن الآن",
+          "en": "Jim McCall now"
+        },
+        {
+          "ar": "بيف ليتلوود مجدداً",
+          "en": "Bev Littlewood"
+        }
+      ],
+      "concept_id": "ch7_musa",
+      "explanation": {
+        "ar": "موسى اقترح نموذجي زمن التنفيذ الأساسي واللوغاريتمي.",
+        "en": "Musa proposed the basic and logarithmic Poisson execution time models."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "NHPP تعني...",
+        "en": "NHPP stands for..."
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عملية بواسون غير المتجانسة",
+          "en": "non homogeneous Poisson process"
+        },
+        {
+          "ar": "عملية بواسون غير المتباينة",
+          "en": "non heterogeneous Poisson process"
+        },
+        {
+          "ar": "جداء بواسون غير المتجانس",
+          "en": "non homogeneous Poisson product"
+        },
+        {
+          "ar": "جداء بواسون غير المتباين",
+          "en": "non heterogeneous Poisson product"
+        }
+      ],
+      "concept_id": "ch7_nhpp",
+      "explanation": {
+        "ar": "النماذج تعامل حدوث الأعطال كعملية بواسون غير متجانسة.",
+        "en": "The models treat failure occurrence as a non-homogeneous Poisson process."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما غرض نموذج الموثوقية؟",
+        "en": "What is the purpose of a reliability model?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لاستبدال الاختبار الآن هنا مجدداً",
+          "en": "to replace the testing now here again too here"
+        },
+        {
+          "ar": " للتنبؤ بالأعطال من تاريخ التنفيذ",
+          "en": "to predict failures from execution history"
+        },
+        {
+          "ar": "لكتابة كود البرنامج مجدداً أيضاً",
+          "en": "to write the program code too now here"
+        },
+        {
+          "ar": "لتسعير الترخيص هنا أيضاً الآن",
+          "en": "to price the licence here again too now"
+        }
+      ],
+      "concept_id": "ch7_model_purpose",
+      "explanation": {
+        "ar": "النموذج يستنتج منحنى الأعطال ليُقيَّم الإصدار التالي.",
+        "en": "The model extrapolates the failure curve so the next release can be judged."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T21:33:06Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
