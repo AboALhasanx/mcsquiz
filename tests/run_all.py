@@ -35,6 +35,8 @@ SPECS = [
     'test_phase0.py',
     'test_review.py',
     'test_review_flow.py',
+    'test_search.py',
+    'test_search_flow.py',
 ]
 
 

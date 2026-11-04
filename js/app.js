@@ -149,7 +149,7 @@
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
-    'results-view', 'saved-view', 'review-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
+    'results-view', 'saved-view', 'review-view', 'search-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
@@ -160,7 +160,7 @@
     // the saved shortcut is part of the top bar: always reachable, one tap
     // (the sound toggle is not — it lives in the burger menu only)
     // the language toggle lives in every app bar and is always visible
-    const catalogViews = ['deck-catalog', 'saved-view', 'review-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
+    const catalogViews = ['deck-catalog', 'saved-view', 'review-view', 'search-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
     document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
@@ -1037,6 +1037,12 @@
     }
   }
 
+  function renderSearch() {
+    if (window.PortalSearchUI && window.PortalSearchUI.render) {
+      window.PortalSearchUI.render(S.index, S.banks, startReviewPractice);
+    }
+  }
+
   // ---------------- saved questions (delegated to js/saved_ui.js) ----------------
   let _savedUI = null;
   function getSavedUI() {
@@ -1834,6 +1840,12 @@
       clearSessionSnapshot();
       renderReview();
       show('review-view');
+      window.scrollTo(0, 0);
+    } else if (h === '#/search' || h === '#/search/') {
+      S.session = null;
+      clearSessionSnapshot();
+      renderSearch();
+      show('search-view');
       window.scrollTo(0, 0);
     } else if (h === '#/stats' || h === '#/stats/') {
       S.session = null;
@@ -3651,6 +3663,7 @@ const weekBar = $('league-week-bar');
           pickOption: pickOption,
           startReviewPractice: startReviewPractice,
           renderReview: renderReview,
+          renderSearch: renderSearch,
           show: show,
         };
       }

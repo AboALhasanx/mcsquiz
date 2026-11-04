@@ -124,7 +124,7 @@ def run():
         check("Search matches English terms cleanly", len(res2) == 1 and res2[0]["q"]["id"] == "q1")
 
         # 8. AND semantics: multiple terms must all match
-        res_and = ev("() => PortalSearch.query('جدار مفاتيح')")
+        res_and = ev("() => PortalSearch.query('جدار تشفير')")
         check("AND semantics: returns empty if not all words match the question", len(res_and) == 0)
 
         res_and2 = ev("() => PortalSearch.query('جدار مرور')")

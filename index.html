@@ -45,6 +45,9 @@
                     <span id="test-mode-badge" class="test-mode-badge hidden" title="بيانات تجريبية — ليست الأسئلة الحقيقية">TEST MODE</span>
                 </div>
                 <div class="header-right header-catalog-actions">
+                    <a id="btn-header-search" class="icon-btn" href="#/search" aria-label="البحث الشامل" title="البحث الشامل">
+                        <i data-lucide="search"></i>
+                    </a>
                     <button id="lang-toggle-catalog" class="icon-btn lang-toggle" type="button" aria-label="لغة الأسئلة: عربي" aria-pressed="true" title="لغة الأسئلة">
                         <i data-lucide="languages"></i>
                     </button>
@@ -440,6 +443,46 @@
                             <span>بدء الاختبار المخصص</span>
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Search View -->
+            <div id="search-view" class="state-view hidden">
+                <div class="saved-topbar search-topbar">
+                    <div>
+                        <h2 class="saved-title">البحث الشامل</h2>
+                        <p class="saved-total-line">ابحث في نص الأسئلة والخيارات والشروحات والمفاهيم</p>
+                    </div>
+                </div>
+
+                <div class="search-input-wrap">
+                    <i data-lucide="search" class="search-input-icon" aria-hidden="true"></i>
+                    <input type="search" id="search-query-input" class="search-input" placeholder="اكتب للبحث (مثال: تشفير، هجوم، RSA...)" autocomplete="off" spellcheck="false" aria-label="حقل البحث في الأسئلة">
+                    <button type="button" id="search-clear-btn" class="search-clear-btn hidden" aria-label="مسح البحث">
+                        <i data-lucide="x" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div class="catalog-filter-bar" id="search-subject-bar" role="group" aria-label="فلترة نتائج البحث حسب المادة"></div>
+
+                <div class="search-meta-bar" id="search-meta-bar">
+                    <span class="search-meta-count" id="search-count-label">0 نتيجة</span>
+                    <button type="button" class="action-btn secondary-btn search-practice-btn disabled" id="btn-start-search-practice" disabled>
+                        <i data-lucide="play"></i>
+                        <span>تدريب على النتائج</span>
+                    </button>
+                </div>
+
+                <div id="search-results-list" class="search-results-list"></div>
+
+                <div id="search-initial-state" class="stats-empty">
+                    <i data-lucide="search"></i>
+                    <p>ابحث فورياً في كافة بنوك الأسئلة والشروحات بدون اتصال بالإنترنت.</p>
+                </div>
+
+                <div id="search-empty-state" class="stats-empty hidden">
+                    <i data-lucide="file-question"></i>
+                    <p>لا توجد أسئلة مطابقة لبحثك — جرب كلمات بحث أخرى أو اختر مادة مختلفة.</p>
                 </div>
             </div>
 
@@ -1284,6 +1327,10 @@
 
                 <div class="menu-section">
                     <span class="menu-section-title">المكتبة</span>
+                    <a id="menu-search" class="menu-item" href="#/search">
+                        <i data-lucide="search"></i>
+                        <span class="menu-item-label">البحث الشامل</span>
+                    </a>
                     <a id="menu-review" class="menu-item" href="#/review">
                         <i data-lucide="repeat"></i>
                         <span class="menu-item-label">المراجعة الذكية</span>
@@ -1599,6 +1646,7 @@
     <script src="js/review.js" defer></script>
     <script src="js/review_ui.js" defer></script>
     <script src="js/search.js" defer></script>
+    <script src="js/search_ui.js" defer></script>
     <script src="js/achievements.js" defer></script>
     <script src="js/account_ui.js" defer></script>
     <script src="js/app.js" defer></script>

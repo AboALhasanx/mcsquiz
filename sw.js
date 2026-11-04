@@ -28,6 +28,7 @@ const CORE = [
   './js/review_ui.js',
   './js/saved_ui.js',
   './js/search.js',
+  './js/search_ui.js',
   './js/stats_ui.js',
   './js/supabase-config.js',
   './js/tg-config.js',

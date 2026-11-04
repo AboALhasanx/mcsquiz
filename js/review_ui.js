@@ -8,7 +8,7 @@
   var selectedSource = 'due';
   var selectedCount = 10;
 
-  function $(id) {
+  function el(id) {
     return document.getElementById(id);
   }
 
@@ -64,7 +64,7 @@
   }
 
   function updateBadge() {
-    var badge = $('menu-review-count');
+    var badge = el('menu-review-count');
     if (!badge) return;
     if (!global.PortalReview) {
       badge.classList.add('hidden');
@@ -84,10 +84,10 @@
     var stats = R.getStats(store);
 
     // 1. Stats Grid
-    var statDue = $('review-stat-due');
-    var statWeak = $('review-stat-weak');
-    var statTotal = $('review-stat-total');
-    var statMastered = $('review-stat-mastered');
+    var statDue = el('review-stat-due');
+    var statWeak = el('review-stat-weak');
+    var statTotal = el('review-stat-total');
+    var statMastered = el('review-stat-mastered');
 
     if (statDue) statDue.textContent = String(stats.due);
     if (statWeak) statWeak.textContent = String(stats.weak);
@@ -95,16 +95,16 @@
     if (statMastered) statMastered.textContent = String(stats.boxes[5] || 0);
 
     // 2. Decks Info
-    var duePill = $('deck-due-pill');
-    var btnDue = $('btn-start-due-review');
+    var duePill = el('deck-due-pill');
+    var btnDue = el('btn-start-due-review');
     if (duePill) duePill.textContent = stats.due + ' سؤال';
     if (btnDue) {
       btnDue.disabled = (stats.due === 0);
       btnDue.classList.toggle('disabled', stats.due === 0);
     }
 
-    var weakPill = $('deck-weak-pill');
-    var btnWeak = $('btn-start-weak-review');
+    var weakPill = el('deck-weak-pill');
+    var btnWeak = el('btn-start-weak-review');
     if (weakPill) weakPill.textContent = stats.weak + ' سؤال';
     if (btnWeak) {
       btnWeak.disabled = (stats.weak === 0);
@@ -112,7 +112,7 @@
     }
 
     // 3. Subject Select options in Custom Builder
-    var subSelect = $('builder-subject-select');
+    var subSelect = el('builder-subject-select');
     if (subSelect && index && Array.isArray(index.subjects)) {
       subSelect.innerHTML = index.subjects.map(function (s) {
         return '<option value="' + escapeHtml(s.subject_id) + '">' + escapeHtml(s.subject_title) + '</option>';
@@ -135,7 +135,7 @@
     eventsWired = true;
 
     // Start Due Review Deck
-    var btnDue = $('btn-start-due-review');
+    var btnDue = el('btn-start-due-review');
     if (btnDue) {
       btnDue.addEventListener('click', function () {
         if (!global.PortalReview || !startSessionFn) return;
@@ -157,7 +157,7 @@
     }
 
     // Start Weakness Trainer Deck
-    var btnWeak = $('btn-start-weak-review');
+    var btnWeak = el('btn-start-weak-review');
     if (btnWeak) {
       btnWeak.addEventListener('click', function () {
         if (!global.PortalReview || !startSessionFn) return;
@@ -179,7 +179,7 @@
     }
 
     // Source chips
-    var sourceChips = $('builder-source-chips');
+    var sourceChips = el('builder-source-chips');
     if (sourceChips) {
       sourceChips.addEventListener('click', function (e) {
         var btn = e.target.closest('.builder-chip');
@@ -192,7 +192,7 @@
         btn.setAttribute('aria-checked', 'true');
         selectedSource = btn.dataset.source;
 
-        var subGroup = $('builder-subject-picker-group');
+        var subGroup = el('builder-subject-picker-group');
         if (subGroup) {
           subGroup.classList.toggle('hidden', selectedSource !== 'subject');
         }
@@ -200,7 +200,7 @@
     }
 
     // Count chips
-    var countChips = $('builder-count-chips');
+    var countChips = el('builder-count-chips');
     if (countChips) {
       countChips.addEventListener('click', function (e) {
         var btn = e.target.closest('.builder-chip');
@@ -216,7 +216,7 @@
     }
 
     // Start Custom Quiz
-    var btnCustom = $('btn-start-custom-quiz');
+    var btnCustom = el('btn-start-custom-quiz');
     if (btnCustom) {
       btnCustom.addEventListener('click', function () {
         if (!startSessionFn) return;
@@ -247,7 +247,7 @@
             }
           });
         } else if (selectedSource === 'subject') {
-          var subSelect = $('builder-subject-select');
+          var subSelect = el('builder-subject-select');
           var subId = subSelect ? subSelect.value : '';
           var sub = (index && index.subjects) ? index.subjects.find(function (s) { return s.subject_id === subId; }) : null;
           title = 'كوز مخصص · ' + ((sub && sub.subject_title) || 'مادة مختارة');
