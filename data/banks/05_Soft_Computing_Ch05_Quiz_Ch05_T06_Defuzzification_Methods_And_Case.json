@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "طرائق إزالة التغبيش والحالة",
+    "en": "Defuzzification Methods and Case"
+  },
+  "quiz_id": "Quiz_Ch05_T06_Defuzzification_Methods_And_Case",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي طريقة من طرائق العظمى لإزالة التغبيش؟",
+        "en": "Which is a maxima defuzzification method?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أول العظمى هنا",
+          "en": "first of maxima here"
+        },
+        {
+          "ar": "مركز الثقل هنا",
+          "en": "centre of gravity here"
+        },
+        {
+          "ar": "مركز المجاميع هنا",
+          "en": "centre of sums here"
+        },
+        {
+          "ar": "المتوسط الموزون",
+          "en": "weighted average here"
+        }
+      ],
+      "concept_id": "c5d_maxima",
+      "explanation": {
+        "ar": "أول العظمى طريقة من العظمى؛ والبقية تستخدم الشكل كله.",
+        "en": "First-of-maxima is a maxima method; the others use the whole shape."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يُعيد أول العظمى؟",
+        "en": "What does first-of-maxima return?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مركز المساحة هنا",
+          "en": "the centre of the area"
+        },
+        {
+          "ar": "أصغر x عند القمة",
+          "en": "the smallest peak x"
+        },
+        {
+          "ar": "أكبر x عند القمة",
+          "en": "the largest peak x"
+        },
+        {
+          "ar": "متوسط x للقمة هنا",
+          "en": "the mean of the peak x"
+        }
+      ],
+      "concept_id": "c5d_fom",
+      "explanation": {
+        "ar": "أول العظمى يُعيد أصغر قيمة تبلغ عندها المجموعة قمتها.",
+        "en": "First-of-maxima returns the smallest value at which the set reaches its peak."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يعامل مركز المجاميع مجموعات المخرج؟",
+        "en": "How does the centre of sums treat output sets?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أكبر مجموعة فقط",
+          "en": "only the largest set"
+        },
+        {
+          "ar": "أول مجموعة فقط",
+          "en": "only the first set"
+        },
+        {
+          "ar": "كل مجموعة على حدة",
+          "en": "each set on its own"
+        },
+        {
+          "ar": "اتحاد كل المجموعات",
+          "en": "the union of all sets"
+        }
+      ],
+      "concept_id": "c5d_cos",
+      "explanation": {
+        "ar": "مركز المجاميع يستخدم كل مجموعة على حدة، فالتداخل يُحسب مرتين.",
+        "en": "The centre of sums uses each output set on its own, so overlaps count twice."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "مركز أكبر مساحة يستخدم ماذا؟",
+        "en": "The centre of largest area uses what?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "اتحاد كل المجموعات",
+          "en": "the union of all sets"
+        },
+        {
+          "ar": "قمة كل مجموعة هنا",
+          "en": "the peak of each set"
+        },
+        {
+          "ar": "متوسط القمم هنا",
+          "en": "the mean of the peaks"
+        },
+        {
+          "ar": "أكبر مجموعة واحدة",
+          "en": "the largest single set"
+        }
+      ],
+      "concept_id": "c5d_cola",
+      "explanation": {
+        "ar": "يستخدم فقط مجموعة المخرج ذات أكبر مساحة، متجاهلاً غيرها.",
+        "en": "It uses only the output set with the largest area, ignoring the others."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "المتوسط الموزون صالح لأي شيء؟",
+        "en": "The weighted average is valid for what?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مجموعات مخرجة متناظرة",
+          "en": "symmetric output sets"
+        },
+        {
+          "ar": "أي مجموعة غير متناظرة",
+          "en": "any asymmetric set here"
+        },
+        {
+          "ar": "مجموعات حاسمة فقط هنا",
+          "en": "only crisp sets here"
+        },
+        {
+          "ar": "مجموعات فارغة فقط هنا",
+          "en": "only empty sets here"
+        }
+      ],
+      "concept_id": "c5d_wa_valid",
+      "explanation": {
+        "ar": "المتوسط الموزون صالح فقط عندما تكون كل مجموعة مخرج متناظرة.",
+        "en": "The weighted average is valid only when each output set is symmetric."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "في حالة الروبوت، ما يُفعل أولاً؟",
+        "en": "In the robot case, what is done first?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اجمع كل المجموعات هنا",
+          "en": "aggregate the sets"
+        },
+        {
+          "ar": "حوّل المدخلات ضبابياً",
+          "en": "fuzzify the inputs"
+        },
+        {
+          "ar": "أزل تغبيش المخرج هنا",
+          "en": "defuzzify the output"
+        },
+        {
+          "ar": "اقصص اللواحق كلها هنا",
+          "en": "clip the consequents"
+        }
+      ],
+      "concept_id": "c5d_case_fuzzify",
+      "explanation": {
+        "ar": "تبدأ الدورة بتحويل المدخلات الحاسمة إلى درجات.",
+        "en": "The cycle starts by fuzzifying the crisp inputs into grades."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "في حالة الروبوت، قوة الإطلاق هي ماذا؟",
+        "en": "In the robot case, the firing strength is what?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مجموع الدرجات هنا",
+          "en": "the sum of the grades"
+        },
+        {
+          "ar": "حاصل ضرب المخرجات",
+          "en": "the product of outputs"
+        },
+        {
+          "ar": "أدنى الدرجات هنا",
+          "en": "the minimum of the grades"
+        },
+        {
+          "ar": "أقصى الدرجات هنا",
+          "en": "the maximum of the grades"
+        }
+      ],
+      "concept_id": "c5d_case_alpha",
+      "explanation": {
+        "ar": "تُطلق القاعدة عند أدنى درجات مقدمتها.",
+        "en": "A rule fires at the minimum of its antecedent grades."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في ممداني، عند ماذا يُقصّ كل لاحق؟",
+        "en": "In Mamdani, each consequent is clipped at what?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أقصى درجة ممكنة",
+          "en": "the maximum grade here"
+        },
+        {
+          "ar": "متوسط المخرج هنا",
+          "en": "the output mean here"
+        },
+        {
+          "ar": "عدد القواعد هنا",
+          "en": "the rule count here now"
+        },
+        {
+          "ar": "قوة إطلاق القاعدة",
+          "en": "its own firing strength"
+        }
+      ],
+      "concept_id": "c5d_case_clip",
+      "explanation": {
+        "ar": "يُقصّ كل لاحق ممداني عند قوة إطلاق قاعدته.",
+        "en": "Each Mamdani consequent is clipped at the firing strength of its rule."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T13:14:36Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

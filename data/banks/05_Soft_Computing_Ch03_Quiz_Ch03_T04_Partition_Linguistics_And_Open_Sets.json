@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التقسيم واللغويات والمجموعات المفتوحة",
+    "en": "Partition, Linguistics and Open Sets"
+  },
+  "quiz_id": "Quiz_Ch03_T04_Partition_Linguistics_And_Open_Sets",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "التقسيم الضبابي يتكوّن من ماذا؟",
+        "en": "A fuzzy partition is formed by what?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مجموعة قيم لغوية",
+          "en": "a few linguistic values"
+        },
+        {
+          "ar": "قيمة حاسمة واحدة",
+          "en": "a single crisp value"
+        },
+        {
+          "ar": "عتبة ثنائية واحدة",
+          "en": "one binary threshold here"
+        },
+        {
+          "ar": "مجموعة ضبابية فارغة",
+          "en": "an empty fuzzy set here"
+        }
+      ],
+      "concept_id": "c3_fuzzy_partition",
+      "explanation": {
+        "ar": "التقسيم الضبابي يتكوّن من عدة قيم لغوية تغطي الفضاء.",
+        "en": "A fuzzy partition is formed by several linguistic values covering the universe."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في مثال العمر، ما هو المتغير اللغوي؟",
+        "en": "In the age example, what is the linguistic variable?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "القيمة متوسط فقط",
+          "en": "the value middle"
+        },
+        {
+          "ar": "المتغير هو العمر",
+          "en": "the variable age"
+        },
+        {
+          "ar": "القيمة شاب هنا",
+          "en": "the value young"
+        },
+        {
+          "ar": "القيمة عجوز فقط",
+          "en": "the value old"
+        }
+      ],
+      "concept_id": "c3_linguistic_variable",
+      "explanation": {
+        "ar": "المتغير اللغوي هو العمر؛ وشاب وعجوز قيمه اللغوية.",
+        "en": "The linguistic variable is age; young and old are its linguistic values."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي قيمة لغوية في مثال الحرارة؟",
+        "en": "Which is a linguistic value in the temperature example?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "فضاء الخطاب هنا",
+          "en": "the universe of discourse"
+        },
+        {
+          "ar": "درجة الانتماء هنا",
+          "en": "the membership grade"
+        },
+        {
+          "ar": "القيمة عالي هنا",
+          "en": "the value high itself"
+        },
+        {
+          "ar": "المتغير الحرارة",
+          "en": "the variable temperature"
+        }
+      ],
+      "concept_id": "c3_linguistic_value",
+      "explanation": {
+        "ar": "عالي قيمة لغوية؛ أما الحرارة فهي المتغير اللغوي.",
+        "en": "High is a linguistic value; temperature is the linguistic variable."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما هي الأساسية النسبية لـ A؟",
+        "en": "What is the relative cardinality of A?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الأساسية وحدها هنا",
+          "en": "the cardinality alone"
+        },
+        {
+          "ar": "ارتفاع المجموعة هنا",
+          "en": "the height of the set"
+        },
+        {
+          "ar": "عرض الدعم كله هنا",
+          "en": "the width of the support"
+        },
+        {
+          "ar": "الأساسية على حجم X",
+          "en": "cardinality over X size"
+        }
+      ],
+      "concept_id": "c3_relative_card",
+      "explanation": {
+        "ar": "الأساسية النسبية تقسم الأساسية على حجم الفضاء.",
+        "en": "Relative cardinality divides the cardinality by the size of the universe."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "المجموعة المفتوحة يساراً لها أي نهايات؟",
+        "en": "An open-left fuzzy set has what limits?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "واحد يساراً وصفر يميناً",
+          "en": "one left and zero right"
+        },
+        {
+          "ar": "صفر عند الطرفين هنا",
+          "en": "zero at both ends here"
+        },
+        {
+          "ar": "صفر يساراً وواحد يميناً",
+          "en": "zero left and one right"
+        },
+        {
+          "ar": "واحد عند الطرفين هنا",
+          "en": "one at both ends here"
+        }
+      ],
+      "concept_id": "c3_open_left",
+      "explanation": {
+        "ar": "المفتوحة يساراً: الدرجة تقترب من واحد عند سالب اللانهاية وصفر عند موجبها.",
+        "en": "Open left means the grade tends to one at minus infinity and zero at plus infinity."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما النهايات التي تعرّف المجموعة المفتوحة يميناً؟",
+        "en": "What limits define an open-right set?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "واحد عند الطرفين هنا",
+          "en": "one at both ends here"
+        },
+        {
+          "ar": "صفر يساراً وواحد يميناً",
+          "en": "zero left and one right"
+        },
+        {
+          "ar": "واحد يساراً وصفر يميناً",
+          "en": "one left and zero right"
+        },
+        {
+          "ar": "صفر عند الطرفين هنا",
+          "en": "zero at both ends here"
+        }
+      ],
+      "concept_id": "c3_open_right",
+      "explanation": {
+        "ar": "المفتوحة يميناً: الدرجة تقترب من صفر عند سالب اللانهاية وواحد عند موجبها.",
+        "en": "Open right means the grade tends to zero at minus infinity and one at plus infinity."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "المجموعة المغلقة لها أي نهايات؟",
+        "en": "A closed fuzzy set has what limits?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "واحد يساراً وصفر يميناً",
+          "en": "one left and zero right"
+        },
+        {
+          "ar": "صفر يساراً وواحد يميناً",
+          "en": "zero left and one right"
+        },
+        {
+          "ar": "صفر عند الطرفين تماماً",
+          "en": "zero at both ends here"
+        },
+        {
+          "ar": "واحد عند الطرفين هنا",
+          "en": "one at both ends here"
+        }
+      ],
+      "concept_id": "c3_closed_set",
+      "explanation": {
+        "ar": "المغلقة: الدرجة تقترب من الصفر عند اللانهايتين.",
+        "en": "Closed means the grade tends to zero at both infinities."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مجموعة حدات تشكّل تقسيم حرارة؟",
+        "en": "Which set of terms forms a temperature partition?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "بارد وحار فقط هنا",
+          "en": "cold and hot only here"
+        },
+        {
+          "ar": "تشغيل وإطفاء فقط",
+          "en": "on and off only here"
+        },
+        {
+          "ar": "صفر وواحد فقط هنا",
+          "en": "zero and one only here"
+        },
+        {
+          "ar": "من منخفض إلى عالي",
+          "en": "from very low to high"
+        }
+      ],
+      "concept_id": "c3_partition_terms",
+      "explanation": {
+        "ar": "تقسيم الحرارة يستخدم حدات متدرجة من منخفض جداً إلى عالي جداً.",
+        "en": "A temperature partition uses graded terms from very low to very high."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T13:14:36Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

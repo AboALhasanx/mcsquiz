@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "نظرية المجموعات الحاسمة",
+    "en": "Crisp Set Theory"
+  },
+  "quiz_id": "Quiz_Ch02_T01_Crisp_Set_Theory",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما هي المجموعة الحاسمة؟",
+        "en": "What is a crisp set?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تجميع غير مرتب تماماً",
+          "en": "an unordered collection"
+        },
+        {
+          "ar": "قائمة مرتبة من القيم هنا",
+          "en": "an ordered list of values"
+        },
+        {
+          "ar": "خريطة انتماء متدرجة هنا",
+          "en": "a graded membership map"
+        },
+        {
+          "ar": "مصفوفة علاقة ضبابية هنا",
+          "en": "a fuzzy relation matrix"
+        }
+      ],
+      "concept_id": "c2_set_def",
+      "explanation": {
+        "ar": "المجموعة الحاسمة تجميع غير مرتب لعناصر مختلفة.",
+        "en": "A crisp set is an unordered collection of different elements."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما هي أساسية المجموعة؟",
+        "en": "What is the cardinality of a set?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حاصل ضربها",
+          "en": "the product of its values"
+        },
+        {
+          "ar": "عدد عناصرها",
+          "en": "the number of its elements"
+        },
+        {
+          "ar": "ترتيب العناصر",
+          "en": "the order of its elements"
+        },
+        {
+          "ar": "مجموع قيمها",
+          "en": "the sum of its values"
+        }
+      ],
+      "concept_id": "c2_cardinality",
+      "explanation": {
+        "ar": "الأساسية هي عدد العناصر داخل المجموعة، ويُرمز لها بالرمز |S|.",
+        "en": "Cardinality is the number of elements in the set."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "المجموعة الجزئية الفعلية X من Y تتطلب ماذا؟",
+        "en": "A proper subset X of Y requires what?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بعض X خارج Y هنا",
+          "en": "some X outside Y here"
+        },
+        {
+          "ar": "لا X داخل Y أبداً",
+          "en": "no X inside Y at all"
+        },
+        {
+          "ar": "كل X داخل Y وأقل",
+          "en": "every X in Y and fewer"
+        },
+        {
+          "ar": "كل X داخل Y ومساوٍ",
+          "en": "every X in Y and equal"
+        }
+      ],
+      "concept_id": "c2_proper_subset",
+      "explanation": {
+        "ar": "المجموعة الجزئية الفعلية كل عناصرها في Y وعددها أقل تماماً.",
+        "en": "A proper subset has all its elements in Y and strictly fewer elements."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "المجموعة الفارغة تمتلك ماذا؟",
+        "en": "An empty set has what?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أساسية تساوي واحداً",
+          "en": "a cardinality of one"
+        },
+        {
+          "ar": "أساسية لا نهائية",
+          "en": "an infinite cardinality"
+        },
+        {
+          "ar": "أساسية تساوي اثنين",
+          "en": "a cardinality of two"
+        },
+        {
+          "ar": "أساسية تساوي صفراً",
+          "en": "a cardinality of zero"
+        }
+      ],
+      "concept_id": "c2_empty_set",
+      "explanation": {
+        "ar": "المجموعة الفارغة لا تحوي عناصر، فأساسيتها صفر.",
+        "en": "An empty set contains no elements, so its cardinality is zero."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما هو اتحاد A و B؟",
+        "en": "What is the union A union B?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عناصر في A أو B أو هما",
+          "en": "elements in A or B or both"
+        },
+        {
+          "ar": "عناصر في A و B معاً فقط",
+          "en": "elements in A and B only"
+        },
+        {
+          "ar": "عناصر في A دون B هنا",
+          "en": "elements in A but not B"
+        },
+        {
+          "ar": "عناصر خارج A و B معاً",
+          "en": "elements outside both A and B"
+        }
+      ],
+      "concept_id": "c2_union",
+      "explanation": {
+        "ar": "الاتحاد يحوي كل عنصر في A أو B أو كليهما.",
+        "en": "The union holds every element in A, in B, or in both."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما هو تقاطع A و B؟",
+        "en": "What is the intersection A intersect B?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عناصر خارج المجموعتين",
+          "en": "elements outside both sets"
+        },
+        {
+          "ar": "عناصر في A و B معاً",
+          "en": "elements in both A and B"
+        },
+        {
+          "ar": "عناصر في A أو B فقط",
+          "en": "elements in A or B only"
+        },
+        {
+          "ar": "عناصر في A دون B هنا",
+          "en": "elements in A but not B"
+        }
+      ],
+      "concept_id": "c2_intersection",
+      "explanation": {
+        "ar": "التقاطع يحوي فقط العناصر المشتركة بين المجموعتين.",
+        "en": "The intersection holds only the elements common to both sets."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما هو الفرق A ناقص B؟",
+        "en": "What is the difference A minus B?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عناصر في B دون A هنا",
+          "en": "elements in B but not A"
+        },
+        {
+          "ar": "عناصر خارج المجموعتين",
+          "en": "elements outside both sets"
+        },
+        {
+          "ar": "عناصر في A دون B هنا",
+          "en": "elements in A but not B"
+        },
+        {
+          "ar": "عناصر في A و B معاً",
+          "en": "elements in A and B"
+        }
+      ],
+      "concept_id": "c2_difference",
+      "explanation": {
+        "ar": "الفرق يُبقي العناصر الموجودة في A وليس في B.",
+        "en": "The difference keeps elements that are in A but not in B."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما هو متمم A؟",
+        "en": "What is the complement of A?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عناصر داخل A هنا",
+          "en": "elements inside A here"
+        },
+        {
+          "ar": "عناصر تساوي A تماماً",
+          "en": "elements equal to A here"
+        },
+        {
+          "ar": "عناصر مشتركة مع A",
+          "en": "elements shared with A"
+        },
+        {
+          "ar": "عناصر ليست في A هنا",
+          "en": "elements not in A here"
+        }
+      ],
+      "concept_id": "c2_complement",
+      "explanation": {
+        "ar": "المتمم يحوي كل عنصر في الفضاء ليس في A.",
+        "en": "The complement holds every element of the universe that is not in A."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T13:14:36Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
