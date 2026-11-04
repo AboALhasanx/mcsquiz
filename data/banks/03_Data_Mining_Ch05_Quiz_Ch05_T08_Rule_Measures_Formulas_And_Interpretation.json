@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس القواعد: الصيغ والتفسير",
+    "en": "Rule Measures: Formulas and Interpretation"
+  },
+  "quiz_id": "Quiz_Ch05_T08_Rule_Measures_Formulas_And_Interpretation",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يُحسب دعم القاعدة؟",
+        "en": "How is the Support of a rule computed?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدّ الاتحاد على الكل",
+          "en": "union count over total"
+        },
+        {
+          "ar": "عدّ السابق على الكل",
+          "en": "antecedent over total"
+        },
+        {
+          "ar": "عدّ اللاحق على الكل",
+          "en": "consequent over total"
+        },
+        {
+          "ar": "عدّ عنصر واحد على الكل",
+          "en": "single item over total"
+        }
+      ],
+      "concept_id": "c5m_sup_formula",
+      "explanation": {
+        "ar": "الدعم هو عدّ X وY معاً مقسوماً على N.",
+        "en": "Support is the count of X and Y together divided by N."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف تُحسب ثقة القاعدة؟",
+        "en": "How is the Confidence of a rule computed?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدّ السابق على اللاحق",
+          "en": "antecedent over consequent"
+        },
+        {
+          "ar": "عدّ الاتحاد على السابق",
+          "en": "union count over antecedent"
+        },
+        {
+          "ar": "عدّ الاتحاد على الكل هنا",
+          "en": "union count over total"
+        },
+        {
+          "ar": "عدّ اللاحق على السابق",
+          "en": "consequent over antecedent"
+        }
+      ],
+      "concept_id": "c5m_conf_formula",
+      "explanation": {
+        "ar": "الثقة تقسم عدّ الاتحاد على عدّ السابق.",
+        "en": "Confidence divides the joint count by the antecedent count."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "على ماذا يقسم الرفع الدعم المشترك؟",
+        "en": "What does the Lift formula divide joint support by?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد المعاملات كلها",
+          "en": "count of all transactions"
+        },
+        {
+          "ar": "ثقة القاعدة نفسها",
+          "en": "confidence of the rule here"
+        },
+        {
+          "ar": "حاصل ضرب الدعمين",
+          "en": "product of single supports"
+        },
+        {
+          "ar": "مجموع الدعمين معاً",
+          "en": "sum of the single supports"
+        }
+      ],
+      "concept_id": "c5m_lift_formula",
+      "explanation": {
+        "ar": "الرفع يقسم الدعم المشترك على حاصل ضرب الدعمين الفرديين.",
+        "en": "Lift divides joint support by the product of the two single supports."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "إذا كان رفع الخبز إلى الحليب يساوي 1.5، ماذا ينتج؟",
+        "en": "If Lift of Bread to Milk equals 1.5, what follows?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تماماً كالعشوائية",
+          "en": "exactly as often as random"
+        },
+        {
+          "ar": "أقل من الاستقلال",
+          "en": "less often than independence"
+        },
+        {
+          "ar": "لا تحدث معاً أبداً",
+          "en": "never occurring together at all"
+        },
+        {
+          "ar": "أكثر من الاستقلال",
+          "en": "more often than independence"
+        }
+      ],
+      "concept_id": "c5m_lift_1_5",
+      "explanation": {
+        "ar": "رفع 1.5 يعني أن الاثنين يجتمعان أكثر مما تتوقعه الاستقلالية.",
+        "en": "A Lift of 1.5 means the pair co-occurs more than independence predicts."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا تُظهر قيمة الدعم العالية؟",
+        "en": "What does a high Support value show?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المزيج يحدث كثيراً",
+          "en": "the combination occurs often"
+        },
+        {
+          "ar": "القاعدة تثبت السببية",
+          "en": "the rule proves causation"
+        },
+        {
+          "ar": "العنصران مستقلان",
+          "en": "the items are independent"
+        },
+        {
+          "ar": "القاعدة زائدة دائماً",
+          "en": "the rule is always redundant"
+        }
+      ],
+      "concept_id": "c5m_support_high",
+      "explanation": {
+        "ar": "الدعم العالي يعني أن المزيج يحدث بكثرة في البيانات.",
+        "en": "A high Support means the combination occurs frequently in the data."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ثقة 75% تعني ماذا؟",
+        "en": "A Confidence of 75% means what?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "X وY لا تجتمعان أبداً",
+          "en": "X and Y never co-occur"
+        },
+        {
+          "ar": "75% من X تحوي Y أيضاً",
+          "en": "75% of X also have Y"
+        },
+        {
+          "ar": "75% من الصفوف فيها Y",
+          "en": "75% of all rows have Y"
+        },
+        {
+          "ar": "Y يتبع X دائماً هنا",
+          "en": "Y always follows X"
+        }
+      ],
+      "concept_id": "c5m_conf_meaning",
+      "explanation": {
+        "ar": "تعني أن 75% من المعاملات التي تحوي X تحوي Y أيضاً.",
+        "en": "It means 75% of the transactions containing X also contain Y."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "بماذا يقارن الدعم عدّ الاتحاد؟",
+        "en": "What does Support compare the joint count against?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدّ اللاحق وحده",
+          "en": "the consequent count"
+        },
+        {
+          "ar": "تكرار عنصر واحد",
+          "en": "the item frequency now"
+        },
+        {
+          "ar": "إجمالي المعاملات",
+          "en": "the total transactions"
+        },
+        {
+          "ar": "عدّ السابق وحده هنا",
+          "en": "the antecedent count"
+        }
+      ],
+      "concept_id": "c5m_support_range",
+      "explanation": {
+        "ar": "الدعم يقسم عدّ الاتحاد على إجمالي عدد المعاملات.",
+        "en": "Support divides the joint count by the total number of transactions."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مقياس يجيب كم مرة يحدث Y عند حدوث X؟",
+        "en": "Which measure answers how often Y occurs when X occurs?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مقياس الدعم",
+          "en": "the support measure"
+        },
+        {
+          "ar": "مقياس الرفع",
+          "en": "the lift measure now"
+        },
+        {
+          "ar": "مقياس التغطية",
+          "en": "the coverage measure"
+        },
+        {
+          "ar": "مقياس الثقة",
+          "en": "the confidence measure"
+        }
+      ],
+      "concept_id": "c5m_measure_choice",
+      "explanation": {
+        "ar": "الثقة هي التكرار الشرطي لـ Y بشرط X.",
+        "en": "Confidence is the conditional frequency of Y given X."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:57:27Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

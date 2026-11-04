@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.10.1';
+const VERSION = '1.10.2';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -182,6 +182,9 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T05_Apriori.json',
   './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T06_FP_Growth_And_Enumeration_Trees.json',
   './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T07_Sequential_Pattern_Growth.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T08_Rule_Measures_Formulas_And_Interpretation.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T09_Frequent_Itemset_Worked_Examples.json',
+  './data/banks/03_Data_Mining_Ch05_Quiz_Ch05_T10_Algorithm_Comparison_And_Search.json',
   './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T01_Classification_Foundations_And_Data_Splits.json',
   './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T02_Classification_Types_And_Task_Differences.json',
   './data/banks/03_Data_Mining_Ch06_Quiz_Ch06_T03_Decision_Tree_Induction_And_Pruning.json',

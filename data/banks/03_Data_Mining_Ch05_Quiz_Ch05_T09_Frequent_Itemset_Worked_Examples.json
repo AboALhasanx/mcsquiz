@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أمثلة محلولة للمجموعات المتكررة",
+    "en": "Frequent Itemset Worked Examples"
+  },
+  "quiz_id": "Quiz_Ch05_T09_Frequent_Itemset_Worked_Examples",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "مع 5 معاملات وحد أدنى 40%، كم معاملة يجب أن تحوي المجموعة؟",
+        "en": "With 5 transactions and min_sup 40%, how many must contain an itemset?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "معاملتان على الأقل",
+          "en": "at least two transactions"
+        },
+        {
+          "ar": "ثلاث معاملات فقط",
+          "en": "at least three transactions"
+        },
+        {
+          "ar": "أربع معاملات فقط",
+          "en": "at least four transactions"
+        },
+        {
+          "ar": "معاملة واحدة فقط هنا",
+          "en": "at least one transaction"
+        }
+      ],
+      "concept_id": "c5w_minsup_2",
+      "explanation": {
+        "ar": "5 ضرب 0.40 يساوي 2، فالمجموعة يجب أن تظهر في معاملتين على الأقل.",
+        "en": "5 times 0.40 equals 2, so the itemset must appear in at least two."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "بحد 40% و5 معاملات، هل الخبز والحليب والقهوة متكررة؟",
+        "en": "At 40% with 5 transactions, is Bread,Milk,Coffee frequent?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا، الدعم 80%",
+          "en": "no, support is 80%"
+        },
+        {
+          "ar": "لا، الدعم 20%",
+          "en": "no, support is 20%"
+        },
+        {
+          "ar": "نعم، الدعم 60%",
+          "en": "yes, support is 60%"
+        },
+        {
+          "ar": "نعم، الدعم 40%",
+          "en": "yes, support is 40%"
+        }
+      ],
+      "concept_id": "c5w_breadmilkcoffee_not",
+      "explanation": {
+        "ar": "تظهر في واحدة من خمس معاملات، فالدعم 20% وهي غير متكررة.",
+        "en": "It appears in one of five transactions, so support is 20% and it is not frequent."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لأربعة عناصر، كم مجموعة غير فارغة توجد؟",
+        "en": "For four items, how many non-empty itemsets exist?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ثمانية مجموعات",
+          "en": "eight itemsets"
+        },
+        {
+          "ar": "ثلاثون مجموعة",
+          "en": "thirty itemsets"
+        },
+        {
+          "ar": "خمسة عشر مجموعة",
+          "en": "fifteen itemsets"
+        },
+        {
+          "ar": "ستة عشر مجموعة",
+          "en": "sixteen itemsets"
+        }
+      ],
+      "concept_id": "c5w_brute_15",
+      "explanation": {
+        "ar": "2 أس 4 ناقص 1 يساوي 15 مجموعة غير فارغة.",
+        "en": "2 to the power 4 minus 1 equals 15 non-empty itemsets."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لعشرة عناصر، 2 أس 10 ناقص 1 يساوي ماذا؟",
+        "en": "For ten items, 2^10 minus 1 equals what?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مئة وثلاثة وعشرون",
+          "en": "one hundred and twenty three"
+        },
+        {
+          "ar": "عشرة آلاف وعشرون",
+          "en": "ten thousand and twenty three"
+        },
+        {
+          "ar": "مئتان وستة وخمسون",
+          "en": "two hundred and fifty six"
+        },
+        {
+          "ar": "ألف وثلاثة وعشرون",
+          "en": "one thousand and twenty three"
+        }
+      ],
+      "concept_id": "c5w_brute_1023",
+      "explanation": {
+        "ar": "2 أس 10 يساوي 1024، فناقص 1 يعطي 1023 مجموعة.",
+        "en": "2 to the power 10 is 1024, so minus 1 gives 1023 itemsets."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "في مثال الـ5 معاملات بحد 40%، أي مجموعات مفردة متكررة؟",
+        "en": "In the 5-transaction example at 40%, which 1-itemsets are frequent?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الخبز والحليب والقهوة",
+          "en": "Bread, Milk, Coffee"
+        },
+        {
+          "ar": "الخبز والحليب فقط معاً",
+          "en": "Bread and Milk only"
+        },
+        {
+          "ar": "الحليب والقهوة فقط معاً",
+          "en": "Milk and Coffee only"
+        },
+        {
+          "ar": "الخبز والقهوة فقط معاً",
+          "en": "Bread and Coffee only"
+        }
+      ],
+      "concept_id": "c5w_l1_example",
+      "explanation": {
+        "ar": "الخبز والحليب والقهوة كل منها يظهر مرتين على الأقل، فكلها متكررة.",
+        "en": "Bread, Milk and Coffee each appear at least twice, so all are frequent."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "لماذا تتوقف Apriori عند المجموعة الثلاثية في المثال؟",
+        "en": "Why does Apriori stop at the 3-itemset in the example?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا مجموعات فرعية له",
+          "en": "it has no candidate subsets"
+        },
+        {
+          "ar": "دعمه يقل عن 40% فقط",
+          "en": "its support falls below 40%"
+        },
+        {
+          "ar": "دعمه يبلغ 60% هنا",
+          "en": "its support reaches 60%"
+        },
+        {
+          "ar": "يحوي عناصر كثيرة",
+          "en": "it contains too many items"
+        }
+      ],
+      "concept_id": "c5w_apriori_stop",
+      "explanation": {
+        "ar": "المجموعة الثلاثية تظهر مرة من خمس، فـ20% أقل من حد 40%.",
+        "en": "The 3-itemset appears once in five, so 20% is below the 40% threshold."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما الخطوة الرئيسية الأولى في تنقيب الارتباط؟",
+        "en": "What is the first major step in association mining?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حساب قيم الرفع كلها",
+          "en": "compute the lift values"
+        },
+        {
+          "ar": "ترتيب كل المعاملات أولاً",
+          "en": "sort all the transactions"
+        },
+        {
+          "ar": "توليد المجموعات المتكررة",
+          "en": "generate frequent itemsets"
+        },
+        {
+          "ar": "توليد القواعد النهائية",
+          "en": "generate the final rules"
+        }
+      ],
+      "concept_id": "c5w_fi_first_step",
+      "explanation": {
+        "ar": "تُولَّد المجموعات المتكررة أولاً، ثم تُشتق القواعد منها.",
+        "en": "Frequent itemsets are generated first, then rules are derived from them."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما هو الحد الأدنى للدعم؟",
+        "en": "What is min_sup?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قيمة دعم تلقائية",
+          "en": "an automatic support value"
+        },
+        {
+          "ar": "حد ثقة ثابت هنا",
+          "en": "a fixed confidence limit"
+        },
+        {
+          "ar": "أقصى عدد من القواعد",
+          "en": "a rule count maximum"
+        },
+        {
+          "ar": "حد يحدده المستخدم",
+          "en": "a user defined threshold"
+        }
+      ],
+      "concept_id": "c5w_minsup_def",
+      "explanation": {
+        "ar": "الحد الأدنى للدعم عتبة يحددها المستخدم لمدى تكرار المجموعة.",
+        "en": "Minimum support is a user-defined threshold for how often an itemset must occur."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:57:27Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

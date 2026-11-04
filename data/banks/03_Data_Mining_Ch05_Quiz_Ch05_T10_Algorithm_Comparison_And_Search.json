@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقارنة الخوارزميات واستراتيجيات البحث",
+    "en": "Algorithm Comparison and Search Strategies"
+  },
+  "quiz_id": "Quiz_Ch05_T10_Algorithm_Comparison_And_Search",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كم مسحة لقاعدة البيانات تحتاج Apriori عادة؟",
+        "en": "How many database scans does Apriori typically need?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدة مسحات متكررة",
+          "en": "multiple scans"
+        },
+        {
+          "ar": "مسحتان فقط بالضبط",
+          "en": "exactly two scans"
+        },
+        {
+          "ar": "مسحة واحدة فقط",
+          "en": "a single scan"
+        },
+        {
+          "ar": "لا مسح على الإطلاق",
+          "en": "no scan at all"
+        }
+      ],
+      "concept_id": "c5c_apriori_scan",
+      "explanation": {
+        "ar": "Apriori تعيد مسح القاعدة عند كل مستوى، فتحتاج مسحات متعددة.",
+        "en": "Apriori rescans the database at each level, so it needs multiple scans."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كم مسحة رئيسية تستخدم FP-Growth لبناء الشجرة؟",
+        "en": "How many main scans does FP-Growth use to build the tree?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "دون مسح بتاتاً",
+          "en": "no scan at all here"
+        },
+        {
+          "ar": "مسحتان عادةً",
+          "en": "typically two scans"
+        },
+        {
+          "ar": "مسحات متعددة",
+          "en": "many repeated scans"
+        },
+        {
+          "ar": "مسحة واحدة فقط",
+          "en": "exactly one scan only"
+        }
+      ],
+      "concept_id": "c5c_fpgrowth_scan",
+      "explanation": {
+        "ar": "FP-Growth تحتاج عادة مسحتين رئيسيتين لبناء شجرة FP.",
+        "en": "FP-Growth usually needs two main scans to build the FP-tree."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الاستراتيجية الرئيسية لـ Apriori؟",
+        "en": "What is the main strategy of Apriori?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "رتّب ثم اعدد",
+          "en": "sort then count all"
+        },
+        {
+          "ar": "اعيّن ثم اختبر",
+          "en": "sample and test all"
+        },
+        {
+          "ar": "ولّد ثم قلّم",
+          "en": "generate and prune"
+        },
+        {
+          "ar": "اضغط ثم انمِ",
+          "en": "compress and grow"
+        }
+      ],
+      "concept_id": "c5c_apriori_strategy",
+      "explanation": {
+        "ar": "Apriori تولّد المرشحات وتقلّم ما يحوي مجموعة فرعية غير متكررة.",
+        "en": "Apriori generates candidates and prunes those with an infrequent subset."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الاستراتيجية الرئيسية لـ FP-Growth؟",
+        "en": "What is the main strategy of FP-Growth?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ولّد ثم قلّم",
+          "en": "generate and prune"
+        },
+        {
+          "ar": "رتّب ثم اعدد",
+          "en": "sort then count"
+        },
+        {
+          "ar": "اعيّن ثم اختبر",
+          "en": "sample and test"
+        },
+        {
+          "ar": "اضغط ثم انمِ",
+          "en": "compress and grow"
+        }
+      ],
+      "concept_id": "c5c_fpgrowth_strategy",
+      "explanation": {
+        "ar": "FP-Growth تضغط البيانات في شجرة FP وتنمّي الأنماط منها.",
+        "en": "FP-Growth compresses data into an FP-tree and grows patterns from it."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يمثل جذر شجرة التعداد؟",
+        "en": "What does the enumeration-tree root represent?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المجموعة الفارغة",
+          "en": "the empty itemset"
+        },
+        {
+          "ar": "العنصر الأول فقط",
+          "en": "the first item"
+        },
+        {
+          "ar": "أكبر مجموعة فقط",
+          "en": "the largest itemset"
+        },
+        {
+          "ar": "القاعدة النهائية",
+          "en": "the final rule"
+        }
+      ],
+      "concept_id": "c5c_enum_root",
+      "explanation": {
+        "ar": "جذر شجرة التعداد هو المجموعة الفارغة.",
+        "en": "The root of an enumeration tree is the empty itemset."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يستكشف البحث بالعمق شجرة التعداد؟",
+        "en": "How does Depth-First Search explore an enumeration tree?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الجذر وحده فقط هنا",
+          "en": "only the root node"
+        },
+        {
+          "ar": "فرعاً عميقاً أولاً",
+          "en": "one branch deeply first"
+        },
+        {
+          "ar": "كل المستوى تتابعاً",
+          "en": "all nodes level by level"
+        },
+        {
+          "ar": "عقداً عشوائية دائماً",
+          "en": "random nodes each time"
+        }
+      ],
+      "concept_id": "c5c_dfs_bfs",
+      "explanation": {
+        "ar": "البحث بالعمق يمضي عميقاً في فرع واحد قبل الرجوع.",
+        "en": "DFS goes as deep as possible along one branch before backtracking."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "متى يُقلَّم فرع من شجرة التعداد؟",
+        "en": "When is a branch of the enumeration tree pruned?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عندما يحوي عنصراً واحداً",
+          "en": "when it has only one item"
+        },
+        {
+          "ar": "عندما يحوي عناصر كثيرة",
+          "en": "when it has too many items"
+        },
+        {
+          "ar": "عندما دعمه منخفض جداً",
+          "en": "when its support is too low"
+        },
+        {
+          "ar": "عندما دعمه مرتفع جداً",
+          "en": "when its support is too high"
+        }
+      ],
+      "concept_id": "c5c_prune_branch",
+      "explanation": {
+        "ar": "يُقلَّم الفرع عندما تكون مجموعته غير متكررة، فلا تفيد أي مجموعة أكبر.",
+        "en": "A branch is pruned when its itemset is infrequent, so no superset can help."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما القيد الرئيسي لأشجار التعداد؟",
+        "en": "What is the main limitation of enumeration trees?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قلة المجموعات المرشحة",
+          "en": "too few candidate itemsets"
+        },
+        {
+          "ar": "عجز عن استخدام الدعم",
+          "en": "inability to use support"
+        },
+        {
+          "ar": "غياب العناصر النادرة",
+          "en": "always missing rare items"
+        },
+        {
+          "ar": "نمو أسي دون أي تقليم",
+          "en": "exponential growth unpruned"
+        }
+      ],
+      "concept_id": "c5c_enum_limitation",
+      "explanation": {
+        "ar": "دون تقليم، تنمو الشجرة أُسّياً مع عدد العناصر.",
+        "en": "Without pruning, the tree grows exponentially with the number of items."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:57:27Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
