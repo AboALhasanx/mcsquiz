@@ -319,6 +319,121 @@
     };
   }
 
+  var SUBJECT_MASTERY_THRESHOLD = 80;
+
+  var SUBJECT_METADATA = {
+    '01_Cyber_Security': { icon: 'shield-check', color: '#06b6d4', accentClass: 'mastery-cyber', shortTitle: 'الأمن السيبراني' },
+    '02_English_Language': { icon: 'languages', color: '#f97316', accentClass: 'mastery-english', shortTitle: 'اللغة الإنجليزية' },
+    '03_Data_Mining': { icon: 'database', color: '#eab308', accentClass: 'mastery-mining', shortTitle: 'تنقيب البيانات' },
+    '04_Advanced_Software_Eng': { icon: 'cpu', color: '#3b82f6', accentClass: 'mastery-swe', shortTitle: 'هندسة البرمجيات' },
+    '05_Soft_Computing': { icon: 'network', color: '#a855f7', accentClass: 'mastery-soft', shortTitle: 'الحوسبة اللينة' },
+    '06_Artificial_Intelligence': { icon: 'bot', color: '#10b981', accentClass: 'mastery-ai', shortTitle: 'الذكاء الاصطناعي' }
+  };
+
+  function getSubjectMeta(subjectId, fallbackTitle) {
+    var meta = SUBJECT_METADATA[subjectId];
+    if (meta) return meta;
+    return {
+      icon: 'award',
+      color: '#38bdf8',
+      accentClass: 'mastery-default',
+      shortTitle: fallbackTitle || subjectId || 'مادة دراسية'
+    };
+  }
+
+  function getBestScore(quizId) {
+    try {
+      var raw = localStorage.getItem('portal_best_' + quizId);
+      if (!raw) return null;
+      var obj = JSON.parse(raw);
+      return (obj && typeof obj.pct === 'number') ? obj : null;
+    } catch (e) { // audit-ignore: optional storage read
+      return null;
+    }
+  }
+
+  function evaluateSubjectMastery(subjectsOverride, getBestOverride) {
+    var subjects = [];
+    if (Array.isArray(subjectsOverride)) {
+      subjects = subjectsOverride;
+    } else {
+      var state = global.__portalState || (global.__portal && global.__portal.S) || {};
+      if (state.index && Array.isArray(state.index.subjects)) {
+        subjects = state.index.subjects;
+      }
+    }
+
+    var bestFn = (typeof getBestOverride === 'function') ? getBestOverride : getBestScore;
+    var outSubjects = [];
+    var masteredCount = 0;
+
+    subjects.forEach(function (sub) {
+      if (!sub) return;
+      var subId = sub.subject_id || '';
+      var subTitle = sub.subject_title || subId;
+      var meta = getSubjectMeta(subId, subTitle);
+      var chapters = Array.isArray(sub.chapters) ? sub.chapters : [];
+      var totalQuizzes = chapters.length;
+      var completedQuizzes = 0;
+      var sumPct = 0;
+
+      chapters.forEach(function (ch) {
+        if (!ch || !ch.quiz_id) return;
+        var b = bestFn(ch.quiz_id);
+        if (b && typeof b.pct === 'number') {
+          completedQuizzes++;
+          sumPct += Number(b.pct);
+        }
+      });
+
+      var avgPct = completedQuizzes > 0 ? Math.round(sumPct / completedQuizzes) : 0;
+      var progressPct = totalQuizzes > 0 ? Math.min(100, Math.round((completedQuizzes / totalQuizzes) * 100)) : 0;
+      var isMastered = (totalQuizzes > 0 && completedQuizzes === totalQuizzes && avgPct >= SUBJECT_MASTERY_THRESHOLD);
+
+      var tier = 0;
+      if (isMastered) {
+        masteredCount++;
+        if (avgPct >= 98) tier = 4;      // Diamond
+        else if (avgPct >= 90) tier = 3; // Gold
+        else tier = 2;                   // Silver
+      }
+
+      var tierMeta = TIERS[tier] || null;
+      var statusText = '';
+      if (isMastered) {
+        statusText = 'مُتقَن (' + completedQuizzes + '/' + totalQuizzes + ' · ' + avgPct + '%)';
+      } else if (completedQuizzes === 0) {
+        statusText = '0 / ' + totalQuizzes + ' كوزات · لم تبدأ بعد';
+      } else {
+        statusText = completedQuizzes + ' / ' + totalQuizzes + ' كوزات · ' + avgPct + '%';
+      }
+
+      outSubjects.push({
+        subjectId: subId,
+        title: subTitle,
+        shortTitle: meta.shortTitle,
+        icon: meta.icon,
+        color: meta.color,
+        accentClass: meta.accentClass,
+        totalQuizzes: totalQuizzes,
+        completedQuizzes: completedQuizzes,
+        sumPct: sumPct,
+        avgPct: avgPct,
+        progressPct: progressPct,
+        isMastered: isMastered,
+        tier: tier,
+        tierMeta: tierMeta,
+        statusText: statusText
+      });
+    });
+
+    return {
+      subjects: outSubjects,
+      masteredCount: masteredCount,
+      totalSubjects: outSubjects.length
+    };
+  }
+
   function loadState() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
@@ -373,8 +488,22 @@
       });
     });
 
+    var subjectMastery = evaluateSubjectMastery();
+
     if (!state.hasBootstrapped) {
       state.hasBootstrapped = true;
+      if (subjectMastery && Array.isArray(subjectMastery.subjects)) {
+        subjectMastery.subjects.forEach(function (s) {
+          if (s.isMastered) {
+            var k = 'mastery_' + s.subjectId;
+            var rec = state.unlocked[k] || { tier: 0, unlockedAt: 0, lastNotifiedTier: 0 };
+            rec.tier = s.tier;
+            rec.lastNotifiedTier = s.tier;
+            if (!rec.unlockedAt) rec.unlockedAt = Date.now();
+            state.unlocked[k] = rec;
+          }
+        });
+      }
       changed = true;
     }
 
@@ -384,7 +513,8 @@
       stats: stats,
       results: results,
       unlockedCount: results.filter(function (r) { return r.isUnlocked; }).length,
-      totalCount: CATALOG.length
+      totalCount: CATALOG.length,
+      subjectMastery: subjectMastery
     };
   }
 
@@ -422,6 +552,22 @@
             };
           }
         });
+        // Also baseline prior subject mastery
+        try {
+          var priorSm = evaluateSubjectMastery();
+          if (priorSm && Array.isArray(priorSm.subjects)) {
+            priorSm.subjects.forEach(function (s) {
+              if (s.isMastered) {
+                var pk = 'mastery_' + s.subjectId;
+                state.unlocked[pk] = {
+                  tier: s.tier,
+                  unlockedAt: Date.now(),
+                  lastNotifiedTier: s.tier
+                };
+              }
+            });
+          }
+        } catch (e) {} // audit-ignore: optional prior mastery baseline
       }
     }
 
@@ -450,6 +596,38 @@
         }
       }
     });
+
+    // Check subject mastery transitions
+    try {
+      var sm = evaluateSubjectMastery();
+      if (sm && Array.isArray(sm.subjects)) {
+        sm.subjects.forEach(function (s) {
+          if (s.isMastered) {
+            var stateKey = 'mastery_' + s.subjectId;
+            var sRec = state.unlocked[stateKey] || { tier: 0, unlockedAt: 0, lastNotifiedTier: 0 };
+            if (s.tier > sRec.tier) {
+              sRec.tier = s.tier;
+              sRec.unlockedAt = Date.now();
+              state.unlocked[stateKey] = sRec;
+
+              if (sRec.tier > sRec.lastNotifiedTier) {
+                sRec.lastNotifiedTier = sRec.tier;
+                state.unlocked[stateKey] = sRec;
+                var sTierMeta = s.tierMeta || TIERS[s.tier] || { label: 'وسام إتقان المادة', color: s.color };
+
+                newlyUnlocked.push({
+                  badge: { id: stateKey, icon: s.icon },
+                  tier: s.tier,
+                  tierMeta: sTierMeta,
+                  title: 'وسام إتقان: ' + s.shortTitle,
+                  desc: 'إتمام كافة كوزات مادة ' + s.shortTitle + ' بمعدل 80% فأعلى'
+                });
+              }
+            }
+          }
+        });
+      }
+    } catch (e) {} // audit-ignore: optional subject mastery celebration
 
     if (newlyUnlocked.length > 0) {
       saveState(state);

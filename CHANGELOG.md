@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.3] — 2026-11-04
+
+### Changed
+- content: English Ch01/Ch03 banks to 12 each (v71)
+
+
 ## [1.11.2] — 2026-11-04
 
 ### Changed

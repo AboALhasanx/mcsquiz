@@ -84,6 +84,8 @@
     cloudName: null, // linked Telegram account display name
   };
 
+  try { window.__portalState = S; } catch (e) {} // audit-ignore: portal state expose
+
   const SAVED_KEY = 'portal_saved_v1';
   const HISTORY_KEY = 'portal_history_v1';
   const UI_KEY = 'portal_ui_v1';
@@ -562,11 +564,24 @@
       S.subjectFilter = subjects[0].subject_id;
       S.chapterFilter = null;
     }
+    const masteryMap = {};
+    if (window.PortalAchievements && window.PortalAchievements.evaluateSubjectMastery) {
+      try {
+        const sm = window.PortalAchievements.evaluateSubjectMastery(subjects, getBest);
+        (sm.subjects || []).forEach((s) => { masteryMap[s.subjectId] = s; });
+      } catch (e) {} // audit-ignore: optional mastery lookup
+    }
     const mk = (id, label) => {
       const b = document.createElement('button');
       b.className = 'filter-chip' + (S.subjectFilter === id ? ' active' : '');
       b.dataset.subject = id;
-      b.textContent = label;
+      const isMastered = !!(masteryMap[id] && masteryMap[id].isMastered);
+      if (isMastered) {
+        b.innerHTML = '<span class="chip-label">' + escapeHtml(label) + '</span>' +
+          '<i data-lucide="shield-check" class="chip-mastery-icon" aria-label="مادة مُتقنة"></i>';
+      } else {
+        b.textContent = label;
+      }
       b.setAttribute('aria-pressed', S.subjectFilter === id ? 'true' : 'false');
       b.addEventListener('click', () => {
         S.subjectFilter = id;
@@ -577,6 +592,7 @@
       return b;
     };
     subjects.forEach((s) => bar.appendChild(mk(s.subject_id, s.subject_title)));
+    icons();
   }
   function visibleChapters() {
     const sub = currentSubject();
@@ -3761,7 +3777,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.2';
+  const SHELL_VERSION = '1.11.3';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

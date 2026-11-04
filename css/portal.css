@@ -1896,6 +1896,89 @@ html[data-theme="light"] .league-row-acc {
   margin-top: 0.2rem;
 }
 
+/* --- Subject Mastery Sub-section in Honors Shelf --- */
+.profile-mastery-section {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-card);
+}
+.profile-honors-icon.mastery-icon {
+  color: #eab308;
+}
+.profile-mastery-grid {
+  margin-top: 0.2rem;
+}
+.chip-mastery-icon {
+  width: 14px;
+  height: 14px;
+  color: #eab308;
+  display: inline-block;
+  vertical-align: middle;
+  margin-inline-start: 4px;
+  flex-shrink: 0;
+}
+
+/* Distinct Subject Metallic Accents when Mastered */
+.profile-badge-item.mastery-cyber.is-unlocked {
+  border-color: rgba(6, 182, 212, 0.55);
+  background: radial-gradient(circle at top, rgba(6, 182, 212, 0.18), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.mastery-cyber.is-unlocked .profile-badge-icon-box {
+  background: rgba(6, 182, 212, 0.18);
+  border: 1px solid rgba(6, 182, 212, 0.45);
+  color: #06b6d4;
+}
+
+.profile-badge-item.mastery-english.is-unlocked {
+  border-color: rgba(249, 115, 22, 0.55);
+  background: radial-gradient(circle at top, rgba(249, 115, 22, 0.18), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.mastery-english.is-unlocked .profile-badge-icon-box {
+  background: rgba(249, 115, 22, 0.18);
+  border: 1px solid rgba(249, 115, 22, 0.45);
+  color: #f97316;
+}
+
+.profile-badge-item.mastery-mining.is-unlocked {
+  border-color: rgba(234, 179, 8, 0.55);
+  background: radial-gradient(circle at top, rgba(234, 179, 8, 0.18), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.mastery-mining.is-unlocked .profile-badge-icon-box {
+  background: rgba(234, 179, 8, 0.18);
+  border: 1px solid rgba(234, 179, 8, 0.45);
+  color: #eab308;
+}
+
+.profile-badge-item.mastery-swe.is-unlocked {
+  border-color: rgba(59, 130, 246, 0.55);
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.mastery-swe.is-unlocked .profile-badge-icon-box {
+  background: rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  color: #3b82f6;
+}
+
+.profile-badge-item.mastery-soft.is-unlocked {
+  border-color: rgba(168, 85, 247, 0.55);
+  background: radial-gradient(circle at top, rgba(168, 85, 247, 0.18), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.mastery-soft.is-unlocked .profile-badge-icon-box {
+  background: rgba(168, 85, 247, 0.18);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #a855f7;
+}
+
+.profile-badge-item.mastery-ai.is-unlocked {
+  border-color: rgba(16, 185, 129, 0.55);
+  background: radial-gradient(circle at top, rgba(16, 185, 129, 0.18), transparent 75%), var(--bg-card);
+}
+.profile-badge-item.mastery-ai.is-unlocked .profile-badge-icon-box {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #10b981;
+}
+
 /* ==========================================================================
    Badge Details Bottom Sheet (iOS & Apple Activity Inspired)
    ========================================================================== */
