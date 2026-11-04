@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.20';
+const VERSION = '1.11.21';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -266,6 +266,9 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B09_Quality_And_Defect_Metrics.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B10_Productivity_And_Process_Metrics.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B11_Metrics_Analysis_And_Programme.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B02_Software_Quality_Models.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B03_CMM_Maturity_Levels.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B04_CMM_Process_Areas.json',
   './data/banks/05_Soft_Computing_Ch01_Quiz_Ch01_T01_SC_Scope_And_Concepts.json',
   './data/banks/05_Soft_Computing_Ch01_Quiz_Ch01_T02_Paradigms_ANN_And_EC.json',
   './data/banks/05_Soft_Computing_Ch02_Quiz_Ch02_T01_Crisp_Set_Theory.json',

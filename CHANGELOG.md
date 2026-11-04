@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.21] — 2026-11-05
+
+### Changed
+- content: ASE Ch07 quality models and CMM banks (v89)
+
+
 ## [1.11.20] — 2026-11-05
 
 ### Changed
