@@ -2110,253 +2110,190 @@
     }
   }
 
-  // ---------------- guided tour (custom spotlight, short steps, replayable, hands-on) ----------------
+  // ---------------- guided tour (Driver.js modern SVG spotlight, 22 steps, hands-on) ----------------
   const TOUR_STEPS = [
-    { title: 'MCSQuiz — جولة تعريفية', body: 'دليل شامل للبوابة: المواد، الاختبارات، النتيجة، المحفوظات، الإحصائيات، والدوري. يمكنك إنهاء الجولة في أي وقت.', center: true },
-
-    { title: 'أزرار الشريط العلوي', body: 'الجرس للتنبيهات (يظهر إشعار عند نزول أسئلة جديدة)، ثم المحفوظات وتبديل المظهر والقائمة — والشعار يعيدك للرئيسية.', target: '.header-catalog-actions' },
-
-    { title: 'القائمة الجانبية', body: 'المحفوظ والإحصائيات والدوري، وتثبيت التطبيق والنسخة بدون إنترنت، والصوت والمظهر.', open: 'menu', target: '#menu-drawer .menu-list' },
-
-    { title: 'الجرس والتنبيهات', body: 'أي أسئلة تنزل جديدة توصلك هنا: المادة والجابتر وعدد الأسئلة. تفتحها أو تحدد الكل كمقروء.', target: '#btn-bell' },
-
-    { title: 'اختر المادة', body: 'شريط أفقي — اسحب واختر مادتك.', target: '#subject-filter-bar' },
-
-    { title: 'اختر الجابتر', body: 'أرقام الجابترات. الرقم الفاتح هو المختار حالياً.', target: '#chapter-filter-bar' },
-
-    { title: 'صف الكوز', body: 'زر التشغيل يبدأ الكوز فوراً، وأيقونة (i) تعرض عدد الأسئلة وأفضل نتيجة.', target: '#deck-catalog .sketch-row:first-child' },
-
+    { title: 'MCSQuiz — جولة تعريفية شاملة', body: 'دليل شامل لكل تفاصيل البوابة: المواد، الاختبارات، النتيجة، المحفوظات، الإحصائيات، والدوري. يمكنك إنهاء الجولة بأي وقت.', center: true },
+    { title: 'أزرار الشريط العلوي', body: 'الجرس للتنبيهات (يظهر إشعار عند نزول أسئلة جديدة)، ثم المحفوظات وتبديل المظهر والقائمة — والشعار يعيدك للرئيسية.', target: '.header-catalog-actions', side: 'bottom', align: 'end' },
+    { title: 'القائمة الجانبية', body: 'المحفوظ والإحصائيات والدوري، وتثبيت التطبيق والنسخة بدون إنترنت، والصوت والمظهر.', target: '#menu-drawer .menu-list', side: 'left', align: 'start', open: 'menu' },
+    { title: 'الجرس والتنبيهات', body: 'أي أسئلة تنزل جديدة توصلك هنا: المادة والجابتر وعدد الأسئلة. تفتحها أو تحدد الكل كمقروء.', target: '#btn-bell', side: 'bottom', align: 'center' },
+    { title: 'اختر المادة', body: 'شريط أفقي — اسحب واختر مادتك.', target: '#subject-filter-bar', side: 'bottom', align: 'center' },
+    { title: 'اختر الجابتر', body: 'أرقام الجابترات. الرقم الفاتح هو المختار حالياً.', target: '#chapter-filter-bar', side: 'bottom', align: 'center' },
+    { title: 'صف الكوز', body: 'زر التشغيل يبدأ الكوز فوراً، وأيقونة (i) تعرض عدد الأسئلة وأفضل نتيجة.', target: '#deck-catalog .sketch-row:first-child', side: 'bottom', align: 'center' },
     { title: 'تجربة اختبار', body: 'سنفتح الاختبار الأول لمعاينة تجربة الحل عملياً.', center: true, go: true },
-
-    { title: 'البداية', body: 'هنا عدد الأسئلة والوقت المتوقع. المؤقت يبدأ عند الضغط.', target: '#btn-start-quiz', action: 'start' },
-
-    { title: 'الحفظ', body: 'زر الحفظ أعلى البطاقة — يضيف السؤال إلى المحفوظات.', target: '#btn-save-question' },
-
-    { title: 'زر الترجمة', body: 'أيقونة الترجمة ثابتة في الشريط العلوي: باللون الذهبي للعربية، والقياسي للإنجليزية. تبدّل لغة السؤال والخيارات والشرح.', target: '#lang-toggle-session' },
-
-    { title: 'أجب', body: 'اختر إجابة — لا يوجد زر تخطٍ؛ يلزم تحديد خيار للانتقال.', target: '#options-container', action: 'answer' },
-
-    { title: 'الشرح فوراً', body: 'بعد الإجابة يظهر الشرح بالعربي تحت الخيارات.', target: '#live-feedback-box' },
-
-    { title: 'التالي', body: 'ينتقل بعد الإجابة فقط، ومع السؤال الأخير يُنهي الاختبار ويحسب النتيجة.', target: '#btn-next' },
-
-    { title: 'جدول الأسئلة', body: 'هذا الزر يفتح خريطة الأسئلة.', target: '#btn-open-matrix' },
-
-    { title: 'خريطة الأسئلة', body: 'توضح الإجابات الصحيحة والخاطئة مع إمكانية مراجعة الأسئلة السابقة. يُنهى الاختبار تلقائياً بعد آخر سؤال.', open: 'matrix', target: '#matrix-drawer .matrix-grid' },
-
-    { title: 'شاشة النتيجة', body: 'عرض تفصيلي للنتيجة: النسبة، الإجابات، الزمن، ومراجعة لكل سؤال مع الشرح وإمكانية حفظ أي سؤال، والترجمة من الشريط العلوي.', demo: 'results', target: '.results-card' },
-
-    { title: 'المحفوظات', body: 'الأسئلة المحفوظة مقسمة حسب المادة والفصل، مع خيار بدء اختبار للفصل أو المادة كاملة.', center: true, route: '#/saved' },
-
-    { title: 'الإحصائيات', body: 'أرقامك العامة، متوسط كل مادة، سجل المحاولات، ونسخة احتياطية/استعادة/مسح.', center: true, route: '#/stats' },
-
-    { title: 'الدوري الأسبوعي', body: 'ترتيب أسبوعي بالإجابات الصحيحة مع نسبة الدقة. زر «ظاهر» يخفي اسمك أو يرجعه.', target: '#league-view .league-head', route: '#/league' },
-
-    { title: 'شارك ترتيبك', body: 'بطاقة مشاركة مصممة تتضمن ترتيبك وأفضل النتائج والدقة لتنزيلها أو مشاركتها.', target: '#btn-league-share' },
-
+    { title: 'البداية والمؤقت', body: 'هنا عدد الأسئلة والوقت المستغرق. المؤقت يبدأ بدقة مع إمكانية الإيقاف المؤقت.', target: '#time-chip', side: 'bottom', align: 'center', action: 'start' },
+    { title: 'الحفظ', body: 'زر الحفظ أعلى البطاقة — يضيف السؤال إلى المحفوظات لمراجعته لاحقاً.', target: '#btn-save-question', side: 'bottom', align: 'start' },
+    { title: 'زر الترجمة', body: 'أيقونة الترجمة ثابتة في الشريط العلوي: باللون الذهبي للعربية، والقياسي للإنجليزية. تبدّل لغة السؤال والخيارات والشرح.', target: '#lang-toggle-session', side: 'bottom', align: 'center' },
+    { title: 'أجب', body: 'اختر إجابة — لا يوجد زر تخطٍ؛ يلزم تحديد خيار للانتقال.', target: '#options-container', side: 'top', align: 'center', action: 'answer' },
+    { title: 'الشرح فوراً', body: 'بعد الإجابة يظهر الشرح بالعربي تحت الخيارات مباشرة لتوضيح الحل.', target: '#live-feedback-box', side: 'top', align: 'center' },
+    { title: 'التالي', body: 'ينتقل بعد الإجابة فقط، ومع السؤال الأخير يُنهي الاختبار ويحسب النتيجة.', target: '#btn-next', side: 'top', align: 'center' },
+    { title: 'جدول الأسئلة', body: 'هذا الزر يفتح خريطة مصفوفة الأسئلة للتنقل السريع.', target: '#btn-open-matrix', side: 'bottom', align: 'center' },
+    { title: 'خريطة الأسئلة', body: 'توضح الإجابات الصحيحة والخاطئة مع إمكانية مراجعة الأسئلة السابقة.', target: '#matrix-drawer .matrix-grid', side: 'left', align: 'start', open: 'matrix' },
+    { title: 'شاشة النتيجة', body: 'عرض تفصيلي للنتيجة: النسبة، الإجابات، الزمن، ومراجعة لكل سؤال مع الشرح وإمكانية حفظ أي سؤال، والترجمة من الشريط العلوي.', target: '.results-card', side: 'bottom', align: 'center', demo: 'results' },
+    { title: 'المحفوظات', body: 'الأسئلة المحفوظة مقسمة حسب المادة والفصل، مع خيار بدء اختبار للفصل أو المادة كاملة.', target: '#saved-view', side: 'top', align: 'center', route: '#/saved' },
+    { title: 'الإحصائيات', body: 'أرقامك العامة، متوسط كل مادة، سجل المحاولات، ونسخة احتياطية/استعادة/مسح.', target: '#stats-view', side: 'top', align: 'center', route: '#/stats' },
+    { title: 'الدوري الأسبوعي', body: 'ترتيب أسبوعي بالإجابات الصحيحة مع نسبة الدقة. زر «ظاهر» يخفي اسمك أو يرجعه.', target: '#league-view .league-head', side: 'bottom', align: 'center', route: '#/league' },
+    { title: 'شارك ترتيبك', body: 'بطاقة مشاركة مصممة تتضمن ترتيبك وأفضل النتائج والدقة لتنزيلها أو مشاركتها.', target: '#btn-league-share', side: 'top', align: 'center' },
     { title: 'انتهت الجولة', body: 'يمكنك إعادتها من القائمة الجانبية ← «إعادة الجولة التعليمية». يعمل التطبيق بدون إنترنت بعد الزيارة الأولى.', center: true },
   ];
 
   let tourIdx = -1;
-  let tourRoutedFor = -1;
-  const tourRetried = new Map();
+  let tourDriver = null;
 
   function tourGet(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
   function tourSet(key) { try { localStorage.setItem(key, '1'); } catch (e) {} }
 
-  function tourShow(i) {
-    tourIdx = i;
-    const ov = $('tour-overlay');
-    if (i < 0 || i >= TOUR_STEPS.length) { tourHide(); return; }
-    const st = TOUR_STEPS[i];
-    if (st.demo === 'results' && $('results-view').classList.contains('hidden')) {
-      startTourDemoResults();
-    }
-    // cross-view steps: navigate first, then place the tip on the new screen
-    if (st.route && location.hash !== st.route) {
-      if (tourRoutedFor !== i) {
-        tourRoutedFor = i;
-        try { S.session = null; } catch (e) {}     // the tour is an explicit leave
-        try { hideLeaveModal(); } catch (e) {}
-        $('tour-tip').style.visibility = 'hidden';
-        const nb = $('tour-btn-next');
-        if (nb) nb.disabled = true;
-        navBypass = true;
-        location.hash = st.route;
-        setTimeout(() => {
-          $('tour-tip').style.visibility = '';
-          if (nb) nb.disabled = false;
-          if (tourIdx === i) tourShow(i);
-        }, 800);
-        return;
-      }
-      // navigation did not take: keep the step centred instead of looping
-    }
-    $('tour-tip').style.visibility = '';
-    const nextBtn = $('tour-btn-next');
-    if (nextBtn) nextBtn.disabled = false;
-    try { hideLeaveModal(); } catch (e) {}
-    if (st.open === 'menu') openDrawer('menu-drawer');
-    else if (st.open === 'matrix') openDrawer('matrix-drawer');
-    else closeDrawers();
-    if (st.go) {
-      const sub = currentSubject();
-      const ch = sub && sub.chapters[0];
-      if (sub && ch) location.hash = '#/quiz/' + encodeURIComponent(sub.subject_id) + '/' + encodeURIComponent(ch.quiz_id);
-      setTimeout(() => tourShow(i + 1), 900);
-      return;
-    }
-    let el = null;
-    let rect = null;
-    if (!st.center) {
-      const cands = st.target ? Array.from(document.querySelectorAll(st.target)) : [];
-      el = cands.find((x) => x && x.offsetParent) || null;
-      if (!el) {
-        // the target is not on the screen yet (the explanation only appears
-        // after an answer): keep the text of the step visible in the middle
-        // and try again, instead of leaving a blank overlay behind
-        const tries = tourRetried.get(i) || 0;
-        if (tries < 3) tourRetried.set(i, tries + 1);
-        ov.classList.remove('hidden');
-        ov.setAttribute('aria-hidden', 'false');
-        ov.classList.add('tour-dim-light');
-        const tipIcon = $('tour-tip-icon');
-        if (tipIcon) tipIcon.style.display = 'block';
-        $('tour-tip-title').textContent = st.title;
-        $('tour-tip-body').textContent = st.body;
-        $('tour-tip-progress').textContent = (i + 1) + ' / ' + TOUR_STEPS.length;
-        const tipBar = $('tour-tip-bar-fill');
-        if (tipBar) tipBar.style.width = ((i + 1) / TOUR_STEPS.length * 100) + '%';
-        $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : (st.action ? 'تخطي الخطوة' : 'التالي');
-        $('tour-btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
-        $('tour-tip').classList.remove('tour-waiting');
-        centerTip();
-        paintShades(null);
-        icons();
-        if (tries < 3) setTimeout(() => { if (tourIdx === i) tourShow(i); }, 600);
-        return;
-      }
-      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      rect = el.getBoundingClientRect();
-    }
-    ov.classList.remove('hidden');
-    ov.setAttribute('aria-hidden', 'false');
-    ov.removeAttribute('inert');
-    ov.classList.toggle('tour-dim-light', !!st.center);
-    const icon = $('tour-tip-icon');
-    if (icon) icon.style.display = st.center ? 'block' : 'none';
-    // Action steps need the spotlight hole clickable: shades stop intercepting.
-    ['tour-shade-top', 'tour-shade-bottom', 'tour-shade-left', 'tour-shade-right'].forEach((id) => {
-      document.getElementById(id).style.pointerEvents = st.action ? 'none' : 'auto';
-    });
-    $('tour-tip-title').textContent = st.title;
-    $('tour-tip-body').textContent = st.body;
-    $('tour-tip-progress').textContent = (i + 1) + ' / ' + TOUR_STEPS.length;
-    const bar = $('tour-tip-bar-fill');
-    if (bar) bar.style.width = ((i + 1) / TOUR_STEPS.length * 100) + '%';
-    const isAction = !!st.action;
-    $('tour-tip').classList.toggle('tour-waiting', isAction);
-    $('tour-btn-next').textContent = i === TOUR_STEPS.length - 1 ? 'إنهاء' : (isAction ? 'تخطي الخطوة' : 'التالي');
-    $('tour-btn-prev').style.visibility = i === 0 ? 'hidden' : 'visible';
-    $('tour-tip').classList.toggle('is-last', i === TOUR_STEPS.length - 1);
-    requestAnimationFrame(() => tourPlace(rect, !!st.center));
-    // Re-place after smooth scroll settles (fixed overlay doesn't track scrolling).
-    if (el) setTimeout(() => {
-      if (tourIdx !== i) return;
-      tourPlace(el.getBoundingClientRect(), false);
-    }, 550);
-    icons();
-  }
-
-  function tourPlace(rect, centered) {
-    const tip = $('tour-tip');
-    tip.classList.toggle('tour-centered', centered);
-    if (centered) { centerTip(); paintShades(null); return; }
-    const pad = 8;
-    paintShades(rect);
-    const vw = window.innerWidth, vh = window.innerHeight;
-    const wide = vw >= 768;
-    tip.style.visibility = 'hidden';
-    tip.style.transform = '';
-    tip.style.maxWidth = '';
-    tip.style.marginLeft = '';
-    tip.style.marginRight = '';
-    if (wide) {
-      tip.style.width = '360px';
-      tip.style.left = ''; tip.style.right = '';
-      // RTL: align tip's right edge with the target's right edge
-      tip.style.left = Math.max(8, Math.min(rect.right - 360, vw - 376)) + 'px';
-    } else {
-      tip.style.width = '';
-      tip.style.left = '12px'; tip.style.right = '12px';
-    }
-    tip.style.top = '0px';
-    const th = tip.offsetHeight;
-    const gap = 10;
-    const y = rect.top + rect.height + pad;
-    let ty = y + gap;
-    if (ty + th > vh - 8) ty = Math.max(8, rect.top - pad - gap - th);
-    tip.style.top = ty + 'px';
-    tip.style.visibility = 'visible';
-    tip.style.right = wide ? '' : '12px';
-  }
-
-  function paintShades(rect) {
-    const pad = 8;
-    const t = $('tour-shade-top'), b = $('tour-shade-bottom'),
-      l = $('tour-shade-left'), r = $('tour-shade-right'),
-      f = $('tour-frame');
-    const vw = window.innerWidth, vh = window.innerHeight;
-    const show = (el, x, y, w, h) => {
-      el.style.left = x + 'px'; el.style.top = y + 'px';
-      el.style.width = Math.max(0, w) + 'px'; el.style.height = Math.max(0, h) + 'px';
+  function startTourDemoQuiz() {
+    const sub = currentSubject();
+    const ch = sub && sub.chapters && sub.chapters[0];
+    const bank = ch && S.banks ? S.banks[ch.quiz_id] : null;
+    if (!sub || !ch || !bank || !bank.questions || !bank.questions.length) return false;
+    const origin = { subjectId: sub.subject_id, subjectTitle: sub.subject_title, chapterNo: ch.chapter_no, topic: bank.topic, quizId: ch.quiz_id };
+    const qs = bank.questions.slice(0, 3).map((q) => Object.assign({}, q, { origin: origin }));
+    S.session = {
+      sub: { subject_id: sub.subject_id, subject_title: sub.subject_title },
+      ch: ch,
+      chapterLabel: ch.topicLabel || chLabel(ch),
+      questions: qs,
+      picks: [qs[0].correct, null, null],
+      dwells: [0, 0, 0],
+      started: true,
+      finished: false,
+      demo: true,
+      idx: 0,
+      maxIdx: 0,
+      quizId: ch.quiz_id,
+      hash: '#/quiz'
     };
-    if (!rect) {
-      show(t, 0, 0, vw, vh); show(b, 0, 0, 0, 0); show(l, 0, 0, 0, 0); show(r, 0, 0, 0, 0);
-      if (f) f.classList.add('hidden');
-      return;
-    }
-    const x = Math.max(0, rect.left - pad), y = Math.max(0, rect.top - pad),
-      w = rect.width + pad * 2, h = rect.height + pad * 2;
-    show(t, 0, 0, vw, y);
-    show(b, 0, y + h, vw, vh - (y + h));
-    show(l, 0, y, x, h);
-    show(r, x + w, y, vw - (x + w), h);
-    if (f) {
-      f.classList.remove('hidden');
-      f.style.left = x + 'px'; f.style.top = y + 'px';
-      f.style.width = w + 'px'; f.style.height = h + 'px';
-    }
+    show('quiz-view');
+    renderQuestion();
+    return true;
   }
 
-  function centerTip() {
-    const tip = $('tour-tip');
-    tip.style.width = 'min(440px, calc(100vw - 24px))';
-    tip.style.left = '0';
-    tip.style.right = '0';
-    tip.style.marginLeft = 'auto';
-    tip.style.marginRight = 'auto';
-    tip.style.transform = '';
-    tip.style.top = Math.max(12, (window.innerHeight - tip.offsetHeight) / 2 - 30) + 'px';
-    tip.style.visibility = 'visible';
+  function syncTourBridge(idx, step) {
+    tourIdx = idx;
+    const ov = $('tour-overlay');
+    if (ov) {
+      ov.classList.remove('hidden');
+      ov.setAttribute('aria-hidden', 'false');
+    }
+    const tipTitle = $('tour-tip-title');
+    if (tipTitle && step.popover) tipTitle.textContent = step.popover.title || '';
+    const tipBody = $('tour-tip-body');
+    if (tipBody && step.popover) tipBody.textContent = step.popover.description || '';
+    const tipProg = $('tour-tip-progress');
+    if (tipProg) tipProg.textContent = (idx + 1) + ' / ' + TOUR_STEPS.length;
+    const nb = $('tour-btn-next');
+    if (nb) nb.textContent = (idx === TOUR_STEPS.length - 1) ? 'إنهاء' : 'التالي';
+  }
+
+  function initPortalTour() {
+    if (tourDriver) return tourDriver;
+    if (!window.driver || !window.driver.js || !window.driver.js.driver) return null;
+    const driver = window.driver.js.driver;
+
+    const driverSteps = TOUR_STEPS.map((st, i) => {
+      const stepDef = {
+        popover: {
+          title: st.title,
+          description: st.body,
+          side: st.center ? 'over' : (st.side || 'bottom'),
+          align: st.align || 'center'
+        }
+      };
+      if (!st.center && st.target) {
+        stepDef.element = st.target;
+      }
+
+      stepDef.onHighlightStarted = () => {
+        if (st.open === 'menu') openDrawer('menu-drawer');
+        else if (st.open === 'matrix') openDrawer('matrix-drawer');
+        else closeDrawers();
+
+        if (st.go) {
+          startTourDemoQuiz();
+        } else if (st.demo === 'results') {
+          startTourDemoResults();
+        } else if (st.route) {
+          location.hash = st.route;
+          if (st.route === '#/saved') { show('saved-view'); renderSaved(); }
+          else if (st.route === '#/stats') { show('stats-view'); renderStats(); }
+          else if (st.route === '#/league') { show('league-view'); renderLeague(); }
+        } else if (i === 6 || i === TOUR_STEPS.length - 1) {
+          location.hash = '#/';
+          show('catalog-view');
+        }
+      };
+
+      if (st.open) {
+        stepDef.onDeselected = () => closeDrawers();
+      }
+
+      return stepDef;
+    });
+
+    tourDriver = driver({
+      animate: true,
+      allowClose: true,
+      overlayOpacity: 0.72,
+      overlayColor: '#04070c',
+      stagePadding: 6,
+      stageRadius: 10,
+      popoverOffset: 12,
+      nextBtnText: 'التالي ←',
+      prevBtnText: '→ السابق',
+      doneBtnText: 'إنهاء الجولة',
+      progressText: '{{current}} / {{total}}',
+      showProgress: true,
+      onDestroyed: () => {
+        try {
+          tourDone();
+          closeDrawers();
+          location.hash = '#/';
+          show('catalog-view');
+        } catch (e) {}
+      },
+      onHighlighted: (element, step, { config, state }) => {
+        syncTourBridge(state.activeStep, step);
+      },
+      steps: driverSteps
+    });
+
+    return tourDriver;
+  }
+
+  function tourShow(i) {
+    const td = initPortalTour();
+    if (td) {
+      td.drive(i || 0);
+      return;
+    }
   }
 
   function tourHide() {
     tourIdx = -1;
-    $('tour-overlay').classList.add('hidden');
-    $('tour-overlay').setAttribute('aria-hidden', 'true');
-    $('tour-overlay').setAttribute('inert', '');
-    const f = $('tour-frame');
-    if (f) f.classList.add('hidden');
+    if (tourDriver) {
+      try { tourDriver.destroy(); } catch (e) {}
+    }
+    const ov = $('tour-overlay');
+    if (ov) {
+      ov.classList.add('hidden');
+      ov.setAttribute('aria-hidden', 'true');
+      ov.setAttribute('inert', '');
+    }
     try { closeDrawers(); } catch (e) {}
   }
 
-  function tourDone() { tourSet(TOUR_KEY); tourHide(); toast('انتهت الجولة — بالتوفيق!'); }
+  function tourDone() {
+    tourSet(TOUR_KEY);
+    tourHide();
+    toast('انتهت الجولة — بالتوفيق!');
+  }
 
   function tourNotify(eventName) {
-    if (tourIdx < 0 || tourIdx >= TOUR_STEPS.length) return;
-    const st = TOUR_STEPS[tourIdx];
-    if (st.action === eventName) tourShow(tourIdx + 1);
+    if (!tourDriver) return;
+    const idx = tourDriver.getActiveIndex();
+    if (eventName === 'start' && idx === 8) tourDriver.moveNext();
+    else if (eventName === 'answer' && idx === 11) tourDriver.moveNext();
   }
 
   function maybeQuizHint() {
@@ -3634,17 +3571,23 @@ const weekBar = $('league-week-bar');
         toast('تم مسح السجل');
       }
     });
-    $('tour-btn-next').addEventListener('click', () => {
-      const st = TOUR_STEPS[tourIdx];
-      // skipping an action step still performs it, so the tour's screen matches the app
-      if (st && st.action === 'start' && S.session && !S.session.started) {
-        try { beginAnswering(); } catch (e) {}
-      }
-      if (tourIdx >= TOUR_STEPS.length - 1) tourDone();
-      else tourShow(tourIdx + 1);
-    });
-    $('tour-btn-prev').addEventListener('click', () => { if (tourIdx > 0) tourShow(tourIdx - 1); });
-    $('tour-btn-skip').addEventListener('click', tourDone);
+    if ($('tour-btn-next')) {
+      $('tour-btn-next').addEventListener('click', () => {
+        if (tourDriver && tourDriver.hasNextStep()) tourDriver.moveNext();
+        else if (tourDriver) tourDriver.destroy();
+      });
+    }
+    if ($('tour-btn-prev')) {
+      $('tour-btn-prev').addEventListener('click', () => {
+        if (tourDriver && tourDriver.hasPreviousStep()) tourDriver.movePrevious();
+      });
+    }
+    if ($('tour-btn-skip')) {
+      $('tour-btn-skip').addEventListener('click', () => {
+        if (tourDriver) tourDriver.destroy();
+        else tourDone();
+      });
+    }
     const openMatrix = $('btn-open-matrix');
     if (openMatrix) openMatrix.addEventListener('click', () => {
       if (!S.session || S.session.finished) { toast('لا يوجد كوز نشط'); return; }
@@ -3845,7 +3788,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.23';
+  const SHELL_VERSION = '1.11.24';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

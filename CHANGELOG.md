@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.24] — 2026-11-05
+
+### Changed
+- integrate modern Driver.js 22-step guided tour with offline SVG spotlight
+
+
 ## [1.11.23] — 2026-11-05
 
 ### Changed

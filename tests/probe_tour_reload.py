@@ -9,22 +9,24 @@ pw = common.launch()
 browser, page, errors = common.new_page(
     pw, tour_done=False, telegram={'id': 3, 'first_name': 'x'})
 try:
-    page.wait_for_selector('#tour-overlay:not(.hidden)', timeout=25000)
+    page.wait_for_selector('.driver-popover, #tour-overlay:not(.hidden)', timeout=25000)
     # walk to the end quickly
     for _ in range(30):
         nxt = page.evaluate("""() => {
-          const tip = document.querySelector('#tour-tip');
+          const tip = document.querySelector('.driver-popover') || document.querySelector('#tour-tip');
+          if (!tip) return null;
           const r = tip.getBoundingClientRect();
           if (r.width < 5) return null;
-          return document.querySelector('#tour-btn-next').textContent;
+          const next = tip.querySelector('.driver-popover-next-btn') || document.querySelector('#tour-btn-next');
+          return next ? next.textContent.trim() : null;
         }""")
         if nxt is None:
             break
-        if nxt == 'إنهاء':
-            page.evaluate('() => document.querySelector("#tour-btn-next").click()')
+        if 'إنهاء' in nxt:
+            page.evaluate('() => (document.querySelector(".driver-popover-next-btn") || document.querySelector("#tour-btn-next"))?.click()')
             page.wait_for_timeout(600)
             break
-        page.evaluate('() => document.querySelector("#tour-btn-next").click()')
+        page.evaluate('() => (document.querySelector(".driver-popover-next-btn") || document.querySelector("#tour-btn-next"))?.click()')
         page.wait_for_timeout(700)
     print('flag before reload:',
           page.evaluate("() => localStorage.getItem('portal_tour_done')"))
@@ -37,9 +39,9 @@ try:
     print('overlay after reload:',
           page.evaluate("() => document.querySelector('#tour-overlay').className"))
     print('tour title after reload:',
-          page.evaluate("() => document.querySelector('#tour-tip-title').textContent"))
+          page.evaluate("() => document.querySelector('.driver-popover-title, #tour-tip-title')?.textContent"))
     print('tour step after reload:',
-          page.evaluate("() => document.querySelector('#tour-tip-progress').textContent"))
+          page.evaluate("() => document.querySelector('.driver-popover-progress-text, #tour-tip-progress')?.textContent"))
     print('errors:', errors[:3])
 finally:
     browser.close()

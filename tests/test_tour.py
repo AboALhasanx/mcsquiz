@@ -15,21 +15,24 @@ def run():
     browser, page, errors = common.new_page(
         pw, tour_done=False, telegram={'id': 3, 'first_name': 'طالب'})
     try:
-        page.wait_for_selector('#tour-overlay:not(.hidden)', timeout=25000)
+        page.wait_for_selector('.driver-popover, #tour-overlay:not(.hidden)', timeout=25000)
         check('tour greets a first-time visitor',
-              'hidden' not in (page.locator('#tour-overlay').get_attribute('class') or ''))
+              page.locator('.driver-popover').count() > 0 or 'hidden' not in (page.locator('#tour-overlay').get_attribute('class') or ''))
         check('the tour remembers it started',
               page.evaluate("() => localStorage.getItem('portal_tour_done')") == '1')
 
         seen, routes, skipped_start = [], set(), False
         for _ in range(30):
             state = page.evaluate("""() => {
-              const tip = document.querySelector('#tour-tip');
+              const tip = document.querySelector('.driver-popover') || document.querySelector('#tour-tip');
+              if (!tip) return null;
               const r = tip.getBoundingClientRect();
               if (r.width < 5 || r.height < 5) return null;
+              const titleEl = tip.querySelector('.driver-popover-title') || document.querySelector('#tour-tip-title');
+              const nextBtn = tip.querySelector('.driver-popover-next-btn') || document.querySelector('#tour-btn-next');
               return {
-                title: document.querySelector('#tour-tip-title').textContent,
-                next: document.querySelector('#tour-btn-next').textContent,
+                title: titleEl ? titleEl.textContent.trim() : '',
+                next: nextBtn ? nextBtn.textContent.trim() : '',
                 hash: location.hash,
                 quizVisible: !document.querySelector('#quiz-view').classList.contains('hidden'),
               };
@@ -39,18 +42,18 @@ def run():
             seen.append(state['title'])
             routes.add(state['hash'])
             if state['title'].startswith('البداية') and not skipped_start:
-                page.click('#tour-btn-next')          # skip the action…
+                page.click('.driver-popover-next-btn')          # skip the action…
                 page.wait_for_timeout(1400)
                 still = page.evaluate(
                     "() => !document.querySelector('#quiz-view').classList.contains('hidden')")
                 check('skipping the start step still starts the quiz', still)
                 skipped_start = True
                 continue
-            if state['next'] == 'إنهاء':
-                page.click('#tour-btn-next')
+            if 'إنهاء' in state['next']:
+                page.click('.driver-popover-next-btn')
                 page.wait_for_timeout(600)
                 break
-            page.click('#tour-btn-next')
+            page.click('.driver-popover-next-btn')
             page.wait_for_timeout(1100)
 
         check('the tour has more than ten steps', len(seen) >= 10, len(seen))
@@ -58,7 +61,7 @@ def run():
               any('#/saved' in r for r in routes) and any('#/stats' in r for r in routes)
               and any('#/league' in r for r in routes), routes)
         check('the tour ends by closing itself',
-              'hidden' in (page.locator('#tour-overlay').get_attribute('class') or ''))
+              page.locator('.driver-popover').count() == 0 and 'hidden' in (page.locator('#tour-overlay').get_attribute('class') or ''))
 
         # replay from the menu, without re-triggering it on a reload
         # (the context fixture wipes the flag on every navigation, so pin it
@@ -68,13 +71,13 @@ def run():
         page.goto(common.APP, wait_until='domcontentloaded')
         page.wait_for_timeout(1500)
         check('the tour stays dismissed after a reload',
-              'hidden' in (page.locator('#tour-overlay').get_attribute('class') or ''))
+              page.locator('.driver-popover').count() == 0 and 'hidden' in (page.locator('#tour-overlay').get_attribute('class') or ''))
         page.locator('.btn-menu').first.click()
         page.wait_for_timeout(500)
         page.click('#menu-tour')
         page.wait_for_timeout(700)
         check('the menu replays the tour',
-              'hidden' not in (page.locator('#tour-overlay').get_attribute('class') or ''))
+              page.locator('.driver-popover').count() > 0 or 'hidden' not in (page.locator('#tour-overlay').get_attribute('class') or ''))
 
         check('no runtime errors', not errors, errors[:2])
     finally:
