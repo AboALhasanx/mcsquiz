@@ -548,10 +548,8 @@
   function currentChapter(sub) {
     sub = sub || currentSubject();
     if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) return null;
-    if (sub.chapters.some((c) => c.chapter_no === S.chapterFilter)) {
-      return sub.chapters.find((c) => c.chapter_no === S.chapterFilter);
-    }
-    return sub.chapters[0];
+    const match = sub.chapters.find((c) => c.chapter_no === S.chapterFilter);
+    return match || sub.chapters[0];
   }
 
   function renderSubjectChips() {
@@ -750,9 +748,6 @@
     toast('تم تحديد الكل كمقروء', 'success');
   }
 
-  // other callers still say "the content banner": keep the name working
-  function renderContentBanner() { renderBell(); }
-
   // one toast when new content actually lands on this device
   function notifyNewContent() {
     const fresh = (S.freshChapters || []).filter((f) => !f.read);
@@ -771,11 +766,14 @@
 
   function findChapter(quizId) {
     const idx = S.index || {};
-    let found = null;
-    (idx.subjects || []).forEach((sub) => (sub.chapters || []).forEach((ch) => {
-      if (ch.quiz_id === quizId) found = ch;
-    }));
-    return found;
+    const subjects = idx.subjects || [];
+    for (let i = 0; i < subjects.length; i++) {
+      const chapters = subjects[i].chapters || [];
+      for (let j = 0; j < chapters.length; j++) {
+        if (chapters[j].quiz_id === quizId) return chapters[j];
+      }
+    }
+    return null;
   }
 
   // a chapter counts as seen once the student opens it
@@ -790,7 +788,6 @@
     // count); it disappears on the next load
     const item = (S.freshChapters || []).find((f) => f.quiz_id === quizId);
     if (item) item.read = true;
-    renderContentBanner();
     renderCatalog();
   }
 
@@ -3848,7 +3845,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.22';
+  const SHELL_VERSION = '1.11.23';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -3956,6 +3953,7 @@ const weekBar = $('league-week-bar');
           renderAccount: renderAccount,
           updateAdminFlagsUI: updateAdminFlagsUI,
           show: show,
+          findChapter: findChapter,
         };
       }
       {

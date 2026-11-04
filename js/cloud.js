@@ -343,15 +343,19 @@
     var saved = {}, history = [], bests = {};
     try { saved = JSON.parse(localStorage.getItem(LS_SAVED) || '{}') || {}; } catch (e) {}
     try { history = JSON.parse(localStorage.getItem(LS_HISTORY) || '[]') || []; } catch (e) {}
-    for (var i = 0; i < localStorage.length; i++) {
-      try {
+    try {
+      var len = localStorage.length;
+      for (var i = 0; i < len; i++) {
         var k = localStorage.key(i);
         if (k && k.indexOf(LS_BEST_PREFIX) === 0) {
-          var bv = JSON.parse(localStorage.getItem(k));
-          if (bv && typeof bv === 'object') bests[k] = bv;
+          var raw = localStorage.getItem(k);
+          if (raw) {
+            var bv = JSON.parse(raw);
+            if (bv && typeof bv === 'object') bests[k] = bv;
+          }
         }
-      } catch (e) {}
-    }
+      }
+    } catch (e) {}
     // the timestamp of the last real change, not of this sync attempt: a device
     // that has been offline cannot overwrite newer data from another device
     var touched = 0;
@@ -379,7 +383,17 @@
     if (d.bests && typeof d.bests === 'object') {
       Object.keys(d.bests).forEach(function (k) {
         if (k.indexOf(LS_BEST_PREFIX) === 0) {
-          try { localStorage.setItem(k, JSON.stringify(d.bests[k])); } catch (e) {}
+          try {
+            var incoming = d.bests[k];
+            var raw = localStorage.getItem(k);
+            if (raw) {
+              var cur = JSON.parse(raw);
+              if (cur && incoming && cur.pct === incoming.pct && cur.t === incoming.t) {
+                return; // skip redundant write if pct and timestamp match
+              }
+            }
+            localStorage.setItem(k, JSON.stringify(incoming));
+          } catch (e) {}
         }
       });
     }

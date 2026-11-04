@@ -363,7 +363,26 @@
       }
     }
 
-    var bestFn = (typeof getBestOverride === 'function') ? getBestOverride : getBestScore;
+    var bestFn = getBestOverride;
+    if (typeof bestFn !== 'function') {
+      var bestMap = {};
+      try {
+        var len = localStorage.length;
+        for (var i = 0; i < len; i++) {
+          var k = localStorage.key(i);
+          if (k && k.indexOf('portal_best_') === 0) {
+            var raw = localStorage.getItem(k);
+            if (raw) {
+              var obj = JSON.parse(raw);
+              if (obj && typeof obj.pct === 'number') {
+                bestMap[k.slice(12)] = obj;
+              }
+            }
+          }
+        }
+      } catch (e) {} // audit-ignore: optional storage batch read
+      bestFn = function (qid) { return bestMap[qid] || null; };
+    }
     var outSubjects = [];
     var masteredCount = 0;
 
@@ -1356,6 +1375,7 @@
     TIERS: TIERS,
     SUBJECT_MASTERY_THRESHOLD: SUBJECT_MASTERY_THRESHOLD,
     evaluateSubjectMastery: evaluateSubjectMastery,
+    getBestScore: getBestScore,
     getSubjectMeta: getSubjectMeta,
     loadState: loadState,
     saveState: saveState,

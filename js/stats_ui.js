@@ -37,15 +37,19 @@
 
     function collectBests() {
       var out = {};
-      for (var i = 0; i < localStorage.length; i++) {
-        try {
+      try {
+        var len = localStorage.length;
+        for (var i = 0; i < len; i++) {
           var k = localStorage.key(i);
           if (k && k.indexOf('portal_best_') === 0) {
-            var bv = JSON.parse(localStorage.getItem(k));
-            if (bv && typeof bv === 'object') out[k] = bv;
+            var raw = localStorage.getItem(k);
+            if (raw) {
+              var bv = JSON.parse(raw);
+              if (bv && typeof bv === 'object') out[k] = bv;
+            }
           }
-        } catch (e) {} // audit-ignore: optional localStorage key read
-      }
+        }
+      } catch (e) {} // audit-ignore: optional localStorage key read
       return out;
     }
 
@@ -702,7 +706,17 @@
           if (d.bests && typeof d.bests === 'object' && Object.keys(d.bests).length > 0) {
             Object.keys(d.bests).forEach(function (k) {
               if (k.indexOf('portal_best_') === 0) {
-                try { localStorage.setItem(k, JSON.stringify(d.bests[k])); } catch (e) {} // audit-ignore: optional storage write
+                try {
+                  var incoming = d.bests[k];
+                  var raw = localStorage.getItem(k);
+                  if (raw) {
+                    var cur = JSON.parse(raw);
+                    if (cur && incoming && cur.pct === incoming.pct && cur.t === incoming.t) {
+                      return; // audit-ignore: optional storage write
+                    }
+                  }
+                  localStorage.setItem(k, JSON.stringify(incoming));
+                } catch (e) {} // audit-ignore: optional storage write
               }
             });
             restoredCount++;

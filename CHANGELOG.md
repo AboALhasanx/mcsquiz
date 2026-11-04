@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.23] — 2026-11-05
+
+### Changed
+- perf: optimize achievements mastery loop, cloud sync smart diff, and chapter lookup early exit
+
+
 ## [1.11.22] — 2026-11-05
 
 ### Changed
