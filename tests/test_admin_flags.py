@@ -128,6 +128,8 @@ try:
 
     # Exit quiz back to home
     p.click('#btn-exit')
+    p.wait_for_selector('#leave-go', timeout=3000)
+    p.click('#leave-go')
     p.wait_for_timeout(300)
 
     # Now test as aboalhasan
@@ -181,7 +183,7 @@ try:
     p.fill('#flag-note-input', 'الخيار ج يحتاج تعديل صياغة')
     p.click('#btn-save-flag')
 
-    p.wait_for_selector('#flag-modal.hidden', timeout=5000)
+    p.wait_for_selector('#flag-modal', state='hidden', timeout=5000)
 
     time_state_3 = p.evaluate("""() => {
         const ses = window.__portal ? window.__portal.S.session : null;
@@ -195,6 +197,12 @@ try:
     common.check('quiz session timer resumes after saving flag', time_state_3['isPaused'] is False)
     common.check('flag button has is-flagged class', time_state_3['isFlaggedClass'] is True)
     common.check('flags count is 1', time_state_3['flagsCount'] == 1)
+
+    # Cleanly exit the quiz before navigating to account
+    p.click('#btn-exit')
+    p.wait_for_selector('#leave-go', timeout=3000)
+    p.click('#leave-go')
+    p.wait_for_timeout(300)
 
     # -------------------------------------------------------------
     # 5. Account Profile View: Admin Export & Count Badge
@@ -217,6 +225,7 @@ try:
     # Now verify it is hidden when not admin
     p.evaluate("""() => {
         localStorage.setItem('portal_account_v1', JSON.stringify({
+            id: 'uid-regular',
             handle: 'regular_user',
             name: 'طالب'
         }));

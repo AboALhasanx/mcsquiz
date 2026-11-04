@@ -100,7 +100,7 @@
       "concept_id": "forward_start",
       "explanation": {
         "ar": "يبدأ دون خصائص.",
-        "en": "Starts with no features."
+        "en": "Forward selection is greedy from below: it begins with the empty set and adds one feature at a time."
       }
     },
     {
@@ -164,7 +164,7 @@
       "concept_id": "backward_start",
       "explanation": {
         "ar": "يبدأ بكل الخصائص.",
-        "en": "Starts with all features."
+        "en": "Backward elimination is greedy from above: it begins with every feature and removes one at a time."
       }
     },
     {
@@ -196,7 +196,7 @@
       "concept_id": "backward_action",
       "explanation": {
         "ar": "إزالة أقل خاصية فائدة.",
-        "en": "Remove the least useful feature."
+        "en": "Each step removes the feature whose absence hurts the model least."
       }
     },
     {
@@ -237,7 +237,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:57:37Z",
+  "updated_at": "2026-11-04T17:05:55Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

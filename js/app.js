@@ -3761,7 +3761,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.10.9';
+  const SHELL_VERSION = '1.10.11';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -3866,6 +3866,8 @@ const weekBar = $('league-week-bar');
           startReviewPractice: startReviewPractice,
           renderReview: renderReview,
           renderSearch: renderSearch,
+          renderAccount: renderAccount,
+          updateAdminFlagsUI: updateAdminFlagsUI,
           show: show,
         };
       }

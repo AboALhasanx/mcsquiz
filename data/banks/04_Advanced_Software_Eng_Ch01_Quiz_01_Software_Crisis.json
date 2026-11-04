@@ -36,7 +36,7 @@
       "concept_id": "patriot_clock_drift",
       "explanation": {
         "ar": "أدى اقتطاع 1/10 عند البت 24 إلى انحراف سالب قدره ~0.000000095 ثانية لكل نبضة. على مدار 100 ساعة (3.6 مليون نبضة)، فقدت الساعة 0.3433 ثانية. وبسرعة 5 ماخ (1,676 م/ث)، أزيحت بوابة النطاق (Range Gate) بمقدار ~687 متراً، مما جعل الرادار يبحث في موقع سابق للهدف.",
-        "en": "أدى اقتطاع 1/10 عند البت 24 إلى انحراف سالب قدره ~0.000000095 ثانية لكل نبضة. على مدار 100 ساعة (3.6 مليون نبضة)، فقدت الساعة 0.3433 ثانية. وبسرعة 5 ماخ (1,676 م/ث)، أزيحت بوابة النطاق (Range Gate) بمقدار ~687 متراً، مما جعل الرادار يبحث في موقع سابق للهدف."
+        "en": "Truncating 1/10 at bit 24 produced a small negative drift per tick; over 100 hours it accumulated to about 0.34 seconds, shifting the range gate roughly 687 metres so the radar tracked empty airspace."
       }
     },
     {
@@ -68,7 +68,7 @@
       "concept_id": "brooks_essential_complexity",
       "explanation": {
         "ar": "حدد بروكس أربع خصائص متأصلة في التعقيد الجوهري: التعقيد (Complexity)، المطابقة (Conformity)، القابلية للتغيير (Changeability)، والخفاء (Invisibility). أما الأدوات وبطء الترجمة وصعوبة الصياغة فهي تعقيدات عرضية يمكن تحسينها تقنياً.",
-        "en": "حدد بروكس أربع خصائص متأصلة في التعقيد الجوهري: التعقيد (Complexity)، المطابقة (Conformity)، القابلية للتغيير (Changeability)، والخفاء (Invisibility). أما الأدوات وبطء الترجمة وصعوبة الصياغة فهي تعقيدات عرضية يمكن تحسينها تقنياً."
+        "en": "Brooks names four properties of essential complexity: complexity, conformity, changeability and invisibility. Tooling, slow compilation and clumsy syntax are accidental complexity that can be improved."
       }
     },
     {
@@ -100,7 +100,7 @@
       "concept_id": "brooks_law",
       "explanation": {
         "ar": "يوضح قانون بروكس أن عبء التواصل يزداد بالصيغة N(N-1)/2، بالإضافة إلى استهلاك وقت كبار المهندسين في تدريب الأعضاء الجدد بدلاً من إنجاز العمل.",
-        "en": "يوضح قانون بروكس أن عبء التواصل يزداد بالصيغة N(N-1)/2، بالإضافة إلى استهلاك وقت كبار المهندسين في تدريب الأعضاء الجدد بدلاً من إنجاز العمل."
+        "en": "Brooks' Law shows that communication overhead grows as N(N-1)/2, and senior engineers lose time training newcomers instead of building."
       }
     },
     {
@@ -132,7 +132,7 @@
       "concept_id": "dependability_taxonomy",
       "explanation": {
         "ar": "الخطأ الإدراكي البشري (Error) يولد عيباً ثابتاً (Fault/Defect) في الكود أو الوثائق. وعند تنفيذه في وقت التشغيل، يُنتج حالة خطأ داخلية غير صالحة (Error State)، والتي تظهر على حدود النظام كفشل مرئي (Failure).",
-        "en": "الخطأ الإدراكي البشري (Error) يولد عيباً ثابتاً (Fault/Defect) في الكود أو الوثائق. وعند تنفيذه في وقت التشغيل، يُنتج حالة خطأ داخلية غير صالحة (Error State)، والتي تظهر على حدود النظام كفشل مرئي (Failure)."
+        "en": "A human error introduces a static fault or defect in the code or documents; at run time it produces an internal error state, which surfaces at the system boundary as an observable failure."
       }
     },
     {
@@ -164,7 +164,7 @@
       "concept_id": "se_ethics_public",
       "explanation": {
         "ar": "ينص المبدأ الأول بوضوح على أن مهندسي البرمجيات يجب أن يتصرفوا بما يتفق مع المصلحة العامة، وهي مصلحة تعلو فوق الولاء لصاحب العمل عندما تكون السلامة أو الصحة أو الرفاهية العامة مهددة.",
-        "en": "ينص المبدأ الأول بوضوح على أن مهندسي البرمجيات يجب أن يتصرفوا بما يتفق مع المصلحة العامة، وهي مصلحة تعلو فوق الولاء لصاحب العمل عندما تكون السلامة أو الصحة أو الرفاهية العامة مهددة."
+        "en": "The first principle requires engineers to act in the public interest, which outranks loyalty to the employer when public safety, health or welfare is at risk."
       }
     }
   ],
@@ -173,7 +173,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-10-23T08:09:01Z",
+  "updated_at": "2026-11-04T17:12:27Z",
   "subject_title": "هندسة البرمجيات المتقدمة",
   "schema_version": 3,
   "semester_label": "كورس أول"

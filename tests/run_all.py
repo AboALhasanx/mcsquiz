@@ -37,6 +37,7 @@ SPECS = [
     'test_review_flow.py',
     'test_search.py',
     'test_search_flow.py',
+    'test_admin_flags.py',
 ]
 
 

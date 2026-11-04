@@ -5,6 +5,18 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.11] — 2026-11-04
+
+### Changed
+- content: ASE/AI English explanations + authoring audit (v67)
+
+
+## [1.10.10] — 2026-11-04
+
+### Changed
+- content: DM explanation cleanup + authoring audit gate (v66)
+
+
 ## [1.10.9] — 2026-11-04
 
 ### Changed

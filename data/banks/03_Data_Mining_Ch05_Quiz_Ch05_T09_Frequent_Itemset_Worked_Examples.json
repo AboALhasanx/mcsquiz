@@ -170,33 +170,33 @@
     {
       "id": "q6",
       "stem": {
-        "ar": "لماذا تتوقف Apriori عند المجموعة الثلاثية في المثال؟",
-        "en": "Why does Apriori stop at the 3-itemset in the example?"
+        "ar": "لماذا تتوقف Apriori عن تمديد فرع من البحث؟",
+        "en": "Why does Apriori stop extending a branch of the search?"
       },
       "bloom": "Apply",
       "answer": 1,
       "options": [
         {
-          "ar": "لا مجموعات فرعية له",
-          "en": "it has no candidate subsets"
+          "ar": "ليس لها مجموعات مرشحة هنا",
+          "en": "it has no candidate subsets left"
         },
         {
-          "ar": "دعمه يقل عن 40% فقط",
-          "en": "its support falls below 40%"
+          "ar": "دعمها يقل عن الحد الأدنى",
+          "en": "its support falls below the minimum"
         },
         {
-          "ar": "دعمه يبلغ 60% هنا",
-          "en": "its support reaches 60%"
+          "ar": "دعمها يبلغ الحد الأعلى",
+          "en": "its support reaches the maximum"
         },
         {
-          "ar": "يحوي عناصر كثيرة",
-          "en": "it contains too many items"
+          "ar": "تحوي عناصر كثيرة جداً هنا",
+          "en": "it contains far too many items now"
         }
       ],
       "concept_id": "c5w_apriori_stop",
       "explanation": {
-        "ar": "المجموعة الثلاثية تظهر مرة من خمس، فـ20% أقل من حد 40%.",
-        "en": "The 3-itemset appears once in five, so 20% is below the 40% threshold."
+        "ar": "خاصية Apriori تقلّم أي فرع ينخفض دعمه تحت العتبة الدنيا.",
+        "en": "The Apriori property prunes any branch whose support drops under the minimum threshold."
       }
     },
     {
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-11-04T11:57:27Z",
+  "updated_at": "2026-11-04T17:05:55Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"
