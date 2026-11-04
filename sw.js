@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.10.5';
+const VERSION = '1.10.6';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -164,6 +164,12 @@ const CORE = [
   './data/banks/02_English_Language_Ch02_Quiz_Ch02_EN_T04_Reading2_Vocabulary.json',
   './data/banks/02_English_Language_Ch02_Quiz_Ch02_ModelA_Reading_and_Vocabulary.json',
   './data/banks/02_English_Language_Ch02_Quiz_Ch02_ModelB_Reading_and_Vocabulary.json',
+  './data/banks/02_English_Language_Ch03_Quiz_Ch03_EN_T01_Narrative_Tenses.json',
+  './data/banks/02_English_Language_Ch03_Quiz_Ch03_EN_T02_Echo_And_Reply_Questions.json',
+  './data/banks/02_English_Language_Ch03_Quiz_Ch03_EN_T03_News_Books_Films.json',
+  './data/banks/02_English_Language_Ch03_Quiz_Ch03_EN_T04_Past_Perfect.json',
+  './data/banks/02_English_Language_Ch03_Quiz_Ch03_EN_T05_Prefixes_And_Word_Families.json',
+  './data/banks/02_English_Language_Ch03_Quiz_Ch03_EN_T06_Reading_Vocabulary_U3.json',
   './data/banks/03_Data_Mining_Ch01_Quiz_Ch01_T01_What_Is_Data_Mining.json',
   './data/banks/03_Data_Mining_Ch01_Quiz_Ch01_T02_Advantages_of_Data_Mining.json',
   './data/banks/03_Data_Mining_Ch01_Quiz_Ch01_T03_Disadvantages_of_Data_Mining.json',

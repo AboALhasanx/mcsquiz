@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.6] — 2026-11-04
+
+### Changed
+- content: English Unit 3, 6 banks / 68 q (v62)
+
+
 ## [1.10.5] — 2026-11-04
 
 ### Changed
