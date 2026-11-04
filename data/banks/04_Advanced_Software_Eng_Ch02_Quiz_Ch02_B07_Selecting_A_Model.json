@@ -1,9 +1,9 @@
 {
   "topic": {
-    "ar": "اختيار النموذج حسب حالة المشروع",
-    "en": "Choosing a Model by Project Situation"
+    "ar": "اختيار نموذج دورة الحياة",
+    "en": "Selecting a Life-Cycle Model"
   },
-  "quiz_id": "Quiz_Ch02_T02_Choosing_A_Model",
+  "quiz_id": "Quiz_Ch02_B07_Selecting_A_Model",
   "has_math": false,
   "semester": 1,
   "questions": [
@@ -14,16 +14,8 @@
         "en": "If the requirements are easily understood and well defined, which model fits best?"
       },
       "bloom": "Apply",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "نموذج الشلال هنا الآن",
-          "en": "the Waterfall model here"
-        },
-        {
-          "ar": "نموذج النمذجة الأولية",
-          "en": "the Prototyping model here"
-        },
         {
           "ar": "النموذج الحلزوني هنا",
           "en": "the Spiral model here now"
@@ -31,6 +23,14 @@
         {
           "ar": "لا شيء مما سبق هنا",
           "en": "none of the above at all"
+        },
+        {
+          "ar": "نموذج الشلال هنا الآن",
+          "en": "the Waterfall model here"
+        },
+        {
+          "ar": "نموذج النمذجة الأولية",
+          "en": "the Prototyping model here"
         }
       ],
       "concept_id": "ch2_clear_requirements",
@@ -202,38 +202,6 @@
     {
       "id": "q7",
       "stem": {
-        "ar": "النموذج الأنسب لتقنية جديدة غير مفهومة جيداً هو...",
-        "en": "The most suitable model for new technology that is not well understood is..."
-      },
-      "bloom": "Apply",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "نموذج RAD السريع هنا",
-          "en": "the RAD model here now at all"
-        },
-        {
-          "ar": "نموذج التحسين التكراري",
-          "en": "the Iterative model here"
-        },
-        {
-          "ar": "نموذج التطوير التطوري",
-          "en": "the Evolutionary model here"
-        },
-        {
-          "ar": "نموذج الشلال هنا الآن",
-          "en": "the Waterfall model here"
-        }
-      ],
-      "concept_id": "ch2_new_technology",
-      "explanation": {
-        "ar": "عندما تكون التقنية غير واضحة يجب أن يتطور المنتج مع نمو الفهم.",
-        "en": "When the technology is unclear, the product must evolve as understanding grows."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
         "ar": "أي نموذج يناسب مشروعاً صغيراً بمتطلبات مستقرة؟",
         "en": "Which model suits a small project with stable requirements?"
       },
@@ -262,6 +230,38 @@
         "ar": "المتطلبات المستقرة والنطاق الصغير يناسبهما تسلسل الشلال المباشر.",
         "en": "Stable requirements and a small scope fit the straight waterfall sequence."
       }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي زوجين يحكمان اختيار نموذج دورة الحياة؟",
+        "en": "Which pair dominates the choice of a life-cycle model?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "استقرار المتطلبات والمخاطر",
+          "en": "requirement stability and risk"
+        },
+        {
+          "ar": "حجم الفريق ومساحة المكتب",
+          "en": "team size and office space"
+        },
+        {
+          "ar": "اختيار المترجم والعتاد",
+          "en": "compiler choice and hardware"
+        },
+        {
+          "ar": "طول الوثيقة والخط هنا الآن",
+          "en": "document length and font here"
+        }
+      ],
+      "concept_id": "ch2_selection_driver",
+      "explanation": {
+        "ar": "المتطلبات المستقرة والمخاطر المنخفضة تشير للشلال، وعدم الاستقرار والمخاطر العالية لغيرها.",
+        "en": "Stable requirements and low risk point to waterfall; instability and high risk point elsewhere."
+      }
     }
   ],
   "instructor": {
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T18:50:14Z",
+  "updated_at": "2026-11-04T20:05:14Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

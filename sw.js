@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.14';
+const VERSION = '1.11.15';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -233,11 +233,14 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T05_Process_Crisis_And_Silver_Bullet.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T06_Software_Myths_And_Ethics.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T07_Error_Fault_Failure_And_Failures_Log.json',
-  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T01_Models_And_Terms.json',
-  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T02_Choosing_A_Model.json',
-  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T03_Waterfall_RAD_And_Spiral.json',
-  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T04_Unified_Process.json',
-  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T05_Agile_XP_And_Scrum.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B01_SDLC_BuildFix_And_Waterfall.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B02_Incremental_And_Iterative.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B03_RAD_And_Its_Conditions.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B04_Evolutionary_And_Prototyping.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B05_Spiral_And_Risk.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B06_Unified_Process.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B07_Selecting_A_Model.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B08_Agile_XP_And_Scrum.json',
   './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T01_Requirements_Engineering_Foundations.json',
   './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T02_Elicitation_Techniques_And_QFD.json',
   './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T03_Modelling_Context_DFD_ER_UseCase.json',

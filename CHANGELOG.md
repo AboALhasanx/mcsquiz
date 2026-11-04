@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.15] — 2026-11-04
+
+### Changed
+- content: ASE Ch02 rebuilt as 8 vocabulary banks (v83)
+
+
 ## [1.11.14] — 2026-11-04
 
 ### Changed

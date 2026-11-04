@@ -3606,6 +3606,7 @@ html[data-qlang="ar"] .icon-btn.lang-toggle { color: var(--accent); }
   background: var(--border-card);
   margin: 0 auto 0.65rem;
   opacity: 0.75;
+  flex-shrink: 0;
 }
 
 .notif-head {
@@ -3615,6 +3616,7 @@ html[data-qlang="ar"] .icon-btn.lang-toggle { color: var(--accent); }
   gap: 0.6rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
 }
 
 .notif-head-title-wrap {
@@ -3690,9 +3692,29 @@ html[data-qlang="ar"] .icon-btn.lang-toggle { color: var(--accent); }
   flex-direction: column;
   gap: 0.5rem;
   overflow-y: auto;
-  padding: 0.75rem 0.1rem;
+  direction: ltr; /* Move vertical scrollbar to the right edge */
+  padding: 0.75rem 0.35rem 0.75rem 0.15rem;
   margin: 0;
   scrollbar-width: thin;
+  scrollbar-color: var(--border-card) transparent;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.notif-list > * {
+  direction: rtl; /* Restore natural Arabic RTL flow for content */
+}
+.notif-list::-webkit-scrollbar {
+  width: 5px;
+}
+.notif-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.notif-list::-webkit-scrollbar-thumb {
+  background: var(--border-card);
+  border-radius: 9999px;
+}
+.notif-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 .notif-row {
