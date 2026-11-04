@@ -30,6 +30,9 @@ SPECS = [
     'test_offline.py',
     'test_a11y.py',
     'test_security.py',
+    'test_achievements.py',
+    'test_achievements_flow.py',
+    'test_phase0.py',
 ]
 
 

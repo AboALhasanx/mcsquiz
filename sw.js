@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.10.0';
+const VERSION = '1.10.1';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -196,6 +196,14 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T05_Naive_Bayes_Examples_Smoothing_And_Variants.json',
   './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T06_Logistic_Regression_Probability_And_Threshold.json',
   './data/banks/03_Data_Mining_Ch07_Quiz_Ch07_T07_Logistic_Regression_Training_Interpretation_And_Comparison.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T01_Data_Mining_Foundations_and_Tasks.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T02_Supervised_and_Unsupervised_Learning.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T03_Clustering_Concept_and_Role.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T04_Clustering_Objectives_and_Applications.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T05_Distance_and_Similarity_Measures.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T06_KMeans_and_KMeansPlusPlus.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T07_Hierarchical_DBSCAN_GMM.json',
+  './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T08_Choosing_Number_of_Clusters.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_ModelB_Software_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_ModelA_SDLC_Models.json',

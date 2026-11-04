@@ -856,6 +856,7 @@
         at: Date.now(), hash: ses.hash, sub: ses.sub, ch: ses.ch, title: ses.title,
         chapterLabel: ses.chapterLabel, questions: ses.questions, picks: ses.picks,
         dwells: ses.dwells, idx: ses.idx, maxIdx: ses.maxIdx,
+        kind: ses.kind || (ses.ch && ses.ch.quiz_id ? 'bank' : 'saved'),
         retryWrong: !!ses.retryWrong, replay: ses.replay || null, elapsed,
       }));
     } catch (e) { /* audit-ignore: a full sessionStorage only costs the resume */ }
@@ -873,6 +874,7 @@
       questions: snap.questions, picks: snap.picks, dwells: snap.dwells,
       idx: Math.min(Number(snap.idx) || 0, snap.questions.length - 1),
       maxIdx: Number(snap.maxIdx) || 0,
+      kind: snap.kind || (snap.ch && snap.ch.quiz_id ? 'bank' : 'saved'),
       retryWrong: !!snap.retryWrong, replay: snap.replay || null,
       hash: snap.hash, finished: false, started: true,
       startEpoch: Date.now() - Number(snap.elapsed || 0), pauseAccum: 0, pauseStart: null,
@@ -900,11 +902,13 @@
   }
 
   function launchSession(pool, meta) {
-    // meta: {subjectId, subjectTitle, chapterNo, chapterLabel?, topic, quizId|null, retryWrong, replay}
+    // meta: {subjectId, subjectTitle, chapterNo, chapterLabel?, topic, quizId|null, retryWrong, replay, kind?}
     preparePool(pool);
+    const kind = meta.kind || (meta.quizId ? 'bank' : ((meta.replay && meta.replay.type === 'saved') ? 'saved' : 'bank'));
     S.session = {
       sub: { subject_id: meta.subjectId, subject_title: meta.subjectTitle },
       ch: { chapter_no: meta.chapterNo, quiz_id: meta.quizId },
+      kind: kind,
       title: meta.topic,
       chapterLabel: meta.chapterLabel || chLabel({ chapter_no: meta.chapterNo }),
       questions: pool,
@@ -980,6 +984,7 @@
     launchSession(pool, {
       subjectId: sub.subject_id, subjectTitle: sub.subject_title,
       chapterNo: ch.chapter_no, chapterLabel: ch.topicLabel || ch.label || chLabel(ch), topic: topicTitle(bank), quizId: ch.quiz_id, bank: bank,
+      kind: 'bank',
       retryWrong: retryWrong, replay: { type: 'bank', subjectId: sub.subject_id, quizId: ch.quiz_id },
     });
   }
@@ -995,6 +1000,7 @@
       chapterNo: first.chapterNo !== undefined ? first.chapterNo : 1, chapterLabel: chapterLabel,
       topic: safeTitle,
       quizId: null, retryWrong: false,
+      kind: 'saved',
       replay: { type: 'saved', keys: items.map((it) => it.key) },
     });
     S.session.hash = '#/practice';
@@ -1478,7 +1484,7 @@
         quizId: ses.ch.quiz_id, topic: ses.title,
         correct: res.correct, total: res.total, pct: res.pct,
         secs: res.totalTimeSec,
-        kind: ses.ch.quizId ? 'bank' : (ses.replay && ses.replay.type === 'saved' ? 'saved' : 'bank'),
+        kind: ses.kind || (ses.ch && ses.ch.quiz_id ? 'bank' : ((ses.replay && ses.replay.type === 'saved') ? 'saved' : 'bank')),
       });
       while (S.history.length > 200) S.history.shift();
       localStorage.setItem(HISTORY_KEY, JSON.stringify(S.history));
@@ -3461,7 +3467,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.10.0';
+  const SHELL_VERSION = '1.10.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

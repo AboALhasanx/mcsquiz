@@ -42,6 +42,7 @@
     } catch (e) {}
     try { localStorage.removeItem('portal_data_touched_v1'); } catch (e) {}
     try { localStorage.removeItem(PENDING_KEY); } catch (e) {}
+    try { localStorage.removeItem('portal_achievements_v1'); } catch (e) {}
   }
   function ownData(id) {
     if (!id) return;
@@ -177,6 +178,7 @@
       localStorage.removeItem(PENDING_KEY);
       // the PIN is a credential: it must not outlive the session on a shared device
       localStorage.removeItem('portal_pin_v1');
+      localStorage.removeItem('portal_achievements_v1');
       localStorage.setItem('portal_signed_out_v1', '1');
     } catch (e) {}
     cachedUser = null;
@@ -269,6 +271,7 @@
       localStorage.removeItem('portal_data_owner_v1');
       localStorage.removeItem('portal_session_v1');
       localStorage.removeItem(PENDING_KEY);
+      localStorage.removeItem('portal_achievements_v1');
       for (var i = localStorage.length - 1; i >= 0; i--) {
         var k = localStorage.key(i);
         if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' ||
@@ -671,6 +674,24 @@
     });
 
     out.saved = saved; out.history = hist; out.bests = bests; out.removed = removed; out.clearedAt = clearedAt;
+
+    // preserve forward-compatible sections (e.g. review store, study days)
+    var known = { app: 1, version: 1, exportedAt: 1, updatedAt: 1, saved: 1, history: 1, bests: 1, removed: 1, clearedAt: 1 };
+    var allKeys = {};
+    Object.keys(a).concat(Object.keys(b)).forEach(function (k) {
+      if (!known[k]) allKeys[k] = 1;
+    });
+    var bNewer = (Number(b.updatedAt) || 0) >= (Number(a.updatedAt) || 0);
+    Object.keys(allKeys).forEach(function (k) {
+      if (k in a && k in b) {
+        out[k] = bNewer ? b[k] : a[k];
+      } else if (k in a) {
+        out[k] = a[k];
+      } else {
+        out[k] = b[k];
+      }
+    });
+
     return out;
   }
 

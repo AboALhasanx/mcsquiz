@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التعلم المشرف وغير المشرف",
+    "en": "Supervised and Unsupervised Learning"
+  },
+  "quiz_id": "Quiz_Ch08_T02_Supervised_and_Unsupervised_Learning",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "التعلم المشرف يستخدم بيانات تحوي ماذا؟",
+        "en": "Supervised learning uses data with what?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تسميات هدف معروفة",
+          "en": "known target labels"
+        },
+        {
+          "ar": "ميزات بلا تسميات",
+          "en": "features without labels"
+        },
+        {
+          "ar": "نصوص غير مسماة",
+          "en": "unlabeled text only"
+        },
+        {
+          "ar": "صور بلا أي تسمية",
+          "en": "images with no label"
+        }
+      ],
+      "concept_id": "c8_sup_def",
+      "explanation": {
+        "ar": "التعلم المشرف يستخدم بيانات بتسميات هدف معروفة.",
+        "en": "Supervised learning uses data with known target labels."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي نوع من البيانات يستخدم التعلم غير المشرف؟",
+        "en": "What kind of data does unsupervised learning use?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أمثلة صور مسماة",
+          "en": "labeled image examples"
+        },
+        {
+          "ar": "ميزات بلا تسميات",
+          "en": "features without labels"
+        },
+        {
+          "ar": "تسميات هدف معروفة",
+          "en": "known target labels"
+        },
+        {
+          "ar": "أسماء فئات محددة",
+          "en": "predefined category names"
+        }
+      ],
+      "concept_id": "c8_sup_def2",
+      "explanation": {
+        "ar": "التعلم غير المشرف يستخدم ميزات بلا تسميات هدف.",
+        "en": "Unsupervised learning uses features without target labels."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما مهام التعلم المشرف؟",
+        "en": "Which are supervised learning tasks?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "كشف الشذوذ فقط",
+          "en": "anomaly detection tasks only"
+        },
+        {
+          "ar": "تلخيص البيانات فقط",
+          "en": "data summarization tasks only"
+        },
+        {
+          "ar": "التصنيف والانحدار",
+          "en": "classification and regression"
+        },
+        {
+          "ar": "التجميع والاختزال",
+          "en": "clustering and reduction tasks"
+        }
+      ],
+      "concept_id": "c8_sup_tasks",
+      "explanation": {
+        "ar": "المهام المشرفة النموذجية هي التصنيف والانحدار.",
+        "en": "Typical supervised tasks are classification and regression."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي مهام تنتمي للتعلم غير المشرف؟",
+        "en": "Which tasks belong to unsupervised learning?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التصنيف والانحدار",
+          "en": "classification and regression"
+        },
+        {
+          "ar": "تنبؤ القيم الرقمية",
+          "en": "value prediction tasks only"
+        },
+        {
+          "ar": "وسم البريد الإلكتروني",
+          "en": "spam labeling tasks only"
+        },
+        {
+          "ar": "التجميع والاختزال",
+          "en": "clustering and reduction"
+        }
+      ],
+      "concept_id": "c8_sup_tasks2",
+      "explanation": {
+        "ar": "المهام غير المشرفة النموذجية هي التجميع والاختزال.",
+        "en": "Typical unsupervised tasks are clustering and reduction."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "التنبؤ بالاحتيال من أمثلة مسماة هو؟",
+        "en": "Predicting fraud from labeled examples is?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تعلّم مشرف بالبيانات",
+          "en": "supervised learning"
+        },
+        {
+          "ar": "تعلّم غير مشرف تماماً",
+          "en": "unsupervised learning"
+        },
+        {
+          "ar": "ضغط البيانات الكبيرة",
+          "en": "data compression"
+        },
+        {
+          "ar": "استرجاع سجلات قديمة",
+          "en": "record retrieval"
+        }
+      ],
+      "concept_id": "c8_sup_ex1",
+      "explanation": {
+        "ar": "استخدام التسميات للتنبؤ بالاحتيال تعلم مشرف.",
+        "en": "Using labels to predict fraud is supervised learning."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "تجميع معاملات متشابهة دون تسميات هو؟",
+        "en": "Grouping similar transactions without labels is?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "استرجاع سجلات قديمة",
+          "en": "record retrieval task"
+        },
+        {
+          "ar": "تعلّم غير مشرف تماماً",
+          "en": "unsupervised learning"
+        },
+        {
+          "ar": "تعلّم مشرف على البيانات",
+          "en": "supervised learning task"
+        },
+        {
+          "ar": "ضغط البيانات الكبيرة",
+          "en": "data compression task"
+        }
+      ],
+      "concept_id": "c8_sup_ex2",
+      "explanation": {
+        "ar": "تجميع معاملات متشابهة دون تسميات تعلم غير مشرف، إذ لا يوجد هدف معطى.",
+        "en": "Grouping similar transactions without labels is unsupervised, since no target is given."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "تسميات مثل ممتاز موجودة؛ التعلم التنبؤ بها هو؟",
+        "en": "Labels like Excellent exist; learning to predict them is?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ضغط البيانات الكبيرة",
+          "en": "data compression"
+        },
+        {
+          "ar": "استرجاع سجلات قديمة",
+          "en": "record retrieval"
+        },
+        {
+          "ar": "تعلّم مشرف بالبيانات",
+          "en": "supervised learning"
+        },
+        {
+          "ar": "تعلّم غير مشرف تماماً",
+          "en": "unsupervised learning"
+        }
+      ],
+      "concept_id": "c8_sup_ex3",
+      "explanation": {
+        "ar": "التنبؤ بتسميات موجودة مثل ممتاز تعلم مشرف، لأن الهدف معروف.",
+        "en": "Predicting existing labels such as Excellent is supervised, because the target is known."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "التجميع نوع من ماذا؟",
+        "en": "Clustering is a type of what?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تعلّم مشرف على البيانات",
+          "en": "supervised learning task"
+        },
+        {
+          "ar": "ضغط البيانات الكبيرة",
+          "en": "data compression task"
+        },
+        {
+          "ar": "استرجاع سجلات قديمة",
+          "en": "record retrieval task"
+        },
+        {
+          "ar": "تعلّم غير مشرف تماماً",
+          "en": "unsupervised learning"
+        }
+      ],
+      "concept_id": "c8_sup_clustbelong",
+      "explanation": {
+        "ar": "التجميع مهمة تعلم غير مشرف شائعة، لأنه يجمّع بيانات بلا تسميات هدف.",
+        "en": "Clustering is a common unsupervised task, as it groups data with no target labels."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:33:19Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

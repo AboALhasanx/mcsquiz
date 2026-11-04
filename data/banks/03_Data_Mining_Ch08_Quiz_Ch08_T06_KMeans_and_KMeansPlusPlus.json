@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "خوارزمية K-Means وK-Means++",
+    "en": "K-Means and K-Means++"
+  },
+  "quiz_id": "Quiz_Ch08_T06_KMeans_and_KMeansPlusPlus",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "يُوصف K-Means بأنه ماذا؟",
+        "en": "K-Means is best described as what?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقسيم إلى K عناقيد",
+          "en": "partitioning into K clusters"
+        },
+        {
+          "ar": "شجرة تسلسلية كاملة",
+          "en": "a hierarchical tree method"
+        },
+        {
+          "ar": "كاشف ضجيج كثيف جداً",
+          "en": "a density based noise finder"
+        },
+        {
+          "ar": "نموذج غاوسي مختلط",
+          "en": "a Gaussian mixture model"
+        }
+      ],
+      "concept_id": "c8_kmn_type",
+      "explanation": {
+        "ar": "K-Means خوارزمية تقسيمية إلى K عناقيد.",
+        "en": "K-Means is a partitioning algorithm into K clusters."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "يُمثَّل كل عنقود K-Means بماذا؟",
+        "en": "Each K-Means cluster is represented by what?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نقطة ضجيج واحدة",
+          "en": "a single noise point"
+        },
+        {
+          "ar": "مركزه وهو متوسطه",
+          "en": "its centroid the mean"
+        },
+        {
+          "ar": "أكبر عنصر داخله",
+          "en": "its largest object"
+        },
+        {
+          "ar": "تسمية فئة معروفة",
+          "en": "a known class label"
+        }
+      ],
+      "concept_id": "c8_kmn_centroid",
+      "explanation": {
+        "ar": "يُمثَّل كل عنقود بمركزه، وهو متوسط عناصره.",
+        "en": "Each cluster is represented by its centroid, which is the mean of its objects."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "في K-Means، كيف تُسنَد العناصر؟",
+        "en": "In K-Means, how are objects assigned?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تسمية معروفة مسبقاً",
+          "en": "a known class label"
+        },
+        {
+          "ar": "الكل إلى عنقود واحد",
+          "en": "all to a single cluster"
+        },
+        {
+          "ar": "إلى أقرب مركز له",
+          "en": "to the nearest centroid"
+        },
+        {
+          "ar": "إلى أبعد مركز له",
+          "en": "to the farthest centroid"
+        }
+      ],
+      "concept_id": "c8_kmn_step3",
+      "explanation": {
+        "ar": "يُسنَد كل عنصر إلى أقرب مركز، وهذا يشكّل العناقيد.",
+        "en": "Each object is assigned to the nearest centroid, which forms the clusters."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "بعد الإسناد، كيف يُحدَّث المركز؟",
+        "en": "After assignment, how is the centroid updated?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أكبر عنصر داخله",
+          "en": "as the largest object"
+        },
+        {
+          "ar": "ثابت لا يتغير أبداً",
+          "en": "kept fixed forever more"
+        },
+        {
+          "ar": "تسمية معروفة مسبقاً",
+          "en": "as a known class label"
+        },
+        {
+          "ar": "متوسط العناصر كلها",
+          "en": "as the mean of objects"
+        }
+      ],
+      "concept_id": "c8_kmn_step4",
+      "explanation": {
+        "ar": "يُعاد حساب كل مركز كمتوسط العناصر الموجودة الآن في عنقوده.",
+        "en": "Each centroid is recomputed as the mean of the objects now in its cluster."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "بيانات 2,4,10,12، K=2، مراكز 2 و10: أي إسناد صحيح؟",
+        "en": "Data 2,4,10,12, K=2, initial centroids 2 and 10: which assignment is correct?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "{2,4} و {10,12}",
+          "en": "{2,4} and {10,12}"
+        },
+        {
+          "ar": "{2,10} و {4,12}",
+          "en": "{2,10} and {4,12}"
+        },
+        {
+          "ar": "{2,12} و {4,10}",
+          "en": "{2,12} and {4,10}"
+        },
+        {
+          "ar": "{2,4,10} و {12}",
+          "en": "{2,4,10} and {12}"
+        }
+      ],
+      "concept_id": "c8_kmn_ex_c1",
+      "explanation": {
+        "ar": "أقرب مركز يضع 2,4 معاً و10,12 معاً.",
+        "en": "Nearest centroid puts 2,4 together and 10,12 together."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما قصور من قصور K-Means؟",
+        "en": "Which is a limitation of K-Means?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يتعامل مع أشكال غريبة",
+          "en": "handles odd shapes well"
+        },
+        {
+          "ar": "K يجب اختياره مسبقاً",
+          "en": "K chosen in advance only"
+        },
+        {
+          "ar": "K يُختار تلقائياً دائماً",
+          "en": "K chosen automatically"
+        },
+        {
+          "ar": "لا يعتمد على البدايات",
+          "en": "never depends on starts"
+        }
+      ],
+      "concept_id": "c8_kmn_lim1",
+      "explanation": {
+        "ar": "يجب اختيار K مسبقاً، وK الخاطئ يعطي عناقيد مضللة.",
+        "en": "K must be selected in advance, and a wrong K gives misleading clusters."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي ضعف في K-Means يتعلق بالقيم المتطرفة؟",
+        "en": "Which weakness of K-Means concerns extreme values?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يجد K الأمثل دائماً",
+          "en": "always finds best K"
+        },
+        {
+          "ar": "يتطلب تسميات فئات",
+          "en": "needs class labels"
+        },
+        {
+          "ar": "حسّاس للقيم الشاذة",
+          "en": "sensitive to outliers"
+        },
+        {
+          "ar": "غير متأثر بالشاذة",
+          "en": "never hit by outliers"
+        }
+      ],
+      "concept_id": "c8_kmn_lim2",
+      "explanation": {
+        "ar": "هو حسّاس للقيم الشاذة وللميزات ذات المقاييس المختلفة جداً.",
+        "en": "It is sensitive to outliers and to features on very different scales."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما هو K-Means++؟",
+        "en": "What is K-Means++?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "خوارزمية تجميع أخرى",
+          "en": "an unrelated clustering method"
+        },
+        {
+          "ar": "طريقة تسميات معروفة",
+          "en": "a known class label method"
+        },
+        {
+          "ar": "مضغوط بيانات بسيط",
+          "en": "a simple dataset compressor"
+        },
+        {
+          "ar": "تهيئة توزّع المراكز",
+          "en": "initialization of centroids"
+        }
+      ],
+      "concept_id": "c8_kmn_pp",
+      "explanation": {
+        "ar": "هي تهيئة توزّع المراكز قبل خطوات K-Means المعتادة.",
+        "en": "It is an initialization that spreads centroids out before the usual K-Means steps."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:33:19Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

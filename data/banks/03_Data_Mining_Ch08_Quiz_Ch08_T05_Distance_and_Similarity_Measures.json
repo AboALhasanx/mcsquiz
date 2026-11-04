@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس التشابه والمسافة",
+    "en": "Distance and Similarity Measures"
+  },
+  "quiz_id": "Quiz_Ch08_T05_Distance_and_Similarity_Measures",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "مقياس المسافة يدل على ماذا لعنصرين؟",
+        "en": "A distance measure shows what of two objects?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مدى بعدهما عن بعضهما",
+          "en": "how far apart they are"
+        },
+        {
+          "ar": "مدى تشابههما الاثنين",
+          "en": "how much alike they are"
+        },
+        {
+          "ar": "أي تسمية يشتركان بها",
+          "en": "which label they share"
+        },
+        {
+          "ar": "كم ميزة يمتلكان هما",
+          "en": "how many features exist"
+        }
+      ],
+      "concept_id": "c8_dis_distmean",
+      "explanation": {
+        "ar": "مقياس المسافة يدل على مدى بعد عنصرين؛ الأكبر يعني تشابهاً أقل.",
+        "en": "A distance measure shows how far apart two objects are; larger means less alike."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "مقياس التشابه يدل على ماذا لعنصرين؟",
+        "en": "A similarity measure shows what of two objects?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "كم ميزة يمتلكان هما",
+          "en": "how many features exist"
+        },
+        {
+          "ar": "مدى تشابههما الاثنين",
+          "en": "how much alike they are"
+        },
+        {
+          "ar": "مدى بعدهما عن بعضهما",
+          "en": "how far apart they are"
+        },
+        {
+          "ar": "أي تسمية يشتركان بها",
+          "en": "which label they share"
+        }
+      ],
+      "concept_id": "c8_dis_simmean",
+      "explanation": {
+        "ar": "مقياس التشابه يدل على مدى تشابههما.",
+        "en": "A similarity measure shows how alike they are."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما هي المسافة الإقليدية؟",
+        "en": "What is Euclidean distance?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الزاوية بين المتجهين",
+          "en": "angle between two vectors"
+        },
+        {
+          "ar": "عدد الميزات المشتركة",
+          "en": "count of shared features"
+        },
+        {
+          "ar": "الخط المستقيم بينهما",
+          "en": "straight-line point distance"
+        },
+        {
+          "ar": "مجموع الفروق المطلقة",
+          "en": "sum of absolute differences"
+        }
+      ],
+      "concept_id": "c8_dis_euc_def",
+      "explanation": {
+        "ar": "هي المسافة المستقيمة بين نقطتين، مأخوذة من قاعدة فيثاغورس.",
+        "en": "It is the straight-line distance between two points, from the Pythagorean rule."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لـ A=(2,3) و B=(5,7)، أي مقياس يساوي 5؟",
+        "en": "For A=(2,3) and B=(5,7), which measure equals 5?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مسافة مانهاتن هي",
+          "en": "Manhattan distance"
+        },
+        {
+          "ar": "تشابه جيب التمام",
+          "en": "Cosine similarity"
+        },
+        {
+          "ar": "مسافة تشيبيشيف",
+          "en": "Chebyshev distance"
+        },
+        {
+          "ar": "المسافة الإقليدية",
+          "en": "Euclidean distance"
+        }
+      ],
+      "concept_id": "c8_dis_euc_ex",
+      "explanation": {
+        "ar": "جذر((5-2)²+(7-3)²)=5، وهي المسافة الإقليدية.",
+        "en": "sqrt((5-2)^2+(7-3)^2)=5, the Euclidean distance."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "مع A=(2,3) و B=(5,7)، القيمة 7 هي أي مقياس؟",
+        "en": "With A=(2,3) and B=(5,7), the value 7 is which measure?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مسافة مانهاتن هي",
+          "en": "Manhattan distance"
+        },
+        {
+          "ar": "المسافة الإقليدية",
+          "en": "Euclidean distance"
+        },
+        {
+          "ar": "تشابه جيب التمام",
+          "en": "Cosine similarity"
+        },
+        {
+          "ar": "مسافة تشيبيشيف",
+          "en": "Chebyshev distance"
+        }
+      ],
+      "concept_id": "c8_dis_man_ex",
+      "explanation": {
+        "ar": "|5-2|+|7-3| = 7، وهي مسافة مانهاتن.",
+        "en": "|5-2|+|7-3| = 7, the Manhattan distance."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يقيس تشابه جيب التمام؟",
+        "en": "What does Cosine Similarity measure?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد الميزات المشتركة",
+          "en": "count of shared features"
+        },
+        {
+          "ar": "الزاوية بين المتجهين",
+          "en": "the angle between vectors"
+        },
+        {
+          "ar": "المسافة المستقيمة بينهما",
+          "en": "straight-line point distance"
+        },
+        {
+          "ar": "مجموع الفروق المطلقة",
+          "en": "sum of absolute differences"
+        }
+      ],
+      "concept_id": "c8_dis_cos_def",
+      "explanation": {
+        "ar": "يقيس الزاوية بين متجهين، متجاهلاً طوليهما.",
+        "en": "It measures the angle between two vectors, ignoring their lengths."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما المدى الشائع لتشابه جيب التمام؟",
+        "en": "What is the common range of Cosine Similarity?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "من 0 إلى 10",
+          "en": "from 0 to 10"
+        },
+        {
+          "ar": "من -10 إلى 10",
+          "en": "from -10 to 10"
+        },
+        {
+          "ar": "من -1 إلى 1",
+          "en": "from -1 to 1"
+        },
+        {
+          "ar": "من 0 إلى 100",
+          "en": "from 0 to 100"
+        }
+      ],
+      "concept_id": "c8_dis_cos_range",
+      "explanation": {
+        "ar": "يتراوح عادة من -1 إلى 1، ومن 0 إلى 1 للبيانات غير السالبة.",
+        "en": "It commonly ranges from -1 to 1, and from 0 to 1 for non-negative data."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف تُعرَّف مسافة جيب التمام؟",
+        "en": "How is Cosine Distance defined?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مربع قيمة التشابه",
+          "en": "square of cosine similarity"
+        },
+        {
+          "ar": "مجموع المتجهين معاً",
+          "en": "sum of the two vectors"
+        },
+        {
+          "ar": "الزاوية بالدرجات فقط",
+          "en": "the angle in degrees only"
+        },
+        {
+          "ar": "واحد ناقص التشابه",
+          "en": "1 minus cosine similarity"
+        }
+      ],
+      "concept_id": "c8_dis_cos_dist",
+      "explanation": {
+        "ar": "مسافة جيب التمام هي 1 ناقص التشابه.",
+        "en": "Cosine Distance is 1 minus cosine similarity."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:33:19Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.1] — 2026-11-04
+
+### Changed
+- content: DM Ch08 Clustering (8 banks, 64 q)
+
+
 ## [1.10.0] — 2026-11-04
 
 ### Changed

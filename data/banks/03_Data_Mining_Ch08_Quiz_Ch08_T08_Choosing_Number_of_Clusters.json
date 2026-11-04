@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "تحديد عدد المجموعات",
+    "en": "Choosing the Number of Clusters"
+  },
+  "quiz_id": "Quiz_Ch08_T08_Choosing_Number_of_Clusters",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "طريقة المرفق تشغّل K-Means لغرض ماذا؟",
+        "en": "The Elbow Method runs K-Means for what?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدة قيم K وتسجيل WCSS",
+          "en": "several K and record WCSS"
+        },
+        {
+          "ar": "قيمة K ثابتة واحدة فقط",
+          "en": "a single fixed K only"
+        },
+        {
+          "ar": "إسناد تسميات معروفة تماماً",
+          "en": "assigning known class labels"
+        },
+        {
+          "ar": "ضغط البيانات بأكملها",
+          "en": "compressing the whole data"
+        }
+      ],
+      "concept_id": "c8_k_elbow_def",
+      "explanation": {
+        "ar": "تشغّل K-Means لعدة قيم K وتسجّل WCSS لكل تشغيل.",
+        "en": "It runs K-Means for several K and records the WCSS of each run."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الذي يقيسه WCSS؟",
+        "en": "WCSS measures what?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تسمية فئة معروفة فقط",
+          "en": "a known class label here"
+        },
+        {
+          "ar": "مربع المسافة للمراكز",
+          "en": "sum of squared distances"
+        },
+        {
+          "ar": "عدد نقاط الضجيج هنا",
+          "en": "the count of noise points"
+        },
+        {
+          "ar": "عدد الميزات الكلية",
+          "en": "the number of features"
+        }
+      ],
+      "concept_id": "c8_k_wcss",
+      "explanation": {
+        "ar": "يقيس مربع المسافة من كل نقطة إلى مركز عنقودها.",
+        "en": "It measures the squared distance from each point to its cluster centroid."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "نقطة المرفق هي حيث يتباطأ ماذا؟",
+        "en": "The elbow point is where what slows?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد نقاط الضجيج فقط",
+          "en": "the count of noise"
+        },
+        {
+          "ar": "عدد الميزات كلها",
+          "en": "the number of features"
+        },
+        {
+          "ar": "انخفاض قيمة WCSS",
+          "en": "the decrease in WCSS"
+        },
+        {
+          "ar": "زيادة قيمة K فقط",
+          "en": "the increase in K"
+        }
+      ],
+      "concept_id": "c8_k_elbow_mean",
+      "explanation": {
+        "ar": "هي النقطة حيث يتوقف إضافة العناقيد عن خفض WCSS بحدّة.",
+        "en": "It is the point where adding clusters stops sharply reducing WCSS."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الذي يقيسه مقياس الظلال؟",
+        "en": "The Silhouette Score measures what?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد نقاط الضجيج هنا",
+          "en": "the count of noise points"
+        },
+        {
+          "ar": "عدد الميزات الكلية",
+          "en": "the number of features"
+        },
+        {
+          "ar": "تسمية فئة معروفة فقط",
+          "en": "a known class label here"
+        },
+        {
+          "ar": "ملاءمة مقابل أقرب آخر",
+          "en": "cluster fit versus nearest"
+        }
+      ],
+      "concept_id": "c8_k_sil_def",
+      "explanation": {
+        "ar": "يقيس مدى ملاءمة كل عنصر لعنقوده مقابل أقرب عنقود آخر.",
+        "en": "It measures how well each object fits its cluster versus the nearest other cluster."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا تخبرك قيمة ظلال قريبة من +1؟",
+        "en": "What does a silhouette value close to +1 tell you?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "العنصر ملائم جيداً",
+          "en": "object fits cluster well"
+        },
+        {
+          "ar": "العنصر ضجيج واضح تماماً",
+          "en": "object is clear noise here"
+        },
+        {
+          "ar": "تسمية معروفة مسبقاً",
+          "en": "a known class label only"
+        },
+        {
+          "ar": "العنصر ميزاته قليلة",
+          "en": "object has few features now"
+        }
+      ],
+      "concept_id": "c8_k_sil_pos",
+      "explanation": {
+        "ar": "قرب +1 يعني أن العنصر يلائم عنقوده أفضل بكثير من التالي.",
+        "en": "Near +1 means the object fits its own cluster much better than the next one."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا تعني قيمة ظلال قريبة من 0؟",
+        "en": "What does a silhouette value close to 0 mean?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "العنصر ميزاته كثيرة",
+          "en": "object has many features"
+        },
+        {
+          "ar": "العنصر قريب من حد ما",
+          "en": "object near a boundary"
+        },
+        {
+          "ar": "العنصر ضجيج واضح تماماً",
+          "en": "object is clear noise here"
+        },
+        {
+          "ar": "تسمية معروفة مسبقاً",
+          "en": "a known class label only"
+        }
+      ],
+      "concept_id": "c8_k_sil_zero",
+      "explanation": {
+        "ar": "حول 0 يعني أن العنصر يقع قرب حد بين عنقودين.",
+        "en": "Around 0 means the object sits near a boundary between two clusters."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا تشير إليه قيمة ظلال سالبة؟",
+        "en": "What does a negative silhouette value suggest?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تسمية معروفة مسبقاً",
+          "en": "a known class label only"
+        },
+        {
+          "ar": "العنصر ميزاته قليلة",
+          "en": "object has few features now"
+        },
+        {
+          "ar": "العنصر في عنقود خاطئ",
+          "en": "object may be wrong cluster"
+        },
+        {
+          "ar": "العنصر ضجيج واضح تماماً",
+          "en": "object is clear noise here"
+        }
+      ],
+      "concept_id": "c8_k_sil_neg",
+      "explanation": {
+        "ar": "دون 0 يشير إلى أن العنصر قد ينتمي لعنقود مختلف عن المسند.",
+        "en": "Below 0 suggests the object may belong to a different cluster than assigned."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما معادلة الظلال s(i)؟",
+        "en": "What is the Silhouette formula s(i)?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "(a-b) / min(a,b)",
+          "en": "(a-b) / min(a,b)"
+        },
+        {
+          "ar": "a زائد b بالكامل",
+          "en": "a plus b all over"
+        },
+        {
+          "ar": "max(a,b) لوحده",
+          "en": "max(a,b) alone"
+        },
+        {
+          "ar": "(b-a) / max(a,b)",
+          "en": "(b-a) / max(a,b)"
+        }
+      ],
+      "concept_id": "c8_k_sil_form",
+      "explanation": {
+        "ar": "s(i) = (b-a) / max(a,b)، حيث a متوسط عنقوده وb متوسط أقرب عنقود.",
+        "en": "s(i) = (b-a) / max(a,b), where a is the own-cluster mean and b the nearest mean."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. أحمد شاكر عبد الرضا",
+    "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
+  },
+  "subject_id": "03_Data_Mining",
+  "updated_at": "2026-11-04T11:33:19Z",
+  "subject_title": "تنقيب البيانات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

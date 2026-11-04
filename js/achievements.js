@@ -55,10 +55,14 @@
     }
   }
 
-  function getAggregateStats() {
+  function getAggregateStats(historyOverride) {
     var history = [];
     var saved = {};
-    try { history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch (e) {}
+    if (Array.isArray(historyOverride)) {
+      history = historyOverride;
+    } else {
+      try { history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch (e) {}
+    }
     try { saved = JSON.parse(localStorage.getItem(SAVED_KEY) || '{}'); } catch (e) {}
 
     var totalQuizzes = history.length;
@@ -384,6 +388,25 @@
     var stats = getAggregateStats();
     var state = loadState();
     var newlyUnlocked = [];
+
+    // If this device never bootstrapped, baseline prior history so we don't spam celebrations
+    // for achievements that were already earned before this quiz.
+    if (!state.hasBootstrapped) {
+      state.hasBootstrapped = true;
+      if (stats.history.length > 1) {
+        var priorStats = getAggregateStats(stats.history.slice(0, -1));
+        CATALOG.forEach(function (badge) {
+          var priorEval = badge.evaluate(priorStats);
+          if (priorEval.achievedTier > 0) {
+            state.unlocked[badge.id] = {
+              tier: priorEval.achievedTier,
+              unlockedAt: Date.now(),
+              lastNotifiedTier: priorEval.achievedTier
+            };
+          }
+        });
+      }
+    }
 
     CATALOG.forEach(function (badge) {
       var evalRes = badge.evaluate(stats);
