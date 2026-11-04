@@ -355,6 +355,42 @@
       if (countEl) {
         countEl.textContent = data.unlockedCount + ' / ' + data.totalCount;
       }
+
+      var masteryGrid = document.getElementById('profile-mastery-grid');
+      var masteryCountEl = document.getElementById('profile-mastery-count');
+      if (masteryGrid && data.subjectMastery) {
+        masteryGrid.innerHTML = '';
+        var sm = data.subjectMastery;
+        (sm.subjects || []).forEach(function (sub) {
+          var item = document.createElement('div');
+          var tierClass = sub.isMastered ? (sub.tierMeta ? sub.tierMeta.accentClass : 'tier-gold') : 'tier-locked';
+          var customAccent = sub.accentClass ? (' ' + sub.accentClass) : '';
+          item.className = 'profile-badge-item ' + (sub.isMastered ? 'is-unlocked ' : 'is-locked ') + tierClass + customAccent;
+          item.setAttribute('role', 'listitem');
+          item.setAttribute('tabindex', '0');
+          item.setAttribute('aria-label', 'وسام إتقان ' + sub.title + ': ' + sub.statusText);
+
+          var iconHtml = '<div class="profile-badge-icon-box">' +
+            '<i data-lucide="' + escapeHtml(sub.icon) + '"></i>' +
+            '</div>';
+          var titleHtml = '<span class="profile-badge-title">' + escapeHtml(sub.shortTitle) + '</span>';
+          var statusHtml = '<span class="profile-badge-status">' + escapeHtml(sub.isMastered ? 'مُتقَن' : (sub.completedQuizzes + '/' + sub.totalQuizzes)) + '</span>';
+
+          item.innerHTML = iconHtml + titleHtml + statusHtml;
+          item.addEventListener('click', function () {
+            if (global.PortalAchievements && global.PortalAchievements.showSubjectMasterySheet) {
+              global.PortalAchievements.showSubjectMasterySheet(sub.subjectId);
+            }
+          });
+          masteryGrid.appendChild(item);
+        });
+
+        if (masteryCountEl) {
+          masteryCountEl.textContent = sm.masteredCount + ' / ' + sm.totalSubjects;
+        }
+      }
+
+      if (global.lucide && global.lucide.createIcons) global.lucide.createIcons();
       return;
     }
 

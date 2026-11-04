@@ -432,6 +432,12 @@
             var tierCls = (topB.tierMeta && topB.tierMeta.accentClass) ? ('badge-' + topB.tierMeta.accentClass) : 'badge-tier-gold';
             pills.push('<span class="player-honor-pill ' + tierCls + '"><i data-lucide="' + escapeHtml(topB.badge.icon) + '"></i> ' + escapeHtml(topB.evalRes.currentTierTitle || topB.badge.title) + '</span>');
           }
+          if (ev.subjectMastery && Array.isArray(ev.subjectMastery.subjects)) {
+            var masteredSubs = ev.subjectMastery.subjects.filter(function (s) { return s.isMastered; });
+            masteredSubs.forEach(function (ms) {
+              pills.push('<span class="player-honor-pill badge-tier-gold"><i data-lucide="' + escapeHtml(ms.icon) + '"></i> إتقان ' + escapeHtml(ms.shortTitle) + '</span>');
+            });
+          }
           if (pills.length > 0) {
             honorsHtml = '<div class="player-honors-highlight">' + pills.join('') + '</div>';
           }

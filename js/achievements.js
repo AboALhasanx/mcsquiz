@@ -683,6 +683,9 @@
 
   /* Bottom Sheet details inspector */
   function showBadgeSheet(badgeId) {
+    if (typeof badgeId === 'string' && badgeId.indexOf('mastery_') === 0) {
+      return showSubjectMasterySheet(badgeId.substring(8));
+    }
     var badge = CATALOG.find(function (b) { return b.id === badgeId; });
     if (!badge) return;
 
@@ -779,6 +782,89 @@
       sheet.classList.add('hidden');
       overlay.classList.add('hidden');
     }, 280);
+  }
+
+  function showSubjectMasterySheet(subjectId) {
+    var sm = evaluateSubjectMastery();
+    var sub = (sm.subjects || []).find(function (s) { return s.subjectId === subjectId; });
+    if (!sub) return;
+
+    var sheet = document.getElementById('badge-sheet');
+    var overlay = document.getElementById('badge-sheet-overlay');
+    if (!sheet || !overlay) return;
+
+    var emblemEl = document.getElementById('badge-sheet-emblem');
+    var rankEl = document.getElementById('badge-sheet-rank');
+    var titleEl = document.getElementById('badge-sheet-title');
+    var descEl = document.getElementById('badge-sheet-desc');
+    var progValEl = document.getElementById('badge-sheet-progress-val');
+    var progFillEl = document.getElementById('badge-sheet-progress-fill');
+    var progLabelEl = document.getElementById('badge-sheet-progress-label');
+    var dateEl = document.getElementById('badge-sheet-date');
+
+    var isUnlocked = sub.isMastered;
+    var emblemClass = isUnlocked ? (sub.tierMeta ? sub.tierMeta.accentClass : 'tier-gold') : 'tier-locked';
+
+    if (emblemEl) {
+      emblemEl.className = 'badge-sheet-emblem-wrap ' + emblemClass + (sub.accentClass ? (' ' + sub.accentClass) : '');
+      emblemEl.innerHTML = '<div class="sheet-emblem-halo" style="' + (isUnlocked ? ('background:' + sub.color + ';') : '') + '"></div>' +
+        '<div class="sheet-emblem-disc">' +
+        '<i data-lucide="' + escapeHtml(sub.icon) + '"></i>' +
+        '</div>';
+    }
+
+    if (titleEl) titleEl.textContent = 'وسام إتقان: ' + sub.title;
+    if (descEl) descEl.textContent = 'إتمام جميع كوزات مادة ' + sub.title + ' البالغ عددها ' + sub.totalQuizzes + ' كوزاً بمعدل 80% فأعلى';
+
+    if (rankEl) {
+      if (isUnlocked) {
+        rankEl.textContent = sub.tierMeta ? sub.tierMeta.label : 'وسام إتقان معتمد';
+        rankEl.className = 'badge-sheet-rank-tag ' + (sub.tierMeta ? sub.tierMeta.accentClass : 'tier-gold');
+      } else {
+        rankEl.textContent = 'قيد المذاكرة والتدريب';
+        rankEl.className = 'badge-sheet-rank-tag tier-locked';
+      }
+    }
+
+    if (progValEl) progValEl.textContent = sub.completedQuizzes + ' / ' + sub.totalQuizzes + ' كوزاً مكتملة';
+    if (progFillEl) progFillEl.style.width = sub.progressPct + '%';
+    if (progLabelEl) {
+      if (isUnlocked) {
+        progLabelEl.textContent = 'تم إتقان المادة بنجاح (المعدل الإجمالي: ' + sub.avgPct + '%)';
+      } else if (sub.completedQuizzes === 0) {
+        progLabelEl.textContent = 'الهدف: إتمام كافة كوزات المادة بمعدل ≥ 80%';
+      } else {
+        progLabelEl.textContent = 'المعدل الحالي: ' + sub.avgPct + '% · متبقي ' + (sub.totalQuizzes - sub.completedQuizzes) + ' كوزاً';
+      }
+    }
+
+    if (dateEl) {
+      if (isUnlocked) {
+        dateEl.textContent = 'إتقان أكاديمي معتمد ومسجل في حساب الطالب';
+      } else {
+        dateEl.textContent = 'أكمل باقي كوزات المادة بمتوسط 80% فأعلى لفتح الوسام';
+      }
+    }
+
+    var shareBtn = document.getElementById('badge-sheet-share-btn');
+    if (shareBtn) {
+      if (isUnlocked) {
+        shareBtn.classList.remove('hidden');
+        shareBtn.onclick = function () {
+          shareSubjectMasteryCard(sub);
+        };
+      } else {
+        shareBtn.classList.add('hidden');
+      }
+    }
+
+    sheet.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    void sheet.offsetWidth;
+    sheet.classList.add('is-open');
+    overlay.classList.add('is-open');
+
+    if (global.lucide && global.lucide.createIcons) global.lucide.createIcons();
   }
 
   /* --- Canvas Badge Share Card Generation (Offline Safe) --- */
@@ -1043,6 +1129,190 @@
     }
   }
 
+  async function shareSubjectMasteryCard(sub) {
+    if (!sub) return;
+    if (typeof global.toast === 'function') global.toast('نجهّز بطاقة وسام الإتقان…', 'info');
+
+    var W = 800;
+    var H = 960;
+    var c = document.createElement('canvas');
+    c.width = W;
+    c.height = H;
+    var ctx = c.getContext('2d');
+    ctx.direction = 'rtl';
+    ctx.textBaseline = 'alphabetic';
+
+    // 1. Dark Gradient Background
+    var bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, '#090d16');
+    bg.addColorStop(1, '#0e1626');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // 2. Radial Glow matching subject color
+    var glowColor = sub.color || '#eab308';
+    var glow = ctx.createRadialGradient(W / 2, 380, 40, W / 2, 380, 420);
+    glow.addColorStop(0, glowColor);
+    glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.globalAlpha = 0.22;
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, 760);
+    ctx.globalAlpha = 1.0;
+
+    // 3. Card Outer Border
+    drawRoundRect(ctx, 32, 32, W - 64, H - 64, 32);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 4. Header Bar
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = '700 36px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText('MCSQuiz', W - 64, 96);
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '600 24px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText('وسام إتقان أكاديمي', 64, 96);
+
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.07)';
+    ctx.fillRect(64, 126, W - 128, 1.5);
+
+    // 5. Student Header
+    var studentName = 'طالب متميز';
+    try {
+      var acc = JSON.parse(localStorage.getItem('portal_account_v1') || '{}');
+      if (acc.name) studentName = acc.name;
+    } catch (e) {} // audit-ignore: optional student name read
+
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#f1f5f9';
+    ctx.font = '700 32px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText(studentName, W - 64, 185);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '500 22px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText('أتم بنجاح كافة متطلبات إتقان المادة', W - 64, 222);
+
+    // 6. Central Emblem Squircle & Icon
+    var emblemX = W / 2;
+    var emblemY = 380;
+    var emblemSize = 130;
+
+    ctx.beginPath();
+    ctx.arc(emblemX, emblemY, 88, 0, Math.PI * 2);
+    ctx.fillStyle = glowColor;
+    ctx.globalAlpha = 0.16;
+    ctx.fill();
+    ctx.globalAlpha = 1.0;
+
+    drawRoundRect(ctx, emblemX - emblemSize / 2, emblemY - emblemSize / 2, emblemSize, emblemSize, 34);
+    ctx.fillStyle = '#0f172a';
+    ctx.fill();
+    ctx.strokeStyle = glowColor;
+    ctx.lineWidth = 3.5;
+    ctx.stroke();
+
+    var emblemWrap = document.getElementById('badge-sheet-emblem');
+    var svgEl = emblemWrap ? emblemWrap.querySelector('svg') : null;
+    if (svgEl) {
+      var cloneSvg = svgEl.cloneNode(true);
+      cloneSvg.setAttribute('width', '68');
+      cloneSvg.setAttribute('height', '68');
+      cloneSvg.setAttribute('stroke', glowColor);
+      var svgXml = new XMLSerializer().serializeToString(cloneSvg);
+      await drawSvgToCanvas(ctx, svgXml, emblemX - 34, emblemY - 34, 68, 68);
+    }
+
+    // 7. Rank Badge Tag
+    var rankLabel = (sub.tierMeta && sub.tierMeta.label) ? sub.tierMeta.label : 'إتقان أكاديمي';
+    ctx.font = '700 22px "MCSQuiz Arabic", sans-serif';
+    var rankMetrics = ctx.measureText(rankLabel);
+    var tagW = rankMetrics.width + 42;
+    var tagH = 40;
+    var tagX = emblemX - tagW / 2;
+    var tagY = 480;
+
+    drawRoundRect(ctx, tagX, tagY, tagW, tagH, 20);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
+    ctx.fill();
+    ctx.strokeStyle = glowColor;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = glowColor;
+    ctx.fillText(rankLabel, emblemX, tagY + 27);
+
+    // 8. Badge Title & Description
+    var badgeTitle = 'وسام إتقان ' + sub.title;
+    ctx.fillStyle = '#f8fafc';
+    ctx.font = '800 44px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText(badgeTitle, emblemX, 580);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '500 24px "MCSQuiz Arabic", sans-serif';
+    ctx.fillText('إنجاز ' + sub.totalQuizzes + ' كوزاً بمعدل نجاح متميز', emblemX, 630);
+
+    // 9. Metric / Status Box
+    var boxW = 560;
+    var boxH = 74;
+    var boxX = emblemX - boxW / 2;
+    var boxY = 675;
+
+    drawRoundRect(ctx, boxX, boxY, boxW, boxH, 18);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.font = '700 26px "MCSQuiz Arabic", sans-serif';
+    ctx.fillStyle = '#38bdf8';
+    ctx.fillText('إتقان كامل بنسبة دقة ' + sub.avgPct + '%', emblemX, boxY + 46);
+
+    // 10. Date earned
+    var dateStr = 'معتمد في سجل إنجازات المنصة';
+    ctx.font = '500 21px "MCSQuiz Arabic", sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText(dateStr, emblemX, 795);
+
+    // 11. Footer App Link
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
+    ctx.fillRect(80, 835, W - 160, 1.5);
+
+    ctx.font = '600 21px "MCSQuiz Arabic", sans-serif';
+    ctx.fillStyle = '#475569';
+    ctx.fillText('mcq-portal-jade.vercel.app', emblemX, 882);
+
+    // Output: Share file or Modal Preview
+    var blob = await new Promise(function (res) { c.toBlob(res, 'image/png'); });
+    if (!blob) {
+      if (typeof global.toast === 'function') global.toast('تعذر إنشاء الصورة', 'error');
+      return;
+    }
+
+    var file = new File([blob], 'mcsquiz-mastery-' + sub.subjectId + '.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: badgeTitle,
+          text: 'أحرزت ' + badgeTitle + ' في MCSQuiz!'
+        });
+        return;
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          showBadgeModalPreview(URL.createObjectURL(blob), badgeTitle);
+        }
+        return;
+      }
+    }
+
+    showBadgeModalPreview(URL.createObjectURL(blob), badgeTitle);
+  }
+
   function escapeHtml(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -1078,13 +1348,18 @@
   global.PortalAchievements = {
     CATALOG: CATALOG,
     TIERS: TIERS,
+    SUBJECT_MASTERY_THRESHOLD: SUBJECT_MASTERY_THRESHOLD,
+    evaluateSubjectMastery: evaluateSubjectMastery,
+    getSubjectMeta: getSubjectMeta,
     loadState: loadState,
     saveState: saveState,
     evaluateAll: evaluateAll,
     checkAfterQuiz: checkAfterQuiz,
     showBadgeSheet: showBadgeSheet,
+    showSubjectMasterySheet: showSubjectMasterySheet,
     closeBadgeSheet: closeBadgeSheet,
     showCelebrationHUD: showCelebrationHUD,
-    shareBadgeCard: shareBadgeCard
+    shareBadgeCard: shareBadgeCard,
+    shareSubjectMasteryCard: shareSubjectMasteryCard
   };
 })(window);

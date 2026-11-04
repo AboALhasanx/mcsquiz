@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.4] — 2026-11-04
+
+### Changed
+- content: floor of 8 per bank, cyber+english (v72)
+
+
 ## [1.11.3] — 2026-11-04
 
 ### Changed

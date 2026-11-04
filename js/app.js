@@ -2072,6 +2072,7 @@
     } else {
       S.session = null;
       clearSessionSnapshot();
+      renderSubjectChips();
       renderCatalog();
       show('deck-catalog');
     }
@@ -3777,7 +3778,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.3';
+  const SHELL_VERSION = '1.11.4';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
