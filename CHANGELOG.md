@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.12] — 2026-11-04
+
+### Changed
+- content: ASE Ch01 rebuilt from official MCQs (v68)
+
+
 ## [1.10.11] — 2026-11-04
 
 ### Changed

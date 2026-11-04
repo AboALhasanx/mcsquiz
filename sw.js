@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.10.11';
+const VERSION = '1.10.12';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -226,8 +226,10 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T06_KMeans_and_KMeansPlusPlus.json',
   './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T07_Hierarchical_DBSCAN_GMM.json',
   './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T08_Choosing_Number_of_Clusters.json',
-  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_01_Software_Crisis.json',
-  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_ModelB_Software_Crisis.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T01_Software_Programs_And_Documentation.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T02_Software_Characteristics_And_Crisis.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T03_Product_Process_And_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T04_People_Project_And_Terminology.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_ModelA_SDLC_Models.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_ModelB_SDLC_Models.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_ModelA_Software_Design.json',
