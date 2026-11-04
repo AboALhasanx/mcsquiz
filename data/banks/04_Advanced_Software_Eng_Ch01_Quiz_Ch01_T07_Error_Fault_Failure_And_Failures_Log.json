@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "الخطأ والعيب والفشل وسجل الحوادث",
+    "en": "Error, Fault, Failure and the Failures Log"
+  },
+  "quiz_id": "Quiz_Ch01_T07_Error_Fault_Failure_And_Failures_Log",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "خطأ بشري في المواصفة يُدخل...",
+        "en": "A human mistake in the specification introduces..."
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عيباً في النظام",
+          "en": "a fault into the system"
+        },
+        {
+          "ar": "فشلاً عند الحدود",
+          "en": "a failure at the boundary"
+        },
+        {
+          "ar": "انقطاع خدمة فوراً",
+          "en": "a service outage at once"
+        },
+        {
+          "ar": "خللاً في العتاد",
+          "en": "a hardware defect here"
+        }
+      ],
+      "concept_id": "ch1_error_to_fault",
+      "explanation": {
+        "ar": "الخطأ البشري يخلق عيباً في الأثر، ولا يفشل شيء حتى يُنفَّذ ذلك العيب.",
+        "en": "The human error creates a fault in the artefact; nothing fails until that fault runs."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "عندما تُنفَّذ الشيفرة المعيبة تنتج...",
+        "en": "When faulty code executes it produces..."
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تجاوزاً للكلفة أيضاً",
+          "en": "a cost overrun here again again"
+        },
+        {
+          "ar": "حالة خطأ داخل النظام",
+          "en": "an error state inside the system"
+        },
+        {
+          "ar": "متطلباً جديداً الآن",
+          "en": "a new requirement now here here here"
+        },
+        {
+          "ar": "وثيقة تصميم هنا مجدداً",
+          "en": "a design document too now too"
+        }
+      ],
+      "concept_id": "ch1_fault_to_state",
+      "explanation": {
+        "ar": "تنفيذ العيب يترك الحالة الداخلية غير صحيحة، وهذه هي حالة الخطأ.",
+        "en": "Execution of a fault leaves the internal state incorrect, which is the error state."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "الحالة الداخلية غير الصحيحة تصبح مرئية للمستخدم كـ...",
+        "en": "An incorrect internal state becomes visible to the user as..."
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "خلل في الوثيقة",
+          "en": "a defect in the document"
+        },
+        {
+          "ar": "طلب تغيير هنا",
+          "en": "a change request here"
+        },
+        {
+          "ar": "فشل في الخدمة",
+          "en": "a failure of the service"
+        },
+        {
+          "ar": "عيب في الشيفرة",
+          "en": "a fault in the code now"
+        }
+      ],
+      "concept_id": "ch1_state_to_failure",
+      "explanation": {
+        "ar": "الفشل هو الانحراف الملاحظ عند حدود النظام، وهو آخر حلقة في السلسلة.",
+        "en": "Failure is the observable deviation at the system boundary, the last link in the chain."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يرتبط العيب والخلل في استخدام عملية البرمجيات؟",
+        "en": "How do defect and fault relate in software-process usage?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "العيب مرحلة لاحقة للخلل",
+          "en": "defect is a later stage than fault"
+        },
+        {
+          "ar": "العيب للعتاد فقط أيضاً",
+          "en": "defect applies to hardware only"
+        },
+        {
+          "ar": "الخلل للوثائق فقط مجدداً هنا",
+          "en": "fault applies to documents only"
+        },
+        {
+          "ar": "هما مترادفان هنا الآن هنا",
+          "en": "they are synonyms here now too"
+        }
+      ],
+      "concept_id": "ch1_defect_fault",
+      "explanation": {
+        "ar": "برسمان يذكر أن العيب والخلل يُستخدمان مترادفين لا كمرحلتين منفصلتين.",
+        "en": "Pressman notes that defect and fault are used as synonyms, not as separate stages."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما سبب فشل صاروخ باتريوت؟",
+        "en": "What caused the Patriot missile failure?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "انحراف ساعة من اقتطاع العُشر",
+          "en": "a clock drift from truncating one tenth"
+        },
+        {
+          "ar": "طفح مكدس في حلقة التوجيه أيضاً",
+          "en": "a stack overflow in the guidance loop here"
+        },
+        {
+          "ar": "قسمة على صفر في الرادار الآن",
+          "en": "a division by zero in the radar now"
+        },
+        {
+          "ar": "تسريب ذاكرة في الشاشة هنا",
+          "en": "a memory leak in the display here too"
+        }
+      ],
+      "concept_id": "ch1_patriot_cause",
+      "explanation": {
+        "ar": "قُطع العُشر في العدّاد، فانحرفت الساعة وتزحزحت بوابة المدى.",
+        "en": "A tenth was truncated in the counter, so the clock drifted and the range gate shifted."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما سبب فشل أريان-5؟",
+        "en": "What caused the Ariane-5 failure?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مسار إطلاق خاطئ هنا أيضاً الآن",
+          "en": "a wrong launch trajectory now here too"
+        },
+        {
+          "ar": "طفح عند التحويل من 64 إلى 16 بت",
+          "en": "a 64-bit to 16-bit conversion overflow"
+        },
+        {
+          "ar": "قاعدة بيانات توجيه تالفة هنا",
+          "en": "a corrupted guidance database again"
+        },
+        {
+          "ar": "فشل في مصدر الطاقة الآن مجدداً هنا",
+          "en": "a power supply failure here too now"
+        }
+      ],
+      "concept_id": "ch1_ariane_cause",
+      "explanation": {
+        "ar": "حُوّلت السرعة الجانبية إلى 16 بت فطفحت بعد 36.7 ثانية.",
+        "en": "The sideways velocity was converted to 16 bits and overflowed after 36.7 seconds."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "إلى كم مجال تطبيقي تُصنَّف البرمجيات؟",
+        "en": "Into how many application domains is software grouped?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ستة مجالات هنا هنا",
+          "en": "six domains here"
+        },
+        {
+          "ar": "عشرة مجالات الآن الآن",
+          "en": "ten domains now here"
+        },
+        {
+          "ar": "ثمانية مجالات مجدداً",
+          "en": "eight domains again"
+        },
+        {
+          "ar": "أربعة مجالات أيضاً",
+          "en": "four domains too now"
+        }
+      ],
+      "concept_id": "ch1_app_domains",
+      "explanation": {
+        "ar": "الطبيعة المتغيرة للبرمجيات تُعرض عبر ثمانية مجالات تطبيقية.",
+        "en": "The changing nature of software is shown through eight application domains in total."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يعني الدور المتطور للبرمجيات؟",
+        "en": "What does the evolving role of software mean?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "البرمجيات محصورة بالحاسبات أيضاً",
+          "en": "software is limited to calculators"
+        },
+        {
+          "ar": "البرمجيات استبدلت كل العتاد",
+          "en": "software replaced all hardware now"
+        },
+        {
+          "ar": "البرمجيات للخبراء فقط هنا الآن",
+          "en": "software is only for experts here too"
+        },
+        {
+          "ar": "البرمجيات تبلغ كل جانب من الحياة",
+          "en": "software reaches every aspect of life"
+        }
+      ],
+      "concept_id": "ch1_evolving_role",
+      "explanation": {
+        "ar": "انتقلت البرمجيات من دور الحاسبة إلى معظم مجالات الحياة اليومية.",
+        "en": "Software moved from a calculator role into almost every domain of daily life."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T19:51:23Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

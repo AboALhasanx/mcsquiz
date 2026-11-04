@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.12';
+const VERSION = '1.11.13';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -230,6 +230,9 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T02_Software_Characteristics_And_Crisis.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T03_Product_Process_And_Metrics.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T04_People_Project_And_Terminology.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T05_Process_Crisis_And_Silver_Bullet.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T06_Software_Myths_And_Ethics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T07_Error_Fault_Failure_And_Failures_Log.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T01_Models_And_Terms.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T02_Choosing_A_Model.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_T03_Waterfall_RAD_And_Spiral.json',
