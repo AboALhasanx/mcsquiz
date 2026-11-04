@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.19] — 2026-11-05
+
+### Changed
+- content: ASE Ch06 six blocks (v87)
+
+
 ## [1.11.18] — 2026-11-04
 
 ### Changed

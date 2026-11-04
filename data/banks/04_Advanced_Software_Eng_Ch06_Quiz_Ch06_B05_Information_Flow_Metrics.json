@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس تدفق المعلومات",
+    "en": "Information Flow Metrics"
+  },
+  "quiz_id": "Quiz_Ch06_B05_Information_Flow_Metrics",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما هو الدخول لِلمكوّن؟",
+        "en": "What is the FAN IN of a component?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المكوّنات التي تناديه أو تمرر التحكم إليه",
+          "en": "components that call or pass control to it"
+        },
+        {
+          "ar": "المكوّنات المرتبطة به أيضاً الآن هنا أيضاً",
+          "en": "components related to it too now again"
+        },
+        {
+          "ar": "المكوّنات المعتمدة عليه مجدداً مجدداً",
+          "en": "components dependent on it again here too here"
+        },
+        {
+          "ar": "لا شيء مما سبق هنا الآن هنا أيضاً الآن",
+          "en": "none of the above here now here too now"
+        }
+      ],
+      "concept_id": "ch6_fan_in",
+      "explanation": {
+        "ar": "الدخول يعدّ من ينادي المكوّن، لا من يناديه هو.",
+        "en": "Fan-in counts the callers, not the callees, of the component."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما هو الخروج من المكوّن؟",
+        "en": "What is the FAN OUT of a component?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا شيء مما سبق هنا الآن",
+          "en": "none of the above here"
+        },
+        {
+          "ar": "المكوّنات التي يناديها",
+          "en": "components it calls now"
+        },
+        {
+          "ar": "المكوّنات المرتبطة به",
+          "en": "components related to it"
+        },
+        {
+          "ar": "المكوّنات التي تناديه",
+          "en": "components that call it"
+        }
+      ],
+      "concept_id": "ch6_fan_out",
+      "explanation": {
+        "ar": "الخروج يعدّ المكوّنات التي يناديها هذا المكوّن أو يتحكم بها.",
+        "en": "Fan-out counts the components this one calls or controls."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يجمع مقياس هنري-كافورا حدوده؟",
+        "en": "How does the Henry-Kafura metric combine its terms?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المجموع مقسوماً على الطول الآن هنا",
+          "en": "the sum divided by the length too now again again here"
+        },
+        {
+          "ar": "الطول مضروباً بحاصل ضربهما أيضاً الآن",
+          "en": "length times their product here again here too"
+        },
+        {
+          "ar": "الطول مضروباً بمربع مجموع الدخول والخروج",
+          "en": "length times the squared sum of fan-in and fan-out"
+        },
+        {
+          "ar": "الطول مضروباً بمجموعهما هنا مجدداً أيضاً",
+          "en": "length times the sum of them now here too now"
+        }
+      ],
+      "concept_id": "ch6_hkm_formula",
+      "explanation": {
+        "ar": "المقياس يضرب الطول بمربع مجموع الاتصالات، فيغلب أثر الاتصال.",
+        "en": "The metric multiplies length by the square of the fan sum, so connectivity dominates."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "علامَ يدل ارتفاع الخروج؟",
+        "en": "What does a high fan-out suggest?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الوحدة غير مستخدمة الآن هنا أيضاً",
+          "en": "a module is unused here now"
+        },
+        {
+          "ar": "الوحدة متماسكة تماماً مجدداً",
+          "en": "a module is perfectly cohesive"
+        },
+        {
+          "ar": "الوحدة بلا واجهة هنا أيضاً الآن",
+          "en": "a module has no interface"
+        },
+        {
+          "ar": "الوحدة تفعل أكثر من اللازم بنفسها",
+          "en": "a module does too much itself"
+        }
+      ],
+      "concept_id": "ch6_high_fanout",
+      "explanation": {
+        "ar": "الوحدة التي تنادي وحدات كثيرة تحمل عادة مسؤوليات أكثر من اللازم.",
+        "en": "A module that calls many others usually carries too many responsibilities."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "علامَ يدل ارتفاع الدخول؟",
+        "en": "What does a high fan-in suggest?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "وحدات كثيرة تعتمد على هذه الوحدة",
+          "en": "many modules depend on this one"
+        },
+        {
+          "ar": "هذه الوحدة تنادي الجميع مجدداً",
+          "en": "this module calls everyone again"
+        },
+        {
+          "ar": "الوحدة بلا منادين هنا أيضاً الآن",
+          "en": "a module has no callers now"
+        },
+        {
+          "ar": "الوحدة غير مختبَرة الآن هنا",
+          "en": "a module is untested here too"
+        }
+      ],
+      "concept_id": "ch6_high_fanin",
+      "explanation": {
+        "ar": "الدخول العالي يعلّم محوراً ينتشر فشله على نطاق واسع.",
+        "en": "High fan-in marks a hub whose failure would ripple widely."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يزن مقياس تدفق المعلومات بالطول؟",
+        "en": "What does the information flow metric weight by length?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "كلفة العتاد",
+          "en": "the hardware cost here here"
+        },
+        {
+          "ar": "اتصال الوحدة",
+          "en": "the connectivity of a unit"
+        },
+        {
+          "ar": "سرعة المترجم",
+          "en": "the compiler speed now too"
+        },
+        {
+          "ar": "عدد التعليقات",
+          "en": "the number of comments again"
+        }
+      ],
+      "concept_id": "ch6_hkm_weights",
+      "explanation": {
+        "ar": "الطول يعمل معاملاً على حدود الاتصال، فالوحدات الكبيرة المتصلة تسجل أعلى.",
+        "en": "Length acts as the scale factor on the fan terms, so big connected modules score highest."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا يُربَّع مجموع الاتصالات في المقياس؟",
+        "en": "Why is the fan sum squared in the metric?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لحذف حد الطول هنا الآن هنا",
+          "en": "to remove the length term too now"
+        },
+        {
+          "ar": "لعدّ الأسطر مرتين أيضاً الآن هنا",
+          "en": "to count lines twice here again too"
+        },
+        {
+          "ar": "لمعاقبة الوحدات شديدة الاتصال",
+          "en": "to penalise heavily connected modules"
+        },
+        {
+          "ar": "لإبقاء القيمة صغيرة مجدداً",
+          "en": "to keep the value small now here again"
+        }
+      ],
+      "concept_id": "ch6_hkm_square",
+      "explanation": {
+        "ar": "التربيع يجعل الاتصال غالباً، فيُعاقب المحور أكثر بكثير من حد خطي.",
+        "en": "Squaring makes connectivity dominate, so a hub is penalised far more than a linear term would."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا حسّن شيبارد في مقياس تدفق المعلومات؟",
+        "en": "What did Shepperd refine in the information flow metric?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تعريف الوحدة هنا",
+          "en": "the definition of a module again"
+        },
+        {
+          "ar": "واجهة المترجم الآن",
+          "en": "the compiler interface now here"
+        },
+        {
+          "ar": "إجراء الاختبار أيضاً",
+          "en": "the test procedure here too"
+        },
+        {
+          "ar": "أوزان حدود التدفق",
+          "en": "the weighting of the flow terms"
+        }
+      ],
+      "concept_id": "ch6_shepperd",
+      "explanation": {
+        "ar": "شيبارد عدّل أوزان مساهمات التدفق، لا معنى الدخول والخروج.",
+        "en": "Shepperd adjusted how the flow contributions are weighted, not what fan-in and fan-out mean."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T21:09:47Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

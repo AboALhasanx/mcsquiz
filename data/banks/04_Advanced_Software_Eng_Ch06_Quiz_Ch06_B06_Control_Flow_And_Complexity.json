@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس تدفق التحكم والتعقيد",
+    "en": "Control Flow and Complexity Metrics"
+  },
+  "quiz_id": "Quiz_Ch06_B06_Control_Flow_And_Complexity",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يُحسب التعقيد الدوري من مخطط التدفق؟",
+        "en": "How is cyclomatic complexity computed from a flow graph?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الأضلاع ناقص العقد زائد ضعف المكوّنات",
+          "en": "edges minus nodes plus twice the components"
+        },
+        {
+          "ar": "الأضلاع ناقص العقد زائد المكوّنات",
+          "en": "edges minus nodes plus components here"
+        },
+        {
+          "ar": "العقد ناقص الأضلاع زائد ضعف المكوّنات",
+          "en": "nodes minus edges plus twice the components"
+        },
+        {
+          "ar": "الأضلاع زائد العقد ناقص المكوّنات",
+          "en": "edges plus nodes minus components now too"
+        }
+      ],
+      "concept_id": "ch6_mccabe_formula",
+      "explanation": {
+        "ar": "لمخطط بحدود E وعقد N ومكوّنات P، التعقيد هو E ناقص N زائد 2P.",
+        "en": "For a graph with E edges, N nodes and P components, complexity is E minus N plus 2P."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "من قدّم التعقيد الدوري؟",
+        "en": "Who introduced cyclomatic complexity?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بي ليتلوود",
+          "en": "B. Littlewood"
+        },
+        {
+          "ar": "تي جي مكيب",
+          "en": "T. J. McCabe"
+        },
+        {
+          "ar": "إم هالستيد",
+          "en": "M. Halstead"
+        },
+        {
+          "ar": "بي بوم هنا",
+          "en": "B. Boehm here"
+        }
+      ],
+      "concept_id": "ch6_mccabe_author",
+      "explanation": {
+        "ar": "مكيب قدّم المقياس كعدّ للمسارات المستقلة داخل البرنامج.",
+        "en": "McCabe proposed the measure as a count of the independent paths through a program."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا يعدّ التعقيد الدوري فعلاً؟",
+        "en": "What does cyclomatic complexity actually count?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الوحدات في النظام هنا مجدداً",
+          "en": "modules in the system too now too"
+        },
+        {
+          "ar": "المتغيرات في النطاق أيضاً",
+          "en": "variables in scope here again again"
+        },
+        {
+          "ar": "المسارات المستقلة في الكود",
+          "en": "independent paths through the code"
+        },
+        {
+          "ar": "أسطر الكود المكتوبة الآن",
+          "en": "lines of code written now here"
+        }
+      ],
+      "concept_id": "ch6_cc_counts",
+      "explanation": {
+        "ar": "يعدّ مجموعة المسارات المستقلة الأساسية، وهي التي تحدد الحد الأدنى للاختبارات.",
+        "en": "It counts the basis set of independent paths, which sets the minimum test count."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يقيس التعقيد الجوهري؟",
+        "en": "What does essential complexity measure?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد الأسطر الخام أيضاً الآن هنا أيضاً الآن",
+          "en": "the raw line count here again too now here too now here"
+        },
+        {
+          "ar": "عدد التعليقات هنا مجدداً أيضاً الآن هنا",
+          "en": "the number of comments too now again again again"
+        },
+        {
+          "ar": "تحذيرات المترجم الآن هنا مجدداً مجدداً",
+          "en": "the compiler warnings now here here too now here"
+        },
+        {
+          "ar": "التعقيد المتبقي بعد إزالة التراكيب المنظمة",
+          "en": "complexity left after removing structured constructs"
+        }
+      ],
+      "concept_id": "ch6_essential_complexity",
+      "explanation": {
+        "ar": "التعقيد الجوهري يعزل بنية القرار غير القابلة للاختزال.",
+        "en": "Essential complexity isolates the irreducible decision structure of the program."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يقيس عدد العقد؟",
+        "en": "What does knot count measure?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقاطعات خطوط تدفق التحكم",
+          "en": "crossings of control flow lines"
+        },
+        {
+          "ar": "عدد الحلقات الآن مجدداً",
+          "en": "the number of loops here again"
+        },
+        {
+          "ar": "عدد الدوال هنا أيضاً هنا",
+          "en": "the number of functions too"
+        },
+        {
+          "ar": "عمق الاستدعاء الذاتي",
+          "en": "the depth of recursion now here"
+        }
+      ],
+      "concept_id": "ch6_knot_count",
+      "explanation": {
+        "ar": "العقدة تقاطع لخطوط التدفق في المخطط، وهي تدل على تحكم متشابك.",
+        "en": "A knot is a crossing of flow lines in the graph, which signals tangled control."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يقيس عمق التعشيش؟",
+        "en": "What does nesting depth measure?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد الوحدات هنا",
+          "en": "the number of modules now here"
+        },
+        {
+          "ar": "مدى تعمّق القرارات",
+          "en": "how deeply decisions are embedded"
+        },
+        {
+          "ar": "عدد العبارات الآن",
+          "en": "the number of statements too now here"
+        },
+        {
+          "ar": "حجم البيانات أيضاً",
+          "en": "the size of the data here again"
+        }
+      ],
+      "concept_id": "ch6_nesting_depth",
+      "explanation": {
+        "ar": "الشروط المتعمقة أصعب في المتابعة والاختبار من المسطحة.",
+        "en": "Deeply nested conditions are harder to follow and to test than flat ones."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يرتبط التعقيد بقابلية الاختبار؟",
+        "en": "How does complexity relate to testability?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "التعقيد بلا أثر هنا الآن أيضاً",
+          "en": "complexity has no effect here now"
+        },
+        {
+          "ar": "التعقيد يلغي الحاجة للاختبار",
+          "en": "complexity removes the need for tests"
+        },
+        {
+          "ar": "تعقيد أعلى يحتاج اختبارات أكثر",
+          "en": "higher complexity needs more tests"
+        },
+        {
+          "ar": "تعقيد أعلى يحتاج اختبارات أقل",
+          "en": "higher complexity needs fewer tests"
+        }
+      ],
+      "concept_id": "ch6_complexity_testability",
+      "explanation": {
+        "ar": "كل مسار مستقل يجب اختباره، فعدد المسارات يحدد عبء الاختبار.",
+        "en": "Each independent path must be exercised, so the path count sets the testing burden."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يمثل الضلع في مخطط التدفق؟",
+        "en": "What does an edge represent in the flow graph?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تعريف متغير أيضاً الآن",
+          "en": "a variable declaration here too now"
+        },
+        {
+          "ar": "سطر تعليق هنا مجدداً",
+          "en": "a comment line here too now again"
+        },
+        {
+          "ar": "حدود وحدة الآن هنا أيضاً",
+          "en": "a module boundary now again here"
+        },
+        {
+          "ar": "انتقال التحكم بين العقد",
+          "en": "a transfer of control between nodes"
+        }
+      ],
+      "concept_id": "ch6_edges_meaning",
+      "explanation": {
+        "ar": "الأضلاع انتقالات تحكم، والعقد هي العبارات أو نقاط القرار.",
+        "en": "Edges are control transfers; nodes are the statements or decision points."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T21:09:47Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

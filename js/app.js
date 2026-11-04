@@ -630,7 +630,20 @@
       bar.appendChild(b);
     });
     const active = bar.querySelector('.filter-chip.active');
-    if (active) { try { active.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {} }
+    if (active) {
+      const allChips = Array.from(bar.querySelectorAll('.chapter-chip'));
+      const activeIdx = allChips.indexOf(active);
+      if (activeIdx <= 1) {
+        // Chapters 1 and 2: keep start of rail ('جابتر' + '1') cleanly in view
+        bar.scrollTo({ left: 0 });
+      } else {
+        const barRect = bar.getBoundingClientRect();
+        const actRect = active.getBoundingClientRect();
+        if (actRect.left < barRect.left || actRect.right > barRect.right) {
+          try { active.scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) {}
+        }
+      }
+    }
   }
 
   // the bell carries the "new questions" state; the list lives in a sheet.
@@ -3835,7 +3848,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.18';
+  const SHELL_VERSION = '1.11.19';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

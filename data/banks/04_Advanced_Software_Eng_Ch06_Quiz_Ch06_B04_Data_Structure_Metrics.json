@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس بنى البيانات",
+    "en": "Data Structure Metrics"
+  },
+  "quiz_id": "Quiz_Ch06_B04_Data_Structure_Metrics",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يُحصل على ضعف البرنامج؟",
+        "en": "How is program weakness obtained?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بجمع ضعف الوحدات",
+          "en": "by summing the weaknesses of modules"
+        },
+        {
+          "ar": "بمتوسط ضعف الوحدات",
+          "en": "by averaging those weaknesses too"
+        },
+        {
+          "ar": "بالقسمة على المدى",
+          "en": "by dividing them by the span now again"
+        },
+        {
+          "ar": "بالضرب بالمستوى",
+          "en": "by multiplying by the level here"
+        }
+      ],
+      "concept_id": "ch6_program_weakness",
+      "explanation": {
+        "ar": "ضعف البرنامج يجمع ضعف وحداته لا متوسطها.",
+        "en": "Program weakness aggregates the weakness of its modules, not an average of them."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما هو المتغير الحيّ؟",
+        "en": "What is a live variable?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "متغير في تعليق الآن مجدداً",
+          "en": "a variable in a comment now here too"
+        },
+        {
+          "ar": "متغير قيمته مطلوبة لاحقاً",
+          "en": "a variable whose value is needed later"
+        },
+        {
+          "ar": "متغير لا يُستخدم بعدها",
+          "en": "a variable never used again too now"
+        },
+        {
+          "ar": "ثابت في الكود هنا أيضاً",
+          "en": "a constant in the code here again again"
+        }
+      ],
+      "concept_id": "ch6_live_variable",
+      "explanation": {
+        "ar": "المتغير حيّ من تعريفه حتى آخر استخدام له.",
+        "en": "A variable is live from its definition until its last use."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا تخبرك متوسطات المتغيرات الحية؟",
+        "en": "What do average live variables tell you?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد التعليقات هنا مجدداً مجدداً أيضاً",
+          "en": "the number of comments now"
+        },
+        {
+          "ar": "إصدار المترجم الآن هنا الآن هنا",
+          "en": "the compiler version here again"
+        },
+        {
+          "ar": "حجم مجموعة العمل التي تحتاجها الوحدة",
+          "en": "the working set a module needs"
+        },
+        {
+          "ar": "إجمالي أسطر الكود أيضاً أيضاً الآن",
+          "en": "the total lines of code too"
+        }
+      ],
+      "concept_id": "ch6_avg_live",
+      "explanation": {
+        "ar": "تقدّر مقدار الحالة التي يجب أن تحتفظ بها الوحدة أثناء عملها.",
+        "en": "It estimates how much state a module must hold at once while it runs."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما هو مدى المتغير؟",
+        "en": "What is a variable span?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد مرات ظهوره هنا أيضاً الآن",
+          "en": "the number of times it appears now again again here"
+        },
+        {
+          "ar": "الذاكرة التي يشغلها مجدداً",
+          "en": "the memory it occupies now again too now here"
+        },
+        {
+          "ar": "النوع الذي يعلنه الآن هنا أيضاً",
+          "en": "the type it declares here too here here too"
+        },
+        {
+          "ar": "المسافة بين تعريفه واستخداماته",
+          "en": "the distance between its definition and its uses"
+        }
+      ],
+      "concept_id": "ch6_span",
+      "explanation": {
+        "ar": "المدى يقيس تباعد العبارات التي تتعامل مع المتغير.",
+        "en": "Span measures how far apart the statements that touch the variable are."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا تسجل قائمة الإسناد المرجعي؟",
+        "en": "What does a cross-reference list record?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أين يُنشأ كل متغير ويُقرأ",
+          "en": "where each variable is created and read"
+        },
+        {
+          "ar": "سجل أخطاء المترجم هنا",
+          "en": "the compiler error log too now too now here"
+        },
+        {
+          "ar": "نتائج حالات الاختبار الآن",
+          "en": "the test case results now again here"
+        },
+        {
+          "ar": "توزيع المهام على الفريق",
+          "en": "the team assignments here here again"
+        }
+      ],
+      "concept_id": "ch6_crossref",
+      "explanation": {
+        "ar": "القائمة تربط كل متغير بالعبارات التي تعرّفه أو تستخدمه.",
+        "en": "The list maps every variable to the statements that define or use it."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي أنواع بيانات تعدّها مقاييس البنى؟",
+        "en": "Which data kinds do data-structure metrics count?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بيانات محلية وبعيدة ومخزّنة",
+          "en": "local, remote and cached data"
+        },
+        {
+          "ar": "بيانات الإدخال والداخل والمخرج",
+          "en": "input, internal and output data"
+        },
+        {
+          "ar": "بيانات الشيفرة والثنائي والاختبار",
+          "en": "source, binary and test data here"
+        },
+        {
+          "ar": "بيانات رقمية ونصية وصورية هنا",
+          "en": "numeric, text and image data"
+        }
+      ],
+      "concept_id": "ch6_data_kinds",
+      "explanation": {
+        "ar": "المقياس يفصل ما يدخل وما يُحفظ داخلاً وما يخرج.",
+        "en": "The metric separates what enters, what is kept internally, and what leaves."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا يعطي عدّ VARS؟",
+        "en": "What does the VARS count give?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد الوحدات هنا مجدداً",
+          "en": "the number of modules here again"
+        },
+        {
+          "ar": "عدد المعاملات أيضاً",
+          "en": "the number of operators now here"
+        },
+        {
+          "ar": "عدد المتغيرات المتميزة",
+          "en": "the number of distinct variables"
+        },
+        {
+          "ar": "عدد العبارات الآن هنا",
+          "en": "the number of statements too"
+        }
+      ],
+      "concept_id": "ch6_vars_count",
+      "explanation": {
+        "ar": "VARS يعدّ المتغيرات المتميزة في الوحدة، فيقيس بصمة بياناتها.",
+        "en": "VARS counts distinct variables used in a module, which sizes its data footprint."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يجمع ضعف الوحدة؟",
+        "en": "What does module weakness combine?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الحجم والصعوبة هنا مجدداً",
+          "en": "volume and difficulty too now"
+        },
+        {
+          "ar": "الدخول والخروج الآن هنا الآن",
+          "en": "fan-in and fan-out here here too"
+        },
+        {
+          "ar": "الأسطر والتعليقات أيضاً أيضاً",
+          "en": "lines and comments now again"
+        },
+        {
+          "ar": "متوسط المتغيرات الحية والمدى",
+          "en": "average live variables and span"
+        }
+      ],
+      "concept_id": "ch6_module_weakness",
+      "explanation": {
+        "ar": "الضعف يرتفع بمقدار الحالة الحية وبمدى انتشارها.",
+        "en": "Weakness rises with both the amount of live state and how far it is spread."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-04T21:09:47Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
