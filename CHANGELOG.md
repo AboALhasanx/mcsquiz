@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.12] — 2026-11-04
+
+### Changed
+- content: ASE Ch04 four topic banks (v80)
+
+
 ## [1.11.11] — 2026-11-04
 
 ### Changed
