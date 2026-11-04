@@ -43,6 +43,8 @@
     try { localStorage.removeItem('portal_data_touched_v1'); } catch (e) {}
     try { localStorage.removeItem(PENDING_KEY); } catch (e) {}
     try { localStorage.removeItem('portal_achievements_v1'); } catch (e) {}
+    try { localStorage.removeItem('portal_review_v1'); } catch (e) {}
+    try { localStorage.removeItem('portal_days_v1'); } catch (e) {}
   }
   function ownData(id) {
     if (!id) return;
@@ -272,6 +274,8 @@
       localStorage.removeItem('portal_session_v1');
       localStorage.removeItem(PENDING_KEY);
       localStorage.removeItem('portal_achievements_v1');
+      localStorage.removeItem('portal_review_v1');
+      localStorage.removeItem('portal_days_v1');
       for (var i = localStorage.length - 1; i >= 0; i--) {
         var k = localStorage.key(i);
         if (k && (k.indexOf(LS_BEST_PREFIX) === 0 || k === 'portal_data_touched_v1' ||
@@ -354,8 +358,12 @@
     var removed = {}, clearedAt = 0;
     try { removed = JSON.parse(localStorage.getItem('portal_saved_removed_v1') || '{}') || {}; } catch (e) {}
     try { clearedAt = Number(localStorage.getItem('portal_history_cleared_v1')) || 0; } catch (e) {}
-    return { app: 'mcq-portal', version: 1, exportedAt: new Date().toISOString(), updatedAt: touched || Date.now(),
-             saved: saved, history: history, bests: bests, removed: removed, clearedAt: clearedAt };
+    var review = {}, days = {};
+    try { review = JSON.parse(localStorage.getItem('portal_review_v1') || '{}') || {}; } catch (e) {}
+    try { days = JSON.parse(localStorage.getItem('portal_days_v1') || '{}') || {}; } catch (e) {}
+    return { app: 'mcq-portal', version: 2, exportedAt: new Date().toISOString(), updatedAt: touched || Date.now(),
+             saved: saved, history: history, bests: bests, removed: removed, clearedAt: clearedAt,
+             review: review, days: days };
   }
 
   function applyBundle(d) {
@@ -378,6 +386,12 @@
     }
     if (d.clearedAt) {
       try { localStorage.setItem('portal_history_cleared_v1', String(Number(d.clearedAt))); } catch (e) {}
+    }
+    if (d.review && typeof d.review === 'object') {
+      try { localStorage.setItem('portal_review_v1', JSON.stringify(d.review)); } catch (e) {}
+    }
+    if (d.days && typeof d.days === 'object') {
+      try { localStorage.setItem('portal_days_v1', JSON.stringify(d.days)); } catch (e) {}
     }
     // the downloaded copy is the current state: remember its write time so the
     // next comparison is a tie and the server keeps winning it
@@ -675,8 +689,23 @@
 
     out.saved = saved; out.history = hist; out.bests = bests; out.removed = removed; out.clearedAt = clearedAt;
 
+    if (a.review || b.review) {
+      if (global.PortalReview && global.PortalReview.mergeStores) {
+        out.review = global.PortalReview.mergeStores(a.review || {}, b.review || {});
+      } else {
+        out.review = Object.assign({}, a.review || {}, b.review || {});
+      }
+    }
+    if (a.days || b.days) {
+      if (global.PortalReview && global.PortalReview.mergeDays) {
+        out.days = global.PortalReview.mergeDays(a.days || {}, b.days || {});
+      } else {
+        out.days = Object.assign({}, a.days || {}, b.days || {});
+      }
+    }
+
     // preserve forward-compatible sections (e.g. review store, study days)
-    var known = { app: 1, version: 1, exportedAt: 1, updatedAt: 1, saved: 1, history: 1, bests: 1, removed: 1, clearedAt: 1 };
+    var known = { app: 1, version: 1, exportedAt: 1, updatedAt: 1, saved: 1, history: 1, bests: 1, removed: 1, clearedAt: 1, review: 1, days: 1 };
     var allKeys = {};
     Object.keys(a).concat(Object.keys(b)).forEach(function (k) {
       if (!known[k]) allKeys[k] = 1;
@@ -888,6 +917,7 @@
     markNeedsSync: markNeedsSync,
     pullOrPush: pullOrPush,
     mergeBundles: mergeBundles,
+    buildLocalBundle: collectBundle,
     upload: upload,
     download: download,
     lastSync: lastSync,

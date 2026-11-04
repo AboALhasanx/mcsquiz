@@ -131,8 +131,8 @@
       ],
       "concept_id": "lift_positive",
       "explanation": {
-        "ar": "ارتباط إيجابي عند Lift > 1",
-        "en": "Positive association"
+        "ar": "ارتباط إيجابي: الرفع أكبر من 1 يعني أن العنصرين يظهران معاً أكثر من المتوقع.",
+        "en": "A Lift above 1 means the two items are positively associated."
       }
     },
     {
@@ -163,8 +163,8 @@
       ],
       "concept_id": "lift_independent",
       "explanation": {
-        "ar": "عدم وجود ارتباط أو الاستقلال",
-        "en": "No association / independence"
+        "ar": "عدم وجود ارتباط: الرفع يساوي 1 يعني أن العنصرين مستقلان تماماً.",
+        "en": "A Lift equal to 1 means no association, so the items are independent."
       }
     },
     {
@@ -195,8 +195,8 @@
       ],
       "concept_id": "lift_negative",
       "explanation": {
-        "ar": "ارتباط سلبي عند Lift < 1",
-        "en": "Negative association"
+        "ar": "ارتباط سلبي: الرفع أقل من 1 يعني أن ظهور أحدهما يقلّل ظهور الآخر.",
+        "en": "A Lift below 1 means the two items are negatively associated."
       }
     },
     {
@@ -227,8 +227,8 @@
       ],
       "concept_id": "support_example_value",
       "explanation": {
-        "ar": "0.60",
-        "en": "0.60"
+        "ar": "الدعم = 3/5 = 0.60، أي أن 60% من المعاملات تحوي العنصرين معاً.",
+        "en": "Support equals 3/5 = 0.60, so 60% of transactions contain both items."
       }
     },
     {
@@ -259,8 +259,8 @@
       ],
       "concept_id": "confidence_example_value",
       "explanation": {
-        "ar": "0.75",
-        "en": "0.75"
+        "ar": "الثقة = 3/4 = 0.75، أي أن 75% من معاملات الخبز تحوي الحليب أيضاً.",
+        "en": "Confidence equals 3/4 = 0.75, so 75% of Bread rows also contain Milk."
       }
     },
     {
@@ -291,8 +291,8 @@
       ],
       "concept_id": "lift_example_value",
       "explanation": {
-        "ar": "1.5",
-        "en": "1.5"
+        "ar": "الرفع = 1.5، فالخبز والحليب يجتمعان أكثر مما تتوقعه الاستقلالية.",
+        "en": "Lift equals 1.5, so Bread and Milk co-occur more than independence predicts."
       }
     },
     {
@@ -333,7 +333,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:57:37Z",
+  "updated_at": "2026-11-04T12:07:52Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

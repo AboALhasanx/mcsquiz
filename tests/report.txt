@@ -234,3 +234,45 @@ PASS | a11y | the share preview image has alt text |
 PASS | a11y | theme toggle changes the palette | #d9b26a / #8c621d
 PASS | a11y | theme choice is remembered | 
 PASS | a11y | no runtime errors | []
+PASS | portal | PortalReview module is registered on window | 
+PASS | portal | contentHash is deterministic | 
+PASS | portal | contentHash differentiates distinct questions | 
+PASS | portal | today() returns a positive integer | 
+PASS | portal | wrong answer demotes to box 0 and due tomorrow | 
+PASS | portal | correct on due item promotes box 0 -> 1 with interval 3 days | 
+PASS | portal | correct on non-due item does not promote box | 
+PASS | portal | max box 5 remains capped at 5 and schedules 90 days | 
+PASS | portal | future clock drift is clamped within 120 days | 
+PASS | portal | isOrphan detects matching content hash | 
+PASS | portal | isOrphan detects modified question content | 
+PASS | portal | getWeakKeys returns keys sorted by error ratio descending (only w >= 1) | 
+PASS | portal | getDueKeys returns all items due on or before today | 
+FAIL | portal | merge is commutative: merge(a, b) == merge(b, a) | 
+PASS | portal | merge is idempotent: merge(a, a) == a | 
+PASS | portal | merge prefers newer record based on u | 
+PASS | portal | computeCombinedStreak unions history days and study days for 4-day streak | 
+PASS | portal | clearPersonal wipes portal_review_v1 | 
+PASS | portal | clearPersonal wipes portal_days_v1 | 
+PASS | portal | buildLocalBundle bundles review store | 
+PASS | portal | buildLocalBundle bundles study days | 
+PASS | portal | PortalReview module is registered on window | 
+PASS | portal | contentHash is deterministic | 
+PASS | portal | contentHash differentiates distinct questions | 
+PASS | portal | today() returns a positive integer | 
+PASS | portal | wrong answer demotes to box 0 and due tomorrow | 
+PASS | portal | correct on due item promotes box 0 -> 1 with interval 3 days | 
+PASS | portal | correct on non-due item does not promote box | 
+PASS | portal | max box 5 remains capped at 5 and schedules 90 days | 
+PASS | portal | future clock drift is clamped within 120 days | 
+PASS | portal | isOrphan detects matching content hash | 
+PASS | portal | isOrphan detects modified question content | 
+PASS | portal | getWeakKeys returns keys sorted by error ratio descending (only w >= 1) | 
+PASS | portal | getDueKeys returns all items due on or before today | 
+PASS | portal | merge is commutative: merge(a, b) == merge(b, a) | 
+PASS | portal | merge is idempotent: merge(a, a) == a | 
+PASS | portal | merge prefers newer record based on u | 
+PASS | portal | computeCombinedStreak unions history days and study days for 4-day streak | 
+PASS | portal | clearPersonal wipes portal_review_v1 | 
+PASS | portal | clearPersonal wipes portal_days_v1 | 
+PASS | portal | buildLocalBundle bundles review store | 
+PASS | portal | buildLocalBundle bundles study days | 

@@ -67,8 +67,8 @@
       ],
       "concept_id": "minsup_user",
       "explanation": {
-        "ar": "عتبة يحددها المستخدم",
-        "en": "Minimum support (min_sup) is a user-defined threshold that determines how frequently an itemset must occur in a dataset to be considered a frequent itemset."
+        "ar": "عتبة يحددها المستخدم لتحديد مدى تكرار المجموعة كي تُعدّ متكررة.",
+        "en": "Minimum support is a user-defined threshold for how often an itemset must occur."
       }
     },
     {
@@ -163,8 +163,8 @@
       ],
       "concept_id": "brute_support",
       "explanation": {
-        "ar": "مسح قاعدة المعاملات",
-        "en": "Calculate the support of each itemset by scanning the transaction database."
+        "ar": "يُحسب الدعم بمسح قاعدة المعاملات وعدّ ظهور كل مجموعة فيها.",
+        "en": "Support is obtained by scanning the transaction database and counting each itemset."
       }
     },
     {
@@ -195,8 +195,8 @@
       ],
       "concept_id": "brute_advantage",
       "explanation": {
-        "ar": "الميزة الرئيسية هي بساطتها.",
-        "en": "The main advantage is its simplicity. It is easy to understand and, for a small dataset, can find all frequent itemsets."
+        "ar": "الميزة الرئيسية بساطتها وسهولة فهمها، وتجد كل المجموعات المتكررة للبيانات الصغيرة.",
+        "en": "Its main advantage is simplicity: easy to understand and exact on small data."
       }
     },
     {
@@ -259,8 +259,8 @@
       ],
       "concept_id": "brute_four_itemsets_count",
       "explanation": {
-        "ar": "15",
-        "en": "The algorithm checks the support of all 15 itemsets and keeps only those satisfying the minimum-support threshold."
+        "ar": "عدد المجموعات غير الفارغة = 2 أس 4 ناقص 1 = 15 مجموعة.",
+        "en": "The count is 2 to the power 4 minus 1, which equals 15 non-empty itemsets."
       }
     }
   ],
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:57:37Z",
+  "updated_at": "2026-11-04T12:07:52Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

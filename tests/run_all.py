@@ -33,6 +33,7 @@ SPECS = [
     'test_achievements.py',
     'test_achievements_flow.py',
     'test_phase0.py',
+    'test_review.py',
 ]
 
 

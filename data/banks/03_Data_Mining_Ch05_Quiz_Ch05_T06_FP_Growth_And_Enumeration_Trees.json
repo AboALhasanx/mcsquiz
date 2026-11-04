@@ -67,8 +67,8 @@
       ],
       "concept_id": "fpgrowth_structure",
       "explanation": {
-        "ar": "بنية بيانات مضغوطة تسمى شجرة FP",
-        "en": "Instead, it uses a compact data structure called an FP-tree (Frequent Pattern Tree) to represent the transaction database."
+        "ar": "تستخدم بنية بيانات مضغوطة تسمى شجرة FP لتمثيل قاعدة المعاملات.",
+        "en": "It uses a compact FP-tree to represent the transaction database."
       }
     },
     {
@@ -99,8 +99,8 @@
       ],
       "concept_id": "fpgrowth_order",
       "explanation": {
-        "ar": "بترتيب تنازلي حسب تكرارها",
-        "en": "Sort the remaining items in descending order of their frequency."
+        "ar": "تُرتَّب العناصر المتبقية تنازلياً حسب تكرارها قبل بناء الشجرة.",
+        "en": "The remaining frequent items are sorted in descending order of frequency."
       }
     },
     {
@@ -131,8 +131,8 @@
       ],
       "concept_id": "fpgrowth_header",
       "explanation": {
-        "ar": "العقد التي تمثل العنصر نفسه",
-        "en": "Create a header table that connects nodes representing the same item."
+        "ar": "جدول رأس يربط العقد التي تمثل العنصر نفسه داخل الشجرة.",
+        "en": "A header table links the tree nodes that represent the same item."
       }
     },
     {
@@ -163,8 +163,8 @@
       ],
       "concept_id": "fpgrowth_conditional",
       "explanation": {
-        "ar": "قواعد أنماط شرطية وأشجار FP شرطية",
-        "en": "Construct conditional pattern bases and conditional FP-trees as needed."
+        "ar": "تُبنى قواعد أنماط شرطية وأشجار FP شرطية أثناء التنقيب.",
+        "en": "It builds conditional pattern bases and conditional FP-trees while mining."
       }
     },
     {
@@ -195,8 +195,8 @@
       ],
       "concept_id": "enum_tree_node",
       "explanation": {
-        "ar": "تمثل كل عقدة مجموعة عناصر جزئية",
-        "en": "The basic idea is to represent the possible item combinations as a tree. Each node represents a partial itemset, and adding an item creates a larger itemset."
+        "ar": "تمثل كل عقدة مجموعة عناصر جزئية، وإضافة عنصر تصنع مجموعة أكبر.",
+        "en": "Each node is a partial itemset, and adding an item makes a larger itemset."
       }
     },
     {
@@ -237,7 +237,7 @@
     "en": "Asst. Prof. Dr. Ahmed Shakir Abd Al-Rida"
   },
   "subject_id": "03_Data_Mining",
-  "updated_at": "2026-10-27T20:57:37Z",
+  "updated_at": "2026-11-04T12:07:52Z",
   "subject_title": "تنقيب البيانات",
   "schema_version": 3,
   "semester_label": "كورس أول"

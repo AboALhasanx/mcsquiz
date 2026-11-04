@@ -24,6 +24,7 @@ const CORE = [
   './js/pwa.js',
   './js/qrcode.min.js',
   './js/quiz-vault.js',
+  './js/review.js',
   './js/saved_ui.js',
   './js/stats_ui.js',
   './js/supabase-config.js',

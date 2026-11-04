@@ -91,6 +91,11 @@
   }
 
   function computeStreak(history) {
+    if (global.PortalReview && global.PortalReview.computeCombinedStreak) {
+      var daysStore = {};
+      try { daysStore = JSON.parse(localStorage.getItem('portal_days_v1') || '{}') || {}; } catch (e) {}
+      return global.PortalReview.computeCombinedStreak(history, daysStore);
+    }
     if (!history || !history.length) return 0;
     var days = {};
     history.forEach(function (h) {
