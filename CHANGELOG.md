@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.9] — 2026-11-04
+
+### Changed
+- content: Soft Computing audit (v65)
+
+
 ## [1.10.8] — 2026-11-04
 
 ### Changed

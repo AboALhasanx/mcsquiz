@@ -3218,6 +3218,7 @@
 
   // ---------------- wire up ----------------
   function bind() {
+    function bindClick(id, fn) { const el = $(id); if (el) el.addEventListener('click', fn); }
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' || e.key === 'Esc') {
         if (!$('leave-modal').classList.contains('hidden')) { hideLeaveModal(); return; }
@@ -3349,7 +3350,6 @@
     });
     $('menu-install').addEventListener('click', installApp);
     // ---- handle accounts: login, account sheet, device linking ----
-    const bindClick = (id, fn) => { const el = $(id); if (el) el.addEventListener('click', fn); };
     bindClick('login-submit', submitLogin);
     bindClick('login-close', () => { closeLoginModal(); closeDrawers(); });
     bindClick('login-skip', () => { closeLoginModal(); toast('تستخدم الآن بدون حساب'); });
@@ -3761,7 +3761,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.10.8';
+  const SHELL_VERSION = '1.10.9';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

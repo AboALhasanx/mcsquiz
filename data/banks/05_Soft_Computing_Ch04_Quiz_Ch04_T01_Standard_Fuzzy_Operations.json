@@ -14,8 +14,12 @@
         "en": "How is the union of two fuzzy sets computed?"
       },
       "bloom": "Remember",
-      "answer": 0,
+      "answer": 1,
       "options": [
+        {
+          "ar": "حاصل ضرب الدرجتين",
+          "en": "the product of grades"
+        },
         {
           "ar": "أقصى الدرجتين معاً",
           "en": "the maximum of grades"
@@ -27,10 +31,6 @@
         {
           "ar": "واحد ناقص الدرجة",
           "en": "one minus each grade"
-        },
-        {
-          "ar": "حاصل ضرب الدرجتين",
-          "en": "the product of grades"
         }
       ],
       "concept_id": "c4_union_max",
@@ -142,16 +142,8 @@
         "en": "On a graph, what is the union of two fuzzy sets?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "الغلاف العلوي للمنحنى",
-          "en": "the upper envelope"
-        },
-        {
-          "ar": "الغلاف السفلي للمنحنى",
-          "en": "the lower envelope"
-        },
         {
           "ar": "الانعكاس حول 0.5 هنا",
           "en": "the mirror about 0.5"
@@ -159,6 +151,14 @@
         {
           "ar": "متوسط المنحنيين معاً",
           "en": "the average of curves"
+        },
+        {
+          "ar": "الغلاف العلوي للمنحنى",
+          "en": "the upper envelope"
+        },
+        {
+          "ar": "الغلاف السفلي للمنحنى",
+          "en": "the lower envelope"
         }
       ],
       "concept_id": "c4_union_graph",
@@ -170,97 +170,97 @@
     {
       "id": "q6",
       "stem": {
-        "ar": "مع A={0.5,0.1,0.4} و B={0.2,0.3,0.5}، ما اتحاد A و B عند x2؟",
-        "en": "With A={0.5,0.1,0.4} and B={0.2,0.3,0.5}, what is A union B at x2?"
-      },
-      "bloom": "Apply",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "0.2",
-          "en": "0.2"
-        },
-        {
-          "ar": "0.3",
-          "en": "0.3"
-        },
-        {
-          "ar": "0.1",
-          "en": "0.1"
-        },
-        {
-          "ar": "0.5",
-          "en": "0.5"
-        }
-      ],
-      "concept_id": "c4_union_example",
-      "explanation": {
-        "ar": "الاتحاد يأخذ الأقصى، فعند x2 يكون max(0.1, 0.3) = 0.3.",
-        "en": "Union takes the maximum, so at x2 it is max(0.1, 0.3) = 0.3."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "مع المجموعتين نفسها، ما تقاطع A و B عند x2؟",
-        "en": "With the same sets, what is A intersection B at x2?"
-      },
-      "bloom": "Apply",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "0.5",
-          "en": "0.5"
-        },
-        {
-          "ar": "0.2",
-          "en": "0.2"
-        },
-        {
-          "ar": "0.1",
-          "en": "0.1"
-        },
-        {
-          "ar": "0.3",
-          "en": "0.3"
-        }
-      ],
-      "concept_id": "c4_inter_example",
-      "explanation": {
-        "ar": "التقاطع يأخذ الأدنى، فعند x2 يكون min(0.1, 0.3) = 0.1.",
-        "en": "Intersection takes the minimum, so at x2 it is min(0.1, 0.3) = 0.1."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "إذا كانت درجة A عند x2 هي 0.1، فما متممها هناك؟",
-        "en": "If the grade of A at x2 is 0.1, what is the complement there?"
+        "ar": "في نظرية المجموعات الضبابية، أي عملية منطقية يقابلها الاتحاد؟",
+        "en": "In fuzzy set theory, which logical operation does union correspond to?"
       },
       "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "0.1",
-          "en": "0.1"
+          "ar": "عملية AND المنطقية",
+          "en": "the AND operation"
         },
         {
-          "ar": "0.5",
-          "en": "0.5"
+          "ar": "عملية NOT المنطقية",
+          "en": "the NOT operation"
         },
         {
-          "ar": "0.4",
-          "en": "0.4"
+          "ar": "عملية XOR المنطقية",
+          "en": "the XOR operation"
         },
         {
-          "ar": "0.9",
-          "en": "0.9"
+          "ar": "عملية OR المنطقية",
+          "en": "the OR operation"
+        }
+      ],
+      "concept_id": "c4_union_example",
+      "explanation": {
+        "ar": "الاتحاد يأخذ الأعلى، وهو النظير الضبابي لعملية OR المنطقية.",
+        "en": "Union takes the maximum, which is the fuzzy counterpart of logical OR."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يُحسب تقاطع مجموعتين ضبابيتين عند كل نقطة؟",
+        "en": "How is the intersection of two fuzzy sets computed at each point?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أصغر الدرجتين عند النقطة",
+          "en": "the smaller of the two grades"
+        },
+        {
+          "ar": "أكبر الدرجتين عند النقطة",
+          "en": "the larger of the two grades"
+        },
+        {
+          "ar": "واحد ناقص أصغر درجة",
+          "en": "one minus the smaller grade"
+        },
+        {
+          "ar": "حاصل ضرب الدرجتين معاً",
+          "en": "the product of the two grades"
+        }
+      ],
+      "concept_id": "c4_inter_example",
+      "explanation": {
+        "ar": "التقاطع يأخذ أدنى درجتي العضوية عند كل عنصر.",
+        "en": "Intersection takes the minimum of the two membership grades at every element."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يمثّل متمّم المجموعة الضبابية؟",
+        "en": "What does the complement of a fuzzy set represent?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نفي المفهوم الضبابي",
+          "en": "the negation of the concept"
+        },
+        {
+          "ar": "المفهوم نفسه مرة أخرى",
+          "en": "the same concept once again"
+        },
+        {
+          "ar": "اتحاد المجموعتين معاً",
+          "en": "the union of the two sets"
+        },
+        {
+          "ar": "تقاطع المجموعتين معاً",
+          "en": "the intersection of the two sets"
         }
       ],
       "concept_id": "c4_comp_example",
       "explanation": {
-        "ar": "المتمم هو واحد ناقص الدرجة، فـ 1 - 0.1 = 0.9.",
-        "en": "Complement is one minus the grade, so 1 - 0.1 = 0.9."
+        "ar": "المتمّم ينفي المفهوم، فدرجة عالية لـ A تصبح درجة منخفضة لـ ليس A.",
+        "en": "The complement negates the concept, so a high grade for A becomes a low grade for not A."
       }
     }
   ],
@@ -269,7 +269,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T16:54:29Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

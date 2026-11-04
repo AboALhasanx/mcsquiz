@@ -14,16 +14,8 @@
         "en": "When is a fuzzy controller the right tool?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 2,
       "options": [
-        {
-          "ar": "غير خطي ومتغير بالوقت",
-          "en": "nonlinear and time-varying"
-        },
-        {
-          "ar": "خطي ومعروف تماماً هنا",
-          "en": "linear and fully known now"
-        },
         {
           "ar": "ساكن ومحدد بدقة هنا",
           "en": "static and exactly known"
@@ -31,6 +23,14 @@
         {
           "ar": "نموذج واحد ثابت هنا",
           "en": "single and fixed model now"
+        },
+        {
+          "ar": "غير خطي ومتغير بالوقت",
+          "en": "nonlinear and time-varying"
+        },
+        {
+          "ar": "خطي ومعروف تماماً هنا",
+          "en": "linear and fully known now"
         }
       ],
       "concept_id": "c5c_when",
@@ -202,33 +202,33 @@
     {
       "id": "q7",
       "stem": {
-        "ar": "مع 4 حدات مسافة و5 حدات زاوية، كم قاعدة؟",
-        "en": "With 4 distance terms and 5 angle terms, how many rules?"
+        "ar": "كيف ينمو عدد القواعد الضبابية مع متغيرات الإدخال؟",
+        "en": "How does the number of fuzzy rules grow with the input variables?"
       },
       "bloom": "Apply",
-      "answer": 2,
+      "answer": 0,
       "options": [
         {
-          "ar": "ست عشرة قاعدة",
-          "en": "sixteen rules in total"
+          "ar": "بحاصل ضرب عدد حدودها",
+          "en": "with the product of their term counts"
         },
         {
-          "ar": "خمس وعشرون قاعدة",
-          "en": "twenty five rules total"
+          "ar": "بمجموع عدد حدودها هنا",
+          "en": "with the sum of their term counts"
         },
         {
-          "ar": "عشرون قاعدة فقط",
-          "en": "twenty rules in total"
+          "ar": "بأكبر عدد حدود فقط هنا",
+          "en": "with the largest term count only"
         },
         {
-          "ar": "تسع قواعد فقط",
-          "en": "nine rules in total"
+          "ar": "بعدد المخارج وحده هنا",
+          "en": "with the number of outputs alone here"
         }
       ],
       "concept_id": "c5c_rulecount",
       "explanation": {
-        "ar": "قاعدة القواعد 4 في 5، فتعطي عشرين قاعدة.",
-        "en": "The rule base is 4 times 5, which gives twenty rules."
+        "ar": "كل توليفة من حدود كل مدخل تصبح قاعدة، فالأعداد تتضارب لا تتجمع.",
+        "en": "Every combination of terms from every input becomes one rule, so the counts multiply."
       }
     },
     {
@@ -269,7 +269,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T16:54:29Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

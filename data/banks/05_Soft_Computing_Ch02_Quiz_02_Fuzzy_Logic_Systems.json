@@ -36,7 +36,7 @@
       "concept_id": "fuzzy_system_pipeline",
       "explanation": {
         "ar": "معمارية النظام الضبابي في الكتيّب: المدخل الحاسم يدخل إلى المُضبِّب (Fuzzifier) فتتحوّل إلى درجات عضوية، ثم تُطابَق مع قاعدة القواعد (Rule Base) ويشتغل محرك الاستدلال (Inference Engine)، وأخيراً يُعيد مزيل الضبابية (Defuzzifier) الناتج قيمة حاسمة واحدة. الترتيب المقلوب هو الفخ الأكثر شيوعاً.",
-        "en": "معمارية النظام الضبابي في الكتيّب: المدخل الحاسم يدخل إلى المُضبِّب (Fuzzifier) فتتحوّل إلى درجات عضوية، ثم تُطابَق مع قاعدة القواعد (Rule Base) ويشتغل محرك الاستدلال (Inference Engine)، وأخيراً يُعيد مزيل الضبابية (Defuzzifier) الناتج قيمة حاسمة واحدة. الترتيب المقلوب هو الفخ الأكثر شيوعاً."
+        "en": "The crisp input is fuzzified into grades, matched against the rule base by the inference engine, and then defuzzified back into a crisp control value."
       }
     },
     {
@@ -68,7 +68,7 @@
       "concept_id": "rule_base_linguistic",
       "explanation": {
         "ar": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية.",
-        "en": "قاعدة القواعد (Rule Base) هي مخزن المعرفة اللغوية من نوع «إذا كان كذا فإن كذا» (IF temperature is high THEN fan speed is fast)، وهي معرفة خبير لا معايرة حساسات ولا أوزان شبكة عصبية."
+        "en": "The rule base stores expert linguistic IF-THEN knowledge, not sensor calibration and not network weights."
       }
     },
     {
@@ -94,13 +94,13 @@
         },
         {
           "ar": "أن نيودلهي تنتمي للمجموعة الحاسمة في 0.7 من كل الحالات في هذا المثال.",
-          "en": "New Delhi belongs to the crisp comfort set in 0.7 of all observed cases in this example."
+          "en": "New Delhi belongs to the crisp comfort set in 0.7 of all the observed cases."
         }
       ],
       "concept_id": "membership_not_probability",
       "explanation": {
         "ar": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث.",
-        "en": "هذا مثال «مدينة الراحة» الوارد في الكتيّب (X = كل مدن الهند، A = مدينة الراحة، ونيودلهي بدرجة 0.7). التحذير الصريح على الشريحة: درجة العضوية ليست احتمالاً — إنها درجة التوافق مع مفهوم لغوي غامض، مو احتمال وقوع حدث."
+        "en": "A membership grade is the degree of compatibility with a vague concept, not the probability that an event occurs."
       }
     },
     {
@@ -132,7 +132,7 @@
       "concept_id": "fuzzy_notation_slash_marker",
       "explanation": {
         "ar": "النص الأزرق على شريحة الترميز البديل يقول صريحاً: الشرطة المائلة «/» هي علامة وسم (marker) ولا تعني القسمة إطلاقاً. فلا تحسب μ/x كناتج قسمة — إنها تعني «العنصر x بعضوية مقدارها μ».",
-        "en": "النص الأزرق على شريحة الترميز البديل يقول صريحاً: الشرطة المائلة «/» هي علامة وسم (marker) ولا تعني القسمة إطلاقاً. فلا تحسب μ/x كناتج قسمة — إنها تعني «العنصر x بعضوية مقدارها μ»."
+        "en": "The slash is only a marker separating the element from its grade, so it never means division."
       }
     },
     {
@@ -164,7 +164,7 @@
       "concept_id": "fuzzy_representation_cases",
       "explanation": {
         "ar": "الحالة 1 في الكتيّب: كون المعلومات منفصل ومنتهي (discrete and finite) فيُكتب المجموع Σ. الحالة 2: كون المعلومات مستمر ولا نهائي (continuous and infinite) فيُكتب التكامل ∫. نفس الدلالة في الحالتين، والفرق فقط في رمز الجمع.",
-        "en": "الحالة 1 في الكتيّب: كون المعلومات منفصل ومنتهي (discrete and finite) فيُكتب المجموع Σ. الحالة 2: كون المعلومات مستمر ولا نهائي (continuous and infinite) فيُكتب التكامل ∫. نفس الدلالة في الحالتين، والفرق فقط في رمز الجمع."
+        "en": "A discrete and finite universe is written with a summation, while a continuous and infinite universe is written with an integral; only the symbol changes."
       }
     },
     {
@@ -196,7 +196,7 @@
       "concept_id": "de_morgan_law",
       "explanation": {
         "ar": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي.",
-        "en": "قانون دي مورغان بصيغتيه: مكمّل (A ∩ B) = مكمّل A ∪ مكمّل B، ومكمّل (A ∪ B) = مكمّل A ∩ مكمّل B. القاعدة العملية: المكمّل يقلب العملية — الاتحاد يصير تقاطعاً والتقاطع يصير اتحاداً. الخطأ الشائع هو إبقاء العملية كما هي."
+        "en": "The complement reverses the operation: the complement of an intersection is the union of the complements, and the reverse also holds."
       }
     }
   ],
@@ -205,7 +205,7 @@
     "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
   },
   "subject_id": "05_Soft_Computing",
-  "updated_at": "2026-11-04T12:32:55Z",
+  "updated_at": "2026-11-04T16:54:29Z",
   "subject_title": "الحوسبة المرنة",
   "schema_version": 3,
   "semester_label": "كورس أول"

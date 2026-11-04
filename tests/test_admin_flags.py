@@ -98,25 +98,26 @@ try:
     # -------------------------------------------------------------
     # 3. In-Quiz UI: Hidden for non-admin vs Visible for aboalhasan
     # -------------------------------------------------------------
-    # Load bank and start a quiz
-    p.goto(common.BASE_URL + '/#/')
-    p.wait_for_selector('.subject-card', timeout=7000)
+    subs = common.subjects(p)
+    sid, qid = subs[0]['id'], subs[0]['chapters'][0]
 
     # First test as guest/non-admin
     p.evaluate("""() => {
+        if (window.__portal && window.__portal.S) window.__portal.S.session = null;
         localStorage.clear();
+        sessionStorage.clear();
         localStorage.setItem('portal_account_v1', JSON.stringify({
+            id: 'test-student-id',
             handle: 'student_tester',
             name: 'طالب'
         }));
+        location.hash = '#/';
     }""")
-    p.reload()
-    p.wait_for_selector('.subject-card', timeout=7000)
-    p.click('.subject-card')
-    p.wait_for_selector('.quiz-item-btn', timeout=7000)
-    p.click('.quiz-item-btn')
-    p.wait_for_selector('#btn-start-quiz', timeout=7000)
-    p.click('#btn-start-quiz')
+    p.wait_for_timeout(300)
+    p.evaluate("(h) => { location.hash = h; }", '#/quiz/%s/%s' % (sid, qid))
+    p.wait_for_timeout(400)
+    if p.locator('#btn-start-quiz').is_visible():
+        p.click('#btn-start-quiz')
     p.wait_for_selector('#question-card', timeout=7000)
 
     is_flag_btn_hidden = p.evaluate("""() => {
@@ -127,22 +128,27 @@ try:
 
     # Exit quiz back to home
     p.click('#btn-exit')
-    p.wait_for_selector('.subject-card', timeout=7000)
+    p.wait_for_timeout(300)
 
     # Now test as aboalhasan
     p.evaluate("""() => {
+        if (window.__portal && window.__portal.S) {
+            window.__portal.S.session = null;
+        }
+        localStorage.clear();
+        sessionStorage.clear();
         localStorage.setItem('portal_account_v1', JSON.stringify({
+            id: 'uid-aboalhasan',
             handle: 'aboalhasan',
             name: 'ابو الحسن'
         }));
+        location.hash = '#/';
     }""")
-    p.reload()
-    p.wait_for_selector('.subject-card', timeout=7000)
-    p.click('.subject-card')
-    p.wait_for_selector('.quiz-item-btn', timeout=7000)
-    p.click('.quiz-item-btn')
-    p.wait_for_selector('#btn-start-quiz', timeout=7000)
-    p.click('#btn-start-quiz')
+    p.wait_for_timeout(300)
+    p.evaluate("(h) => { location.hash = h; }", '#/quiz/%s/%s' % (sid, qid))
+    p.wait_for_timeout(400)
+    if p.locator('#btn-start-quiz').is_visible():
+        p.click('#btn-start-quiz')
     p.wait_for_selector('#question-card', timeout=7000)
 
     is_flag_btn_visible = p.evaluate("""() => {
@@ -155,7 +161,7 @@ try:
     # 4. Timer Pause on Flag Modal Open & Resume on Save
     # -------------------------------------------------------------
     time_state_1 = p.evaluate("""() => {
-        const ses = window.__portal ? window.__portal.state().session : null;
+        const ses = window.__portal ? window.__portal.S.session : null;
         return { isPaused: !!(ses && ses.pauseStart) };
     }""")
     common.check('quiz session timer is running before modal open', time_state_1['isPaused'] is False)
@@ -165,7 +171,7 @@ try:
     p.wait_for_selector('#flag-modal:not(.hidden)', timeout=5000)
 
     time_state_2 = p.evaluate("""() => {
-        const ses = window.__portal ? window.__portal.state().session : null;
+        const ses = window.__portal ? window.__portal.S.session : null;
         return { isPaused: !!(ses && ses.pauseStart) };
     }""")
     common.check('quiz session timer is paused when modal opens', time_state_2['isPaused'] is True)
@@ -178,7 +184,7 @@ try:
     p.wait_for_selector('#flag-modal.hidden', timeout=5000)
 
     time_state_3 = p.evaluate("""() => {
-        const ses = window.__portal ? window.__portal.state().session : null;
+        const ses = window.__portal ? window.__portal.S.session : null;
         const btn = document.getElementById('btn-flag-question');
         return {
             isPaused: !!(ses && ses.pauseStart),
@@ -194,7 +200,7 @@ try:
     # 5. Account Profile View: Admin Export & Count Badge
     # -------------------------------------------------------------
     # Navigate to account profile
-    p.goto(common.BASE_URL + '/#/account')
+    p.evaluate("(h) => { location.hash = h; }", '#/account')
     p.wait_for_selector('#account-view', timeout=7000)
 
     export_btn_state = p.evaluate("""() => {
@@ -214,11 +220,10 @@ try:
             handle: 'regular_user',
             name: 'طالب'
         }));
-        if (window.__portal && window.__portal.renderAccount) {
-            window.__portal.renderAccount();
-        }
+        location.hash = '#/';
     }""")
-    p.reload()
+    p.wait_for_timeout(300)
+    p.evaluate("(h) => { location.hash = h; }", '#/account')
     p.wait_for_selector('#account-view', timeout=7000)
 
     non_admin_export_state = p.evaluate("""() => {
