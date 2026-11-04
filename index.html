@@ -322,6 +322,127 @@
                 </section>
             </div>
 
+            <!-- Spaced Repetition & Custom Quiz Hub (Review View) -->
+            <div id="review-view" class="state-view hidden">
+                <div class="saved-topbar review-topbar">
+                    <div>
+                        <h2 class="saved-title">المراجعة الذكية</h2>
+                        <p id="review-total-line" class="saved-total-line">نظام التكرار المتباعد وبنك نقاط الضعف</p>
+                    </div>
+                </div>
+
+                <!-- Review Hub Stats Bento -->
+                <div class="review-stats-grid">
+                    <div class="review-stat-card highlight">
+                        <div class="review-stat-icon due"><i data-lucide="calendar-clock"></i></div>
+                        <div class="review-stat-info">
+                            <span class="review-stat-val font-num" id="review-stat-due">0</span>
+                            <span class="review-stat-label">مستحق اليوم</span>
+                        </div>
+                    </div>
+                    <div class="review-stat-card">
+                        <div class="review-stat-icon weak"><i data-lucide="alert-triangle"></i></div>
+                        <div class="review-stat-info">
+                            <span class="review-stat-val font-num" id="review-stat-weak">0</span>
+                            <span class="review-stat-label">نقاط ضعف</span>
+                        </div>
+                    </div>
+                    <div class="review-stat-card">
+                        <div class="review-stat-icon total"><i data-lucide="layers"></i></div>
+                        <div class="review-stat-info">
+                            <span class="review-stat-val font-num" id="review-stat-total">0</span>
+                            <span class="review-stat-label">إجمالي المتتبَع</span>
+                        </div>
+                    </div>
+                    <div class="review-stat-card">
+                        <div class="review-stat-icon mastered"><i data-lucide="check-check"></i></div>
+                        <div class="review-stat-info">
+                            <span class="review-stat-val font-num" id="review-stat-mastered">0</span>
+                            <span class="review-stat-label">متقن (صندوق 5)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decks Section -->
+                <div class="review-decks-section">
+                    <!-- Deck 1: Due Today -->
+                    <div class="review-deck-card" id="deck-due-card">
+                        <div class="deck-card-head">
+                            <div class="deck-icon-bubble due"><i data-lucide="clock"></i></div>
+                            <div class="deck-title-group">
+                                <h3 class="deck-title">كروت اليوم المستحقة</h3>
+                                <p class="deck-desc">أسئلة حان موعد مراجعتها وفق فواصل لايتنر لتثبيت الذاكرة.</p>
+                            </div>
+                        </div>
+                        <div class="deck-card-footer">
+                            <span class="deck-count-pill font-num" id="deck-due-pill">0 سؤال</span>
+                            <button type="button" class="action-btn primary-btn deck-action-btn" id="btn-start-due-review">
+                                <i data-lucide="play"></i>
+                                <span>ابدأ مراجعة اليوم</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Deck 2: Weak Questions -->
+                    <div class="review-deck-card" id="deck-weak-card">
+                        <div class="deck-card-head">
+                            <div class="deck-icon-bubble weak"><i data-lucide="flame-kindling"></i></div>
+                            <div class="deck-title-group">
+                                <h3 class="deck-title">بنك نقاط الضعف</h3>
+                                <p class="deck-desc">الأسئلة التي تكرر خطؤك فيها مرتبة حسب نسبة التعثر للتركيز عليها.</p>
+                            </div>
+                        </div>
+                        <div class="deck-card-footer">
+                            <span class="deck-count-pill font-num" id="deck-weak-pill">0 سؤال</span>
+                            <button type="button" class="action-btn secondary-btn deck-action-btn" id="btn-start-weak-review">
+                                <i data-lucide="crosshair"></i>
+                                <span>تدريب نقاط الضعف</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Quiz Builder Section -->
+                <div class="custom-builder-card">
+                    <div class="builder-head">
+                        <div class="builder-icon-bubble"><i data-lucide="sliders"></i></div>
+                        <div class="builder-title-group">
+                            <h3 class="builder-title">باني الاختبار المخصص</h3>
+                            <p class="builder-desc">خصص جلسة تدريب سريعة باختيار المصدر وعدد الأسئلة.</p>
+                        </div>
+                    </div>
+                    <div class="builder-options-grid">
+                        <div class="builder-option-group">
+                            <span class="builder-option-label">مصدر الأسئلة</span>
+                            <div class="builder-chips" id="builder-source-chips" role="radiogroup" aria-label="مصدر الأسئلة">
+                                <button type="button" class="builder-chip active" data-source="due" role="radio" aria-checked="true">المستحقة</button>
+                                <button type="button" class="builder-chip" data-source="weak" role="radio" aria-checked="false">الأخطاء</button>
+                                <button type="button" class="builder-chip" data-source="saved" role="radio" aria-checked="false">المحفوظات</button>
+                                <button type="button" class="builder-chip" data-source="subject" role="radio" aria-checked="false">مادة محددة</button>
+                            </div>
+                        </div>
+                        <div class="builder-option-group hidden" id="builder-subject-picker-group">
+                            <label class="builder-option-label" for="builder-subject-select">المادة الدراسية</label>
+                            <select id="builder-subject-select" class="builder-select" dir="auto"></select>
+                        </div>
+                        <div class="builder-option-group">
+                            <span class="builder-option-label">عدد الأسئلة</span>
+                            <div class="builder-chips" id="builder-count-chips" role="radiogroup" aria-label="عدد الأسئلة">
+                                <button type="button" class="builder-chip active" data-count="10" role="radio" aria-checked="true">10</button>
+                                <button type="button" class="builder-chip" data-count="20" role="radio" aria-checked="false">20</button>
+                                <button type="button" class="builder-chip" data-count="40" role="radio" aria-checked="false">40</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="builder-actions">
+                        <button type="button" class="action-btn primary-btn builder-submit-btn" id="btn-start-custom-quiz">
+                            <i data-lucide="sparkles"></i>
+                            <span>بدء الاختبار المخصص</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Saved Questions View (organized Subject -> Chapter) -->
             <div id="saved-view" class="state-view hidden">
                 <div class="saved-topbar saved-head-bar">
@@ -1163,6 +1284,11 @@
 
                 <div class="menu-section">
                     <span class="menu-section-title">المكتبة</span>
+                    <a id="menu-review" class="menu-item" href="#/review">
+                        <i data-lucide="repeat"></i>
+                        <span class="menu-item-label">المراجعة الذكية</span>
+                        <span id="menu-review-count" class="menu-count hidden">0</span>
+                    </a>
                     <a id="menu-saved" class="menu-item" href="#/saved">
                         <i data-lucide="bookmark"></i>
                         <span class="menu-item-label">الأسئلة المحفوظة</span>
@@ -1471,6 +1597,7 @@
     <script src="js/league_ui.js" defer></script>
     <script src="js/vs_ui.js" defer></script>
     <script src="js/review.js" defer></script>
+    <script src="js/review_ui.js" defer></script>
     <script src="js/achievements.js" defer></script>
     <script src="js/account_ui.js" defer></script>
     <script src="js/app.js" defer></script>

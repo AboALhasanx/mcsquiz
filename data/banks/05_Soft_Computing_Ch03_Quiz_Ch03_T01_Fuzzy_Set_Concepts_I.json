@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مفاهيم المجموعات الضبابية: الدعم والارتفاع",
+    "en": "Fuzzy Set Concepts: Support to Height"
+  },
+  "quiz_id": "Quiz_Ch03_T01_Fuzzy_Set_Concepts_I",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما هو دعم المجموعة الضبابية؟",
+        "en": "What is the support of a fuzzy set?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نقاط درجتها فوق الصفر",
+          "en": "points with grade above zero"
+        },
+        {
+          "ar": "نقاط درجتها تساوي واحد",
+          "en": "points with grade equal one"
+        },
+        {
+          "ar": "نقاط درجتها تساوي نصف",
+          "en": "points with grade equal half"
+        },
+        {
+          "ar": "نقاط درجتها تحت الصفر",
+          "en": "points with grade below zero"
+        }
+      ],
+      "concept_id": "c3_support",
+      "explanation": {
+        "ar": "الدعم هو كل نقطة درجتها أكبر من الصفر.",
+        "en": "The support is every point whose membership grade is greater than zero."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي النقاط تشكّل النواة؟",
+        "en": "Which points form the core?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نقاط درجتها تحت الواحد",
+          "en": "points with grade below one"
+        },
+        {
+          "ar": "نقاط درجتها تساوي واحد",
+          "en": "points with grade equal one"
+        },
+        {
+          "ar": "نقاط درجتها فوق الصفر",
+          "en": "points with grade above zero"
+        },
+        {
+          "ar": "نقاط درجتها تساوي نصف",
+          "en": "points with grade equal half"
+        }
+      ],
+      "concept_id": "c3_core",
+      "explanation": {
+        "ar": "النواة هي كل نقطة درجتها تساوي الواحد.",
+        "en": "The core is every point whose membership grade equals one."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "متى تكون المجموعة الضبابية فارغة؟",
+        "en": "When is a fuzzy set empty?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الدرجة نصف في كل مكان",
+          "en": "grade is half everywhere"
+        },
+        {
+          "ar": "الدرجة فوق الصفر هنا",
+          "en": "grade is above zero"
+        },
+        {
+          "ar": "الدرجة صفر في كل مكان",
+          "en": "grade is zero everywhere"
+        },
+        {
+          "ar": "الدرجة واحد في كل مكان",
+          "en": "grade is one everywhere"
+        }
+      ],
+      "concept_id": "c3_empty",
+      "explanation": {
+        "ar": "المجموعة الفارغة درجتها صفر عند كل نقطة في الفضاء.",
+        "en": "An empty fuzzy set has membership zero at every point of the universe."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "متى تكون المجموعة الضبابية طبيعية؟",
+        "en": "When is a fuzzy set normal?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "دعمها فارغ تماماً",
+          "en": "its support is empty"
+        },
+        {
+          "ar": "ارتفاعها تحت الواحد",
+          "en": "its height is below one"
+        },
+        {
+          "ar": "درجاتها كلها صفر",
+          "en": "its grades are all zero"
+        },
+        {
+          "ar": "نواتها ليست فارغة",
+          "en": "its core is not empty"
+        }
+      ],
+      "concept_id": "c3_normal",
+      "explanation": {
+        "ar": "تكون طبيعية عندما تبلغ نقطة واحدة الدرجة واحد، فالنواة غير فارغة.",
+        "en": "A set is normal when at least one point reaches grade one, so the core is non-empty."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما هي نقطة التقاطع؟",
+        "en": "What is a crossover point?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الدرجة تساوي نصفاً",
+          "en": "grade equals exactly half"
+        },
+        {
+          "ar": "الدرجة تساوي واحداً",
+          "en": "grade equals exactly one"
+        },
+        {
+          "ar": "الدرجة تساوي صفراً",
+          "en": "grade equals exactly zero"
+        },
+        {
+          "ar": "الدرجة فوق النصف",
+          "en": "grade is above one half"
+        }
+      ],
+      "concept_id": "c3_crossover",
+      "explanation": {
+        "ar": "نقطة التقاطع هي نقطة درجتها تساوي النصف.",
+        "en": "A crossover point is a point whose grade equals one half."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما هي المجموعة الأحادية الضبابية؟",
+        "en": "What is a fuzzy singleton?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ارتفاعها تحت الواحد",
+          "en": "height is below one here"
+        },
+        {
+          "ar": "دعمها نقطة واحدة هنا",
+          "en": "support is a single point"
+        },
+        {
+          "ar": "دعمها الفضاء كله",
+          "en": "support is the whole space"
+        },
+        {
+          "ar": "نواتها فارغة تماماً",
+          "en": "core is empty at all"
+        }
+      ],
+      "concept_id": "c3_singleton",
+      "explanation": {
+        "ar": "المجموعة الأحادية دعمها نقطة واحدة فقط بدرجة واحد.",
+        "en": "A fuzzy singleton has a support of exactly one point, with grade one there."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما هو ارتفاع المجموعة الضبابية؟",
+        "en": "What is the height of a fuzzy set?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد النقاط فيه",
+          "en": "the number of points"
+        },
+        {
+          "ar": "عرض الدعم كله",
+          "en": "the width of the support"
+        },
+        {
+          "ar": "أكبر درجة تُبلَغ",
+          "en": "the largest grade reached"
+        },
+        {
+          "ar": "أصغر درجة تُبلَغ",
+          "en": "the smallest grade reached"
+        }
+      ],
+      "concept_id": "c3_height",
+      "explanation": {
+        "ar": "الارتفاع هو أكبر درجة انتماء تبلغها المجموعة.",
+        "en": "Height is the supremum of the membership grades, the largest grade reached."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف تُعرَّف أساسية المجموعة الضبابية؟",
+        "en": "How is the cardinality of a fuzzy set defined?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد النقاط فيه هنا",
+          "en": "count of the points"
+        },
+        {
+          "ar": "أكبر قيمة درجة هنا",
+          "en": "largest grade value"
+        },
+        {
+          "ar": "عرض الدعم كله هنا",
+          "en": "width of the support"
+        },
+        {
+          "ar": "مجموع الدرجات كلها",
+          "en": "sum of every grade"
+        }
+      ],
+      "concept_id": "c3_cardinality",
+      "explanation": {
+        "ar": "الأساسية هي مجموع كل درجات الانتماء على الفضاء.",
+        "en": "Cardinality is the sum of all membership grades over the universe."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

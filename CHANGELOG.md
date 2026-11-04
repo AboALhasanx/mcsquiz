@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.3] — 2026-11-04
+
+### Changed
+- content: Soft Computing Ch03/04/05 + cleanup (v59)
+
+
 ## [1.10.2] — 2026-11-04
 
 ### Changed

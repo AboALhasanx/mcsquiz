@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "المتحكمات المنطقية الضبابية",
+    "en": "Fuzzy Logic Controllers"
+  },
+  "quiz_id": "Quiz_Ch05_T04_Fuzzy_Logic_Controllers",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "متى يكون المتحكم الضبابي الأداة المناسبة؟",
+        "en": "When is a fuzzy controller the right tool?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "غير خطي ومتغير بالوقت",
+          "en": "nonlinear and time-varying"
+        },
+        {
+          "ar": "خطي ومعروف تماماً هنا",
+          "en": "linear and fully known now"
+        },
+        {
+          "ar": "ساكن ومحدد بدقة هنا",
+          "en": "static and exactly known"
+        },
+        {
+          "ar": "نموذج واحد ثابت هنا",
+          "en": "single and fixed model now"
+        }
+      ],
+      "concept_id": "c5c_when",
+      "explanation": {
+        "ar": "المتحكم الضبابي يناسب الأنظمة غير الخطية والمتغيرة والمشوشة.",
+        "en": "An FLC suits nonlinear, time-varying and noisy systems."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مكونات تشكّل متحكماً منطقياً ضبابياً؟",
+        "en": "Which components make up a fuzzy logic controller?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جمع وضرب ومتوسط هنا",
+          "en": "sum product and average here"
+        },
+        {
+          "ar": "تحويل واستدلال وإزالة",
+          "en": "fuzzify, infer and defuzzify"
+        },
+        {
+          "ar": "اتحاد وتقاطع ومتمم هنا",
+          "en": "union intersection complement"
+        },
+        {
+          "ar": "أقصى-أدنى وأقصى-ضرب",
+          "en": "max-min and max-product only"
+        }
+      ],
+      "concept_id": "c5c_components",
+      "explanation": {
+        "ar": "المتحكم يحوّل ضبابياً، يستدل عبر القواعد، ثم يزيل التغبيش.",
+        "en": "An FLC fuzzifies, infers over the rules, then defuzzifies."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "في ممداني، ما هو لاحق القاعدة؟",
+        "en": "In Mamdani, the rule consequent is what?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قيمة رقمية حاسمة هنا",
+          "en": "a crisp number value"
+        },
+        {
+          "ar": "مصفوفة علاقة كاملة",
+          "en": "a relation matrix"
+        },
+        {
+          "ar": "مجموعة مخرج ضبابية",
+          "en": "a fuzzy output set"
+        },
+        {
+          "ar": "دالة خطية بسيطة هنا",
+          "en": "a linear function"
+        }
+      ],
+      "concept_id": "c5c_mamdani_cons",
+      "explanation": {
+        "ar": "لاحق ممداني مجموعة ضبابية، تُزال تغبيشها لاحقاً.",
+        "en": "A Mamdani consequent is a fuzzy set, later defuzzified."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في تاكاغي-سوغينو، ما هو لاحق القاعدة؟",
+        "en": "In Takagi-Sugeno, the rule consequent is what?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجموعة مخرج ضبابية",
+          "en": "a fuzzy output set"
+        },
+        {
+          "ar": "قيمة رقمية حاسمة",
+          "en": "a crisp number value"
+        },
+        {
+          "ar": "مصفوفة علاقة كاملة",
+          "en": "a relation matrix"
+        },
+        {
+          "ar": "دالة خطية بسيطة هنا",
+          "en": "a linear function"
+        }
+      ],
+      "concept_id": "c5c_sugeno_cons",
+      "explanation": {
+        "ar": "لاحق تاكاغي-سوغينو دالة في المدخلات.",
+        "en": "A Takagi-Sugeno consequent is a function of the inputs."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي ميزة لممداني؟",
+        "en": "Which is a Mamdani advantage?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قابلية تفسير عالية",
+          "en": "high interpretability"
+        },
+        {
+          "ar": "دقة عددية أعلى هنا",
+          "en": "higher numerical accuracy"
+        },
+        {
+          "ar": "حساب أسرع هنا جداً",
+          "en": "faster computation here"
+        },
+        {
+          "ar": "دون قاعدة قواعد هنا",
+          "en": "no rule base at all"
+        }
+      ],
+      "concept_id": "c5c_mamdani_interp",
+      "explanation": {
+        "ar": "قواعد ممداني تبقى لغوية، فسهلة القراءة والشرح.",
+        "en": "Mamdani rules stay linguistic, so they are easy to read and explain."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي ميزة لتاكاغي-سوغينو؟",
+        "en": "Which is a Takagi-Sugeno advantage?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لاحق لغوي ضبابي",
+          "en": "a linguistic consequent"
+        },
+        {
+          "ar": "دقة عددية أعلى هنا",
+          "en": "higher numerical accuracy"
+        },
+        {
+          "ar": "قابلية تفسير عالية",
+          "en": "high rule interpretability"
+        },
+        {
+          "ar": "قواعد سهلة القراءة",
+          "en": "very readable rules"
+        }
+      ],
+      "concept_id": "c5c_sugeno_adv",
+      "explanation": {
+        "ar": "تاكاغي-سوغينو أدق وأسرع لكن أقل قابلية للتفسير.",
+        "en": "Takagi-Sugeno is more accurate and faster but less interpretable."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "مع 4 حدات مسافة و5 حدات زاوية، كم قاعدة؟",
+        "en": "With 4 distance terms and 5 angle terms, how many rules?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ست عشرة قاعدة",
+          "en": "sixteen rules in total"
+        },
+        {
+          "ar": "خمس وعشرون قاعدة",
+          "en": "twenty five rules total"
+        },
+        {
+          "ar": "عشرون قاعدة فقط",
+          "en": "twenty rules in total"
+        },
+        {
+          "ar": "تسع قواعد فقط",
+          "en": "nine rules in total"
+        }
+      ],
+      "concept_id": "c5c_rulecount",
+      "explanation": {
+        "ar": "قاعدة القواعد 4 في 5، فتعطي عشرين قاعدة.",
+        "en": "The rule base is 4 times 5, which gives twenty rules."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف تُحسب قوة إطلاق القاعدة؟",
+        "en": "How is a rule firing strength computed?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أقصى درجات المقدمة",
+          "en": "maximum of the antecedent grades"
+        },
+        {
+          "ar": "مجموع درجات المقدمة",
+          "en": "sum of the antecedent grades"
+        },
+        {
+          "ar": "حاصل ضرب درجات المخرج",
+          "en": "product of all output grades"
+        },
+        {
+          "ar": "أدنى درجات المقدمة",
+          "en": "minimum of the antecedent grades"
+        }
+      ],
+      "concept_id": "c5c_alpha",
+      "explanation": {
+        "ar": "قوة الإطلاق هي أدنى درجات المقدمة، أي أضعف شرط في القاعدة.",
+        "en": "The firing strength is the minimum of the antecedent grades."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

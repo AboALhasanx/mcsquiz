@@ -77,7 +77,7 @@
   }
 
   function getWeakKeys(store) {
-    var s = store || {};
+    var s = store || loadStore();
     var keys = Object.keys(s).filter(function (k) {
       var r = s[k];
       return r && Number(r.w) >= 1 && Number(r.n) > 0;
@@ -98,7 +98,7 @@
 
   function getDueKeys(store, todayVal) {
     var t = (typeof todayVal === 'number') ? todayVal : today();
-    var s = store || {};
+    var s = store || loadStore();
     var keys = Object.keys(s).filter(function (k) {
       var r = s[k];
       return r && Number(r.d) <= t;

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "العمليات الضبابية القياسية",
+    "en": "Standard Fuzzy Operations"
+  },
+  "quiz_id": "Quiz_Ch04_T01_Standard_Fuzzy_Operations",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كيف يُحسب اتحاد مجموعتين ضبابيتين؟",
+        "en": "How is the union of two fuzzy sets computed?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أقصى الدرجتين معاً",
+          "en": "the maximum of grades"
+        },
+        {
+          "ar": "أدنى الدرجتين معاً",
+          "en": "the minimum of grades"
+        },
+        {
+          "ar": "واحد ناقص الدرجة",
+          "en": "one minus each grade"
+        },
+        {
+          "ar": "حاصل ضرب الدرجتين",
+          "en": "the product of grades"
+        }
+      ],
+      "concept_id": "c4_union_max",
+      "explanation": {
+        "ar": "الاتحاد يأخذ أقصى درجتي الانتماء عند كل عنصر.",
+        "en": "Union takes the maximum of the two membership grades at each element."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي قاعدة تحسب تقاطع مجموعتين؟",
+        "en": "Which rule computes the intersection?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حاصل ضرب الدرجتين",
+          "en": "the product of grades"
+        },
+        {
+          "ar": "أدنى الدرجتين معاً",
+          "en": "the minimum of grades"
+        },
+        {
+          "ar": "أقصى الدرجتين معاً",
+          "en": "the maximum of grades"
+        },
+        {
+          "ar": "واحد ناقص الدرجة",
+          "en": "one minus each grade"
+        }
+      ],
+      "concept_id": "c4_inter_min",
+      "explanation": {
+        "ar": "التقاطع يأخذ أدنى الدرجتين عند كل عنصر.",
+        "en": "Intersection takes the minimum of the two grades at each element."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يُحسب متمم مجموعة ضبابية؟",
+        "en": "How is the complement of a fuzzy set computed?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أدنى الدرجتين معاً",
+          "en": "the minimum of grades"
+        },
+        {
+          "ar": "حاصل ضرب الدرجتين",
+          "en": "the product of grades"
+        },
+        {
+          "ar": "واحد ناقص الدرجة",
+          "en": "one minus the grade"
+        },
+        {
+          "ar": "أقصى الدرجتين معاً",
+          "en": "the maximum of grades"
+        }
+      ],
+      "concept_id": "c4_comp_one_minus",
+      "explanation": {
+        "ar": "المتمم يطرح كل درجة من واحد، فتصبح 0.1 هي 0.9.",
+        "en": "Complement subtracts each grade from one, so 0.1 becomes 0.9."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لماذا يُعدّ المتمم عملية أحادية؟",
+        "en": "Why is the complement a unary operation?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تحتاج إلى مجموعتين هنا",
+          "en": "it needs two fuzzy sets"
+        },
+        {
+          "ar": "تحتاج إلى ثلاث مجموعات",
+          "en": "it needs three fuzzy sets"
+        },
+        {
+          "ar": "لا تحتاج أي مجموعة هنا",
+          "en": "it needs no fuzzy set"
+        },
+        {
+          "ar": "تحتاج مجموعة واحدة فقط",
+          "en": "it needs one fuzzy set"
+        }
+      ],
+      "concept_id": "c4_comp_unary",
+      "explanation": {
+        "ar": "العملية الأحادية تعمل على مجموعة واحدة، بخلاف الاتحاد والتقاطع.",
+        "en": "A unary operation acts on one set, unlike union and intersection."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "على الرسم، ما هو اتحاد مجموعتين ضبابيتين؟",
+        "en": "On a graph, what is the union of two fuzzy sets?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الغلاف العلوي للمنحنى",
+          "en": "the upper envelope"
+        },
+        {
+          "ar": "الغلاف السفلي للمنحنى",
+          "en": "the lower envelope"
+        },
+        {
+          "ar": "الانعكاس حول 0.5 هنا",
+          "en": "the mirror about 0.5"
+        },
+        {
+          "ar": "متوسط المنحنيين معاً",
+          "en": "the average of curves"
+        }
+      ],
+      "concept_id": "c4_union_graph",
+      "explanation": {
+        "ar": "الاتحاد هو الغلاف العلوي لمنحنيي الانتماء.",
+        "en": "The union is the upper envelope of the two membership curves."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "مع A={0.5,0.1,0.4} و B={0.2,0.3,0.5}، ما اتحاد A و B عند x2؟",
+        "en": "With A={0.5,0.1,0.4} and B={0.2,0.3,0.5}, what is A union B at x2?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "0.2",
+          "en": "0.2"
+        },
+        {
+          "ar": "0.3",
+          "en": "0.3"
+        },
+        {
+          "ar": "0.1",
+          "en": "0.1"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        }
+      ],
+      "concept_id": "c4_union_example",
+      "explanation": {
+        "ar": "الاتحاد يأخذ الأقصى، فعند x2 يكون max(0.1, 0.3) = 0.3.",
+        "en": "Union takes the maximum, so at x2 it is max(0.1, 0.3) = 0.3."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "مع المجموعتين نفسها، ما تقاطع A و B عند x2؟",
+        "en": "With the same sets, what is A intersection B at x2?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.2",
+          "en": "0.2"
+        },
+        {
+          "ar": "0.1",
+          "en": "0.1"
+        },
+        {
+          "ar": "0.3",
+          "en": "0.3"
+        }
+      ],
+      "concept_id": "c4_inter_example",
+      "explanation": {
+        "ar": "التقاطع يأخذ الأدنى، فعند x2 يكون min(0.1, 0.3) = 0.1.",
+        "en": "Intersection takes the minimum, so at x2 it is min(0.1, 0.3) = 0.1."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "إذا كانت درجة A عند x2 هي 0.1، فما متممها هناك؟",
+        "en": "If the grade of A at x2 is 0.1, what is the complement there?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "0.1",
+          "en": "0.1"
+        },
+        {
+          "ar": "0.5",
+          "en": "0.5"
+        },
+        {
+          "ar": "0.4",
+          "en": "0.4"
+        },
+        {
+          "ar": "0.9",
+          "en": "0.9"
+        }
+      ],
+      "concept_id": "c4_comp_example",
+      "explanation": {
+        "ar": "المتمم هو واحد ناقص الدرجة، فـ 1 - 0.1 = 0.9.",
+        "en": "Complement is one minus the grade, so 1 - 0.1 = 0.9."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "القضايا والاستلزامات الضبابية",
+    "en": "Fuzzy Propositions and Implications"
+  },
+  "quiz_id": "Quiz_Ch05_T02_Fuzzy_Propositions_And_Implications",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "قيمة صدق القضية الضبابية تنتمي إلى ماذا؟",
+        "en": "A fuzzy proposition truth value belongs to what?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "المجال من صفر إلى واحد",
+          "en": "the interval from zero to one"
+        },
+        {
+          "ar": "فقط القيمتان صفر وواحد",
+          "en": "only the values zero or one"
+        },
+        {
+          "ar": "أعداد سالبة فقط هنا",
+          "en": "only negative numbers here"
+        },
+        {
+          "ar": "قيم أكبر من واحد هنا",
+          "en": "only values above one right here"
+        }
+      ],
+      "concept_id": "c5p_crisp_fuzzy",
+      "explanation": {
+        "ar": "القضية الضبابية قد تكون صحيحة بأي درجة في المجال من صفر إلى واحد.",
+        "en": "A fuzzy proposition can be true to any degree in the interval zero to one."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف يُحسب النفي الضبابي؟",
+        "en": "How is fuzzy NOT computed?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حاصل ضرب القيمتين",
+          "en": "the product of two values"
+        },
+        {
+          "ar": "واحد ناقص الصدق هنا",
+          "en": "one minus the truth value"
+        },
+        {
+          "ar": "أقصى القيمتين معاً",
+          "en": "the maximum of two values"
+        },
+        {
+          "ar": "أدنى القيمتين معاً",
+          "en": "the minimum of two values"
+        }
+      ],
+      "concept_id": "c5p_not",
+      "explanation": {
+        "ar": "النفي يطرح قيمة الصدق من الواحد، فيعكس الدرجة حول النصف.",
+        "en": "NOT subtracts the truth value from one."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف يُحسب الاستلزام الضبابي؟",
+        "en": "How is fuzzy implication computed?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "حاصل ضرب a في b هنا",
+          "en": "the simple product of a and b"
+        },
+        {
+          "ar": "مجموع a مع b هنا",
+          "en": "the simple sum of a and b"
+        },
+        {
+          "ar": "أقصى بين متمم a و b",
+          "en": "max of one minus a and b"
+        },
+        {
+          "ar": "أدنى بين متمم a و b",
+          "en": "min of one minus a and b"
+        }
+      ],
+      "concept_id": "c5p_implication",
+      "explanation": {
+        "ar": "الاستلزام يأخذ أقصى قيمة بين واحد ناقص a و b.",
+        "en": "Implication takes the maximum of one minus a and b."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يُحسب التساوي الضبابي؟",
+        "en": "How is fuzzy equality computed?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حاصل ضرب القيمتين",
+          "en": "the product of two values"
+        },
+        {
+          "ar": "أقصى القيمتين معاً",
+          "en": "the maximum of two values"
+        },
+        {
+          "ar": "أدنى القيمتين معاً",
+          "en": "the minimum of the two values"
+        },
+        {
+          "ar": "واحد ناقص فرق مطلق",
+          "en": "one minus the absolute gap"
+        }
+      ],
+      "concept_id": "c5p_equality",
+      "explanation": {
+        "ar": "التساوي هو واحد ناقص الفرق المطلق بين الدرجتين.",
+        "en": "Equality is one minus the absolute difference of the two grades."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الصيغة القياسية للقضية الضبابية؟",
+        "en": "What is the canonical form of a fuzzy proposition?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "v هو F حيث F ضبابي",
+          "en": "v is F where F is fuzzy"
+        },
+        {
+          "ar": "F هو v حيث v حاسم",
+          "en": "F is v where v is crisp"
+        },
+        {
+          "ar": "v يساوي F لكل قيمة",
+          "en": "v equals F for all values"
+        },
+        {
+          "ar": "F يستلزم v لكل قيمة",
+          "en": "F implies v for all values"
+        }
+      ],
+      "concept_id": "c5p_canonical",
+      "explanation": {
+        "ar": "الصيغة القياسية v هو F، وصدقها درجة v في F.",
+        "en": "The canonical form is v is F, and its truth is the grade of v in F."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "لعبارة OR بين المقدمات، كيف تُجمع علاقات القواعد؟",
+        "en": "For OR between antecedents, how are the rule relations combined?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بضرب العلاقتين",
+          "en": "by product of relations"
+        },
+        {
+          "ar": "باتحاد العلاقتين",
+          "en": "by union of the relations"
+        },
+        {
+          "ar": "بتقاطع العلاقتين",
+          "en": "by intersection of relations"
+        },
+        {
+          "ar": "بمتمم العلاقتين",
+          "en": "by complement of relations"
+        }
+      ],
+      "concept_id": "c5p_compound",
+      "explanation": {
+        "ar": "OR يجمع علاقات القاعدة بالاتحاد، وAND بالتقاطع.",
+        "en": "OR combines the rule relations by union, AND by intersection."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي عائلتين لمشغلات الاستلزام توجدان؟",
+        "en": "Which two families of implication operators exist?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ضبابي وحاسم",
+          "en": "fuzzy and crisp logic now"
+        },
+        {
+          "ar": "أقصى وأدنى هنا",
+          "en": "maximum and minimum now"
+        },
+        {
+          "ar": "مقترن ومستلزم",
+          "en": "coupled with and entails"
+        },
+        {
+          "ar": "اتحاد وتقاطع",
+          "en": "union and intersection"
+        }
+      ],
+      "concept_id": "c5p_families",
+      "explanation": {
+        "ar": "توجد مشغلات تقترن فيها A بـ B ومشغلات تستلزم فيها A الـ B.",
+        "en": "There are operators coupling A with B and operators where A entails B."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "عندما درجة المقدمة صفر، ماذا تعطي مشغلات الاستلزام؟",
+        "en": "When the antecedent grade is zero, what do entailment operators give?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تعطي القيمة صفر",
+          "en": "they give the value zero"
+        },
+        {
+          "ar": "تعطي القيمة نصف",
+          "en": "they give the value half"
+        },
+        {
+          "ar": "تعطي اللاحق نفسه",
+          "en": "they give the consequent"
+        },
+        {
+          "ar": "تعطي القيمة واحد",
+          "en": "they give the value one"
+        }
+      ],
+      "concept_id": "c5p_vacuous",
+      "explanation": {
+        "ar": "المقدمة الخاطئة تجعل الاستلزام صحيحاً تلقائياً، فيعطي واحداً.",
+        "en": "A false premise makes an entailment vacuously true, so it gives one."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

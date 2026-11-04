@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "الاستدلال وإزالة التغبيش",
+    "en": "Inference and Defuzzification"
+  },
+  "quiz_id": "Quiz_Ch05_T03_Inference_And_Defuzzification",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يستنتج الاستدلال الأمامي؟",
+        "en": "What does modus ponens conclude?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "Q من P ومن P يستلزم Q",
+          "en": "Q from P and P implies Q"
+        },
+        {
+          "ar": "ليس P من القاعدة وليس Q",
+          "en": "not P from rule and not Q"
+        },
+        {
+          "ar": "P من القيمة Q وحدها",
+          "en": "P from the value Q alone"
+        },
+        {
+          "ar": "R من المقدمتين معاً",
+          "en": "R from the two premises"
+        }
+      ],
+      "concept_id": "c5i_mp",
+      "explanation": {
+        "ar": "الاستدلال الأمامي يستنتج Q من P ومن القاعدة P يستلزم Q.",
+        "en": "Modus ponens concludes Q from P and the rule P implies Q."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يستنتج القياس العكسي؟",
+        "en": "What does the backward rule conclude?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "R من المقدمتين معاً",
+          "en": "R from the two premises"
+        },
+        {
+          "ar": "ليس P من القاعدة و Q",
+          "en": "not P from rule and not Q"
+        },
+        {
+          "ar": "Q من P ومن القاعدة",
+          "en": "Q from P and the given rule"
+        },
+        {
+          "ar": "P من القيمة Q وحدها",
+          "en": "P from the value Q alone"
+        }
+      ],
+      "concept_id": "c5i_mt",
+      "explanation": {
+        "ar": "الاستدلال العكسي يستنتج ليس P من القاعدة ومن ليس Q.",
+        "en": "Modus tollens concludes not P from the rule and not Q."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف تُحسب نتيجة التعميم الأمامي؟",
+        "en": "How is the GMP conclusion computed?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "R يساوي A' مركّب B",
+          "en": "R equals A prime composed B"
+        },
+        {
+          "ar": "B' يساوي R ناقص A'",
+          "en": "B prime equals R minus A prime"
+        },
+        {
+          "ar": "B' يساوي A' مركّب R",
+          "en": "B prime equals A prime composed R"
+        },
+        {
+          "ar": "A' يساوي B' مركّب R",
+          "en": "A prime equals B prime composed R"
+        }
+      ],
+      "concept_id": "c5i_gmp",
+      "explanation": {
+        "ar": "التعميم الأمامي يحسب B' كتركيب A' مع R.",
+        "en": "GMP computes the conclusion B prime as A prime composed with R."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "المدخل الحاسم المقاس يعمل كـماذا في الاستدلال؟",
+        "en": "A crisp measured input acts as what in inference?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مجموعة ضبابية كاملة",
+          "en": "a full fuzzy set"
+        },
+        {
+          "ar": "مجموعة ضبابية فارغة",
+          "en": "an empty fuzzy set"
+        },
+        {
+          "ar": "علاقة حاسمة تماماً",
+          "en": "a crisp relation"
+        },
+        {
+          "ar": "مجموعة أحادية ضبابية",
+          "en": "a fuzzy singleton"
+        }
+      ],
+      "concept_id": "c5i_singleton",
+      "explanation": {
+        "ar": "المدخل المقاس يُعامل كمجموعة أحادية عند تلك القيمة.",
+        "en": "A measured input is treated as a fuzzy singleton at that value."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "مع عدة قواعد، كيف تُجمع اللواحق المقصوصة؟",
+        "en": "With several rules, how are clipped consequents combined?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "باتحاد يأخذ الأقصى",
+          "en": "by union taking the maximum"
+        },
+        {
+          "ar": "بتقاطع يأخذ الأدنى",
+          "en": "by intersection taking minimum"
+        },
+        {
+          "ar": "بجمع كل المساحات",
+          "en": "by summing all the areas"
+        },
+        {
+          "ar": "بمتوسط الارتفاعات",
+          "en": "by averaging the heights"
+        }
+      ],
+      "concept_id": "c5i_several",
+      "explanation": {
+        "ar": "عدة لواحق مقصوصة تُجمع بالاتحاد، بأخذ الأقصى.",
+        "en": "Several clipped consequents are combined by union, taking the maximum."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي عائلة من طرائق إزالة التغبيش هذه؟",
+        "en": "Which is a defuzzification method family?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الأقصى-الأدنى والضرب هنا",
+          "en": "max-min and max-product"
+        },
+        {
+          "ar": "العظمى والمركز والمتوسط",
+          "en": "maxima centroid average"
+        },
+        {
+          "ar": "الاتحاد والتقاطع والمتمم",
+          "en": "union intersection complement"
+        },
+        {
+          "ar": "التحويل والاستدلال والإزالة",
+          "en": "fuzzify infer defuzzify"
+        }
+      ],
+      "concept_id": "c5i_defuzz_families",
+      "explanation": {
+        "ar": "العائلات هي العظمى وطرائق المركز والمتوسط الموزون.",
+        "en": "The families are maxima, centroid methods and weighted average."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يُحسب مركز الثقل؟",
+        "en": "How is the centre of gravity computed?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "أكبر درجة في المجموعة هنا",
+          "en": "the largest grade in the set"
+        },
+        {
+          "ar": "متوسط القمتين معاً هنا",
+          "en": "the mean of the two peak values"
+        },
+        {
+          "ar": "x موزون بالدرجة مطبّع",
+          "en": "x weighted by grade, normalised"
+        },
+        {
+          "ar": "مجموع الدرجات على النقاط",
+          "en": "sum of grades over point count"
+        }
+      ],
+      "concept_id": "c5i_cog",
+      "explanation": {
+        "ar": "مركز الثقل مجموع x في الدرجة مقسوماً على مجموع الدرجات.",
+        "en": "CoG is the sum of x times grade divided by the sum of grades."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي طريقة يستخدمها تاكاغي-سوغينو لمخرجه؟",
+        "en": "Which method does Takagi-Sugeno use for its output?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مركز الثقل التكاملي",
+          "en": "centre of gravity integral"
+        },
+        {
+          "ar": "متوسط القيم العظمى",
+          "en": "the mean of the maxima"
+        },
+        {
+          "ar": "مركز المجاميع هنا جداً",
+          "en": "the centre of the sums"
+        },
+        {
+          "ar": "المتوسط الموزون للقمم",
+          "en": "weighted average of peaks"
+        }
+      ],
+      "concept_id": "c5i_wa_sugeno",
+      "explanation": {
+        "ar": "تاكاغي-سوغينو يستخدم متوسطاً موزوناً لمواضع القمم.",
+        "en": "Takagi-Sugeno uses a weighted average of the peak positions."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

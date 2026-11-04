@@ -149,7 +149,7 @@
   function saveKeyOf(origin, qid) { return origin.subjectId + '|' + origin.quizId + '|' + qid; }
 
   const VIEWS = ['deck-catalog', 'quiz-loading', 'quiz-error', 'quiz-start-view', 'quiz-view',
-    'results-view', 'saved-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
+    'results-view', 'saved-view', 'review-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
   function show(viewId) {
     VIEWS.forEach((v) => $(v).classList.toggle('hidden', v !== viewId));
     const inQuiz = viewId === 'quiz-start-view' || viewId === 'quiz-view';
@@ -160,7 +160,7 @@
     // the saved shortcut is part of the top bar: always reachable, one tap
     // (the sound toggle is not — it lives in the burger menu only)
     // the language toggle lives in every app bar and is always visible
-    const catalogViews = ['deck-catalog', 'saved-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
+    const catalogViews = ['deck-catalog', 'saved-view', 'review-view', 'stats-view', 'league-view', 'account-view', 'vs-view'];
     $('header-catalog-view').style.display = catalogViews.includes(viewId) ? 'flex' : 'none';
     $('header-session-view').style.display = catalogViews.includes(viewId) ? 'none' : 'flex';
     document.body.dataset.quizlive = (inQuiz && S.session && !S.session.finished) ? 'yes' : 'no';
@@ -1008,6 +1008,35 @@
     saveSessionSnapshot();
   }
 
+  // Spaced repetition & Custom review session (device-local, does not pollute history/XP).
+  function startReviewPractice(questions, title, kind) {
+    if (!questions || !questions.length) return;
+    const pool = questions.map((q) => JSON.parse(JSON.stringify(q)));
+    const first = (pool[0] && pool[0].origin) || {};
+    const safeKind = kind || 'review';
+    const safeTitle = title || (safeKind === 'review' ? 'مراجعة الأسئلة المستحقة' : 'كوز مخصص');
+    launchSession(pool, {
+      subjectId: first.subjectId || 'review',
+      subjectTitle: first.subjectTitle || (safeKind === 'review' ? 'المراجعة المتباعدة' : 'كوز مخصص'),
+      chapterNo: first.chapterNo !== undefined ? first.chapterNo : 1,
+      chapterLabel: first.chapterLabel || 'مراجعة',
+      topic: safeTitle,
+      quizId: null,
+      retryWrong: false,
+      kind: safeKind,
+      replay: { type: safeKind, keys: pool.map((q) => (q.origin ? saveKeyOf(q.origin, q.id) : q.id)) },
+    });
+    S.session.hash = '#/practice';
+    if (location.hash !== '#/practice') location.hash = '#/practice';
+    saveSessionSnapshot();
+  }
+
+  function renderReview() {
+    if (window.PortalReviewUI && window.PortalReviewUI.render) {
+      window.PortalReviewUI.render(S.index, S.banks, S.saved, startReviewPractice);
+    }
+  }
+
   // ---------------- saved questions (delegated to js/saved_ui.js) ----------------
   let _savedUI = null;
   function getSavedUI() {
@@ -1396,6 +1425,21 @@
     tourNotify('answer');
     const q = ses.questions[ses.idx];
     if (i === q.correct) playSound('correct'); else playSound('wrong');
+    try {
+      if (window.PortalReview && window.PortalReview.recordAnswer && q && q.origin && q.id) {
+        const revKey = saveKeyOf(q.origin, q.id);
+        const stemText = q.stem ? (q.stem.ar || q.stem.en || (typeof q.stem === 'string' ? q.stem : '')) : '';
+        const corrOpt = (q.options && q.options[q.correct] !== undefined) ? q.options[q.correct] : '';
+        const corrText = corrOpt ? (corrOpt.ar || corrOpt.en || (typeof corrOpt === 'string' ? corrOpt : '')) : '';
+        const cHash = window.PortalReview.contentHash(stemText, corrText);
+        const isOk = (i === q.correct);
+        const markStudy = (ses.kind === 'review' || ses.kind === 'custom');
+        window.PortalReview.recordAnswer(revKey, cHash, isOk, { markStudyDay: markStudy });
+        if (window.PortalReviewUI && window.PortalReviewUI.updateBadge) {
+          window.PortalReviewUI.updateBadge();
+        }
+      }
+    } catch (e) {} // audit-ignore: review journaling
     renderQuestion();
     renderMatrix();
     saveSessionSnapshot();
@@ -1458,12 +1502,16 @@
     $('progress-bar-fill').style.width = '100%';
     const res = window.PortalAnalytics.analyze(ses.questions, ses.picks, ses.dwells, elapsedSec());
     playSound(res.pct >= 60 ? 'completed' : 'fail');
-    if (ses.ch.quiz_id) setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
+    if (ses.kind !== 'review' && ses.kind !== 'custom' && ses.ch.quiz_id) {
+      setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
+    }
     ses.finished = true;
     recordHistory(ses, res);
     let newBadges = [];
-    if (window.PortalAchievements && window.PortalAchievements.checkAfterQuiz) {
-      newBadges = window.PortalAchievements.checkAfterQuiz(ses, res) || [];
+    if (ses.kind !== 'review' && ses.kind !== 'custom') {
+      if (window.PortalAchievements && window.PortalAchievements.checkAfterQuiz) {
+        newBadges = window.PortalAchievements.checkAfterQuiz(ses, res) || [];
+      }
     }
     renderResults(res, newBadges);
     show('results-view');
@@ -1476,6 +1524,14 @@
   }
 
   function recordHistory(ses, res) {
+    if (ses.kind === 'review' || ses.kind === 'custom') {
+      try {
+        if (window.PortalReview && window.PortalReview.markTodayStudy) {
+          window.PortalReview.markTodayStudy();
+        }
+      } catch (e) {} // audit-ignore: study day mark
+      return;
+    }
     try {
       S.history.push({
         t: Date.now(),
@@ -1772,6 +1828,12 @@
       clearSessionSnapshot();
       renderSaved();
       show('saved-view');
+      window.scrollTo(0, 0);
+    } else if (h === '#/review' || h === '#/review/') {
+      S.session = null;
+      clearSessionSnapshot();
+      renderReview();
+      show('review-view');
       window.scrollTo(0, 0);
     } else if (h === '#/stats' || h === '#/stats/') {
       S.session = null;
@@ -2289,10 +2351,14 @@
   }
   function updateMenuCounts() {
     const b = $('menu-saved-count');
-    if (!b) return;
-    const n = Object.keys(S.saved).length;
-    b.textContent = n > 999 ? '999+' : n;
-    b.classList.toggle('hidden', n === 0);
+    if (b) {
+      const n = Object.keys(S.saved).length;
+      b.textContent = n > 999 ? '999+' : n;
+      b.classList.toggle('hidden', n === 0);
+    }
+    if (window.PortalReviewUI && window.PortalReviewUI.updateBadge) {
+      window.PortalReviewUI.updateBadge();
+    }
   }
   async function installApp() {
     const inTelegram = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData);
@@ -3431,6 +3497,12 @@ const weekBar = $('league-week-bar');
         goHash('#/saved');
         return;
       }
+      if (ses.replay && (ses.replay.type === 'review' || ses.replay.type === 'custom')) {
+        const pool = ses.questions.map((q) => JSON.parse(JSON.stringify(q)));
+        startReviewPractice(pool, ses.title, ses.replay.type);
+        beginAnswering();
+        return;
+      }
       startSession(ses.sub.subject_id, ses.ch.quiz_id, null);
       beginAnswering();
     });
@@ -3442,6 +3514,14 @@ const weekBar = $('league-week-bar');
         const subset = window.PortalAnalytics.buildWrongOnly(from.questions, from.picks);
         if (!subset || !subset.length) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
         const meta = { subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title, chapterNo: ses.ch.chapter_no, chapterLabel: ses.chapterLabel, topic: ses.title, quizId: null, retryWrong: true, replay: ses.replay };
+        launchSession(subset, meta);
+        beginAnswering();
+        return;
+      }
+      if (ses.replay && (ses.replay.type === 'review' || ses.replay.type === 'custom')) {
+        const subset = window.PortalAnalytics.buildWrongOnly(from.questions, from.picks);
+        if (!subset || !subset.length) { toast('لا توجد أخطاء لإعادتها — أحسنت!'); return; }
+        const meta = { subjectId: ses.sub.subject_id, subjectTitle: ses.sub.subject_title, chapterNo: ses.ch.chapter_no, chapterLabel: ses.chapterLabel, topic: ses.title, quizId: null, retryWrong: true, replay: ses.replay, kind: ses.replay.type };
         launchSession(subset, meta);
         beginAnswering();
         return;
@@ -3467,7 +3547,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.10.2';
+  const SHELL_VERSION = '1.10.3';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -3569,6 +3649,9 @@ const weekBar = $('league-week-bar');
           getVsUI: getVsUI,
           bidiHtml: bidiHtml,
           pickOption: pickOption,
+          startReviewPractice: startReviewPractice,
+          renderReview: renderReview,
+          show: show,
         };
       }
       {

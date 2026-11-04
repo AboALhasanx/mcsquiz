@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.10.2';
+const VERSION = '1.10.3';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -25,6 +25,7 @@ const CORE = [
   './js/qrcode.min.js',
   './js/quiz-vault.js',
   './js/review.js',
+  './js/review_ui.js',
   './js/saved_ui.js',
   './js/stats_ui.js',
   './js/supabase-config.js',
@@ -218,6 +219,16 @@ const CORE = [
   './data/banks/05_Soft_Computing_Ch01_Quiz_Ch01_ModelB_Soft_Computing_Intro.json',
   './data/banks/05_Soft_Computing_Ch02_Quiz_02_Fuzzy_Logic_Systems.json',
   './data/banks/05_Soft_Computing_Ch02_Quiz_Ch02_ModelB_Fuzzy_Logic_Systems.json',
+  './data/banks/05_Soft_Computing_Ch03_Quiz_Ch03_T01_Fuzzy_Set_Concepts_I.json',
+  './data/banks/05_Soft_Computing_Ch03_Quiz_Ch03_T02_Fuzzy_Set_Concepts_II.json',
+  './data/banks/05_Soft_Computing_Ch03_Quiz_Ch03_T03_Membership_Function_Types.json',
+  './data/banks/05_Soft_Computing_Ch04_Quiz_Ch04_T01_Standard_Fuzzy_Operations.json',
+  './data/banks/05_Soft_Computing_Ch04_Quiz_Ch04_T02_Advanced_Operations_And_Hedges.json',
+  './data/banks/05_Soft_Computing_Ch04_Quiz_Ch04_T03_Properties_Laws_And_TNorms.json',
+  './data/banks/05_Soft_Computing_Ch05_Quiz_Ch05_T01_Fuzzy_Relations_And_Composition.json',
+  './data/banks/05_Soft_Computing_Ch05_Quiz_Ch05_T02_Fuzzy_Propositions_And_Implications.json',
+  './data/banks/05_Soft_Computing_Ch05_Quiz_Ch05_T03_Inference_And_Defuzzification.json',
+  './data/banks/05_Soft_Computing_Ch05_Quiz_Ch05_T04_Fuzzy_Logic_Controllers.json',
   './data/banks/06_Artificial_Intelligence_Ch01_Quiz_Ch01_ModelA_AI_Foundations.json',
   './data/banks/06_Artificial_Intelligence_Ch01_Quiz_Ch01_ModelB_AI_Foundations.json',
   './data/banks/06_Artificial_Intelligence_Ch02_Quiz_Ch02_ModelA_Search_and_Learning.json',

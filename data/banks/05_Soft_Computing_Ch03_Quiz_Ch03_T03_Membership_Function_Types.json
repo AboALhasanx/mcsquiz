@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أنواع دوال الانتماء",
+    "en": "Membership Function Types"
+  },
+  "quiz_id": "Quiz_Ch03_T03_Membership_Function_Types",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "كم معاملاً تستخدم دالة الانتماء المثلثية؟",
+        "en": "How many parameters does a triangular MF use?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ثلاثة معاملات",
+          "en": "three parameters"
+        },
+        {
+          "ar": "أربعة معاملات",
+          "en": "four parameters"
+        },
+        {
+          "ar": "معاملان فقط",
+          "en": "two parameters"
+        },
+        {
+          "ar": "معامل واحد فقط",
+          "en": "a single parameter"
+        }
+      ],
+      "concept_id": "c3_tri_params",
+      "explanation": {
+        "ar": "الدالة المثلثية تُحدَّد بثلاثة معاملات a و b و c.",
+        "en": "A triangular MF is specified by three parameters a, b and c."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كم معاملاً تستخدم دالة الانتماء شبه المنحرفة؟",
+        "en": "How many parameters does a trapezoidal MF use?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "خمسة معاملات",
+          "en": "five parameters"
+        },
+        {
+          "ar": "أربعة معاملات",
+          "en": "four parameters"
+        },
+        {
+          "ar": "ثلاثة معاملات",
+          "en": "three parameters"
+        },
+        {
+          "ar": "معاملان فقط",
+          "en": "two parameters"
+        }
+      ],
+      "concept_id": "c3_trap_params",
+      "explanation": {
+        "ar": "شبه المنحرفة تُحدَّد بأربعة معاملات a و b و c و d.",
+        "en": "A trapezoidal MF is specified by four parameters a, b, c and d."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي معاملات تحدد دالة غاوس؟",
+        "en": "Which parameters specify a Gaussian MF?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ثلاثة معاملات",
+          "en": "three parameters"
+        },
+        {
+          "ar": "أربعة معاملات",
+          "en": "four parameters"
+        },
+        {
+          "ar": "المركز والعرض",
+          "en": "centre and width"
+        },
+        {
+          "ar": "العرض والميل",
+          "en": "width and slope"
+        }
+      ],
+      "concept_id": "c3_gauss_params",
+      "explanation": {
+        "ar": "دالة غاوس تستخدم c للمركز وسيغما للعرض.",
+        "en": "A Gaussian MF uses c for the centre and sigma for the width."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في دالة الجرس المعمم، ماذا يعطي b سالب؟",
+        "en": "In a generalized bell MF, a negative b gives what?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "جرس معتدل طبيعي",
+          "en": "a normal upright bell"
+        },
+        {
+          "ar": "خط مستقيم تماماً",
+          "en": "a perfectly straight line"
+        },
+        {
+          "ar": "هضبة مسطحة تماماً",
+          "en": "a perfectly flat plateau"
+        },
+        {
+          "ar": "جرس مقلوب تماماً",
+          "en": "an upside-down bell shape"
+        }
+      ],
+      "concept_id": "c3_bell_neg",
+      "explanation": {
+        "ar": "قيمة b السالبة تقلب الجرس، فتعطي شكلاً مقلوباً.",
+        "en": "A negative b flips the bell, giving an upside-down bell shape."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي معاملات تحدد دالة سيغمويد؟",
+        "en": "Which parameters specify a sigmoidal MF?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نقطة التقاطع والميل",
+          "en": "crossover point and slope"
+        },
+        {
+          "ar": "نقطة المركز والعرض",
+          "en": "centre point and width"
+        },
+        {
+          "ar": "ثلاثة معاملات فقط",
+          "en": "exactly three parameters"
+        },
+        {
+          "ar": "أربعة معاملات فقط",
+          "en": "exactly four parameters"
+        }
+      ],
+      "concept_id": "c3_sigmoid_params",
+      "explanation": {
+        "ar": "دالة سيغمويد تستخدم c نقطة تقاطع و a ميلاً.",
+        "en": "A sigmoidal MF uses c as the crossover point and a as the slope."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما شكل دالة الانتماء شبه المنحرفة؟",
+        "en": "What shape does a trapezoidal MF have?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "دالة درجية بسيطة جداً",
+          "en": "a simple step function"
+        },
+        {
+          "ar": "قمة مسطحة وجوانب مائلة",
+          "en": "flat top with sloped sides"
+        },
+        {
+          "ar": "قمة حادة واحدة فقط هنا",
+          "en": "a single sharp peak only"
+        },
+        {
+          "ar": "منحنى جرسي ناعم جداً",
+          "en": "a smooth bell-shaped curve"
+        }
+      ],
+      "concept_id": "c3_trap_shape",
+      "explanation": {
+        "ar": "شبه المنحرفة تصعد ثم تستوي عند القمة ثم تهبط.",
+        "en": "A trapezoidal MF rises, stays flat at the top, then falls."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "في دالة غاوس، ماذا يمثل c؟",
+        "en": "In a Gaussian MF, what does c represent?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ميل المنحنى",
+          "en": "the slope of the curve"
+        },
+        {
+          "ar": "ارتفاع المنحنى",
+          "en": "the height of the curve"
+        },
+        {
+          "ar": "مركز المنحنى",
+          "en": "the centre of the curve"
+        },
+        {
+          "ar": "عرض المنحنى",
+          "en": "the width of the curve"
+        }
+      ],
+      "concept_id": "c3_gauss_center",
+      "explanation": {
+        "ar": "في دالة غاوس، يمثل c مركز المنحنى الذي يقع عنده أعلى انتماء.",
+        "en": "In a Gaussian MF, c is the centre of the curve."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في دالة الجرس المعمم، ماذا يمثل a؟",
+        "en": "In a generalized bell MF, what does a represent?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مركز المنحنى",
+          "en": "the centre of the curve"
+        },
+        {
+          "ar": "ميل المنحنى",
+          "en": "the slope of the curve"
+        },
+        {
+          "ar": "ارتفاع المنحنى",
+          "en": "the height of the curve"
+        },
+        {
+          "ar": "عرض المنحنى",
+          "en": "the width of the curve"
+        }
+      ],
+      "concept_id": "c3_bell_width",
+      "explanation": {
+        "ar": "في دالة الجرس المعمم، a هو عرض المنحنى.",
+        "en": "In a generalized bell MF, a is the width of the curve."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "الخصائص والقوانين وT-norms",
+    "en": "Properties, Laws and T-norms"
+  },
+  "quiz_id": "Quiz_Ch04_T03_Properties_Laws_And_TNorms",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي قانون يبقى صحيحاً للمجموعات الضبابية؟",
+        "en": "Which law still holds for fuzzy sets?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قانون دي مورغان يصح دائماً",
+          "en": "the De Morgan law holds"
+        },
+        {
+          "ar": "قانون الوسط المرفوع يصح هنا",
+          "en": "the excluded middle holds"
+        },
+        {
+          "ar": "قانون التناقض يصح دائماً",
+          "en": "the contradiction law holds"
+        },
+        {
+          "ar": "الاثنان الأخيران يصحان هنا",
+          "en": "both of the last two hold"
+        }
+      ],
+      "concept_id": "c4_de_morgan",
+      "explanation": {
+        "ar": "دي مورغان يصح؛ أما الوسط المرفوع والتناقض فيفشلان.",
+        "en": "De Morgan holds; excluded middle and contradiction fail."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يحدث لقانون الوسط المرفوع في المجموعات الضبابية؟",
+        "en": "What happens to the law of excluded middle in fuzzy sets?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يساوي المتمم تماماً",
+          "en": "it equals the complement"
+        },
+        {
+          "ar": "يفشل للدرجات الوسطى",
+          "en": "it fails for middle grades"
+        },
+        {
+          "ar": "يصمد كما في الحاسم",
+          "en": "it holds as in crisp sets"
+        },
+        {
+          "ar": "يصبح أقوى قليلاً",
+          "en": "it becomes much stronger"
+        }
+      ],
+      "concept_id": "c4_excluded_middle",
+      "explanation": {
+        "ar": "عند درجة 0.5 يكون الاتحاد مع المتمم 0.5، لا واحداً.",
+        "en": "For a grade of 0.5 the union with the complement is 0.5, not one."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا يحدث لقانون التناقض في المجموعات الضبابية؟",
+        "en": "What happens to the law of contradiction in fuzzy sets?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يصبح أقوى من الحاسم هنا",
+          "en": "it becomes stronger"
+        },
+        {
+          "ar": "يساوي الاتحاد تماماً",
+          "en": "it equals the union"
+        },
+        {
+          "ar": "يفشل فالتقاطع غير خالٍ",
+          "en": "it fails: not empty"
+        },
+        {
+          "ar": "يصمد كما في الحاسم هنا",
+          "en": "it holds as before"
+        }
+      ],
+      "concept_id": "c4_contradiction",
+      "explanation": {
+        "ar": "عند درجة 0.5 يكون التقاطع مع المتمم 0.5، لا فارغاً.",
+        "en": "At a grade of 0.5 the intersection with the complement is 0.5, not empty."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "هل يصح قانون الانعكاس المزدوج للمجموعات الضبابية؟",
+        "en": "Does the involution law hold for fuzzy sets?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لا، تفشل دائماً هنا",
+          "en": "no, it always fails"
+        },
+        {
+          "ar": "فقط للمجموعات الحاسمة",
+          "en": "only for crisp sets"
+        },
+        {
+          "ar": "فقط عند الدرجة واحد",
+          "en": "only at grade of one"
+        },
+        {
+          "ar": "نعم، تعيد A بمرتين",
+          "en": "yes, twice returns A"
+        }
+      ],
+      "concept_id": "c4_involution",
+      "explanation": {
+        "ar": "المتمم مرتين يعيد المجموعة الأصلية، فالانعكاس المزدوج يصح.",
+        "en": "Complementing twice returns the original set, so involution holds."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يُحسب الجداء الديكارتي لمجموعتين ضبابيتين؟",
+        "en": "How is the Cartesian product of two fuzzy sets computed?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أدنى الدرجتين معاً",
+          "en": "min of the two grades"
+        },
+        {
+          "ar": "أقصى الدرجتين معاً",
+          "en": "max of the two grades"
+        },
+        {
+          "ar": "واحد ناقص الدرجة",
+          "en": "one minus each grade"
+        },
+        {
+          "ar": "حاصل ضرب الدرجتين",
+          "en": "the product of grades"
+        }
+      ],
+      "concept_id": "c4_cartesian",
+      "explanation": {
+        "ar": "كل خلية في مصفوفة العلاقة هي أدنى الدرجتين.",
+        "en": "Each cell of the relation matrix is the minimum of the two grades."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يتطلب الجداء الديكارتي؟",
+        "en": "The Cartesian product requires what?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عنصر واحد فقط هنا",
+          "en": "a single element only"
+        },
+        {
+          "ar": "فضاءان مختلفان هنا",
+          "en": "different universes"
+        },
+        {
+          "ar": "الفضاء نفسه تماماً",
+          "en": "the same universe"
+        },
+        {
+          "ar": "دون أي فضاء أبداً",
+          "en": "no universe at all"
+        }
+      ],
+      "concept_id": "c4_cart_universe",
+      "explanation": {
+        "ar": "يجمع عناصر فضاءين مختلفين في علاقة.",
+        "en": "It joins elements of two different universes into a relation."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما هو الـT-norm في المنطق الضبابي؟",
+        "en": "What is a T-norm in fuzzy logic?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "متمم ضبابي عام",
+          "en": "a fuzzy complement"
+        },
+        {
+          "ar": "علاقة ضبابية",
+          "en": "a fuzzy relation type"
+        },
+        {
+          "ar": "عملية AND عامة",
+          "en": "a general fuzzy AND"
+        },
+        {
+          "ar": "عملية OR عامة",
+          "en": "a general fuzzy OR"
+        }
+      ],
+      "concept_id": "c4_tnorm",
+      "explanation": {
+        "ar": "الـT-norm أي عامل يعمل كـAND ضبابي عام.",
+        "en": "A T-norm is any operator acting as a general fuzzy AND."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي عامل يعمل كـOR ضبابي عام؟",
+        "en": "Which operator acts as a general fuzzy OR?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عملية AND عامة",
+          "en": "a general fuzzy AND"
+        },
+        {
+          "ar": "متمم ضبابي عام",
+          "en": "a fuzzy complement"
+        },
+        {
+          "ar": "علاقة ضبابية",
+          "en": "a fuzzy relation"
+        },
+        {
+          "ar": "عملية OR عامة",
+          "en": "a general fuzzy OR"
+        }
+      ],
+      "concept_id": "c4_snorm",
+      "explanation": {
+        "ar": "الـS-norm أي عامل يعمل كـOR ضبابي عام.",
+        "en": "An S-norm is any operator acting as a general fuzzy OR."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.د. عبد الهادي محمد ادخيل",
+    "en": "Prof. Dr. Abdul Hadi Mohammed Adkhil"
+  },
+  "subject_id": "05_Soft_Computing",
+  "updated_at": "2026-11-04T12:32:55Z",
+  "subject_title": "الحوسبة المرنة",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
