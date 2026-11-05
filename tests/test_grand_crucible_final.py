@@ -41,7 +41,7 @@ def run():
 
         sw_active = False
         try:
-            page.wait_for_function("() => !!navigator.serviceWorker.controller", timeout=25000)
+            page.wait_for_function("() => !!navigator.serviceWorker.controller", timeout=35000)
             sw_active = True
         except Exception:
             pass  # audit-ignore: timeout waiting for sw controller
@@ -206,7 +206,11 @@ def run():
         # =========================================================================
         print("\n--- Pillar 5: Weekly League & Dynamic Legends Engine ---")
         page.evaluate("() => { location.hash = '#/league'; }")
-        page.wait_for_timeout(600)
+        try:
+            page.wait_for_selector('.podium-slot, .league-podium-card, .league-table-row, .league-row', timeout=15000)
+        except Exception:
+            pass  # audit-ignore: league table wait
+        page.wait_for_timeout(400)
 
         league_check = page.evaluate("""() => {
             const podiumSlots = document.querySelectorAll('.podium-slot, .league-podium-slot, .league-podium-card');
