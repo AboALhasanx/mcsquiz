@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس الإنتاجية والعملية",
+    "en": "Productivity and Process Metrics"
+  },
+  "quiz_id": "Quiz_Ch06_T11_Productivity_And_Process_Metrics",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما العلاقة التي تعرّف مقياس إنتاجية البرمجيات؟",
+        "en": "What relationship defines a software productivity measure?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مخرج برمجي محدد مقسوماً على الجهد المستخدم",
+          "en": "A stated software output divided by the effort used"
+        },
+        {
+          "ar": "مجموع العيوب مقسوماً على زمن التشغيل المنقضي",
+          "en": "A defect total divided by elapsed operating time"
+        },
+        {
+          "ar": "طول المصدر مضروباً بتعقيد تدفق التحكم",
+          "en": "A source length multiplied by control-flow complexity"
+        },
+        {
+          "ar": "عدد الأصناف مقسوماً على عمق الوراثة",
+          "en": "A class count divided by the depth of inheritance"
+        }
+      ],
+      "concept_id": "ch6_productivity_ratio",
+      "explanation": {
+        "ar": "تربط الإنتاجية مقياساً للمخرج بالجهد المستخدم لإنتاجه؛ أما معدل العيوب والتعقيد والوراثة فتجيب عن أسئلة أخرى.",
+        "en": "Productivity relates an output measure to the effort used to produce it; defect rate, complexity, and inheritance answer different questions."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يعبر عنه LOC لكل شخص-شهر؟",
+        "en": "What does LOC per person-month express?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "فترات الإخفاق المرصودة خلال شهر تقويمي واحد",
+          "en": "Failure intervals observed during one calendar month"
+        },
+        {
+          "ar": "أسطر المصدر المنجزة لكل شخص-شهر من الجهد",
+          "en": "Source lines produced per person-month of effort"
+        },
+        {
+          "ar": "العوامل المتميزة المعدودة في كل وحدة برمجية",
+          "en": "Distinct operators counted in each software module"
+        },
+        {
+          "ar": "كلفة المشروع لكل مكوّن خارجي لنقاط الوظائف",
+          "en": "Project cost per external function-point component"
+        }
+      ],
+      "concept_id": "ch6_loc_person_month",
+      "explanation": {
+        "ar": "يستعمل LOC لكل شخص-شهر حجم الشيفرة مخرجاً وأشهر العمل جهداً؛ ويتأثر بقاعدة عد LOC ولغة البرمجة.",
+        "en": "LOC per person-month uses code size as output and person-months as effort; it is sensitive to the LOC counting convention and language."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا تعبر عنه نقاط الوظائف لكل شخص-شهر؟",
+        "en": "What does function points per person-month express?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الحجم الوظيفي مقسوماً على عدد عيوب ما بعد الإصدار",
+          "en": "Functional size divided by post-release defect count"
+        },
+        {
+          "ar": "أسطر المصدر مقسومة على عدد مستويات الوراثة",
+          "en": "Source lines divided by the number of inheritance levels"
+        },
+        {
+          "ar": "الحجم الوظيفي المسلّم نسبةً إلى جهد التطوير",
+          "en": "Functional size delivered relative to development effort"
+        },
+        {
+          "ar": "زمن الإخفاق المنقضي مقسوماً على مدة جدول المشروع",
+          "en": "Elapsed failure time divided by project schedule duration"
+        }
+      ],
+      "concept_id": "ch6_fp_person_month",
+      "explanation": {
+        "ar": "تربط FP لكل شخص-شهر حجم نقاط الوظائف المسلّم بجهد التطوير؛ فهي تقيس الإنتاجية لا العيوب أو التعقيد.",
+        "en": "FP per person-month relates delivered function-point size to development effort; it measures productivity rather than defects or complexity."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لماذا ينبغي مقارنة الإنتاجية المعتمدة على LOC بحذر بين اللغات؟",
+        "en": "Why should LOC-based productivity be compared cautiously across languages?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تستخدم كل لغة بنية التعليمات والأسطر نفسها",
+          "en": "Every language uses the same statement and line structure"
+        },
+        {
+          "ar": "تُحسب نقاط الوظائف من إخفاقات التشغيل وحدها",
+          "en": "Function points are counted only from runtime failures"
+        },
+        {
+          "ar": "يسجل LOC مباشرة العدد الكلي لمعاملات العميل",
+          "en": "LOC directly records customer transaction totals"
+        },
+        {
+          "ar": "قد تختلف LOC للوظيفة المكافئة حسب اللغة",
+          "en": "Equivalent features may need different LOC by language"
+        }
+      ],
+      "concept_id": "ch6_loc_language_effect",
+      "explanation": {
+        "ar": "تختلف العلاقة بين LOC والوظائف باختلاف اللغة؛ لذلك لا تقارن قيم الإنتاجية القائمة على الأسطر مباشرةً من دون سياق.",
+        "en": "The LOC-to-function relationship varies by language, so line-based productivity values are not directly comparable without context."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يلخص توزيع الجهد عبر المراحل؟",
+        "en": "What does effort distribution across phases summarize?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كيفية توزيع جهد المشروع بين أنشطة دورة الحياة",
+          "en": "How project effort is allocated among lifecycle activities"
+        },
+        {
+          "ar": "كيفية تقسيم وظائف البرمجيات بين الممثلين الخارجيين",
+          "en": "How software functions are divided among external actors"
+        },
+        {
+          "ar": "كيفية تباعد إحالات المتغيرات عبر التعليمات",
+          "en": "How variable references are spaced across statements"
+        },
+        {
+          "ar": "كيفية ترتيب الأصناف عبر مستويات الوراثة",
+          "en": "How classes are arranged across inheritance levels"
+        }
+      ],
+      "concept_id": "ch6_effort_distribution",
+      "explanation": {
+        "ar": "يصف توزيع الجهد تخصيص جهد المشروع لأنشطة أو مراحل دورة الحياة؛ أما البدائل فتصف بنى مختلفة.",
+        "en": "Effort distribution describes the allocation of project effort to lifecycle activities or phases; the other options describe different structures."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "لماذا قد يزيد اكتشاف العيب المتأخر جهد المشروع؟",
+        "en": "Why can late defect discovery increase project effort?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ينخفض حجم المصدر تلقائياً عند اكتشاف العيب متأخراً",
+          "en": "Late discovery automatically reduces the source-code size"
+        },
+        {
+          "ar": "قد يلزم تعديل مخرجات سابقة وأعمال لاحقة معتمدة عليها",
+          "en": "Earlier outputs and dependent later work may need revision"
+        },
+        {
+          "ar": "تتغير أوزان نقاط الوظائف عند اكتشاف العيب متأخراً",
+          "en": "Late discovery changes the project's function-point weights"
+        },
+        {
+          "ar": "يلغي الاكتشاف المتأخر الحاجة إلى اختبار الانحدار",
+          "en": "Late discovery removes the need for regression testing"
+        }
+      ],
+      "concept_id": "ch6_late_rework",
+      "explanation": {
+        "ar": "عندما يتسرب الخطأ من مرحلته قد يتطلب التصحيح إعادة عمل التصميم والشيفرة والاختبارات اللاحقة؛ لذلك تبرز أهمية احتواء المرحلة.",
+        "en": "When an error escapes its phase, correction may require reworking downstream design, code, and tests; this is why phase containment matters."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا يصف نضج العملية في تصنيفات المقرر؟",
+        "en": "What does process maturity describe?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد العوامل في البرنامج المصدري المكتمل",
+          "en": "The operator count in a finished source program"
+        },
+        {
+          "ar": "عدد الشاشات في واجهة المستخدم للمنتج",
+          "en": "The screen count in the product's user interface"
+        },
+        {
+          "ar": "نضج العملية المستخدمة لإنتاج البرمجيات",
+          "en": "Maturity of the process used to produce the software"
+        },
+        {
+          "ar": "اعتمادية مكوّن عتادي يقع خارج المنتج",
+          "en": "Reliability of a hardware component outside the product"
+        }
+      ],
+      "concept_id": "ch6_process_maturity",
+      "explanation": {
+        "ar": "يورد المقرر نضج العملية ضمن مقاييس العملية؛ أما البدائل فتصف حجم المنتج أو مكوّناً خارجياً.",
+        "en": "Process maturity is a process metric; the other choices describe product size or an external component."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا يجب عدم الخلط بين مقاييس الإنتاجية ومقاييس التعقيد؟",
+        "en": "Why should productivity metrics not be confused with complexity metrics?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كلاهما يقيس طول المصدر دائماً بالطريقة نفسها",
+          "en": "Both always measure source length in the same manner"
+        },
+        {
+          "ar": "تساوي قيم التعقيد إنتاجية المشروع مباشرةً",
+          "en": "Complexity values directly equal project productivity"
+        },
+        {
+          "ar": "تحل الإنتاجية محل مقاييس حجم البرمجيات",
+          "en": "Productivity values replace all software-size measures in every context"
+        },
+        {
+          "ar": "تقيس خصائص مختلفة وتحتاج إلى تفسير منفصل",
+          "en": "They describe distinct properties with different meanings"
+        }
+      ],
+      "concept_id": "ch6_productivity_vs_complexity",
+      "explanation": {
+        "ar": "يحذر المقرر صراحةً من الخلط بين الإنتاجية والتعقيد؛ فمعدل المخرج لكل جهد ليس مقياساً لتدفق التحكم أو البنية.",
+        "en": "Productivity should not be confused with complexity: output per effort differs from control-flow or structure measures."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T20:54:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

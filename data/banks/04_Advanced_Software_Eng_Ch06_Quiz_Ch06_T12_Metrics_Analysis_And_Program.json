@@ -1,0 +1,372 @@
+{
+  "topic": {
+    "ar": "تحليل المقاييس وبرنامج القياس",
+    "en": "Metrics Analysis and Program"
+  },
+  "quiz_id": "Quiz_Ch06_T12_Metrics_Analysis_And_Program",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي عناصر تمثل إحصاءات موجزة أوردها تحليل المقاييس؟",
+        "en": "Which items are summary statistics listed for metric analysis?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قيم المتوسط والوسيط والحدين الأعلى والأدنى للمقياس",
+          "en": "Mean, median, maximum, and minimum values for a measure"
+        },
+        {
+          "ar": "مقاييس الأصناف: أعداد fan-in وfan-out وDIT وNOC",
+          "en": "Class metrics: fan-in, fan-out, DIT, and NOC counts"
+        },
+        {
+          "ar": "عناصر نقاط الوظائف: مدخلات ومخرجات واستعلامات وملفات",
+          "en": "Function-point items: inputs, outputs, inquiries, and files"
+        },
+        {
+          "ar": "عناصر حالات الاستخدام: ممثلون ومعاملات وشاشات وتقارير",
+          "en": "Use-case items: actors, transactions, screens, and reports"
+        }
+      ],
+      "concept_id": "ch6_summary_statistics",
+      "explanation": {
+        "ar": "يسمي المقرر المتوسط والوسيط والقيمتين العظمى والصغرى إحصاءات موجزة؛ أما البدائل فمصطلحات لمقاييس أو أحجام برمجية.",
+        "en": "Mean, median, maximum, and minimum are summary statistics; the alternatives are software metrics or sizing terms."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي تمثيل ورد لعرض توزيعات بيانات المقاييس؟",
+        "en": "Which representation is listed for displaying metric-data distributions?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مخطط استدعاء يعرض علاقات الوحدات البرمجية",
+          "en": "A call graph showing module-to-module relationships"
+        },
+        {
+          "ar": "مدرج تكراري يعرض توزيع قيم بيانات المقاييس",
+          "en": "A histogram displaying metric-value distributions"
+        },
+        {
+          "ar": "جدول إحالات متقاطعة يعرض مواضع المتغيرات في الأسطر",
+          "en": "A cross-reference table showing variable line locations"
+        },
+        {
+          "ar": "تسلسل هرمي للأصناف يوضح عمق الوراثة بينها",
+          "en": "A class hierarchy showing inheritance depth"
+        }
+      ],
+      "concept_id": "ch6_histogram",
+      "explanation": {
+        "ar": "ترد المدرجات التكرارية ملخصاتٍ رسومية لبيانات المقاييس؛ أما مخططات الاستدعاء وجداول الإحالة وتسلسلات الأصناف فتعرض بنى أخرى.",
+        "en": "Histograms are listed as graphical summaries for metric data; call graphs, cross-reference tables, and class hierarchies show other structures."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي تقنية رسومية مدرجة صراحةً ضمن قائمة التحليل بالمقرر؟",
+        "en": "Which graphic can summarize distributions of metric data?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مخططات تدفق التحكم لعدّ مناطق الشيفرة",
+          "en": "Control-flow graphs for counting source-code regions"
+        },
+        {
+          "ar": "مخططات استخدام لوزن معاملات المستخدم",
+          "en": "Use-case diagrams for weighting user transactions"
+        },
+        {
+          "ar": "مخططات الصندوق لتمثيل بيانات القياس",
+          "en": "Box plots for summarizing measured metric values"
+        },
+        {
+          "ar": "مخططات أصناف لتقييم تعقيد ممثلي النظام",
+          "en": "Class diagrams for assessing actor-system complexity"
+        }
+      ],
+      "concept_id": "ch6_box_plot",
+      "explanation": {
+        "ar": "تلخص مخططات الصندوق التوزيعات إلى جانب المدرجات التكرارية والمخططات الدائرية.",
+        "en": "Box plots summarize distributions alongside histograms and pie charts."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي تقنية متعددة المتغيرات تظهر في شرائح التحليل؟",
+        "en": "Which named multivariate technique appears in the analysis slides?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تحليل احتواء الأخطاء بين مراحل دورة الحياة",
+          "en": "Phase containment analysis across lifecycle stages"
+        },
+        {
+          "ar": "تحليل تعديل نقاط الكائنات وخصائص التطبيق",
+          "en": "Object-point adjustment for application features"
+        },
+        {
+          "ar": "تحليل ضعف البرنامج عبر وحداته البرمجية",
+          "en": "Program weakness analysis across software modules"
+        },
+        {
+          "ar": "تحليل المكونات الرئيسية لبيانات المقاييس",
+          "en": "Principal component analysis for metric data"
+        }
+      ],
+      "concept_id": "ch6_pca",
+      "explanation": {
+        "ar": "يورد تحليل المكونات الرئيسية تقنيةً إحصائية؛ أما البدائل فمصطلحات هندسة برمجيات غير مرتبطة.",
+        "en": "Principal component analysis is listed as a statistical technique; the alternatives are unrelated software-engineering terms."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي استنتاج لا تبرره علاقة الارتباط وحدها؟",
+        "en": "What conclusion is not justified by correlation alone?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "أن الارتباط وحده يثبت تسبب خاصية بتغير الأخرى",
+          "en": "That correlation alone proves one attribute caused another"
+        },
+        {
+          "ar": "أن المشاهدات المقاسة تتغير معاً ضمن بيانات العينة",
+          "en": "That measured observations vary together within the sample"
+        },
+        {
+          "ar": "أن العلاقة المرصودة تستحق فحصاً إضافياً بالأدلة",
+          "en": "That the observed relationship deserves further investigation"
+        },
+        {
+          "ar": "أن العينة تظهر ارتباطاً إحصائياً بين المقاييس",
+          "en": "That the sample shows a statistical association between measures"
+        }
+      ],
+      "concept_id": "ch6_correlation_interpretation",
+      "explanation": {
+        "ar": "يصف الارتباط التلازم لا السببية؛ فالادعاء السببي يحتاج تصميماً أو دليلاً إضافياً يتجاوز اتجاه المقاييس المترابطة.",
+        "en": "Correlation describes association, not causation; causal claims need additional design or evidence beyond a correlated metric trend."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "بماذا يساعد تحليل الانحدار عند فحص بيانات المقاييس؟",
+        "en": "What does regression analysis help examine in metric data?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد الأبناء المباشرين في تسلسل أصناف البرمجيات",
+          "en": "Immediate child count in a software class hierarchy"
+        },
+        {
+          "ar": "علاقة ممثلة بنموذج بين متغيرات جرى قياسها",
+          "en": "A modeled relationship among measured variables"
+        },
+        {
+          "ar": "عدد العوامل الموجودة ضمن إجراء في الشيفرة",
+          "en": "The operator count within a source-code procedure"
+        },
+        {
+          "ar": "عدد المعاملات الموجودة ضمن حالة استخدام واحدة",
+          "en": "Transaction count within a single use case"
+        }
+      ],
+      "concept_id": "ch6_regression_analysis",
+      "explanation": {
+        "ar": "يرد الانحدار والارتباط ضمن تقنيات تحليل بيانات المقاييس؛ أما البدائل فهي أعداد من عائلات مقاييس أخرى.",
+        "en": "Regression and correlation are listed among analysis techniques for metric data; the other choices are counts from unrelated metric families."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا ينبغي فحص القيمة الشاذة قبل جمع مقاييس المشاريع؟",
+        "en": "Why should an outlier be examined before pooling project metrics?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تثبت أن المقياس المختار اسمي دون أي مراجعة",
+          "en": "It proves the chosen scale is nominal without review"
+        },
+        {
+          "ar": "تحدد المشروع الأعلى إنتاجية دون النظر إلى سياقه",
+          "en": "It identifies the most productive project without context"
+        },
+        {
+          "ar": "قد تشوه الملخصات أو النماذج المقدرة للبيانات",
+          "en": "It may distort summaries or fitted metric-data models"
+        },
+        {
+          "ar": "تلغي الحاجة إلى مقارنة خصائص المشاريع",
+          "en": "It removes the need to compare project characteristics"
+        }
+      ],
+      "concept_id": "ch6_outlier",
+      "explanation": {
+        "ar": "ترد القيم الشاذة صراحةً مشكلةً في بيانات المقاييس وقد تؤثر في الملخصات أو العلاقات المقدرة، لذلك تحتاج مراجعة سياقية.",
+        "en": "Outliers are explicitly listed as a metric-data problem and can affect summaries or fitted relationships, so they need contextual review."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مجموعة تضم مشكلات مسماة لتحليل بيانات المقاييس؟",
+        "en": "Which group contains problems named for metric-data analysis?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عمق الوراثة واستجابة الطرق وعدد الأصناف الأبناء",
+          "en": "Inheritance depth, method response, and child-class count"
+        },
+        {
+          "ar": "ملفات الإدخال وملفات الإخراج ومجاميع المعاملات",
+          "en": "Input files, output files, and transaction totals"
+        },
+        {
+          "ar": "طول المصدر ووزن الممثل والجدول الزمني للمشروع",
+          "en": "Source length, actor weight, and the project schedule"
+        },
+        {
+          "ar": "التوزيع والقيم الشاذة والمقياس والتعدد الخطي",
+          "en": "Distribution, outliers, measurement scale, collinearity"
+        }
+      ],
+      "concept_id": "ch6_metric_data_problems",
+      "explanation": {
+        "ar": "يورد المقرر مشكلات التوزيع الطبيعي والقيم الشاذة ومقياس القياس والتعدد الخطي ضمن مشكلات تحليل البيانات.",
+        "en": "Metric-data analysis can require distribution assumptions, outlier checks, a suitable measurement scale, and attention to multicollinearity."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف ينبغي اختيار المشاريع لمجموعة بيانات مقاييس مشتركة؟",
+        "en": "How should projects be selected for a common metric-data pool?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مزيج ممثل من مجالات التطبيق وأساليب تطوير المشاريع",
+          "en": "A representative mix of domains and development styles"
+        },
+        {
+          "ar": "مشاريع من مجال تطبيق واحد وأسلوب تطوير واحد فقط",
+          "en": "Projects from one application domain and one style only"
+        },
+        {
+          "ar": "اختيار أكبر مشروع تطوير فقط من المجموعة المتاحة",
+          "en": "Only the largest available software-development project"
+        },
+        {
+          "ar": "مشاريع تفتقر إلى تعريفات واضحة للمقاييس المستخدمة",
+          "en": "Projects whose metric definitions are missing or unclear"
+        }
+      ],
+      "concept_id": "ch6_common_pool_representative",
+      "explanation": {
+        "ar": "يوصي المقرر بمجموعة مشاريع ممثلة بدلاً من مجموعة تأتي من مجال واحد أو أسلوب تطوير واحد.",
+        "en": "Use a representative project pool rather than one drawn from a single domain or development style."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما الذي ينبغي منعه عند إعداد مجموعة بيانات مشاريع مشتركة؟",
+        "en": "What should be prevented when assembling a common project-data pool?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مشاريع تمثل مجالات تطبيق مختلفة في المجموعة",
+          "en": "Projects representing different application domains"
+        },
+        {
+          "ar": "هيمنة مشروع كبير على بقية بيانات المجموعة",
+          "en": "One large project outweighing the rest of the pool"
+        },
+        {
+          "ar": "تحديد المشاريع التي تفتقر إلى بعض قيم المقاييس",
+          "en": "Projects with missing metric values being identified"
+        },
+        {
+          "ar": "جمع بيانات المشاريع بواسطة عملية مؤتمتة",
+          "en": "Projects being collected by an automated process"
+        }
+      ],
+      "concept_id": "ch6_common_pool_dominance",
+      "explanation": {
+        "ar": "يحذر المقرر من هيمنة مشروع كبير جداً على المجموعة المشتركة، لأن ذلك يشوه مزيج المشاريع الممثل.",
+        "en": "A single very large project can distort the mix represented in a common pool, so it should not dominate the data."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي ممارسة يبرزها المقرر لنجاح برنامج المقاييس؟",
+        "en": "Which practice is highlighted for a successful metrics program?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "استخدام مقياس واحد مع إهمال سياقه التاريخي",
+          "en": "Use one measure while discarding its historical context"
+        },
+        {
+          "ar": "جمع كل قيمة يدوياً بعد إصدار المنتج فقط",
+          "en": "Collect every value manually only after product release"
+        },
+        {
+          "ar": "أتمتة الجمع وإيقاف المقاييس التي تفقد فائدتها",
+          "en": "Automate collection and retire measures that lose value"
+        },
+        {
+          "ar": "إبقاء كل مقياس دون تغيير بصرف النظر عن فائدته",
+          "en": "Keep every metric unchanged regardless of its usefulness"
+        }
+      ],
+      "concept_id": "ch6_metrics_program_automation",
+      "explanation": {
+        "ar": "يؤكد المقرر الأتمتة والمقاييس متعددة العوامل ونضج المقاييس وصيانتها وإيقاف ما لم يعد منها مفيداً.",
+        "en": "A successful metrics program automates collection, matures and maintains measures, and retires those that no longer serve a purpose."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T20:54:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.29] — 2026-11-05
+
+### Changed
+- chore: refresh offline quiz bank cache for ASE Chapter 6
+
+
 ## [1.11.28] — 2026-11-05
 
 ### Changed

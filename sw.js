@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.28';
+const VERSION = '1.11.29';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -281,17 +281,18 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T22_Object_Oriented_Design.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T23_Object_Oriented_Basic_Concepts.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T24_OO_Analysis_And_Design_Steps.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B01_Measurement_Fundamentals.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B02_Size_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B03_Halstead_Software_Science.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B04_Data_Structure_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B05_Information_Flow_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B06_Control_Flow_And_Complexity.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B07_Object_Oriented_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B08_Use_Case_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B09_Quality_And_Defect_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B10_Productivity_And_Process_Metrics.json',
-  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B11_Metrics_Analysis_And_Programme.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T01_Measurement_Fundamentals.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T02_Metric_Categories.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T03_Software_Size_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T04_Halstead_Software_Science.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T05_Data_Structure_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T06_Information_Flow_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T07_Control_Flow_Complexity.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T08_Object_Oriented_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T09_Use_Case_Oriented_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T10_Quality_And_Defect_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T11_Productivity_And_Process_Metrics.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T12_Metrics_Analysis_And_Program.json',
   './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B01_Basic_Concepts.json',
   './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B02_Software_Quality_Models.json',
   './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B03_CMM_Maturity_Levels.json',

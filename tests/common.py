@@ -92,6 +92,12 @@ def new_page(pw, tour_done=True, telegram=None, add_init=None):
     # (wrapping it in "() => {...}" would only define a function, never call it).
     ctx.add_init_script(
         "try { " + done_line + " localStorage.setItem('portal_quiz_hint', '1'); } catch (e) {}")
+    if BASE.startswith(('http://127.0.0.1:', 'http://localhost:')):
+        # Local UI specs exercise the bundled bank mirror. Letting every fresh
+        # browser page fetch the public manifest would fan out into hundreds
+        # of remote bank RPCs and make unrelated UI tests rate-limit/flap.
+        # The live portal path is verified separately against production.
+        ctx.route('**/rest/v1/rpc/content_manifest', lambda route: route.abort())
     if telegram is not None:
         ctx.add_init_script(telegram_script(telegram))
     if add_init:

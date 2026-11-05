@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "مقاييس حالات الاستخدام",
+    "en": "Use-Case Oriented Metrics"
+  },
+  "quiz_id": "Quiz_Ch06_T09_Use_Case_Oriented_Metrics",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي واجهة خارجية تأخذ الوزن 1 في جدول الممثلين؟",
+        "en": "In the actor-weight table, which external interface receives weight 1?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نظام آخر يُستدعى عبر واجهة محددة للتعامل معه",
+          "en": "Another system reached through a defined interface"
+        },
+        {
+          "ar": "شخص يتفاعل مع النظام باستخدام واجهة رسومية",
+          "en": "A person using a graphical interface to interact"
+        },
+        {
+          "ar": "نظام آخر يتواصل عبر واجهة بروتوكول نصي",
+          "en": "Another system communicating through a text protocol"
+        },
+        {
+          "ar": "حالة استخدام تتضمن عدة معاملات ينفذها المستخدم",
+          "en": "A use case containing several user transactions"
+        }
+      ],
+      "concept_id": "ch6_actor_simple",
+      "explanation": {
+        "ar": "الممثل البسيط نظام آخر ذو واجهة محددة؛ أما أنظمة البروتوكول النصي والأشخاص مستخدمو GUI فنوعان آخران.",
+        "en": "A simple actor is another system with a defined interface; text-protocol systems and people using a GUI are the other actor types."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي ممثل يطابق الفئة المتوسطة وفق المقرر؟",
+        "en": "Which actor fits the average category?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نظام آخر يُستدعى عبر واجهة محددة للتعامل معه",
+          "en": "Another system reached through a defined interface"
+        },
+        {
+          "ar": "نظام آخر يتواصل مع النظام عبر بروتوكول نصي",
+          "en": "Another system using a text-protocol interface"
+        },
+        {
+          "ar": "شخص يتفاعل مع النظام باستخدام واجهة رسومية",
+          "en": "A person interacting through a graphical interface"
+        },
+        {
+          "ar": "مستخدم بشري لا يرسل أي طلبات إلى النظام",
+          "en": "A human user sending no requests to the system"
+        }
+      ],
+      "concept_id": "ch6_actor_average",
+      "explanation": {
+        "ar": "يصنف المقرر النظام الخارجي ذي الواجهة النصية أو المعتمد على بروتوكول ممثلاً متوسطاً؛ وتحدد الواجهة المعرّفة ومستخدم GUI النوعين الآخرين.",
+        "en": "A text-protocol external system is an average actor; a defined interface and a human GUI represent the other types."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي تفاعل بشري يأخذ أعلى وزن للممثل؟",
+        "en": "Which human interaction is assigned the highest actor weight?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نظام آخر يُستدعى عبر واجهة محددة للتعامل معه",
+          "en": "Another system reached through a defined interface"
+        },
+        {
+          "ar": "نظام آخر يتعامل عبر واجهة بروتوكول نصي",
+          "en": "Another system using a text-based protocol interface"
+        },
+        {
+          "ar": "شخص يستخدم واجهة GUI للتفاعل مع النظام",
+          "en": "A person using a GUI to interact with the system"
+        },
+        {
+          "ar": "عملية دفعية لا تتضمن تفاعلاً مع مستخدم خارجي",
+          "en": "A batch process without external user interaction"
+        }
+      ],
+      "concept_id": "ch6_actor_complex",
+      "explanation": {
+        "ar": "يسمي المقرر الشخص الذي يستخدم واجهة رسومية ممثلاً معقداً؛ أما واجهتا النظام الخارجي فتحصلان على فئتين أدنى.",
+        "en": "A person using a graphical interface is a complex actor; the two external-system interfaces receive lower categories."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يحسب المجموع الجزئي لأوزان الممثلين؟",
+        "en": "How is the actor-weight subtotal formed?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ضرب عدد الممثلين بعدد المعاملات في النموذج",
+          "en": "Multiply actor count by the number of transactions"
+        },
+        {
+          "ar": "جمع العوامل المسندة إلى كل وحدة برمجية في النظام",
+          "en": "Add the factors assigned to each software module"
+        },
+        {
+          "ar": "قسمة عدد الممثلين على عدد شاشات المستخدم",
+          "en": "Divide actor count by the number of user screens"
+        },
+        {
+          "ar": "جمع الوزن المسند لكل ممثل جرى احتسابه في النموذج",
+          "en": "Add the assigned weight for each counted actor"
+        }
+      ],
+      "concept_id": "ch6_actor_weight_sum",
+      "explanation": {
+        "ar": "ينص المقرر على جمع عوامل أنواع الممثلين للحصول على وزن الممثلين؛ أما وزن المعاملات فيحسب على نحو منفصل.",
+        "en": "Add the actor-type factors to obtain the actor weight; transaction weighting is handled separately."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف تصنف حالة الاستخدام البسيطة وتوزن في جدول المقرر؟",
+        "en": "How many transactions define a simple use case, and what weight applies?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ثلاث معاملات أو أقل، بعامل مقداره خمسة",
+          "en": "Three or fewer transactions, with a factor of five"
+        },
+        {
+          "ar": "أربع إلى سبع معاملات، بعامل مقداره عشرة",
+          "en": "Four to seven transactions, with a factor of ten"
+        },
+        {
+          "ar": "أكثر من سبع معاملات، بعامل مقداره خمسة عشر",
+          "en": "More than seven transactions, with a factor of fifteen"
+        },
+        {
+          "ar": "ثلاثة ممثلين أو أقل، بعامل مقداره ثلاثة",
+          "en": "Three or fewer actors, with a factor of three"
+        }
+      ],
+      "concept_id": "ch6_simple_use_case",
+      "explanation": {
+        "ar": "يعتمد صف حالة الاستخدام البسيطة على ثلاث معاملات أو أقل ويحمل عاملاً مقداره خمسة؛ أما فئات الممثلين فلها جدول مختلف.",
+        "en": "The simple use-case row is based on three or fewer transactions and carries a factor of five; actor categories use a different table."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي نطاق معاملات يحدد حالة الاستخدام المتوسطة في جدول المقرر؟",
+        "en": "Which transaction range defines an average use case?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ثلاث معاملات أو أقل، بعامل مقداره خمسة",
+          "en": "Three or fewer transactions, with a factor of five"
+        },
+        {
+          "ar": "أربع إلى سبع معاملات، بعامل مقداره عشرة",
+          "en": "Four to seven transactions, with a factor of ten"
+        },
+        {
+          "ar": "أكثر من سبع معاملات، بعامل مقداره خمسة عشر",
+          "en": "More than seven transactions, with a factor of fifteen"
+        },
+        {
+          "ar": "أربعة إلى سبعة ممثلين، بعامل مقداره اثنين",
+          "en": "Four to seven actors, with a factor of two"
+        }
+      ],
+      "concept_id": "ch6_average_use_case",
+      "explanation": {
+        "ar": "تضم حالة الاستخدام المتوسطة أربعاً إلى سبع معاملات وعاملها عشرة؛ أما البدائل فتصف الحالات البسيطة أو المعقدة أو عدد الممثلين.",
+        "en": "An average use case has four to seven transactions and factor ten; the other rows describe simple or complex cases or actor counts."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي عدد معاملات يحدد حالة الاستخدام المعقدة في جدول المقرر؟",
+        "en": "Which transaction count defines a complex use case?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ثلاث معاملات أو أقل، ووزن حالة الاستخدام خمسة",
+          "en": "Three transactions or fewer; use-case weight is five"
+        },
+        {
+          "ar": "أربع إلى سبع معاملات، ووزن حالة الاستخدام عشرة",
+          "en": "Four to seven transactions; use-case weight is ten"
+        },
+        {
+          "ar": "أكثر من سبع معاملات، ووزن حالة الاستخدام خمسة عشر",
+          "en": "More than seven transactions; use-case weight is fifteen"
+        },
+        {
+          "ar": "أكثر من سبعة ممثلين، ووزن الممثل يساوي ثلاثة",
+          "en": "Actor class above seven; assigned actor weight is three"
+        }
+      ],
+      "concept_id": "ch6_complex_use_case",
+      "explanation": {
+        "ar": "تضم حالة الاستخدام المعقدة أكثر من سبع معاملات وعاملها خمسة عشر؛ أما جدول الممثلين فمنفصل.",
+        "en": "The complex use-case row has more than seven transactions and factor fifteen; the actor table is separate."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف تجمع أوزان حالات الاستخدام المعتمدة على المعاملات؟",
+        "en": "How are transaction-based use-case weights combined?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "احتساب الممثلين وضرب عددهم بعمق وراثة الأصناف",
+          "en": "Count actors and multiply them by class-inheritance depth"
+        },
+        {
+          "ar": "احتساب أسطر المصدر المقاسة وتوزيعها على ملفات المشروع",
+          "en": "Count source lines and allocate them across project files"
+        },
+        {
+          "ar": "احتساب العيوب وضرب عددها بمتوسط زمن التشغيل",
+          "en": "Count defects and multiply them by average execution time"
+        },
+        {
+          "ar": "عدّ فئات حالات الاستخدام وضرب كل فئة بوزنها المحدد",
+          "en": "Count use-case classes and apply each assigned weight"
+        }
+      ],
+      "concept_id": "ch6_use_case_weighting",
+      "explanation": {
+        "ar": "يزن المقرر كل نوع من حالات الاستخدام بعامله المعتمد على المعاملات؛ وينتج بذلك المجموع الجزئي غير المعدل، لا صيغة UCP الكاملة غير الموثقة.",
+        "en": "Each use-case type is weighted by its transaction-based factor to give an unadjusted subtotal; this is not the full adjusted UCP formula."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T20:54:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

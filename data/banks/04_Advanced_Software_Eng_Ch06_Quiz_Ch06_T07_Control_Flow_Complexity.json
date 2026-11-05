@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "تعقيد تدفق التحكم",
+    "en": "Control Flow Complexity"
+  },
+  "quiz_id": "Quiz_Ch06_T07_Control_Flow_Complexity",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا تمثل العقد والحواف في مخطط تدفق التحكم؟",
+        "en": "In a control-flow graph, what do nodes and edges represent?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "العقد تمثل التعليمات والحواف تمثل انتقالات التحكم",
+          "en": "Nodes: statements/blocks; edges: control transfers"
+        },
+        {
+          "ar": "العقد تمثل الأصناف والحواف تمثل روابط الوراثة",
+          "en": "Nodes are classes; edges are inheritance links"
+        },
+        {
+          "ar": "العقد تمثل المتغيرات والحواف تبين امتدادات حياتها",
+          "en": "Nodes are variables; edges show their live ranges"
+        },
+        {
+          "ar": "العقد تمثل الملفات والحواف تبين الإدخال والإخراج",
+          "en": "Nodes are files; edges show input and output"
+        }
+      ],
+      "concept_id": "ch6_control_flow_graph",
+      "explanation": {
+        "ar": "يمثل مخطط تدفق التحكم مسار التنفيذ؛ فالعقد تعليمات أو كتل، والحواف الموجهة تبين انتقالات التحكم الممكنة.",
+        "en": "A control-flow graph models executable flow: nodes are statements or blocks and directed edges show possible transfers of control."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي صياغة لفظية تطابق حساب McCabe المعتمد على الرسم؟",
+        "en": "Which verbal form matches McCabe's graph-based complexity calculation?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد العقد ناقص الحواف مضافاً إليه مثلي عدد العوامل",
+          "en": "Nodes minus edges plus twice the operator count"
+        },
+        {
+          "ar": "عدد الحواف ناقص العقد مضافاً إليه مثلي عدد المكونات",
+          "en": "Edges minus nodes plus twice the component count"
+        },
+        {
+          "ar": "عدد الشروط ناقص المناطق مضافاً إليه عدد الوحدات",
+          "en": "Predicates minus regions plus the number of modules"
+        },
+        {
+          "ar": "عدد الحواف مضافاً إليه العقد مقسوماً على عدد الشروط",
+          "en": "Edges plus nodes divided by the number of predicates"
+        }
+      ],
+      "concept_id": "ch6_mccabe_graph_formula",
+      "explanation": {
+        "ar": "تستعمل صيغة الرسم الحواف والعقد وعدد المكونات المتصلة؛ أما البدائل فتخلط بها أعداداً أو عمليات مختلفة.",
+        "en": "The graph formula uses edges, nodes, and the number of connected components; the alternatives mix unrelated counts or operations."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا يرمز P في صيغة McCabe المعتمدة على الرسم؟",
+        "en": "What does P denote in the graph-based McCabe formula?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عدد عقد الشروط في مخطط تدفق التحكم",
+          "en": "The number of predicate nodes in the flow graph"
+        },
+        {
+          "ar": "عدد متغيرات البرنامج الظاهرة في مخطط التدفق",
+          "en": "The number of program variables shown in the graph"
+        },
+        {
+          "ar": "عدد المكونات المتصلة في مخطط تدفق التحكم",
+          "en": "The number of connected components in the flow graph"
+        },
+        {
+          "ar": "عدد فرق الاختبار المستقلة الخاصة بالمخطط",
+          "en": "The number of independent test teams for the graph"
+        }
+      ],
+      "concept_id": "ch6_mccabe_connected_components",
+      "explanation": {
+        "ar": "يعدّ P المكونات المتصلة، وغالباً تكون واحدة لمخطط برنامج متصل؛ أما عقد الشروط فتدخل في طريقة أخرى.",
+        "en": "P counts connected components, commonly one for a single connected program flow graph; predicate nodes are used by a different method."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كيف يستخرج التعقيد الدوري من عقد الشروط؟",
+        "en": "How is cyclomatic complexity obtained from predicate nodes?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عدد حواف المخطط ناقصاً 1",
+          "en": "Count graph edges, then subtract one from the count"
+        },
+        {
+          "ar": "عدد أسطر المصدر مقسوماً على 2",
+          "en": "Count source lines, then divide the total by two"
+        },
+        {
+          "ar": "عدد الأصناف مع عمق الوراثة",
+          "en": "Count classes, then add their inheritance depth"
+        },
+        {
+          "ar": "عدد عقد الشروط في المخطط + 1",
+          "en": "Count predicate nodes, then add one to the count"
+        }
+      ],
+      "concept_id": "ch6_mccabe_predicate_method",
+      "explanation": {
+        "ar": "تعطي طريقة عقد الشروط عدد عقد الشرط مضافاً إليه واحد؛ وهي طريقة بديلة لحساب تعقيد McCabe.",
+        "en": "The predicate method returns the number of predicate nodes plus one; it is an alternate computation of McCabe complexity."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي خاصية في الرسم تعطي التعقيد الدوري بطريقة المناطق؟",
+        "en": "Which graph feature gives cyclomatic complexity by the region method?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدد المناطق في مخطط تدفق التحكم",
+          "en": "The number of regions in the control-flow graph"
+        },
+        {
+          "ar": "عدد المتغيرات الحية عبر كل منطقة",
+          "en": "The number of variables live across each region"
+        },
+        {
+          "ar": "عدد الوحدات المستدعاة من كل منطقة",
+          "en": "The number of modules called from each region"
+        },
+        {
+          "ar": "عدد العوامل الموجودة داخل كل منطقة",
+          "en": "The number of operators found inside each region"
+        }
+      ],
+      "concept_id": "ch6_mccabe_regions_method",
+      "explanation": {
+        "ar": "يعرض المقرر عدّ المناطق طريقة ثالثة لاستخراج التعقيد الدوري من مخطط التدفق.",
+        "en": "Region counting is another way to obtain cyclomatic complexity from a flow graph."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يعدّ التعقيد الدوري من حيث المسارات؟",
+        "en": "What does cyclomatic complexity count in terms of paths?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "عدد مسارات التنفيذ الممكنة كافة دون قيود",
+          "en": "The count of all possible execution traces without limits"
+        },
+        {
+          "ar": "عدد المسارات المستقلة خطياً عبر الوحدة البرمجية",
+          "en": "The count of linearly independent paths through a module"
+        },
+        {
+          "ar": "عدد إحالات البيانات الموجودة في كل تعليمة مصدر",
+          "en": "The count of data references in each source statement"
+        },
+        {
+          "ar": "عدد الملفات التي يجري الوصول إليها أثناء التنفيذ",
+          "en": "The count of files accessed during program execution"
+        }
+      ],
+      "concept_id": "ch6_mccabe_independent_paths",
+      "explanation": {
+        "ar": "يعطي التعقيد الدوري عدد المسارات المستقلة خطياً؛ ولا يعدّ كل أثر تنفيذ ممكن أو إحالة بيانات.",
+        "en": "Cyclomatic complexity gives the number of linearly independent paths; it is not a count of every possible trace or data reference."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "بماذا يساعد تفسير المسارات المستقلة المختبِر؟",
+        "en": "What does the independent-path interpretation help a tester organize?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قائمة أصناف تُستخدم لاختبار سلوك الوراثة",
+          "en": "A list of classes used to test inheritance behavior"
+        },
+        {
+          "ar": "تحويل بين LOC ووحدات حجم نقاط الوظائف",
+          "en": "A mapping between LOC and function-point size units"
+        },
+        {
+          "ar": "مجموعة أساس من المسارات لاختبار تدفق التحكم",
+          "en": "A basis set of paths for control-flow testing"
+        },
+        {
+          "ar": "جدول لتوزيع الجهد على مراحل دورة حياة البرمجيات",
+          "en": "An effort-distribution table for lifecycle phases"
+        }
+      ],
+      "concept_id": "ch6_mccabe_test_basis",
+      "explanation": {
+        "ar": "توفر المسارات المستقلة أساساً لتنظيم اختبارات تركز على تدفق التحكم؛ ولا تقيس الحجم أو جهد المشروع.",
+        "en": "Independent paths provide a basis for organizing path-focused tests of control flow; they do not measure size or project effort."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا لا يعدّ التعقيد الدوري مقياساً للحجم؟",
+        "en": "Why is cyclomatic complexity not a size metric?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يقيس اعتمادية المنتج بدلاً من مقداره البرمجي",
+          "en": "It measures product reliability rather than its amount"
+        },
+        {
+          "ar": "يقيس توظيف المشروع بدلاً من بنية البرمجيات",
+          "en": "It measures project staffing rather than software structure"
+        },
+        {
+          "ar": "يقيس مفردات اللغة بدلاً من حجم الشيفرة المصدرية",
+          "en": "It measures language vocabulary rather than source size"
+        },
+        {
+          "ar": "يصف بنية التحكم وتفرعات البرنامج، لا حجمه",
+          "en": "It describes control flow rather than product size"
+        }
+      ],
+      "concept_id": "ch6_cyclomatic_not_size",
+      "explanation": {
+        "ar": "يصف التعقيد الدوري بنية قرارات تدفق التحكم؛ أما LOC ونقاط الوظائف وطول البرنامج فهي مقاييس حجم.",
+        "en": "Cyclomatic complexity describes the control-flow decision structure; LOC, function points, and program length are size measures."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T20:54:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
