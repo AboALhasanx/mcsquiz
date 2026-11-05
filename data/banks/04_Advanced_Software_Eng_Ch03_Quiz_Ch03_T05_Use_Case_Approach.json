@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أسلوب حالات الاستخدام في استخلاص المتطلبات",
+    "en": "Use-Case Approach to Elicitation"
+  },
+  "quiz_id": "Quiz_Ch03_T05_Use_Case_Approach",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يمثل الممثل في نموذج حالات الاستخدام؟",
+        "en": "In a use-case model, what does an actor represent?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "دور خارجي يشارك في التفاعل مع النظام",
+          "en": "An external role that interacts with the modeled system"
+        },
+        {
+          "ar": "جدول بيانات داخلي يخزنه النظام ويستعمله",
+          "en": "An internal data table stored within the system"
+        },
+        {
+          "ar": "مراجع يفحص وثيقة المتطلبات قبل اعتمادها",
+          "en": "A reviewer assigned to inspect the requirements document"
+        },
+        {
+          "ar": "عملية تحول البيانات داخل مخطط التدفق",
+          "en": "A process that transforms data in a flow diagram"
+        }
+      ],
+      "concept_id": "usecase_actor_external",
+      "explanation": {
+        "ar": "يكون الممثل خارج النظام المنمذج ويشارك في التفاعل؛ أما البيانات أو العمليات الداخلية فليست ممثلين.",
+        "en": "An actor is external to the modeled system and participates in an interaction; internal data or processes are not actors."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي اسم لحالة استخدام يصف هدف مستخدم لا إجراء واجهة؟",
+        "en": "Which use-case name states a user goal rather than an interface action?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تشغيل فئة Java للتحقق من مدخلات القارئ",
+          "en": "Run the Java class that validates input"
+        },
+        {
+          "ar": "إصدار بطاقة مكتبة جديدة لقارئ مسجل",
+          "en": "Issue a new library card to a reader"
+        },
+        {
+          "ar": "النقر على زر الإرسال الأزرق لإرسال الطلب",
+          "en": "Click the blue submit button to send a form"
+        },
+        {
+          "ar": "فتح الجدول الثالث في قاعدة البيانات",
+          "en": "Open the third table in the database"
+        }
+      ],
+      "concept_id": "usecase_goal",
+      "explanation": {
+        "ar": "ينبغي لحالة الاستخدام التعبير عن هدف مستخدم يمكن ملاحظته. أما النقرات والجداول وفئات التنفيذ فهي تفاصيل تصميم.",
+        "en": "A use case should express an observable user goal. Button clicks, table details, and implementation classes are design details."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "تتبادل خدمة دفع خارج التطبيق الطلبات معه. أين توضع في مخطط حالات الاستخدام؟",
+        "en": "A payment service outside the application exchanges requests with it. Where is it placed in a use-case diagram?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "داخل الحدود بوصفها قسماً من SRS",
+          "en": "Inside the boundary as an SRS behavior section"
+        },
+        {
+          "ar": "على الحدود بوصفها مخزن بيانات",
+          "en": "On the boundary as a persistent data store"
+        },
+        {
+          "ar": "خارج حدود النظام بوصفها ممثلاً",
+          "en": "Outside the boundary as an external actor"
+        },
+        {
+          "ar": "داخل الحدود بوصفها حالة استخدام",
+          "en": "Inside as a goal-oriented system use case"
+        }
+      ],
+      "concept_id": "usecase_boundary",
+      "explanation": {
+        "ar": "تُرسم الأنظمة الخارجية ممثلين خارج الحدود، بينما تمثل حالات الاستخدام داخلها أهداف النظام أو خدماته.",
+        "en": "External systems are actors outside the boundary; use cases inside the boundary represent system goals or services."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يجب أن يتحقق النظام من هوية العميل في كل عملية سحب. أي علاقة تعبر عن هذا السلوك المشترك الإلزامي؟",
+        "en": "Every withdrawal must authenticate the customer. Which relationship expresses this required shared behavior?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تمدد حالة التحقق من العميل حالة سحب النقد",
+          "en": "Authenticate Customer extends Withdraw Cash"
+        },
+        {
+          "ar": "تكون حالة سحب النقد مخزن بيانات للتحقق من العميل",
+          "en": "Withdraw Cash is a data store for Authenticate Customer"
+        },
+        {
+          "ar": "تكون حالة التحقق من العميل ممثلاً خارجياً",
+          "en": "Authenticate Customer is an external actor"
+        },
+        {
+          "ar": "تتضمن حالة سحب النقد حالة التحقق من العميل",
+          "en": "Withdraw Cash includes Authenticate Customer"
+        }
+      ],
+      "concept_id": "usecase_include_required",
+      "explanation": {
+        "ar": "تضيف علاقة include سلوكاً ينفذ دائماً ضمن الحالة الأساسية، ويتجه السهم من الحالة الأساسية إلى الحالة المتضمنة.",
+        "en": "An include relationship adds behavior that always runs as part of the base use case, with the arrow from the base to the included case."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يظهر تحذير تجاوز الرصيد عند تحقق شرط محدد فقط. أي علاقة تلائمه؟",
+        "en": "An overdraft warning appears only under a specified balance condition. Which relationship fits?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يمدد التحذير حالة السحب عند تحقق الشرط",
+          "en": "The warning optionally extends the withdrawal use case"
+        },
+        {
+          "ar": "تتضمن حالة السحب التحذير في كل عملية سحب",
+          "en": "The withdrawal use case always includes the warning"
+        },
+        {
+          "ar": "يحدد التحذير الحد الفاصل مع النظام الخارجي",
+          "en": "The warning defines an external system boundary"
+        },
+        {
+          "ar": "يمثل التحذير مخزناً دائماً للبيانات في DFD",
+          "en": "The warning is modeled as a persistent DFD store"
+        }
+      ],
+      "concept_id": "usecase_extend_optional",
+      "explanation": {
+        "ar": "تضيف extend سلوكاً اختيارياً عند شرط أو نقطة امتداد؛ أما include فتمثل سلوكاً مشتركاً إلزامياً.",
+        "en": "Extend inserts optional behavior at a condition or extension point; include represents unconditional shared behavior."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "عند توثيق سيناريو حالة استخدام، ما الذي يكتب قبل المسارات البديلة والاستثنائية؟",
+        "en": "When documenting a use-case scenario, what should be written before alternate and exception flows?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تنسيق حزم البيانات المرسلة عبر الشبكة",
+          "en": "The network packet format"
+        },
+        {
+          "ar": "مسار النجاح الأساسي لحالة الاستخدام",
+          "en": "The basic successful flow"
+        },
+        {
+          "ar": "آلية تنفيذ قاعدة البيانات وسجلاتها",
+          "en": "The database implementation"
+        },
+        {
+          "ar": "قائمة تدقيق وثيقة المتطلبات ومراجعتها",
+          "en": "The final review checklist"
+        }
+      ],
+      "concept_id": "usecase_main_success_first",
+      "explanation": {
+        "ar": "يحدد سيناريو النجاح الأساسي المسار الطبيعي للهدف، ثم توثق المسارات البديلة والاستثنائية حوله.",
+        "en": "The main success scenario establishes the normal goal path; alternatives and exceptions are then documented around it."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "قد يفشل طلب الحجز عند نفاد المقاعد. أين يوثق هذا السلوك؟",
+        "en": "A reservation request may fail when no seats remain. Where should this behavior be captured?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بوصفه لغة برمجة لتنفيذ النظام",
+          "en": "An implementation language named in the SRS"
+        },
+        {
+          "ar": "بوصفه درجة علاقة بين كيانات ER",
+          "en": "An ER degree that counts participating entities"
+        },
+        {
+          "ar": "ضمن مسار بديل أو استثنائي للحالة",
+          "en": "An alternative or exception path in the scenario"
+        },
+        {
+          "ar": "بوصفه ممثلاً خارج حدود النظام",
+          "en": "An actor placed inside the system boundary"
+        }
+      ],
+      "concept_id": "usecase_alternative_flow",
+      "explanation": {
+        "ar": "تمثل النتيجة الفاشلة مساراً بديلاً أو استثنائياً في سيناريو الاستخدام، وليست ممثلاً أو خيار تنفيذ.",
+        "en": "A failed outcome is an alternate or exception path in the use-case scenario, not an actor or implementation choice."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الذي يبرزه نموذج حالات الاستخدام مقارنة بمخطط DFD؟",
+        "en": "What does a use-case model emphasize compared with a DFD?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "التركيب الداخلي لعناصر البيانات المسماة",
+          "en": "The internal composition of named data items"
+        },
+        {
+          "ar": "الترميز المادي المستخدم لتبادل البيانات",
+          "en": "The physical encoding used for exchanged data"
+        },
+        {
+          "ar": "تسلسل مراحل مراجعة وثيقة مواصفة SRS",
+          "en": "The review sequence for an SRS document"
+        },
+        {
+          "ar": "أهداف الممثلين الخارجيين وسلوك النظام",
+          "en": "Actor goals expressed through system behavior"
+        }
+      ],
+      "concept_id": "usecase_behavioral_model",
+      "explanation": {
+        "ar": "تنظم حالات الاستخدام السلوك حول أهداف الممثلين؛ أما DFD فتنمذج حركة البيانات وتحويلاتها.",
+        "en": "Use cases organize behavior around actor goals; DFDs model data movement and transformations."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T13:41:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

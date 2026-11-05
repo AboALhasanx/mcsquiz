@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "دراسة الجدوى: الغرض ومحاور الفحص",
+    "en": "Feasibility Study: Purpose and Focus"
+  },
+  "quiz_id": "Quiz_Ch03_T03_Feasibility_Study",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "متى تكون دراسة الجدوى أكثر فائدة؟",
+        "en": "When is a feasibility study most useful?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مبكراً قبل تخصيص موارد كبيرة",
+          "en": "Early, before committing major resources"
+        },
+        {
+          "ar": "بعد أن يثبت التنفيذ التصميم",
+          "en": "After implementation has fixed the design"
+        },
+        {
+          "ar": "أثناء الصيانة بعد النشر",
+          "en": "During maintenance after deployment"
+        },
+        {
+          "ar": "فقط بعد ترميز جميع المتطلبات",
+          "en": "Only after every requirement is coded"
+        }
+      ],
+      "concept_id": "feasibility_early_viability",
+      "explanation": {
+        "ar": "تقيّم الجدوى قابلية المشروع المقترح للتنفيذ مبكراً كي تعيد المؤسسة النظر قبل إنفاق كلفة وجهد كبيرين.",
+        "en": "Feasibility evaluates a proposed project's viability early, so the organization can reconsider before substantial cost and effort are committed."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "وجد تقييم الجدوى أن المنفعة المقترحة لا تبرر الكلفة المقدرة. ما المسألة الأساسية؟",
+        "en": "A feasibility assessment finds that the proposed benefit cannot justify the estimated cost. Which issue is central?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تحديد مواضع الممثلين حول حدود حالات الاستخدام",
+          "en": "Placing external actors around use-case boundaries"
+        },
+        {
+          "ar": "جدوى المشروع الاقتصادية وموازنة كلفته ومنفعته",
+          "en": "Economic viability and value-for-cost decision"
+        },
+        {
+          "ar": "موازنة تدفقات البيانات بين مستويات DFD",
+          "en": "Balancing data flows across DFD levels"
+        },
+        {
+          "ar": "تتبع المتطلبات إلى مصادرها واستخداماتها",
+          "en": "Tracing requirements to their source and use"
+        }
+      ],
+      "concept_id": "feasibility_decision",
+      "explanation": {
+        "ar": "مقارنة الكلفة الواقعية بنموذج العمل والقيمة المتوقعة مسألة جدوى اقتصادية؛ أما الخيارات الأخرى فتخص النمذجة أو جودة المواصفة.",
+        "en": "Comparing realistic costs with the business model and expected value is an economic feasibility concern; the other options belong to modeling or specification quality."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "يفتقر الفريق إلى المهارات والتقنية اللازمة لبناء المنتج المقترح. أي جانب من الجدوى يثار؟",
+        "en": "A team lacks the skills and technology to build the proposed product. Which feasibility concern is raised?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مستوى تفصيل متطلبات المستخدمين",
+          "en": "Required detail in user-facing requirements"
+        },
+        {
+          "ar": "مطابقة مواصفة SRS لمعايير المراجعة",
+          "en": "Conformance of the SRS with review criteria"
+        },
+        {
+          "ar": "توفر التقنية والمهارات اللازمة للحل",
+          "en": "Technical feasibility of the proposed solution"
+        },
+        {
+          "ar": "التبرير الاقتصادي للاستثمار المقترح",
+          "en": "Economic justification for the investment"
+        }
+      ],
+      "concept_id": "feasibility_build_capacity",
+      "explanation": {
+        "ar": "تسأل الجدوى التقنية عما إذا كانت التقنية والمهارات والقدرة اللازمة لتطوير النظام متاحة.",
+        "en": "Technical feasibility asks whether the needed technology, skills, and capability exist to develop the proposed system."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "كان التقدير الأولي أقل كثيراً من الكلفة والمدة الواقعية. ما الذي ينبغي للدراسة فحصه؟",
+        "en": "The initial estimate is far below the realistic cost and schedule. What should the study examine?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "اتجاه السهم في علاقة include لحالة الاستخدام",
+          "en": "The arrow direction in a use-case include relation"
+        },
+        {
+          "ar": "عدد أنواع الكيانات المشاركة في علاقة ER",
+          "en": "The participating entity types in an ER relation"
+        },
+        {
+          "ar": "وضوح عناوين أقسام مواصفة SRS وتنظيمها",
+          "en": "Clear section names and organization in the SRS"
+        },
+        {
+          "ar": "واقعية تقديرات كلفة المشروع وجدوله الزمني",
+          "en": "Realistic cost and schedule estimates for the project"
+        }
+      ],
+      "concept_id": "feasibility_cost_schedule",
+      "explanation": {
+        "ar": "تقارن دراسة الجدوى تقديرات الكلفة والمدة الحالية بالأهداف المقترحة وتفحص مقدار الفجوة.",
+        "en": "Feasibility compares current cost and schedule estimates with the proposed targets and examines the size of the gap."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "لم يتفق المستخدمون والمطورون على نموذج مفصل للواجهة. إلى ماذا يشير ذلك؟",
+        "en": "Users and developers cannot agree on a detailed interface prototype. What does this signal?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدم استقرار المتطلبات أو نطاق المشروع",
+          "en": "Unstable requirements or an unsettled project scope"
+        },
+        {
+          "ar": "اكتمال مواصفة SRS وشمول احتياجات جميع المعنيين",
+          "en": "A complete SRS with all stakeholder needs included"
+        },
+        {
+          "ar": "توازن مخطط DFD وتطابق التدفقات الحدية فيه",
+          "en": "A balanced DFD with matching boundary flows"
+        },
+        {
+          "ar": "جدوى نموذج العمل وتبرير تكاليف التنفيذ",
+          "en": "An economically viable model with justified costs"
+        }
+      ],
+      "concept_id": "feasibility_scope_stability",
+      "explanation": {
+        "ar": "يشكل تعذر الاتفاق على نموذج واجهة مفصل مؤشراً تحذيرياً لاستقرار النطاق والمواصفة، وليس دليلاً على اكتمالهما أو الجدوى.",
+        "en": "Difficulty agreeing on a detailed user-interface prototype is a feasibility warning about scope and specification stability, not proof of completeness or viability."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما هدف التعامل مع المخاطر في مرحلة الجدوى؟",
+        "en": "What is the risk-management objective at the feasibility stage?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "استبدال تحليل المتطلبات بوثيقة تأمين للمشروع",
+          "en": "Replace requirements analysis with an insurance policy"
+        },
+        {
+          "ar": "تحديد المخاطر الرئيسة وتقدير إمكان السيطرة عليها",
+          "en": "Identify major risks and assess whether they are manageable"
+        },
+        {
+          "ar": "تنفيذ جميع دورات ضبط المخاطر التفصيلية للمشروع",
+          "en": "Run every detailed risk-control cycle for the entire project"
+        },
+        {
+          "ar": "ضمان إزالة كل مصادر عدم اليقين من المشروع",
+          "en": "Guarantee that every source of uncertainty is eliminated"
+        }
+      ],
+      "concept_id": "feasibility_risk_bounded",
+      "explanation": {
+        "ar": "تحدد الدراسة المبكرة المخاطر الرئيسة وتقدّر إمكانية تجاوزها؛ ولا تمثل دورة إدارة المخاطر الكاملة.",
+        "en": "The early study identifies major risks and assesses whether they can be surmounted; it is not the full risk-management lifecycle."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "يمكن بناء المنتج لكن كلفته التشغيلية الواقعية تتجاوز إيراداته المتوقعة. أي محور لم يتحقق؟",
+        "en": "A product can be built, but realistic operating costs exceed its expected revenue. Which focus is unmet?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "استخلاص حاجات أصحاب المصلحة وأهدافهم",
+          "en": "Elicitation of stakeholder needs and goals"
+        },
+        {
+          "ar": "تحليل مخطط DFD إلى مستويات أدنى",
+          "en": "Decomposition of a DFD into lower levels"
+        },
+        {
+          "ar": "الجدوى الاقتصادية لنموذج التشغيل",
+          "en": "Economic viability of the operating model"
+        },
+        {
+          "ar": "تمثيل صيغة واجهة التبادل بين الأنظمة",
+          "en": "Representation of a system interface format"
+        }
+      ],
+      "concept_id": "feasibility_business_model",
+      "explanation": {
+        "ar": "تفحص الجدوى بقاء نموذج العمل مبرراً عند أخذ الكلف الواقعية بالحسبان، حتى لو كان النظام ممكناً تقنياً.",
+        "en": "Feasibility asks whether the business model remains justified when realistic costs are considered, even if the system is technically possible."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "الفكرة قابلة للتطبيق لكن لا توجد خطة تطوير كافية. ماذا ينبغي لتقييم الجدوى أن يفعل؟",
+        "en": "A viable concept has no adequate development plan. What should the feasibility assessment do?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "افتراض جدوى الفكرة من دون فحصها",
+          "en": "Assume the project is feasible because its concept is viable"
+        },
+        {
+          "ar": "استخدام الخطة لتعريف عناصر البيانات",
+          "en": "Convert the project plan into a data dictionary"
+        },
+        {
+          "ar": "تأجيل فحص الخطة إلى مرحلة التصديق",
+          "en": "Defer the development plan until requirements validation"
+        },
+        {
+          "ar": "التحقق من كفاية خطة التطوير المقترحة",
+          "en": "Flag the adequacy of the development plan for review"
+        }
+      ],
+      "concept_id": "feasibility_plan_adequacy",
+      "explanation": {
+        "ar": "يتضمن فحص الجدوى اكتمال خطة التطوير وكفايتها؛ فقابلية الفكرة وحدها لا تحسم هذه المسألة.",
+        "en": "The feasibility focus includes whether the development plan is complete and adequate; a viable product concept alone does not settle that question."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T13:41:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

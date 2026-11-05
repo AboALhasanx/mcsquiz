@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.26';
+const VERSION = '1.11.27';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -243,11 +243,14 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B06_Unified_Process.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B07_Selecting_A_Model.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B08_Agile_XP_And_Scrum.json',
-  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T01_Requirements_Engineering_Foundations.json',
-  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T02_Elicitation_Techniques_And_QFD.json',
-  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T03_Modelling_Context_DFD_ER_UseCase.json',
-  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T04_SRS_Feasibility_And_Validation.json',
-  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T05_Elicitation_Practice_And_Prototyping.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T01_Requirements_Engineering_Process_And_Practice.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T02_Requirements_Types_And_Interfaces.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T03_Feasibility_Study.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T04_Elicitation_Techniques.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T05_Use_Case_Approach.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T06_Requirements_Analysis_Models.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T07_SRS_Documentation.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T08_Requirements_Validation_And_Reviews.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B01_Size_Estimation_And_Function_Points.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B02_Static_Cost_Models.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B03_COCOMO_81.json',

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التصديق على المتطلبات ومراجعتها",
+    "en": "Requirements Validation and Reviews"
+  },
+  "quiz_id": "Quiz_Ch03_T08_Requirements_Validation_And_Reviews",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما الغرض الأساسي من مراجعة مسودة SRS؟",
+        "en": "What is the primary purpose of reviewing a draft SRS?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "كشف عيوب المتطلبات وتصحيحها قبل التصميم",
+          "en": "Find requirement defects before design begins"
+        },
+        {
+          "ar": "قياس سرعة التنفيذ بعد ترجمة البرنامج",
+          "en": "Measure execution speed after compilation"
+        },
+        {
+          "ar": "اختيار مورد قاعدة بيانات للتنفيذ المخطط",
+          "en": "Select a database vendor for implementation"
+        },
+        {
+          "ar": "استبدال استخلاص الاحتياجات من أصحاب المصلحة",
+          "en": "Replace elicitation of stakeholder needs"
+        }
+      ],
+      "concept_id": "validation_review_goal",
+      "explanation": {
+        "ar": "تفحص مراجعة المتطلبات المسودة مبكراً لتصحيح النقص والغموض والتعارض قبل التنفيذ.",
+        "en": "A requirements review inspects the draft specification early so omissions, ambiguity, and conflicts can be corrected before implementation."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف يختلف التحقق من المتطلبات عن التصديق عليها؟",
+        "en": "How does requirements verification differ from validation?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اختبار التنفيذ ديناميكياً وترجمة البرنامج",
+          "en": "Verification tests dynamically after implementation; validation compiles code"
+        },
+        {
+          "ar": "فحص مطابقة المواصفة والتصديق على الحاجة",
+          "en": "Verification checks specification conformance; validation checks stakeholder needs"
+        },
+        {
+          "ar": "قياس رضا المستخدم وفحص سلامة الإملاء",
+          "en": "Verification measures user satisfaction; validation checks spelling alone"
+        },
+        {
+          "ar": "كتابة مواصفة SRS وتصميم قاعدة البيانات",
+          "en": "Verification writes an SRS during planning; validation designs a database"
+        }
+      ],
+      "concept_id": "validation_verification_distinction",
+      "explanation": {
+        "ar": "يسأل التحقق عما إذا كانت المواصفة تطابق معايير محددة؛ ويسأل التصديق عما إذا كانت تمثل ما يحتاجه أصحاب المصلحة.",
+        "en": "Verification asks whether the specification conforms to defined criteria; validation asks whether it represents what stakeholders need."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي نشاط يبدأ عملية مراجعة المتطلبات ذات المراحل الست؟",
+        "en": "Which activity begins the six-stage requirements review process?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "توزيع النظام البرمجي المكتمل",
+          "en": "Distribute the completed software system"
+        },
+        {
+          "ar": "متابعة التصحيح بعد جلسة المراجعة",
+          "en": "Follow up agreed corrective actions"
+        },
+        {
+          "ar": "تخطيط مراجعة وثيقة المتطلبات",
+          "en": "Plan the review and assign participants"
+        },
+        {
+          "ar": "تنقيح مواصفة SRS بعد المراجعة",
+          "en": "Revise the SRS after resolving review findings"
+        }
+      ],
+      "concept_id": "validation_review_plan_first",
+      "explanation": {
+        "ar": "تبدأ المراجعة بالتخطيط؛ ثم يأتي التوزيع والقراءة الفردية والاجتماع والمتابعة والتنقيح.",
+        "en": "The review begins with planning; distribution, individual reading, the meeting, follow-up, and revision occur later."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "استلم المراجعون SRS قبل الاجتماع وحددوا الغموض بصورة فردية. أي مرحلة هذه؟",
+        "en": "Reviewers receive the SRS before the meeting and mark ambiguities individually. Which stage is this?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تخطيط جلسة المراجعة وتحديد الأدوار",
+          "en": "Plan the meeting and assign review roles"
+        },
+        {
+          "ar": "تنقيح الوثيقة بعد توثيق الملاحظات",
+          "en": "Revise the SRS after recording findings"
+        },
+        {
+          "ar": "إنهاء استخلاص احتياجات المستخدمين",
+          "en": "Close elicitation before reviewers prepare"
+        },
+        {
+          "ar": "قراءة وثائق المتطلبات قبل الاجتماع",
+          "en": "Read the requirements documents before review"
+        }
+      ],
+      "concept_id": "validation_review_reading",
+      "explanation": {
+        "ar": "يأتي التحضير الفردي بعد توزيع الوثائق وقبل اجتماع المراجعة المنظم.",
+        "en": "Individual preparation follows distribution and precedes the organized review meeting."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يفحص المراجع إمكانية تفسير عبارة في SRS بطريقتين. أي مشكلة في قائمة الفحص هذه؟",
+        "en": "A reviewer checks whether any SRS statement can be interpreted in two ways. Which checklist issue is this?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "غموض العبارة وتعدد تفسيرها",
+          "en": "Ambiguity: a statement permits multiple meanings"
+        },
+        {
+          "ar": "تكرار متطلبات ذات معنى واحد",
+          "en": "Redundancy: one requirement repeats another"
+        },
+        {
+          "ar": "تتبع المتطلب إلى مصدره",
+          "en": "Traceability: a requirement lacks its source link"
+        },
+        {
+          "ar": "تنظيم الوثيقة وترتيب أقسامها",
+          "en": "Organization: sections are arranged poorly"
+        }
+      ],
+      "concept_id": "validation_review_checklist",
+      "explanation": {
+        "ar": "تشير التفسيرات المتعددة المعقولة إلى الغموض؛ أما تكرار العبارات والروابط الناقصة وبنية الوثيقة فهي فحوص مختلفة.",
+        "en": "Multiple plausible interpretations indicate ambiguity; repeated statements, missing links, and document structure are different checks."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "وجد المراجعون متطلبين متعارضين. ماذا ينبغي أن يحدث بعد ذلك؟",
+        "en": "Reviewers find two requirements that contradict each other. What should happen next?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تحويل أحد المتطلبين إلى رمز DFD",
+          "en": "Convert one requirement into a DFD symbol"
+        },
+        {
+          "ar": "حل التعارض مع المعنيين وتنقيح SRS",
+          "en": "Resolve stakeholder conflict and revise the SRS"
+        },
+        {
+          "ar": "الإبقاء على التعارض وترك المطورين يخمنون",
+          "en": "Keep both statements and let developers guess"
+        },
+        {
+          "ar": "حذف المتطلبين من الوثيقة بلا نقاش",
+          "en": "Delete both requirements without discussion"
+        }
+      ],
+      "concept_id": "validation_review_conflict_resolution",
+      "explanation": {
+        "ar": "تنسق متابعة المراجعة التصحيحات المتفق عليها؛ وتحل مفاوضة أصحاب المصلحة التعارض قبل اعتماد المواصفة.",
+        "en": "Review follow-up coordinates agreed corrections; stakeholder negotiation resolves requirement conflicts before the specification is accepted."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا تتضمن عملية المراجعة المتابعة وتنقيح الوثيقة؟",
+        "en": "Why does a review process include follow-up and document revision?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "استبدال وثيقة المتطلبات بحالات الاختبار",
+          "en": "Replace the requirements document with test cases"
+        },
+        {
+          "ar": "تثبيت التعارضات وترك حلها للمطورين",
+          "en": "Freeze contradictions for developers to resolve"
+        },
+        {
+          "ar": "تنفيذ التصحيحات ومعالجة ملاحظات الفحص",
+          "en": "Apply corrections and confirm issues are resolved"
+        },
+        {
+          "ar": "تجاوز اجتماع المراجعة وإنهاء الفحص مبكراً",
+          "en": "Skip the review meeting and close inspection early"
+        }
+      ],
+      "concept_id": "validation_review_followup",
+      "explanation": {
+        "ar": "تتابع الإجراءات تنفيذ المهام، ويحدث التنقيح مواصفة SRS؛ ومن دونهما قد تبقى العيوب المسجلة بلا معالجة.",
+        "en": "Follow-up tracks actions and revision updates the SRS; without these steps, recorded defects may remain unresolved."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا لا تساوي مراجعة SRS اختبار البرمجيات المنفذة؟",
+        "en": "Why is a review of the SRS not the same as testing the implemented software?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تنفيذ مسارات البرنامج لكشف أخطاء التشغيل",
+          "en": "It executes program paths to reveal runtime failures"
+        },
+        {
+          "ar": "قياس زمن الاستجابة أثناء تشغيل البرمجيات",
+          "en": "It measures response time while the software runs"
+        },
+        {
+          "ar": "فحص توافق الأجهزة بعد نشر المنتج البرمجي",
+          "en": "It checks hardware compatibility after deployment"
+        },
+        {
+          "ar": "فحص متطلبات مكتوبة قبل وجود منتج عامل",
+          "en": "It inspects requirements before implementation"
+        }
+      ],
+      "concept_id": "validation_review_not_testing",
+      "explanation": {
+        "ar": "مراجعة المتطلبات فحص للوثيقة يمكنه كشف العيوب قبل وجود الشيفرة؛ أما الاختبار الديناميكي فيشغل تنفيذاً برمجياً.",
+        "en": "A requirements review is a document inspection that can find defects before code exists; dynamic testing exercises an implementation."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T13:41:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

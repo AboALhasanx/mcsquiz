@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "توثيق SRS وجودتها",
+    "en": "SRS Documentation and Quality"
+  },
+  "quiz_id": "Quiz_Ch03_T07_SRS_Documentation",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا ينبغي أن تحدد مواصفة SRS بصورة أساسية؟",
+        "en": "What should an SRS primarily specify?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "سلوك النظام وقيوده بمعزل عن التصميم الداخلي",
+          "en": "Required system behavior and constraints, independent of design"
+        },
+        {
+          "ar": "فئات الشيفرة والخوارزميات المختارة للتنفيذ",
+          "en": "Source-code classes and algorithms chosen for implementation"
+        },
+        {
+          "ar": "توزيع المهام والمسؤوليات اليومية للفريق",
+          "en": "Daily task assignments and responsibilities across the team"
+        },
+        {
+          "ar": "خطوات نشر النظام المكتمل وترتيب تثبيته",
+          "en": "Deployment steps and installation order for the finished system"
+        }
+      ],
+      "concept_id": "srs_what_not_how",
+      "explanation": {
+        "ar": "تصف SRS سلوك النظام وقيوده بوصفه صندوقاً أسود؛ أما خيارات التصميم والتنفيذ فتأتي لاحقاً ما لم تفرضها جهة خارجية.",
+        "en": "The SRS is a black-box statement of required behavior and constraints; design and implementation choices belong later unless imposed externally."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "إلامَ يرمز SRS؟",
+        "en": "What does SRS stand for?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مخطط قاعدة البيانات العلائقية",
+          "en": "Structured relational database schema"
+        },
+        {
+          "ar": "مواصفة متطلبات البرمجيات",
+          "en": "Software Requirements Specification"
+        },
+        {
+          "ar": "تسلسل مراجعة نظام البرمجيات",
+          "en": "Systematic review sequence for software"
+        },
+        {
+          "ar": "جدول إصدار نظام البرمجيات",
+          "en": "Software release schedule and milestones"
+        }
+      ],
+      "concept_id": "srs_acronym",
+      "explanation": {
+        "ar": "يرمز SRS إلى مواصفة متطلبات البرمجيات، وهي الوثيقة التي تسجل المتطلبات المتفق عليها.",
+        "en": "SRS names the Software Requirements Specification, the document that records the agreed requirements."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما رقم معيار IEEE التاريخي الذي يستشهد به لتنظيم مواصفة SRS؟",
+        "en": "Which historical IEEE standard number is cited for SRS organization?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "المعيار ISO Std 9001:2015 للجودة",
+          "en": "ISO 9001:2015 for quality management"
+        },
+        {
+          "ar": "المعيار UML Std 2.5.1 للنمذجة",
+          "en": "UML 2.5.1 for software modelling notation"
+        },
+        {
+          "ar": "المعيار IEEE Std 830-1998 التاريخي",
+          "en": "IEEE Std 830-1998 for SRS documentation"
+        },
+        {
+          "ar": "المعيار IEEE Std 802.11-2020 للشبكات",
+          "en": "IEEE Std 802.11-2020 for wireless networks"
+        }
+      ],
+      "concept_id": "srs_course_standard",
+      "explanation": {
+        "ar": "تسمي مادة المقرر IEEE 830-1998 لتنظيم SRS. يختبر السؤال مرجع المقرر التاريخي ولا يدعي أنه المعيار الحالي.",
+        "en": "IEEE 830-1998 is the historical reference for SRS organization. This tests that legacy course reference, not a claim about the current standard."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ينص متطلب على أن التقرير يجب أن يُحمّل بسرعة. ما خاصية SRS المفقودة مباشرة؟",
+        "en": "A requirement says a report must load quickly. Which SRS quality is most directly missing?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "قابلية تعديل الوثيقة بترتيب أقسامها",
+          "en": "Modifiable through organized sections"
+        },
+        {
+          "ar": "قابلية تتبع المتطلب عبر معرّف مصدره",
+          "en": "Traceable through a recorded source identifier"
+        },
+        {
+          "ar": "الاتساق مع متطلب آخر في الوثيقة",
+          "en": "Consistent with other requirements"
+        },
+        {
+          "ar": "قابلية التحقق بمعيار يمكن قياسه",
+          "en": "Verifiable against a measurable criterion"
+        }
+      ],
+      "concept_id": "srs_unambiguous",
+      "explanation": {
+        "ar": "لا تملك كلمة بسرعة حداً قابلاً للقياس، لذلك لا يستطيع المختبر تحديد تحققها. ويجعلها هدف زمن استجابة قابلة للتحقق.",
+        "en": "Quickly has no measurable threshold, so a tester cannot determine whether it is satisfied. A response-time target would make it verifiable."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "تعطي عبارتان في SRS نتيجتين متعاكستين للشرط نفسه. أي خاصية انتُهكت؟",
+        "en": "Two SRS statements assign opposite outcomes to the same condition. Which quality is violated?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "اتساق المعنى بين متطلبات الوثيقة",
+          "en": "Consistent meaning across SRS requirements"
+        },
+        {
+          "ar": "تتبع المتطلب إلى مصدره الأصلي",
+          "en": "Traceable links to each requirement source"
+        },
+        {
+          "ar": "تعديل المتطلبات مع تغير الحاجة",
+          "en": "Modifiable statements when needs change"
+        },
+        {
+          "ar": "استقلال المواصفة عن قرارات التصميم",
+          "en": "Independence from internal design choices"
+        }
+      ],
+      "concept_id": "srs_consistency",
+      "explanation": {
+        "ar": "تنتهك العبارات المتعارضة خاصية الاتساق؛ أما التتبع والتعديل فيتعلقان بخصائص مختلفة للوثيقة.",
+        "en": "Conflicting statements violate consistency; traceability and modifiability concern different document properties."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "يحدد متطلب التشغيل الطبيعي لكنه يهمل ما يحدث عند غياب مدخل لازم. أي خاصية مهددة؟",
+        "en": "A requirement defines normal operation but omits what happens when a required input is missing. Which quality is at risk?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "منع تكرار العبارات داخل الوثيقة",
+          "en": "Non-redundant statements across the document"
+        },
+        {
+          "ar": "اكتمال تغطية الحالات والمتطلبات",
+          "en": "Complete coverage of required system behavior"
+        },
+        {
+          "ar": "ترتيب البنود حسب درجة استقرارها",
+          "en": "Requirements ranked by their expected stability"
+        },
+        {
+          "ar": "تمثيل صيغ الواجهات الخارجية",
+          "en": "Specified formats for external interfaces"
+        }
+      ],
+      "concept_id": "srs_completeness",
+      "explanation": {
+        "ar": "يؤدي إغفال سلوك أو حالة مهمة إلى نقص المواصفة؛ ولا يعالج ترتيب الأولوية أو صيغة الواجهة هذه الفجوة السلوكية.",
+        "en": "Omitting an important behavior or condition leaves the specification incomplete; ranking and interface format do not fill that behavioral gap."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "يفرض متطلب لغة برمجة محددة دون قيد خارجي. ما موضع القلق؟",
+        "en": "A requirement mandates a specific programming language without an external constraint. What is the concern?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تحديد تدفقات حدودية في مخطط السياق",
+          "en": "It defines boundary flows in a context DFD"
+        },
+        {
+          "ar": "تصنيف المتطلب وفق جمهوره وتفصيله",
+          "en": "It classifies requirements by audience and detail"
+        },
+        {
+          "ar": "فرض قيد على التنفيذ بدل تحديد السلوك",
+          "en": "It dictates implementation over required behavior"
+        },
+        {
+          "ar": "إنشاء روابط تتبع دون توثيق مصادرها",
+          "en": "It links requirements to design but omits their origins"
+        }
+      ],
+      "concept_id": "srs_design_independence",
+      "explanation": {
+        "ar": "ينبغي عادة أن تحدد SRS السلوك والقيود المطلوبة دون فرض خيارات التنفيذ الداخلي ما لم يوجد إلزام خارجي.",
+        "en": "An SRS should normally state required behavior and constraints without prescribing internal implementation choices unless an external mandate exists."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا تتيح قابلية تتبع المتطلبات للفريق؟",
+        "en": "What does requirement traceability allow a team to do?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ضمان الجدوى الاقتصادية لكل تقدير",
+          "en": "Guarantee the economic feasibility of each estimate"
+        },
+        {
+          "ar": "استبدال الحاجة إلى مراجعة وثيقة SRS",
+          "en": "Link only to design outputs while omitting requirement sources"
+        },
+        {
+          "ar": "تحويل حاجة المستخدم إلى ترميز واجهة",
+          "en": "Convert each user need to an interface encoding"
+        },
+        {
+          "ar": "ربط كل متطلب بمصدره وأعماله اللاحقة",
+          "en": "Link each requirement to its origin and related work"
+        }
+      ],
+      "concept_id": "srs_traceability",
+      "explanation": {
+        "ar": "تربط قابلية التتبع المتطلبات بمصادرها وبأعمال التصميم أو التنفيذ أو التحقق المرتبطة بها؛ ولا تستبدل المراجعة.",
+        "en": "Traceability links requirements to their sources and related design, implementation, or verification work; it does not replace review."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T13:50:06Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

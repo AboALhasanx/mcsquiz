@@ -1,0 +1,404 @@
+{
+  "topic": {
+    "ar": "نماذج تحليل المتطلبات",
+    "en": "Requirements Analysis Models"
+  },
+  "quiz_id": "Quiz_Ch03_T06_Requirements_Analysis_Models",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يمثل مخطط تدفق البيانات بصورة أساسية؟",
+        "en": "What does a Data Flow Diagram primarily represent?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "حركة البيانات وتحولها عبر عمليات النظام",
+          "en": "Data movement and transformation through processes"
+        },
+        {
+          "ar": "الكيانات وعلاقاتها في نموذج البيانات",
+          "en": "Persistent entities and relationships in a data model"
+        },
+        {
+          "ar": "بنية مواصفة SRS وخصائص جودتها الفنية",
+          "en": "The structure and quality properties of an SRS"
+        },
+        {
+          "ar": "مراحل مراجعة وثيقة SRS والمشاركون فيها",
+          "en": "The stages and participants in an SRS review"
+        }
+      ],
+      "concept_id": "analysis_dfd_flow_transform",
+      "explanation": {
+        "ar": "ينمذج DFD تدفقات البيانات والعمليات التي تحولها؛ بينما تركز مخططات ER على بنية البيانات المخزنة.",
+        "en": "A DFD models data flows and the processes that transform them; ER diagrams focus on data structure at rest."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تضم أنواع رموز DFD الأربعة المعتمدة؟",
+        "en": "Which set contains the four standard DFD symbol types?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "متطلبات وواجهات وقيود ومراجعة فنية",
+          "en": "SRS, interface, constraint, and review"
+        },
+        {
+          "ar": "عملية وتدفق بيانات ومخزن وكيان خارجي",
+          "en": "Process, flow, store, and external entity"
+        },
+        {
+          "ar": "ممثل وحالة استخدام وحدود وارتباط",
+          "en": "Actor, use case, boundary, and association"
+        },
+        {
+          "ar": "كيان بيانات وصفة وعلاقة ومفتاح رئيس",
+          "en": "Entity, attribute, relation, and key"
+        }
+      ],
+      "concept_id": "analysis_dfd_symbols",
+      "explanation": {
+        "ar": "يستخدم DFD العمليات وتدفقات البيانات الموجهة ومخازن البيانات والكيانات الخارجية. أما المجموعات الأخرى فتخص حالات الاستخدام أو ER أو وثائق المتطلبات.",
+        "en": "DFDs use processes, directed data flows, data stores, and external entities. The other sets belong to use cases, ER modeling, or requirements documents."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لعملية في DFD تدفقات إدخال لكنها لا تنتج أي تدفق إخراج. أي عيب يوضحه ذلك؟",
+        "en": "A DFD process has input flows but produces no output flow. What defect is illustrated?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مخطط سياق يحافظ على تدفقات الحدود",
+          "en": "A balanced context boundary preserving its flows"
+        },
+        {
+          "ar": "علاقة ER ثلاثية تشترك فيها ثلاثة كيانات",
+          "en": "A ternary relationship linking three entity types"
+        },
+        {
+          "ar": "عملية ثقب أسود تستهلك مدخلات بلا مخرجات",
+          "en": "A black-hole process consuming input without output"
+        },
+        {
+          "ar": "عملية معجزة تنتج مخرجات بلا مدخلات",
+          "en": "A miracle process producing output without input"
+        }
+      ],
+      "concept_id": "analysis_dfd_black_hole",
+      "explanation": {
+        "ar": "تستهلك عملية الثقب الأسود مدخلات بلا مخرجات؛ أما عملية المعجزة فتنتج مخرجات بلا مدخلات.",
+        "en": "A black hole consumes input without producing output; a miracle produces output without input."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "حُللت عملية إلى مخطط DFD أدنى مستوى. ماذا يجب أن يحدث لتدفقات حدودها الخارجية؟",
+        "en": "A process is decomposed into a lower-level DFD. What must happen to its external boundary flows?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يجوز حذف تدفقات الأب من المخطط الفرعي بلا توضيح",
+          "en": "The child diagram may omit parent flows without explanation"
+        },
+        {
+          "ar": "يستبدل المخطط الفرعي كل تدفق بكيان خارجي",
+          "en": "The child diagram replaces every flow with an external entity"
+        },
+        {
+          "ar": "يستبعد المخطط الفرعي المخازن حتى عند قراءة البيانات",
+          "en": "The child diagram excludes stores even when the process reads data"
+        },
+        {
+          "ar": "يحافظ المخطط الفرعي على مدخلات الأب ومخرجاته الحدية",
+          "en": "The child diagram preserves the parent's external inputs and outputs"
+        }
+      ],
+      "concept_id": "analysis_dfd_balance",
+      "explanation": {
+        "ar": "تحافظ عملية التحليل المتوازنة على المدخلات والمخرجات الخارجية للعملية الأم في المخطط الأدنى.",
+        "en": "Balanced decomposition preserves the parent process's external inputs and outputs in the lower-level diagram."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي اتصال مباشر غير صالح في DFD؟",
+        "en": "Which direct connection is invalid in a DFD?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ربط مخزن البيانات مباشرة بمخزن آخر",
+          "en": "A direct connection between two data stores"
+        },
+        {
+          "ar": "ربط عملية بكيان خارجي عبر تدفق بيانات",
+          "en": "A process connected to an external entity"
+        },
+        {
+          "ar": "إرسال عملية تدفقاً إلى مخزن بيانات",
+          "en": "A process sending a flow to a data store"
+        },
+        {
+          "ar": "إرسال كيان خارجي تدفقاً إلى عملية",
+          "en": "An external entity sending a flow to a process"
+        }
+      ],
+      "concept_id": "analysis_dfd_illegal_link",
+      "explanation": {
+        "ar": "يتجاوز اتصال مخزن بمخزن عمليةً، بينما تمثل حركة البيانات الصحيحة عبر العمليات.",
+        "en": "A data store-to-store link bypasses a process; valid data movement is represented through processes."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ماذا يضيف قاموس البيانات إلى مجموعة مخططات DFD؟",
+        "en": "What does a data dictionary add to a set of DFDs?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المراجعون ومواعيد فحص وثيقة مواصفة SRS",
+          "en": "Reviewers and dates scheduled for the SRS inspection"
+        },
+        {
+          "ar": "تعريف عناصر البيانات المسماة وبيان مكوناتها",
+          "en": "Definitions and composition of each named data item"
+        },
+        {
+          "ar": "الممثلون الخارجيون وأهداف حالات الاستخدام",
+          "en": "External actors and their goals in each use case"
+        },
+        {
+          "ar": "تكاليف المشروع ومنافعه عند تقييم الجدوى",
+          "en": "Project costs and benefits used to judge viability"
+        }
+      ],
+      "concept_id": "analysis_dictionary_role",
+      "explanation": {
+        "ar": "يعرف قاموس البيانات معنى عناصر البيانات المستخدمة في النماذج وتركيبها؛ ولا يستبدل التحليل السلوكي أو دراسة الجدوى.",
+        "en": "The data dictionary defines the meaning and composition of data elements used in the models; it does not replace behavioral or feasibility analysis."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا تعبر الصيغة [محلي/بعيد] في ترميز قاموس البيانات؟",
+        "en": "In data-dictionary notation, what does [local/remote] express?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "عنصر اختياري يجوز حذفه عند الحاجة",
+          "en": "An optional item that may be omitted"
+        },
+        {
+          "ar": "تكرار بلا حد أعلى لعدد مرات الإدراج",
+          "en": "A repeated item with no upper limit"
+        },
+        {
+          "ar": "اختيار بديل واحد من القيم المسماة",
+          "en": "A choice between the listed alternatives"
+        },
+        {
+          "ar": "تسلسل يتطلب وجود القيمتين معاً",
+          "en": "A sequence requiring both listed values"
+        }
+      ],
+      "concept_id": "analysis_dictionary_alternative",
+      "explanation": {
+        "ar": "تفصل الأقواس المربعة بين البدائل؛ وتدل علامة الجمع على التسلسل، والأقواس العادية على الاختيارية، والمعقوفات على التكرار.",
+        "en": "Square brackets separate alternatives; plus denotes sequence, parentheses mark optional content, and braces denote repetition."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مجموعة تسمي مفاهيم نموذج ER الأساسية؟",
+        "en": "Which set names the core ER-model concepts?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عمليات وتدفقات بيانات ومخازن",
+          "en": "Processes, data flows, and stores"
+        },
+        {
+          "ar": "ممثلون وحالات استخدام وحدود نظام",
+          "en": "Actors, use cases, and boundaries"
+        },
+        {
+          "ar": "وظائف وقيود ومواصفات واجهات",
+          "en": "Functions, constraints, and interfaces"
+        },
+        {
+          "ar": "كيانات وصفات وروابط تربط بينها",
+          "en": "Entities, attributes, and relations"
+        }
+      ],
+      "concept_id": "analysis_er_components",
+      "explanation": {
+        "ar": "يصف نموذج ER الكيانات وصفاتها والعلاقات بينها؛ أما المجموعات الأخرى فتخص DFD أو حالات الاستخدام أو فئات المتطلبات.",
+        "en": "ER modeling describes entities, their attributes, and relationships among them; the other sets belong to DFDs, use cases, or requirement classes."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "تربط علاقة طبيباً ومريضاً ودواءً في ارتباط واحد. ما درجتها؟",
+        "en": "A relationship links a doctor, a patient, and a medication in one association. What is its degree?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ثلاثية لاشتراك ثلاثة أنواع من الكيانات",
+          "en": "Ternary: three entity types participate"
+        },
+        {
+          "ar": "أحادية لأن العلاقة تحمل اسماً واحداً",
+          "en": "Unary, because one relationship is named"
+        },
+        {
+          "ar": "ثنائية لارتباط نوعين من الكيانات",
+          "en": "Binary, because two entity types participate"
+        },
+        {
+          "ar": "متعددة لمشاركة عدة أنواع من الكيانات",
+          "en": "N-ary, with more than four entity types"
+        }
+      ],
+      "concept_id": "analysis_er_degree",
+      "explanation": {
+        "ar": "تحصي درجة العلاقة أنواع الكيانات المشاركة فيها؛ والطبيب والمريض والدواء ثلاثة أنواع.",
+        "en": "Relationship degree counts the entity types participating in that relationship; doctor, patient, and medication make three."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "عند تحويل علاقة مفاهيمية M:N إلى جداول علائقية، ما أحد الخيارات الشائعة؟",
+        "en": "When mapping a conceptual M:N relationship into relational tables, what is a common option?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "جمع مجموعتي الكيانات في مخزن بيانات واحد ضمن DFD",
+          "en": "Store both entity sets in one DFD data store"
+        },
+        {
+          "ar": "استخدام جدول رابط يشير إلى جدولي الكيانين المشاركين",
+          "en": "Use a junction table referencing both entity tables"
+        },
+        {
+          "ar": "حذف العلاقة والكيانين كليهما من النموذج المفاهيمي",
+          "en": "Remove the relationship and both entities from the model"
+        },
+        {
+          "ar": "تمثيل كل صفة للعلاقة بوصفها عملية في مخطط DFD",
+          "en": "Represent relationship attributes as DFD processes"
+        }
+      ],
+      "concept_id": "analysis_mn_mapping",
+      "explanation": {
+        "ar": "يعد الجدول الرابط أو الترابطي تنفيذاً علائقياً شائعاً وقد يحمل صفات العلاقة؛ ولا يفرض حذف العلاقة المفاهيمية M:N.",
+        "en": "A junction or associative table is a common relational implementation and may carry relationship attributes; it is not a requirement to erase the conceptual M:N relationship."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "لا يستطيع المستخدمون وصف سير العمل على الشاشة غير المستقر بالكلمات. ماذا يمكن أن يقدم النموذج الأولي؟",
+        "en": "Users cannot explain an unstable screen workflow in words. What can a prototype provide?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "بديل عن تقييم الجدوى والتخطيط للمشروع",
+          "en": "A replacement for feasibility and project planning"
+        },
+        {
+          "ar": "معمارية إنتاج كاملة وجاهزة افتراضياً",
+          "en": "A complete production architecture ready by default"
+        },
+        {
+          "ar": "نموذج يساعد المستخدمين على توضيح المتطلبات",
+          "en": "A concrete artifact that helps users clarify requirements"
+        },
+        {
+          "ar": "مخطط قاعدة بيانات نهائي يبنى بلا تغذية راجعة",
+          "en": "A final database schema created without user feedback"
+        }
+      ],
+      "concept_id": "analysis_prototype_feedback",
+      "explanation": {
+        "ar": "يساعد النموذج الأولي المستخدمين على التفاعل مع تمثيل ملموس وتوضيح المتطلبات غير المستقرة؛ ولا يصبح المعمارية تلقائياً.",
+        "en": "A prototype helps users react to a concrete representation and clarify uncertain requirements; it does not automatically become the architecture."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "لماذا يفصل النموذج الأولي السريع المخصص للتخلص عن المنتج النهائي في نظام كبير؟",
+        "en": "Why is a quick throw-away prototype kept separate from the final product in a large system?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تغذية المستخدم لا قيمة لها بعد جمعها",
+          "en": "User feedback has no value after it is collected"
+        },
+        {
+          "ar": "لا يستطيع النموذج الأولي توضيح المتطلبات",
+          "en": "A prototype cannot clarify uncertain requirements"
+        },
+        {
+          "ar": "اشتراط لغة النموذج الأولي للنظام النهائي",
+          "en": "Every final system must use the prototype's language"
+        },
+        {
+          "ar": "قد تفتقر شيفرته إلى بنية وجودة الإنتاج",
+          "en": "Experimental prototype code may lack production quality"
+        }
+      ],
+      "concept_id": "analysis_prototype_throwaway",
+      "explanation": {
+        "ar": "يبنى النموذج المخصص للتخلص للتعلم وتوضيح المتطلبات؛ وقد لا تحقق شيفرته modularity وmaintainability المطلوبتين للنظام النهائي.",
+        "en": "A throw-away prototype is built to learn and clarify requirements; its code may not meet the modularity and maintainability needed in the final system."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T13:41:07Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

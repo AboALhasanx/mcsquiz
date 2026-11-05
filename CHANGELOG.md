@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.27] — 2026-11-05
+
+### Changed
+- content: ASE Chapter 3 requirements banks
+
+
 ## [1.11.26] — 2026-11-05
 
 ### Changed
