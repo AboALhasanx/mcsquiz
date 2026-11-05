@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.25] — 2026-11-05
+
+### Changed
+- fix(sw): guard first-visit activation reload and add timeout to content rpc
+
+
 ## [1.11.24] — 2026-11-05
 
 ### Changed

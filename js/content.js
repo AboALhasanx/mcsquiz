@@ -25,6 +25,8 @@
   function rpc(name, body) {
     var c = cfg();
     if (!configured()) return Promise.reject(new Error('content-not-configured'));
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 6000) : null;
     return fetch(c.url + '/rest/v1/rpc/' + name, {
       method: 'POST',
       headers: {
@@ -34,9 +36,14 @@
       },
       body: JSON.stringify(body || {}),
       cache: 'no-store',
+      signal: ctrl ? ctrl.signal : undefined,
     }).then(function (r) {
+      if (timer) clearTimeout(timer);
       if (!r.ok) throw new Error('content-rpc-' + name + '-' + r.status);
       return r.json();
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      throw err;
     });
   }
 

@@ -37,20 +37,40 @@ def run():
         # =========================================================================
         print("\n--- Pillar 1: Precache & Service Worker Subsystem ---")
         page.goto(common.APP, wait_until='domcontentloaded', timeout=45000)
-        page.wait_for_timeout(3500)
+        page.wait_for_timeout(2000)
 
-        sw_active = page.evaluate("() => !!navigator.serviceWorker.controller")
+        sw_active = False
+        try:
+            page.wait_for_function("() => !!navigator.serviceWorker.controller", timeout=25000)
+            sw_active = True
+        except Exception:
+            pass  # audit-ignore: timeout waiting for sw controller
+
         check('P1.1: Service Worker installs and takes active control of shell', sw_active)
 
-        core_loaded = page.evaluate("""() => !!(
-            window.PortalSavedUI &&
-            window.PortalStatsUI &&
-            window.PortalLeagueUI &&
-            window.PortalVsUI &&
-            window.PortalVSBot &&
-            window.PortalContent
-        )""")
-        check('P1.2: All modular controllers and engines loaded and initialized', core_loaded)
+        core_status = {}
+        try:
+            page.wait_for_function("""() => !!(
+                window.PortalSavedUI &&
+                window.PortalStatsUI &&
+                window.PortalLeagueUI &&
+                window.PortalVsUI &&
+                window.PortalVSBot &&
+                window.PortalContent
+            )""", timeout=15000)
+            core_loaded = True
+        except Exception:
+            core_status = page.evaluate("""() => ({
+                saved: !!window.PortalSavedUI,
+                stats: !!window.PortalStatsUI,
+                league: !!window.PortalLeagueUI,
+                vs: !!window.PortalVsUI,
+                bot: !!window.PortalVSBot,
+                content: !!window.PortalContent
+            })""")
+            core_loaded = False
+
+        check('P1.2: All modular controllers and engines loaded and initialized', core_loaded, core_status)
 
         # =========================================================================
         # PILLAR 2: COMPLETE QUIZ FLOW & ADVERSARIAL CHECKS

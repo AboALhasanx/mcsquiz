@@ -3788,7 +3788,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.24';
+  const SHELL_VERSION = '1.11.25';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');
@@ -3953,9 +3953,16 @@ const weekBar = $('league-week-bar');
   // SW tells open tabs that a new shell is live -> refresh once so the new
   // assets (and the new Telegram identity path) are actually in use.
   if ('serviceWorker' in navigator) {
+    const hadInitialController = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.addEventListener('message', (ev) => {
       if (ev && ev.data && ev.data.type === 'sw-activated') {
         try {
+          if (!hadInitialController) {
+            // First visit: page was fetched fresh from network; clients.claim()
+            // has claimed this window. No reload required.
+            sessionStorage.setItem('portal_sw_reloaded', ev.data.cache);
+            return;
+          }
           if (sessionStorage.getItem('portal_sw_reloaded') !== ev.data.cache) {
             sessionStorage.setItem('portal_sw_reloaded', ev.data.cache);
             // If in the middle of a live exam, don't brutally reload in the user's face!
@@ -3965,8 +3972,6 @@ const weekBar = $('league-week-bar');
               toast('تحديث جديد متوفر — سيتفعّل عند انتهاء الاختبار', 'info');
               return;
             }
-            // a first visit can be reloaded by the worker right as the tour
-            // opens: remember it so it resumes instead of disappearing
             if (tourIdx >= 0) sessionStorage.setItem('portal_tour_resume', String(tourIdx));
             location.reload();
           }
