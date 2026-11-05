@@ -10,289 +10,321 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي نموذج هو الأكثر شيوعاً لمشروع طالب صغير؟",
-        "en": "Which model is the most popular one for a student's small project?"
+        "ar": "أي تسلسل يصف البناء والإصلاح؟",
+        "en": "Which sequence describes Build & Fix?"
       },
       "bloom": "Understand",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "نموذج النمذجة الأولية",
-          "en": "the Prototyping model"
+          "ar": "تبدأ بالبرمجة ثم تُعدّل الشيفرة عند ظهور العيوب.",
+          "en": "Code first, then modify the program as faults appear."
         },
         {
-          "ar": "نموذج سريع وإصلاح هنا",
-          "en": "the Quick and fix model"
+          "ar": "تُحدد كل المتطلبات ثم يُثبّت التصميم قبل التنفيذ.",
+          "en": "Specify all requirements, then freeze the design."
         },
         {
-          "ar": "نموذج الشلال هنا الآن",
-          "en": "the Waterfall model here"
+          "ar": "تُرتب خصائص النظام ثم توزع على إصدارات متتابعة.",
+          "en": "Prioritize features, then release them in increments."
         },
         {
-          "ar": "النموذج الحلزوني هنا",
-          "en": "the Spiral model here"
+          "ar": "تُقيّم المخاطر ثم تُختار عملية مناسبة لكل دورة.",
+          "en": "Assess risks, then select a process for each cycle."
         }
       ],
       "concept_id": "ch2_student_model",
       "explanation": {
-        "ar": "التمارين الصغيرة تُكتب أولاً ثم تُصلح، وهذا هو نموذج سريع وإصلاح.",
-        "en": "Small exercises are written first and fixed later, which is the quick and fix model."
+        "ar": "يبدأ البناء والإصلاح بالبرمجة بعد فهم أولي، ثم يختبر البرنامج ويعدّله مراراً. أما الخيارات الأخرى فتصف عملاً مخططاً أو تزايدياً أو مدفوعاً بالمخاطر.",
+        "en": "Build & Fix starts with coding after only an initial understanding, then repeatedly tests and modifies the program. The other choices describe plan-driven, incremental, and risk-driven work."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "أي واحد ليس نموذج دورة حياة برمجيات؟",
-        "en": "Which one is NOT a software life cycle model?"
+        "ar": "إلى ماذا يشير الاختصار SDLC؟",
+        "en": "What does SDLC stand for?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 1,
       "options": [
         {
-          "ar": "نموذج النمذجة لدورة الحياة",
-          "en": "the Prototyping life cycle model"
+          "ar": "دورة تصميم وتطوير الأنظمة",
+          "en": "System design process cycle"
         },
         {
-          "ar": "نموذج النضج والقدرات هنا",
-          "en": "the Capability maturity model"
+          "ar": "دورة حياة تطوير البرمجيات",
+          "en": "Software development life cycle"
         },
         {
-          "ar": "نموذج الشلال لدورة الحياة",
-          "en": "the Waterfall life cycle model"
+          "ar": "دورة حياة تطوير الأنظمة",
+          "en": "System development life cycle"
         },
         {
-          "ar": "النموذج الحلزوني لدورة الحياة",
-          "en": "the Spiral life cycle model"
+          "ar": "دورة تصميم وتطوير البرمجيات",
+          "en": "Software design process cycle"
         }
       ],
-      "concept_id": "ch2_not_lifecycle",
+      "concept_id": "ch2_sdlc",
       "explanation": {
-        "ar": "نموذج النضج يقيس نضج عملية المنظمة، ولا يحدد مراحل التطوير.",
-        "en": "CMM appraises how mature an organization's process is; it does not define development phases."
+        "ar": "يشير SDLC إلى دورة حياة تطوير البرمجيات، أي العملية المنظمة لتطوير البرمجيات من البدء حتى التسليم والصيانة.",
+        "en": "SDLC means Software Development Life Cycle: the organized process used to develop software from initiation through delivery and maintenance."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "SDLC تعني...",
-        "en": "SDLC stands for..."
+        "ar": "أي حالة مشروع تتعارض أكثر مع تسلسل الشلال الكلاسيكي؟",
+        "en": "Which project condition conflicts most with the classical Waterfall sequence?"
       },
-      "bloom": "Remember",
-      "answer": 3,
+      "bloom": "Understand",
+      "answer": 2,
       "options": [
         {
-          "ar": "دورة حياة تصميم البرمجيات",
-          "en": "Software design life cycle here"
+          "ar": "يمكن توثيق مخرجات المراحل ومراجعتها.",
+          "en": "Phase outputs can be documented and reviewed formally."
         },
         {
-          "ar": "دورة حياة تطوير الأنظمة",
-          "en": "System development life cycle here"
+          "ar": "يمتلك المشروع معايير قبول واضحة.",
+          "en": "The project has clear and testable acceptance criteria."
         },
         {
-          "ar": "دورة حياة تصميم الأنظمة",
-          "en": "System design life cycle here"
+          "ar": "تتغير المتطلبات كثيراً أثناء التطوير.",
+          "en": "Requirements change often while development is underway."
         },
         {
-          "ar": "دورة حياة تطوير البرمجيات",
-          "en": "Software development life cycle"
+          "ar": "تكون المتطلبات مستقرة قبل بدء التصميم.",
+          "en": "Requirements are stable before the design work begins."
         }
       ],
-      "concept_id": "ch2_sdlc",
+      "concept_id": "ch2_waterfall_unsuitable",
       "explanation": {
-        "ar": "SDLC تعني دورة حياة تطوير البرمجيات، وهي المراحل التي يمر بها المنتج.",
-        "en": "SDLC expands to Software Development Life Cycle, the phases a product passes through."
+        "ar": "يثبّت التسلسل الكلاسيكي المتطلبات مبكراً، لذلك يصعب استيعاب التغييرات المتكررة. أما استقرار المتطلبات وإمكان مراجعة المخرجات فينسجمان مع افتراضاته.",
+        "en": "The classical sequence freezes requirements early, so frequent changes are difficult to accommodate. Stable requirements and reviewable phase outputs fit its assumptions better."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "أي مرحلة ليست موجودة في دورة حياة البرمجيات؟",
-        "en": "Which phase is NOT available in the software life cycle?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "مرحلة الاختبار",
-          "en": "the testing phase"
-        },
-        {
-          "ar": "مرحلة الصيانة",
-          "en": "the maintenance phase"
-        },
-        {
-          "ar": "مرحلة التجريد",
-          "en": "the abstraction phase"
-        },
-        {
-          "ar": "مرحلة الترميز",
-          "en": "the coding phase here"
-        }
-      ],
-      "concept_id": "ch2_not_a_phase",
-      "explanation": {
-        "ar": "الترميز والاختبار والصيانة مراحل، أما التجريد فأسلوب تصميم لا مرحلة.",
-        "en": "Coding, testing and maintenance are phases; abstraction is a design technique, not a phase."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "نموذج الشلال غير مناسب لـ...",
-        "en": "The Waterfall model is not suitable for..."
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "استيعاب التغيير",
-          "en": "accommodating change"
-        },
-        {
-          "ar": "المشاريع الصغيرة",
-          "en": "the small projects"
-        },
-        {
-          "ar": "المشاريع المعقدة",
-          "en": "the complex projects"
-        },
-        {
-          "ar": "لا شيء مما سبق",
-          "en": "none of the above here"
-        }
-      ],
-      "concept_id": "ch2_waterfall_unsuitable",
-      "explanation": {
-        "ar": "الشلال يجمّد كل مرحلة، فيصبح التغيير المتأخر مكلفاً لا مستوعباً.",
-        "en": "Waterfall freezes each phase, so later change is expensive rather than accommodated."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "إحصائياً، أي مرحلة تحمل النصيب الأكبر من الأخطاء؟",
-        "en": "Statistically, the largest share of errors belongs to which phase?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "مرحلة المواصفات",
-          "en": "the specifications phase"
-        },
-        {
-          "ar": "مرحلة الترميز هنا",
-          "en": "the coding phase now"
-        },
-        {
-          "ar": "مرحلة التصميم هنا",
-          "en": "the design phase here now"
-        },
-        {
-          "ar": "مرحلة التنصيب هنا",
-          "en": "the installation phase here"
-        }
-      ],
-      "concept_id": "ch2_errors_phase",
-      "explanation": {
-        "ar": "أكثر العيوب تولد في مرحلة المواصفات، حتى لو ظهرت لاحقاً.",
-        "en": "Most defects are born in the specification phase, even when they surface later."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "يُفترض أن يسير التطوير خطياً عبر المراحل في...",
-        "en": "Development is supposed to proceed linearly through the phases in..."
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "نموذج النمذجة الأولية",
-          "en": "the Prototyping model"
-        },
-        {
-          "ar": "لا شيء مما سبق هنا",
-          "en": "none of the above here"
-        },
-        {
-          "ar": "نموذج الشلال هنا الآن",
-          "en": "the Waterfall model now"
-        },
-        {
-          "ar": "النموذج الحلزوني هنا",
-          "en": "the Spiral model here"
-        }
-      ],
-      "concept_id": "ch2_linear",
-      "explanation": {
-        "ar": "الشلال وحده يمر مرة واحدة بالمواصفات والتصميم والترميز والاختبار.",
-        "en": "Only the waterfall moves once through specification, design, coding and testing."
-      }
-    },
-    {
-      "id": "q8",
-      "stem": {
-        "ar": "أي نموذج يطلب أكبر قدر من التوثيق؟",
-        "en": "Which model demands the heaviest documentation?"
+        "ar": "ما ناتج مرحلة الترميز واختبار الوحدات في الشلال؟",
+        "en": "What is the output of the Waterfall coding and module-testing phase?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "نموذج RAD السريع هنا",
-          "en": "the RAD model here now"
+          "ar": "عقد موقّع يحدد نطاق المشروع.",
+          "en": "A signed contract for the project scope."
         },
         {
-          "ar": "نموذج النمذجة الأولية",
-          "en": "the Prototyping model"
+          "ar": "تقرير جدوى يقارن البدائل.",
+          "en": "A feasibility report comparing alternatives."
         },
         {
-          "ar": "النموذج التطوري هنا",
-          "en": "the Evolutionary model"
+          "ar": "خطة إصدارات لخصائص مستقبلية.",
+          "en": "A release plan for future product increments."
         },
         {
-          "ar": "نموذج الشلال هنا الآن",
-          "en": "the Waterfall model now"
+          "ar": "مجموعة وحدات منفذة ومختبرة.",
+          "en": "An implemented collection of tested modules."
+        }
+      ],
+      "concept_id": "ch2_errors_phase",
+      "explanation": {
+        "ar": "تنتج مرحلة الترميز واختبار الوحدات وحدات منفذة خضعت للاختبار. أما الخيارات الأخرى فترتبط ببدء المشروع أو الجدوى أو تخطيط الإصدارات.",
+        "en": "Coding and module testing produce implemented modules that have been tested. The other outputs belong to project initiation, feasibility, or incremental planning."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "كيف يربط نموذج الشلال المراحل المتتابعة؟",
+        "en": "How does the Waterfall model connect successive phases?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ناتج كل مرحلة يصبح مدخلاً للمرحلة التالية.",
+          "en": "Each phase output becomes the next phase input."
+        },
+        {
+          "ar": "تبدأ كل مرحلة من الحاجة الأصلية من جديد.",
+          "en": "Every phase starts again from the original need."
+        },
+        {
+          "ar": "تعمل كل مرحلة من دون نتائج المراحل السابقة.",
+          "en": "Each phase runs without using earlier results."
+        },
+        {
+          "ar": "ناتج المرحلة الأخيرة يحدد المرحلة الأولى.",
+          "en": "The final phase output determines the first phase."
+        }
+      ],
+      "concept_id": "ch2_linear",
+      "explanation": {
+        "ar": "الشلال تتابع تصبح فيه مخرجات المرحلة مدخلات المرحلة التالية. ولا يعيد كل مرحلة إلى الحاجة الأصلية ولا يعكس الترتيب.",
+        "en": "Waterfall is a cascade in which one phase's output feeds the next phase. It does not restart every phase from the original need or reverse the sequence."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الذي يجعل عملية الشلال معتمدة على الوثائق؟",
+        "en": "What makes the Waterfall process document-driven?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يستبدل الفريق الاختبار بوثائق التصميم.",
+          "en": "The team replaces testing with design documents."
+        },
+        {
+          "ar": "توثّق مستندات رسمية مخرجات كل مرحلة.",
+          "en": "A formal document records the output of each phase."
+        },
+        {
+          "ar": "يجب أن ينتج كل اجتماع عقداً موقّعاً.",
+          "en": "Every meeting must produce a signed contract."
+        },
+        {
+          "ar": "يكتب المستخدمون شيفرة التنفيذ لكل مرحلة.",
+          "en": "Users write the implementation code for each phase."
         }
       ],
       "concept_id": "ch2_waterfall_docs",
       "explanation": {
-        "ar": "كل مرحلة في الشلال تنتهي بوثيقة موقّعة، فالأوراق هي الأثقل.",
-        "en": "Every waterfall phase ends in a signed document, so the paperwork is heaviest."
+        "ar": "تتطلب العملية وثيقة رسمية عند نهاية كل مرحلة. وهذا لا يعني أن كل اجتماع ينتج عقداً أو أن الوثائق تحل محل الاختبار.",
+        "en": "The process expects a formal document at the end of each phase. That does not mean every meeting creates a contract or that documentation replaces testing."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي نشاطين يميزان البناء والإصلاح؟",
+        "en": "Which two activities characterize Build & Fix?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ترتيب الخصائص ثم جدولة الإصدارات.",
+          "en": "Prioritize features, then schedule releases."
+        },
+        {
+          "ar": "تقييم كل خطر ثم اختيار العملية.",
+          "en": "Assess each risk, then choose a process."
+        },
+        {
+          "ar": "بناء البرنامج ثم إصلاحه عند الحاجة.",
+          "en": "Build the software, then fix it as needed."
+        },
+        {
+          "ar": "تخطيط كل مرحلة ثم تثبيت التصميم.",
+          "en": "Plan every phase, then freeze the design."
+        }
+      ],
+      "concept_id": "ch2_build_fix_phases",
+      "explanation": {
+        "ar": "يمتاز البناء والإصلاح بإنشاء برنامج أولي ثم تعديله عند ظهور العيوب أو الحاجات، ولا يفرض دورة حياة رسمية ذات مراحل محددة.",
+        "en": "Build & Fix is characterized by constructing an initial program and modifying it as faults or needs emerge; it does not prescribe a formal staged life cycle."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "متى يمكن بدء مرحلة من مراحل SDLC أو إعلان اكتمالها؟",
+        "en": "When may an SDLC phase begin or be declared complete?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "عندما يغيّر مدير المشروع الجدول الزمني.",
+          "en": "When the project manager changes the schedule."
+        },
+        {
+          "ar": "عندما يتلقى الفريق التالي رسالة غير رسمية.",
+          "en": "When the next team receives an informal message."
+        },
+        {
+          "ar": "عند تنفيذ كل المتطلبات المستقبلية.",
+          "en": "When all future requirements have been implemented."
+        },
+        {
+          "ar": "عند تحقق معايير الدخول أو الخروج المحددة.",
+          "en": "When its defined entry or exit criteria are met."
+        }
+      ],
+      "concept_id": "ch2_sdlc_phase_criteria",
+      "explanation": {
+        "ar": "تجعل معايير الدخول والخروج تقدم المرحلة قابلاً للملاحظة والضبط. ولا يثبت تغيير الجدول أو الرسالة غير الرسمية تحقق المعايير.",
+        "en": "Entry and exit criteria make phase progress observable and controllable. A schedule change or an informal message does not establish that the phase criteria were met."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "نموذج البناء والإصلاح يتكوّن من...",
-        "en": "The Build and Fix model has..."
+        "ar": "بماذا تساعد دورة حياة البرمجيات فريق المشروع؟",
+        "en": "What does an SDLC help a project team do?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "مرحلتان فقط هنا",
-          "en": "two phases"
+          "ar": "تنظيم التطوير وتخطيط الموارد ومتابعة التقدم.",
+          "en": "Structure development and plan resources."
         },
         {
-          "ar": "ثلاث مراحل كاملة",
-          "en": "three phases"
+          "ar": "ضمان ثبات المتطلبات طوال مراحل المشروع.",
+          "en": "Guarantee that requirements never change."
         },
         {
-          "ar": "مرحلة واحدة فقط",
-          "en": "one phase"
+          "ar": "إلغاء اختبار النظام بعد إكمال كتابة الشيفرة.",
+          "en": "Remove the need to test the finished system."
         },
         {
-          "ar": "أربع مراحل كاملة",
-          "en": "four phases"
+          "ar": "اختيار لغة التنفيذ تلقائياً بحسب حجم النظام.",
+          "en": "Select a programming language automatically."
         }
       ],
-      "concept_id": "ch2_build_fix_phases",
+      "concept_id": "ch2_sdlc_purpose",
       "explanation": {
-        "ar": "البناء والإصلاح له مرحلتان فقط: بناء الكود ثم إصلاح ما ينكسر.",
-        "en": "Build and fix has only two phases: build the code, then fix what breaks."
+        "ar": "ينظم نموذج دورة الحياة العملية ويدعم تخطيط الموارد ومتابعة التقدم. ولا يضمن ثبات المتطلبات أو يلغي الاختبار.",
+        "en": "A life-cycle model structures the process, supports resource planning, and helps managers track progress. It does not guarantee stable requirements or eliminate testing."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "لماذا تزداد مخاطر البناء والإصلاح مع نمو النظام؟",
+        "en": "Why does Build & Fix become risky as a system grows?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تمنع دفعاته الثابتة عرض النتائج مبكراً.",
+          "en": "Its fixed increments prevent users from seeing results."
+        },
+        {
+          "ar": "قد تجعل التعديلات المتكررة الصيانة صعبة.",
+          "en": "Repeated changes can leave the program hard to maintain."
+        },
+        {
+          "ar": "تؤخر مراجعات المخاطر قرارات التنفيذ.",
+          "en": "Its risk reviews delay every implementation decision."
+        },
+        {
+          "ar": "تتطلب مراحله الرسمية تخطيطاً طويلاً مسبقاً.",
+          "en": "Its formal phases require too much planning."
+        }
+      ],
+      "concept_id": "ch2_build_fix_maintenance",
+      "explanation": {
+        "ar": "يفتقر البناء والإصلاح إلى البنية التي تضبط التعقيد المتزايد، لذلك قد تجعل التعديلات المتكررة الصيانة صعبة. أما الخيارات الأخرى فترتبط بأساليب مختلفة.",
+        "en": "Build & Fix lacks the structure that helps control growing complexity, so repeated modifications can make maintenance difficult. The other options describe concerns from different process styles."
       }
     }
   ],
@@ -301,7 +333,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T20:05:14Z",
+  "updated_at": "2026-11-05T11:50:42Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

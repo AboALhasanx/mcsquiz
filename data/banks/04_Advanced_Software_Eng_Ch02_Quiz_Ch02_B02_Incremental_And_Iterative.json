@@ -10,33 +10,33 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي نموذج تكرارى صراحةً؟",
-        "en": "Which model is explicitly iterative?"
+        "ar": "ما الذي يجمعه نموذج التحسين التكراري؟",
+        "en": "What does the Iterative-Enhancement Model combine?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "نموذج الشلال هنا أيضاً",
-          "en": "the waterfall model"
+          "ar": "تكرار تتابعات خطية مع مراجعة النماذج.",
+          "en": "Repeated linear cycles with prototype input."
         },
         {
-          "ar": "نموذج البناء والإصلاح",
-          "en": "the build and fix one"
+          "ar": "إصدار نهائي بعد تثبيت التصميم مبكراً.",
+          "en": "One final release after a frozen design."
         },
         {
-          "ar": "نموذج RAD هنا الآن هنا",
-          "en": "the RAD model here"
+          "ar": "مراجعات للمخاطر دون تطوير المنتج.",
+          "en": "Risk reviews without product development."
         },
         {
-          "ar": "النموذج الحلزوني مجدداً",
-          "en": "the spiral model here"
+          "ar": "برمجة متوازية دون مراجعة العميل.",
+          "en": "Parallel coding without customer review."
         }
       ],
       "concept_id": "ch2_iterative_model",
       "explanation": {
-        "ar": "الحلزوني يعيد دورته حتى يصبح الخطر مقبولاً، وهذا ما يجعله تكرارياً.",
-        "en": "The spiral repeats its loop until the risk is acceptable, which makes it iterative."
+        "ar": "يكرر التحسين التكراري تتابعات التطوير الخطية ويستخدم تقييم العميل لتوجيه الدفعات اللاحقة. وليس إصداراً واحداً ثابتاً أو تحليلاً للمخاطر بلا تطوير.",
+        "en": "Iterative Enhancement repeats linear development sequences and uses customer evaluation to guide later increments. It is not a single frozen release or risk analysis without development."
       }
     },
     {
@@ -49,20 +49,20 @@
       "answer": 1,
       "options": [
         {
-          "ar": "خطة الاختبار فقط هنا",
-          "en": "the test plan only here now again"
+          "ar": "مواصفة تُثبت قبل التطوير",
+          "en": "a specification frozen first"
         },
         {
           "ar": "دفعات عاملة من المنتج",
-          "en": "working increments of the product"
+          "en": "working product increments"
         },
         {
-          "ar": "تسليماً نهائياً واحداً",
-          "en": "one single final delivery too"
+          "ar": "خطة اختبار مكتملة فقط",
+          "en": "only a completed test plan"
         },
         {
-          "ar": "مواصفة مجمّدة أولاً",
-          "en": "a frozen specification first here"
+          "ar": "تسليم المنتج مرة واحدة",
+          "en": "one final product delivery"
         }
       ],
       "concept_id": "ch2_inc_delivers",
@@ -81,20 +81,20 @@
       "answer": 2,
       "options": [
         {
-          "ar": "جمع المتطلبات فقط هنا أيضاً",
-          "en": "the requirement gathering only too"
+          "ar": "اختبار قبول نهائي واحد فقط",
+          "en": "one final acceptance test only"
         },
         {
-          "ar": "اختبار القبول النهائي مجدداً",
-          "en": "the final acceptance test here again"
+          "ar": "إعادة المشروع كله من البداية",
+          "en": "the whole project restarted from zero"
         },
         {
-          "ar": "دورات تنقيح على العمل نفسه",
-          "en": "refinement cycles over the same work"
+          "ar": "دورات تنقح العمل السابق نفسه",
+          "en": "cycles that revise earlier work"
         },
         {
-          "ar": "المشروع كله من الصفر الآن",
-          "en": "the whole project from zero now"
+          "ar": "جمع المتطلبات مرة واحدة فقط",
+          "en": "requirements gathered once only"
         }
       ],
       "concept_id": "ch2_iter_repeats",
@@ -110,23 +110,23 @@
         "en": "Which one adds new functionality?"
       },
       "bloom": "Analyze",
-      "answer": 1,
+      "answer": 3,
       "options": [
         {
-          "ar": "لا أحد يضيف نطاقاً أيضاً",
-          "en": "neither adds scope here"
+          "ar": "كلاهما يضيف خصائص",
+          "en": "both add new features"
         },
         {
-          "ar": "التطوير التزايدي هنا مجدداً",
-          "en": "incremental development"
-        },
-        {
-          "ar": "التطوير التكراري الآن هنا",
+          "ar": "التطوير التكراري",
           "en": "iterative development"
         },
         {
-          "ar": "كلاهما يضيف النطاق نفسه الآن",
-          "en": "both add the same scope"
+          "ar": "كلاهما يكرر العمل",
+          "en": "both repeat development"
+        },
+        {
+          "ar": "التطوير التزايدي",
+          "en": "incremental development"
         }
       ],
       "concept_id": "ch2_inc_vs_iter",
@@ -138,59 +138,27 @@
     {
       "id": "q5",
       "stem": {
-        "ar": "أي واحد يعيد العمل على الوظيفة نفسها؟",
-        "en": "Which one reworks the same functionality?"
-      },
-      "bloom": "Analyze",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "كلاهما بالطريقة نفسها",
-          "en": "both work the same way now"
-        },
-        {
-          "ar": "لا أحد يعيد العمل",
-          "en": "neither reworks anything"
-        },
-        {
-          "ar": "التطوير التكراري هنا",
-          "en": "iterative development here"
-        },
-        {
-          "ar": "التطوير التزايدي الآن",
-          "en": "incremental development"
-        }
-      ],
-      "concept_id": "ch2_iter_refines",
-      "explanation": {
-        "ar": "التكرار تنقيح للشريحة نفسها مدفوعاً بالتغذية الراجعة.",
-        "en": "Iteration is refinement of the same slice, driven by feedback."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
         "ar": "ما الخطر الأساسي للتسليم التزايدي؟",
         "en": "What is the main risk of incremental delivery?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 0,
       "options": [
         {
-          "ar": "توثيق أكثر من اللازم",
-          "en": "too much documentation here again too"
-        },
-        {
-          "ar": "تصميم مجمّد مبكراً هنا",
-          "en": "a frozen design too early now here again"
-        },
-        {
-          "ar": "انعدام التواصل مع العميل",
-          "en": "no customer contact at all too now"
-        },
-        {
-          "ar": "مشاكل تكامل بين الدفعات",
+          "ar": "مشكلات تكامل بين الدفعات المتتابعة",
           "en": "integration problems between increments"
+        },
+        {
+          "ar": "توثيق مفرط خلال جميع مراحل المشروع",
+          "en": "excessive documentation in every phase"
+        },
+        {
+          "ar": "تصميماً ثابتاً مبكراً للنظام كله",
+          "en": "an early frozen design for the whole system"
+        },
+        {
+          "ar": "غياب تواصل العميل أثناء التطوير",
+          "en": "no customer contact during development"
         }
       ],
       "concept_id": "ch2_inc_risk",
@@ -200,67 +168,163 @@
       }
     },
     {
-      "id": "q7",
+      "id": "q6",
       "stem": {
-        "ar": "كل دفعة يجب أن تنتهي بـ...",
-        "en": "Each increment should end with..."
+        "ar": "ما السمة الشائعة للدفعة الأولى في التحسين التكراري؟",
+        "en": "What often characterizes the first Iterative-Enhancement increment?"
       },
-      "bloom": "Remember",
-      "answer": 0,
+      "bloom": "Understand",
+      "answer": 1,
       "options": [
         {
-          "ar": "إصدار صالح للاستخدام",
-          "en": "a usable release"
+          "ar": "نشر النظام قبل مراجعة العميل.",
+          "en": "the final deployment before customer review"
         },
         {
-          "ar": "وثيقة تصميم أيضاً",
-          "en": "a design document"
+          "ar": "منتج أساسي يحقق المتطلبات الضرورية.",
+          "en": "a core product with essential features"
         },
         {
-          "ar": "تقرير كلفة الآن هنا",
-          "en": "a cost report here"
+          "ar": "النظام الكامل بكل خصائصه المخططة.",
+          "en": "the complete planned system in one release"
         },
         {
-          "ar": "سجل مخاطر هنا مجدداً",
-          "en": "a risk register"
+          "ar": "نموذج أولي مؤقت لعرض شكل النظام.",
+          "en": "a throw-away model for user review"
         }
       ],
       "concept_id": "ch2_inc_each_ends",
       "explanation": {
-        "ar": "الدفعة غير القابلة للاستخدام لا تعطي تغذية راجعة، فتنتهي قابلة للتشغيل.",
-        "en": "An increment that cannot be used delivers no feedback, so it must end runnable."
+        "ar": "غالباً ما تكون الدفعة الأولى منتجاً أساسياً يحقق المتطلبات الضرورية، ثم تضيف الدفعات اللاحقة القدرات وتنقحها بعد المراجعة.",
+        "en": "The first increment is often a core product that meets basic requirements; later increments add and refine capabilities after review."
       }
     },
     {
-      "id": "q8",
+      "id": "q7",
       "stem": {
         "ar": "لماذا التغيير أرخص في التسليم التزايدي؟",
         "en": "Why is change cheaper under incremental delivery?"
       },
       "bloom": "Analyze",
-      "answer": 0,
+      "answer": 2,
       "options": [
         {
-          "ar": "التغذية الراجعة تصل مبكراً",
-          "en": "feedback arrives early now"
+          "ar": "زيادة حجم فريق التطوير دائماً",
+          "en": "the development team is always larger"
         },
         {
-          "ar": "لا حاجة للاختبار هنا مجدداً",
-          "en": "no testing is needed here"
+          "ar": "ثبات المتطلبات خلال التطوير كله",
+          "en": "requirements stay frozen throughout work"
         },
         {
-          "ar": "الفريق أكبر دائماً أيضاً",
-          "en": "the team is always larger"
+          "ar": "وصول التغذية الراجعة في وقت مبكر",
+          "en": "feedback arrives early in development"
         },
         {
-          "ar": "المتطلبات مجمّدة الآن هنا",
-          "en": "the requirements are frozen"
+          "ar": "عدم الحاجة إلى الاختبار لاحقاً",
+          "en": "testing is never needed later"
         }
       ],
       "concept_id": "ch2_inc_change_cost",
       "explanation": {
         "ar": "الدفعات المبكرة تكشف الأخطاء وهي ما تزال رخيصة التصحيح.",
         "en": "Early increments expose mistakes while they are still cheap to correct."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف تُنظّم الخدمات في التسليم التزايدي؟",
+        "en": "How are services organized in incremental delivery?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تؤجل كلها إلى إصدار نهائي واحد.",
+          "en": "They are all postponed until one final release."
+        },
+        {
+          "ar": "تنفذ بترتيب يحدده مترجم النظام.",
+          "en": "They follow an order chosen by the compiler."
+        },
+        {
+          "ar": "تُثبت بعد نموذج أولي سيُهمَل.",
+          "en": "They are frozen after a throw-away prototype."
+        },
+        {
+          "ar": "الخدمات توزع حسب أولوية الحاجة",
+          "en": "They are prioritized across product releases."
+        }
+      ],
+      "concept_id": "ch2_incremental_priorities",
+      "explanation": {
+        "ar": "يرتب التسليم التزايدي الخدمات حسب الأولوية ويوزع أجزاء النظام على إصدارات. ويمكن تحليل المتطلبات اللاحقة أثناء تطوير إصدار سابق.",
+        "en": "Incremental delivery prioritizes services and assigns parts of the system to releases. Later requirements can be analyzed while an earlier release is developed."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ماذا يمكن أن يحدث لمتطلبات الدفعات اللاحقة أثناء تطوير الأولى؟",
+        "en": "What can happen to requirements for later increments while the first is developed?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يمكن تحليلها مع تطوير الإصدار الأول.",
+          "en": "They can be analyzed as the first release is developed."
+        },
+        {
+          "ar": "يجب تنفيذها قبل بناء الإصدار الأول.",
+          "en": "They must be implemented before the first release is built."
+        },
+        {
+          "ar": "تُهمل بعد اختبار المنتج الأساسي.",
+          "en": "They are discarded after the core product is tested."
+        },
+        {
+          "ar": "تُحدد بعد تشغيل النظام زمناً طويلاً.",
+          "en": "They are defined after the system runs for years."
+        }
+      ],
+      "concept_id": "ch2_incremental_parallel_requirements",
+      "explanation": {
+        "ar": "يتيح التطوير التزايدي تحليل المتطلبات اللاحقة أثناء بناء الإصدار الأول. وهذا يدعم التسليم المرحلي دون اشتراط كل الخصائص منذ البداية.",
+        "en": "Incremental development allows later requirements to be analyzed while the first release is being built. This supports staged delivery without requiring every feature up front."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما مشكلة التكامل التي قد تظهر بين دفعات التحسين التكراري؟",
+        "en": "What integration problem can occur across Iterative-Enhancement increments?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يعجز المنتج الأساسي عن إضافة قدرات جديدة.",
+          "en": "The core product cannot receive added capabilities."
+        },
+        {
+          "ar": "قد تحتاج دفعة إلى تعديل برمجيات سابقة.",
+          "en": "A later increment may require changes to earlier software."
+        },
+        {
+          "ar": "تلغي الدفعة اللاحقة جميع المتطلبات السابقة.",
+          "en": "A later increment must erase earlier requirements."
+        },
+        {
+          "ar": "تمنع مراجعة العميل دمج الوحدات في النظام.",
+          "en": "Customer reviews prevent modules from being integrated."
+        }
+      ],
+      "concept_id": "ch2_increment_breakage",
+      "explanation": {
+        "ar": "يذكر النص احتمال تعطل التوافق بين الدفعات، إذ قد تتطلب الدفعات اللاحقة تعديلات في السابقة. وهذا خطر تكامل واعتماد، لا قاعدة لمحو العمل السابق.",
+        "en": "Later increments may require modifications to earlier software. This creates an integration and dependency risk, not a rule to erase prior work."
       }
     }
   ],
@@ -269,7 +333,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T20:05:14Z",
+  "updated_at": "2026-11-05T11:50:42Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"
