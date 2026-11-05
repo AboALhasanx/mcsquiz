@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التصميم الموجه بالكائنات",
+    "en": "Object-Oriented Design"
+  },
+  "quiz_id": "Quiz_Ch05_T22_Object_Oriented_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما أساس التنظيم في التصميم الموجه بالكائنات؟",
+        "en": "What is the organizing basis of object-oriented design?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تصميم يقوم على كائنات متفاعلة وأصنافها",
+          "en": "Design based on interacting objects and their classes"
+        },
+        {
+          "ar": "تصميم يعتمد على تسلسل الإجراءات البرمجية وحده",
+          "en": "Design based only on a hierarchy of software procedures"
+        },
+        {
+          "ar": "تصميم يعرض تدفق البيانات بلا عناصر بنيوية",
+          "en": "Design based on data flows without structural entities"
+        },
+        {
+          "ar": "تصميم يصف عقد النشر من دون سلوك برمجي",
+          "en": "Design based on deployment nodes without software behavior"
+        }
+      ],
+      "concept_id": "ch5_ood_definition",
+      "explanation": {
+        "ar": "ينظم OOD تصميم البرمجيات حول كائنات وأصناف تتفاعل.",
+        "en": "OOD organizes software design around objects and classes that interact."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا تمثل الكائنات عادة في التصميم الموجه بالكائنات؟",
+        "en": "What do objects commonly represent in an object-oriented design?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أجهزة شبكية بلا حالة أو سلوك برمجي",
+          "en": "Network devices without software state or behavior"
+        },
+        {
+          "ar": "كيانات لها هوية وحالة وسلوك برمجي مرتبط",
+          "en": "Entities with identity, state, and associated behavior"
+        },
+        {
+          "ar": "وظائف بلا هوية أو بيانات مرتبطة بها",
+          "en": "Functions with no identity or associated data"
+        },
+        {
+          "ar": "ملفات مصدرية تحوي تعليقات لا كيانات تشغيلية",
+          "en": "Source files containing comments but no runtime entities"
+        }
+      ],
+      "concept_id": "ch5_ood_domain_model",
+      "explanation": {
+        "ar": "الكائن كيان له هوية وحالة وسلوك خاص به.",
+        "en": "An object is an entity with its own identity, state, and behavior."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مقارنة بين OOD وFOD صحيحة؟",
+        "en": "Which contrast between OOD and FOD is accurate?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لا يمثل أي منهج سلوك النظام ومسؤولياته",
+          "en": "Neither models software responsibilities or behavior"
+        },
+        {
+          "ar": "يركز OOD على الإجراءات وFOD على الكائنات",
+          "en": "OOD centers on procedures; FOD centers on objects"
+        },
+        {
+          "ar": "يركز OOD على الكائنات وFOD على الوظائف",
+          "en": "OOD centers on objects; FOD centers on functions"
+        },
+        {
+          "ar": "يركز النهجان على تخزين البيانات في الجداول فقط",
+          "en": "Both approaches focus only on stored data tables"
+        }
+      ],
+      "concept_id": "ch5_ood_vs_fod",
+      "explanation": {
+        "ar": "يختلف محور النمذجة الأساس؛ فـOOD للكائنات وFOD للوظائف.",
+        "en": "The primary modeling focus differs: objects for OOD and functions for FOD."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يصف الصنف؟",
+        "en": "What does a class describe?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "رسالة تشغيلية واحدة تنتقل بين كائنات النظام",
+          "en": "One specific runtime message passed between two objects"
+        },
+        {
+          "ar": "آلة نشر وعنوانها الشبكي ضمن المعمارية",
+          "en": "A deployment machine and its network address"
+        },
+        {
+          "ar": "تسلسل منظم لإجراءات غير مترابطة في التطبيق",
+          "en": "An ordered sequence of procedures with unrelated purposes"
+        },
+        {
+          "ar": "بنية وسلوك مشتركان بين كائنات الصنف الواحد",
+          "en": "Common structure and behavior shared by related objects"
+        }
+      ],
+      "concept_id": "ch5_ood_class",
+      "explanation": {
+        "ar": "الصنف مخطط يصف الخصائص المشتركة لكائناته.",
+        "en": "A class is a blueprint that describes common characteristics of its objects."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ماذا يحقق التغليف في التصميم الموجه بالكائنات؟",
+        "en": "What does encapsulation do in object-oriented design?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يخفي الحالة الداخلية خلف واجهة عامة مضبوطة",
+          "en": "Hides internal state behind a controlled public interface"
+        },
+        {
+          "ar": "يكشف الحقول الداخلية كلها للتعديل الخارجي المباشر",
+          "en": "Exposes every internal field for direct external modification"
+        },
+        {
+          "ar": "يجمع إجراءات غير مترابطة داخل ملف شيفرة مشترك",
+          "en": "Combines unrelated procedures within a shared source file"
+        },
+        {
+          "ar": "يلغي التواصل بين الكائنات البرمجية المتفاعلة كلها",
+          "en": "Removes all communication among interacting software objects"
+        }
+      ],
+      "concept_id": "ch5_ood_encapsulation",
+      "explanation": {
+        "ar": "يحمي التغليف الحالة الداخلية بتنظيم الوصول عبر واجهة.",
+        "en": "Encapsulation protects internal state by controlling access through an interface."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "على ماذا يركز التجريد عند نمذجة كائن؟",
+        "en": "What does abstraction emphasize when modeling an object?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "موقع الكائن المادي ضمن منظور النشر فقط",
+          "en": "Only the object's physical location in a deployment view"
+        },
+        {
+          "ar": "الخصائص المهمة مع حذف التفاصيل غير اللازمة",
+          "en": "Relevant properties while leaving out needless detail"
+        },
+        {
+          "ar": "كل العمليات الممكنة مهما كان غرض النموذج",
+          "en": "All possible operations regardless of the model's purpose"
+        },
+        {
+          "ar": "تفاصيل التنفيذ كلها قبل تحديد المتطلبات",
+          "en": "Every implementation detail before requirements are known"
+        }
+      ],
+      "concept_id": "ch5_ood_abstraction_focus",
+      "explanation": {
+        "ar": "يحتفظ التجريد بالخصائص المرتبطة بغرض النموذج.",
+        "en": "Abstraction retains properties relevant to the model's purpose."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "تغير تمثيل الصنف من دون تأثر مستدعيه؛ ما الذي يفسر ذلك؟",
+        "en": "A change to a class representation leaves its callers unchanged; what explains this?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تمرير رسائل بلا عقد للعمليات",
+          "en": "Message passing without an operation contract"
+        },
+        {
+          "ar": "تعدد أشكال يلغي حدود الأصناف",
+          "en": "Polymorphism that removes all class boundaries"
+        },
+        {
+          "ar": "التغليف خلف واجهة عامة مستقرة",
+          "en": "Encapsulation behind a stable public interface"
+        },
+        {
+          "ar": "وراثة تكشف كل الحقول الداخلية",
+          "en": "Inheritance that exposes every internal field"
+        }
+      ],
+      "concept_id": "ch5_ood_change_locality",
+      "explanation": {
+        "ar": "عندما يعتمد المستدعون على واجهة مستقرة، يمكن حصر تغييرات التمثيل الداخلي.",
+        "en": "When callers depend on a stable interface, internal representation changes can remain local."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي ادعاء عن التصميم الكائني مضبوط بحدوده؟",
+        "en": "Which claim about object-oriented design is appropriately limited?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يضمن عيوباً أقل في جميع الأنظمة البرمجية",
+          "en": "It guarantees fewer defects in every software system"
+        },
+        {
+          "ar": "يلغي الحاجة إلى واجهات مستقرة واختبارات برمجية",
+          "en": "It removes the need for stable interfaces and testing"
+        },
+        {
+          "ar": "يخفض الكلفة دائماً مقارنة بالتصميم الوظيفي",
+          "en": "It always costs less than function-oriented design"
+        },
+        {
+          "ar": "قد يلائم تمثيل كيانات المجال طبيعة بعض الأنظمة",
+          "en": "It can model entities when the domain suits objects"
+        }
+      ],
+      "concept_id": "ch5_ood_not_guarantee",
+      "explanation": {
+        "ar": "يوفر OOD أسلوب نمذجة مفيداً لا ضماناً عاماً بالتفوق.",
+        "en": "OOD offers a useful modeling approach, not a universal guarantee of superiority."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.28] — 2026-11-05
+
+### Changed
+- content: replace ASE Chapter 5 banks and refresh offline cache
+
+
 ## [1.11.27] — 2026-11-05
 
 ### Changed

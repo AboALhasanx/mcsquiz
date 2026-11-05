@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التصميم التنازلي",
+    "en": "Top-Down Design"
+  },
+  "quiz_id": "Quiz_Ch05_T11_Top_Down_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "من أين يبدأ التصميم التنازلي؟",
+        "en": "Where does top-down design begin?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بالبدء من غرض النظام وبنيته العامة",
+          "en": "With the system's overall goals and architecture"
+        },
+        {
+          "ar": "بأصغر إجراء خدمي قابل لإعادة الاستخدام",
+          "en": "With the smallest reusable utility in the system"
+        },
+        {
+          "ar": "بمخطط أجهزة النشر ومواقعه النهائي للنظام",
+          "en": "With a final diagram of deployment hardware and sites"
+        },
+        {
+          "ar": "بتنفيذ تفصيلي لمخازن بيانات النظام",
+          "en": "With detailed implementation of the system's data stores"
+        }
+      ],
+      "concept_id": "ch5_topdown_definition",
+      "explanation": {
+        "ar": "يبدأ التصميم التنازلي من أعلى مستوى في النظام.",
+        "en": "Top-down design starts at the highest system level."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف تطور الاستراتيجية التنازلية الأجزاء الأدنى؟",
+        "en": "How does a top-down strategy develop lower-level parts?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بترتيب ملفات التنفيذ بحسب الحجم",
+          "en": "By sorting implementation files by size"
+        },
+        {
+          "ar": "بتنقيح الوظائف الكبيرة إلى مهام أصغر",
+          "en": "By refining larger functions into smaller tasks"
+        },
+        {
+          "ar": "بجمع الإجراءات الخدمية نحو جذر النظام",
+          "en": "By combining utility routines into a system root"
+        },
+        {
+          "ar": "باستبدال المتطلبات بمخططات الأصناف",
+          "en": "By replacing requirements with class diagrams"
+        }
+      ],
+      "concept_id": "ch5_topdown_direction",
+      "explanation": {
+        "ar": "يحول التفكيك التدريجي السلوك الأعلى إلى أجزاء أكثر تفصيلاً.",
+        "en": "Stepwise decomposition turns higher-level behavior into progressively detailed parts."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما فائدة البدء بأهداف النظام؟",
+        "en": "What advantage comes from starting with system goals?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لا يعود التصميم معتمداً على المتطلبات المحددة",
+          "en": "The design no longer depends on stated requirements"
+        },
+        {
+          "ar": "تتوفر كل مكتبة منخفضة المستوى فور بدء التصميم",
+          "en": "Every low-level library is available immediately"
+        },
+        {
+          "ar": "يبقى الغرض العام واضحاً أثناء تفكيك النظام",
+          "en": "The overall purpose stays visible during decomposition"
+        },
+        {
+          "ar": "تصبح بدائل الاختبار غير لازمة للفحص المبكر",
+          "en": "Test stubs are no longer needed during early checks"
+        }
+      ],
+      "concept_id": "ch5_topdown_goal_focus",
+      "explanation": {
+        "ar": "يحافظ البدء بهدف النظام على وضوح الغرض العام.",
+        "en": "Starting from the system goal keeps the global purpose in view."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الذي قد يحل محل جزء أدنى غير مكتمل أثناء الاختبار المبكر؟",
+        "en": "What can replace an unfinished lower-level part during early testing?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "برنامج اختبار يستدعي أداة موجودة",
+          "en": "A test driver that calls an existing utility"
+        },
+        {
+          "ar": "متغير عام مشترك بين كل المستدعين",
+          "en": "A shared global variable for all callers"
+        },
+        {
+          "ar": "منظور قاعدة بيانات يسرد الشيفرة الناقصة",
+          "en": "A database view that lists the missing code"
+        },
+        {
+          "ar": "بديل اختباري يحاكي الجزء غير المكتمل",
+          "en": "A test stub that simulates the missing part"
+        }
+      ],
+      "concept_id": "ch5_topdown_stubs",
+      "explanation": {
+        "ar": "يوفر البديل الاختباري سلوكاً مؤقتاً عندما لا يكون المكون التابع قد نُفذ بعد.",
+        "en": "A stub supplies temporary behavior when a subordinate component is not yet implemented."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "اكتمل السلوك الأعلى قبل إجراءاته التابعة؛ ما الذي يدعم الاختبار؟",
+        "en": "Higher-level behavior is ready before its subordinate routines; what supports testing?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تحاكي بدائل الاختبار الإجراءات التابعة غير المكتملة",
+          "en": "Stubs stand in for subordinate routines that are unfinished"
+        },
+        {
+          "ar": "تستدعي برامج الاختبار الوظائف العليا المفقودة",
+          "en": "Drivers invoke every missing higher-level caller instead"
+        },
+        {
+          "ar": "تحل البيانات المشتركة محل واجهات المكونات البرمجية",
+          "en": "Shared data replaces the interfaces between components"
+        },
+        {
+          "ar": "تمثل عقد النشر المادية النظام بأكمله مؤقتاً",
+          "en": "Deployment nodes stand in for the complete system"
+        }
+      ],
+      "concept_id": "ch5_topdown_testing",
+      "explanation": {
+        "ar": "تتيح البدائل اختبار المكون الأعلى قبل جاهزية اعتمادياته.",
+        "en": "Stubs let a higher-level component be exercised before its dependencies are ready."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الذي قد يؤجله النهج التنازلي؟",
+        "en": "What may a top-down approach postpone?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تقسيم وظائف النظام إلى أعمال أصغر متتابعة",
+          "en": "Dividing behavior into progressively smaller functions"
+        },
+        {
+          "ar": "قد يتأخر دمج مكتبات المستوى الأدنى والأجهزة",
+          "en": "Integrating low-level assets may occur at a later stage"
+        },
+        {
+          "ar": "توضيح قرارات المعمارية لفرق التنفيذ البرمجية",
+          "en": "Communicating the architecture to software implementers"
+        },
+        {
+          "ar": "تحديد الأهداف العامة وواجهات النظام",
+          "en": "Defining the system-wide goals and public interfaces"
+        }
+      ],
+      "concept_id": "ch5_topdown_limit",
+      "explanation": {
+        "ar": "قد يتأخر دمج الأصول الدنيا لأن الاستراتيجية تبدأ من مستوى أعلى.",
+        "en": "Lower-level assets may be integrated later because the strategy starts above them."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي تقنية ترتبط بالتفكيك التنازلي؟",
+        "en": "Which technique is closely associated with top-down decomposition?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "توجيه المعاملات بين عمليات بديلة متعددة",
+          "en": "Transaction dispatch across alternative operations"
+        },
+        {
+          "ar": "اقتران عام يربط وحدات برمجية منفصلة",
+          "en": "Shared global coupling between separate modules"
+        },
+        {
+          "ar": "تنقيح تدريجي يحول السلوك العام إلى تفاصيل",
+          "en": "Stepwise refinement from general behavior to detail"
+        },
+        {
+          "ar": "تماسك عشوائي يجمع عبارات غير مترابطة",
+          "en": "Coincidental cohesion among unrelated statements"
+        }
+      ],
+      "concept_id": "ch5_topdown_stepwise",
+      "explanation": {
+        "ar": "يوسع التنقيح التدريجي الوظائف المجردة إلى خطوات أكثر تفصيلاً بصورة متكررة.",
+        "en": "Stepwise refinement repeatedly expands abstract functions into more detailed steps."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي عبارة تقارن التصميم التنازلي بالتصميم التصاعدي؟",
+        "en": "Which statement contrasts top-down with bottom-up design?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يجمع التنازلي الأدوات ويفكك التصاعدي الأهداف",
+          "en": "Top-down assembles utilities; bottom-up divides system goals"
+        },
+        {
+          "ar": "يتجنب التنازلي المعمارية ويتجنب التصاعدي المكونات",
+          "en": "Top-down omits architecture; bottom-up omits components"
+        },
+        {
+          "ar": "يبدأ النهجان ببرمجة النظام قبل وضع تصميمه",
+          "en": "Both approaches begin by writing the source code"
+        },
+        {
+          "ar": "يفكك التنازلي الأهداف ويجمع التصاعدي الأجزاء",
+          "en": "Top-down refines goals; bottom-up assembles basic parts"
+        }
+      ],
+      "concept_id": "ch5_topdown_vs_bottomup",
+      "explanation": {
+        "ar": "ينتقل التنازلي من الكل إلى التفاصيل، والتصاعدي من الأجزاء إلى الكل.",
+        "en": "Top-down proceeds from the whole toward detail; bottom-up proceeds from parts toward the whole."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:19:45Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

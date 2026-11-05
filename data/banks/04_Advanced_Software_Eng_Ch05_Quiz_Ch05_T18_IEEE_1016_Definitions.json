@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "تعريفات IEEE Std 1016",
+    "en": "IEEE Std 1016 Definitions"
+  },
+  "quiz_id": "Quiz_Ch05_T18_IEEE_1016_Definitions",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما كيان التصميم في SDD؟",
+        "en": "What is a design entity in an SDD?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عنصر بنيوي محدد ضمن تصميم البرمجيات",
+          "en": "A distinct structural element in the software design"
+        },
+        {
+          "ar": "قصة مستخدم تحدد سلوكاً لمراجعته مع العميل",
+          "en": "A user story defining behavior for customer review"
+        },
+        {
+          "ar": "خادم مادي يستضيف خدمة تطبيق بعد نشرها",
+          "en": "A physical server hosting a deployed application service"
+        },
+        {
+          "ar": "طلب تغيير يقدم بعد إصدار المنتج البرمجي",
+          "en": "A change request submitted after the software release"
+        }
+      ],
+      "concept_id": "ch5_design_entity_definition",
+      "explanation": {
+        "ar": "كيان التصميم جزء بنيوي مميز تمثله وثيقة وصف التصميم.",
+        "en": "A design entity is a discrete structural part represented in the design description."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يجمع منظور التصميم؟",
+        "en": "What does a design view collect?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ملفات الشيفرة مرتبة حسب تسلسل نشر النظام",
+          "en": "Source files arranged by their deployment sequence"
+        },
+        {
+          "ar": "سمات تمثل جانباً محدداً من تصميم البرمجيات",
+          "en": "Attributes addressing a particular design concern"
+        },
+        {
+          "ar": "مستخدمو المشروع الذين يراجعون خطة تسليم النظام",
+          "en": "Project users reviewing the software delivery plan"
+        },
+        {
+          "ar": "بيانات خارجية تدخل إلى النظام البرمجي",
+          "en": "External data entering the software system"
+        }
+      ],
+      "concept_id": "ch5_design_view_definition",
+      "explanation": {
+        "ar": "يعرض منظور التصميم مجموعة فرعية من السمات المرتبطة بجانب محدد.",
+        "en": "A design view presents a subset of design attributes relevant to a concern."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا تمثل SDD؟",
+        "en": "What does SDD represent?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "خطة مشروع توضح الموارد والكلفة ومواعيد التسليم",
+          "en": "A project plan listing staff, cost, and delivery dates"
+        },
+        {
+          "ar": "برنامج تنفيذي يقدم إلى مستخدمي النظام",
+          "en": "An executable program delivered to software users"
+        },
+        {
+          "ar": "وصف فني لمعلومات تصميم النظام البرمجي",
+          "en": "A technical description of software design information"
+        },
+        {
+          "ar": "استطلاع مستخدم يقيس أداء النظام البرمجي",
+          "en": "A user survey that measures system performance"
+        }
+      ],
+      "concept_id": "ch5_sdd_definition",
+      "explanation": {
+        "ar": "توثق SDD معلومات التصميم الفني والقرارات المعمارية.",
+        "en": "An SDD documents technical design information and architectural decisions."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "بماذا يختلف كيان التصميم عن منظور التصميم؟",
+        "en": "How does a design entity differ from a design view?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الكيان فريق المشروع والمنظور جدول مواعيد التسليم",
+          "en": "An entity is a project team; a view is its schedule"
+        },
+        {
+          "ar": "الكيان مرحلة اختبار والمنظور حزمة إصدار البرنامج",
+          "en": "An entity is a test stage; a view is a release package"
+        },
+        {
+          "ar": "الكيان دور مستخدم والمنظور خطة المشروع العامة",
+          "en": "An entity is a user role; a view is a project plan"
+        },
+        {
+          "ar": "الكيان يوصف، والمنظور ينظم سماته بحسب جانب التصميم",
+          "en": "Entities are described; views group attributes by concern"
+        }
+      ],
+      "concept_id": "ch5_entity_vs_view",
+      "explanation": {
+        "ar": "الكيان عنصر بنيوي، والمنظور ينظم معلومات عن جوانب التصميم.",
+        "en": "An entity is a structural element; a view organizes information about design concerns."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي عنصر يمكن اعتباره كيان تصميم؟",
+        "en": "Which item can be treated as a design entity?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "نظام فرعي واضح البنية وله مسؤوليات محددة",
+          "en": "A subsystem with clear structural responsibilities"
+        },
+        {
+          "ar": "دعوة اجتماع أرسلت إلى أعضاء فريق المشروع",
+          "en": "A meeting invitation sent to the project team"
+        },
+        {
+          "ar": "مجموع ميزانية مشروع بلا عنصر برمجي محدد",
+          "en": "A project budget total without a software element"
+        },
+        {
+          "ar": "شكوى مستخدم بلا استجابة تصميمية مرتبطة بها",
+          "en": "A user complaint without an attached design response"
+        }
+      ],
+      "concept_id": "ch5_entity_examples",
+      "explanation": {
+        "ar": "يمكن أن تكون الأنظمة الفرعية وأجزاء البرمجيات البنيوية كيانات تصميم.",
+        "en": "Subsystems and other structural software parts can be design entities."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "جمع منظور سمات الواجهة لتفتيش مركز؛ فهذا المنظور...",
+        "en": "A view groups interface attributes for focused inspection; it is..."
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قرار قبول على مستوى المستخدم",
+          "en": "A user-level acceptance decision"
+        },
+        {
+          "ar": "معلومات تصميم مخصصة لجانب محدد",
+          "en": "Concern-specific design information"
+        },
+        {
+          "ar": "نظاماً فرعياً تنفيذياً مستقلاً",
+          "en": "A separate executable subsystem"
+        },
+        {
+          "ar": "تقديراً للموارد على مستوى المشروع",
+          "en": "A project-level staffing estimate"
+        }
+      ],
+      "concept_id": "ch5_view_concern",
+      "explanation": {
+        "ar": "ينظم منظور التصميم مجموعة معلومات مناسبة لجانب معين.",
+        "en": "A design view organizes a relevant subset of information for a particular concern."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "كيف يفيد قسم التعريفات القياسي فريق التصميم؟",
+        "en": "Why does a standard definitions section help a design team?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يختار لغة تنفيذ المشروع",
+          "en": "It selects the project's implementation language"
+        },
+        {
+          "ar": "يستبدل مراجعة تفاصيل الواجهات",
+          "en": "It replaces review of interface details"
+        },
+        {
+          "ar": "يوحد معاني مصطلحات التصميم",
+          "en": "It gives shared meanings to design terms"
+        },
+        {
+          "ar": "يحدد موعد إصدار لكل مطور",
+          "en": "It assigns each developer a release deadline"
+        }
+      ],
+      "concept_id": "ch5_definitions_purpose",
+      "explanation": {
+        "ar": "تقلل المصطلحات المشتركة الالتباس عند مناقشة كيانات التصميم ومناظره.",
+        "en": "Shared terminology reduces ambiguity when people discuss design entities and views."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي عبارة تصف منظور التصميم بأفضل صورة؟",
+        "en": "Which statement best describes a design view?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "رسم إلزامي واحد يضم أجزاء النظام البرمجي كلها",
+          "en": "One mandatory drawing containing the entire software system"
+        },
+        {
+          "ar": "قائمة شاملة بمخاطر المشروع وإجراءات ضبطها",
+          "en": "A complete list of project risks and their controls"
+        },
+        {
+          "ar": "نسخة مترجمة من مكون برمجي جاهز للتشغيل",
+          "en": "A compiled version of one software component"
+        },
+        {
+          "ar": "مجموعة منظمة من معلومات التصميم لجانب معين",
+          "en": "An organized subset of design information for one concern"
+        }
+      ],
+      "concept_id": "ch5_view_not_diagram",
+      "explanation": {
+        "ar": "المنظور تنظيم لمعلومات التصميم بحسب جانب معين وليس مخططاً واحداً إلزامياً.",
+        "en": "A view is a concern-oriented organization of design information, not one required diagram."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "نطاق IEEE Std 1016",
+    "en": "Scope of IEEE Std 1016"
+  },
+  "quiz_id": "Quiz_Ch05_T17_IEEE_1016_Scope",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يحدد نطاق IEEE Std 1016؟",
+        "en": "What does the scope of IEEE Std 1016 establish?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "انطباق الممارسة على أوصاف تصميم البرمجيات",
+          "en": "Its applicability to software design descriptions"
+        },
+        {
+          "ar": "اللغة البرمجية المحددة والمستخدمة في كل مشروع",
+          "en": "The programming language required for every project"
+        },
+        {
+          "ar": "إلزام جميع المشاريع بإجراءات تصميم تنازلي",
+          "en": "A mandatory top-down design procedure for systems"
+        },
+        {
+          "ar": "اعتماد ترميز واحد لواجهات جميع الأنظمة",
+          "en": "One interface notation required across all systems"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_applicability",
+      "explanation": {
+        "ar": "يحدد النطاق مواضع انطباق الممارسة الموصى بها لوثائق SDD.",
+        "en": "The scope says where the recommended practice for SDDs applies."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الجوانب التي يعالجها نطاق المعيار في SDD؟",
+        "en": "What aspects of an SDD does the standard scope address?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "قواعد تنسيق الشيفرة وإعداد المترجم البرمجي",
+          "en": "Source-code style rules and compiler configuration"
+        },
+        {
+          "ar": "المعلومات المطلوبة في SDD وطريقة تنظيمها",
+          "en": "Required information content and its organization"
+        },
+        {
+          "ar": "خطط تدريب المستخدم وجدولة إصدار البرمجيات",
+          "en": "User training plans and software release scheduling"
+        },
+        {
+          "ar": "كلف المشروع وتقديرات العمل وتوزيع الموظفين",
+          "en": "Project costs, work estimates, and staff assignments"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_content",
+      "explanation": {
+        "ar": "يتعلق النطاق بمحتوى SDD المعلوماتي وتنظيمه.",
+        "en": "The scope concerns SDD information content and organization."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "هل يفرض نطاق المعيار التصميم الموجه بالوظائف؟",
+        "en": "Does the standard scope require function-oriented design?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "لا، فهو يخص تنسيق الشيفرة فقط",
+          "en": "No, it addresses only source-code layout"
+        },
+        {
+          "ar": "نعم، يستبعد التصميم الموجه بالكائنات",
+          "en": "Yes, it excludes object-oriented design"
+        },
+        {
+          "ar": "لا، فهو لا يفرض منهجية محددة للتصميم",
+          "en": "No, it does not mandate a design methodology"
+        },
+        {
+          "ar": "نعم، يفرض ترميزاً وظيفياً واحداً",
+          "en": "Yes, it requires one functional notation"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_methodology",
+      "explanation": {
+        "ar": "تنطبق الممارسة الموصى بها على محتوى SDD من دون فرض منهجية تصميم واحدة.",
+        "en": "The recommended practice applies to SDD content without prescribing one design methodology."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "هل يمكن لنظام كائني أن تكون له SDD ضمن هذا النطاق؟",
+        "en": "Can an object-oriented system have an SDD under this scope?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لا، فالنطاق يقتصر على الأنظمة الوظيفية",
+          "en": "No, it covers function-oriented systems only"
+        },
+        {
+          "ar": "لا، فالنطاق يستبعد الأنظمة التي تضم أصنافاً",
+          "en": "No, it excludes systems that contain classes"
+        },
+        {
+          "ar": "نعم، بعد أن تكتمل برمجة النظام بالكامل",
+          "en": "Yes, after the system's source code is complete"
+        },
+        {
+          "ar": "نعم، فالنطاق مستقل عن منهجية التصميم",
+          "en": "Yes, the scope is independent of design method"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_ood",
+      "explanation": {
+        "ar": "لا يقصر المعيار استخدام SDD على منهجية تصميم بعينها.",
+        "en": "The standard does not limit SDD use to a particular design methodology."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مجال برمجي مستثنى من النطاق المذكور؟",
+        "en": "Which software domain is excluded from the stated scope?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "لا يستثني أياً من مجالات التطبيق المذكورة",
+          "en": "None of the listed application domains is excluded"
+        },
+        {
+          "ar": "البرمجيات التجارية وحدها مستثناة من النطاق",
+          "en": "Commercial software is the only excluded domain"
+        },
+        {
+          "ar": "البرمجيات المضمنة وحدها مستثناة من النطاق",
+          "en": "Embedded software is the only excluded domain"
+        },
+        {
+          "ar": "البرمجيات العلمية وحدها مستثناة من النطاق",
+          "en": "Scientific software is the only excluded domain"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_domains",
+      "explanation": {
+        "ar": "يشمل النطاق البرمجيات التجارية والعلمية والمضمنة والعسكرية.",
+        "en": "The scope covers commercial, scientific, embedded, and military software."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي ادعاء يتجاوز نطاق ممارسة SDD؟",
+        "en": "Which claim goes beyond the scope of the SDD practice?"
+      },
+      "bloom": "Evaluate",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يحدد معلومات SDD وتنظيمها داخل وصف التصميم",
+          "en": "It defines SDD information and its arrangement"
+        },
+        {
+          "ar": "ينطبق على مجالات متعددة من تطبيقات البرمجيات",
+          "en": "It applies across varied software application domains"
+        },
+        {
+          "ar": "يفرض دورة تطوير واحدة ملزمة على جميع المشاريع",
+          "en": "It requires one mandatory development lifecycle"
+        },
+        {
+          "ar": "لا يشترط منهجية تصميم معينة خاصة بالنظام",
+          "en": "It is independent of a specific design methodology"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_not_lifecycle",
+      "explanation": {
+        "ar": "يحدد النطاق إرشادات الوصف ولا يفرض دورة تطوير واحدة.",
+        "en": "The scope defines description guidance, not one required software lifecycle."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي موضوع يقع خارج النطاق المذكور للمعيار؟",
+        "en": "Which subject is outside the standard's stated scope?"
+      },
+      "bloom": "Evaluate",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "مجالات تطبيق أوصاف التصميم على الأنظمة",
+          "en": "Applicability of design descriptions across systems"
+        },
+        {
+          "ar": "تنظيم المعلومات داخل وصف تصميم البرمجيات",
+          "en": "Organization of information within the design description"
+        },
+        {
+          "ar": "إعدادات ضبط المترجم أثناء تنفيذ البرمجيات",
+          "en": "Compiler settings used when implementing the software"
+        },
+        {
+          "ar": "المعلومات التي يتضمنها وصف تصميم البرمجيات",
+          "en": "Information included in the software design description"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_not_language",
+      "explanation": {
+        "ar": "تتعلق إعدادات المترجم بأدوات التنفيذ لا بنطاق SDD.",
+        "en": "Compiler settings concern implementation tooling rather than SDD scope."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الذي يستطيع المشروع اختياره مع الالتزام بنطاق SDD؟",
+        "en": "What may a project choose while still following the SDD scope?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "ما إذا كان سيصف معلومات التصميم أصلاً",
+          "en": "Whether to describe any design information at all"
+        },
+        {
+          "ar": "ما إذا كان سينظم المحتوى المطلوب في SDD",
+          "en": "Whether to organize required content in the SDD"
+        },
+        {
+          "ar": "ما إذا كان SDD وصفاً لتصميم البرمجيات",
+          "en": "Whether an SDD is a description of software design"
+        },
+        {
+          "ar": "منهجية التصميم وأسلوب النمذجة المتبع",
+          "en": "Its design methodology and modeling approach"
+        }
+      ],
+      "concept_id": "ch5_sdd_scope_use",
+      "explanation": {
+        "ar": "يترك المعيار منهجية التصميم مفتوحة مع توجيه طريقة الوصف.",
+        "en": "The standard leaves the design method open while guiding the description."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:19:45Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

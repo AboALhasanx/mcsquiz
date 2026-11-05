@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "الغرض من وصف التصميم البرمجي",
+    "en": "Purpose of a Software Design Description"
+  },
+  "quiz_id": "Quiz_Ch05_T19_Purpose_Of_SDD",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما الغرض الرئيس من SDD؟",
+        "en": "What is the primary purpose of an SDD?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "توجيه التنفيذ بوصف فني معتمد لقرارات تصميم البرمجيات",
+          "en": "Guide implementation with an authoritative design description"
+        },
+        {
+          "ar": "استبدال المتطلبات المحددة بشيفرة التطبيق القابلة للتشغيل",
+          "en": "Replace stated requirements with executable application code"
+        },
+        {
+          "ar": "تسجيل العيوب التي تظهر بعد إصدار البرمجيات فقط",
+          "en": "Record only defects discovered after software release"
+        },
+        {
+          "ar": "اختيار نموذج التسعير التجاري الذي يعتمده العميل",
+          "en": "Select the commercial pricing model used by the customer"
+        }
+      ],
+      "concept_id": "ch5_sdd_purpose",
+      "explanation": {
+        "ar": "توفر SDD لفرق التنفيذ مرجعاً فنياً معتمداً للتصميم.",
+        "en": "An SDD gives implementation teams an authoritative technical design reference."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "اختلف المنفذون حول واجهة؛ ماذا ينبغي أن توفر SDD؟",
+        "en": "Implementers disagree about an interface; what should the SDD provide?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "خطة تسويق أعدت بعد إصدار المنتج للمستخدمين",
+          "en": "A marketing plan prepared after the product release"
+        },
+        {
+          "ar": "قرار الواجهة المسجل الذي يتبعه فريق التنفيذ",
+          "en": "The recorded interface decision builders should follow"
+        },
+        {
+          "ar": "ميزانية نشر لا ترتبط بقرار التصميم البرمجي",
+          "en": "An unrelated budget for deploying the software system"
+        },
+        {
+          "ar": "متطلب مستخدم بديل لم يخضع لمراجعة رسمية",
+          "en": "A replacement user requirement that was not reviewed"
+        }
+      ],
+      "concept_id": "ch5_sdd_implementation",
+      "explanation": {
+        "ar": "تسجل SDD قرارات التصميم التي توجه التنفيذ المتسق.",
+        "en": "The SDD records design decisions that guide consistent implementation."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "كيف تدعم SDD التحقق بالمقارنة مع SRS؟",
+        "en": "How can an SDD support verification against the SRS?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يحول نتائج الاختبار إلى قصص مستخدم جديدة للمشروع",
+          "en": "It converts test outcomes into new user stories for the project"
+        },
+        {
+          "ar": "يلغي الحاجة إلى الاحتفاظ بمتطلبات النظام المكتوبة",
+          "en": "It removes the need to retain written system requirements"
+        },
+        {
+          "ar": "يوفر أساساً لمقارنة التصميم بمتطلبات النظام",
+          "en": "It provides a baseline to compare the design with requirements"
+        },
+        {
+          "ar": "يقيس سرعة التشغيل بعد اكتمال التنفيذ فقط",
+          "en": "It measures only runtime speed after implementation is complete"
+        }
+      ],
+      "concept_id": "ch5_sdd_verification",
+      "explanation": {
+        "ar": "يمكن مقارنة SDD مع SRS للتحقق من معالجة التصميم للسلوك المطلوب.",
+        "en": "The SDD can be checked against the SRS to see whether the design addresses required behavior."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لماذا تبقى SDD مفيدة بعد التنفيذ الأولي؟",
+        "en": "Why is an SDD useful after initial implementation?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يمنع كل تغيير محتمل في المتطلبات مستقبلاً",
+          "en": "It prevents every possible requirement change in the future"
+        },
+        {
+          "ar": "يستبدل اختبارات البرمجيات بعد التسليم الأولي كلها",
+          "en": "It replaces all software tests performed after initial delivery"
+        },
+        {
+          "ar": "يحتوي النسخة الوحيدة المعتمدة من ملفات البرنامج",
+          "en": "It contains the only valid copy of the program source code"
+        },
+        {
+          "ar": "يحفظ معلومات التصميم الفني لأعمال الصيانة اللاحقة",
+          "en": "It preserves technical design information for later maintenance"
+        }
+      ],
+      "concept_id": "ch5_sdd_maintenance",
+      "explanation": {
+        "ar": "تساعد معلومات التصميم عبر دورة الحياة القائمين بالصيانة على فهم القرارات القائمة.",
+        "en": "Lifecycle design information helps maintainers understand existing decisions."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي وثيقة يستطيع المراجعون فحصها لدراسة الخيارات المعمارية؟",
+        "en": "Which artifact can reviewers inspect to examine architectural choices?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "وصف التصميم البرمجي",
+          "en": "The Software Design Description"
+        },
+        {
+          "ar": "تقويم الحملة التسويقية",
+          "en": "The marketing campaign calendar"
+        },
+        {
+          "ar": "سجل اعتماد الرواتب",
+          "en": "The payroll approval register"
+        },
+        {
+          "ar": "تقرير حضور المستخدمين",
+          "en": "The user attendance report"
+        }
+      ],
+      "concept_id": "ch5_sdd_review",
+      "explanation": {
+        "ar": "تسجل SDD التصميم الذي يجري فحصه في المراجعة الفنية.",
+        "en": "The SDD records the design that is examined in a technical review."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يقلل وصف واضح للتصميم التخمين أثناء التنفيذ؟",
+        "en": "How does a clear SDD reduce implementation guesswork?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يخفي المسؤوليات المسندة إلى كل مكون برمجي",
+          "en": "It hides the responsibilities assigned to each software component"
+        },
+        {
+          "ar": "يوضح القرارات المعمارية وقرارات الواجهة للمنفذين",
+          "en": "It states the architectural and interface decisions for builders"
+        },
+        {
+          "ar": "يسرد شكاوى المستخدم من دون توثيق حلول تصميمية",
+          "en": "It lists user complaints without recording any design resolution"
+        },
+        {
+          "ar": "يتيح لكل فريق تنفيذ ابتكار واجهة غير متوافقة",
+          "en": "It lets each implementation team invent an incompatible interface"
+        }
+      ],
+      "concept_id": "ch5_sdd_guessing",
+      "explanation": {
+        "ar": "توفر القرارات الموثقة أساساً مشتركاً لخيارات التنفيذ لدى الفرق.",
+        "en": "Documented decisions give builders a shared basis for their implementation choices."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي ادعاء عن SDD صحيح؟",
+        "en": "Which claim about an SDD is accurate?"
+      },
+      "bloom": "Evaluate",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يلغي الحاجة إلى مراجعة التصميم البرمجي",
+          "en": "It removes the need to review the software design"
+        },
+        {
+          "ar": "يمثل المنتج النهائي العامل الذي يسلم للعملاء",
+          "en": "It is the final running product delivered to customers"
+        },
+        {
+          "ar": "يوجه التنفيذ لكنه ليس برنامجاً قابلاً للتشغيل",
+          "en": "It guides implementation but is not executable software"
+        },
+        {
+          "ar": "يضمن خلو النظام المنفذ من العيوب البرمجية",
+          "en": "It guarantees that the implemented system has no defects"
+        }
+      ],
+      "concept_id": "ch5_sdd_not_code",
+      "explanation": {
+        "ar": "تصف SDD التصميم، بينما يبقى التنفيذ والتحقق نشاطين منفصلين.",
+        "en": "An SDD describes the design; implementation and verification remain separate activities."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما دور SDD عبر دورة حياة البرمجيات؟",
+        "en": "What lifecycle role does an SDD play?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تحديد السعر التجاري الأولي الذي يدفعه مستخدمو النظام",
+          "en": "Setting the initial commercial price paid by software users"
+        },
+        {
+          "ar": "اعتماد طلبات الإجازة السنوية لمطوري البرمجيات",
+          "en": "Approving annual leave requests for software developers"
+        },
+        {
+          "ar": "اختيار سياسة التوظيف للمؤسسة والموارد الجديدة",
+          "en": "Selecting the organization's hiring policy for new staff"
+        },
+        {
+          "ar": "إيصال قرارات التصميم الفني إلى فرق المشروع اللاحقة",
+          "en": "Communicating technical design decisions to later project teams"
+        }
+      ],
+      "concept_id": "ch5_sdd_audience_purpose",
+      "explanation": {
+        "ar": "تنقل الوثيقة المعرفة الفنية بالتصميم عبر التنفيذ والصيانة.",
+        "en": "The document carries technical design knowledge across implementation and maintenance."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:19:45Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "خطوات تحليل وتصميم نظام موجه بالكائنات",
+    "en": "Steps to Analyze and Design an Object-Oriented System"
+  },
+  "quiz_id": "Quiz_Ch05_T24_OO_Analysis_And_Design_Steps",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما النشاط الرئيس الأول في تسلسل التحليل والتصميم الكائني؟",
+        "en": "What is the first major activity in the stated OO analysis and design sequence?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تحديد الجهات وإنشاء حالات استخدام تصف سلوك النظام",
+          "en": "Identify actors and define their use cases for system behavior"
+        },
+        {
+          "ar": "إعداد وثائق التصميم النهائية قبل تحليل الجهات",
+          "en": "Prepare final design documents before analyzing system actors"
+        },
+        {
+          "ar": "إنشاء مناظير المكونات والنشر في بداية التحليل",
+          "en": "Create component and deployment views at the start of analysis"
+        },
+        {
+          "ar": "إنشاء مخططات الكائنات والحالات قبل تعريف الاستخدامات",
+          "en": "Create object and state diagrams before defining use cases"
+        }
+      ],
+      "concept_id": "ch5_oo_process_first",
+      "explanation": {
+        "ar": "تبدأ العملية بتحديد الجهات وحالات الاستخدام ونمذجتها.",
+        "en": "The process begins by identifying actors and use cases and modeling them."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "متى ينشأ مخطط النشاط ضمن التسلسل المذكور؟",
+        "en": "When is an activity diagram created in the stated sequence?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بعد اعتماد وثائق التصميم النهائية حصراً",
+          "en": "Only after the final design documents are approved"
+        },
+        {
+          "ar": "عند حاجة التحليل إلى مخطط نشاط لحالة استخدام",
+          "en": "When analysis needs an activity view for a use case"
+        },
+        {
+          "ar": "لكل حالة استخدام في جميع الأنظمة بلا استثناء",
+          "en": "For every use case in every system without exception"
+        },
+        {
+          "ar": "قبل تحديد الجهات التي تتفاعل مع النظام",
+          "en": "Before any actors have been identified in the system"
+        }
+      ],
+      "concept_id": "ch5_oo_process_activity_optional",
+      "explanation": {
+        "ar": "مخطط النشاط خطوة مشروطة وليس متطلباً إلزامياً في كل حالة.",
+        "en": "The activity diagram is a conditional step, not an unconditional requirement."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ماذا يجهز لكل حالة استخدام أثناء نمذجة التفاعل؟",
+        "en": "What is prepared for each use case during interaction modeling?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "قوائم الشيفرة وتقارير الاختبار النهائية للبرمجيات",
+          "en": "Source-code listings and final software test reports"
+        },
+        {
+          "ar": "جداول بيانات وتسميات عقد النشر المادية",
+          "en": "Data tables and physical deployment labels for nodes"
+        },
+        {
+          "ar": "كائنات ومخططات توضح الرسائل لكل حالة استخدام",
+          "en": "Objects and diagrams showing messages for each use case"
+        },
+        {
+          "ar": "سجلات مخاطر وتقديرات كلفة للنظام بأكمله",
+          "en": "Risk records and cost estimates for the whole system"
+        }
+      ],
+      "concept_id": "ch5_oo_process_interaction",
+      "explanation": {
+        "ar": "تحدد نمذجة التفاعل الكائنات المشاركة وتصف الرسائل بينها.",
+        "en": "Interaction modeling identifies participating objects and describes their messages."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي مخطط يلتقط أصناف النظام وعلاقاتها البنيوية؟",
+        "en": "Which diagram captures the system's classes and their structural relations?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مخطط نشاط يوضح سير العمل والتحكم",
+          "en": "An activity diagram showing workflow and control"
+        },
+        {
+          "ar": "مخطط نشر يوزع البرمجيات على الأجهزة",
+          "en": "A deployment diagram mapping software to hardware"
+        },
+        {
+          "ar": "مخطط تدفق يوضح الخطوات الإجرائية وفروعها",
+          "en": "A flowchart showing procedural steps and branches"
+        },
+        {
+          "ar": "مخطط أصناف يوضح الأنواع والعلاقات بينها",
+          "en": "A class diagram showing types and their relations"
+        }
+      ],
+      "concept_id": "ch5_oo_process_class",
+      "explanation": {
+        "ar": "يصف مخطط الأصناف البنية الساكنة للأصناف وعلاقاتها.",
+        "en": "The class diagram describes the static class structure and relationships."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "متى تضاف مخططات الحالة والكائن؟",
+        "en": "When are state-chart and object diagrams included?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عند الحاجة إلى توضيح حالات الكائن ضمن التصميم",
+          "en": "If the design needs diagrams that clarify object states"
+        },
+        {
+          "ar": "قبل نموذج حالات الاستخدام في كل نظام برمجي",
+          "en": "Before the use-case model in every software system"
+        },
+        {
+          "ar": "بعد نشر التطبيق البرمجي إلى المستخدمين فقط",
+          "en": "Only after the application is deployed to its users"
+        },
+        {
+          "ar": "بدلاً من إعداد مخططات التفاعل الخاصة بالنظام",
+          "en": "Instead of preparing the system's interaction diagrams"
+        }
+      ],
+      "concept_id": "ch5_oo_process_state_optional",
+      "explanation": {
+        "ar": "تعد العملية مخططات الحالة والكائن مشروطة بالحاجة.",
+        "en": "The process marks state-chart and object diagrams as conditional."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي مخططات تصف مكونات التنفيذ والتوزيع المادي؟",
+        "en": "Which diagrams describe implementation components and physical allocation?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مناظير الأصناف والحالة التي توضح البنية والسلوك",
+          "en": "Class and state-chart views show structure and behavior"
+        },
+        {
+          "ar": "مناظير المكونات والنشر التي توضح بنية التنفيذ",
+          "en": "Component and deployment diagrams define build structure"
+        },
+        {
+          "ar": "مناظير التسلسل والتعاون التي تشرح تفاعل الكائنات",
+          "en": "Sequence and collaboration views describe object interaction"
+        },
+        {
+          "ar": "مناظير النشاط وحالات الاستخدام لأهداف الجهات وسير العمل",
+          "en": "Activity and use-case views show actor goals and workflows"
+        }
+      ],
+      "concept_id": "ch5_oo_process_components",
+      "explanation": {
+        "ar": "تُعد مناظير المكونات والنشر بعد نماذج البنية والتفاعل.",
+        "en": "Component and deployment views are prepared after the structural and interaction models."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي تسلسل يتبع تنظيم التحليل والتصميم ابتداءً من نمذجة التفاعل؟",
+        "en": "Which sequence follows the stated process from interaction modeling onward?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "النشاط فالمكونات وحالات الاستخدام ثم نمذجة الأصناف والتفاعل",
+          "en": "Activity, components, use cases, class modeling, interaction"
+        },
+        {
+          "ar": "الأصناف ثم النشر وحالات الاستخدام والنشاط ومخططات التفاعل",
+          "en": "Class, deployment, use cases, optional activity, interaction"
+        },
+        {
+          "ar": "التفاعل ثم الأصناف فالحالة والكائن عند الحاجة فالمكونات والنشر",
+          "en": "Interaction, class, optional state/object, components, deployment"
+        },
+        {
+          "ar": "النشر ثم التفاعل فالحالة وحالات الاستخدام ومخططات الأصناف",
+          "en": "Deployment, then interaction, state, use cases, and class diagrams"
+        }
+      ],
+      "concept_id": "ch5_oo_process_order",
+      "explanation": {
+        "ar": "ينتقل الترتيب من التفاعلات إلى الأصناف فالمخططات المشروطة ثم المكونات والنشر.",
+        "en": "The stated sequence moves from interactions to classes, optional diagrams, then components and deployment."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما النشاط الختامي الذي يلي مخططات النمذجة؟",
+        "en": "What final activity follows the modeling diagrams?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "استبدال متطلبات النظام ببرنامج قابل للتنفيذ",
+          "en": "Replace all system requirements with executable source code"
+        },
+        {
+          "ar": "إعادة تحديد الجهات بعد نشر النظام البرمجي للمستخدمين",
+          "en": "Repeat actor identification after the product is deployed"
+        },
+        {
+          "ar": "نشر واجهة المستخدم من دون إجراء مراجعة تصميمية",
+          "en": "Publish the user interface without a design review"
+        },
+        {
+          "ar": "إعداد الوثائق الفنية النهائية لتصميم النظام وتنظيمها",
+          "en": "Prepare and organize the final technical design documents"
+        }
+      ],
+      "concept_id": "ch5_oo_process_documents",
+      "explanation": {
+        "ar": "تختتم العملية بإعداد وثائق التصميم.",
+        "en": "The process concludes by preparing the design documentation."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:19:45Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

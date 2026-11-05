@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التصميم التصاعدي",
+    "en": "Bottom-Up Design"
+  },
+  "quiz_id": "Quiz_Ch05_T10_Bottom_Up_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "من أين يبدأ التصميم التصاعدي؟",
+        "en": "Where does bottom-up design begin?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "بالمكونات الأساسية والإجراءات الخدمية",
+          "en": "With basic components and utility routines"
+        },
+        {
+          "ar": "بمنسق النظام الأعلى الذي يحدد اتجاهه",
+          "en": "With the system's highest-level coordinator"
+        },
+        {
+          "ar": "بترتيب شاشات واجهة المستخدم النهائية",
+          "en": "With arrangements for user-interface screens"
+        },
+        {
+          "ar": "بتهيئة أجهزة النشر وتشغيل النظام",
+          "en": "With the final deployment configuration"
+        }
+      ],
+      "concept_id": "ch5_bottomup_definition",
+      "explanation": {
+        "ar": "يبدأ التصميم التصاعدي بلبنات البناء ذات المستوى الأدنى.",
+        "en": "Bottom-up design starts with low-level building blocks."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "بأي اتجاه تتكون البنى الأكبر؟",
+        "en": "In which direction are larger structures formed?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تُعرض مناظير المستخدم إلى جهات خارجية",
+          "en": "User views are projected outward to external actors"
+        },
+        {
+          "ar": "تُجمع الأجزاء الدنيا باتجاه بنية أعلى",
+          "en": "Lower-level components combine to form larger structures"
+        },
+        {
+          "ar": "تُسطح مسارات التحكم جانبياً عبر الوحدات",
+          "en": "Control paths are flattened sideways across modules"
+        },
+        {
+          "ar": "تُفكك أهداف النظام إلى وظائف أدنى",
+          "en": "System goals are divided downward into smaller functions"
+        }
+      ],
+      "concept_id": "ch5_bottomup_direction",
+      "explanation": {
+        "ar": "تنشأ الأنظمة الفرعية الأعلى من جمع المكونات ذات المستوى الأدنى.",
+        "en": "Higher-level subsystems emerge by combining lower-level components."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "بدأ فريق بأدوات مجربة قابلة لإعادة الاستخدام؛ أي استراتيجية يعكس ذلك؟",
+        "en": "A team starts with tested reusable utilities; which strategy does this reflect?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تصميم مفهومي يصف القدرات الظاهرة للمستخدم",
+          "en": "Conceptual design describing user-visible capabilities"
+        },
+        {
+          "ar": "التماسك المنطقي يتيح اختيار مهمة من فئة متقاربة",
+          "en": "Logical cohesion lets a selector choose related tasks"
+        },
+        {
+          "ar": "التصميم التصاعدي يجمع الأجزاء الأساسية في أنظمة",
+          "en": "Bottom-up design combines basic parts into systems"
+        },
+        {
+          "ar": "التصميم التنازلي ينقح أهداف النظام إلى تفاصيل",
+          "en": "Top-down design refines system goals into details"
+        }
+      ],
+      "concept_id": "ch5_bottomup_reuse",
+      "explanation": {
+        "ar": "البداية بأدوات منخفضة المستوى موجودة سمة للتصميم التصاعدي.",
+        "en": "Beginning with existing low-level utilities is characteristic of bottom-up design."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما إحدى نقاط قوة التصميم التصاعدي المعروفة؟",
+        "en": "What is a recognized strength of bottom-up design?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الحفاظ على أهداف النظام واضحة منذ البداية",
+          "en": "It keeps every system goal visible from the start"
+        },
+        {
+          "ar": "الاستغناء عن دمج الوحدات المنفصلة لاحقاً",
+          "en": "It avoids the need to integrate separate components"
+        },
+        {
+          "ar": "ضمان ثبات واجهات النظام طوال التطوير",
+          "en": "It guarantees that all interfaces remain unchanged"
+        },
+        {
+          "ar": "إمكان إعادة استخدام مكونات منخفضة المستوى",
+          "en": "It can reuse existing low-level components and utilities"
+        }
+      ],
+      "concept_id": "ch5_bottomup_strength",
+      "explanation": {
+        "ar": "يستفيد التصميم التصاعدي من المكتبات والأجزاء الأساسية المتاحة.",
+        "en": "Bottom-up design can capitalize on available libraries and foundational parts."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما أحد أوجه الضعف المحتملة للنهج التصاعدي الخالص؟",
+        "en": "What is a possible weakness of a purely bottom-up approach?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قد لا تلائم المكونات الأولى أهداف النظام اللاحقة",
+          "en": "Early components may not fit later system goals"
+        },
+        {
+          "ar": "يصعب اختبار المكونات منخفضة المستوى بصورة مستقلة",
+          "en": "Low-level components cannot be tested in isolation"
+        },
+        {
+          "ar": "تسبب الأدوات المستخدمة اقتران المحتوى دائماً",
+          "en": "Existing utilities always create content coupling"
+        },
+        {
+          "ar": "يعجز النهج عن تقديم خدمات على مستوى أعلى",
+          "en": "The approach cannot produce higher-level services"
+        }
+      ],
+      "concept_id": "ch5_bottomup_limit",
+      "explanation": {
+        "ar": "من دون توجيه مبكر من مستوى النظام قد لا تلائم الأجزاء المفيدة المتطلبات العامة.",
+        "en": "Without early system-level guidance, useful pieces may not align with overall requirements."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الذي قد يلزم لتشغيل مكون منخفض المستوى مبكراً؟",
+        "en": "What may be needed to exercise a low-level component early?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "نموذج شاشة لكل إجراء داخلي",
+          "en": "A screen mockup for each internal routine"
+        },
+        {
+          "ar": "برنامج اختبار يستدعي المكون",
+          "en": "A test driver that calls the component"
+        },
+        {
+          "ar": "بديل اختباري يحل محل مستدعيه",
+          "en": "A test stub that replaces its callers"
+        },
+        {
+          "ar": "منظور نشر للنظام المكتمل",
+          "en": "A deployment view of the finished system"
+        }
+      ],
+      "concept_id": "ch5_bottomup_test_driver",
+      "explanation": {
+        "ar": "يستطيع برنامج الاختبار استدعاء الجزء الأدنى قبل وجود مستدعياته العليا.",
+        "en": "A driver can invoke a lower-level part before higher-level callers exist."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا قد يكون الدمج موضع اهتمام في التصميم التصاعدي؟",
+        "en": "Why can integration be a concern in bottom-up design?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تستلزم كل أداة برمجية إعادة كتابة قبل اختبارها",
+          "en": "Every utility must be rewritten before it can be tested"
+        },
+        {
+          "ar": "يبدأ التصميم بعد نشر جميع مكونات النظام فقط",
+          "en": "Design begins only after all system parts are deployed"
+        },
+        {
+          "ar": "تلائم الأجزاء المنفصلة المعمارية العامة للنظام",
+          "en": "Separate parts must ultimately fit the overall architecture"
+        },
+        {
+          "ar": "يمنع النهج التصاعدي إنشاء واجهات بين المكونات",
+          "en": "Bottom-up work forbids interfaces between software parts"
+        }
+      ],
+      "concept_id": "ch5_bottomup_integration",
+      "explanation": {
+        "ar": "على الفريق التأكد من أن الأجزاء القابلة لإعادة الاستخدام تتجمع لتكوين النظام المطلوب.",
+        "en": "The team must ensure that reusable pieces combine into the required system."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي مقارنة مع التصميم التنازلي صحيحة؟",
+        "en": "Which contrast with top-down design is accurate?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يبدأ التصاعدي بالأهداف والتنازلي بالأدوات",
+          "en": "Bottom-up starts with goals; top-down starts with utility parts"
+        },
+        {
+          "ar": "تبدأ الاستراتيجيتان بعد اكتمال البرمجة فقط",
+          "en": "Both strategies begin only after coding is complete"
+        },
+        {
+          "ar": "تحظر الاستراتيجيتان إعادة استخدام المكونات",
+          "en": "Both strategies prohibit reuse of existing components"
+        },
+        {
+          "ar": "يبدأ التصاعدي بالأجزاء والتنازلي بأهداف النظام",
+          "en": "Bottom-up starts with parts; top-down starts with system goals"
+        }
+      ],
+      "concept_id": "ch5_bottomup_vs_topdown",
+      "explanation": {
+        "ar": "تختلف الاستراتيجيتان أساساً في اتجاه التفكيك والتجميع.",
+        "en": "The two strategies differ mainly in their direction of decomposition and assembly."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

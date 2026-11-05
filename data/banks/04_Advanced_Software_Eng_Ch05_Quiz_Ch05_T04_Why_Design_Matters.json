@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أهمية التصميم البرمجي",
+    "en": "Why Software Design Matters"
+  },
+  "quiz_id": "Quiz_Ch05_T04_Why_Design_Matters",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "لماذا يعد التصميم نشاطاً هندسياً مهماً؟",
+        "en": "Why is design an important engineering activity?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يحول المتطلبات إلى خطة لبناء النظام",
+          "en": "It turns requirements into a construction plan"
+        },
+        {
+          "ar": "يلغي الحاجة إلى تحديد حاجات المستخدم",
+          "en": "It replaces the need to define user needs"
+        },
+        {
+          "ar": "يضمن تنفيذ النظام من دون عيوب",
+          "en": "It guarantees implementation without any defects"
+        },
+        {
+          "ar": "يجعل التحقق غير ضروري بعد البرمجة",
+          "en": "It makes verification unnecessary after coding"
+        }
+      ],
+      "concept_id": "ch5_design_importance_bridge",
+      "explanation": {
+        "ar": "يمنح التصميم التنفيذ بنية مدروسة مشتقة من المتطلبات.",
+        "en": "Design gives implementation a reasoned structure derived from the requirements."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الذي يستطيع التصميم البرمجي التأثير فيه بقوة؟",
+        "en": "What can a software design strongly influence?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "حجم الفئة المستهدفة من مستخدمي النظام",
+          "en": "The size of the system's intended user population"
+        },
+        {
+          "ar": "جودة النظام وإمكان صيانته على المدى البعيد",
+          "en": "The quality and maintainability of the final result"
+        },
+        {
+          "ar": "الكهرباء المتوفرة في موقع النشر البرمجي",
+          "en": "The electricity available at the deployment location"
+        },
+        {
+          "ar": "القوانين المنظمة لقطاع عمل الجهة المستفيدة",
+          "en": "The laws governing the customer's business sector"
+        }
+      ],
+      "concept_id": "ch5_design_quality",
+      "explanation": {
+        "ar": "تؤثر الخيارات المعمارية في خصائص جودة مهمة، ومنها قابلية الصيانة.",
+        "en": "Architectural choices influence important quality properties, including maintainability."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا ينبغي حسم القرارات البنيوية قبل انتشار البرمجة؟",
+        "en": "Why should major structural decisions be made before coding spreads?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تتوقف المتطلبات عن التغير بعد إنشاء الأصناف",
+          "en": "Requirements stop changing once classes exist"
+        },
+        {
+          "ar": "لا يستطيع الاختبار كشف عيوب الشيفرة المنفذة",
+          "en": "Testing cannot identify defects in implemented code"
+        },
+        {
+          "ar": "قد تؤثر القرارات المشتركة في مكونات النظام",
+          "en": "Shared choices can shape many system components"
+        },
+        {
+          "ar": "يصبح كل قرار تصميمي غير مهم بعد البرمجة",
+          "en": "Every design choice becomes irrelevant after coding"
+        }
+      ],
+      "concept_id": "ch5_design_early_decisions",
+      "explanation": {
+        "ar": "قد يؤثر القرار البنيوي في الواجهات والاعتماديات عبر النظام.",
+        "en": "A structural decision may affect interfaces and dependencies throughout the system."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الصفات الثلاث المنسوبة إلى Vitruvius في نقاش التصميم؟",
+        "en": "Which three qualities are attributed to Vitruvius in the design discussion?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "السرعة وقابلية النقل والأمن",
+          "en": "Speed, portability, and security"
+        },
+        {
+          "ar": "الدقة وقابلية الاستخدام والنمطية",
+          "en": "Accuracy, usability, and modularity"
+        },
+        {
+          "ar": "الكلفة والجدول والإنتاجية",
+          "en": "Cost, schedule, and productivity"
+        },
+        {
+          "ar": "المتانة والمنفعة والجاذبية",
+          "en": "Durability, utility, and charm"
+        }
+      ],
+      "concept_id": "ch5_design_quality_three",
+      "explanation": {
+        "ar": "يعرض نقاش التصميم المتانة والمنفعة والجاذبية بوصفها ثلاث صفات.",
+        "en": "The cited design discussion presents durability, utility, and charm as three qualities."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي عبارة تميّز التصميم عن البرمجة بأفضل صورة؟",
+        "en": "Which statement best separates design from coding?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يخطط التصميم للحل وتنفذ البرمجة هذا الحل",
+          "en": "Design plans the solution; coding implements it"
+        },
+        {
+          "ar": "يختبر التصميم المنتج وتعتمد البرمجة نطاقه",
+          "en": "Design tests the product; coding approves its scope"
+        },
+        {
+          "ar": "يجمع التصميم الحاجات وتختار البرمجة المستخدمين",
+          "en": "Design gathers needs; coding selects the users"
+        },
+        {
+          "ar": "ينشر التصميم الخدمات وتدير البرمجة الميزانيات",
+          "en": "Design deploys services; coding manages budgets"
+        }
+      ],
+      "concept_id": "ch5_design_vs_coding",
+      "explanation": {
+        "ar": "يصف التصميم بنية الحل، بينما تنفذ البرمجة تلك البنية.",
+        "en": "Design describes the solution structure, while coding implements that structure."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يساعد مخطط التصميم فريق البناء؟",
+        "en": "How can a design blueprint help a construction team?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يثبت اعتماد كل متطلب قبل التنفيذ",
+          "en": "It proves each requirement is already validated"
+        },
+        {
+          "ar": "يوضح أدوار المكونات قبل بدء التنفيذ",
+          "en": "It clarifies component roles before implementation"
+        },
+        {
+          "ar": "يمنع أعمال الصيانة بعد إصدار المنتج",
+          "en": "It prevents maintenance work after product release"
+        },
+        {
+          "ar": "يلغي الحاجة إلى توضيح الواجهات",
+          "en": "It removes the need to communicate interfaces"
+        }
+      ],
+      "concept_id": "ch5_design_construction_errors",
+      "explanation": {
+        "ar": "يساعد التصميم الواضح المنفذين على تنسيق مسؤوليات المكونات وواجهاتها.",
+        "en": "A clear design helps builders coordinate component responsibilities and interfaces."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "تغيير بسيط في سياسة يفرض تعديلات على مكونات غير مترابطة؛ ما القيمة الضعيفة؟",
+        "en": "A small policy change forces edits across many unrelated components; what design value was weak?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "انفتاح النظام عبر حدوده مع البيئات الخارجية",
+          "en": "External openness through system boundaries"
+        },
+        {
+          "ar": "وضوح النشر عبر عقد الحوسبة المادية",
+          "en": "Deployment clarity through physical computing nodes"
+        },
+        {
+          "ar": "قابلية الصيانة عبر حصر أثر قرارات التصميم",
+          "en": "Maintainability through localized design decisions"
+        },
+        {
+          "ar": "النطاق المفهومي عبر إجراءات المستخدم الظاهرة",
+          "en": "Conceptual scope through user-visible workflows"
+        }
+      ],
+      "concept_id": "ch5_design_maintainability",
+      "explanation": {
+        "ar": "يحصر التصميم القابل للصيانة التغييرات بدلاً من نشرها في أجزاء غير مترابطة.",
+        "en": "A maintainable design localizes changes rather than spreading them across unrelated parts."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الادعاء الأدق بشأن التصميم المعد جيداً؟",
+        "en": "What is the safest claim about a well-prepared design?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يزيل أوجه الغموض عن أعمال الصيانة المستقبلية",
+          "en": "It removes uncertainty from future maintenance work"
+        },
+        {
+          "ar": "يثبت أن كل خيار تنفيذي في النظام هو الأمثل",
+          "en": "It proves every implementation choice will be optimal"
+        },
+        {
+          "ar": "يمنع تغير المتطلبات بعد الحصول على الاعتماد",
+          "en": "It prevents requirements from changing after approval"
+        },
+        {
+          "ar": "يوجه البناء لكنه لا يضمن خلو الشيفرة من العيوب",
+          "en": "It guides construction but cannot ensure defect-free code"
+        }
+      ],
+      "concept_id": "ch5_design_not_guarantee",
+      "explanation": {
+        "ar": "يحسن التصميم أساس التنفيذ، لكن البرمجة والتحقق يظلان ضروريين.",
+        "en": "Design improves the basis for implementation; coding and verification still matter."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

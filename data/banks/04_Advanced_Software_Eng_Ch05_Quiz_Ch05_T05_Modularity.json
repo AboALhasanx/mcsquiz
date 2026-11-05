@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "النمطية وجودة التقسيم",
+    "en": "Modularity and Modular Quality"
+  },
+  "quiz_id": "Quiz_Ch05_T05_Modularity",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا تعني النمطية في معمارية البرمجيات؟",
+        "en": "What does modularity mean in software architecture?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تقسيم النظام إلى وحدات واضحة قليلة الترابط",
+          "en": "A system divided into focused, loosely linked modules"
+        },
+        {
+          "ar": "جمع مسؤوليات النظام داخل وحدة مشتركة واحدة",
+          "en": "Combining every responsibility into one shared unit"
+        },
+        {
+          "ar": "تكرار كل وظيفة ضمن جميع مكونات النظام",
+          "en": "Duplicating each function throughout every component"
+        },
+        {
+          "ar": "إلغاء الواجهات بين مكونات النظام كافة",
+          "en": "Removing defined interfaces among all system parts"
+        }
+      ],
+      "concept_id": "ch5_modularity_definition",
+      "explanation": {
+        "ar": "تنظم النمطية النظام في مكونات متميزة ذات أدوار محددة وتفاعلات واضحة.",
+        "en": "Modularity organizes a system as distinct components with focused roles and defined interactions."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تضم معايير Meyer الخمسة للنمطية؟",
+        "en": "Which set contains Meyer's five modularity criteria?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الأصناف والكائنات والرسائل والتغليف والوراثة وتعدد الأشكال",
+          "en": "Objects, classes, messages, reusable inheritance, polymorphism"
+        },
+        {
+          "ar": "قابلية التفكيك والتركيب والفهم والاستمرار والحماية",
+          "en": "Decomposability, composability, understandability, continuity, protection"
+        },
+        {
+          "ar": "تحديد الوحدة وغرضها ومعالجتها ومواردها وموقع نشرها",
+          "en": "Entity identity, stated purpose, processing steps, resources, deployment"
+        },
+        {
+          "ar": "دقة النتائج والإنتاجية والنقل والأمن والتشغيل البيني",
+          "en": "Accurate results, high productivity, portable code, security, interoperability"
+        }
+      ],
+      "concept_id": "ch5_meyer_criteria",
+      "explanation": {
+        "ar": "تقيّم معايير Meyer إمكان فصل المكونات وإعادة استخدامها وفهمها وتعديلها وحصر أعطالها.",
+        "en": "Meyer's criteria evaluate whether components can be separated, reused, understood, changed, and contained."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أثر تغيير متطلب صغير في مكون معزول؛ أي معيار ظهر؟",
+        "en": "A small requirement change affects one isolated component; which criterion is shown?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الحماية النمطية تحصر الأعطال داخل مكون واحد",
+          "en": "Modular protection confines faults within one component"
+        },
+        {
+          "ar": "قابلية التفكيك النمطية تقسم المشكلة المعقدة",
+          "en": "Modular decomposability breaks complex problems into parts"
+        },
+        {
+          "ar": "الاستمرارية النمطية تحصر التغييرات الصغيرة",
+          "en": "Modular continuity localizes small requirement changes"
+        },
+        {
+          "ar": "قابلية التركيب النمطية تجمع أجزاء مستقلة",
+          "en": "Modular composability combines self-contained parts"
+        }
+      ],
+      "concept_id": "ch5_modular_continuity",
+      "explanation": {
+        "ar": "تحصر الاستمرارية أثر التغيير الصغير في المتطلب داخل موضع محدد.",
+        "en": "Continuity localizes the effect of a small requirement change."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "بقي عطل داخل المكون الذي بدأ فيه؛ أي معيار يوضحه ذلك؟",
+        "en": "A fault stays inside its originating component; which criterion does this illustrate?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الاستمرارية النمطية تحصر التغييرات الصغيرة",
+          "en": "Modular continuity localizes small requirement changes"
+        },
+        {
+          "ar": "قابلية الفهم النمطية تتيح فهم المكون مستقلاً",
+          "en": "Modular understandability supports isolated reading"
+        },
+        {
+          "ar": "قابلية التركيب النمطية تجمع أجزاء مستقلة",
+          "en": "Modular composability combines self-contained parts"
+        },
+        {
+          "ar": "الحماية النمطية تحصر الأعطال داخل مكون واحد",
+          "en": "Modular protection confines faults within one component"
+        }
+      ],
+      "concept_id": "ch5_modular_protection",
+      "explanation": {
+        "ar": "تحصر الحماية نتائج العطل أو الحالة الاستثنائية ضمن المكون.",
+        "en": "Protection confines the consequences of a fault or exceptional condition."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يمكن فهم مكون من دون قراءة جيرانه؛ وهذا يحقق...",
+        "en": "A component can be understood without reading its neighbors; this supports..."
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قابلية الفهم النمطية تتيح فهم المكون مستقلاً",
+          "en": "Modular understandability supports isolated reading"
+        },
+        {
+          "ar": "قابلية التفكيك النمطية تقسم المشكلة المعقدة",
+          "en": "Modular decomposability breaks complex problems into parts"
+        },
+        {
+          "ar": "الحماية النمطية تحصر الأعطال داخل مكون واحد",
+          "en": "Modular protection confines faults within one component"
+        },
+        {
+          "ar": "الاستمرارية النمطية تحصر التغييرات الصغيرة",
+          "en": "Modular continuity localizes small requirement changes"
+        }
+      ],
+      "concept_id": "ch5_modular_understandability",
+      "explanation": {
+        "ar": "تعني قابلية الفهم إمكان استيعاب كل مكون بصورة مستقلة.",
+        "en": "Understandability means each component can be comprehended in isolation."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الذي تتيحه قابلية التركيب النمطية؟",
+        "en": "What does modular composability enable?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "مشاركة بيانات غير مقيدة بين جميع المكونات",
+          "en": "Sharing unrestricted data across every component"
+        },
+        {
+          "ar": "تركيب مكونات مستقلة لبناء أنظمة جديدة",
+          "en": "Combining self-contained components in new systems"
+        },
+        {
+          "ar": "تغيير كل مكون عند تعديل قاعدة واحدة",
+          "en": "Changing every component when one rule changes"
+        },
+        {
+          "ar": "قراءة الشيفرة الداخلية قبل استخدام أي مكون",
+          "en": "Reading all internal code before using a component"
+        }
+      ],
+      "concept_id": "ch5_modular_composability",
+      "explanation": {
+        "ar": "تدعم قابلية التركيب إعادة الاستخدام من خلال تجميع أجزاء مستقلة.",
+        "en": "Composability supports reuse by allowing self-contained parts to be assembled."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ماذا تحقق قابلية التفكيك النمطية؟",
+        "en": "What does modular decomposability accomplish?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نقل مسؤوليات النظام إلى واجهة المستخدم",
+          "en": "Moving all responsibilities into the user interface"
+        },
+        {
+          "ar": "دمج منتجات جاهزة دون واجهات محددة",
+          "en": "Combining finished products without defined interfaces"
+        },
+        {
+          "ar": "تفكيك المشكلة المعقدة إلى مسائل أصغر",
+          "en": "Breaking a complex problem into smaller subproblems"
+        },
+        {
+          "ar": "حجب متطلبات النظام عن فرق التنفيذ",
+          "en": "Concealing every requirement from implementation teams"
+        }
+      ],
+      "concept_id": "ch5_modular_decomposability",
+      "explanation": {
+        "ar": "تفصل قابلية التفكيك المشكلة المعقدة إلى أجزاء يسهل التعامل معها.",
+        "en": "Decomposability separates a complex problem into manageable parts."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الخطر الأبرز من تقسيم النظام إلى أجزاء صغيرة أكثر من اللازم؟",
+        "en": "What is the main risk of decomposing a system into too many tiny parts?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تزيد الأجزاء الصغيرة إمكان إعادة استخدامها",
+          "en": "Every small part becomes reusable automatically"
+        },
+        {
+          "ar": "تلغي التجزئة جميع الاعتماديات الخارجية",
+          "en": "All dependencies vanish from the system design"
+        },
+        {
+          "ar": "تغني كثرة الأجزاء عن اختبار النظام",
+          "en": "Testing becomes unnecessary for small components"
+        },
+        {
+          "ar": "قد يفوق التنسيق بساطة الأجزاء الصغيرة",
+          "en": "Coordination costs can outweigh local simplicity"
+        }
+      ],
+      "concept_id": "ch5_modularity_tradeoff",
+      "explanation": {
+        "ar": "يوازن التصميم النمطي بين سهولة إدارة الأجزاء وكلفة تفاعلاتها.",
+        "en": "Modular design balances manageable parts with the cost of their interactions."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

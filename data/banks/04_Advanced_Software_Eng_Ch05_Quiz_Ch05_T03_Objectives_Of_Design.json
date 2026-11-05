@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "أهداف التصميم البرمجي",
+    "en": "Objectives of Software Design"
+  },
+  "quiz_id": "Quiz_Ch05_T03_Objectives_Of_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي مجموعة تمثل أهداف التصميم كما وردت في الكتاب؟",
+        "en": "Which set states the software design objectives?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "صحيح وكامل ومفهوم وبالمستوى المناسب وقابل للصيانة",
+          "en": "Correct, complete, understandable, right-level, maintainable"
+        },
+        {
+          "ar": "سريع ومحمول ومختصر وآمن وقابل لإعادة الاستخدام",
+          "en": "Fast, portable, compact, secure, reusable across projects"
+        },
+        {
+          "ar": "منخفض الكلفة ومألوف ومؤتمت وموزع ومقاوم للأعطال",
+          "en": "Low-cost, familiar, automated, distributed, fault-resistant"
+        },
+        {
+          "ar": "مدمج وعام وحديث ومستقل وقابل للقياس والتوسع",
+          "en": "Compact, generic, current, independent, measurable, flexible"
+        }
+      ],
+      "concept_id": "ch5_design_objectives_set",
+      "explanation": {
+        "ar": "أهداف التصميم هي الصحة والاكتمال وقابلية الفهم والمستوى المناسب وقابلية الصيانة.",
+        "en": "The stated objectives are correctness and completeness, understandability, suitable level, and maintainability."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يحافظ عليه التصميم الصحيح والكامل؟",
+        "en": "What does a correct and complete design preserve?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تفاصيل تنفيذ لا ترتبط بالحاجات المحددة",
+          "en": "Implementation details unrelated to stated system needs"
+        },
+        {
+          "ar": "السلوك المطلوب والمتطلبات المرتبطة بالنظام",
+          "en": "Required behavior and relevant system requirements"
+        },
+        {
+          "ar": "كل ميزة قد يطلبها المستخدم مستقبلاً للنظام",
+          "en": "Every imaginable feature requested by future users"
+        },
+        {
+          "ar": "الشاشات الظاهرة التي اعتمدها فريق التسويق",
+          "en": "Only visible screens approved by the marketing team"
+        }
+      ],
+      "concept_id": "ch5_objective_correct_complete",
+      "explanation": {
+        "ar": "تتطلب الصحة والاكتمال أن يمثل التصميم الحاجات المحددة من دون إغفال.",
+        "en": "Correctness and completeness require the design to represent the specified needs without omissions."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "يكون التصميم قابلاً للفهم عندما تكون بنيته...",
+        "en": "A design is understandable when its structure is..."
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "موسع بكل تعليمة برمجية منخفضة المستوى",
+          "en": "Expanded with every low-level coding statement"
+        },
+        {
+          "ar": "مكتوب بمصطلحات آلة خاصة بمورد واحد",
+          "en": "Written only in vendor-specific machine terms"
+        },
+        {
+          "ar": "واضح بما يكفي للقراء الفنيين المقصودين",
+          "en": "Clear enough for its intended technical readers"
+        },
+        {
+          "ar": "مخفي عن الجميع عدا مؤلفه الأصلي",
+          "en": "Hidden from everyone except its original author"
+        }
+      ],
+      "concept_id": "ch5_objective_understandable",
+      "explanation": {
+        "ar": "تعتمد قابلية الفهم على وضوح التنظيم وبالمستوى المقصود من التفاصيل.",
+        "en": "Understandability depends on clear organization at the intended level of detail."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يعني أن يكون التصميم بالمستوى المناسب؟",
+        "en": "What does “at the right level” mean for a design?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يتضمن كل تعليمة تنفيذية بصورة كاملة",
+          "en": "It contains every implementation statement in full"
+        },
+        {
+          "ar": "يحذف البنية حتى انتهاء كتابة الشيفرة",
+          "en": "It omits all structure until coding is finished"
+        },
+        {
+          "ar": "يعرض المستوى نفسه من التفاصيل للجميع",
+          "en": "It gives every stakeholder an identical detail level"
+        },
+        {
+          "ar": "تفاصيله تلائم القرار والجمهور المقصود",
+          "en": "Its detail matches the decision and intended audience"
+        }
+      ],
+      "concept_id": "ch5_objective_right_level",
+      "explanation": {
+        "ar": "يوفر المستوى المناسب ما يكفي لغرضه من دون فرض عمق واحد على الجميع.",
+        "en": "The appropriate level provides enough detail for its purpose without forcing one depth everywhere."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي هدف تصميمي يدعم التغييرات المستقبلية مباشرة؟",
+        "en": "Which design objective most directly supports future changes?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قابلية الصيانة عند تغير متطلبات النظام لاحقاً",
+          "en": "Maintainability across later requirement changes"
+        },
+        {
+          "ar": "الجدة البصرية المضافة إلى واجهة المستخدم النهائية",
+          "en": "Visual novelty added to the final user interface"
+        },
+        {
+          "ar": "التفاصيل التنفيذية القصوى في كل مكون برمجي",
+          "en": "Maximum implementation detail in every component"
+        },
+        {
+          "ar": "تقليل التواصل بين أصحاب المصلحة في النظام",
+          "en": "Reduced communication among system stakeholders"
+        }
+      ],
+      "concept_id": "ch5_objective_maintainable",
+      "explanation": {
+        "ar": "تساعد البنية القابلة للصيانة على فهم النظام وتعديله بمرور الوقت.",
+        "en": "Maintainable structure helps people understand and change the system over time."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أغفل التصميم سلوكاً مطلوباً في SRS؛ أي هدف لم يتحقق؟",
+        "en": "A design omits a required behavior from the SRS; which objective failed?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الاستقلال الفني عن مستخدمي النظام",
+          "en": "Technical independence from system users"
+        },
+        {
+          "ar": "صحة التصميم واكتماله في تمثيل المتطلبات",
+          "en": "Correctness and completeness of the design"
+        },
+        {
+          "ar": "ملاءمة مستوى التفاصيل الفنية للتنفيذ",
+          "en": "Appropriate level of technical detail"
+        },
+        {
+          "ar": "سهولة العرض البصري على مراجعي التصميم",
+          "en": "Ease of visual presentation to reviewers"
+        }
+      ],
+      "concept_id": "ch5_objective_traceability",
+      "explanation": {
+        "ar": "يجعل إغفال المتطلب التصميم غير مكتمل وقد يجعله غير صحيح.",
+        "en": "An omitted requirement makes the design incomplete and can make it incorrect."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "التصميم مجرد أكثر مما يحتاجه المنفذون للبناء؛ أي هدف لم يتحقق؟",
+        "en": "A design is too abstract for implementers to build from; which objective is unmet?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "انفتاح النظام عبر حدوده الخارجية",
+          "en": "External openness across system boundaries"
+        },
+        {
+          "ar": "حماية البيانات الداخلية أثناء التشغيل",
+          "en": "Protection of internal data at runtime"
+        },
+        {
+          "ar": "مستوى التفاصيل المناسب لتنفيذ النظام",
+          "en": "The right level of detail for implementation"
+        },
+        {
+          "ar": "اكتمال المتطلبات وإمكان تتبعها",
+          "en": "Requirements completeness and traceability"
+        }
+      ],
+      "concept_id": "ch5_objective_audience",
+      "explanation": {
+        "ar": "ينبغي أن يقدم التصميم للمنفذين تفاصيل كافية وبالمستوى اللازم للبناء.",
+        "en": "The design must give implementers sufficient detail at the level needed for construction."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي تفسير ينسجم أكثر مع أهداف التصميم؟",
+        "en": "Which interpretation best respects the design objectives?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "كتابة كل تعليمة قبل انتهاء التحليل",
+          "en": "Every code statement written before analysis ends"
+        },
+        {
+          "ar": "تحسين خاصية مع تجاهل الخصائص الأخرى",
+          "en": "One quality optimized while others are ignored"
+        },
+        {
+          "ar": "ميزات إضافية تحل محل تغطية المتطلبات",
+          "en": "Extra features replacing required behavior coverage"
+        },
+        {
+          "ar": "تفاصيل كافية لبناء واضح وصحيح للنظام",
+          "en": "Enough detail for clear and correct construction"
+        }
+      ],
+      "concept_id": "ch5_objectives_not_exhaustiveness",
+      "explanation": {
+        "ar": "تتطلب الأهداف تفاصيل مناسبة ومفهومة مع الحفاظ على الصحة والاكتمال والصيانة.",
+        "en": "The objectives call for suitable, understandable detail that remains correct, complete, and maintainable."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

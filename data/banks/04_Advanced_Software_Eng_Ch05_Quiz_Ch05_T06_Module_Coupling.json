@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "الاقتران بين الوحدات",
+    "en": "Module Coupling"
+  },
+  "quiz_id": "Quiz_Ch05_T06_Module_Coupling",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ماذا يقيس الاقتران بين الوحدات؟",
+        "en": "What does module coupling measure?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الاعتماد المتبادل بين وحدات برمجية منفصلة",
+          "en": "Interdependence between separate software modules"
+        },
+        {
+          "ar": "تماسك العناصر الوظيفية داخل مكون برمجي واحد",
+          "en": "Functional strength inside one software module"
+        },
+        {
+          "ar": "عدد الشاشات التي تعرضها واجهة التطبيق",
+          "en": "Number of screens displayed by an application"
+        },
+        {
+          "ar": "حجم البيانات التي يخزنها التطبيق أثناء عمله",
+          "en": "Amount of data stored inside an application"
+        }
+      ],
+      "concept_id": "ch5_coupling_definition",
+      "explanation": {
+        "ar": "يقيس الاقتران درجة الاعتماد المتبادل بين المكونات المنفصلة.",
+        "en": "Coupling measures the degree of interdependence between separate components."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي نوع من الاقتران يقتصر على تمرير قيم بسيطة؟",
+        "en": "Which coupling type uses only simple parameter values?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اقتران مشترك بسبب بيانات عامة مشتركة",
+          "en": "Common coupling through shared global state"
+        },
+        {
+          "ar": "اقتران البيانات عبر معاملات بسيطة",
+          "en": "Data coupling through simple parameter values"
+        },
+        {
+          "ar": "اقتران المحتوى بتعديل الشيفرة الداخلية",
+          "en": "Content coupling through access to private code"
+        },
+        {
+          "ar": "اقتران التحكم عبر علم يوجه التفرع",
+          "en": "Control coupling through caller-selected flags"
+        }
+      ],
+      "concept_id": "ch5_best_coupling",
+      "explanation": {
+        "ar": "يتواصل اقتران البيانات عبر القيم المطلوبة ويحد من الاعتماديات.",
+        "en": "Data coupling communicates through needed data values and keeps dependencies limited."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي شكل من الاقتران هو الأشد والأقل رغبة؟",
+        "en": "Which coupling form is the most restrictive and undesirable?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "اقتران البنية عند تمرير حقول غير لازمة",
+          "en": "Stamp coupling through an underused composite record"
+        },
+        {
+          "ar": "اقتران خارجي ببروتوكول أو صيغة مشتركة",
+          "en": "External coupling through a shared protocol"
+        },
+        {
+          "ar": "اقتران المحتوى بالوصول إلى داخل الوحدة",
+          "en": "Content coupling reaches into another module's code"
+        },
+        {
+          "ar": "اقتران البيانات عبر معاملات بسيطة",
+          "en": "Data coupling through simple parameter values"
+        }
+      ],
+      "concept_id": "ch5_worst_coupling",
+      "explanation": {
+        "ar": "يحدث اقتران المحتوى عندما تتدخل وحدة في الشيفرة الداخلية لوحدة أخرى أو بياناتها.",
+        "en": "Content coupling occurs when one component reaches into another's internal code or data."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "تقرأ وحدتان منطقة بيانات عامة مشتركة وتعدّلانها؛ هذا هو...",
+        "en": "Two components read and write the same global data area; this is..."
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "اقتران التحكم عبر علم يوجه التفرع",
+          "en": "Control coupling through caller-selected flags"
+        },
+        {
+          "ar": "اقتران خارجي بسبب بروتوكول مشترك",
+          "en": "External coupling through a shared protocol"
+        },
+        {
+          "ar": "اقتران بنية مركبة مع استخدام جزء منها",
+          "en": "Stamp coupling through an underused composite record"
+        },
+        {
+          "ar": "اقتران مشترك عبر الحالة العامة",
+          "en": "Common coupling through shared global state"
+        }
+      ],
+      "concept_id": "ch5_common_coupling",
+      "explanation": {
+        "ar": "تنشئ الحالة العامة المشتركة اقتراناً مشتركاً.",
+        "en": "Shared global state creates common coupling."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "مررت وحدة علماً يحدد فرعاً داخلياً في وحدة أخرى؛ هذا هو...",
+        "en": "One component passes a flag that selects another's internal branch; this is..."
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "اقتران التحكم عبر علم يختار تفرعاً داخلياً",
+          "en": "Control coupling uses a caller-selected branch flag"
+        },
+        {
+          "ar": "اقتران البيانات عبر معاملات بسيطة ومحددة",
+          "en": "Data coupling through simple parameter values"
+        },
+        {
+          "ar": "اقتران خارجي ببروتوكول أو صيغة مشتركة",
+          "en": "External coupling through a shared protocol"
+        },
+        {
+          "ar": "اقتران المحتوى بالوصول إلى داخل الوحدة",
+          "en": "Content coupling through access to another module's code"
+        }
+      ],
+      "concept_id": "ch5_control_coupling",
+      "explanation": {
+        "ar": "يوجه علم التحكم المنطق الداخلي لمكون آخر، فينشأ اقتران التحكم.",
+        "en": "A control flag directs another component's internal logic, creating control coupling."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "استقبلت وحدة سجلاً مركباً ولم تستخدم إلا حقلاً واحداً؛ هذا هو...",
+        "en": "A component receives a record but uses only one of its fields; this is..."
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اقتران مشترك عبر ذاكرة أو بيانات عامة",
+          "en": "Common coupling through shared global state"
+        },
+        {
+          "ar": "اقتران بنية مركبة يستخدم منها جزء محدد",
+          "en": "Stamp coupling passes a partly unused record"
+        },
+        {
+          "ar": "اقتران المحتوى بالوصول إلى داخل الوحدة",
+          "en": "Content coupling through access to private code"
+        },
+        {
+          "ar": "اقتران البيانات بتمرير معاملات بسيطة",
+          "en": "Data coupling through simple parameter values"
+        }
+      ],
+      "concept_id": "ch5_stamp_coupling",
+      "explanation": {
+        "ar": "يمرر اقتران البنية المركبة سجلاً كاملاً مع أن المستقبِل يستخدم جزءاً منه فقط.",
+        "en": "Stamp coupling passes a composite structure when the receiver uses only part of it."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "الاعتماد على صيغة ملف أو بروتوكول خارجي مشترك هو...",
+        "en": "Dependence on a shared external file format or protocol is..."
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "اقتران المحتوى بالوصول إلى داخل الوحدة",
+          "en": "Content coupling reaches into another module's code"
+        },
+        {
+          "ar": "اقتران مشترك عبر ذاكرة أو بيانات عامة",
+          "en": "Common coupling uses the same global data area"
+        },
+        {
+          "ar": "اقتران خارجي بسبب بروتوكول أو صيغة مشتركة",
+          "en": "External coupling uses a shared format or protocol"
+        },
+        {
+          "ar": "اقتران البيانات عبر معاملات بسيطة ومحددة",
+          "en": "Data coupling passes simple values as parameters"
+        }
+      ],
+      "concept_id": "ch5_external_coupling",
+      "explanation": {
+        "ar": "ينشأ الاقتران الخارجي من الاعتماد على صيغة أو بروتوكول أو جهاز خارجي.",
+        "en": "External coupling arises from dependence on an external format, protocol, or device."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "لماذا يستحيل عملياً انعدام الاقتران بين مكونات متعاونة؟",
+        "en": "Why is zero coupling unrealistic for cooperating components?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لا بد أن تستخدم شيفرة داخلية موحدة",
+          "en": "They must all use identical internal code"
+        },
+        {
+          "ar": "لا بد أن تخزن الحالة في بيانات عامة مشتركة",
+          "en": "They must store state in shared global memory"
+        },
+        {
+          "ar": "لا بد أن تتجنب جميع الواجهات المعلنة",
+          "en": "They must avoid every published interface"
+        },
+        {
+          "ar": "لا بد أن تتبادل البيانات أو التحكم",
+          "en": "They must exchange data or transfer control"
+        }
+      ],
+      "concept_id": "ch5_zero_coupling",
+      "explanation": {
+        "ar": "تحتاج المكونات المفيدة إلى بعض التواصل؛ والهدف هو اقتران خفيف لا انعدام التفاعل.",
+        "en": "Useful components need some communication; the goal is loose coupling rather than no interaction."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

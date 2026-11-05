@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "العلاقة بين التماسك والاقتران",
+    "en": "Cohesion and Coupling Relationship"
+  },
+  "quiz_id": "Quiz_Ch05_T08_Cohesion_Coupling_Relationship",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما التركيبة المفضلة في التصميم النمطي؟",
+        "en": "What combination is preferred in a modular design?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تماسك عالٍ داخل الوحدات واقتران منخفض بين مكوناتها",
+          "en": "High cohesion within modules and low coupling between them"
+        },
+        {
+          "ar": "تماسك منخفض داخل الوحدات واقتران عالٍ بين مكوناتها",
+          "en": "Low cohesion within modules and high coupling between them"
+        },
+        {
+          "ar": "تماسك عالٍ واقتران عالٍ بين جميع مكونات النظام",
+          "en": "High cohesion and high coupling across all components"
+        },
+        {
+          "ar": "تماسك منخفض واقتران منخفض داخل كل مكون برمجي",
+          "en": "Low cohesion and low coupling inside each component"
+        }
+      ],
+      "concept_id": "ch5_cc_design_target",
+      "explanation": {
+        "ar": "يركز التصميم الجيد كل مكون ويحد الاعتماد عبر الحدود.",
+        "en": "A sound design focuses each component and limits dependencies across boundaries."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أين يقاس التماسك وأين يقاس الاقتران؟",
+        "en": "Where is cohesion measured, and where is coupling measured?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "داخل شبكة؛ وبين ملفات الشيفرة فقط",
+          "en": "Inside a network; between source files only"
+        },
+        {
+          "ar": "داخل مكون واحد؛ وبين مكونات منفصلة",
+          "en": "Inside one component; between separate components"
+        },
+        {
+          "ar": "بين أنظمة منفصلة؛ وداخل قاعدة بيانات",
+          "en": "Between separate systems; inside one database"
+        },
+        {
+          "ar": "عبر أدوار المستخدم؛ وداخل عملية واحدة",
+          "en": "Across user roles; inside a single operation"
+        }
+      ],
+      "concept_id": "ch5_cc_scope_distinction",
+      "explanation": {
+        "ar": "يقع التماسك داخل المكون الواحد، أما الاقتران فيتعلق بالعلاقات بين المكونات.",
+        "en": "Cohesion is internal to one component; coupling concerns relationships across components."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "هل يضمن التماسك العالي تلقائياً اقتراناً منخفضاً؟",
+        "en": "Does high cohesion automatically guarantee low coupling?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نعم، فكلاهما يقيس الخاصية الداخلية نفسها",
+          "en": "Yes, both measure the same internal property"
+        },
+        {
+          "ar": "لا، فالاقتران يخص الأنظمة الخارجية فقط",
+          "en": "No, coupling applies only to external systems"
+        },
+        {
+          "ar": "لا، فهما هدفان تصميميان منفصلان ومتكاملان",
+          "en": "No, they are related but separate design goals"
+        },
+        {
+          "ar": "نعم، فالتماسك يزيل كل اعتماد مباشرة",
+          "en": "Yes, cohesion directly removes every dependency"
+        }
+      ],
+      "concept_id": "ch5_cc_not_causal",
+      "explanation": {
+        "ar": "قد يكون للمكون غرض مركز مع بقائه شديد الاعتماد على مكونات أخرى.",
+        "en": "A component can have a focused purpose yet still depend heavily on other components."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما خطر الصيانة الشائع عند ارتفاع الاقتران؟",
+        "en": "What is a common maintenance risk of high coupling?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تُحجب الواجهات عن الجهات التي تستدعي المكونات",
+          "en": "Every interface becomes hidden from its users and callers"
+        },
+        {
+          "ar": "يفقد النظام قدرته على تبادل البيانات بين وحداته",
+          "en": "The system loses its ability to exchange data altogether"
+        },
+        {
+          "ar": "قد يمتد أثر التغيير إلى الوحدات التي تعتمد عليه",
+          "en": "A change can ripple into components that depend on it"
+        },
+        {
+          "ar": "قد يفقد المكون المركز غرضه الوظيفي الواحد",
+          "en": "A focused component may lose its single defined purpose"
+        }
+      ],
+      "concept_id": "ch5_cc_high_coupling",
+      "explanation": {
+        "ar": "تجعل الاعتماديات القوية التغيير المحلي أكثر عرضة للتأثير في الأجزاء المرتبطة.",
+        "en": "Strong dependencies make a local change more likely to affect connected parts."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "على ماذا يدل انخفاض التماسك غالباً؟",
+        "en": "What does low cohesion commonly indicate?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "اجتماع مسؤوليات غير مترابطة داخل مكون برمجي واحد",
+          "en": "Unrelated responsibilities share one software component"
+        },
+        {
+          "ar": "اعتماد المكون على قيم البيانات التي يحتاج إليها فقط",
+          "en": "A component depends only on the data values it needs"
+        },
+        {
+          "ar": "عزل وظائف النظام بحسب المسؤوليات التي تؤديها",
+          "en": "System functions are isolated by their responsibilities"
+        },
+        {
+          "ar": "احتواء واجهة المستخدم على عدد قليل من الشاشات",
+          "en": "A user interface contains only a small number of screens"
+        }
+      ],
+      "concept_id": "ch5_cc_low_cohesion",
+      "explanation": {
+        "ar": "يعني انخفاض التماسك أن عناصر المكون لا تخدم غرضاً مركزاً واحداً.",
+        "en": "Low cohesion means the elements inside a component do not serve one focused purpose."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف يدعم التماسك والاقتران النمطية معاً؟",
+        "en": "How do cohesion and coupling support modularity together?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يتولى مكون مركزي واحد مسؤوليات النظام كلها",
+          "en": "One central component takes every system responsibility"
+        },
+        {
+          "ar": "تتواصل المكونات المركزة عبر اعتماديات محدودة",
+          "en": "Focused components communicate through limited dependencies"
+        },
+        {
+          "ar": "تجمع المهام غير المترابطة لتقليل عدد الملفات",
+          "en": "Unrelated tasks are grouped together to reduce file count"
+        },
+        {
+          "ar": "تحل الحالة الداخلية المشتركة محل الواجهات المحددة",
+          "en": "Shared internal state replaces every defined interface"
+        }
+      ],
+      "concept_id": "ch5_cc_modularity",
+      "explanation": {
+        "ar": "تعمل النمطية بأفضل صورة عندما تكون المكونات مركزة داخلياً ومترابطة بخفة.",
+        "en": "Modularity works best when components are internally focused and loosely connected."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا لا ينبغي اعتبار انعدام الاقتران هو الهدف؟",
+        "en": "Why should designers avoid treating zero coupling as the goal?"
+      },
+      "bloom": "Evaluate",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ينبغي لكل مكون تنفيذ الخوارزمية نفسها",
+          "en": "Every component should implement the same algorithm"
+        },
+        {
+          "ar": "لا تحتاج المكونات المنفصلة إلى التعاون",
+          "en": "Separate components never need to cooperate"
+        },
+        {
+          "ar": "ما زالت المكونات تحتاج إلى تواصل هادف",
+          "en": "Components still need purposeful communication"
+        },
+        {
+          "ar": "ينبغي للمكونات مشاركة كل بنياتها الداخلية",
+          "en": "Components should share every internal data structure"
+        }
+      ],
+      "concept_id": "ch5_cc_zero_coupling",
+      "explanation": {
+        "ar": "الهدف تواصل يكفي للتعاون مع إزالة الاعتماديات التي يمكن تجنبها.",
+        "en": "The design target is enough communication for cooperation with avoidable dependencies removed."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أخفى مكون قراراً تصميمياً خلف واجهة مستقرة؛ ما الفائدة؟",
+        "en": "A component hides a design decision behind a stable interface; what is the benefit?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يجب أن يتغير كل مستدعٍ عند تغير البيانات الداخلية",
+          "en": "Every caller must change whenever internal data changes"
+        },
+        {
+          "ar": "تتشارك المكونات الحالة الداخلية المخفية لهذا المكون",
+          "en": "All components must share the hidden state of this component"
+        },
+        {
+          "ar": "يعمل النظام من دون تواصل بين مكوناته البرمجية",
+          "en": "The system can operate without communication among components"
+        },
+        {
+          "ar": "يعتمد المستدعون على واجهة ثابتة لا على تفاصيل التمثيل",
+          "en": "Callers rely on a stable interface, not internal details"
+        }
+      ],
+      "concept_id": "ch5_cc_information_hiding",
+      "explanation": {
+        "ar": "يقلل إخفاء المعلومات الاعتماد على القرارات التصميمية الداخلية.",
+        "en": "Information hiding reduces dependencies on internal design decisions."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "ما الفائدة التي يتيحها التماسك العالي مع الاقتران المنخفض؟",
+        "en": "What benefit can high cohesion with low coupling provide?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يسهل فهم الوحدات المركزة واختبارها وصيانتها",
+          "en": "Focused modules are easier to understand, test, and maintain"
+        },
+        {
+          "ar": "تنفصل كل وحدة تماماً عن سلوك النظام المشترك",
+          "en": "Every module becomes independent of shared system behavior"
+        },
+        {
+          "ar": "يزيل التماسك تلقائياً كل اعتماد بين الوحدات البرمجية",
+          "en": "Cohesion automatically removes all dependencies between modules"
+        },
+        {
+          "ar": "يختفي كل تواصل بين المكونات التي تتعاون معاً",
+          "en": "All communication disappears between cooperating components"
+        }
+      ],
+      "concept_id": "ch5_cc_independence_benefits",
+      "explanation": {
+        "ar": "يدعم التماسك العالي والاقتران المنخفض استقلالية المكونات، ويسهل فهمها واختبارها وصيانتها.",
+        "en": "High cohesion and low coupling support functional independence, which makes components easier to understand, test, and maintain."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي علاقة تربط عادة التماسك المنطقي بالاقتران؟",
+        "en": "Which relationship commonly links logical cohesion with coupling?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يستخدم التماسك الاتصالي بيانات مشتركة مع اقتران خارجي",
+          "en": "Communicational cohesion shares data through external coupling"
+        },
+        {
+          "ar": "قد يصاحب التماسك المنطقي اقتران تحكم بسبب علم المستدعي",
+          "en": "Logical cohesion may use a caller flag, creating control coupling"
+        },
+        {
+          "ar": "يجمع التماسك الزمني مهاماً متزامنة مع اقتران البنية",
+          "en": "Temporal cohesion groups same-time tasks and requires stamp coupling"
+        },
+        {
+          "ar": "يخدم التماسك الوظيفي غرضاً واحداً مع اقتران مشترك",
+          "en": "Functional cohesion serves one purpose through shared global coupling"
+        }
+      ],
+      "concept_id": "ch5_cc_logical_control_pair",
+      "explanation": {
+        "ar": "يختار علم المستدعي نشاطاً ضمن مجموعة متماسكة منطقياً وقد ينشأ عنه اقتران تحكم.",
+        "en": "A caller flag selects one activity within a logically cohesive group and can create control coupling."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

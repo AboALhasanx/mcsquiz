@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "استراتيجية التصميم",
+    "en": "Strategy of Design"
+  },
+  "quiz_id": "Quiz_Ch05_T09_Strategy_Of_Design",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما الذي توجهه استراتيجية التصميم؟",
+        "en": "What does a design strategy guide?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تفكيك النظام إلى أجزاء ثم تجميعها",
+          "en": "How a system is divided into parts and assembled"
+        },
+        {
+          "ar": "مراجعة ميزانية المشروع واعتمادها",
+          "en": "How project funds are reviewed and approved"
+        },
+        {
+          "ar": "اختيار المستخدمين لإجراء اختبار القبول",
+          "en": "How users are selected for acceptance testing"
+        },
+        {
+          "ar": "تسويق الخدمة بعد إطلاقها للعملاء",
+          "en": "How a released service is promoted to customers"
+        }
+      ],
+      "concept_id": "ch5_strategy_definition",
+      "explanation": {
+        "ar": "تحدد استراتيجية التصميم الاتجاه العام المستخدم لتشكيل معمارية النظام.",
+        "en": "A design strategy sets the broad direction used to shape the system architecture."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة تسمي استراتيجيات التصميم الثلاث المعروفة؟",
+        "en": "Which set names the three recognized design strategies?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التماسك الوظيفي والزمني والمنطقي",
+          "en": "Functional, temporal, and logical cohesion"
+        },
+        {
+          "ar": "التصميم التنازلي والتصاعدي والهجين",
+          "en": "Top-down, bottom-up, and hybrid design"
+        },
+        {
+          "ar": "الشلال والحلزوني والتسليم التزايدي",
+          "en": "Waterfall, spiral, and incremental delivery"
+        },
+        {
+          "ar": "الاختبار والتنقيح والتحقق الصوري",
+          "en": "Testing, debugging, and formal verification"
+        }
+      ],
+      "concept_id": "ch5_strategy_families",
+      "explanation": {
+        "ar": "استراتيجيات التصميم الثلاث هي التنازلي والتصاعدي ومزيجهما الهجين.",
+        "en": "The three design strategies are top-down, bottom-up, and their hybrid combination."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي جانب يبقى واضحاً في الاستراتيجية التنازلية؟",
+        "en": "Which concern stays visible in a top-down strategy?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "ألوان الواجهات التي يفضلها المستخدمون عادةً",
+          "en": "The interface colors preferred by system users"
+        },
+        {
+          "ar": "تفاصيل المكتبات الدنيا بمعزل عن أهداف النظام",
+          "en": "The lowest library details without system context"
+        },
+        {
+          "ar": "أهداف النظام العليا وبنيته التنظيمية",
+          "en": "The system's high-level goals and overall structure"
+        },
+        {
+          "ar": "الحالة الداخلية لكل كائن ضمن النظام",
+          "en": "The internal state of each object in the system"
+        }
+      ],
+      "concept_id": "ch5_strategy_topdown_focus",
+      "explanation": {
+        "ar": "يبدأ التصميم التنازلي من الغرض العام وينقح بنيته.",
+        "en": "Top-down design starts from the overall purpose and refines its structure."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي نقطة بداية تميز الاستراتيجية التصاعدية؟",
+        "en": "Which starting point identifies a bottom-up strategy?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تقسيم أهداف النظام إلى مهام أدنى",
+          "en": "System goals divided into lower-level tasks"
+        },
+        {
+          "ar": "توسيع أدوار المستخدم إلى سيناريوهات واجهة",
+          "en": "User roles expanded into interface scenarios"
+        },
+        {
+          "ar": "تحويل المخططات العليا إلى تقارير اختبار",
+          "en": "High-level diagrams translated into test reports"
+        },
+        {
+          "ar": "تجميع المكونات الأساسية في أجزاء أكبر",
+          "en": "Basic components assembled into larger parts"
+        }
+      ],
+      "concept_id": "ch5_strategy_bottomup_start",
+      "explanation": {
+        "ar": "يبدأ التصميم التصاعدي بلبنات البناء الدنيا ثم يجمعها صعوداً.",
+        "en": "Bottom-up design begins with lower-level building blocks and combines them upward."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الذي يجعل استراتيجية التصميم هجينة؟",
+        "en": "What makes a design strategy hybrid?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "يجمع أهداف النظام مع مكونات موجودة وملائمة",
+          "en": "It combines system goals with suitable existing components"
+        },
+        {
+          "ar": "يستبدل أهداف النظام بإجراءات خدمية منفصلة",
+          "en": "It replaces system goals with disconnected utility routines"
+        },
+        {
+          "ar": "يستخدم الأصناف وحدها ويرفض المكونات الإجرائية",
+          "en": "It uses only classes and rejects procedural components"
+        },
+        {
+          "ar": "يؤجل القرارات البنيوية إلى ما بعد إصدار المنتج",
+          "en": "It delays structural choices until the product is released"
+        }
+      ],
+      "concept_id": "ch5_strategy_hybrid",
+      "explanation": {
+        "ar": "يستخدم التصميم الهجين التفكير التنازلي والتصاعدي حيث يناسب كل منهما.",
+        "en": "Hybrid design uses top-down and bottom-up reasoning where each fits."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي عنصر ليس من استراتيجيات التصميم الثلاث؟",
+        "en": "Which item is not one of the three design strategies?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "التصميم التصاعدي يركب الأجزاء لبناء أنظمة أكبر",
+          "en": "Bottom-up design combines basic parts into larger systems"
+        },
+        {
+          "ar": "التصميم المضمن يضع البرمجيات داخل جهاز مادي",
+          "en": "Embedded design places software within a physical device"
+        },
+        {
+          "ar": "التصميم الهجين يجمع اتجاهي التطوير والتصميم",
+          "en": "Hybrid design combines top-down and bottom-up directions"
+        },
+        {
+          "ar": "التصميم التنازلي ينقح أهداف النظام إلى تفاصيل أدنى",
+          "en": "Top-down design refines system goals into lower-level details"
+        }
+      ],
+      "concept_id": "ch5_strategy_not_design",
+      "explanation": {
+        "ar": "التصميم المضمّن ليس من بين التصميم التنازلي والتصاعدي والهجين.",
+        "en": "Embedded design is not one of the stated top-down, bottom-up, and hybrid strategies."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "للمشروع أهداف واضحة وأدوات قابلة لإعادة الاستخدام؛ أي نهج يلائمه؟",
+        "en": "A project has clear system goals and reusable utilities; which approach fits?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يتجاهل التصاعدي أهداف النظام العامة عند البناء",
+          "en": "Bottom-up design ignores all system goals during construction"
+        },
+        {
+          "ar": "يهمل التنازلي الأدوات المتاحة ويعيد بناءها",
+          "en": "Top-down design discards every available utility component"
+        },
+        {
+          "ar": "يجمع الهجين أهداف النظام والأدوات المناسبة",
+          "en": "Hybrid design respects system goals and reuses suitable parts"
+        },
+        {
+          "ar": "لا تلائم المكونات الجاهزة أياً من اتجاهات التصميم",
+          "en": "No strategy applies to a project with existing components"
+        }
+      ],
+      "concept_id": "ch5_strategy_select",
+      "explanation": {
+        "ar": "يستطيع النهج الهجين الحفاظ على اتجاه النظام العام مع استخدام مكونات مناسبة موجودة.",
+        "en": "A hybrid approach can retain system-level direction while using suitable existing components."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ما الطريقة السليمة لاختيار استراتيجية التصميم؟",
+        "en": "What is a sound way to choose a design strategy?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "افتراض تفوق استراتيجية واحدة في جميع المشاريع البرمجية",
+          "en": "Assume one strategy works best for every software project"
+        },
+        {
+          "ar": "تحديد النهج بحسب عدد المخططات التي سينتجها الفريق فقط",
+          "en": "Choose only by how many diagrams the team will produce"
+        },
+        {
+          "ar": "اختيار الاستراتيجية ذات المصطلحات الأحدث دائماً",
+          "en": "Select the strategy that uses the newest terminology"
+        },
+        {
+          "ar": "اختيار النهج الذي يلائم أهداف النظام ومكوناته المتاحة",
+          "en": "Match the approach to system goals and available components"
+        }
+      ],
+      "concept_id": "ch5_strategy_no_universal_winner",
+      "explanation": {
+        "ar": "ينبغي أن تلائم الاستراتيجية أهداف النظام والمكونات الممكن إعادة استخدامها.",
+        "en": "The strategy should suit the system goals and the components that can be reused."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

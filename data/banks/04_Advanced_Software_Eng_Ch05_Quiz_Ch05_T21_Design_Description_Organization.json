@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "تنظيم وصف التصميم",
+    "en": "Design Description Organization"
+  },
+  "quiz_id": "Quiz_Ch05_T21_Design_Description_Organization",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي مجموعة تسمي مناظير التصميم الأربعة في المادة؟",
+        "en": "Which set names the four design views for an SDD?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مناظير التفكيك والاعتمادية والواجهة والتصميم التفصيلي",
+          "en": "Decomposition, dependency, interface, and detailed-design views"
+        },
+        {
+          "ar": "مناظير حالات الاستخدام والنشاط والتسلسل ومخططات النشر",
+          "en": "Use-case, activity, sequence, and deployment-diagram views"
+        },
+        {
+          "ar": "مناظير المدخل والتحويل والمخرج وتحليل المعاملات",
+          "en": "Input, transform, output, and transaction-analysis views"
+        },
+        {
+          "ar": "مناظير البيانات والتحكم والتماسك الإجرائي والاتصالي",
+          "en": "Data, control, procedural, and communicational-cohesion views"
+        }
+      ],
+      "concept_id": "ch5_sdd_views_set",
+      "explanation": {
+        "ar": "تنظم المناظير الأربعة معلومات التصميم في التفكيك والاعتمادية والواجهة والتفصيل.",
+        "en": "The four views organize design information into decomposition, dependency, interface, and detail."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ماذا يعرض منظور التفكيك؟",
+        "en": "What does the decomposition view show?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "الخوارزمية الداخلية والبيانات المحلية",
+          "en": "The internal algorithm and local data"
+        },
+        {
+          "ar": "التسلسل الهرمي للأنظمة والمكونات",
+          "en": "The subsystem and component hierarchy"
+        },
+        {
+          "ar": "الاعتماديات بين البروتوكولات الخارجية",
+          "en": "The dependencies between external protocols"
+        },
+        {
+          "ar": "الواجهة العامة وقواعد التواصل",
+          "en": "The public interface and communication rules"
+        }
+      ],
+      "concept_id": "ch5_sdd_decomposition_view",
+      "explanation": {
+        "ar": "يمثل منظور التفكيك كيفية تقسيم النظام إلى أجزاء أدنى.",
+        "en": "The decomposition view represents how the system is divided into lower-level parts."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي منظور يركز على العلاقات والاعتماديات بين الأجزاء؟",
+        "en": "Which view focuses on relationships and dependencies among parts?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يعرض منظور التفصيل الخوارزميات والبيانات الداخلية",
+          "en": "Detailed design view describes algorithms and internal data"
+        },
+        {
+          "ar": "يعرض منظور التفكيك التسلسل الهرمي للمكونات",
+          "en": "Decomposition view describes the component hierarchy"
+        },
+        {
+          "ar": "يعرض منظور الاعتمادية العلاقات بين أجزاء التصميم",
+          "en": "Dependency view describes relationships among design parts"
+        },
+        {
+          "ar": "يعرض منظور الواجهة التواقيع وعقود التواصل",
+          "en": "Interface view describes signatures and communication contracts"
+        }
+      ],
+      "concept_id": "ch5_sdd_dependency_view",
+      "explanation": {
+        "ar": "يصف منظور الاعتمادية الاعتماديات بين كيانات التصميم وموارده.",
+        "en": "The dependency view describes dependencies among design entities and resources."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يحتاج المراجع إلى عقود المعاملات والتواصل؛ أي منظور يساعده؟",
+        "en": "A reviewer needs parameter and communication contracts; which view helps?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يعرض منظور الاعتمادية العلاقات بين أجزاء التصميم",
+          "en": "Dependency view describes relationships among design parts"
+        },
+        {
+          "ar": "يعرض منظور التفصيل الخوارزميات والبيانات الداخلية",
+          "en": "Detailed design view describes algorithms and internal data"
+        },
+        {
+          "ar": "يعرض منظور التفكيك التسلسل الهرمي للمكونات",
+          "en": "Decomposition view describes the component hierarchy"
+        },
+        {
+          "ar": "يعرض منظور الواجهة التواقيع وعقود التواصل",
+          "en": "Interface view describes signatures and communication contracts"
+        }
+      ],
+      "concept_id": "ch5_sdd_interface_view",
+      "explanation": {
+        "ar": "يعرض منظور الواجهة التواقيع العامة وعقود التواصل.",
+        "en": "The interface view presents public signatures and communication contracts."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أين ينبغي تنظيم الخوارزميات الداخلية وبنى البيانات؟",
+        "en": "Where should internal algorithms and data structures be organized?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "في منظور التفصيل الذي يشرح الخوارزميات والبيانات",
+          "en": "In the detailed-design view describing algorithms and local data"
+        },
+        {
+          "ar": "في منظور الاعتمادية الذي يوضح روابط عناصر التصميم",
+          "en": "In the dependency view mapping relationships among elements"
+        },
+        {
+          "ar": "في منظور الواجهة الذي يحدد التواقيع والعقود العامة",
+          "en": "In the interface view defining public signatures and contracts"
+        },
+        {
+          "ar": "في بيان النطاق الذي يوضح حدود النظام ومكوناته الرئيسة",
+          "en": "In the scope statement describing system boundaries"
+        }
+      ],
+      "concept_id": "ch5_sdd_detail_view",
+      "explanation": {
+        "ar": "يسجل منظور التصميم التفصيلي الخوارزميات الداخلية والحالة وبنى البيانات.",
+        "en": "The detailed design view records internal algorithms, state, and data structures."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "ما الفرق بين محتوى SDD وتنظيمها؟",
+        "en": "What is the difference between SDD content and organization?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يحدد المحتوى الميزانية ويوزع التنظيم الموظفين",
+          "en": "Content sets the project budget; organization assigns staff"
+        },
+        {
+          "ar": "يسمي المحتوى المعلومات وينظمها العرض ضمن مناظير",
+          "en": "Content names the information; organization groups it into views"
+        },
+        {
+          "ar": "يسمي المحتوى المناظير ويختار التنظيم المجال البرمجي",
+          "en": "Content names the views; organization selects the software domain"
+        },
+        {
+          "ar": "المحتوى قابل للتنفيذ والتنظيم هو الشيفرة",
+          "en": "Content is executable; organization is the source code"
+        }
+      ],
+      "concept_id": "ch5_sdd_content_vs_organization",
+      "explanation": {
+        "ar": "تحدد سمات الكيان محتوى المعلومات، وتنظم مناظير التصميم تلك المعلومات.",
+        "en": "Entity attributes define information content, while design views organize that information."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا تنظم معلومات التصميم في مناظير منفصلة؟",
+        "en": "Why organize design information into separate views?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يستبدل كل منظور مواصفة متطلبات النظام",
+          "en": "Each view replaces the system requirements specification"
+        },
+        {
+          "ar": "يكرر كل منظور الشيفرة الكاملة لتنفيذ النظام",
+          "en": "Every view repeats the complete implementation source code"
+        },
+        {
+          "ar": "يساعد كل منظور على فحص جانب تصميمي محدد",
+          "en": "Each view helps examine one specific design concern"
+        },
+        {
+          "ar": "تلغي المناظير الحاجة إلى تحديد كيانات التصميم",
+          "en": "Views remove the need to identify entities in the design"
+        }
+      ],
+      "concept_id": "ch5_sdd_views_purpose",
+      "explanation": {
+        "ar": "تسهل المناظير المخصصة لجوانب محددة فحص أبعاد التصميم المختلفة.",
+        "en": "Concern-oriented views make different aspects of the design easier to inspect."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في أي منظور تضع المادة سمة Function؟",
+        "en": "In which design view is the Function attribute organized?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يعرض منظور الواجهة التواقيع العامة وعقود التواصل",
+          "en": "Interface view defines public signatures and contracts"
+        },
+        {
+          "ar": "يعرض منظور الاعتمادية الروابط بين كيانات التصميم",
+          "en": "Dependency view maps links among design entities"
+        },
+        {
+          "ar": "يعرض منظور التفصيل الخوارزميات والبيانات الداخلية",
+          "en": "Detailed view specifies algorithms and internal data"
+        },
+        {
+          "ar": "يعرض منظور التفكيك تسلسل الوظائف ومسؤوليات الوحدات",
+          "en": "Decomposition view shows function hierarchy and roles"
+        }
+      ],
+      "concept_id": "ch5_sdd_function_view_note",
+      "explanation": {
+        "ar": "تضع المادة سمة Function ضمن منظور التفكيك.",
+        "en": "The Function attribute is organized in the Decomposition view."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:07:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

@@ -1,0 +1,340 @@
+{
+  "topic": {
+    "ar": "المفاهيم الأساسية للتصميم الكائني",
+    "en": "Object-Oriented Basic Concepts"
+  },
+  "quiz_id": "Quiz_Ch05_T23_Object_Oriented_Basic_Concepts",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي مجموعة تسمي المفاهيم الكائنية الأساسية؟",
+        "en": "Which set names the central object-oriented concepts?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الكائنات والأصناف والرسائل والتجريد والوراثة وتعدد الأشكال",
+          "en": "Objects, classes, messages, abstraction, inheritance, polymorphism"
+        },
+        {
+          "ar": "العمليات والجداول والمعاملات والجدولة والكلفة والاعتمادية",
+          "en": "Processes, tables, transactions, scheduling, cost, reliability"
+        },
+        {
+          "ar": "المدخلات والمخازن والتحويلات والتقارير والفروع والنشر",
+          "en": "Inputs, stores, transformations, reports, branches, deployment"
+        },
+        {
+          "ar": "المخاطر والتقديرات والمراحل والموارد والمراجعات والإصدارات",
+          "en": "Risks, estimates, milestones, staffing, reviews, releases"
+        }
+      ],
+      "concept_id": "ch5_ood_basic_set",
+      "explanation": {
+        "ar": "تشكل هذه المفاهيم مفردات التصميم الكائني الأساسية في الفصل.",
+        "en": "These concepts form core object-oriented vocabulary."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما الذي يمنح الكائن هويته بوصفه كياناً أثناء التشغيل؟",
+        "en": "What gives an object its identity as a runtime entity?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "موضعه في تسلسل مخطط بنية مطبوع",
+          "en": "Its position in a printed structure-chart hierarchy"
+        },
+        {
+          "ar": "هويته وحالته وسلوكه الأساسي",
+          "en": "Its own identity, current state, and behavior"
+        },
+        {
+          "ar": "حجم ملفه وتاريخ إصدار البرمجيات",
+          "en": "Its source-file size and software release date"
+        },
+        {
+          "ar": "اسم صنفه من دون حالة لنسخته",
+          "en": "Its class name without any state in the instance"
+        }
+      ],
+      "concept_id": "ch5_ood_object",
+      "explanation": {
+        "ar": "يجمع الكائن الهوية والحالة والسلوك.",
+        "en": "An object combines identity with state and behavior."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما تمرير الرسائل بين الكائنات؟",
+        "en": "What is message passing between objects?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تخصيص مخطط جهازاً لعقدة برمجية محددة",
+          "en": "One diagram assigns a hardware device to a software node"
+        },
+        {
+          "ar": "خزن صنف ملف الشيفرة الخاص بصنف آخر",
+          "en": "One class stores the source file of another class"
+        },
+        {
+          "ar": "طلب كائن من آخر تنفيذ عملية محددة",
+          "en": "One object requests another object to perform an operation"
+        },
+        {
+          "ar": "تغيير إجراء علماً عاماً دون استدعاء مكون",
+          "en": "One procedure changes a global flag without calling a component"
+        }
+      ],
+      "concept_id": "ch5_ood_message",
+      "explanation": {
+        "ar": "تمرير الرسائل طلب تواصل لتنفيذ عملية.",
+        "en": "Message passing is a communication request for an operation."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ماذا يتيح تعدد الأشكال للعملية الواحدة؟",
+        "en": "What does polymorphism allow for one operation?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تخزن الكائنات كلها الحالة نفسها ضمن حقولها الداخلية",
+          "en": "Every object stores identical state in its internal data fields"
+        },
+        {
+          "ar": "يحدد كل صنف طريقة واحدة لجميع النسخ المنتمية إليه",
+          "en": "Each class defines exactly one method for all its instances"
+        },
+        {
+          "ar": "لا تُرسل الرسائل إلا خلال ترجمة ملفات البرنامج",
+          "en": "Messages can be transmitted only during source-code compilation"
+        },
+        {
+          "ar": "تطبق الأنواع المختلفة العملية نفسها بطرائق متباينة",
+          "en": "Different object types implement the same operation differently"
+        }
+      ],
+      "concept_id": "ch5_ood_polymorphism",
+      "explanation": {
+        "ar": "يتيح تعدد الأشكال للعملية نفسها سلوكاً يختلف باختلاف نوع الكائن.",
+        "en": "Polymorphism lets the same operation have type-specific behavior."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ورث نوع متخصص خصائص مشتركة من نوع عام؛ هذا هو...",
+        "en": "A specialized type inherits shared characteristics from a general type; this is..."
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تربط الوراثة صنفاً متخصصاً بآخر عام",
+          "en": "Inheritance links a specialized class to a general one"
+        },
+        {
+          "ar": "يخفي التغليف الحالة الداخلية خلف واجهة",
+          "en": "Encapsulation hides internal state behind an interface"
+        },
+        {
+          "ar": "يطلب تمرير الرسائل عملية من كائن آخر",
+          "en": "Message passing requests an operation from another object"
+        },
+        {
+          "ar": "التماسك الزمني يجمع المهام بحسب وقت تنفيذها",
+          "en": "Temporal cohesion groups tasks by execution time"
+        }
+      ],
+      "concept_id": "ch5_basic_inheritance",
+      "explanation": {
+        "ar": "تعبر الوراثة عن علاقة بين أصناف عامة ومتخصصة.",
+        "en": "Inheritance expresses a relationship between general and specialized classes."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "استخدم المستدعي عملية للمكدس من دون رؤية طريقة خزنه؛ وهذا يوضح...",
+        "en": "A caller uses a stack operation without seeing its storage layout; this illustrates..."
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اقتران محتوى عبر الوصول إلى الحالة الخاصة لصنف آخر",
+          "en": "Content coupling through access to another class's private state"
+        },
+        {
+          "ar": "تجريد العمليات ذات الصلة مع إغفال تفاصيلها الداخلية",
+          "en": "Abstraction of relevant operations with internal details omitted"
+        },
+        {
+          "ar": "منظور نشر يوزع الكائنات على عقد النظام المادية",
+          "en": "A deployment view assigning objects to physical nodes"
+        },
+        {
+          "ar": "وصول مباشر إلى التمثيل الداخلي والحقول المخزنة",
+          "en": "Direct access to internal representation and stored fields"
+        }
+      ],
+      "concept_id": "ch5_basic_abstraction",
+      "explanation": {
+        "ar": "يتيح التجريد الاعتماد على العمليات المناسبة من دون معرفة التفاصيل الداخلية.",
+        "en": "Abstraction lets a user rely on relevant operations without internal details."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي عبارة تتجنب مساواة كل صنف بـADT؟",
+        "en": "Which statement avoids equating every class with an ADT?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يكشف ADT تمثيله المخزني لكل مستدعٍ للنظام",
+          "en": "An ADT exposes its internal representation to every caller"
+        },
+        {
+          "ar": "يكون ADT دائماً صنفاً يرث ويتعدد شكله وسلوكه",
+          "en": "An ADT is always a class that uses inheritance and polymorphism"
+        },
+        {
+          "ar": "يحدد ADT العمليات ويصف الصنف حالة الكائن وسلوكه",
+          "en": "An ADT specifies operations; a class models object features"
+        },
+        {
+          "ar": "الصنف جدول قيم لا يحدد سلوك الكائن أو عملياته",
+          "en": "A class is a table of values without operations or behavior"
+        }
+      ],
+      "concept_id": "ch5_ood_adt_class",
+      "explanation": {
+        "ar": "المصطلحان مرتبطان لكنهما غير متطابقين، إذ يركز كل تعريف على جوانب مختلفة.",
+        "en": "The terms are related but not interchangeable; their definitions emphasize different aspects."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "متى تكون الوراثة لمجرد إعادة الاستخدام خياراً ضعيفاً؟",
+        "en": "When is inheritance for reuse alone a poor choice?"
+      },
+      "bloom": "Evaluate",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "حين ينتمي السلوك المشترك فعلاً إلى صنف أساس",
+          "en": "When shared behavior genuinely belongs to a base type"
+        },
+        {
+          "ar": "عندما يحدد الصنف واجهة واضحة للمستعملين",
+          "en": "When a class has a stable and well-defined interface"
+        },
+        {
+          "ar": "حين يخصص النوع الفرعي سلوكاً موروثاً ملائماً",
+          "en": "When a subtype specializes valid inherited behavior"
+        },
+        {
+          "ar": "عندما تكون علاقة العام بالمتخصص غير واضحة",
+          "en": "When the general-specialized relationship is unclear"
+        }
+      ],
+      "concept_id": "ch5_ood_inheritance_caution",
+      "explanation": {
+        "ar": "تضيف الوراثة علاقة بين الأنواع، ولا تبرر إعادة الاستخدام وحدها تسلسلاً مضللاً.",
+        "en": "Inheritance adds a type relationship; reuse alone does not justify a misleading hierarchy."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "هل يمكن للوراثة تمثيل علاقة أنواع صحيحة من دون تعدد أشكال عبر إعادة التعريف؟",
+        "en": "Can inheritance express a valid type relationship without polymorphic overriding?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "قد تمثل الوراثة علاقة أنواع حتى بلا إعادة تعريف الطرق",
+          "en": "Inheritance can express a type relation without method overriding"
+        },
+        {
+          "ar": "تشترط الوراثة دائماً إعادة تعريف الطرق المشتركة كلها",
+          "en": "Inheritance requires every subtype to redefine shared methods"
+        },
+        {
+          "ar": "الوراثة وتعدد الأشكال هما الخاصية نفسها في التصميم",
+          "en": "Polymorphism and inheritance describe the same type feature"
+        },
+        {
+          "ar": "لا يرث الصنف إلا مع تحميل الطرق المتعددة بالاسم نفسه",
+          "en": "A class cannot inherit unless several methods are overloaded"
+        }
+      ],
+      "concept_id": "ch5_ood_inheritance_without_polymorphism",
+      "explanation": {
+        "ar": "قد تمثل الوراثة التخصص من دون أن يعيد النوع الفرعي تعريف طريقة؛ فهي مرتبطة بتعدد الأشكال لكنها ليست مطابقة له.",
+        "en": "Inheritance can express specialization even when a subtype does not override a method; it is related to, but not identical with, polymorphism."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي ممارسة تدعم صنفاً جيداً وقابلاً لإعادة الاستخدام؟",
+        "en": "Which practice supports a reusable, well-formed class?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "استخدم الوراثة بلا علاقة صحيحة بين الأنواع",
+          "en": "Use inheritance without a valid general-specialized relation"
+        },
+        {
+          "ar": "اجمع مفهوماً مترابطاً مع حالته وعملياته المناسبة",
+          "en": "Keep a class concept, state, and operations coherent"
+        },
+        {
+          "ar": "ادمج مفاهيم غير مرتبطة لتقليل عدد الأصناف",
+          "en": "Combine unrelated ideas to reduce the number of classes"
+        },
+        {
+          "ar": "اكشف التمثيل الداخلي بوصفه الواجهة العامة للصنف",
+          "en": "Expose internal representation as the class's public interface"
+        }
+      ],
+      "concept_id": "ch5_ood_class_quality",
+      "explanation": {
+        "ar": "يمثل الصنف المترابط مفهوماً ذا معنى ويجمع حالته وعملياته ذات الصلة.",
+        "en": "A coherent class models a meaningful concept and keeps its relevant state and operations together."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T18:19:45Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

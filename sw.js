@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.27';
+const VERSION = '1.11.28';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -257,9 +257,30 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B04_COCOMO_II.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B05_Putnam_Resource_Model.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B06_Cost_And_Risk_Support.json',
-  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T01_Coupling_Cohesion_And_Design_Strategy.json',
-  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T02_Design_Scenarios_And_Comparisons.json',
-  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T03_Design_Layers_Modularity_And_Mapping.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T01_What_Is_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T02_Conceptual_And_Technical_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T03_Objectives_Of_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T04_Why_Design_Matters.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T05_Modularity.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T06_Module_Coupling.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T07_Module_Cohesion.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T08_Cohesion_Coupling_Relationship.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T09_Strategy_Of_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T10_Bottom_Up_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T11_Top_Down_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T12_Hybrid_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T13_Function_Oriented_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T14_Design_Notations.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T15_Functional_Procedure_Layers.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T16_IEEE_1016_Recommended_Practice.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T17_IEEE_1016_Scope.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T18_IEEE_1016_Definitions.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T19_Purpose_Of_SDD.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T20_Design_Description_Information_Content.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T21_Design_Description_Organization.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T22_Object_Oriented_Design.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T23_Object_Oriented_Basic_Concepts.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T24_OO_Analysis_And_Design_Steps.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B01_Measurement_Fundamentals.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B02_Size_Metrics.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_B03_Halstead_Software_Science.json',
