@@ -10,257 +10,417 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "كيف يُحسب التعرّض للخطر؟",
-        "en": "How is Risk Exposure computed?"
+        "ar": "أي مجموعة يمكن أن تدخل ضمن تقدير كلفة المشروع؟",
+        "en": "Which group can be part of a project cost estimate?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "الاحتمال مقسوماً على الخسارة",
-          "en": "probability divided by loss"
+          "ar": "كلفة الموظفين فقط من دون المعدات",
+          "en": "Personnel cost only, excluding equipment"
         },
         {
-          "ar": "الاحتمال مضروباً بالخسارة",
-          "en": "probability times loss now"
+          "ar": "كلفة البرمجيات والأجهزة والموظفين",
+          "en": "Software, hardware, and personnel costs"
         },
         {
-          "ar": "الاحتمال زائد الخسارة هنا",
-          "en": "probability plus loss here"
+          "ar": "كلفة البرمجيات فقط من دون الموظفين",
+          "en": "Software cost only, excluding staff"
         },
         {
-          "ar": "الخسارة مقسومة على الاحتمال",
-          "en": "loss divided by probability"
+          "ar": "كلفة الأجهزة فقط من دون البرمجيات",
+          "en": "Hardware cost only, excluding software"
         }
       ],
-      "concept_id": "ch4_risk_exposure",
+      "concept_id": "ch4_cost_includes",
       "explanation": {
-        "ar": "التعرّض للخطر يضرب احتمال الحدث في حجم الخسارة.",
-        "en": "Risk Exposure multiplies the probability of the event by the size of the loss."
+        "ar": "قد يشمل تقدير كلفة المشروع كلفة البرمجيات والأجهزة والموظفين.",
+        "en": "A project cost estimate may include software, hardware, and personnel costs."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "أنشطة إدارة المخاطر تنقسم إلى...",
-        "en": "Risk management activities are divided into..."
+        "ar": "ما الذي يجعل الحدث غير المؤكد خطراً في مشروع برمجي؟",
+        "en": "What makes an uncertain event a software project risk?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "خمس فئات",
-          "en": "five categories"
+          "ar": "مهمة مكتملة بلا عدم يقين",
+          "en": "A completed task with no uncertainty"
         },
         {
-          "ar": "عشر فئات",
-          "en": "ten categories"
+          "ar": "ميزة مرغوبة بلا جانب سلبي",
+          "en": "A desired feature with no downside"
         },
         {
-          "ar": "فئتان هنا",
-          "en": "two categories"
+          "ar": "عدم يقين قد يؤدي إلى خسارة",
+          "en": "Uncertainty with potential for loss"
         },
         {
-          "ar": "ثلاث فئات",
-          "en": "three categories"
+          "ar": "كلفة معروفة بلا أثر محتمل",
+          "en": "A known cost with no possible impact"
         }
       ],
-      "concept_id": "ch4_risk_categories",
+      "concept_id": "ch4_risk_definition",
       "explanation": {
-        "ar": "إدارة المخاطر تنقسم إلى تقييم المخاطر وضبط المخاطر، أي فئتان.",
-        "en": "Risk management splits into risk assessment and risk control, so two categories."
+        "ar": "يجمع خطر البرمجيات بين عدم اليقين واحتمال وقوع خسارة أو نتيجة سلبية أخرى.",
+        "en": "A software risk combines uncertainty with the possibility of loss or another adverse consequence."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "أي واحد ليس نشاطاً من أنشطة إدارة المخاطر؟",
-        "en": "Which one is NOT a risk management activity?"
+        "ar": "أي مجموعة تطابق فئات مخاطر البرمجيات المعتادة؟",
+        "en": "Which set matches the typical software-risk categories?"
       },
-      "bloom": "Understand",
+      "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "تقييم المخاطر أيضاً",
-          "en": "risk assessment too now"
+          "ar": "الجدول والكلفة والجودة والموظفون ومخاطر الأمن",
+          "en": "Schedule, cost, quality, staffing, security risks"
         },
         {
-          "ar": "ضبط المخاطر هنا مجدداً",
-          "en": "risk control here again"
+          "ar": "التقنية والقانونية والأخلاقية والسوقية والمالية",
+          "en": "Technical, legal, ethical, market, financial risks"
         },
         {
-          "ar": "لا شيء مما سبق أعلاه",
-          "en": "none of the above answers"
+          "ar": "المدخلات والمخرجات والخزن والواجهات وقواعد البيانات",
+          "en": "Input, output, storage, interface, database risks"
         },
         {
-          "ar": "توليد المخاطر الآن هنا",
-          "en": "risk generation now here"
+          "ar": "الخارجية والمتطلبات والإدارة والمعرفة والمخاطر الأخرى",
+          "en": "External, requirements, management, knowledge, other"
         }
       ],
-      "concept_id": "ch4_not_risk_activity",
+      "concept_id": "ch4_risk_categories",
       "explanation": {
-        "ar": "التقييم والضبط هما النشاطان، ولا أحد يولّد المخاطر عمداً.",
-        "en": "Assessment and control are the two activities; nobody generates risk on purpose."
+        "ar": "تشمل فئات المخاطر المعتادة الاعتماديات الخارجية والمتطلبات والإدارة ونقص المعرفة وفئات أخرى.",
+        "en": "Typical risk categories include external dependencies, requirements, management, lack of knowledge, and other risks."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "تقدير كلفة المشروع قد يشمل...",
-        "en": "Cost estimation for a project may include..."
+        "ar": "إلى أي فئة تنتمي المتطلبات الغامضة أو المتغيرة؟",
+        "en": "Changing or unclear user requirements belong to which risk category?"
       },
-      "bloom": "Understand",
-      "answer": 2,
+      "bloom": "Apply",
+      "answer": 0,
       "options": [
         {
-          "ar": "كلفة العتاد هنا",
-          "en": "hardware cost now again"
+          "ar": "مشكلات غموض المتطلبات",
+          "en": "Requirement issues"
         },
         {
-          "ar": "كلفة الأفراد الآن",
-          "en": "personnel costs too now"
+          "ar": "مشكلات قصور الإدارة",
+          "en": "Management issues"
         },
         {
-          "ar": "كل ما سبق أعلاه",
-          "en": "all of the above answers"
+          "ar": "تعطل جهة الدعم الخارجية",
+          "en": "External dependencies"
         },
         {
-          "ar": "كلفة البرمجيات",
-          "en": "software cost here here here"
+          "ar": "نقص معرفة الفريق الفنية",
+          "en": "Lack of knowledge"
         }
       ],
-      "concept_id": "ch4_cost_includes",
+      "concept_id": "ch4_risk_requirement_example",
       "explanation": {
-        "ar": "التقدير الكامل للمشروع يغطي البرمجيات والعتاد والأفراد معاً.",
-        "en": "A full project estimate covers software, hardware and personnel together."
+        "ar": "تُصنّف المتطلبات الغامضة أو المتغيرة ضمن مشكلات المتطلبات.",
+        "en": "Unclear or changing user requirements are classified as requirement issues."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "أي واحد ليس برمجيات بنية تحتية؟",
-        "en": "Which one is NOT infrastructure software?"
+        "ar": "ضمن أي فئة يرد فقدان موظف أساسي أو غياب جهاز الاختبار؟",
+        "en": "Turnover of a key person or unavailable test equipment is listed under which category?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 1,
       "options": [
         {
-          "ar": "المترجمات هنا أيضاً الآن هنا",
-          "en": "compilers here now again"
+          "ar": "فئة الاعتماد على جهة خارجية",
+          "en": "External-agency dependency risks"
         },
         {
-          "ar": "نظام إدارة النتائج هنا أيضاً",
-          "en": "result management system"
+          "ar": "فئة المخاطر الأخرى في البرمجيات",
+          "en": "Other software-risk categories"
         },
         {
-          "ar": "نظام التشغيل الآن مجدداً مجدداً",
-          "en": "operating system too here"
+          "ar": "فئة المتطلبات التي تتغير باستمرار",
+          "en": "Changing-requirement risk issues"
         },
         {
-          "ar": "نظام إدارة قواعد البيانات",
-          "en": "database management system"
+          "ar": "فئة ضعف إدارة العمل والموارد",
+          "en": "Project-management risk issues"
         }
       ],
-      "concept_id": "ch4_infra_not",
+      "concept_id": "ch4_risk_other_example",
       "explanation": {
-        "ar": "البنية التحتية تعني أنظمة التشغيل وقواعد البيانات والمترجمات، لا نظام نتائج تطبيقي.",
-        "en": "Infrastructure means operating systems, DBMS and compilers, not an application result system."
+        "ar": "يعد دوران الموظفين الأساسيين وغياب مرافق الاختبار مثالين على عوامل مخاطر أخرى.",
+        "en": "Key-person turnover and unavailable testing facilities are examples of other risk factors."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ماذا يشمل تقييم المخاطر؟",
-        "en": "What does risk assessment cover?"
+        "ar": "ما النشاطان الرئيسيان لإدارة مخاطر البرمجيات؟",
+        "en": "What are the two primary software risk-management activities?"
       },
       "bloom": "Understand",
-      "answer": 3,
+      "answer": 2,
       "options": [
         {
-          "ar": "متابعة الجدول فقط هنا",
-          "en": "monitoring the schedule only now"
+          "ar": "اختبار المخاطر وتسليمها",
+          "en": "Risk Testing and Risk Delivery"
         },
         {
-          "ar": "دفع التأمين هنا أيضاً",
-          "en": "paying the insurance now again too"
+          "ar": "تسجيل المخاطر وإغلاقها",
+          "en": "Risk Logging and Risk Closure"
         },
         {
-          "ar": "كتابة الكود الآن مجدداً",
-          "en": "writing the code here too here"
+          "ar": "تقييم المخاطر والتحكم بها",
+          "en": "Risk Assessment and Risk Control"
         },
         {
-          "ar": "تحديد المخاطر وترتيبها",
-          "en": "identifying and prioritising risks"
+          "ar": "التنبؤ بالمخاطر وتسعيرها",
+          "en": "Risk Forecasting and Risk Pricing"
         }
       ],
-      "concept_id": "ch4_risk_assessment",
+      "concept_id": "ch4_risk_two_categories",
       "explanation": {
-        "ar": "التقييم يحدد ما هي المخاطر ومدى خطورة كل واحدة.",
-        "en": "Assessment establishes what the risks are and how serious each one is."
+        "ar": "تتكون إدارة المخاطر من مجموعتين رئيستين، التقييم والتحكم، وتضم كل منهما ثلاثة أنشطة.",
+        "en": "Risk management has two main groups, Assessment and Control, and each contains three activities."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "ماذا يشمل ضبط المخاطر؟",
-        "en": "What does risk control cover?"
+        "ar": "أي تسلسل يندرج ضمن تقييم المخاطر؟",
+        "en": "Which sequence belongs to Risk Assessment?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "تخطيط الاستجابة ومتابعتها",
-          "en": "planning and monitoring the response"
+          "ar": "تخطيط الاستجابات وحلها ومراقبتها",
+          "en": "Plan, resolve, and monitor responses"
         },
         {
-          "ar": "تحديد المخاطر فقط مجدداً",
-          "en": "identifying the risks only again too"
+          "ar": "تصميم المكونات وبرمجتها واختبارها",
+          "en": "Design, code, and test components"
         },
         {
-          "ar": "تقدير الحجم هنا أيضاً الآن",
-          "en": "estimating the size here too now"
+          "ar": "تقدير الإصدارات وجدولتها وتوظيفها",
+          "en": "Estimate, schedule, and staff releases"
         },
         {
-          "ar": "تصميم الواجهة الآن هنا",
-          "en": "designing the interface now here"
+          "ar": "تحديد المخاطر وتحليلها وترتيبها",
+          "en": "Identify, analyze, and prioritize risks"
         }
       ],
-      "concept_id": "ch4_risk_control",
+      "concept_id": "ch4_risk_assessment",
       "explanation": {
-        "ar": "الضبط يحوّل التقييم إلى خطة ويتابع نجاحها.",
-        "en": "Control turns the assessment into a plan and tracks whether it works."
+        "ar": "يحدد تقييم المخاطر المخاطر ويحللها ويرتب أولوياتها بالاستناد إلى مستوى تعرضها.",
+        "en": "Risk Assessment identifies risks, analyzes them, and prioritizes them using their exposure."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "لماذا تحديد المخاطر مبكراً ذو قيمة؟",
-        "en": "Why is early risk identification valuable?"
+        "ar": "أي تسلسل يندرج ضمن التحكم بالمخاطر؟",
+        "en": "Which sequence belongs to Risk Control?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تخطيط المخاطر ومعالجتها ومراقبتها",
+          "en": "Plan, resolve, and monitor risk responses"
+        },
+        {
+          "ar": "تحديد المخاطر وتحليلها وترتيبها",
+          "en": "Identify, analyze, and prioritize risks"
+        },
+        {
+          "ar": "تقدير البرمجيات وتصميمها وإصدارها",
+          "en": "Estimate, design, and release software"
+        },
+        {
+          "ar": "قياس الأجهزة ومقارنتها وتسعيرها",
+          "en": "Measure, compare, and price hardware"
+        }
+      ],
+      "concept_id": "ch4_risk_control",
+      "explanation": {
+        "ar": "يخطط التحكم بالمخاطر للاستجابات ويعالج المخاطر المهمة ويراقب مؤشراتها.",
+        "en": "Risk Control plans responses, resolves significant risks, and monitors their indicators."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي معادلة تعرّف Risk Exposure؟",
+        "en": "Which equation defines Risk Exposure?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "RE = الاحتمالية × زمن التطوير",
+          "en": "RE = probability × development time"
+        },
+        {
+          "ar": "RE = الاحتمالية × الخسارة المحتملة",
+          "en": "RE = probability × potential loss"
+        },
+        {
+          "ar": "RE = الاحتمالية + الخسارة المحتملة",
+          "en": "RE = probability + potential loss"
+        },
+        {
+          "ar": "RE = الخسارة المحتملة / الاحتمالية",
+          "en": "RE = potential loss / probability"
+        }
+      ],
+      "concept_id": "ch4_risk_exposure",
+      "explanation": {
+        "ar": "يساوي التعرض للمخاطر احتمال الخسارة مضروباً في مقدارها المحتمل.",
+        "en": "Risk Exposure is probability multiplied by the potential magnitude of loss."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "عند ترتيب المخاطر كمياً، أيها يحظى بالاهتمام أولاً؟",
+        "en": "When risks are prioritized quantitatively, which should receive attention first?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "الخطر الذي أُبلغ عنه أخيراً",
+          "en": "The risk reported most recently"
+        },
+        {
+          "ar": "الخطر ذو أقل احتمال للوقوع",
+          "en": "The risk with the lowest probability"
+        },
+        {
+          "ar": "الخطر ذو أعلى قيمة للتعرض",
+          "en": "The risk with the highest exposure"
+        },
+        {
+          "ar": "الخطر ذو أقصر وصف في السجل",
+          "en": "The risk with the shortest description"
+        }
+      ],
+      "concept_id": "ch4_risk_prioritization",
+      "explanation": {
+        "ar": "قدّر التعرض لكل خطر، ثم عالج الخطر ذي التعرض الأعلى أولاً.",
+        "en": "Estimate Risk Exposure for each risk, then address the risk with the largest exposure first."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "أي عنصر ليس نشاطاً مذكوراً لإدارة المخاطر؟",
+        "en": "Which item is not a stated risk-management activity?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "نشاط تحديد المخاطر",
+          "en": "Identification of risks"
+        },
+        {
+          "ar": "نشاط تحليل المخاطر",
+          "en": "Analysis of risks"
+        },
+        {
+          "ar": "نشاط تخطيط الاستجابة",
+          "en": "Planning risk control"
+        },
+        {
+          "ar": "نشاط إنشاء المخاطر",
+          "en": "Generation of risks"
+        }
+      ],
+      "concept_id": "ch4_not_risk_activity",
+      "explanation": {
+        "ar": "تشمل أنشطة التقييم والتحكم التحديد والتحليل والتخطيط والمعالجة والمراقبة، لا إنشاء المخاطر.",
+        "en": "The listed assessment and control activities include identification, analysis, planning, resolution, and monitoring, not risk generation."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "متى تكون إدارة المخاطر مبررة اقتصادياً؟",
+        "en": "When is risk management economically justified?"
       },
       "bloom": "Analyze",
       "answer": 0,
       "options": [
         {
-          "ar": "التخفيف أرخص قبل الالتزام",
-          "en": "mitigation is cheaper before commitment"
+          "ar": "تكون كلفة التخفيف أقل من الخسارة المتوقعة",
+          "en": "When its cost is below expected loss avoided"
         },
         {
-          "ar": "يزيل كل عدم اليقين هنا",
-          "en": "it removes all uncertainty here again here"
+          "ar": "تكون كلفة التخفيف مساوية للخسارة المتوقعة",
+          "en": "When it removes every possible uncertainty"
         },
         {
-          "ar": "يقصّر الكود الآن مجدداً",
-          "en": "it shortens the code now too now here"
+          "ar": "تكون كلفة التخفيف ثابتة في كل المشاريع",
+          "en": "When it increases project cost by a fixed share"
         },
         {
-          "ar": "يرفع السعر هنا أيضاً الآن",
-          "en": "it raises the price here again too"
+          "ar": "تضمن كلفة التخفيف إزالة المخاطر كلها",
+          "en": "When it guarantees that no risk will occur"
         }
       ],
-      "concept_id": "ch4_risk_early",
+      "concept_id": "ch4_risk_economic",
       "explanation": {
-        "ar": "الخطر المكتشف في التخطيط يمكن التصميم حوله، والمتأخر لا يمكن.",
-        "en": "A risk found during planning can still be designed around; one found late cannot."
+        "ar": "لا توجد نسبة توفير عامة؛ بل تقارن كلفة التخفيف بالخسارة المتوقعة التي قد يقللها.",
+        "en": "No universal savings rate applies; compare mitigation cost with the expected loss it may reduce."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "أي عنصر تطبيق للمستخدم النهائي وليس برنامج بنية تحتية؟",
+        "en": "Which item is an end-user application rather than infrastructure software?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أداة ترجمة الشفرة البرمجية",
+          "en": "Compiler and translation tool"
+        },
+        {
+          "ar": "نظام إدارة نتائج الطلبة",
+          "en": "Result management application"
+        },
+        {
+          "ar": "نظام تشغيل الحاسوب وبرامجه",
+          "en": "Operating system software"
+        },
+        {
+          "ar": "نظام إدارة قواعد البيانات",
+          "en": "Database management software"
+        }
+      ],
+      "concept_id": "ch4_infra_not",
+      "explanation": {
+        "ar": "توفر أنظمة التشغيل وقواعد البيانات والمترجمات بنية أساسية؛ أما نظام النتائج فيخدم حاجة تطبيقية.",
+        "en": "Operating systems, DBMSs, and compilers provide infrastructure; a result-management system serves an application need."
       }
     }
   ],
@@ -269,7 +429,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T20:38:56Z",
+  "updated_at": "2026-11-05T15:35:33Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

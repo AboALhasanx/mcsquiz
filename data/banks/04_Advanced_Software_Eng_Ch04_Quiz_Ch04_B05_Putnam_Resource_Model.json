@@ -10,257 +10,385 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "نموذج بوتنام لتخصيص الموارد قائم على...",
-        "en": "The Putnam resource allocation model is based on..."
+        "ar": "أي نمط للقوى العاملة يستند إليه نموذج بوتنام؟",
+        "en": "Which manpower pattern underlies the Putnam resource model?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "ملاحظة بوم عن القوى العاملة",
-          "en": "Boehm manpower observation"
+          "ar": "منحنى Norden/Rayleigh",
+          "en": "The Norden/Rayleigh curve"
         },
         {
-          "ar": "منحنى نوردن/رايلي أيضاً الآن",
-          "en": "the Norden/Rayleigh curve"
+          "ar": "منحنى تثبيت أعداد الفريق",
+          "en": "A constant-staffing curve"
         },
         {
-          "ar": "نقاط الوظائف هنا الآن مجدداً",
-          "en": "function points here now"
+          "ar": "منحنى نمو توظيف خطي",
+          "en": "A linear growth curve"
         },
         {
-          "ar": "نظرية بوتنام الإدارية هنا",
-          "en": "Putnam theory of management"
+          "ar": "منحنى مراحل الإصدار",
+          "en": "A stepwise release curve"
         }
       ],
       "concept_id": "ch4_putnam_basis",
       "explanation": {
-        "ar": "بوتنام ينمذج منحنى القوى العاملة بمنحنى نوردن/رايلي.",
-        "en": "Putnam models the manpower profile with the Norden/Rayleigh curve."
+        "ar": "ينمذج بوتنام القوى العاملة بمنحنى Norden/Rayleigh الذي يرتفع إلى ذروة ثم ينخفض.",
+        "en": "Putnam models manpower with a Norden/Rayleigh-shaped curve that rises to a peak and later declines."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "كيف يعبّر بوتنام عن مقياس الصعوبة؟",
-        "en": "How does Putnam express the difficulty metric?"
+        "ar": "ما شكل منحنى رايلي للقوى العاملة طوال المشروع؟",
+        "en": "What shape does the full-project Rayleigh manpower curve have?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "K مضروبة في مكعب الزمن",
-          "en": "K times the cube of time too"
+          "ar": "يرتفع بلا توقف حتى نهاية المشروع",
+          "en": "It rises linearly without a peak"
         },
         {
-          "ar": "K مقسومة على مكعب الزمن",
-          "en": "K divided by the cube of time"
+          "ar": "يرتفع تدريجياً حتى ذروة ثم ينخفض",
+          "en": "It rises to a peak and then declines"
         },
         {
-          "ar": "K مقسومة على مربع الزمن",
-          "en": "K divided by the square of time"
+          "ar": "يبقى ثابتاً طوال مدة المشروع",
+          "en": "It stays flat until the final release"
         },
         {
-          "ar": "K مقسومة على الزمن هنا",
-          "en": "K divided by time here now"
+          "ar": "ينخفض تدريجياً منذ بدء المشروع",
+          "en": "It falls steadily from project start"
         }
       ],
-      "concept_id": "ch4_putnam_difficulty",
+      "concept_id": "ch4_putnam_curve",
       "explanation": {
-        "ar": "الصعوبة D تساوي K على مكعب زمن التطوير، فالزمن يخفّض الصعوبة سريعاً.",
-        "en": "Difficulty D equals K over the cube of development time, so time reduces difficulty fast."
+        "ar": "يزداد منحنى المشروع الكامل نحو ذروة قرب td ثم ينخفض بعدها.",
+        "en": "The full-project curve builds staffing toward a peak near td and declines afterward."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "ما شكل منحنى رايلي للقوى العاملة؟",
-        "en": "What shape does the Rayleigh manpower curve take?"
+        "ar": "أي تعبير يصف القوى العاملة m(t) على منحنى رايلي الكامل؟",
+        "en": "Which expression describes manpower m(t) on the full Rayleigh curve?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "ينخفض ثم يصعد بالنهاية",
-          "en": "it falls then rises at the end"
+          "ar": "m(t) = 2K / (at) · e^t",
+          "en": "m(t) = 2K / (at) · e^t"
         },
         {
-          "ar": "يتذبذب بدورات ثابتة هنا",
-          "en": "it alternates in fixed cycles"
+          "ar": "m(t) = K + at · e^(−t²)",
+          "en": "m(t) = K + at · e^(−t²)"
         },
         {
-          "ar": "يصعد إلى ذروة ثم يتلاشى",
-          "en": "it rises to a peak then decays"
+          "ar": "m(t) = 2Kat · e^(−at²)",
+          "en": "m(t) = 2Kat · e^(−at²)"
         },
         {
-          "ar": "يبقى مستوياً طوال المشروع",
-          "en": "it stays flat through the project"
+          "ar": "m(t) = Kt² · e^(−at)",
+          "en": "m(t) = Kt² · e^(−at)"
         }
       ],
-      "concept_id": "ch4_putnam_curve",
+      "concept_id": "ch4_putnam_staffing_curve",
       "explanation": {
-        "ar": "القوى العاملة تنمو إلى ذروة واحدة ثم تتلاشى، وهذا شكل رايلي.",
-        "en": "Manpower grows to a single peak and then decays, which is the Rayleigh shape."
+        "ar": "تُمثّل القوى العاملة في رايلي بالحد 2Kat مضروباً في تناقص أسي يعتمد على مربع t.",
+        "en": "Rayleigh manpower is represented by 2Kat multiplied by an exponential decay term in t squared."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "كيف يُعبَّر عن ذروة معدل القوى العاملة في نموذج بوتنام؟",
-        "en": "How is the peak manpower rate expressed in Putnam's model?"
+        "ar": "كيف يرتبط المعامل a بزمن التطوير td؟",
+        "en": "How is parameter a related to development time td?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "K على مربع الزمن أيضاً",
-          "en": "K over the square of the time now here"
+          "ar": "a = 1 / (td²)",
+          "en": "a = 1 / (td²)"
         },
         {
-          "ar": "ضعف K على الزمن هنا مجدداً",
-          "en": "two K over the time here too here"
+          "ar": "a = td² / (2)",
+          "en": "a = td² / (2)"
         },
         {
-          "ar": "K مضروبة بجذر e الآن هنا",
-          "en": "K times the root of e now again"
+          "ar": "a = 1 / (2td³)",
+          "en": "a = 1 / (2td³)"
         },
         {
-          "ar": "K على الزمن مضروباً بجذر e",
-          "en": "K over the time times the root of e"
+          "ar": "a = 1 / (2td²)",
+          "en": "a = 1 / (2td²)"
         }
       ],
-      "concept_id": "ch4_putnam_peak",
+      "concept_id": "ch4_putnam_curve_a",
       "explanation": {
-        "ar": "الذروة هي K مقسومة على حاصل ضرب زمن التطوير في جذر e.",
-        "en": "The peak rate is K divided by the product of development time and the square root of e."
+        "ar": "يساوي معامل المنحنى الكامل مقلوب ضعفي مربع زمن التطوير.",
+        "en": "The full-curve parameter is the reciprocal of twice the square of development time."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "كم تقريباً من الجهد الكلي يقع في دورة التطوير الفرعية؟",
-        "en": "About what share of total effort falls in the development sub-cycle?"
+        "ar": "متى يبلغ منحنى رايلي للمشروع الكامل ذروته؟",
+        "en": "At what time does the full-project Rayleigh curve reach its peak?"
       },
-      "bloom": "Remember",
-      "answer": 3,
+      "bloom": "Understand",
+      "answer": 0,
       "options": [
         {
-          "ar": "نحو خمسة عشر بالمئة",
-          "en": "about fifteen per cent"
+          "ar": "تحدث الذروة عند t = td",
+          "en": "Peak occurs at t = td"
         },
         {
-          "ar": "نحو خمسة وعشرين بالمئة",
-          "en": "about twenty five per cent"
+          "ar": "تحدث الذروة عند t = td / 2",
+          "en": "Peak occurs at t = td / 2"
         },
         {
-          "ar": "نحو خمسة وستين بالمئة",
-          "en": "about sixty five per cent"
+          "ar": "تحدث الذروة عند t = 2td",
+          "en": "Peak occurs at t = 2td"
         },
         {
-          "ar": "نحو أربعين بالمئة هنا",
-          "en": "about forty per cent here"
+          "ar": "تحدث الذروة عند t = td²",
+          "en": "Peak occurs at t = td²"
         }
       ],
-      "concept_id": "ch4_putnam_share",
+      "concept_id": "ch4_putnam_peak",
       "explanation": {
-        "ar": "نحو أربعين بالمئة من الجهد في دورة التطوير الفرعية، والباقي في مواضع أخرى.",
-        "en": "Roughly forty per cent of the effort sits in the development sub-cycle; the rest is elsewhere."
+        "ar": "يضع اشتقاق معادلة المنحنى الكامل ذروته عند زمن التطوير td.",
+        "en": "Differentiating the full-curve equation places its peak at the development time td."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "في معادلة بوتنام، على ماذا يعتمد الحجم S؟",
-        "en": "In Putnam's software equation, what does the size S depend on?"
+        "ar": "أي صيغة تعطي ذروة القوى العاملة m0 للمنحنى الكامل؟",
+        "en": "Which formula gives the full-curve peak manpower m0?"
       },
-      "bloom": "Understand",
-      "answer": 2,
+      "bloom": "Apply",
+      "answer": 1,
       "options": [
         {
-          "ar": "عدد نقاط الوظائف مجدداً",
-          "en": "the function point count now here"
+          "ar": "m0 = td / (K√e)",
+          "en": "m0 = td / (K√e)"
         },
         {
-          "ar": "عدد الوحدات هنا الآن",
-          "en": "the number of modules here again too"
+          "ar": "m0 = K / (td√e)",
+          "en": "m0 = K / (td√e)"
         },
         {
-          "ar": "الجهد وزمن التطوير معاً",
-          "en": "effort and development time together"
+          "ar": "m0 = Ktd / √e",
+          "en": "m0 = Ktd / √e"
         },
         {
-          "ar": "عدد عوامل الكلفة أيضاً",
-          "en": "the number of cost drivers too now"
+          "ar": "m0 = K / (td²√e)",
+          "en": "m0 = K / (td²√e)"
         }
       ],
-      "concept_id": "ch4_putnam_equation",
+      "concept_id": "ch4_putnam_peak_formula",
       "explanation": {
-        "ar": "S يتحدد بالجهد أس ثلث والزمن أس أربعة أثلاث، مضروباً بعامل التقنية.",
-        "en": "S is set by effort raised to one third and time raised to four thirds, scaled by technology."
+        "ar": "يعطي تقييم منحنى رايلي عند t = td قسمة K على td مضروباً في الجذر التربيعي لـ e.",
+        "en": "Evaluating the Rayleigh curve at t = td gives K divided by td times the square root of e."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "ماذا يُظهر التقابل بين الزمن والكلفة؟",
-        "en": "What does the time versus cost trade-off show?"
+        "ar": "أي معادلة تعرّف مقياس الصعوبة D في نموذج بوتنام؟",
+        "en": "Which equation defines Putnam's difficulty metric D?"
       },
-      "bloom": "Analyze",
-      "answer": 0,
+      "bloom": "Understand",
+      "answer": 2,
       "options": [
         {
-          "ar": "ضغط الزمن يرفع الجهد بشدة",
-          "en": "compressing time raises effort sharply"
+          "ar": "D = K · td²",
+          "en": "D = K · td²"
         },
         {
-          "ar": "ضغط الزمن يخفض الجهد هنا",
-          "en": "compressing time lowers effort again"
+          "ar": "D = S / K",
+          "en": "D = S / K"
         },
         {
-          "ar": "الزمن بلا أثر على الجهد",
-          "en": "time has no effect on effort now here here"
+          "ar": "D = K / td²",
+          "en": "D = K / td²"
         },
         {
-          "ar": "الكلفة تنخفض بانخفاض الزمن",
-          "en": "cost falls as time falls here too"
+          "ar": "D = K / td³",
+          "en": "D = K / td³"
         }
       ],
-      "concept_id": "ch4_putnam_tradeoff",
+      "concept_id": "ch4_putnam_difficulty",
       "explanation": {
-        "ar": "لأن الجهد يتناسب مع الزمن بأس سالب، تقليص الجدول يضخّم القوى العاملة.",
-        "en": "Because effort scales with time to a negative power, shrinking the schedule inflates the manpower."
+        "ar": "الصعوبة هي جهد المشروع مقسوماً على مربع زمن التطوير؛ أما D0 فهو مقياس تراكم مختلف.",
+        "en": "Difficulty is full-project effort divided by development time squared; D0 is a different build-up metric."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "كيف تتصرف الإنتاجية مع ارتفاع الصعوبة؟",
-        "en": "How does productivity behave as difficulty rises?"
+        "ar": "أي معادلة تعرّف مقياس تراكم القوى العاملة D0؟",
+        "en": "Which equation defines the manpower build-up metric D0?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "D0 = K / td²",
+          "en": "D0 = K / td²"
+        },
+        {
+          "ar": "D0 = K · td³",
+          "en": "D0 = K · td³"
+        },
+        {
+          "ar": "D0 = S / td",
+          "en": "D0 = S / td"
+        },
+        {
+          "ar": "D0 = K / td³",
+          "en": "D0 = K / td³"
+        }
+      ],
+      "concept_id": "ch4_putnam_build_metric",
+      "explanation": {
+        "ar": "يقسم D0 جهد المشروع على مكعب زمن التطوير، وهو يختلف عن مقياس الصعوبة D.",
+        "en": "D0 divides full-project effort by development time cubed and is distinct from difficulty D."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي معادلة تمثل معادلة حجم البرمجيات لبوتنام؟",
+        "en": "Which is Putnam's software-size equation?"
       },
       "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "تنخفض مع ارتفاع الصعوبة",
-          "en": "it falls as difficulty rises"
+          "ar": "S = C · K^(1/3) · td^(4/3)",
+          "en": "S = C · K^(1/3) · td^(4/3)"
         },
         {
-          "ar": "ترتفع مع ارتفاع الصعوبة",
-          "en": "it rises as difficulty rises"
+          "ar": "S = C · K^(4/3) · td^(1/3)",
+          "en": "S = C · K^(4/3) · td^(1/3)"
         },
         {
-          "ar": "تبقى ثابتة هنا الآن مجدداً",
-          "en": "it stays constant here too"
+          "ar": "S = C · K^(1/3) + td^(4/3)",
+          "en": "S = C · K^(1/3) + td^(4/3)"
         },
         {
-          "ar": "تصبح غير معرّفة أيضاً",
-          "en": "it becomes undefined now"
+          "ar": "S = C · K^(1/3) / td^(4/3)",
+          "en": "S = C · K^(1/3) / td^(4/3)"
+        }
+      ],
+      "concept_id": "ch4_putnam_equation",
+      "explanation": {
+        "ar": "تربط معادلة البرمجيات الحجم بثابت التقنية والجذر التكعيبي للجهد وزمن التطوير مرفوعاً إلى أربعة أثلاث.",
+        "en": "The software equation links size to the technology constant, cube-root effort, and development time to the four-thirds power."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "مع ثبات الحجم والتقنية، أي علاقة تصف مفاضلة الزمن والكلفة في بوتنام؟",
+        "en": "For fixed size and technology, what relation captures Putnam's time-cost trade-off?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يبقى K + td ثابتاً",
+          "en": "K + td remains constant"
+        },
+        {
+          "ar": "يبقى K · td⁴ ثابتاً",
+          "en": "K · td⁴ remains constant"
+        },
+        {
+          "ar": "يبقى K · td² ثابتاً",
+          "en": "K · td² remains constant"
+        },
+        {
+          "ar": "يبقى K / td⁴ ثابتاً",
+          "en": "K / td⁴ remains constant"
+        }
+      ],
+      "concept_id": "ch4_putnam_tradeoff",
+      "explanation": {
+        "ar": "تعطي معادلة البرمجيات تناسب K عكسياً مع القوة الرابعة لـ td عند ثبات الحجم والتقنية.",
+        "en": "The software equation yields K proportional to one over td to the fourth power when size and technology are fixed."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "عند ثبات حجم المنتج، ماذا يحدث للإنتاجية S/K إذا ارتفع الجهد K؟",
+        "en": "At fixed product size, what happens to productivity S/K when effort K rises?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تبقى نسبة الإنتاجية S/K ثابتة",
+          "en": "The S/K productivity ratio stays fixed"
+        },
+        {
+          "ar": "لا تُعرّف نسبة الإنتاجية S/K",
+          "en": "The S/K productivity ratio is undefined"
+        },
+        {
+          "ar": "تنخفض نسبة الإنتاجية S/K",
+          "en": "The S/K productivity ratio decreases"
+        },
+        {
+          "ar": "ترتفع نسبة الإنتاجية S/K",
+          "en": "The S/K productivity ratio increases"
         }
       ],
       "concept_id": "ch4_putnam_productivity",
       "explanation": {
-        "ar": "صعوبة أعلى تعني جهداً أكبر لكل وحدة مخرج، فتنخفض الإنتاجية.",
-        "en": "Higher difficulty means more effort per unit of output, so productivity drops."
+        "ar": "عند ثبات الحجم، تساوي الإنتاجية الحجم مقسوماً على الجهد؛ لذا يخفض الجهد الأعلى النسبة.",
+        "en": "With size fixed, productivity is size divided by effort, so more effort lowers the productivity ratio."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ما العلاقة التي تربط الجهد الكامل K بجهد دورة التطوير Kd؟",
+        "en": "What relation connects full effort K to development-sub-cycle effort Kd?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الجهد الكلي K يساوي مجموع Kd وtd",
+          "en": "Full effort K equals Kd plus td"
+        },
+        {
+          "ar": "الجهد الكلي K يساوي الفرق بين Kd وtd",
+          "en": "Full effort K equals Kd minus td"
+        },
+        {
+          "ar": "الجهد الكلي K يساوي Kd مقسوماً على ستة",
+          "en": "Full effort K equals Kd divided by six"
+        },
+        {
+          "ar": "الجهد الكلي K يساوي ستة أمثال Kd",
+          "en": "Full effort K equals six times Kd"
+        }
+      ],
+      "concept_id": "ch4_putnam_subcycle",
+      "explanation": {
+        "ar": "جهد دورة التطوير سدس جهد المشروع الكامل، وهو يختلف عن الجهد التراكمي حتى الإصدار.",
+        "en": "Development-sub-cycle effort is one sixth of full-project effort; it differs from cumulative effort by release."
       }
     }
   ],
@@ -269,7 +397,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T20:38:56Z",
+  "updated_at": "2026-11-05T15:26:20Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

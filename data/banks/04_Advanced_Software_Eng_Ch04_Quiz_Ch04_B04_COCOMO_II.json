@@ -10,257 +10,385 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "COCOMO II قائم على أي منهج؟",
-        "en": "COCOMO II is based on which approach?"
+        "ar": "إلى أي نهج تقدير ينتمي COCOMO II؟",
+        "en": "COCOMO II belongs to which estimation approach?"
       },
       "bloom": "Understand",
-      "answer": 0,
+      "answer": 3,
       "options": [
         {
-          "ar": "المنهج الخوارزمي مجدداً",
-          "en": "the algorithmic approach"
+          "ar": "نهج رأي الخبراء للتقدير",
+          "en": "Expert-opinion estimation"
         },
         {
-          "ar": "المنهج المعقّد أيضاً",
-          "en": "the complex approach here"
+          "ar": "نهج القياس فقط للمشاريع",
+          "en": "Analogy-only estimation"
         },
         {
-          "ar": "المنهج الصاعد هنا هنا",
-          "en": "the bottom-up approach"
+          "ar": "نهج بناء المهام التفصيلي",
+          "en": "Bottom-up task accounting"
         },
         {
-          "ar": "المنهج الهابط الآن الآن",
-          "en": "the top-down approach"
+          "ar": "نهج التقدير الخوارزمي",
+          "en": "Algorithmic estimation"
         }
       ],
       "concept_id": "ch4_ii_approach",
       "explanation": {
-        "ar": "COCOMO II خوارزمي: التقدير يأتي من معادلات على الحجم وعوامل القياس.",
-        "en": "COCOMO II is algorithmic: the estimate comes from equations over size and scale factors."
+        "ar": "يعد COCOMO II نموذجاً خوارزمياً يتنبأ بالجهد بمعادلات معايرة ومدخلات المشروع.",
+        "en": "COCOMO II is an algorithmic model that predicts effort using calibrated equations and project inputs."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "طُوّر COCOMO II في...",
-        "en": "COCOMO II was developed at..."
+        "ar": "في أي مؤسسة طُوّر COCOMO II؟",
+        "en": "At which institution was COCOMO II developed?"
       },
       "bloom": "Remember",
-      "answer": 1,
+      "answer": 0,
       "options": [
         {
-          "ar": "مختبرات بيل الآن هنا",
-          "en": "AT&T Bell Labs now again now here"
+          "ar": "جامعة جنوب كاليفورنيا الأميركية",
+          "en": "University of Southern California"
         },
         {
-          "ar": "جامعة جنوب كاليفورنيا",
-          "en": "the University of Southern California"
+          "ar": "جامعة كارنيغي ميلون الأميركية",
+          "en": "Carnegie Mellon University"
         },
         {
-          "ar": "جامعة ميريلاند مجدداً",
-          "en": "the University of Maryland too now"
+          "ar": "معهد جورجيا للتقنية الأميركي",
+          "en": "Georgia Institute of Technology"
         },
         {
-          "ar": "أبحاث IBM هنا أيضاً",
-          "en": "IBM research here too here again too here"
+          "ar": "جامعة كاليفورنيا في بيركلي الأميركية",
+          "en": "University of California, Berkeley"
         }
       ],
       "concept_id": "ch4_ii_place",
       "explanation": {
-        "ar": "COCOMO II خرج من جامعة جنوب كاليفورنيا حيث انتقل بوم.",
-        "en": "COCOMO II came out of the University of Southern California, where Boehm moved."
+        "ar": "طُوّر COCOMO II في جامعة جنوب كاليفورنيا.",
+        "en": "COCOMO II was developed at the University of Southern California."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "أي واحد ليس فئة في COCOMO II؟",
-        "en": "Which one is NOT a COCOMO II category?"
-      },
-      "bloom": "Understand",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "قطاع البنية التحتية مجدداً",
-          "en": "Infrastructure Sector"
-        },
-        {
-          "ar": "تكامل الأنظمة هنا الآن",
-          "en": "System Integration here"
-        },
-        {
-          "ar": "قطاع المتطلبات هنا أيضاً",
-          "en": "Requirement Sector here"
-        },
-        {
-          "ar": "برمجة المستخدم النهائي",
-          "en": "End User Programming"
-        }
-      ],
-      "concept_id": "ch4_ii_not_category",
-      "explanation": {
-        "ar": "القطاعات الثلاثة هي برمجة المستخدم النهائي والبنية التحتية وتكامل الأنظمة.",
-        "en": "The three sectors are end-user programming, infrastructure and system integration."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "كم مرحلة لـ COCOMO II؟",
-        "en": "How many stages does COCOMO II have?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "مرحلتان هنا",
-          "en": "two stages here here"
-        },
-        {
-          "ar": "أربع مراحل",
-          "en": "four stages now now"
-        },
-        {
-          "ar": "خمس مراحل",
-          "en": "five stages too too"
-        },
-        {
-          "ar": "ثلاث مراحل",
-          "en": "three stages again"
-        }
-      ],
-      "concept_id": "ch4_ii_stages",
-      "explanation": {
-        "ar": "COCOMO II له ثلاث مراحل: تركيب التطبيق والتصميم المبكر وما بعد المعمارية.",
-        "en": "COCOMO II has three stages: application composition, early design and post-architecture."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "أي واحد ليس مرحلة في COCOMO II؟",
-        "en": "Which one is NOT a COCOMO II stage?"
-      },
-      "bloom": "Understand",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "نموذج الكلفة الشامل هنا",
-          "en": "Comprehensive cost model too"
-        },
-        {
-          "ar": "نموذج تركيب التطبيق الآن",
-          "en": "Application Composition model"
-        },
-        {
-          "ar": "نموذج التصميم المبكر هنا",
-          "en": "Early design model here here"
-        },
-        {
-          "ar": "نموذج ما بعد المعمارية",
-          "en": "Post architecture model now"
-        }
-      ],
-      "concept_id": "ch4_ii_not_stage",
-      "explanation": {
-        "ar": "المراحل الثلاث هي التركيب والتصميم المبكر وما بعد المعمارية، و«الشامل» ليس منها.",
-        "en": "The three stages are composition, early design and post-architecture; comprehensive is not one."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "في COCOMO II، كيف يُبنى أس الجهد B؟",
-        "en": "In COCOMO II, how is the effort exponent B built?"
+        "ar": "أي عنصر ليس من قطاعات تطبيق COCOMO II؟",
+        "en": "Which item is not one of the COCOMO II application sectors?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "حاصل ضرب الحجم في الزمن أيضاً الآن",
-          "en": "the product of size and time now again too now here"
+          "ar": "قطاع بنية التطبيقات التحتية",
+          "en": "Infrastructure Sector"
         },
         {
-          "ar": "أساس مضاف إليه مضاعف صغير لعوامل القياس",
-          "en": "a base plus a small multiple of the scale factors"
+          "ar": "قطاع تقدير متطلبات المشروع",
+          "en": "Requirement Sector"
         },
         {
-          "ar": "ثابت لا يتغير لكل مشروع الآن هنا أيضاً",
-          "en": "a fixed constant for every project here again"
+          "ar": "قطاع برمجة المستخدم النهائي",
+          "en": "End-User Programming"
         },
         {
-          "ar": "مجموع كل عوامل الكلفة هنا مجدداً مجدداً",
-          "en": "the sum of all cost drivers here too now here"
+          "ar": "قطاع تكامل الأنظمة البرمجية",
+          "en": "System Integration"
         }
       ],
-      "concept_id": "ch4_ii_exponent",
+      "concept_id": "ch4_ii_not_category",
       "explanation": {
-        "ar": "B يبدأ من 0.91 ويزيد 0.01 لكل عامل قياس ينطبق.",
-        "en": "B starts from 0.91 and grows by 0.01 for each scale factor that applies."
+        "ar": "القطاعات الأربعة هي برمجة المستخدم النهائي ومولدات التطبيقات وتكامل الأنظمة والبنية التحتية.",
+        "en": "The four sectors are End-User Programming, Application Generators, System Integration, and Infrastructure."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي مجموعة تسمي مراحل تقدير COCOMO II الثلاث؟",
+        "en": "Which set names the three COCOMO II estimation stages?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "العضوي وشبه المنفصل والمدمج في COCOMO '81",
+          "en": "Organic, Semidetached, Embedded operating modes"
+        },
+        {
+          "ar": "المتطلبات والبرمجة والاختبار والصيانة",
+          "en": "Requirements, coding, testing, and maintenance phases"
+        },
+        {
+          "ar": "التركيب والتصميم المبكر وما بعد المعمارية",
+          "en": "Composition, Early Design, Post-Architecture"
+        },
+        {
+          "ar": "النموذج الأساسي والمتوسط والمفصل في COCOMO '81",
+          "en": "Basic, Intermediate, Detailed COCOMO '81 models"
+        }
+      ],
+      "concept_id": "ch4_ii_stages",
+      "explanation": {
+        "ar": "يستخدم COCOMO II نماذج تقدير التركيب والتصميم المبكر وما بعد المعمارية.",
+        "en": "COCOMO II uses Application Composition, Early Design, and Post-Architecture estimation models."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "المتطلبات معروفة لكن المعمارية لم تستقر بعد؛ أي مرحلة تناسب؟",
+        "en": "Requirements are known, but architecture is not yet settled. Which stage fits?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مرحلة تركيب التطبيقات لتقدير COCOMO II",
+          "en": "The COCOMO II Application Composition stage"
+        },
+        {
+          "ar": "مرحلة ما بعد المعمارية لتقدير COCOMO II",
+          "en": "The COCOMO II Post-Architecture estimation stage"
+        },
+        {
+          "ar": "مرحلة التقدير المفصّل في COCOMO '81",
+          "en": "The Detailed COCOMO '81 estimation stage"
+        },
+        {
+          "ar": "مرحلة التصميم المبكر لتقدير COCOMO II",
+          "en": "The COCOMO II Early Design estimation stage"
+        }
+      ],
+      "concept_id": "ch4_ii_stage_early",
+      "explanation": {
+        "ar": "يدعم التصميم المبكر التقدير بعد فهم المتطلبات وقبل اكتمال تعريف المعمارية.",
+        "en": "Early Design supports estimation after requirements are understood and before the architecture is fully defined."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "توفرت معمارية مستقرة وتقييمات مفصلة لعوامل الكلفة؛ أي مرحلة تناسب؟",
+        "en": "A stable architecture and detailed cost-driver ratings are available. Which stage fits?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "مرحلة ما بعد المعمارية في COCOMO II",
+          "en": "The COCOMO II Post-Architecture stage"
+        },
+        {
+          "ar": "مرحلة تركيب التطبيقات في COCOMO II",
+          "en": "The COCOMO II Application Composition stage"
+        },
+        {
+          "ar": "مرحلة التصميم المبكر في COCOMO II",
+          "en": "The COCOMO II Early Design stage"
+        },
+        {
+          "ar": "مرحلة COCOMO '81 الأساسي في التقدير",
+          "en": "The Basic COCOMO '81 estimation stage"
+        }
+      ],
+      "concept_id": "ch4_ii_stage_postarch",
+      "explanation": {
+        "ar": "تستخدم مرحلة ما بعد المعمارية عند استقرار المعمارية وتوفر معلومات عوامل الكلفة المفصلة.",
+        "en": "Post-Architecture is used once architecture is established and the detailed driver information is available."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "ما الذي يميّز نموذج التصميم المبكر عن ما بعد المعمارية؟",
-        "en": "What distinguishes the early design model from post-architecture?"
+        "ar": "ما أساس الحجم الذي يستخدمه نموذج تركيب التطبيقات؟",
+        "en": "What sizing basis does the Application Composition model use?"
       },
       "bloom": "Understand",
-      "answer": 2,
+      "answer": 1,
       "options": [
         {
-          "ar": "يتجاهل حجم المشروع هنا مجدداً أيضاً",
-          "en": "it ignores the project size here too now"
+          "ar": "تلخص سنوات العمل والجهد على منحنى Rayleigh",
+          "en": "Person-years summarize effort along a Rayleigh curve"
         },
         {
-          "ar": "يستبدل COCOMO الأساسي الآن هنا",
-          "en": "it replaces the basic COCOMO now again again"
+          "ar": "تحصي Object Points الشاشات والتقارير والمكونات",
+          "en": "Object Points count screens, reports, and components"
         },
         {
-          "ar": "يستخدم عوامل قياس أقل وبيانات أخشن",
-          "en": "it uses fewer scale factors and coarser data"
+          "ar": "تحصي KLOC أسطر الشفرة ومضاعفات الكلفة المفصلة",
+          "en": "KLOC counts delivered source lines and detailed drivers"
         },
         {
-          "ar": "يحتاج الشيفرة النهائية أيضاً الآن",
-          "en": "it needs the finished source code here too"
+          "ar": "تحصي Function Points المدخلات والمخرجات والملفات",
+          "en": "Function Points count inputs, outputs, and logical files"
         }
       ],
-      "concept_id": "ch4_ii_early",
+      "concept_id": "ch4_ii_application",
       "explanation": {
-        "ar": "التصميم المبكر يعمل ببيانات حجم خشنة، وما بعد المعمارية يستخدم مضاعفات مفصّلة.",
-        "en": "Early design works from coarse size data, while post-architecture uses detailed multipliers."
+        "ar": "يحصي نموذج تركيب التطبيقات أنواع الكائنات مثل الشاشات والتقارير ومكونات 3GL.",
+        "en": "Application Composition counts object types such as screens, reports, and 3GL components."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "متى يُستخدم نموذج تركيب التطبيق؟",
-        "en": "When is the application composition model used?"
+        "ar": "كيف تؤثر إعادة الاستخدام في نقاط الكائنات الجديدة؟",
+        "en": "How does reuse affect New Object Points?"
       },
       "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "NOP = OP × (100 − نسبة الإنتاجية) / 100",
+          "en": "NOP = OP × (100 − PROD%) / 100"
+        },
+        {
+          "ar": "NOP = OP × (100 − نسبة الحجم) / 100",
+          "en": "NOP = OP × (100 − size%) / 100"
+        },
+        {
+          "ar": "NOP = OP × (100 − نسبة الإعادة) / 100",
+          "en": "NOP = OP × (100 − reuse%) / 100"
+        },
+        {
+          "ar": "NOP = OP × (100 + نسبة الإعادة) / 100",
+          "en": "NOP = OP × (100 + reuse%) / 100"
+        }
+      ],
+      "concept_id": "ch4_ii_nop_reuse",
+      "explanation": {
+        "ar": "تُطرح نسبة إعادة الاستخدام من مجموع نقاط الكائنات للحصول على الجزء المطلوب تطويره.",
+        "en": "The reuse percentage is removed from total Object Points to obtain the newly developed portion."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "في تركيب التطبيقات، كيف يقدّر الجهد من NOP؟",
+        "en": "In Application Composition, how is effort estimated from NOP?"
+      },
+      "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "لبرمجيات مضمّنة آنية الآن هنا أيضاً",
-          "en": "for embedded real-time firmware too now here"
+          "ar": "الجهد = NOP × الإنتاجية",
+          "en": "Effort = NOP × productivity"
         },
         {
-          "ar": "لأنظمة دفاعية ضخمة هنا مجدداً مجدداً هنا",
-          "en": "for very large defence systems now here"
+          "ar": "الجهد = OP / نسبة الإعادة",
+          "en": "Effort = OP / reuse percentage"
         },
         {
-          "ar": "لبحوث الخوارزميات فقط أيضاً الآن",
-          "en": "for pure algorithm research here again"
+          "ar": "الجهد = الحجم × أسّ التحجيم",
+          "en": "Effort = size × scale exponent"
         },
         {
-          "ar": "لأنظمة تُبنى من مكوّنات قابلة للإعادة",
-          "en": "for systems built from reusable components"
+          "ar": "الجهد = NOP / الإنتاجية",
+          "en": "Effort = NOP / productivity"
         }
       ],
-      "concept_id": "ch4_ii_application",
+      "concept_id": "ch4_ii_composition_effort",
       "explanation": {
-        "ar": "تقدير التركيب يستهدف أنظمة تُجمَّع من مكوّنات وسكربتات قائمة.",
-        "en": "Composition estimation targets systems assembled from existing components and scripts."
+        "ar": "تقاس الإنتاجية بنقاط الكائنات لكل شخص-شهر؛ لذا يعطي قسمة NOP عليها تقدير الجهد.",
+        "en": "Object Points per person-month is productivity, so dividing NOP by productivity yields effort."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "كيف يُحسب أس التحجيم B في COCOMO II؟",
+        "en": "How is the COCOMO II scale exponent B formed?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "B = 0.91 + 0.01 × مجموع عوامل التحجيم الخمسة",
+          "en": "B = 0.91 + 0.01 × sum of five scale factors"
+        },
+        {
+          "ar": "B = 0.91 + 0.01 × مجموع مضاعفات الجهد",
+          "en": "B = 0.91 + 0.01 × sum of effort multipliers"
+        },
+        {
+          "ar": "B = 2.94 × الحجم مرفوعاً لعوامل الكلفة الخمسة",
+          "en": "B = 2.94 × size raised to five drivers"
+        },
+        {
+          "ar": "B = 0.01 × حاصل ضرب عوامل التحجيم السبعة",
+          "en": "B = 0.01 × product of seven scale factors"
+        }
+      ],
+      "concept_id": "ch4_ii_exponent",
+      "explanation": {
+        "ar": "يعتمد الأس على مجموع تقييمات خمسة عوامل تحجيم، لا على حاصل ضرب مضاعفات الجهد المنفصلة.",
+        "en": "The exponent uses the sum of five scale-factor ratings, not the separate effort-multiplier product."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "كيف يختلف التصميم المبكر وما بعد المعمارية في تفصيل عوامل الكلفة؟",
+        "en": "How do Early Design and Post-Architecture differ in cost-driver detail?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "ما بعد المعمارية يحذف مضاعفات الجهد",
+          "en": "Post-Architecture removes effort multipliers"
+        },
+        {
+          "ar": "التصميم المبكر يستخدم عوامل كلفة مجمعة",
+          "en": "Early Design uses aggregated cost-driver ratings"
+        },
+        {
+          "ar": "ما بعد المعمارية يستخدم عوامل كلفة مفصلة",
+          "en": "Post-Architecture uses only aggregated ratings"
+        },
+        {
+          "ar": "المرحلتان تستبدلان عوامل التحجيم بعامل واحد",
+          "en": "Both stages replace scale factors with one driver"
+        }
+      ],
+      "concept_id": "ch4_ii_early",
+      "explanation": {
+        "ar": "تستخدم المرحلتان خمسة عوامل تحجيم، لكن ما بعد المعمارية يملك مضاعفات جهد أكثر تفصيلاً.",
+        "en": "Both stages use five scale factors; Post-Architecture has more detailed effort multipliers than Early Design."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "أي صيغة توافق تقدير الجهد بعد المعمارية؟",
+        "en": "Which form matches Post-Architecture effort estimation?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "E = A × Size^B / EAF",
+          "en": "E = A × Size^B / EAF"
+        },
+        {
+          "ar": "E = A × NOP / PROD",
+          "en": "E = A × NOP / PROD"
+        },
+        {
+          "ar": "E = A × Size^B × EAF",
+          "en": "E = A × Size^B × EAF"
+        },
+        {
+          "ar": "E = A + Size^B + EAF",
+          "en": "E = A + Size^B + EAF"
+        }
+      ],
+      "concept_id": "ch4_ii_postarch_effort",
+      "explanation": {
+        "ar": "يجمع تقدير ما بعد المعمارية حد الحجم الأسي المعاير مع معامل تعديل الجهد.",
+        "en": "Post-Architecture combines the calibrated size-power term with the effort adjustment factor."
       }
     }
   ],
@@ -269,7 +397,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T20:38:56Z",
+  "updated_at": "2026-11-05T15:35:33Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

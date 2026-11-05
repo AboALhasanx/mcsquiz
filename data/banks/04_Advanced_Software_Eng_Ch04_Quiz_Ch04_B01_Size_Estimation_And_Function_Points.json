@@ -10,321 +10,385 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "بعد تثبيت المواصفة، ماذا يمكننا تقديره؟",
-        "en": "After the SRS is finalised, what may we estimate?"
+        "ar": "بعد اعتماد مواصفة المتطلبات، أي تقديرات تدعم تخطيط المشروع؟",
+        "en": "After the SRS is baselined, which estimates support project planning?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "كل ما سبق أعلاه هنا",
-          "en": "all of the above answers"
+          "ar": "الحجم والكلفة وزمن التطوير",
+          "en": "Size, cost, and development time"
         },
         {
-          "ar": "حجم المنتج هنا مجدداً",
-          "en": "the size of the product"
+          "ar": "الحجم والموارد وزمن الصيانة",
+          "en": "Size, staffing, and maintenance time"
         },
         {
-          "ar": "كلفة المشروع أيضاً",
-          "en": "the cost of the project"
+          "ar": "الجودة والمخاطر وموعد الإصدار",
+          "en": "Quality, risk, and release date"
         },
         {
-          "ar": "زمن التطوير الآن الآن",
-          "en": "the development time here"
+          "ar": "الميزانية والأجهزة وزمن الدعم",
+          "en": "Budget, hardware, and support time"
         }
       ],
       "concept_id": "ch4_after_srs",
       "explanation": {
-        "ar": "بعد تثبيت المواصفة يمكن تقدير الحجم والكلفة وزمن التطوير منها.",
-        "en": "Once the SRS is fixed, size, cost and development time can all be estimated from it."
+        "ar": "بعد اعتماد المتطلبات تشمل تقديرات التخطيط حجم المنتج وكلفة المشروع وزمن التطوير.",
+        "en": "Once requirements are baselined, planning estimates cover product size, project cost, and development time."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "أي واحد ليس مقياس حجم للبرمجيات؟",
-        "en": "Which one is NOT a size measure for software?"
+        "ar": "أي عنصر يقيس تعقيد تدفق التحكم لا حجم البرمجيات؟",
+        "en": "Which item measures control-flow complexity rather than software size?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
+        {
+          "ar": "عدد وظائف البرنامج",
+          "en": "Function Count estimate"
+        },
+        {
+          "ar": "تعقيد تدفق التحكم",
+          "en": "Cyclomatic complexity"
+        },
         {
           "ar": "طول برنامج هالستيد",
           "en": "Halstead program length"
         },
         {
-          "ar": "التعقيد الدوري الآن",
-          "en": "cyclomatic complexity"
-        },
-        {
-          "ar": "أسطر الكود هنا أيضاً",
-          "en": "lines of code here now"
-        },
-        {
-          "ar": "عدد الدوال هنا مجدداً",
-          "en": "function count here"
+          "ar": "عدد أسطر البرنامج",
+          "en": "Lines of Code count"
         }
       ],
       "concept_id": "ch4_not_size_measure",
       "explanation": {
-        "ar": "التعقيد الدوري يقيس تعقيد تدفق التحكم لا الحجم.",
-        "en": "Cyclomatic complexity measures control-flow complexity, not size."
+        "ar": "يقيس التعقيد الدوري المسارات المستقلة في تدفق التحكم، أما الخيارات الأخرى فهي مقاييس للحجم.",
+        "en": "Cyclomatic complexity counts independent control-flow paths; the remaining choices measure software size."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "طوّر طريقة عدد الوظائف...",
-        "en": "The function count method was developed by..."
+        "ar": "من طوّر طريقة Function Count؟",
+        "en": "Who developed the Function Count method?"
       },
       "bloom": "Remember",
       "answer": 2,
       "options": [
         {
-          "ar": "بي بوم هنا",
-          "en": "B. Boehm here too"
+          "ar": "M. H. Halstead",
+          "en": "M. H. Halstead"
         },
         {
-          "ar": "إم هالستيد",
-          "en": "M. Halstead here"
+          "ar": "T. J. McCabe",
+          "en": "T. J. McCabe"
         },
         {
-          "ar": "آلان ألبرشت",
-          "en": "Alan Albrecht now"
+          "ar": "A. J. Albrecht",
+          "en": "A. J. Albrecht"
         },
         {
-          "ar": "بي بيزر هنا",
-          "en": "B. Beizer here"
+          "ar": "Barry W. Boehm",
+          "en": "Barry W. Boehm"
         }
       ],
       "concept_id": "ch4_fp_author",
       "explanation": {
-        "ar": "آلان ألبرشت قدّم نقاط الوظائف في IBM كمقياس حجم مستقل عن اللغة.",
-        "en": "Alan Albrecht introduced function points at IBM as a language-independent size measure."
+        "ar": "طوّر Allan J. Albrecht طريقة Function Count الأصلية في IBM.",
+        "en": "Allan J. Albrecht developed the original Function Count method at IBM."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "إلى كم نوع وحدة وظيفية تحلّل FPA النظام؟",
-        "en": "How many functional unit types does FPA decompose the system into?"
+        "ar": "كم نوعاً من مجال المعلومات الوظيفية يحصي تحليل نقاط الوظائف؟",
+        "en": "How many functional information-domain types does FPA count?"
       },
       "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "نوعان هنا",
-          "en": "two types"
+          "ar": "أربعة أنواع لمجال المعلومات",
+          "en": "Four information-domain types"
         },
         {
-          "ar": "ثلاثة أنواع",
-          "en": "three types"
+          "ar": "ستة أنواع لمجال المعلومات",
+          "en": "Six information-domain types"
         },
         {
-          "ar": "أربعة أنواع",
-          "en": "four types"
+          "ar": "سبعة أنواع لمجال المعلومات",
+          "en": "Seven information-domain types"
         },
         {
-          "ar": "خمسة أنواع",
-          "en": "five types"
+          "ar": "خمسة أنواع لمجال المعلومات",
+          "en": "Five information-domain types"
         }
       ],
       "concept_id": "ch4_fpa_types",
       "explanation": {
-        "ar": "FPA يستخدم خمسة أنواع وحدات وظيفية، من المدخلات الخارجية إلى الملفات المنطقية الداخلية.",
-        "en": "FPA uses five functional unit types, from external inputs to internal logical files."
+        "ar": "يحصر التحليل الأنواع EI وEO وEQ وILF وEIF، أي خمس خصائص لمجال المعلومات.",
+        "en": "FPA counts EI, EO, EQ, ILF, and EIF as five information-domain characteristics."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "IFPUG تعني...",
-        "en": "IFPUG stands for..."
+        "ar": "إلى ماذا يشير الاختصار IFPUG؟",
+        "en": "What does IFPUG stand for?"
       },
       "bloom": "Remember",
       "answer": 0,
       "options": [
         {
-          "ar": "المجموعة الدولية لمستخدمي نقاط الوظائف",
-          "en": "International function point user group"
+          "ar": "مجموعة مستخدمي نقاط الوظائف الدولية",
+          "en": "International Function Point Users Group"
         },
         {
-          "ar": "مجموعة نقاط الوظائف المبدئية الموحّدة",
-          "en": "Initial function point uniform group"
+          "ar": "مجموعة منفعة نقاط الوظائف الدولية",
+          "en": "International Function Point Utility Group"
         },
         {
-          "ar": "المجموعة الدولية الموحّدة لنقاط الوظائف",
-          "en": "International function point uniform group"
+          "ar": "مجموعة مستخدمي نقاط الوظائف المتكاملة",
+          "en": "Integrated Function Point Users Group"
         },
         {
-          "ar": "مجموعة مستخدمي نقاط الوظائف المبدئية",
-          "en": "Initial function point user group here"
+          "ar": "مجموعة مستخدمي برامج الوظائف الدولية",
+          "en": "International Function Program Users Group"
         }
       ],
       "concept_id": "ch4_ifpug",
       "explanation": {
-        "ar": "IFPUG هي المجموعة الدولية لمستخدمي نقاط الوظائف، وهي التي تحفظ قواعد العدّ.",
-        "en": "IFPUG is the International Function Point Users Group, which maintains the counting rules."
+        "ar": "يشير IFPUG إلى مجموعة مستخدمي نقاط الوظائف الدولية، وهي رابطة مهنية لمستخدمي هذه الطريقة.",
+        "en": "IFPUG expands to International Function Point Users Group, the professional association for function-point users."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "تُحسب نقاط الوظائف من...",
-        "en": "Function points are calculated from..."
+        "ar": "كيف نحصل على نقاط الوظائف المعدّلة من UFP؟",
+        "en": "How are adjusted Function Points obtained from UFP?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "UFP مضروبة في الإنتاجية",
-          "en": "UFP multiplied by productivity"
+          "ar": "FP = UFP × EAF",
+          "en": "FP = UFP × EAF"
         },
         {
-          "ar": "UFP مضروبة في CAF هنا",
-          "en": "UFP multiplied by CAF here"
+          "ar": "FP = UFP × CAF",
+          "en": "FP = UFP × CAF"
         },
         {
-          "ar": "UFP مضروبة في FAC الآن",
-          "en": "UFP multiplied by FAC now"
+          "ar": "FP = UFP + CAF",
+          "en": "FP = UFP + CAF"
         },
         {
-          "ar": "UFP مضروبة في الكلفة",
-          "en": "UFP multiplied by cost too"
+          "ar": "FP = UFP ÷ CAF",
+          "en": "FP = UFP ÷ CAF"
         }
       ],
       "concept_id": "ch4_fp_formula",
       "explanation": {
-        "ar": "نقاط الوظائف غير المعدّلة تُقاس بعامل تعديل التعقيد.",
-        "en": "Unadjusted function points are scaled by the complexity adjustment factor."
+        "ar": "تساوي نقاط الوظائف المعدّلة عدد UFP مضروباً في معامل تعديل التعقيد.",
+        "en": "The adjusted function-point total is the unadjusted count multiplied by the complexity adjustment factor."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "تقدير حجم المشروع يعتمد على...",
-        "en": "Estimation of project size depends on..."
+        "ar": "ما الذي ينبغي أن يوجّه تقدير حجم البرمجيات؟",
+        "en": "What should drive an estimate of software size?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "الجدول الزمني للمشروع",
-          "en": "the schedule of the project"
+          "ar": "موعد التسليم ومدة المشروع",
+          "en": "Delivery deadline and project duration"
         },
         {
-          "ar": "الوقت المتاح الآن مجدداً",
-          "en": "the time available here"
+          "ar": "حدود الأجهزة والموارد المتاحة",
+          "en": "Hardware limits and available resources"
         },
         {
-          "ar": "لا شيء مما سبق أعلاه هنا",
-          "en": "none of the above answers"
+          "ar": "متطلبات المنتج والوظائف اللازمة",
+          "en": "Product requirements and needed functions"
         },
         {
-          "ar": "كلفة المشروع هنا أيضاً",
-          "en": "the cost of the project"
+          "ar": "الميزانية المعتمدة وحجم الفريق",
+          "en": "Approved budget and available staff"
         }
       ],
       "concept_id": "ch4_size_depends",
       "explanation": {
-        "ar": "الحجم يُقدَّر من المتطلبات، لا من الكلفة أو الجدول أو الوقت.",
-        "en": "Size is estimated from the requirements, not from cost, schedule or time."
+        "ar": "يقدّر الحجم من وظائف المنتج المطلوبة؛ وتُشتق الكلفة والمدة منه بدلاً من تعريفهما للحجم.",
+        "en": "Size is estimated from the required product functionality; cost and schedule are estimated from size, not used to define it."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "كم عامل تعديل تعقيد يستخدم FPA؟",
-        "en": "How many complexity adjustment factors does FPA use?"
+        "ar": "كم خاصية عامة للنظام تدخل في حساب CAF؟",
+        "en": "How many General System Characteristics contribute to the CAF?"
       },
       "bloom": "Remember",
       "answer": 3,
       "options": [
         {
-          "ar": "عشرة عوامل هنا",
-          "en": "ten factors here"
+          "ar": "اثنتا عشرة خاصية للنظام",
+          "en": "Twelve system characteristics"
         },
         {
-          "ar": "اثنا عشر عاملاً",
-          "en": "twelve factors now"
+          "ar": "ست عشرة خاصية للنظام",
+          "en": "Sixteen system characteristics"
         },
         {
-          "ar": "عشرون عاملاً الآن",
-          "en": "twenty factors too"
+          "ar": "ثماني عشرة خاصية للنظام",
+          "en": "Eighteen system characteristics"
         },
         {
-          "ar": "أربعة عشر عاملاً",
-          "en": "fourteen factors"
+          "ar": "أربع عشرة خاصية للنظام",
+          "en": "Fourteen system characteristics"
         }
       ],
       "concept_id": "ch4_caf_count",
       "explanation": {
-        "ar": "FPA يقيّم أربع عشرة خصيصة نظامية عامة لبناء عامل التعديل.",
-        "en": "FPA rates fourteen general system characteristics to build the adjustment factor."
+        "ar": "تستخدم طريقة نقاط الوظائف أربع عشرة خاصية عامة للنظام، وتُقيّم كل خاصية وفق مقياسها.",
+        "en": "The function-point method uses fourteen General System Characteristics, each rated on its specified scale."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "أي خصيصة في نطاق المعلومات تحمل أكبر وزن في FPA؟",
-        "en": "Which information domain characteristic carries the most weight in FPA?"
+        "ar": "أي تعبير يعرّف معامل تعديل التعقيد لنقاط الوظائف؟",
+        "en": "Which expression defines the Function Point complexity adjustment factor?"
       },
       "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "الملفات المنطقية الداخلية",
-          "en": "Internal Logical Files"
+          "ar": "CAF = 0.65 + 0.01∑Fi",
+          "en": "CAF = 0.65 + 0.01∑Fi"
         },
         {
-          "ar": "المدخلات الخارجية هنا أيضاً",
-          "en": "External Inputs here"
+          "ar": "CAF = 0.75 + 0.01∑Fi",
+          "en": "CAF = 0.75 + 0.01∑Fi"
         },
         {
-          "ar": "المخرجات الخارجية الآن",
-          "en": "External Outputs now"
+          "ar": "CAF = 0.65 + 0.10∑Fi",
+          "en": "CAF = 0.65 + 0.10∑Fi"
         },
         {
-          "ar": "ملفات الواجهة الخارجية",
-          "en": "External Interface Files"
+          "ar": "CAF = 0.65 × 0.01∑Fi",
+          "en": "CAF = 0.65 × 0.01∑Fi"
         }
       ],
-      "concept_id": "ch4_ilf",
+      "concept_id": "ch4_caf_formula",
       "explanation": {
-        "ar": "الملفات المنطقية الداخلية تأخذ أعلى وزن لأنها تمثّل بيانات مُصانة.",
-        "en": "Internal logical files are weighted highest because they represent maintained data."
+        "ar": "يبدأ CAF من 0.65 ويضيف 0.01 مضروباً في مجموع تقييمات العوامل الأربعة عشر.",
+        "en": "CAF starts at 0.65 and adds 0.01 times the sum of the fourteen factor ratings."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "ما الميزة المفهومية الأساسية لنقاط الوظائف على أسطر الكود؟",
-        "en": "What is the main conceptual advantage of function points over LOC?"
+        "ar": "أي مكوّن في FPA له أكبر وزن عند التعقيد المتوسط؟",
+        "en": "Which FPA component has the largest average-complexity weight?"
       },
-      "bloom": "Analyze",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "تقيس تخصيص الذاكرة هنا الآن",
-          "en": "FP measures memory allocation here again"
+          "ar": "ملفات المخرجات الخارجية",
+          "en": "External Output Files"
         },
         {
-          "ar": "نقاط الوظائف مستقلة عن اللغة",
-          "en": "FP is independent of the language used"
+          "ar": "الملفات المنطقية الداخلية",
+          "en": "Internal Logical Files"
         },
         {
-          "ar": "تُعدّ نقاط الوظائف بالمترجم هنا",
-          "en": "FP can be counted by a compiler now"
+          "ar": "ملفات الواجهات الخارجية",
+          "en": "External Interface Files"
         },
         {
-          "ar": "تحتاج صياغة الشيفرة كاملة",
-          "en": "FP needs the full source syntax too"
+          "ar": "ملفات المدخلات الخارجية",
+          "en": "External Input Files"
+        }
+      ],
+      "concept_id": "ch4_ilf",
+      "explanation": {
+        "ar": "يملك ILF أكبر وزن عند التعقيد المتوسط بين أنواع مكونات نقاط الوظائف الخمسة.",
+        "en": "At average complexity, ILF has the largest weight among the five function-point component types."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "لماذا تسمح نقاط الوظائف بمقارنة الوظائف بين لغات البرمجة؟",
+        "en": "Why can Function Points compare functionality across programming languages?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تخصّص العدد نفسه من الأسطر لكل لغة",
+          "en": "They assign the same number of lines to every language"
+        },
+        {
+          "ar": "تقدّر الجهد من دون أخذ المتطلبات بالحسبان",
+          "en": "They estimate effort without considering requirements"
+        },
+        {
+          "ar": "تقيس الوظائف المقدّمة بدلاً من أسطر الشفرة",
+          "en": "They measure delivered functions rather than source lines"
+        },
+        {
+          "ar": "تحصي التعليمات بصياغة موحّدة لكل اللغات",
+          "en": "They count statements using one language-neutral syntax"
         }
       ],
       "concept_id": "ch4_fp_advantage",
       "explanation": {
-        "ar": "نقاط الوظائف تُعدّ من المتطلبات، فاختيار اللغة لا يغيّرها.",
-        "en": "Function points are counted from the requirements, so the language choice does not change them."
+        "ar": "تركّز نقاط الوظائف على ما يقدّمه النظام للمستخدم، بينما يتغيّر عدد الأسطر باختلاف اللغة.",
+        "en": "Function Points focus on user-visible functionality, while LOC counts vary with the implementation language."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "وفق عدّ LOC الفيزيائي، أي سطر برمجي يُحتسب؟",
+        "en": "Under a physical LOC convention, which source line is counted?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "مسار لتدفق التحكم داخل البرنامج",
+          "en": "A control-flow path through the program"
+        },
+        {
+          "ar": "وظيفة يراها المستخدم النهائي",
+          "en": "A function visible to an end user"
+        },
+        {
+          "ar": "ملف بيانات يشير إليه البرنامج",
+          "en": "A data file referenced by the program"
+        },
+        {
+          "ar": "سطر برمجي غير فارغ وليس تعليقاً",
+          "en": "A nonblank, noncomment source line"
+        }
+      ],
+      "concept_id": "ch4_loc_physical_line",
+      "explanation": {
+        "ar": "يحصي LOC الفيزيائي سطر كود غير فارغ وليس تعليقاً، لا مساراً أو وظيفة أو ملف بيانات مشاراً إليه.",
+        "en": "Physical LOC counts a nonblank, noncomment code line, not a path, function, or referenced data file."
       }
     }
   ],
@@ -333,7 +397,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T20:38:56Z",
+  "updated_at": "2026-11-05T15:35:33Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"
