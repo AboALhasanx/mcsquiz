@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "لا توجد رصاصة فضية وصعوبات البرمجيات",
+    "en": "No Silver Bullet and Software Difficulty"
+  },
+  "quiz_id": "Quiz_Ch01_T06_No_Silver_Bullet",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "بماذا تعد الرصاصة الفضية في تطوير البرمجيات؟",
+        "en": "What does a software silver bullet promise?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تطوير واحد يعد بتحسن بمقدار رتبة كاملة",
+          "en": "A single change promising a tenfold improvement"
+        },
+        {
+          "ar": "أداة تزيل كل العيوب قبل تسليم البرمجيات",
+          "en": "A tool removing every defect before software ships"
+        },
+        {
+          "ar": "أسلوب يجعل كل مشروع يكتمل في موعده",
+          "en": "A method making every project finish on schedule"
+        },
+        {
+          "ar": "لغة تلغي الحاجة إلى معظم قرارات التصميم",
+          "en": "A language eliminating all design decisions"
+        }
+      ],
+      "concept_id": "ch1_silver_bullet_definition",
+      "explanation": {
+        "ar": "المقصود بالرصاصة الفضية تطوير منفرد يعد بتحسن بمقدار رتبة كاملة في الإنتاجية أو الموثوقية أو البساطة.",
+        "en": "In this argument, a silver bullet is a single development promising an order-of-magnitude gain in productivity, reliability or simplicity."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي نتائج يشملها ادعاء الرصاصة الفضية؟",
+        "en": "Which outcomes are included in the silver-bullet claim?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "المتطلبات والتصميم وسرعة التسليم",
+          "en": "Requirements, design and delivery speed"
+        },
+        {
+          "ar": "الإنتاجية والموثوقية وسهولة الفهم",
+          "en": "Productivity, reliability and simplicity"
+        },
+        {
+          "ar": "الصحة واختيار الأفراد وضبط الميزانية",
+          "en": "Correctness, staffing and budget control"
+        },
+        {
+          "ar": "الاختبار والصيانة وإعادة استخدام الشيفرة",
+          "en": "Testing, maintenance and code reuse"
+        }
+      ],
+      "concept_id": "ch1_silver_bullet_scope",
+      "explanation": {
+        "ar": "يسمي الادعاء الإنتاجية والموثوقية والبساطة نتائج لا يعد تطوير منفرد بتحسينها بمقدار رتبة كاملة.",
+        "en": "The claim names productivity, reliability and simplicity as the outcomes that no single development promises to improve by an order of magnitude."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "هل يمكن لتقنية إدارية أن تكون رصاصة فضية وفق هذا الطرح؟",
+        "en": "Could a management technique qualify as a silver bullet under this argument?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "نعم، إذا ألغت التقنية الحاجة إلى الاختبار",
+          "en": "Yes, if the technique removes the need for testing"
+        },
+        {
+          "ar": "لا، لأن العتاد وحده يحسن أعمال البرمجيات",
+          "en": "No, because only hardware can improve software work"
+        },
+        {
+          "ar": "لا التقنية ولا الإدارة تعد بتحسن كبير وحدها",
+          "en": "No, neither alone promises an order-of-magnitude gain"
+        },
+        {
+          "ar": "نعم، إذا جمد المدير المتطلبات عند بدء المشروع",
+          "en": "Yes, if the manager freezes requirements at project start"
+        }
+      ],
+      "concept_id": "ch1_silver_bullet_technology_or_management",
+      "explanation": {
+        "ar": "يشمل الطرح التطوير التقني وتقنيات الإدارة معاً؛ ولا يعد أي منهما وحده بالتحسن المطلوب.",
+        "en": "The claim covers both technological development and management techniques; neither alone promises the specified gain."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "لماذا لم يؤدِّ تبني أدوات CASE المكلفة إلى إنهاء أزمة البرمجيات؟",
+        "en": "Why did expensive CASE-tool adoption fail to end the software crisis?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لم تمتلك الشركات حواسيب تشغل الأدوات",
+          "en": "Companies lacked computers able to run the tools"
+        },
+        {
+          "ar": "تدعم أدوات CASE تصنيع العتاد فقط",
+          "en": "CASE tools only support hardware manufacture"
+        },
+        {
+          "ar": "صُممت الأدوات للمشاريع الصغيرة فقط",
+          "en": "The tools were designed only for small projects"
+        },
+        {
+          "ar": "الأدوات لا تلغي جوهر العمل المفهومي",
+          "en": "Tools do not remove the central conceptual work"
+        }
+      ],
+      "concept_id": "ch1_case_tools_not_cure",
+      "explanation": {
+        "ar": "أنفقت الشركات كثيراً على أدوات CASE دون نتائج مرضية؛ لأن صعوبة البرمجيات تكمن في تحديد النظام المفهومي وتصميمه واختباره.",
+        "en": "Companies spent heavily on CASE tools but results were unsatisfactory because the difficult work remains specifying, designing and testing the conceptual system."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الجزء الذي عُدّ صعباً في بناء البرمجيات؟",
+        "en": "What is identified as the hard part of building software?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تحديد النظام المفهومي وتصميمه واختباره",
+          "en": "Specifying, designing and testing the conceptual system"
+        },
+        {
+          "ar": "كتابة وحدات الشيفرة وتنسيقها للمشروع",
+          "en": "Typing and formatting each source-code statement"
+        },
+        {
+          "ar": "تمثيل التصميم في مخطط واضح قابل للمراجعة",
+          "en": "Representing the design in a diagram for review"
+        },
+        {
+          "ar": "تثبيت أدوات التطوير على حواسيب فريق العمل",
+          "en": "Installing and configuring the development tools and environment"
+        }
+      ],
+      "concept_id": "ch1_hard_part_conceptual",
+      "explanation": {
+        "ar": "العمل الصعب هو بناء التصور المفهومي، لا جهد تمثيله بالشيفرة أو المخططات.",
+        "en": "The difficult work lies in defining, designing and testing the conceptual software system, not merely representing it."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي خاصية تجعل فهم البرمجيات كاملة أمراً صعباً؟",
+        "en": "Which property makes software difficult to understand as a whole?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "لا يمكن تعديل البرمجيات بعد تسليمها أبداً",
+          "en": "Its requirements never change after approval"
+        },
+        {
+          "ar": "يزداد تعقيد النظام بتفاعل عناصره المفهومية",
+          "en": "Its complexity comes from interacting elements"
+        },
+        {
+          "ar": "المرونة تسمح بتغييرات كثيرة تعقّد التخطيط",
+          "en": "Its parts follow one simple repeating pattern"
+        },
+        {
+          "ar": "تلغي قابلية التغيير الحاجة إلى تحديد المتطلبات",
+          "en": "Its behaviour is visible without examining it"
+        }
+      ],
+      "concept_id": "ch1_software_difficulty_complexity",
+      "explanation": {
+        "ar": "التعقيد إحدى الصعوبات؛ فتفاعل العناصر يجعل فهم النظام صعباً.",
+        "en": "Complexity is one of the named difficulties: many interacting conceptual elements make a software system hard to comprehend."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا قد تجعل قابلية البرمجيات للتغيير ضبط التطوير صعباً؟",
+        "en": "Why can software changeability make development difficult to control?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تمنع المرونة تعديل النظام بعد تسليمه",
+          "en": "Every change automatically reduces the system size"
+        },
+        {
+          "ar": "تبقى متطلبات النظام ثابتة بعد موافقة العميل",
+          "en": "Changeability removes the need to define requirements"
+        },
+        {
+          "ar": "تسمح المرونة بتغييرات كثيرة فتصعّب التخطيط",
+          "en": "Flexibility permits changes that complicate planning"
+        },
+        {
+          "ar": "يلغي التغيير الحاجة إلى تحديد متطلبات واضحة",
+          "en": "Software cannot be modified once it is delivered"
+        }
+      ],
+      "concept_id": "ch1_software_difficulty_changeability",
+      "explanation": {
+        "ar": "تسمح المرونة بسلوكيات ممكنة كثيرة، مما يصعّب تخطيط تطوير البرمجيات ومراقبته وضبطه.",
+        "en": "Flexibility permits many possible behaviours, which makes software development harder to plan, monitor and control."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "ماذا يعني خفاء البرمجيات ضمن مجموعة الصعوبات المذكورة؟",
+        "en": "What does software invisibility mean in the named difficulty set?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "لا يمكن حفظ الشيفرة أو تشغيلها على الحاسوب",
+          "en": "Its source code cannot be stored on any computer system"
+        },
+        {
+          "ar": "لا يمكن للمستخدم ملاحظة مخرجات النظام إطلاقاً",
+          "en": "Its source code cannot be stored on a computer system"
+        },
+        {
+          "ar": "لا يمكن وصف وظائفها ضمن متطلبات البرمجيات",
+          "en": "Its users cannot observe the program output at all"
+        },
+        {
+          "ar": "بنيتها لا تُرى مباشرةً كالأجسام المادية",
+          "en": "Its structure cannot be seen like a physical object"
+        }
+      ],
+      "concept_id": "ch1_software_difficulty_invisibility",
+      "explanation": {
+        "ar": "يتعلق الخفاء بصعوبة رؤية بنية البرمجيات مباشرةً، ولا يعني غياب المخرجات التي يمكن ملاحظتها.",
+        "en": "Invisibility concerns the difficulty of directly seeing software structure; it does not mean software has no observable outputs."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T10:04:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

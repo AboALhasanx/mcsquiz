@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "الخطأ والعيب وحالة الخطأ والفشل",
+    "en": "Error, Fault, Error State and Failure"
+  },
+  "quiz_id": "Quiz_Ch01_T07_Error_Fault_Failure_Terminology",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما الخطأ البشري في النموذج السببي؟",
+        "en": "In the causal model, what is a human error?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "زلة شخص خلال تطوير النظام أو تشغيله",
+          "en": "A person makes a mistake during development or operation"
+        },
+        {
+          "ar": "أن يقدم النظام خدمة تخالف مواصفاته",
+          "en": "A system delivers a service that violates its specification"
+        },
+        {
+          "ar": "أن يُفعّل عيب برمجي أثناء التنفيذ",
+          "en": "A software defect is activated during execution"
+        },
+        {
+          "ar": "أن يصل البرنامج إلى حالة داخلية غير صحيحة",
+          "en": "A program reaches an incorrect internal state"
+        }
+      ],
+      "concept_id": "ch1_human_error_definition",
+      "explanation": {
+        "ar": "الخطأ البشري هو زلة الشخص، وقد تؤدي إلى إدخال عيب في البرمجية أو تشغيلها.",
+        "en": "A human error is the person’s mistake; it can introduce a fault into the software or its operation."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "ما العيب البرمجي في السلسلة السببية؟",
+        "en": "What is a software fault in the causal chain?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "خدمة يلاحظ المستخدم أنها لم تحقق الغرض",
+          "en": "A measurement showing an incorrect output"
+        },
+        {
+          "ar": "خلل في البرمجية يمكن أن يُفعّل لاحقاً",
+          "en": "A defect in the system that can be activated"
+        },
+        {
+          "ar": "خدمة يلاحظ المستخدم أنها لم تحقق غرضها",
+          "en": "A user-visible service that misses its purpose"
+        },
+        {
+          "ar": "قرار خاطئ يتخذه الشخص أثناء كتابة الشيفرة",
+          "en": "A person’s mistaken decision during coding"
+        }
+      ],
+      "concept_id": "ch1_fault_definition",
+      "explanation": {
+        "ar": "العيب خلل في النظام؛ وعند تفعيله قد ينتج حالة داخلية غير صحيحة.",
+        "en": "A fault is a defect in the system; when activated, it may produce an incorrect internal state."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما حالة النظام الخاطئة في هذا النموذج؟",
+        "en": "What is an erroneous internal state?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "زلة بشرية أثناء كتابة المتطلبات أو الشيفرة",
+          "en": "A fault documented but never introduced into a system"
+        },
+        {
+          "ar": "عيب موجود لم يُفعّل ولم يغيّر حالة النظام",
+          "en": "A service failure observed by an external user"
+        },
+        {
+          "ar": "حالة داخلية غير صحيحة تنتج عند تنفيذ العيب",
+          "en": "An incorrect internal state produced when a fault runs"
+        },
+        {
+          "ar": "انحراف الخدمة الذي يلاحظه المستخدم خارج النظام",
+          "en": "A human mistake that has not affected the software"
+        }
+      ],
+      "concept_id": "ch1_error_state_definition",
+      "explanation": {
+        "ar": "عندما يغير العيب المفعّل الحالة الداخلية بصورة خاطئة، يكون النظام في حالة خطأ.",
+        "en": "When an activated fault changes the internal state incorrectly, the system is in an error state."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "ما الذي يجعل الحدث فشلًا للنظام في النموذج؟",
+        "en": "What makes an event a system failure in the model?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أن يخطئ المطوّر عند كتابة أحد المتطلبات",
+          "en": "A developer makes a mistake while writing a requirement"
+        },
+        {
+          "ar": "أن يبقى عيب غير مفعّل مخزوناً في البرمجية",
+          "en": "A dormant fault remains stored in the software"
+        },
+        {
+          "ar": "أن تكون الحالة الداخلية خاطئة بلا أثر خارجي",
+          "en": "An internal state is wrong but has no external effect"
+        },
+        {
+          "ar": "خدمة النظام المقدمة تخالف ما هو متوقع",
+          "en": "The delivered service deviates from what is expected"
+        }
+      ],
+      "concept_id": "ch1_failure_definition",
+      "explanation": {
+        "ar": "الفشل هو انحراف الخدمة المقدمة، الذي يمكن ملاحظته خارجياً، عن الخدمة المتوقعة.",
+        "en": "A failure is the externally observable deviation of delivered service from expected service."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي تسلسل يربط زلة الشخص بفشل الخدمة بصورة صحيحة؟",
+        "en": "Which sequence correctly links a person’s mistake to a failed service?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "خطأ بشري، عيب بالنظام، حالة خاطئة، فشل الخدمة",
+          "en": "Human error, system fault, erroneous state, service failure"
+        },
+        {
+          "ar": "عيب بالنظام، فشل الخدمة، خطأ بشري، حالة صحيحة",
+          "en": "System fault, service failure, human error, correct state"
+        },
+        {
+          "ar": "حالة خاطئة، خطأ بشري، فشل الخدمة، عيب بالنظام",
+          "en": "Erroneous state, human error, service failure, system fault"
+        },
+        {
+          "ar": "فشل الخدمة، حالة صحيحة، عيب بالنظام، خطأ بشري",
+          "en": "Service failure, correct state, system fault, human error"
+        }
+      ],
+      "concept_id": "ch1_causal_chain_order",
+      "explanation": {
+        "ar": "قد تُدخل زلة بشرية عيباً؛ وقد ينتج عن تفعيله حالة خطأ تؤدي إلى فشل الخدمة.",
+        "en": "A human mistake may introduce a fault; activation can produce an error state, which may then cause a service failure."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "يوجد عيب لكن مسار الشيفرة المعني لم يُنفذ. ما الاستنتاج الممكن؟",
+        "en": "A defect is present but the relevant code path never runs. What can be concluded?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يستحيل أن يحتوي النظام حالة خاطئة",
+          "en": "The system cannot contain any erroneous state"
+        },
+        {
+          "ar": "قد يبقى العيب خاملاً دون أن يحدث فشل",
+          "en": "The fault may remain dormant without a failure"
+        },
+        {
+          "ar": "لا بد أن فشل الخدمة قد حدث بالفعل",
+          "en": "A service failure must already have occurred"
+        },
+        {
+          "ar": "لا بد أن المستخدم لاحظ نتيجة غير صحيحة",
+          "en": "The user must have observed an incorrect result"
+        }
+      ],
+      "concept_id": "ch1_dormant_fault",
+      "explanation": {
+        "ar": "قد يبقى العيب غير المفعّل خاملاً؛ ووجوده وحده لا يثبت وقوع فشل في الخدمة.",
+        "en": "A fault that is not activated may remain dormant; its presence alone does not prove that a service failure occurred."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "الحالة الداخلية غير صحيحة لكن المخرجات بقيت ضمن الخدمة المتوقعة. ماذا حدث؟",
+        "en": "An internal state is incorrect, but output remains within the expected service. What has occurred?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "توجد حالة خطأ ولا يظهر فشل في الخدمة",
+          "en": "A human mistake is the only possible event"
+        },
+        {
+          "ar": "قد تبقى الخدمة سليمة رغم خطأ الحالة الداخلية",
+          "en": "The system fault has necessarily been removed"
+        },
+        {
+          "ar": "قد توجد حالة خطأ دون فشل ظاهر في الخدمة",
+          "en": "An internal error need not cause an external failure"
+        },
+        {
+          "ar": "يبقى أثر الخطأ محصوراً داخل النظام أحياناً",
+          "en": "A service failure occurred without any internal error"
+        }
+      ],
+      "concept_id": "ch1_error_without_failure",
+      "explanation": {
+        "ar": "لا تنتقل الحالة الداخلية الخاطئة دائماً إلى الخدمة المرئية خارجياً؛ لذلك قد لا يعقبها فشل.",
+        "en": "An erroneous internal state does not always propagate to externally observable service; a failure need not follow."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "كيف يُستخدم المصطلحان defect و fault في مصطلحات عملية البرمجيات؟",
+        "en": "How are “defect” and “fault” used in software-process terminology?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يسميان مرحلتين متتاليتين بعد فشل الخدمة",
+          "en": "They are consecutive stages after a service failure"
+        },
+        {
+          "ar": "يدلان على خطأ المستخدم ومخرج الخدمة",
+          "en": "They name the user’s mistake and the service output"
+        },
+        {
+          "ar": "يميزان نتيجة الاختبار عن مقياس النظام",
+          "en": "They distinguish a test result from a system metric"
+        },
+        {
+          "ar": "هما اسمان مترادفان لخلل في أثر برمجي",
+          "en": "They are synonyms for a flaw in a software artefact"
+        }
+      ],
+      "concept_id": "ch1_defect_fault_synonym",
+      "explanation": {
+        "ar": "في استعمال عملية البرمجيات، defect و fault مترادفان؛ وليسا مرحلتين منفصلتين في السلسلة السببية.",
+        "en": "In software-process usage, defect and fault are synonyms; they are not separate stages in the causal chain."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T10:04:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

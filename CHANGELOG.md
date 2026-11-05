@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.26] — 2026-11-05
+
+### Changed
+- content: rebuild ASE Chapter 1 quiz banks and refresh offline cache
+
+
 ## [1.11.25] — 2026-11-05
 
 ### Changed

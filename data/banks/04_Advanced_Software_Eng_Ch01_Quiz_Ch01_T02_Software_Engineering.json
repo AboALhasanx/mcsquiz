@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "التعريفات والأهداف",
+    "en": "Definitions and Objectives"
+  },
+  "quiz_id": "Quiz_Ch01_T02_Software_Engineering",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما الفكرة المحورية في تعريف Fritz Bauer لهندسة البرمجيات؟",
+        "en": "Which idea is central to Fritz Bauer's definition of software engineering?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تهدف حيل الترميز إلى بناء برامج أكبر بسرعة",
+          "en": "Coding tricks aim to build larger programs more quickly"
+        },
+        {
+          "ar": "تستهدف معايير العتاد خفض كلفة أنظمة الحاسوب",
+          "en": "Hardware standards target lower costs for computer systems"
+        },
+        {
+          "ar": "تثبّت الإدارة احتياجات المستخدم منذ بداية المشروع",
+          "en": "Management rules freeze user needs at project start"
+        },
+        {
+          "ar": "تنتج الهندسة السليمة برمجيات موثوقة بكفاءة",
+          "en": "Sound engineering yields reliable software efficiently"
+        }
+      ],
+      "concept_id": "ch1_bauer_definition_principles",
+      "explanation": {
+        "ar": "يركّز Bauer على المبادئ الهندسية السليمة وإنتاج برمجيات اقتصادية وموثوقة تعمل بكفاءة على آلات حقيقية. البدائل تستبدل ذلك بسرعة الترميز أو كلفة العتاد أو تجميد المتطلبات.",
+        "en": "Bauer emphasizes sound engineering principles and economical, reliable software that works efficiently on real machines. The distractors replace that aim with coding speed, hardware cost or frozen requirements."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مجموعة من القيود ترد في تعريف Stephen Schach؟",
+        "en": "Which set of constraints appears in Stephen Schach's definition?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "الجودة ووقت التسليم والميزانية وتحقيق المتطلبات",
+          "en": "Quality, delivery time, budget and satisfaction of requirements"
+        },
+        {
+          "ar": "حجم الفريق وموقع المكتب ولغة البرمجة وموعد الإصدار",
+          "en": "Team size, office location, programming language and release date"
+        },
+        {
+          "ar": "السرعة وسعة الذاكرة وعرض الشبكة وعدد المعالجات",
+          "en": "Speed, memory capacity, network bandwidth and processor count"
+        },
+        {
+          "ar": "كلفة العتاد وعمر العميل والحصة السوقية وحجم المبيعات",
+          "en": "Hardware cost, customer age, market share and sales volume"
+        }
+      ],
+      "concept_id": "ch1_schach_definition_delivery_constraints",
+      "explanation": {
+        "ar": "يعرّف Schach التخصص ببرمجيات ذات جودة تُسلّم في الوقت والميزانية المحددين وتحقق المتطلبات. المجموعات الأخرى تصف سعة تقنية أو عوامل فريق وسوق، لا التعريف.",
+        "en": "Schach defines the discipline by quality software delivered on time, within budget and meeting requirements. The other sets describe technical capacity, staffing or market factors, not the definition."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "ما الأمران اللذان ينبغي معالجتهما معًا لتحقيق هدف هندسة البرمجيات؟",
+        "en": "What must be addressed together to achieve the stated software-engineering objective?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "جودة العتاد وطريقة إنتاجه الصناعي",
+          "en": "Hardware quality and its industrial production process"
+        },
+        {
+          "ar": "رضا المستخدم وحجم فريق التطوير المسؤول",
+          "en": "Customer satisfaction and development-team size"
+        },
+        {
+          "ar": "جودة المنتج وطريقة إنتاجه المنظّمة",
+          "en": "Product quality and the process used to develop it"
+        },
+        {
+          "ar": "اختيار اللغة وعدد ملفات الشيفرة المكتوبة",
+          "en": "Language choice and the number of code files"
+        }
+      ],
+      "concept_id": "ch1_software_engineering_balances_product_process",
+      "explanation": {
+        "ar": "يتطلب الهدف اهتمامًا منضبطًا بجودة المنتج وبالعملية التي تطوره معًا. تصنيع العتاد وعدد ملفات الشيفرة لا يعبّران عن هذا التركيز المزدوج.",
+        "en": "The objective requires disciplined attention to both the product's quality and the process used to develop it. Hardware manufacture and code-file counts do not express this paired focus.2, p.4."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "سلّم مشروع شيفرة عاملة في موعدها لكنها مكلفة الصيانة ولا تحقق المتطلبات؛ أي هدف ما زال غير متحقق؟",
+        "en": "A project delivers working code on schedule but it is costly to maintain and misses requirements. Which objective remains unmet?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "تجميد خطة المشروع عقب أول تسليم للبرنامج",
+          "en": "A project plan frozen after its first delivery"
+        },
+        {
+          "ar": "أي برنامج يعمل قبل انتهاء الموعد المحدد",
+          "en": "Any executable program delivered before the deadline"
+        },
+        {
+          "ar": "خفض كلفة العتاد مع إهمال جودة البرمجيات",
+          "en": "Lower hardware cost regardless of software quality"
+        },
+        {
+          "ar": "برمجيات جيدة قابلة للصيانة وتحقق المتطلبات",
+          "en": "Good, maintainable software that meets requirements"
+        }
+      ],
+      "concept_id": "ch1_quality_maintainability_time_budget",
+      "explanation": {
+        "ar": "يشمل الهدف الجودة وقابلية الصيانة والتسليم في الوقت والميزانية وتحقيق المتطلبات؛ وجود شيفرة عاملة وحده لا يكفي. البدائل تختزل الهدف أو تستبدله.",
+        "en": "The objective includes quality, maintainability, timely delivery, budget and requirements satisfaction; working code alone is insufficient. The other options narrow or replace that objective."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "لماذا يرى النص أن مهارة البرمجة وحدها لا تكفي للبرامج الكبيرة؟",
+        "en": "Why is programming skill alone insufficient for large programs?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تتطلب البرامج الكبيرة تصميم العتاد بدل تصميم البرمجيات",
+          "en": "Large programs require hardware design instead of software design"
+        },
+        {
+          "ar": "تتطلب البرامج الكبيرة فريقًا أكبر بدل إجراءات موثقة",
+          "en": "Large programs require a larger team instead of documented procedures"
+        },
+        {
+          "ar": "تتطلب البرامج الكبيرة هندسة تتجاوز مهارة الترميز",
+          "en": "Large programs need engineering discipline beyond coding skill"
+        },
+        {
+          "ar": "تتطلب البرامج الكبيرة لغة برمجة واحدة لكل مكوّن",
+          "en": "Large programs require one programming language for every component"
+        }
+      ],
+      "concept_id": "ch1_programming_art_insufficient_large_systems",
+      "explanation": {
+        "ar": "فن البرمجة وحده لم يعد كافياً لبناء البرامج الكبيرة، لذا تلزم ممارسة هندسية أوسع.",
+        "en": "Programming art alone is insufficient to construct large programs, so a broader engineering discipline is needed. The distractors substitute unrelated hardware, language or staffing prescriptions."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "غيّر فريق لغة التنفيذ مع إبقاء أهداف النظام وقيوده؛ أي ادعاء يبقى صحيحًا؟",
+        "en": "A team changes its implementation language but keeps the same system goals and constraints. Which claim still applies?"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تنطبق مفاهيم هندسة البرمجيات على اللغة الأصلية فقط",
+          "en": "Software-engineering concepts apply only to the original language"
+        },
+        {
+          "ar": "تظل مبادئ هندسة البرمجيات صالحة باختلاف اللغات",
+          "en": "Software-engineering concepts remain valid across programming languages"
+        },
+        {
+          "ar": "تنطبق مفاهيم هندسة البرمجيات على اللغات المترجمة فقط",
+          "en": "Software-engineering concepts apply only to compiled languages"
+        },
+        {
+          "ar": "تتوقف مفاهيم هندسة البرمجيات عند تغيّر المتطلبات",
+          "en": "Software-engineering concepts stop applying when requirements change"
+        }
+      ],
+      "concept_id": "ch1_se_concepts_language_independent",
+      "explanation": {
+        "ar": "يقوم التخصص على مبادئ هندسية ولا يقتصر على لغة برمجة بعينها. البدائل تخترع قيودًا على اللغة أو تغيّر المتطلبات.",
+        "en": "The discipline is based on engineering principles and is not limited to a particular programming language. The other choices invent language or requirements restrictions.2.1, p.4;"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا انتقل الهدف من إنتاج برمجيات عاملة فحسب إلى برمجيات قابلة للصيانة؟",
+        "en": "Why did the objective shift from merely producing working software toward maintainable software?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "ارتفاع كلفة الصيانة جعل قابلية الصيانة مهمة",
+          "en": "Rising maintenance cost made maintainability important"
+        },
+        {
+          "ar": "توقف العتاد عن التطور فأصبحت الشيفرة دائمة",
+          "en": "Hardware stopped improving, making source code permanent"
+        },
+        {
+          "ar": "توقف العملاء عن طلب وظائف جديدة بعد التسليم",
+          "en": "Customers stopped requesting functions after delivery"
+        },
+        {
+          "ar": "لم يعد الاختبار ضروريًا بعد أول تشغيل للبرنامج",
+          "en": "Testing became unnecessary once the program first worked"
+        }
+      ],
+      "concept_id": "ch1_software_engineering_maintainable_shift",
+      "explanation": {
+        "ar": "يفسر ارتفاع كلفة الصيانة التحول نحو برمجيات قابلة للصيانة؛ أما توقف العتاد أو الاختبار فلا يفسرانه.",
+        "en": "Rising maintenance cost explains the shift toward maintainable software; hardware stagnation and the end of testing do not."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أي تمييز يفصل بدقة بين تعريفي Bauer وSchach المنقولين؟",
+        "en": "Which distinction best separates Bauer's and Schach's quoted definitions?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "يعرّف Bauer مراحل المشروع؛ ويصف Schach أدلة التشغيل",
+          "en": "Bauer defines milestones; Schach defines operating manuals"
+        },
+        {
+          "ar": "يؤكد Bauer المبادئ الهندسية؛ ويركز Schach على التسليم",
+          "en": "Bauer stresses engineering; Schach adds delivery constraints"
+        },
+        {
+          "ar": "يحصر Bauer التخصص بالعتاد؛ ويقصر Schach اللغة على C",
+          "en": "Bauer limits the discipline to hardware and languages"
+        },
+        {
+          "ar": "يركز Bauer على حجم الفريق؛ ويصنف Schach المنتجات",
+          "en": "Bauer stresses team size; Schach describes product categories"
+        }
+      ],
+      "concept_id": "ch1_bauer_vs_schach_definition_focus",
+      "explanation": {
+        "ar": "يبرز Bauer المبادئ الهندسية والبرمجيات الاقتصادية الموثوقة؛ ويصرّح Schach بالجودة والوقت والميزانية والمتطلبات. تنسب البدائل موضوعات أخرى إلى التعريفين.",
+        "en": "Bauer foregrounds engineering principles and economical, reliable software; Schach explicitly includes quality, time, budget and requirements. The alternatives attribute unrelated chapter topics to the definitions."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T10:23:04Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}

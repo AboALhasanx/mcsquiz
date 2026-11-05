@@ -1,0 +1,276 @@
+{
+  "topic": {
+    "ar": "خرافات البرمجيات",
+    "en": "Software Myths"
+  },
+  "quiz_id": "Quiz_Ch01_T05_Software_Myths",
+  "has_math": false,
+  "semester": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "ما الذي يجعل الاعتقاد في تطوير البرمجيات خرافة؟",
+        "en": "What makes a software-development belief a myth?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "اعتقاد معقول يضلل قرارات فرق البرمجيات",
+          "en": "A plausible belief that misguides practice"
+        },
+        {
+          "ar": "اعتقاد اختُبر وأُكّد في مشاريع متعددة",
+          "en": "It has been measured and confirmed across projects"
+        },
+        {
+          "ar": "قاعدة مكتوبة يجب أن يتبعها كل فريق",
+          "en": "It is a written rule that every team must follow"
+        },
+        {
+          "ar": "حقيقة تقنية ثابتة رغم تغير الأدوات",
+          "en": "It is a technical fact that never changes"
+        }
+      ],
+      "concept_id": "ch1_myth_meaning",
+      "explanation": {
+        "ar": "الخرافة اعتقاد يبدو معقولاً لكنه يشوّه طريقة تطوير البرمجيات، وليست قاعدة مثبتة بالدليل.",
+        "en": "A myth is a plausible belief that distorts how software should be developed; it is not an evidence-based rule."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "كيف جُمعت الخرافات التسع في الفصل؟",
+        "en": "How are the nine software myths grouped?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "بحسب طبقات العتاد والبرمجيات والشبكة",
+          "en": "By hardware, software and network layers"
+        },
+        {
+          "ar": "مناظير الإدارة والعميل والمطورين",
+          "en": "Management, customer and developer views"
+        },
+        {
+          "ar": "بحسب مراحل التحليل والتصميم والتنفيذ",
+          "en": "By analysis, design and implementation stages"
+        },
+        {
+          "ar": "بحسب مقاييس المنتج والعملية والمشروع",
+          "en": "By product, process and project measures"
+        }
+      ],
+      "concept_id": "ch1_myth_count_groups",
+      "explanation": {
+        "ar": "يجمع الفصل تسع خرافات ضمن مناظير الإدارة والعميل والمطوّر.",
+        "en": "The nine myths are grouped under management, customer and developer perspectives."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "لماذا يُعدّ الادعاء بأن الاختبار يثبت غياب أخطاء البرمجيات خرافة؟",
+        "en": "Why is the claim that testing proves the absence of software errors a myth?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يثبت الاختبار صحة كل المدخلات الممكنة",
+          "en": "Testing proves every possible input was correct"
+        },
+        {
+          "ar": "يضمن الاختبار أن التغييرات اللاحقة بلا ضرر",
+          "en": "Testing guarantees that later changes are harmless"
+        },
+        {
+          "ar": "يكشف الاختبار الخطأ ولا ينفي بقاء غيره",
+          "en": "Testing finds errors but cannot prove none remain"
+        },
+        {
+          "ar": "يثبت الاختبار صحة السلوك في كل الحالات",
+          "en": "A test suite guarantees every defect is removed before release"
+        }
+      ],
+      "concept_id": "ch1_myth_testing_absence",
+      "explanation": {
+        "ar": "يمكن للاختبار إظهار وجود الأخطاء، لكنه لا يثبت غيابها جميعاً.",
+        "en": "Testing can show the presence of errors, but it cannot prove their complete absence."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "غيّر مطوّر دالة في نظام مشترك. أي خرافة قد تجعل الفريق يتجاوز الفحوص اللازمة؟",
+        "en": "A developer changes one function in a shared system. Which myth could make the team skip needed checks?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "الاعتقاد أن كل إصدار يحتاج خطة اختبار موثقة",
+          "en": "Believing that each release needs a documented test plan"
+        },
+        {
+          "ar": "الاعتقاد أن المتطلبات قد تتغير أثناء التطوير",
+          "en": "Believing that requirements may change during development"
+        },
+        {
+          "ar": "الاعتقاد أن سلوك النظام يعتمد على مكوّناته",
+          "en": "Believing that system behaviour depends on its components"
+        },
+        {
+          "ar": "الخرافة ترى التغيير آمناً من دون فحص النظام",
+          "en": "The myth treats changes as safe without system rechecks"
+        }
+      ],
+      "concept_id": "ch1_myth_reverify",
+      "explanation": {
+        "ar": "تتعامل الخرافة مع التغيير كأنه بلا أثر، مع أن التغيير يتطلب إعادة التحقق من النظام.",
+        "en": "The myth treats change as harmless, although a change requires the system to be re-verified."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "ما الافتراض الخاطئ وراء القول إن البرمجيات ذات الميزات الأكثر أفضل دائماً؟",
+        "en": "What mistaken assumption lies behind the claim that software with more features is always better?"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "عدد الميزات وحده يحدد جودة البرمجيات",
+          "en": "Feature count alone defines software quality"
+        },
+        {
+          "ar": "قد ينجح منتج مركز في أداء غرضه جيداً",
+          "en": "A focused product can serve its purpose well"
+        },
+        {
+          "ar": "ينبغي أن تقود حاجات المستخدم اختيار الميزات",
+          "en": "User needs should guide feature selection"
+        },
+        {
+          "ar": "قد تزيد الميزة التعقيد من دون قيمة",
+          "en": "A feature may increase complexity without value"
+        }
+      ],
+      "concept_id": "ch1_myth_more_features",
+      "explanation": {
+        "ar": "زيادة الميزات لا تحسن البرمجيات تلقائياً؛ فقد يؤدي المنتج المركز غرضه بصورة أفضل.",
+        "en": "More features do not automatically improve software; a focused product may do its intended job better."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أُضيف مطوّرون كثيرون إلى مشروع متأخر، لكن التنسيق والتهيئة استغرقا وقتاً. أي خرافة يجري تحديها؟",
+        "en": "A late project is given many new engineers, but coordination and onboarding take time. Which myth is challenged?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "أن التواصل يتغير مع حجم الفريق",
+          "en": "Team communication changes with size"
+        },
+        {
+          "ar": "المزيد من المطورين ينهي التأخير",
+          "en": "New hires always recover project delay"
+        },
+        {
+          "ar": "التخطيط يحدد مواعيد التسليم",
+          "en": "Planning effort affects delivery schedules"
+        },
+        {
+          "ar": "أن الفرق تحتاج وقتاً لفهم النظام",
+          "en": "Teams need time to learn a system"
+        }
+      ],
+      "concept_id": "ch1_myth_add_people",
+      "explanation": {
+        "ar": "يحذر الفصل من أن إضافة مطورين إلى مشروع متأخر قد تزيد تأخيره.",
+        "en": "Adding engineers to an already late project may delay it further."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "لماذا قد تؤدي إعادة الاستخدام إلى شعور زائف بسلامة البرمجيات؟",
+        "en": "Why can reuse create a false sense of software safety?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "يزيل المكوّن المعاد استخدامه كل مشكلات التكامل",
+          "en": "A reused component removes every integration issue"
+        },
+        {
+          "ar": "يضمن المكوّن المعاد استخدامه صحة المتطلبات",
+          "en": "A reused component guarantees correct requirements"
+        },
+        {
+          "ar": "إعادة الاستخدام لا تغني عن فحص المخاطر والملاءمة",
+          "en": "Reuse still requires risk and suitability checks"
+        },
+        {
+          "ar": "يكون المكوّن المعاد استخدامه خالياً من العيوب دائماً",
+          "en": "A reused component always contains no defects"
+        }
+      ],
+      "concept_id": "ch1_myth_reuse_safety",
+      "explanation": {
+        "ar": "إعادة الاستخدام لا تثبت السلامة بذاتها؛ والافتراض بعكس ذلك قد يولد شعوراً زائفاً بالأمان.",
+        "en": "Reuse does not itself prove safety; assuming it does can create a false sense of security."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "سلّم فريق برنامجاً قابلاً للتنفيذ لكنه أهمل قابلية الصيانة وجودة المنتج. أي خرافة يعكس ذلك؟",
+        "en": "A team delivers an executable program but ignores maintainability and product quality. Which myth does this reflect?"
+      },
+      "bloom": "Analyze",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "أن البرمجيات يجب أن تلبي متطلباتها المعلنة",
+          "en": "That software must meet its stated requirements"
+        },
+        {
+          "ar": "أن الصيانة تظل مهمة بعد تسليم المنتج",
+          "en": "That maintenance matters after delivery"
+        },
+        {
+          "ar": "أن جودة المنتج تعتمد على أعمال تطويره",
+          "en": "That product quality depends on development work"
+        },
+        {
+          "ar": "البرنامج العامل وحده هو الهدف النهائي",
+          "en": "A working program alone is the objective"
+        }
+      ],
+      "concept_id": "ch1_myth_working_program",
+      "explanation": {
+        "ar": "يوضح الفصل أن الهدف تجاوز مجرد تشغيل البرنامج إلى الجودة وقابلية الصيانة.",
+        "en": "The objective goes beyond a merely working program to quality and maintainability."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-05T10:04:15Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول"
+}
