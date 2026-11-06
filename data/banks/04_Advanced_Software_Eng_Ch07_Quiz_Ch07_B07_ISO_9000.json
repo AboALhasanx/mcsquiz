@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "ISO 9000 وصلتها بنموذج النضج",
-    "en": "ISO 9000 and Its Relation to the CMM"
+    "ar": "مقارنة ISO 9000 وCMM",
+    "en": "ISO 9000 and CMM Comparison"
   },
   "quiz_id": "Quiz_Ch07_B07_ISO_9000",
   "has_math": false,
@@ -10,257 +10,353 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "كم بنداً يستخدمها ISO 9001؟",
-        "en": "How many clauses does ISO 9001 use?"
+        "ar": "بماذا تعنى سلسلة ISO 9000 أساساً؟",
+        "en": "What is the ISO 9000 series primarily concerned with?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "خمسة عشر بنداً مجدداً",
-          "en": "fifteen clauses too"
+          "ar": "معايير مترابطة لإدارة الجودة وضمانها.",
+          "en": "Quality-management and quality-assurance standards."
         },
         {
-          "ar": "عشرون بنداً الآن هنا",
-          "en": "twenty clauses now"
+          "ar": "نموذج مرحلي لنضج عمليات تطوير البرمجيات.",
+          "en": "A staged model of software process maturity."
         },
         {
-          "ar": "خمسة وعشرون بنداً الآن",
-          "en": "twenty five clauses"
+          "ar": "مجموعة نماذج لموثوقية المنتجات البرمجية.",
+          "en": "A family of software product reliability models."
         },
         {
-          "ar": "عشرة بنود هنا أيضاً",
-          "en": "ten clauses here"
+          "ar": "مجموعة ملفات لتمثيل مدخلات اختبار البرمجيات.",
+          "en": "A collection of input profiles for software testing."
         }
       ],
-      "concept_id": "ch7_iso9001_clauses",
+      "concept_id": "ch7_iso9000_family",
       "explanation": {
-        "ar": "معيار ISO 9001 مكتوب بنود، وعددها عشرون.",
-        "en": "ISO 9001 is written in clauses, and they number twenty in the standard."
+        "ar": "ISO 9000 سلسلة معايير مترابطة تعنى بإدارة الجودة وضمانها.",
+        "en": "ISO 9000 is a related series of standards dealing with quality management and assurance."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "في ISO 9126، كل خاصية تتفرّع إلى...",
-        "en": "In ISO 9126, each characteristic is broken down into..."
+        "ar": "ما دور ISO 9001 ضمن سلسلة ISO 9000؟",
+        "en": "What role does ISO 9001 play within the ISO 9000 series?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "أربع سمات",
-          "en": "four attributes too"
+          "ar": "يقدر شدة إخفاق البرمجيات خلال التنفيذ.",
+          "en": "It estimates failure intensity during program execution."
         },
         {
-          "ar": "سمة واحدة",
-          "en": "one attribute here"
+          "ar": "يحدد متطلبات نظام الجودة وإدارته داخل المؤسسة.",
+          "en": "It specifies requirements for a quality-management system."
         },
         {
-          "ar": "سمتان هنا",
-          "en": "two attributes now"
+          "ar": "يرتب المؤسسات بمستويات نضج عملية البرمجيات.",
+          "en": "It ranks organizations by software maturity level."
         },
         {
-          "ar": "ثلاث سمات",
-          "en": "three attributes"
+          "ar": "يحدد خصائص جودة المنتج في الأنظمة البرمجية.",
+          "en": "It defines software product quality characteristics."
         }
       ],
-      "concept_id": "ch7_iso9126_characteristics",
+      "concept_id": "ch7_iso9001_role",
       "explanation": {
-        "ar": "كل خاصية تحمل مجموعة من الخصائص الفرعية المسماة سمات.",
-        "en": "Each characteristic carries a set of sub-characteristics called attributes."
+        "ar": "يمثل ISO 9001 معيار نظام الجودة الأوثق صلة بمؤسسات التطوير ضمن السلسلة.",
+        "en": "ISO 9001 is the quality-system standard in the series most directly applied to development organizations."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "ISO 9000 سلسلة معايير لإدارة الجودة وتحتوي...",
-        "en": "ISO 9000 is a series of quality management standards and has..."
+        "ar": "ماذا يقدم ISO 9000-3 لإدارة جودة البرمجيات؟",
+        "en": "What does ISO 9000-3 provide in software quality management?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "عشرة معايير مترابطة أيضاً",
-          "en": "ten related standards now"
+          "ar": "مقياساً من خمسة مستويات لقياس نضج العملية.",
+          "en": "A five-level scale for measuring process maturity."
         },
         {
-          "ar": "خمسة وعشرين معياراً مترابطاً",
-          "en": "twenty five related standards"
+          "ar": "نموذجاً لتقدير شدة إخفاق البرمجيات.",
+          "en": "A model for estimating software failure intensity."
         },
         {
-          "ar": "معيارين مترابطين هنا مجدداً",
-          "en": "two related standards here"
+          "ar": "إرشادات لتطبيق ISO 9001 على تطوير البرمجيات.",
+          "en": "Guidance for applying ISO 9001 to software development."
         },
         {
-          "ar": "خمسة معايير مترابطة الآن",
-          "en": "five related standards too"
+          "ar": "بديلاً عن متطلبات نظام الجودة في ISO 9001.",
+          "en": "A replacement for ISO 9001's quality-system requirements."
         }
       ],
-      "concept_id": "ch7_iso9000_series",
+      "concept_id": "ch7_iso90003_guidance",
       "explanation": {
-        "ar": "عائلة ISO 9000 تغطي المعيار ومرافقيه.",
-        "en": "The ISO 9000 family covers the standard and its companions."
+        "ar": "يقدم ISO 9000-3 إرشادات خاصة بالبرمجيات لتطبيق متطلبات ISO 9001 الأوسع.",
+        "en": "ISO 9000-3 gives software-specific guidance for applying the broader ISO 9001 requirements."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "ما الفارق الأساسي في التركيز بين ISO 9001 ونموذج النضج؟",
-        "en": "What is the main difference in emphasis between ISO 9001 and the CMM?"
+        "ar": "في إصدار ISO 9001 ذي البنود العشرين، ماذا تحدد البنود مجتمعة؟",
+        "en": "In a 20-clause ISO 9001 version, what do the clauses collectively specify?"
       },
-      "bloom": "Analyze",
+      "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "نموذج النضج يركّز على تحسين العملية المستمر",
-          "en": "the CMM stresses continuous process improvement"
+          "ar": "تتابع مراحل نضج عملية تطوير البرمجيات.",
+          "en": "A five-stage path for software-process maturity."
         },
         {
-          "ar": "ISO 9001 ينطبق على البرمجيات فقط الآن",
-          "en": "ISO 9001 applies only to software here"
+          "ar": "هرم يضم خصائص جودة المنتجات البرمجية.",
+          "en": "A hierarchy of quality attributes for software products."
         },
         {
-          "ar": "نموذج النضج يهتم بالتوثيق فقط هنا أيضاً",
-          "en": "the CMM concerns documentation only now"
+          "ar": "معادلات لقياس معدل الإخفاق أثناء الاختبار.",
+          "en": "Equations for estimating failure rates during testing."
         },
         {
-          "ar": "ISO 9001 يركّز على التغيير المستمر مجدداً",
-          "en": "ISO 9001 stresses continuous software change"
+          "ar": "متطلبات نظام الجودة وإدارته داخل المؤسسة.",
+          "en": "Requirements for an organization's quality system."
         }
       ],
-      "concept_id": "ch7_iso_vs_cmm",
+      "concept_id": "ch7_iso_clause_version",
       "explanation": {
-        "ar": "ISO 9001 يشهد على نظام إدارة جودة، ونموذج النضج يقيّم نضج العملية.",
-        "en": "ISO 9001 certifies a quality management system; the CMM rates process maturity."
+        "ar": "يرتبط عدد البنود بإصدار محدد، وتصف البنود متطلبات نظام الجودة.",
+        "en": "The clause count belongs to a specific edition; the clauses describe quality-system requirements."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ينطبق ISO 9001 على...",
-        "en": "ISO 9001 applies to..."
+        "ar": "أي فرق في النطاق بين ISO 9001 وCMM دقيق؟",
+        "en": "Which scope contrast between ISO 9001 and CMM is accurate?"
       },
-      "bloom": "Understand",
+      "bloom": "Analyze",
       "answer": 0,
       "options": [
         {
-          "ar": "أي نوع من المنظمات",
-          "en": "any kind of organisation"
+          "ar": "نطاق ISO 9001 واسع، ويركز CMM على نضج عملية البرمجيات.",
+          "en": "ISO 9001 is broad; CMM focuses on software-process maturity."
         },
         {
-          "ar": "شركات البرمجيات فقط",
-          "en": "software companies only"
+          "ar": "يقتصر ISO 9001 على البرمجيات، ويشمل CMM الصناعات كلها.",
+          "en": "ISO 9001 is software-only; CMM applies to all industries."
         },
         {
-          "ar": "صنّاع العتاد فقط",
-          "en": "hardware makers only"
+          "ar": "يقتصر المعياران على إجراءات تصنيع الأجهزة فقط.",
+          "en": "Both standards apply only to hardware manufacturing."
         },
         {
-          "ar": "معاهد البحث فقط هنا",
-          "en": "research institutes only"
+          "ar": "يمنح CMM اعتماد جودة لجميع المنتجات البرمجية.",
+          "en": "CMM specifies quality-system certification for every product."
         }
       ],
-      "concept_id": "ch7_iso9000_scope",
+      "concept_id": "ch7_iso_cmm_scope",
       "explanation": {
-        "ar": "المعيار عام، ولهذا يغطي أكثر بكثير من البرمجيات.",
-        "en": "The standard is generic, which is why it covers far more than software."
+        "ar": "يطبق ISO 9001 على قطاعات واسعة، بينما يقدم CMM إطاراً لنضج عملية البرمجيات.",
+        "en": "ISO 9001 applies across sectors, whereas CMM provides a software-process maturity framework."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "ماذا تشترك فيه ISO 9001 ونموذج النضج؟",
-        "en": "What do ISO 9001 and the CMM share?"
+        "ar": "أي اهتمام يميز CMM بوضوح عن ISO 9001؟",
+        "en": "Which emphasis most clearly distinguishes CMM from ISO 9001?"
       },
-      "bloom": "Understand",
+      "bloom": "Analyze",
       "answer": 1,
       "options": [
         {
-          "ar": "كلاهما يشهد على المنتجات الآن",
-          "en": "both certify products here too"
+          "ar": "يحدد ISO 9001 تدرجاً من خمس مراحل للنضج.",
+          "en": "ISO 9001 defines a five-stage maturity progression."
         },
         {
-          "ar": "كلاهما يكافئ العمليات الموثّقة",
-          "en": "both reward documented processes"
+          "ar": "يركز CMM على التحسين المستمر لعملية البرمجيات.",
+          "en": "CMM emphasizes continuous software-process improvement."
         },
         {
-          "ar": "كلاهما يفرض المستويات نفسها",
-          "en": "both require the same levels again"
+          "ar": "يركز CMM على اعتماد المنتجات في الصناعات كلها.",
+          "en": "CMM emphasizes product certification for all industries."
         },
         {
-          "ar": "كلاهما يقيس جودة الكود هنا أيضاً",
-          "en": "both measure code quality now"
+          "ar": "يقيس ISO 9001 عيوب البرمجيات بعد كل تشغيل.",
+          "en": "ISO 9001 measures software faults after every execution."
         }
       ],
-      "concept_id": "ch7_cmm_iso_both",
+      "concept_id": "ch7_iso_cmm_improvement",
       "explanation": {
-        "ar": "كلاهما يدفع المنظمة لتوثيق ما تفعله وفعله باتساق.",
-        "en": "Both push an organisation to write down what it does and do it consistently."
+        "ar": "يركز CMM بقوة على التحسين المستمر، بينما يحدد ISO 9001 نظام جودة مقبولاً.",
+        "en": "The CMM places strong emphasis on continuous process improvement; ISO 9001 specifies an acceptable quality system."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "لماذا ظهر نموذج النضج بجانب ISO 9001؟",
-        "en": "Why did the CMM arise alongside ISO 9001?"
+        "ar": "أي مبدأ مشترك بين ISO 9001 وCMM؟",
+        "en": "Which principle is shared by ISO 9001 and CMM?"
       },
-      "bloom": "Analyze",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "نموذج النضج حلّ محل ISO مجدداً الآن",
-          "en": "the CMM replaced the ISO now again"
+          "ar": "استخدم إجراءً واحداً في كل قطاعات الصناعة.",
+          "en": "Use the same software process in every industry."
         },
         {
-          "ar": "نموذج النضج جاء من صانعي العتاد",
-          "en": "the CMM came from hardware makers"
+          "ar": "اضمن خلو كل برنامج من العيوب بعد التسليم.",
+          "en": "Guarantee that every delivered program has no faults."
         },
         {
-          "ar": "احتجت عملية البرمجيات نموذجها الخاص",
-          "en": "software process needed its own model"
+          "ar": "وثق العملية ونفذ العمل بما يطابق توثيقها.",
+          "en": "Document the process and follow it as documented."
         },
         {
-          "ar": "سُحب ISO 9001 هنا الآن أيضاً هنا",
-          "en": "ISO 9001 was withdrawn here too here here"
+          "ar": "استبدل سجلات العملية بفحص المنتج النهائي.",
+          "en": "Replace all process records with product inspections."
         }
       ],
-      "concept_id": "ch7_cmm_gap",
+      "concept_id": "ch7_iso_cmm_shared_principle",
       "explanation": {
-        "ar": "إدارة الجودة كانت عامة، فاحتاجت البرمجيات سُلّم نضج خاصاً بها.",
-        "en": "Quality management was generic, so software needed a maturity ladder of its own."
+        "ar": "تقدر المقاربتان توثيق العمليات وتنفيذ العمل وفقاً لها.",
+        "en": "Both approaches emphasize documented processes and work that matches them."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "كيف يُقاس التقدم في نموذج النضج عادةً؟",
-        "en": "How is CMM progress usually assessed?"
+        "ar": "أي مجال في CMM يدعم ضبط الوثائق وفق ISO 9001 مباشرة؟",
+        "en": "Which CMM practice area most directly supports ISO 9001 document control?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "بعدد أسطر الكود هنا أيضاً هنا",
-          "en": "by counting the lines of code here again here"
+          "ar": "إدارة التعاقدات البرمجية.",
+          "en": "Software Subcontract Management practices."
         },
         {
-          "ar": "بعدد الاجتماعات الآن مجدداً",
-          "en": "by the number of meetings held now here"
+          "ar": "تخطيط مشروع البرمجيات.",
+          "en": "Software Project Planning activities."
         },
         {
-          "ar": "بعدد الأخطاء المبلّغ عنها",
-          "en": "by the number of bugs reported too"
+          "ar": "هندسة المنتج البرمجي.",
+          "en": "Software Product Engineering practices."
         },
         {
-          "ar": "بتقييم رسمي من مقيمين مدربين",
-          "en": "by formal assessment by trained assessors"
+          "ar": "إدارة تهيئة البرمجيات.",
+          "en": "Software Configuration Management processes."
         }
       ],
-      "concept_id": "ch7_cmm_audits",
+      "concept_id": "ch7_iso_document_mapping",
       "explanation": {
-        "ar": "التقييمات الرسمية هي ما يضع المنظمة فعلاً على مستوى.",
-        "en": "Certified assessments are what actually place an organisation on a level."
+        "ar": "تضبط ممارسات إدارة التهيئة توزيع الوثائق وتعديلها.",
+        "en": "CMM configuration-management practices control the distribution and modification of documents."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "أي خاصية مشتركة في CMM تدعم تدقيق الجودة وفق ISO 9001 مباشرة؟",
+        "en": "Which CMM common feature most directly supports ISO 9001 quality audits?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التحقق من التنفيذ عبر المراجعات والتدقيق.",
+          "en": "Verifying Implementation, through reviews and audits."
+        },
+        {
+          "ar": "القدرة على الأداء عبر الموارد والتدريب.",
+          "en": "Ability to Perform, through staff and tools."
+        },
+        {
+          "ar": "الأنشطة المنفذة عبر الخطط ومخرجات العمل.",
+          "en": "Activities Performed, through plans and work products."
+        },
+        {
+          "ar": "الالتزام بالأداء عبر السياسة والدعم الإداري.",
+          "en": "Commitment to Perform, through management policy."
+        }
+      ],
+      "concept_id": "ch7_iso_audit_mapping",
+      "explanation": {
+        "ar": "تستخدم خاصية التحقق من التنفيذ المراجعات والتدقيق لفحص الالتزام بالممارسة المقررة.",
+        "en": "The Verifying Implementation feature uses reviews and audits to check adherence to established practice."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ماذا يثبت اعتماد ISO 9001 مباشرة؟",
+        "en": "What does ISO 9001 certification establish most directly?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "اتباع كل مشروع أساليب تقنية متطابقة.",
+          "en": "That every project follows identical technical methods."
+        },
+        {
+          "ar": "مطابقة نظام الجودة لمتطلبات محددة.",
+          "en": "The quality system's conformance to specified requirements."
+        },
+        {
+          "ar": "خلو البرمجيات من العيوب أثناء التشغيل.",
+          "en": "That the software contains no faults in operation."
+        },
+        {
+          "ar": "بلوغ المؤسسة أعلى مستوى في CMM.",
+          "en": "That the organization has reached CMM's highest level."
+        }
+      ],
+      "concept_id": "ch7_iso_certification_limit",
+      "explanation": {
+        "ar": "يتعلق الاعتماد بمطابقة نظام الجودة، ولا يثبت خلو البرمجيات من العيوب أو مستوى نضج CMM.",
+        "en": "Certification concerns the quality system's conformance; it is not proof of fault-free software or CMM maturity."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "تسعى مؤسسة لتحسين عملية البرمجيات وتواجه شرط اعتماد من مشترٍ؛ أي اختيار سليم؟",
+        "en": "An organization seeks software-process improvement but also faces a buyer's certification requirement; which choice is sound?"
+      },
+      "bloom": "Evaluate",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "استخدم نضج CMM بديلاً لكل اعتماد سوقي.",
+          "en": "Use CMM maturity as a substitute for every market certificate."
+        },
+        {
+          "ar": "اخترهما لأن كليهما يضمن خلو المنتج من العيوب.",
+          "en": "Choose either approach because both guarantee defect-free products."
+        },
+        {
+          "ar": "استخدم CMM للتحسين ونفذ اعتماد ISO المطلوب.",
+          "en": "Use CMM to guide improvement and meet required ISO certification."
+        },
+        {
+          "ar": "استخدم اعتماد ISO لإثبات التحسين المستمر.",
+          "en": "Use ISO certification alone as proof of continuous improvement."
+        }
+      ],
+      "concept_id": "ch7_iso_cmm_selection",
+      "explanation": {
+        "ar": "يمكن لـCMM تنظيم تحسين عملية البرمجيات، وقد يتطلب السوق اعتماد ISO 9001 أيضاً.",
+        "en": "CMM can structure software-process improvement, while a market may separately require ISO 9001 certification."
       }
     }
   ],
@@ -269,7 +365,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T21:33:06Z",
+  "updated_at": "2026-11-05T23:01:39Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

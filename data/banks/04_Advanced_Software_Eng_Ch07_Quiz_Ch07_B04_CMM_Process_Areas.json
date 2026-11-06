@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "نموذج النضج: المناطق العملية والخصائص المشتركة",
-    "en": "CMM: Process Areas and Common Features"
+    "ar": "مناطق العملية والخصائص المشتركة في CMM",
+    "en": "CMM Key Process Areas and Common Features"
   },
   "quiz_id": "Quiz_Ch07_B04_CMM_Process_Areas",
   "has_math": false,
@@ -10,257 +10,257 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "نموذج النضج تقنية لـ...",
-        "en": "The CMM is a technique for..."
+        "ar": "ماذا يعني KPA في CMM؟",
+        "en": "What does KPA mean in the CMM?"
       },
       "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "تحسين عملية البرمجيات",
-          "en": "improving the software process now"
+          "ar": "منطقة رئيسية تضم ممارسات عملية مترابطة.",
+          "en": "Key Process Area, a group of related process practices."
         },
         {
-          "ar": "تطوير البرمجيات آلياً",
-          "en": "automatically developing the software"
+          "ar": "سمة رئيسية تصف جودة منتج برمجي محدد.",
+          "en": "Key Product Attribute, a software quality characteristic."
         },
         {
-          "ar": "اختبار المنتج هنا",
-          "en": "testing the product here now again"
+          "ar": "متوسط شائع لقياس موثوقية المنتج البرمجي.",
+          "en": "Known Performance Average, a reliability measurement."
         },
         {
-          "ar": "كل ما سبق أعلاه الآن",
-          "en": "all of the above answers too here"
+          "ar": "نشاط برمجي يحدد مرحلة من مراحل التطوير.",
+          "en": "Kernel Program Activity, a software execution phase."
         }
       ],
-      "concept_id": "ch7_cmm_purpose",
+      "concept_id": "ch7_kpa_meaning",
       "explanation": {
-        "ar": "نموذج النضج إطار لتحسين العملية، لا طريقة تطوير أو اختبار.",
-        "en": "CMM is a process-improvement framework, not a development or testing method."
+        "ar": "تجمع منطقة العملية الأساسية أهدافاً وممارسات مترابطة لازمة لقدرة العملية في مستوى نضج معين.",
+        "en": "A Key Process Area groups related goals and practices important to process capability at a maturity level."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "أي نموذج يقيس تحسين عملية البرمجيات؟",
-        "en": "Which model measures software process improvement?"
+        "ar": "كيف تُنظم مناطق العملية الأساسية في CMM المرحلي؟",
+        "en": "How are Key Process Areas organized in staged CMM?"
       },
-      "bloom": "Remember",
+      "bloom": "Analyze",
       "answer": 1,
       "options": [
         {
-          "ar": "النموذج الحلزوني الآن",
-          "en": "the spiral model"
+          "ar": "يضم المستوى الأولي كل المناطق قبل بدء العمل.",
+          "en": "The Initial level contains all KPAs before any process work."
         },
         {
-          "ar": "ISO 9000 هنا مجدداً",
-          "en": "ISO 9000 now again"
+          "ar": "تظهر KPAs في المستويات الأعلى بعد المستوى الأولي.",
+          "en": "Higher CMM maturity levels introduce their own KPAs."
         },
         {
-          "ar": "ISO 9126 الآن هنا",
-          "en": "ISO 9126 too here"
+          "ar": "تنتمي كل منطقة عملية إلى جميع مستويات النضج معاً.",
+          "en": "Every KPA belongs to all maturity levels at the same time."
         },
         {
-          "ar": "نموذج النضج أيضاً",
-          "en": "the CMM here now too"
+          "ar": "تحل مناطق العملية محل مستويات النضج في النموذج المرحلي.",
+          "en": "KPAs replace maturity levels in the staged model."
         }
       ],
-      "concept_id": "ch7_process_improvement_model",
+      "concept_id": "ch7_kpa_level_structure",
       "explanation": {
-        "ar": "نموذج النضج يقيّم مدى تعريف المنظمة لعمليتها وممارستها.",
-        "en": "The CMM rates how well an organisation's process is defined and practised."
+        "ar": "لا يضم المستوى الأولي مناطق محددة، وتظهر مناطق العملية في المستويات الأعلى.",
+        "en": "The Initial level has no defined KPAs; the staged areas are introduced at higher levels."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "كم منطقة عملية رئيسية في كل مستوى نضج؟",
-        "en": "How many Key Process Areas does each maturity level have?"
-      },
-      "bloom": "Remember",
-      "answer": 2,
-      "options": [
-        {
-          "ar": "عدة مناطق الآن هنا",
-          "en": "several areas now"
-        },
-        {
-          "ar": "لا مناطق إطلاقاً",
-          "en": "no areas at all"
-        },
-        {
-          "ar": "واحدة بالضبط أيضاً",
-          "en": "exactly one here"
-        },
-        {
-          "ar": "نفس العدد هنا مجدداً",
-          "en": "the same number"
-        }
-      ],
-      "concept_id": "ch7_cmm_kpas_per_level",
-      "explanation": {
-        "ar": "كل مستوى يجمع عدة مناطق، والعدد يزداد مع ارتفاع النموذج.",
-        "en": "Each level bundles several areas, and the count grows as the model rises."
-      }
-    },
-    {
-      "id": "q4",
-      "stem": {
-        "ar": "KPA في نموذج النضج تعني...",
-        "en": "KPA in CMM stands for..."
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "منطقة المنتج الرئيسية",
-          "en": "Key Product Area now here"
-        },
-        {
-          "ar": "المنطقة الرئيسية العامة",
-          "en": "Key Principal Area"
-        },
-        {
-          "ar": "منطقة الأداء الرئيسية",
-          "en": "Key Performance Area"
-        },
-        {
-          "ar": "منطقة العملية الرئيسية",
-          "en": "Key Process Area here"
-        }
-      ],
-      "concept_id": "ch7_kpa_stands",
-      "explanation": {
-        "ar": "منطقة العملية الرئيسية تجمع الممارسات الواجبة للوصول إلى مستوى.",
-        "en": "A Key Process Area groups the practices that must be in place to reach a level."
-      }
-    },
-    {
-      "id": "q5",
-      "stem": {
-        "ar": "في نموذج النضج، الخصائص المشتركة تصف...",
-        "en": "In CMM, the common features characterise..."
-      },
-      "bloom": "Remember",
-      "answer": 0,
-      "options": [
-        {
-          "ar": "المدخلات والعمليات والمخرجات والتخزين",
-          "en": "input, process, output and storage here too now"
-        },
-        {
-          "ar": "الالتزام بالأداء والقدرة عليه والنتائج",
-          "en": "commitment to perform, ability to perform and results"
-        },
-        {
-          "ar": "الأهداف والمقاييس والإجراءات والتغذية الراجعة",
-          "en": "goals, metrics, actions and feedback now again"
-        },
-        {
-          "ar": "التخطيط والتنفيذ والمراجعة والاحتفاظ",
-          "en": "planning, execution, review and retention here"
-        }
-      ],
-      "concept_id": "ch7_common_features",
-      "explanation": {
-        "ar": "كل منطقة توصف بالالتزام والقدرة والنتائج.",
-        "en": "Every area is described by commitment, ability and results."
-      }
-    },
-    {
-      "id": "q6",
-      "stem": {
-        "ar": "أي منطقة عملية رئيسية تنتمي للمستوى الثاني؟",
-        "en": "Which KPA belongs to CMM Level 2?"
-      },
-      "bloom": "Remember",
-      "answer": 1,
-      "options": [
-        {
-          "ar": "منع العيوب هنا الآن",
-          "en": "defect prevention here now too"
-        },
-        {
-          "ar": "تعريف عملية المنظمة",
-          "en": "organization process definition"
-        },
-        {
-          "ar": "إدارة ضبط البرمجيات",
-          "en": "software configuration management"
-        },
-        {
-          "ar": "الإدارة الكمية للعمليات",
-          "en": "quantitative process management"
-        }
-      ],
-      "concept_id": "ch7_level2_kpa",
-      "explanation": {
-        "ar": "المستوى الثاني يغطي إدارة الضبط والتدريب وممارسات التكرار الأخرى.",
-        "en": "Level 2 covers configuration management, training and the other repeatability practices."
-      }
-    },
-    {
-      "id": "q7",
-      "stem": {
-        "ar": "ما غرض منطقة العملية الرئيسية؟",
-        "en": "What is the purpose of a Key Process Area?"
+        "ar": "أي مجموعة تسمي الخصائص المشتركة لترسيخ KPA في CMM؟",
+        "en": "Which set names CMM's common features for institutionalizing a KPA?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "لتسعير المنتج هنا أيضاً الآن",
-          "en": "to price the product here now here"
+          "ar": "التشغيل والمراجعة والانتقال والنضج والاعتماد.",
+          "en": "Operation, revision, transition, maturity, and certification."
         },
         {
-          "ar": "لتخزين المتطلبات الآن هنا",
-          "en": "to store the requirements too now again"
+          "ar": "الموثوقية وسهولة الاستخدام والنقل والكفاءة والتكامل.",
+          "en": "Reliability, usability, portability, efficiency, and integrity."
         },
         {
-          "ar": "لتجميع ممارسات تحقق مستوى واحد",
-          "en": "to group practices that reach one level"
+          "ar": "الالتزام والقدرة والأنشطة والقياس والتحقق.",
+          "en": "Commitment, ability, activities, measurement, and verification."
         },
         {
-          "ar": "لقياس سرعة المبرمج مجدداً أيضاً",
-          "en": "to measure programmer speed again too"
+          "ar": "التخطيط والبرمجة والترجمة والاختبار والنشر.",
+          "en": "Planning, coding, compiling, testing, and deployment."
         }
       ],
-      "concept_id": "ch7_kpa_purpose",
+      "concept_id": "ch7_common_features_list",
       "explanation": {
-        "ar": "المناطق هي نقاط التحقق التي يُحاكَم بها مستوى النضج.",
-        "en": "Areas are the checkpoints a maturity level is judged against."
+        "ar": "الخصائص الخمس هي الالتزام بالأداء والقدرة عليه والأنشطة المنفذة والقياس والتحليل والتحقق من التنفيذ.",
+        "en": "The five common features are Commitment to Perform, Ability to Perform, Activities Performed, Measurement and Analysis, and Verifying Implementation."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "تفتقر منطقة عملية إلى موظفين مدربين وأدوات وأدوار واضحة؛ أي خاصية ضعيفة؟",
+        "en": "A process area lacks trained staff, tools, and a clear role structure; which feature is weak?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "options": [
+        {
+          "ar": "يراجع التحقق من التنفيذ اتباع إجراءات العمل.",
+          "en": "Verifying Implementation, which reviews adherence to procedures."
+        },
+        {
+          "ar": "يحلل القياس بيانات أداء العملية وأهدافها.",
+          "en": "Measurement and Analysis, which evaluates process data."
+        },
+        {
+          "ar": "يحدد الالتزام بالأداء سياسة الإدارة ودعمها.",
+          "en": "Commitment to Perform, which establishes management policy."
+        },
+        {
+          "ar": "توفر القدرة على الأداء موارد الفريق وتدريبه.",
+          "en": "Ability to Perform, which provides necessary resources and skills."
+        }
+      ],
+      "concept_id": "ch7_ability_perform_scenario",
+      "explanation": {
+        "ar": "تشمل القدرة على الأداء الموارد والبنية التنظيمية والتدريب والأدوات اللازمة.",
+        "en": "Ability to Perform covers prerequisites such as resources, organizational structure, training, and tools."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "يدقق فريق في الالتزام بعملية مقررة؛ أي خاصية يطبق؟",
+        "en": "A team audits whether an established process is followed; which feature is applied?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "التحقق من التنفيذ يراجع الالتزام بإجراءات العمل.",
+          "en": "Verifying Implementation checks adherence to the process."
+        },
+        {
+          "ar": "تحدد الأنشطة المنفذة الخطط ومخرجات العمل المطلوبة.",
+          "en": "Activities Performed defines plans and required work products."
+        },
+        {
+          "ar": "توفر القدرة على الأداء الموظفين والموارد والتدريب.",
+          "en": "Ability to Perform supplies staff, tools, and training."
+        },
+        {
+          "ar": "يحدد الالتزام بالأداء سياسة الإدارة والدعم المطلوب.",
+          "en": "Commitment to Perform sets policy and management support."
+        }
+      ],
+      "concept_id": "ch7_verification_scenario",
+      "explanation": {
+        "ar": "يستخدم التحقق من التنفيذ المراجعات والتدقيق لضمان اتباع الإجراءات المقررة.",
+        "en": "Verifying Implementation uses reviews and audits to ensure that activities follow established procedures."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كيف تختلف KPA عن الخاصية المشتركة؟",
+        "en": "How do a KPA and a common feature differ?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "تقيس KPA منتجاً، وتحدد الخصائص المشتركة مدخلات المستخدم.",
+          "en": "A KPA measures a product; common features specify user inputs."
+        },
+        {
+          "ar": "تسمي KPA منطقة عملية، وتنظم الخصائص المشتركة ترسيخها.",
+          "en": "A KPA names an area; common features institutionalize it."
+        },
+        {
+          "ar": "تسمي KPA عامل جودة، وتقيس الخصائص المشتركة العيوب.",
+          "en": "A KPA names a quality factor; common features measure defects."
+        },
+        {
+          "ar": "تصف KPA مرحلة نضج، وتحل الخصائص المشتركة محل المراحل.",
+          "en": "A KPA describes a maturity stage; common features replace stages."
+        }
+      ],
+      "concept_id": "ch7_kpa_vs_common_feature",
+      "explanation": {
+        "ar": "تحدد KPA مجال العملية، وتصف الخصائص المشتركة كيفية ترسيخ ممارساته.",
+        "en": "A KPA identifies the process area; common features describe how practices in that area are institutionalized."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ما الذي يبقى مشتركاً عند تغير موضوع KPA في CMM؟",
+        "en": "What remains shared when the subject of a CMM KPA changes?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تقيس كل منطقة سمات منتج برمجي محدد.",
+          "en": "Each area measures attributes of a software product."
+        },
+        {
+          "ar": "تحصل المؤسسات على مستوى نضج موحد.",
+          "en": "Organizations receive one common maturity level."
+        },
+        {
+          "ar": "تتكرر الفئات المشتركة عبر مناطق العملية.",
+          "en": "Common features span distinct software process areas."
+        },
+        {
+          "ar": "تحتفظ كل منطقة بأهداف وممارسات خاصة بها.",
+          "en": "Each area retains its own specific goals and practices."
+        }
+      ],
+      "concept_id": "ch7_common_features_scope",
+      "explanation": {
+        "ar": "يختلف محتوى مناطق العملية، بينما تنظم الفئات المشتركة طريقة تنفيذها.",
+        "en": "The KPA content varies, while the same common-feature categories organize its implementation."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "ما الفارق العملي بين مستويين متجاورين في نموذج النضج؟",
-        "en": "What is the practical gap between two adjacent CMM levels?"
+        "ar": "ما الذي يدل على ترسيخ KPA بدلاً من تطبيقها مؤقتاً؟",
+        "en": "What indicates that a KPA is institutionalized rather than used temporarily?"
       },
       "bloom": "Analyze",
       "answer": 3,
       "options": [
         {
-          "ar": "سعر المنتج هنا أيضاً",
-          "en": "the price of the product now again here"
+          "ar": "ينفذ خبير المشروع ممارساتها مرة واحدة فقط.",
+          "en": "Its practices are performed once by a project expert."
         },
         {
-          "ar": "لغة البرمجة المستخدمة",
-          "en": "the programming language used here"
+          "ar": "تُستبدل أهدافها عند كل إصدار للمنتج.",
+          "en": "Its goals are replaced whenever a product is released."
         },
         {
-          "ar": "منصة العتاد الآن مجدداً",
-          "en": "the hardware platform here too now"
+          "ar": "تبقى إجراءاتها غير رسمية وغير موثقة.",
+          "en": "Its procedures are kept informal and undocumented."
         },
         {
-          "ar": "انضباط عملية المنظمة",
-          "en": "the organisation's process discipline"
+          "ar": "تبقى ممارساتها قائمة وقابلة للتكرار.",
+          "en": "Its practices are lasting and repeatable over time."
         }
       ],
-      "concept_id": "ch7_cmm_levels_gap",
+      "concept_id": "ch7_process_area_institutionalization",
       "explanation": {
-        "ar": "الصعود مستوى يعني أن المنظمة كلها تكرر انضباطاً لم تكن تملكه.",
-        "en": "Climbing a level means the whole organisation repeats a discipline it did not have before."
+        "ar": "يجعل الترسيخ ممارسات المنطقة مستمرة وقابلة للتكرار بدلاً من اعتمادها على جهد مؤقت.",
+        "en": "Institutionalization makes KPA practices enduring and repeatable rather than dependent on one temporary effort."
       }
     }
   ],
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T21:24:16Z",
+  "updated_at": "2026-11-05T23:01:39Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

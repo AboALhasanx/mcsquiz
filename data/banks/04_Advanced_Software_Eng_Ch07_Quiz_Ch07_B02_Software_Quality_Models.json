@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "نماذج جودة البرمجيات: مكال وبوم وISO 9126",
-    "en": "Software Quality Models: McCall, Boehm and ISO 9126"
+    "ar": "نماذج جودة البرمجيات",
+    "en": "Software Quality Models"
   },
   "quiz_id": "Quiz_Ch07_B02_Software_Quality_Models",
   "has_math": false,
@@ -10,385 +10,353 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "جودة البرمجيات هي...",
-        "en": "Software quality is..."
+        "ar": "كيف ترتبط موثوقية البرمجيات بجودتها؟",
+        "en": "How does software reliability relate to software quality?"
       },
-      "bloom": "Remember",
+      "bloom": "Analyze",
       "answer": 0,
       "options": [
         {
-          "ar": "مطابقة المتطلبات",
-          "en": "conformance to requirements"
+          "ar": "الموثوقية سمة من سمات الجودة وليست الجودة كلها.",
+          "en": "Reliability is one quality attribute, not the whole of quality."
         },
         {
-          "ar": "ملاءمة الغرض الآن",
-          "en": "fitness for the purpose here"
+          "ar": "الموثوقية والجودة مقياس واحد في جميع النماذج.",
+          "en": "Reliability and quality are identical measures in every model."
         },
         {
-          "ar": "مستوى الرضا هنا",
-          "en": "the level of satisfaction"
+          "ar": "تقيس الجودة الإخفاقات، وتقيس الموثوقية حجم الشفرة.",
+          "en": "Quality measures failures, while reliability measures source size."
         },
         {
-          "ar": "كل ما سبق أعلاه",
-          "en": "all of the above answers"
+          "ar": "الموثوقية عملية تطوير، والجودة أسلوب اختبار.",
+          "en": "Reliability is a development process; quality is a test technique."
         }
       ],
-      "concept_id": "ch7_quality_is",
+      "concept_id": "ch7_quality_reliability_difference",
       "explanation": {
-        "ar": "الجودة تشمل المطابقة والملاءمة للهدف ومستوى رضا المستخدم.",
-        "en": "Quality covers conformance, fitness for purpose and how satisfied the user is."
+        "ar": "الموثوقية إحدى خصائص الجودة، وتشمل جودة البرمجيات سمات أخرى أيضاً.",
+        "en": "Reliability is a quality characteristic; software quality covers additional attributes as well."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "يمكن التعبير عن معدل العيوب كـ...",
-        "en": "Defect rate can be expressed as..."
+        "ar": "ما المجموعات التي تنظم عوامل الجودة في نموذج McCall؟",
+        "en": "Which groups organize McCall's software quality factors?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "كل ما سبق أعلاه هنا",
-          "en": "all of the above answers"
+          "ar": "الاستخدامات والبنى المتوسطة والبدائية في نموذج Boehm.",
+          "en": "Primary uses, intermediate constructs, and primitive constructs."
         },
         {
-          "ar": "عيوب لكل مليون سطر",
-          "en": "defects per million lines"
+          "ar": "تشغيل المنتج ومراجعته وانتقاله ضمن تصنيف الجودة.",
+          "en": "Product operation, product revision, and product transition."
         },
         {
-          "ar": "عيوب لكل نقطة وظيفة",
-          "en": "defects per function point"
+          "ar": "إدارة العملية وقياسها وتحسينها ضمن نضج المؤسسة.",
+          "en": "Process planning, process control, and process improvement."
         },
         {
-          "ar": "عيوب لكل وحدة حجم",
-          "en": "defects per unit of size"
+          "ar": "الوظيفية والموثوقية وسهولة الاستخدام والصيانة.",
+          "en": "Functionality, reliability, usability, and maintainability."
         }
       ],
-      "concept_id": "ch7_defect_rate",
+      "concept_id": "ch7_mccall_categories",
       "explanation": {
-        "ar": "التطبيع الثلاثة كلها مستخدمة، والفرق في وحدة الحجم.",
-        "en": "All three normalisations are used; the unit of size is what differs."
+        "ar": "ينظم McCall عوامل جودة المنتج ضمن التشغيل والمراجعة والانتقال.",
+        "en": "McCall groups product quality factors under operation, revision, and transition."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "كم عامل جودة منتج يقترح نموذج مكال؟",
-        "en": "How many product quality factors does the McCall model propose?"
+        "ar": "ما العلاقة بين العوامل والمعايير في نموذج McCall؟",
+        "en": "What is the relationship between McCall's factors and criteria?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "أحد عشر عاملاً هنا هنا",
-          "en": "eleven factors"
+          "ar": "تحل المعايير محل العوامل عند تشغيل المنتج.",
+          "en": "Criteria replace factors when the product enters operation."
         },
         {
-          "ar": "ستة عوامل الآن الآن الآن",
-          "en": "six factors now"
+          "ar": "العوامل والمعايير اسمان متبادلان للمستوى نفسه.",
+          "en": "Factors and criteria are interchangeable names for one level."
         },
         {
-          "ar": "عاملان هنا أيضاً أيضاً",
-          "en": "two factors here"
+          "ar": "المعايير سمات أدنى مستوى تصف عوامل الجودة.",
+          "en": "Criteria are lower-level attributes that inform quality factors."
         },
         {
-          "ar": "ثلاثة عوامل مجدداً مجدداً",
-          "en": "three factors too"
+          "ar": "العوامل سمات أدنى مستوى تحدد معايير الجودة.",
+          "en": "Factors are lower-level attributes that define quality criteria."
         }
       ],
-      "concept_id": "ch7_mccall_factor_count",
+      "concept_id": "ch7_mccall_factor_criteria",
       "explanation": {
-        "ar": "يعرّف مكال أحد عشر عاملاً موزعة على ثلاث فئات.",
-        "en": "McCall defines eleven factors grouped into three categories."
+        "ar": "عوامل الجودة سمات المستوى الأعلى، أما المعايير فسمات المستوى الثاني المرتبطة بها.",
+        "en": "Quality factors are the higher-level attributes; criteria are the second-level attributes related to them."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "أي واحد ليس فئة في نموذج مكال؟",
-        "en": "Which one is NOT a category in McCall's model?"
+        "ar": "ضمن أي مجموعة تقع الموثوقية في عوامل McCall؟",
+        "en": "Where does reliability belong in McCall's product-factor groups?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 3,
       "options": [
         {
-          "ar": "تشغيل المنتج",
-          "en": "product operation now"
+          "ar": "مراجعة المنتج وتشمل الاختبار والصيانة والتعديل.",
+          "en": "Product revision, which concerns testing and maintenance."
         },
         {
-          "ar": "مواصفة المنتج",
-          "en": "product specification"
+          "ar": "انتقال المنتج ويشمل النقل بين المنصات والأنظمة.",
+          "en": "Product transition, which concerns transfer between platforms."
         },
         {
-          "ar": "انتقال المنتج",
-          "en": "product transition"
+          "ar": "تحسين العملية يرفع نضج الممارسات المؤسسية.",
+          "en": "Process improvement, which concerns organizational maturity."
         },
         {
-          "ar": "مراجعة المنتج",
-          "en": "product revision here"
+          "ar": "تشغيل المنتج ويضم عوامل أدائه أثناء الاستخدام.",
+          "en": "Product operation, which concerns the product during use."
         }
       ],
-      "concept_id": "ch7_not_mccall_category",
+      "concept_id": "ch7_product_operation_reliability",
       "explanation": {
-        "ar": "الفئات الثلاث هي التشغيل والمراجعة والانتقال.",
-        "en": "The three categories are operation, revision and transition."
+        "ar": "الموثوقية من عوامل تشغيل المنتج إلى جانب سمات مثل الصحة وسهولة الاستخدام.",
+        "en": "Reliability is a product-operation factor alongside attributes such as correctness and usability."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "ماذا تسمى المستوى الثاني من السمات في نموذج مكال؟",
-        "en": "What are the second level of attributes in McCall's model called?"
+        "ar": "أي اهتمام يلائم مجموعة مراجعة المنتج لدى McCall؟",
+        "en": "Which concern best fits McCall's product revision group?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "معايير الجودة",
-          "en": "quality criteria now"
+          "ar": "تسهيل اختبار البرمجيات وصيانتها وتعديلها.",
+          "en": "Making software easier to test, maintain, and modify."
         },
         {
-          "ar": "عوامل الجودة",
-          "en": "quality factors here"
+          "ar": "نقل البرمجيات بين المنصات وربط الأنظمة.",
+          "en": "Moving software between platforms and linking systems."
         },
         {
-          "ar": "إرشادات الجودة",
-          "en": "quality guidelines"
+          "ar": "مساعدة المستخدمين على تشغيل البرمجيات يومياً.",
+          "en": "Helping users operate the software during normal use."
         },
         {
-          "ar": "مواصفات الجودة",
-          "en": "quality specifications"
+          "ar": "قياس نضج العملية عبر مستويات المؤسسة.",
+          "en": "Measuring maturity across an organization's process levels."
         }
       ],
-      "concept_id": "ch7_mccall_second_level",
+      "concept_id": "ch7_product_revision_factors",
       "explanation": {
-        "ar": "العوامل في الأعلى، والمعايير في الوسط، والمقاييس في القاعدة.",
-        "en": "Factors sit at the top, criteria in the middle and metrics at the base."
+        "ar": "تشمل مراجعة المنتج العوامل المرتبطة باختبار البرمجيات وصيانتها.",
+        "en": "Product revision covers factors related to testing and maintaining the software."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "أي واحد ليس مستوى في نموذج جودة بوم؟",
-        "en": "Which one is NOT a level in Boehm's quality model?"
+        "ar": "أي مجموعة تضم عوامل انتقال المنتج في نموذج McCall؟",
+        "en": "Which set contains McCall's product transition factors?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "البنى النهائية أيضاً",
-          "en": "final constructs now"
+          "ar": "الملاءمة والدقة والاستعادة ضمن خصائص المنتج.",
+          "en": "Suitability, accuracy, and recoverability."
         },
         {
-          "ar": "الاستخدامات الأولية",
-          "en": "primary uses here too"
+          "ar": "قابلية النقل وإعادة الاستخدام والتشغيل البيني.",
+          "en": "Portability, reusability, and interoperability."
         },
         {
-          "ar": "البنى الوسيطة هنا",
-          "en": "intermediate constructs"
+          "ar": "الصحة والكفاءة والتكامل ضمن عوامل تشغيل المنتج.",
+          "en": "Correctness, efficiency, and integrity."
         },
         {
-          "ar": "البنى البدائية الآن",
-          "en": "primitive constructs"
+          "ar": "الاختبار والمرونة والصيانة ضمن مراجعة المنتج.",
+          "en": "Testability, flexibility, and maintainability."
         }
       ],
-      "concept_id": "ch7_not_boehm_level",
+      "concept_id": "ch7_product_transition_factors",
       "explanation": {
-        "ar": "مستويات بوم تصعد من البنى البدائية إلى الاستخدامات الأولية.",
-        "en": "Boehm's levels run from primitive constructs up to primary uses."
+        "ar": "يضع McCall قابلية النقل وإعادة الاستخدام والتشغيل البيني ضمن انتقال المنتج.",
+        "en": "McCall places portability, reusability, and interoperability under product transition."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "أي واحد ليس نموذج جودة منتج برمجي؟",
-        "en": "Which one is NOT a software product quality model?"
+        "ar": "أي تسلسل يصف هرم نموذج Boehm لجودة البرمجيات؟",
+        "en": "Which hierarchy describes Boehm's software quality model?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "ISO 9000 هنا هنا",
-          "en": "ISO 9000 here again"
+          "ar": "خصائص ISO 9126 الست ضمن بنية جودة صارمة.",
+          "en": "Functionality, reliability, usability, and maintainability."
         },
         {
-          "ar": "ISO 9126 الآن الآن",
-          "en": "ISO 9126 now too too"
+          "ar": "مستويات CMM الخمسة من الأولي إلى المحسن.",
+          "en": "Initial, repeatable, defined, managed, and optimizing."
         },
         {
-          "ar": "نموذج مكال مجدداً",
-          "en": "the McCall model now"
+          "ar": "الاستخدامات الأولية والبنى المتوسطة والبدائية.",
+          "en": "Primary uses, intermediate constructs, and primitive constructs."
         },
         {
-          "ar": "نموذج بوم أيضاً",
-          "en": "the Boehm model here"
+          "ar": "تشغيل المنتج ومراجعته وانتقاله ضمن نموذج McCall.",
+          "en": "Product operation, product revision, and product transition."
         }
       ],
-      "concept_id": "ch7_not_product_quality_model",
+      "concept_id": "ch7_boehm_levels",
       "explanation": {
-        "ar": "ISO 9000 معيار لإدارة الجودة، أما ISO 9126 فهو نموذج جودة المنتج.",
-        "en": "ISO 9000 is a quality management standard; ISO 9126 is the product quality model."
+        "ar": "ينظم Boehm الجودة عبر الاستخدامات الأولية والبنى المتوسطة والبنى البدائية.",
+        "en": "Boehm organizes quality through primary uses, intermediate constructs, and primitive constructs."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "طوّر مكال...",
-        "en": "McCall developed a..."
+        "ar": "بماذا تشبه البنى المتوسطة في نموذج Boehm؟",
+        "en": "What do Boehm's intermediate constructs resemble?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "نموذج عملية الآن",
-          "en": "process model now here"
+          "ar": "معايير الجودة الأدنى مستوى في نموذج McCall.",
+          "en": "McCall's lower-level product quality criteria."
         },
         {
-          "ar": "نموذج موثوقية",
-          "en": "reliability model"
+          "ar": "مستويات النضج في CMM لتحسين العملية.",
+          "en": "CMM's maturity levels for software-process improvement."
         },
         {
-          "ar": "لا شيء مما سبق",
-          "en": "none of the above"
+          "ar": "بنود ISO 9001 لاعتماد نظام الجودة.",
+          "en": "ISO 9001's clauses for quality-system certification."
         },
         {
-          "ar": "نموذج جودة هنا",
-          "en": "quality model here"
+          "ar": "عوامل الجودة الأعلى مستوى في نموذج McCall.",
+          "en": "McCall's higher-level product quality factors."
         }
       ],
-      "concept_id": "ch7_mccall_kind",
+      "concept_id": "ch7_boehm_intermediate",
       "explanation": {
-        "ar": "مساهمة مكال هي نموذج جودة متعدد الطبقات لمنتج البرمجيات.",
-        "en": "McCall's contribution is the layered quality model of the software product."
+        "ar": "تشبه البنى المتوسطة لدى Boehm عوامل الجودة في نموذج McCall.",
+        "en": "Boehm's intermediate constructs are similar to McCall's quality factors."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "يعرّف ISO 9126...",
-        "en": "ISO 9126 contains definitions of..."
+        "ar": "أي مجموعة تسرد خصائص الجودة العليا في ISO 9126؟",
+        "en": "Which set lists ISO 9126's top-level quality characteristics?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "خصائص الجودة الآن",
-          "en": "quality characteristics"
+          "ar": "الوظيفية والموثوقية وسهولة الاستخدام والكفاءة والصيانة والنقل.",
+          "en": "Functionality, reliability, usability, efficiency, maintainability, portability."
         },
         {
-          "ar": "عوامل الجودة أيضاً",
-          "en": "quality factors here"
+          "ar": "الصحة والكفاءة والتكامل وسهولة الاستخدام والمرونة وإعادة الاستخدام.",
+          "en": "Correctness, efficiency, integrity, usability, flexibility, reusability."
         },
         {
-          "ar": "سمات الجودة هنا",
-          "en": "quality attributes now"
+          "ar": "التشغيل والمراجعة والانتقال والنضج والاختبار والاعتماد.",
+          "en": "Operation, revision, transition, testing, maturity, certification, and process control."
         },
         {
-          "ar": "كل ما سبق أعلاه",
-          "en": "all of the above answers"
+          "ar": "الملاءمة والدقة والأمن والتدريب والتدقيق وضبط العملية.",
+          "en": "Suitability, accuracy, security, training, audit, and documented process control."
         }
       ],
-      "concept_id": "ch7_iso9126_defines",
+      "concept_id": "ch7_iso9126_characteristics",
       "explanation": {
-        "ar": "المعيار يعرّف الخصائص والخصائص الفرعية والمقاييس تحت كل منها.",
-        "en": "The standard defines characteristics, the sub-characteristics and the metrics under each."
+        "ar": "يسمي ISO 9126 الوظيفية والموثوقية وسهولة الاستخدام والكفاءة والصيانة وقابلية النقل.",
+        "en": "ISO 9126 names functionality, reliability, usability, efficiency, maintainability, and portability."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "في نموذج مكال، فئة مراجعة المنتج تغطي...",
-        "en": "In McCall's model, the product revision category covers..."
+        "ar": "ما السمة البنيوية التي تميز هرم ISO 9126؟",
+        "en": "What structural feature distinguishes the ISO 9126 hierarchy?"
       },
-      "bloom": "Remember",
+      "bloom": "Analyze",
       "answer": 1,
       "options": [
         {
-          "ar": "قابلية الاستخدام والسلامة والكفاءة",
-          "en": "usability, integrity and efficiency here"
+          "ar": "يستبدل النموذج خصائص البرمجيات بمستويات النضج.",
+          "en": "The model replaces software characteristics with maturity levels."
         },
         {
-          "ar": "قابلية الصيانة والمرونة وقابلية الاختبار",
-          "en": "maintainability, flexibility and testability"
+          "ar": "ترتبط كل خاصية بسمة واحدة ضمن تسلسل هرمي صارم.",
+          "en": "Each characteristic is linked to one attribute in a strict hierarchy."
         },
         {
-          "ar": "قابلية النقل وإعادة الاستخدام والتكامل",
-          "en": "portability, reusability and interoperability"
+          "ar": "قد تنتمي كل سمة إلى خصائص متعددة غير مترابطة.",
+          "en": "Every attribute may belong to several unrelated characteristics."
         },
         {
-          "ar": "الصحة والموثوقية والكفاءة هنا الآن أيضاً",
-          "en": "correctness, reliability and efficiency"
+          "ar": "تُجمع عوامل الجودة حسب كلفة تطويرها فقط.",
+          "en": "Quality factors are grouped only by their development cost."
         }
       ],
-      "concept_id": "ch7_mccall_revision",
+      "concept_id": "ch7_iso9126_hierarchy",
       "explanation": {
-        "ar": "المراجعة تغطي تغيير المنتج بعد تسليمه.",
-        "en": "Revision covers changing the product after delivery."
+        "ar": "هرم ISO 9126 صارم؛ إذ ترتبط كل خاصية بسمة واحدة.",
+        "en": "The ISO 9126 hierarchy is strict: each characteristic relates to one attribute."
       }
     },
     {
       "id": "q11",
       "stem": {
-        "ar": "في نموذج مكال، أي عامل ينتمي لانتقال المنتج؟",
-        "en": "In McCall's model, which factor belongs to product transition?"
+        "ar": "أي منظور تعكسه خصائص الجودة الخارجية في ISO 9126 أساساً؟",
+        "en": "Whose view do ISO 9126's outer quality characteristics primarily reflect?"
       },
-      "bloom": "Remember",
+      "bloom": "Analyze",
       "answer": 2,
       "options": [
         {
-          "ar": "قابلية النقل هنا أيضاً",
-          "en": "portability"
+          "ar": "منظور المدير إلى انحراف جدول المشروع.",
+          "en": "The project manager's view of schedule variance."
         },
         {
-          "ar": "قابلية الاستخدام مجدداً",
-          "en": "usability"
+          "ar": "منظور مصمم الأجهزة إلى تقادم المكونات.",
+          "en": "The hardware designer's view of component aging."
         },
         {
-          "ar": "الصحة هنا أيضاً الآن",
-          "en": "correctness"
+          "ar": "منظور المستخدم إلى الجودة الخارجية للمنتج.",
+          "en": "The user's external view of the software product."
         },
         {
-          "ar": "المرونة الآن مجدداً",
-          "en": "flexibility"
+          "ar": "منظور المترجم إلى البنية الداخلية للبرنامج.",
+          "en": "The compiler's view of the program's internal code."
         }
       ],
-      "concept_id": "ch7_mccall_transition",
+      "concept_id": "ch7_iso_user_view",
       "explanation": {
-        "ar": "قابلية النقل، أي نقل المنتج لبيئة أخرى، عامل انتقال.",
-        "en": "Portability, the ability to move the product to another environment, is a transition factor."
-      }
-    },
-    {
-      "id": "q12",
-      "stem": {
-        "ar": "كم خاصية عليا يعرّفها ISO 9126؟",
-        "en": "How many top-level characteristics does ISO 9126 define?"
-      },
-      "bloom": "Remember",
-      "answer": 3,
-      "options": [
-        {
-          "ar": "ست خصائص هنا هنا مجدداً",
-          "en": "six characteristics"
-        },
-        {
-          "ar": "سبع خصائص أيضاً أيضاً أيضاً",
-          "en": "seven characteristics"
-        },
-        {
-          "ar": "ثماني خصائص مجدداً هنا",
-          "en": "eight characteristics"
-        },
-        {
-          "ar": "خمس خصائص الآن الآن الآن",
-          "en": "five characteristics"
-        }
-      ],
-      "concept_id": "ch7_iso9126_six",
-      "explanation": {
-        "ar": "الوظائفية والموثوقية وقابلية الاستخدام والكفاءة وقابلية الصيانة والنقل.",
-        "en": "Functionality, reliability, usability, efficiency, maintainability and portability."
+        "ar": "تصف السمات الخارجية الجودة من منظور المستخدم لا من منظور المطور الداخلي.",
+        "en": "The model's outer attributes describe quality from the user's view rather than an internal developer view."
       }
     }
   ],
@@ -397,7 +365,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T21:24:16Z",
+  "updated_at": "2026-11-05T23:01:39Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

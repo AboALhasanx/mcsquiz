@@ -25,10 +25,16 @@ def run():
     try:
         page.goto(common.APP, wait_until='domcontentloaded', timeout=45000)
         page.wait_for_timeout(4000)
-        # wait until the service worker controls the page
+        # Wait for installation, then reload once if first-load client claim missed.
         try:
+            page.wait_for_function("""async () => {
+              const r = await navigator.serviceWorker.getRegistration();
+              return !!(r && r.active);
+            }""", timeout=45000)
+            if not page.evaluate('() => !!navigator.serviceWorker.controller'):
+                page.reload(wait_until='domcontentloaded', timeout=45000)
             page.wait_for_function(
-                '() => !!navigator.serviceWorker.controller', timeout=20000)
+                '() => !!navigator.serviceWorker.controller', timeout=15000)
             sw = True
         except Exception:
             sw = False
@@ -75,8 +81,17 @@ def run():
             }""")
             if is_open:
                 common.tap(page, page.locator('.option-tile').first)
-                page.wait_for_timeout(120)
-            page.click('#btn-next')
+                page.wait_for_function("""() => {
+                  const s = window.__portal.S.session;
+                  return s.picks[s.idx] !== null;
+                }""", timeout=5000)
+            before_idx = page.evaluate('() => window.__portal.S.session.idx')
+            common.tap(page, page.locator('#btn-next'))
+            page.wait_for_function("""(idx) => {
+              const s = window.__portal.S.session;
+              const resultsVisible = !document.querySelector('#results-view').classList.contains('hidden');
+              return resultsVisible || s.idx > idx;
+            }""", arg=before_idx, timeout=5000)
             page.wait_for_timeout(150)
         check('a quiz starts, runs and finishes offline',
               'hidden' not in (page.locator('#results-view').get_attribute('class') or ''))

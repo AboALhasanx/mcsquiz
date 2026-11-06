@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "المفاهيم الأساسية: الموثوقية والعيوب والزمن",
-    "en": "Basic Concepts: Reliability, Faults and Time"
+    "ar": "أسس الموثوقية وبيئة التشغيل",
+    "en": "Reliability Foundations and Operating Environment"
   },
   "quiz_id": "Quiz_Ch07_B01_Basic_Concepts",
   "has_math": false,
@@ -10,257 +10,321 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "أي واحد ليس مرحلة من منحنى حوض الاستحمام؟",
-        "en": "Which one is NOT a phase of the bath tub curve?"
+        "ar": "ما الذي يحدد موثوقية البرمجيات؟",
+        "en": "What defines software reliability?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "الإحماء الآن",
-          "en": "burn-in here"
+          "ar": "عمل خالٍ من الإخفاق خلال زمن وبيئة محددين.",
+          "en": "Failure-free operation for a stated time and environment."
         },
         {
-          "ar": "العمر النافع",
-          "en": "useful life"
+          "ar": "نتائج صحيحة لكل المدخلات وفي جميع البيئات.",
+          "en": "Correct output for every input in every possible setting."
         },
         {
-          "ar": "التآكل هنا",
-          "en": "wear-out now"
+          "ar": "برنامج خالٍ من العيوب بعد الفحص النهائي.",
+          "en": "A defect-free codebase after its final inspection."
         },
         {
-          "ar": "طور الاختبار",
-          "en": "test-out too"
+          "ar": "عدد محدد من التشغيلات الناجحة مهما طال الزمن.",
+          "en": "A fixed count of successful runs regardless of duration."
         }
       ],
-      "concept_id": "ch7_bath_tub",
+      "concept_id": "ch7_reliability_definition",
       "explanation": {
-        "ar": "المنحنى يحوي الإحماء والعمر النافع والتآكل، و«طور الاختبار» ليست مرحلة.",
-        "en": "The curve has burn-in, useful life and wear-out; test-out is not a phase."
+        "ar": "الموثوقية احتمال استمرار العمل بلا إخفاق ضمن ظروف محددة ولمدة معلومة.",
+        "en": "Reliability is the probability of failure-free operation under stated conditions for a specified period."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "موثوقية البرمجيات هي...",
-        "en": "Software reliability is..."
+        "ar": "كيف يختلف العيب عن الإخفاق؟",
+        "en": "How does a fault differ from a failure?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "لا شيء مما سبق هنا أيضاً الآن",
-          "en": "none of the above here now too again"
+          "ar": "العيب مخرج خاطئ، والإخفاق سببه الداخلي.",
+          "en": "A fault is a wrong output; a failure is its hidden cause."
         },
         {
-          "ar": "احتمال التشغيل الخالي من الأعطال",
-          "en": "the probability of failure-free operation"
+          "ar": "العيب كامن، والإخفاق انحراف ظاهر عن المتطلبات.",
+          "en": "A fault is latent; a failure is observed incorrect operation."
         },
         {
-          "ar": "احتمال فشل البرنامج مجدداً أيضاً",
-          "en": "the probability of a program failing now here"
+          "ar": "الإخفاق كامن، والعيب انحراف ظاهر عن المتطلبات.",
+          "en": "A failure is latent; a fault is observed incorrect operation."
         },
         {
-          "ar": "فرصة نجاح البرنامج الآن هنا مجدداً",
-          "en": "the chance that a program succeeds here"
+          "ar": "العيب حالة اختبار مفقودة، والإخفاق اختبار ناجح.",
+          "en": "A fault is a missing test; a failure is a passed test."
         }
       ],
-      "concept_id": "ch7_reliability_def",
+      "concept_id": "ch7_failure_fault_distinction",
       "explanation": {
-        "ar": "الموثوقية هي احتمال تشغيل النظام دون أعطال لمدة محددة.",
-        "en": "Reliability is the probability that the system operates without failure for a stated period."
+        "ar": "العيب نقص كامن في البرنامج، أما الإخفاق فهو انحراف ظاهر عن المتطلبات عند التشغيل.",
+        "en": "A fault is a latent defect; a failure is the program's externally visible departure from requirements."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "العطل هو...",
-        "en": "A fault is..."
+        "ar": "ماذا قد يحدث عند بقاء عيب واحد في البرنامج؟",
+        "en": "What can happen when one fault remains in a program?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "عيب في البرنامج",
-          "en": "an error in the program"
+          "ar": "إخفاقات متعددة لا تحدث إلا بوجود عيوب متعددة.",
+          "en": "Several failures only if several separate faults exist."
         },
         {
-          "ar": "كل ما سبق أعلاه",
-          "en": "all of the above answers"
+          "ar": "لا يظهر الإخفاق إلا عند تفعيل العيب يدوياً.",
+          "en": "No failure unless the fault is manually activated."
         },
         {
-          "ar": "خلل في البرنامج",
-          "en": "a defect in the program"
+          "ar": "إخفاقات متكررة كلما تكرر شرط تفعيل العيب.",
+          "en": "Repeated failures whenever its triggering condition recurs."
         },
         {
-          "ar": "خطأ في البرنامج",
-          "en": "a mistake in the program"
+          "ar": "إخفاق واحد فقط حتى مع تكرر شرط التفعيل.",
+          "en": "One failure total, even when its triggering condition recurs."
         }
       ],
-      "concept_id": "ch7_fault_def",
+      "concept_id": "ch7_one_fault_many_failures",
       "explanation": {
-        "ar": "الخلل والخطأ والعيب تصف كلها المشكلة نفسها.",
-        "en": "The terms defect, mistake and error all describe the same class of problem."
+        "ar": "قد يسبب العيب الواحد إخفاقات متعددة عند تكرر شرط التشغيل الذي يفعّله.",
+        "en": "One fault can produce multiple failures when execution repeatedly reaches the condition that activates it."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "عطل واحد قد يؤدي إلى...",
-        "en": "One fault may lead to..."
+        "ar": "أي نمط يصف منحنى حوض الاستحمام للأجهزة؟",
+        "en": "Which pattern describes the hardware bathtub curve?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "فشلان هنا أيضاً",
-          "en": "two failures now here"
+          "ar": "ترتفع في الإحماء، تستقر، ثم تنخفض مع الاهتراء.",
+          "en": "It rises during burn-in, steadies, then falls with wear."
         },
         {
-          "ar": "أعطال كثيرة مجدداً",
-          "en": "many failures too now"
+          "ar": "تستقر في الإحماء، ثم تنخفض مع تقادم الأجزاء.",
+          "en": "It stays steady during burn-in, then falls as parts age."
         },
         {
-          "ar": "كل ما سبق أعلاه",
-          "en": "all of the above answers"
+          "ar": "تنخفض باستمرار بسبب إزالة عيوب البرمجيات.",
+          "en": "It falls continuously because software faults are removed."
         },
         {
-          "ar": "فشل واحد الآن هنا",
-          "en": "one failure here again"
+          "ar": "تنخفض في الإحماء، تستقر، ثم ترتفع مع الاهتراء.",
+          "en": "It falls during burn-in, steadies, then rises with wear."
         }
       ],
-      "concept_id": "ch7_fault_failures",
+      "concept_id": "ch7_hardware_bathtub",
       "explanation": {
-        "ar": "العطل الواحد الكامن قد يظهر كأعطال مختلفة في ظروف مختلفة.",
-        "en": "A single latent fault can surface as many different failures in different situations."
+        "ar": "تكون إخفاقات الأجهزة مرتفعة أولاً، ثم تستقر في العمر النافع، ثم ترتفع مع الاهتراء.",
+        "en": "Hardware failures are initially high during burn-in, lower during useful life, and higher again with wear-out."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "أي وحدة زمنية لا تُستخدم في دراسات الموثوقية؟",
-        "en": "Which time unit is NOT used in reliability studies?"
+        "ar": "أي مقارنة بين إخفاقات البرمجيات والأجهزة دقيقة؟",
+        "en": "Which contrast between software and hardware failures is sound?"
       },
-      "bloom": "Understand",
+      "bloom": "Analyze",
       "answer": 0,
       "options": [
         {
-          "ar": "زمن التنفيذ أيضاً أيضاً",
-          "en": "execution time"
+          "ar": "عيوب البرمجيات تصميمية، بينما تتعرض الأجهزة غالباً للاهتراء.",
+          "en": "Software faults are design defects; hardware often suffers physical wear."
         },
         {
-          "ar": "زمن الآلة هنا مجدداً",
-          "en": "machine time"
+          "ar": "تهترئ البرمجيات غالباً، بينما تكون عيوب الأجهزة تصميمية.",
+          "en": "Software mainly suffers physical wear; hardware mainly has design faults."
         },
         {
-          "ar": "زمن الساعة الآن الآن",
-          "en": "clock time here"
+          "ar": "يفشل كلاهما غالباً بسبب تقادم المواد بعد التصنيع والتشغيل.",
+          "en": "Both fail mainly through material aging after devices are manufactured."
         },
         {
-          "ar": "الزمن التقويمي هنا مجدداً",
-          "en": "calendar time"
+          "ar": "لا يعتمد أي منهما على ظروف الاستخدام أو بيئة التشغيل.",
+          "en": "Neither failure pattern depends on its operating conditions."
         }
       ],
-      "concept_id": "ch7_time_unit",
+      "concept_id": "ch7_hardware_software_failure_causes",
       "explanation": {
-        "ar": "الموثوقية تستخدم زمن التنفيذ وزمن الساعة والزمن التقويمي.",
-        "en": "Reliability work uses execution time, clock time and calendar time."
+        "ar": "ترتبط إخفاقات البرمجيات بعيوب التصميم وتفعيلها، بينما تتدهور الأجهزة مادياً أيضاً.",
+        "en": "Software failures are associated with design faults and their activation; hardware also degrades physically."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "البرمجيات لا تتآكل أو تنكسر كالعتاد.",
-        "en": "Software does not break or wear out like hardware."
+        "ar": "ماذا يصف Operational Profile؟",
+        "en": "What does an operational profile describe?"
       },
-      "bloom": "Analyze",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "لا يمكن القول أيضاً الآن",
-          "en": "it cannot be said now"
+          "ar": "الأجزاء المادية المثبتة ضمن بيئة نشر محددة.",
+          "en": "The hardware parts installed in each deployment environment."
         },
         {
-          "ar": "العبارة صحيحة هنا مجدداً",
-          "en": "this statement is true"
+          "ar": "النسب المتوقعة لأنواع التشغيل المختلفة للبرنامج.",
+          "en": "The expected proportions of the program's different run types."
         },
         {
-          "ar": "العبارة خاطئة الآن هنا",
-          "en": "this statement is false"
+          "ar": "ترتيب ملفات البرنامج المستخدمة أثناء بناء النسخة.",
+          "en": "The sequence of source files used during software construction."
         },
         {
-          "ar": "العبارة صحيحة جزئياً أيضاً",
-          "en": "it is partly true here"
+          "ar": "تسلسل إصلاح العيوب خلال جلسة اختبار واحدة.",
+          "en": "The order in which faults are repaired during a test session."
         }
       ],
-      "concept_id": "ch7_no_wearout",
+      "concept_id": "ch7_operational_profile_definition",
       "explanation": {
-        "ar": "أعطال البرمجيات تأتي من عيوب كامنة لا من تآكل فيزيائي.",
-        "en": "Software failures come from latent faults, not from physical wear-out."
+        "ar": "يحدد Operational Profile احتمالات أنواع التشغيل وفقاً للاستخدام المتوقع.",
+        "en": "An operational profile assigns probabilities to run types reflecting expected use."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "تُعرَّف موثوقية البرمجيات بالنسبة إلى...",
-        "en": "Software reliability is defined with respect to..."
+        "ar": "لماذا قد تختلف موثوقية البرنامج نفسه باختلاف ملفي الاستخدام؟",
+        "en": "Why can one program have different reliability under two use profiles?"
       },
-      "bloom": "Understand",
+      "bloom": "Apply",
       "answer": 2,
       "options": [
         {
-          "ar": "الجودة أيضاً الآن",
-          "en": "quality too now"
+          "ar": "يتجاهل مقياس الموثوقية العمليات التي ينفذها المستخدمون.",
+          "en": "Reliability ignores which operations users perform in that profile."
         },
         {
-          "ar": "لا شيء مما سبق",
-          "en": "none of the above"
+          "ar": "يزيل ملف الاستخدام العيوب من دون تعديل البرنامج.",
+          "en": "A new use profile removes faults without changing the software."
         },
         {
-          "ar": "الزمن هنا مجدداً",
-          "en": "time here again"
+          "ar": "يمنح كل ملف أوزاناً مختلفة لعمليات تختلف فرص إخفاقها.",
+          "en": "Profiles weight operations by their different failure chances."
         },
         {
-          "ar": "السرعة الآن هنا",
-          "en": "speed now here"
+          "ar": "يغير كل ملف شفرة البرنامج تلقائياً عند التشغيل.",
+          "en": "Each profile rewrites the program's code automatically."
         }
       ],
-      "concept_id": "ch7_reliability_wrt",
+      "concept_id": "ch7_profile_changes_reliability",
       "explanation": {
-        "ar": "الموثوقية تُذكر دائماً مع فترة زمنية وتشغيل.",
-        "en": "Reliability is always stated over a period of time and an operation."
+        "ar": "يتغير تقدير الموثوقية إذا اختلفت أوزان العمليات واختلفت فرص إخفاقها الشرطية.",
+        "en": "Changing the probabilities of operations with different conditional failure chances changes the profile-level reliability."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "MTTF تعني...",
-        "en": "MTTF stands for..."
+        "ar": "ما المقصود بفضاء مدخلات البرنامج؟",
+        "en": "What is the input space of a program?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "أقصى زمن حتى الفشل الآن",
-          "en": "maximum time to failure here"
+          "ar": "مجموعة قيم الخرج الناتجة عن التشغيلات المكتملة.",
+          "en": "The set of output values produced by completed runs."
         },
         {
-          "ar": "أدنى زمن حتى الفشل أيضاً",
-          "en": "minimum time to failure"
+          "ar": "قائمة العيوب المكتشفة خلال دراسة الموثوقية.",
+          "en": "The list of faults detected during a reliability study."
         },
         {
-          "ar": "لا شيء مما سبق هنا مجدداً",
-          "en": "none of the above here"
+          "ar": "مدة المعالج المخصصة لتنفيذ البرنامج فعلياً.",
+          "en": "The processor time reserved for the program's execution."
         },
         {
-          "ar": "متوسط الزمن حتى الفشل هنا",
-          "en": "mean time to failure now"
+          "ar": "مجموعة الحالات الممكنة لمتغيرات الإدخال الخارجية.",
+          "en": "The set of possible states of its external input variables."
         }
       ],
-      "concept_id": "ch7_mttf",
+      "concept_id": "ch7_input_space",
       "explanation": {
-        "ar": "متوسط الزمن حتى الفشل هو الفاصل المتوسط قبل أعطال النظام.",
-        "en": "Mean time to failure is the average interval before the system fails."
+        "ar": "حالة الإدخال مجموعة قيم للمتغيرات الخارجية، وفضاء الإدخال يضم الحالات الممكنة.",
+        "en": "An input state is a combination of values for external variables; the input space contains the possible states."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كيف تؤثر البيئة الوظيفية في الإخفاقات المرصودة؟",
+        "en": "How does the functional environment affect observed failures?"
+      },
+      "bloom": "Analyze",
+      "answer": 0,
+      "options": [
+        {
+          "ar": "تفعّل أنواع التشغيل عيوباً مختلفة في البرنامج نفسه.",
+          "en": "Different run types can activate different faults in the same program."
+        },
+        {
+          "ar": "تحدد البيئة عدد العيوب المكتوبة مسبقاً في الشفرة.",
+          "en": "The environment determines how many faults were written in the code."
+        },
+        {
+          "ar": "تجعل البيئة كل عيب يفشل مع كل تشغيل للبرنامج.",
+          "en": "Different environments make every fault fail on every execution."
+        },
+        {
+          "ar": "تؤثر أنواع التشغيل في عتاد النظام لا في البرنامج.",
+          "en": "Run types affect hardware wear but never software failures."
+        }
+      ],
+      "concept_id": "ch7_functional_environment",
+      "explanation": {
+        "ar": "تحدد العمليات والمدخلات المنفذة العيوب الكامنة التي يجري الوصول إليها.",
+        "en": "The operations and inputs exercised determine which latent faults are encountered."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "ما الفرق بين زمن التنفيذ وزمن الساعة؟",
+        "en": "What distinguishes execution time from clock time?"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "options": [
+        {
+          "ar": "زمن التنفيذ جهد المستخدم، وزمن الساعة انشغال المعالج.",
+          "en": "Execution time is user effort; clock time is processor utilization."
+        },
+        {
+          "ar": "وقت التنفيذ هو وقت المعالج، والساعة تشمل انتظار التشغيل.",
+          "en": "Execution time is processor work; clock time includes waits within a run."
+        },
+        {
+          "ar": "يشمل زمن التنفيذ الإطفاء، ولا يحسب زمن الساعة أي انتظار.",
+          "en": "Execution time includes shutdowns; clock time excludes all waiting."
+        },
+        {
+          "ar": "يقيس زمن التنفيذ الأيام، بينما يحصي زمن الساعة الإخفاقات.",
+          "en": "Execution time measures calendar days; clock time counts failures."
+        }
+      ],
+      "concept_id": "ch7_execution_clock_time",
+      "explanation": {
+        "ar": "زمن التنفيذ هو وقت عمل المعالج على البرنامج، أما زمن الساعة فيشمل فترات الانتظار أثناء التشغيل.",
+        "en": "Execution time is time spent by the processor executing the program; clock time also includes waits during a run."
       }
     }
   ],
@@ -269,7 +333,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T21:33:06Z",
+  "updated_at": "2026-11-05T23:01:39Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

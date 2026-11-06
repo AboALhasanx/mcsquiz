@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "نموذج النضج: مستويات النضج والتدريج",
-    "en": "CMM: Maturity Levels and Staging"
+    "ar": "مستويات النضج في CMM",
+    "en": "CMM Maturity Levels"
   },
   "quiz_id": "Quiz_Ch07_B03_CMM_Maturity_Levels",
   "has_math": false,
@@ -10,257 +10,257 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "كم منطقة عملية رئيسية في المستوى الأول؟",
-        "en": "How many Key Process Areas does CMM Level 1 have?"
+        "ar": "أي تسلسل يرتب مستويات نضج CMM من الأدنى إلى الأعلى؟",
+        "en": "Which sequence gives the CMM maturity levels from lowest to highest?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "ست مناطق الآن هنا مجدداً",
-          "en": "six areas now again"
+          "ar": "الأولي والمتكرر والمحدد والمدار والمحسن.",
+          "en": "Initial, Repeatable, Defined, Managed, Optimizing."
         },
         {
-          "ar": "منطقتان هنا مجدداً هنا",
-          "en": "two areas too here"
+          "ar": "الأولي والمحدد والمتكرر والمدار والمحسن.",
+          "en": "Initial, Defined, Repeatable, Managed, Optimizing."
         },
         {
-          "ar": "لا مناطق أيضاً الآن الآن",
-          "en": "no areas here now too"
+          "ar": "المتكرر والأولي والمحدد والمحسن والمدار.",
+          "en": "Repeatable, Initial, Defined, Optimizing, Managed."
         },
         {
-          "ar": "لا شيء مما سبق أيضاً أيضاً",
-          "en": "none of the above"
+          "ar": "الأولي والمتكرر والمدار والمحدد والمحسن.",
+          "en": "Initial, Repeatable, Managed, Defined, Optimizing."
         }
       ],
-      "concept_id": "ch7_cmm_level1_kpa",
+      "concept_id": "ch7_cmm_staged_sequence",
       "explanation": {
-        "ar": "المستوى الأول مبدئي والممارسات ارتجالية، فلا يعرّف مناطق عملية رئيسية.",
-        "en": "Level 1 is initial: practices are ad hoc, so it defines no Key Process Areas."
+        "ar": "يتدرج المسار من الأولي إلى المتكرر ثم المحدد والمدار وصولاً إلى المحسن.",
+        "en": "The staged path progresses from Initial through Repeatable, Defined, and Managed to Optimizing."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "كم مستوى نضج في نموذج النضج؟",
-        "en": "How many maturity levels does the CMM have?"
+        "ar": "ماذا يصف مستوى النضج في CMM؟",
+        "en": "What does a CMM maturity level characterize?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "سبعة مستويات أيضاً",
-          "en": "seven levels"
+          "ar": "نسبة الشفرة التي اجتازت مجموعة اختبار محددة.",
+          "en": "The percentage of code that passed a specific test suite."
         },
         {
-          "ar": "مستوى واحد هنا هنا",
-          "en": "one level here"
+          "ar": "قدرة عملية البرمجيات في المؤسسة ونضجها.",
+          "en": "Software-process maturity and organizational capability."
         },
         {
-          "ar": "ثلاثة مستويات مجدداً",
-          "en": "three levels"
+          "ar": "عدد العيوب الباقية في إصدار برمجي واحد.",
+          "en": "The number of defects remaining in one software release."
         },
         {
-          "ar": "خمسة مستويات الآن",
-          "en": "five levels now"
+          "ar": "جودة واجهة المستخدم لبرنامج منفرد.",
+          "en": "The quality of a single program's user interface."
         }
       ],
-      "concept_id": "ch7_cmm_level_count",
+      "concept_id": "ch7_cmm_process_capability",
       "explanation": {
-        "ar": "المستويات المرحلية: المبدئي والمتكرر والمحدد والمدار والتحسيني.",
-        "en": "The staged levels run initial, repeatable, defined, managed and optimizing."
+        "ar": "يصف نضج CMM قدرة العملية، لا عدد عيوب منتج واحد أو درجة جودته.",
+        "en": "CMM maturity describes process capability, not the defect count or quality score of one product."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "CMM تعني...",
-        "en": "CMM stands for..."
+        "ar": "ما الوصف الأنسب لمؤسسة عند المستوى الأولي في CMM؟",
+        "en": "What best describes an organization at the Initial CMM level?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "نموذج إدارة الكلفة أيضاً",
-          "en": "cost management model here"
+          "ar": "توثق المؤسسة عملية معيارية مشتركة على مستوى المؤسسة.",
+          "en": "A standard process is documented across the organization."
         },
         {
-          "ar": "نموذج الصيانة الشامل هنا",
-          "en": "comprehensive maintenance model"
+          "ar": "يضبط الأداء بحدود كمية تقيس استقرار العملية.",
+          "en": "Process performance stays within measured limits."
         },
         {
-          "ar": "نموذج نضج القدرة الآن الآن",
-          "en": "capacity maturity model now"
+          "ar": "العمل ارتجالي ونتائجه تعتمد غالباً على الأفراد.",
+          "en": "Work is ad hoc; results depend heavily on individuals."
         },
         {
-          "ar": "نموذج نضج النضج هنا مجدداً",
-          "en": "capability maturity model"
+          "ar": "تتبع المشاريع خططاً مستقرة مستندة إلى نتائج سابقة.",
+          "en": "Projects follow stable plans based on earlier results."
         }
       ],
-      "concept_id": "ch7_cmm_expands",
+      "concept_id": "ch7_cmm_initial",
       "explanation": {
-        "ar": "إنه نموذج نضج النضج، وغرضه تحسين العملية.",
-        "en": "It is the Capability Maturity Model, and its purpose is process improvement."
+        "ar": "تكون العملية عند المستوى الأولي غير قابلة للتنبؤ وتعتمد غالباً على جهد الأفراد.",
+        "en": "At the Initial level, the process is unpredictable and often depends on individual effort."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "أي مستوى في CMM يغطي الإدارة الأساسية للمشروع؟",
-        "en": "Which CMM level covers basic project management?"
+        "ar": "ما الذي يميز المستوى المتكرر في CMM؟",
+        "en": "What makes the Repeatable CMM level distinct?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "المتكرر مجدداً مجدداً",
-          "en": "repeatable again"
+          "ar": "تتكيف المشاريع مع عملية موحدة في المؤسسة.",
+          "en": "One standard process is tailored across organization units."
         },
         {
-          "ar": "المحدد هنا هنا هنا",
-          "en": "defined now here"
+          "ar": "يتنبأ الضبط الإحصائي بأداء العملية عبر المشاريع.",
+          "en": "Statistical control predicts process performance across projects."
         },
         {
-          "ar": "المدار الآن الآن الآن",
-          "en": "managed too now"
+          "ar": "يمنع التحسين المستمر تكرار العيوب المعروفة.",
+          "en": "Continuous improvement prevents recurring known defects."
         },
         {
-          "ar": "المبدئي أيضاً أيضاً",
-          "en": "initial here too"
+          "ar": "تتكرر ممارسات ناجحة بإدارة مشاريع مستقرة.",
+          "en": "Stable project management repeats earlier successful practices."
         }
       ],
-      "concept_id": "ch7_cmm_level2",
+      "concept_id": "ch7_cmm_repeatable",
       "explanation": {
-        "ar": "المستوى الثاني متكرر: العملية موثّقة وتُمارَس الإدارة الأساسية للمشروع.",
-        "en": "Level 2 is repeatable: the process is documented and basic project management is practised."
+        "ar": "تتيح إدارة المشاريع المستقرة تكرار الممارسات التي أثبتت نجاحها سابقاً.",
+        "en": "Repeatable project management lets organizations reproduce earlier successful practices."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "أي مستوى في CMM يخص ضبط العملية؟",
-        "en": "Which CMM level is about process control?"
+        "ar": "ما قدرة العملية التي يرسخها المستوى المحدد في CMM؟",
+        "en": "What process capability is established at the Defined CMM level?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "المبدئي أيضاً أيضاً",
-          "en": "initial here too"
+          "ar": "توثق المؤسسة معياراً للعمل وتكيفه المشاريع.",
+          "en": "Each project tailors the documented standard process."
         },
         {
-          "ar": "المتكرر مجدداً مجدداً",
-          "en": "repeatable again"
+          "ar": "يضبط المدير الفرد عملية مشروعه من دون معيار مؤسسي.",
+          "en": "A project process controlled only by individual managers."
         },
         {
-          "ar": "المحدد هنا هنا هنا",
-          "en": "defined now here"
+          "ar": "تقاس به جودة العيوب المكتشفة في كل برنامج.",
+          "en": "A quantitative limit for every software defect."
         },
         {
-          "ar": "المدار الآن الآن الآن",
-          "en": "managed too now"
+          "ar": "برنامج تحسين مستمر تقوده ممارسات جديدة.",
+          "en": "A continuous improvement program driven by new practices."
         }
       ],
-      "concept_id": "ch7_cmm_level4",
+      "concept_id": "ch7_cmm_defined",
       "explanation": {
-        "ar": "المستوى الرابع مدار: العملية تُقاس وتُضبط إحصائياً.",
-        "en": "Level 4 is managed: the process is measured and statistically controlled."
+        "ar": "يوثق المستوى المحدد عملية معيارية للمؤسسة، وتكيفها المشاريع وفق خصائصها.",
+        "en": "The Defined level documents a standard software process across the organization; projects tailor it."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "أي مستوى في CMM يخص إدارة العملية؟",
-        "en": "Which CMM level is about process management?"
+        "ar": "كيف يضبط المستوى المدار في CMM أداء العملية؟",
+        "en": "How does the Managed CMM level control process performance?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "التحسيني مجدداً هنا",
-          "en": "optimizing again"
+          "ar": "يركز فقط على إدخال تقنيات برمجية جديدة.",
+          "en": "It focuses only on introducing new software technologies."
         },
         {
-          "ar": "المبدئي أيضاً أيضاً",
-          "en": "initial here too"
+          "ar": "يستخدم القياس الكمي لإدارة تباين العملية.",
+          "en": "It uses quantitative measurement to manage process variation."
         },
         {
-          "ar": "المحدد هنا هنا مجدداً",
-          "en": "defined now here"
+          "ar": "يعتمد ممارسات غير رسمية تتغير باختلاف الأفراد.",
+          "en": "It relies on informal practices that change by individual."
         },
         {
-          "ar": "المدار الآن الآن الآن",
-          "en": "managed too now"
+          "ar": "يحدد عملية واحدة من دون قياس أدائها.",
+          "en": "It defines one process without measuring its performance."
         }
       ],
-      "concept_id": "ch7_cmm_level3",
+      "concept_id": "ch7_cmm_managed",
       "explanation": {
-        "ar": "المستوى الثالث محدد: العمليات توحّد على مستوى المنظمة.",
-        "en": "Level 3 is defined: processes are standardised across the organisation."
+        "ar": "يُقاس أداء العملية وجودة المنتج كمياً عند المستوى المدار ويُضبط التباين.",
+        "en": "At the Managed level, process and product quality are measured and variation is controlled quantitatively."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "طُوّر نموذج النضج في...",
-        "en": "CMM was developed at..."
+        "ar": "ما الهدف المحوري للمستوى المحسن في CMM؟",
+        "en": "What is the central aim of the Optimizing CMM level?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "جامعة Carnegie Mellon",
-          "en": "Carnegie Mellon University"
+          "ar": "توثيق عملية هندسية وإدارية معيارية للمؤسسة.",
+          "en": "Organization-wide process documentation for engineering and management."
         },
         {
-          "ar": "جامعة ماريلاند أيضاً الآن",
-          "en": "Maryland University now"
+          "ar": "ضبط كمي لتباين الأداء ضمن حدود معتمدة.",
+          "en": "Quantitative control of variation within established limits."
         },
         {
-          "ar": "جامعة هارفارد هنا مجدداً",
-          "en": "Harvard University here"
+          "ar": "التحسين المستمر للعملية ومنع تكرار العيوب.",
+          "en": "Continuous improvement prevents recurring defects in software."
         },
         {
-          "ar": "جامعة كامبريدج الآن هنا",
-          "en": "Cambridge University too"
+          "ar": "متابعة مستقرة للمشاريع بممارسات ناجحة سابقة.",
+          "en": "Stable project tracking using previously successful practices."
         }
       ],
-      "concept_id": "ch7_cmm_origin",
+      "concept_id": "ch7_cmm_optimizing",
       "explanation": {
-        "ar": "أنتجه معهد هندسة البرمجيات في Carnegie Mellon في أواخر الثمانينيات.",
-        "en": "SEI at Carnegie Mellon produced the model in the late 1980s."
+        "ar": "يعزز المستوى المحسن العملية استباقياً ويسعى لمنع العيوب المعروفة.",
+        "en": "The Optimizing level proactively strengthens the process and seeks to prevent known defects."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "أي مستوى في CMM يقدّم الضبط الإحصائي للعمليات؟",
-        "en": "Which CMM level introduces statistical process control?"
+        "ar": "أي فرق يفصل بين النضج المحدد والنضج المدار؟",
+        "en": "Which distinction separates Defined from Managed maturity?"
       },
-      "bloom": "Remember",
+      "bloom": "Analyze",
       "answer": 3,
       "options": [
         {
-          "ar": "المستوى الثالث",
-          "en": "level three again"
+          "ar": "يمنع المحدد كل العيوب، بينما يبدأ المدار تخطيط المشروع.",
+          "en": "Defined prevents all defects; Managed begins project planning."
         },
         {
-          "ar": "المستوى الرابع",
-          "en": "level four now"
+          "ar": "يعتمد المحدد المنتجات، بينما يستبدل المدار عمليات البرمجيات.",
+          "en": "Defined certifies products; Managed replaces software processes."
         },
         {
-          "ar": "المستوى الخامس",
-          "en": "level five too"
+          "ar": "يقيس المحدد اهتراء الأجهزة، بينما يقيس المدار رضا المستخدم.",
+          "en": "Defined measures hardware wear; Managed measures user satisfaction."
         },
         {
-          "ar": "المستوى الثاني",
-          "en": "level two here"
+          "ar": "يوحد المحدد العملية، بينما يقيس المدار تباينها كمياً.",
+          "en": "Defined standardizes the process; Managed controls measured variation."
         }
       ],
-      "concept_id": "ch7_cmm_stat_control",
+      "concept_id": "ch7_defined_vs_managed",
       "explanation": {
-        "ar": "الضبط الإحصائي للعمليات يصل مع المستوى المدار.",
-        "en": "Statistical process control arrives with the managed level."
+        "ar": "يرسخ المستوى المحدد عملية معيارية، ويضيف المدار القياس والضبط الكميين.",
+        "en": "Defined establishes a standard process; Managed adds quantitative measurement and control."
       }
     }
   ],
@@ -269,7 +269,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T21:24:16Z",
+  "updated_at": "2026-11-05T23:01:39Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"

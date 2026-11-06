@@ -1,7 +1,7 @@
 {
   "topic": {
-    "ar": "مقاييس الموثوقية وطبيعة النماذج",
-    "en": "Reliability Measures and the Nature of the Models"
+    "ar": "مقاييس الموثوقية وسلوك الإخفاق",
+    "en": "Reliability Measures and Failure Behavior"
   },
   "quiz_id": "Quiz_Ch07_B05_Reliability_Measures",
   "has_math": false,
@@ -10,321 +10,353 @@
     {
       "id": "q1",
       "stem": {
-        "ar": "يمكن تمثيل حوادث الأعطال بـ...",
-        "en": "Failure occurrences can be represented by..."
+        "ar": "كيف تختلف الموثوقية عن شدة الإخفاق؟",
+        "en": "How does reliability differ from failure intensity?"
       },
-      "bloom": "Understand",
+      "bloom": "Analyze",
       "answer": 0,
       "options": [
         {
-          "ar": "زمن الفشل هنا الآن مجدداً",
-          "en": "the time to failure here now again"
+          "ar": "الموثوقية احتمال خلو الزمن، والشدة معدل الإخفاق.",
+          "en": "Reliability is a failure-free probability; intensity is a failure rate."
         },
         {
-          "ar": "الفاصل بين الفشلتين هنا",
-          "en": "the interval between failures"
+          "ar": "الموثوقية معدل الإخفاق، والشدة احتمال خلو الزمن.",
+          "en": "Reliability is a failure rate; intensity is a failure-free probability."
         },
         {
-          "ar": "عدد الأعطال داخل فترة الآن",
-          "en": "the failures inside a time interval"
+          "ar": "تحصي الموثوقية العيوب، وتقيس الشدة حجم الشفرة.",
+          "en": "Reliability counts latent faults; intensity counts source lines."
         },
         {
-          "ar": "كل ما سبق أعلاه أيضاً",
-          "en": "all of the above answers too here"
+          "ar": "الموثوقية صفة جودة، والشدة معدل وقوع الإخفاق.",
+          "en": "Reliability is a process level; intensity is a quality attribute."
         }
       ],
-      "concept_id": "ch7_failure_representation",
+      "concept_id": "ch7_reliability_vs_intensity",
       "explanation": {
-        "ar": "الثلاثة رؤى للبيانات نفسها تُستخدم حسب النموذج.",
-        "en": "All three views of the same data are used, depending on the model."
+        "ar": "الموثوقية احتمال خلال مدة محددة، أما شدة الإخفاق فمعدل لحظي لكل وحدة زمن.",
+        "en": "Reliability is a probability over a specified interval; failure intensity is an instantaneous rate per unit time."
       }
     },
     {
       "id": "q2",
       "stem": {
-        "ar": "ما أقصى قيمة ممكنة للموثوقية؟",
-        "en": "What is the maximum possible value of reliability?"
+        "ar": "ماذا تمثل دالة القيمة المتوسطة في نموذج الموثوقية؟",
+        "en": "What does the mean value function represent in a reliability model?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "صفر الآن الآن الآن الآن",
-          "en": "zero too now again"
+          "ar": "العدد الثابت للعيوب الباقية بعد الإصدار النهائي.",
+          "en": "The fixed number of faults remaining after final release."
         },
         {
-          "ar": "مئة هنا هنا مجدداً هنا",
-          "en": "one hundred too too"
+          "ar": "العدد التراكمي المتوقع للإخفاقات حتى زمن معين.",
+          "en": "The expected cumulative failures by a given point in time."
         },
         {
-          "ar": "عشرة أيضاً أيضاً مجدداً",
-          "en": "ten here here here here"
+          "ar": "الاحتمال اللحظي للإخفاق عند حالة إدخال واحدة.",
+          "en": "The instantaneous chance of a failure at one input state."
         },
         {
-          "ar": "واحد مجدداً هنا أيضاً",
-          "en": "one now again now"
+          "ar": "متوسط انشغال المعالج خلال شهر تقويمي.",
+          "en": "The average processor utilization during a calendar month."
         }
       ],
-      "concept_id": "ch7_max_reliability",
+      "concept_id": "ch7_mean_value_function",
       "explanation": {
-        "ar": "الموثوقية احتمال، فالواحد هو السقف والصفر هو الأرضية.",
-        "en": "Reliability is a probability, so one is the ceiling and zero is the floor."
+        "ar": "تعطي دالة القيمة المتوسطة العدد التراكمي المتوقع للإخفاقات حتى نقطة زمنية معينة.",
+        "en": "The mean value function gives the expected cumulative number of failures up to a time point."
       }
     },
     {
       "id": "q3",
       "stem": {
-        "ar": "ما أدنى قيمة ممكنة للموثوقية؟",
-        "en": "What is the minimum possible value of reliability?"
+        "ar": "قبل أول إخفاق مرصود، أي مدة يلخصها MTTF؟",
+        "en": "Before the first observed failure, what duration does MTTF summarize?"
       },
-      "bloom": "Remember",
+      "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "واحد مجدداً هنا أيضاً",
-          "en": "one now again now"
+          "ar": "عدد الإخفاقات المرصودة ضمن فترة زمنية.",
+          "en": "The number of failures observed in a time interval."
         },
         {
-          "ar": "صفر الآن الآن الآن الآن",
-          "en": "zero too now again"
+          "ar": "العدد التراكمي للإخفاقات عند زمن مختار.",
+          "en": "The cumulative count of failures at a chosen time."
         },
         {
-          "ar": "مئة هنا هنا مجدداً هنا",
-          "en": "one hundred too too"
+          "ar": "متوسط زمن التشغيل المتوقع حتى حدوث إخفاق.",
+          "en": "The average operating time until a failure occurs."
         },
         {
-          "ar": "عشرة أيضاً أيضاً مجدداً",
-          "en": "ten here here here here"
+          "ar": "متوسط الزمن الفاصل بين إخفاقين متتاليين.",
+          "en": "The average time separating successive failures."
         }
       ],
-      "concept_id": "ch7_min_reliability",
+      "concept_id": "ch7_mttf_meaning",
       "explanation": {
-        "ar": "النظام الذي يفشل دائماً موثوقيته صفر.",
-        "en": "A system that always fails has reliability of zero."
+        "ar": "متوسط الزمن حتى الإخفاق هو متوسط زمن التشغيل السابق لوقوع إخفاق.",
+        "en": "Mean Time to Failure is the average operating time before a failure occurs."
       }
     },
     {
       "id": "q4",
       "stem": {
-        "ar": "مع زيادة الموثوقية، شدة الأعطال...",
-        "en": "As reliability increases, failure intensity..."
+        "ar": "عند تكرر الإخفاقات أثناء التشغيل، أي فاصل يلخصه MTBF؟",
+        "en": "When failures recur during operation, what interval does MTBF summarize?"
       },
       "bloom": "Understand",
       "answer": 3,
       "options": [
         {
-          "ar": "ترتفع الآن مجدداً",
-          "en": "increases now too"
+          "ar": "متوسط زمن التشغيل حتى الإخفاق الأول.",
+          "en": "The average operating time until the first failure."
         },
         {
-          "ar": "لا تأثير لها هنا",
-          "en": "has no effect again"
+          "ar": "معدل الإخفاق خلال فترة تنفيذ واحدة.",
+          "en": "The failure rate during a single execution interval."
         },
         {
-          "ar": "لا شيء مما سبق",
-          "en": "none of the above"
+          "ar": "إجمالي الإخفاقات المتوقع طوال عمر المنتج.",
+          "en": "The expected total failures over the product lifetime."
         },
         {
-          "ar": "تنخفض هنا أيضاً",
-          "en": "decreases here here"
+          "ar": "متوسط الزمن الفاصل بين إخفاقات متعاقبة.",
+          "en": "The average time separating successive failures."
         }
       ],
-      "concept_id": "ch7_intensity_relation",
+      "concept_id": "ch7_mtbf_meaning",
       "explanation": {
-        "ar": "تُزال أعطال أكثر مع نضج المنتج، فتنخفض الشدة.",
-        "en": "More failures are removed as the product matures, so the intensity falls."
+        "ar": "يقيس متوسط الزمن بين الإخفاقات متوسط الفاصل بين إخفاقات متتالية.",
+        "en": "Mean Time Between Failures measures the average interval between successive failures."
       }
     },
     {
       "id": "q5",
       "stem": {
-        "ar": "بشدة 0.005 عطل بالساعة على عشر ساعات، احتمال عدم العطل يقارب...",
-        "en": "With an intensity of 0.005 failures per hour over ten hours, the probability of no failure is about..."
+        "ar": "أي مجموعة تمثل الصور الزمنية الأربع الشائعة للإخفاقات؟",
+        "en": "Which set represents the four common time-based views of failures?"
       },
-      "bloom": "Apply",
+      "bloom": "Understand",
       "answer": 0,
       "options": [
         {
-          "ar": "عشرة بالمئة هنا الآن",
-          "en": "ten per cent here now"
+          "ar": "زمن الحدث والفاصل بين الأحداث والعدد التراكمي وعدد الفترة.",
+          "en": "Event time, inter-event time, cumulative and interval counts."
         },
         {
-          "ar": "اثنان وتسعون بالمئة",
-          "en": "ninety two per cent"
+          "ar": "حالة الإدخال وحالة الخرج ونوع التشغيل وملف التشغيل.",
+          "en": "Input state, output state, run type, operational profile."
         },
         {
-          "ar": "خمسة وتسعون بالمئة",
-          "en": "ninety five per cent"
+          "ar": "زمن التنفيذ وزمن الساعة والزمن التقويمي وزمن الآلة.",
+          "en": "Execution time, clock time, calendar time, machine time."
         },
         {
-          "ar": "ثمانية وتسعون بالمئة",
-          "en": "ninety eight per cent"
+          "ar": "عدد العيوب وحجم الشفرة وحالات الاختبار واستخدام المعالج.",
+          "en": "Fault count, program size, test cases, processor usage."
         }
       ],
-      "concept_id": "ch7_intensity_example",
+      "concept_id": "ch7_failure_time_representations",
       "explanation": {
-        "ar": "على عشر ساعات العدد المتوقع 0.05، فالنجاة قريبة من الواحد.",
-        "en": "Over ten hours the expected count is 0.05, so survival is close to one."
+        "ar": "يمكن تمثيل الإخفاقات بأزمنتها أو فواصلها أو عددها التراكمي أو عددها ضمن فترة.",
+        "en": "Failures may be represented by their times, intervals, cumulative count, or count within an interval."
       }
     },
     {
       "id": "q6",
       "stem": {
-        "ar": "أي واحد ليس نموذج موثوقية برمجية؟",
-        "en": "Which one is NOT a software reliability model?"
+        "ar": "ماذا تعبّر عنه قيمة شدة الإخفاق؟",
+        "en": "What does a failure-intensity value express?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "لا شيء مما سبق هنا أيضاً",
-          "en": "none of the above now again"
+          "ar": "نسبة الشفرة التي فُحصت بالمراجعة.",
+          "en": "A percentage of source code inspected by reviewers."
         },
         {
-          "ar": "نموذج جيلينسكي-موراندا",
-          "en": "the Jelinski-Moranda model"
+          "ar": "معدل إخفاقات لكل وحدة زمن محددة.",
+          "en": "A rate of failures per unit of the specified time."
         },
         {
-          "ar": "نموذج زمن التنفيذ الأساسي",
-          "en": "the basic execution time model"
+          "ar": "احتمال لا يرتبط بمدة رصد محددة.",
+          "en": "A probability that ignores the observation period."
         },
         {
-          "ar": "النموذج الحلزوني الآن",
-          "en": "the spiral model here too"
+          "ar": "عدد العيوب بصرف النظر عن تنفيذ البرنامج.",
+          "en": "A total fault count independent of program execution."
         }
       ],
-      "concept_id": "ch7_not_model",
+      "concept_id": "ch7_failure_intensity_units",
       "explanation": {
-        "ar": "النموذج الحلزوني نموذج دورة حياة، لا نموذج موثوقية.",
-        "en": "The spiral model is a life-cycle model, not a reliability model."
+        "ar": "تُعبّر شدة الإخفاق عن معدل، مثل عدد الإخفاقات لكل ساعة تنفيذ.",
+        "en": "Failure intensity is expressed as a rate, such as failures per hour of execution time."
       }
     },
     {
       "id": "q7",
       "stem": {
-        "ar": "في نماذج الموثوقية، التركيز على...",
-        "en": "In reliability models, the emphasis is on..."
+        "ar": "أي مدى يصح لاحتمال الموثوقية؟",
+        "en": "Which range is valid for a reliability probability?"
       },
       "bloom": "Understand",
       "answer": 2,
       "options": [
         {
-          "ar": "الأعطال أيضاً الآن",
-          "en": "failures again"
+          "ar": "أي قيمة موجبة ولو تجاوزت الواحد كثيراً.",
+          "en": "Any positive value with no upper bound."
         },
         {
-          "ar": "الأخطاء البرمجية",
-          "en": "bugs here here"
+          "ar": "قيمة أكبر من الواحد خلال الاختبار فقط.",
+          "en": "Only values greater than one during testing."
         },
         {
-          "ar": "الأخطاء الآن هنا",
-          "en": "errors now now"
+          "ar": "قيمة من الصفر حتى الواحد مع شمول الحدين.",
+          "en": "From zero to one, including both endpoints."
         },
         {
-          "ar": "العيوب هنا مجدداً",
-          "en": "faults too too"
+          "ar": "قيمة بين الصفر والمئة من دون شمول الصفر.",
+          "en": "From zero to one hundred, excluding zero."
         }
       ],
-      "concept_id": "ch7_emphasis",
+      "concept_id": "ch7_reliability_range",
       "explanation": {
-        "ar": "النماذج تعدّ الأعطال الملاحظة، لا الأخطاء التي سبّتها.",
-        "en": "The models count observed failures, not the errors that caused them."
+        "ar": "الموثوقية احتمال، لذا تقع بين الصفر والواحد مع شمول الحدين.",
+        "en": "Reliability is a probability, so it lies between zero and one inclusive."
       }
     },
     {
       "id": "q8",
       "stem": {
-        "ar": "طوّر نموذج زمن التنفيذ الأساسي...",
-        "en": "The basic execution time model was developed by..."
+        "ar": "أثناء إزالة العيوب، ما العلاقة الشائعة بين الموثوقية والشدة؟",
+        "en": "During fault removal, which trend commonly links reliability and intensity?"
       },
-      "bloom": "Remember",
+      "bloom": "Analyze",
       "answer": 3,
       "options": [
         {
-          "ar": "جي دي موسى أيضاً",
-          "en": "J. D. Musa here"
+          "ar": "تنخفض الموثوقية حين تنخفض شدة الإخفاق.",
+          "en": "Reliability falls as failure intensity falls."
         },
         {
-          "ar": "باري بوم هنا هنا",
-          "en": "Barry Boehm too"
+          "ar": "يبقى المقياسان ثابتين بعد الاختبار الأول.",
+          "en": "Both measures stay fixed after the first test."
         },
         {
-          "ar": "جيم مكال الآن الآن",
-          "en": "Jim McCall now"
+          "ar": "ترتفع الموثوقية والشدة عند إزالة عيب.",
+          "en": "Both measures rise whenever a fault is removed."
         },
         {
-          "ar": "بيف ليتلوود مجدداً",
-          "en": "Bev Littlewood"
+          "ar": "ترتفع الموثوقية حين تنخفض شدة الإخفاق.",
+          "en": "Reliability rises as failure intensity falls."
         }
       ],
-      "concept_id": "ch7_musa",
+      "concept_id": "ch7_reliability_intensity_trend",
       "explanation": {
-        "ar": "موسى اقترح نموذجي زمن التنفيذ الأساسي واللوغاريتمي.",
-        "en": "Musa proposed the basic and logarithmic Poisson execution time models."
+        "ar": "تزداد الموثوقية عادة مع إزالة العيوب، بينما تنخفض شدة الإخفاق.",
+        "en": "As testing removes faults, reliability commonly increases while the failure intensity decreases."
       }
     },
     {
       "id": "q9",
       "stem": {
-        "ar": "NHPP تعني...",
-        "en": "NHPP stands for..."
+        "ar": "يركز قرار الإصدار على خطر الإخفاق اللحظي؛ أي مقياس يلائمه؟",
+        "en": "A release decision focuses on the instantaneous risk of failure; which measure fits best?"
       },
-      "bloom": "Remember",
+      "bloom": "Apply",
       "answer": 0,
       "options": [
         {
-          "ar": "عملية بواسون غير المتجانسة",
-          "en": "non homogeneous Poisson process"
+          "ar": "شدة الإخفاق لأنها معدل خطر عند زمن محدد.",
+          "en": "Failure intensity, a rate describing risk at a given time."
         },
         {
-          "ar": "عملية بواسون غير المتباينة",
-          "en": "non heterogeneous Poisson process"
+          "ar": "الموثوقية لأنها متوسط لعدد العيوب في المنتج.",
+          "en": "Reliability, an average defect count during operation."
         },
         {
-          "ar": "جداء بواسون غير المتجانس",
-          "en": "non homogeneous Poisson product"
+          "ar": "متوسط الزمن حتى الإخفاق لأنه يحصي حالات الإدخال.",
+          "en": "Mean time to failure, which counts input states exercised."
         },
         {
-          "ar": "جداء بواسون غير المتباين",
-          "en": "non heterogeneous Poisson product"
+          "ar": "فضاء الإدخال لأنه يقيس معدل الخطر لكل زمن.",
+          "en": "Input space, which measures failure chance per time."
         }
       ],
-      "concept_id": "ch7_nhpp",
+      "concept_id": "ch7_intensity_release_objective",
       "explanation": {
-        "ar": "النماذج تعامل حدوث الأعطال كعملية بواسون غير متجانسة.",
-        "en": "The models treat failure occurrence as a non-homogeneous Poisson process."
+        "ar": "تلائم شدة الإخفاق هدف الإصدار المعبر عنه بمعدل الخطر عند نقطة من الاختبار.",
+        "en": "Failure intensity is suited to a release objective stated as a risk rate at a point in testing."
       }
     },
     {
       "id": "q10",
       "stem": {
-        "ar": "ما غرض نموذج الموثوقية؟",
-        "en": "What is the purpose of a reliability model?"
+        "ar": "أي مقياس يلائم جمع قيم موثوقية المكونات؟",
+        "en": "Which measure is suited to combining component reliability values?"
       },
       "bloom": "Understand",
       "answer": 1,
       "options": [
         {
-          "ar": "لاستبدال الاختبار الآن هنا مجدداً",
-          "en": "to replace the testing now here again too here"
+          "ar": "الزمن التقويمي مدة العمل والموارد.",
+          "en": "Calendar time is elapsed duration for testing staff."
         },
         {
-          "ar": " للتنبؤ بالأعطال من تاريخ التنفيذ",
-          "en": "to predict failures from execution history"
+          "ar": "الموثوقية احتمال في ظروف تشغيل محددة.",
+          "en": "Reliability is a probability under stated conditions."
         },
         {
-          "ar": "لكتابة كود البرنامج مجدداً أيضاً",
-          "en": "to write the program code too now here"
+          "ar": "شدة الإخفاق معدل مرتبط بوحدة الزمن.",
+          "en": "Failure intensity is a time-based failure rate."
         },
         {
-          "ar": "لتسعير الترخيص هنا أيضاً الآن",
-          "en": "to price the licence here again too now"
+          "ar": "القيمة المتوسطة عدد الإخفاقات المتوقع.",
+          "en": "Mean value is the expected cumulative failure count."
         }
       ],
-      "concept_id": "ch7_model_purpose",
+      "concept_id": "ch7_reliability_component_combination",
       "explanation": {
-        "ar": "النموذج يستنتج منحنى الأعطال ليُقيَّم الإصدار التالي.",
-        "en": "The model extrapolates the failure curve so the next release can be judged."
+        "ar": "الموثوقية مقياس احتمالي يمكن دمجه لمكونات النظام وفق نظرية الموثوقية.",
+        "en": "Reliability is a probability measure that can be combined for system components using reliability theory."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "كيف تساعد دراسات الموثوقية إدارة المشروع أثناء الاختبار؟",
+        "en": "How can reliability studies help project management during testing?"
+      },
+      "bloom": "Apply",
+      "answer": 2,
+      "options": [
+        {
+          "ar": "تستبدل خطة المشروع بإحصاء طلبات المستخدمين.",
+          "en": "They replace project plans with counts of user requests."
+        },
+        {
+          "ar": "تضمن خلو البرنامج المنشور من العيوب البرمجية.",
+          "en": "They guarantee that deployed software contains no faults."
+        },
+        {
+          "ar": "تتابع تقدم الاختبار وتدعم قرارات الإصدار والكلفة.",
+          "en": "They guide release timing, schedule, and cost during testing."
+        },
+        {
+          "ar": "تقدر حجم البرنامج من دون رصد إخفاقات الاختبار.",
+          "en": "They estimate program size without observing test failures."
+        }
+      ],
+      "concept_id": "ch7_reliability_study_use",
+      "explanation": {
+        "ar": "تساعد مقاييس الموثوقية على متابعة الاختبار وربط قرارات الإصدار بالجدول والكلفة.",
+        "en": "Reliability measures help monitor test progress and relate release decisions to schedule and cost."
       }
     }
   ],
@@ -333,7 +365,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-04T21:33:06Z",
+  "updated_at": "2026-11-05T23:01:39Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول"
