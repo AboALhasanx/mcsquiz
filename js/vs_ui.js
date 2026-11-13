@@ -85,7 +85,7 @@
       var banks = S.banks || {};
       Object.keys(banks).forEach(function (k) {
         var b = banks[k];
-        if (!b || !b.questions || !b.questions.length) return;
+        if (!b || b.bank_kind === 'source' || !b.questions || !b.questions.length) return;
         if (subjectId && subjectId !== 'all' && b.subject_id !== subjectId) return;
         if (chapterId && chapterId !== 'all' && b.quiz_id !== chapterId) return;
         b.questions.forEach(function (q) { pool.push(q); });
@@ -93,7 +93,7 @@
       if (pool.length < 5) {
         Object.keys(banks).forEach(function (k) {
           var b = banks[k];
-          if (b && b.questions && b.questions.length) {
+          if (b && b.bank_kind !== 'source' && b.questions && b.questions.length) {
             b.questions.forEach(function (q) { pool.push(q); });
           }
         });
@@ -181,7 +181,9 @@
           }
           chSelect.disabled = false;
           var sub = S.index.subjects.find(function (s) { return s.subject_id === sid; });
-          var chs = (sub && sub.chapters) || [];
+          var chs = ((sub && sub.chapters) || []).filter(function (c) {
+            return !/^Quiz_Ch\d+_S\d+_Source_/.test(String(c.quiz_id || ''));
+          });
           chSelect.innerHTML = '<option value="all">جميع الفصول</option>' +
             chs.map(function (c) { return '<option value="' + escapeHtml(c.quiz_id) + '">' + escapeHtml(c.topicLabel ? (c.topicLabel + ' · ' + (c.topic && (c.topic.ar || c.topic.en) || '')) : (c.quiz_id)) + '</option>'; }).join('');
         };

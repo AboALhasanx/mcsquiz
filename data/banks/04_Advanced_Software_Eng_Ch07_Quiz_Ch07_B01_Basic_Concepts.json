@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch07_B01_Basic_Concepts",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "A fixed count of successful runs regardless of duration."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_reliability_definition",
       "explanation": {
         "ar": "الموثوقية احتمال استمرار العمل بلا إخفاق ضمن ظروف محددة ولمدة معلومة.",
@@ -65,6 +67,7 @@
           "en": "A fault is a missing test; a failure is a passed test."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_failure_fault_distinction",
       "explanation": {
         "ar": "العيب نقص كامن في البرنامج، أما الإخفاق فهو انحراف ظاهر عن المتطلبات عند التشغيل.",
@@ -97,6 +100,7 @@
           "en": "One failure total, even when its triggering condition recurs."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_one_fault_many_failures",
       "explanation": {
         "ar": "قد يسبب العيب الواحد إخفاقات متعددة عند تكرر شرط التشغيل الذي يفعّله.",
@@ -129,6 +133,7 @@
           "en": "It falls during burn-in, steadies, then rises with wear."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_hardware_bathtub",
       "explanation": {
         "ar": "تكون إخفاقات الأجهزة مرتفعة أولاً، ثم تستقر في العمر النافع، ثم ترتفع مع الاهتراء.",
@@ -161,6 +166,7 @@
           "en": "Neither failure pattern depends on its operating conditions."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_hardware_software_failure_causes",
       "explanation": {
         "ar": "ترتبط إخفاقات البرمجيات بعيوب التصميم وتفعيلها، بينما تتدهور الأجهزة مادياً أيضاً.",
@@ -193,6 +199,7 @@
           "en": "The order in which faults are repaired during a test session."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_operational_profile_definition",
       "explanation": {
         "ar": "يحدد Operational Profile احتمالات أنواع التشغيل وفقاً للاستخدام المتوقع.",
@@ -225,6 +232,7 @@
           "en": "Each profile rewrites the program's code automatically."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_profile_changes_reliability",
       "explanation": {
         "ar": "يتغير تقدير الموثوقية إذا اختلفت أوزان العمليات واختلفت فرص إخفاقها الشرطية.",
@@ -257,6 +265,7 @@
           "en": "The set of possible states of its external input variables."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_input_space",
       "explanation": {
         "ar": "حالة الإدخال مجموعة قيم للمتغيرات الخارجية، وفضاء الإدخال يضم الحالات الممكنة.",
@@ -289,6 +298,7 @@
           "en": "Run types affect hardware wear but never software failures."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_functional_environment",
       "explanation": {
         "ar": "تحدد العمليات والمدخلات المنفذة العيوب الكامنة التي يجري الوصول إليها.",
@@ -321,6 +331,7 @@
           "en": "Execution time measures calendar days; clock time counts failures."
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch7_execution_clock_time",
       "explanation": {
         "ar": "زمن التنفيذ هو وقت عمل المعالج على البرنامج، أما زمن الساعة فيشمل فترات الانتظار أثناء التشغيل.",

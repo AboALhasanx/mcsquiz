@@ -76,8 +76,11 @@ The vault is the master. A bank is one JSON file per chapter model:
 01_Semester_1/<Subject>/07_Quizzes_&_Anki/Quiz_Ch<NN>_Model<A|B>_<Slug>.json
 ```
 
-Two models per chapter (النموذج أ / النموذج ب). The authoring rules, the schema and the
-publishing steps live in the vault: `00_STUDIO_HUB/guides/QUIZ_BANK_PROTOCOL.md` and
+Two models per chapter (النموذج أ / النموذج ب). A separate `bank_kind: "source"`
+track keeps original exam MCQs in their source order; it is filtered apart from
+conceptual practice, and a disputed source key stays ungraded. The authoring rules,
+the schema and the publishing steps live in the vault:
+`00_STUDIO_HUB/guides/QUIZ_BANK_PROTOCOL.md`, `SOURCE_QUIZ_PROTOCOL.md` and
 `00_STUDIO_HUB/guides/PORTAL_PUBLISH.md`.
 
 ```bash

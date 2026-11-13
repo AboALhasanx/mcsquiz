@@ -23,6 +23,11 @@ card's design changes — it just gets a second line of numbers.
 
 ## Done
 
+- **2026-11-13** — **source-faithful ASE question track** (1.12.0): 21 source
+  banks / 252 original MCQs across Ch01–09, separated from conceptual practice,
+  original English order preserved, disputed keys ungraded, live content v111.
+  Tests: `tests/test_source_flow.py` (35), `tests/test_source_content.py` (68),
+  pipeline unit tests (56), full portal CI (374 after publish).
 - **2026-11-04** — **achievements engine, honors shelf & badge share card** (1.10.0):
   8 tiered badges (bronze/silver/gold/diamond) evaluated from encrypted local
   history and stats, interactive bottom sheet with metallic glow, high-DPI (800x960)

@@ -69,7 +69,10 @@
     banks: {},          // quiz_id -> bank json
     subjectFilter: null,   // subject_id — always selected, no "all"
     chapterFilter: null,   // chapter_no — always selected, no "all"
+    bankKindFilter: 'source', // the source track is preferred when available
     lang: 'ar',         // 'ar' | 'en' | 'both'
+    prefLang: 'ar',     // the student's own choice, never the forced source language
+    langBeforeSource: null,
     sound: true,
     session: null,      // {sub, ch, title, chapterLabel, questions, picks, dwells, idx, hash, finished, ..., replay}
     saved: {},          // saveKey -> {origin, snapshot, savedAt}
@@ -95,10 +98,10 @@
   function saveUI() {
     try {
       localStorage.setItem(UI_KEY, JSON.stringify({
-        subject: S.subjectFilter, chapter: S.chapterFilter,
+        subject: S.subjectFilter, chapter: S.chapterFilter, bankKind: S.bankKindFilter,
         savedSubject: S.savedSubject, savedChapter: S.savedChapter, savedChapterOpen: null, savedExpanded: S.savedExpanded,
         savedHideAnswers: S.savedHideAnswers,
-        lang: S.lang,
+        lang: S.prefLang || S.lang,
         statsRange: S.statsRange,
       }));
     } catch (e) {}
@@ -109,12 +112,13 @@
       if (!u) return;
       if (u.subject) S.subjectFilter = u.subject;
       if (u.chapter) S.chapterFilter = u.chapter;
+      if (u.bankKind === 'source' || u.bankKind === 'practice') S.bankKindFilter = u.bankKind;
       if (u.savedSubject) S.savedSubject = u.savedSubject;
       if (u.savedExpanded) S.savedExpanded = u.savedExpanded;
       if (u.savedChapter) S.savedChapter = u.savedChapter;
       if (u.savedHideAnswers !== undefined) S.savedHideAnswers = Boolean(u.savedHideAnswers);
       if (u.statsRange !== undefined && u.statsRange !== null) S.statsRange = Number(u.statsRange);
-      if (u.lang === 'en' || u.lang === 'ar') S.lang = u.lang;
+      if (u.lang === 'en' || u.lang === 'ar') { S.lang = u.lang; S.prefLang = u.lang; }
     } catch (e) {}
   }
 
@@ -237,6 +241,7 @@
       quiz_id: b.quiz_id || '',
       subject_id: b.subject_id || b.subject || '',
       subject_title: b.subject_title || '',
+      bank_kind: b.bank_kind || 'practice',
       topic: pair(b.topic, b.topic_ar, b.topic),
       instructor: pair(b.instructor, b.instructor_ar, b.instructor),
       updated_at: b.updated_at || '',
@@ -262,7 +267,9 @@
         answer = 'ABCD'.indexOf(answer.toUpperCase());
       }
       if (typeof answer !== 'number' && typeof q.correct === 'number') answer = q.correct;
-      const answerIdx = typeof answer === 'number' ? answer : -1;
+      const ungraded = out.bank_kind === 'source' && q.source && q.source.key_status === 'disputed' &&
+        q.answer === null && (q.correct === null || q.correct === undefined);
+      const answerIdx = ungraded ? null : (typeof answer === 'number' ? answer : -1);
       out.questions.push({
         id: q.id || '',
         concept_id: q.concept_id || '',
@@ -272,6 +279,8 @@
         answer: answerIdx,
         correct: answerIdx,
         explanation: pair(q.explanation, q.explanation_ar, q.explanation_en),
+        bank_kind: out.bank_kind,
+        source: q.source && typeof q.source === 'object' ? JSON.parse(JSON.stringify(q.source)) : null,
       });
     });
     if (!out.topic.ar && !out.topic.en) out.topic = { ar: fallbackTitle || '', en: '' };
@@ -320,7 +329,7 @@
       idx.subjects.forEach((sub) => {
         const groups = {};
         (sub.chapters || []).forEach((ch) => {
-          const k = String(ch.chapter_no);
+          const k = String(ch.chapter_no) + '|' + chapterBankKind(ch);
           (groups[k] = groups[k] || []).push(ch);
         });
         Object.keys(groups).forEach((k) => {
@@ -328,7 +337,7 @@
           groups[k].forEach((ch, i) => {
             ch.label = String(ch.chapter_no);
             ch.topicNum = String(i + 1);
-            ch.topicLabel = 'موضوع: ' + (i + 1);
+            ch.topicLabel = (chapterBankKind(ch) === 'source' ? 'دفعة: ' : 'موضوع: ') + (i + 1);
           });
         });
       });
@@ -411,6 +420,7 @@
 
   function validateBank(b) {
     const errs = [];
+    if (b.bank_kind && !['source', 'practice'].includes(b.bank_kind)) errs.push('unknown bank kind');
     if (!Array.isArray(b.questions) || b.questions.length === 0) errs.push('no questions');
     (b.questions || []).forEach((q) => {
       const opts = q.options || [];
@@ -419,11 +429,17 @@
         const v = (o && typeof o === 'object') ? (o.ar || o.en) : o;
         if (!v) errs.push(q.id + ':opt' + i + 'empty');
       });
-      if (!(q.answer >= 0 && q.answer <= 3)) errs.push(q.id + ':keysync');
+      if (window.PortalAnalytics.isScorable(q) && !(Number.isInteger(q.answer) && q.answer >= 0 && q.answer <= 3)) errs.push(q.id + ':keysync');
       const ex = (q.explanation && typeof q.explanation === 'object') ? (q.explanation.ar || q.explanation.en) : q.explanation;
       if (!ex) errs.push(q.id + ':noexpl');
       const stem = (q.stem && typeof q.stem === 'object') ? (q.stem.ar || q.stem.en) : '';
       if (!stem) errs.push(q.id + ':nostem');
+      if (b.bank_kind === 'source') {
+        const src = q.source || {};
+        if (!src.id || !src.reference) errs.push(q.id + ':source missing');
+        if (!['confirmed', 'derived', 'disputed'].includes(src.key_status)) errs.push(q.id + ':source key unresolved');
+        if (src.key_status === 'disputed' && (window.PortalAnalytics.isScorable(q) || !src.note || !src.note.ar || !src.note.en)) errs.push(q.id + ':source dispute must be ungraded and explained');
+      }
     });
     return errs;
   }
@@ -548,8 +564,39 @@
   function currentChapter(sub) {
     sub = sub || currentSubject();
     if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) return null;
-    const match = sub.chapters.find((c) => c.chapter_no === S.chapterFilter);
-    return match || sub.chapters[0];
+    const match = sub.chapters.find((c) => c.chapter_no === S.chapterFilter && chapterBankKind(c) === S.bankKindFilter);
+    const sameKind = sub.chapters.find((c) => chapterBankKind(c) === S.bankKindFilter);
+    return match || sameKind || sub.chapters[0];
+  }
+
+  function chapterBankKind(ch) {
+    const bank = ch && S.banks[ch.quiz_id];
+    return (bank && bank.bank_kind === 'source') || (ch && ch.bank_kind === 'source') ||
+      /^Quiz_Ch\d+_S\d+_Source_/.test(String(ch && ch.quiz_id || '')) ? 'source' : 'practice';
+  }
+
+  function renderBankKindChips(sub) {
+    const bar = $('bank-kind-filter-bar');
+    const chapters = (sub && sub.chapters) || [];
+    const kinds = ['source', 'practice'].filter((kind) => chapters.some((ch) => chapterBankKind(ch) === kind));
+    if (!kinds.includes(S.bankKindFilter)) S.bankKindFilter = kinds[0] || 'practice';
+    bar.innerHTML = '';
+    bar.classList.toggle('hidden', !kinds.includes('source'));
+    kinds.forEach((kind) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'filter-chip' + (S.bankKindFilter === kind ? ' active' : '');
+      btn.dataset.bankKind = kind;
+      btn.textContent = kind === 'source' ? 'أسئلة المصدر' : 'تدريب الفهم';
+      btn.setAttribute('aria-pressed', S.bankKindFilter === kind ? 'true' : 'false');
+      btn.addEventListener('click', () => {
+        S.bankKindFilter = kind;
+        renderChapterChips();
+        saveUI();
+        renderCatalog();
+      });
+      bar.appendChild(btn);
+    });
   }
 
   function renderSubjectChips() {
@@ -571,6 +618,7 @@
       b.addEventListener('click', () => {
         S.subjectFilter = id;
         S.chapterFilter = null;
+        S.bankKindFilter = 'source';
         saveUI();
         renderSubjectChips(); renderChapterChips(); renderCatalog();
       });
@@ -583,7 +631,7 @@
     const ch = currentChapter(sub);
     if (!sub || !ch) return [];
     return sub.chapters
-      .filter((c) => c.chapter_no === ch.chapter_no)
+      .filter((c) => c.chapter_no === ch.chapter_no && chapterBankKind(c) === S.bankKindFilter)
       .map((c2) => ({ sub: sub, ch: c2 }));
   }
 
@@ -597,6 +645,7 @@
   function renderChapterChips() {
     const bar = $('chapter-filter-bar');
     const sub = currentSubject();
+    renderBankKindChips(sub);
     if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) {
       if (bar) { bar.innerHTML = ''; bar.style.display = 'none'; }
       return;
@@ -606,10 +655,15 @@
     const chapters = [];
     const seenChapters = new Set();
     sub.chapters.forEach((c) => {
+      if (chapterBankKind(c) !== S.bankKindFilter) return;
       if (seenChapters.has(c.chapter_no)) return;
       seenChapters.add(c.chapter_no);
       chapters.push(c);
     });
+    if (!chapters.length) {
+      if (bar) { bar.innerHTML = ''; bar.style.display = 'none'; }
+      return;
+    }
     if (!S.chapterFilter || !chapters.some((c) => c.chapter_no === S.chapterFilter)) {
       S.chapterFilter = chapters[0].chapter_no;
     }
@@ -866,9 +920,11 @@
   }
 
   function preparePool(pool) {
-    shuffle(pool);
-    // Always shuffle options; remap correct (fixes positional bias).
+    if (!pool.some((q) => q.bank_kind === 'source')) shuffle(pool);
+    // Source options retain their original order: "both A and C" is positional.
+    // The same marker survives saved, retry and review snapshots.
     pool.forEach((q) => {
+      if (q.bank_kind === 'source') return;
       const order = shuffle([0, 1, 2, 3]);
       if (Array.isArray(q.options) && q.options.length && q.options[0] && typeof q.options[0] === 'object') {
         // v3: the options are {ar, en} pairs, shuffled together
@@ -903,7 +959,7 @@
       sessionStorage.setItem(SNAP_KEY, JSON.stringify({
         at: Date.now(), hash: ses.hash, sub: ses.sub, ch: ses.ch, title: ses.title,
         chapterLabel: ses.chapterLabel, questions: ses.questions, picks: ses.picks,
-        dwells: ses.dwells, idx: ses.idx, maxIdx: ses.maxIdx,
+        dwells: ses.dwells, idx: ses.idx, maxIdx: ses.maxIdx, lang: S.lang,
         kind: ses.kind || (ses.ch && ses.ch.quiz_id ? 'bank' : 'saved'),
         retryWrong: !!ses.retryWrong, replay: ses.replay || null, elapsed,
       }));
@@ -928,6 +984,19 @@
       startEpoch: Date.now() - Number(snap.elapsed || 0), pauseAccum: 0, pauseStart: null,
       qStart: Date.now(), timerId: null,
     };
+    S.subjectFilter = snap.sub && snap.sub.subject_id || S.subjectFilter;
+    S.chapterFilter = snap.ch && snap.ch.chapter_no || S.chapterFilter;
+    const allSource = snap.questions.every((q) => q.bank_kind === 'source');
+    S.bankKindFilter = allSource ? 'source' : 'practice';
+    if (snap.lang === 'en' || snap.lang === 'ar') {
+      S.lang = snap.lang;
+    } else if (allSource) {
+      S.lang = 'en';
+    }
+    if (allSource) S.langBeforeSource = S.prefLang || 'ar';
+    else S.langBeforeSource = null;
+    try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
+    syncLangButtons();
     const chapterNo = (snap.ch && snap.ch.chapter_no !== undefined) ? snap.ch.chapter_no : 1;
     const chapterLabel = snap.chapterLabel || chLabel({ chapter_no: chapterNo });
     const chapterNum = 'جابتر ' + chapterNo;
@@ -952,6 +1021,14 @@
   function launchSession(pool, meta) {
     // meta: {subjectId, subjectTitle, chapterNo, chapterLabel?, topic, quizId|null, retryWrong, replay, kind?}
     preparePool(pool);
+    if (pool.length && pool.every((q) => q.bank_kind === 'source')) {
+      if (S.langBeforeSource === null) S.langBeforeSource = S.lang;
+      S.lang = 'en';
+      document.documentElement.setAttribute('lang', 'en');
+      syncLangButtons();
+    } else {
+      restorePreferredLang();
+    }
     const kind = meta.kind || (meta.quizId ? 'bank' : ((meta.replay && meta.replay.type === 'saved') ? 'saved' : 'bank'));
     S.session = {
       sub: { subject_id: meta.subjectId, subject_title: meta.subjectTitle },
@@ -1002,6 +1079,9 @@
       } else {
         note.textContent = '';
       }
+      if (bank && bank.bank_kind === 'source') {
+        note.textContent = 'نص السؤال والخيارات من المصدر بترتيبها الأصلي. الترجمة والشرح منفصلان؛ راجع التنبيهات بعد الإجابة.';
+      }
     }
     $('question-total-label').textContent = pool.length;
     $('live-feedback-box').classList.add('hidden');
@@ -1015,6 +1095,10 @@
     const ch = sub && (sub.chapters || []).find((c) => c.quiz_id === quizId);
     const bank = S.banks[quizId];
     if (!sub || !ch || !bank) { showError('لم يتم العثور على الكوز المطلوب.'); return; }
+    S.subjectFilter = sub.subject_id;
+    S.chapterFilter = ch.chapter_no;
+    S.bankKindFilter = chapterBankKind(ch);
+    saveUI();
 
     let pool = bank.questions.map((q) => {
       const c = JSON.parse(JSON.stringify(q));
@@ -1115,6 +1199,7 @@
         stemPair: stemPair,
         optsPair: optsPair,
         explText: explText,
+        explanationHtml: explanationHtml,
         lettersFor: lettersFor,
         richHtml: richHtml
       });
@@ -1518,6 +1603,7 @@
   // explanation — in the quiz, in the saved questions, in the review and in VS mode.
   function setLang(lang) {
     S.lang = (lang === 'en') ? 'en' : 'ar';
+    S.prefLang = S.lang;
     try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
     saveUI();
     syncLangButtons();
@@ -1528,6 +1614,14 @@
       else if (!$('deck-catalog').classList.contains('hidden')) renderCatalog();
       else if (!$('vs-view').classList.contains('hidden')) updateVsLanguage();
     } catch (e) {}
+  }
+
+  function restorePreferredLang() {
+    if (S.langBeforeSource === null) return;
+    S.langBeforeSource = null;
+    S.lang = S.prefLang || 'ar';
+    try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
+    syncLangButtons();
   }
 
   function updateVsLanguage() {
@@ -1548,12 +1642,18 @@
   function explText(q) {
     return S.lang === 'en' ? (explEn(q) || explAr(q)) : (explAr(q) || explEn(q));
   }
+  function explanationHtml(q) {
+    const src = q.bank_kind === 'source' ? q.source : null;
+    const note = src && src.note && (src.note[S.lang] || src.note.ar || src.note.en);
+    return (note ? '<p class="source-note">' + richHtml(note) + '</p>' : '') + richHtml(explText(q));
+  }
   function lettersFor(lang) { return lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
 
   function renderQuestion() {
     const ses = S.session;
     const q = ses.questions[ses.idx];
     const letters = qLetters();
+    const graded = window.PortalAnalytics.isScorable(q);
     $('question-index-label').textContent = ses.idx + 1;
     $('progress-bar-fill').style.width = (ses.idx / ses.questions.length) * 100 + '%';
     const stems = stemPair(q);
@@ -1568,6 +1668,11 @@
     } else {
       qEl2.classList.add('hidden');
     }
+    const sourceEl = $('question-source');
+    const src = q.bank_kind === 'source' ? q.source : null;
+    sourceEl.classList.toggle('hidden', !src);
+    sourceEl.innerHTML = src ? 'نص المصدر · السؤال <bdi dir="ltr">' + escapeHtml(src.id) + '</bdi> · <bdi dir="auto">' + escapeHtml(src.reference) + '</bdi>' +
+      (graded ? '' : ' · للمراجعة فقط؛ لا يُحتسب ضمن النتيجة') : '';
     const box = $('options-container');
     box.innerHTML = '';
     const locked = ses.picks[ses.idx] !== null;
@@ -1578,7 +1683,7 @@
       const isCorrectOpt = q.correct === i;
       let tileClass = 'option-tile';
       if (locked) {
-        if (isSelected) tileClass += (i === q.correct) ? ' correct-answer' : ' user-wrong';
+        if (isSelected) tileClass += !graded ? ' source-choice' : (i === q.correct) ? ' correct-answer' : ' user-wrong';
         else if (isCorrectOpt) tileClass += ' correct-answer';
       }
       const btn = document.createElement('button');
@@ -1603,7 +1708,7 @@
     // The explanation is always available after answering: auto-opened when the
     // answer was wrong (the moment it matters), collapsed when it was right.
     const answered = locked;
-    const wasWrong = answered && ses.picks[ses.idx] !== q.correct;
+    const wasWrong = answered && (!graded || ses.picks[ses.idx] !== q.correct);
     const expl = explText(q);
     const boxEl = $('live-feedback-box');
     const explBody = $('live-explanation-text');
@@ -1611,7 +1716,7 @@
     const showBox = answered && !!expl;
     boxEl.classList.toggle('hidden', !showBox);
     if (showBox) {
-      explBody.innerHTML = richHtml(expl);
+      explBody.innerHTML = explanationHtml(q);
       explBody.setAttribute('dir', 'auto');
       setExplOpen(boxEl, explToggle, explBody, wasWrong);
       if (wasWrong) {
@@ -1644,9 +1749,11 @@
     ses.dwells[ses.idx] = (Date.now() - ses.qStart) / 1000;
     tourNotify('answer');
     const q = ses.questions[ses.idx];
-    if (i === q.correct) playSound('correct'); else playSound('wrong');
+    if (window.PortalAnalytics.isScorable(q)) {
+      if (i === q.correct) playSound('correct'); else playSound('wrong');
+    }
     try {
-      if (window.PortalReview && window.PortalReview.recordAnswer && q && q.origin && q.id) {
+      if (window.PortalAnalytics.isScorable(q) && window.PortalReview && window.PortalReview.recordAnswer && q && q.origin && q.id) {
         const revKey = saveKeyOf(q.origin, q.id);
         const stemText = q.stem ? (q.stem.ar || q.stem.en || (typeof q.stem === 'string' ? q.stem : '')) : '';
         const corrOpt = (q.options && q.options[q.correct] !== undefined) ? q.options[q.correct] : '';
@@ -1697,7 +1804,7 @@
       let cls = 'matrix-cell';
       const picked = ses.picks[i];
       if (picked !== null && picked !== undefined) {
-        cls += (picked === q.correct) ? ' answered-correct' : ' answered-wrong';
+        cls += !window.PortalAnalytics.isScorable(q) ? ' answered-neutral' : (picked === q.correct) ? ' answered-correct' : ' answered-wrong';
       } else if (i < ses.maxIdx) {
         cls += ' seen-skipped';
       }
@@ -1721,14 +1828,14 @@
     clearSessionSnapshot();
     $('progress-bar-fill').style.width = '100%';
     const res = window.PortalAnalytics.analyze(ses.questions, ses.picks, ses.dwells, elapsedSec());
-    playSound(res.pct >= 60 ? 'completed' : 'fail');
-    if (ses.kind !== 'review' && ses.kind !== 'custom' && ses.ch.quiz_id) {
+    playSound(res.total === 0 || res.pct >= 60 ? 'completed' : 'fail');
+    if (res.total > 0 && ses.kind !== 'review' && ses.kind !== 'custom' && ses.ch.quiz_id) {
       setBest(ses.ch.quiz_id, res.pct, res.correct + ' / ' + res.total);
     }
     ses.finished = true;
     recordHistory(ses, res);
     let newBadges = [];
-    if (ses.kind !== 'review' && ses.kind !== 'custom') {
+    if (res.total > 0 && ses.kind !== 'review' && ses.kind !== 'custom') {
       if (window.PortalAchievements && window.PortalAchievements.checkAfterQuiz) {
         newBadges = window.PortalAchievements.checkAfterQuiz(ses, res) || [];
       }
@@ -1744,6 +1851,7 @@
   }
 
   function recordHistory(ses, res) {
+    if (res.total === 0) return;
     if (ses.kind === 'review' || ses.kind === 'custom') {
       try {
         if (window.PortalReview && window.PortalReview.markTodayStudy) {
@@ -1876,8 +1984,8 @@
         celEl.innerHTML = '';
       }
     }
-    $('score-percentage').textContent = res.pct + '%';
-    $('score-fraction').textContent = res.correct + ' / ' + res.total;
+    $('score-percentage').textContent = res.total ? res.pct + '%' : '—';
+    $('score-fraction').textContent = res.total ? res.correct + ' / ' + res.total : 'لا توجد أسئلة مُقيّمة';
     $('score-badge-text').textContent = res.band.ar;
     const badgeIcon = $('score-badge-icon');
     if (badgeIcon) {
@@ -1886,20 +1994,23 @@
       fresh.setAttribute('data-lucide', res.band.icon);
       badgeIcon.replaceWith(fresh);
     }
-    const unanswered = (S.session.picks || []).filter((p) => p === null || p === undefined).length;
+    const unanswered = (S.session.picks || []).filter((p, i) => window.PortalAnalytics.isScorable(S.session.questions[i]) && (p === null || p === undefined)).length;
     $('stat-correct').textContent = res.correct;
     $('stat-wrong').textContent = Math.max(0, res.total - res.correct - unanswered);
     const accEl = $('stat-accuracy');
-    if (accEl) accEl.textContent = res.pct + '%';
+    if (accEl) accEl.textContent = res.total ? res.pct + '%' : '—';
     $('stat-total-time').textContent = res.totalTime;
 
     const cb = $('chapter-breakdown');
     const ses = S.session;
     cb.innerHTML = '<div class="chapter-row"><span class="chapter-name">' +
       escapeHtml(ses.sub.subject_title + ' · ' + (ses.chapterLabel || chLabel(ses.ch))) + '</span></div>';
+    const ungradedCount = ses.questions.filter((q) => !window.PortalAnalytics.isScorable(q)).length;
+    if (ungradedCount) cb.innerHTML += '<p class="question-source">أسئلة للمراجعة خارج النتيجة: ' + ungradedCount + '</p>';
 
-    $('filter-count-all').textContent = res.total;
-    const actualWrong = ses.picks.filter((p, i) => p !== null && p !== undefined && p !== ses.questions[i].correct).length;
+    $('filter-count-all').textContent = ses.questions.length;
+    const actualWrong = ses.picks.filter((p, i) => window.PortalAnalytics.isScorable(ses.questions[i]) &&
+      p !== null && p !== undefined && p !== ses.questions[i].correct).length;
     $('filter-count-wrong').textContent = actualWrong;
     $('filter-count-correct').textContent = res.correct;
     const btnWrong = $('btn-retry-wrong');
@@ -1912,17 +2023,18 @@
       const picked = ses.picks[i];
       const skipped = picked === null || picked === undefined;
       const ok = !skipped && picked === q.correct;
-      const verdict = ok ? 'correct' : (skipped ? 'skipped' : 'wrong');
+      const graded = window.PortalAnalytics.isScorable(q);
+      const verdict = !graded ? 'ungraded' : ok ? 'correct' : (skipped ? 'skipped' : 'wrong');
       const card = document.createElement('div');
-      card.className = 'review-card ' + (ok ? 'correct-border' : (skipped ? 'skipped-border' : 'wrong-border'));
+      card.className = 'review-card ' + (!graded ? 'source-review' : ok ? 'correct-border' : (skipped ? 'skipped-border' : 'wrong-border'));
       card.dataset.ok = verdict;
       card.setAttribute('data-q-index', i);
 
       const header = document.createElement('div');
       header.className = 'review-card-header';
       const dwellSec = Math.round(Number(ses.dwells[i]) || 0);
-      const statusIcon = ok ? 'check' : (skipped ? 'minus' : 'x');
-      const statusWord = ok ? 'صحيحة' : (skipped ? 'لم تُجب' : 'خاطئة');
+      const statusIcon = !graded ? 'info' : ok ? 'check' : (skipped ? 'minus' : 'x');
+      const statusWord = !graded ? 'للمراجعة فقط' : ok ? 'صحيحة' : (skipped ? 'لم تُجب' : 'خاطئة');
       header.innerHTML =
         '<div class="review-q-meta"><span class="review-q-num">سؤال ' + (i + 1) + '</span>' +
         '<span class="review-status-tag ' + verdict + '">' +
@@ -1942,10 +2054,11 @@
       const optionsList = document.createElement('div');
       optionsList.className = 'review-options-list';
       for (let oi = 0; oi < 4; oi++) {
-        if (oi !== picked && oi !== q.correct) continue; // show only pick + correct
+        if (q.bank_kind !== 'source' && oi !== picked && oi !== q.correct) continue;
         const pair = optsPair(q, oi);
         let optClass = 'review-option-item';
-        if (oi === picked && !ok && !skipped) optClass += ' user-wrong';
+        if (!graded && oi === picked) optClass += ' source-choice';
+        else if (oi === picked && graded && !ok && !skipped) optClass += ' user-wrong';
         else if (oi === q.correct) optClass += ' correct-answer';
         const item = document.createElement('div');
         item.className = optClass;
@@ -1967,7 +2080,7 @@
           '<span>الشرح</span>' +
           '<i data-lucide="chevron-down" class="expl-chevron"></i>' +
           '</button>' +
-          '<div class="expl-body" dir="auto" hidden>' + richHtml(expl) + '</div>';
+          '<div class="expl-body" dir="auto" hidden>' + explanationHtml(q) + '</div>';
         const tg = exp.querySelector('.expl-toggle');
         const body = exp.querySelector('.expl-body');
         tg.addEventListener('click', () => {
@@ -2038,6 +2151,7 @@
     closeDrawers();
     if (!S.index) return;
     const h = location.hash;
+    if (!h.startsWith('#/quiz') && !h.startsWith('#/practice')) restorePreferredLang();
     if (!h.startsWith('#/vs')) {
       const ui = getVsUI();
       if (ui) ui.cleanupVsTimers();
@@ -2104,7 +2218,9 @@
     } else {
       S.session = null;
       clearSessionSnapshot();
+      restorePreferredLang();
       renderSubjectChips();
+      renderChapterChips();
       renderCatalog();
       show('deck-catalog');
     }
@@ -3788,7 +3904,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.11.30';
+  const SHELL_VERSION = '1.12.0';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

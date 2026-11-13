@@ -1,0 +1,550 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 4",
+    "en": "Source MCQs — Batch 4"
+  },
+  "quiz_id": "Quiz_Ch07_S04_Source_MCQs",
+  "has_math": true,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "عدد البنود clauses المستخدمة في ISO-9001 هو:",
+        "en": "The number of clauses used in ISO-9001 are"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.39",
+        "line": 2068,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.39; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "15",
+          "en": "15"
+        },
+        {
+          "ar": "25",
+          "en": "25"
+        },
+        {
+          "ar": "20",
+          "en": "20"
+        },
+        {
+          "ar": "10",
+          "en": "10"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q39",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** اعتمدت مواصفة ISO 9001 (إصدار 1994 المنهجي في الكتاب) على **20 بنداً أو فقرة متطلبات (20 clauses)** تم ربطها مع متطلبات CMM.",
+        "en": "ISO 9001:1994 organized its quality-system requirements into 20 clauses, numbered 4.1 through 4.20."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "تحتوي ISO-9126 على تعريفات:",
+        "en": "ISO-9126 contains definitions of"
+      },
+      "bloom": "Remember",
+      "answer": null,
+      "source": {
+        "id": "7.40",
+        "line": 2073,
+        "note": {
+          "ar": "مفتاح الناشر D يتعارض مع الحل المستنتج من النص؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "DISPUTED: Publisher key is D (all of the above); T1 notes argue A (quality characteristics) as ISO 9126 specifically defines characteristics."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.40; publisher key p. 499",
+        "key_status": "disputed"
+      },
+      "options": [
+        {
+          "ar": "quality characteristics",
+          "en": "quality characteristics"
+        },
+        {
+          "ar": "quality factors",
+          "en": "quality factors"
+        },
+        {
+          "ar": "quality attributes",
+          "en": "quality attributes"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q40",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** في معيار ISO 9126، يسمى المستوى الأعلى بخصائص الجودة (Quality characteristics)، وعددها 6 خصائص رئيسية.",
+        "en": "The ISO/IEC 9126 standard formally structures software product quality into six top-level quality characteristics: Functionality, Reliability, Usability, Efficiency, Maintainability, and Portability. Each characteristic is further refined into subcharacteristics and measurable metrics."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "في ISO-9126، كل خاصية ترتبط بـ:",
+        "en": "In ISO-9126, each characteristic is related to"
+      },
+      "bloom": "Remember",
+      "answer": null,
+      "source": {
+        "id": "7.41",
+        "line": 2078,
+        "note": {
+          "ar": "مفتاح الناشر A يتعارض مع الحل المستنتج من النص؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "DISPUTED / DEFECTIVE: Publisher key is A (one attribute), but ISO 9126 characteristics have varying counts of attributes/sub-characteristics (2, 3, 5). Inconsistent question."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.41; publisher key p. 499",
+        "key_status": "disputed"
+      },
+      "options": [
+        {
+          "ar": "one attribute",
+          "en": "one attribute"
+        },
+        {
+          "ar": "two attributes",
+          "en": "two attributes"
+        },
+        {
+          "ar": "three attributes",
+          "en": "three attributes"
+        },
+        {
+          "ar": "four attributes",
+          "en": "four attributes"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q41",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** يرتبط كل بعد رئيسي في سلايدات أغروال بصفات فرعية محددة (Subcharacteristics) تمثل السمات المشتقة. الشريحة 117 تضع الخيار (c)، لكن جدول الكتاب يبيّن أن العدد يختلف حسب الخاصية؛ لذلك لا يوجد خيار واحد يصح للجميع.",
+        "en": "Official textbook question 7.41 from Aggarwal & Singh (3rd ed.). Key: (A)."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في نموذج McCall، عامل جودة مراجعة المنتج product revision يتكون من:",
+        "en": "In McCall quality model; product revision quality factor consist of"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.42",
+        "line": 2083,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED on raw source options. Publisher key (D) exactly matches raw option (D). T1 reordered or altered options, but raw source is preserved."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.42; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "maintainability",
+          "en": "maintainability"
+        },
+        {
+          "ar": "flexibility",
+          "en": "flexibility"
+        },
+        {
+          "ar": "testability",
+          "en": "testability"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q42",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** عوامل مراجعة المنتج (Product Revision) في نموذج ماكول هي ثلاثية الصيانة: سهولة الصيانة (Maintainability) + المرونة (Flexibility) + القابلية للاختبار (Testability).",
+        "en": "Under McCall's framework, Product Revision focuses on how easily the software can be inspected, repaired, and enhanced. It consists of exactly three factors: 1. Maintainability: Effort required to locate and fix defects. 2. Flexibility: Effort required to modify the software for new operational needs. 3. Testability: Effort required to validate that the software performs its intended functions."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مما يلي ليس نموذج موثوقية برمجيات؟",
+        "en": "Which is not a software reliability model ?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.43",
+        "line": 2088,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.43; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "the Jelinski-Moranda Model",
+          "en": "the Jelinski-Moranda Model"
+        },
+        {
+          "ar": "basic execution time model",
+          "en": "basic execution time model"
+        },
+        {
+          "ar": "spiral model",
+          "en": "spiral model"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q43",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** النموذج الحلزوني (Spiral model) هو نموذج دورة حياة لتطوير البرمجيات (SDLC) يعتمد على إدارة المخاطر، وليس نموذجاً رياضياً لقياس الاعتمادية.",
+        "en": "The Spiral model is an iterative, risk-driven Software Development Life Cycle (SDLC) process model formulated by Barry Boehm. It is not a statistical software reliability growth model. Jelinski–Moranda and Musa's Basic execution time model are established reliability models."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "كل نموذج نضج في CMM يحتوي على:",
+        "en": "Each maturity model in CMM has"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.44",
+        "line": 2093,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.44; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "one KPA",
+          "en": "one KPA"
+        },
+        {
+          "ar": "equal KPAs",
+          "en": "equal KPAs"
+        },
+        {
+          "ar": "several KPAs",
+          "en": "several KPAs"
+        },
+        {
+          "ar": "no KPA",
+          "en": "no KPA"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q44",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** يضم كل مستوى من مستويات CMM الناضجة عدة مناطق عمليات رئيسية (Several KPAs)، تتراوح بين 2 و7 مجالات.",
+        "en": "With the exception of Level 1 (which has 0 KPAs), each mature level in the CMM comprises multiple Key Process Areas (KPAs): Level 2 has 6 KPAs, Level 3 has 7 KPAs, Level 4 has 2 KPAs, and Level 5 has 3 KPAs."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "اختصار KPA في CMM يعني:",
+        "en": "KPA in CMM stands for"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.45",
+        "line": 2098,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.45; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "key Process Area",
+          "en": "key Process Area"
+        },
+        {
+          "ar": "key Product Area",
+          "en": "key Product Area"
+        },
+        {
+          "ar": "key Principal Area",
+          "en": "key Principal Area"
+        },
+        {
+          "ar": "key Performance Area",
+          "en": "key Performance Area"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q45",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** مصطلح KPA يعني منطقة العملية الرئيسية (Key Process Area).",
+        "en": "KPA stands for Key Process Area. In CMM, a Key Process Area identifies a cluster of related activities that, when performed collectively, achieve a set of goals considered critical for establishing process capability at that maturity level."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في نماذج الموثوقية، ينصب تركيزنا على:",
+        "en": "In reliability models, our emphasis is on"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.46",
+        "line": 2103,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.46; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "errors",
+          "en": "errors"
+        },
+        {
+          "ar": "faults",
+          "en": "faults"
+        },
+        {
+          "ar": "failures",
+          "en": "failures"
+        },
+        {
+          "ar": "bugs",
+          "en": "bugs"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q46",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** تركز نماذج الاعتمادية على حالات الفشل (Failures) لأنها الحدث الديناميكي الحقيقي الذي يواجهه المستخدم ويؤثر على الخدمة في الواقع.",
+        "en": "Dynamic software reliability models model the observable behavior of the software from the user's perspective; hence, the primary modeling emphasis is on failures (dynamic departure from required operation). Users experience failures, not passive latent faults residing silently in unexecuted source code."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "البرمجيات لا تنكسر ولا تبلى مثل العتاد. ما رأيك؟",
+        "en": "Software does not break or wearout like hardware. What is your opinion ?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.47",
+        "line": 2108,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.47; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "true",
+          "en": "true"
+        },
+        {
+          "ar": "false",
+          "en": "false"
+        },
+        {
+          "ar": "cannot say",
+          "en": "cannot say"
+        },
+        {
+          "ar": "not fixed",
+          "en": "not fixed"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q47",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** العبارة صحيحة تماماً (True): البرمجيات لا تهترئ ولا تبلى مادياً (Does not wear out) لأنها كيان منطقي غير خاضع لقوانين الاحتكاك والفيزياء.",
+        "en": "True in the physical sense: software does not wear out through physical aging. It may become obsolete or fail when its environment or requirements change, but those changes are different from hardware wear-out."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "تعرف موثوقية البرمجيات بالنسبة إلى:",
+        "en": "Software reliability is defined with respect to"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.48",
+        "line": 2113,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.48; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "time",
+          "en": "time"
+        },
+        {
+          "ar": "speed",
+          "en": "speed"
+        },
+        {
+          "ar": "quality",
+          "en": "quality"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q48",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** دالة الاعتمادية تُعرّف رياضياً بالنسبة إلى الزمن (Time).",
+        "en": "Software reliability is mathematically defined as a time-dependent probability distribution $R(t)$ measuring the likelihood of failure-free operation over a specified operational time interval. Without specifying a temporal baseline (execution time, clock time, or calendar time), reliability has no mathematical meaning."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "اختصار MTTF يعني:",
+        "en": "MTTF stands for"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.49",
+        "line": 2118,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.49; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "mean time to failure",
+          "en": "mean time to failure"
+        },
+        {
+          "ar": "maximum time to failure",
+          "en": "maximum time to failure"
+        },
+        {
+          "ar": "minimum time to failure",
+          "en": "minimum time to failure"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q49",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** اختصار MTTF يعني متوسط زمن حدوث الفشل (Mean Time To Failure).",
+        "en": "MTTF stands for Mean Time To Failure. It is the expected statistical value of the operational execution time of a software system before its next failure event occurs, defined as the integral of the reliability function: $$MTTF = \\int_0^\\infty R(t) \\, dt$$"
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "ISO-9000 سلسلة معايير لإدارة الجودة وتحتوي على:",
+        "en": "ISO-9000 is a series of standards for quality management systems and has"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "7.50",
+        "line": 2123,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.50; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "2 related standards",
+          "en": "2 related standards"
+        },
+        {
+          "ar": "5 related standards",
+          "en": "5 related standards"
+        },
+        {
+          "ar": "10 related standards",
+          "en": "10 related standards"
+        },
+        {
+          "ar": "25 related standards",
+          "en": "25 related standards"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q50",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** تتكون سلسلة معايير ISO 9000 الأصلية من **5 مواصفات مرتبطة** شهيرة (ISO 9000, 9001, 9002, 9003, 9004).",
+        "en": "The original ISO 9000 series comprises five related standards: 1. ISO 9000: Quality management and quality assurance standards — Guidelines for selection and use. 2. ISO 9001: Model for quality assurance in design, development, production, installation, and servicing. 3. ISO 9002: Model for quality assurance in production, installation, and servicing. 4. ISO 9003: Model for quality assurance in final inspection and test. 5. ISO 9004: Quality management and quality system elements — Guidelines."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:51Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

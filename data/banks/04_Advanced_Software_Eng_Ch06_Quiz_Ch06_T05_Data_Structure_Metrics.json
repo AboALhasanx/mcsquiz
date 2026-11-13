@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch06_T05_Data_Structure_Metrics",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "Product data, process data, and actor data"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_data_categories",
       "explanation": {
         "ar": "يميز محور بنية البيانات بين بيانات الإدخال والبيانات الداخلية وبيانات الإخراج للوحدة؛ أما البدائل فتنتمي إلى تصنيفات أخرى.",
@@ -65,6 +67,7 @@
           "en": "Actors that enter a value for the variable"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_cross_reference_list",
       "explanation": {
         "ar": "تربط قائمة الإحالات المتقاطعة المتغير بأرقام أسطر الإشارة إليه، مما يدعم تحليل المتغيرات الحية والامتداد لاحقاً.",
@@ -97,6 +100,7 @@
           "en": "It is passed to an external user as output"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_live_variable",
       "explanation": {
         "ar": "تتعلق الحياة بإمكان استعمال القيمة قبل استبدالها؛ فالتصريح والوراثة وكون المتغير مخرجاً لا تثبت حياته وحدها.",
@@ -129,6 +133,7 @@
           "en": "Mean live-variable count per executable statement"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_average_live_variables",
       "explanation": {
         "ar": "متوسط المتغيرات الحية هو مجموع أعدادها عبر التعليمات التنفيذية مقسوماً على عدد التعليمات التنفيذية.",
@@ -161,6 +166,7 @@
           "en": "Comments surrounding the variable's declaration"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_variable_span",
       "explanation": {
         "ar": "يعتمد الامتداد على المسافة بين الإحالات المتعاقبة؛ ولا يمثل عمق الوراثة أو تفرع الاستدعاءات.",
@@ -193,6 +199,7 @@
           "en": "Unique operands divided by unique operators"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_module_weakness",
       "explanation": {
         "ar": "يستخدم ضعف الوحدة متوسط المتغيرات الحية مضروباً بمتوسط عمر المتغير؛ أما الامتداد فمقياس بيانات منفصل.",
@@ -225,6 +232,7 @@
           "en": "Module count divided by mean live-variable count"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_program_weakness",
       "explanation": {
         "ar": "ضعف البرنامج هو متوسط نقاط ضعف الوحدات؛ أما الجمع وحده فلا يطبّع القيمة بحسب عدد الوحدات.",
@@ -257,6 +265,7 @@
           "en": "It gives the program-wide mean of module values"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_program_metric_aggregation",
       "explanation": {
         "ar": "تعطي قسمة مجموع نقاط ضعف الوحدات على عددها متوسط البرنامج المحدد، لا المجموع ولا القيمة القصوى.",

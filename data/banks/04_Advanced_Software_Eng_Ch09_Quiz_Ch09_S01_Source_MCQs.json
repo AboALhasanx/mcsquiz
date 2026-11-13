@@ -1,0 +1,594 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 1",
+    "en": "Source MCQs — Batch 1"
+  },
+  "quiz_id": "Quiz_Ch09_S01_Source_MCQs",
+  "has_math": false,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "عملية توليد وثائق التحليل والتصميم تسمى:",
+        "en": "Process of generating analysis and design documents is called"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "9.1",
+        "line": 803,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.1; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "inverse Engineering",
+          "en": "inverse Engineering"
+        },
+        {
+          "ar": "software Engineering",
+          "en": "software Engineering"
+        },
+        {
+          "ar": "reverse Engineering",
+          "en": "reverse Engineering"
+        },
+        {
+          "ar": "re-engineering",
+          "en": "re-engineering"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q01",
+      "explanation": {
+        "ar": "الهندسة العكسية تحلل مخرجات التنفيذ القائمة، ومنها الكود المصدري، لاستخراج التصميم المعماري ونماذج البيانات ومواصفات المتطلبات دون تغيير السلوك التشغيلي.",
+        "en": "Reverse engineering analyzes existing implementation artifacts (source code) to extract high-level architectural designs, data models, and requirement specifications without altering operational behavior."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "اختبار الانحدار regression testing يرتبط أساساً بـ:",
+        "en": "Regression testing is primarily related to"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "9.2",
+        "line": 806,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED: Publisher key (D=maintenance testing) reflects textbook taxonomy classifying regression testing primarily under maintenance."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.2; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "functional testing",
+          "en": "functional testing"
+        },
+        {
+          "ar": "data flow testing",
+          "en": "data flow testing"
+        },
+        {
+          "ar": "development testing",
+          "en": "development testing"
+        },
+        {
+          "ar": "maintenance testing",
+          "en": "maintenance testing"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q02",
+      "explanation": {
+        "ar": "اختبار الصيانة يضمن أن التعديلات التي تعالج عيوباً أو تكيف البيئة أو تضيف ميزات لا تدخل عيوب انحدار ولا تفسد الخطوط الأساسية التي جرى التحقق منها سابقاً.",
+        "en": "Maintenance testing ensures that modifications introduced to correct defects, adapt to environment shifts, or add features do not introduce regression defects or corrupt previously validated system baselines."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مما يلي ليس فئة من فئات الصيانة maintenance؟",
+        "en": "Which one is not a category of maintenance ?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "9.3",
+        "line": 809,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.3; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "corrective maintenance",
+          "en": "corrective maintenance"
+        },
+        {
+          "ar": "effective maintenance",
+          "en": "effective maintenance"
+        },
+        {
+          "ar": "adaptive maintenance",
+          "en": "adaptive maintenance"
+        },
+        {
+          "ar": "perfective maintenance",
+          "en": "perfective maintenance"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q03",
+      "explanation": {
+        "ar": "فئات الصيانة الأربع المعتمدة هي التصحيحية والتكيفية والكمالية والوقائية. أما Effective maintenance فهي مشتت غير موجود في تصنيفات هندسة البرمجيات.",
+        "en": "The four canonical categories of software maintenance are Corrective, Adaptive, Perfective, and Preventive. Effective maintenance is a distractor and does not exist in standard software engineering taxonomies."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "الصيانة التي تبدأ بسبب عيوب في البرمجيات تسمى:",
+        "en": "The maintenance initiated by defects in the software is called"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "9.4",
+        "line": 812,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.4; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "corrective maintenance",
+          "en": "corrective maintenance"
+        },
+        {
+          "ar": "adaptive maintenance",
+          "en": "adaptive maintenance"
+        },
+        {
+          "ar": "perfective maintenance",
+          "en": "perfective maintenance"
+        },
+        {
+          "ar": "preventive maintenance",
+          "en": "preventive maintenance"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q04",
+      "explanation": {
+        "ar": "الصيانة التصحيحية تعالج التعديلات التفاعلية التي تجرى لتشخيص العيوب والأخطاء المتبقية في خطوط الإنتاج وتصحيحها.",
+        "en": "Corrective maintenance specifically handles reactive modifications performed to diagnose and rectify residual faults and errors identified in operational production baselines."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "Patch يعرف بأنه:",
+        "en": "Patch is known as"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "9.5",
+        "line": 815,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.5; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "emergency fixes",
+          "en": "emergency fixes"
+        },
+        {
+          "ar": "routine fixes",
+          "en": "routine fixes"
+        },
+        {
+          "ar": "critical fixes",
+          "en": "critical fixes"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q05",
+      "explanation": {
+        "ar": "Patch إصلاح طارئ يطبق مباشرة على الكود المصدري لاستعادة تشغيل النظام أثناء انقطاع غير مخطط أو حادث أمني حرج، دون مراجعة تصميم كاملة.",
+        "en": "A patch represents an emergency fix deployed directly to source code to restore system operations during unplanned outages or critical security incidents, bypassing full upfront design reviews."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "الصيانة التكيفية adaptive maintenance ترتبط بـ:",
+        "en": "Adaptive maintenance is related to"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "9.6",
+        "line": 818,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.6; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "modification in software due to failures",
+          "en": "modification in software due to failures"
+        },
+        {
+          "ar": "modification in software due to demand of new functionalities",
+          "en": "modification in software due to demand of new functionalities"
+        },
+        {
+          "ar": "modification in software due to increase in complexity",
+          "en": "modification in software due to increase in complexity"
+        },
+        {
+          "ar": "modification in software to match changes in the ever-changing environment",
+          "en": "modification in software to match changes in the ever-changing environment"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q06",
+      "explanation": {
+        "ar": "الصيانة التكيفية تعدل النظام القائم للحفاظ على توافقه مع تغيرات بيئة التشغيل الخارجية، مثل نظام تشغيل جديد أو منصة عتاد أو ترقية قاعدة بيانات.",
+        "en": "Adaptive maintenance modifies an existing software system to maintain compatibility with changes in its external operating environment, such as new operating systems, hardware platforms, or database upgrades."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "الصيانة الكمالية perfective maintenance تشير إلى تحسينات:",
+        "en": "Perfective maintenance refers to enhancements"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "9.7",
+        "line": 828,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.7; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "making the product better",
+          "en": "making the product better"
+        },
+        {
+          "ar": "making the product faster and smaller",
+          "en": "making the product faster and smaller"
+        },
+        {
+          "ar": "making the product with new functionalities",
+          "en": "making the product with new functionalities"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q07",
+      "explanation": {
+        "ar": "الصيانة الكمالية تشمل تحسينات يطلبها المستخدم وضبط الأداء وتحسين السرعة والذاكرة والتعديلات البنيوية التي ترفع قابلية الصيانة والموثوقية.",
+        "en": "Perfective maintenance encompasses user-requested enhancements, performance tuning (speed and memory optimizations), and structural modifications that improve maintainability and reliability."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "حسب توزيع جهد الصيانة، أي نوع من الصيانة استهلك الحصة الأكبر؟",
+        "en": "As per distribution of maintenance effort, which type of maintenance has consumed maximum share?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "9.8",
+        "line": 833,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.8; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "adaptive",
+          "en": "adaptive"
+        },
+        {
+          "ar": "corrective",
+          "en": "corrective"
+        },
+        {
+          "ar": "perfective",
+          "en": "perfective"
+        },
+        {
+          "ar": "preventive",
+          "en": "preventive"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q08",
+      "explanation": {
+        "ar": "الصيانة الكمالية تستحوذ على الحصة الأكبر من جهد الصيانة، نحو 50%، بسبب نمو المنظمة وتغير متطلبات المستخدم الوظيفية عبر دورة التشغيل.",
+        "en": "Perfective maintenance accounts for the largest share of maintenance expenditures (50%), driven by ongoing organizational growth and evolving user functional demands throughout the operational life cycle."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "حسب توزيع جهد الصيانة، أي نوع من الصيانة استهلك الحصة الأصغر؟",
+        "en": "As per distribution of maintenance effort, which type of maintenance has consumed minimum share?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "9.9",
+        "line": 836,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.9; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "adaptive",
+          "en": "adaptive"
+        },
+        {
+          "ar": "corrective",
+          "en": "corrective"
+        },
+        {
+          "ar": "perfective",
+          "en": "perfective"
+        },
+        {
+          "ar": "preventive",
+          "en": "preventive"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q09",
+      "explanation": {
+        "ar": "الصيانة الوقائية تمثل أصغر حصة من جهد الصيانة، نحو 4%، وهي إعادة هيكلة استباقية ومنع للعيوب قبل حدوث فشل تشغيلي.",
+        "en": "Preventive maintenance accounts for the smallest proportion of maintenance effort (4%), representing proactive code restructuring and defect prevention prior to operational failure."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي مما يلي ليس نموذجاً من نماذج الصيانة؟",
+        "en": "Which one is not a maintenance model?"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "9.10",
+        "line": 839,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.10; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "CMM",
+          "en": "CMM"
+        },
+        {
+          "ar": "iterative Enhancement model",
+          "en": "iterative Enhancement model"
+        },
+        {
+          "ar": "quick-fix model",
+          "en": "quick-fix model"
+        },
+        {
+          "ar": "reuse-oriented model",
+          "en": "reuse-oriented model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q10",
+      "explanation": {
+        "ar": "CMM إطار لتحسين عملية المنظمة، أما Quick-fix وIterative Enhancement وReuse-Oriented وBoehm وTaute فهي نماذج لعملية الصيانة.",
+        "en": "CMM (Capability Maturity Model) is an organizational process improvement framework, whereas Quick-fix, Iterative Enhancement, Reuse-Oriented, Boehm, and Taute are software maintenance process models."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "في أي نموذج تتم الإصلاحات دون تحليل مفصل للآثار طويلة الأمد؟",
+        "en": "In which model, fixes are done without detailed analysis of the long-term effects?"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "9.11",
+        "line": 842,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.11; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "reuse oriented model",
+          "en": "reuse oriented model"
+        },
+        {
+          "ar": "quick-fix model",
+          "en": "quick-fix model"
+        },
+        {
+          "ar": "taute maintenance model",
+          "en": "taute maintenance model"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q11",
+      "explanation": {
+        "ar": "نموذج Quick-fix يعدل الكود مباشرة دون تحليل مفصل أو تحديث للتوثيق، فيسرع تدهور البنية ويزيد إنتروبيا الكود.",
+        "en": "The Quick-fix model patches source code directly without detailed analysis or documentation updates, accelerating architectural decay and code entropy."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "نموذج Iterative Enhancement هو:",
+        "en": "Iterative enhancement model is a"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "9.12",
+        "line": 845,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.12; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "three stage model",
+          "en": "three stage model"
+        },
+        {
+          "ar": "two stage model",
+          "en": "two stage model"
+        },
+        {
+          "ar": "four stage model",
+          "en": "four stage model"
+        },
+        {
+          "ar": "seven stage model",
+          "en": "seven stage model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q12",
+      "explanation": {
+        "ar": "نموذج Iterative Enhancement يعمل في دورة ثلاثية مستمرة: التحليل ثم إعادة التصميم ثم التنفيذ، ويحافظ على تزامن البنية مع التوثيق.",
+        "en": "The Iterative Enhancement model operates in an ongoing three-stage cycle: Analysis, Redesign, and Implementation, ensuring architecture and documentation remain synchronized."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "نموذج Taute للصيانة يحتوي على:",
+        "en": "Taute maintenance model has"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "9.13",
+        "line": 848,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ali_Fahem_Source/Ch09_Software_Maintenance.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 9.13; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "two phases",
+          "en": "two phases"
+        },
+        {
+          "ar": "six phases",
+          "en": "six phases"
+        },
+        {
+          "ar": "eight phases",
+          "en": "eight phases"
+        },
+        {
+          "ar": "ten phases",
+          "en": "ten phases"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch09_q13",
+      "explanation": {
+        "ar": "نموذج Taute يقسم دورة الصيانة إلى ثماني مراحل متكررة: طلب التغيير، التقدير، الجدولة، البرمجة، الاختبار، التوثيق، الإصدار، والتشغيل.",
+        "en": "The Taute maintenance model partitions the maintenance lifecycle into eight cyclical phases: Change request, Estimate, Schedule, Program, Test, Documentation, Release, and Operation."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:51Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

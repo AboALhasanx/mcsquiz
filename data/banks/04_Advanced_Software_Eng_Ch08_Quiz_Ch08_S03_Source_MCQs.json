@@ -1,0 +1,553 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 3",
+    "en": "Source MCQs — Batch 3"
+  },
+  "quiz_id": "Quiz_Ch08_S03_Source_MCQs",
+  "has_math": true,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "من نقاط ضعف تحليل القيم الحدودية وتقسيم فئات التكافؤ:",
+        "en": "One weakness of boundary value analysis and equivalence partitioning is"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "8.27",
+        "line": 3931,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.27; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "they are not effective",
+          "en": "they are not effective"
+        },
+        {
+          "ar": "they do not explore combinations of input circumstances",
+          "en": "they do not explore combinations of input circumstances"
+        },
+        {
+          "ar": "they explore combinations of input circumstances",
+          "en": "they explore combinations of input circumstances"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q27",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** نقطة الضعف الجوهرية في تحليل القيم الحدية وتجزئة التكافؤ هي إهمال التفاعل بين الشروط المركبة، حيث تفترض كل طريقة فحص المتغير بمعزل عن بقية المتغيرات.",
+        "en": "One major weakness of boundary value analysis and equivalence class partitioning is that they do not explore combinations of input conditions. Both methods test variables largely in isolation under the single-fault assumption, missing defects caused by variable interactions."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "في تقنية cause effect graphing، السبب والنتيجة يرتبطان بـ:",
+        "en": "In cause effect graphing technique, cause and effect are related to"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "8.28",
+        "line": 3937,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.28; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "input and output",
+          "en": "input and output"
+        },
+        {
+          "ar": "output and input",
+          "en": "output and input"
+        },
+        {
+          "ar": "destination and source",
+          "en": "destination and source"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q28",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** في تقنية مخطط السبب والنتيجة (Cause-Effect Graphing)، يمثل «السبب» شرط الإدخال (Input)، ويمثل «الأثر» الإجراء أو المخرج الناتج (Output).",
+        "en": "In cause-effect graphing, cause and effect represent input condition and output action (or state change) respectively. A cause is a distinct input condition or equivalence class; an effect is an observable output or internal transformation."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "مخطط DD Path يسمى:",
+        "en": "DD Path graph is called as"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "8.29",
+        "line": 3943,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.29; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "design to design path graph",
+          "en": "design to design path graph"
+        },
+        {
+          "ar": "defect to defect path graph",
+          "en": "defect to defect path graph"
+        },
+        {
+          "ar": "destination to destination path graph",
+          "en": "destination to destination path graph"
+        },
+        {
+          "ar": "decision to decision path graph",
+          "en": "decision to decision path graph"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q29",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** DD = Decision to Decision. الرسم يدمج العقد المتتابعة ويُبقي عقد القرار. الفخ: لا تفكّ الاختصار إلى Design أو Defect أو Destination.",
+        "en": "A DD path graph is a decision-to-decision path graph. It reduces the flow graph by combining runs of sequential nodes into single nodes, keeping the decision nodes."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "المسار المستقل independent path هو:",
+        "en": "An independent path is"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "8.30",
+        "line": 3949,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.30; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "any path through the DD path graph that introduces at least one new set of processing statements or new conditions",
+          "en": "any path through the DD path graph that introduces at least one new set of processing statements or new conditions"
+        },
+        {
+          "ar": "any path through the DD Path graph that introduces at most one new set of processing statements or new conditions",
+          "en": "any path through the DD Path graph that introduces at most one new set of processing statements or new conditions"
+        },
+        {
+          "ar": "any path through the DD Path graph that introduces one and only one new set of processing statements or new conditions",
+          "en": "any path through the DD Path graph that introduces one and only one new set of processing statements or new conditions"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q30",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** المسار المستقل يضيف على الأقل مجموعة جديدة من تعليمات المعالجة أو شروطاً جديدة. الفخ: at most وone and only one خياران خاطئان.",
+        "en": "An independent path is any path through the DD path graph that introduces at least one new set of processing statements or new conditions."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "التعقيد السيكلوماتي cyclomatic complexity طوره:",
+        "en": "Cyclomatic complexity is developed by"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "8.31",
+        "line": 3955,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.31; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "B.W. Boehm",
+          "en": "B.W. Boehm"
+        },
+        {
+          "ar": "T.J. McCabe",
+          "en": "T.J. McCabe"
+        },
+        {
+          "ar": "B.W. Littlewood",
+          "en": "B.W. Littlewood"
+        },
+        {
+          "ar": "Victor Basili",
+          "en": "Victor Basili"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q31",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** مقياس التعقيد الدوري من وضع مكيب (T. J. McCabe).",
+        "en": "Cyclomatic complexity was developed by T. J. McCabe. The deck introduces it as McCabe's cyclomatic metric, V(G) = e - n + 2P."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "يرمز للتعقيد السيكلوماتي بـ:",
+        "en": "Cyclomatic complexity is denoted by"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "8.32",
+        "line": 3961,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.32; publisher key p. 499",
+        "key_status": "confirmed",
+        "normalizations": [
+          "remove_page_header_artifact"
+        ]
+      },
+      "options": [
+        {
+          "ar": "V(G) = e – n + 2P",
+          "en": "V(G) = e – n + 2P"
+        },
+        {
+          "ar": "V(G) = Π + 1",
+          "en": "V(G) = Π + 1"
+        },
+        {
+          "ar": "V(G) = number of regions of the graph",
+          "en": "V(G) = number of regions of the graph"
+        },
+        {
+          "ar": "all of the above.",
+          "en": "all of the above."
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q32",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** الطرق الثلاث صحيحة: e-n+2P (حيث P عدد المكونات المتصلة)، وπ+1 (حيث π عدد عقد القرار)، وعدد المناطق. لذلك الإجابة (d).",
+        "en": "All three formulations are valid: (a) V(G) = e - n + 2P, (b) V(G) = π + 1, where π is the number of predicate nodes, and (c) V(G) = the number of regions of the flow graph."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "المعادلة V(G) = Π + 1 للتعقيد السيكلوماتي تنطبق فقط إذا كان لكل عقدة شرط predicate:",
+        "en": "The equation V(G) = Π + 1 of cyclomatic complexity is applicable only if every predicate node has"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "8.33",
+        "line": 3972,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.33; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "two outgoing edges",
+          "en": "two outgoing edges"
+        },
+        {
+          "ar": "three or more outgoing edges",
+          "en": "three or more outgoing edges"
+        },
+        {
+          "ar": "no outgoing edges",
+          "en": "no outgoing edges"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q33",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** صيغة π+1 تصح فقط إذا كان لكل عقدة قرار مخرجان اثنان بالضبط.",
+        "en": "The equation V(G) = π + 1 applies only if every predicate node has two outgoing edges. A node with three or more outgoing edges breaks the simple +1 rule."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "حجم مصفوفة الرسم graph matrix هو:",
+        "en": "The size of the graph matrix is"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "8.34",
+        "line": 3978,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.34; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "number of edges in the flow graph",
+          "en": "number of edges in the flow graph"
+        },
+        {
+          "ar": "number of nodes in the flow graph",
+          "en": "number of nodes in the flow graph"
+        },
+        {
+          "ar": "number of paths in the flow graph",
+          "en": "number of paths in the flow graph"
+        },
+        {
+          "ar": "number of independent paths in the flow graph",
+          "en": "number of independent paths in the flow graph"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q34",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** مصفوفة الرسم البياني (Graph Matrix) هي مصفوفة مربعة بأبعاد $N \\times N$، حيث يمثل $N$ عدد العقد الإجمالي في مخطط تدفق البرنامج.",
+        "en": "The size of a graph matrix is an $N \\times N$ square matrix, where $N$ is the number of nodes in the flow graph. Each row and column corresponds directly to a node."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كل عقدة تمثل بـ:",
+        "en": "Every node is represented by"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "8.35",
+        "line": 3984,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.35; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "one row and one column in graph matrix",
+          "en": "one row and one column in graph matrix"
+        },
+        {
+          "ar": "two rows and two columns in graph matrix",
+          "en": "two rows and two columns in graph matrix"
+        },
+        {
+          "ar": "one row and two columns in graph matrix",
+          "en": "one row and two columns in graph matrix"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q35",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** في مصفوفة الرسم، تُمثل كل عقدة بصف واحد وعمود واحد حصراً؛ وتُسجل التوصيلات بين العقدة $i$ والعقدة $j$ في الخلية المتقاطعة.",
+        "en": "In a graph matrix, every node is represented by exactly one row and one column. The entry at $(i, j)$ indicates whether a directed edge connects node $i$ to node $j$."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "التعقيد السيكلوماتي يساوي:",
+        "en": "Cyclomatic complexity is equal to"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "8.36",
+        "line": 3990,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.36; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "number of independent paths",
+          "en": "number of independent paths"
+        },
+        {
+          "ar": "number of paths",
+          "en": "number of paths"
+        },
+        {
+          "ar": "number of edges",
+          "en": "number of edges"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q36",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** التعقيد الدوري $V(G)$ يساوي رياضياً عدد المسارات المستقلة خطياً (Number of independent paths) في فضاء المسارات الأساسي للبرنامج.",
+        "en": "Cyclomatic complexity $V(G)$ is equal to the number of linearly independent paths through the program flow graph. It establishes the upper bound for the number of test cases required to achieve complete branch coverage."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "اختبار تدفق البيانات data flow testing يرتبط بـ:",
+        "en": "Data flow testing is related to"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "8.37",
+        "line": 3996,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.37; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "data flow diagrams",
+          "en": "data flow diagrams"
+        },
+        {
+          "ar": "E-R diagrams",
+          "en": "E-R diagrams"
+        },
+        {
+          "ar": "data dictionaries",
+          "en": "data dictionaries"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q37",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** فحص تدفق البيانات (Data Flow Testing) هو فحص صندوق أبيض لمسارات المتغيرات (DEF/USE) في كود البرنامج، ولا علاقة له بمخططات تدفق البيانات (DFD) أو مخططات الكيانات (ERD).",
+        "en": "Data flow testing is not related to data flow diagrams, E-R diagrams, or data dictionaries. Data flow testing is a structural (white-box) technique focusing on the lifecycle of program variables (definitions, uses, and kills) along paths in control flow graphs."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "في اختبار تدفق البيانات، الهدف هو إيجاد:",
+        "en": "In data flow testing, objective is to find"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "8.38",
+        "line": 4002,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch08_Software_Testing.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 8.38; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "all dc-paths that are not du-paths",
+          "en": "all dc-paths that are not du-paths"
+        },
+        {
+          "ar": "all du-paths",
+          "en": "all du-paths"
+        },
+        {
+          "ar": "all du-paths that are not dc-paths",
+          "en": "all du-paths that are not dc-paths"
+        },
+        {
+          "ar": "all dc-paths",
+          "en": "all dc-paths"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch08_q38",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** الهدف في فحص تدفق البيانات هو كشف التشوهات (Data anomalies) باختبار المسارات التي يعاد فيها تعريف المتغير دون استخدامه (المسارات التي ليست dc-paths نظيفة).",
+        "en": "In data flow testing, a key objective is to uncover data anomalies, which requires examining all du-paths that are not definition-clear (dc) paths. If a variable is re-defined along a path before being used, an anomaly or redundant definition exists."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:51Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

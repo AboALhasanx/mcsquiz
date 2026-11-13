@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch06_T10_Quality_And_Defect_Metrics",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "All failures divided by the number of product releases"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_dre_project_formula",
       "explanation": {
         "ar": "تساوي DRE للمشروع E مقسوماً على E مضافاً إليه D؛ إذ تمثل E ما اكتشف قبل التسليم وD ما اكتشف بعده، ويعكس المقياس فاعلية تنقية العيوب.",
@@ -65,6 +67,7 @@
           "en": "E is project staff; D is delivered documentation pages"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_dre_error_terms",
       "explanation": {
         "ar": "يفصل تعريف Pressman للمشروع بين الأخطاء المكتشفة قبل التسليم والعيوب المكتشفة بعده؛ وهما جزآ المقام.",
@@ -97,6 +100,7 @@
           "en": "Activity effort relative to the project's total development cost"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_dre_activity_scope",
       "explanation": {
         "ar": "تقسم DRE للنشاط أخطاء النشاط i على مجموعها والعيوب المتسربة منه والمكتشفة في النشاط التالي.",
@@ -129,6 +133,7 @@
           "en": "Most measured errors are found before the next boundary"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_dre_interpretation",
       "explanation": {
         "ar": "تشير القيمة القريبة من الواحد إلى فاعلية التنقية المبكرة ضمن النطاق المحدد؛ ولا تثبت خلو البرمجيات من العيوب في جميع الظروف.",
@@ -161,6 +166,7 @@
           "en": "Move every detected error to the following phase"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_phase_containment",
       "explanation": {
         "ar": "يهدف احتواء المرحلة إلى كشف الأخطاء قرب الموضع الذي أُدخلت فيه، مما يقلل إعادة العمل عبر المراحل اللاحقة.",
@@ -193,6 +199,7 @@
           "en": "Equalize product sizes before comparison"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_defect_density",
       "explanation": {
         "ar": "يجعل مقام الحجم عدد العيوب قابلاً للتفسير نسبةً إلى حجم المنتج؛ فالعدد الخام وحده لا يطبع أحجام المنتجات المختلفة.",
@@ -225,6 +232,7 @@
           "en": "Operating hours between consecutive failures"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_defect_per_kloc",
       "explanation": {
         "ar": "يقسم مقياس العيوب لكل KLOC عدد العيوب على آلاف الأسطر البرمجية؛ أما نقاط الوظائف فمقام حجم مختلف.",
@@ -257,6 +265,7 @@
           "en": "Defects relative to delivered functional size"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_defect_per_fp",
       "explanation": {
         "ar": "يربط مقام نقاط الوظائف العيوب بالحجم الوظيفي؛ أما KLOC فيمثل مقاماً لحجم الشيفرة لا للحجم الوظيفي.",
@@ -289,6 +298,7 @@
           "en": "Average executable statements within one module"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mtbf_product_measure",
       "explanation": {
         "ar": "يتعلق MTBF بزمن التشغيل بين الإخفاقات ويستخدم مقياساً للمنتج مرتبطاً بالاعتمادية؛ وليس عدّاً للعيوب أو جدولاً للمشروع.",
@@ -321,6 +331,7 @@
           "en": "The product has the smallest possible source size"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_dre_unit_scope",
       "explanation": {
         "ar": "ضمن حدّ الرصد والفترة المحددين، تعني DRE التي تساوي واحداً أن أياً من العيوب المعدودة لم يتسرب عبر الحد؛ ولا تثبت غياب العيوب مطلقاً.",

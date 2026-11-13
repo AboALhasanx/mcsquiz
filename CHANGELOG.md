@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.12.0] — 2026-11-13
+
+### Changed
+- feat: separate source-faithful MCQs from conceptual practice, preserve original ordering, and leave disputed keys ungraded; ASE Ch01–09 source track (21 banks / 252 questions) published as content v111
+
+
 ## [1.11.30] — 2026-11-06
 
 ### Changed

@@ -20,6 +20,11 @@
     return m + ':' + String(s).padStart(2, '0');
   }
 
+  function isScorable(q) {
+    return !(q && q.bank_kind === 'source' && q.source &&
+      q.source.key_status === 'disputed' && q.correct === null && q.answer === null);
+  }
+
   /**
    * Analyze one finished session.
    * @param {Array} questions  deep-copied session questions [{id, correct, ...}]
@@ -28,15 +33,16 @@
    * @param {number} totalSec  wall-clock session seconds
    */
   function analyze(questions, picks, dwells, totalSec) {
-    const n = questions.length;
+    const n = questions.filter(isScorable).length;
     let correct = 0;
     const wrongIds = [];
     const rows = [];
     let dwellSum = 0;
     let dwellN = 0;
 
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
+      if (!isScorable(q)) continue;
       const picked = picks[i];
       const ok = picked !== null && picked !== undefined && picked === q.correct;
       if (ok) correct++;
@@ -48,7 +54,7 @@
     }
 
     const pct = n === 0 ? 0 : Math.round((correct / n) * 1000) / 10;
-    const band = gradeBand(pct);
+    const band = n === 0 && questions.length > 0 ? { key: 'ungraded', ar: 'مراجعة بلا تقييم', icon: 'book-open' } : gradeBand(pct);
     const avgDwell = dwellN === 0 ? 0 : dwellSum / dwellN;
 
     return {
@@ -72,6 +78,7 @@
   function buildWrongOnly(questions, picks) {
     const subset = [];
     for (let i = 0; i < questions.length; i++) {
+      if (!isScorable(questions[i])) continue;
       if (picks[i] === null || picks[i] === undefined || picks[i] !== questions[i].correct) {
         subset.push(questions[i]);
       }
@@ -79,5 +86,5 @@
     return subset.length ? subset : null;
   }
 
-  global.PortalAnalytics = { analyze: analyze, buildWrongOnly: buildWrongOnly, gradeBand: gradeBand, fmtClock: fmtClock };
+  global.PortalAnalytics = { analyze: analyze, buildWrongOnly: buildWrongOnly, gradeBand: gradeBand, fmtClock: fmtClock, isScorable: isScorable };
 })(window);

@@ -391,7 +391,11 @@
       var subId = sub.subject_id || '';
       var subTitle = sub.subject_title || subId;
       var meta = getSubjectMeta(subId, subTitle);
-      var chapters = Array.isArray(sub.chapters) ? sub.chapters : [];
+      var chapters = (Array.isArray(sub.chapters) ? sub.chapters : []).filter(function (ch) {
+        if (!ch) return false;
+        if (ch.bank_kind === 'source') return false;
+        return !/^Quiz_Ch\d+_S\d+_Source_/.test(String(ch.quiz_id || ''));
+      });
       var totalQuizzes = chapters.length;
       var completedQuizzes = 0;
       var sumPct = 0;

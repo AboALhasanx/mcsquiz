@@ -1,0 +1,597 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 1",
+    "en": "Source MCQs — Batch 1"
+  },
+  "quiz_id": "Quiz_Ch07_S01_Source_MCQs",
+  "has_math": true,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي مما يلي ليس مرحلة من مراحل منحنى الحوض bath tub curve في موثوقية العتاد؟",
+        "en": "Which one is not a phase of \"bath tub curve\" of hardware reliability"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.1",
+        "line": 1856,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.1; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "burn-in",
+          "en": "burn-in"
+        },
+        {
+          "ar": "useful life",
+          "en": "useful life"
+        },
+        {
+          "ar": "wear-out",
+          "en": "wear-out"
+        },
+        {
+          "ar": "test-out",
+          "en": "test-out"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q01",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** المراحل الثلاث لمنحنى الحوض (Bathtub curve) في عتاد الأجهزة هي: مرحلة البداية (Burn-in)، ثم العمر النافع المستقر (Useful life)، ثم مرحلة الاهتراء والتقادم (Wear-out). لا توجد مرحلة باسم «Test-out»، فالبرمجيات لا تهترئ مادياً (No wear-out) بعكس الهاردوير.",
+        "en": "The classical hardware reliability \"bathtub curve\" depicts failure rate over time across three distinct operational phases: 1. Burn-in phase (Infant mortality): Characterized by an initially high failure rate that decreases rapidly as manufacturing defects and marginal components are identified and replaced. 2. Useful life phase: Characterized by a low, relatively constant failure rate driven by random, unpredictable environmental stresses. 3. Wear-out phase: Characterized by a steadily increasing failure rate caused by physical deterioration, fatigue, oxidation, and mechanical friction. \"Test-out\" is not a recognized operational phase of the bathtub curve."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "موثوقية البرمجيات هي:",
+        "en": "Software reliability is"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.2",
+        "line": 1861,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.2; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "the probability of failure free operation of a program for a specified time in a specified envi- ronment",
+          "en": "the probability of failure free operation of a program for a specified time in a specified envi- ronment"
+        },
+        {
+          "ar": "the probability of failure of a program for a specified time in a specified environment",
+          "en": "the probability of failure of a program for a specified time in a specified environment"
+        },
+        {
+          "ar": "the probability of success of a program for a specified time in any environment",
+          "en": "the probability of success of a program for a specified time in any environment"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q02",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** احفظ أركان تعريف اعتمادية البرمجيات الأربعة: الاحتمالية (Probability) ← التشغيل الخالي من الفشل (Failure-free) ← في زمن محدد (Specified time) ← في بيئة تشغيلية محددة (Specified environment).",
+        "en": "Software reliability is the probability of failure-free operation of a program for a specified time in a specified environment. The definition specifies four dimensions: - Probability: A mathematical quantification bounded in $[0, 1]$. - Failure-free operation: The absence of dynamic non-conformances with user expectations. - Specified time: Measured in execution (CPU) time, clock time, or operational units. - Specified environment: The input space and operational profile under which the software executes."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "Fault هو:",
+        "en": "Fault is"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.3",
+        "line": 1867,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.3; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "defect in the program",
+          "en": "defect in the program"
+        },
+        {
+          "ar": "mistake in the program",
+          "en": "mistake in the program"
+        },
+        {
+          "ar": "error in the program",
+          "en": "error in the program"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q03",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** تسلسل الأعطال القياسي: الخطأ البشري (Error/Mistake) يُنتج عيباً داخلياً في الكود يسمى العلة أو الخلل (Fault/Defect)، والذي يسبب عند تنفيذه الفشل التشغيلي الخارجي (Failure).",
+        "en": "In IEEE standard terminology and software reliability foundations, a fault is an internal manifestation of a human mistake or error that introduces a defect into the program source code, design, or documentation. While rigorous taxonomies distinguish the developer's cognitive error (mistake) from the static code defect (fault) and the runtime event (failure), the terms defect, mistake, and error are commonly used interchangeably in introductory reliability literature to characterize a fault."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "قد يؤدي Fault واحد إلى:",
+        "en": "One fault may lead to"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.4",
+        "line": 1872,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.4; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "one failure",
+          "en": "one failure"
+        },
+        {
+          "ar": "two failures",
+          "en": "two failures"
+        },
+        {
+          "ar": "many failures",
+          "en": "many failures"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q04",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** العلاقة بين العيب المصدري (Fault) والفشل التشغيلي (Failure) هي علاقة (One-to-Many)؛ عيب برمجي واحد في حلقة تكرار قد يسبب آلاف الانهيارات، وقد لا يظهر أبداً إذا لم يُنفذ مساره.",
+        "en": "There is no strict one-to-one mapping between static faults and dynamic failures: - A single fault may manifest as a single failure under a specific test case. - A single fault may trigger multiple recurring failures across different user transactions or continuous iterations. - A single fault may cause an entire cascade of failures in downstream distributed components. - Conversely, multiple distinct faults may combine to trigger a single observable failure."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي وحدة زمن time لا تستخدم في دراسات الموثوقية؟",
+        "en": "Which 'time' unit is not used in reliability studies"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "7.5",
+        "line": 1877,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.5; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "execution time",
+          "en": "execution time"
+        },
+        {
+          "ar": "machine time",
+          "en": "machine time"
+        },
+        {
+          "ar": "clock time",
+          "en": "clock time"
+        },
+        {
+          "ar": "calendar time",
+          "en": "calendar time"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q05",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** المقاييس الزمنية المعتمدة في دراسات الاعتمادية هي ثلاثة: زمن التنفيذ الفعلي للمعالج (Execution time $\\tau$)، والزمن التقويمي الطبيعي (Calendar time $t$)، وزمن الساعة الجدارية (Clock time). مصطلح «Machine time» مستبعد.",
+        "en": "Software reliability engineering characterizes system behavior across three specific, well-defined time concepts: 1. Execution time ($\\tau$): The actual processor (CPU) time spent by the computer system executing the instructions of the software under study. 2. Calendar time ($t$): The ordinary chronological time experienced in calendar days, weeks, or months, including idle time and off-shift hours. 3. Clock time: The total elapsed wall-clock running time during which the system is operational. \"Machine time\" is an ambiguous, non-standard term not formally recognized as a time dimension in reliability modeling."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "يمكن تمثيل حالات الفشل failure occurrences على أنها:",
+        "en": "Failure occurrences can be represented as"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.6",
+        "line": 1882,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.6; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "time to failure",
+          "en": "time to failure"
+        },
+        {
+          "ar": "time interval between failures",
+          "en": "time interval between failures"
+        },
+        {
+          "ar": "failures experienced in a time interval",
+          "en": "failures experienced in a time interval"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q06",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** يمكن تمثيل حدوث الانهيارات بثلاث طرق إحصائية متكافئة: زمن حدوث الفشل، أو الفاصل الزمني بين فشلين، أو عدد الإخفاقات خلال فترة محددة.",
+        "en": "In stochastic reliability modeling, the random failure process can be mathematically formulated in three mathematically equivalent representations: 1. Time to failure: The elapsed time from the start of execution until failure occurrence. 2. Time interval between failures: The incremental operational duration separating successive failure events ($t_i - t_{i-1}$). 3. Failures experienced in a time interval: The cumulative or incremental count of failures observed over a given operational duration ($M(\\tau)$ or $\\Delta \\mu$)."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أقصى قيمة ممكنة للموثوقية هي:",
+        "en": "Maximum possible value of reliability is"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.7",
+        "line": 1887,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.7; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "100",
+          "en": "100"
+        },
+        {
+          "ar": "10",
+          "en": "10"
+        },
+        {
+          "ar": "1",
+          "en": "1"
+        },
+        {
+          "ar": "0",
+          "en": "0"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q07",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** الاعتمادية هي دالة احتمالية رياضية (Probability)، وبالتالي فإن قيمتها الصغرى هي 0 وقيمتها العظمى هي 1 (ولا يُختار 100 إلا إذا وُضعت علامة النسبة المئوية %).",
+        "en": "Because reliability $R(t)$ is mathematically defined as a probability, its values are strictly bounded by the probability axioms within the closed real interval: $$0 \\le R(t) \\le 1$$ A reliability value of $R(t) = 1.0$ represents a 100% mathematical probability of failure-free operation over the specified interval. (While percentages such as $100\\%$ are colloquial, the raw mathematical maximum is $1$)."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "أدنى قيمة ممكنة للموثوقية هي:",
+        "en": "Minimum possible value of reliability is"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.8",
+        "line": 1892,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.8; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "100",
+          "en": "100"
+        },
+        {
+          "ar": "10",
+          "en": "10"
+        },
+        {
+          "ar": "1",
+          "en": "1"
+        },
+        {
+          "ar": "0",
+          "en": "0"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q08",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** القيمة الصغرى المطلقة للاعتمادية هي 0.",
+        "en": "The lower bound of the probability distribution for software reliability is $0$, representing complete operational failure where failure-free operation over the specified duration cannot occur."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "كلما زادت الموثوقية، فإن شدة الفشل failure intensity:",
+        "en": "As the reliability increases, failure intensity"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.9",
+        "line": 1897,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.9; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "decreases",
+          "en": "decreases"
+        },
+        {
+          "ar": "increases",
+          "en": "increases"
+        },
+        {
+          "ar": "no effect",
+          "en": "no effect"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q09",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** العلاقة عكسية صريحة: كلما انخفضت شدة الفشل (Failure Intensity $\\lambda$)، ارتفعت موثوقية واعتمادية النظام ($R$).",
+        "en": "Reliability $R(t)$ and failure intensity $\\lambda(t)$ share an inverse exponential relationship: $$R(t) = \\exp\\left(-\\int_0^t \\lambda(u) \\, du\\right)$$ When failure intensity $\\lambda$ decreases (indicating fewer failures occurring per unit of execution time), the probability of failure-free operation $R(t)$ increases toward 1. Conversely, high failure intensity rapidly drives reliability toward zero."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "إذا كانت شدة الفشل 0.005 failures/hour خلال 10 ساعات تشغيل، فإن موثوقية البرنامج تعبر عن:",
+        "en": "If failure intensity is 0.005 failures/hour during 10 hours of operation of a software, its reliability can be expressed as"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.10",
+        "line": 1902,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.10; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "0.90",
+          "en": "0.90"
+        },
+        {
+          "ar": "0.92",
+          "en": "0.92"
+        },
+        {
+          "ar": "0.95",
+          "en": "0.95"
+        },
+        {
+          "ar": "0.98",
+          "en": "0.98"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q10",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** القانون الرياضي المباشر: $R = e^{-\\lambda t} = e^{-(0.005 \\times 10)} = e^{-0.05} \\approx 0.9512$. التقريب الصحيح هو 0.95.",
+        "en": "Under the constant failure intensity assumption over operational duration $t$, reliability is calculated using the exponential reliability formula: $$R(t) = e^{-\\lambda t}$$ Substituting $\\lambda = 0.005 \\text{ failures/hour}$ and $t = 10 \\text{ hours}$: $$R(10) = e^{-(0.005 \\times 10)} = e^{-0.05} \\approx 0.951229 \\approx 0.95$$ Therefore, the probability of failure-free operation during the 10-hour interval is approximately 0.95 (or 95.1%)."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "جودة البرمجيات Software Quality هي:",
+        "en": "Software Quality is"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.11",
+        "line": 1908,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.11; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "conformance to requirements",
+          "en": "conformance to requirements"
+        },
+        {
+          "ar": "fitness for the purpose",
+          "en": "fitness for the purpose"
+        },
+        {
+          "ar": "level of satisfaction",
+          "en": "level of satisfaction"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q11",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** جودة البرمجيات تشمل التوافق مع المتطلبات المحددة (Crosby)، والملاءمة للغرض التشغيلي (Juran)، وتحقيق رضا المستخدم (ISO/IEEE).",
+        "en": "Software quality is a multidimensional concept synthesizing several canonical engineering perspectives: - Crosby's definition: \"Conformance to requirements\" (meeting specified functional and non-functional specifications). - Juran's definition: \"Fitness for purpose / use\" (satisfying customer operational needs in real production). - IEEE / ISO definition: The degree to which a software system satisfies user requirements and produces a high level of stakeholder satisfaction."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "معدل العيوب Defect rate هو:",
+        "en": "Defect rate is"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.12",
+        "line": 1913,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.12; publisher key p. 499",
+        "key_status": "confirmed",
+        "normalizations": [
+          "remove_page_header_artifact"
+        ]
+      },
+      "options": [
+        {
+          "ar": "number of defects per million lines of source code",
+          "en": "number of defects per million lines of source code"
+        },
+        {
+          "ar": "number of defects per function point",
+          "en": "number of defects per function point"
+        },
+        {
+          "ar": "number of defects per unit of size of software",
+          "en": "number of defects per unit of size of software"
+        },
+        {
+          "ar": "all of the above",
+          "en": "all of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q12",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** معدل أو كثافة العيوب (Defect rate) هو مقياس منسوب لوحدة الحجم، سواء قيس بعدد العيوب لكل KLOC أو لكل Function Point.",
+        "en": "Defect rate (or defect density) is defined as the total number of identified defects normalized against a standardized measure of software size. Industry and academic standards compute defect rate per KLOC (thousands of lines of code), per million lines of code (in telecommunications/avionics), or per Function Point (in business IT systems). Therefore, any metric normalizing defects per unit of size represents defect rate."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "كم عدد عوامل جودة المنتج المقترحة في نموذج McCall؟",
+        "en": "How many product quality factors have been proposed in McCall quality model ?"
+      },
+      "bloom": "Remember",
+      "answer": null,
+      "source": {
+        "id": "7.13",
+        "line": 1924,
+        "note": {
+          "ar": "مفتاح الناشر B يتعارض مع الحل المستنتج من النص؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "DISPUTED: Publisher key is B (3), but McCall model defines 3 perspectives and 11 factors. Question asks for factors (C=11)."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.13; publisher key p. 499",
+        "key_status": "disputed"
+      },
+      "options": [
+        {
+          "ar": "2",
+          "en": "2"
+        },
+        {
+          "ar": "3",
+          "en": "3"
+        },
+        {
+          "ar": "11",
+          "en": "11"
+        },
+        {
+          "ar": "6",
+          "en": "6"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q13",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** نموذج ماكول (McCall) يقسم الجودة إلى **3 أبعاد رئيسية** تضم بداخلها **11 عاملاً نوعياً (Factors)**: 5 للتشغيل + 3 للمراجعة والتعديل + 3 للانتقال وقابلية النقل.",
+        "en": "In Jim McCall's seminal software quality model (1977), software quality is decomposed into exactly 11 product quality factors organized across three operational perspectives: 1. Product Operation (5 factors): Correctness, Reliability, Efficiency, Integrity, Usability. 2. Product Revision (3 factors): Maintainability, Flexibility, Testability. 3. Product Transition (3 factors): Portability, Reusability, Interoperability."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:50Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

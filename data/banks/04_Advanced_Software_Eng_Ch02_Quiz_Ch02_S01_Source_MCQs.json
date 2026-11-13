@@ -1,0 +1,594 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 1",
+    "en": "Source MCQs — Batch 1"
+  },
+  "quiz_id": "Quiz_Ch02_S01_Source_MCQs",
+  "has_math": false,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "تم تطوير النموذج الحلزوني بواسطة:",
+        "en": "Spiral Model was developed by"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "2.1",
+        "line": 781,
+        "note": {
+          "ar": "ورد الاسم مطبوعاً في الكتاب الأصلي ص. 37 والسلايد 41 بالخطأ المطبعي Berry Boehm، والمفتاح يعتمد (b)، والصحيح علمياً هو Barry Boehm.",
+          "en": "Textbook printed text (p. 37) and slide 41 print the typo  Berry Boehm; the official key is (b). Preserved raw text verbatim; academically the developer is Barry Boehm."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.1; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Bev Littlewood",
+          "en": "Bev Littlewood"
+        },
+        {
+          "ar": "Berry Boehm",
+          "en": "Berry Boehm"
+        },
+        {
+          "ar": "Roger Pressman",
+          "en": "Roger Pressman"
+        },
+        {
+          "ar": "Victor Basili",
+          "en": "Victor Basili"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q01",
+      "explanation": {
+        "ar": "طور النموذج الحلزوني العالم باري بوم عام 1986 لإدماج إدارة وتحليل المخاطر في دورة حياة البرمجيات.",
+        "en": "The spiral model was formulated and published by Barry Boehm in 1986 to incorporate explicit risk analysis into the SDLC."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي النماذج التالية هو الأكثر شعبية واستخداماً لمشاريع الطلاب الصغيرة؟",
+        "en": "Which model is most popular for student’s small projects?"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "source": {
+        "id": "2.2",
+        "line": 784,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). Also called Build and Fix."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.2; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "نموذج الشلال",
+          "en": "waterfall model"
+        },
+        {
+          "ar": "النموذج الحلزوني",
+          "en": "spiral model"
+        },
+        {
+          "ar": "نموذج البناء والتصليح السريع",
+          "en": "quick and fix model"
+        },
+        {
+          "ar": "نموذج النماذج الأولية",
+          "en": "prototyping model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q02",
+      "explanation": {
+        "ar": "نموذج Quick and Fix هو الأكثر شيوعاً في التمارين الطلابية الصغيرة ذات الأسطر القليلة لعدم حاجته لمواصفات وتوثيق مسبق.",
+        "en": "The quick and fix model (Build and Fix) is widely used by students for small programs (100-200 LOC) where code is written without formal specification."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مما يلي ليس نموذجاً من نماذج دورة حياة البرمجيات؟",
+        "en": "Which is not a software life cycle model?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "source": {
+        "id": "2.3",
+        "line": 787,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d). CMM is a maturity framework, not an SDLC."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.3; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "نموذج الشلال",
+          "en": "waterfall model"
+        },
+        {
+          "ar": "النموذج الحلزوني",
+          "en": "spiral model"
+        },
+        {
+          "ar": "نموذج النماذج الأولية",
+          "en": "prototyping model"
+        },
+        {
+          "ar": "نموذج نضج القدرات",
+          "en": "capability maturity model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q03",
+      "explanation": {
+        "ar": "نموذج نضج القدرات هو إطار لتقييم ونضج العمليات المؤسسية وليس نموذجاً تنفيذياً لدورة حياة البرمجيات.",
+        "en": "The Capability Maturity Model (CMM) is an organizational process improvement framework, not an engineering life cycle model."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "يتم أخذ عامل مخاطر المشروع في الاعتبار في:",
+        "en": "Project risk factor is considered in"
+      },
+      "bloom": "Understand",
+      "answer": 2,
+      "source": {
+        "id": "2.4",
+        "line": 790,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c)."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.4; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "نموذج الشلال",
+          "en": "waterfall model"
+        },
+        {
+          "ar": "نموذج النماذج الأولية",
+          "en": "prototyping model"
+        },
+        {
+          "ar": "النموذج الحلزوني",
+          "en": "spiral model"
+        },
+        {
+          "ar": "نموذج التحسين التكراري",
+          "en": "iterative enhancement model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q04",
+      "explanation": {
+        "ar": "الميزة الجوهرية للنموذج الحلزوني هي إجراء تحليل وإدارة المخاطر في كل دورة تكرارية قبل الانتقال للمرحلة التالية.",
+        "en": "The defining characteristic of the spiral model is explicit risk assessment and management in every cycle."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "المصطلح SDLC هو اختصار لـ:",
+        "en": "SDLC stands for"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "2.5",
+        "line": 793,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b)."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.5; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Software design life cycle",
+          "en": "software design life cycle"
+        },
+        {
+          "ar": "Software development life cycle",
+          "en": "software development life cycle"
+        },
+        {
+          "ar": "System development life cycle",
+          "en": "system development life cycle"
+        },
+        {
+          "ar": "System design life cycle",
+          "en": "system design life cycle"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q05",
+      "explanation": {
+        "ar": "يرمز SDLC في هندسة البرمجيات إلى Software Development Life Cycle (دورة حياة تطوير البرمجيات).",
+        "en": "SDLC stands for Software Development Life Cycle."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "يتكون نموذج البناء والتصليح من:",
+        "en": "Build and fix model has"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "2.6",
+        "line": 796,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). Two phases: write code, fix code."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.6; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "3 مراحل",
+          "en": "3 phases"
+        },
+        {
+          "ar": "مرحلة واحدة",
+          "en": "1 phase"
+        },
+        {
+          "ar": "مرحلتين",
+          "en": "2 phases"
+        },
+        {
+          "ar": "4 مراحل",
+          "en": "4 phases"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q06",
+      "explanation": {
+        "ar": "يتكون نموذج Build and Fix من مرحلتين اثنتين فقط: كتابة الكود ثم تعديله وتصحيح أخطائه.",
+        "en": "Build and Fix consists of exactly 2 phases: Write code, then modify/fix it until satisfied."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "المصطلح SRS هو اختصار لـ:",
+        "en": "SRS Stands for"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "2.7",
+        "line": 799,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a)."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.7; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Software requirements specification",
+          "en": "software requirements specification"
+        },
+        {
+          "ar": "Software requirements solutions",
+          "en": "software requirements solutions"
+        },
+        {
+          "ar": "System requirements specification",
+          "en": "system requirements specification"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q07",
+      "explanation": {
+        "ar": "يرمز SRS إلى Software Requirements Specification (مواصفات متطلبات البرمجيات).",
+        "en": "SRS stands for Software Requirements Specification, the baseline specification document."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "نموذج الشلال غير مناسب لـ:",
+        "en": "Waterfall model is not suitable for"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "source": {
+        "id": "2.8",
+        "line": 802,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b). النص المطبوع ورد بـ accomodating change.",
+          "en": "Textbook key confirms (b). Printed book preserves typo accomodating change."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.8; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "المشاريع الصغيرة",
+          "en": "small projects"
+        },
+        {
+          "ar": "استيعاب التغييرات",
+          "en": "accomodating change"
+        },
+        {
+          "ar": "المشاريع المعقدة",
+          "en": "complex projects"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q08",
+      "explanation": {
+        "ar": "نموذج الشلال تسلسلي صارم ولا يصلح للمشاريع التي تتغير متطلباتها باستمرار أثناء التطوير.",
+        "en": "The classic waterfall model is rigid and sequential, making it ill-suited for accommodating changing requirements during development."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "المصطلح RAD هو اختصار لـ:",
+        "en": "RAD stands for"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "2.9",
+        "line": 805,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a)."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.9; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Rapid application development",
+          "en": "rapid application development"
+        },
+        {
+          "ar": "Relative application development",
+          "en": "relative application development"
+        },
+        {
+          "ar": "Ready application development",
+          "en": "ready application development"
+        },
+        {
+          "ar": "Repeated application development",
+          "en": "repeated application development"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q09",
+      "explanation": {
+        "ar": "يرمز RAD إلى Rapid Application Development (التطوير السريع للتطبيقات).",
+        "en": "RAD stands for Rapid Application Development, emphasizing short development cycles using component-based construction."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "تم اقتراح نموذج التطوير السريع بواسطة:",
+        "en": "RAD model was proposed by"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "2.10",
+        "line": 808,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c).",
+          "en": "Textbook key confirms (c). James Martin at IBM formulated RAD."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.10; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Lucent Technologies",
+          "en": "Lucent Technologies"
+        },
+        {
+          "ar": "Motorola",
+          "en": "motorola"
+        },
+        {
+          "ar": "IBM",
+          "en": "IBM"
+        },
+        {
+          "ar": "Microsoft",
+          "en": "microsoft"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q10",
+      "explanation": {
+        "ar": "تم اقتراح نموذج التطوير السريع RAD وتبنيه بواسطة شركة IBM (عبر جيمس مارتن عام 1991).",
+        "en": "The RAD model was proposed and popularized by IBM (James Martin) in 1991."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "إذا كانت المتطلبات مفهومة بوضوح ومحددة بدقة، فما هو النموذج الأنسب؟",
+        "en": "If requirements are easily understandable and defined, which model is best suited?"
+      },
+      "bloom": "Apply",
+      "answer": 0,
+      "source": {
+        "id": "2.11",
+        "line": 811,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a).",
+          "en": "Textbook key confirms (a)."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.11; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "نموذج الشلال",
+          "en": "waterfall model"
+        },
+        {
+          "ar": "نموذج النماذج الأولية",
+          "en": "prototyping model"
+        },
+        {
+          "ar": "النموذج الحلزوني",
+          "en": "spiral model"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q11",
+      "explanation": {
+        "ar": "عندما تكون المتطلبات مستقرة ومفهومة تماماً وخالية من الغموض، فإن نموذج الشلال الكلاسيكي هو الأفضل والأنسب.",
+        "en": "When requirements are well-understood, stable, and clearly defined from the start, the linear waterfall model is the simplest and best suited."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "إذا كانت المتطلبات تتغير باستمرار وبشكل متكرر، فما هو النموذج الواجب اختياره؟",
+        "en": "If requirements are frequently changing, which model is to be selected"
+      },
+      "bloom": "Apply",
+      "answer": 1,
+      "source": {
+        "id": "2.12",
+        "line": 814,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b)."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.12; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "نموذج الشلال",
+          "en": "waterfall"
+        },
+        {
+          "ar": "نموذج النماذج الأولية",
+          "en": "prototyping model"
+        },
+        {
+          "ar": "نموذج RAD",
+          "en": "RAD model"
+        },
+        {
+          "ar": "نموذج التحسين التكراري",
+          "en": "iterative enhancement model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q12",
+      "explanation": {
+        "ar": "نموذج النماذج الأولية هو الأنسب للمتطلبات سريعة التغير لأنه يوفر نماذج تجريبية تكشف المتطلبات وتعدلها فورياً.",
+        "en": "Prototyping allows continuous customer evaluation and rapid adaptation when requirements frequently change."
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "إذا كانت مشاركة المستخدمين متوفرة ومتاحة بشكل مستمر، فما هو النموذج الواجب اختياره؟",
+        "en": "If user participation is available, which model is to be chosen?"
+      },
+      "bloom": "Apply",
+      "answer": 3,
+      "source": {
+        "id": "2.13",
+        "line": 817,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d).",
+          "en": "Textbook key confirms (d). RAD requires strong user commitment."
+        },
+        "path": "02_Raw_Materials/New/Ch02_Life_Cycle_Models.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 2.13; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "نموذج الشلال",
+          "en": "waterfall model"
+        },
+        {
+          "ar": "نموذج التحسين التكراري",
+          "en": "iterative enhancement model"
+        },
+        {
+          "ar": "النموذج الحلزوني",
+          "en": "spiral model"
+        },
+        {
+          "ar": "نموذج التطوير السريع",
+          "en": "RAD model"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch02_q13",
+      "explanation": {
+        "ar": "يعتمد نموذج RAD بشكل جوهري على الحضور المستمر والمشاركة الفعالة من المستخدمين وفرق العمل المشتركة.",
+        "en": "The RAD model relies heavily on active, continuous user participation in Joint Application Development (JAD) sessions and iterative feedback."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:50Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch05_T08_Cohesion_Coupling_Relationship",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "Low cohesion and low coupling inside each component"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_design_target",
       "explanation": {
         "ar": "يركز التصميم الجيد كل مكون ويحد الاعتماد عبر الحدود.",
@@ -65,6 +67,7 @@
           "en": "Across user roles; inside a single operation"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_scope_distinction",
       "explanation": {
         "ar": "يقع التماسك داخل المكون الواحد، أما الاقتران فيتعلق بالعلاقات بين المكونات.",
@@ -97,6 +100,7 @@
           "en": "Yes, cohesion directly removes every dependency"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_not_causal",
       "explanation": {
         "ar": "قد يكون للمكون غرض مركز مع بقائه شديد الاعتماد على مكونات أخرى.",
@@ -129,6 +133,7 @@
           "en": "A focused component may lose its single defined purpose"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_high_coupling",
       "explanation": {
         "ar": "تجعل الاعتماديات القوية التغيير المحلي أكثر عرضة للتأثير في الأجزاء المرتبطة.",
@@ -161,6 +166,7 @@
           "en": "A user interface contains only a small number of screens"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_low_cohesion",
       "explanation": {
         "ar": "يعني انخفاض التماسك أن عناصر المكون لا تخدم غرضاً مركزاً واحداً.",
@@ -193,6 +199,7 @@
           "en": "Shared internal state replaces every defined interface"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_modularity",
       "explanation": {
         "ar": "تعمل النمطية بأفضل صورة عندما تكون المكونات مركزة داخلياً ومترابطة بخفة.",
@@ -225,6 +232,7 @@
           "en": "Components should share every internal data structure"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_zero_coupling",
       "explanation": {
         "ar": "الهدف تواصل يكفي للتعاون مع إزالة الاعتماديات التي يمكن تجنبها.",
@@ -257,6 +265,7 @@
           "en": "Callers rely on a stable interface, not internal details"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_information_hiding",
       "explanation": {
         "ar": "يقلل إخفاء المعلومات الاعتماد على القرارات التصميمية الداخلية.",
@@ -289,6 +298,7 @@
           "en": "All communication disappears between cooperating components"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_independence_benefits",
       "explanation": {
         "ar": "يدعم التماسك العالي والاقتران المنخفض استقلالية المكونات، ويسهل فهمها واختبارها وصيانتها.",
@@ -321,6 +331,7 @@
           "en": "Functional cohesion serves one purpose through shared global coupling"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch5_cc_logical_control_pair",
       "explanation": {
         "ar": "يختار علم المستدعي نشاطاً ضمن مجموعة متماسكة منطقياً وقد ينشأ عنه اقتران تحكم.",

@@ -17,10 +17,12 @@ ROOT = os.path.dirname(HERE)
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 PORT = os.environ.get('PORTAL_PORT', '8081')
 SPECS = [
+    'test_source_schema.py',
     'test_banks.py',
     'test_accounts.py',
     'test_pin_change.py',
     'test_catalog.py',
+    'test_source_flow.py',
     'test_quiz.py',
     'test_league.py',
     'test_vs.py',

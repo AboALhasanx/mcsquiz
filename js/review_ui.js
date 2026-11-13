@@ -279,7 +279,10 @@
           return;
         }
 
-        var finalQuestions = shuffle(pool).slice(0, selectedCount);
+        // Source questions carry positional wording; preserve their order when
+        // the pool contains any of them. Ordinary practice pools still shuffle.
+        var hasSource = pool.some(function (q) { return q && q.bank_kind === 'source'; });
+        var finalQuestions = (hasSource ? pool.slice() : shuffle(pool)).slice(0, selectedCount);
         startSessionFn(finalQuestions, title, 'custom');
       });
     }

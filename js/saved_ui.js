@@ -40,6 +40,7 @@
     };
     var lettersFor = ctx.lettersFor || function () { return ['أ', 'ب', 'ج', 'د']; };
     var richHtml = ctx.richHtml || function (t) { return escapeHtml(t); };
+    var explanationHtml = ctx.explanationHtml || function (q) { return richHtml(explText(q)); };
 
     function currentSaveKey() {
       var ses = S.session;
@@ -377,10 +378,10 @@
         solutionWrap.className = 'saved-q-solution';
 
         for (var oi = 0; oi < 4; oi++) {
-          if (oi !== q.correct) continue;
+          if (q.bank_kind !== 'source' && oi !== q.correct) continue;
           var pair = optsPair(q, oi);
           var item = document.createElement('div');
-          item.className = 'saved-correct-answer';
+          item.className = oi === q.correct ? 'saved-correct-answer' : 'saved-source-option';
           item.setAttribute('dir', 'auto');
           var li = lettersFor(pair[0].lang);
           item.innerHTML =
@@ -396,7 +397,7 @@
           var exp = document.createElement('div');
           exp.className = 'saved-q-expl';
           exp.setAttribute('dir', 'auto');
-          exp.innerHTML = '<span class="saved-expl-label">الشرح</span><div class="saved-expl-body">' + richHtml(expl) + '</div>';
+          exp.innerHTML = '<span class="saved-expl-label">الشرح</span><div class="saved-expl-body">' + explanationHtml(q) + '</div>';
           solutionWrap.appendChild(exp);
         }
 

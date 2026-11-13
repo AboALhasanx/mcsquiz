@@ -1,0 +1,471 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 1",
+    "en": "Source MCQs — Batch 1"
+  },
+  "quiz_id": "Quiz_Ch06_S01_Source_MCQs",
+  "has_math": true,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي مما يلي ليس فئة من فئات مقاييس البرمجيات؟",
+        "en": "Which one is not a category of software metrics ?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "6.1",
+        "line": 1870,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.1; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "مقاييس المنتج",
+          "en": "product metrics"
+        },
+        {
+          "ar": "مقاييس العملية",
+          "en": "process metrics"
+        },
+        {
+          "ar": "مقاييس المشروع",
+          "en": "project metrics"
+        },
+        {
+          "ar": "مقاييس الأشخاص",
+          "en": "people metrics"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q01",
+      "explanation": {
+        "ar": "التصنيف المعتمد يشمل مقاييس المنتج والعملية والمشروع، ولا يشمل مقاييس الأشخاص.",
+        "en": "In K.K. Aggarwal & Yogesh Singh's taxonomy (companion slides 9–10, 96; scan p. 254), software metrics are categorized into three primary classes:"
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "مقاييس Software Science طورها:",
+        "en": "Software science measures are developed by"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "6.2",
+        "line": 1873,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.2; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "M. Halstead",
+          "en": "M. Halstead"
+        },
+        {
+          "ar": "B. Littlewood",
+          "en": "B. Littlewood"
+        },
+        {
+          "ar": "T.J. McCabe",
+          "en": "T.J. McCabe"
+        },
+        {
+          "ar": "G. Rothermal",
+          "en": "G. Rothermal"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q02",
+      "explanation": {
+        "ar": "Maurice Halstead طور نظرية Software Science عام 1977.",
+        "en": "Software Science (also known as Halstead Metrics) was developed and published by Maurice H. Halstead in 1977. The theory operates on the premise that any computer program is a collection of tokens categorized strictly into operators and operands."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "مفردات البرنامج تعرف بأنها:",
+        "en": "Vocabulary of a program is defined as:"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "6.3",
+        "line": 1876,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.3; publisher key p. 499",
+        "key_status": "confirmed",
+        "normalizations": [
+          "formula_ocr_cleaned_from_T1"
+        ]
+      },
+      "options": [
+        {
+          "ar": "$\\eta = \\eta_1 + \\eta_2$",
+          "en": "$\\eta = \\eta_1 + \\eta_2$"
+        },
+        {
+          "ar": "$\\eta = \\eta_1 \\times \\eta_2$",
+          "en": "$\\eta = \\eta_1 - \\eta_2$"
+        },
+        {
+          "ar": "$\\eta = \\eta_1 - \\eta_2$",
+          "en": "$\\eta = \\eta_1 \\times \\eta_2$"
+        },
+        {
+          "ar": "$\\eta = \\eta_1 / \\eta_2$",
+          "en": "$\\eta = \\eta_1 / \\eta_2$"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q03",
+      "explanation": {
+        "ar": "المفردات تساوي مجموع العوامل والمتغيرات الفريدة: η1 + η2.",
+        "en": "The program vocabulary $\\eta$ represents the total number of distinct tokens appearing in a program. It is computed as the sum of:"
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "في نظرية Halstead، الحجم يقاس بالبت. البتات هي:",
+        "en": "In Halstead theory of software science, volume is measured in bits. The bits are"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "6.4",
+        "line": 1879,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.4; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "عدد البتات اللازمة لتخزين البرنامج",
+          "en": "number of bits required to store the program"
+        },
+        {
+          "ar": "الحجم الفعلي للبرنامج إذا استخدم ترميز ثنائي موحد للمفردات",
+          "en": "actual size of a program if a uniform binary encoding scheme for vocabulary is used"
+        },
+        {
+          "ar": "عدد البتات اللازمة لتنفيذ البرنامج",
+          "en": "number of bits required to execute the program"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q04",
+      "explanation": {
+        "ar": "حجم Halstead هو الحجم الفعلي للبرنامج بترميز ثنائي موحد للمفردات.",
+        "en": "In Halstead's Software Science, Program Volume $V = N \\log_2 \\eta$ measures the information content or storage size of a program implementation."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "في نظرية Halstead، الجهد يقاس بـ:",
+        "en": "In Halstead theory, effort is measured in"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "6.5",
+        "line": 1884,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.5; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "شهور أشخاص",
+          "en": "parson-months"
+        },
+        {
+          "ar": "ساعات",
+          "en": "hours"
+        },
+        {
+          "ar": "تمييزات ذهنية أولية",
+          "en": "elementary mental discriminations"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q05",
+      "explanation": {
+        "ar": "الجهد E يقاس بوحدات التمييزات الذهنية الأولية.",
+        "en": "Halstead defined mental effort $E$ as the total number of elementary mental discriminations (decisions) required to develop or comprehend a program. It is calculated as:"
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "مستوى اللغة يعرف بأنه:",
+        "en": "Language level is defined as:"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "6.6",
+        "line": 1894,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.6; publisher key p. 499",
+        "key_status": "confirmed",
+        "normalizations": [
+          "formula_ocr_cleaned_from_T1"
+        ]
+      },
+      "options": [
+        {
+          "ar": "$\\lambda = L^3 V$",
+          "en": "$\\lambda = L^3 V$"
+        },
+        {
+          "ar": "$\\lambda = LV$",
+          "en": "$\\lambda = LV$"
+        },
+        {
+          "ar": "$\\lambda = L V^*$",
+          "en": "$\\lambda = L V^*$"
+        },
+        {
+          "ar": "$\\lambda = L^2 V$",
+          "en": "$\\lambda = L^2 V$"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q06",
+      "explanation": {
+        "ar": "مستوى اللغة λ يعرف بالعلاقة L^3 V.",
+        "en": "Language level $\\lambda$ is an invariant attribute of a programming language, representing the expressive power and conciseness of the language. It is derived from the relationship:"
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "ضعف البرنامج هو:",
+        "en": "Program weakness is:"
+      },
+      "bloom": "Remember",
+      "answer": null,
+      "source": {
+        "id": "6.7",
+        "line": 1897,
+        "note": {
+          "ar": "الخيارات المطبوعة تصف ضعف الوحدة لا ضعف البرنامج؛ مفتاح الناشر يتعارض مع نص السؤال، لذلك لا توجد درجة.",
+          "en": "The printed choices describe module weakness rather than program weakness; the publisher key and the literal stem disagree, so no grade is assigned."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.7; publisher key p. 499",
+        "key_status": "disputed",
+        "normalizations": [
+          "formula_ocr_cleaned_from_T1"
+        ]
+      },
+      "options": [
+        {
+          "ar": "$WM = \\overline{LV} \\times \\gamma$",
+          "en": "$WM = \\overline{LV} \\times \\gamma$"
+        },
+        {
+          "ar": "$WM = \\overline{LV} / \\gamma$",
+          "en": "$WM = \\overline{LV} / \\gamma$"
+        },
+        {
+          "ar": "$WM = \\overline{LV} + \\gamma$",
+          "en": "$WM = \\overline{LV} + \\gamma$"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "None of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q07",
+      "explanation": {
+        "ar": "صيغ الخيارات تصف ضعف الوحدة لا ضعف البرنامج، ومفتاح الناشر يتعارض مع الصياغة الأصلية.",
+        "en": "> [!WARNING]"
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "FAN IN للمكوّن A يعرف بأنه:",
+        "en": "‘FAN IN’ of a component A is defined as"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "6.8",
+        "line": 1900,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.8; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "عدد المكونات التي يمكنها استدعاء المكوّن A أو تمرير التحكم إليه",
+          "en": "count of the number of components that can call, or pass control, to component A"
+        },
+        {
+          "ar": "عدد المكونات المرتبطة بالمكوّن A",
+          "en": "number of components related to component A"
+        },
+        {
+          "ar": "عدد المكونات المعتمدة على المكوّن A",
+          "en": "number of components dependent on component A"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q08",
+      "explanation": {
+        "ar": "FAN IN يقيس عدد المكونات التي تستدعي المكوّن A.",
+        "en": "Fan-in of a component $A$ is the count of the number of components that can call, or pass control, to component $A$. It measures how many other components depend on component $A$."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "FAN OUT للمكوّن A يعرف بأنه:",
+        "en": "‘FAN OUT’ of a component A is defined as"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "6.9",
+        "line": 1905,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.9; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "عدد المكونات المرتبطة بالمكوّن A",
+          "en": "number of components related to component A"
+        },
+        {
+          "ar": "عدد المكونات المعتمدة على المكوّن A",
+          "en": "number of components dependent on component A"
+        },
+        {
+          "ar": "عدد المكونات التي يستدعيها المكوّن A",
+          "en": "number of components that are called by component A"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q09",
+      "explanation": {
+        "ar": "FAN OUT يقيس عدد المكونات التي يستدعيها المكوّن A.",
+        "en": "Fan-out of a component $A$ is the number of components that are called by component $A$. It reflects the control dispersion and coordination responsibility of the component."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "أي مما يلي ليس مقياس حجم؟",
+        "en": "Which is not a size metric?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "6.10",
+        "line": 1910,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch06_Software_Metrics.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 6.10; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "LOC",
+          "en": "LOC"
+        },
+        {
+          "ar": "function count",
+          "en": "function count"
+        },
+        {
+          "ar": "program length",
+          "en": "program length"
+        },
+        {
+          "ar": "cyclomatic complexity",
+          "en": "cyclomatic complexity"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch06_q10",
+      "explanation": {
+        "ar": "cyclomatic complexity مقياس تعقيد وليس مقياس حجم.",
+        "en": "Cyclomatic Complexity is a control-flow structural complexity metric formulated by Thomas McCabe, designed to quantify procedural logic and the number of linearly independent paths. It is not a measure of software physical or functional size. In contrast, LOC, Function count, and Halstead's Program Length are recognized size metrics."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:50Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

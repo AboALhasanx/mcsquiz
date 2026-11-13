@@ -1,7 +1,7 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.11.30';
+const VERSION = '1.12.0';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
@@ -228,6 +228,8 @@ const CORE = [
   './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T06_KMeans_and_KMeansPlusPlus.json',
   './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T07_Hierarchical_DBSCAN_GMM.json',
   './data/banks/03_Data_Mining_Ch08_Quiz_Ch08_T08_Choosing_Number_of_Clusters.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_S02_Source_MCQs.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T01_What_Software_Is.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T02_Software_Engineering.json',
   './data/banks/04_Advanced_Software_Eng_Ch01_Quiz_Ch01_T03_Software_Process.json',
@@ -243,6 +245,10 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B06_Unified_Process.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B07_Selecting_A_Model.json',
   './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_B08_Agile_XP_And_Scrum.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch02_Quiz_Ch02_S02_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_S02_Source_MCQs.json',
   './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T01_Requirements_Engineering_Process_And_Practice.json',
   './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T02_Requirements_Types_And_Interfaces.json',
   './data/banks/04_Advanced_Software_Eng_Ch03_Quiz_Ch03_T03_Feasibility_Study.json',
@@ -257,6 +263,9 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B04_COCOMO_II.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B05_Putnam_Resource_Model.json',
   './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_B06_Cost_And_Risk_Support.json',
+  './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch04_Quiz_Ch04_S02_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_S01_Source_MCQs.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T01_What_Is_Design.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T02_Conceptual_And_Technical_Design.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T03_Objectives_Of_Design.json',
@@ -281,6 +290,8 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T22_Object_Oriented_Design.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T23_Object_Oriented_Basic_Concepts.json',
   './data/banks/04_Advanced_Software_Eng_Ch05_Quiz_Ch05_T24_OO_Analysis_And_Design_Steps.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_S02_Source_MCQs.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T01_Measurement_Fundamentals.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T02_Metric_Categories.json',
   './data/banks/04_Advanced_Software_Eng_Ch06_Quiz_Ch06_T03_Software_Size_Metrics.json',
@@ -300,6 +311,16 @@ const CORE = [
   './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B05_Reliability_Measures.json',
   './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B06_Execution_Time_Models.json',
   './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_B07_ISO_9000.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_S02_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_S03_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch07_Quiz_Ch07_S04_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch08_Quiz_Ch08_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch08_Quiz_Ch08_S02_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch08_Quiz_Ch08_S03_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch08_Quiz_Ch08_S04_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch09_Quiz_Ch09_S01_Source_MCQs.json',
+  './data/banks/04_Advanced_Software_Eng_Ch09_Quiz_Ch09_S02_Source_MCQs.json',
   './data/banks/05_Soft_Computing_Ch01_Quiz_Ch01_T01_SC_Scope_And_Concepts.json',
   './data/banks/05_Soft_Computing_Ch01_Quiz_Ch01_T02_Paradigms_ANN_And_EC.json',
   './data/banks/05_Soft_Computing_Ch02_Quiz_Ch02_T01_Crisp_Set_Theory.json',

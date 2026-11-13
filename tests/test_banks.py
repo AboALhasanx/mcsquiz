@@ -49,7 +49,10 @@ def run():
                 answer = q.get('correct')
             if not (q_en and len(o_en) == 4 and e_en):
                 structural.append(name + ':en')
-            if not (0 <= int(answer if answer is not None else -1) <= 3):
+            src_meta = q.get('source') if isinstance(q.get('source'), dict) else {}
+            ungraded_source = (data.get('bank_kind') == 'source' and
+                               src_meta.get('key_status') == 'disputed' and answer is None)
+            if not ungraded_source and not (0 <= int(answer if answer is not None else -1) <= 3):
                 structural.append(name + ':correct')
             # translated questions must be fully consistent, never half-Arabic
             if ARABIC.search(q_ar):

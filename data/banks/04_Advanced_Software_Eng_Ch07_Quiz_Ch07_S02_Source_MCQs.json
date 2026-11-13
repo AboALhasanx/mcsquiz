@@ -1,0 +1,597 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 2",
+    "en": "Source MCQs — Batch 2"
+  },
+  "quiz_id": "Quiz_Ch07_S02_Source_MCQs",
+  "has_math": true,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أي مما يلي ليس عامل جودة منتج في نموذج McCall؟",
+        "en": "Which one is not a product quality factor of McCall quality model ?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.14",
+        "line": 1929,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.14; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "product revision",
+          "en": "product revision"
+        },
+        {
+          "ar": "product operation",
+          "en": "product operation"
+        },
+        {
+          "ar": "product specification",
+          "en": "product specification"
+        },
+        {
+          "ar": "product transition",
+          "en": "product transition"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q14",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** أبعاد ماكول الثلاثة الشهيرة هي: Product Operation وProduct Revision وProduct Transition. لا يوجد بعد باسم «Product specification».",
+        "en": "McCall's triangular quality framework categorizes its 11 factors into three broad operational categories: - Product Operation: Using the software to perform real-world tasks. - Product Revision: Modifying and debugging the software code. - Product Transition: Porting and adapting the software to new platforms. \"Product specification\" is an engineering phase, not one of McCall's three quality categories."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "المستوى الثاني من سمات الجودة في نموذج McCall يسمى:",
+        "en": "The second level of quality attributes in McCall quality model are termed as"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.15",
+        "line": 1934,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.15; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "quality criteria",
+          "en": "quality criteria"
+        },
+        {
+          "ar": "quality factors",
+          "en": "quality factors"
+        },
+        {
+          "ar": "quality guidelines",
+          "en": "quality guidelines"
+        },
+        {
+          "ar": "quality specifications",
+          "en": "quality specifications"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q15",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** الهرمية في نموذج ماكول: العوامل (Factors) في القمة ← تليها المعايير الهندسية (Criteria) في المستوى الثاني ← تليها المقاييس الكمية المباشرة (Metrics).",
+        "en": "McCall's quality model is structured in a strict hierarchical decomposition: 1. Top Level (High-level Factors): External quality factors representing management and customer viewpoints (e.g., Maintainability, Reliability). 2. Second Level (Quality Criteria): Intermediate software attributes representing software engineering viewpoints that directly affect the factors (e.g., modularity, conciseness, consistency, fault tolerance). 3. Third Level (Quality Metrics): Quantitative direct measurements used to calculate the criteria."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مما يلي ليس مستوى في نموذج Boehm لجودة البرمجيات؟",
+        "en": "Which one is not a level in Boehm software quality model ?"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.16",
+        "line": 1939,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (D) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.16; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "primary uses",
+          "en": "primary uses"
+        },
+        {
+          "ar": "intermediate constructs",
+          "en": "intermediate constructs"
+        },
+        {
+          "ar": "primitive constructs",
+          "en": "primitive constructs"
+        },
+        {
+          "ar": "final constructs",
+          "en": "final constructs"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q16",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** مستويات نموذج بويم (Boehm) الثلاثة هي: Primary uses ← تليها Intermediate constructs ← ثم Primitive constructs. لا توجد طبقة تسمى «Final constructs».",
+        "en": "Barry Boehm's hierarchical quality model (1978) structures quality across three explicit levels: 1. Primary uses / high-level characteristics: The figure links General Utility directly to Portability and Maintainability. As-is Utility links to Reliability, Efficiency, and Human Engineering; Maintainability links to Testability, Understandability, and Modifiability. 2. Intermediate constructs: Seven constructs, including Portability, Reliability, Efficiency, Human Engineering, Testability, Understandability, and Modifiability. 3. Primitive constructs: The model lists 12 lower-level characteristics. \"Final constructs\" is not a level in Boehm's taxonomy."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أي مما يلي ليس نموذج جودة برمجيات؟",
+        "en": "Which one is not a software quality model ?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.17",
+        "line": 1944,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.17; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "McCall model",
+          "en": "McCall model"
+        },
+        {
+          "ar": "Boehm model",
+          "en": "Boehm model"
+        },
+        {
+          "ar": "ISO-9000",
+          "en": "ISO-9000"
+        },
+        {
+          "ar": "ISO-9126",
+          "en": "ISO-9126"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q17",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** فرق جوهري: نماذج جودة المنتج البرمجي تشمل McCall وBoehm وISO 9126. أما ISO 9000 فهو معيار إدارة عمليات المنشأة (Process Standard) وليس مقياساً لجودة المنتج البرمجي ذاته.",
+        "en": "McCall's model, Boehm's model, and ISO 9126 are product quality models that evaluate the internal attributes and external runtime characteristics of the software artifact itself. In contrast, ISO 9000 (and ISO 9001) is a Quality Management System (QMS) standard focused strictly on organizational development processes, management commitment, and procedural compliance, rather than evaluating software product attributes directly."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "نموذج Basic Execution Time طوره:",
+        "en": "Basic execution time model was developed by"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "7.18",
+        "line": 1949,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.18; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Bev. Littlewood",
+          "en": "Bev. Littlewood"
+        },
+        {
+          "ar": "J.D. Musa",
+          "en": "J.D. Musa"
+        },
+        {
+          "ar": "R. Pressman",
+          "en": "R. Pressman"
+        },
+        {
+          "ar": "Victor Basili",
+          "en": "Victor Basili"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q18",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** نموذج زمن التنفيذ الأساسي (Basic Execution Time Model) وضعه جون موسى (J.D. Musa) في مختبرات بيل عام 1979.",
+        "en": "The Basic Execution Time Model was formulated and published by John D. Musa at Bell Laboratories in 1979. It represents one of the foundational Non-Homogeneous Poisson Process (NHPP) software reliability growth models based on execution time."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "اختصار NHPP يعني:",
+        "en": "NHPP stands for"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.19",
+        "line": 1954,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.19; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "non homogeneous poisson process",
+          "en": "non homogeneous poisson process"
+        },
+        {
+          "ar": "non hetrogeneous poisson process",
+          "en": "non hetrogeneous poisson process"
+        },
+        {
+          "ar": "non homogeneous poisson product",
+          "en": "non homogeneous poisson product"
+        },
+        {
+          "ar": "non hetrogeneous poisson product",
+          "en": "non hetrogeneous poisson product"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q19",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** مصطلح NHPP يعني عملية بواسون غير المتجانسة (Non-Homogeneous Poisson Process)، وتتميز بأن معدل حدوث الأخطاء فيها يتغير مع تقدم زمن الاختبار.",
+        "en": "NHPP stands for Non-Homogeneous Poisson Process. In software reliability growth modeling, an NHPP is a generalized Poisson stochastic process whose failure rate (intensity function $\\lambda(t)$) varies dynamically over execution time rather than remaining constant."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "في نموذج Basic Execution Time، شدة الفشل تعطى بـ:",
+        "en": "In basic execution time model, failure intensity is given by"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "7.20",
+        "line": 1959,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.20; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "λ(μ) = λ₀ (1 - μ²/V₀)",
+          "en": "λ(μ) = λ₀ (1 - μ²/V₀)"
+        },
+        {
+          "ar": "λ(μ) = λ₀ (1 - μ/V₀)",
+          "en": "λ(μ) = λ₀ (1 - μ/V₀)"
+        },
+        {
+          "ar": "λ(μ) = λ₀ (1 - V₀/μ)",
+          "en": "λ(μ) = λ₀ (1 - V₀/μ)"
+        },
+        {
+          "ar": "λ(μ) = λ₀ (1 - V₀/μ²)",
+          "en": "λ(μ) = λ₀ (1 - V₀/μ²)"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q20",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** دالة شدة الفشل في النموذج الأساسي دالة خطية تنازلية: $\\lambda(\\mu) = \\lambda_0 (1 - \\mu/v_0)$. تنخفض الشدة خطياً مع ازدياد الأعطال المكتشفة والمصلحة.",
+        "en": "In Musa's Basic Execution Time Model, the failure intensity $\\lambda(\\mu)$ decreases linearly as a function of the cumulative failures experienced ($\\mu$): $$\\lambda(\\mu) = \\lambda_0 \\left(1 - \\frac{\\mu}{v_0}\\right)$$ Where: - $\\lambda_0$: Initial failure intensity at the beginning of execution ($\\mu = 0$). - $v_0$: Total number of failures that would be experienced in infinite execution time. - $\\mu$: Cumulative number of failures experienced up to that point."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "في نموذج Basic Execution Time، عدد حالات الفشل الإضافية المطلوبة لتحقيق هدف شدة فشل Δμ يعبر عنه بـ:",
+        "en": "In basic execution time model, additional number of failures required to achieve a failure intensity objective (Δμ) is expressed as"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.21",
+        "line": 1964,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED on raw source options. Publisher key (A) exactly matches raw option (A). T1 reordered or altered options, but raw source is preserved."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.21; publisher key p. 499",
+        "key_status": "confirmed",
+        "normalizations": [
+          "join_ocr_linebreak_hyphen"
+        ]
+      },
+      "options": [
+        {
+          "ar": "Δμ = V₀/λ₀ (λₚ - λ_F)",
+          "en": "Δμ = V₀/λ₀ (λₚ - λ_F)"
+        },
+        {
+          "ar": "Δμ = V₀/λ₀ (λ_F - λₚ)",
+          "en": "Δμ = V₀/λ₀ (λ_F - λₚ)"
+        },
+        {
+          "ar": "Δμ = λ₀/V₀ (λ_F - λₚ)",
+          "en": "Δμ = λ₀/V₀ (λ_F - λₚ)"
+        },
+        {
+          "ar": "Δμ = λ₀/V₀ (λₚ - λ_F)",
+          "en": "Δμ = λ₀/V₀ (λₚ - λ_F)"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q21",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** عدد الأعطال الإضافية اللازمة للوصول إلى هدف الاعتمادية هو: $\\Delta \\mu = \\frac{v_0}{\\lambda_0} (\\lambda_P - \\lambda_F)$. انتبه لطرح الهدف المنخفض من الشدة الحالية $(\\lambda_P - \\lambda_F)$.",
+        "en": "Rearranging the linear failure intensity relationship for the present intensity ($\\lambda_P$) and objective intensity ($\\lambda_F$): $$\\lambda_P = \\lambda_0 \\left(1 - \\frac{\\mu_P}{v_0}\\right), \\quad \\lambda_F = \\lambda_0 \\left(1 - \\frac{\\mu_F}{v_0}\\right)$$ Subtracting the two equations yields: $$\\lambda_P - \\lambda_F = \\frac{\\lambda_0}{v_0} (\\mu_F - \\mu_P) = \\frac{\\lambda_0}{v_0} \\Delta \\mu$$ Solving for $\\Delta \\mu$ gives: $$\\Delta \\mu = \\frac{v_0}{\\lambda_0} (\\lambda_P - \\lambda_F)$$"
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "في نموذج Basic Execution Time، الزمن الإضافي المطلوب لتحقيق هدف شدة فشل Δτ يعطى بـ:",
+        "en": "In basic execution time model, additional time required to achieve a failure intensity objective (Δτ) is given as"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "7.22",
+        "line": 1970,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED on raw source options. Publisher key (D) exactly matches raw option (D). T1 reordered or altered options, but raw source is preserved."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.22; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Δτ = λ₀/V₀ Ln (λ_F/λₚ)",
+          "en": "Δτ = λ₀/V₀ Ln (λ_F/λₚ)"
+        },
+        {
+          "ar": "Δτ = λ₀/V₀ Ln (λₚ/λ_F)",
+          "en": "Δτ = λ₀/V₀ Ln (λₚ/λ_F)"
+        },
+        {
+          "ar": "Δτ = V₀/λ₀ Ln (λ_F/λₚ)",
+          "en": "Δτ = V₀/λ₀ Ln (λ_F/λₚ)"
+        },
+        {
+          "ar": "Δτ = V₀/λ₀ Ln (λₚ/λ_F)",
+          "en": "Δτ = V₀/λ₀ Ln (λₚ/λ_F)"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q22",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** زمن التنفيذ الإضافي المطلوب للوصول لهدف الاختبار: $\\Delta \\tau = \\frac{v_0}{\\lambda_0} \\ln(\\lambda_P / \\lambda_F)$. النسبة داخل اللوغاريتم هي القيمة الأكبر على الأصغر $(\\lambda_P / \\lambda_F)$ لضمان ناتج موجب.",
+        "en": "In the Basic execution time model, failure intensity decays exponentially with execution time $\\tau$: $$\\lambda(\\tau) = \\lambda_0 \\exp\\left(-\\frac{\\lambda_0}{v_0} \\tau\\right)$$ Evaluating between current intensity $\\lambda_P$ and target intensity $\\lambda_F$: $$\\frac{\\lambda_P}{\\lambda_F} = \\exp\\left(\\frac{\\lambda_0}{v_0} \\Delta \\tau\\right)$$ Taking the natural logarithm of both sides and solving for $\\Delta \\tau$: $$\\Delta \\tau = \\frac{v_0}{\\lambda_0} \\ln\\left(\\frac{\\lambda_P}{\\lambda_F}\\right)$$"
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "دالة شدة الفشل في نموذج Logarithmic Poisson تعطى بـ:",
+        "en": "Failure intensity function of Logarithmic Poisson execution model is given as"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.23",
+        "line": 1982,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED on raw source options. Publisher key (C) exactly matches raw option (C). T1 reordered or altered options, but raw source is preserved."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.23; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "λ(μ) = λ₀ Ln (-θμ)",
+          "en": "λ(μ) = λ₀ Ln (-θμ)"
+        },
+        {
+          "ar": "λ(μ) = λ₀ exp (θμ)",
+          "en": "λ(μ) = λ₀ exp (θμ)"
+        },
+        {
+          "ar": "λ(μ) = λ₀ exp (-θμ)",
+          "en": "λ(μ) = λ₀ exp (-θμ)"
+        },
+        {
+          "ar": "λ(μ) = λ₀ log (-θμ)",
+          "en": "λ(μ) = λ₀ log (-θμ)"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q23",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** دالة شدة الفشل في نموذج بواسون اللوغاريتمي تنخفض أسياً مع عدد الأخطاء: $\\lambda(\\mu) = \\lambda_0 \\exp(-\\theta \\mu)$.",
+        "en": "In the Logarithmic Poisson execution time model (Musa–Okumoto, 1984), failure intensity decreases exponentially with respect to cumulative failures experienced ($\\mu$): $$\\lambda(\\mu) = \\lambda_0 \\exp(-\\theta \\mu)$$ Where $\\theta$ is the failure intensity decay parameter. This exponential decay captures the realistic observation that early faults contribute much more heavily to failure intensity than subtle faults discovered late in testing."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "في نموذج Logarithmic Poisson، الرمز θ يعرف بأنه:",
+        "en": "In Logarithmic Poisson execution model, 'θ' is known as"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "7.24",
+        "line": 1987,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (B) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.24; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "failure intensity function parameter",
+          "en": "failure intensity function parameter"
+        },
+        {
+          "ar": "failure intensity decay parameter",
+          "en": "failure intensity decay parameter"
+        },
+        {
+          "ar": "failure intensity measurement",
+          "en": "failure intensity measurement"
+        },
+        {
+          "ar": "failure intensity increment parameter",
+          "en": "failure intensity increment parameter"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q24",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** الرمز $\\theta$ في نموذج بواسون اللوغاريتمي يمثل معامل تلاشي شدة الفشل (Failure intensity decay parameter).",
+        "en": "In the Logarithmic Poisson formulation, $\\theta$ is explicitly termed the failure intensity decay parameter (measured in $\\text{failure}^{-1}$). It quantifies the relative reduction in failure intensity per failure experienced: $$\\theta = -\\frac{d\\lambda / d\\mu}{\\lambda}$$"
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "في نموذج Jelinski-Moranda، شدة الفشل تعرف بـ:",
+        "en": "In Jelinski-Moranda model, failure intensity is defined as"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "7.25",
+        "line": 1992,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (A) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.25; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "λ(t) = φ(N - i + 1)",
+          "en": "λ(t) = φ(N - i + 1)"
+        },
+        {
+          "ar": "λ(t) = φ(N + i + 1)",
+          "en": "λ(t) = φ(N + i + 1)"
+        },
+        {
+          "ar": "λ(t) = φ(N + i - 1)",
+          "en": "λ(t) = φ(N + i - 1)"
+        },
+        {
+          "ar": "λ(t) = φ(N - i - 1)",
+          "en": "λ(t) = φ(N - i - 1)"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q25",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** معادلة جيلينسكي-موراندا: شدة الفشل عند العطل رقم $i$ تتناسب مع عدد الأخطاء المتبقية: $\\phi [N - (i - 1)]$.",
+        "en": "The Jelinski–Moranda model (1972) assumes that software contains an initial total of $N$ faults, each contributing an equal hazard rate $\\phi$. When the $i$-th failure occurs, $(i - 1)$ faults have already been completely and perfectly removed without introducing new faults. Thus, during the interval between the $(i-1)$-th and $i$-th failure, the failure intensity is: $$\\lambda(t_i) = \\phi [N - (i - 1)]$$"
+      }
+    },
+    {
+      "id": "q13",
+      "stem": {
+        "ar": "مستوى CMM الأول يحتوي على:",
+        "en": "CMM level 1 has"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "7.26",
+        "line": 1997,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "CONFIRMED against publisher key (C) in Aggarwal & Singh (3rd ed.) p. 499."
+        },
+        "path": "02_Raw_Materials/New/Ch07_Software_Reliability.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 7.26; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "6 KPAs",
+          "en": "6 KPAs"
+        },
+        {
+          "ar": "2 KPAs",
+          "en": "2 KPAs"
+        },
+        {
+          "ar": "0 KPAs",
+          "en": "0 KPAs"
+        },
+        {
+          "ar": "none of the above",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch07_q26",
+      "explanation": {
+        "ar": "والفخ الامتحاني:** المستوى الأول في نموذج CMM (المستوى الابتدائي Initial) يحتوي على **صفر من مناطق العمليات الرئيسية (0 KPAs)** لأن العمل فيه فوضوي وغير خاضع لمعايير مؤسسية.",
+        "en": "In the Capability Maturity Model (CMM), Level 1 (Initial) has exactly zero Key Process Areas (KPAs). At Level 1, processes are ad-hoc, chaotic, and undefined; project success depends solely on individual heroism and crisis management rather than repeatable institutional practices. KPAs appear beginning at Level 2 (which has 6 KPAs)."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:51Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

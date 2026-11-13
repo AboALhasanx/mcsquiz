@@ -1,0 +1,550 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 1",
+    "en": "Source MCQs — Batch 1"
+  },
+  "quiz_id": "Quiz_Ch05_S01_Source_MCQs",
+  "has_math": false,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "أفضل شكل مرغوب من الاقتران هو:",
+        "en": "The most desirable form of coupling is"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "5.1",
+        "line": 1238,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.1; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "control coupling",
+          "en": "control coupling"
+        },
+        {
+          "ar": "data coupling",
+          "en": "data coupling"
+        },
+        {
+          "ar": "common coupling",
+          "en": "common coupling"
+        },
+        {
+          "ar": "content coupling",
+          "en": "content coupling"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q01",
+      "explanation": {
+        "ar": "data coupling هو الأفضل لأنه يمرر بيانات بسيطة فقط بين الوحدات.",
+        "en": "Modules communicate by passing data items as parameters."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أسوأ نوع من الاقتران هو:",
+        "en": "The worst type of coupling is"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "5.2",
+        "line": 1242,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.2; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "content coupling",
+          "en": "content coupling"
+        },
+        {
+          "ar": "common coupling",
+          "en": "common coupling"
+        },
+        {
+          "ar": "external coupling",
+          "en": "external coupling"
+        },
+        {
+          "ar": "data coupling",
+          "en": "data coupling"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q02",
+      "explanation": {
+        "ar": "content coupling يعد أسوأ شكل لأنه يمس الكود الداخلي لوحدة أخرى.",
+        "en": "Content coupling is the tightest, most pathological, and worst form of coupling because one module directly modifies or branches into the internal procedural code, execution state, or local data of another module. This destroys modular independence and prevents any isolated maintenance or unit testing."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أفضل شكل مرغوب من التماسك هو:",
+        "en": "The most desirable form of cohesion is"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "5.3",
+        "line": 1246,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.3; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "logical cohesion",
+          "en": "logical cohesion"
+        },
+        {
+          "ar": "procedural cohesion",
+          "en": "procedural cohesion"
+        },
+        {
+          "ar": "functional cohesion",
+          "en": "functional cohesion"
+        },
+        {
+          "ar": "temporal cohesion",
+          "en": "temporal cohesion"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q03",
+      "explanation": {
+        "ar": "functional cohesion هو الأفضل لأن كل العمليات تخدم مهمة وظيفية واحدة.",
+        "en": "Functional cohesion represents the highest, strongest, and most desirable level of cohesion because all elements and instructions within the module cooperate to execute a single, well-defined functional task with no extraneous side effects. Examples include mathematical functions like `compute_square_root()` or `calculate_sine()`."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "أسوأ نوع من التماسك هو:",
+        "en": "The worst type of cohesion is"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "5.4",
+        "line": 1250,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.4; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "temporal cohesion",
+          "en": "temporal cohesion"
+        },
+        {
+          "ar": "coincidental cohesion",
+          "en": "coincidental cohesion"
+        },
+        {
+          "ar": "logical cohesion",
+          "en": "logical cohesion"
+        },
+        {
+          "ar": "sequential cohesion",
+          "en": "sequential cohesion"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q04",
+      "explanation": {
+        "ar": "coincidental cohesion يجمع عناصر لا تربطها علاقة وظيفية حقيقية.",
+        "en": "Coincidental cohesion is the weakest, least desirable, and lowest form of cohesion because instructions are bundled into a module arbitrarily with no meaningful functional, sequential, procedural, or temporal relationship. It typically arises when random utility routines are lumped together without structural cohesion."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "أي مما يلي ليس استراتيجية للتصميم؟",
+        "en": "Which one is not a strategy for design ?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "5.5",
+        "line": 1254,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.5; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "bottom up design",
+          "en": "bottom up design"
+        },
+        {
+          "ar": "top down design",
+          "en": "top down design"
+        },
+        {
+          "ar": "embedded design",
+          "en": "embedded design"
+        },
+        {
+          "ar": "hybrid design",
+          "en": "hybrid design"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q05",
+      "explanation": {
+        "ar": "embedded design ليس استراتيجية تصميم معتمدة في هذا التصنيف.",
+        "en": "Software design methodology establishes three primary classical architectural strategies: Top-Down design, Bottom-Up design, and Hybrid (Mixed) design. Embedded design is not an architectural decomposition strategy; in software engineering, \"embedded\" refers to an operational application category, hardware constraint, or a COCOMO development mode."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "التماسك الزمني يعني:",
+        "en": "Temporal cohesion means"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "5.6",
+        "line": 1258,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.6; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "التماسك بين المتغيرات المؤقتة",
+          "en": "cohesion between temporary variables"
+        },
+        {
+          "ar": "التماسك بين المتغيرات المحلية",
+          "en": "cohesion between local variables"
+        },
+        {
+          "ar": "التماسك بالنسبة للزمن",
+          "en": "cohesion with respect to time"
+        },
+        {
+          "ar": "التماسك العرَضي",
+          "en": "coincidental cohesion"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q06",
+      "explanation": {
+        "ar": "temporal cohesion يجمع عمليات تنفذ في الفترة الزمنية نفسها.",
+        "en": "Temporal cohesion groups operations that are executed within the same window of time during program lifecycle execution, regardless of whether they share data or functional logic. A canonical example is an application startup routine that initializes variables, opens log files, configures database handles, and draws UI frames simultaneously."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "التماسك الوظيفي يعني:",
+        "en": "Functional cohesion means"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "5.7",
+        "line": 1262,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.7; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "العمليات جزء من مهمة وظيفية واحدة وتوضع في الإجراء نفسه",
+          "en": "operations are part of single functional task and are placed in same procedures"
+        },
+        {
+          "ar": "العمليات جزء من مهمة وظيفية واحدة وتوضع في إجراءات متعددة",
+          "en": "operations are part of single functional task and are placed in multiple procedures"
+        },
+        {
+          "ar": "العمليات جزء من مهام متعددة",
+          "en": "operations are part of multiple tasks"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q07",
+      "explanation": {
+        "ar": "التماسك الوظيفي يجمع كل عمليات المهمة في إجراء واحد متماسك.",
+        "en": "Functional cohesion occurs when all operations contained within a single procedure or module contribute directly and exclusively to executing one focused functional objective. Breaking a single functional task across multiple arbitrary modules impairs cohesion and introduces undesirable stamp or control coupling."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "عندما تشير وحدتان إلى منطقة بيانات عامة واحدة، فإن علاقتهما تكون:",
+        "en": "When two modules refer to the same global data area , they are related as"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "5.8",
+        "line": 1268,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.8; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "external coupled",
+          "en": "external coupled"
+        },
+        {
+          "ar": "data coupled",
+          "en": "data coupled"
+        },
+        {
+          "ar": "content coupled",
+          "en": "content coupled"
+        },
+        {
+          "ar": "common coupled",
+          "en": "common coupled"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q08",
+      "explanation": {
+        "ar": "الاقتران العام يحدث عند مشاركة منطقة بيانات عامة.",
+        "en": "Common coupling occurs whenever two or more independent modules read, write, or bind to the same shared global data area (such as Fortran COMMON blocks, C global variables, or shared public memory pools). If one module mutates the shared global format, all other modules referencing that pool risk runtime corruption."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "الوحدة التي ترتبط تعليماتها عبر تدفق التحكم هي:",
+        "en": "The module in which instructions are related through flow of control is"
+      },
+      "bloom": "Remember",
+      "answer": null,
+      "source": {
+        "id": "5.9",
+        "line": 1272,
+        "note": {
+          "ar": "مفتاح الناشر المطبوع هو A، لكن التماسك الإجرائي هو الخيار C؛ بقي السؤال بلا درجة إلى حين المراجعة.",
+          "en": "The printed publisher key is A, but procedural cohesion is option C; the item is ungraded pending review."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.9; publisher key p. 499",
+        "key_status": "disputed"
+      },
+      "options": [
+        {
+          "ar": "temporal cohesion",
+          "en": "temporal cohesion"
+        },
+        {
+          "ar": "logical cohesion",
+          "en": "logical cohesion"
+        },
+        {
+          "ar": "procedural cohesion",
+          "en": "procedural cohesion"
+        },
+        {
+          "ar": "functional cohesion",
+          "en": "functional cohesion"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q09",
+      "explanation": {
+        "ar": "procedural cohesion يرتب العمليات حسب تدفق التحكم بينها.",
+        "en": "Procedural cohesion exists when elements inside a module are grouped together because they must be executed in a specific, predetermined sequence dictated by program control flow (such as step 1 followed by step 2 followed by step 3). Unlike sequential cohesion, operations in procedural cohesion do not necessarily pass output data from one step to the next as input."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "علاقة عناصر البيانات داخل الوحدة تسمى:",
+        "en": "The relationship of data elements in a module is called"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "5.10",
+        "line": 1280,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.10; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "coupling",
+          "en": "coupling"
+        },
+        {
+          "ar": "cohesion",
+          "en": "cohesion"
+        },
+        {
+          "ar": "modularity",
+          "en": "modularity"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q10",
+      "explanation": {
+        "ar": "التماسك يصف ترابط عناصر الوحدة الواحدة.",
+        "en": "Cohesion measures the internal binding, intra-module strength, and semantic closeness of elements, statements, and data structures encapsulated within a single module. Coupling, by contrast, measures inter-module relationship and external interdependence across different modules."
+      }
+    },
+    {
+      "id": "q11",
+      "stem": {
+        "ar": "النظام الذي لا يتفاعل مع البيئة الخارجية يسمى:",
+        "en": "A system that does not interact with external environment is called"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "5.11",
+        "line": 1284,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.11; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "closed system",
+          "en": "closed system"
+        },
+        {
+          "ar": "logical system",
+          "en": "logical system"
+        },
+        {
+          "ar": "open system",
+          "en": "open system"
+        },
+        {
+          "ar": "hierarichal system",
+          "en": "hierarichal system"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q11",
+      "explanation": {
+        "ar": "النظام المغلق لا يستقبل مدخلات خارجية ولا يرسل مخرجات.",
+        "en": "In general systems theory applied to software architecture, a closed system is completely self-contained and operates in total isolation without accepting inputs from, or delivering outputs to, its external operating environment. Real-world software systems are virtually always open systems because they interact continuously with users, sensors, and external networks."
+      }
+    },
+    {
+      "id": "q12",
+      "stem": {
+        "ar": "مدى اعتماد الوحدات المختلفة على بعضها يسمى:",
+        "en": "The extent to which different modules are dependent upon each other is called"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "5.12",
+        "line": 1288,
+        "note": {
+          "ar": "قوبل السؤال مع مفتاح الناشر المطبوع.",
+          "en": "Checked against the printed publisher key."
+        },
+        "path": "02_Raw_Materials/New/Ch05_Software_Design.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 5.12; publisher key p. 499",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "coupling",
+          "en": "coupling"
+        },
+        {
+          "ar": "cohesion",
+          "en": "cohesion"
+        },
+        {
+          "ar": "modularity",
+          "en": "modularity"
+        },
+        {
+          "ar": "stability",
+          "en": "stability"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch05_q12",
+      "explanation": {
+        "ar": "الاقتران يقيس درجة الاعتماد المتبادل بين الوحدات.",
+        "en": "Coupling is the qualitative and structural metric that gauges the degree of interdependence, interconnection, and mutual reliance between distinct software modules. Good software engineering practice strives to minimize inter-module coupling while maximizing intra-module cohesion."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:50Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

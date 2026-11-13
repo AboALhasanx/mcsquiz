@@ -1,0 +1,465 @@
+{
+  "topic": {
+    "ar": "أسئلة المصدر — الدفعة 1",
+    "en": "Source MCQs — Batch 1"
+  },
+  "quiz_id": "Quiz_Ch01_S01_Source_MCQs",
+  "has_math": false,
+  "semester": 1,
+  "bank_kind": "source",
+  "questions": [
+    {
+      "id": "q1",
+      "stem": {
+        "ar": "البرمجيات هي:",
+        "en": "Software is"
+      },
+      "bloom": "Understand",
+      "answer": 0,
+      "source": {
+        "id": "1.1",
+        "line": 668,
+        "note": {
+          "ar": "مفتاح الكتاب ص. 498 يعتمد (a). البرمجيات مفهوم أوسع وأشمل من مجرد الأكواد البرمجية.",
+          "en": "Textbook key confirms (a). In software engineering, programs are only one constituent of software."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.1; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "مجموعة شاملة للبرامج",
+          "en": "superset of programs"
+        },
+        {
+          "ar": "مجموعة جزئية من البرامج",
+          "en": "subset of programs"
+        },
+        {
+          "ar": "مجموعة من البرامج فقط",
+          "en": "set of programs"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q01",
+      "explanation": {
+        "ar": "البرمجيات مجموعة شاملة للبرامج لأنها تتكون من: البرامج + التوثيق + إجراءات التشغيل، فالبرنامج جزء منها.",
+        "en": "Software is a superset of programs because Software = Programs + Documentation + Operating Procedures."
+      }
+    },
+    {
+      "id": "q2",
+      "stem": {
+        "ar": "أي مما يلي ليس جزءاً من أدلة إجراءات التشغيل؟",
+        "en": "Which is NOT the part of operating procedure manuals?"
+      },
+      "bloom": "Remember",
+      "answer": 2,
+      "source": {
+        "id": "1.2",
+        "line": 671,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c). أدلة التوثيق تخص دورة التطوير الداخلية وليست إجراءات تشغيل.",
+          "en": "Textbook key confirms (c). Operating manuals include user, operational, installation, and administration guides."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.2; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "أدلة المستخدم",
+          "en": "user manuals"
+        },
+        {
+          "ar": "أدلة التشغيل",
+          "en": "operational manuals"
+        },
+        {
+          "ar": "أدلة التوثيق",
+          "en": "documentation manuals"
+        },
+        {
+          "ar": "أدلة التثبيت",
+          "en": "installation manuals"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q02",
+      "explanation": {
+        "ar": "أدلة التوثيق (مثل وثائق التحليل والتصميم والاختبار) تشكل عائلة مستقلة عن أدلة إجراءات التشغيل الموجهة للمستخدم والمشغل.",
+        "en": "Documentation manuals (SRS, design, test plans) belong to development documentation, distinct from operating procedure manuals (user, operational, installation)."
+      }
+    },
+    {
+      "id": "q3",
+      "stem": {
+        "ar": "أي مما يلي ليس من خصائص البرمجيات؟",
+        "en": "Which is NOT a software characteristic?"
+      },
+      "bloom": "Understand",
+      "answer": 3,
+      "source": {
+        "id": "1.3",
+        "line": 674,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d). عصمة البرمجيات من الخطأ خرافة هندسية وليست خاصية.",
+          "en": "Textbook key confirms (d). Correctness is not an inherent guaranteed property."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.3; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "البرمجيات لا تبلى ولا تهترئ",
+          "en": "software does not wear out"
+        },
+        {
+          "ar": "البرمجيات مرنة",
+          "en": "software is flexible"
+        },
+        {
+          "ar": "البرمجيات لا تُصنع صناعياً",
+          "en": "software is not manufactured"
+        },
+        {
+          "ar": "البرمجيات دائماً صحيحة وخالية من الأخطاء",
+          "en": "software is always correct"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q03",
+      "explanation": {
+        "ar": "البرمجيات تُهندس ولا تُصنع، ولا تبلى فيزيائياً، ومرنة، لكنها ليست دائماً صحيحة بل تتعرض للأخطاء والعيوب.",
+        "en": "Software is engineered, flexible, and does not wear out physically, but it is not inherently always correct; software suffers from defects and latent faults."
+      }
+    },
+    {
+      "id": "q4",
+      "stem": {
+        "ar": "المنتج البرمجي هو:",
+        "en": "Product is"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "1.4",
+        "line": 677,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a). المنتج البرمجي يمثل ما يتم تسليمه فعلياً للعميل.",
+          "en": "Textbook key confirms (a). Deliverables constitute the product."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.4; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "المخرجات القابلة للتسليم",
+          "en": "deliverables"
+        },
+        {
+          "ar": "توقعات المستخدم",
+          "en": "user expectations"
+        },
+        {
+          "ar": "جهد المؤسسة في التطوير",
+          "en": "organisation’s effort in development"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q04",
+      "explanation": {
+        "ar": "المنتج هو مجموعة المخرجات المسلّمة للعميل مثل البرامج والوثائق وأدلة التشغيل.",
+        "en": "A product consists of the deliverables produced for the client/user, distinct from milestones or intermediate activities."
+      }
+    },
+    {
+      "id": "q5",
+      "stem": {
+        "ar": "لإنتاج منتج ذي جودة عالية، يجب أن تكون العملية:",
+        "en": "To produce a good quality product, process should be"
+      },
+      "bloom": "Understand",
+      "answer": 1,
+      "source": {
+        "id": "1.5",
+        "line": 680,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b). العملية الكفؤة هي أساس الجودة وليس التعقيد.",
+          "en": "Textbook key confirms (b). Efficiency is the desirable process characteristic."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.5; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "معقدة",
+          "en": "complex"
+        },
+        {
+          "ar": "كفؤة وفعالة",
+          "en": "efficient"
+        },
+        {
+          "ar": "صارمة وقاسية",
+          "en": "rigorous"
+        },
+        {
+          "ar": "لا شيء مما سبق",
+          "en": "none of the above"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q05",
+      "explanation": {
+        "ar": "لإنتاج برمجيات عالية الجودة، يجب أن تتسم العملية بالكفاءة والفاعلية، بينما التعقيد يعيق الإنجاز.",
+        "en": "A software process must be efficient and well-managed to produce quality software within budget and schedule; complexity is counterproductive."
+      }
+    },
+    {
+      "id": "q6",
+      "stem": {
+        "ar": "أي مما يلي لا يُعد مقياساً للمنتج؟",
+        "en": "Which is not a product metric?"
+      },
+      "bloom": "Analyze",
+      "answer": 2,
+      "source": {
+        "id": "1.6",
+        "line": 683,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (c). الإنتاجية مقياس عملية بينما الحجم والموثوقية والوظائف مقاييس منتج.",
+          "en": "Textbook key confirms (c). Productivity is a process metric."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.6; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "الحجم",
+          "en": "size"
+        },
+        {
+          "ar": "الموثوقية",
+          "en": "reliability"
+        },
+        {
+          "ar": "الإنتاجية",
+          "en": "productivity"
+        },
+        {
+          "ar": "الوظيفية",
+          "en": "functionality"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q06",
+      "explanation": {
+        "ar": "الإنتاجية تقيس أداء فريق العمل والعملية البرمجية، وليست خاصية للمنتج ذاته.",
+        "en": "Productivity measures developer effort/time (a process metric), whereas size, reliability, and functionality measure the software product itself."
+      }
+    },
+    {
+      "id": "q7",
+      "stem": {
+        "ar": "أي مما يلي لا يُعد مقياساً للعملية؟",
+        "en": "Which is not a process metric?"
+      },
+      "bloom": "Analyze",
+      "answer": 1,
+      "source": {
+        "id": "1.7",
+        "line": 691,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b). الوظائف مقياس للمنتج وليس للعملية.",
+          "en": "Textbook key confirms (b). Functionality belongs to product metrics."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.7; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "الإنتاجية",
+          "en": "productivity"
+        },
+        {
+          "ar": "الوظيفية",
+          "en": "functionality"
+        },
+        {
+          "ar": "الجودة",
+          "en": "quality"
+        },
+        {
+          "ar": "الكفاءة",
+          "en": "efficiency"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q07",
+      "explanation": {
+        "ar": "الوظيفية هي صفة ومقياس للمنتج البرمجي المسلّم، وليست مقياساً لمسار العملية.",
+        "en": "Functionality is an attribute of the delivered software product, not of the development process."
+      }
+    },
+    {
+      "id": "q8",
+      "stem": {
+        "ar": "يُقاس الجهد البرمجي بدلالة:",
+        "en": "Effort is measured in terms of:"
+      },
+      "bloom": "Remember",
+      "answer": 0,
+      "source": {
+        "id": "1.8",
+        "line": 694,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (a). أشهر-شخص هي الوحدة القياسية للجهد.",
+          "en": "Textbook key confirms (a). Person-months is the standard unit."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.8; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "أشهر-شخص",
+          "en": "person-months"
+        },
+        {
+          "ar": "الروبيات/العملة",
+          "en": "rupees"
+        },
+        {
+          "ar": "الأشخاص فقط",
+          "en": "persons"
+        },
+        {
+          "ar": "الأشهر فقط",
+          "en": "months"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q08",
+      "explanation": {
+        "ar": "يُقاس الجهد بوحدة شخص-شهر، وهي تجمع بين عدد المطورين وزمن العمل.",
+        "en": "Effort in software engineering is canonically measured in person-months (PM), capturing both staff count and duration."
+      }
+    },
+    {
+      "id": "q9",
+      "stem": {
+        "ar": "المصطلح UML هو اختصار لـ:",
+        "en": "UML stands for"
+      },
+      "bloom": "Remember",
+      "answer": 1,
+      "source": {
+        "id": "1.9",
+        "line": 697,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (b).",
+          "en": "Textbook key confirms (b)."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.9; publisher key p. 498",
+        "key_status": "confirmed"
+      },
+      "options": [
+        {
+          "ar": "Uniform Modeling Language",
+          "en": "uniform modeling language"
+        },
+        {
+          "ar": "Unified Modeling Language",
+          "en": "unified modeling language"
+        },
+        {
+          "ar": "Unit Modeling Language",
+          "en": "unit modeling language"
+        },
+        {
+          "ar": "Universal Modeling Language",
+          "en": "universal modeling language"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q09",
+      "explanation": {
+        "ar": "يرمز UML إلى Unified Modeling Language (لغة النمذجة الموحدة).",
+        "en": "UML stands for Unified Modeling Language, standardized by the OMG for object-oriented modeling."
+      }
+    },
+    {
+      "id": "q10",
+      "stem": {
+        "ar": "جزء برمجي وظيفي قابل للتسليم بشكل مستقل ويوفر وصولاً لخدماته عبر واجهات يُسمى:",
+        "en": "An independently deliverable piece of functionality providing access to its services through interfaces is called"
+      },
+      "bloom": "Remember",
+      "answer": 3,
+      "source": {
+        "id": "1.10",
+        "line": 700,
+        "note": {
+          "ar": "مفتاح الكتاب يعتمد (d). النص الأصلي المطبوع انقطع فيه طرف الكلمة throug[unclear] وتم تثبيته.",
+          "en": "Textbook key confirms (d). Primary text clipped  through as throug[unclear]; restored from context and T1."
+        },
+        "path": "02_Raw_Materials/New/Ch01_Introduction.md",
+        "reference": "Aggarwal & Singh, Software Engineering (3rd ed.), MCQ 1.10; publisher key p. 498",
+        "key_status": "confirmed",
+        "normalizations": [
+          "restore_ocr_unclear_from_context"
+        ]
+      },
+      "options": [
+        {
+          "ar": "قياس البرمجيات",
+          "en": "software measurement"
+        },
+        {
+          "ar": "تركيب البرمجيات",
+          "en": "software composition"
+        },
+        {
+          "ar": "مقياس البرمجيات",
+          "en": "software measure"
+        },
+        {
+          "ar": "المكون البرمجي",
+          "en": "software component"
+        }
+      ],
+      "bank_kind": "source",
+      "concept_id": "ase_source_ch01_q10",
+      "explanation": {
+        "ar": "المكون البرمجي هو وحدة وظيفية قابلة للتسليم المستقل وتتيح خدماتها عبر واجهات.",
+        "en": "A software component is an independently deliverable piece of functionality accessible solely through defined interfaces."
+      }
+    }
+  ],
+  "instructor": {
+    "ar": "أ.م.د. علي فاهم نعمة",
+    "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
+  },
+  "subject_id": "04_Advanced_Software_Eng",
+  "updated_at": "2026-11-13T12:16:50Z",
+  "subject_title": "هندسة البرمجيات",
+  "schema_version": 3,
+  "semester_label": "كورس أول",
+  "source_manifest": "source_manifests/ASE_Source_MCQs.json"
+}

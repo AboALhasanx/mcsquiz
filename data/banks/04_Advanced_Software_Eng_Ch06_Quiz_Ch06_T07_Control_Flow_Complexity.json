@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch06_T07_Control_Flow_Complexity",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "Nodes are files; edges show input and output"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_control_flow_graph",
       "explanation": {
         "ar": "يمثل مخطط تدفق التحكم مسار التنفيذ؛ فالعقد تعليمات أو كتل، والحواف الموجهة تبين انتقالات التحكم الممكنة.",
@@ -65,6 +67,7 @@
           "en": "Edges plus nodes divided by the number of predicates"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mccabe_graph_formula",
       "explanation": {
         "ar": "تستعمل صيغة الرسم الحواف والعقد وعدد المكونات المتصلة؛ أما البدائل فتخلط بها أعداداً أو عمليات مختلفة.",
@@ -97,6 +100,7 @@
           "en": "The number of independent test teams for the graph"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mccabe_connected_components",
       "explanation": {
         "ar": "يعدّ P المكونات المتصلة، وغالباً تكون واحدة لمخطط برنامج متصل؛ أما عقد الشروط فتدخل في طريقة أخرى.",
@@ -129,6 +133,7 @@
           "en": "Count predicate nodes, then add one to the count"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mccabe_predicate_method",
       "explanation": {
         "ar": "تعطي طريقة عقد الشروط عدد عقد الشرط مضافاً إليه واحد؛ وهي طريقة بديلة لحساب تعقيد McCabe.",
@@ -161,6 +166,7 @@
           "en": "The number of operators found inside each region"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mccabe_regions_method",
       "explanation": {
         "ar": "يعرض المقرر عدّ المناطق طريقة ثالثة لاستخراج التعقيد الدوري من مخطط التدفق.",
@@ -193,6 +199,7 @@
           "en": "The count of files accessed during program execution"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mccabe_independent_paths",
       "explanation": {
         "ar": "يعطي التعقيد الدوري عدد المسارات المستقلة خطياً؛ ولا يعدّ كل أثر تنفيذ ممكن أو إحالة بيانات.",
@@ -225,6 +232,7 @@
           "en": "An effort-distribution table for lifecycle phases"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_mccabe_test_basis",
       "explanation": {
         "ar": "توفر المسارات المستقلة أساساً لتنظيم اختبارات تركز على تدفق التحكم؛ ولا تقيس الحجم أو جهد المشروع.",
@@ -257,6 +265,7 @@
           "en": "It describes control flow rather than product size"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_cyclomatic_not_size",
       "explanation": {
         "ar": "يصف التعقيد الدوري بنية قرارات تدفق التحكم؛ أما LOC ونقاط الوظائف وطول البرنامج فهي مقاييس حجم.",

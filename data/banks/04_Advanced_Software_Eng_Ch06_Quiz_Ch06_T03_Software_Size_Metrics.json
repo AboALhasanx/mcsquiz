@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch06_T03_Software_Size_Metrics",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "Only lines containing one complete executable statement"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_loc_counting_rule",
       "explanation": {
         "ar": "يستبعد تعريف Conte السائد في البحوث الأسطر الفارغة والتعليقات، لكنه يشمل الترويسات والتصريحات والنص البرمجي التنفيذي وغير التنفيذي.",
@@ -65,6 +67,7 @@
           "en": "Function-point totals fix every line-counting convention"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_loc_counting_convention",
       "explanation": {
         "ar": "يعرض مثال المقرر أعداداً مختلفة بحسب استبعاد الفراغات والتعليقات أو عد التعليمات التنفيذية فقط؛ لذلك يجب توضيح القاعدة.",
@@ -97,6 +100,7 @@
           "en": "Actors, transactions, screens, reports, algorithms, environment, and adjustments"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fp_functional_units",
       "explanation": {
         "ar": "يعدّ تحليل Albrecht نقاط الإدخال والإخراج والاستعلامات والملفات المنطقية الداخلية وملفات الواجهات الخارجية.",
@@ -129,6 +133,7 @@
           "en": "It combines input and output to retrieve information"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fp_external_inquiry",
       "explanation": {
         "ar": "الاستعلام الخارجي يجمع الإدخال والإخراج لاسترجاع البيانات؛ أما صيانة الملفات والتقارير الصادرة فأنواع وظيفية مختلفة.",
@@ -161,6 +166,7 @@
           "en": "An ILF is an input-output request that retrieves data"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fp_ilf_eif",
       "explanation": {
         "ar": "يمثل EIF بيانات مترابطة منطقياً يشير إليها النظام المقاس وتديرها منظومة أخرى؛ أما ILF فيُصان داخل النظام المقاس.",
@@ -193,6 +199,7 @@
           "en": "Counts defects observed after a product release"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fp_adjustment_factor",
       "explanation": {
         "ar": "يطبق المقرر عامل ضبط التعقيد على العدد غير المعدل لنقاط الوظائف اعتماداً على أربعة عشر تقديراً لمؤثرات النظام؛ ولا يعدّل LOC أو عدد الممثلين.",
@@ -225,6 +232,7 @@
           "en": "Measures elapsed time during production runs"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fp_language_independence",
       "explanation": {
         "ar": "تعتمد نقاط الوظائف على المنظور الوظيفي للنظام ويمكن تقديرها من المتطلبات أو التصميم بمعزل عن لغة التنفيذ.",
@@ -257,6 +265,7 @@
           "en": "Adds algorithmic complexity to the size measure"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_feature_point_algorithm",
       "explanation": {
         "ar": "تضيف Feature Points الخوارزميات إلى عدّ مجال المعلومات، مما يلائم التطبيقات ذات التعقيد الخوارزمي المرتفع.",
@@ -289,6 +298,7 @@
           "en": "Methods, attributes, and inheritance relationships"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_object_points",
       "explanation": {
         "ar": "تقدّر Object Points الحجم من الشاشات والتقارير ومكونات لغات الجيل الثالث؛ أما البدائل فتنتمي إلى عائلات مقاييس مختلفة.",
@@ -321,6 +331,7 @@
           "en": "Estimates time from token counts and mental rate"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_backfiring",
       "explanation": {
         "ar": "تستعمل backfiring علاقات خاصة باللغة بين LOC ونقاط الوظائف لتقدير الوظائف من الشيفرة المنجزة؛ وهي تقريبية وينبغي استعمالها بحذر.",

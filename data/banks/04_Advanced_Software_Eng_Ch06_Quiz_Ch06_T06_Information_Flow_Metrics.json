@@ -6,6 +6,7 @@
   "quiz_id": "Quiz_Ch06_T06_Information_Flow_Metrics",
   "has_math": false,
   "semester": 1,
+  "bank_kind": "practice",
   "questions": [
     {
       "id": "q1",
@@ -33,6 +34,7 @@
           "en": "Methods that share attributes within the same component"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fan_in",
       "explanation": {
         "ar": "يعدّ fan-in الأساسي استدعاءات المكونات أو تحويلات التحكم الواردة؛ أما الاستدعاءات الصادرة فهي fan-out.",
@@ -65,6 +67,7 @@
           "en": "Methods inherited from the component's parent classes"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fan_out",
       "explanation": {
         "ar": "يعدّ fan-out الأساسي الاستدعاءات الصادرة المباشرة؛ أما الجهات المستدعية الواردة فيعدّها fan-in.",
@@ -97,6 +100,7 @@
           "en": "Every component receives one for both fan counts"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fan_boundary_convention",
       "explanation": {
         "ar": "يسند إجراء الشريحة قيمة دنيا مقدارها واحد إلى fan-in للجذور وfan-out للأوراق؛ وهذا اصطلاح للإجراء لا تعريف شامل.",
@@ -129,6 +133,7 @@
           "en": "It can penalize a component that is reused"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_fan_in_reuse_caveat",
       "explanation": {
         "ar": "تحذر الشريحة صراحةً من أن نموذج fan-in المبسط قد يفرض عقوبة على المكونات المعاد استخدامها؛ لذا يلزم تفسير القيمة في سياقها.",
@@ -161,6 +166,7 @@
           "en": "Class depth plus the count of its immediate subclasses"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_henry_kafura_formula",
       "explanation": {
         "ar": "يجمع Henry–Kafura طول الوحدة مع مربع مجموع تدفق المعلومات؛ وهو يختلف عن عدّ fan الأساسي وحده.",
@@ -193,6 +199,7 @@
           "en": "Project staffing patterns and schedule changes"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_henry_kafura_flow_scope",
       "explanation": {
         "ar": "يوسع Henry–Kafura مقياسي fan-in وfan-out ليتجاوزا الاستدعاءات ويشملا بنى البيانات التي تسترجعها الوحدة أو تحدثها.",
@@ -225,6 +232,7 @@
           "en": "Project effort, schedule duration, and defect density"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_extended_fan_out_terms",
       "explanation": {
         "ar": "يجمع fan-out الموسع في الشريحة المكونات المستدعاة والمعاملات الممررة بين مستويات التسلسل وعناصر البيانات التي يكتبها المكوّن.",
@@ -257,6 +265,7 @@
           "en": "With flow fixed, the longer module scores higher"
         }
       ],
+      "bank_kind": "practice",
       "concept_id": "ch6_henry_kafura_length_effect",
       "explanation": {
         "ar": "عند تساوي مجموع تدفقات المعلومات، يجعل عامل طول الوحدة قيمة Henry–Kafura للوحدة الأطول أكبر.",
