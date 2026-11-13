@@ -34,14 +34,26 @@ def run():
         check('row links to its quiz',
               '#/quiz/' in (rows.first.locator('a').first.get_attribute('href') or ''))
 
-        # switching subject is local work: no network at all
-        before = page.evaluate('() => window.__net || 0')
+        # Switching subjects should not fetch bank data from the Supabase API.
+        # Match the configured API host, not the local vendored Supabase JS
+        # modules (also named "supabase" in their URL) loaded during startup.
         calls = []
-        page.on('request', lambda r: calls.append(r.url) if 'supabase' in r.url else None)
+        def record_supabase_api_request(request):
+            from urllib.parse import urlparse
+            host = urlparse(request.url).hostname or ''
+            if host.endswith('.supabase.co'):
+                calls.append({
+                    'url': request.url,
+                    'method': request.method,
+                    'resource_type': request.resource_type,
+                })
+
+        page.on('request', record_supabase_api_request)
         if len(subs) > 1:
             page.locator('#subject-filter-bar .filter-chip').nth(1).click()
             page.wait_for_timeout(300)
-        check('switching subjects sends no requests', len(calls) == 0, len(calls))
+        check('switching subjects sends no Supabase API requests',
+              len(calls) == 0, calls)
         check('switching subjects changes the active chip',
               len(subs) <= 1 or 'active' in (page.locator('#subject-filter-bar .filter-chip').nth(1).get_attribute('class') or ''))
 

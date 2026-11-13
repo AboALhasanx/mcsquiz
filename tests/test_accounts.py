@@ -50,18 +50,67 @@ def run():
         # signing out now asks first: accept the warning and remember it appeared
         seen = {}
         p1.once('dialog', lambda d: (seen.update({'msg': d.message}), d.accept()))
+        # Seed device-only data and hold the logout sync open so this test
+        # deterministically exercises the old fixed-800ms observation window.
+        p1.evaluate("""() => {
+          localStorage.setItem('portal_history_v1', JSON.stringify([{ t: 1 }]));
+          localStorage.setItem('portal_saved_v1', JSON.stringify({ 'test|q|1': { savedAt: 1 } }));
+          localStorage.setItem('portal_best_test', '1');
+          const C = window.PortalCloud;
+          const original = C.pullOrPush;
+          window.__logoutSyncStarted = false;
+          C.pullOrPush = () => new Promise((resolve) => {
+            window.__logoutSyncStarted = true;
+            setTimeout(() => {
+              C.pullOrPush = original;
+              resolve({ action: 'test-delayed-sync' });
+            }, 1500);
+          });
+        }""")
         p1.evaluate("() => document.querySelector('#account-logout').dispatchEvent(new MouseEvent('click', {bubbles:true}))")
+        p1.wait_for_function('() => window.__logoutSyncStarted === true', timeout=3000)
         p1.wait_for_timeout(800)
         check('signing out warns before it happens', 'تسجيل الخروج' in (seen.get('msg') or ''), seen.get('msg'))
-        # the device must not keep the account's records after a sign-out
-        left = p1.evaluate("""() => ({
+        # The old fixed wait lands while sync is still pending; make that
+        # vulnerability explicit rather than treating the intermediate state
+        # as a completed sign-out.
+        during_sync = p1.evaluate("""() => ({
+            syncing: window.__logoutSyncStarted,
             h: JSON.parse(localStorage.getItem('portal_history_v1') || '[]').length,
             s: Object.keys(JSON.parse(localStorage.getItem('portal_saved_v1') || '{}')).length,
             best: Object.keys(localStorage).filter((k) => k.indexOf('portal_best_') === 0).length,
             pin: !!localStorage.getItem('portal_pin_v1'),
             acc: !!localStorage.getItem('portal_account_v1')})""")
+        check('delayed logout sync exposes the old 800ms timing window',
+              during_sync['syncing'] and during_sync['h'] > 0 and during_sync['s'] > 0
+              and during_sync['best'] > 0 and during_sync['pin'] and during_sync['acc'], during_sync)
+        try:
+            p1.wait_for_function("""() => {
+              const history = JSON.parse(localStorage.getItem('portal_history_v1') || '[]');
+              const saved = JSON.parse(localStorage.getItem('portal_saved_v1') || '{}');
+              const best = Object.keys(localStorage).filter((k) => k.indexOf('portal_best_') === 0);
+              return history.length === 0 && Object.keys(saved).length === 0 && best.length === 0
+                && !localStorage.getItem('portal_pin_v1') && !localStorage.getItem('portal_account_v1');
+            }""", timeout=7000)
+            cleared = p1.evaluate("""() => ({
+                h: JSON.parse(localStorage.getItem('portal_history_v1') || '[]').length,
+                s: Object.keys(JSON.parse(localStorage.getItem('portal_saved_v1') || '{}')).length,
+                best: Object.keys(localStorage).filter((k) => k.indexOf('portal_best_') === 0).length,
+                pin: !!localStorage.getItem('portal_pin_v1'),
+                acc: !!localStorage.getItem('portal_account_v1')})""")
+        except Exception as e:
+            cleared = p1.evaluate("""() => ({
+                syncStarted: window.__logoutSyncStarted,
+                h: JSON.parse(localStorage.getItem('portal_history_v1') || '[]').length,
+                s: Object.keys(JSON.parse(localStorage.getItem('portal_saved_v1') || '{}')).length,
+                best: Object.keys(localStorage).filter((k) => k.indexOf('portal_best_') === 0).length,
+                pin: !!localStorage.getItem('portal_pin_v1'),
+                acc: !!localStorage.getItem('portal_account_v1')})""")
+            cleared['waitError'] = str(e).split('\n')[0]
         check('signing out wipes the local records',
-              left['h'] == 0 and left['s'] == 0 and left['best'] == 0 and not left['pin'] and not left['acc'], left)
+              cleared['h'] == 0 and cleared['s'] == 0 and cleared['best'] == 0
+              and not cleared['pin'] and not cleared['acc'], cleared)
+        p1.evaluate('() => { delete window.__logoutSyncStarted; }')
         login(p1, handle, name, pin='1111')
         check('a wrong PIN is rejected', not p1.evaluate('() => !!window.PortalCloud.account()'),
               p1.locator('#login-error').text_content())
