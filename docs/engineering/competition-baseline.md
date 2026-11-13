@@ -105,3 +105,6 @@ results and all implementation changes below as work proceeds.
   service-worker cache name, `SHELL_VERSION`); precache check reports 343 entries and
   the audit is clean. Nothing was deployed.
 - Not verified: cold-start installed-PWA update, airplane mode, or the deployed build.
+  A cold-start test of this shell cannot be honest without deploying it, which the
+  student prohibited.
+- Committed locally and pushed as `cf74998` (no Vercel deploy).
