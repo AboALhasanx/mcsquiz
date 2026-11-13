@@ -17,6 +17,9 @@ the PWA: service worker + cached manifest + cached banks  <- offline first
 > Working on this repo with an agent? Read [AGENTS.md](AGENTS.md) first — the gate,
 > the release flow, the RTL/copy rules and the data-safety rules live there.
 
+For the engineering map, operational runbook, security boundaries, and testing
+notes, start at [docs/engineering/README.md](docs/engineering/README.md).
+
 ## Run it locally
 
 ```bash
@@ -66,7 +69,8 @@ python tools/ci.py && npx -y vercel@latest --prod --yes
 ```
 
 `CHANGELOG.md` is kept in the Keep a Changelog format. Deploys are explicit; the
-committed GitHub Actions workflow runs the same gate on every push.
+committed GitHub Actions workflow runs the static audit on pushes and PRs; the
+browser behavior suite requires manual dispatch.
 
 ## Content
 
