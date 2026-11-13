@@ -71,3 +71,19 @@ for (const legend of bot.getLegends()) {
   }
 }
 console.log('PASS all legends stay inside accuracy and timing bounds');
+
+// 4. Only genuine negation markers penalise the opponent.
+const negation = [
+  ['Which of these is NOT one of the five properties of a secure system?', true],
+  ['Where can cybersecurity not be kept?', true],
+  ['Which one is not a category of maintenance ?', true],
+  ['A traffic flood makes a website unreachable for six hours.', false],
+  ['The bank finds a program error and fixes it afterwards.', false],
+  ['Which common belief about threats is wrong?', true]
+];
+for (const [stem, expected] of negation) {
+  const decision = bot.decide(bot.getLegend('ronaldinho'),
+    { question: stem, options: ['a', 'b', 'c', 'd'], answer: 0 }, 0, 0, 0, 0);
+  assert.equal(decision.isNegation, expected, stem);
+}
+console.log('PASS only genuine negation wording is treated as a trap');

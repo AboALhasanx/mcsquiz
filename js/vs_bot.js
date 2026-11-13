@@ -118,7 +118,10 @@
     }
   ];
 
-  var NEGATION_REGEX = /(?:ما\s*عدا|ليس|غير|لا\s+ي|لا\s+ت|باستثناء|خطأ|خاطئ|not|except|never|least|false)/i;
+  // Genuine negation markers only. Bare substrings such as "not" inside
+  // "cannot"/"unreachable" or "error" in ordinary prose used to penalise
+  // questions that are not negation traps.
+  var NEGATION_REGEX = /(?:ما\s*عدا|باستثناء|\bليس(?:ت)?\b|لا\s+(?:ي|ت)|\bnot\b|\bexcept\b|\bnever\b|\bincorrect\b|\bfalse\b|\bwrong\b)/i;
   var RIVALRY_KEY = 'portal_vs_rivals';
 
   function getLegends() {

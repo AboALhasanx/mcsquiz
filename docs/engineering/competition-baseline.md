@@ -116,3 +116,42 @@ results and all implementation changes below as work proceeds.
   attached over USB; the student has since indicated no tablet is available, so treat
   device-specific claims as that earlier snapshot only.
 - Committed locally and pushed as `cf74998` (no Vercel deploy).
+
+## Deeper audit — measured gaps (2026-11-13)
+
+Measured against the 2,533 shipped questions and the current source.
+
+Fixed in this pass:
+
+- Negation trap detection matched 215/2,533 stems (8.5%), of which 112 (4.4%) were
+  ordinary prose such as "unreachable" or "program error". Word-bounded negation
+  markers plus `wrong`/`incorrect`/`false` now match **115/2,533 (4.5%)**, and
+  `tests/test_bot_competition.js` asserts both genuine and non-negation stems.
+- The player card printed an accuracy ratio in a subject view by dividing subject
+  points by *total* answers. It now shows the honest dash there; table rows already
+  did. `tests/test_league_subject_accuracy.py` covers it.
+
+Still open, in priority order (each needs a decision, not just code):
+
+1. **League XP is client-claimed and repeatable.** `weeklyXp` sums `correct` from
+   local history with no per-quiz dedupe (`js/league.js`), and the history file is
+   user-editable via import, so the board measures repetition as much as skill.
+   A fix needs a product rule (best attempt per quiz, decay, or per-day cap) and
+   ideally a server-side delta RPC.
+2. **Nothing is monotonic.** A second device with a shorter merged history, or a
+   history clear, can lower a week that is already ranked, because the upsert blindly
+   replaces `xp`. A server-side `greatest(old, new)` is the smallest honest fix.
+3. **Ranking windows are truncated before ranking.** The weekly board asks for the
+   top 100 rows overall, and the all-time board fetches 500 rows with no ordering, so
+   a subject leader below the cut is invisible and all-time totals can vary between
+   fetches. Needs an RPC/aggregate, not a bigger client limit.
+4. **Legends lead an empty week.** Five virtual rows always merge in, so a brand-new
+   week never shows "no one yet", and the fictional duel bonus can move a legend up
+   after the student *loses*. Keeping legends is fine; the bonus direction and a
+   humans-only view are product choices.
+5. **The podium is `aria-hidden`.** Table rows and player cards announce the virtual
+   status; the podium badge is visual only.
+6. **The gate cannot run as-is here.** `test_accounts`, `test_pin_change`,
+   `test_security` and the live-room part of `test_vs` create real accounts/rooms,
+   and `run_all.py` deletes `tests/report.txt`. A dedicated local-only runner, or a
+   separate test project, is the clean fix.

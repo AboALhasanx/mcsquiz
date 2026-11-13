@@ -418,7 +418,9 @@
     function openPlayerCard(r) {
       var card = $('player-card');
       if (!card || !r) return;
-      var acc = accuracyOf(r);
+      // In a subject view the points are subject-scoped but total answers are not,
+      // so a ratio would be wrong. Show the honest dash instead of a false accuracy.
+      var acc = S.leagueSubject ? null : accuracyOf(r);
       var subs = Object.keys(r.per_subject || {})
         .map(function (id) {
           var v = r.per_subject[id] || {};
