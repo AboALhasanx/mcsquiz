@@ -35,7 +35,7 @@ def run(vault):
     previous=json.loads((root/'data/index.json').read_text(encoding='utf-8'))
     subject=next(s for s in previous['subjects'] if s['subject_id']==sid)
     manifest={'version':previous['version'], 'subjects':[subject]}
-    subject['chapters']=list(subject['chapters'])
+    subject['chapters']=[c for c in subject['chapters'] if c.get('quiz_id') not in source]
     for qid,bank in source.items():
         subject['chapters'].append({'chapter_no':int(qid.split('_')[1][2:]),'quiz_id':qid,
             'bank':f'banks/{qid}.json','count':len(bank['questions']),'version':1})

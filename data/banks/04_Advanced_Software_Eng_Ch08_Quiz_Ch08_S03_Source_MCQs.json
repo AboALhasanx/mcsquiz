@@ -48,7 +48,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q27",
       "explanation": {
-        "ar": "والفخ الامتحاني:** نقطة الضعف الجوهرية في تحليل القيم الحدية وتجزئة التكافؤ هي إهمال التفاعل بين الشروط المركبة، حيث تفترض كل طريقة فحص المتغير بمعزل عن بقية المتغيرات.",
+        "ar": "نقطة الضعف الجوهرية في تحليل القيم الحدية وتجزئة التكافؤ هي إهمال التفاعل بين الشروط المركبة، حيث تفترض كل طريقة فحص المتغير بمعزل عن بقية المتغيرات.",
         "en": "One major weakness of boundary value analysis and equivalence class partitioning is that they do not explore combinations of input conditions. Both methods test variables largely in isolation under the single-fault assumption, missing defects caused by variable interactions."
       }
     },
@@ -92,7 +92,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q28",
       "explanation": {
-        "ar": "والفخ الامتحاني:** في تقنية مخطط السبب والنتيجة (Cause-Effect Graphing)، يمثل «السبب» شرط الإدخال (Input)، ويمثل «الأثر» الإجراء أو المخرج الناتج (Output).",
+        "ar": "في تقنية مخطط السبب والنتيجة (Cause-Effect Graphing)، يمثل «السبب» شرط الإدخال (Input)، ويمثل «الأثر» الإجراء أو المخرج الناتج (Output).",
         "en": "In cause-effect graphing, cause and effect represent input condition and output action (or state change) respectively. A cause is a distinct input condition or equivalence class; an effect is an observable output or internal transformation."
       }
     },
@@ -136,7 +136,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q29",
       "explanation": {
-        "ar": "والفخ الامتحاني:** DD = Decision to Decision. الرسم يدمج العقد المتتابعة ويُبقي عقد القرار. الفخ: لا تفكّ الاختصار إلى Design أو Defect أو Destination.",
+        "ar": "DD = Decision to Decision. الرسم يدمج العقد المتتابعة ويُبقي عقد القرار. الفخ: لا تفكّ الاختصار إلى Design أو Defect أو Destination.",
         "en": "A DD path graph is a decision-to-decision path graph. It reduces the flow graph by combining runs of sequential nodes into single nodes, keeping the decision nodes."
       }
     },
@@ -180,7 +180,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q30",
       "explanation": {
-        "ar": "والفخ الامتحاني:** المسار المستقل يضيف على الأقل مجموعة جديدة من تعليمات المعالجة أو شروطاً جديدة. الفخ: at most وone and only one خياران خاطئان.",
+        "ar": "المسار المستقل يضيف على الأقل مجموعة جديدة من تعليمات المعالجة أو شروطاً جديدة. الفخ: at most وone and only one خياران خاطئان.",
         "en": "An independent path is any path through the DD path graph that introduces at least one new set of processing statements or new conditions."
       }
     },
@@ -224,7 +224,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q31",
       "explanation": {
-        "ar": "والفخ الامتحاني:** مقياس التعقيد الدوري من وضع مكيب (T. J. McCabe).",
+        "ar": "مقياس التعقيد الدوري من وضع مكيب (T. J. McCabe).",
         "en": "Cyclomatic complexity was developed by T. J. McCabe. The deck introduces it as McCabe's cyclomatic metric, V(G) = e - n + 2P."
       }
     },
@@ -271,7 +271,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q32",
       "explanation": {
-        "ar": "والفخ الامتحاني:** الطرق الثلاث صحيحة: e-n+2P (حيث P عدد المكونات المتصلة)، وπ+1 (حيث π عدد عقد القرار)، وعدد المناطق. لذلك الإجابة (d).",
+        "ar": "الطرق الثلاث صحيحة: e-n+2P (حيث P عدد المكونات المتصلة)، وπ+1 (حيث π عدد عقد القرار)، وعدد المناطق. لذلك الإجابة (d).",
         "en": "All three formulations are valid: (a) V(G) = e - n + 2P, (b) V(G) = π + 1, where π is the number of predicate nodes, and (c) V(G) = the number of regions of the flow graph."
       }
     },
@@ -315,7 +315,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q33",
       "explanation": {
-        "ar": "والفخ الامتحاني:** صيغة π+1 تصح فقط إذا كان لكل عقدة قرار مخرجان اثنان بالضبط.",
+        "ar": "صيغة π+1 تصح فقط إذا كان لكل عقدة قرار مخرجان اثنان بالضبط.",
         "en": "The equation V(G) = π + 1 applies only if every predicate node has two outgoing edges. A node with three or more outgoing edges breaks the simple +1 rule."
       }
     },
@@ -359,7 +359,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q34",
       "explanation": {
-        "ar": "والفخ الامتحاني:** مصفوفة الرسم البياني (Graph Matrix) هي مصفوفة مربعة بأبعاد $N \\times N$، حيث يمثل $N$ عدد العقد الإجمالي في مخطط تدفق البرنامج.",
+        "ar": "مصفوفة الرسم البياني (Graph Matrix) هي مصفوفة مربعة بأبعاد $N \\times N$، حيث يمثل $N$ عدد العقد الإجمالي في مخطط تدفق البرنامج.",
         "en": "The size of a graph matrix is an $N \\times N$ square matrix, where $N$ is the number of nodes in the flow graph. Each row and column corresponds directly to a node."
       }
     },
@@ -403,7 +403,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q35",
       "explanation": {
-        "ar": "والفخ الامتحاني:** في مصفوفة الرسم، تُمثل كل عقدة بصف واحد وعمود واحد حصراً؛ وتُسجل التوصيلات بين العقدة $i$ والعقدة $j$ في الخلية المتقاطعة.",
+        "ar": "في مصفوفة الرسم، تُمثل كل عقدة بصف واحد وعمود واحد حصراً؛ وتُسجل التوصيلات بين العقدة $i$ والعقدة $j$ في الخلية المتقاطعة.",
         "en": "In a graph matrix, every node is represented by exactly one row and one column. The entry at $(i, j)$ indicates whether a directed edge connects node $i$ to node $j$."
       }
     },
@@ -447,7 +447,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q36",
       "explanation": {
-        "ar": "والفخ الامتحاني:** التعقيد الدوري $V(G)$ يساوي رياضياً عدد المسارات المستقلة خطياً (Number of independent paths) في فضاء المسارات الأساسي للبرنامج.",
+        "ar": "التعقيد الدوري $V(G)$ يساوي رياضياً عدد المسارات المستقلة خطياً (Number of independent paths) في فضاء المسارات الأساسي للبرنامج.",
         "en": "Cyclomatic complexity $V(G)$ is equal to the number of linearly independent paths through the program flow graph. It establishes the upper bound for the number of test cases required to achieve complete branch coverage."
       }
     },
@@ -491,7 +491,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q37",
       "explanation": {
-        "ar": "والفخ الامتحاني:** فحص تدفق البيانات (Data Flow Testing) هو فحص صندوق أبيض لمسارات المتغيرات (DEF/USE) في كود البرنامج، ولا علاقة له بمخططات تدفق البيانات (DFD) أو مخططات الكيانات (ERD).",
+        "ar": "فحص تدفق البيانات (Data Flow Testing) هو فحص صندوق أبيض لمسارات المتغيرات (DEF/USE) في كود البرنامج، ولا علاقة له بمخططات تدفق البيانات (DFD) أو مخططات الكيانات (ERD).",
         "en": "Data flow testing is not related to data flow diagrams, E-R diagrams, or data dictionaries. Data flow testing is a structural (white-box) technique focusing on the lifecycle of program variables (definitions, uses, and kills) along paths in control flow graphs."
       }
     },
@@ -535,7 +535,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q38",
       "explanation": {
-        "ar": "والفخ الامتحاني:** الهدف في فحص تدفق البيانات هو كشف التشوهات (Data anomalies) باختبار المسارات التي يعاد فيها تعريف المتغير دون استخدامه (المسارات التي ليست dc-paths نظيفة).",
+        "ar": "الهدف في فحص تدفق البيانات هو كشف التشوهات (Data anomalies) باختبار المسارات التي يعاد فيها تعريف المتغير دون استخدامه (المسارات التي ليست dc-paths نظيفة).",
         "en": "In data flow testing, a key objective is to uncover data anomalies, which requires examining all du-paths that are not definition-clear (dc) paths. If a variable is re-defined along a path before being used, an anomaly or redundant definition exists."
       }
     }
@@ -545,7 +545,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-13T12:16:51Z",
+  "updated_at": "2026-11-13T12:50:00Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول",

@@ -48,7 +48,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q01",
       "explanation": {
-        "ar": "والفخ الامتحاني:** تعريف مايرز الكلاسيكي (Glenford Myers, 1979): الاختبار هو عملية تنفيذ البرنامج بقصد اكتشاف الأخطاء والعيوب الكامنة، وليس إثبات خلوه التام من الأخطاء لأن الاختبار الشامل مستحيل حسابياً.",
+        "ar": "تعريف مايرز الكلاسيكي (Glenford Myers, 1979): الاختبار هو عملية تنفيذ البرنامج بقصد اكتشاف الأخطاء والعيوب الكامنة، وليس إثبات خلوه التام من الأخطاء لأن الاختبار الشامل مستحيل حسابياً.",
         "en": "Software testing is defined classically by Myers (1979) as the process of executing a program with the intent of finding errors. Testing demonstrates the presence of defects rather than their absolute absence."
       }
     },
@@ -92,7 +92,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q02",
       "explanation": {
-        "ar": "والفخ الامتحاني:** الخطأ البشري أثناء كتابة الكود يسمى «bug». لا تخلط بين الخيارين: errors هو الفعل البشري العام، أما bugs فهو الاسم الذي يطلقه المصدر على أخطاء الترميز.",
+        "ar": "الخطأ البشري أثناء كتابة الكود يسمى «bug». لا تخلط بين الخيارين: errors هو الفعل البشري العام، أما bugs فهو الاسم الذي يطلقه المصدر على أخطاء الترميز.",
         "en": "When developers make mistakes while coding, these mistakes are called bugs. People make errors (a good synonym is mistake); a failure occurs only when a fault executes."
       }
     },
@@ -136,7 +136,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q03",
       "explanation": {
-        "ar": "والفخ الامتحاني:** الفحص الوظيفي (Functional Testing) يُعرف أيضاً بالفحص السلوكي (Behavioral Testing) أو فحص الصندوق الأسود (Black-box)؛ حيث تُبنى حالات الاختبار استناداً إلى المدخلات والمخرجات المطلوبة بالمواصفات دون النظر للكود الداخلي.",
+        "ar": "الفحص الوظيفي (Functional Testing) يُعرف أيضاً بالفحص السلوكي (Behavioral Testing) أو فحص الصندوق الأسود (Black-box)؛ حيث تُبنى حالات الاختبار استناداً إلى المدخلات والمخرجات المطلوبة بالمواصفات دون النظر للكود الداخلي.",
         "en": "Functional testing is known as behavioral testing or black-box testing. It treats the software component as a black box, deriving test inputs purely from requirements specifications without examining internal structural control flow."
       }
     },
@@ -180,7 +180,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q04",
       "explanation": {
-        "ar": "والفخ الامتحاني:** تحليل القيم الحدية القياسي (BVA) يولد $4n+1$ حالة اختبار لعدد $n$ من المتغيرات اعتماداً على فرضية العيب المنفرد (Single-fault assumption)، حيث يُختبر كل متغير عند 4 قيم حدية وتبقى بقية المتغيرات عند قيمتها الطبيعية (Nominal)، بالإضافة لحالة اختبار مركزية واحدة.",
+        "ar": "تحليل القيم الحدية القياسي (BVA) يولد $4n+1$ حالة اختبار لعدد $n$ من المتغيرات اعتماداً على فرضية العيب المنفرد (Single-fault assumption)، حيث يُختبر كل متغير عند 4 قيم حدية وتبقى بقية المتغيرات عند قيمتها الطبيعية (Nominal)، بالإضافة لحالة اختبار مركزية واحدة.",
         "en": "For a function of $n$ variables, boundary value analysis (BVA) yields $4n + 1$ test cases. Under the single-fault assumption, each variable is tested at four boundary extremes ($min, min+, max-, max$) while holding other variables at nominal, plus one common baseline test case with all variables at nominal values: $4(n) + 1 = 4n + 1$."
       }
     },
@@ -224,7 +224,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q05",
       "explanation": {
-        "ar": "والفخ الامتحاني:** فحص المتانة (Robustness Testing) يختبر القيم الواقعة خارج الحدود مباشرة ($min-$ و $max+$) بالإضافة للحدود الأربعة، فيكون لكل متغير 6 قيم حدية بالإضافة للحالة الطبيعية ($6n+1$). لمتغيرين اثنين: $6(2)+1 = 13$ حالة اختبار.",
+        "ar": "فحص المتانة (Robustness Testing) يختبر القيم الواقعة خارج الحدود مباشرة ($min-$ و $max+$) بالإضافة للحدود الأربعة، فيكون لكل متغير 6 قيم حدية بالإضافة للحالة الطبيعية ($6n+1$). لمتغيرين اثنين: $6(2)+1 = 13$ حالة اختبار.",
         "en": "For a function of two variables ($n = 2$), robustness testing generates $6n + 1 = 6(2) + 1 = 13$ test cases. Robustness testing adds values just outside the valid boundaries ($min-$ and $max+$), testing 6 extreme points per variable plus the nominal center."
       }
     },
@@ -268,7 +268,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q06",
       "explanation": {
-        "ar": "والفخ الامتحاني:** قاعدة عدد حالات اختبار المتانة العامة لـ $n$ متغير هي $6n+1$، وهي امتداد لقاعدة BVA القياسية ($4n+1$) بإضافة نقطتين غير صالحتين لكل متغير لاختبار مناعة النظام ضد المدخلات غير المقبولة.",
+        "ar": "قاعدة عدد حالات اختبار المتانة العامة لـ $n$ متغير هي $6n+1$، وهي امتداد لقاعدة BVA القياسية ($4n+1$) بإضافة نقطتين غير صالحتين لكل متغير لاختبار مناعة النظام ضد المدخلات غير المقبولة.",
         "en": "For a function of $n$ variables, robustness testing of boundary value analysis yields $6n + 1$ test cases. Each variable takes values $\\{min-, min, min+, nom, max-, max, max+\\}$, producing $6$ tests per variable held against nominal values of all other inputs, plus $1$ all-nominal test case."
       }
     },
@@ -312,7 +312,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q07",
       "explanation": {
-        "ar": "والفخ الامتحاني:** اختبار الانحدار (Regression) يرتبط بمرحلة الصيانة: إعادة الفحص بعد أي تعديل. السلايدات لا تشرح هذا البند بجملة صريحة، فاحفظه كمفتاح الناشر.",
+        "ar": "اختبار الانحدار (Regression) يرتبط بمرحلة الصيانة: إعادة الفحص بعد أي تعديل. السلايدات لا تشرح هذا البند بجملة صريحة، فاحفظه كمفتاح الناشر.",
         "en": "Publisher key: regression testing is primarily related to maintenance testing, meaning re-testing after software has been changed."
       }
     },
@@ -359,7 +359,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q08",
       "explanation": {
-        "ar": "والفخ الامتحاني:** في مخطط تدفق التحكم (Control Flow Graph)، العقدة التي لا يدخل إليها أي سهم ($indegree=0$) ويخرج منها مسار واحد أو أكثر ($outdegree \\ne 0$) تُسمى عقدة المصدر أو البداية (Source Node).",
+        "ar": "في مخطط تدفق التحكم (Control Flow Graph)، العقدة التي لا يدخل إليها أي سهم ($indegree=0$) ويخرج منها مسار واحد أو أكثر ($outdegree \\ne 0$) تُسمى عقدة المصدر أو البداية (Source Node).",
         "en": "In a control flow graph, a node with indegree $= 0$ and outdegree $\\ne 0$ is called a source node. It represents the entry point of the program or module."
       }
     },
@@ -403,7 +403,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q09",
       "explanation": {
-        "ar": "والفخ الامتحاني:** العقدة التي تدخل إليها مسارات ($indegree \\ne 0$) ولا يخرج منها أي مسار ($outdegree=0$) هي عقدة المقصد أو النهاية (Destination / Sink Node).",
+        "ar": "العقدة التي تدخل إليها مسارات ($indegree \\ne 0$) ولا يخرج منها أي مسار ($outdegree=0$) هي عقدة المقصد أو النهاية (Destination / Sink Node).",
         "en": "In a control flow graph, a node with indegree $\\ne 0$ and outdegree $= 0$ is called a destination node (or sink node). It represents the exit point or termination of the control flow."
       }
     },
@@ -447,7 +447,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q10",
       "explanation": {
-        "ar": "والفخ الامتحاني:** جدول القرار (Decision Table) يتكون بنيوياً من 4 أرباع محددة: جذع الشروط (أعلى اليسار)، بنود الشروط (أعلى اليمين)، جذع الإجراءات (أسفل اليسار)، وبنود الإجراءات (أسفل اليمين).",
+        "ar": "جدول القرار (Decision Table) يتكون بنيوياً من 4 أرباع محددة: جذع الشروط (أعلى اليسار)، بنود الشروط (أعلى اليمين)، جذع الإجراءات (أسفل اليسار)، وبنود الإجراءات (أسفل اليمين).",
         "en": "A decision table has four distinct portions: (1) Condition Stub in the upper left, (2) Condition Entry in the upper right, (3) Action Stub in the lower left, and (4) Action Entry in the lower right."
       }
     },
@@ -491,7 +491,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q11",
       "explanation": {
-        "ar": "والفخ الامتحاني:** اختبار بيتا (Beta testing) ينفذه المستخدمون الفعليون (Users/Customers) في مواقعهم وبيئات عملهم الواقعية دون رقابة مباشرة من فريق التطوير.",
+        "ar": "اختبار بيتا (Beta testing) ينفذه المستخدمون الفعليون (Users/Customers) في مواقعهم وبيئات عملهم الواقعية دون رقابة مباشرة من فريق التطوير.",
         "en": "Beta testing is carried out by real end users or customers at external customer sites. It represents live operational evaluation in unconstrained, real-world user environments without active intervention from the development team."
       }
     },
@@ -535,7 +535,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q12",
       "explanation": {
-        "ar": "والفخ الامتحاني:** تجزئة فئات التكافؤ تقنية صندوق أسود (Black-box) لأنها تُشتق من المواصفات فقط. الفخ: الخياران Structural وMutation يخصان عائلات أخرى، وليسا صحيحين.",
+        "ar": "تجزئة فئات التكافؤ تقنية صندوق أسود (Black-box) لأنها تُشتق من المواصفات فقط. الفخ: الخياران Structural وMutation يخصان عائلات أخرى، وليسا صحيحين.",
         "en": "Equivalence class partitioning is a black-box (functional) technique: the input domain is divided into classes from the specification, and test cases are chosen from each class without looking at the code."
       }
     },
@@ -579,7 +579,7 @@
       "bank_kind": "source",
       "concept_id": "ase_source_ch08_q13",
       "explanation": {
-        "ar": "والفخ الامتحاني:** مخطط السبب والنتيجة (Cause-Effect Graphing) هو تقنية متقدمة تابعة لفحوصات الصندوق الأسود الوظيفية (Functional Testing)، تهدف لتحويل العلاقات المنطقية بين المدخلات والمخرجات إلى جداول قرار دقيقة.",
+        "ar": "مخطط السبب والنتيجة (Cause-Effect Graphing) هو تقنية متقدمة تابعة لفحوصات الصندوق الأسود الوظيفية (Functional Testing)، تهدف لتحويل العلاقات المنطقية بين المدخلات والمخرجات إلى جداول قرار دقيقة.",
         "en": "Cause-effect graphing is one form of functional (black-box) testing technique. It translates complex natural-language specifications into Boolean logical graphs relating input conditions (causes) to output responses (effects) to systematically generate decision tables."
       }
     }
@@ -589,7 +589,7 @@
     "en": "Asst. Prof. Dr. Ali Fahim Ni'ma"
   },
   "subject_id": "04_Advanced_Software_Eng",
-  "updated_at": "2026-11-13T12:16:51Z",
+  "updated_at": "2026-11-13T12:50:00Z",
   "subject_title": "هندسة البرمجيات",
   "schema_version": 3,
   "semester_label": "كورس أول",
