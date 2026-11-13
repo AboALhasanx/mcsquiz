@@ -52,6 +52,9 @@
       botStageTimers: [],
       botStreak: 0
     };
+    // Session-only aggregate; never stored or sent. A different owner starts fresh.
+    var adaptiveOwner = null;
+    var adaptiveProfiles = {};
     global.vsState = vsState;
 
     function vsPlayerInfo() {
@@ -134,15 +137,8 @@
       var arena = $('vs-arena');
       var result = $('vs-result');
 
-      if (!navigator.onLine || !window.PortalVS || !window.PortalVS.configured()) {
-        if (offCard) offCard.classList.remove('hidden');
-        if (lobby) lobby.classList.add('hidden');
-        if (waiting) waiting.classList.add('hidden');
-        if (arena) arena.classList.add('hidden');
-        if (result) result.classList.add('hidden');
-        return;
-      }
-      if (offCard) offCard.classList.add('hidden');
+      var liveAvailable = !!(navigator.onLine && window.PortalVS && window.PortalVS.configured());
+      if (offCard) offCard.classList.toggle('hidden', liveAvailable);
 
       if (!vsState.room) {
         if (lobby) lobby.classList.remove('hidden');
@@ -151,6 +147,10 @@
         if (result) result.classList.add('hidden');
         setupVsLobby();
         setupVsResultActions();
+        ['vs-btn-create-room', 'vs-btn-join-room', 'vs-btn-scan-qr'].forEach(function (id) {
+          var button = $(id);
+          if (button) button.disabled = !liveAvailable;
+        });
 
         var m = (hash || '').match(/^#\/vs\/([0-9]{4})$/);
         if (m && m[1]) {
@@ -423,6 +423,15 @@
       var chId = (chSelect && chSelect.value) || 'all';
 
       var p = vsPlayerInfo();
+      if (adaptiveOwner !== p.id) {
+        adaptiveOwner = p.id;
+        adaptiveProfiles = {};
+      }
+      var adaptive = window.PortalVSAdaptive;
+      var profile = adaptive && (adaptiveProfiles[subId] || adaptive.createProfile());
+      vsState.adaptiveSubject = subId;
+      vsState.adaptiveOwner = p.id;
+      vsState.adaptiveOffset = profile ? adaptive.difficulty(profile).offset : 0;
       var seed = Math.floor(Math.random() * 1000000) + 1;
       vsState.isBot = true;
       vsState.botLegend = legend;
@@ -802,7 +811,9 @@
 
       if (vsState.isBot && window.PortalVSBot && vsState.botLegend) {
         var botDec = window.PortalVSBot.decide(
-          vsState.botLegend,
+          Object.assign({}, vsState.botLegend, {
+            baseAccuracy: Math.max(0.35, Math.min(0.96, vsState.botLegend.baseAccuracy + (vsState.adaptiveOffset || 0)))
+          }),
           q,
           roundIndex,
           vsState.myScore,
@@ -1129,6 +1140,12 @@
 
       if (vsState.isBot && vsState.botLegend && window.PortalVSBot && window.PortalVSBot.recordMatchResult) {
         var outcome = (vsState.myScore > vsState.oppScore) ? 'win' : (vsState.myScore < vsState.oppScore ? 'loss' : 'tie');
+        var adaptive = window.PortalVSAdaptive;
+        if (adaptive && vsState.adaptiveOwner === vsPlayerInfo().id && adaptiveOwner === vsState.adaptiveOwner) {
+          var key = vsState.adaptiveSubject;
+          var aggregate = { wins: outcome === 'win' ? 1 : 0, losses: outcome === 'loss' ? 1 : 0, ties: outcome === 'tie' ? 1 : 0 };
+          adaptiveProfiles[key] = adaptive.recordAggregate(adaptiveProfiles[key] || adaptive.createProfile(), aggregate).profile;
+        }
         var st = window.PortalVSBot.recordMatchResult(vsState.botLegend.id, outcome);
         if (st && subEl) {
           subEl.textContent += ' • المواجهات: ' + st.wins + ' فوز - ' + st.losses + ' خسارة';

@@ -1,19 +1,19 @@
 /* MCQ Portal service worker â€” static + data cache, no API fabrication.
  * Telemetry POSTs do not exist in the portal, so failed POSTs are never
  * answered with fake 200s (unlike the Master-Studio sw.js defect). */
-const VERSION = '1.12.0';
+const VERSION = '1.13.0';
 const CACHE = 'mcq-portal-' + VERSION;
 const CORE = [
   './',
   './index.html',
   './manifest.json',
+  './css/driver.css',
   './css/fonts.css',
   './css/portal.css',
   './css/quiz.css',
-  './css/driver.css',
   './js/account_ui.js',
-  './js/admin_flags.js',
   './js/achievements.js',
+  './js/admin_flags.js',
   './js/analytics.js',
   './js/app.js',
   './js/cloud.js',
@@ -36,6 +36,7 @@ const CORE = [
   './js/supabase-config.js',
   './js/tg-config.js',
   './js/vs.js',
+  './js/vs_adaptive.js',
   './js/vs_bot.js',
   './js/vs_ui.js',
   './js/vendor/npm/iceberg-js-0.8.1.js',

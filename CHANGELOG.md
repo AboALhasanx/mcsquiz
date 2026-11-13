@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.0] — 2026-11-13
+
+### Changed
+- feat: adaptive local rival, continuous opponent balance, virtual league badges, offline legend duels
+
+
 ## [1.12.0] — 2026-11-13
 
 ### Changed

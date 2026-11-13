@@ -249,18 +249,17 @@
     // 3. Dynamic Human Accuracy Calculation
     var currentAccuracy = legend.baseAccuracy;
 
-    // Clutch round bonus
+    // Clutch round bonus, with diminishing returns so accurate legends do not
+    // all flatten onto the same ceiling in the deciding rounds.
     if (roundIndex >= 3) {
-      currentAccuracy += legend.clutchFocus;
+      var headroom = Math.max(0, 1 - Math.max(0, currentAccuracy - 0.5) / 0.40);
+      currentAccuracy += legend.clutchFocus * headroom;
     }
 
-    // Dynamic Rubber-banding (Tight competitive match)
+    // Dynamic Rubber-banding (Tight competitive match). The adjustment is
+    // continuous in the score gap: no cliff when one answer crosses a threshold.
     var scoreDiff = oppScore - myScore; // positive: bot is ahead
-    if (scoreDiff > 350) {
-      currentAccuracy -= 0.08; // human slight relaxation
-    } else if (scoreDiff < -250) {
-      currentAccuracy += 0.09; // human fighting back to catch up
-    }
+    currentAccuracy -= 0.085 * Math.tanh(scoreDiff / 900);
 
     // Negation vulnerability
     if (isNegation) {

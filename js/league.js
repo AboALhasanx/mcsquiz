@@ -222,10 +222,10 @@
   }
 
   async function isHidden(sb, uid, wid) {
-    try {
-      var r = await sb.from('league_xp').select('hidden').eq('user_id', uid).eq('week_id', wid).maybeSingle();
-      return !!(r.data && r.data.hidden);
-    } catch (e) { return false; }
+    var r = await sb.from('league_xp').select('hidden').eq('user_id', uid).eq('week_id', wid).maybeSingle();
+    // Never turn an unreadable visibility setting into an explicit public write.
+    if (r.error) throw new Error(r.error.message || 'visibility-read-failed');
+    return !!(r.data && r.data.hidden);
   }
 
   async function setHidden(hidden) {
@@ -353,7 +353,7 @@
   }
 
   global.PortalLeague = {
-    invalidateClient: function () { clientPromise = null; },
+    invalidateClient: function () { clientPromise = null; myId = null; },
     configured: configured,
     linked: linked,
     userId: myUserId,

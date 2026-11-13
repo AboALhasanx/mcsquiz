@@ -29,6 +29,27 @@
       return out;
     }
 
+    // The football legends are generated opponents, not student accounts. Every
+    // surface that can name one (table, podium, winner banner, player card and
+    // the share canvas) must say so in Arabic, without moving it in the ranking.
+    var VIRTUAL_LABEL = 'افتراضي';
+    var VIRTUAL_NOTE = 'منافس افتراضي — ليس حساب طالب';
+
+    function isVirtualRow(r) {
+      if (!r) return false;
+      if (r.isBot) return true;
+      return typeof r.user_id === 'string' && r.user_id.indexOf('legend:') === 0;
+    }
+
+    function virtualBadgeHtml(size) {
+      var fs = size === 'podium' ? '0.62rem' : '0.7rem';
+      return '<span class="league-bot-badge" title="' + VIRTUAL_NOTE + '"' +
+        ' style="display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;' +
+        'font-size:' + fs + ';font-weight:700;line-height:1;padding:3px 6px;border-radius:999px;' +
+        'border:1px solid var(--accent-border);background:var(--accent-subtle);color:var(--accent);' +
+        'white-space:nowrap">' + VIRTUAL_LABEL + '</span>';
+    }
+
     function leagueScopeLabel() {
       if (!S.leagueSubject) return 'الترتيب العام';
       var subs = (S.index && S.index.subjects) || [];
@@ -75,7 +96,9 @@
       if (!el) return;
       if (isPrev && Array.isArray(rows) && rows.length > 0 && rows[0].xp > 0) {
         el.innerHTML = '<i data-lucide="crown"></i><span>بطل الأسبوع الماضي: <b>' +
-          escapeHtml(rows[0].name || 'لاعب') + '</b> برصيد ' + rows[0].xp + ' إجابة ودقة ' +
+          escapeHtml(rows[0].name || 'لاعب') + '</b>' +
+          (isVirtualRow(rows[0]) ? ' ' + virtualBadgeHtml('podium') : '') +
+          ' برصيد ' + rows[0].xp + ' إجابة ودقة ' +
           (accuracyOf(rows[0]) !== null ? accuracyOf(rows[0]) + '%' : '—') + '</span>';
         el.classList.remove('hidden');
       } else {
@@ -175,7 +198,9 @@
       var seen = new Set(combined.map(function (r) { return r.user_id; }));
       botRows.forEach(function (b) {
         if (!seen.has(b.user_id)) {
-          combined.push(b);
+          // keep the row flagged even if the generator ever omits it: the
+          // disclosure below must not depend on another module's field
+          combined.push(Object.assign({}, b, { isBot: true }));
         }
       });
       combined.sort(function (a, b) {
@@ -371,7 +396,8 @@
       if (restLabel) restLabel.classList.toggle('hidden', !usePodium || rest.length === 0);
       rest.forEach(function (r) {
         var row = document.createElement('div');
-        row.className = 'league-row' + (myId && r.user_id === myId ? ' is-me' : '');
+        row.className = 'league-row' + (myId && r.user_id === myId ? ' is-me' : '') +
+          (isVirtualRow(r) ? ' is-bot' : '');
         row.setAttribute('role', 'listitem');
         row.innerHTML =
           '<span class="league-rank" dir="ltr">' + r.rank + '</span>' +
@@ -379,6 +405,7 @@
           '<span class="league-row-name" dir="auto">' +
             escapeHtml(r.name || 'لاعب') +
           '</span>' +
+          (isVirtualRow(r) ? virtualBadgeHtml() : '') +
           '<span class="league-row-xp">' + r.xp + '<small>إجابة</small></span>' +
           (!S.leagueSubject ? '<span class="league-row-acc">' + (accuracyOf(r) !== null ? accuracyOf(r) + '%' : '—') + '</span>' : '');
         wirePlayerCard(row, r);
@@ -441,8 +468,8 @@
           if (pills.length > 0) {
             honorsHtml = '<div class="player-honors-highlight">' + pills.join('') + '</div>';
           }
-        } else if (r.isBot) {
-          honorsHtml = '<div class="player-honors-highlight"><span class="player-honor-pill badge-tier-diamond"><i data-lucide="sparkles"></i> ذكاء أسطوري متكيف</span></div>';
+        } else if (isVirtualRow(r)) {
+          honorsHtml = '<div class="player-honors-highlight"><span class="player-honor-pill badge-tier-diamond"><i data-lucide="sparkles"></i> منافس افتراضي متكيف</span></div>';
         }
       } catch (e) {} // audit-ignore: optional honors highlight
 
@@ -451,6 +478,7 @@
           avHtml +
           '<div class="player-head-text">' +
             '<h3 dir="auto">' + escapeHtml(r.name || 'لاعب') + '</h3>' +
+            (isVirtualRow(r) ? virtualBadgeHtml('podium') : '') +
             '<p>' + (r.title ? escapeHtml(r.title) + ' · ' : '') + 'المركز ' + escapeHtml(String(r.rank || '—')) + ' هذا الأسبوع</p>' +
           '</div>' +
         '</div>' +
@@ -468,7 +496,7 @@
             }).join('') +
             '</div>'
           : '') +
-        '<p class="player-note">' + (r.isBot ? 'منافس أسطوري ذكي يتفاعل مع وتيرة أدائك وتحدياتك' : 'أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.') + '</p>';
+        '<p class="player-note">' + (isVirtualRow(r) ? 'منافس افتراضي — ليس حساب طالب، ويتفاعل مع وتيرة أدائك وتحدياتك' : 'أرقام هذا الأسبوع فقط — بدون معرّف الحساب ولا أي بيانات شخصية.') + '</p>';
       openDrawer('player-drawer');
       icons();
     }
@@ -477,7 +505,8 @@
       if (!el) return;
       el.classList.add('is-clickable');
       el.setAttribute('tabindex', '0');
-      el.setAttribute('aria-label', 'بطاقة ' + (row.name || 'لاعب'));
+      el.setAttribute('aria-label', 'بطاقة ' + (row.name || 'لاعب') +
+        (isVirtualRow(row) ? ' — ' + VIRTUAL_NOTE : ''));
       el.addEventListener('click', function () { openPlayerCard(row); });
       el.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPlayerCard(row); }
@@ -495,7 +524,8 @@
         var slot = document.createElement('div');
         var first = r.rank === 1;
         var photo = (myId && r.user_id === myId && !r.avatar) ? (myPhoto || '') : r.avatar;
-        slot.className = 'podium-slot p' + r.rank + (myId && r.user_id === myId ? ' is-me' : '');
+        slot.className = 'podium-slot p' + r.rank + (myId && r.user_id === myId ? ' is-me' : '') +
+          (isVirtualRow(r) ? ' is-bot' : '');
         var avHtml = avatarHtml(photo, r.name, 'podium-av');
         slot.innerHTML =
           '<span class="podium-av-wrap">' +
@@ -503,6 +533,7 @@
           avHtml +
           '</span>' +
           '<span class="podium-name" dir="auto">' + escapeHtml(r.name || 'لاعب') + '</span>' +
+          (isVirtualRow(r) ? virtualBadgeHtml('podium') : '') +
           '<span class="podium-xp">' + r.xp + ' <small>إجابة</small></span>' +
           '<span class="podium-block">' + r.rank + '</span>';
         wirePlayerCard(slot, r);
@@ -759,6 +790,22 @@
         var nameX = R - 92 - avR - 26;
         ctx2d.fillText(r.name || 'لاعب', nameX, cy + 10);
 
+        if (isVirtualRow(r)) {
+          ctx2d.font = '700 19px "MCSQuiz Arabic", sans-serif';
+          var tagW = ctx2d.measureText(VIRTUAL_LABEL).width + 26;
+          var tagX = nameX - tagW;
+          var tagY = cy + 18;
+          ctx2d.fillStyle = 'rgba(217,178,106,0.16)';
+          drawRoundRect(ctx2d, tagX, tagY, tagW, 30, 8);
+          ctx2d.fill();
+          ctx2d.strokeStyle = 'rgba(217,178,106,0.42)';
+          ctx2d.lineWidth = 1.5;
+          ctx2d.stroke();
+          ctx2d.fillStyle = GOLD;
+          ctx2d.textAlign = 'center';
+          ctx2d.fillText(VIRTUAL_LABEL, tagX + tagW / 2, tagY + 21);
+        }
+
         ctx2d.textAlign = 'left';
         ctx2d.fillStyle = first ? GOLD : INK;
         ctx2d.font = '700 38px "MCSQuiz Arabic", sans-serif';
@@ -778,6 +825,11 @@
       if (mineOutside) {
         drawRow(mine, y + 12, { h: 124, av: 40 });
       }
+
+      ctx2d.textAlign = 'right';
+      ctx2d.fillStyle = MUTED;
+      ctx2d.font = '500 22px "MCSQuiz Arabic", sans-serif';
+      ctx2d.fillText('«افتراضي» منافس آلي وليس حساب طالب', R, H - 26);
 
       return c;
     }
@@ -878,6 +930,8 @@
 
     return {
       scopeRows: scopeRows,
+      isVirtualRow: isVirtualRow,
+      virtualBadgeHtml: virtualBadgeHtml,
       renderLeague: renderLeague,
       shareMyRank: shareMyRank,
       openPlayerCard: openPlayerCard
