@@ -11,6 +11,8 @@ for the project overview. These pages complement the existing canonical document
   and dated advisory observations. This is not a security audit.
 - [Testing and risks](testing-and-risks.md): test layers, separate checks, evidence
   limits, and follow-up questions.
+- [Competition baseline](competition-baseline.md): dated record of the scoring,
+  league, virtual-opponent and adaptive work, with what was verified and what was not.
 
 Maintain these notes when their corresponding behavior changes. Source files,
 `VERSION`, the generated vault state, live configuration and fresh test output are

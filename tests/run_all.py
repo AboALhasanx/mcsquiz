@@ -29,6 +29,7 @@ SPECS = [
     'test_league_privacy.py',
     'test_league_bot_disclosure.py',
     'test_vs_offline_competition.py',
+    'test_offline_cold_start.py',
     'test_vs.py',
     'test_player_card.py',
     'test_share.py',

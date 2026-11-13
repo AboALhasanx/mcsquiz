@@ -97,14 +97,22 @@ results and all implementation changes below as work proceeds.
 - Safe local suite on port 18081 (18 specs; remote-touching specs excluded):
   **597 checks, 0 failed**. `tests/report.txt` was backed up and restored byte for
   byte (SHA-256 `8AA81E88…BD9535`).
-- Tablet, integrated build: after cache-busting with `?t=`, the local page loaded
-  `PortalVSAdaptive`, reported offset 0 on a cold session, completed five rounds
-  offline-simulated and showed the result with no page errors. The first attempt
-  loaded the tablet's cached older shell (`PortalVSAdaptive` absent); `?t=` fixed it.
+- Tablet-width browser substitute (800×1340, since no physical tablet is available):
+  no horizontal overflow on catalogue, arena or league; `PortalVSAdaptive` loaded;
+  five legends listed; five-round duel finished with no page errors. The league badge
+  needs real/mocked rows, which the disclosure spec covers at phone width.
+- Cold start without network through the service worker
+  (`python tests/test_offline_cold_start.py`): the catalogue renders from the worker
+  cache, a live-room attempt fails visibly instead of hanging, and a five-round legend
+  duel completes with no page errors. This is the PWA offline path, not a physical
+  device and not a test of an updated installed app.
 - Shell bumped to **1.13.0** via `tools/release.py minor` (VERSION, manifest,
   service-worker cache name, `SHELL_VERSION`); precache check reports 343 entries and
   the audit is clean. Nothing was deployed.
-- Not verified: cold-start installed-PWA update, airplane mode, or the deployed build.
-  A cold-start test of this shell cannot be honest without deploying it, which the
-  student prohibited.
+- Not verified: an updated installed PWA receiving the new shell, true airplane mode,
+  or the deployed build. A cold-start test of this shell cannot be honest without
+  deploying it, which the student prohibited.
+- Earlier physical-tablet observations in this document were made while the device was
+  attached over USB; the student has since indicated no tablet is available, so treat
+  device-specific claims as that earlier snapshot only.
 - Committed locally and pushed as `cf74998` (no Vercel deploy).
