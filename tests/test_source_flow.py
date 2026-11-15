@@ -166,6 +166,14 @@ def run():
         check('ungraded choice is neutral, not wrong',
               page.locator('.option-tile.ungraded-choice').count() == 1 and
               page.locator('.option-tile.user-wrong, .option-tile.correct-answer').count() == 0)
+        check('ungraded choice is visibly selected without grading colors',
+              page.locator('.option-tile.ungraded-choice.selected[aria-checked="true"]').count() == 1 and
+              page.locator('.option-tile.ungraded-choice').evaluate("""el => {
+                const selected = getComputedStyle(el);
+                const peer = getComputedStyle(el.parentElement.querySelector('.option-tile:not(.ungraded-choice)'));
+                return selected.borderColor !== peer.borderColor && selected.boxShadow !== peer.boxShadow;
+              }""") and
+              page.locator('.option-tile.user-wrong, .option-tile.correct-answer').count() == 0)
         check('ungraded selection does not affect review telemetry', page.evaluate('JSON.stringify(window.PortalReview.loadStore()) === window.__beforeUnscoredReview'))
         page.locator('#btn-next').click()
         check('ungraded-only results are not a failed exam', page.locator('#score-badge-text').inner_text() == 'مراجعة بلا تقييم' and page.locator('#score-percentage').inner_text() == '—')

@@ -1611,7 +1611,7 @@
       const isCorrectOpt = q.correct === i;
       let tileClass = 'option-tile';
       if (locked) {
-        if (isSelected) tileClass += !graded ? ' ungraded-choice' : (i === q.correct) ? ' correct-answer' : ' user-wrong';
+        if (isSelected) tileClass += !graded ? ' ungraded-choice selected' : (i === q.correct) ? ' correct-answer' : ' user-wrong';
         else if (isCorrectOpt) tileClass += ' correct-answer';
       }
       const btn = document.createElement('button');
@@ -3830,7 +3830,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.13.1';
+  const SHELL_VERSION = '1.13.2';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

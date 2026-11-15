@@ -5,6 +5,12 @@ versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.2] — 2026-11-16
+
+### Changed
+- fix: show selected neutral answers
+
+
 ## [1.13.1] — 2026-11-16
 
 ### Changed
