@@ -69,10 +69,7 @@
     banks: {},          // quiz_id -> bank json
     subjectFilter: null,   // subject_id — always selected, no "all"
     chapterFilter: null,   // chapter_no — always selected, no "all"
-    bankKindFilter: 'source', // the source track is preferred when available
     lang: 'ar',         // 'ar' | 'en' | 'both'
-    prefLang: 'ar',     // the student's own choice, never the forced source language
-    langBeforeSource: null,
     sound: true,
     session: null,      // {sub, ch, title, chapterLabel, questions, picks, dwells, idx, hash, finished, ..., replay}
     saved: {},          // saveKey -> {origin, snapshot, savedAt}
@@ -98,10 +95,10 @@
   function saveUI() {
     try {
       localStorage.setItem(UI_KEY, JSON.stringify({
-        subject: S.subjectFilter, chapter: S.chapterFilter, bankKind: S.bankKindFilter,
+        subject: S.subjectFilter, chapter: S.chapterFilter,
         savedSubject: S.savedSubject, savedChapter: S.savedChapter, savedChapterOpen: null, savedExpanded: S.savedExpanded,
         savedHideAnswers: S.savedHideAnswers,
-        lang: S.prefLang || S.lang,
+        lang: S.lang,
         statsRange: S.statsRange,
       }));
     } catch (e) {}
@@ -112,13 +109,12 @@
       if (!u) return;
       if (u.subject) S.subjectFilter = u.subject;
       if (u.chapter) S.chapterFilter = u.chapter;
-      if (u.bankKind === 'source' || u.bankKind === 'practice') S.bankKindFilter = u.bankKind;
       if (u.savedSubject) S.savedSubject = u.savedSubject;
       if (u.savedExpanded) S.savedExpanded = u.savedExpanded;
       if (u.savedChapter) S.savedChapter = u.savedChapter;
       if (u.savedHideAnswers !== undefined) S.savedHideAnswers = Boolean(u.savedHideAnswers);
       if (u.statsRange !== undefined && u.statsRange !== null) S.statsRange = Number(u.statsRange);
-      if (u.lang === 'en' || u.lang === 'ar') { S.lang = u.lang; S.prefLang = u.lang; }
+      if (u.lang === 'en' || u.lang === 'ar') S.lang = u.lang;
     } catch (e) {}
   }
 
@@ -322,14 +318,13 @@
       }
     }
     S.index = idx;
-    // chapters stay plain numbers (1, 2, 3 …). Inside a chapter every bank
-    // gets its own topic number: chapter.topic (1.1, 1.2 …), shown inside the
-    // card next to the topic title
+    // Chapters stay plain numbers (1, 2, 3 …). Every bank within a chapter
+    // gets a regular topic number, shown beside its title.
     try {
       idx.subjects.forEach((sub) => {
         const groups = {};
         (sub.chapters || []).forEach((ch) => {
-          const k = String(ch.chapter_no) + '|' + chapterBankKind(ch);
+          const k = String(ch.chapter_no);
           (groups[k] = groups[k] || []).push(ch);
         });
         Object.keys(groups).forEach((k) => {
@@ -337,7 +332,7 @@
           groups[k].forEach((ch, i) => {
             ch.label = String(ch.chapter_no);
             ch.topicNum = String(i + 1);
-            ch.topicLabel = (chapterBankKind(ch) === 'source' ? 'دفعة: ' : 'موضوع: ') + (i + 1);
+            ch.topicLabel = 'موضوع: ' + (i + 1);
           });
         });
       });
@@ -564,39 +559,8 @@
   function currentChapter(sub) {
     sub = sub || currentSubject();
     if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) return null;
-    const match = sub.chapters.find((c) => c.chapter_no === S.chapterFilter && chapterBankKind(c) === S.bankKindFilter);
-    const sameKind = sub.chapters.find((c) => chapterBankKind(c) === S.bankKindFilter);
-    return match || sameKind || sub.chapters[0];
-  }
-
-  function chapterBankKind(ch) {
-    const bank = ch && S.banks[ch.quiz_id];
-    return (bank && bank.bank_kind === 'source') || (ch && ch.bank_kind === 'source') ||
-      /^Quiz_Ch\d+_S\d+_Source_/.test(String(ch && ch.quiz_id || '')) ? 'source' : 'practice';
-  }
-
-  function renderBankKindChips(sub) {
-    const bar = $('bank-kind-filter-bar');
-    const chapters = (sub && sub.chapters) || [];
-    const kinds = ['source', 'practice'].filter((kind) => chapters.some((ch) => chapterBankKind(ch) === kind));
-    if (!kinds.includes(S.bankKindFilter)) S.bankKindFilter = kinds[0] || 'practice';
-    bar.innerHTML = '';
-    bar.classList.toggle('hidden', !kinds.includes('source'));
-    kinds.forEach((kind) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'filter-chip' + (S.bankKindFilter === kind ? ' active' : '');
-      btn.dataset.bankKind = kind;
-      btn.textContent = kind === 'source' ? 'أسئلة المصدر' : 'تدريب الفهم';
-      btn.setAttribute('aria-pressed', S.bankKindFilter === kind ? 'true' : 'false');
-      btn.addEventListener('click', () => {
-        S.bankKindFilter = kind;
-        renderChapterChips();
-        saveUI();
-        renderCatalog();
-      });
-      bar.appendChild(btn);
-    });
+    const match = sub.chapters.find((c) => c.chapter_no === S.chapterFilter);
+    return match || sub.chapters[0];
   }
 
   function renderSubjectChips() {
@@ -618,7 +582,6 @@
       b.addEventListener('click', () => {
         S.subjectFilter = id;
         S.chapterFilter = null;
-        S.bankKindFilter = 'source';
         saveUI();
         renderSubjectChips(); renderChapterChips(); renderCatalog();
       });
@@ -631,7 +594,7 @@
     const ch = currentChapter(sub);
     if (!sub || !ch) return [];
     return sub.chapters
-      .filter((c) => c.chapter_no === ch.chapter_no && chapterBankKind(c) === S.bankKindFilter)
+      .filter((c) => c.chapter_no === ch.chapter_no)
       .map((c2) => ({ sub: sub, ch: c2 }));
   }
 
@@ -645,7 +608,6 @@
   function renderChapterChips() {
     const bar = $('chapter-filter-bar');
     const sub = currentSubject();
-    renderBankKindChips(sub);
     if (!sub || !Array.isArray(sub.chapters) || !sub.chapters.length) {
       if (bar) { bar.innerHTML = ''; bar.style.display = 'none'; }
       return;
@@ -655,7 +617,6 @@
     const chapters = [];
     const seenChapters = new Set();
     sub.chapters.forEach((c) => {
-      if (chapterBankKind(c) !== S.bankKindFilter) return;
       if (seenChapters.has(c.chapter_no)) return;
       seenChapters.add(c.chapter_no);
       chapters.push(c);
@@ -858,6 +819,7 @@
       const row = document.createElement('div');
       row.className = 'sketch-row';
       const title = topicTitle(bank);
+      const topicLabel = ch.topicLabel || 'موضوع: 1';
       const isFresh = !!(S.freshChapters || []).some((f) => f.quiz_id === ch.quiz_id && !f.read);
       row.innerHTML =
         '<button type="button" class="sketch-cell sketch-info-cell row-info-cell" aria-label="تفاصيل الكوز">' +
@@ -866,7 +828,7 @@
           '<div class="sketch-eyebrow">' +
             '<span class="sketch-subject-tag">' + escapeHtml(sub.subject_title) + '</span>' +
             '<span class="sketch-chip">' + escapeHtml(chLabelLong(ch)) + '</span>' +
-            '<span class="sketch-topic-num" dir="auto">' + escapeHtml(ch.topicLabel || 'موضوع: 1') + '</span>' +
+            (topicLabel ? '<span class="sketch-topic-num" dir="auto">' + escapeHtml(topicLabel) + '</span>' : '') +
             (isFresh ? '<span class="sketch-chip sketch-chip-new">جديد</span>' : '') +
           '</div>' +
           '<div class="sketch-title" dir="' + (isRtlText(title) ? 'rtl' : 'ltr') + '">' + escapeHtml(title) + '</div>' +
@@ -895,7 +857,7 @@
     if (crumb) crumb.innerHTML = crumbHtml(sub, ch);
     const topicEl = $('info-sheet-topic');
     const tNum = ch.topicLabel || 'موضوع: 1';
-    topicEl.innerHTML = '<span class="sketch-topic-num">' + escapeHtml(tNum) + '</span> ' + escapeHtml(title);
+    topicEl.innerHTML = (tNum ? '<span class="sketch-topic-num">' + escapeHtml(tNum) + '</span> ' : '') + escapeHtml(title);
     topicEl.setAttribute('dir', isRtlText(title) ? 'rtl' : 'ltr');
     $('info-sheet-list').innerHTML = detailGridHtml(bankDetailRows(sub, ch, bank));
     const startBtn = $('info-sheet-start');
@@ -986,15 +948,9 @@
     };
     S.subjectFilter = snap.sub && snap.sub.subject_id || S.subjectFilter;
     S.chapterFilter = snap.ch && snap.ch.chapter_no || S.chapterFilter;
-    const allSource = snap.questions.every((q) => q.bank_kind === 'source');
-    S.bankKindFilter = allSource ? 'source' : 'practice';
     if (snap.lang === 'en' || snap.lang === 'ar') {
       S.lang = snap.lang;
-    } else if (allSource) {
-      S.lang = 'en';
     }
-    if (allSource) S.langBeforeSource = S.prefLang || 'ar';
-    else S.langBeforeSource = null;
     try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
     syncLangButtons();
     const chapterNo = (snap.ch && snap.ch.chapter_no !== undefined) ? snap.ch.chapter_no : 1;
@@ -1021,14 +977,6 @@
   function launchSession(pool, meta) {
     // meta: {subjectId, subjectTitle, chapterNo, chapterLabel?, topic, quizId|null, retryWrong, replay, kind?}
     preparePool(pool);
-    if (pool.length && pool.every((q) => q.bank_kind === 'source')) {
-      if (S.langBeforeSource === null) S.langBeforeSource = S.lang;
-      S.lang = 'en';
-      document.documentElement.setAttribute('lang', 'en');
-      syncLangButtons();
-    } else {
-      restorePreferredLang();
-    }
     const kind = meta.kind || (meta.quizId ? 'bank' : ((meta.replay && meta.replay.type === 'saved') ? 'saved' : 'bank'));
     S.session = {
       sub: { subject_id: meta.subjectId, subject_title: meta.subjectTitle },
@@ -1079,9 +1027,6 @@
       } else {
         note.textContent = '';
       }
-      if (bank && bank.bank_kind === 'source') {
-        note.textContent = 'نص السؤال والخيارات من المصدر بترتيبها الأصلي. الترجمة والشرح منفصلان؛ راجع التنبيهات بعد الإجابة.';
-      }
     }
     $('question-total-label').textContent = pool.length;
     $('live-feedback-box').classList.add('hidden');
@@ -1097,7 +1042,6 @@
     if (!sub || !ch || !bank) { showError('لم يتم العثور على الكوز المطلوب.'); return; }
     S.subjectFilter = sub.subject_id;
     S.chapterFilter = ch.chapter_no;
-    S.bankKindFilter = chapterBankKind(ch);
     saveUI();
 
     let pool = bank.questions.map((q) => {
@@ -1603,7 +1547,6 @@
   // explanation — in the quiz, in the saved questions, in the review and in VS mode.
   function setLang(lang) {
     S.lang = (lang === 'en') ? 'en' : 'ar';
-    S.prefLang = S.lang;
     try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
     saveUI();
     syncLangButtons();
@@ -1614,14 +1557,6 @@
       else if (!$('deck-catalog').classList.contains('hidden')) renderCatalog();
       else if (!$('vs-view').classList.contains('hidden')) updateVsLanguage();
     } catch (e) {}
-  }
-
-  function restorePreferredLang() {
-    if (S.langBeforeSource === null) return;
-    S.langBeforeSource = null;
-    S.lang = S.prefLang || 'ar';
-    try { document.documentElement.setAttribute('lang', S.lang); } catch (e) {}
-    syncLangButtons();
   }
 
   function updateVsLanguage() {
@@ -1643,9 +1578,7 @@
     return S.lang === 'en' ? (explEn(q) || explAr(q)) : (explAr(q) || explEn(q));
   }
   function explanationHtml(q) {
-    const src = q.bank_kind === 'source' ? q.source : null;
-    const note = src && src.note && (src.note[S.lang] || src.note.ar || src.note.en);
-    return (note ? '<p class="source-note">' + richHtml(note) + '</p>' : '') + richHtml(explText(q));
+    return richHtml(explText(q));
   }
   function lettersFor(lang) { return lang === 'en' ? ['A', 'B', 'C', 'D'] : ['أ', 'ب', 'ج', 'د']; }
 
@@ -1668,11 +1601,6 @@
     } else {
       qEl2.classList.add('hidden');
     }
-    const sourceEl = $('question-source');
-    const src = q.bank_kind === 'source' ? q.source : null;
-    sourceEl.classList.toggle('hidden', !src);
-    sourceEl.innerHTML = src ? 'نص المصدر · السؤال <bdi dir="ltr">' + escapeHtml(src.id) + '</bdi> · <bdi dir="auto">' + escapeHtml(src.reference) + '</bdi>' +
-      (graded ? '' : ' · للمراجعة فقط؛ لا يُحتسب ضمن النتيجة') : '';
     const box = $('options-container');
     box.innerHTML = '';
     const locked = ses.picks[ses.idx] !== null;
@@ -1683,7 +1611,7 @@
       const isCorrectOpt = q.correct === i;
       let tileClass = 'option-tile';
       if (locked) {
-        if (isSelected) tileClass += !graded ? ' source-choice' : (i === q.correct) ? ' correct-answer' : ' user-wrong';
+        if (isSelected) tileClass += !graded ? ' ungraded-choice' : (i === q.correct) ? ' correct-answer' : ' user-wrong';
         else if (isCorrectOpt) tileClass += ' correct-answer';
       }
       const btn = document.createElement('button');
@@ -2006,7 +1934,7 @@
     cb.innerHTML = '<div class="chapter-row"><span class="chapter-name">' +
       escapeHtml(ses.sub.subject_title + ' · ' + (ses.chapterLabel || chLabel(ses.ch))) + '</span></div>';
     const ungradedCount = ses.questions.filter((q) => !window.PortalAnalytics.isScorable(q)).length;
-    if (ungradedCount) cb.innerHTML += '<p class="question-source">أسئلة للمراجعة خارج النتيجة: ' + ungradedCount + '</p>';
+    if (ungradedCount) cb.innerHTML += '<p class="ungraded-count-note">أسئلة للمراجعة خارج النتيجة: ' + ungradedCount + '</p>';
 
     $('filter-count-all').textContent = ses.questions.length;
     const actualWrong = ses.picks.filter((p, i) => window.PortalAnalytics.isScorable(ses.questions[i]) &&
@@ -2026,7 +1954,7 @@
       const graded = window.PortalAnalytics.isScorable(q);
       const verdict = !graded ? 'ungraded' : ok ? 'correct' : (skipped ? 'skipped' : 'wrong');
       const card = document.createElement('div');
-      card.className = 'review-card ' + (!graded ? 'source-review' : ok ? 'correct-border' : (skipped ? 'skipped-border' : 'wrong-border'));
+      card.className = 'review-card ' + (!graded ? 'ungraded-review' : ok ? 'correct-border' : (skipped ? 'skipped-border' : 'wrong-border'));
       card.dataset.ok = verdict;
       card.setAttribute('data-q-index', i);
 
@@ -2057,7 +1985,7 @@
         if (q.bank_kind !== 'source' && oi !== picked && oi !== q.correct) continue;
         const pair = optsPair(q, oi);
         let optClass = 'review-option-item';
-        if (!graded && oi === picked) optClass += ' source-choice';
+        if (!graded && oi === picked) optClass += ' ungraded-choice';
         else if (oi === picked && graded && !ok && !skipped) optClass += ' user-wrong';
         else if (oi === q.correct) optClass += ' correct-answer';
         const item = document.createElement('div');
@@ -2151,7 +2079,6 @@
     closeDrawers();
     if (!S.index) return;
     const h = location.hash;
-    if (!h.startsWith('#/quiz') && !h.startsWith('#/practice')) restorePreferredLang();
     if (!h.startsWith('#/vs')) {
       const ui = getVsUI();
       if (ui) ui.cleanupVsTimers();
@@ -2218,7 +2145,6 @@
     } else {
       S.session = null;
       clearSessionSnapshot();
-      restorePreferredLang();
       renderSubjectChips();
       renderChapterChips();
       renderCatalog();
@@ -3904,7 +3830,7 @@ const weekBar = $('league-week-bar');
 
   // ---------------- boot ----------------
   // ---------------- version guard: never run a stale shell ----------------
-  const SHELL_VERSION = '1.13.0';
+  const SHELL_VERSION = '1.13.1';
   async function guardShell() {
     try {
       const marker = localStorage.getItem('portal_shell_version');

@@ -1,4 +1,4 @@
-"""Source track: isolation, original order, provenance and offline snapshots.
+"""ASE source questions: ordinary presentation, original order and offline snapshots.
 
 Uses an intercepted local fixture; no database writes and no production content.
 """
@@ -25,7 +25,7 @@ def fixture_bank(qid, kind='source'):
     for i in range(3):
         q = {
             'id': 'q%d' % (i + 1), 'concept_id': '%s_%d' % (qid, i),
-            'stem': {'en': 'Original source question %d?' % (i + 1), 'ar': 'السؤال الأصلي %d؟' % (i + 1)},
+            'stem': {'en': 'Question %d?' % (i + 1), 'ar': 'السؤال %d؟' % (i + 1)},
             'options': [{'en': en, 'ar': ar} for en, ar in zip(
                 ['First option', 'Second option', 'Both A and B', 'None of the above'],
                 ['الخيار الأول', 'الخيار الثاني', 'كلا الخيارين A وB', 'لا شيء مما سبق'])],
@@ -70,29 +70,34 @@ def run():
         page.on('pageerror', lambda e: errors.append(str(e)))
         page.goto(common.APP, wait_until='domcontentloaded')
         page.wait_for_function('() => window.__portal && Object.keys(window.__portal.S.banks).length === 3')
-        check('source track is preferred', page.locator('[data-bank-kind="source"]').get_attribute('aria-pressed') == 'true')
-        check('source and practice are separated', page.locator('#catalog-cards-container .sketch-row').count() == 1)
-        check('source batches have their own numbering', 'دفعة: 1' in page.locator('#catalog-cards-container').inner_text())
+        check('catalog has no source/practice filter', page.locator('#bank-kind-filter-bar').count() == 0)
+        check('source and practice banks share the normal chapter list',
+              page.locator('#catalog-cards-container .sketch-row').count() == 2)
+        check('bank title may retain its wording, without a batch label',
+              'أسئلة المصدر' in page.locator('#catalog-cards-container').inner_text() and
+              'دفعة:' not in page.locator('#catalog-cards-container').inner_text())
         artifact_dir = Path(os.environ.get('PORTAL_SOURCE_ARTIFACTS', str(Path(tempfile.gettempdir()) / 'opencode')))
         artifact_dir.mkdir(parents=True, exist_ok=True)
         page.evaluate('document.fonts.ready')
         page.screenshot(path=str(artifact_dir / 'ase-source-catalog-dark402.png'))
-        page.locator('[data-bank-kind="practice"]').click()
-        check('practice card remains available', practice_id in page.locator('#catalog-cards-container a').first.get_attribute('href'))
-        check('practice topic numbering is unchanged', 'موضوع: 1' in page.locator('#catalog-cards-container').inner_text())
-        page.locator('[data-bank-kind="source"]').click()
         page.get_by_role('button', name='جابتر 8', exact=True).click()
-        page.locator('[data-bank-kind="practice"]').click()
-        check('switching to practice leaves a source-only chapter safely', page.evaluate('window.__portal.S.chapterFilter') == 1)
-        page.locator('[data-bank-kind="source"]').click()
-        page.locator('#catalog-cards-container a').first.click()
+        check('source-only chapter remains selectable without a track filter',
+              page.evaluate('window.__portal.S.chapterFilter') == 8 and
+              page.locator('#catalog-cards-container .sketch-row').count() == 1)
+        page.get_by_role('button', name='جابتر 1', exact=True).click()
+        check('practice bank remains listed beside source bank',
+              page.locator('#catalog-cards-container a[href*="%s"]' % practice_id).count() == 2)
+        page.locator('#catalog-cards-container a[href*="%s"]' % source_id).first.click()
         page.wait_for_selector('#btn-start-quiz:visible')
-        check('source preflight explains order', 'بترتيبها الأصلي' in page.locator('#start-note').inner_text())
+        check('preflight contains no provenance notice', page.locator('#start-note').inner_text().strip() == '')
         page.locator('#btn-start-quiz').click()
         page.wait_for_selector('#question-text:visible')
         original = [o['en'] for o in banks[source_id]['questions'][0]['options']]
-        check('source opens in original English', page.locator('#question-text').inner_text() == 'Original source question 1?')
-        check('source options retain their order', page.locator('.option-content').all_text_contents() == original)
+        original_ar = [o['ar'] for o in banks[source_id]['questions'][0]['options']]
+        check('source question follows the selected Arabic language',
+              page.locator('#question-text').inner_text() == 'السؤال 1؟')
+        check('source options retain their order in Arabic',
+              page.locator('.option-content').all_text_contents() == original_ar)
         check('source key keeps its original position', page.evaluate('window.__portal.S.session.questions[0].correct') == 2)
         page.screenshot(path=str(artifact_dir / 'ase-source-quiz-dark402.png'))
         page.set_viewport_size({'width': 533, 'height': 874})
@@ -100,31 +105,43 @@ def run():
         page.screenshot(path=str(artifact_dir / 'ase-source-quiz-light533.png'))
         page.set_viewport_size({'width': 402, 'height': 874})
         page.evaluate('document.documentElement.setAttribute("data-theme", "dark")')
-        check('provenance is safely rendered as text', '<not markup>' in page.locator('#question-source').inner_text() and page.locator('#question-source not').count() == 0)
+        check('question card has no provenance element or text',
+              page.locator('#question-source').count() == 0 and
+              '<not markup>' not in page.locator('#question-card').inner_text() and
+              'المصدر' not in page.locator('#question-card').inner_text())
         check('correction does not reveal itself before answering', not page.locator('#live-feedback-box').is_visible())
-        page.locator('.option-tile').first.click()
-        check('source note is separate after answering', page.locator('.source-note').inner_text() == 'Source correction kept separate.')
-        check('source mode starts in English', page.evaluate('window.__portal.S.lang') == 'en')
+        page.locator('.option-tile').nth(2).click()
+        check('explanation appears without injected source notes',
+              'تنطبق العبارتان الأولى والثانية.' in page.locator('#live-explanation-text').inner_text() and
+              page.locator('.source-note').count() == 0 and
+              'تصحيح المصدر' not in page.locator('#live-explanation-text').inner_text())
+        check('source question does not override the selected language',
+              page.evaluate('window.__portal.S.lang') == 'ar')
+        page.locator('#lang-toggle-session').click()
+        check('language toggle exposes the English translation',
+              page.locator('#question-text').inner_text() == 'Question 1?')
         page.reload(wait_until='domcontentloaded')
         page.wait_for_function('() => window.__portal && window.__portal.S.session && window.__portal.S.session.started')
-        check('reloading a source session restores English', page.evaluate('window.__portal.S.lang') == 'en' and
-              page.locator('#question-text').inner_text() == 'Original source question 1?')
+        check('reloading a source session restores the selected language',
+              page.evaluate('window.__portal.S.lang') == 'en' and
+              page.locator('#question-text').inner_text() == 'Question 1?')
         page.locator('#lang-toggle-session').click()
-        check('Arabic translation remains available', 'السؤال الأصلي' in page.locator('#question-text').inner_text())
-        check('Arabic note remains separate', page.locator('.source-note').inner_text() == 'تصحيح المصدر موثق منفصلاً.')
+        check('Arabic translation remains available', page.locator('#question-text').inner_text() == 'السؤال 1؟')
+        check('source metadata remains hidden after language switching',
+              'تصحيح المصدر' not in page.locator('#question-card').inner_text() and
+              'Fixture source' not in page.locator('#question-card').inner_text())
         page.locator('#btn-save-question').click()
         check('saved snapshot retains source identity', page.evaluate('Object.values(window.__portal.S.saved)[0].snapshot.bank_kind') == 'source')
-        # Session restore must not normalize away source metadata or reorder options.
+        # Session restore must not normalize away internal order metadata.
         page.reload(wait_until='domcontentloaded')
         page.wait_for_function('() => window.__portal && window.__portal.S.session && window.__portal.S.session.started')
         check('reload preserves source order and answer', page.evaluate('window.__portal.S.session.questions[0].options[2].en') == 'Both A and B')
-        check('reload preserves source note', 'تصحيح المصدر' in page.locator('.source-note').inner_text())
         page.evaluate("""() => {
-          const s = window.__portal.S;
-          const item = Object.values(s.saved)[0];
-          Math.random = () => 0;
-          window.__portal.startReviewPractice([item.snapshot], 'مراجعة المصدر', 'review');
-        }""")
+           const s = window.__portal.S;
+           const item = Object.values(s.saved)[0];
+           Math.random = () => 0;
+           window.__portal.startReviewPractice([item.snapshot], 'مراجعة سؤال', 'review');
+         }""")
         check('review does not shuffle positional source options', page.evaluate('window.__portal.S.session.questions[0].options[2].en') == 'Both A and B')
         grade = page.evaluate("""() => {
           const s = window.__portal.S;
@@ -142,20 +159,23 @@ def run():
           window.__portal.startReviewPractice([q], 'مراجعة سؤال ملتبس', 'review');
         }""")
         page.locator('#btn-start-quiz').click()
-        check('ungraded question is labelled before selection', 'لا يُحتسب ضمن النتيجة' in page.locator('#question-source').inner_text())
+        check('ungraded question shows no provenance label',
+              page.locator('#question-source').count() == 0 and
+              'لا يُحتسب ضمن النتيجة' not in page.locator('#question-card').inner_text())
         page.locator('.option-tile').first.click()
-        check('ungraded choice is neutral, not wrong', page.locator('.option-tile.source-choice').count() == 1 and page.locator('.option-tile.user-wrong, .option-tile.correct-answer').count() == 0)
+        check('ungraded choice is neutral, not wrong',
+              page.locator('.option-tile.ungraded-choice').count() == 1 and
+              page.locator('.option-tile.user-wrong, .option-tile.correct-answer').count() == 0)
         check('ungraded selection does not affect review telemetry', page.evaluate('JSON.stringify(window.PortalReview.loadStore()) === window.__beforeUnscoredReview'))
         page.locator('#btn-next').click()
         check('ungraded-only results are not a failed exam', page.locator('#score-badge-text').inner_text() == 'مراجعة بلا تقييم' and page.locator('#score-percentage').inner_text() == '—')
-        check('ungraded review preserves all source choices', page.locator('.review-card .review-option-item').count() == 4)
+        check('ungraded review preserves every choice', page.locator('.review-card .review-option-item').count() == 4)
         # Finish a scored source session with one wrong graded answer and one
         # ungraded disputed pick: the wrong counter must ignore the latter.
         page.evaluate("""(id) => {
-          const s = window.__portal.S;
-          s.lang = 'en';
-          window.__portal.startReviewPractice(s.banks[id].questions, 'تدقيق النتيجة', 'custom');
-        }""", source_id)
+           const s = window.__portal.S;
+           window.__portal.startReviewPractice(s.banks[id].questions, 'مراجعة النتيجة', 'custom');
+         }""", source_id)
         page.locator('#btn-start-quiz').click()
         page.locator('.option-tile').nth(2).click()
         page.locator('#btn-next').click()
@@ -165,12 +185,14 @@ def run():
         page.locator('#btn-next').click()
         page.wait_for_timeout(500)
         check('ungraded pick does not inflate the wrong counter', page.locator('#filter-count-wrong').inner_text() == '1', page.locator('#filter-count-wrong').inner_text())
-        check('ungraded pick is marked neutral, not wrong', page.locator('.review-option-item.source-choice').count() == 1 and page.locator('.review-card[data-ok="ungraded"]').count() == 1)
+        check('ungraded pick is marked neutral, not wrong',
+               page.locator('.review-option-item.ungraded-choice').count() == 1 and
+               page.locator('.review-card[data-ok="ungraded"]').count() == 1)
         page.evaluate("() => { location.hash = '#/'; }")
         page.wait_for_timeout(300)
-        check('leaving source mode restores the saved language', page.evaluate('window.__portal.S.lang') == 'ar', page.evaluate('window.__portal.S.lang'))
+        check('leaving the quiz keeps the selected language', page.evaluate('window.__portal.S.lang') == 'ar', page.evaluate('window.__portal.S.lang'))
         # A normal practice bank still follows the existing shuffle rule.
-        page.evaluate('(h) => { location.hash = h; }', '#/quiz/04_Advanced_Software_Eng/' + practice_id)
+        page.evaluate("() => { Math.random = () => 0; location.hash = '#/quiz/04_Advanced_Software_Eng/%s'; }" % practice_id)
         page.wait_for_function('(id) => window.__portal.S.session && window.__portal.S.session.ch.quiz_id === id', arg=practice_id)
         check('practice options still shuffle', page.evaluate('window.__portal.S.session.questions[0].options.map(o => o.en)') != original)
         check('practice answer remains mapped to its correct text', page.evaluate('window.__portal.S.session.questions[0].options[window.__portal.S.session.questions[0].correct].en') == 'Both A and B')

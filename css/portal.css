@@ -81,11 +81,8 @@ html[data-theme="light"] .test-mode-badge {
 .chapter-chip { font-size: 0.78rem; }
 .catalog-filter-bar { overflow-x: auto; scrollbar-width: none; }
 .catalog-filter-bar::-webkit-scrollbar { display: none; }
-#bank-kind-filter-bar .filter-chip { min-height: 44px; }
-#bank-kind-filter-bar .filter-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-.question-source { font-size: 0.76rem; color: var(--text-main); line-height: 1.7; overflow-wrap: anywhere; margin-block: 0.5rem; }
-.source-note { border-inline-start: 3px solid var(--accent); padding-inline-start: 0.75rem; margin-block-end: 0.75rem; }
-.option-tile.source-choice { border-color: var(--accent); }
+.option-tile.ungraded-choice,
+.review-option-item.ungraded-choice { border-color: var(--text-muted); }
 .matrix-cell.answered-neutral { border-color: var(--text-muted); }
 .saved-source-option { display: flex; gap: 0.75rem; padding: 0.5rem; }
 .catalog-filter-bar .filter-chip { flex: 0 0 auto; }
@@ -3312,7 +3309,6 @@ body:not([data-quizlive="yes"]) #btn-exit {
 .review-card { text-align: start; }
 .review-question-text { text-align: start; }
 .review-option-item { text-align: start; }
-.review-option-item.source-choice { border-color: var(--accent); background: var(--accent-subtle); }
 .review-explanation-box { background: none; }
 .expl-body { text-align: start; }
 .review-save-btn { align-self: flex-start; }

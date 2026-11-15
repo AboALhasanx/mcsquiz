@@ -6,6 +6,7 @@ Intercepts the manifest/bank reads only in the test browser. data/ stays untouch
 import argparse
 import json
 import os
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -13,6 +14,15 @@ from pathlib import Path
 import common
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 import portal_schema as schema
+
+PROVENANCE_RE = re.compile(
+    r'(?i)(publisher|textbook|official (?:key|answer|textbook)|answer key|'
+    r'keyed answer|printed key|printed book|companion slides?|slide deck|'
+    r'the deck|\bslides?\b|\bpages?\s*\d+|\bp\.\s*\d+|\bT1\b|'
+    r'Aggarwal\s*[§&]|Bieman\s*&\s*Kang|IEEE standard terminology|'
+    r'الناشر|الكتاب|مفتاح الناشر|مفتاح الكتاب|المفتاح الرسمي|'
+    r'السلايدات?|الشريحة|الشرائح|مذكرة|مذكرات|ص\.?\s*\d+)'
+)
 
 
 def run(vault):
@@ -28,6 +38,14 @@ def run(vault):
         common.check(f'{path.name} validates as v3', not errs, errs[:2])
         if errs:
             continue
+        for question in bank['questions']:
+            explanation = question.get('explanation')
+            texts = list(explanation.values()) if isinstance(explanation, dict) else [explanation]
+            common.check(
+                f"{path.name}:{question['id']} explanation has no provenance",
+                all(isinstance(text, str) and not PROVENANCE_RE.search(text) for text in texts),
+                [text for text in texts if not isinstance(text, str) or PROVENANCE_RE.search(text)],
+            )
         source[bank['quiz_id']]=bank
     ids=[q['source']['id'] for b in source.values() for q in b['questions']]
     common.check('every reviewed source question occurs exactly once', len(ids)==len(set(ids)) and set(ids)==set(snapshot['items']), len(ids))
@@ -58,20 +76,38 @@ def run(vault):
         page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(common.APP,wait_until='domcontentloaded')
         page.wait_for_function('(n) => window.__portal && Object.keys(window.__portal.S.banks).length===n',arg=expected_banks,timeout=45000)
-        common.check('actual source payloads load alongside existing practice',page.locator('[data-bank-kind="source"]').count()==1)
+        page.locator('#subject-filter-bar [data-subject="04_Advanced_Software_Eng"]').click()
+        first_chapter = min(int(qid.split('_')[1][2:]) for qid in source)
+        page.get_by_role('button', name=f'جابتر {first_chapter}', exact=True).click()
+        visible_ids = page.locator('#catalog-cards-container .sketch-content-cell').evaluate_all(
+            "(els) => els.map(a => decodeURIComponent(a.getAttribute('href').split('/').pop()))")
+        expected_visible = [ch['quiz_id'] for ch in subject['chapters'] if ch['chapter_no'] == first_chapter]
+        common.check('source banks appear in the normal chapter list beside other banks',
+                     set(visible_ids) == set(expected_visible) and
+                     any(qid in visible_ids for qid in source if int(qid.split('_')[1][2:]) == first_chapter))
+        common.check('catalog has no source/practice filter',
+                     page.locator('#bank-kind-filter-bar, [data-bank-kind]').count() == 0)
         for qid,bank in source.items():
             page.evaluate("""(id) => {
               const b=window.__portal.S.banks[id];
               if (window.__portal.S.session) clearInterval(window.__portal.S.session.timerId);
-              window.__portal.startReviewPractice(b.questions, 'تدقيق المصدر', 'custom');
+              window.__portal.startReviewPractice(b.questions, 'فحص البنك', 'custom');
             }""",qid)
             actual=page.evaluate("""() => window.__portal.S.session.questions.map(q=>({
               id:q.source.id, en:q.stem.en, options:q.options.map(o=>o.en), answer:q.answer
             }))""")
             expected=[{'id':q['source']['id'],'en':q['stem']['en'],'options':[o['en'] for o in q['options']],'answer':q['answer']} for q in bank['questions']]
             common.check(f'{qid}: all original questions/options/keys survive launch',actual==expected)
+            common.check(f'{qid}: question uses the selected Arabic language',
+                         page.evaluate('window.__portal.S.lang') == 'ar')
             page.locator('#btn-start-quiz').click()
-            common.check(f'{qid}: original English appears on screen',page.locator('#question-text').inner_text()==bank['questions'][0]['stem']['en'])
+            common.check(f'{qid}: question appears in Arabic without provenance',
+                         page.locator('#question-text').inner_text()==bank['questions'][0]['stem']['ar'] and
+                         page.locator('#question-source').count()==0 and
+                         bank['questions'][0]['source']['reference'] not in page.locator('#question-card').inner_text())
+            common.check(f'{qid}: source note is not inserted into the question card',
+                         not any(note in page.locator('#question-card').inner_text()
+                                 for note in bank['questions'][0]['source'].get('note', {}).values()))
         longest=max((q for b in source.values() for q in b['questions']),key=lambda q:len(q['stem']['en'])+sum(len(o['en']) for o in q['options']))
         page.evaluate("""(q) => window.__portal.startReviewPractice([q], 'تدقيق العرض', 'custom')""",longest)
         page.locator('#btn-start-quiz').click()
